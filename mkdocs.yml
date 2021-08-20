@@ -1,0 +1,49 @@
+site_name: ZoneNSI
+site_url: https://www.zonensi.fr/
+site_author : Bug_Jack_Barron
+nav:
+    - 'Home' : index.md
+    - 'Mathématiques' :
+        - 'Seconde' : 'Maths_seconde_home.md'
+        - 'Première' : 'Maths_premiere_home.md'
+        - 'Terminale' : 'Maths_terminale_home.md'
+    - 'SNT' : 'snt_home.md'
+    - 'NSI' :
+        - 'Première' : 'NSI_premiere_home.md'
+        - 'Terminale' : 'NSI_terminale_home.md'
+    - 'Miscellanées' :
+        - 'Python' :
+            - 'Le langage' 
+            - 'Flask' 
+            - 'MkDocs' : 'Miscellanees\mkdocs_cmd.md'
+            - 'Manim' 
+
+        
+theme:
+    name: material
+    locale: fr
+    logo : assets/logo.png
+    palette :
+        scheme : slate
+        primary : blue grey
+        accent : amber
+      
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+ 
+extra_css :
+  - extra.css
+  
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.snippets
+  - abbr
