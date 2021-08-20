@@ -37,6 +37,10 @@ donnera
 
 ## Les hyperliens
 
+Le fonctionnement des hyperlmens est particulier à MkDocs, donc ce qui suit n'est pas tyoujours valable dans 
+n'importe quel environnement lisant du **MarkDown**.
+
+
 
 ## Modules de MkDocs-Material
 
