@@ -29,6 +29,13 @@ def bubble_sort(items):
 ```
 
 
+
+<iframe src="https://trinket.io/embed/python/3d8d7ce66b" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+ :smile:
+ 
+ {--supprime--} et {++insere++} et {== Surligne ==}
+ 
 ## Keys
 
 ++ctrl++
