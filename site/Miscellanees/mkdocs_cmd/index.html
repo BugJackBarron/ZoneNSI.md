@@ -219,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Maths_seconde_home.md" class="md-nav__link">
+      <a href="../../Maths/Seconde/home.md" class="md-nav__link">
         Seconde
       </a>
     </li>
@@ -231,7 +231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Maths_premiere_home.md" class="md-nav__link">
+      <a href="../../Maths/Premiere/home.md" class="md-nav__link">
         Première
       </a>
     </li>
@@ -243,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Maths_terminale_home.md" class="md-nav__link">
+      <a href="../../Maths/Terminale/home.md" class="md-nav__link">
         Terminale
       </a>
     </li>
@@ -300,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../NSI_premiere_home.md" class="md-nav__link">
+      <a href="../../NSI/Premiere/home.md" class="md-nav__link">
         Première
       </a>
     </li>
@@ -312,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../NSI_terminale_home.md" class="md-nav__link">
+      <a href="../../NSI/Terminale/home/" class="md-nav__link">
         Terminale
       </a>
     </li>
@@ -592,8 +592,12 @@
 <p>Le langage <strong>Mardown</strong> est en langage de balise simple, utilisé entre autres dans les notebooks Jupyter, et pour lequel les règles d'utilisation sont simples :</p>
 <ul>
 <li>La mise en <strong>gras</strong> se fait par en encadrant par 2 étoiles  : <code>**Gras**</code> -&gt; <strong>Gras</strong>.</li>
-<li>La mise en <em>italique</em> se fait par en encadrant par 1 étoile  : <code>*Italique*</code> -&gt; <em>Italique</em>.</li>
-<li>Les titres de différents niveaux sont obtenus en utilisant un certain nombre de  dièse <code>#</code></li>
+<li>
+<p>La mise en <em>italique</em> se fait par en encadrant par 1 étoile  : <code>*Italique*</code> -&gt; <em>Italique</em>.</p>
+</li>
+<li>
+<p>Les titres de différents niveaux sont obtenus en utilisant un certain nombre de  dièse <code>#</code></p>
+</li>
 <li>Les images sont insérées par la commande <code>![Alt text](/path/to/img.jpg "Optional title")</code></li>
 <li>Un texte sans fortmatage est obtenu en encadrant par des guillemets invversés ` : <code>'**Truc**'</code> n'est pas mis en forme</li>
 </ul>
@@ -620,8 +624,13 @@ donnera </p>
 sur une seule ligne.</p>
 </blockquote>
 <h2 id="les-hyperliens">Les hyperliens</h2>
-<p>Le fonctionnement des hyperlmens est particulier à MkDocs, donc ce qui suit n'est pas tyoujours valable dans 
+<p>Le fonctionnement des hyperlmens est particulier à MkDocs, donc ce qui suit n'est pas toujours valable dans 
 n'importe quel environnement lisant du <strong>MarkDown</strong>.</p>
+<p>Le principe de base : <code>[texte de remplacement](adresse du document)</code></p>
+<p>Il est possible de référer à des documents internes en utilisant leur chemin relatif.
+<code>Please see the [project license](../about/license.md) for further details.</code></p>
+<p>Il est possible de faire une référence à une partie spécifique d'un document par l'intermédiaire d'ID générées automatiquement par MkDocs pour chaque <strong>header</strong> (⚠️ les noms sont en minuscules et les caractères spéciaux - y compris les espaces, sont remplacé par des tirets. lers tirets doubles sont alors réduits à un simple tiret).</p>
+<p>Ainsi le lien <code>[ceci](mkdocs_cmd.md#syntaxe-des-documents-mkdocs)</code> renvoie <a href="./#syntaxe-des-documents-mkdocs">ici</a> renvoie vers le header de cette partie.</p>
 <h2 id="modules-de-mkdocs-material">Modules de MkDocs-Material</h2>
 <h3 id="_1"></h3>
                 
@@ -643,7 +652,7 @@ n'importe quel environnement lisant du <strong>MarkDown</strong>.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+        <a href="../../NSI/Terminale/home/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Terminale" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -652,7 +661,7 @@ n'importe quel environnement lisant du <strong>MarkDown</strong>.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Home
+              Terminale
             </div>
           </div>
         </a>
