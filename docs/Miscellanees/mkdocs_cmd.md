@@ -4,6 +4,8 @@ Pour la documentation complète : [mkdocs.org](https://www.mkdocs.org).
 
 Documentation sur materials :  [materials reference ](https://squidfunk.github.io/mkdocs-material/reference/abbreviations/)
 
+La documentation sur le plugin **macro** : [macro plugin](https://mkdocs-macros-plugin.readthedocs.io/en/latest/#installation)
+
 ## Bases de la syntaxe Markdown
 
 Le langage **Mardown** est en langage de balise simple, utilisé entre autres dans les notebooks Jupyter, et pour lequel les règles d'utilisation sont simples :
