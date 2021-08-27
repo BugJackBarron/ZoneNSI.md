@@ -18,11 +18,21 @@ nav:
             - 'MkDocs' : 'Miscellanees\mkdocs_cmd.md'
             - 'Manim' 
 
-        
+ 
+plugins : 
+    - search
+    - macros
+    
 theme:
     name: material
     locale: fr
     logo  : assets/icons/house-fill.svg
+    features:
+        - navigation.instant
+        - navigation.top    
+        - header.autohide
+        - toc.integrate
+
     palette :
         scheme : slate
         primary : blue grey
