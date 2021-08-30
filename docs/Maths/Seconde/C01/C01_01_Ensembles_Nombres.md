@@ -47,7 +47,7 @@
 
 	* **Appartenance** :   On dit que $5$ {==**appartient**==} à $\mathbb{N}$, et on note $5 \in \mathbb{N}$. De même $-2$ {==**n'appartient pas**==} à $\mathbb{N}$, et on note  $-12 \notin \mathbb{N}$.
 
-	* **Inclusion** :  Tous les éléments de $\mathbb{N}$ sont aussi des éléments de $\mathbb{Z}$. On dit alors que $\mathbb{N}$ est un {==**sous-ensemble**==} de $\mathbb{Z}$ et on note alors $\mathbb{N} \subset \mathbb{Z}$ (qui se lit $\mathbb{N}$ est inclu dans $\mathbb{Z}$).
+	* **Inclusion** :  Tous les éléments de $\mathbb{N}$ sont aussi des éléments de $\mathbb{Z}$. On dit alors que $\mathbb{N}$ est un {==**sous-ensemble**==} de $\mathbb{Z}$ et on note alors $\mathbb{N} \subset \mathbb{Z}$ (qui se lit $\mathbb{N}$ est inclus dans $\mathbb{Z}$).
 
 
 ??? example "Application : choix du bon symbole"
@@ -112,7 +112,7 @@
 	
 ## Nombres décimaux
 
-!!! tip "definition : Nombres décimaux"
+!!! tip "définition : Nombres décimaux"
 	Un {==nombre décimal==} est un nombre pouvant s'écrire sous la forme d'une {==fraction décimale==}, c'est à dire sous la forme 
 	$$
 	\dfrac{a}{10^n}
@@ -218,7 +218,7 @@
 	
 	Or $10~000\times a - a = 9~999\times a$.
 	
-	D'aperès les deux lignes précédentes, on a alors $9~999\times a = 27132$ soit $a = \dfrac{27~132}{9~999} = \dfrac{9~044}{3~333}$.
+	D'après les deux lignes précédentes, on a alors $9~999\times a = 27132$ soit $a = \dfrac{27~132}{9~999} = \dfrac{9~044}{3~333}$.
 
 	Donc $a$ est bien un nombre rationnel puisqu'il s'écrit sous la forme d'une fraction.
 
