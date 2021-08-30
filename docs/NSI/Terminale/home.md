@@ -10,8 +10,8 @@ Cette progression n'est valable que pour les élèves du Lycée Pavie de Guingam
 
 | Thème | Chapitre | Durée Estimée | Dates prévues | Dates effectives | Remarques |
 | :---  | :---:    | :---:         | :---:         | :---:            | ---:      |
-| Structures de données | Modularité | 1 semaine | 02/09 -> 09/09 | | |
-| Langages et programmation | Récursivité | 2 semaines | 09/09 -> 23/09 | | | 
+| Structures de données | Modularité et POO | 2 semaine | 02/09 -> 16/09 | | |
+| Langages et programmation | Récursivité | 2 semaines | 16/09 -> 30/09 | | | 
 
 
 #Les épreuves
