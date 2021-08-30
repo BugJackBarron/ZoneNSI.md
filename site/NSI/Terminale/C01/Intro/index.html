@@ -18,7 +18,7 @@
     
     
       
-        <title>Modularité et POO - ZoneNSI</title>
+        <title>Introduction - ZoneNSI</title>
       
     
     
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#modularite-et-initiation-a-la-programmation-orientee-objet" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Modularité et POO
+              Introduction
             
           </span>
         </div>
@@ -359,16 +364,122 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" checked>
+      
+      <label class="md-nav__link" for="__nav_4_2_2">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Modularité et POO
+        
+      </label>
+      <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Introduction
+          </a>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Modularité et POO
+        Introduction
       </a>
       
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#un-premier-probleme" class="md-nav__link">
+    Un premier problème
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Modules, interfaces, encapsulation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        POO
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -511,9 +622,65 @@
               
                 
                 
-                  <h1>Modularité et POO</h1>
-                
-                
+                <h1 id="modularite-et-initiation-a-la-programmation-orientee-objet">Modularité et initiation à la Programmation Orientée Objet</h1>
+<p>Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient <em>built-in</em> ou bien importés à partir de <em>modules</em>, nous nous posons rarement la question de savoir quelle est leur <strong>implémentation</strong>, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons globalement confiance aux concepteurs du langage ou du module. </p>
+<p>Ce qui nous importe est plutôt <strong>l'interface</strong> de ces objets, c'est-à-dire la façon dont nous pouvons interagir avec ces objets : les créer, les affecter, les additionner, les supprimer,...</p>
+<p>Dans cette partie nous verrons comment créer un module, le documenter, et définir une interface claire. Nous verrons les prémices d'un nouveau <strong>paradigme de programmation</strong> : la Programmation Orientée Objet(<strong>POO</strong>).</p>
+<p><em>La suite de cette partie est grandement inspirée de <a href="https://www.editions-ellipses.fr/accueil/10445-specialite-numerique-et-sciences-informatiques-lecons-avec-exercices-corriges-terminale-nouveaux-programmes-9782340038554.html">Numériques et Sciences Informatique, 24 leçons avec exercices corrigé, Ellipse</a></em></p>
+<h2 id="un-premier-probleme">Un premier problème</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>Voici une propriété probabiliste peu intuitive : il suffit d'avoir un groupe de
+23 personnes pour que la probabilité que deux personnes aient la même date
+d'anniversaire soit supérieure à 50%.</p>
+</div>
+<p>Nous allons construire un programme Python qui permettra de vérifier expérimentalement cette propriété.</p>
+<p>Pour modéliser le problème :</p>
+<ul>
+<li>plutôt que d'utiliser des dates, nous allons utiliser des entiers de 1 à 365 ;</li>
+<li>nous allons créer une fonction <code>genere_groupe()</code> qui renvoie un tableau aléatoire de 23 entiers de 1 à 365 ;</li>
+<li>nous allons créer une fonction <code>contient_doublon(t)</code> qui renverra <code>True</code> si le tableau contient un doublon, et <code>False</code> sinon ;</li>
+<li>puis nous créerons une fonction <code>teste_hypothese()</code> qui testera sur un échantillon de 100 groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<p>Créer un fichier <code>recherchesDates.py</code> et <strong>implémenter</strong> les fonctions précédentes.
+Des solutions sont proposées dans les parties ci-dessous, mais vous <strong>devez d'abord tester par vous-mêmes</strong>.</p>
+</div>
+<details class="done"><summary>Solution</summary><div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1"><code>genere_groupe()</code></label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="k">def</span> <span class="nf">genere_groupe</span><span class="p">()</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;fonction renvoyant un tableau de 23 nombres aléatoires entre 1 et 365&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">365</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2"><code>contient_doublon(t)</code></label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;fonction renvoyant un booléen signalant la présence ou non d&#39;un doublon dans le tableau&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># s est un tableau temporaire contenant les valeurs testées</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">t</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">s</span> <span class="p">:</span> <span class="c1"># si data est déjà dans s, alors c&#39;est un doublon</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span> <span class="p">:</span> <span class="c1"># sinon on ajoute data à la liste des valeurs testées.</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3"><code>teste_hypothese()</code></label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">teste_hypothese</span><span class="p">()</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;fonction renvoyant le nombre de groupes contenant un doublon</span>
+<span class="sd">    sur un échantillon de 100 groupes&quot;&quot;&quot;</span>
+    <span class="n">nbDoublons</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">genere_groupe</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">nbDoublons</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">nbDoublons</span>
+</code></pre></div>
+</div>
+</div>
+</details>
                 
               
               
@@ -554,13 +721,13 @@
       
       
         
-        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Le langage" rel="next">
+        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Modules, interfaces, encapsulation" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Le langage
+              Modules, interfaces, encapsulation
             </div>
           </div>
           <div class="md-footer__button md-icon">
