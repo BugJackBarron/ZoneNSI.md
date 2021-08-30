@@ -4,12 +4,15 @@ site_author : Bug_Jack_Barron
 nav:
     - 'Home' : index.md
     - 'Mathématiques' :
-        - 'Seconde' : 'Maths\Seconde\home.md'
-        - 'Première' : 'Maths\Premiere\home.md'
-        - 'Terminale' : 'Maths\Terminale\home.md'
+        - 'Seconde' : 
+            - 'Présentation' : 'Maths\Seconde\home.md'
+            - 'Ensembles de nombres et intervalles' : 
+                -'Ensembles de nombres ': 'Maths\Seconde\C01\C01_01_Ensembles_Nombres.md'
+        - 'Première' : 'WorkInProgress.md'
+        - 'Terminale' : 'WorkInProgress.md'
     - 'SNT' : 'WorkInProgress.md'
     - 'NSI' :
-        - 'Première' : 'NSI\Premiere\home.md'
+        - 'Première' : 'WorkInProgress.md'
         - 'Terminale' : 
             - 'Présentation' : 'NSI\Terminale\home.md'
             - 'Modularité et POO' :
@@ -65,6 +68,7 @@ extra_css :
 
   
 markdown_extensions:
+  - attr_list
   - pymdownx.highlight
   - pymdownx.caret
   - pymdownx.mark

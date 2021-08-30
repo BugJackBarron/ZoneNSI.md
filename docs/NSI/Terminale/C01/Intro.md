@@ -90,5 +90,5 @@ Pour modéliser le problème :
 
 ## Différentes solutions ?
 
-Bien entendu, les solutions proposées ci-dessus ne sont pas uniques. Elles sont mêmes **non optimales** (p
+Bien entendu, les solutions proposées ci-dessus ne sont pas uniques. Elles sont mêmes **non optimales** (en tout cas pour la fonction `contient_doublon(t)`).
 	
