@@ -20,15 +20,15 @@ Nous allons construire un programme Python qui permettra de vérifier expérimen
 Pour modéliser le problème :
 
 * plutôt que d'utiliser des dates, nous allons utiliser des entiers de 1 à 365 ;
-* nous allons créer une fonction ``genere_groupe()`` qui renvoie un tableau aléatoire de 23 entiers de 1 à 365 ;
+* nous allons créer une procédure (*une fonction sans paramètres*) ``genere_groupe()`` qui renvoie un tableau aléatoire de 23 entiers de 1 à 365 ;
 * nous allons créer une fonction ``contient_doublon(t)`` qui renverra `True` si le tableau contient un doublon, et ``False`` sinon ;
-* puis nous créerons une fonction ``teste_hypothese()`` qui testera sur un échantillon de 100 groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.
+* puis nous créerons une procédure ``teste_hypothese()`` qui testera sur un échantillon de 100 groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.
 
 !!! question "Exercice"
 	Créer un fichier ``recherchesDates.py`` et **implémenter** les fonctions précédentes.
-	Des solutions sont proposées dans les parties ci-dessous, mais vous **devez d'abord tester par vous-mêmes**.
+	Des solutions sont proposées dans les parties ci-dessous, mais vous {==**devez d'abord tester par vous-mêmes**==}.
 
-??? done "Solution"
+??? done "Solutions"
 	=== "``genere_groupe()``"
 		``` python
 		from random import randint
@@ -63,6 +63,32 @@ Pour modéliser le problème :
 			return nbDoublons
 		```
 
+??? info "Exécution dans Basthon"
+	<iframe src="https://console.basthon.fr/?script=eJyFU8Fq4zAQPTuQfxiyhzpsKUnD7qHQ27JfsLdSgmyNExVlxkijQv9mr_kO_9iOLKdJSssKg-UnzZv3ZsZd4AMEQ1Zf7tBzkPHLkcxnVTWfWexgh4QBt7vAqcd6CQ_zGehaLBYdUyuOCQLSK78ZEkgEYhqPJoFFuN8A8aEJGMH44WiEXd4jSUBYAwpsfv5QosIYUFIgeJoU1OtbPV1CxwG24Cgr22F9v1k-z2dFWsskTtm2llPjmWr5v7yGWaUgQXQ7Mj6j3kAfhmNEahE4qWYCe6N3J1qwhiJ4PFl7VxzhEZ6e4ZtuMF6ZF8zVNGp3FIk05lHvr8ZjClEvRFEZsRBlj9aIyTblZCEv173jER5yJleAnM8Ox5fhb1EXb7XErMTtzSRlEn_muqjxn5DwfIA-4kSeretjXjgJlkyaQQvkXczAJw7urjPEO9P3SLbOwcurzv42mkgHqzQvx-N2_9az7DFOk1V93jetfRmkPFVlEuNFYS_dVjGFDAzHdq9nzo8N1HFbrU6RY_8qan6VmNzFFSjyYdI0omiqRG98-A0y7L6cwKq6pP_-uFZoKsIZ_wfGJR4o" width="100%" height="400"> </iframe>
+	
+??? info "Preuve mathématique"
+	*Cette pruve est donnée à titre indicatif, et n'a ni à être connue, ni même à être comprise.*
+	
+	Considérons notre groupe de 23 personnes, et cherchons la probabilité que les 23 personnes **n'aient pas la même date anniversaire** :
+	
+	* la première peut avoir n'importe quel date anniversaire, donc 365 possibilité sur 365 dates possibles.
+	* La deuxième ne peut pas avoir la même date que les deux premiers, donc 364 possibilités sur 365.
+	* La troisième ne peut avoir la même date que les deux premiers, donc 363 possibilités sur 365.
+	* ...
+	* La $n-ième$ ne peut avoir la même date que les $n-1$ précédents, donc $365-(n-1)$ possibilités.
+	* ...
+	* La 23ème ne peut avoir la même date que les 22 précédents, donc $365-22 = 343$ possibilités.
+	
+	La probabilité cherchée est donc $p = \dfrac{365}{365} \times \dfrac{364}{365} \times ... \times \dfrac{343}{365} = \dfrac{365~!}{342~!.365^{23}}$ où $365~!$ est la factorielle de 365, soit la multiplication $365 \times 364 \times 363 \times ... \times 2 \times 1$.
+	
+	Or l'événement contraire de  *"les 23 personnes n'ont pas la même date anniversaire"* est l'événement *"au moins 2 personnes parmi les 23 ont la même date d'anniversaire"*. Donc sa probabilité est $p' = 1-p$ soit en calculant environ $0,5073$, soit $50,73$ \%.
+	
+	Plus d'informations peuvent être trouvées sur l'[article correspondant de wikipedia](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires).
 
 
+
+
+## Différentes solutions ?
+
+Bien entendu, les solutions proposées ci-dessus ne sont pas uniques. Elles sont mêmes **non optimales** (p
 	
