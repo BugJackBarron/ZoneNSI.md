@@ -144,7 +144,7 @@ Il est tout à fait possible de proposer d'autres **implémentations** du code, 
 		Un des avantages est que la complexité en temps est bien meilleure que pour la première solution. Il n'y a plus les deux boucles imbriquées, d'où un gain considérable. Cependant on peut avoir un problème de {==**coût en mémoire**==}, car on utilise un tableau de taille 365 pour uniquement vérifier 23 dates. Dans le cadre d'une comparaison sur un ensemble de valeurs possibles supérieures à 365, le coût en mémoire peut vite devenir problématique.
 		
 	=== "Solution tableau de bits"
-		La solution est très complexe, mais elle a un grand mérite : un booléen, en python, est en fait un **entier** (0 ou 1), donc stocké sur... {==8 octets==} !
+		La solution est très complexe, mais elle a un grand mérite : un booléen, en python, est en fait un **entier** (0 ou 1), donc stocké sur... {==8 octets==} ! (source [ici](https://www.python.org/dev/peps/pep-0237/))
 		Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un booléen... En fait il suffit d'un seul bit ! Cette solution divise donc par {== 64 ==} la taille mémoire par rapport à la solution précédente ! 
 		
 		C'est globalement un bon avantage dans cette situation,; mais cela reste rapidement insuffisant si le nombre d'éléments auquel on s'intérese est bien plus grand que 365.
