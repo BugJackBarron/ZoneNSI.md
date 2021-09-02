@@ -93,7 +93,7 @@ Pour modéliser le problème :
 Bien entendu, les solutions proposées ci-dessus ne sont pas uniques. Elles sont mêmes **non optimales** (en tout cas pour la fonction `contient_doublon(t)`).
 Il est tout à fait possible de proposer d'autres **implémentations** du code, c'est-à-dire **d'autres façons de coder** la fonctionnalité voulue. Ainsi on pourrait regarder les implémentations suivantes, et les comparer entre elles :
 
-!!! info "Exercice : autres implémentations de `contient_doublon(t)`"
+!!! question "Exercice : autres implémentations de `contient_doublon(t)`"
 	=== "Tableau de booléens"
 		``` python
 		def contient_doublon(t) :
@@ -134,4 +134,80 @@ Il est tout à fait possible de proposer d'autres **implémentations** du code, 
 					s[data%23].append(data)
 			return False
 		```
+		
+??? done "Solution"
+
+	=== "Solution originale"
+		L'avantage est la simplicité du code, et c'est à peu près tout... Par contre les inconvénients sont nombreux, en particulier le {==**coût en temps**==} : en effet à chaque tour de boucle `for data in t`, on exécute l'instruction `data in s`, qui parcoure tout le tableau `s`... On a donc une complexité en temps en $\mathscr{O}(n^2)$ (au pire). Pour un tableau de 23 éléments, c'est acceptable, mais dans l'hypothèse d'un tableau de plus grande taille, c'est absolument à éviter !
+		
+	=== "Solution tableau de booléens"
+		Un des avantages est que la complexité en temps est bien meilleure que pour la première solution. Il n'y a plus les deux boucles imbriquées, d'où un gain considérable. Cependant on peut avoir un problème de {==**coût en mémoire**==}, car on utilise un tableau de taille 365 pour uniquement vérifier 23 dates. Dans le cadre d'une comparaison sur un ensemble de valeurs possibles supérieures à 365, le coût en mémoire peut vite devenir problématique.
+		
+	=== "Solution tableau de bits"
+		La solution est très complexe, mais elle a un grand mérite : un booléen, en python, est en fait un **entier** (0 ou 1), donc stocké sur... {==8 octets==} !
+		Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un booléen... En fait il suffit d'un seul bit ! Cette solution divise donc par {== 64 ==} la taille mémoire par rapport à la solution précédente ! 
+		
+		C'est globalement un bon avantage dans cette situation,; mais cela reste rapidement insuffisant si le nombre d'éléments auquel on s'intérese est bien plus grand que 365.
+		
+		Il faut noter que le **tableau de bits** (ou *bit set* ou *bit array*) est une structure compacte qui permet de représenter facilement des tableaux de booléens. Elle permet une meilleure utilisation des ressources mémoires dans les cas où celle-ci est limitée, comme par exemple dans la mémoire cache du processeur.
+	
+	=== "Solution table de hachage"
+		Comme nous l'avons vu en classede première, la table de hachage est une solkution efficace et élégante qui permet de gangner à la fois du **coût en temps** (on ne parcoure pas un tableau, on atteint directement l'objet par sa *clé*, ou en tout on parcoure un sous-ensemble beaucoup plus petit), et du **coût en mémoire** (le tableau des clés est de la taille strictement nécessaire).
+		
+		
+## Une même interface
+	
+!!! question "Exercice"
+	Quand on observe les 4 propositions de codes pour la fonction `contient_doublon(t)`, on peut constater que ces 4 codes  sont quasiment identiques. Quelles sont ces parties identiques ?
+
+??? done "Solution"
+
+	``` python
+	def contient_doublon(t) :
+			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
+			s = ...
+			for data in t :
+				if ... : 
+					return True
+				else : 
+					...
+			return False
+	```
+	
+Les parties en pointillé de la solution précédente vérifient les conditions suivantes :
+
+* `s` représente un ensemble de date, et le premier trou correspond à la création de cette structure.
+* Le deuxième trou consiste à vérifier si `data` est contenu dans `s`.
+* le troisième trou consiste à ajouter `data` à `s`
+
+Seules ces trois parties changent dans les 4 programmes.
+
+On pourrait alors isoler ces trois aspects dans trois fonctions différentes et obtenir le code *factorisé* suivant :
+
+??? done "Code factorisé"
+	``` python
+	def contient_doublon(t) :
+			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
+			s = cree()
+			for data in t :
+				if contient(data,s) : 
+					return True
+				else : 
+					ajoute(data,s)
+			return False
+	```
+
+On définit ainsi une fonction `contient_doublon(t)` {== complètement séparée ==} de la représentation de la structure `s`.
+
+Le programmeur qui souhaite simplement utiliser la structure de donnée `s` {== n'a pas à se préoccuper ==} de la façon dont elle a été {== **implémentée** ==}. Il n'a besoin que de connaître son {== **interface**==}  :
+
+* la fonction `cree()` sert à construire une structure ;
+* la fonction `contient(data,s)` sert à regarder si `data` est contenu dans la structure `s` ;
+* La fonction `ajoute(data,s)` ajoute l'élément `data` à la structure `s`.
+
+C'est exactement ce qui se passe quand on utilise des modules python : on ne cherche pas à savoir *comment sont programmés* les fonctions du modules(= {== l'implémentation du module ==}) - car on fait confiance aux programmeurs de ce module, mais juste à savoir *comment utiliser* ces fonctions(= {==l'interface du module==}).
+
+Encore mieux, le programmeur du module peut, si il ne change pas l'**interface** (= la manière d'utiliser les fonctions), améliorer ces fonctions (en temps, en mémoire, etc...) sans même que l'utilisateur n'ait à changer quoi que ce soit à son propre programme, qui continuera à fonctionner (mieux, du moins on espère...).
+
+	
 	
