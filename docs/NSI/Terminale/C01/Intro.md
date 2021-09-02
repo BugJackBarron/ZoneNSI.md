@@ -91,5 +91,47 @@ Pour modéliser le problème :
 ## Différentes solutions ?
 
 Bien entendu, les solutions proposées ci-dessus ne sont pas uniques. Elles sont mêmes **non optimales** (en tout cas pour la fonction `contient_doublon(t)`).
-Il est tout à fait possible de proposer d'autres **implémentations** du code, c'est-à-dire d'autres façons de 
+Il est tout à fait possible de proposer d'autres **implémentations** du code, c'est-à-dire **d'autres façons de coder** la fonctionnalité voulue. Ainsi on pourrait regarder les implémentations suivantes, et les comparer entre elles :
+
+!!! info "Exercice : autres implémentations de `contient_doublon(t)`"
+	=== "Tableau de booléens"
+		``` python
+		def contient_doublon(t) :
+			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
+			s = [False]*365 # s est un tableau temporaire contenant false pour chaque date
+			for data in t :
+				if s[data] : # si s[data] est vrai (True), alors il y a doublon
+					return True
+				else : # sinon on bascule s[data] à True
+					s[data] = True
+			return False
+		```
+		C'est une solution simple. Mais que dire de ses avantages et de ses inconvénients ?
+	
+	=== "Tableau de bits"
+		``` python
+		def contient_doublon(t) :
+			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
+			s = 0
+			for data in t :
+				if s&(1<<x) !=0 : 
+					return True
+				else : 
+					s = s| (1<<x)
+			return False
+		```
+		C'est une solution beaucoup plus complexe (et hors programme de Terminale dans sa conception). Quels sont ses avantages et ses inconvénients ?
+		
+	=== "Table de hachage"
+		``` python
+		def contient_doublon(t) :
+			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
+			s = [[] for _ in range(23]
+			for data in t :
+				if data in s[data%23] : 
+					return True
+				else : 
+					s[data%23].append(data)
+			return False
+		```
 	
