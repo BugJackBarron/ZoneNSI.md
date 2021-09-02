@@ -91,4 +91,5 @@ Pour modéliser le problème :
 ## Différentes solutions ?
 
 Bien entendu, les solutions proposées ci-dessus ne sont pas uniques. Elles sont mêmes **non optimales** (en tout cas pour la fonction `contient_doublon(t)`).
+Il est tout à fait possible de proposer d'autres **implémentations** du code, c'est-à-dire d'autres façons de 
 	
