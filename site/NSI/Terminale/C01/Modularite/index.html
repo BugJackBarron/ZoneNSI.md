@@ -876,7 +876,6 @@ en faisant commencer leur nom par un cracatère <em>underscore</em> _</p>
 </tbody>
 </table>
 <p>Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
-Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
 On aurait alors comme possibilité d'implémentation (non complète):
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
@@ -921,10 +920,10 @@ On aurait alors comme possibilité d'implémentation (non complète):
 <details class="done"><summary>Une solution possible</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
+<span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+<span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+<span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>

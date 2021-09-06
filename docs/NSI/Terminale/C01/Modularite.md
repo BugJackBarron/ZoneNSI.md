@@ -151,7 +151,7 @@ Pour chaque module, on peut donc distinguer :
 	| `convexite(p)` | Renvoie la convexité de la courbe représentative du polynôme |
 	| `tangente(p,x)` | Renvoie l'équation de la tangente à la courbe du polynôme p en x |
 
-	Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
+	
 	Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
 	On aurait alors comme possibilité d'implémentation (non complète):
 	``` python
