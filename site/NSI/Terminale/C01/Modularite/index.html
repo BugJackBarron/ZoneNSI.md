@@ -547,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../WorkInProgress/" class="md-nav__link">
+      <a href="../Exceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -826,6 +826,168 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.<
 <p>🧩 Il est bien entendu essentiel de s'inspirer des exemples donné dans la page <a href="../Intro/">d'introduction</a>.</p>
 </div>
 <h2 id="notions-dencapsulation">Notions d'encapsulation</h2>
+<div class="admonition tip">
+<p class="admonition-title">Notion d'encapsulation</p>
+<p>Le contrat qu'une <strong>interface</strong> établit entre l'utilisateur et l'auteur d'un module
+ ne porte pas sur les moyens, mais <strong>sur les résultats</strong> : l'auteur s'engage
+ à ce que les résultats produits par l'utilisation de ses fonctions 
+ soient bien ceux décrits dans l'interface, mais il est libre de s'y prendre comme 
+ il le souhaite.</p>
+<p>En particulier il est libre d'introduire des fonctions, variables, constantes, ..., 
+ qui <strong>ne sont pas inclues dans l'interface</strong>. On parle alors de fonctions, variables, constantes
+ <mark class="critic"><strong>encapsulées</strong></mark> dans le module.</p>
+<p>Le contrat explicite est que l'utilisateur <mark class="critic"><strong> ne doit en aucun cas</strong></mark> utiliser
+ ces données encapsulées. Dans le cas contraire, si l'auteur du module
+ change son approche et modifie ces données internes, le programme du client risque
+ de devenir non fonctionnel.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Norme en Python</p>
+<p>En Python, l'auteur d'un module peut indiquer que certains éléments sont <mark class="critic"><strong>privés</strong></mark> (= encapsulés)
+en faisant commencer leur nom par un cracatère <em>underscore</em> _</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p>Imaginons un module <code>secondDegre.py</code> dont l'interface est définie ainsi :</p>
+<table>
+<thead>
+<tr>
+<th align="left">fonction</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>polynome(t)</code></td>
+<td align="left">Vérifie que le tuple t  sous la forme (a,b,c) représente bien un polynôme de degré 2</td>
+</tr>
+<tr>
+<td align="left"><code>valeursRacines(p)</code></td>
+<td align="left">Renvoie les valeurs des racines, et None si il n'existe pas de recines réelles</td>
+</tr>
+<tr>
+<td align="left"><code>convexite(p)</code></td>
+<td align="left">Renvoie la convexité de la courbe représentative du polynôme</td>
+</tr>
+<tr>
+<td align="left"><code>tangente(p,x)</code></td>
+<td align="left">Renvoie l'équation de la tangente à la courbe du polynôme p en x</td>
+</tr>
+</tbody>
+</table>
+<p>Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
+Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
+On aurait alors comme possibilité d'implémentation (non complète):
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="k">if</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
+        <span class="n">Raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">Raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">_nombreRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">valeursracines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">convexite</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">_calcule</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div></p>
+<p>Dans ce module, les fonctions préfixées par _ sont considérées comme privées, et ne faisant pas partie de l'interface.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<p>Créer un module <code>secondDegre.py</code> contenant a minima la totalité des fonctions précédentes, et implémenter toutes ces fonctions.</p>
+</div>
+<details class="done"><summary>Une solution possible</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">_nombreRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span> <span class="p">:</span> 
+        <span class="k">return</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">valeursRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">nbR</span> <span class="o">=</span> <span class="n">_nombreRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nbR</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="n">nbR</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">return</span>  <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">convexite</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;convexe&quot;</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;concave&quot;</span>
+
+<span class="k">def</span> <span class="nf">_calcule</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)))</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="n">valueError</span><span class="p">()</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)))</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="n">valueError</span><span class="p">()</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s1">(x-</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">) + </span><span class="si">{</span><span class="n">_calcule</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+</code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Encapsulation dans d'autres langages</p>
+<p>Il faut noter que la notion de fonction ou variable privée en <code>Python</code> n'est qu'une convention. <strong>Rien n'empêche réellement
+l'utilisateur du module d'utiliser ces fonctions privées</strong>.</p>
+<p>C'est loin d'être le cas dans d'autres langages (comme <code>C++</code> ou <code>Java</code>), qui introduisent un contrôle strict de l'encapsulation
+en rendant l'accès aux éléments privés impossible.</p>
+</div>
                 
               
               
@@ -866,7 +1028,7 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.<
       
       
         
-        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Exceptions" rel="next">
+        <a href="../Exceptions/" class="md-footer__link md-footer__link--next" aria-label="Next: Exceptions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -887,7 +1049,7 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.<
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - F.Vergniaud
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - F.Vergniaud
           </div>
         
         Made with
