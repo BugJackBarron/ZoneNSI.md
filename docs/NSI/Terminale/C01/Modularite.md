@@ -121,6 +121,14 @@ Pour chaque module, on peut donc distinguer :
 	
 ## Notions d'encapsulation
 	
-
+!!! tip "Encapsulation"
+	Le contrat qu'une **interface** établit entre l'utilisateur et l'auteur d'un module
+	 ne porte pas sur les moyens, mais **sur les résultats** : l'auteur s'engage
+	 à ce que les résultats produits par l'utilisation de ses fonctions 
+	 soient bien ceux décrits dans l'interface, mais il est libre de s'y prendere comme 
+	 il le souhaite.
+	 
+	 En particulier il est libre d'inroduire des foncions, variables, consar
+	 nes
 
 
