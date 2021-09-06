@@ -706,11 +706,31 @@ nous lançons le script suivant, nommé <code>testModule.py</code>, et situé da
 <div class="highlight"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">secondDegre</span> <span class="k">as</span> <span class="nn">sD</span>
 
     <span class="n">p</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Donnez les coefficients du polynome séparés par des virgules :&quot;</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">sD</span><span class="o">.</span><span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)))</span>
 
+    <span class="n">p</span> <span class="o">=</span> <span class="n">sD</span><span class="o">.</span><span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sD</span><span class="o">.</span><span class="n">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div></p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Un problème ?</p>
+<p>Copiez-collez le code ci-dessus dans un fichier <code>testModule.py</code>, puis exécutez-le en saisissant :</p>
+<ol>
+<li><code>3,4,5</code> ;</li>
+<li><code>trois,4,5</code></li>
+<li><code>3,4,5,6</code> ;</li>
+<li><code>0,3,4</code></li>
+</ol>
+<p>Dans chacun des cas, qu'obtient-on en sortie ? Pourquoi ?</p>
+</div>
+<details class="done"><summary>Solution</summary><div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1"><code>3,4,5</code></label><div class="tabbed-content">
+<p>La sortie est :</p>
+<div class="highlight"><pre><span></span><code>`y = 22.0(x-3) + 44.0`
+</code></pre></div>
+<p>qui est correcte.</p>
+</div>
+</div>
+</details>
                 
               
               

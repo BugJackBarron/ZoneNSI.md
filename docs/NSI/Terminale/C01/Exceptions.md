@@ -11,7 +11,25 @@
 		import secondDegre as sD
 
 		p = input("Donnez les coefficients du polynome séparés par des virgules :")
-		p = sD.polynome(p.split(","))
+		p = tuple(map(float, p.split(",")))
 
+		p = sD.polynome(p)
 		print(sD.tangente(p,3))
 	```
+!!! question "Un problème ?"
+	Copiez-collez le code ci-dessus dans un fichier `testModule.py`, puis exécutez-le en saisissant :
+	
+	1. `3,4,5` ;
+	2. `trois,4,5`
+	3. `3,4,5,6` ;
+	4. `0,3,4`
+	
+	Dans chacun des cas, qu'obtient-on en sortie ? Pourquoi ?
+	
+??? done "Solution"
+	=== "`3,4,5`"
+		La sortie est :
+		
+			`y = 22.0(x-3) + 44.0`
+		
+		qui est correcte.
