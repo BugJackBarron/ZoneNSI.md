@@ -201,10 +201,10 @@ Pour chaque module, on peut donc distinguer :
 	from math import sqrt
 	
 	def polynome(t) :
-		a,b,c = t
-		if not(isinstance(a,(int, float))
-		) or not(isinstance(b,(int, float))
-		) or not(isinstance(c,(int, float))) :
+		a,b,*c = t
+    if not(isinstance(a,(int, float))
+    ) or not(isinstance(b,(int, float))
+    ) or len(c) >1 or not(isinstance(*c,(int, float))) :
 			raise ValueError()
 		if a == 0 :
 			raise ValueError()
