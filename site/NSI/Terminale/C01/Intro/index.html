@@ -809,10 +809,10 @@ C'est une solution simple. Mais que dire de ses avantages et de ses inconvénien
     <span class="sd">&quot;&quot;&quot;fonction renvoyant un booléen signalant la présence ou non d&#39;un doublon dans le tableau&quot;&quot;&quot;</span>
     <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">t</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">s</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span><span class="mi">0</span> <span class="p">:</span> 
+        <span class="k">if</span> <span class="n">s</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span><span class="mi">0</span> <span class="p">:</span> 
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span> <span class="p">:</span> 
-            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">|</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">|</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div>
 C'est une solution beaucoup plus complexe (et hors programme de Terminale dans sa conception). Quels sont ses avantages et ses inconvénients ?</p>
@@ -820,7 +820,7 @@ C'est une solution beaucoup plus complexe (et hors programme de Terminale dans s
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Table de hachage</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;fonction renvoyant un booléen signalant la présence ou non d&#39;un doublon dans le tableau&quot;&quot;&quot;</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
     <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">t</span> <span class="p">:</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">data</span><span class="o">%</span><span class="mi">23</span><span class="p">]</span> <span class="p">:</span> 
             <span class="k">return</span> <span class="kc">True</span>

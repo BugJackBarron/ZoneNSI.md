@@ -807,12 +807,29 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.<
 </ul>
 <div class="admonition abstract">
 <p class="admonition-title">Un exemple d'interface</p>
-<p>Un module utilisable pour la fonction factorisée <code>contient_doublon(t)</code> aura pour interface :
-| fonction | Description |
-| :--- | :--- |
-| <code>cree()</code> | crée et renvoie un ensemble de date vide |
-| <code>contient(data,s)</code> | renvoie <code>True</code> si la structure <code>s</code> contient la donnée <code>data</code> |
-| <code>ajoute(data,s)</code> | ajoute la donnée <code>data</code> à la structure <code>s</code> |</p>
+<p>Un module utilisable pour la fonction factorisée <code>contient_doublon(t)</code> aura pour interface :</p>
+<table>
+<thead>
+<tr>
+<th align="left">fonction</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>cree()</code></td>
+<td align="left">crée et renvoie un ensemble de date vide</td>
+</tr>
+<tr>
+<td align="left"><code>contient(data,s)</code></td>
+<td align="left">renvoie <code>True</code> si la structure <code>s</code> contient la donnée <code>data</code></td>
+</tr>
+<tr>
+<td align="left"><code>ajoute(data,s)</code></td>
+<td align="left">ajoute la donnée <code>data</code> à la structure <code>s</code></td>
+</tr>
+</tbody>
+</table>
 <p>Vous constaterez que dans cette description, il n'est nul part fait mention de la <em>nature de la structure</em>. Il pourrait s'agir aussi bien de liste, de tableau de bits, de tables de hachage...</p>
 </div>
 <div class="admonition question">
