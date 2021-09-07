@@ -147,10 +147,10 @@ Pour chaque module, on peut donc distinguer :
 	
 	| fonction | Description |
 	| :--- | :--- |
-	| `polynome(t)` | Vérifie que le tuple t  sous la forme (a,b,c) représente bien un polynôme de degré 2 |
-	| `valeursRacines(p)` | Renvoie les valeurs des racines, et None si il n'existe pas de recines réelles |
-	| `convexite(p)` | Renvoie la convexité de la courbe représentative du polynôme |
-	| `tangente(p,x)` | Renvoie l'équation de la tangente à la courbe du polynôme p en x |
+	| `polynome(t)` | Vérifie que le tuple `t`  sous la forme `(a,b,c)` représente bien un polynôme de degré 2 |
+	| `valeursRacines(p)` | Renvoie les valeurs des racines, et `None` si il n'existe pas de recines réelles |
+	| `convexite(p)` | Renvoie la convexité de la courbe représentative du polynôme sous la forme d'une chaîne de caractère en minuscule|
+	| `tangente(p,x)` | Renvoie l'équation de la tangente à la courbe du polynôme `p` en `x` |
 
 	
 	Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
