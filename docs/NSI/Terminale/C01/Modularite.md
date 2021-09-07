@@ -100,6 +100,7 @@ Pour chaque module, on peut donc distinguer :
 
 !!! abstract "Un exemple d'interface"
 	Un module utilisable pour la fonction factorisée `contient_doublon(t)` aura pour interface :
+	
 	| fonction | Description |
 	| :--- | :--- |
 	| `cree()` | crée et renvoie un ensemble de date vide |
