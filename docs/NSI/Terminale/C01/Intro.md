@@ -114,10 +114,10 @@ Il est tout à fait possible de proposer d'autres **implémentations** du code, 
 			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
 			s = 0
 			for data in t :
-				if s&(1<<x) !=0 : 
+				if s&(1<<data) !=0 : 
 					return True
 				else : 
-					s = s| (1<<x)
+					s = s| (1<<data)
 			return False
 		```
 		C'est une solution beaucoup plus complexe (et hors programme de Terminale dans sa conception). Quels sont ses avantages et ses inconvénients ?
@@ -126,7 +126,7 @@ Il est tout à fait possible de proposer d'autres **implémentations** du code, 
 		``` python
 		def contient_doublon(t) :
 			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
-			s = [[] for _ in range(23]
+			s = [[] for _ in range(23)]
 			for data in t :
 				if data in s[data%23] : 
 					return True
