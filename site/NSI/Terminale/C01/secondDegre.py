@@ -1,14 +1,23 @@
 from math import sqrt
 
-def polynome(t) :
-    a,b,*c = t
-    if not(isinstance(a,(int, float))
-    ) or not(isinstance(b,(int, float))
-    ) or len(c) >1 or not(isinstance(*c,(int, float))) :
-        raise ValueError()
-    if a == 0 :
-        raise ValueError()
-    return t
+def polynome(*t) :
+        try :
+            if len(t) == 1 :# si on passe un tuple ou un tableau (1,2,3),
+                # *t le convertit en [(1,2,3)]
+                t = t[0] # d'où cette ligne
+            a, b, *c  = t #Puis on unpack
+        except TypeError :
+            raise TypeError("Must pass three argument or a tuple of 3 element.")
+        if len(c) !=1 :
+            raise ValueError("Bad Number of argument.")
+        if not(isinstance(a,(int, float))
+        ) or not(isinstance(b,(int, float))
+        ) or not(isinstance(*c,(int, float))) :
+                raise TypeError("argment Error : argument must be a tuple of integers or floats.")
+        if a == 0 :
+            raise ValueError("First element of tuple must not be 0.")
+        return t
+    
     
 def _discriminant(p) :
     a,b,c = polynome(p)
