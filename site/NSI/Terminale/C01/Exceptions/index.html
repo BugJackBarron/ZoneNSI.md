@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/Exceptions/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -835,7 +835,7 @@ qui sont peu clairs en particulier pour le cas n°2.</p>
 <p>Une erreur possible, et que vous avez probablement commise, est celle
 de passer non pas un seul argument sous la forme d'un <em>tuple</em> (ou d'une liste)
 mais de multiples paramètres.</p>
-<p>Cette erreur déclenche alors l'exception <code>TypeError</code> car les arguments passés ne sont pas du bon type.</p>
+<p>Cette erreur déclenche alors l'exception <code>TypeError</code> car les trois arguments passés ne sont pas du bon type.</p>
 </div>
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Une correction possible</label><div class="tabbed-content">
 <p>Le code suivant  est une solution possible (certainement perfectible) à la levée d'erreurs plus explicites :</p>
@@ -862,11 +862,88 @@ mais de multiples paramètres.</p>
 </details>
 <h2 id="intercepter-des-exceptions">Intercepter des exceptions</h2>
 <p>Vous avez constaté dans la solution précédente un bloc que nous n'avons encore jamais utilisé :</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">:</span>
-    <span class="c1"># Bloc</span>
-<span class="k">except</span> <span class="n">error</span> <span class="p">:</span>
-    <span class="c1">#Bloc</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>    
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span>  <span class="o">=</span> <span class="n">t</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Must pass three argument or a tuple of 3 element.&quot;</span><span class="p">)</span>
 </code></pre></div>
+On a ici l'utilisation d'une structure spéciale : l'interception d'ereurs.</p>
+<div class="admonition tips">
+<p class="admonition-title">Interception des exceptions</p>
+<p>Il arrive souvent en programmation que l'on doive utiliser une instructions oui une série d'instruction dont on sait à l'avance qu'elle peuvent générer des erreurs. La structure suivante est là pour ça :
+<div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">:</span>
+    <span class="c1"># Bloc try</span>
+<span class="k">except</span> <span class="n">error</span> <span class="p">:</span>
+    <span class="c1"># Bloc except</span>
+</code></pre></div>
+Le code du bloc <code>try</code> va être exécuté, et si une erreur du type fournie en argument de l'instruction <code>except</code> est levée, alors le code  du bloc <code>except</code> est exécuté.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple :</p>
+<p>En première nous avons vu l'importance de rendre parfois un code <strong>dumbproof</strong>, et que cela génèrais parfois de nombreuses difficultés. Le simple fait de coder une fonction demandant à un utilisateur de saisir un nombre entier entre 1 et 10 inclus pouvaiet rapidement pénible à écrire. Les deux onglets ci-dessous donnent deux versions d'une fonction permettant de réaliser cette fonction, la version utilisée en première, et celle levant des excpetions.</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Version avec des structures conditionnelles</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">askIntFrom1To10</span><span class="p">()</span> <span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+        <span class="n">nb</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un entier entre 1 et 10 :&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nb</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span>
+            <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span><span class="n">nb</span> <span class="ow">and</span> <span class="n">nb</span><span class="o">&lt;=</span><span class="mi">10</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="n">nb</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;entier saisi n&#39;est pas entre 1 et 10. Veuillez recommencer&quot;</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ce n&#39;est pas un entier, veuillez recommencer !&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Version avec interception d'erreurs</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">askIntFrom1To10</span><span class="p">()</span> <span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+        <span class="k">try</span> <span class="p">:</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un entier entre 1 et 10 :&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span><span class="n">nb</span> <span class="ow">and</span> <span class="n">nb</span><span class="o">&lt;=</span><span class="mi">10</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="n">nb</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;entier saisi n&#39;est pas entre 1 et 10. Veuillez recommencer&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ce n&#39;est pas un entier, veuillez recommencer !&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<p>Evidemment, la différence ne saute pas vraiment aux yeux... Pourquoi faire tout un plat d'une seule ligne gagnée ?</p>
+<p>Essayez donc, pour chacune des 2 fonctions précédentes, avec les chaines de caractères suivantes :</p>
+<ul>
+<li>½</li>
+<li>3²</li>
+</ul>
+</div>
+<details class="done"><summary>Réponse</summary><p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode<em>
+permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
+qui peut se douter que les </em><em>fractions définies dans la table utf8</em><em>, ainsi que les caractères en </em><em>exposant et en indice</em>*, sont considérés comme 
+des valeurs numériques.</p>
+<p>L'intérêt du bloc <code>try</code> est qu'il se déclenchera dès qu'il y aura une exception levée. Et cette exception a peu de chance de se produire dans le bloc <code>if / else</code>. La fonction devient <strong>dumbproof</strong> (mais si vous réussissez à déclencher une erreur bloquante, signalez-le moi !!).</p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Enchainer les interceptions</p>
+<p>Il est aussi possible d'avoir plusieurs blocs <code>except</code> successifs, en utilisant :
+<div class="highlight"><pre><span></span><code>    <span class="k">try</span> <span class="p">:</span>
+        <span class="c1"># Bloc try</span>
+    <span class="k">except</span> <span class="n">error1</span> <span class="p">:</span>
+        <span class="c1"># Bloc except1</span>
+    <span class="k">except</span> <span class="n">error2</span> <span class="p">:</span>
+        <span class="c1"># Bloc except2</span>
+    <span class="o">...</span>
+</code></pre></div></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Etendre la gestion des exceptions</p>
+<p>Il existe de nombreuses autres possibilités utilisant la levée d'exceptions, mais elles dépassent largement le programme de Terminale.</p>
+<p>Les plus curieux parmi vous pourront toujours aller lire la <a href="https://docs.python.org/3/tutorial/errors.html">doc Python</a>, qui reste la référence absolue...</p>
+</div>
                 
               
               
@@ -956,10 +1033,10 @@ mais de multiples paramètres.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
