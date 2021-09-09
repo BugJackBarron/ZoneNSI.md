@@ -44,14 +44,19 @@
 		La sortie renvoie une erreur de type `ValueError`, mais c'est celle levée dans le deuxième `if`, car le tuple donné ne correspond pas à un polynôme de degré 2.
 		
 !!! tips "Lever les bonnes erreurs"
-	Dans l'exemple précédent, les trois erreurs, pourtant très différentes, donnent la même erreur. L'utilisateur, qui lui ne connait pas l'implémentation, **ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de debuggage particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur, pour qu'il n'ait pas à ses préoccuper des détails d'implémentation.
+	Dans l'exemple précédent, les trois erreurs, pourtant très différentes, **sont signalées
+	 par le même message. L'utilisateur, qui lui ne connaît pas l'implémentation,
+	  **ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de débuggage
+	   particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur,
+	    pour qu'il n'ait pas à ses préoccuper des détails d'implémentation.
 	
-	Il est par exemple possible de rajouter un message lorsque l'erreur est levée, en la passant en paramètre directement dans l'instruction `ValueError()` :
+	Il est par exemple possible de {==**rajouter un message**==} lorsque l'erreur est levée, 
+	en la passant en paramètre directement dans l'instruction `ValueError()` :
 	``` python
 		def polynome(t) :
     			a,b,*c = t
 			if len(c) >1 :
-				raise valueError("length of tuple argument greater than 3")
+				raise ValueError("length of tuple argument greater than 3")
 			if not(isinstance(a,(int, float))
 			) or not(isinstance(b,(int, float))
 			) or not(isinstance(*c,(int, float))) :
@@ -65,9 +70,31 @@
 
 Voici quelques exceptions courantes, et leurs utilisations
 	
-| exception | contexte |
-------------------------
+| Exception | Contexte |
 | :---: | :--- |
 |`NameError` | accès à une variable inexistante dans l'espace de nom courant |
 |`IndexError` | accès à un indice invalide d'une liste, d'un tuple, d'une chaine de caractères... |
-|`KeyError` | accès à un indice invalide d'une liste, d'un tuple, d'une chaine de caractères... |
+|`KeyError` | accès à une clé inexistante d'un dictionnaire |
+| `ZeroDivisionError` | division par zéro |
+| `TypeError` | opération appliquées à un ou des objets incompatibles |
+
+!!! tips "Lever des exceptions"
+	Une exception peut être {==**levée**==} (c'est-à-dire volontairement déclenchée) par l'intermédiaire de l'instruction `raise`.
+
+	Dans ce cas **le programme est interrompu**, et *la pile d'erreurs* est renvoyées dans le terminal à l'utilisateur.
+	
+!!! question "Corriger le code"""
+	
+	Malgré nos corrections, il reste plusieurs possibilités d'erreurs dans l'utilisation de la fonction `polynome(t)`.
+	
+	Quelles sont-elles et comment les corriger pour lever une exception explicite ?
+	
+??? done "Solution"
+
+	 === "Exécution de `polynome(3,4,5)`"
+	 
+		Une erreur possible, et que vous avez probablement commise, est celle
+		de passer non pas un seul argument sous la forme d'un *tuple* (ou d'une liste)
+		 mais de multiples paramètres.
+		 
+		 Cette erreur déclenche alors l'exception 
