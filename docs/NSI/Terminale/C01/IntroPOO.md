@@ -62,6 +62,7 @@ Nous avons déjà rencontré un certain nombres d'objets prédéfinis dans Pytho
 * la classe `dict`, pour représenter une collection *non ordonnée* indexée par des clés.
 
 
+Chacun de ces types précédents possède ses propres **attributs** et ses propres **méthodes** :
 
 * un objet de la classe `str` possède une longueur, donné par la fonction built-in `len()`,
  et plusieurs **méthodes** associées comme `lower()`, `upper()`, etc...
