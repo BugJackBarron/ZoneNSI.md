@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/IntroPOO/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.802231af.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -747,6 +747,44 @@ On distingue entre autres :</p>
 <li>et en partie événementielle.</li>
 </ul>
 <h2 id="principes">Principes</h2>
+<p>Le concept principal de la <strong>programmation orientée objet</strong> (POO) est celui d' <strong><mark class="critic">objet</mark></strong>.
+Nous avons déjà rencontré un certain nombres d'objets prédéfinis dans Python :</p>
+<ul>
+<li>la classe <code>int</code>, pour représenter les entiers relatifs ;</li>
+<li>la classe <code>float</code>, pour représenter les nombre à virgule flottante (une partie des décimaux) ;</li>
+<li>la classe <code>str</code> pour représenter les chaînes de caractères ;</li>
+<li>la classe <code>list</code>, pour représenter un ensemble <em>ordonné</em> et <em>mutable</em> de toute autre collection d'objets ;</li>
+<li>la classe <code>tuple</code>, pour représenter un ensemble <em>ordonné</em> et <em>non-mutable</em> de toute autre collection d'objets ;</li>
+<li>la classe <code>set</code>, pour représenter un ensemble <em>non ordonné</em> et <em>sans doublons</em> ;</li>
+<li>la classe <code>dict</code>, pour représenter une collection <em>non ordonnée</em> indexée par des clés.</li>
+</ul>
+<p>Chacun de ces types précédents possède ses propres <strong>attributs</strong> et ses propres <strong>méthodes</strong> :</p>
+<ul>
+<li>un objet de la classe <code>str</code> possède une longueur, donné par la fonction built-in <code>len()</code>,
+ et plusieurs <strong>méthodes</strong> associées comme <code>lower()</code>, <code>upper()</code>, etc...</li>
+<li>un objet de la classe <code>list</code> possède lui aussi une longueur, et ses propres <strong>méthodes</strong>
+ comme  <code>append()</code>, <code>pop()</code>, etc...</li>
+</ul>
+<div class="admonition tips">
+<p class="admonition-title">Classes et constructeurs d'objets</p>
+<p>En Programmation Orientée Objet, on va construire de nouvelles classes d'objets
+plus ou moins complexes, possédant :</p>
+<ul>
+<li>des <mark class="critic"><strong>attributs</strong></mark>, c'est-à-dire des variables spécifiques qui lui sont directement associées ;</li>
+<li>des <mark class="critic"><strong>méthodes</strong></mark>, c'est-à-dire des fonctions modifiant l'objet, ou interagissant avec l'environnement
+extérieur à cet objet.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Personnages de JDR/MMORPG</p>
+<p>Prenons un JDR ou MMORPG lambda, dont les personnages sont constitués ainsi :</p>
+<ul>
+<li>ils ont 4 caractéristiques numériques entre <span class="arithmatex">\(1\)</span> et <span class="arithmatex">\(40\)</span>, à savoir <code>force, endurance, rapidité, intelligence</code> ;</li>
+<li>ils ont un nombre de points de vie de départ calculé à partir des caractéristiques <code>endurance + force//2</code> ;</li>
+<li>ils possèdent bien sûr un <code>nom</code> ;</li>
+<li>leur nombre de <code>points d'expérience</code> au départ est de <span class="arithmatex">\(0\)</span>, et leur <code>niveau</code> est de <span class="arithmatex">\(1\)</span>.</li>
+</ul>
+</div>
                 
               
               
@@ -836,10 +874,10 @@ On distingue entre autres :</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.756773cc.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

@@ -50,5 +50,39 @@ C'est le cas de Python, qui supporte la programmation :
 
 ## Principes	
 	
+Le concept principal de la **programmation orientée objet** (POO) est celui d' **{==objet==}**.
+Nous avons déjà rencontré un certain nombres d'objets prédéfinis dans Python :
+
+* la classe `int`, pour représenter les entiers relatifs ;
+* la classe `float`, pour représenter les nombre à virgule flottante (une partie des décimaux) ;
+* la classe `str` pour représenter les chaînes de caractères ;
+* la classe `list`, pour représenter un ensemble *ordonné* et *mutable* de toute autre collection d'objets ;
+* la classe `tuple`, pour représenter un ensemble *ordonné* et *non-mutable* de toute autre collection d'objets ;
+* la classe `set`, pour représenter un ensemble *non ordonné* et *sans doublons* ;
+* la classe `dict`, pour représenter une collection *non ordonnée* indexée par des clés.
+
+
+
+* un objet de la classe `str` possède une longueur, donné par la fonction built-in `len()`,
+ et plusieurs **méthodes** associées comme `lower()`, `upper()`, etc...
+*  un objet de la classe `list` possède lui aussi une longueur, et ses propres **méthodes**
+ comme  `append()`, `pop()`, etc...
+
+!!! tips "Classes et constructeurs d'objets"
+	En Programmation Orientée Objet, on va construire de nouvelles classes d'objets
+	plus ou moins complexes, possédant :
 	
+	* des {==**attributs**==}, c'est-à-dire des variables spécifiques qui lui sont directement associées ;
+	* des {==**méthodes**==}, c'est-à-dire des fonctions modifiant l'objet, ou interagissant avec l'environnement
+	extérieur à cet objet.
+	
+!!! example "Personnages de JDR/MMORPG"
+	
+	Prenons un JDR ou MMORPG lambda, dont les personnages sont constitués ainsi :
+	
+	* ils ont 4 caractéristiques numériques entre $1$ et $40$, à savoir `force, endurance, rapidité, intelligence` ;
+	* ils ont un nombre de points de vie de départ calculé à partir des caractéristiques `endurance + force//2` ;
+	* ils possèdent bien sûr un `nom` ;
+	* leur nombre de `points d'expérience` au départ est de $0$, et leur `niveau` est de $1$.
+
 	
