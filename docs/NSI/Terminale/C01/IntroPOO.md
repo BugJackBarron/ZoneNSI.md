@@ -99,10 +99,12 @@ Pour construire un tel personnage, on va devoir renseigner son nom,
 et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calculés.
  Tous sont cependant des {==**attributs**==} du personnage.
  
-On va donc décrire un personnage par l'intermédiaire de l'interface suivante :
+!!! abstract
+	On va donc décrire un personnage par l'intermédiaire de l'interface suivante :
  
-
-![perso](Perso1.png){width=10% : .imagepng}
+	<p align="center">
+	![perso](Perso1.png){width=15% : .imagepng}
+	</p>
 
 ### Création de la classe et des attributs
 
@@ -168,13 +170,13 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
   
 
 	>>> firstPlayer = Personnage("Bob", 20, 25, 10, 30)
-	
-On peut schématiser avec le dessin suivant : 
 
+!!! abstract	
+	On peut schématiser avec le dessin suivant : 
 
-
-![perso](Perso2.png){width=30% : .imagepng}
-
+	<p align="center">
+	![perso](Perso2.png){width=25% }
+	</p>
 
 
 L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthode constructeur**, qui va permettre de créer un
@@ -205,10 +207,12 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 
 	>>> secondPlayer = Personnage('Bill', 34, 10, 20, 12)
 
-Cette seconde {==**instance	**==} de type `Personnage` possède aussi ses propres attributs, comme montré dans le schéma suivant :
+!!! abstract 
+	Cette seconde {==**instance	**==} de type `Personnage` possède aussi ses propres attributs, comme montré dans le schéma suivant :
 
-![perso](Perso3.png){width=30% : .imagepng}
-
+	<p align="center">
+	![perso3](Perso3.png){width=35%}
+	</p>
 
 !!! tips "Espace de nommage"
 
@@ -238,7 +242,7 @@ Cette seconde {==**instance	**==} de type `Personnage` possède aussi ses propre
 		mémoire et le type de l'objet que nous venons de lui passer.
 		
 
-Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**}, que nous nommerons
+Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**==}, que nous nommerons
 `affiche`. Cette méthode devra avoir le comportement suivant :
 
 	>>> firstPlayer.affiche()
@@ -247,7 +251,7 @@ Nous allons donc devoir améliorer cet affichage, en construisant notre propre {
 		
 !!! tips "Méthodes et attributs"
 
-	Si les {==**attributs**==} d'une classe sont comme des **variables** spécifiques à une classe, les {==**méthodes**==}
+	Si les {==**attributs** ==} d'une classe sont comme des **variables** spécifiques à une classe, les {==**méthodes**==}
 	sont des **fonctions** : elles peuvent prendre ou non des arguments, et ont des valeurs de retour (qui peuvent être
 	parfois implicites : la méthode `__init__` renvoie le nouvel objet créé.)
 
@@ -346,4 +350,6 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 				return False
 			return True
 	```
+	
+
 
