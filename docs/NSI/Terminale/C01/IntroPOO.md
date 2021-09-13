@@ -76,6 +76,8 @@ Chacun de ces types précédents possède ses propres **attributs** et ses propr
 	* des {==**attributs**==}, c'est-à-dire des variables spécifiques qui lui sont directement associées ;
 	* des {==**méthodes**==}, c'est-à-dire des fonctions modifiant l'objet, ou interagissant avec l'environnement
 	extérieur à cet objet.
+
+## Application à un exemple
 	
 !!! example "Personnages de JDR/MMORPG"
 	
@@ -84,6 +86,79 @@ Chacun de ces types précédents possède ses propres **attributs** et ses propr
 	* ils ont 4 caractéristiques numériques entre $1$ et $40$, à savoir `force, endurance, rapidité, intelligence` ;
 	* ils ont un nombre de points de vie de départ calculé à partir des caractéristiques `endurance + force//2` ;
 	* ils possèdent bien sûr un `nom` ;
-	* leur nombre de `points d'expérience` au départ est de $0$, et leur `niveau` est de $1$.
+	* leur nombre de `points d'expérience` au départ est de $0$, et leur `niveau` est de $1$ ;
+	* Chaque personnage peut **mener une attaque**, qui consiste à ajouter un nombre aléatoire entre 1 et 20 à sa force ;
+	* Chaque personnage peut **se défendre d'une attaque** qui lui est lancée
+	en ajoutant un nombre aléatoire de 1 à 20 à son endurance. Si ce résultat est supérieur ou égal au 
+	niveau d'attaque, l'attaque a échouée, sinon le personnage perd un nombre de points 
+	de vie  égal à la différence entre le niveau d'attaque et le niveau de défense.
+		
+	
+
+Pour construire un tel personnage, on va devoir renseigner son nom, 
+et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calculés.
+ Tous sont cependant des {==**attributs**==} du personnage.
+ 
+On va donc décrire un personnage par l'intermédiaire de l'interface suivante :
+ 
+
+![perso](Perso1.png){width=10% : .imagepng}
+
+### Création de la classe et des attributs
+
+!!! info  inline end
+	Nous détaillerons beaucoup plus dans un chapitre spécifique le fonctionnement de la POO.
+	 Pour l'instant vous devrez vous contenter des explications ci-dessus.
+
+
+!!! tips "Décrire une classe en Python"
+	Le code suivant permet de définir une nouvelle classe d'objets de type  `Personnage` :
+	
+	``` python
+	class Personnage :
+		""" une classe pour représenter un personnage générique du MMORPG """
+		def __init__(self, nom, force, endurance, rapidite, intelligence) :
+			self.nom = nom
+			self.force = force
+			self.endurance = endurance
+			self.rapidite = rapidite
+			self.intelligence = intelligence
+			self.pv = self.endurance + self.force//2
+			self.pex = 0
+			self.niveau = 1
+	```
+	
+	La définition d'une classe d'objet est effectuée par lee mot-clé `class`,
+	 suivi du nom de la classe (commençant par une majuscule par convention) et du symbole `:`.
+	 Comme toujours en Python le symbole `:` déclenche l'attente d'un bloc indenté, qui 
+	 correspondra à la définition de l'objet.
+	 
+	On trouve ensuite une `docstring` décrivant la classe, puis la définition 
+	d'une `méthode` de la classe, la méthode `__init__()`, appelée {==**méthode constructeur de la classe**==}.
+	 
+	Cette méthode prend plusieurs paramètres :
+	 
+	1. le paramètre `self`, **obligatoire**, qui représente *'l'instance* de l'objet créé.
+	2. une série de paramètres qui correspondent aux paramètres définis dans l'interface
+	de l'objet `Personnage`.
+	
+	Puis dans cette méthode, on affecte aux {==**attributs de l'objet**==} les valeurs passées
+	en argument, puis on calcule l'{==**attribut**==} `pv` à partir des valeurs déjà connues. 
+	Enfin on défini les deux {==**attributs**==} de valeurs fixes.
+	
+!!! info "Un oubli ?"
+	Attention ! Ici nous ne respectons pas vraiment l'interface, puisque nous ne vérifions
+	pas que les attributs passés en argument sont bien des entiers entre 1 et 40 ! Ce problème sera réglé
+	plus tard.
+
+	
+### Instanciation d'objets
+
+Pour créer des personnages, il suffit maintenant d'utiliser une expression de la forme :`Personnage( nom, f, e, r, i)`.
+ Vous noterez que l'argument `self` n'est pas renseigné ! On appelle cet argument un {==argument implicite==}.
+ 
+	>>>
+	
+ 
 
 	
