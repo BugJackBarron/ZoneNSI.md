@@ -551,6 +551,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#application-a-un-exemple" class="md-nav__link">
+    Application à un exemple
+  </a>
+  
+    <nav class="md-nav" aria-label="Application à un exemple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-de-la-classe-et-des-attributs" class="md-nav__link">
+    Création de la classe et des attributs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instanciation-dobjets" class="md-nav__link">
+    Instanciation d'objets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder-aux-attributs-et-les-modifier" class="md-nav__link">
+    Accéder aux attributs et les modifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deux-objets" class="md-nav__link">
+    Deux objets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definitions-de-methodes" class="md-nav__link">
+    Définitions de méthodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -775,6 +823,7 @@ plus ou moins complexes, possédant :</p>
 extérieur à cet objet.</li>
 </ul>
 </div>
+<h2 id="application-a-un-exemple">Application à un exemple</h2>
 <div class="admonition example">
 <p class="admonition-title">Personnages de JDR/MMORPG</p>
 <p>Prenons un JDR ou MMORPG lambda, dont les personnages sont constitués ainsi :</p>
@@ -782,9 +831,214 @@ extérieur à cet objet.</li>
 <li>ils ont 4 caractéristiques numériques entre <span class="arithmatex">\(1\)</span> et <span class="arithmatex">\(40\)</span>, à savoir <code>force, endurance, rapidité, intelligence</code> ;</li>
 <li>ils ont un nombre de points de vie de départ calculé à partir des caractéristiques <code>endurance + force//2</code> ;</li>
 <li>ils possèdent bien sûr un <code>nom</code> ;</li>
-<li>leur nombre de <code>points d'expérience</code> au départ est de <span class="arithmatex">\(0\)</span>, et leur <code>niveau</code> est de <span class="arithmatex">\(1\)</span>.</li>
+<li>leur nombre de <code>points d'expérience</code> au départ est de <span class="arithmatex">\(0\)</span>, et leur <code>niveau</code> est de <span class="arithmatex">\(1\)</span> ;</li>
+<li>Chaque personnage peut <strong>mener une attaque</strong>, qui consiste à ajouter un nombre aléatoire entre 1 et 20 à sa force ;</li>
+<li>Chaque personnage peut <strong>se défendre d'une attaque</strong> qui lui est lancée
+en ajoutant un nombre aléatoire de 1 à 20 à son endurance. Si ce résultat est supérieur ou égal au 
+niveau d'attaque, l'attaque a échouée, sinon le personnage perd un nombre de points 
+de vie  égal à la différence entre le niveau d'attaque et le niveau de défense.</li>
 </ul>
 </div>
+<p>Pour construire un tel personnage, on va devoir renseigner son nom, 
+et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calculés.
+ Tous sont cependant des <mark class="critic"><strong>attributs</strong></mark> du personnage.</p>
+<p>On va donc décrire un personnage par l'intermédiaire de l'interface suivante :</p>
+<p><img :=":" alt="perso" class="imagepng" src="../Perso1.png" width="10%" /></p>
+<h3 id="creation-de-la-classe-et-des-attributs">Création de la classe et des attributs</h3>
+<div class="admonition info inline end">
+<p class="admonition-title">Info</p>
+<p>Nous détaillerons beaucoup plus dans un chapitre spécifique le fonctionnement de la POO.
+ Pour l'instant vous devrez vous contenter des explications ci-dessus.</p>
+</div>
+<div class="admonition tips">
+<p class="admonition-title">Décrire une classe en Python</p>
+<p>Le code suivant permet de définir une nouvelle classe d'objets de type  <code>Personnage</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">endurance</span><span class="p">,</span> <span class="n">rapidite</span><span class="p">,</span> <span class="n">intelligence</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">=</span> <span class="n">force</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endurance</span> <span class="o">=</span> <span class="n">endurance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rapidite</span> <span class="o">=</span> <span class="n">rapidite</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span> <span class="o">=</span> <span class="n">intelligence</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">endurance</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span><span class="o">//</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pex</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">niveau</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>La définition d'une classe d'objet est effectuée par lee mot-clé <code>class</code>,
+ suivi du nom de la classe (commençant par une majuscule par convention) et du symbole <code>:</code>.
+ Comme toujours en Python le symbole <code>:</code> déclenche l'attente d'un bloc indenté, qui 
+ correspondra à la définition de l'objet.</p>
+<p>On trouve ensuite une <code>docstring</code> décrivant la classe, puis la définition 
+d'une <code>méthode</code> de la classe, la méthode <code>__init__()</code>, appelée <mark class="critic"><strong>méthode constructeur de la classe</strong></mark>.</p>
+<p>Cette méthode prend plusieurs paramètres :</p>
+<ol>
+<li>le paramètre <code>self</code>, <strong>obligatoire</strong>, qui représente <em>'l'instance</em> de l'objet créé.</li>
+<li>une série de paramètres qui correspondent aux paramètres définis dans l'interface
+de l'objet <code>Personnage</code>.</li>
+</ol>
+<p>Puis dans cette méthode, on affecte aux <mark class="critic"><strong>attributs de l'objet</strong></mark> les valeurs passées
+en argument, puis on calcule l'<mark class="critic"><strong>attribut</strong></mark> <code>pv</code> à partir des valeurs déjà connues. 
+Enfin on défini les deux <mark class="critic"><strong>attributs</strong></mark> de valeurs fixes.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Un oubli ?</p>
+<p>Attention ! Ici nous ne respectons pas vraiment l'interface, puisque nous ne vérifions
+pas que les attributs passés en argument sont bien des entiers entre 1 et 40 ! Ce problème sera réglé
+plus tard.</p>
+</div>
+<h3 id="instanciation-dobjets">Instanciation d'objets</h3>
+<p>Pour créer des personnages, il suffit maintenant d'utiliser une expression de la forme :<code>Personnage( nom, f, e, r, i)</code>.
+ Vous noterez que l'argument <code>self</code> n'est pas renseigné ! On appelle cet argument un <mark class="critic">argument implicite</mark>.</p>
+<p>Ainsi pour créer un objet de type <code>Personnage</code> nommé Bob, et ayant les attributs
+ 20 en force, 25 en endurance, 10 en rapidité et 30 en intelligence, on utilise l'instruction suivante :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; Personnage(&quot;Bob&quot;, 20, 25, 10, 30)
+&lt;__main__.Personnage object at 0x7fb674844e48&gt;
+</code></pre></div>
+<p>On constate donc bien qu'un objet de type <code>Personnage</code> est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
+  par le <em>garbage collector</em>. On crée donc une variable <code>firstPlayer</code> comme référence à l'objet :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer = Personnage(&quot;Bob&quot;, 20, 25, 10, 30)
+</code></pre></div>
+<p>On peut schématiser avec le dessin suivant : </p>
+<p><img :=":" alt="perso" class="imagepng" src="../Perso2.png" width="30%" /></p>
+<p>L'appel au nom de la classe <code>Personnage</code> fait en réalité appel à la <strong>méthode constructeur</strong>, qui va permettre de créer un
+nouvel objet de type <code>Personnage</code>. On peut le vérifier avec la ligne suivante :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; type(firstPlayer)
+&lt;class &#39;__main__.Personnage&#39;&gt;
+</code></pre></div>
+<h3 id="acceder-aux-attributs-et-les-modifier">Accéder aux attributs et les modifier</h3>
+<p>Pour accéder à l'attribut <code>pv</code> de l'objet <code>firstPlayer</code>, il suffit d'utiliser la notation</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.pv
+35
+</code></pre></div>
+<p>Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.force = 18
+&gt;&gt;&gt; firstPlayer.force
+18
+&gt;&gt;&gt; firstPlayer.rapidite = firstPlayer.rapidite + 2
+&gt;&gt;&gt; firstPlayer.rapidite
+12
+</code></pre></div>
+<h3 id="deux-objets">Deux objets</h3>
+<p>Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; secondPlayer = Personnage(&#39;Bill&#39;, 34, 10, 20, 12)
+</code></pre></div>
+<p>Cette seconde <mark class="critic"><strong>instance    </strong></mark> de type <code>Personnage</code> possède aussi ses propres attributs, comme montré dans le schéma suivant :</p>
+<p><img :=":" alt="perso" class="imagepng" src="../Perso3.png" width="30%" /></p>
+<div class="admonition tips">
+<p class="admonition-title">Espace de nommage</p>
+<p>Chaque <mark class="critic"><strong>instance</strong></mark> d'objet possède son propre espace de nommage. </p>
+<p>Ici même si les deux objets de type <code>Personnage</code> ont le même nom d'attribut <code>force</code>, ils ne 
+représentent pas le même objet.</p>
+</div>
+<h3 id="definitions-de-methodes">Définitions de méthodes</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Afficher les personnage</p>
+<p>Essayons maintenant d'afficher une chaîne de caractères nous donne toutes les caractéristiques d'un personnage.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Test de <code>print</code></label><div class="tabbed-content">
+<p>Essayons d'abord avec la fonction <em>built-in</em> <code>print()</code> :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(firstPlayer)
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Sortie et commentaires</label><div class="tabbed-content">
+<p>La sortie sur la console Python  est :</p>
+<div class="highlight"><pre><span></span><code>&lt;__main__.Personnage object at 0x7fb6748590f0&gt;
+</code></pre></div>
+<p>C'est peu parlant !  La fonction <code>print</code> ne renvoie que l'adresse
+mémoire et le type de l'objet que nous venons de lui passer.</p>
+</div>
+</div>
+</div>
+<p>Nous allons donc devoir améliorer cet affichage, en construisant notre propre <mark class="critic"><strong>méthode</strong>}, que nous nommerons
+<code>affiche</code>. Cette méthode devra avoir le comportement suivant :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.affiche()
+    &quot;Bonjour, je suis Bob, de niveau 1. J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30
+    en intelligence. J&#39;ai 35 Points de Vie&quot;
+</code></pre></div>
+<div class="admonition tips">
+<p class="admonition-title">Méthodes et attributs</p>
+<p>Si les {==<strong>attributs</strong></mark> d'une classe sont comme des <strong>variables</strong> spécifiques à une classe, les <mark class="critic"><strong>méthodes</strong></mark>
+sont des <strong>fonctions</strong> : elles peuvent prendre ou non des arguments, et ont des valeurs de retour (qui peuvent être
+parfois implicites : la méthode <code>__init__</code> renvoie le nouvel objet créé.)</p>
+</div>
+<p>Pour créer cette méthode, nous allons compléter la classe <code>Personnage</code> de la manière suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">endurance</span><span class="p">,</span> <span class="n">rapidite</span><span class="p">,</span> <span class="n">intelligence</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="o">...</span>
+
+
+    <span class="k">def</span> <span class="nf">affiche</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Bonjour, je suis </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">, de niveau </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">niveau</span><span class="si">}</span><span class="s2">.&quot;</span>
+         <span class="sa">f</span><span class="s2">&quot;J&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">force</span><span class="si">}</span><span class="s2"> en force, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">endurance</span><span class="si">}</span><span class="s2"> en endurance, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rapidite</span><span class="si">}</span><span class="s2">&quot;</span>
+          <span class="sa">f</span><span class="s2">&quot; en rapidité et </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="si">}</span><span class="s2"> en intelligence. J&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="si">}</span><span class="s2"> Points de Vie&quot;</span>
+</code></pre></div>
+<p>Vous constatez que :</p>
+<ol>
+<li>Dans la construction de la méthode <code>affiche</code>, apparaît l'<mark class="critic"><strong>argument implicite</strong></mark> <code>self</code>, qu'il
+est impératif d'utiliser pour avoir accès aux <strong>attributs</strong> de l'objet.</li>
+<li>Dans l'appel de la méthode <mark class="critic"><strong>aucun argument n'est passé</strong></mark>.</li>
+</ol>
+<p>En rechargeant le module, puis en recréant les objets <code>firstPlayer</code> puis <code>secondPlayer</code>, on obtient alors les affichages suivants :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.affiche()
+Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie
+&gt;&gt;&gt; secondPlayer.affiche()
+Bonjour, je suis Bill, de niveau 1.J&#39;ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J&#39;ai 27 Points de Vie
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Implémenter la méthode <code>attaque</code></p>
+<p>Dans notre interface de départ, nous avions prévu une méthode <code>attaque()</code> qui renvoie un entier égal à la valeur 
+de force du personnage auquel on ajoute un nombre aléatoire entre 1 et 20.</p>
+<p>Comment implémenter une telle méthode ?</p>
+</div>
+<details class="done"><summary>Une implémentation possible</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
+
+<span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">endurance</span><span class="p">,</span> <span class="n">rapidite</span><span class="p">,</span> <span class="n">intelligence</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="o">...</span>
+
+
+    <span class="k">def</span> <span class="nf">affiche</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">attaque</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Implémenter la méthode <code>defense(valeurAttaque)</code></p>
+<p>Dans notre interface de départ, nous avions prévu une méthode <code>defense(valeurAttaque)</code> 
+qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au 
+niveau d'attaque, l'attaque a échouée et la méthode renvoie <code>True</code>. Sinon le personnage perd un nombre de points 
+de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie <code>False</code>.</p>
+<p>Comment implémenter une telle méthode ?</p>
+</div>
+<details class="done"><summary>Une implémentation possible</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
+
+<span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">endurance</span><span class="p">,</span> <span class="n">rapidite</span><span class="p">,</span> <span class="n">intelligence</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="o">...</span>
+
+
+    <span class="k">def</span> <span class="nf">affiche</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">attaque</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">defense</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeurAttaque</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">valeurDefense</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">endurance</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">valeurAttaque</span><span class="o">&gt;</span> <span class="n">valeurDefense</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pv</span> <span class="o">-=</span>  <span class="n">valeurAttaque</span><span class="o">-</span><span class="n">valeurDefense</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</details>
                 
               
               

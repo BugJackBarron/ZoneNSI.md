@@ -157,8 +157,193 @@ On va donc décrire un personnage par l'intermédiaire de l'interface suivante :
 Pour créer des personnages, il suffit maintenant d'utiliser une expression de la forme :`Personnage( nom, f, e, r, i)`.
  Vous noterez que l'argument `self` n'est pas renseigné ! On appelle cet argument un {==argument implicite==}.
  
-	>>>
-	
+ Ainsi pour créer un objet de type `Personnage` nommé Bob, et ayant les attributs
+ 20 en force, 25 en endurance, 10 en rapidité et 30 en intelligence, on utilise l'instruction suivante :
  
-
+	>>> Personnage("Bob", 20, 25, 10, 30)
+	<__main__.Personnage object at 0x7fb674844e48>
 	
+ On constate donc bien qu'un objet de type `Personnage` est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
+  par le *garbage collector*. On crée donc une variable `firstPlayer` comme référence à l'objet :
+  
+
+	>>> firstPlayer = Personnage("Bob", 20, 25, 10, 30)
+	
+On peut schématiser avec le dessin suivant : 
+
+
+
+![perso](Perso2.png){width=30% : .imagepng}
+
+
+
+L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthode constructeur**, qui va permettre de créer un
+nouvel objet de type `Personnage`. On peut le vérifier avec la ligne suivante :
+
+	>>> type(firstPlayer)
+	<class '__main__.Personnage'>
+	
+### Accéder aux attributs et les modifier
+
+Pour accéder à l'attribut `pv` de l'objet `firstPlayer`, il suffit d'utiliser la notation
+
+	>>> firstPlayer.pv
+	35
+	
+Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :
+
+	>>> firstPlayer.force = 18
+	>>> firstPlayer.force
+	18
+	>>> firstPlayer.rapidite = firstPlayer.rapidite + 2
+	>>> firstPlayer.rapidite
+	12
+	
+### Deux objets 
+
+Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
+
+	>>> secondPlayer = Personnage('Bill', 34, 10, 20, 12)
+
+Cette seconde {==**instance	**==} de type `Personnage` possède aussi ses propres attributs, comme montré dans le schéma suivant :
+
+![perso](Perso3.png){width=30% : .imagepng}
+
+
+!!! tips "Espace de nommage"
+
+	Chaque {==**instance**==} d'objet possède son propre espace de nommage. 
+	
+	Ici même si les deux objets de type `Personnage` ont le même nom d'attribut `force`, ils ne 
+	représentent pas le même objet.
+	
+
+### Définitions de méthodes
+
+!!!abstract "Afficher les personnage"
+	Essayons maintenant d'afficher une chaîne de caractères nous donne toutes les caractéristiques d'un personnage.
+	
+	=== "Test de `print`"
+		Essayons d'abord avec la fonction *built-in* `print()` :
+		
+			>>> print(firstPlayer)
+
+	=== "Sortie et commentaires" 
+		
+		La sortie sur la console Python  est :
+		
+			<__main__.Personnage object at 0x7fb6748590f0>
+			
+		C'est peu parlant !  La fonction `print` ne renvoie que l'adresse
+		mémoire et le type de l'objet que nous venons de lui passer.
+		
+
+Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**}, que nous nommerons
+`affiche`. Cette méthode devra avoir le comportement suivant :
+
+	>>> firstPlayer.affiche()
+		"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30
+		en intelligence. J'ai 35 Points de Vie"
+		
+!!! tips "Méthodes et attributs"
+
+	Si les {==**attributs**==} d'une classe sont comme des **variables** spécifiques à une classe, les {==**méthodes**==}
+	sont des **fonctions** : elles peuvent prendre ou non des arguments, et ont des valeurs de retour (qui peuvent être
+	parfois implicites : la méthode `__init__` renvoie le nouvel objet créé.)
+
+
+Pour créer cette méthode, nous allons compléter la classe `Personnage` de la manière suivante :
+
+``` python
+
+class Personnage :
+	""" une classe pour représenter un personnage générique du MMORPG """
+	def __init__(self, nom, force, endurance, rapidite, intelligence) :
+		self.nom = nom
+		...
+		
+		
+	def affiche(self) :
+		return f"Bonjour, je suis {self.nom}, de niveau {self.niveau}."
+		 f"J'ai {self.force} en force, {self.endurance} en endurance, {self.rapidite}"
+		  f" en rapidité et {self.intelligence} en intelligence. J'ai {self.pv} Points de Vie"
+		 
+```
+
+Vous constatez que :
+
+1. Dans la construction de la méthode `affiche`, apparaît l'{==**argument implicite**==} `self`, qu'il
+est impératif d'utiliser pour avoir accès aux **attributs** de l'objet.
+2. Dans l'appel de la méthode {==**aucun argument n'est passé**==}.
+
+En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secondPlayer`, on obtient alors les affichages suivants :
+
+	>>> firstPlayer.affiche()
+	Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 34 Points de Vie
+	>>> secondPlayer.affiche()
+	Bonjour, je suis Bill, de niveau 1.J'ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J'ai 27 Points de Vie
+
+!!! question "Implémenter la méthode `attaque`"
+
+	Dans notre interface de départ, nous avions prévu une méthode `attaque()` qui renvoie un entier égal à la valeur 
+	de force du personnage auquel on ajoute un nombre aléatoire entre 1 et 20.
+	
+	Comment implémenter une telle méthode ?
+	
+??? done "Une implémentation possible"
+
+	``` python
+
+	from random import randint 
+
+	class Personnage :
+		""" une classe pour représenter un personnage générique du MMORPG """
+		def __init__(self, nom, force, endurance, rapidite, intelligence) :
+			self.nom = nom
+			...
+			
+			
+		def affiche(self) :
+			...
+			 
+		def attaque(self) :
+			return self.force + randint(1,20)
+			 
+	```
+
+!!! question "Implémenter la méthode `defense(valeurAttaque)`"
+
+	Dans notre interface de départ, nous avions prévu une méthode `defense(valeurAttaque)` 
+	qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au 
+	niveau d'attaque, l'attaque a échouée et la méthode renvoie `True`. Sinon le personnage perd un nombre de points 
+	de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie `False`.
+	
+	Comment implémenter une telle méthode ?
+	
+??? done "Une implémentation possible"
+
+	``` python
+
+	from random import randint 
+
+	class Personnage :
+		""" une classe pour représenter un personnage générique du MMORPG """
+		def __init__(self, nom, force, endurance, rapidite, intelligence) :
+			self.nom = nom
+			...
+			
+			
+		def affiche(self) :
+			...
+			 
+		def attaque(self) :
+			return self.force + randint(1,20)
+			 
+		def defense(self, valeurAttaque) :
+			valeurDefense = self.endurance + randint(1,20)
+			if valeurAttaque> valeurDefense :
+				self.pv -=  valeurAttaque-valeurDefense
+				return False
+			return True
+	```
+
