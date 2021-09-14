@@ -474,4 +474,34 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 	
 	On a alors l'utilisation :
 	
+		>>> firstPlayer == secondPlayer
+		False
+		>>> firstPlayer == Personnage('Marty', 18, 25, 12, 30)
+		True
+
+!!! question "Fight !"
+	
+	Un combat de ce MMORPG se déroule selon le schéma suivant :
+	
+	1. Chaque personnage tire son *initiative* en ajoutant un nombre aléatoire entre 1 et 20 à sa
+	valeur de rapidite.
+	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend.
+	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
+	et le premier se défend.
+	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1.
+	
+	Vous devrez implémenter un programme simulant un combat entre `Bob` et `Bill`, dont la sortie console sera sous la forme suivante :
+		Round 1
+		Bob a l'initiative et attaque avec 28
+		Bill réussit sa défense
+		Bill attaque avec 40
+		Bob rate sa désense et n'a plus que 25 points de vie
+		
+		Round 2
+		...
+	Vous devrez pour réussir construire une méthode supplémentaire pour la classe `Personnage` : la méthode `initiative(self)` qui renvoieun entier représentant le score d'initiative du personnage.
+	
+	Ce programme  devra être dans un fichier séparé de celui contenant la classe `Personnage`.
+	
+	
 	
