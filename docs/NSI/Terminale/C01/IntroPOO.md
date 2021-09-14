@@ -268,9 +268,9 @@ class Personnage :
 		
 		
 	def affiche(self) :
-		return f"Bonjour, je suis {self.nom}, de niveau {self.niveau}."
+		print(f"Bonjour, je suis {self.nom}, de niveau {self.niveau}."
 		 f"J'ai {self.force} en force, {self.endurance} en endurance, {self.rapidite}"
-		  f" en rapidité et {self.intelligence} en intelligence. J'ai {self.pv} Points de Vie"
+		  f" en rapidité et {self.intelligence} en intelligence. J'ai {self.pv} Points de Vie")
 		 
 ```
 
@@ -314,6 +314,15 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 			return self.force + randint(1,20)
 			 
 	```
+	
+	Cette méthode peut alors être utilisée comme dans les exemples ci-dessous :
+	
+		>>> firstPlayer.attaque()
+		22
+		>>> firstPlayer.attaque()
+		27
+		>>> secondPlayer.attaque()
+		38
 
 !!! question "Implémenter la méthode `defense(valeurAttaque)`"
 
@@ -351,5 +360,118 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 			return True
 	```
 	
+	cette méthode peut alors être utilisée ainsi :
+	
+		>>> secondPlayer.defense(firstPlayer.attaque())
+		False
+		>>> secondPlayer.pv
+		18
+	
 
+### Méthodes spécifiques
 
+!!! info inline end 
+
+	La liste de toutes les méthodes d'une classe, y compris des **DUNDERS**,
+	 peut-être obtenue par l'intermédiaire de la commande suivante :
+	 
+		>>> dir(Personnage)
+		['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',
+		 '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__',
+		  '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__',
+		   '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+		    '__repr__', '__setattr__', '__sizeof__', '__str__',
+		     '__subclasshook__', '__weakref__',
+		      'affiche', 'attaque', 'defense']
+
+!!! info "DUNDERS"
+	Il existe plusieurs méthodes spécifiques définies automatiquement dès qu'on crée une classe
+	d'objets. Ces méthodes sont toutes  de la forme `__truc__()` (c'est-à-dire que le nom de la classe
+	est préfixé par un double tiret du bas, soit *Double UNDERScore*, ce qui a donné le nom 
+	de méthodes {==**DUNDERS**==}).
+
+	Ce sont des méthodes universelles que possèdent toute classe en Python, et qui permettent de gérer
+	 un certain nombre  d'actions. Par exemple l'instruction `Personnage('Bob', 18, 25, 12, 30)`
+	 fait appel à la méthode DUNDERS `__init__()` que nous avons définie.
+	 
+	Il est ainsi possible de redéfinir un certain nombre de ces méthodes selon nos utilisations.
+	
+	Le tableau ci-dessous vous présente quelques-uns de ces DUNDERS, applicables à des objets `t` et `other` 
+	instances de la classe :
+	 
+	| méthode | Appel | Intérêt |
+	|:---: | :--- | :--- |
+	| `__str__(self)` | `str(t)` | renvoie une chaîne de caractères décrivant l'objet `t` |
+	| `__lt__(self,other)` | `t < other` | permet de définir la relation *plus petit que* entre deux objets, renvoie `True` ou `False` selon la définition proposée |
+	| `__len__(self)` | `len(t)` | permet de définir la longueur de l'objet `t` |
+	| `__contains__(self,x)` | `x in t` | permet de définir l'appartenance de `x` à `t` |
+	| `__eq__(self, other)` | `t == other` | permet de définir l'égalité entre deux objets `t` et `other` |
+	| `__add__(self, other)` | `t + other` | définit l'addition de deux objets `t` et `other` |
+	| `__mul__(self, other)` | `t * other` | définit la multiplication de deux objets `t` et `other` |
+
+!!! example "redéfinition de la méthode `__str__(self)`"
+	
+	Il est assez facile de redéfinir la méthode `__str__(self)`, puisque nous avons déjà une chaîne
+	de caractère qui nous convient : celle de la méthode `affiche(self)`. Nous allons alors 
+	changer la méthode `affiche(self)` qui renverra la chaîne de caractère générée par la méthode
+	`__str__(self)` (pour des raisons pratiques, la chaîne sera multi-ligne):
+	
+	``` python
+
+	from random import randint 
+
+	class Personnage :
+		""" une classe pour représenter un personnage générique du MMORPG """
+		def __init__(self, nom, force, endurance, rapidite, intelligence) :
+			self.nom = nom
+			...
+			
+		def __str__(self) :
+			return  f"""Bonjour, je suis {self.nom}, de niveau {self.niveau}.
+		 J'ai {self.force} en force, {self.endurance} en endurance, {self.rapidite}
+		   en rapidité et {self.intelligence} en intelligence. J'ai {self.pv} Points de Vie"""
+			
+		def affiche(self) :
+			print(str(self))
+			
+		...
+	```
+	
+	On a alors la possibilité d'utiliser les commandes suivantes :
+	
+		>>> str(firstPlayer)
+		"Bonjour, je suis Bob, de niveau 1.\n         J'ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
+		>>> firstPlayer.affiche()
+		Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J'ai 34 Points de Vie
+
+!!! question "Définir l'égalité entre deux personnages"
+	
+	On considère que deux personnages sont égaux quand ils possèdent les mêmes caractéristiques numériques
+	de bases (`force`, `endurance`, `rapidite` et `intelligence`).
+	
+	Redéfinir  la méthode DUNDERS `__eq__(self, u)` pour qu'elle corresponde à cette définition.
+	
+??? done "Solution"
+
+	``` python
+
+	from random import randint 
+
+	class Personnage :
+		""" une classe pour représenter un personnage générique du MMORPG """
+		def __init__(self, nom, force, endurance, rapidite, intelligence) :
+			self.nom = nom
+			...
+			
+		def __eq__(self, other) :
+			return (self.force == other.force) and (
+			self.endurance == other.endurance) and (
+			self. rapidite == other.rapidite) and (
+			self.intelligence == other.intelligence)
+			
+		...
+	```
+	
+	On a alors l'utilisation :
+	
+	
