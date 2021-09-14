@@ -21,11 +21,6 @@ class Personnage :
         print(str(self))
         
             
-    def affiche(self) :
-        print(f"Bonjour, je suis {self.nom}, de niveau {self.niveau}."
-         f"J'ai {self.force} en force, {self.endurance} en endurance, {self.rapidite}"
-          f"en rapidité et {self.intelligence} en intelligence. J'ai {self.pv} Points de Vie")
-
     def attaque(self) :
         return self.force + randint(1,20)
     
@@ -37,13 +32,13 @@ class Personnage :
         return True
     
     def __eq__(self, other) :
-            return (self.force == other.force) and (
+        return (self.force == other.force) and (
             self.endurance == other.endurance) and (
             self. rapidite == other.rapidite) and (
             self.intelligence == other.intelligence)
 
+
 if __name__ == "__main__" :
-     
     firstPlayer = Personnage('Bob', 18, 25, 12, 30)
     secondPlayer = Personnage('Bill', 34, 10, 20, 12)
     

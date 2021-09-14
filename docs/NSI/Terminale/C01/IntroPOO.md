@@ -1,11 +1,13 @@
-# Introduction à la promgrammation orientée objet
+# Introduction à la programmation orientée objet
 
 ## Un premier exemple issu de Scratch
 
-Observons ce jeu assez minable en Scratch (non, mais vraiment, allez-voir sur le site...).
+Observons ce jeu assez minable en Scratch (non, mais vraiment, allez voir sur le site...).
 <p align="center">
 <iframe src="https://scratch.mit.edu/projects/568504906/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
 </p>
+
+Le lien [ici](https://scratch.mit.edu/projects/568504906){ : target="_blank" }
 
 Ce jeu sommaire est construit autour de trois éléments :
 
@@ -26,9 +28,9 @@ Aussi simpliste que Scratch paraisse, il n'en est néanmoins pas un **véritable
 
 !!! tips "Paradigmes de programmation"
 
-	Un paradigme est * "une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini" *.[Wkipedia](https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique).
+	Un paradigme est *"une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini"*.[Wkipedia](https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique){ : target="_blank" }.
 	
-	En programmation, plus précisemment, on parle de {==**paradigmes de programmation**==} pour exprimer lma mabière dont sont conçu et envisagés les programmes.
+	En programmation, plus précisément, on parle de {==**paradigmes de programmation**==} pour exprimer la manière dont sont conçus et envisagés les programmes.
 	On distingue entre autres :
 	
 	* le paradigme de la {==**programmation impérative**==}, qui est celui que nous avons utilisé jusqu'ici : on décrit les opérations en séquences d'instructions exécutées par l'ordinateur dans un ordre précis (que le langage soit compilé ou interprété). C'est le paradigme classique, celui auquel tout le monde pense quand on parle de programme informatique.
@@ -37,7 +39,7 @@ Aussi simpliste que Scratch paraisse, il n'en est néanmoins pas un **véritable
 	* le paradigme de la {==**programmation événementielle**==}, qui est fondé sur la notion d'événements. Le programme sera principalement défini par ses réactions aux différents événements qui peuvent se produire, c'est-à-dire des changements d'état de variable, par exemple l'incrémentation d'une liste, un déplacement ou un click de souris, une saisie au clavier... 
 	* et [bien d'autres](https://fr.wikipedia.org/wiki/Paradigme_(programmation))...
 	
-Les différents langages de programmation peuvent être plus ou moins spécialisé selon un certain nombre de paradigmes. Quasimùent tous respectent le {==**paradigme originel impératif**==}. Certains langages ne dépassent pas ce paradigme (assembleur, Fortran, Algol, BASIC,... ). D'autres sont spécialisés sur un paradigme spécifique ( comme Lisp, ML, OCaml en programmation fonctionnelle, Ada, Smalltalk, C++, Ruby, C# Swift... en POO). Mais en général tous les langages cités possèdent des composantes {==**multiparadigmes**==}.
+Les différents langages de programmation peuvent être plus ou moins spécialisé selon un certain nombre de paradigmes. Quasiment tous respectent le {==**paradigme originel impératif**==}. Certains langages ne dépassent pas ce paradigme (assembleur, Fortran, Algol, BASIC,... ). D'autres sont spécialisés sur un paradigme spécifique ( comme Lisp, ML, OCaml en programmation fonctionnelle, Ada, Smalltalk, C++, Ruby, C# Swift... en POO). Mais en général tous les langages cités possèdent des composantes {==**multiparadigmes**==}.
 
 C'est le cas de Python, qui supporte la programmation :
 
@@ -65,9 +67,18 @@ Nous avons déjà rencontré un certain nombres d'objets prédéfinis dans Pytho
 Chacun de ces types précédents possède ses propres **attributs** et ses propres **méthodes** :
 
 * un objet de la classe `str` possède une longueur, donné par la fonction built-in `len()`,
- et plusieurs **méthodes** associées comme `lower()`, `upper()`, etc...
+ et plusieurs **méthodes** associées comme `lower()`, `upper()`, etc... 
 *  un objet de la classe `list` possède lui aussi une longueur, et ses propres **méthodes**
  comme  `append()`, `pop()`, etc...
+ 
+??? warning "A lire quand vous avez fini la page !!!"
+	Je raconte n'importe quoi ci-dessus...
+	
+	Je voulais prendre l'exemple de la **longueur** comme étant un **attribut** des types `str` et `list`.
+	
+	En fait la valeur renvoyée par la fonction *built-in* `len()` correspond à celle calculée par le **DUNDERS** `__len__(self)`. Il ne s'agit donc pas réellement d'un attribut, mais du résultat renvoyé par une **méthode**. 
+	
+	Comme quoi même après 30 ans de programmation on en apprend encore...
 
 !!! tips "Classes et constructeurs d'objets"
 	En Programmation Orientée Objet, on va construire de nouvelles classes d'objets
@@ -130,7 +141,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 			self.niveau = 1
 	```
 	
-	La définition d'une classe d'objet est effectuée par lee mot-clé `class`,
+	La définition d'une classe d'objet est effectuée par le mot-clé `class`,
 	 suivi du nom de la classe (commençant par une majuscule par convention) et du symbole `:`.
 	 Comme toujours en Python le symbole `:` déclenche l'attente d'un bloc indenté, qui 
 	 correspondra à la définition de l'objet.
@@ -480,7 +491,7 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 		True
 
 !!! question "Fight !"
-	
+
 	Un combat de ce MMORPG se déroule selon le schéma suivant :
 	
 	1. Chaque personnage tire son *initiative* en ajoutant un nombre aléatoire entre 1 et 20 à sa
@@ -489,6 +500,9 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
 	et le premier se défend.
 	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.
+	5. Le vainqueur récolte un nombre de points d'expérience égal à :
+		
+		nombre d'attaque réussie * 2 + nombre de defense réussie
 	
 	Vous devrez implémenter un programme simulant un combat entre `Bob` et `Bill`, dont la sortie console sera sous la forme suivante :
 	
@@ -496,16 +510,29 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 		Bob a l'initiative et attaque avec 28
 		Bill réussit sa défense
 		Bill attaque avec 40
-		Bob rate sa désense et n'a plus que 25 points de vie
+		Bob rate sa défense et n'a plus que 25 points de vie
 		
 		Round 2
 		...
 		
-	Vous devrez pour réussir construire une méthode supplémentaire pour la classe `Personnage` : la méthode `initiative(self)` qui renvoieun entier représentant le score d'initiative du personnage.
+		
+		Round n
+		Le vainqueur est ..., il lui reste ... points de vie.
 	
-	Ce programme  devra être dans un fichier séparé de celui contenant la classe `Personnage`.
+	Pour réaliser ce programme, vopus devrez :
 	
-	Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant 
+	1. Compléter le fichier `personnage.py` contenant la classe `Personnage` de la manière suivante :
+	
+		1. La méthode constructeur `__init__()` devra lever des exceptions de type `TypeError` explicites, si `nom` n'est pas de type `str`, ou bien si les 4 autres attributs de construction ne sont pas de type `int`. ** L'erreur devra interrompre l'exécution du programme qui la déclenche !**
+		2. La méthode constructeur `__init__()` devra lever des exceptions de type `ValueError` explicites si les valeurs fournies pour les 4 attributs numériques ne sont pas entre 1 et 40. ** L'erreur devra interrompre l'exécution du programme qui la déclenche !**
+		3. La méthode constructeur `__init__()` devra lever des exceptions de type `ValueError` explicites si la chaîne de caractère `nom` est vide. ** L'erreur devra interrompre l'exécution du programme qui la déclenche !**
+		
+	2. Vous devrez pour réussir construire une méthode supplémentaire pour la classe `Personnage` : la méthode `initiative(self)` qui renvoie un entier représentant le score d'initiative du personnage.
+	3. Le programme permettant le combat devra être dans un fichier `combat.py` séparé de celui contenant la classe `Personnage` (la classe `Personnage` étant importée depuis le module `personnage.py` par la commande suivante :
+	
+		from personnage import Personnage
+	
+	4. Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant 
 	la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
 	
 	

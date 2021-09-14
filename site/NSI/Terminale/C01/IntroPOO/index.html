@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/IntroPOO/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-a-la-promgrammation-orientee-objet" class="md-skip">
+        <a href="#introduction-a-la-programmation-orientee-objet" class="md-skip">
           Skip to content
         </a>
       
@@ -733,6 +733,61 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_5" type="checkbox" id="__nav_5_1_5" >
+      
+      <label class="md-nav__link" for="__nav_5_1_5">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Pygame
+        
+      </label>
+      <nav class="md-nav" aria-label="Pygame" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/InstallationPygame/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/Base_pygame/" class="md-nav__link">
+        Bases de Pygame
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -758,13 +813,14 @@
               
                 
                 
-                <h1 id="introduction-a-la-promgrammation-orientee-objet">Introduction à la promgrammation orientée objet</h1>
+                <h1 id="introduction-a-la-programmation-orientee-objet">Introduction à la programmation orientée objet</h1>
 <h2 id="un-premier-exemple-issu-de-scratch">Un premier exemple issu de Scratch</h2>
-<p>Observons ce jeu assez minable en Scratch (non, mais vraiment, allez-voir sur le site...).</p>
+<p>Observons ce jeu assez minable en Scratch (non, mais vraiment, allez voir sur le site...).</p>
 <p align="center">
 <iframe src="https://scratch.mit.edu/projects/568504906/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
 </p>
 
+<p>Le lien <a :=":" href="https://scratch.mit.edu/projects/568504906" target="_blank">ici</a></p>
 <p>Ce jeu sommaire est construit autour de trois éléments :</p>
 <ul>
 <li>la chauve-souris ;</li>
@@ -781,8 +837,8 @@
 <p>Aussi simpliste que Scratch paraisse, il n'en est néanmoins pas un <strong>véritable langage de programmation</strong>, qui plus est <mark class="critic"><strong>multiparadigme</strong></mark> : il est en effet conçu pour gérer la programmation <mark class="critic"><strong>impérative</strong></mark>, la programmation <mark class="critic"><strong>orientée objet</strong></mark> ainsi que la programmation <mark class="critic"><strong>événementielle</strong></mark>.</p>
 <div class="admonition tips">
 <p class="admonition-title">Paradigmes de programmation</p>
-<p>Un paradigme est * "une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini" *.<a href="https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique">Wkipedia</a>.</p>
-<p>En programmation, plus précisemment, on parle de <mark class="critic"><strong>paradigmes de programmation</strong></mark> pour exprimer lma mabière dont sont conçu et envisagés les programmes.
+<p>Un paradigme est <em>"une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini"</em>.<a :=":" href="https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique" target="_blank">Wkipedia</a>.</p>
+<p>En programmation, plus précisément, on parle de <mark class="critic"><strong>paradigmes de programmation</strong></mark> pour exprimer la manière dont sont conçus et envisagés les programmes.
 On distingue entre autres :</p>
 <ul>
 <li>le paradigme de la <mark class="critic"><strong>programmation impérative</strong></mark>, qui est celui que nous avons utilisé jusqu'ici : on décrit les opérations en séquences d'instructions exécutées par l'ordinateur dans un ordre précis (que le langage soit compilé ou interprété). C'est le paradigme classique, celui auquel tout le monde pense quand on parle de programme informatique.</li>
@@ -792,7 +848,7 @@ On distingue entre autres :</p>
 <li>et <a href="https://fr.wikipedia.org/wiki/Paradigme_(programmation)">bien d'autres</a>...</li>
 </ul>
 </div>
-<p>Les différents langages de programmation peuvent être plus ou moins spécialisé selon un certain nombre de paradigmes. Quasimùent tous respectent le <mark class="critic"><strong>paradigme originel impératif</strong></mark>. Certains langages ne dépassent pas ce paradigme (assembleur, Fortran, Algol, BASIC,... ). D'autres sont spécialisés sur un paradigme spécifique ( comme Lisp, ML, OCaml en programmation fonctionnelle, Ada, Smalltalk, C++, Ruby, C# Swift... en POO). Mais en général tous les langages cités possèdent des composantes <mark class="critic"><strong>multiparadigmes</strong></mark>.</p>
+<p>Les différents langages de programmation peuvent être plus ou moins spécialisé selon un certain nombre de paradigmes. Quasiment tous respectent le <mark class="critic"><strong>paradigme originel impératif</strong></mark>. Certains langages ne dépassent pas ce paradigme (assembleur, Fortran, Algol, BASIC,... ). D'autres sont spécialisés sur un paradigme spécifique ( comme Lisp, ML, OCaml en programmation fonctionnelle, Ada, Smalltalk, C++, Ruby, C# Swift... en POO). Mais en général tous les langages cités possèdent des composantes <mark class="critic"><strong>multiparadigmes</strong></mark>.</p>
 <p>C'est le cas de Python, qui supporte la programmation :</p>
 <ul>
 <li>impérative ;</li>
@@ -816,10 +872,15 @@ Nous avons déjà rencontré un certain nombres d'objets prédéfinis dans Pytho
 <p>Chacun de ces types précédents possède ses propres <strong>attributs</strong> et ses propres <strong>méthodes</strong> :</p>
 <ul>
 <li>un objet de la classe <code>str</code> possède une longueur, donné par la fonction built-in <code>len()</code>,
- et plusieurs <strong>méthodes</strong> associées comme <code>lower()</code>, <code>upper()</code>, etc...</li>
+ et plusieurs <strong>méthodes</strong> associées comme <code>lower()</code>, <code>upper()</code>, etc... </li>
 <li>un objet de la classe <code>list</code> possède lui aussi une longueur, et ses propres <strong>méthodes</strong>
  comme  <code>append()</code>, <code>pop()</code>, etc...</li>
 </ul>
+<details class="warning"><summary>A lire quand vous avez fini la page !!!</summary><p>Je raconte n'importe quoi ci-dessus...</p>
+<p>Je voulais prendre l'exemple de la <strong>longueur</strong> comme étant un <strong>attribut</strong> des types <code>str</code> et <code>list</code>.</p>
+<p>En fait la valeur renvoyée par la fonction <em>built-in</em> <code>len()</code> correspond à celle calculée par le <strong>DUNDERS</strong> <code>__len__(self)</code>. Il ne s'agit donc pas réellement d'un attribut, mais du résultat renvoyé par une <strong>méthode</strong>. </p>
+<p>Comme quoi même après 30 ans de programmation on en apprend encore...</p>
+</details>
 <div class="admonition tips">
 <p class="admonition-title">Classes et constructeurs d'objets</p>
 <p>En Programmation Orientée Objet, on va construire de nouvelles classes d'objets
@@ -877,7 +938,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
         <span class="bp">self</span><span class="o">.</span><span class="n">pex</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">niveau</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div>
-<p>La définition d'une classe d'objet est effectuée par lee mot-clé <code>class</code>,
+<p>La définition d'une classe d'objet est effectuée par le mot-clé <code>class</code>,
  suivi du nom de la classe (commençant par une majuscule par convention) et du symbole <code>:</code>.
  Comme toujours en Python le symbole <code>:</code> déclenche l'attente d'un bloc indenté, qui 
  correspondra à la définition de l'objet.</p>
@@ -1219,21 +1280,46 @@ valeur de rapidite.</li>
 <li>Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
 et le premier se défend.</li>
 <li>Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.</li>
+<li>
+<p>Le vainqueur récolte un nombre de points d'expérience égal à :</p>
+<p>nombre d'attaque réussie * 2 + nombre de defense réussie</p>
+</li>
 </ol>
 <p>Vous devrez implémenter un programme simulant un combat entre <code>Bob</code> et <code>Bill</code>, dont la sortie console sera sous la forme suivante :</p>
 <div class="highlight"><pre><span></span><code>Round 1
 Bob a l&#39;initiative et attaque avec 28
 Bill réussit sa défense
 Bill attaque avec 40
-Bob rate sa désense et n&#39;a plus que 25 points de vie
+Bob rate sa défense et n&#39;a plus que 25 points de vie
 
 Round 2
 ...
+
+Round n
+Le vainqueur est ..., il lui reste ... points de vie.
 </code></pre></div>
-<p>Vous devrez pour réussir construire une méthode supplémentaire pour la classe <code>Personnage</code> : la méthode <code>initiative(self)</code> qui renvoieun entier représentant le score d'initiative du personnage.</p>
-<p>Ce programme  devra être dans un fichier séparé de celui contenant la classe <code>Personnage</code>.</p>
+<p>Pour réaliser ce programme, vopus devrez :</p>
+<ol>
+<li>
+<p>Compléter le fichier <code>personnage.py</code> contenant la classe <code>Personnage</code> de la manière suivante :</p>
+<ol>
+<li>La méthode constructeur <code>__init__()</code> devra lever des exceptions de type <code>TypeError</code> explicites, si <code>nom</code> n'est pas de type <code>str</code>, ou bien si les 4 autres attributs de construction ne sont pas de type <code>int</code>. <strong> L'erreur devra interrompre l'exécution du programme qui la déclenche !</strong></li>
+<li>La méthode constructeur <code>__init__()</code> devra lever des exceptions de type <code>ValueError</code> explicites si les valeurs fournies pour les 4 attributs numériques ne sont pas entre 1 et 40. <strong> L'erreur devra interrompre l'exécution du programme qui la déclenche !</strong></li>
+<li>La méthode constructeur <code>__init__()</code> devra lever des exceptions de type <code>ValueError</code> explicites si la chaîne de caractère <code>nom</code> est vide. <strong> L'erreur devra interrompre l'exécution du programme qui la déclenche !</strong></li>
+</ol>
+</li>
+<li>
+<p>Vous devrez pour réussir construire une méthode supplémentaire pour la classe <code>Personnage</code> : la méthode <code>initiative(self)</code> qui renvoie un entier représentant le score d'initiative du personnage.</p>
+</li>
+<li>
+<p>Le programme permettant le combat devra être dans un fichier <code>combat.py</code> séparé de celui contenant la classe <code>Personnage</code> (la classe <code>Personnage</code> étant importée depuis le module <code>personnage.py</code> par la commande suivante :</p>
+<p>from personnage import Personnage</p>
+</li>
+<li>
 <p>Un fichier compressé <code>.zip</code> ou <code>.7z</code> contenant les deux fichiers (celui du programme et le module contenant 
 la classe <code>Personnage</code>) sera rendu via le cahier de texte de pronote, dans la partie <strong>Travail à rendre</strong>.</p>
+</li>
+</ol>
 </div>
                 
               
@@ -1324,10 +1410,10 @@ la classe <code>Personnage</code>) sera rendu via le cahier de texte de pronote,
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
