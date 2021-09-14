@@ -908,8 +908,8 @@ plus tard.</p>
 &lt;__main__.Personnage object at 0x7fb674844e48&gt;
 </code></pre></div>
 <p>On constate donc bien qu'un objet de type <code>Personnage</code> est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
-  par le <em>garbage collector</em>. On crée donc une variable <code>firstPlayer</code> comme référence à l'objet :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer = Personnage(&quot;Bob&quot;, 20, 25, 10, 30)
+  par le <em>garbage collector</em>. On crée donc une variable <code>playerBob</code> comme référence à l'objet :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob = Personnage(&quot;Bob&quot;, 20, 25, 10, 30)
 </code></pre></div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -920,25 +920,25 @@ plus tard.</p>
 </div>
 <p>L'appel au nom de la classe <code>Personnage</code> fait en réalité appel à la <strong>méthode constructeur</strong>, qui va permettre de créer un
 nouvel objet de type <code>Personnage</code>. On peut le vérifier avec la ligne suivante :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; type(firstPlayer)
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; type(playerBob)
 &lt;class &#39;__main__.Personnage&#39;&gt;
 </code></pre></div>
 <h3 id="acceder-aux-attributs-et-les-modifier">Accéder aux attributs et les modifier</h3>
-<p>Pour accéder à l'attribut <code>pv</code> de l'objet <code>firstPlayer</code>, il suffit d'utiliser la notation</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.pv
+<p>Pour accéder à l'attribut <code>pv</code> de l'objet <code>playerBob</code>, il suffit d'utiliser la notation</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.pv
 35
 </code></pre></div>
 <p>Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.force = 18
-&gt;&gt;&gt; firstPlayer.force
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.force = 18
+&gt;&gt;&gt; playerBob.force
 18
-&gt;&gt;&gt; firstPlayer.rapidite = firstPlayer.rapidite + 2
-&gt;&gt;&gt; firstPlayer.rapidite
+&gt;&gt;&gt; playerBob.rapidite = playerBob.rapidite + 2
+&gt;&gt;&gt; playerBob.rapidite
 12
 </code></pre></div>
 <h3 id="deux-objets">Deux objets</h3>
 <p>Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; secondPlayer = Personnage(&#39;Bill&#39;, 34, 10, 20, 12)
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBill = Personnage(&#39;Bill&#39;, 34, 10, 20, 12)
 </code></pre></div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -959,7 +959,7 @@ représentent pas le même objet.</p>
 <p>Essayons maintenant d'afficher une chaîne de caractères nous donne toutes les caractéristiques d'un personnage.</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Test de <code>print</code></label><div class="tabbed-content">
 <p>Essayons d'abord avec la fonction <em>built-in</em> <code>print()</code> :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(firstPlayer)
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(playerBob)
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Sortie et commentaires</label><div class="tabbed-content">
@@ -973,7 +973,7 @@ mémoire et le type de l'objet que nous venons de lui passer.</p>
 </div>
 <p>Nous allons donc devoir améliorer cet affichage, en construisant notre propre <mark class="critic"><strong>méthode</strong></mark>, que nous nommerons
 <code>affiche</code>. Cette méthode devra avoir le comportement suivant :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.affiche()
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.affiche()
     &quot;Bonjour, je suis Bob, de niveau 1. J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30
     en intelligence. J&#39;ai 35 Points de Vie&quot;
 </code></pre></div>
@@ -1002,10 +1002,10 @@ parfois implicites : la méthode <code>__init__</code> renvoie le nouvel objet c
 est impératif d'utiliser pour avoir accès aux <strong>attributs</strong> de l'objet.</li>
 <li>Dans l'appel de la méthode <mark class="critic"><strong>aucun argument n'est passé</strong></mark>.</li>
 </ol>
-<p>En rechargeant le module, puis en recréant les objets <code>firstPlayer</code> puis <code>secondPlayer</code>, on obtient alors les affichages suivants :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.affiche()
+<p>En rechargeant le module, puis en recréant les objets <code>playerBill</code> puis <code>playerBob</code>, on obtient alors les affichages suivants :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.affiche()
 Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie
-&gt;&gt;&gt; secondPlayer.affiche()
+&gt;&gt;&gt; playerBill.affiche()
 Bonjour, je suis Bill, de niveau 1.J&#39;ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J&#39;ai 27 Points de Vie
 </code></pre></div>
 <div class="admonition question">
@@ -1030,11 +1030,11 @@ de force du personnage auquel on ajoute un nombre aléatoire entre 1 et 20.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
 <p>Cette méthode peut alors être utilisée comme dans les exemples ci-dessous :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; firstPlayer.attaque()
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.attaque()
 22
-&gt;&gt;&gt; firstPlayer.attaque()
+&gt;&gt;&gt; playerBob.attaque()
 27
-&gt;&gt;&gt; secondPlayer.attaque()
+&gt;&gt;&gt; playerBill.attaque()
 38
 </code></pre></div>
 </details>
@@ -1069,9 +1069,9 @@ de vie  égal à la différence entre le niveau d'attaque et le niveau de défen
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
 <p>cette méthode peut alors être utilisée ainsi :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; secondPlayer.defense(firstPlayer.attaque())
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBill.defense(playerBob.attaque())
 False
-&gt;&gt;&gt; secondPlayer.pv
+&gt;&gt;&gt; playerBill.pv
 18
 </code></pre></div>
 </details>
@@ -1174,9 +1174,9 @@ changer la méthode <code>affiche(self)</code> qui renverra la chaîne de caract
     <span class="o">...</span>
 </code></pre></div>
 <p>On a alors la possibilité d'utiliser les commandes suivantes :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; str(firstPlayer)
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; str(playerBob)
 &quot;Bonjour, je suis Bob, de niveau 1.\n         J&#39;ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie&quot;
-&gt;&gt;&gt; firstPlayer.affiche()
+&gt;&gt;&gt; playerBob.affiche()
 Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie
 </code></pre></div>
 </div>
@@ -1203,7 +1203,38 @@ de bases (<code>force</code>, <code>endurance</code>, <code>rapidite</code> et <
     <span class="o">...</span>
 </code></pre></div>
 <p>On a alors l'utilisation :</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob == playerBill
+False
+&gt;&gt;&gt; playerBob == Personnage(&#39;Marty&#39;, 18, 25, 12, 30)
+True
+</code></pre></div>
 </details>
+<div class="admonition question">
+<p class="admonition-title">Fight !</p>
+<p>Un combat de ce MMORPG se déroule selon le schéma suivant :</p>
+<ol>
+<li>Chaque personnage tire son <em>initiative</em> en ajoutant un nombre aléatoire entre 1 et 20 à sa
+valeur de rapidite.</li>
+<li>Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend.</li>
+<li>Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
+et le premier se défend.</li>
+<li>Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.</li>
+</ol>
+<p>Vous devrez implémenter un programme simulant un combat entre <code>Bob</code> et <code>Bill</code>, dont la sortie console sera sous la forme suivante :</p>
+<div class="highlight"><pre><span></span><code>Round 1
+Bob a l&#39;initiative et attaque avec 28
+Bill réussit sa défense
+Bill attaque avec 40
+Bob rate sa désense et n&#39;a plus que 25 points de vie
+
+Round 2
+...
+</code></pre></div>
+<p>Vous devrez pour réussir construire une méthode supplémentaire pour la classe <code>Personnage</code> : la méthode <code>initiative(self)</code> qui renvoieun entier représentant le score d'initiative du personnage.</p>
+<p>Ce programme  devra être dans un fichier séparé de celui contenant la classe <code>Personnage</code>.</p>
+<p>Un fichier compressé <code>.zip</code> ou <code>.7z</code> contenant les deux fichiers (celui du programme et le module contenant 
+la classe <code>Personnage</code>) sera rendu via le cahier de texte de pronote, dans la partie <strong>Travail à rendre</strong>.</p>
+</div>
                 
               
               

@@ -166,10 +166,10 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
 	<__main__.Personnage object at 0x7fb674844e48>
 	
  On constate donc bien qu'un objet de type `Personnage` est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
-  par le *garbage collector*. On crée donc une variable `firstPlayer` comme référence à l'objet :
+  par le *garbage collector*. On crée donc une variable `playerBob` comme référence à l'objet :
   
 
-	>>> firstPlayer = Personnage("Bob", 20, 25, 10, 30)
+	>>> playerBob = Personnage("Bob", 20, 25, 10, 30)
 
 !!! abstract	
 	On peut schématiser avec le dessin suivant : 
@@ -182,30 +182,30 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
 L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthode constructeur**, qui va permettre de créer un
 nouvel objet de type `Personnage`. On peut le vérifier avec la ligne suivante :
 
-	>>> type(firstPlayer)
+	>>> type(playerBob)
 	<class '__main__.Personnage'>
 	
 ### Accéder aux attributs et les modifier
 
-Pour accéder à l'attribut `pv` de l'objet `firstPlayer`, il suffit d'utiliser la notation
+Pour accéder à l'attribut `pv` de l'objet `playerBob`, il suffit d'utiliser la notation
 
-	>>> firstPlayer.pv
+	>>> playerBob.pv
 	35
 	
 Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :
 
-	>>> firstPlayer.force = 18
-	>>> firstPlayer.force
+	>>> playerBob.force = 18
+	>>> playerBob.force
 	18
-	>>> firstPlayer.rapidite = firstPlayer.rapidite + 2
-	>>> firstPlayer.rapidite
+	>>> playerBob.rapidite = playerBob.rapidite + 2
+	>>> playerBob.rapidite
 	12
 	
 ### Deux objets 
 
 Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 
-	>>> secondPlayer = Personnage('Bill', 34, 10, 20, 12)
+	>>> playerBill = Personnage('Bill', 34, 10, 20, 12)
 
 !!! abstract 
 	Cette seconde {==**instance	**==} de type `Personnage` possède aussi ses propres attributs, comme montré dans le schéma suivant :
@@ -230,7 +230,7 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 	=== "Test de `print`"
 		Essayons d'abord avec la fonction *built-in* `print()` :
 		
-			>>> print(firstPlayer)
+			>>> print(playerBob)
 
 	=== "Sortie et commentaires" 
 		
@@ -245,7 +245,7 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**==}, que nous nommerons
 `affiche`. Cette méthode devra avoir le comportement suivant :
 
-	>>> firstPlayer.affiche()
+	>>> playerBob.affiche()
 		"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30
 		en intelligence. J'ai 35 Points de Vie"
 		
@@ -280,11 +280,11 @@ Vous constatez que :
 est impératif d'utiliser pour avoir accès aux **attributs** de l'objet.
 2. Dans l'appel de la méthode {==**aucun argument n'est passé**==}.
 
-En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secondPlayer`, on obtient alors les affichages suivants :
+En rechargeant le module, puis en recréant les objets `playerBill` puis `playerBob`, on obtient alors les affichages suivants :
 
-	>>> firstPlayer.affiche()
+	>>> playerBob.affiche()
 	Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 34 Points de Vie
-	>>> secondPlayer.affiche()
+	>>> playerBill.affiche()
 	Bonjour, je suis Bill, de niveau 1.J'ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J'ai 27 Points de Vie
 
 !!! question "Implémenter la méthode `attaque`"
@@ -317,11 +317,11 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 	
 	Cette méthode peut alors être utilisée comme dans les exemples ci-dessous :
 	
-		>>> firstPlayer.attaque()
+		>>> playerBob.attaque()
 		22
-		>>> firstPlayer.attaque()
+		>>> playerBob.attaque()
 		27
-		>>> secondPlayer.attaque()
+		>>> playerBill.attaque()
 		38
 
 !!! question "Implémenter la méthode `defense(valeurAttaque)`"
@@ -362,9 +362,9 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 	
 	cette méthode peut alors être utilisée ainsi :
 	
-		>>> secondPlayer.defense(firstPlayer.attaque())
+		>>> playerBill.defense(playerBob.attaque())
 		False
-		>>> secondPlayer.pv
+		>>> playerBill.pv
 		18
 	
 
@@ -439,9 +439,9 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 	
 	On a alors la possibilité d'utiliser les commandes suivantes :
 	
-		>>> str(firstPlayer)
+		>>> str(playerBob)
 		"Bonjour, je suis Bob, de niveau 1.\n         J'ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
-		>>> firstPlayer.affiche()
+		>>> playerBob.affiche()
 		Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J'ai 34 Points de Vie
 
 !!! question "Définir l'égalité entre deux personnages"
@@ -474,9 +474,9 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 	
 	On a alors l'utilisation :
 	
-		>>> firstPlayer == secondPlayer
+		>>> playerBob == playerBill
 		False
-		>>> firstPlayer == Personnage('Marty', 18, 25, 12, 30)
+		>>> playerBob == Personnage('Marty', 18, 25, 12, 30)
 		True
 
 !!! question "Fight !"
@@ -488,9 +488,10 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend.
 	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
 	et le premier se défend.
-	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1.
+	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.
 	
 	Vous devrez implémenter un programme simulant un combat entre `Bob` et `Bill`, dont la sortie console sera sous la forme suivante :
+	
 		Round 1
 		Bob a l'initiative et attaque avec 28
 		Bill réussit sa défense
@@ -499,9 +500,13 @@ En rechargeant le module, puis en recréant les objets `firstPlayer` puis `secon
 		
 		Round 2
 		...
+		
 	Vous devrez pour réussir construire une méthode supplémentaire pour la classe `Personnage` : la méthode `initiative(self)` qui renvoieun entier représentant le score d'initiative du personnage.
 	
 	Ce programme  devra être dans un fichier séparé de celui contenant la classe `Personnage`.
+	
+	Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant 
+	la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
 	
 	
 	
