@@ -496,7 +496,7 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	
 	1. Chaque personnage tire son *initiative* en ajoutant un nombre aléatoire entre 1 et 20 à sa
 	valeur de rapidite.
-	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend.
+	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le joeur d'attaque sera celui qui possède la rapidité la plus élevée. En cas d'égalité de rapidité, le premier joueur sera déterminé aléatoirement.
 	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
 	et le premier se défend.
 	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.
