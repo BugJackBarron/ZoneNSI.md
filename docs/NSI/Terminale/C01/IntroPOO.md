@@ -517,7 +517,7 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 		
 		
 		Round n
-		Le vainqueur est ..., il lui reste ... points de vie.
+		Le vainqueur est ..., il lui reste ... points de vie. Il gagne ... points d'expériences.
 	
 	Pour réaliser ce programme, vopus devrez :
 	
