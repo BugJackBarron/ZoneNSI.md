@@ -229,11 +229,15 @@ pygame.quit()
 		pygame.display.update()
 	pygame.quit()
 	``` 
+	Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne de ce nom !
 
 
+## Ajout du sprite du joueur
 
-## Ajout d'un sprite
+## Déplacement du joueur
 
-## Rafraîchissement de l'écran et boucle d'évènements
+## Création d'une classe d'objets "Balle"
 
-## 
+## Apparition des objets "Balles"
+
+## Gestion des collisions
