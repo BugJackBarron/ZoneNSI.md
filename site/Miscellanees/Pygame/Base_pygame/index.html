@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#bases-de-pygame" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -669,10 +674,82 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Bases de Pygame
+          </a>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Bases de Pygame
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importer-pygame-et-ses-constantes" class="md-nav__link">
+    Importer Pygame et ses constantes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-dune-fenetre-graphique-et-boucle-devenements" class="md-nav__link">
+    Création d'une fenêtre graphique et boucle d'évènements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ajout-dimage-de-fond" class="md-nav__link">
+    Ajout d'image de Fond
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ajout-dun-sprite" class="md-nav__link">
+    Ajout d'un sprite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rafraichissement-de-lecran-et-boucle-devenements" class="md-nav__link">
+    Rafraîchissement de l'écran et boucle d'évènements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -709,9 +786,267 @@
               
                 
                 
-                  <h1>Bases de Pygame</h1>
-                
-                
+                <h1 id="bases-de-pygame">Bases de Pygame</h1>
+<p>Ce cours est très largement et assez honteusement copié sur <a href="http://sdz.tdct.org/sdz/interface-graphique-pygame-pour-python.html#Lesinterfacesgraphiques">celui-ci</a>. Merci à vous ! En cas de soucis de droits, n'hésitez pas à me contacter par le lien  situé en bas de page !</p>
+<h2 id="importer-pygame-et-ses-constantes">Importer Pygame et ses constantes</h2>
+<p><code>Pygame</code> est une bibliothèque, et en tant que telle, elle est construite à partir de plusieurs modules. Les noms de ces modules sont :</p>
+<ul>
+<li>display</li>
+<li>mixer</li>
+<li>draw</li>
+<li>event</li>
+<li>image</li>
+<li>mouse</li>
+<li>time</li>
+</ul>
+<p>Il existe alors plusieurs possibilités pour importe <code>pygame</code> </p>
+<ol>
+<li>
+<p><strong>Importation complète</strong> :</p>
+<div class="highlight"><pre><span></span><code>import pygame
+</code></pre></div>
+<p>La totalité de la bibliothèque est alors importée, et pour utiliser la fonction <code>update</code> du module <code>display</code> on devra alors utiliser <code>pygame.display.update()</code>.</p>
+</li>
+<li>
+<p><strong>Importation partielle des modules nécessaires</strong> :</p>
+<div class="highlight"><pre><span></span><code>from pygame import display
+</code></pre></div>
+<p>Seul le module display est alors importé, et pour utiliser la fonction <code>update</code> de ce module, on devra alors utiliser <code>display.update()</code>. </p>
+</li>
+<li>
+<p><strong>Importation complète avec import des constantes directement dans l'espace de nommage (conseillée)</strong> :</p>
+<div class="highlight"><pre><span></span><code>import pygame
+from pygame.locals import *
+</code></pre></div>
+<p>Dans ce cas, pour utiliser la constante représentant la touche espace, au lieu d'utiliser <code>pygame.locals.K_SPACE</code>, on utilisera simplement <code>K_SPACE</code>.</p>
+<h2 id="creation-dune-fenetre-graphique-et-boucle-devenements">Création d'une fenêtre graphique et boucle d'évènements</h2>
+</li>
+</ol>
+<div class="admonition abstract">
+<p class="admonition-title">Le projet</p>
+<p>Commençons un petit programme qui nous amènera à déplacer un personnage de gauche à droite sur un fond d'écran, pendant que des balles tombent depuis le haut de l'écran à différentes vitesses. Le jeu consistera à éviter que le personnage entre en collision avec les balles, et s'arrêtera dès qu'une collision aura lieu.</p>
+</div>
+<p>Le premier point est d'afficher une fenêtre graphique d'une dimension donnée : <span class="arithmatex">\(640 \times 480~ pixels^2\)</span> (oui, en bon prof de maths, je respecte à minima les unités...).</p>
+<p>On utilise le script suivant, dans un fichier nommé <code>dodgeTheBall.py</code> :
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition abstract">
+<p class="admonition-title">Analysons le code</p>
+<ul>
+<li>Dans les deux premières lignes, nous importons <code>pygame</code> en totalité ainsi que les constantes spécifiques dans l'espace de nommage courant.</li>
+<li>En ligne 4, nous initialisons tous les modules de <code>pygame</code>.</li>
+<li>En ligne 6, nous appelons ensuite la fonction <code>set_mode()</code> contenue dans le module <code>display</code> de <code>pygame</code>, qui prend en argument un <strong>tuple</strong> contenant la <strong>largeur et la hauteur de la fenêtre voulue</strong> (attention, c'est bien un tuple ! <code>pygame.display.set_mode(640, 480)</code> ne fonctionne pas !).</li>
+</ul>
+</div>
+<details class="bug"><summary>Y'a un bug !</summary><p>La fenêtre reste bloquée  et ne se ferme pas sauf si on force l'arrêt du script !</p>
+<p>Effectivement, on se retrouve bloqué... Il faut rajouter à notre code une instruction supplémentaire pour que la fenëtre se ferme :
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table></p>
+</details>
+<details class="bug"><summary>Encore un</summary><p>Et oui ! Notre fenêtre s'ouvre mais se ferme immédiatement !</p>
+<p>Or nous aimerions qu'elle ne se ferme que sur demande explicite de l'utilisateur, par exemple par un clic sur la croix.</p>
+</details>
+<p>C'est là qu'intervient la notion de <strong>boucle d'évènements</strong>. </p>
+<p>Dans un programme classique, en <em>programmation impérative</em>, le programme se déroule plus ou moins linéairement de la première ligne à la dernière. Mais lorsqu'on utilise des <strong>interfaces graphiques</strong>, on ne peut prévoir à l'avance le comportement de l'utilisateur, et donc suivre un chemin clairement défini à l'avance. C'est pour cette raison qu'on utilise plutôt le paradigme de la <strong>programmation événementielle</strong>, c'est-à-dire un  paradigme où on prévoira l'action de l'utilisateur, mais pas dans un ordre précis. Chaque action prévue dans la <strong>boucle d'évènements</strong> aura un impact précis.</p>
+<p>Dans notre cas, nous souhaiterions que la fenêtre reste ouverte <strong>tant que l'utilisateur</strong> n'a pas exprimé le désir de la fermer, soit par l'intermédiaire de la croix, soit par l'intermédiaire de la combinaison de touches <span class="keys"><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-f4">F4</kbd></span>.</p>
+<div class="admonition info">
+<p class="admonition-title">Notion d'évènements</p>
+<p>Dans la construction d'interfaces graphiques, on utilise souvent la notion d'<em>évènements</em>. Un évènement correspond à :</p>
+<ul>
+<li>un déplacement de la souris ;</li>
+<li>le survol d'une zone spécifique de l'écran par le pointeur de la souris ;</li>
+<li>un appui sur une ou plusieurs touches du clavier :</li>
+<li>le relâchement d'une touche de clavier ;</li>
+<li>un appui ou relâchement d'un bouton de la souris ;</li>
+<li>un événement spécifique prévu dans le programme ;</li>
+<li>un changement de luminosité devant un capteur vidéo ;</li>
+<li>...</li>
+</ul>
+<p>Ces évènements sont stockés à leur apparition dans une <strong>file</strong>(fifo) de <strong>dimension limitée</strong>, nettoyée régulièrement de ses évènements les plus anciens. </p>
+</div>
+<p>Dans <code>pygame</code>, les évènements sont des constantes, et celui qui nous intéresse est l'évènement <code>QUIT</code>. Nous allons donc parcourir la liste des évènements pour ensuite pouvoir quitter la fenêtre si celui-ci est exprimé :
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">QUIT</span> <span class="p">:</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table></p>
+<details class="bug"><summary>L'arnaque : ça ne marche pas !</summary><p>On retombe sur notre problème précédent : la fenêtre ne se ferme plus...</p>
+<p>C'est parce que la <strong>file</strong> d'évènements se construit et se nettoie très rapidement ! Nous n'avons pas le temps de cliquer sur la croix que déjà le parcours par la boucle <code>for</code> est terminé ! Et donc dans ce cas <strong>on ne passe jamais par l'instruction <code>pygame.quit()</code>.</strong></p>
+<p>Il va donc falloir répéter la lecture d'évènements pour pouvoir détecter quand l'utilisateur souhaite fermer sa fenêtre.</p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Boucle d'évènements</p>
+<p>Une boucle d'évènements est une boucle qui se répète tant qu'un évènement précis ne s'est pas produit. A chaque tour de boucle on va lire la totalité des évènements enregistrés dans la file, et on déclenchera la sortie de cette boucle si l'évènement est trouvé.
+<p align="center">
+<img alt="event loop" src="../Boucle1.png" width="width" />
+</p></p>
+</div>
+<p>Pour notre exemple, nous allons créer une boucle <code>while</code> dépendant d'une variable <code>continuer</code> initialisée à <code>True</code>, que nous basculerons à <code>False</code> lorsque l'évènement <code>QUIT</code> est intercepté :</p>
+<details class="done"><summary>Un code fonctionnel</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>Enfin ! Notre fenêtre fonctionne !</p>
+</details>
+<h2 id="ajout-dimage-de-fond">Ajout d'image de Fond</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Image de fond</p>
+<p>Notre fond noir est un peu déprimant. Mettons un peu de verdure grâce à l'image suivante :
+<p align="center">
+<img alt="background" src="../background.jpg" width="width" />
+</p>
+Téléchargez cette image sous le nom <code>background.jpg</code> puis ajoutez la ligne suivante en ligne 7 :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>Bon : mauvaise nouvelle, <strong>ce ne sera pas suffisant !</strong></p>
+<p>La variable <code>fond</code> n'est qu'une référence à une <code>Surface</code> de <code>pygame</code>, retournée par la fonction <code>load()</code>. Une <code>Surface</code> est une classe d'objets définie dans <code>pygame</code> qui possède de nombreux attributs et méthodes (cf. <a href="https://www.pygame.org/docs/ref/surface.html">la doc</a> ). La <strong>méthode</strong> <code>convert()</code> des objets <code>Surface</code> sert à convertir l'image source au format utilisé par <code>pygame</code>.</p>
+<p>Le principe d'affichage de la <strong>SDL</strong> (la sous-couche logicielle gérant les images, le son, etc...) est à connaître pour bien afficher ses images : 
+<code>fenetre</code> est une surface vide, sur laquelle on va "coller", ou "empiler" les autres images. <strong>Le fond doit donc être empilé sur la surface vide de la fenêtre</strong>, grâce à la méthode <code>blit()</code>. Cette méthode prend une <code>Surface</code> en argument ainsi qu'un <em>tuple</em> représentant les <strong>coordonnées du coin supérieur gauche</strong> auquel sera collé la <code>Surface</code> argument par rapport à la <code>Surface</code> appelante.</p>
+<div class="admonition info">
+<p class="admonition-title">Système de coordonnées</p>
+<p>On peut donner comme exemples de <em>tuple</em> de coordonnées ceux de l'image suivante :
+<p align="center">
+<img alt="coordinates" src="../Screen.png" width="width" />
+</p></p>
+</div>
+<p>On pourrait donc utiliser le code suivant :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<details class="bug"><summary>Mais pourquoi ça n'affiche rien !</summary><p>Parce que quand on <code>blit</code> une <code>Surface</code>, <code>pygame</code> calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraichissement de l'écran pour y parvenir, par l'intermédiare de la commande <code>pygame.display.update()</code>. </p>
+<p>Comme nous comptons bien faire bouger un personnage sur l'écran, et que les mouvements de celui-ci dépendront de la boucle d'évènements, autant mettre immédiatement cette commande en fin de boucle, pour que l'image soit systématiquement mise à jour. :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+<h2 id="ajout-dun-sprite">Ajout d'un sprite</h2>
+<h2 id="rafraichissement-de-lecran-et-boucle-devenements">Rafraîchissement de l'écran et boucle d'évènements</h2>
+<h2 id="_1"></h2>
                 
               
               
