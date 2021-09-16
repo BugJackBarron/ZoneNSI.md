@@ -727,22 +727,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ajout-dun-sprite" class="md-nav__link">
-    Ajout d'un sprite
+  <a href="#ajout-du-sprite-du-joueur" class="md-nav__link">
+    Ajout du sprite du joueur
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rafraichissement-de-lecran-et-boucle-devenements" class="md-nav__link">
-    Rafraîchissement de l'écran et boucle d'évènements
+  <a href="#deplacement-du-joueur" class="md-nav__link">
+    Déplacement du joueur
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#creation-dune-classe-dobjets-balle" class="md-nav__link">
+    Création d'une classe d'objets "Balle"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apparition-des-objets-balles" class="md-nav__link">
+    Apparition des objets "Balles"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-collisions" class="md-nav__link">
+    Gestion des collisions
   </a>
   
 </li>
@@ -1012,7 +1026,7 @@ Téléchargez cette image sous le nom <code>background.jpg</code> puis ajoutez l
 </td></tr></table>
 <details class="bug"><summary>Mais pourquoi ça n'affiche rien !</summary><p>Parce que quand on <code>blit</code> une <code>Surface</code>, <code>pygame</code> calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraichissement de l'écran pour y parvenir, par l'intermédiare de la commande <code>pygame.display.update()</code>. </p>
 <p>Comme nous comptons bien faire bouger un personnage sur l'écran, et que les mouvements de celui-ci dépendront de la boucle d'évènements, autant mettre immédiatement cette commande en fin de boucle, pour que l'image soit systématiquement mise à jour. :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1043,10 +1057,13 @@ Téléchargez cette image sous le nom <code>background.jpg</code> puis ajoutez l
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
+Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne de ce nom !</p>
 </details>
-<h2 id="ajout-dun-sprite">Ajout d'un sprite</h2>
-<h2 id="rafraichissement-de-lecran-et-boucle-devenements">Rafraîchissement de l'écran et boucle d'évènements</h2>
-<h2 id="_1"></h2>
+<h2 id="ajout-du-sprite-du-joueur">Ajout du sprite du joueur</h2>
+<h2 id="deplacement-du-joueur">Déplacement du joueur</h2>
+<h2 id="creation-dune-classe-dobjets-balle">Création d'une classe d'objets "Balle"</h2>
+<h2 id="apparition-des-objets-balles">Apparition des objets "Balles"</h2>
+<h2 id="gestion-des-collisions">Gestion des collisions</h2>
                 
               
               
