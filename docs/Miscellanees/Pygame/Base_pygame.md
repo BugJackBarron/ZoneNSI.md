@@ -234,6 +234,40 @@ pygame.quit()
 
 ## Ajout du sprite du joueur
 
+!!! abstract "Les sprites"
+
+	=== "Explications"
+		Ajoutons maintenant une nouvelle image, celle représentant le personnage du joueur.
+		<p align="center">
+		![perso](Perso.png){width : 10%;}
+		</p>
+
+		Pour cela, on ajoute hors de la boucle la commande suivante `perso = pygame.image.load("perso.png").convert()`, puis dans la boucle on ajoute la commande `fenetre.blit(perso,(100,100))`.
+	=== "Code complet"
+		``` python linenums="1"
+
+		import pygame
+		from pygame.locals import *
+
+		pygame.init()
+
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("perso.png").convert()
+		fenetre.blit(fond,(0,0))
+		continuer = True
+		while continuer :
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+			fenetre.blit(perso, (100,100))
+			pygame.display.update()
+		pygame.quit()
+		``` 
+
+	
+
+
 ## Déplacement du joueur
 
 ## Création d'une classe d'objets "Balle"
