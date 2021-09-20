@@ -748,15 +748,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apparition-des-objets-balles" class="md-nav__link">
-    Apparition des objets "Balles"
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gestion-des-collisions" class="md-nav__link">
-    Gestion des collisions
+  <a href="#apparition-des-objets-balle-et-gestion-des-collisions" class="md-nav__link">
+    Apparition des objets Balle et gestion des collisions
   </a>
   
 </li>
@@ -1024,7 +1017,7 @@ Téléchargez cette image sous le nom <code>background.jpg</code> puis ajoutez l
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-<details class="bug"><summary>Mais pourquoi ça n'affiche rien !</summary><p>Parce que quand on <code>blit</code> une <code>Surface</code>, <code>pygame</code> calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraichissement de l'écran pour y parvenir, par l'intermédiare de la commande <code>pygame.display.update()</code>. </p>
+<details class="bug"><summary>Mais pourquoi ça n'affiche rien !</summary><p>Parce que quand on <code>blit</code> une <code>Surface</code>, <code>pygame</code> calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraîchissement de l'écran pour y parvenir, par l'intermédiaire de la commande <code>pygame.display.update()</code>. </p>
 <p>Comme nous comptons bien faire bouger un personnage sur l'écran, et que les mouvements de celui-ci dépendront de la boucle d'évènements, autant mettre immédiatement cette commande en fin de boucle, pour que l'image soit systématiquement mise à jour. :</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1067,7 +1060,7 @@ Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne 
 <p align="center">
 <img 10_="10%;" :=":" alt="perso" src="../Perso.png" width="width" />
 </p>
-Cette image est de dimension $ 100 \times 100$, et nous voudrions la placer 
+Cette image est de dimension <span class="arithmatex">\(100 \times 100\)</span>, et nous voudrions la placer 
 tout en bas  de l'écran, au centre. Les coordonnées de son
 coin supérieur gauche seront donc <span class="arithmatex">\((\dfrac{640 - 100}{2} ; 480 - 100)\)</span>.</p>
 <p>Pour cela, on ajoute hors de la boucle la commande suivante <code>perso = pygame.image.load("perso.png").convert()</code>,
@@ -1348,7 +1341,7 @@ position du <code>Rect</code>. On rajoute donc à la fin de la boucle <code>whil
 <p>Et oui, pour plusieurs raisons :
 * la page ne se rafraîchit pas totalement, et la trace des anciennes
 positions du sprite est gardée;
-* il faut rappuyer sur la touche pour redéplacer le personnage, le déplacement n'est pas fluide.</p>
+* il faut ré-appuyer sur la touche pour re-déplacer le personnage, le déplacement n'est pas fluide.</p>
 <p>Le premier problème vient de la ligne <code>pygame.display.update()</code>, 
 qui ne change que les pixels modifiés par rapport au dernier affichage.
 Une solution simple consiste à forcer l'affichage du fond  <strong>avant</strong>
@@ -1521,12 +1514,12 @@ par :</p>
 d'objets pour représenter ces balles.</p>
 <p>Chaque balle sera représentée par une <strong>image</strong>, qui devra donc être associée à un <strong>rectangle</strong>.
 Chaque balle aura une position, qui sera donnée originellement par son <strong>centre</strong>. Elle aura par ailleurs une <strong>vitesse</strong>,
-dont la valeur de départ sera tirée aléatoirement.</p>
+dont la valeur de départ sera tirée aléatoirement entre 1 et 5.</p>
 <p>Un certain nombre d'actions seront utilisées sur ou par cette balle :</p>
 <ul>
-<li>elle se <strong>déplacera</strong> ;</li>
+<li>elle se <strong>déplacera</strong> d'un nombre de pixels égal à sa <strong>vitesse</strong> ;</li>
 <li>on testera sa <strong>collision</strong> avec le joueur, en renvoyant un booléen ;</li>
-<li>et bien sur on l'<strong>affichera</strong>.</li>
+<li>et bien sur on l'<strong>affichera</strong> dans la fenetre courante.</li>
 </ul>
 <p>On représente donc la classe balle par l'interface suivante :
 <p align="center">
@@ -1538,9 +1531,9 @@ ci contre, et ne nécessite que peu de commentaires, à part pour la méthode <c
 si le rectangle de la balle est en collision avec le rectangle passé en argument et <code>False</code> sinon. Deux rectangles sont en collision si ils 
 ont une partie commune.</p>
 <p>Pour les amateurs de <em>hitbox</em> plus précises, il faudra voir du côté de la classe <a href="https://www.pygame.org/docs/ref/mask.html"><code>Mask</code> de <code>pygame</code></a>, 
-qui utilise le canal alpha ou bien une clé de coloration pour détecter des collisions au pixel près.</p>
+qui utilise le canal alpha ou bien une clé colorimétrique pour détecter des collisions au pixel près.</p>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Code</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Code du fichier <code>balle.py</code></label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1593,13 +1586,183 @@ qui utilise le canal alpha ou bien une clé de coloration pour détecter des col
 </div>
 </div>
 </div>
-<h2 id="apparition-des-objets-balles">Apparition des objets "Balles"</h2>
-<h2 id="gestion-des-collisions">Gestion des collisions</h2>
+<h2 id="apparition-des-objets-balle-et-gestion-des-collisions">Apparition des objets <code>Balle</code> et gestion des collisions</h2>
+<div class="admonition info">
+<p class="admonition-title">Établissons les règles</p>
+<p>On pose les règles suivantes concernant les balles :</p>
+<ul>
+<li>elles ne peuvent pas être plus de 10 simultanément ;</li>
+<li>elles sont construites à partir de l'image suivante, de dimension <span class="arithmatex">\(50 \times 50\)</span> :
+    <p align ="center"> 
+    <img alt="balle" src="../golfBall.png" />
+    </p></li>
+<li>elles apparaissent avec une abscisse aléatoire entre 25 et 455 (pour ne pas dépasser de l'écran ;</li>
+<li>elles disparaissent une fois complètement sorties de l'écran ;</li>
+<li>le jeu s'arrête et ferme la fenêtre dès que le personnage est touché par une balle.</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Codons !</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Description</label><div class="tabbed-content">
+<p>Commençons déjà par importer les objets de types <code>Balle</code> depuis <code>balle.py</code>, et importons aussi
+au passage la fonction <code>randint</code> du module <code>random</code> dont nous aurons besoin pour les tirages aléatoires 
+des positions de départ.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">balle</span> <span class="kn">import</span> <span class="n">Balle</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+</code></pre></div>
+<p>Les balles existantes seront stockées dans une liste python tout ce qui est de plus classique. Nous créons 
+donc une variable <code>listeBalles</code> au départ vide, juste avant la boucle <code>while continuer :</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">listeBalles</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>
+<p>Ensuite il faut créer un système d'apparition des balles. Pour cela, dans la boucle <code>while continuer :</code>, nous allons à chaque tour de boucle 
+ajouter une balle, si la longueur de la liste est inférieure à 10.</p>
+<p><mark class="critic"><strong>Mais ce ne sera pas suffisant !</strong></mark> En effet, la boucle tourne très vite ! <strong>Plusieurs centaines de fois voir plusieurs milliers de fois par seconde</strong>.
+Donc dans ce cas, le joueur aurait l'impression que les 10 balles arrivent de manière simultanées. Il faut donc introduire
+un système permettant de limiter ces apparitions, tout en gardant un côté aléatoire pour le jeu.</p>
+<p>On utilisera alors les lignes suivantes :</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">listeBalles</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">10</span> <span class="ow">and</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">10</span> <span class="p">:</span>
+    <span class="n">listeBalles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Balle</span><span class="p">(</span><span class="s1">&#39;golfBall.png&#39;</span><span class="p">,(</span><span class="n">randint</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">455</span><span class="p">),</span><span class="o">-</span><span class="mi">25</span><span class="p">)))</span>
+</code></pre></div>
+Les valeurs présentes dans la condition <code>randint</code> ont été testée sur mon PC, 
+mais elles peuvent être modifiées selon la puissance de votre machine.</p>
+<p>Voilà, les objets de type <code>Balle</code> sont crées selon les conditions que nous avons posées au départ.</p>
+<p>Reste à les afficher, les déplacer et les faire disparaître le cas échéant.</p>
+<p>Pour les déplacer et les afficher, plaçons nous juste après le <code>blit</code> de l'image de fond. Nous parcourons alors 
+la liste des balles et leur appliquons successivement les méthodes <code>deplace()</code> et <code>affiche()</code>, en donnant comme argument
+la fenêtre courante pour l'affichage :</p>
+<p><div class="highlight"><pre><span></span><code> <span class="k">for</span> <span class="n">ball</span> <span class="ow">in</span> <span class="n">listeBalles</span> <span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">deplace</span><span class="p">()</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">affiche</span><span class="p">(</span><span class="n">fenetre</span><span class="p">)</span>
+</code></pre></div>
+Problème : nos balles disparaissent de l'écran, mais de nouvelles n'apparaissent plus. C'est normal, nous avons saturé la variable 
+<code>listeBalles</code> qui ne peut contenir plus de 10 objets. Il faut donc faire disparaître les objets de la liste quand ils sortent de l'écran. </p>
+<p><div class="highlight"><pre><span></span><code> <span class="k">for</span> <span class="n">ball</span> <span class="ow">in</span> <span class="n">listeBalles</span> <span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">deplace</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">top</span> <span class="o">&gt;=</span> <span class="mi">480</span> <span class="p">:</span>
+        <span class="n">listeBalles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ball</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">affiche</span><span class="p">(</span><span class="n">fenetre</span><span class="p">)</span>
+</code></pre></div>
+Il ne nous reste plus qu'à gérer la fin du jeu : quand une balle entre en collision avec le joueur, nous basculons la variable <code>continuer</code>
+à <code>False</code> pour arrêter la boucle <code>while</code> :
+<div class="highlight"><pre><span></span><code> <span class="k">for</span> <span class="n">ball</span> <span class="ow">in</span> <span class="n">listeBalles</span> <span class="p">:</span>
+    <span class="n">ball</span><span class="o">.</span><span class="n">deplace</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">top</span> <span class="o">&gt;=</span> <span class="mi">480</span> <span class="p">:</span>
+        <span class="n">listeBalles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ball</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">collision</span><span class="p">(</span><span class="n">persoRect</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">affiche</span><span class="p">(</span><span class="n">fenetre</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Voilà, le contrat est rempli. Bien entendu ce n'est qu'un début de jeu, et il reste beaucoup de points à 
+améliorer. Mais vous avez maintenant les bases pour vous permettre de réaliser des jeux d'arcades classiques.</p>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">le code complet du fichier <code>dodegTheBall.py</code></label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">balle</span> <span class="kn">import</span> <span class="n">Balle</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">set_repeat</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+<span class="n">persoRect</span> <span class="o">=</span> <span class="n">perso</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<span class="n">persoRect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">listeBalles</span> <span class="o">=</span><span class="p">[]</span>
+
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">listeBalles</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">10</span> <span class="ow">and</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">10</span> <span class="p">:</span>
+        <span class="n">listeBalles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Balle</span><span class="p">(</span><span class="s1">&#39;golfBall.png&#39;</span><span class="p">,(</span><span class="n">randint</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">455</span><span class="p">),</span><span class="o">-</span><span class="mi">25</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">KEYDOWN</span>  <span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_LEFT</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">left</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="p">:</span>
+                    <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_RIGHT</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">right</span><span class="o">&lt;=</span><span class="mi">630</span> <span class="p">:</span>
+                    <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ball</span> <span class="ow">in</span> <span class="n">listeBalles</span> <span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">deplace</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">top</span> <span class="o">&gt;=</span> <span class="mi">480</span> <span class="p">:</span>
+            <span class="n">listeBalles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ball</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">ball</span><span class="o">.</span><span class="n">collision</span><span class="p">(</span><span class="n">persoRect</span><span class="p">)</span> <span class="p">:</span>
+                <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">ball</span><span class="o">.</span><span class="n">affiche</span><span class="p">(</span><span class="n">fenetre</span><span class="p">)</span>
+
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="n">persoRect</span><span class="p">)</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
                 
               
               
                 
 
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://www.zonensi.fr/Miscellanees/Pygame/Base_pygame/",this.page.identifier="Miscellanees/Pygame/Base_pygame/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//zonensi.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
 
               
             </article>
