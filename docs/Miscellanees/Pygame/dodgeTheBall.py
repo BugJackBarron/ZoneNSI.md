@@ -18,17 +18,17 @@ listeBalles =[]
 
 while continuer :
     if len(listeBalles)<10 and randint(1,500)<=10 :
-        listeBalles.append(Balle('golfBall.png',(randint(0,480),0)))
+        listeBalles.append(Balle('golfBall.png',(randint(25,455),-25)))
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = False
         if event.type == KEYDOWN  :
-                if event.key == K_LEFT :
-                    if persoRect.left>=10 :
-                        persoRect = persoRect.move(-10,0)
-                if event.key == K_RIGHT :
-                    if persoRect.right<=630 :
-                        persoRect = persoRect.move(10,0)
+            if event.key == K_LEFT :
+                if persoRect.left>=10 :
+                    persoRect = persoRect.move(-10,0)
+            if event.key == K_RIGHT :
+                if persoRect.right<=630 :
+                    persoRect = persoRect.move(10,0)
     
     fenetre.blit(fond, (0,0))
     for ball in listeBalles :

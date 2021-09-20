@@ -207,7 +207,7 @@ pygame.quit()
 
 ??? bug "Mais pourquoi ça n'affiche rien !"
 	
-	Parce que quand on `blit` une `Surface`, `pygame` calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraichissement de l'écran pour y parvenir, par l'intermédiare de la commande `pygame.display.update()`. 
+	Parce que quand on `blit` une `Surface`, `pygame` calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraîchissement de l'écran pour y parvenir, par l'intermédiaire de la commande `pygame.display.update()`. 
 	
 	Comme nous comptons bien faire bouger un personnage sur l'écran, et que les mouvements de celui-ci dépendront de la boucle d'évènements, autant mettre immédiatement cette commande en fin de boucle, pour que l'image soit systématiquement mise à jour. :
 	
@@ -241,7 +241,7 @@ pygame.quit()
 		<p align="center">
 		![perso](Perso.png){width : 10%;}
 		</p>
-		Cette image est de dimension $ 100 \times 100$, et nous voudrions la placer 
+		Cette image est de dimension $100 \times 100$, et nous voudrions la placer 
 		tout en bas  de l'écran, au centre. Les coordonnées de son
 		coin supérieur gauche seront donc $(\dfrac{640 - 100}{2} ; 480 - 100)$.
 
@@ -481,7 +481,7 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 		Et oui, pour plusieurs raisons :
 		* la page ne se rafraîchit pas totalement, et la trace des anciennes
 		positions du sprite est gardée;
-		* il faut rappuyer sur la touche pour redéplacer le personnage, le déplacement n'est pas fluide.
+		* il faut ré-appuyer sur la touche pour re-déplacer le personnage, le déplacement n'est pas fluide.
 		
 		Le premier problème vient de la ligne `pygame.display.update()`, 
 		qui ne change que les pixels modifiés par rapport au dernier affichage.
@@ -614,13 +614,13 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 
 		Chaque balle sera représentée par une **image**, qui devra donc être associée à un **rectangle**.
 		Chaque balle aura une position, qui sera donnée originellement par son **centre**. Elle aura par ailleurs une **vitesse**,
-		dont la valeur de départ sera tirée aléatoirement.
+		dont la valeur de départ sera tirée aléatoirement entre 1 et 5.
 
 		Un certain nombre d'actions seront utilisées sur ou par cette balle :
 
-		* elle se **déplacera** ;
+		* elle se **déplacera** d'un nombre de pixels égal à sa **vitesse** ;
 		* on testera sa **collision** avec le joueur, en renvoyant un booléen ;
-		* et bien sur on l'**affichera**.
+		* et bien sur on l'**affichera** dans la fenetre courante.
 		
 		On représente donc la classe balle par l'interface suivante :
 		<p align="center">
@@ -638,7 +638,7 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 		qui utilise le canal alpha ou bien une clé colorimétrique pour détecter des collisions au pixel près.
 		
 		
-	=== "Code"
+	=== "Code du fichier `balle.py`"
 		``` python linenums="1"
 
 		import pygame
@@ -669,8 +669,146 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 
 		```
 
-## Apparition des objets "Balles"
+## Apparition des objets `Balle` et gestion des collisions
 
+!!! info "Établissons les règles"
+
+	On pose les règles suivantes concernant les balles :
 	
+	* elles ne peuvent pas être plus de 10 simultanément ;
+	* elles sont construites à partir de l'image suivante, de dimension $50 \times 50$ :
+		<p align ="center"> 
+		![balle](golfBall.png)
+		</p>
+	* elles apparaissent avec une abscisse aléatoire entre 25 et 455 (pour ne pas dépasser de l'écran ;
+	* elles disparaissent une fois complètement sorties de l'écran ;
+	* le jeu s'arrête et ferme la fenêtre dès que le personnage est touché par une balle.
+	
+!!! abstract "Codons !"
 
-## Gestion des collisions
+	=== "Description"
+	
+		Commençons déjà par importer les objets de types `Balle` depuis `balle.py`, et importons aussi
+		au passage la fonction `randint` du module `random` dont nous aurons besoin pour les tirages aléatoires 
+		des positions de départ.
+		
+		``` python 
+		from balle import Balle
+		from random import randint
+		```
+			
+		Les balles existantes seront stockées dans une liste python tout ce qui est de plus classique. Nous créons 
+		donc une variable `listeBalles` au départ vide, juste avant la boucle `while continuer :`.
+		
+		``` python 		
+		listeBalles = []
+		```
+			
+		Ensuite il faut créer un système d'apparition des balles. Pour cela, dans la boucle `while continuer :`, nous allons à chaque tour de boucle 
+		ajouter une balle, si la longueur de la liste est inférieure à 10.
+		
+		{==**Mais ce ne sera pas suffisant !**==} En effet, la boucle tourne très vite ! **Plusieurs centaines de fois voir plusieurs milliers de fois par seconde**.
+		Donc dans ce cas, le joueur aurait l'impression que les 10 balles arrivent de manière simultanées. Il faut donc introduire
+		un système permettant de limiter ces apparitions, tout en gardant un côté aléatoire pour le jeu.
+		
+		On utilisera alors les lignes suivantes :
+		
+		``` python 
+		if len(listeBalles)<10 and randint(1,500)<=10 :
+			listeBalles.append(Balle('golfBall.png',(randint(25,455),-25)))
+		```
+		Les valeurs présentes dans la condition `randint` ont été testée sur mon PC, 
+		mais elles peuvent être modifiées selon la puissance de votre machine.
+		
+		Voilà, les objets de type `Balle` sont crées selon les conditions que nous avons posées au départ.
+		
+		Reste à les afficher, les déplacer et les faire disparaître le cas échéant.
+		
+		Pour les déplacer et les afficher, plaçons nous juste après le `blit` de l'image de fond. Nous parcourons alors 
+		la liste des balles et leur appliquons successivement les méthodes `deplace()` et `affiche()`, en donnant comme argument
+		la fenêtre courante pour l'affichage :
+		
+		``` python 
+		 for ball in listeBalles :
+			ball.deplace()
+			ball.affiche(fenetre)
+		```
+		Problème : nos balles disparaissent de l'écran, mais de nouvelles n'apparaissent plus. C'est normal, nous avons saturé la variable 
+		`listeBalles` qui ne peut contenir plus de 10 objets. Il faut donc faire disparaître les objets de la liste quand ils sortent de l'écran. 
+		
+		``` python 
+		 for ball in listeBalles :
+			ball.deplace()
+			if ball.rect.top >= 480 :
+				listeBalles.remove(ball)
+			else :
+				ball.affiche(fenetre)
+		```
+		Il ne nous reste plus qu'à gérer la fin du jeu : quand une balle entre en collision avec le joueur, nous basculons la variable `continuer`
+		à `False` pour arrêter la boucle `while` :
+		``` python 
+		 for ball in listeBalles :
+			ball.deplace()
+			if ball.rect.top >= 480 :
+				listeBalles.remove(ball)
+			else :
+				if ball.collision(persoRect) :
+					continuer = False
+				ball.affiche(fenetre)
+		```
+		
+		Voilà, le contrat est rempli. Bien entendu ce n'est qu'un début de jeu, et il reste beaucoup de points à 
+		améliorer. Mais vous avez maintenant les bases pour vous permettre de réaliser des jeux d'arcades classiques.
+	
+	
+	=== "le code complet du fichier `dodegTheBall.py`"
+	
+		``` python linenums="1"
+		import pygame
+		from pygame.locals import *
+		from balle import Balle
+		from random import randint
+
+		pygame.init()
+		pygame.key.set_repeat(400, 30)
+
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("Perso.png").convert_alpha()
+		persoRect = perso.get_rect()
+		persoRect.topleft = (270,380)
+		fenetre.blit(fond,(0,0))
+
+		continuer = True
+		listeBalles =[]
+
+		while continuer :
+			if len(listeBalles)<10 and randint(1,500)<=10 :
+				listeBalles.append(Balle('golfBall.png',(randint(25,455),-25)))
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+				if event.type == KEYDOWN  :
+					if event.key == K_LEFT :
+						if persoRect.left>=10 :
+							persoRect = persoRect.move(-10,0)
+					if event.key == K_RIGHT :
+						if persoRect.right<=630 :
+							persoRect = persoRect.move(10,0)
+			
+			fenetre.blit(fond, (0,0))
+			for ball in listeBalles :
+				ball.deplace()
+				if ball.rect.top >= 480 :
+					listeBalles.remove(ball)
+				else :
+					if ball.collision(persoRect) :
+						continuer = False
+					ball.affiche(fenetre)
+					
+			fenetre.blit(perso, persoRect)
+			pygame.display.update()
+			pygame.time.wait(10)
+		pygame.quit()
+		```
+
