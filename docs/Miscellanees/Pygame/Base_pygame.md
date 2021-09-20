@@ -607,6 +607,60 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 	
 ## Création d'une classe d'objets "Balle"
 
+!!! abstract "classe `Balle`"
+	=== "Interface"
+		Sachant que plusieurs balles vont tomber simultanément, nous allons construire une **classe**
+		d'objets pour représenter ces balles.
+
+		Chaque balle sera représentée par une **image**, qui devra donc être associée à un **rectangle**.
+		Chaque balle aura une position, qui sera donnée originellement par son **centre**.
+
+		Un certain nombre d'actions seront utilisées sur ou par cette balle :
+
+		* elle se **déplacera** ;
+		* on testera sa **collision** avec le joueur ;
+		* et bien sur on l'affichera.
+		
+		On représente donc la classe balle par l'interface suivante :
+		<p align="center">
+		![Balle](InterfaceBalle.png){width = 30%}
+		</p>
+	=== "Code"
+		``` python linenums="1"
+
+		import pygame
+		from pygame.locals import *
+
+		pygame.init()
+		pygame.key.set_repeat(400, 30)
+
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("Perso.png").convert_alpha()
+		persoRect = perso.get_rect()
+		persoRect.topleft = (270,380)
+
+		fenetre.blit(fond,(0,0))
+		continuer = True
+		while continuer :
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+								
+			dicKeys = pygame.key.get_pressed()
+			if dicKeys[K_LEFT] :
+				if persoRect.left>=10 :
+					persoRect = persoRect.move(-10,0)
+			if dicKeys[K_RIGHT] :
+				if persoRect.right<=630 :
+					persoRect = persoRect.move(10,0)
+			fenetre.blit(fond, (0,0))
+			fenetre.blit(perso, persoRect)
+			pygame.display.update()
+			pygame.quit()
+
+		```
+
 ## Apparition des objets "Balles"
 
 ## Gestion des collisions
