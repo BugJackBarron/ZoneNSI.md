@@ -635,7 +635,7 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 		ont une partie commune.
 		
 		Pour les amateurs de *hitbox* plus précises, il faudra voir du côté de la classe [`Mask` de `pygame`](https://www.pygame.org/docs/ref/mask.html), 
-		qui utilise le canal alpha ou bien une clé de coloration pour détecter des collisions au pixel près.
+		qui utilise le canal alpha ou bien une clé colorimétrique pour détecter des collisions au pixel près.
 		
 		
 	=== "Code"
@@ -670,5 +670,7 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 		```
 
 ## Apparition des objets "Balles"
+
+	
 
 ## Gestion des collisions
