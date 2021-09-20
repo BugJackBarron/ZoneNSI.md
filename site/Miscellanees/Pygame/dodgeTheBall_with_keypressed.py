@@ -16,13 +16,15 @@ while continuer :
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = False
-        if event.type == KEYDOWN  :
-                if event.key == K_LEFT :
-                    if persoRect.left>=10 :
-                        persoRect = persoRect.move(-10,0)
-                if event.key == K_RIGHT :
-                    if persoRect.right<=630 :
-                        persoRect = persoRect.move(10,0)
+            
+                        
+    dicKeys = pygame.key.get_pressed()
+    if dicKeys[K_LEFT] :
+        if persoRect.left>=10 :
+            persoRect = persoRect.move(-10,0)
+    if dicKeys[K_RIGHT] :
+        if persoRect.right<=630 :
+            persoRect = persoRect.move(10,0)
     fenetre.blit(fond, (0,0))
     fenetre.blit(perso, persoRect)
     pygame.display.update()

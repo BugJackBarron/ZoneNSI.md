@@ -241,8 +241,12 @@ pygame.quit()
 		<p align="center">
 		![perso](Perso.png){width : 10%;}
 		</p>
+		Cette image est de dimension $ 100 \times 100$, et nous voudrions la placer 
+		tout en bas  de l'écran, au centre. Les coordonnées de son
+		coin supérieur gauche seront donc $(\dfrac{640 - 100}{2} ; 480 - 100)$.
 
-		Pour cela, on ajoute hors de la boucle la commande suivante `perso = pygame.image.load("perso.png").convert()`, puis dans la boucle on ajoute la commande `fenetre.blit(perso,(100,100))`.
+		Pour cela, on ajoute hors de la boucle la commande suivante `perso = pygame.image.load("perso.png").convert()`,
+		 suivie de la commande `fenetre.blit(perso,(270,380))` (mais après avoir collé le fond).
 	=== "Code complet"
 		``` python linenums="1"
 
@@ -253,23 +257,354 @@ pygame.quit()
 
 		fenetre = pygame.display.set_mode((640, 480))
 		fond = pygame.image.load("background.jpg").convert()
-		perso = pygame.image.load("perso.png").convert()
+		perso = pygame.image.load("Perso.png").convert()
+		fenetre.blit(fond,(0,0))
+		fenetre.blit(perso, (270,380))
+		continuer = True
+		while continuer :
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+			
+			pygame.display.update()
+		pygame.quit()
+		``` 
+
+!!! info "Transparence et canal alpha"
+	
+	=== "Canal Alpha"
+		Le résultat est peu probant. En effet nous voyons  un cadre noir autour 
+		sprite du  personnage. Il va donc falloir ajouter de la **transparence** 
+		à cette image.
+		
+		Cette possibilité est offerte par le format `png`, qui possède un format
+		de couleur basé sur la système `RGB + canal Alpha`. Un pixel est donc 
+		représenté par 4 octets :
+			
+		* Les trois premiers pour les canaux `RGB`, chacun étant donc représenté par un
+		nombre entre 0 et 255 ( sommairement 0 représentant le canal éteint, et 255
+		le canal allumé au maximum) ;
+		* Le dernier octet pour le `canal Alpha`, qui va représenter le 
+		**niveau de transparence** du pixel. Ainsi un pixel possédant un `canal Alpha` 
+		à $0$ sera totalement transparent, alors qu'avec une valeur de $255$, il sera
+		totalement opaque.
+			
+		Pygame est bien entendu capable de gérer cette transparence, il suffit d'utiliser 
+		la méthode `convert_alpha()` à la place de la méthode `convert()`.
+		
+	=== "Code complet"
+		``` python linenums="1"
+
+		import pygame
+		from pygame.locals import *
+
+		pygame.init()
+
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("Perso.png").convert_alpha()
+		fenetre.blit(fond,(0,0))
+		fenetre.blit(perso, (270,380))
+		continuer = True
+		while continuer :
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+			
+			pygame.display.update()
+		pygame.quit()
+		``` 
+	=== " Et les autres formats ?"
+		
+		Le format `png` est à privilégier pour l'utilisation de sprites.
+		cependant il est aussi possible de forcer une couleur d'une image de format quelconque 
+		à devenir transparente, grâce à la méthode `set_colorkey()` utilisée comme dans la ligne suivante :
+		
+			image.set_colorkey((255,255,255)) 
+			
+		Ici on a rendu la couleur blanche (triplet RGB $(255, 255, 255)$) transparente
+		pour l'objet `image`.
+
+## Déplacement du joueur
+
+Cette partie a pour objectif de vous faire comprendre deux points :
+	
+* la notion d'objet `Rect` de `pygame` ;
+* l'utilisation d'évènements claviers.
+
+Elle n'est pas formellement correcte, car je n'utilise pas ici de constructeur d'objets
+et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
+
+!!! abstract "Images et objets `Rect`"
+
+	`Pygame` utilises des objets de type `Rect` pour stocker et manipuler
+	des surfaces rectangulaires. Un objet de type `Rect`peut être créer
+	par une combinaison de  valeurs `left, top, width, height` représentant
+	respectivement l'abscisse du côté gauche du rectangle, l'ordonnée
+	du côté haut du rectangle, sa largeur puis sa hauteur en pixels.
+	
+	Des objets de type `Rect` peuvent être aussi créés à partir d'autres
+	objets `pygame` qui sont soit des `Rect`, soit possèdent un {==**attribut**==}
+	nommé `rect` (ce qui est le cas des images).
+	
+	Un objet de type `Rect` possède de nombreux attributs définissant la
+	position et la taille de l'objet :
+		
+		x,y
+		top, left, bottom, right
+		topleft, bottomleft, topright, bottomright
+		midtop, midleft, midbottom, midright
+		center, centerx, centery
+		size, width, height
+		w,h
+		
+	On peut aussi affecter directement tous ces attributs :
+
+		rect1.right = 10
+		rect2.center = (20,30)
+
+	Affecter à `size, width, height, w` ou `h` change les dimensions du rectangle.
+	Toute les autres affectations déplacent le rectangle sans le redimmensionner.
+	
+	Notez que certains attributs sont des entiers (`x, y, top, bottom, centerx,...`),
+	 et que d'autres sont des tuples d'entiers de dimension 2 ( `topleft, bottomright, center,...`)
+	
+		Les méthodes ou fonctions `Rect` qui changent la position ou la taille 
+	d'un `Rect` {==**renvoient une nouvelle copie de ce `Rect` avec les changements effectués**==}.
+	Le `Rect` original n'est pas modifié.
+	
+	Cependant certaines méthodes ont une version {==**in-place**==} 
+	qui retournent `None` mais  affectent le `Rect` original.
+	Ces méthodes "in-place" sont celles préfixées par `ip_`.
+	
+	La liste complète des méthodes et des détails est bien sûr disponible dans 
+	la [doc pygame](https://www.pygame.org/docs/ref/rect.html).
+	
+!!! abstract "Les évènements claviers"
+
+	Lorsque vous coderez une interface graphique, il est probable que vous assignerez des touches clavier aux différentes actions.
+	Le type d'événement créé lorsque l'on appuie sur une touche est repéré par la constante `KEYDOWN`, (ou `KEYUP` au relâchement de la touche).
+	Dans la boucle d'évènement, on pourra alors utiliser une structure conditionnelle telle que
+
+		if event.type == KEYDOWN:
+
+	Mais attention, **cette condition sera vraie quelque soit la touche pressée** !
+	Pour définir une seule touche du clavier, vous devrez utilisez en plus `event.key`, qui détermine la touche pressée,
+	 disponible uniquement lors d'un événement clavier.
+	Cet `event.key` peut prendre les valeurs suivantes :
+
+	* Lettres: `K_a ... K_z`
+	* Nombres: `K_0 ... K_9`
+	* Contrôles: `K_TAB, K_RETURN, K_ESCAPE,...`
+	* Flèches: `K_LEFT, K_UP, K_RIGHT, K_DOWN`
+	* ...
+	
+	La liste complète des constantes est disponible [ici](http://sdz.tdct.org/sdz/interface-graphique-pygame-pour-python.html#Lesinterfacesgraphiques)
+	
+
+!!! abstract "Déplacement du sprite de gauche à droite"
+
+	=== "Mise en place du code"
+		Bien maintenant nous savons a peu prêt quoi faire. Commençons par créer
+		un `Rect` a partir de l'image du personnage, juste après la ligne 
+		de création de l'image `perso` :
+			
+			persoRect = perso.get_rect()
+			
+		Mais attention, on ne vient que de créer le `Rect`, et il n'a pas de position définie.
+		On va alors effacer la ligne de `blit` du personnage, et la remplacer
+		par :
+		
+			persoRect.topleft = (270,380)
+		
+		Notre rectangle est ainsi positionné correctement au centre de l'écran, en bas.
+			
+		Nous allons modifier ensuite `persoRect`pour déplacer le sprite.
+		Nous fixons la vitesse de déplacement du sprite avec une base de
+		$10$ pixels par tour de boucle.
+		
+		Dans la boucle d'événement, nous ajoutons alors les lignes suivantes :
+		
+			if event.type == KEYDOWN  :
+				if event.key == K_LEFT :
+					if persoRect.left>=10 :
+						persoRect = persoRect.move(-10,0)
+				if event.key == K_RIGHT :
+					if persoRect.right<=630 :
+						persoRect = persoRect.move(10,0)
+		
+		Nous avons ainsi un déplacement, mais si vous testez le code à ce moment, rien ne se passe.
+		
+		En effet, il ne faut pas oublier de `blitter` l'image à la nouvelle
+		position du `Rect`. On rajoute donc à la fin de la boucle `while True` la ligne suivante :
+		
+			fenetre.blit(perso, persoRect)
+			
+	=== "Code complet"
+		``` python linenums="1"
+
+		import pygame
+		from pygame.locals import *
+
+		pygame.init()
+
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("Perso.png").convert_alpha()
+		persoRect = perso.get_rect()
+		persoRect.topleft = (270,380)
+
 		fenetre.blit(fond,(0,0))
 		continuer = True
 		while continuer :
 			for event in pygame.event.get():
 				if event.type == QUIT:
 					continuer = False
-			fenetre.blit(perso, (100,100))
+				if event.type == KEYDOWN  :
+						if event.key == K_LEFT :
+							if persoRect.left>=10 :
+								persoRect = persoRect.move(-10,0)
+						if event.key == K_RIGHT :
+							if persoRect.right<=630 :
+								persoRect = persoRect.move(10,0)
+						
+			fenetre.blit(perso, persoRect)
 			pygame.display.update()
 		pygame.quit()
+
+
 		``` 
 
+??? bug "Mais c'est nul !"
+
+	=== "raisons et corrections"
+		Et oui, pour plusieurs raisons :
+		* la page ne se rafraîchit pas totalement, et la trace des anciennes
+		positions du sprite est gardée;
+		* il faut rappuyer sur la touche pour redéplacer le personnage, le déplacement n'est pas fluide.
+		
+		Le premier problème vient de la ligne `pygame.display.update()`, 
+		qui ne change que les pixels modifiés par rapport au dernier affichage.
+		Une solution simple consiste à forcer l'affichage du fond  **avant**
+		le blit du sprite :
+		
+		``` python
+		fenetre.blit(fond, (0,0))
+		fenetre.blit(perso, persoRect)
+		
+		```
+		
+		Pour le second problème, une solution simple (mais pas toujours efficace)
+		consiste à utiliser la méthode `set_repeat()` du module `key`,qui prend en paramètres :
+		
+		* le délai avant de continuer les déplacements quand la touche reste enfoncée (en millisecondes);
+		* le temps entre chaque déplacement. (en millisecondes)
+
+		Vous devez donc, après initialisation de `pygame` placer la ligne :
+		
+			pygame.key.set_repeat(400, 30)
+			
+	=== "Le code complet"
+		
+		``` python linenums="1"
+
+		import pygame
+		from pygame.locals import *
+
+		pygame.init()
+		pygame.key.set_repeat(400, 30)
+
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("Perso.png").convert_alpha()
+		persoRect = perso.get_rect()
+		persoRect.topleft = (270,380)
+
+		fenetre.blit(fond,(0,0))
+		continuer = True
+		while continuer :
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+				if event.type == KEYDOWN  :
+						if event.key == K_LEFT :
+							if persoRect.left>=10 :
+								persoRect = persoRect.move(-10,0)
+						if event.key == K_RIGHT :
+							if persoRect.right<=630 :
+								persoRect = persoRect.move(10,0)
+			fenetre.blit(fond, (0,0))
+			fenetre.blit(perso, persoRect)
+			pygame.display.update()
+		pygame.quit()
+
+		``` 
+
+??? tips "Une solution plus élégante, et plus efficace (mais inutile ici)"
+
+	=== "Solution"
+		Le problème de l'utilisation de la méthode ci-dessus est qu'il est impossible
+		de traiter des appuis sur des combinaisons de touches, puisqu'une seule
+		touche est représentée par l'attribut `event.key`.
+		
+		Heureusement, les concepteurs de `pygame` ont prévu une méthode bien plus efficace :
+		la méthode `get_pressed()` du module `key`, qui renvoie un {==** dictionnaire de booléens**==}
+		ayant pour clé  la constante représentant la touche, et pour lequel les valeurs `True`
+		correspondent aux touches actuellement appuyées.
+		
+		On peut alors retirer de la boucle d'évènements toute la partie concernant les appuis de touches, et les remplacer
+		par :
+		
+		``` python 									
+		dicKeys = pygame.key.get_pressed()
+		if dicKeys[K_LEFT] :
+			if persoRect.left>=10 :
+				persoRect = persoRect.move(-10,0)
+		if dicKeys[K_RIGHT] :
+			if persoRect.right<=630 :
+				persoRect = persoRect.move(10,0)
+			
+		```
+		
+		
+		
+	=== "Le code de remplacement"
 	
+		``` python linenums="1"
 
+		import pygame
+		from pygame.locals import *
 
-## Déplacement du joueur
+		pygame.init()
+		pygame.key.set_repeat(400, 30)
 
+		fenetre = pygame.display.set_mode((640, 480))
+		fond = pygame.image.load("background.jpg").convert()
+		perso = pygame.image.load("Perso.png").convert_alpha()
+		persoRect = perso.get_rect()
+		persoRect.topleft = (270,380)
+
+		fenetre.blit(fond,(0,0))
+		continuer = True
+		while continuer :
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					continuer = False
+								
+			dicKeys = pygame.key.get_pressed()
+			if dicKeys[K_LEFT] :
+				if persoRect.left>=10 :
+					persoRect = persoRect.move(-10,0)
+			if dicKeys[K_RIGHT] :
+				if persoRect.right<=630 :
+					persoRect = persoRect.move(10,0)
+			fenetre.blit(fond, (0,0))
+			fenetre.blit(perso, persoRect)
+			pygame.display.update()
+			pygame.quit()
+
+		```
+	
 ## Création d'une classe d'objets "Balle"
 
 ## Apparition des objets "Balles"

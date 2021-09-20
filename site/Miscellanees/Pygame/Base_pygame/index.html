@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/Miscellanees/Pygame/Base_pygame/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.802231af.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1066,8 +1066,12 @@ Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne 
 <p>Ajoutons maintenant une nouvelle image, celle représentant le personnage du joueur.
 <p align="center">
 <img 10_="10%;" :=":" alt="perso" src="../Perso.png" width="width" />
-</p></p>
-<p>Pour cela, on ajoute hors de la boucle la commande suivante <code>perso = pygame.image.load("perso.png").convert()</code>, puis dans la boucle on ajoute la commande <code>fenetre.blit(perso,(100,100))</code>.</p>
+</p>
+Cette image est de dimension $ 100 \times 100$, et nous voudrions la placer 
+tout en bas  de l'écran, au centre. Les coordonnées de son
+coin supérieur gauche seront donc <span class="arithmatex">\((\dfrac{640 - 100}{2} ; 480 - 100)\)</span>.</p>
+<p>Pour cela, on ajoute hors de la boucle la commande suivante <code>perso = pygame.image.load("perso.png").convert()</code>,
+ suivie de la commande <code>fenetre.blit(perso,(270,380))</code> (mais après avoir collé le fond).</p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Code complet</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1086,21 +1090,23 @@ Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne 
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
 <span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
 <span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
-<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
 <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">))</span>
 <span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
     <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
             <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+
     <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
@@ -1108,7 +1114,405 @@ Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne 
 </div>
 </div>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Transparence et canal alpha</p>
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Canal Alpha</label><div class="tabbed-content">
+<p>Le résultat est peu probant. En effet nous voyons  un cadre noir autour 
+sprite du  personnage. Il va donc falloir ajouter de la <strong>transparence</strong> 
+à cette image.</p>
+<p>Cette possibilité est offerte par le format <code>png</code>, qui possède un format
+de couleur basé sur la système <code>RGB + canal Alpha</code>. Un pixel est donc 
+représenté par 4 octets :</p>
+<ul>
+<li>Les trois premiers pour les canaux <code>RGB</code>, chacun étant donc représenté par un
+nombre entre 0 et 255 ( sommairement 0 représentant le canal éteint, et 255
+le canal allumé au maximum) ;</li>
+<li>Le dernier octet pour le <code>canal Alpha</code>, qui va représenter le 
+<strong>niveau de transparence</strong> du pixel. Ainsi un pixel possédant un <code>canal Alpha</code> 
+à <span class="arithmatex">\(0\)</span> sera totalement transparent, alors qu'avec une valeur de <span class="arithmatex">\(255\)</span>, il sera
+totalement opaque.</li>
+</ul>
+<p>Pygame est bien entendu capable de gérer cette transparence, il suffit d'utiliser 
+la méthode <code>convert_alpha()</code> à la place de la méthode <code>convert()</code>.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Code complet</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">))</span>
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3"> Et les autres formats ?</label><div class="tabbed-content">
+<p>Le format <code>png</code> est à privilégier pour l'utilisation de sprites.
+cependant il est aussi possible de forcer une couleur d'une image de format quelconque 
+à devenir transparente, grâce à la méthode <code>set_colorkey()</code> utilisée comme dans la ligne suivante :</p>
+<div class="highlight"><pre><span></span><code>image.set_colorkey((255,255,255))
+</code></pre></div>
+<p>Ici on a rendu la couleur blanche (triplet RGB <span class="arithmatex">\((255, 255, 255)\)</span>) transparente
+pour l'objet <code>image</code>.</p>
+</div>
+</div>
+</div>
 <h2 id="deplacement-du-joueur">Déplacement du joueur</h2>
+<p>Cette partie a pour objectif de vous faire comprendre deux points :</p>
+<ul>
+<li>la notion d'objet <code>Rect</code> de <code>pygame</code> ;</li>
+<li>l'utilisation d'évènements claviers.</li>
+</ul>
+<p>Elle n'est pas formellement correcte, car je n'utilise pas ici de constructeur d'objets
+et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Images et objets <code>Rect</code></p>
+<p><code>Pygame</code> utilises des objets de type <code>Rect</code> pour stocker et manipuler
+des surfaces rectangulaires. Un objet de type <code>Rect</code>peut être créer
+par une combinaison de  valeurs <code>left, top, width, height</code> représentant
+respectivement l'abscisse du côté gauche du rectangle, l'ordonnée
+du côté haut du rectangle, sa largeur puis sa hauteur en pixels.</p>
+<p>Des objets de type <code>Rect</code> peuvent être aussi créés à partir d'autres
+objets <code>pygame</code> qui sont soit des <code>Rect</code>, soit possèdent un <mark class="critic"><strong>attribut</strong></mark>
+nommé <code>rect</code> (ce qui est le cas des images).</p>
+<p>Un objet de type <code>Rect</code> possède de nombreux attributs définissant la
+position et la taille de l'objet :</p>
+<div class="highlight"><pre><span></span><code>x,y
+top, left, bottom, right
+topleft, bottomleft, topright, bottomright
+midtop, midleft, midbottom, midright
+center, centerx, centery
+size, width, height
+w,h
+</code></pre></div>
+<p>On peut aussi affecter directement tous ces attributs :</p>
+<div class="highlight"><pre><span></span><code>rect1.right = 10
+rect2.center = (20,30)
+</code></pre></div>
+<p>Affecter à <code>size, width, height, w</code> ou <code>h</code> change les dimensions du rectangle.
+Toute les autres affectations déplacent le rectangle sans le redimmensionner.</p>
+<p>Notez que certains attributs sont des entiers (<code>x, y, top, bottom, centerx,...</code>),
+ et que d'autres sont des tuples d'entiers de dimension 2 ( <code>topleft, bottomright, center,...</code>)</p>
+<div class="highlight"><pre><span></span><code>Les méthodes ou fonctions `Rect` qui changent la position ou la taille
+</code></pre></div>
+<p>d'un <code>Rect</code> <mark class="critic"><strong>renvoient une nouvelle copie de ce <code>Rect</code> avec les changements effectués</strong></mark>.
+Le <code>Rect</code> original n'est pas modifié.</p>
+<p>Cependant certaines méthodes ont une version <mark class="critic"><strong>in-place</strong></mark> 
+qui retournent <code>None</code> mais  affectent le <code>Rect</code> original.
+Ces méthodes "in-place" sont celles préfixées par <code>ip_</code>.</p>
+<p>La liste complète des méthodes et des détails est bien sûr disponible dans 
+la <a href="https://www.pygame.org/docs/ref/rect.html">doc pygame</a>.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Les évènements claviers</p>
+<p>Lorsque vous coderez une interface graphique, il est probable que vous assignerez des touches clavier aux différentes actions.
+Le type d'événement créé lorsque l'on appuie sur une touche est repéré par la constante <code>KEYDOWN</code>, (ou <code>KEYUP</code> au relâchement de la touche).
+Dans la boucle d'évènement, on pourra alors utiliser une structure conditionnelle telle que</p>
+<div class="highlight"><pre><span></span><code>if event.type == KEYDOWN:
+</code></pre></div>
+<p>Mais attention, <strong>cette condition sera vraie quelque soit la touche pressée</strong> !
+Pour définir une seule touche du clavier, vous devrez utilisez en plus <code>event.key</code>, qui détermine la touche pressée,
+ disponible uniquement lors d'un événement clavier.
+Cet <code>event.key</code> peut prendre les valeurs suivantes :</p>
+<ul>
+<li>Lettres: <code>K_a ... K_z</code></li>
+<li>Nombres: <code>K_0 ... K_9</code></li>
+<li>Contrôles: <code>K_TAB, K_RETURN, K_ESCAPE,...</code></li>
+<li>Flèches: <code>K_LEFT, K_UP, K_RIGHT, K_DOWN</code></li>
+<li>...</li>
+</ul>
+<p>La liste complète des constantes est disponible <a href="http://sdz.tdct.org/sdz/interface-graphique-pygame-pour-python.html#Lesinterfacesgraphiques">ici</a></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Déplacement du sprite de gauche à droite</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Mise en place du code</label><div class="tabbed-content">
+<p>Bien maintenant nous savons a peu prêt quoi faire. Commençons par créer
+un <code>Rect</code> a partir de l'image du personnage, juste après la ligne 
+de création de l'image <code>perso</code> :</p>
+<div class="highlight"><pre><span></span><code>persoRect = perso.get_rect()
+</code></pre></div>
+<p>Mais attention, on ne vient que de créer le <code>Rect</code>, et il n'a pas de position définie.
+On va alors effacer la ligne de <code>blit</code> du personnage, et la remplacer
+par :</p>
+<div class="highlight"><pre><span></span><code>persoRect.topleft = (270,380)
+</code></pre></div>
+<p>Notre rectangle est ainsi positionné correctement au centre de l'écran, en bas.</p>
+<p>Nous allons modifier ensuite <code>persoRect</code>pour déplacer le sprite.
+Nous fixons la vitesse de déplacement du sprite avec une base de
+<span class="arithmatex">\(10\)</span> pixels par tour de boucle.</p>
+<p>Dans la boucle d'événement, nous ajoutons alors les lignes suivantes :</p>
+<div class="highlight"><pre><span></span><code>if event.type == KEYDOWN  :
+    if event.key == K_LEFT :
+        if persoRect.left&gt;=10 :
+            persoRect = persoRect.move(-10,0)
+    if event.key == K_RIGHT :
+        if persoRect.right&lt;=630 :
+            persoRect = persoRect.move(10,0)
+</code></pre></div>
+<p>Nous avons ainsi un déplacement, mais si vous testez le code à ce moment, rien ne se passe.</p>
+<p>En effet, il ne faut pas oublier de <code>blitter</code> l'image à la nouvelle
+position du <code>Rect</code>. On rajoute donc à la fin de la boucle <code>while True</code> la ligne suivante :</p>
+<div class="highlight"><pre><span></span><code>fenetre.blit(perso, persoRect)
+</code></pre></div>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Code complet</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+<span class="n">persoRect</span> <span class="o">=</span> <span class="n">perso</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<span class="n">persoRect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
+
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">KEYDOWN</span>  <span class="p">:</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_LEFT</span> <span class="p">:</span>
+                    <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">left</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="p">:</span>
+                        <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_RIGHT</span> <span class="p">:</span>
+                    <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">right</span><span class="o">&lt;=</span><span class="mi">630</span> <span class="p">:</span>
+                        <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="n">persoRect</span><span class="p">)</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<details class="bug"><summary>Mais c'est nul !</summary><div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">raisons et corrections</label><div class="tabbed-content">
+<p>Et oui, pour plusieurs raisons :
+* la page ne se rafraîchit pas totalement, et la trace des anciennes
+positions du sprite est gardée;
+* il faut rappuyer sur la touche pour redéplacer le personnage, le déplacement n'est pas fluide.</p>
+<p>Le premier problème vient de la ligne <code>pygame.display.update()</code>, 
+qui ne change que les pixels modifiés par rapport au dernier affichage.
+Une solution simple consiste à forcer l'affichage du fond  <strong>avant</strong>
+le blit du sprite :</p>
+<div class="highlight"><pre><span></span><code><span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="n">persoRect</span><span class="p">)</span>
+</code></pre></div>
+<p>Pour le second problème, une solution simple (mais pas toujours efficace)
+consiste à utiliser la méthode <code>set_repeat()</code> du module <code>key</code>,qui prend en paramètres :</p>
+<ul>
+<li>le délai avant de continuer les déplacements quand la touche reste enfoncée (en millisecondes);</li>
+<li>le temps entre chaque déplacement. (en millisecondes)</li>
+</ul>
+<p>Vous devez donc, après initialisation de <code>pygame</code> placer la ligne :</p>
+<div class="highlight"><pre><span></span><code>pygame.key.set_repeat(400, 30)
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Le code complet</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">set_repeat</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+<span class="n">persoRect</span> <span class="o">=</span> <span class="n">perso</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<span class="n">persoRect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
+
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">KEYDOWN</span>  <span class="p">:</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_LEFT</span> <span class="p">:</span>
+                    <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">left</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="p">:</span>
+                        <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_RIGHT</span> <span class="p">:</span>
+                    <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">right</span><span class="o">&lt;=</span><span class="mi">630</span> <span class="p">:</span>
+                        <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="n">persoRect</span><span class="p">)</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
+<details class="tips"><summary>Une solution plus élégante, et plus efficace (mais inutile ici)</summary><div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Solution</label><div class="tabbed-content">
+<p>Le problème de l'utilisation de la méthode ci-dessus est qu'il est impossible
+de traiter des appuis sur des combinaisons de touches, puisqu'une seule
+touche est représentée par l'attribut <code>event.key</code>.</p>
+<p>Heureusement, les concepteurs de <code>pygame</code> ont prévu une méthode bien plus efficace :
+la méthode <code>get_pressed()</code> du module <code>key</code>, qui renvoie un <mark class="critic"><strong> dictionnaire de booléens</strong></mark>
+ayant pour clé  la constante représentant la touche, et pour lequel les valeurs <code>True</code>
+correspondent aux touches actuellement appuyées.</p>
+<p>On peut alors retirer de la boucle d'évènements toute la partie concernant les appuis de touches, et les remplacer
+par :</p>
+<div class="highlight"><pre><span></span><code><span class="n">dicKeys</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">dicKeys</span><span class="p">[</span><span class="n">K_LEFT</span><span class="p">]</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">left</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="p">:</span>
+        <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">dicKeys</span><span class="p">[</span><span class="n">K_RIGHT</span><span class="p">]</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">right</span><span class="o">&lt;=</span><span class="mi">630</span> <span class="p">:</span>
+        <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Le code de remplacement</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">set_repeat</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+<span class="n">persoRect</span> <span class="o">=</span> <span class="n">perso</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<span class="n">persoRect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
+
+<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">dicKeys</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">dicKeys</span><span class="p">[</span><span class="n">K_LEFT</span><span class="p">]</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">left</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="p">:</span>
+            <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dicKeys</span><span class="p">[</span><span class="n">K_RIGHT</span><span class="p">]</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">right</span><span class="o">&lt;=</span><span class="mi">630</span> <span class="p">:</span>
+            <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="n">persoRect</span><span class="p">)</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
 <h2 id="creation-dune-classe-dobjets-balle">Création d'une classe d'objets "Balle"</h2>
 <h2 id="apparition-des-objets-balles">Apparition des objets "Balles"</h2>
 <h2 id="gestion-des-collisions">Gestion des collisions</h2>
@@ -1186,10 +1590,10 @@ Et voilà ! 15 lignes de code, et nous voilà avec une fenêtre graphique digne 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.756773cc.min.js"></script>
       
         <script src="../../../javascripts/config.js"></script>
       
