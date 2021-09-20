@@ -613,51 +613,59 @@ et de capteurs d'évènements. Nous verrons ceci dans la partie suivante.
 		d'objets pour représenter ces balles.
 
 		Chaque balle sera représentée par une **image**, qui devra donc être associée à un **rectangle**.
-		Chaque balle aura une position, qui sera donnée originellement par son **centre**.
+		Chaque balle aura une position, qui sera donnée originellement par son **centre**. Elle aura par ailleurs une **vitesse**,
+		dont la valeur de départ sera tirée aléatoirement.
 
 		Un certain nombre d'actions seront utilisées sur ou par cette balle :
 
 		* elle se **déplacera** ;
-		* on testera sa **collision** avec le joueur ;
-		* et bien sur on l'affichera.
+		* on testera sa **collision** avec le joueur, en renvoyant un booléen ;
+		* et bien sur on l'**affichera**.
 		
 		On représente donc la classe balle par l'interface suivante :
 		<p align="center">
 		![Balle](InterfaceBalle.png){width = 30%}
 		</p>
+		
+		Nous implémentons de cette classe dans un fichier `balle.py`. Le code est donné dans l'onglet
+		ci contre, et ne nécessite que peu de commentaires, à part pour la méthode `collision(self,targetRect)`.
+		
+		Dans le cadre de ce tutoriel, nous utiliserons la méthode `colliderect` des objets `Rect`. Cette méthode renvoie `True`
+		si le rectangle de la balle est en collision avec le rectangle passé en argument et `False` sinon. Deux rectangles sont en collision si ils 
+		ont une partie commune.
+		
+		Pour les amateurs de *hitbox* plus précises, il faudra voir du côté de la classe [`Mask` de `pygame`](https://www.pygame.org/docs/ref/mask.html), 
+		qui utilise le canal alpha ou bien une clé de coloration pour détecter des collisions au pixel près.
+		
+		
 	=== "Code"
 		``` python linenums="1"
 
 		import pygame
-		from pygame.locals import *
+		from random import randint
 
-		pygame.init()
-		pygame.key.set_repeat(400, 30)
-
-		fenetre = pygame.display.set_mode((640, 480))
-		fond = pygame.image.load("background.jpg").convert()
-		perso = pygame.image.load("Perso.png").convert_alpha()
-		persoRect = perso.get_rect()
-		persoRect.topleft = (270,380)
-
-		fenetre.blit(fond,(0,0))
-		continuer = True
-		while continuer :
-			for event in pygame.event.get():
-				if event.type == QUIT:
-					continuer = False
-								
-			dicKeys = pygame.key.get_pressed()
-			if dicKeys[K_LEFT] :
-				if persoRect.left>=10 :
-					persoRect = persoRect.move(-10,0)
-			if dicKeys[K_RIGHT] :
-				if persoRect.right<=630 :
-					persoRect = persoRect.move(10,0)
-			fenetre.blit(fond, (0,0))
-			fenetre.blit(perso, persoRect)
-			pygame.display.update()
-			pygame.quit()
+		class Balle :
+			def __init__(self, image, center) :
+				""" Initialisation d'un objet de classe Balle a partir de deux arguments :
+			- image est l'adresse relative ou absolue de l'image voulue pour l'objet ;
+			- center est un tuple de deux entiers donnant la position du centre de la balle lors de
+			sa création."""
+		
+				self. image = pygame.image.load(image).convert_alpha()
+				self.rect = self.image.get_rect()
+				self.rect.center = center
+				self.vitesse = randint(1,5)
+			
+			def affiche(self, fenetre) :
+				fenetre.blit(self.image, self.rect)
+				
+			def deplace(self) :
+				self.rect = self.rect.move(0,self.vitesse)
+				
+				
+			def collision(self, targetRect) :
+				return self.rect.colliderect(targetRect) 					
+				
 
 		```
 

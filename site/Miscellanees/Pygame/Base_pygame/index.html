@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/Miscellanees/Pygame/Base_pygame/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1520,17 +1520,25 @@ par :</p>
 <p>Sachant que plusieurs balles vont tomber simultanément, nous allons construire une <strong>classe</strong>
 d'objets pour représenter ces balles.</p>
 <p>Chaque balle sera représentée par une <strong>image</strong>, qui devra donc être associée à un <strong>rectangle</strong>.
-Chaque balle aura une position, qui sera donnée originellement par son <strong>centre</strong>.</p>
+Chaque balle aura une position, qui sera donnée originellement par son <strong>centre</strong>. Elle aura par ailleurs une <strong>vitesse</strong>,
+dont la valeur de départ sera tirée aléatoirement.</p>
 <p>Un certain nombre d'actions seront utilisées sur ou par cette balle :</p>
 <ul>
 <li>elle se <strong>déplacera</strong> ;</li>
-<li>on testera sa <strong>collision</strong> avec le joueur ;</li>
-<li>et bien sur on l'affichera.</li>
+<li>on testera sa <strong>collision</strong> avec le joueur, en renvoyant un booléen ;</li>
+<li>et bien sur on l'<strong>affichera</strong>.</li>
 </ul>
 <p>On représente donc la classe balle par l'interface suivante :
 <p align="center">
 <img alt="Balle" src="../InterfaceBalle.png" width="width" />
 </p></p>
+<p>Nous implémentons de cette classe dans un fichier <code>balle.py</code>. Le code est donné dans l'onglet
+ci contre, et ne nécessite que peu de commentaires, à part pour la méthode <code>collision(self,targetRect)</code>.</p>
+<p>Dans le cadre de ce tutoriel, nous utiliserons la méthode <code>colliderect</code> des objets <code>Rect</code>. Cette méthode renvoie <code>True</code>
+si le rectangle de la balle est en collision avec le rectangle passé en argument et <code>False</code> sinon. Deux rectangles sont en collision si ils 
+ont une partie commune.</p>
+<p>Pour les amateurs de <em>hitbox</em> plus précises, il faudra voir du côté de la classe <a href="https://www.pygame.org/docs/ref/mask.html"><code>Mask</code> de <code>pygame</code></a>, 
+qui utilise le canal alpha ou bien une clé de coloration pour détecter des collisions au pixel près.</p>
 </div>
 <input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Code</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1556,42 +1564,30 @@ Chaque balle aura une position, qui sera donnée originellement par son <strong>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
-<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
 
-<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">set_repeat</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Balle</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">center</span><span class="p">)</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; Initialisation d&#39;un objet de classe Balle a partir de deux arguments :</span>
+<span class="sd">    - image est l&#39;adresse relative ou absolue de l&#39;image voulue pour l&#39;objet ;</span>
+<span class="sd">    - center est un tuple de deux entiers donnant la position du centre de la balle lors de</span>
+<span class="sd">    sa création.&quot;&quot;&quot;</span>
 
-<span class="n">fenetre</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
-<span class="n">fond</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;background.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
-<span class="n">perso</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Perso.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
-<span class="n">persoRect</span> <span class="o">=</span> <span class="n">perso</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
-<span class="n">persoRect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span> <span class="n">image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">continuer</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="k">while</span> <span class="n">continuer</span> <span class="p">:</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
-            <span class="n">continuer</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="nf">affiche</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fenetre</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">)</span>
 
-    <span class="n">dicKeys</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">dicKeys</span><span class="p">[</span><span class="n">K_LEFT</span><span class="p">]</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">left</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="p">:</span>
-            <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">dicKeys</span><span class="p">[</span><span class="n">K_RIGHT</span><span class="p">]</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">right</span><span class="o">&lt;=</span><span class="mi">630</span> <span class="p">:</span>
-            <span class="n">persoRect</span> <span class="o">=</span> <span class="n">persoRect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">fond</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-    <span class="n">fenetre</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">perso</span><span class="p">,</span> <span class="n">persoRect</span><span class="p">)</span>
-    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-    <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">deplace</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targetRect</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">colliderect</span><span class="p">(</span><span class="n">targetRect</span><span class="p">)</span>                    
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1673,10 +1669,10 @@ Chaque balle aura une position, qui sera donnée originellement par son <strong>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../javascripts/config.js"></script>
       
