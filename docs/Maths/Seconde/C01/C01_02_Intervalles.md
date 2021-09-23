@@ -3,7 +3,7 @@
 ## Intervalles de nombres réels
 
 !!! abstract "Définition" 
-	Soient $a$ et $b$ deux nombres réels.
+	Soient $a$ et $b$ deux nombres réels tels que $a \leqslant b$.
 	
 	* On appelle intervalle fermé $[a;b]$ l’ensemble des nombres réels $x$ tels que $a\leqslant x\leqslant b$.
 	<p align="center">
