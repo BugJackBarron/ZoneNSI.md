@@ -1153,23 +1153,68 @@ courbes fractales décrites, avant même l'invention du terme <mark class="criti
 <div class="admonition question">
 <p class="admonition-title">Construction du flocon</p>
 <ol>
-<li>
-<p>Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.
-    === "Enoncé"
-        a. Créer une fonction <code>segment(l)</code> qui trace une étape de la construction du segment de Von Koch (c'est-à-dire une itération
-    de la méthode).
-        b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Solution</label><div class="tabbed-content">
+<li>Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.</li>
+</ol>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>a. Créer une fonction <code>segment(long)</code> qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).</p>
+<p>b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
 <p>A venir !</p>
 </div>
 </div>
-</li>
+<ol>
+<li>Passons à la construction récursive d'un segment :</li>
+</ol>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>En se basant sur la fonction précédente, implémenter une fonction <code>segmentR(long, n)</code> qui tracera
+le résultat de <span class="arithmatex">\(n\)</span> itérations de la méthode sur un segment de longueur <code>long</code>.</p>
+<ul>
+<li>Pour <span class="arithmatex">\(n=0\)</span>, on obtiendra
+<p align="center">
+<img alt="VonKoch 0" src="../VonKoch0.png" style="width:25%;" />
+</p></li>
+<li>Pour <span class="arithmatex">\(n=1\)</span>, on obtiendra
+<p align="center">
+<img alt="VonKoch 1" src="../VonKoch1.png" style="width:25%;" />
+</p></li>
+<li>Pour <span class="arithmatex">\(n=2\)</span>, on obtiendra
+<p align="center">
+<img alt="VonKoch 2" src="../VonKoch2.png" style="width:25%;" />
+</p></li>
+</ul>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+<ol>
 <li>
-<p>Passons à la construction récursive d'un segment :</p>
+<p>Terminer la construction en traçant le flocon sur une base de triangle équilatéral.</p>
+<details class="done"><summary>Solution</summary><p>A venir !</p>
+</details>
 </li>
 </ol>
 </div>
 <h3 id="le-triangle-de-sierpinski">Le triangle de Sierpinski</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Triangle de Sierpinski</p>
+<p>Triangle (ou napperon) de Sierpinski (Sierpinki gasket), aussi connu sous le nom de joint de culasse (nom donné par Mandelbrot).
+Il peut s'obtenir à partir d'un triangle « plein »,
+par une infinité de répétitions consistant à diviser par deux
+la taille du triangle puis à les accoler en trois exemplaires par leurs sommets pour former un nouveau triangle.
+<p align="center">
+<iframe src="../SierpinskiEtapes.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe>
+</p>
+À chaque répétition le triangle est donc de même taille, mais « de moins en moins plein ». </p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">A coder</p>
+<p>En partant du principe de l'exercice sur le flocon de Von Koch, implémenter une fonction <code>Sierpinski(long, n)</code> qui trace
+le résultat de <span class="arithmatex">\(n\)</span> itérations sur un triangle de côté <span class="arithmatex">\(n\)</span>.</p>
+</div>
+<details class="done"><summary>Solution</summary><p>A venir !</p>
+</details>
 <h2 id="nouveaux-algorithmes-de-tri">Nouveaux algorithmes de tri</h2>
 <h3 id="rappels-sur-les-algorithmes-de-tri-vus-en-premiere">Rappels sur les algorithmes de tri vus en première</h3>
 <h3 id="le-tri-fusion">Le Tri Fusion</h3>

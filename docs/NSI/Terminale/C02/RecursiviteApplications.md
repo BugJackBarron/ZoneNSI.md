@@ -149,22 +149,63 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 !!! question "Construction du flocon"
 
 	1. Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.
-		=== "Enoncé"
-			a. Créer une fonction `segment(l)` qui trace une étape de la construction du segment de Von Koch (c'est-à-dire une itération
-		de la méthode).
-			b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.
-			
-		=== "Solution"
-			A venir !
-			
-	2. Passons à la construction récursive d'un segment :
+	=== "Enoncé"
+	
+		a. Créer une fonction `segment(long)` qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).
 		
+		b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.
+		
+	=== "Solution"
+		A venir !
+		
+	2. Passons à la construction récursive d'un segment :
+	
+	=== "Enoncé"
+	
+		En se basant sur la fonction précédente, implémenter une fonction `segmentR(long, n)` qui tracera
+		le résultat de $n$ itérations de la méthode sur un segment de longueur `long`.
+		
+		* Pour $n=0$, on obtiendra
+		<p align="center">
+		![VonKoch 0](VonKoch0.png){: style="width:25%;"}
+		</p>
+		* Pour $n=1$, on obtiendra
+		<p align="center">
+		![VonKoch 1](VonKoch1.png){: style="width:25%;"}
+		</p>
+		* Pour $n=2$, on obtiendra
+		<p align="center">
+		![VonKoch 2](VonKoch2.png){: style="width:25%;"}
+		</p>
+		
+	=== "Solution"
+		A venir !
+		
+	3. Terminer la construction en traçant le flocon sur une base de triangle équilatéral.
+	
+		??? done "Solution"
+			A venir !
 	
 	
-
-
-
 ### Le triangle de Sierpinski
+
+!!! abstract "Triangle de Sierpinski"
+	Triangle (ou napperon) de Sierpinski (Sierpinki gasket), aussi connu sous le nom de joint de culasse (nom donné par Mandelbrot).
+	Il peut s'obtenir à partir d'un triangle « plein »,
+	par une infinité de répétitions consistant à diviser par deux
+	la taille du triangle puis à les accoler en trois exemplaires par leurs sommets pour former un nouveau triangle.
+	<p align="center">
+	![type:video](SierpinskiEtapes.mp4)
+	</p>
+	À chaque répétition le triangle est donc de même taille, mais « de moins en moins plein ». 
+	
+!!! question "A coder"
+	En partant du principe de l'exercice sur le flocon de Von Koch, implémenter une fonction `Sierpinski(long, n)` qui trace
+	le résultat de $n$ itérations sur un triangle de côté $n$.
+
+??? done "Solution"
+
+	A venir !
 
 ## Nouveaux algorithmes de tri
 
