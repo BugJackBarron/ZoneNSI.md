@@ -1,7 +1,7 @@
 # Applications de la récursivité :  Tris de tableaux
 
 
-## Rappels sur les algorithmes de tris de première
+## Rappels sur les algorithmes de tris vus en classe de première
 
 ## Le tri par Fusion
 
