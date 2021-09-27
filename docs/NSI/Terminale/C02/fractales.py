@@ -14,7 +14,7 @@ def testTurtle() :
     donatello.setx(-300)
     
 
-def traceSierpinski(long,n) :
+def traceSierpinski(long,n, speed=5) :
     
     def sier(t,long, n)  :
         if n==0 :
@@ -43,6 +43,7 @@ def traceSierpinski(long,n) :
     screen = turtle.Screen()
     screen.bgcolor('lightgray')
     rafaello = turtle.Turtle()
+    rafaello.speed(speed)
     sier(rafaello, long, n)
     sleep(2)
     screen.reset()
@@ -52,8 +53,10 @@ def traceSierpinski(long,n) :
 
 if __name__ == "__main__" :
     while True :
-        #traceSierpinski(200,0)
-        #traceSierpinski(200,1)
-        #traceSierpinski(200,2)
-        #traceSierpinski(200,3)
-        traceSierpinski(200,4)
+        
+        traceSierpinski(200,0,speed = 0)
+        traceSierpinski(200,1, speed= 0)
+        traceSierpinski(200,2, speed = 0)
+        traceSierpinski(200,3, speed = 0)
+        traceSierpinski(200,4, speed = 0)
+        traceSierpinski(200,7, speed = 0)

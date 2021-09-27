@@ -1,16 +1,14 @@
-# Applications de la récursivité
-
-## Dessiner des fractales avec `turtle`
+# Applications de la récursivité :  Dessiner des fractales avec `turtle`
 
 Commençons par créer un fichier `fractales.py` qui nous servira pour la totalité des exercices.
 
-### Présentation de `turtle`
+## Présentation de `turtle`
 
 !!! tips "Le module `turtle`"
 	Le module `turtle` est un module faisant partie de toute distribution `python`. 
 	Son intérêt repose sur la simplicité (relative) des commandes utilisées pour dessiner.
 	
-	Un objet de classe {==**`Turtle`**==}se comporte comme un **crayon de table traçante**
+	Un objet de classe {==**`Turtle`**=} se comporte comme un **crayon de table traçante**
 	sur une feuille de papier munie d'un repère orthonormé.
 	<div style="display :flex;">
 	<div style="display:inline;width:50%;text-align:center;padding-left: 10px;padding-bottom : 1em">
@@ -87,7 +85,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	Comme toujours, la [doc python](https://docs.python.org/fr/3/library/turtle.html) est très claire sur le module `turtle`,
 	mais voici {==**quelques méthodes**==} des objets de classe `Turle` :
 	
-	* `forward(d)` : déplace l'objet `Turtle` de $d$ pixels dans la direction où pointe la tête de la tortue. A mettre en parallèle avec la méthde `backward(d)`.
+	* `forward(d)` : déplace l'objet `Turtle` de $d$ pixels dans la direction où pointe la tête de la tortue. A mettre en parallèle avec la méthode `backward(d)`.
 	* `left(a)` : tourne la tête de la tortue vers sa gauche de $a$°. A mettre en parallèle avec la méthode `right(a)`.
 	* `goto(x,y)` ou `setx(v)` ou `sety(v)` : déplace la tortue vers une position donnée dans le repère.
 	* `setheading(a)` : tourne la tête de la tortue à un angle de $a$° par rapport à l'horizontale, dans le sens trigonométrique.
@@ -105,13 +103,13 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 		* une chaîne de caractères : `red`, `gray`, ou `#33cc8c`, etc...
 		* un triplet RGB : `(255, 100, 50)`,...
 	* `fillcolor(*args)` : définit la couleur de remplissage.
-	* `begin_fill()` et `end_fill()` : début et fin de la défintion d'une zone de remplissage.
+	* `begin_fill()` et `end_fill()` : début et fin de la définition d'une zone de remplissage.
 	
 	Je ne détaillerai pas ici les méthodes des objets `Screen`.
 	
 !!! question "Prise en main de `turtle`"
 	
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Créer une fonction `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
 		la position courante.
 		2. Créer une fonction `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
@@ -122,12 +120,12 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	=== "Solutions"
 		A venir.
 
-### Flocon de Von Koch
+## Flocon de Von Koch
 
 !!! abstract "Le Flocon de Von Koch"
 	
 	Le flocon de Von Koch, inventée en 1904 par le mathématicien suédois Helge von Koch, est une des premières
-	courbes fractales décrites, avant même l'invention du terme {==**fractale**==} par Benoit Mandelbrot en 1967.
+	courbes fractales décrites, avant même l'invention du terme [{==**fractale**==}](https://fr.wikipedia.org/wiki/Fractale) par Benoit Mandelbrot en 1967.
 	
 	<p align="center">
 	![Flocon](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Von_Koch_curve.gif/180px-Von_Koch_curve.gif){: style="width:25%;"}
@@ -149,7 +147,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 !!! question "Construction du flocon"
 
 	1. Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		a. Créer une fonction `segment(long)` qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).
 		
@@ -160,7 +158,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 		
 	2. Passons à la construction récursive d'un segment :
 	
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		En se basant sur la fonction précédente, implémenter une fonction `segmentR(long, n)` qui tracera
 		le résultat de $n$ itérations de la méthode sur un segment de longueur `long`.
@@ -187,15 +185,15 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 			A venir !
 	
 	
-### Le triangle de Sierpinski
+## Le triangle de Sierpinski
 
 !!! abstract "Triangle de Sierpinski"
-	Triangle (ou napperon) de Sierpinski (Sierpinki gasket), aussi connu sous le nom de joint de culasse (nom donné par Mandelbrot).
-	Il peut s'obtenir à partir d'un triangle « plein »,
-	par une infinité de répétitions consistant à diviser par deux
-	la taille du triangle puis à les accoler en trois exemplaires par leurs sommets pour former un nouveau triangle.
+	
+	Le {==**Triangle (ou napperon) de Sierpinski**==}, aussi connu sous le nom de *joint de culasse* (nom donné par Mandelbrot), est une autre figure fractale décrite au début du XXème siècle.
+	
+	Il peut s'obtenir à partir d'un triangle « plein », par une infinité de répétitions consistant à diviser par deux la taille du triangle puis à les accoler en trois exemplaires par leurs sommets pour former un nouveau triangle.
 	<p align="center">
-	![type:video](SierpinskiEtapes.mp4)
+	![S](SierpinskiEtapes.gif)
 	</p>
 	À chaque répétition le triangle est donc de même taille, mais « de moins en moins plein ». 
 	
@@ -206,12 +204,8 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 ??? done "Solution"
 
 	A venir !
+	
+	
+!!! tips "Remarque" 
 
-## Nouveaux algorithmes de tri
-
-### Rappels sur les algorithmes de tri vus en première
-
-### Le Tri Fusion
-
-### Encore plus vite : QuickSort
-
+	Le triangle de Sierpinski correspond à une propriété particulière du triangle de Pascal. En effet, le triangle de Sierpinski apparaît dans le triangle de Pascal lorsque'on supprime tous les coefficients pairs. Vous pouvez en voir plus [ici](https://blogdemaths.wordpress.com/2013/07/16/sierpinski-et-pascal-sont-dans-un-triangle/)
