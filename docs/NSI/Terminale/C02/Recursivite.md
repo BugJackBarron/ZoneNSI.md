@@ -207,7 +207,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 			if not(isinstance(n, int)) or n<0 :
 				raise valueError("n must be a positiv integer")
 			produit = 1
-			for i in range(1,n+1) :
+			for i in range(1,n+1) :# On peut effectivemment partir de 2, et gagner un tour de boucle.
 				produit =produit*i
 			return produit
 				
@@ -221,7 +221,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 			if n==0 or n==1 :
 				return 1
 			else :
-				return factorielle(n-1)*n				
+				return factorielleR(n-1)*n				
 		```
 
 !!! question "Exercice : étoiles"
@@ -241,10 +241,25 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		2. Impélmenter une fonction **récursive** `etoileR(n)` qui effectue le même travail.
 		
 	=== "Solution Itérative"
-		A venir
+		``` python linenums="1"
+		def étoile(n) :
+			if not(isinstance(n, int)) or n<0 :
+				raise valueError("n must be a positiv integer")
+			for i in range(1, n+1) :
+				print("*"*i)				
+		```
 		
 	=== "Solution récursive"
-		A venir
+		``` python linenums="1"
+		def etoileR(n) :
+			if not(isinstance(n, int)) or n<=0 :
+				raise valueError("n must be a non null positiv integer")
+			if n == 1 :
+				print("*")
+			else :
+				etoileR(n-1)
+				print("*"*n)
+		```
 		
 !!! question "Coefficients binomiaux et triangle de Pascal"
 

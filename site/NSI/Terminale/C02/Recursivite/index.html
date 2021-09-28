@@ -1157,7 +1157,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
     <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">&quot;n must be a positiv integer&quot;</span><span class="p">)</span>
     <span class="n">produit</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span><span class="c1"># On peut effectivemment partir de 2, et gagner un tour de boucle.</span>
         <span class="n">produit</span> <span class="o">=</span><span class="n">produit</span><span class="o">*</span><span class="n">i</span>
     <span class="k">return</span> <span class="n">produit</span>
 </code></pre></div>
@@ -1176,7 +1176,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
     <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span> <span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="n">factorielle</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span>               
+        <span class="k">return</span> <span class="n">factorielleR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span>              
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1198,10 +1198,36 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 2. Impélmenter une fonction <strong>récursive</strong> <code>etoileR(n)</code> qui effectue le même travail.</p>
 </div>
 <input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution Itérative</label><div class="tabbed-content">
-<p>A venir</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">étoile</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">&quot;n must be a positiv integer&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>                
+</code></pre></div>
+</td></tr></table>
 </div>
 <input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">Solution récursive</label><div class="tabbed-content">
-<p>A venir</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">etoileR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">&quot;n must be a non null positiv integer&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">etoileR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
 </div>
 </div>
 </div>
