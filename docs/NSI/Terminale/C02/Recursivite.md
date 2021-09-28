@@ -238,11 +238,11 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		****
 		*****
 		```
-		2. Impélmenter une fonction **récursive** `etoileR(n)` qui effectue le même travail.
+		2. Implémenter une fonction **récursive** `etoileR(n)` qui effectue le même travail.
 		
 	=== "Solution Itérative"
 		``` python linenums="1"
-		def étoile(n) :
+		def etoile(n) :
 			if not(isinstance(n, int)) or n<0 :
 				raise valueError("n must be a positiv integer")
 			for i in range(1, n+1) :
@@ -267,10 +267,11 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 
 		Développez les expressions suivantes :
 		
-		1. $A = (a+b)^1$
-		2. $B = (a+b)^2$
-		3. $C = (a+b)^3$
-		4. $D = (a+b)^4$
+		1. $A = (a+b)^0$
+		2. $B = (a+b)^1$
+		3. $C = (a+b)^2$
+		4. $D = (a+b)^3$
+		5. $E = (a+b)^4$
 		
 		??? done "Solution"
 			A venir
@@ -278,19 +279,36 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	2. Complétez deux lignes supplémentaires du tableau suivant, nommé [{==**Triangle de Pascal**==}](https://fr.wikipedia.org/wiki/Triangle_de_Pascal):
 	
 		$$
-		\begin{array}{|c|c|c|c|c|c|}
+		\begin{array}{|l|c|c|c|c|c|c|}
 		\hline
-		1&&&&&\\\hline
-		1&1&&&&\\\hline
-		1&2&1&&&\\\hline
-		1&3&3&1&&\\\hline
-		1&4&6&4&1&\\\hline
-		1&5&10&10&5&1\\\hline
+		p=>&0&1&2&3&4&5\\\hline
+		n=0&1&&&&&\\\hline
+		n=1&1&1&&&&\\\hline
+		n=2&1&2&1&&&\\\hline
+		n=3&1&3&3&1&&\\\hline
+		n=4&1&4&6&4&1&\\\hline
+		n=5&1&5&10&10&5&1\\\hline
 		\end{array}
 		$$
 		
 		??? done "Solution"
-			A venir
+			Pour construire un nombre, il suffit d'utiliser la ligne précédente, en ajoutant le nombre
+			situé juste au dessus de lui et celui situé à la gauche de ce dernier.
+			
+			$$
+			\begin{array}{|l|c|c|c|c|c|c|c|c|}
+			\hline
+			p=>&0&1&2&3&4&5&6&7\\\hline
+			n=0&1&&&&&&&\\\hline
+			n=1&1&1&&&&&&\\\hline
+			n=2&1&2&1&&&&&\\\hline
+			n=3&1&3&3&1&&&&\\\hline
+			n=4&1&4&6&4&1&&&\\\hline
+			n=5&1&5&10&10&5&1&&\\\hline
+			n=6&1&6&15&20&15&6&1&\\\hline
+			n=7&1&7&21&35&35&21&7&1\\\hline
+			\end{array}
+			$$
 	
 	3. On appelle coefficient binomial de rang $p$ et de degré $n$ le nombre du **Triangle de Pascal** correspondant à la $n$-ième ligne et à la $p$_ième colonne.
 	Ce nombre est noté $\left(\begin{array}{c}
