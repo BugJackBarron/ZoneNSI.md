@@ -202,10 +202,27 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		2. Ecrire une fonction **récursive** `factorielleR(n)` qui renvoie la factorielle d'un entier naturel $n$ donné, et lève une `ValueError` si $n$ n'est pas entier ou est négatif.
 		
 	=== "Solution Itérative"
-		A venir
+		``` python linenums="1"
+		def factorielle(n) :
+			if not(isinstance(n, int)) or n<0 :
+				raise valueError("n must be a positiv integer")
+			produit = 1
+			for i in range(1,n+1) :
+				produit =produit*i
+			return produit
+				
+		```
 		
 	=== "Solution récursive"
-		A venir
+		``` python linenums="1"
+		def factorielleR(n) :
+			if not(isinstance(n, int)) or n<0 :
+				raise valueError("n must be a positiv integer")
+			if n==0 or n==1 :
+				return 1
+			else :
+				return factorielle(n-1)*n				
+		```
 
 !!! question "Exercice : étoiles"
 	
@@ -248,6 +265,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		$$
 		\begin{array}{|c|c|c|c|c|c|}
 		\hline
+		1&&&&&\\\hline
 		1&1&&&&\\\hline
 		1&2&1&&&\\\hline
 		1&3&3&1&&\\\hline
