@@ -166,13 +166,17 @@
 		1. $x \in [7;20]$ si et seulement si $7x \in \dots$
 		2. $x \in ]-1;3]$ si et seulement si $x+4 \in \dots$
 		3. $x \in [2;6]$ si et seuelemnt si $8-x \in \dots$
-		4. $x \in \dots $ si et seulement si $x+6 \in ]3 ; +\infty[$
-		5. $x \in \dots $ si et seulement si $-2x \in [4 ; +\infty[$
-		6. $x \in \dots $ si et seulement si $4x+3 \in [-6;5]$
+		4. $x \in \dots$ si et seulement si $x+6 \in ]3 ; +\infty[$
+		5. $x \in \dots$ si et seulement si $-2x \in [4 ; +\infty[$
+		6. $x \in \dots$ si et seulement si $4x+3 \in [-6;5]$
 		
 	=== "Solution"
-		A venir
-		
+		1. $x \in [7;20]$ si et seulement si $7x \in [49;140]$
+		2. $x \in ]-1;3]$ si et seulement si $x+4 \in ]3;7]$
+		3. $x \in [2;6]$ si et seuelemnt si $8-x \in [2;6]$
+		4. $x \in ]-3 ; +\infty[$ si et seulement si $x+6 \in ]3 ; +\infty[$
+		5. $x \in ]-\infty ; -2]$ si et seulement si $-2x \in [4 ; +\infty[$
+		6. $x \in [-\dfrac{9}{4};2]$ si et seulement si $4x+3 \in [-6;5]$
 
 ??? question "Représenter sous  la forme d'intervalles"
 
@@ -192,7 +196,7 @@
 		1. Résoudre dans $\mathbb{R}$ chacune des équations suivantes :
   
 		* $3x -6 =0$
-		* $ 3x -4 = 0$
+		* $3x -4 = 0$
 		* $-3x +64 = 19$
 		* $-2(x+5)=-8$
 		* $3x -\pi=0$
@@ -200,7 +204,7 @@
 
    
   
-		2. Lesquelles de ces 4 équations sont résolubles dans $\Z$ ? Dans $\Q$ ?
+		2. Lesquelles de ces 4 équations sont résolubles dans $\mathbb{Z}$ ? Dans $\mathbb{Q}$ ?
   
 	=== "Solution"
 		A venir
@@ -211,7 +215,7 @@
 		Résoudre les inéquations suivantes et présenter le résultat sous la forme d'un intervalle :
  
 		* $3x -6 >0$
-		* $ 3x -4 \leqslant  0$
+		* $3x -4 \leqslant  0$
 		* $-3x +64 < 19$
 
 
