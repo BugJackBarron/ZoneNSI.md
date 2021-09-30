@@ -29,10 +29,24 @@
 
 ## Les fichiers nécessaires
 
+!!! warning "Mise en place du dossier de projet"
+	
+	1.Vous commencerez par créer un dossier `NSI` dans votre dossier `Documents` de votre répertoire personnel.
+	
+	2.Puis vous créerez un sous dossier `C01` dans le dossier `NSI`.
+	
+	Ce dossier final devra donc avoir comme adresse absolue :
+	
+	`P:\Documents\NSI\C01`
+	
+	
+
 !!! tips "Fichier de mots"
 
 	Pour mener à bien le projet, vous aurez d'abord besoin du fichier
 	{==**[des mots français.](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=6yiGXrQkojGt)**==}.
+	
+	Vous téléchargerez celui-ci et le copierez dans `P:\Documents\NSI\C01`
 
 	J'ai retiré de celui-ci tous les mots contenant des signes diacritiques autres que :
 
@@ -45,15 +59,19 @@
 	
 !!! tips "Base de code Python"
 	
-	Je vous donne le code ci-dessous qui doit être votre base de travail :
+	Je vous donne le code ci-dessous qui doit être votre base de travail. Ce code sera sauvegardé
+	dans un fichier `ProjetPendu.py` qui sera enregistré à l'aide du logiciel `Thonny` dans 
+	`P:\Documents\NSI\C01`
 	
-	``` python
+	
+	``` python 
 	from random import choice
 
 
 	def choixMot(adresseFichier) :
-		""" fonction ouvrant un fichier texte et renvoyant une chaine de caractère
-	aléatoire issue d'une ligne quelconque du fichier
+		""" fonction ouvrant un fichier texte dont l'adresse absolue ou relative
+		est passée en argument sous la forme d'une chaine de caractère
+		et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
 	"""
 		with open(adresseFichier,'r', encoding='utf8') as file :
 			mot = choice([m for m in file.readlines()]).strip().replace('\n', '')        
@@ -78,6 +96,8 @@
 	'AAAEEEEIIOOUUUC'
 	>>> formateMot('œil')
 	'OEIL'
+	>>> formateMot('Lætitia')
+	'LAETITIA'
 	"""
 		...
 		
@@ -190,12 +210,39 @@
 		import doctest
 		doctest.testmod()
 		main()
-            
-            
-            
 
 	```
 
+!!! warning "fonction `choixMot(adresseFichier)`"
+
+	Cette fonction **ne doit pas être modifiée !**
+	
+	Elle prend en argument l'adresse **relative** ou **absolue** d'un fichier texte, et renvoie la chaine
+	de caractères correspondant à une ligne de ce fichier, où :
+	
+	* les éventuels espaces de début et de fin de ligne sont supprimés ;
+	* les caractères *retour chariot* (sauts de lignes) `\n` sont supprimés.
+		
+	Dans le cadre de ce projet, le fichier `liste_francais_modifiee.txt` doit normalement être situé dans le même
+	répertoire que `ProjetPendu.py`. Donc vous pouvez utiliser cette fonction de la manière suivante :
+	
+	``` python
+	mot = choixMot("liste_francais_modifiee.txt")
+	```
+	Ainsi la variable `mot` contiendra un mot extrait aléatoirement du fichier.
+
 ## Plan de travail
+
+1. Vous commencerez par compléter la fonction `formateMot(mot)`, afin qu'elle renvoie 
+une chaîne de caractères en majuscule dans laquelle tous les **signes diacritiques** ont été
+supprimés (à par les tirets des mots composés). Des **tests unitaires** sont donnés à titre d'exemple
+Vous pouvez éventuellement rajouter les votres.
+
+2. Vous complèterez ensuite la fonction `genereTirets(motATrouver,lettresUtilisees)`, qui 
+renvoie une chaîne de caractères correspondant à celle
+
+
+
+
 
 ## Grille de notation
