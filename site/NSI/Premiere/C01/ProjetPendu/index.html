@@ -1081,6 +1081,15 @@
                 
                 
                 <h1 id="projet-jeu-du-pendu">Projet : Jeu du Pendu</h1>
+<div class="admonition warning">
+<p class="admonition-title">principe du projet</p>
+<ul>
+<li>Vous travaillerez par binomes sur ce projet.</li>
+<li>Vous rendrez le code complet + votre dossier personnel pour le 16 octobre 2021 au plus tard.</li>
+<li>Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne 
+sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !</li>
+</ul>
+</div>
 <h2 id="description-du-projet">Description du projet</h2>
 <div class="admonition info">
 <p class="admonition-title">jeu du Pendu</p>
@@ -1111,10 +1120,18 @@ sont remplacés par la lettre. Sinon on ajoute un élément au dessin du pendu.<
 </p></p>
 </div>
 <h2 id="les-fichiers-necessaires">Les fichiers nécessaires</h2>
+<div class="admonition warning">
+<p class="admonition-title">Mise en place du dossier de projet</p>
+<p>1.Vous commencerez par créer un dossier <code>NSI</code> dans votre dossier <code>Documents</code> de votre répertoire personnel.</p>
+<p>2.Puis vous créerez un sous dossier <code>C01</code> dans le dossier <code>NSI</code>.</p>
+<p>Ce dossier final devra donc avoir comme adresse absolue :</p>
+<p><code>P:\Documents\NSI\C01</code></p>
+</div>
 <div class="admonition tips">
 <p class="admonition-title">Fichier de mots</p>
 <p>Pour mener à bien le projet, vous aurez d'abord besoin du fichier
 <mark class="critic"><strong><a href="https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=6yiGXrQkojGt">des mots français.</a></strong></mark>.</p>
+<p>Vous téléchargerez celui-ci et le copierez dans <code>P:\Documents\NSI\C01</code></p>
 <p>J'ai retiré de celui-ci tous les mots contenant des signes diacritiques autres que :</p>
 <ul>
 <li>les lettres accentuées ;</li>
@@ -1126,16 +1143,19 @@ sont remplacés par la lettre. Sinon on ajoute un élément au dessin du pendu.<
 </div>
 <div class="admonition tips">
 <p class="admonition-title">Base de code Python</p>
-<p>Je vous donne le code ci-dessous qui doit être votre base de travail :</p>
+<p>Je vous donne le code ci-dessous qui doit être votre base de travail. Ce code sera sauvegardé
+dans un fichier <code>ProjetPendu.py</code> qui sera enregistré à l'aide du logiciel <code>Thonny</code> dans 
+<code>P:\Documents\NSI\C01</code></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
 
 
 <span class="k">def</span> <span class="nf">choixMot</span><span class="p">(</span><span class="n">adresseFichier</span><span class="p">)</span> <span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; fonction ouvrant un fichier texte et renvoyant une chaine de caractère</span>
-<span class="sd">aléatoire issue d&#39;une ligne quelconque du fichier</span>
+    <span class="sd">&quot;&quot;&quot; fonction ouvrant un fichier texte dont l&#39;adresse absolue ou relative</span>
+<span class="sd">    est passée en argument sous la forme d&#39;une chaine de caractère</span>
+<span class="sd">    et renvoyant une chaine de caractère issue d&#39;une ligne aléatoire du fichier</span>
 <span class="sd">&quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">adresseFichier</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
-        <span class="n">mot</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>        
+        <span class="n">mot</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">mot</span>
 
 <span class="k">def</span> <span class="nf">formateMot</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span> <span class="p">:</span>
@@ -1157,6 +1177,8 @@ sont remplacés par la lettre. Sinon on ajoute un élément au dessin du pendu.<
 <span class="sd">&#39;AAAEEEEIIOOUUUC&#39;</span>
 <span class="sd">&gt;&gt;&gt; formateMot(&#39;œil&#39;)</span>
 <span class="sd">&#39;OEIL&#39;</span>
+<span class="sd">&gt;&gt;&gt; formateMot(&#39;Lætitia&#39;)</span>
+<span class="sd">&#39;LAETITIA&#39;</span>
 <span class="sd">&quot;&quot;&quot;</span>
     <span class="o">...</span>
 
@@ -1271,8 +1293,151 @@ sont remplacés par la lettre. Sinon on ajoute un élément au dessin du pendu.<
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">fonction <code>choixMot(adresseFichier)</code></p>
+<p>Cette fonction <strong>ne doit pas être modifiée !</strong></p>
+<p>Elle prend en argument l'adresse <strong>relative</strong> ou <strong>absolue</strong> d'un fichier texte, et renvoie la chaine
+de caractères correspondant à une ligne de ce fichier, où :</p>
+<ul>
+<li>les éventuels espaces de début et de fin de ligne sont supprimés ;</li>
+<li>les caractères <em>retour chariot</em> (sauts de lignes) <code>\n</code> sont supprimés.</li>
+</ul>
+<p>Dans le cadre de ce projet, le fichier <code>liste_francais_modifiee.txt</code> doit normalement être situé dans le même
+répertoire que <code>ProjetPendu.py</code>. Donc vous pouvez utiliser cette fonction de la manière suivante :</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">mot</span> <span class="o">=</span> <span class="n">choixMot</span><span class="p">(</span><span class="s2">&quot;liste_francais_modifiee.txt&quot;</span><span class="p">)</span>
+</code></pre></div>
+Ainsi la variable <code>mot</code> contiendra un mot extrait aléatoirement du fichier.</p>
+</div>
 <h2 id="plan-de-travail">Plan de travail</h2>
+<ol>
+<li>
+<p>Vous commencerez par compléter la fonction <code>formateMot(mot)</code>, afin qu'elle renvoie 
+une chaîne de caractères en <mark class="critic"><strong>majuscule</strong></mark> dans laquelle tous les <mark class="critic"><strong>signes diacritiques</strong></mark> ont été
+supprimés (à par les tirets des mots composés). Des <strong>tests unitaires</strong> sont donnés à titre d'exemple
+Vous pouvez éventuellement rajouter les votres.</p>
+</li>
+<li>
+<p>Vous complèterez ensuite la fonction <code>genereTirets(motATrouver,lettresUtilisees)</code>, qui 
+renvoie une chaîne de caractères correspondant à celle passée en premier argument <code>motATrouver</code>, pour laquelle
+les lettres <mark class="critic"><strong>non présentes</strong></mark> dans la chaîne de caractère <code>lettresUtilisees</code>.
+De plus, chaque caractère de la chaîne finale <mark class="critic"><strong>devra être suivi d'un espace</strong></mark>. Des <strong>tests unitaires</strong> sont donnés à titre d'exemple
+Vous pouvez éventuellement rajouter les votres.</p>
+</li>
+<li>
+<p>Vous complèterez la fonction <code>compteRestantes(motATrouver,lettresUtilisees)</code> qui renvoie un entier
+correspondant au nombre de lettres restant à trouver dans <code>motATrouver</code>
+sachant la chaîne de lettres déjà utilisées <code>lettresUtilisees</code>.</p>
+</li>
+<li>
+<p>Vous complèterez ensuite la fonction <code>demandeJoueurLettre()</code> et la rendrez <em>dumbproof</em> : cette fonction doit 
+continuer à redemander au joueur de saisir une lettre tant que celle-ci n'est pas compatible avec les règles du jeu.</p>
+</li>
+<li>
+<p>Vous complèterez ensuite la fonction <code>affichePendu(motATrouver, lettresUtilisees, nbEchecs)</code> qui affiche non seulement la potence, 
+amis aussi le mot à trouver sous sa forme de tirets.
+Pour construire cette fonction, vous utiliserez une <em>f-string</em> multi-lignes telle que :</p>
+</li>
+</ol>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">   _ _ _</span>
+<span class="s2">  o     |</span>
+<span class="s2">/ | \   |</span>
+<span class="s2"> / \    |</span>
+<span class="s2">        |</span>
+<span class="s2"> _______|__ </span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+</td></tr></table>
+6. A partir de toutes les fonctions précédentes, vous finaliserez le jeu en
+complétant la fonction <code>uneManche()</code>.</p>
+<ol>
+<li>Une fois le jeu complété, vous devrez en outre compléter un <strong>dossier personnel</strong> d'une ou
+ deux pages présentant : </li>
+<li>ce que vous avez réalisé individuellement dans ce projet ;</li>
+<li>les difficultés rencontrées et/ou les problèmes que vous n'avez pas pu résoudre ;</li>
+<li>
+<p>les aides qui vous on été apportées.</p>
+</li>
+<li>
+<p>Vous pourrez enfin apporter des modifications et/ou améliorations au code, par exemple en :</p>
+<ul>
+<li>ajoutant un compteur de score qui donne le nombre de réussites par rapport au nombre de parties jouées.</li>
+<li>ajouter un niveau de difficulté, en changeant le nombre d'erreurs possibles ;</li>
+<li>etc...</li>
+</ul>
+</li>
+</ol>
 <h2 id="grille-de-notation">Grille de notation</h2>
+<table>
+<thead>
+<tr>
+<th align="center">intitulé</th>
+<th align="center">barême</th>
+<th align="left">Détails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">fonction <code>formateMot</code></td>
+<td align="center">2 pt</td>
+<td align="left">passage de tous les tests unitaires</td>
+</tr>
+<tr>
+<td align="center">fonction <code>genereTirets</code></td>
+<td align="center">2 pt</td>
+<td align="left">passage de tous les tests unitaires</td>
+</tr>
+<tr>
+<td align="center">fonction <code>compteRestantes</code></td>
+<td align="center">1 pt</td>
+<td align="left">passage de tous les tests unitaires</td>
+</tr>
+<tr>
+<td align="center">fonction <code>demandeJoueurLettre</code></td>
+<td align="center">1 pt</td>
+<td align="left"><em>dumbproof</em></td>
+</tr>
+<tr>
+<td align="center">fonction <code>affichePendu</code></td>
+<td align="center">2 pt</td>
+<td align="left">Affichage correct</td>
+</tr>
+<tr>
+<td align="center">fonction <code>uneManche</code></td>
+<td align="center">3 pts</td>
+<td align="left">On attend un jeu a minima fonctionnel</td>
+</tr>
+<tr>
+<td align="center">Noms des variables clairs</td>
+<td align="center">2 pts</td>
+<td align="left">On proscrira les noms de variable d'un seul caractère, sauf compteurs précis</td>
+</tr>
+<tr>
+<td align="center">Code commenté et clair</td>
+<td align="center">3 pts</td>
+<td align="left">Des explications minimales doivent être écrites pour expliquer votre code</td>
+</tr>
+<tr>
+<td align="center">Réalisation d'un dossier personnel</td>
+<td align="center">2pts</td>
+<td align="left">Rendu au format PDF ou ODT</td>
+</tr>
+<tr>
+<td align="center">Améliorations,   qualité du code, etc...</td>
+<td align="center">2 pts</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
                 
               
               

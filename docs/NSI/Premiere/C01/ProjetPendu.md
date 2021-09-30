@@ -1,5 +1,15 @@
 # Projet : Jeu du Pendu
 
+!!! warning "principe du projet"
+
+	* Vous travaillerez par binomes sur ce projet.
+	* Vous rendrez le code complet + votre dossier personnel pour le 16 octobre 2021 au plus tard.
+	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne 
+	sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
+	
+	
+
+
 ## Description du projet
 
 !!! info "jeu du Pendu"
@@ -74,7 +84,7 @@
 		et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
 	"""
 		with open(adresseFichier,'r', encoding='utf8') as file :
-			mot = choice([m for m in file.readlines()]).strip().replace('\n', '')        
+			mot = choice([m for m in file.readlines()]).replace('\n', '').strip()
 		return mot
 
 	def formateMot(mot) :
@@ -234,15 +244,66 @@
 ## Plan de travail
 
 1. Vous commencerez par compléter la fonction `formateMot(mot)`, afin qu'elle renvoie 
-une chaîne de caractères en majuscule dans laquelle tous les **signes diacritiques** ont été
+une chaîne de caractères en {==**majuscule**==} dans laquelle tous les {==**signes diacritiques**==} ont été
 supprimés (à par les tirets des mots composés). Des **tests unitaires** sont donnés à titre d'exemple
 Vous pouvez éventuellement rajouter les votres.
 
 2. Vous complèterez ensuite la fonction `genereTirets(motATrouver,lettresUtilisees)`, qui 
-renvoie une chaîne de caractères correspondant à celle
+renvoie une chaîne de caractères correspondant à celle passée en premier argument `motATrouver`, pour laquelle
+les lettres {==**non présentes**==} dans la chaîne de caractère `lettresUtilisees`.
+De plus, chaque caractère de la chaîne finale {==**devra être suivi d'un espace**==}. Des **tests unitaires** sont donnés à titre d'exemple
+Vous pouvez éventuellement rajouter les votres.
 
+3. Vous complèterez la fonction `compteRestantes(motATrouver,lettresUtilisees)` qui renvoie un entier
+correspondant au nombre de lettres restant à trouver dans `motATrouver`
+sachant la chaîne de lettres déjà utilisées `lettresUtilisees`.
 
+4. Vous complèterez ensuite la fonction `demandeJoueurLettre()` et la rendrez *dumbproof* : cette fonction doit 
+continuer à redemander au joueur de saisir une lettre tant que celle-ci n'est pas compatible avec les règles du jeu.
+
+5. Vous complèterez ensuite la fonction `affichePendu(motATrouver, lettresUtilisees, nbEchecs)` qui affiche non seulement la potence, 
+amis aussi le mot à trouver sous sa forme de tirets.
+Pour construire cette fonction, vous utiliserez une *f-string* multi-lignes telle que :
+
+``` python linenums="1"
+
+f"""
+
+   _ _ _
+  o     |
+/ | \   |
+ / \    |
+        |
+ _______|__ 
+"""
+```
+6. A partir de toutes les fonctions précédentes, vous finaliserez le jeu en
+complétant la fonction `uneManche()`.
+
+7. Une fois le jeu complété, vous devrez en outre compléter un **dossier personnel** d'une ou
+ deux pages présentant : 
+ * ce que vous avez réalisé individuellement dans ce projet ;
+ * les difficultés rencontrées et/ou les problèmes que vous n'avez pas pu résoudre ;
+ * les aides qui vous on été apportées.
+
+8. Vous pourrez enfin apporter des modifications et/ou améliorations au code, par exemple en :
+	* ajoutant un compteur de score qui donne le nombre de réussites par rapport au nombre de parties jouées.
+	* ajouter un niveau de difficulté, en changeant le nombre d'erreurs possibles ;
+	* etc...
 
 
 
 ## Grille de notation
+
+| intitulé | barême | Détails |
+| :---: | :---: | :--- |
+| fonction `formateMot` | 2 pt | passage de tous les tests unitaires |
+| fonction `genereTirets` | 2 pt | passage de tous les tests unitaires  |
+| fonction `compteRestantes` | 1 pt | passage de tous les tests unitaires |
+| fonction `demandeJoueurLettre` | 1 pt | *dumbproof* |
+| fonction `affichePendu` | 2 pt | Affichage correct |
+| fonction `uneManche` | 3 pts | On attend un jeu a minima fonctionnel |
+| Noms des variables clairs | 2 pts | On proscrira les noms de variable d'un seul caractère, sauf compteurs précis |
+| Code commenté et clair | 3 pts | Des explications minimales doivent être écrites pour expliquer votre code |
+| Réalisation d'un dossier personnel | 2pts | Rendu au format PDF ou ODT |
+| Améliorations,   qualité du code, etc... | 2 pts | |

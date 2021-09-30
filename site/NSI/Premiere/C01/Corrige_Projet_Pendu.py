@@ -2,10 +2,12 @@ from random import choice
 
 
 def choixMot(fichier) :
-    """ fonction ouvrant un fichier texte et renvoyant une chaine de caractère
-aléatoire en minuscule issue d'une ligne quelconque du fichier"""
+    """ fonction ouvrant un fichier texte dont l'adresse absolue ou relative
+    est passée en argument sous la forme d'une chaine de caractère
+    et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
+    """
     with open(fichier,'r', encoding='utf8') as file :
-        mot = choice([m for m in file.readlines()]).lower().replace('\n', '')        
+        mot = choice([m for m in file.readlines()]).replace('\n', '').strip()
     return mot
 
 def formateMot(mot) :
@@ -27,6 +29,8 @@ La chaine renvoyée est en majuscule.
 'AAAEEEEIIOOUUUC'
 >>> formateMot('œil')
 'OEIL'
+>>> formateMot('Lætitia')
+'LAETITIA'
 """
     motFinal = ''
     for l in mot.lower() :
@@ -44,6 +48,8 @@ La chaine renvoyée est en majuscule.
             motFinal += 'c'
         elif l =='œ' :
             motFinal += 'oe'
+        elif l =='æ':
+            motFinal += 'ae'
         elif l not in [chr(97+i) for i in range(26)]+["-"] :
             print(l)
             raise ValueError(f'{l} not in latin alphabet')
