@@ -118,7 +118,44 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 		si le paramètre optionnel `diag` est passé à `True`.
 
 	=== "Solutions"
-		A venir.
+		Toutes les solutions suivantes supposent qu'un écran et qu'une tortue nommée `t` existent dans l'espace de nom général.
+		
+		=== "`triangleEquilateral(c)`"
+		
+			``` python
+			def triangleEquilateral(c) :
+				for _ in range(3):
+					t.forward(c)
+					t.left(120)
+			```
+			
+		=== "`pentagramme(c, color="red")`"
+		
+			``` python
+			def pentagramme(t, c, color="red") :
+				t.fillcolor(color)
+				t.begin_fill()
+				for _ in range(5):
+					t.forward(c)
+					t.right(144)
+				t.end_fill()
+			```
+			
+		=== "`hexagone(c, diag = False)`"
+		
+			``` python
+			def hexagone(t, c, diag = False) :
+				for _ in range(6):
+					t.forward(c)
+					t.right(60)
+				if diag :
+					for _ in range(3) :
+						t.right(60)
+						t.forward(2*c)
+						t.right(120)
+						t.forward(c)
+						t.right(60)
+			```
 
 ## Flocon de Von Koch
 
@@ -154,7 +191,18 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 		b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.
 		
 	=== "Solution"
-		A venir !
+		
+		``` python
+		def segment(long) :
+			t.forward(long//3)
+			t.left(60)
+			t.forward(long//3)
+			t.right(120)
+			t.forward(long//3)
+			t.left(60)
+			t.forward(long//3)
+    
+		```
 		
 	2. Passons à la construction récursive d'un segment :
 	
@@ -177,13 +225,41 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 		</p>
 		
 	=== "Solution"
-		A venir !
+		
+		``` python
+		def segmentR( long, n) :
+			if n == 0 :
+				t.forward(long)
+			else :
+				segmentR(long/3, n-1)
+				t.left(60)
+				segmentR(long/3, n-1)
+				t.right(120)
+				segmentR(long/3, n-1)
+				t.left(60)
+				segmentR(long/3, n-1)
+		```
 		
 	3. Terminer la construction en traçant le flocon sur une base de triangle équilatéral.
 	
 		??? done "Solution"
-			A venir !
-	
+		
+			Avec changement de couleurs :
+			``` python
+			def floconVK(long,n) :
+				t.pencolor(random.choice(couleurs))
+				t.begin_fill()
+				for _ in range(3) :
+					segmentR(long, n)
+					t.right(120)
+				t.end_fill()
+			```
+			où 
+			``` python
+			couleurs=["black","white","grey","red","orange","green",
+              "blue","navy","yellow","gold","tan","brown",
+              "sienna","wheat","cyan","pink","salmon","violet","purple"]
+			```
 	
 ## Le triangle de Sierpinski
 
