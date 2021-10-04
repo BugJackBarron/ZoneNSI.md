@@ -1208,7 +1208,39 @@ si le paramètre optionnel <code>diag</code> est passé à <code>True</code>.</l
 </ol>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solutions</label><div class="tabbed-content">
-<p>A venir.</p>
+<p>Toutes les solutions suivantes supposent qu'un écran et qu'une tortue nommée <code>t</code> existent dans l'espace de nom général.</p>
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1"><code>triangleEquilateral(c)</code></label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">triangleEquilateral</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2"><code>pentagramme(c, color="red")</code></label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pentagramme</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">144</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3"><code>hexagone(c, diag = False)</code></label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hexagone</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">diag</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diag</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1237,18 +1269,26 @@ courbes fractales décrites, avant même l'invention du terme <a href="https://f
 <ol>
 <li>Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.</li>
 </ol>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Énoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Énoncé</label><div class="tabbed-content">
 <p>a. Créer une fonction <code>segment(long)</code> qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).</p>
 <p>b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.</p>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">segment</span><span class="p">(</span><span class="n">long</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">long</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">long</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">long</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">long</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 <ol>
 <li>Passons à la construction récursive d'un segment :</li>
 </ol>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Énoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Énoncé</label><div class="tabbed-content">
 <p>En se basant sur la fonction précédente, implémenter une fonction <code>segmentR(long, n)</code> qui tracera
 le résultat de <span class="arithmatex">\(n\)</span> itérations de la méthode sur un segment de longueur <code>long</code>.</p>
 <ul>
@@ -1266,14 +1306,38 @@ le résultat de <span class="arithmatex">\(n\)</span> itérations de la méthode
 </p></li>
 </ul>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">segmentR</span><span class="p">(</span> <span class="n">long</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">long</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">segmentR</span><span class="p">(</span><span class="n">long</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="n">segmentR</span><span class="p">(</span><span class="n">long</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+        <span class="n">segmentR</span><span class="p">(</span><span class="n">long</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="n">segmentR</span><span class="p">(</span><span class="n">long</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 <ol>
 <li>
 <p>Terminer la construction en traçant le flocon sur une base de triangle équilatéral.</p>
-<details class="done"><summary>Solution</summary><p>A venir !</p>
+<details class="done"><summary>Solution</summary><p>Avec changement de couleurs :
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">floconVK</span><span class="p">(</span><span class="n">long</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">couleurs</span><span class="p">))</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">segmentR</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
+</code></pre></div>
+où 
+<div class="highlight"><pre><span></span><code><span class="n">couleurs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span><span class="s2">&quot;gold&quot;</span><span class="p">,</span><span class="s2">&quot;tan&quot;</span><span class="p">,</span><span class="s2">&quot;brown&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;sienna&quot;</span><span class="p">,</span><span class="s2">&quot;wheat&quot;</span><span class="p">,</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span><span class="s2">&quot;salmon&quot;</span><span class="p">,</span><span class="s2">&quot;violet&quot;</span><span class="p">,</span><span class="s2">&quot;purple&quot;</span><span class="p">]</span>
+</code></pre></div></p>
 </details>
 </li>
 </ol>
