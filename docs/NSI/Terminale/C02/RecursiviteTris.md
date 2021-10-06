@@ -35,15 +35,35 @@
 	
 !!! abstract "Principe du tri par sélection"
 	
+	Sur un tableau de n éléments, le principe du tri par sélection est le suivant :
 
-## Le tri par Fusion
+    * rechercher le plus petit élément du tableau, et l'échanger avec l'élément d'indice 0 ;
+    * rechercher le second plus petit élément du tableau, et l'échanger avec l'élément d'indice 1 ;
+    * continuer de cette façon jusqu'à ce que le tableau soit entièrement trié.
+	
+	On peut voir sur l'animation suivante extraite de [wikipedia](https://fr.wikipedia.org/wiki/Tri_par_s%C3%A9lection) :
+	
+	<p align = "center">
+	![gif insertion](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif){: style ="width:30%;"}
+	</p>
+	
+	Cet algorithme de tri, simple à comprendre, est considéré comme mauvais car sa complexité en temps est en $\mathbb{O}(n^2)$, que ce soit
+	dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà trié il faudra faire toutes les comparaisons).
+	
+
+## Le tri fusion
 
 <p align ="center">
 <img src = "https://fr.web.img2.acsta.net/newsv7/19/06/26/17/10/2163592.jpg" style = "width : 25%;" />
 </p>
 
-!!! abstract "Principe du Tri par fusion (Merge Sort)"
+!!! abstract "Principe du Tri Fusion (Merge Sort)"
 	
+	Le principe du {==**tri fusion**==}, est de séparer un tableau à trier en **deux sous-tableaux** qu'on triera récursivemment (ou itérativemment 
+	mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.
+	
+	Une fois les sous-tableaux triés, il faudra {==**fusionner**==} ces deux sous-tableaux en une seule identité.
+		
 	<p align="center">
 	![Merge Sort](https://i.redd.it/rno9aidb3bm01.png){: style="width : 50%";}
 	</p>
