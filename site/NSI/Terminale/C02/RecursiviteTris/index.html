@@ -808,15 +808,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#le-tri-par-fusion" class="md-nav__link">
-    Le tri par Fusion
+  <a href="#le-tri-fusion" class="md-nav__link">
+    Le tri fusion
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#plus-vite-quicksort" class="md-nav__link">
-    Plus vite : QuickSort
+    Plus vite ! QuickSort !
   </a>
   
 </li>
@@ -1075,18 +1075,67 @@
                 
                 <h1 id="applications-de-la-recursivite-tris-de-tableaux">Applications de la récursivité :  Tris de tableaux</h1>
 <h2 id="rappels-sur-les-algorithmes-de-tris-vus-en-classe-de-premiere">Rappels sur les algorithmes de tris vus en classe de première</h2>
-<h2 id="le-tri-par-fusion">Le tri par Fusion</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Principe du tri par insertion</p>
+<p>Le principe du tri par insertion est le suivant : au moment où on considère un élément du tableau à trier,
+les éléments qui le précèdent sont déjà triés, tandis que les éléments qui le suivent ne sont pas encore triés. </p>
+<p>On peut voir sur l'animation suivante extraite de wikipedia :</p>
+<p><p align = "center">
+<img alt="gif insertion" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" style="style" />
+</p></p>
+<p>La complexité du tri par insertion est <span class="arithmatex">\(\mathbb{O}(n^2)\)</span> dans le pire cas et en moyenne, et linéaire dans le meilleur cas (tableau presque trié). C'est donc un tri
+dont la vitesse d'exécution dépendra fortement de la situation initiale. </p>
+<details class="done"><summary>Le code en Python</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tri_insertion</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">cle</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cle</span><span class="p">:</span>
+            <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1"># decalage</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cle</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Principe du tri par sélection</p>
+<p>Sur un tableau de n éléments, le principe du tri par sélection est le suivant :</p>
+<ul>
+<li>rechercher le plus petit élément du tableau, et l'échanger avec l'élément d'indice 0 ;</li>
+<li>rechercher le second plus petit élément du tableau, et l'échanger avec l'élément d'indice 1 ;</li>
+<li>continuer de cette façon jusqu'à ce que le tableau soit entièrement trié.</li>
+</ul>
+<p>On peut voir sur l'animation suivante extraite de <a href="https://fr.wikipedia.org/wiki/Tri_par_s%C3%A9lection">wikipedia</a> :</p>
+<p><p align = "center">
+<img alt="gif insertion" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" style="style" />
+</p></p>
+<p>Cet algorithme de tri, simple à comprendre, est considéré comme mauvais car sa complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>, que ce soit
+dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà trié il faudra faire toutes les comparaisons).</p>
+</div>
+<h2 id="le-tri-fusion">Le tri fusion</h2>
 <p align ="center">
 <img src = "https://fr.web.img2.acsta.net/newsv7/19/06/26/17/10/2163592.jpg" style = "width : 25%;" />
 </p>
 
 <div class="admonition abstract">
-<p class="admonition-title">Principe du Tri par fusion (Merge Sort)</p>
+<p class="admonition-title">Principe du Tri Fusion (Merge Sort)</p>
+<p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark>, est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivemment (ou itérativemment 
+mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
+<p>Une fois les sous-tableaux triés, il faudra <mark class="critic"><strong>fusionner</strong></mark> ces deux sous-tableaux en une seule identité.</p>
 <p><p align="center">
 <img _=";" alt="Merge Sort" src="https://i.redd.it/rno9aidb3bm01.png" style="width : 50%" />
 </p></p>
 </div>
-<h2 id="plus-vite-quicksort">Plus vite : QuickSort</h2>
+<h2 id="plus-vite-quicksort">Plus vite ! QuickSort !</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du QuickSort</p>
 <p><p align="center">
