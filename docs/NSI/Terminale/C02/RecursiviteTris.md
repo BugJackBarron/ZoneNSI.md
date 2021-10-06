@@ -68,8 +68,15 @@
 	![Merge Sort](https://i.redd.it/rno9aidb3bm01.png){: style="width : 50%";}
 	</p>
 
+!!! example "Exemple vidéo"
+	
+	<p align="center">
+	<iframe src="//video.toutatice.fr/video/24034-tri-fusion-recursif/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
+	</p>
+
 
 ## Plus vite ! QuickSort !
+
 
 !!! abstract "Principe du QuickSort"
 	
