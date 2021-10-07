@@ -63,6 +63,8 @@
 	mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.
 	
 	Une fois les sous-tableaux triés, il faudra {==**fusionner**==} ces deux sous-tableaux en une seule identité.
+	
+	Cet algorithme est  du type {==**diviser pour régner**==} (*Divide and Conquer*) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux).
 		
 	<p align="center">
 	![Merge Sort](https://i.redd.it/rno9aidb3bm01.png){: style="width : 50%";}
@@ -74,8 +76,10 @@
 	<iframe src="//video.toutatice.fr/video/24034-tri-fusion-recursif/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
 	</p>
 
+!!! question "Fonction de fusion"
+	La principale difficulté dans cet algorithme est de créer une fonction fusionnant les deux tableaux triés. 
 
-## Plus vite ! QuickSort !
+## Plus vite ! QuickSort ! (Hors programme)
 
 
 !!! abstract "Principe du QuickSort"
