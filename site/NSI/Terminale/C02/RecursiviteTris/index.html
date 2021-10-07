@@ -1131,6 +1131,7 @@ dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà t
 <p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark>, est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivemment (ou itérativemment 
 mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
 <p>Une fois les sous-tableaux triés, il faudra <mark class="critic"><strong>fusionner</strong></mark> ces deux sous-tableaux en une seule identité.</p>
+<p>Cet algorithme est  du type <mark class="critic"><strong>diviser pour régner</strong></mark> (<em>Divide and Conquer</em>) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux).</p>
 <p><p align="center">
 <img _=";" alt="Merge Sort" src="https://i.redd.it/rno9aidb3bm01.png" style="width : 50%" />
 </p></p>
@@ -1140,6 +1141,10 @@ mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
 <p><p align="center">
 <iframe src="//video.toutatice.fr/video/24034-tri-fusion-recursif/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
 </p></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Fonction de fusion</p>
+<p>la principale difficulté dans cet algorithme est de créer une fonction fusionnant les deux tableaux triés.</p>
 </div>
 <h2 id="plus-vite-quicksort">Plus vite ! QuickSort !</h2>
 <div class="admonition abstract">
