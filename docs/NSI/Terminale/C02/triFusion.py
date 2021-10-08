@@ -14,6 +14,20 @@ def timeit(method):
     return timed
 
 @timeit
+def tri_selection(tab):
+    for i in range(len(tab)):
+      # Trouver le min
+       min = i
+       for j in range(i+1, len(tab)):
+           if tab[min] > tab[j]:
+               min = j
+
+       tmp = tab[i]
+       tab[i] = tab[min]
+       tab[min] = tmp
+    return tab
+
+@timeit
 def tri_insertion(tab): 
     # Parcour de 1 à la taille du tab
     for i in range(1, len(tab)): 
@@ -45,6 +59,9 @@ def fusion(t1, t2) :
     return tf
 
 @timeit
+def callTriFusion(tab):
+    return triFusion(tab)
+
 def triFusion(tab) :
     if len(tab) <= 1 :
         return tab
@@ -64,7 +81,10 @@ def testeTemps(n) :
     tabi = deepcopy(tab)
     print(f"#### TRI INSERTION {n} ####")
     tri_insertion(tabi)
+    tabs = deepcopy(tab)
+    print(f"#### TRI SELECTION {n} ####")
+    tri_selection(tabs)
     tabf=deepcopy(tab)
     print(f"#### TRI FUSION {n} ####")
-    triFusion(tabf)
+    callTriFusion(tabf)
     
