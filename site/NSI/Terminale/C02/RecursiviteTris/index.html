@@ -1228,11 +1228,30 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 
     <span class="k">return</span> <span class="n">timed</span>
 </code></pre></div></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Décorateur <code>@timeit</code></p>
+<p>pour utiliser le décorateur, on le place dans la ligne précédant la définition
+de la fonction qu'on veut décorer. Par exemple :
+<div class="highlight"><pre><span></span><code><span class="nd">@timeit</span>
+<span class="k">def</span> <span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+Chaque fois que la fonction <code>tri_insertion</code> sera appelée, le décorateur sera appliqué
+et exécuterala fonction <code>timed</code>, qui calcule le temps d'exécution de la fonction décorée.</p>
+<p>Il faudra être attentif à son utilisation <strong>dans le cas des fonctions récursives !</strong> (Je vous laisse
+constater par vous même le problème rencontré.)</p>
+</div>
+<ol>
 <li>Créer une fonction <code>genereTab(n)</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</li>
-<li>Créer à l'aide de toutes les fonctions précédentes une fonction <code>testeTemps(n)</code> qui compare les temps d'exécution des différents tris pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
+<li>
+<p>Créer à l'aide de toutes les fonctions précédentes une fonction <code>testeTemps(n)</code> qui compare les temps d'exécution des différents tris pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
 <strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau, et donc créer des copies du tableau original avant de le trier (on peut utiliser la fonction 
-<code>deepcopy</code> du module <code>copy</code>)</li>
-<li>Que peut-on en conclure quand à la complexité en temps du tri fusion ?</li>
+<code>deepcopy</code> du module <code>copy</code>)</p>
+</li>
+<li>
+<p>Que peut-on en conclure quand à la complexité en temps du tri fusion ?</p>
+</li>
 </ol>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
