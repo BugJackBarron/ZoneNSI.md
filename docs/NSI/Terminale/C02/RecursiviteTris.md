@@ -162,10 +162,25 @@
 
 			return timed
 		```
+		!!! warning "Décorateur `@timeit`"
+			pour utiliser le décorateur, on le place dans la ligne précédant la définition
+			de la fonction qu'on veut décorer. Par exemple :
+			``` python
+			@timeit
+			def tri_insertion(tab) :
+				...
+			```
+			Chaque fois que la fonction `tri_insertion` sera appelée, le décorateur sera appliqué
+			et exécuterala fonction `timed`, qui calcule le temps d'exécution de la fonction décorée.
+			
+			Il faudra être attentif à son utilisation **dans le cas des fonctions récursives !** (Je vous laisse
+			constater par vous même le problème rencontré.)
+		
 		2. Créer une fonction `genereTab(n)` qui crée un tableau de taille $n$ d'entiers aléatoires compris entre $0$ et $n^2$.
 		3. Créer à l'aide de toutes les fonctions précédentes une fonction `testeTemps(n)` qui compare les temps d'exécution des différents tris pour $n$ valant $100$, $1~000$, $10~000$. 
 		**Attention**, il faudra effectuer à chaque fois les tests sur le même tableau, et donc créer des copies du tableau original avant de le trier (on peut utiliser la fonction 
 		`deepcopy` du module `copy`)
+		
 		4. Que peut-on en conclure quand à la complexité en temps du tri fusion ?
 		
 	=== "Solution"
