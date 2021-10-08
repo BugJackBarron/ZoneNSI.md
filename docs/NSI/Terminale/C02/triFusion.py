@@ -40,6 +40,23 @@ def tri_insertion(tab):
 
 
 def fusion(t1, t2) :
+    """
+>>> fusion([12,35,45],[4,42,63])
+[4, 12, 35, 42, 45, 63]
+>>> fusion([12,35], [57])
+[12, 35, 57]
+>>> fusion([12,35], [42,57])
+[12, 35, 42, 57]
+>>> fusion([12,35], [])
+[12, 35]
+>>> fusion([], [12,35])
+[12, 35]
+>>> fusion([42,57,67,75], [12,35])
+[12, 35, 42, 57, 67, 75]
+>>> fusion([], [])
+[]
+
+"""
     tf = [0]*(len(t1)+len(t2))
     i, j = 0, 0
     for k in range(len(tf)) :
@@ -87,4 +104,7 @@ def testeTemps(n) :
     tabf=deepcopy(tab)
     print(f"#### TRI FUSION {n} ####")
     callTriFusion(tabf)
-    
+
+
+import doctest
+doctest.testmod()

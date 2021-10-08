@@ -1134,9 +1134,6 @@ dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà t
        <span class="k">return</span> <span class="n">tab</span>
 </code></pre></div>
 </details>
-<div class="admonition info">
-<p class="admonition-title">Complexié en temps comparée</p>
-</div>
 </div>
 <h2 id="le-tri-fusion">Le tri fusion</h2>
 <p align ="center">
@@ -1164,9 +1161,9 @@ mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
 </p></li>
 <li>De combien de variables compteurs avons nous besoins ?</li>
 <li>Quel type de boucle allons nous utiliser ?</li>
-<li>Que se passe-t-il dans la idéo quand <span class="arithmatex">\(j\)</span> atteint la valeur <span class="arithmatex">\(3\)</span> ?</li>
+<li>Que se passe-t-il dans la vidéo quand <span class="arithmatex">\(j\)</span> atteint la valeur <span class="arithmatex">\(3\)</span> ?</li>
 <li>Rédiger en langage naturel l'algorithme fusionnant deux tableaux triés.</li>
-<li>Implémenterune fonction <code>fusion(t1, t2)</code> qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux <code>t1</code> et <code>t2</code>.
+<li>Implémenter une fonction <code>fusion(t1, t2)</code> qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux <code>t1</code> et <code>t2</code>.
 On pourra utiliser les tests suivants pour vérifier que la fonction est correcte :</li>
 </ol>
 <details class="quote"><summary>Les tests</summary><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">45</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">63</span><span class="p">])</span>
@@ -1187,13 +1184,35 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 </details>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<ol>
+<li>C'est beau, c'est fait avec <a href="https://www.manim.community/">manim</a>.</li>
+<li>En réalité il n'y a que deux compteurs : <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(j\)</span>. En effet <span class="arithmatex">\(k\)</span> est en permanence égal à <span class="arithmatex">\(i+j\)</span>.</li>
+<li>On peut utiliser une boucle <code>Pour</code>, vu que le nombre d'itérations est connu au départ :
+il s'agit de la somme des longueurs des deux tableaux. Mais il est aussi tout à fait possible
+d'utiliser une boucle <code>Tant que</code>, puisque l'algorithme se poursuit tant qu'un des deux compteurs n'a pas atteint 
+sa position finale.</li>
+<li>Quand <span class="arithmatex">\(j\)</span> atteint la position 3 (soit la longueur du deuxième tableau), il ne reste plus qu'à compléter
+avec les valeurs restantes du premier tableau.</li>
+<li>Différentes versions :</li>
+</ol>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Version <code>Pour</code> sans initialisation du tableau final</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>fonction fusion(t1, t2)
+    tf &lt;- tableau vide
+    i &lt;- 0
+    j &lt;- 0
+    n1 &lt;- longueur de t1
+    n2 &lt;- longueur de t2
+    Pour k allant de 0 à n1+n2-1
+        Si i&lt;n1 et j&lt;n2
+</code></pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Tri Fusion Récursif</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Exercice</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Exercice</label><div class="tabbed-content">
 <p>Une fois la fonction <code>fusion</code> codée, l'algorithme de tri par fusion est simple :</p>
 <ol>
 <li>Regardez la vidéo suivante :
@@ -1205,14 +1224,14 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 <li>Implémenter une fonction <code>triFusion(t1, t2)</code> qui prend en argument deux tableaux et renvoie le tableau trié contenant les éléments des deux tableaux <code>t1</code> et <code>t2</code>.</li>
 </ol>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
 <p>A venir !</p>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Complexié en temps</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Exercice</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Exercice</label><div class="tabbed-content">
 <ol>
 <li>Copiez-collez le code ci-dessous permettant d'utiliser le décorateur <code>@timeit</code> :
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>                                                
@@ -1254,7 +1273,7 @@ constater par vous même le problème rencontré.)</p>
 </li>
 </ol>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution</label><div class="tabbed-content">
 <p>A venir !</p>
 </div>
 </div>

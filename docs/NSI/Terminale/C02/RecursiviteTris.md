@@ -66,7 +66,7 @@
 			   return tab
 		```
 		
-	!!! info "Complexié en temps comparée" 
+	
 		
 
 ## Le tri fusion
@@ -103,9 +103,9 @@
 		</p>
 		2. De combien de variables compteurs avons nous besoins ?
 		3. Quel type de boucle allons nous utiliser ?
-		4. Que se passe-t-il dans la idéo quand $j$ atteint la valeur $3$ ?
+		4. Que se passe-t-il dans la vidéo quand $j$ atteint la valeur $3$ ?
 		5. Rédiger en langage naturel l'algorithme fusionnant deux tableaux triés.
-		6. Implémenterune fonction `fusion(t1, t2)` qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux `t1` et `t2`.
+		6. Implémenter une fonction `fusion(t1, t2)` qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux `t1` et `t2`.
 		On pourra utiliser les tests suivants pour vérifier que la fonction est correcte :
 		??? quote "Les tests"
 			``` python
@@ -126,7 +126,30 @@
 			```
 		
 	=== "Solution"
-		A venir
+	
+		1. C'est beau, c'est fait avec [manim](https://www.manim.community/).
+		2. En réalité il n'y a que deux compteurs : $i$ et $j$. En effet $k$ est en permanence égal à $i+j$.
+		3. On peut utiliser une boucle `Pour`, vu que le nombre d'itérations est connu au départ :
+		il s'agit de la somme des longueurs des deux tableaux. Mais il est aussi tout à fait possible
+		d'utiliser une boucle `Tant que`, puisque l'algorithme se poursuit tant qu'un des deux compteurs n'a pas atteint 
+		sa position finale.
+		4. Quand $j$ atteint la position 3 (soit la longueur du deuxième tableau), il ne reste plus qu'à compléter
+		avec les valeurs restantes du premier tableau.
+		5.  Différentes versions :
+		=== "Version `Pour` sans initialisation du tableau final"
+			```
+			fonction fusion(t1, t2)
+				tf <- tableau vide
+				i <- 0
+				j <- 0
+				n1 <- longueur de t1
+				n2 <- longueur de t2
+				Pour k allant de 0 à n1+n2-1
+					Si i<n1 et j<n2
+						
+			
+		
+			```
 		
 !!! question "Tri Fusion Récursif"
 	=== "Exercice"
