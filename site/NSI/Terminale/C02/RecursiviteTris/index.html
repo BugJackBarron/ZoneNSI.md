@@ -1212,30 +1212,33 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 </div>
 <div class="admonition question">
 <p class="admonition-title">Complexié en temps</p>
-<p>==="Exercice"</p>
-<div class="highlight"><pre><span></span><code>1. Copiez-collez le code ci-dessous permettant d&#39;utiliser le décorateur `@timeit` :
-``` python 
-import time                                                
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Exercice</label><div class="tabbed-content">
+<ol>
+<li>Copiez-collez le code ci-dessous permettant d'utiliser le décorateur <code>@timeit</code> :
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>                                                
 
-def timeit(method):
+<span class="k">def</span> <span class="nf">timeit</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
 
-    def timed(*args, **kw):
-        ts = time.time()
-        result = method(*args, **kw)
-        te = time.time()
-        print(f&quot; {method.__name__} ({args},{kw}) {te-ts}&quot; )
-        return result
+    <span class="k">def</span> <span class="nf">timed</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="n">te</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">method</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">kw</span><span class="si">}</span><span class="s2">) </span><span class="si">{</span><span class="n">te</span><span class="o">-</span><span class="n">ts</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
 
-    return timed
-```
-2. Créer une fonction `genereTab(n)` qui crée un tableau de taille $n$ d&#39;entiers aléatoires compris entre $0$ et $n^2$.
-3. Créer à l&#39;aide de toutes les fonctions précédentes une fonction `testeTemps(n)` qui compare les temps d&#39;exécution des différents tris pour $n$ valant $100$, $1~000$, $10~000$. 
-**Attention**, il faudra effectuer à chaque fois les tests sur le même tableau, et donc créer des copies du tableau original avant de le trier (on peut utiliser la fonction 
-`deepcopy` du module `copy`)
-4. Que peut-on en conclure quand à la complexité en temps du tri fusion ?
-</code></pre></div>
-<p>==="Solution"
-    A venir !</p>
+    <span class="k">return</span> <span class="n">timed</span>
+</code></pre></div></li>
+<li>Créer une fonction <code>genereTab(n)</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</li>
+<li>Créer à l'aide de toutes les fonctions précédentes une fonction <code>testeTemps(n)</code> qui compare les temps d'exécution des différents tris pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
+<strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau, et donc créer des copies du tableau original avant de le trier (on peut utiliser la fonction 
+<code>deepcopy</code> du module <code>copy</code>)</li>
+<li>Que peut-on en conclure quand à la complexité en temps du tri fusion ?</li>
+</ol>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Complexités du tri fusion</p>

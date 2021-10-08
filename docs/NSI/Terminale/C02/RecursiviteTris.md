@@ -145,7 +145,7 @@
 		
 !!! question "Complexié en temps"
 	
-	==="Exercice"
+	=== "Exercice"
 		
 		1. Copiez-collez le code ci-dessous permettant d'utiliser le décorateur `@timeit` :
 		``` python 
@@ -168,7 +168,7 @@
 		`deepcopy` du module `copy`)
 		4. Que peut-on en conclure quand à la complexité en temps du tri fusion ?
 		
-	==="Solution"
+	=== "Solution"
 		A venir !
 		
 !!! info "Complexités du tri fusion"
