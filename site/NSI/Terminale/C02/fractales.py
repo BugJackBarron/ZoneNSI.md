@@ -1,5 +1,6 @@
 import turtle
 from time import sleep
+import random
 
 
 def testTurtle() :
@@ -19,6 +20,7 @@ def traceSierpinski(long,n, speed=5) :
     def sier(t,long, n)  :
         if n==0 :
             t.left(60)
+            t.fillcolor(random.choice(['red', 'green', 'blue', 'black', 'white', 'yellow']))
             t.begin_fill()
             for _ in range(3) :
                 t.forward(long)
