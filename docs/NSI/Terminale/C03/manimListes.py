@@ -57,7 +57,7 @@ class addFirstElement(Scene):
         self.remove(tab1.group)
         self.remove(tabI.group)
         self.add(tab2.group)
-        
+        self.play(FadeOut(tab2.values[-1]))
         for i in reversed(range(0,len(tab2.tab)-1)) :
             self.play(Transform(tab2.values[i], tab3.values[i+1]))
             if i==len(tab2.tab)-1 :
