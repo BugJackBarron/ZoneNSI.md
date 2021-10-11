@@ -1,0 +1,9 @@
+st=>start: Nombre n
+e=>end: base2
+op1=>operation: base2 est une chaine vide
+cond=>condition: n≠0
+op2=>operation: Ajouter n%2 à base2
+op3=>operation: n prend la valeur n//2
+st->op1->cond
+cond(yes, right)->op2(right)->op3(right)->cond
+cond(no)->e

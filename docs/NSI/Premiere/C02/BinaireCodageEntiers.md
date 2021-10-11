@@ -167,20 +167,6 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 ### Conversions de la base $10$ vers la base $2$
 
-<style>
-.pre {
-    display:       block;
-    unicode-bidi:  embed;
-    font-family:   monospace;
-    white-space:   pre;
-}
-</style>
-
-
-<script src ="raphael.min.js"></script>
-<script src ="flowchart.min.js"></script>
-<script src ="jquery-plugin.js"></script>
-
 
 !!! tips "Méthode : Algorithme de conversion du nombre $(n)_{10}$ en base $2$"
 	
@@ -194,27 +180,11 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 			Renvoyer base2 inversée
 		```
 	
-	<!-- === "Sous forme de diagramme"
-
-		<div class="diagram">
-		st=>start : Nombre n
-		e=>end : base2
-		op1=>operation : base2 
-		est une chaine vide
-		cond=>condition : n ≠0
-		op2=>operation : Ajouter n%2
-		à base2
-		op3=>operation : n prend la valeur n//2
-
-		st->op1->cond
-		cond(oui)->op2->op3->cond
-		cond(Non)->e
-		</div>
-
-
-		<script>
-		$(".diagram").flowchart();
-		</script> -->
+	=== "Sous forme de diagramme"
+		
+		<p align="center">
+		![Dec2Bin](Algogramme_Dec2Bin.png)
+		</p>
 	
 !!! example "Exemple : Conversion de $(135)_{10}$ en base $2$"
 	
@@ -282,115 +252,196 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 ### Une autre base utile : l'hexadécimal
 
-Outre que la lecture des binaires par un humain est très compliquée, il faut remarquer que, de par la construction des nombre en écritures binaires, le nombre de symboles utilisés en base $2$ est largement supérieur à celui utilisé en base $10$ - **$3,2$ fois plus grand** en moyenne sur les $100~000$ premiers entiers.
+Outre que la lecture des nombres en écriture binaire par un humain est très compliquée, il faut remarquer que,
+ de par la construction de ces nombres, la quantité de symboles utilisés en base $2$ est largement supérieur à
+ celui utilisé en base $10$ - **$3,2$ fois plus grand** en moyenne sur les $100~000$ premiers entiers.
 
-Il peut donc être utile de trouver un compromis entre la base $2$, utile pour l'ordinateur, et la base $10$, plus compréhensible par un être humain.
+Il peut donc être utile de trouver un compromis entre la base $2$, utile pour l'ordinateur, et la base $10$
+, plus compréhensible par un être humain.
 
 Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-à-dire un système de **base 16**.
-\begin{definition}{Base hexadécimale}
-\noindent Un nombre entier écrit dans une base hexadécimale ( base $16$ ) vérifie les conditions suivantes :
-\trianglenoir
-\begin{itemize}
-\item il est écrit avec les seize chiffres hexadécimaux : $0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F$ ;
-\item chaque chiffre possède un poids représentant une puissance de $16$, le poids augmentant de la droite vers la gauche en partant d'un exposant $0$.
-\end{itemize}
-\end{definition}
-\begin{exemple}
-Le nombre hexadécimal $(5B6)_{16}$ correspond donc en décimal à :
-\begin{center}
-$\begin{array}{ccccc}
-(5B6)_{16}&=& \dots \times 16^{\dots}&+ \dots \times 16^{\dots}&+ \dots \times 16^{\dots}\\
-&=& \dots \times \dots&+ \dots \times \dots&+ \dots \times \dots\\
-&=&
-\end{array}$
-\end{center}
-\end{exemple}
-\begin{Exercice}
-Convertir de l'hexadécimal vers le décimal :
-\begin{enumerate}
-\item $(FF)_{16}$
-\item $(6E)_{16}$
-\item $(245A)_{16}$
-\end{enumerate}
 
-\end{Exercice}
-\begin{methode}{Convertir vers l'hexadécimal depuis le décimal}
-Pour convertir vers l'hexadécimal depuis le décimal, on utilise la même méthode qu'en binaire mais en divisant par $16$.\\
-\end{methode}
-\begin{exemple}
-Convertir le nombre $244$ en hexadécimal.
+!!! abstract "Base hexadécimale"
+	Un nombre entier écrit dans une base hexadécimale ( base $16$ ) vérifie les conditions suivantes :
 
-\vspace{5cm}
+	* il est écrit avec les seize chiffres hexadécimaux : $0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F$ ;
+	* chaque chiffre possède un poids représentant une puissance de $16$, le poids augmentant de la droite vers la gauche en partant d'un exposant $0$.
 
-\end{exemple}
+!!! example "Exemple"
+	Le nombre hexadécimal $(5B6)_{16}$ correspond donc en décimal à :
 
-\begin{remarques}
-\begin{itemize}
-\item A un chiffre dans la base $16$, correspond exactement $4$ chiffres dans la base $2$.
-\item Cela signifie que pour écrire un octet en hexadécimal, deux chiffres suffisent.
-\item Ce système de notation est très pratique pour noter les codes des couleurs, les clés de chiffrement ( code Wifi par exemple ), ...
-\end{itemize}
-\end{remarques}
+	=== "A compléter"
+	
+		$$
+		\begin{array}{ccccc}
+		(5B6)_{16}&=& \dots \times 16^{\dots}&+ \dots \times 16^{\dots}&+ \dots \times 16^{\dots}\\
+		&=& \dots \times \dots&+ \dots \times \dots&+ \dots \times \dots\\
+		&=&&&\\
+		\end{array}
+		$$
+		
+	=== "Solution"
+	
+		$$
+		\begin{array}{ccccc}
+		(5B6)_{16}&=& 5 \times 16^{2}&+ 11 \times 16^{1}&+ 6 \times 16^{0}\\
+		&=& 5 \times 256&+ 11 \times 16&+ 6 \times 1\\
+		&=&1~462&&\\
+		\end{array}
+		$$
+
+!!! question "Exercice"
+	=== "Enoncé"
+		Convertir de l'hexadécimal vers le décimal :
+
+		* $(FF)_{16}$
+		* $(6E)_{16}$
+		* $(245A)_{16}$
 
 
 
-\section{Opérations élémentaires sur les nombres binaires}
-\subsection{Sommes de nombres binaires}
-\begin{methode}{Additionner deux nombres entiers en base 2}
-La technique d'addition de deux nombres binaire est la même que pour des nombres en écriture décimale :\\
-\parbox{0.3\linewidth}{
-\begin{Large}
-\begin{center}
-$\begin{array}{cccc}
-&1&4&9\\
-+&&7&8\\\hline
-&&&
-\end{array}$
-\end{center}
-\end{Large}
-}\hfill\vline\hfill\parbox{0.6\linewidth}{
-\begin{Large}
-\begin{center}
-$\begin{array}{*{9}{c}}
-&1&0&0&1&0&1&0&1\\
-+&&1&0&0&1&1&1&0\\\hline
-&&&&&&&&
-\end{array}$
-\end{center}
-\end{Large}
-}
-\end{methode}
-\subsection{Produits de nombres binaires}
-\begin{methode}{Multiplier deux nombres entiers en base 2}
-La technique de multiplication de deux nombres binaire est la même que pour des nombres en écriture décimale - mais la retenue peut se propager parfois plus loin que le rang immédiatement supérieur :\\
-\parbox{0.3\linewidth}{
-\begin{Large}
-\begin{center}
-$\begin{array}{cccc}
-&&2&4\\
-\times&&1&3\\\hline
-&&&\\
-+&&&\\\hline
-&&&
-\end{array}$
-\end{center}
-\end{Large}
-}\hfill\vline\hfill\parbox{0.6\linewidth}{
-\begin{Large}
-\begin{center}
-$\begin{array}{*{10}{c}}
-&&1&0&0&1&0&1&0&1\\
-\times&&&&&&1&1&0&1\\\hline
-&&&&&&&&&\\
-+&&&&&&&&&\\
-+&&&&&&&&&\\
-+&&&&&&&&&\\\hline
-&&&&&&&&&
-\end{array}$
-\end{center}
-\end{Large}
-}
-\end{methode}
+!!! tips "Méthode : Convertir vers l'hexadécimal depuis le décimal"
+
+	Pour convertir vers l'hexadécimal depuis le décimal, on utilise la même méthode 
+	qu'en binaire mais en divisant par $16$.
+
+!!! example "Exemple"
+
+	=== "Enoncé"
+		Convertir le nombre $244$ en hexadécimal.
+		
+	=== "Solution"
+		A venir !
 
 
-\end{document}
+!!! info "Remarques"
+
+	* A un chiffre dans la base $16$, correspond exactement $4$ chiffres dans la base $2$.
+	* Cela signifie que pour écrire un octet en hexadécimal, **deux chiffres hexadécimaux suffisent**. C'est pour cette raison que les 
+	octets écrits en base deux sont **groupés par 4 chiffres** :
+	
+	$$
+	(189)_{10} = (BD)_{16} = (1011~1101)_2
+	$$
+	
+	* Ce système de notation est très pratique pour noter les codes des couleurs (par exemple en RGB : `#7455BA` signifie que l'octet représentant le canal rouge
+	a pour valeur `74`, celui du canal vert `55`, et celui du canal bleu `BA`), pour les clés de chiffrement (code Wifi par exemple), ...
+
+
+??? info "Roue numérique"
+	
+	<link href="../Roue_Binaire.css" rel="stylesheet">
+	<div class="container">
+	<div class="texte">Ecriture décimale</div>
+	</div>
+	<div class="container" id="roue_dec">		
+
+	<span class="digit" id ="dec_centaines">0</span>
+	<span class="digit" id ="dec_dizaines">0</span>
+	<span class="digit" id="dec_unites">0</span>
+		
+	</div>
+	<div class="container">
+	<span class="roll" id="rolldown">
+		-
+	</span>
+	
+	<span>
+	<div id="set">
+	<input type="number" id="setSpeed" name="setSpeed"
+	min="0" max="300" value="100" step ="10"/>
+	</div>
+	<div id="reset">
+	Reset
+	</div>
+	</span>
+	<span class="roll" id="rollup">
+	+
+	</span>
+	</div>
+	<div class="container">
+	<div class="texte" id="bintxt">Ecriture binaire</div>
+	</div>
+	<div class="container" id="roue_bin">	
+
+	<span class="digit" id ="bin_7">0</span>
+	<span class="digit" id ="bin_6">0</span>
+	<span class="digit" id ="bin_5">0</span>
+	<span class="digit" id ="bin_4">0</span>
+	<span class="digit" id ="bin_3">0</span>
+	<span class="digit" id ="bin_2">0</span>
+	<span class="digit" id ="bin_1">0</span>
+	<span class="digit" id ="bin_0">0</span>
+
+	</div>
+	<div class="container">
+	<div class="texte" id="hexatxt">Ecriture hexadécimale</div>
+	</div>
+	<div class="container" id="roue_hexa">
+	
+	<span class="digit" id ="hexa_1">0</span>
+	<span class="digit" id ="hexa_0">0</span>
+
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="../Roue_binaire.js"></script>
+	
+	Accès au fichier de base : [ici](Roue_binaire.html)
+
+
+## Opérations élémentaires sur les nombres binaires
+###Sommes de nombres binaires
+!!! tips "Méthode : Additionner deux nombres entiers en base 2"
+
+	La technique d'addition de deux nombres binaire est la même que pour des nombres en écriture décimale :
+	
+	=== "En décimal"
+	
+		$$
+		\begin{array}{cccc}
+		&1&4&9\\
+		+&&7&8\\\hline
+		&&&\\
+		\end{array}
+		$$ 
+	
+	=== "En binaire"
+	
+		$$
+		\begin{array}{*{9}{c}}
+		&1&0&0&1&0&1&0&1\\
+		+&&1&0&0&1&1&1&0\\\hline
+		&&&&&&&&\\
+		\end{array}
+		$$
+	
+### Produits de nombres binaires
+
+!!! tips "Méthode : Multiplier deux nombres entiers en base 2"
+	La technique de multiplication de deux nombres binaire est la même que pour des nombres en écriture décimale - mais la retenue peut se propager parfois plus loin que le rang immédiatement supérieur :
+
+	=== "En décimal"
+	
+		$$
+		\begin{array}{cccc}
+		&&2&7\\
+		\times&&1&3\\\hline
+		&&&\\
+		+&&&\\\hline
+		&&&\\
+		\end{array}
+		$$
+	
+	=== "En binaire"
+	
+		$$
+		\begin{array}{*{10}{c}}
+		&&&&&1&1&0&1&1\\
+		\times&&&&&&1&1&0&1\\\hline
+		&&&&&&&&&\\
+		+&&&&&&&&&\\
+		+&&&&&&&&&\\
+		+&&&&&&&&&\\\hline
+		&&&&&&&&&\\
+		\end{array}
+		$$
