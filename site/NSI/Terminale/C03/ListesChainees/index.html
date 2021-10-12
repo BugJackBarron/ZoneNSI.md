@@ -914,6 +914,26 @@
     Les listes chaînées
   </a>
   
+    <nav class="md-nav" aria-label="Les listes chaînées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#construction-dune-liste-chainees" class="md-nav__link">
+    Construction d'une liste chaînées
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations-sur-les-listes-chainees" class="md-nav__link">
+    Opérations sur les listes chaînées.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1188,6 +1208,7 @@ mais sur un tableau contenant <em>plusieurs millions</em> d'entrées, le nombre 
 <p>Heureusement, il existe d'autres ménières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.    </p>
 </div>
 <h2 id="les-listes-chainees">Les listes chaînées</h2>
+<h3 id="construction-dune-liste-chainees">Construction d'une liste chaînées</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Liste chaînée</p>
 <p>Une <mark class="critic"><strong>liste chaînée</strong></mark> est une structure permettant d'implémenter une liste, c'est-à-dire une séquence finie de valeurs (de même type ou non). Les éléments dont dits <strong>chaînés</strong>
@@ -1219,6 +1240,10 @@ car chque élément possède l'adresse mémoire de l'élément suivant de la lis
 <span class="s2">        self.suivant = suivant</span>
 </code></pre></div>
 </td></tr></table>
+<p>Ici, on a créé trois objets de classe <code>Chainon</code> qu'on peut visualiser ainsi :</p>
+<p><p align="center">
+<img alt="LC2" src="../ListeChainee2.png" style="width : 70%;" />
+</p></p>
 <p>Une fois cette classe définie, la construction de la liste s'effectue de la manière suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="n">chaine</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Chainon</span><span class="p">(</span> <span class="mi">45</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))</span>
 </code></pre></div>
@@ -1230,6 +1255,62 @@ car chque élément possède l'adresse mémoire de l'élément suivant de la lis
 <span class="n">second</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
 <span class="n">first</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
 </code></pre></div></p>
+</div>
+<h3 id="operations-sur-les-listes-chainees">Opérations sur les listes chaînées.</h3>
+<div class="admonition exemple">
+<p class="admonition-title">Longueur d'une liste chaînée</p>
+<p>Nous allons créer maintenant une fonction <code>longueur</code> qui calcule la longueur d'une liste chaînée telle que nous l'avons implémentée.</p>
+<p>Cette fonction devra :</p>
+<ul>
+<li>renvoyer 0 si la liste est vide ;</li>
+<li>renvoyer le nombre d'éléments de la chaîne sinon.</li>
+</ul>
+<p>Le plus simple est d'utiliser la récursivité :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">liste</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">longueur</span><span class="p">(</span><span class="n">liste</span><span class="o">.</span><span class="n">suivant</span><span class="p">)</span>
+</code></pre></div>
+<details class="question"><summary>Et en itératif ?</summary><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">chainon</span> <span class="o">=</span> <span class="n">liste</span>
+    <span class="k">while</span> <span class="n">chainon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">chainon</span> <span class="o">=</span> <span class="n">chainon</span><span class="o">.</span><span class="n">suivante</span>
+    <span class="k">return</span> <span class="n">n</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice : n-ième élément</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>niemeElement(liste, n)</code> qui renvoie le n-ième élément de la liste passée en argument</p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice :  Concaténation de deux listes</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>concatener(l1, l2)</code> qui renvoie la liste obtenue par concaténation de <code>l1</code> et <code>l2</code>.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice :  Insertion d'un chainon</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>inserer(v, n, liste)</code> qui insère l'élément <code>v</code> à la position <code>n</code> dans la liste passée en argument.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
 </div>
                 
               

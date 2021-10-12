@@ -28,6 +28,8 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 ## Les listes chaînées
 
+### Construction d'une liste chaînées
+
 !!! abstract "Liste chaînée"
 	Une {==**liste chaînée**==} est une structure permettant d'implémenter une liste, c'est-à-dire une séquence finie de valeurs (de même type ou non). Les éléments dont dits **chaînés**
 	car chque élément possède l'adresse mémoire de l'élément suivant de la liste.
@@ -57,6 +59,12 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 			self.suivant = suivant
 	```
 	
+	Ici, on a créé trois objets de classe `Chainon` qu'on peut visualiser ainsi :
+	
+	<p align="center">
+	![LC2](ListeChainee2.png){: style="width : 70%;"}
+	</p>
+	
 	Une fois cette classe définie, la construction de la liste s'effectue de la manière suivante :
 	
 	``` python
@@ -71,3 +79,67 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	second = Chainon(15, last)
 	first = Chainon(21, second)
 	```
+	
+### Opérations sur les listes chaînées.
+
+!!! exemple "Longueur d'une liste chaînée"
+
+	Nous allons créer maintenant une fonction `longueur` qui calcule la longueur d'une liste chaînée telle que nous l'avons implémentée.
+	
+	Cette fonction devra :
+	
+	* renvoyer 0 si la liste est vide ;
+	* renvoyer le nombre d'éléments de la chaîne sinon.
+	
+	
+	Le plus simple est d'utiliser la récursivité :
+	
+	``` python
+	def longueur(liste) :
+		if liste == None :
+			return 0
+		else :
+			return 1 + longueur(liste.suivant)
+	```
+	
+	??? question "Et en itératif ?"
+	
+		``` python
+		def longueur(liste) :
+			n = 0
+			chainon = liste
+			while chainon is not None :
+				n+=1
+				chainon = chainon.suivante
+			return n
+		```
+!!! question "Exercice : n-ième élément"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `niemeElement(liste, n)` qui renvoie le n-ième élément de la liste passée en argument
+		
+	=== "Solution"
+	
+		A venir !
+		
+!!! question "Exercice :  Concaténation de deux listes"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `concatener(l1, l2)` qui renvoie la liste obtenue par concaténation de `l1` et `l2`.
+		
+	=== "Solution"
+	
+		A venir !
+		
+!!! question "Exercice :  Insertion d'un chainon"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `inserer(v, n, liste)` qui insère l'élément `v` à la position `n` dans la liste passée en argument.
+		
+	=== "Solution"
+	
+		A venir !
+	
