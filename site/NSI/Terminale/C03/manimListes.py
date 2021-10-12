@@ -26,19 +26,19 @@ class addFirstElement(Scene):
     def construct(self):
         
         ## Titre de la vidéo.
-        titre = Text("Les actions cachées derrière insert")
-        self.play(Write(titre))
-        self.wait(1)
-        self.play(ApplyMethod(titre.shift,3*UP))
-        self.play(FadeOut(titre))
-        del(titre)
-
-
-         # Signature de la vidéo
-        ccby= ImageMobject("../ccby.png").scale(0.3).to_corner(DL)
-        signature = Tex(r"F. VERGNIAUD, www.zonensi.fr, 2021, made in Python with Manim, thx to Grant Sanderson and the Manim Community ").scale(0.3).next_to(ccby,RIGHT).set_color(GRAY)
-        self.play(FadeIn(ccby, signature))
-        
+#        titre = Text("Les actions cachées derrière insert")
+#        self.play(Write(titre))
+#        self.wait(1)
+#        self.play(ApplyMethod(titre.shift,3*UP))
+#        self.play(FadeOut(titre))
+#        del(titre)
+#
+#
+#         # Signature de la vidéo
+#        ccby= ImageMobject("../ccby.png").scale(0.3).to_corner(DL)
+#        signature = Tex(r"F. VERGNIAUD, www.zonensi.fr, 2021, made in Python with Manim, thx to Grant Sanderson and the Manim Community ").scale(0.3).next_to(ccby,RIGHT).set_color(GRAY)
+#        self.play(FadeIn(ccby, signature))
+#        
         texts = [Text("On a un tableau donné").shift(3*UP),
                  Text("Pour insérer 8 à la première place :").shift(3*UP),
                  Text("On ajoute une case initialisée à zéro").shift(3*UP),
@@ -92,6 +92,6 @@ class addFirstElement(Scene):
         self.play(Write(texts[4]))
         self.play(Transform(newval,tab3.values[0]))
         
-        self.wait(5)
+        self.wait(3)
         
         

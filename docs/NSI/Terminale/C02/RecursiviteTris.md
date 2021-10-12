@@ -161,7 +161,7 @@
 		</p>
 		2. Quel est le cas de base ?
 		3. Quel est le cas récursif ?
-		4. Implémenter une fonction `triFusion(t1, t2)` qui prend en argument deux tableaux et renvoie le tableau trié contenant les éléments des deux tableaux `t1` et `t2`.
+		4. Implémenter une fonction `triFusion(t)` qui prend en argument un tableau et renvoie une copie triée de ce tableau.
 		
 	=== "Solution"
 		A venir !
