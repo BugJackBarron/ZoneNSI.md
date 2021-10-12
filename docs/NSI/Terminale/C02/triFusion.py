@@ -13,7 +13,7 @@ def timeit(method):
 
     return timed
 
-@timeit
+
 def tri_selection(tab):
     for i in range(len(tab)):
       # Trouver le min
@@ -27,7 +27,7 @@ def tri_selection(tab):
        tab[min] = tmp
     return tab
 
-@timeit
+
 def tri_insertion(tab): 
     # Parcour de 1 à la taille du tab
     for i in range(1, len(tab)): 
@@ -79,11 +79,11 @@ def fusion(t1, t2) :
 def callTriFusion(tab):
     return triFusion(tab)
 
+
 def triFusion(tab) :
     if len(tab) <= 1 :
         return tab
     else :
-        l = len(tab)//2
         t1 = triFusion(tab[:len(tab)//2])
         t2 = triFusion(tab[len(tab)//2:])
         return fusion(t1,t2)
