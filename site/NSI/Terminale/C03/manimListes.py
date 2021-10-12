@@ -6,7 +6,7 @@ class TableauManim :
         self.center = center
         self.rect = Rectangle(width=len(self.tab), height=1.0, grid_xstep=1.0)
         self.values = [DecimalNumber(v, num_decimal_places=0).scale(0.75).move_to((-(len(self.tab)//2)+((len(self.tab)+1)%2)*0.5+i)*RIGHT) for i,v in enumerate(self.tab)]       
-        self.group = VGroup(self.rect, *self.values).scale(0.75)
+        self.group = VGroup(self.rect, *self.values).scale(1.5)
         self.group.move_to(center[0]*RIGHT+center[1]*UP)
         
     def changeColorNumber(self, position, color) :
@@ -59,7 +59,7 @@ class addFirstElement(Scene):
         tabI = TableauManim([0])
         tabI.group.next_to(tab1.group, RIGHT, buff=0)
         
-        newval = DecimalNumber(8, num_decimal_places=0).scale(0.75)
+        newval = DecimalNumber(8, num_decimal_places=0).scale(0.75).scale(1.5)
         newval.next_to(tab1.values[0], UP, buff = UP)
         newval.generate_target()
         newval.target = tab3.values[0]
