@@ -53,7 +53,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	``` python linenums="1"
 	
 	class Chainon :
-		"""Chainon d'une liste chainée"
+		"""Chainon d'une liste chainée"""
 		def __init__(self, valeur, suivant) :
 			self.valeur = valeur
 			self.suivant = suivant
@@ -67,7 +67,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	```
 	
 	
-	Ici, on a créé trois objets de classe `Chainon` qu'on peut visualiser ainsi :
+	Ici, on a créé une liste nommée `chaine` à partir de trois objets de classe `Chainon` qu'on peut visualiser ainsi :
 	
 	<p align="center">
 	![LC2](ListeChainee2.png){: style="width : 70%;"}
@@ -75,11 +75,9 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 !!! info "Remarque"
 
-	Cette construction est une construction récursive. Il est possible de construire cette liste chainée de manière itérative, mais il faut alors commencer par le dernier élément :
+	Cette construction est une construction récursive basée sur des objets. Il aurait été possioble d'utiliser des tuples ou des listes python, mais l'utilisation serait moins pratique :
 	``` python
-	last = Chainon(45, None)
-	second = Chainon(15, last)
-	first = Chainon(21, second)
+	(21,(15, (45, (None))))
 	```
 	
 ### Opérations sur les listes chaînées.
@@ -135,6 +133,13 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		A venir !
 		
+!!! bug "Un cas limite : renverser la liste"
+	
+	Comment faire pour renverser une liste chaînée ?
+	
+		
+
+		
 !!! question "Exercice :  Insertion d'un chainon"
 
 	=== "Enoncé" 
@@ -145,3 +150,13 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		A venir !
 	
+!!! question "Exercice :  Suppression d'un chainon"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `supprime(n, liste)` qui supprime l'élément à la position `n` dans la liste passée en argument.
+		
+	=== "Solution"
+	
+		A venir !
+		
