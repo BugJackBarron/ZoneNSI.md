@@ -59,17 +59,19 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 			self.suivant = suivant
 	```
 	
-	Ici, on a créé trois objets de classe `Chainon` qu'on peut visualiser ainsi :
-	
-	<p align="center">
-	![LC2](ListeChainee2.png){: style="width : 70%;"}
-	</p>
 	
 	Une fois cette classe définie, la construction de la liste s'effectue de la manière suivante :
 	
 	``` python
 	chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
 	```
+	
+	
+	Ici, on a créé trois objets de classe `Chainon` qu'on peut visualiser ainsi :
+	
+	<p align="center">
+	![LC2](ListeChainee2.png){: style="width : 70%;"}
+	</p>
 
 !!! info "Remarque"
 
