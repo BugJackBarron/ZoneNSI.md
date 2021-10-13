@@ -276,7 +276,7 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 		$$
 		
 		1. Compléter le tableau d'état de la variable $X$. Quelle valeur est affecté à $X$ à la fin de l'algorithme ?
-		2. On remplace la première ligne par $X \leftarrow a$, où $a$ est un réel donné. Quelle expression dépéendant dfe $a$ est affectée à $X$ après exécutioon de l'algorithme ?
+		2. On remplace la première ligne par $X \leftarrow a$, où $a$ est un réel donné. Quelle expression dépendant de $a$ est affectée à $X$ après exécution de l'algorithme ?
 	
 	=== "Solution"
 		
