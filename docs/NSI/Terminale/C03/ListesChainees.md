@@ -102,49 +102,139 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 			return 1 + longueur(liste.suivant)
 	```
 	
+	La **complexité** de cette fonction est directement proportionnelle à la longueur de la liste : pour une liste de $1~000$ éléments,
+	la fonction effectuera :
+	
+	* $1~000$ comparaisons ;
+	* $1~000$ additions ;
+	* $1~000$ appels récursifs.
+	
+	On en conclut que la complexité en temps de cette fonction est en $\mathbb{O}(n)$.
+	
 	??? question "Et en itératif ?"
 	
 		``` python
-		def longueur(liste) :
+		def longueur(chaine) :
 			n = 0
-			chainon = liste
+			chainon = chaine
 			while chainon is not None :
 				n+=1
-				chainon = chainon.suivante
+				chainon = chainon.suivant
 			return n
 		```
 !!! question "Exercice : n-ième élément"
 
 	=== "Enoncé" 
 		
-		Créer une fonction `niemeElement(liste, n)` qui renvoie le n-ième élément de la liste passée en argument
+		Créer une fonction `niemeElement(chaine, n)` qui renvoie la valeur du n-ième élément de la liste chaînée passée en argument
 		
-	=== "Solution"
+	=== "Solution récursive"
 	
-		A venir !
+		``` python
+		def niemeElement(chaine, i) :
+			if chaine == None :
+				raise IndexError("Invalid index")
+			if i == 0 :
+				return chaine.valeur
+			else :
+				return niemeElement(chaine.suivant, i-1)
+		```
+		
+		La question de la complexité est un peu plus subtile :
+		
+		* dans un cas correct (l'indice `n` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `i` ;
+		* dans le cas où `n` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
+		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $i$, car le calcul de la longueur parcoure déjà toutes la liste.
+		Faire ce clacul en appel récursif générerait donc une complexité **quadratique**.
+		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.
+		On peut cependant corriger celà par la ligne :
+		
+		``` python
+		if chaine == None or i<0 
+		:
+		```
+		
+		
+	=== "Solution Itérative"
+	
+		``` python
+		def niemeElementI(chaine, i) :
+			if i<0 :
+				raise IndexError("Invalid index")
+			ni = 0
+			chainon = chaine
+			while  chainon != None and ni != i :
+				ni += 1
+				chainon = chainon.suivant
+			if chainon != None :
+				return chainon.valeur
+			else :
+				raise IndexError("Invalid index")
+		```
+		 On retrouve en terme de complexité les mêmes éléments que pour la fonction récursive. Cependant les erreurs 
+		 ainsi que les conditions de sorties sont plus complexes à prendre en compte.
+		
 		
 !!! question "Exercice :  Concaténation de deux listes"
 
 	=== "Enoncé" 
 		
-		Créer une fonction `concatener(l1, l2)` qui renvoie la liste obtenue par concaténation de `l1` et `l2`.
+		Créer une fonction `concatener(c1, c2)` qui renvoie la liste chaînée obtenue par concaténation de `c1` et `c2`.
 		
-	=== "Solution"
+	=== "Solution récursive"
 	
-		A venir !
+		``` python
+		def concatener(c1, c2) :
+			if c1 == None :
+				return c2
+			else :
+				return Chainon(c1.valeur,concatener(c1.suivant, c2))
+		```
 		
-!!! bug "Un cas limite : renverser la liste"
+		La complexité dépend fortement de la longueur de la liste `c1`. par contre elle ne dépend pas de celle de `c2`.
+		Dans cette version, les chaines `c1` et `c2` ne sont pas modifiée ! `concatener` renvoie 
+		une nouvelle liste chaînée qui a copié les valeurs de `c1` avant de les lier à celles de `c2`.
+		
+	=== "Solution Itérative"
+		
+		``` python 
+		def concatenerI(c1, c2) :
+			chainon = c1
+			while chainon.suivant != None :
+				chainon = chainon.suivant
+			chainon.suivant = c2
+			return c1
+			
+		```
+		Attention ! Dans cette solution, `c1` est modifiée ! 
+		
+		
+		
+??? bug "Un cas limite : renverser la liste"
 	
-	Comment faire pour renverser une liste chaînée ?
+	Comment faire pour renverser une liste chaînée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes,
+	nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélectionnant le premier chaînon et en le concaténant
+	à la liste renversée de la suite de la chaîne, Le cas de base étant celui d'une liste vide, auquel cas on renvoie cette liste :
+	
+	``` python
+	def renverser(chaine) :
+		if chaine == None :
+			return None
+		else :
+			concatener(renverser(chaine.suivant), Chainon(chaine.valeur, None))
+	```
+	
+	Cependant cette solution n'est pas efficace !
+	
 	
 		
-
+### Modification de listes chaînées
 		
 !!! question "Exercice :  Insertion d'un chainon"
 
 	=== "Enoncé" 
 		
-		Créer une fonction `inserer(v, n, liste)` qui insère l'élément `v` à la position `n` dans la liste passée en argument.
+		Créer une fonction `inserer(v, n, chaine)` qui insère l'élément `v` à la position `n` dans la liste passée en argument.
 		
 	=== "Solution"
 	
@@ -154,7 +244,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `supprime(n, liste)` qui supprime l'élément à la position `n` dans la liste passée en argument.
+		Créer une fonction `supprime(n, chaine)` qui supprime l'élément à la position `n` dans la liste passée en argument.
 		
 	=== "Solution"
 	
