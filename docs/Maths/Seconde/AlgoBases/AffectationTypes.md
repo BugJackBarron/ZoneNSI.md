@@ -27,14 +27,14 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 
 	Une {==**variable**==} est une *case mémoire* possédant un **nom**, dans lequel on range une **donnée**.
  
-	Les données informatiques de base peuvent être classeés dans 4 types différents
+	Les données informatiques de base peuvent être classées dans 4 types différents :
  
 	* les **entiers** (*nombre entier relatif*) ;
 	* les **flottants** (*en simplifiant, les nombres décimaux*);
 	* les **chaînes de caractères** (*des suites de lettres, chiffres, symboles, encadrées par des guillemets*);
-	* les **booléens** (*une valeur qui ne peut être que dand deux états : Vrai et Faux*).
+	* les **booléens** (*une valeur qui ne peut être que dans deux états : Vrai et Faux*).
 
-	L'affectation est l'opération qui consiste à &laquo; ranger &raquo; une donnée dans une variable. En pseudo-code elle est symbolisée parune flèche pointant vers la gauche  : $\leftarrow$. On lira l'instruction 
+	L'affectation est l'opération qui consiste à &laquo; ranger &raquo; une donnée dans une variable. En pseudo-code elle est symbolisée par une flèche pointant vers la gauche  : $\leftarrow$. On lira l'instruction 
 	
 	$$
 	X \leftarrow 7
@@ -248,7 +248,7 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 		$$
 		
 		1. Compléter le tableau d'état de la variable $X$. Quelle valeur est affecté à $X$ à la fin de l'algorithme ?
-		1. On remplace la première ligne par $X \leftarrow a$, où $a$ est un réel donné. Laquelle de ces trois propositions correspondent à la valeur affecté à $X$ après exécutioon de l'algorithme ?
+		1. On remplace la première ligne par $X \leftarrow a$, où $a$ est un réel donné. Laquelle de ces trois propositions correspondent à la valeur affecté à $X$ après exécution de l'algorithme ?
 			* $2a+3^2$
 			* $(2a+3)^2$
 			* $2(a+3)^2$
