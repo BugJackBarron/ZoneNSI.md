@@ -102,6 +102,15 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 			return 1 + longueur(liste.suivant)
 	```
 	
+	La **complexité** de cette fonction est directement proportionnelle à la longueur de la liste : pour une liste de $1~000$ éléments,
+	la fonction effectuera :
+	
+	* $1~000$ comparaisons ;
+	* $1~000$ additions ;
+	* $1~000$ appels récursifs.
+	
+	On en conclut que la complexité en temps de cette fonction est en $\mathbb{O}(n)$.
+	
 	??? question "Et en itératif ?"
 	
 		``` python
@@ -121,7 +130,23 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 	=== "Solution"
 	
-		A venir !
+		``` python
+		def niemeElement(liste, i) :
+			if liste == None :
+				raise IndexError("Invalid index")
+			if i == 0 :
+				return liste.valeur
+			else :
+				return niemeElement(liste.suivant, i-1)
+		```
+		
+		La question de la complexité est un peu plus subtile :
+		
+		* dans un cas correct (l'indice `n` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `i` ;
+		* dans le cas où `n` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
+		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $i$, car le calcul de la longueur parcoure déjà toutes la liste.
+		Faire ce clacul en appel récursif générerait donc une complexité **quadratique**.
+		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.
 		
 !!! question "Exercice :  Concaténation de deux listes"
 
@@ -131,14 +156,33 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 	=== "Solution"
 	
-		A venir !
+		``` python
+		def concatener(l1, l2) :
+			if l1 == None :
+				return l2
+			else :
+			return Chainon(l1.valeur,concatener(l1.suivant, l2))
+		```
 		
-!!! bug "Un cas limite : renverser la liste"
+??? bug "Un cas limite : renverser la liste"
 	
-	Comment faire pour renverser une liste chaînée ?
+	Comment faire pour renverser une liste chaînée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes,
+	nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélectionnant le premier chaînon et en le concaténant
+	à la liste renversée de la suite de la chaîne, Le cas de base étant celui d'une liste vide, auquel cas on renvoie cette liste :
+	
+	``` python
+	def renverser(liste) :
+		if liste == None :
+			return None
+		else :
+			concatener(renverser(liste.suivant), Chainon(liste.valeur, None))
+	```
+	
+	Cependant cette solution n'est pas efficace !
+	
 	
 		
-
+### Modification de listes chaînées
 		
 !!! question "Exercice :  Insertion d'un chainon"
 
