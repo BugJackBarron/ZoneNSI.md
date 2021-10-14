@@ -95,11 +95,11 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	Le plus simple est d'utiliser la récursivité :
 	
 	``` python
-	def longueur(liste) :
-		if liste == None :
+	def longueur(chaine) :
+		if chaine == None :
 			return 0
 		else :
-			return 1 + longueur(liste.suivant)
+			return 1 + longueur(chaine.suivant)
 	```
 	
 	La **complexité** de cette fonction est directement proportionnelle à la longueur de la liste : pour une liste de $1~000$ éléments,
@@ -126,7 +126,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `niemeElement(chaine, n)` qui renvoie la valeur du n-ième élément de la liste chaînée passée en argument
+		Créer une fonction `niemeElement(chaine, i)` qui renvoie la valeur du i-ième élément de la liste chaînée passée en argument.
 		
 	=== "Solution récursive"
 	
@@ -142,12 +142,12 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 		La question de la complexité est un peu plus subtile :
 		
-		* dans un cas correct (l'indice `n` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `i` ;
-		* dans le cas où `n` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
+		* dans un cas correct (l'indice `i` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `i` ;
+		* dans le cas où `i` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
 		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $i$, car le calcul de la longueur parcoure déjà toutes la liste.
-		Faire ce clacul en appel récursif générerait donc une complexité **quadratique**.
-		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.
-		On peut cependant corriger celà par la ligne :
+		Faire ce calcul en appel récursif générerait donc une complexité **quadratique**. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
+		de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.
+		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.On peut cependant corriger celà par la ligne :
 		
 		``` python
 		if chaine == None or i<0 
@@ -195,6 +195,10 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		Dans cette version, les chaines `c1` et `c2` ne sont pas modifiée ! `concatener` renvoie 
 		une nouvelle liste chaînée qui a copié les valeurs de `c1` avant de les lier à celles de `c2`.
 		
+		<p align="center">
+		![LC1](ListeChaineeConcatener1.png){: style="width : 60%;"}
+		</p>
+		
 	=== "Solution Itérative"
 		
 		``` python 
@@ -207,6 +211,9 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 			
 		```
 		Attention ! Dans cette solution, `c1` est modifiée ! 
+		<p align="center">
+		![LC2](ListeChaineeConcatener2.png){: style="width : 60%;"}
+		</p>
 		
 		
 		

@@ -49,11 +49,17 @@ def concatener(c1, c2) :
 
 
 def concatenerI(c1, c2) :
-    chainon = c1
-    while chainon.suivant != None :
-        chainon = chainon.suivant
-    chainon.suivant = c2
-    return c1
+    """Non fonctionnel"""
+    if c1 == None :
+        return c2
+    else :
+        newc = Chainon(c1.valeur, None)
+        while c1.suivant != None :
+            newc.suivant = Chainon(c1.suivant.valeur, None)
+            newc = newc.suivant
+            c1 = c1.suivant
+        newc.suivant = c2
+        return newc
         
 chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
 chaine2 = Chainon(13, Chainon(16, None))

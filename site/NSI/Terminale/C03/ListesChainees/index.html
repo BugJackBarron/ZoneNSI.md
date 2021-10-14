@@ -1322,11 +1322,11 @@ car chque élément possède l'adresse mémoire de l'élément suivant de la lis
 <li>renvoyer le nombre d'éléments de la chaîne sinon.</li>
 </ul>
 <p>Le plus simple est d'utiliser la récursivité :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="n">liste</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">longueur</span><span class="p">(</span><span class="n">liste</span><span class="o">.</span><span class="n">suivant</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="p">)</span>
 </code></pre></div>
 <p>La <strong>complexité</strong> de cette fonction est directement proportionnelle à la longueur de la liste : pour une liste de <span class="arithmatex">\(1~000\)</span> éléments,
 la fonction effectuera :</p>
@@ -1349,7 +1349,7 @@ la fonction effectuera :</p>
 <div class="admonition question">
 <p class="admonition-title">Exercice : n-ième élément</p>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
-<p>Créer une fonction <code>niemeElement(chaine, n)</code> qui renvoie la valeur du n-ième élément de la liste chaînée passée en argument</p>
+<p>Créer une fonction <code>niemeElement(chaine, i)</code> qui renvoie la valeur du i-ième élément de la liste chaînée passée en argument.</p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution récursive</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">niemeElement</span><span class="p">(</span><span class="n">chaine</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span>
@@ -1362,12 +1362,12 @@ la fonction effectuera :</p>
 </code></pre></div>
 <p>La question de la complexité est un peu plus subtile :</p>
 <ul>
-<li>dans un cas correct (l'indice <code>n</code> fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à <code>i</code> ;</li>
-<li>dans le cas où <code>n</code> est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
+<li>dans un cas correct (l'indice <code>i</code> fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à <code>i</code> ;</li>
+<li>dans le cas où <code>i</code> est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
 Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à <span class="arithmatex">\(i\)</span>, car le calcul de la longueur parcoure déjà toutes la liste.
-Faire ce clacul en appel récursif générerait donc une complexité <strong>quadratique</strong>.</li>
-<li>Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.
-On peut cependant corriger celà par la ligne :</li>
+Faire ce calcul en appel récursif générerait donc une complexité <strong>quadratique</strong>. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
+de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
+<li>Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.On peut cependant corriger celà par la ligne :</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span> 
 <span class="p">:</span>
@@ -1407,6 +1407,9 @@ On peut cependant corriger celà par la ligne :</li>
 <p>La complexité dépend fortement de la longueur de la liste <code>c1</code>. par contre elle ne dépend pas de celle de <code>c2</code>.
 Dans cette version, les chaines <code>c1</code> et <code>c2</code> ne sont pas modifiée ! <code>concatener</code> renvoie 
 une nouvelle liste chaînée qui a copié les valeurs de <code>c1</code> avant de les lier à celles de <code>c2</code>.</p>
+<p><p align="center">
+<img alt="LC1" src="../ListeChaineeConcatener1.png" style="width : 60%;" />
+</p></p>
 </div>
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Solution Itérative</label><div class="tabbed-content">
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">concatenerI</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span> <span class="p">:</span>
@@ -1416,7 +1419,10 @@ une nouvelle liste chaînée qui a copié les valeurs de <code>c1</code> avant d
     <span class="n">chainon</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">c2</span>
     <span class="k">return</span> <span class="n">c1</span>
 </code></pre></div>
-Attention ! Dans cette solution, <code>c1</code> est modifiée ! </p>
+Attention ! Dans cette solution, <code>c1</code> est modifiée ! 
+<p align="center">
+<img alt="LC2" src="../ListeChaineeConcatener2.png" style="width : 60%;" />
+</p></p>
 </div>
 </div>
 </div>
