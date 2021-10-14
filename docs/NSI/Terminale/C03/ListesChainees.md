@@ -122,7 +122,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 				chainon = chainon.suivant
 			return n
 		```
-!!! question "Exercice : n-ième élément"
+!!! question "Exercice 1 : n-ième élément"
 
 	=== "Enoncé" 
 		
@@ -175,7 +175,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		 ainsi que les conditions de sorties sont plus complexes à prendre en compte.
 		
 		
-!!! question "Exercice :  Concaténation de deux listes"
+!!! question "Exercice 2 :  Concaténation de deux listes"
 
 	=== "Enoncé" 
 		
@@ -228,32 +228,145 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		if chaine == None :
 			return None
 		else :
-			concatener(renverser(chaine.suivant), Chainon(chaine.valeur, None))
+			return concatener(renverser(chaine.suivant), Chainon(chaine.valeur, None))
 	```
 	
-	Cependant cette solution n'est pas efficace !
+	Cependant cette solution n'est pas efficace ! En effet, à chaque appel de `renverser`, on fait aussi appel à la fonction `concatener` qui parcoure la totalité de la chaine, à part un élément. La complexité devient alors {==**quadratique**==} ! 
+	
+	{==**La récursivité n'est pas toujours la meilleure solution !==**} (mais parfois elle l'est quand même !)
+	
+	On va don passer en itératif, surtourt qu'il est facile d'attacher un chainon en tête d'une chaine déjà consrtituée :
+	
+	``` python
+	def renverser(chaine) :
+		reverse = None
+		c= chaine
+		while c != None :
+			reverse = Chainon(c.valeur, reverse)
+			c = c.suivant
+		return reverse
+	```
+	
+	La complexité est celle du parcours d'une chaîne complète, donc en $\mathbb{O}(n)$.
+	
+	
 	
 	
 		
 ### Modification de listes chaînées
+
+!!! warning "Pourquoi se casser la tête ?"
+	Eliminons tout de suite une possibilité : bien entendu, **en Python**, il est possible de modifier *directement* un attribut, donc la modification d'une valeur d'une liste chaînée est assez évidente.
+	Par exemple, les lignes suivantes  :
+	``` python
+	chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
+	chaine.suivant.valeur = 33
+	```
+	modifient la valeur du deuxième élément de la chaine, qui devient `21 -> 33 -> 45 -> None`.
+	
+	Cependant, **cette possibilité n'est pas toujours possible dans tous les langages**, et de toutes façons cette manière de modifier ne correspond pas à la logique de construction d'une liste chaînée.
+	
+	On va donc préférer passer à des modifications directe des chaînons.
+	
+	
 		
-!!! question "Exercice :  Insertion d'un chainon"
+!!! question "Exercice 3 :  Insertion d'un chainon"
 
 	=== "Enoncé" 
 		
 		Créer une fonction `inserer(v, n, chaine)` qui insère l'élément `v` à la position `n` dans la liste passée en argument.
 		
+		Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :
+		
+		<p align="center">
+		![LC Insertion](Insertion.png){: style="width : 50%;"}
+		</p>
+		
 	=== "Solution"
 	
 		A venir !
 	
-!!! question "Exercice :  Suppression d'un chainon"
+!!! question "Exercice 4 :  Suppression d'un chainon"
 
 	=== "Enoncé" 
 		
 		Créer une fonction `supprime(n, chaine)` qui supprime l'élément à la position `n` dans la liste passée en argument.
 		
+		Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :
+		
+		<p align="center">
+		![LC Suppression](Suppression.png){: style="width : 50%;"}
+		</p>
+		
 	=== "Solution"
 	
 		A venir !
+		
+## Quelques exercices supplémentaires 
+
+Nous voici avec une structure correcte, permettant de travailler correctement sur des listes chainées. Nous allons maintenant augmenter notre potentiel d'action avec les listes chaînées :
+
+!!! question "Exercice 5 :  Création à partir d'une liste Python"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `creeDepuisTab(tab)` qui crée une liste chaînée depuis un tableau donné en argument.
+		
+		Par exemple :
+		
+		* `creeDepuisTab([12, 15, 17])` crée la liste chaînée `12 -> 15 -> 17 -> None` ;
+		* `creeDepuisTab([])` crée un objet `None` ;
+		* `creeDepuisTab([42])` crée une liste chaînée `42 -> None`.
+		
+	=== "Solution"
+	
+		A venir !
+
+!!! question "Exercice 6 :  Chercher le nombre d'occurences"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `occurences(valeur, chaine)` qui renvoie le nombre d'occurence de `valeur` dans la liste chaînée `chaine`.
+		
+		Par exemple :
+		
+		* `occurences(12, chaine)` devra renvoyer 3 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `occurences(27,chaine)` devra renvoyer 0 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `occurences(42,chaine)` devra renvoyer 1 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
+		
+	=== "Solution"
+	
+		A venir !
+
+
+!!! question "Exercice 7 :  Trouver la première occurence"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `premiereOccurence(valeur, chaine)` qui renvoie *l'indice de la première occurence* de `valeur` dans la liste chaînée `chaine`. Si \valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
+		
+		Par exemple :
+		
+		* `premiereOccurences(12, chaine)` devra renvoyer 0 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `premiereOccurences(27,chaine)` devra renvoyer -1 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `premiereOccurences(42,chaine)` devra renvoyer 3 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
+		
+	=== "Solution"
+	
+		A venir !
+		
+!!! question "Exercice 8 :  chaînes identiques"
+
+	=== "Enoncé" 
+		
+		Créer une fonction `identique(c1, c2)` qui renvoie `True` si les deux chaînes contiennent les mêmes valeurs dans le même ordre, et `False` sinon.
+				
+		
+	=== "Solution"
+	
+		A venir !
+
+## Encapsulation
+
+Partie à venir...
 		

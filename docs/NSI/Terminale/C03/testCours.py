@@ -60,6 +60,14 @@ def concatenerI(c1, c2) :
             c1 = c1.suivant
         newc.suivant = c2
         return newc
+    
+def renverser(chaine) :
+    reverse = None
+    c= chaine
+    while c != None :
+        reverse = Chainon(c.valeur, reverse)
+        c = c.suivant
+    return reverse
         
 chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
 chaine2 = Chainon(13, Chainon(16, None))
