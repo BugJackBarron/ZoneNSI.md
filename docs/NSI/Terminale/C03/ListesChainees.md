@@ -284,7 +284,15 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 	=== "Solution"
 	
-		A venir !
+		``` python
+		def inserer(v, n, chaine) :
+			if chaine == None :
+				raise IndexError("Invalid index")
+			if n == 0 :
+				return Chainon(v, chaine)
+			else :
+				return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))
+		```
 	
 !!! question "Exercice 4 :  Suppression d'un chainon"
 
@@ -300,7 +308,15 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 	=== "Solution"
 	
-		A venir !
+		``` python
+		def supprimer(n, chaine) :
+			if chaine == None :
+				raise IndexError("Invalid index")
+			if n == 0  :
+				return chaine.suivant
+			else :
+				return Chainon(chaine.valeur, supprimer(n-1, chaine.suivant))
+		```
 		
 ## Quelques exercices supplémentaires 
 

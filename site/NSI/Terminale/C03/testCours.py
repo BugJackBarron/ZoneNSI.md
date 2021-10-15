@@ -28,8 +28,6 @@ def longueurI(chaine) :
     return l
 
         
-chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
-print(longueur(chaine))
 
 
 def niemeElement(chaine, i) :
@@ -49,17 +47,12 @@ def concatener(c1, c2) :
 
 
 def concatenerI(c1, c2) :
-    """Non fonctionnel"""
-    if c1 == None :
-        return c2
-    else :
-        newc = Chainon(c1.valeur, None)
-        while c1.suivant != None :
-            newc.suivant = Chainon(c1.suivant.valeur, None)
-            newc = newc.suivant
-            c1 = c1.suivant
-        newc.suivant = c2
-        return newc
+    chainon = c1
+    while chainon.suivant != None :
+        chainon = chainon.suivant
+    chainon.suivant = c2
+    return c1
+
     
 def renverser(chaine) :
     reverse = None
@@ -72,3 +65,26 @@ def renverser(chaine) :
 chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
 chaine2 = Chainon(13, Chainon(16, None))
 
+def renverser(chaine) :
+    if chaine == None :
+        return None
+    else :
+        return concatener(renverser(chaine.suivant), Chainon(chaine.valeur, None))
+
+
+def inserer(v, n, chaine) :
+    if chaine == None :
+        raise IndexError("Invalid index")
+    if n == 0 :
+        return Chainon(v, chaine)
+    else :
+        return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))
+    
+def supprimer(n, chaine) :
+    if chaine == None :
+        raise IndexError("Invalid index")
+    if n == 0  :
+        return chaine.suivant
+    else :
+        return Chainon(chaine.valeur, supprimer(n-1, chaine.suivant))
+    
