@@ -286,13 +286,12 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		``` python
 		def inserer(v, n, chaine) :
-			if chaine == None :
+			if n<0 :
 				raise IndexError("Invalid index")
-			if n == 0 :
+			if n == 0 or chaine == None:
 				return Chainon(v, chaine)
 			else :
 				return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))
-		```
 	
 !!! question "Exercice 4 :  Suppression d'un chainon"
 
@@ -310,7 +309,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		``` python
 		def supprimer(n, chaine) :
-			if chaine == None :
+			if chaine == None or n<0:
 				raise IndexError("Invalid index")
 			if n == 0  :
 				return chaine.suivant
@@ -334,10 +333,41 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 		* `creeDepuisTab([])` crée un objet `None` ;
 		* `creeDepuisTab([42])` crée une liste chaînée `42 -> None`.
 		
-	=== "Solution"
+	=== "Solutions"
 	
-		A venir !
+		Il existe de nombreuses possibilités, et toutes ne sont pas équivalentes en terme de complexité (la V4 ci-dessous est beaucoup moins efficace).
+		
+		=== "Pythonesque avec reversed"
+			``` python
+			def creeDepuisTab(tab) :
+				"""Version pythonesque avec reversed"""
+				LC = None
+				for e in reversed(tab) :
+					LC = Chainon(e, LC)
+				return LC
+			```
+		
+		=== "Avec indices"
+			``` python
+			def creeDepuisTab(tab) :
+				"""Version avec calcul de l'indice"""
+				LC = None
+				l = len(tab)
+				for i in range(len(tab)):
+					LC = Chainon(tab[l-1-i], LC)
+				return LC
+			```
 
+		=== "Récursive avec slices"
+			``` python
+			def creeDepuisTab(tab) :
+			 """Version récursive"""
+				if  tab == [] :
+					return None
+				else :
+					return Chainon(tab[0], creeDepuisTabV3(tab[1:]))
+						```
+			
 !!! question "Exercice 6 :  Chercher le nombre d'occurences"
 
 	=== "Enoncé" 
