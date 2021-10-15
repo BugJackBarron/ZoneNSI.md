@@ -62,8 +62,6 @@ def renverser(chaine) :
         c = c.suivant
     return reverse
         
-chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
-chaine2 = Chainon(13, Chainon(16, None))
 
 def renverser(chaine) :
     if chaine == None :
@@ -73,9 +71,9 @@ def renverser(chaine) :
 
 
 def inserer(v, n, chaine) :
-    if chaine == None :
+    if n<0 :
         raise IndexError("Invalid index")
-    if n == 0 :
+    if n == 0 or chaine == None:
         return Chainon(v, chaine)
     else :
         return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))
@@ -88,3 +86,38 @@ def supprimer(n, chaine) :
     else :
         return Chainon(chaine.valeur, supprimer(n-1, chaine.suivant))
     
+def creeDepuisTabV1(tab) :
+    """Version pythonesque avec reversed"""
+    LC = None
+    for e in reversed(tab) :
+        LC = Chainon(e, LC)
+    return LC
+    
+def creeDepuisTabV2(tab) :
+    """Version avec calcul de l'indice"""
+    LC = None
+    l = len(tab)
+    for i in range(len(tab)):
+        LC = Chainon(tab[l-1-i], LC)
+    return LC
+
+def creeDepuisTabV3(tab) :
+    """Version récursive"""
+    if  tab == [] :
+        return None
+    else :
+        return Chainon(tab[0], creeDepuisTabV3(tab[1:]))
+    
+def creeDepuisTabV4(tab) :
+    """Version avec insertion ( mais moins bonne en terme de complexité"""
+    LC = None
+    for i, v in enumerate(tab) :
+        print(i, v)
+        LC = inserer(v,i,LC)
+    return LC
+    
+
+if __name__ == "__main__" :
+    chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
+    chaine2 = Chainon(13, Chainon(16, None))
+
