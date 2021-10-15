@@ -338,6 +338,57 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        Algorithmes, affectations et types de variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -931,8 +982,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#modification-de-listes-chainees" class="md-nav__link">
+    Modification de listes chaînées
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quelques-exercices-supplementaires" class="md-nav__link">
+    Quelques exercices supplémentaires
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    Encapsulation
+  </a>
   
 </li>
       
@@ -1234,26 +1306,24 @@ car chque élément possède l'adresse mémoire de l'élément suivant de la lis
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span> <span class="p">:</span>
-    <span class="s2">&quot;&quot;&quot;Chainon d&#39;une liste chainée&quot;</span>
-<span class="s2">    def __init__(self, valeur, suivant) :</span>
-<span class="s2">        self.valeur = valeur</span>
-<span class="s2">        self.suivant = suivant</span>
+    <span class="sd">&quot;&quot;&quot;Chainon d&#39;une liste chainée&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
 </code></pre></div>
 </td></tr></table>
 <p>Une fois cette classe définie, la construction de la liste s'effectue de la manière suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="n">chaine</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Chainon</span><span class="p">(</span> <span class="mi">45</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))</span>
 </code></pre></div>
-<p>Ici, on a créé trois objets de classe <code>Chainon</code> qu'on peut visualiser ainsi :</p>
+<p>Ici, on a créé une liste nommée <code>chaine</code> à partir de trois objets de classe <code>Chainon</code> qu'on peut visualiser ainsi :</p>
 <p><p align="center">
 <img alt="LC2" src="../ListeChainee2.png" style="width : 70%;" />
 </p></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Remarque</p>
-<p>Cette construction est une construction récursive. Il est possible de construire cette liste chainée de manière itérative, mais il faut alors commencer par le dernier élément :
-<div class="highlight"><pre><span></span><code><span class="n">last</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">second</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
-<span class="n">first</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+<p>Cette construction est une construction récursive basée sur des objets. Il aurait été possioble d'utiliser des tuples ou des listes python, mais l'utilisation serait moins pratique :
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">21</span><span class="p">,(</span><span class="mi">15</span><span class="p">,</span> <span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="p">(</span><span class="kc">None</span><span class="p">))))</span>
 </code></pre></div></p>
 </div>
 <h3 id="operations-sur-les-listes-chainees">Opérations sur les listes chaînées.</h3>
@@ -1266,52 +1336,234 @@ car chque élément possède l'adresse mémoire de l'élément suivant de la lis
 <li>renvoyer le nombre d'éléments de la chaîne sinon.</li>
 </ul>
 <p>Le plus simple est d'utiliser la récursivité :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="n">liste</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">longueur</span><span class="p">(</span><span class="n">liste</span><span class="o">.</span><span class="n">suivant</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="p">)</span>
 </code></pre></div>
-<details class="question"><summary>Et en itératif ?</summary><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="p">:</span>
+<p>La <strong>complexité</strong> de cette fonction est directement proportionnelle à la longueur de la liste : pour une liste de <span class="arithmatex">\(1~000\)</span> éléments,
+la fonction effectuera :</p>
+<ul>
+<li><span class="arithmatex">\(1~000\)</span> comparaisons ;</li>
+<li><span class="arithmatex">\(1~000\)</span> additions ;</li>
+<li><span class="arithmatex">\(1~000\)</span> appels récursifs.</li>
+</ul>
+<p>On en conclut que la complexité en temps de cette fonction est en <span class="arithmatex">\(\mathbb{O}(n)\)</span>.</p>
+<details class="question"><summary>Et en itératif ?</summary><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">chainon</span> <span class="o">=</span> <span class="n">liste</span>
+    <span class="n">chainon</span> <span class="o">=</span> <span class="n">chaine</span>
     <span class="k">while</span> <span class="n">chainon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="p">:</span>
         <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="n">chainon</span> <span class="o">=</span> <span class="n">chainon</span><span class="o">.</span><span class="n">suivante</span>
+        <span class="n">chainon</span> <span class="o">=</span> <span class="n">chainon</span><span class="o">.</span><span class="n">suivant</span>
     <span class="k">return</span> <span class="n">n</span>
 </code></pre></div>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Exercice : n-ième élément</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
-<p>Créer une fonction <code>niemeElement(liste, n)</code> qui renvoie le n-ième élément de la liste passée en argument</p>
+<p class="admonition-title">Exercice 1 : n-ième élément</p>
+<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>niemeElement(chaine, i)</code> qui renvoie la valeur du i-ième élément de la liste chaînée passée en argument.</p>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution récursive</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">niemeElement</span><span class="p">(</span><span class="n">chaine</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Invalid index&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">chaine</span><span class="o">.</span><span class="n">valeur</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">niemeElement</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>La question de la complexité est un peu plus subtile :</p>
+<ul>
+<li>dans un cas correct (l'indice <code>i</code> fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à <code>i</code> ;</li>
+<li>dans le cas où <code>i</code> est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
+Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à <span class="arithmatex">\(i\)</span>, car le calcul de la longueur parcoure déjà toutes la liste.
+Faire ce calcul en appel récursif générerait donc une complexité <strong>quadratique</strong>. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
+de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
+<li>Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.On peut cependant corriger celà par la ligne :</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span> 
+<span class="p">:</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Solution Itérative</label><div class="tabbed-content">
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">niemeElementI</span><span class="p">(</span><span class="n">chaine</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Invalid index&quot;</span><span class="p">)</span>
+    <span class="n">ni</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">chainon</span> <span class="o">=</span> <span class="n">chaine</span>
+    <span class="k">while</span>  <span class="n">chainon</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ni</span> <span class="o">!=</span> <span class="n">i</span> <span class="p">:</span>
+        <span class="n">ni</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">chainon</span> <span class="o">=</span> <span class="n">chainon</span><span class="o">.</span><span class="n">suivant</span>
+    <span class="k">if</span> <span class="n">chainon</span> <span class="o">!=</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">chainon</span><span class="o">.</span><span class="n">valeur</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Invalid index&quot;</span><span class="p">)</span>
+</code></pre></div>
+ On retrouve en terme de complexité les mêmes éléments que pour la fonction récursive. Cependant les erreurs 
+ ainsi que les conditions de sorties sont plus complexes à prendre en compte.</p>
 </div>
 </div>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Exercice :  Concaténation de deux listes</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
-<p>Créer une fonction <code>concatener(l1, l2)</code> qui renvoie la liste obtenue par concaténation de <code>l1</code> et <code>l2</code>.</p>
+<p class="admonition-title">Exercice 2 :  Concaténation de deux listes</p>
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>concatener(c1, c2)</code> qui renvoie la liste chaînée obtenue par concaténation de <code>c1</code> et <code>c2</code>.</p>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution récursive</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">concatener</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">c1</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">c2</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span><span class="n">concatener</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">suivant</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
+</code></pre></div>
+<p>La complexité dépend fortement de la longueur de la liste <code>c1</code>. par contre elle ne dépend pas de celle de <code>c2</code>.
+Dans cette version, les chaines <code>c1</code> et <code>c2</code> ne sont pas modifiée ! <code>concatener</code> renvoie 
+une nouvelle liste chaînée qui a copié les valeurs de <code>c1</code> avant de les lier à celles de <code>c2</code>.</p>
+<p><p align="center">
+<img alt="LC1" src="../ListeChaineeConcatener1.png" style="width : 60%;" />
+</p></p>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Solution Itérative</label><div class="tabbed-content">
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">concatenerI</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">chainon</span> <span class="o">=</span> <span class="n">c1</span>
+    <span class="k">while</span> <span class="n">chainon</span><span class="o">.</span><span class="n">suivant</span> <span class="o">!=</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="n">chainon</span> <span class="o">=</span> <span class="n">chainon</span><span class="o">.</span><span class="n">suivant</span>
+    <span class="n">chainon</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">c2</span>
+    <span class="k">return</span> <span class="n">c1</span>
+</code></pre></div>
+Attention ! Dans cette solution, <code>c1</code> est modifiée ! 
+<p align="center">
+<img alt="LC2" src="../ListeChaineeConcatener2.png" style="width : 60%;" />
+</p></p>
 </div>
 </div>
+</div>
+<details class="bug"><summary>Un cas limite : renverser la liste</summary><p>Comment faire pour renverser une liste chaînée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes,
+nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélectionnant le premier chaînon et en le concaténant
+à la liste renversée de la suite de la chaîne, Le cas de base étant celui d'une liste vide, auquel cas on renvoie cette liste :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">renverser</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">concatener</span><span class="p">(</span><span class="n">renverser</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="p">),</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+<p>Cependant cette solution n'est pas efficace ! En effet, à chaque appel de <code>renverser</code>, on fait aussi appel à la fonction <code>concatener</code> qui parcoure la totalité de la chaine, à part un élément. La complexité devient alors <mark class="critic"><strong>quadratique</strong></mark> ! </p>
+<p>{<mark>**La récursivité n'est pas toujours la meilleure solution !</mark>**} (mais parfois elle l'est quand même !)</p>
+<p>On va don passer en itératif, surtourt qu'il est facile d'attacher un chainon en tête d'une chaine déjà consrtituée :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">renverser</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">c</span><span class="o">=</span> <span class="n">chaine</span>
+    <span class="k">while</span> <span class="n">c</span> <span class="o">!=</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="n">reverse</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">reverse</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">suivant</span>
+    <span class="k">return</span> <span class="n">reverse</span>
+</code></pre></div>
+<p>La complexité est celle du parcours d'une chaîne complète, donc en <span class="arithmatex">\(\mathbb{O}(n)\)</span>.</p>
+</details>
+<h3 id="modification-de-listes-chainees">Modification de listes chaînées</h3>
+<div class="admonition warning">
+<p class="admonition-title">Pourquoi se casser la tête ?</p>
+<p>Eliminons tout de suite une possibilité : bien entendu, <strong>en Python</strong>, il est possible de modifier <em>directement</em> un attribut, donc la modification d'une valeur d'une liste chaînée est assez évidente.
+Par exemple, les lignes suivantes  :
+<div class="highlight"><pre><span></span><code><span class="n">chaine</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">Chainon</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Chainon</span><span class="p">(</span> <span class="mi">45</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))</span>
+<span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="mi">33</span>
+</code></pre></div>
+modifient la valeur du deuxième élément de la chaine, qui devient <code>21 -&gt; 33 -&gt; 45 -&gt; None</code>.</p>
+<p>Cependant, <strong>cette possibilité n'est pas toujours possible dans tous les langages</strong>, et de toutes façons cette manière de modifier ne correspond pas à la logique de construction d'une liste chaînée.</p>
+<p>On va donc préférer passer à des modifications directe des chaînons.</p>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Exercice :  Insertion d'un chainon</p>
+<p class="admonition-title">Exercice 3 :  Insertion d'un chainon</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
-<p>Créer une fonction <code>inserer(v, n, liste)</code> qui insère l'élément <code>v</code> à la position <code>n</code> dans la liste passée en argument.</p>
+<p>Créer une fonction <code>inserer(v, n, chaine)</code> qui insère l'élément <code>v</code> à la position <code>n</code> dans la liste passée en argument.</p>
+<p>Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :</p>
+<p><p align="center">
+<img alt="LC Insertion" src="../Insertion.png" style="width : 50%;" />
+</p></p>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
 <p>A venir !</p>
 </div>
 </div>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 4 :  Suppression d'un chainon</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>supprime(n, chaine)</code> qui supprime l'élément à la position <code>n</code> dans la liste passée en argument.</p>
+<p>Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :</p>
+<p><p align="center">
+<img alt="LC Suppression" src="../Suppression.png" style="width : 50%;" />
+</p></p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h2 id="quelques-exercices-supplementaires">Quelques exercices supplémentaires</h2>
+<p>Nous voici avec une structure correcte, permettant de travailler correctement sur des listes chainées. Nous allons maintenant augmenter notre potentiel d'action avec les listes chaînées :</p>
+<div class="admonition question">
+<p class="admonition-title">Exercice 5 :  Création à partir d'une liste Python</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>creeDepuisTab(tab)</code> qui crée une liste chaînée depuis un tableau donné en argument.</p>
+<p>Par exemple :</p>
+<ul>
+<li><code>creeDepuisTab([12, 15, 17])</code> crée la liste chaînée <code>12 -&gt; 15 -&gt; 17 -&gt; None</code> ;</li>
+<li><code>creeDepuisTab([])</code> crée un objet <code>None</code> ;</li>
+<li><code>creeDepuisTab([42])</code> crée une liste chaînée <code>42 -&gt; None</code>.</li>
+</ul>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 6 :  Chercher le nombre d'occurences</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>occurences(valeur, chaine)</code> qui renvoie le nombre d'occurence de <code>valeur</code> dans la liste chaînée <code>chaine</code>.</p>
+<p>Par exemple :</p>
+<ul>
+<li><code>occurences(12, chaine)</code> devra renvoyer 3 si la chaîne est <code>12 -&gt; 35 -&gt; 12 -&gt;42 -&gt; 12 -&gt;35 -&gt; None</code>;</li>
+<li><code>occurences(27,chaine)</code> devra renvoyer 0 si la chaîne est <code>12 -&gt; 35 -&gt; 12 -&gt;42 -&gt; 12 -&gt;35 -&gt; None</code>;</li>
+<li><code>occurences(42,chaine)</code> devra renvoyer 1 si la chaîne est <code>12 -&gt; 35 -&gt; 12 -&gt;42 -&gt; 12 -&gt;35 -&gt; None</code>.</li>
+</ul>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 7 :  Trouver la première occurence</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>premiereOccurence(valeur, chaine)</code> qui renvoie <em>l'indice de la première occurence</em> de <code>valeur</code> dans la liste chaînée <code>chaine</code>. Si \valeur<code>n'est pas dans</code>chaine<code>, la fonction devra renvoyer</code>-1`. </p>
+<p>Par exemple :</p>
+<ul>
+<li><code>premiereOccurences(12, chaine)</code> devra renvoyer 0 si la chaîne est <code>12 -&gt; 35 -&gt; 12 -&gt;42 -&gt; 12 -&gt;35 -&gt; None</code>;</li>
+<li><code>premiereOccurences(27,chaine)</code> devra renvoyer -1 si la chaîne est <code>12 -&gt; 35 -&gt; 12 -&gt;42 -&gt; 12 -&gt;35 -&gt; None</code>;</li>
+<li><code>premiereOccurences(42,chaine)</code> devra renvoyer 3 si la chaîne est <code>12 -&gt; 35 -&gt; 12 -&gt;42 -&gt; 12 -&gt;35 -&gt; None</code>.</li>
+</ul>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 8 :  chaînes identiques</p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>identique(c1, c2)</code> qui renvoie <code>True</code> si les deux chaînes contiennent les mêmes valeurs dans le même ordre, et <code>False</code> sinon.</p>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h2 id="encapsulation">Encapsulation</h2>
+<p>Partie à venir...</p>
                 
               
               
