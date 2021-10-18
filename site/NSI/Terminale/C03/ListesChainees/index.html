@@ -1023,6 +1023,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../Piles_et_files/" class="md-nav__link">
+        Piles et files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ToursHanoi/" class="md-nav__link">
         TP : Tours de Hanoï
       </a>
@@ -1277,7 +1291,7 @@
 </p></p>
 <p>Au total, nous avons réalisé un nombre d'opérations qui est <strong>proportionnel à la taille du tableau !</strong>Sur un petit, tel que celui-ci, il n'y a pas trop de problèmes, 
 mais sur un tableau contenant <em>plusieurs millions</em> d'entrées, le nombre d'opérations devient bien trop important.</p>
-<p>Heureusement, il existe d'autres ménières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.    </p>
+<p>Heureusement, il existe d'autres manières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.    </p>
 </div>
 <h2 id="les-listes-chainees">Les listes chaînées</h2>
 <h3 id="construction-dune-liste-chainees">Construction d'une liste chaînées</h3>
@@ -1325,6 +1339,34 @@ car chque élément possède l'adresse mémoire de l'élément suivant de la lis
 <p>Cette construction est une construction récursive basée sur des objets. Il aurait été possioble d'utiliser des tuples ou des listes python, mais l'utilisation serait moins pratique :
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">21</span><span class="p">,(</span><span class="mi">15</span><span class="p">,</span> <span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="p">(</span><span class="kc">None</span><span class="p">))))</span>
 </code></pre></div></p>
+</div>
+<div class="admonition tips">
+<p class="admonition-title">Affichage d'un objet <code>Chainon</code></p>
+<p>Afin de représenter à l'écran notre objet <code>Chainon</code>, on implémente la méthode <code>__str__</code> ainsi :
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Chainon d&#39;une liste chainée&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="si">}</span><span class="s2"> -&gt; None&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">suivant</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Ainsi l'instruction <code>print(chaine)</code> affichera <code>21 -&gt; 15 -&gt; 45 -&gt; None</code>.</p>
 </div>
 <h3 id="operations-sur-les-listes-chainees">Opérations sur les listes chaînées.</h3>
 <div class="admonition exemple">
@@ -1383,8 +1425,8 @@ Faire ce calcul en appel récursif générerait donc une complexité <strong>qua
 de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
 <li>Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.On peut cependant corriger celà par la ligne :</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span> 
-<span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+<span class="o">...</span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Solution Itérative</label><div class="tabbed-content">
@@ -1437,6 +1479,16 @@ Attention ! Dans cette solution, <code>c1</code> est modifiée !
 <p align="center">
 <img alt="LC2" src="../ListeChaineeConcatener2.png" style="width : 60%;" />
 </p></p>
+<p><mark class="critic"><strong>ET C'EST UNE TRES MAUVAISE IDEE</strong></mark></p>
+<p>Imaginons qu'on exécute deux fois la concaténation <code>concatenerI(c1, c2)</code>, puis qu'on demande un affichage de <code>c1</code>.</p>
+<p>La première concaténation va donner le schéma ci-dessus, la châine <code>c1</code> ayant pour dernier chaînon le dernier chaînon de <code>c2</code>.
+A l'exécution de la deuxième concaténation, il n'y aura pas de création de nouvelle chaîne, mais simplement la modification du dernier
+chaînon de l'actuel <code>c1</code> vers le premier élément de <code>c2</code>, soit... une boucle menant du dernier élément de <code>c2</code> vers le premier de <code>c2</code> :</p>
+<p><p align="center">
+<img alt="LC2" src="../ListeChaineeConcatener3.png" style="width : 60%;" />
+</p></p>
+<p>La chaîne obtenue ne possède plus de fin (jamais elle ne pointe vers <code>None</code>). La méthode <code>__str__</code> effectuant un appel récursif dont le cas de basecorrespond au fait de pointer vers <code>None</code>, 
+on aura alors une erreur de type <code>RecursionError: maximum recursion depth exceeded</code>, puisqu'il est devenu impossible de passer par le cas de base.</p>
 </div>
 </div>
 </div>
@@ -1450,7 +1502,7 @@ nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélection
         <span class="k">return</span> <span class="n">concatener</span><span class="p">(</span><span class="n">renverser</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="p">),</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 </code></pre></div>
 <p>Cependant cette solution n'est pas efficace ! En effet, à chaque appel de <code>renverser</code>, on fait aussi appel à la fonction <code>concatener</code> qui parcoure la totalité de la chaine, à part un élément. La complexité devient alors <mark class="critic"><strong>quadratique</strong></mark> ! </p>
-<p>{<mark>**La récursivité n'est pas toujours la meilleure solution !</mark>**} (mais parfois elle l'est quand même !)</p>
+<p><mark class="critic"><strong>La récursivité n'est pas toujours la meilleure solution !</strong></mark> (mais parfois elle l'est quand même !)</p>
 <p>On va don passer en itératif, surtourt qu'il est facile d'attacher un chainon en tête d'une chaine déjà consrtituée :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">renverser</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">reverse</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1484,14 +1536,14 @@ modifient la valeur du deuxième élément de la chaine, qui devient <code>21 -&
 </p></p>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
-<p>``` python
-def inserer(v, n, chaine) :
-    if n&lt;0 :
-        raise IndexError("Invalid index")
-    if n == 0 or chaine == None:
-        return Chainon(v, chaine)
-    else :
-        return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inserer</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Invalid index&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">chaine</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">inserer</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">chaine</span><span class="o">.</span><span class="n">suivant</span><span class="p">))</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -1531,7 +1583,7 @@ def inserer(v, n, chaine) :
 </div>
 <input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solutions</label><div class="tabbed-content">
 <p>Il existe de nombreuses possibilités, et toutes ne sont pas équivalentes en terme de complexité (la V4 ci-dessous est beaucoup moins efficace).</p>
-<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Pythonesque avec reversed</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Itérative Pythonesque avec <code>reversed</code></label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">creeDepuisTab</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Version pythonesque avec reversed&quot;&quot;&quot;</span>
     <span class="n">LC</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1540,7 +1592,7 @@ def inserer(v, n, chaine) :
     <span class="k">return</span> <span class="n">LC</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Avec indices</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Itérative avec indices</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">creeDepuisTab</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Version avec calcul de l&#39;indice&quot;&quot;&quot;</span>
     <span class="n">LC</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1551,13 +1603,13 @@ def inserer(v, n, chaine) :
 </code></pre></div>
 </div>
 <input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">Récursive avec slices</label><div class="tabbed-content">
-<p><code>python
-def creeDepuisTab(tab) :
- """Version récursive"""
-    if  tab == [] :
-        return None
-    else :
-        return Chainon(tab[0], creeDepuisTabV3(tab[1:]))</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">creeDepuisTab</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="p">:</span>
+ <span class="sd">&quot;&quot;&quot;Version récursive&quot;&quot;&quot;</span>
+    <span class="k">if</span>  <span class="n">tab</span> <span class="o">==</span> <span class="p">[]</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">creeDepuisTabV3</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -1606,7 +1658,349 @@ def creeDepuisTab(tab) :
 </div>
 </div>
 <h2 id="encapsulation">Encapsulation</h2>
-<p>Partie à venir...</p>
+<p>On va désormais <strong>encapsuler</strong> l'implémentation précédente dans une autre classe, nommée <code>ListeC</code> dont l'interface est la suivante  :</p>
+<ol>
+<li>la construction d'un objet <code>ListeC</code> vide  correspondre à un objet <code>None</code>;</li>
+<li>une méthode <code>is_empty</code> doit renvoyer un booléen correspondnat au statut vide ou non vide de la liste ;</li>
+<li>une méthode <code>push</code> permet d'ajouter une valeur en tête de la liste ;</li>
+<li>la méthode <code>__str__</code> doit renvoyer une chaîne correcte (telle que celle de la classe <code>Chainon</code>) ;</li>
+<li>l'appel à la fonction <code>len</code> doit renvoyer la longueur de la liste ;</li>
+<li>on doit pouvoir atteindre le i-ème élément d'un objet <code>lc</code>par l'intermédiaire de <code>lc[i]</code> ;</li>
+<li>l'opérateur <code>+</code> utilisé entre deux objets de type <code>ListeC</code> doit renvoyer un nouvel objet crée par concaténation.</li>
+</ol>
+<p>Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différences d'implémenations présentées dans la partie précédente :</p>
+<div class="admonition question">
+<p class="admonition-title">Méthode constructeur <code>__init__</code> :</p>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Analyse</label><div class="tabbed-content">
+<p>Un objet <code>ListeC</code> ne contient qu'un seul attribut : la tête de la liste. Soit c'est un objet de type Chainon<code>, soit c'est l'objet</code>None<code>. La méthode</code><strong>init</strong><code>ne doit
+donc qu'initialiser un attribut</code>head<code>à la valeur</code>None`</p>
+</div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Méthode <code>is_empty</code> :</p>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">Analyse</label><div class="tabbed-content">
+<p>si la tête est de type <code>None</code>, on renvoie <code>True</code>, sinon <code>False</code></p>
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Méthode <code>push</code> :</p>
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">Analyse</label><div class="tabbed-content">
+<p>Comme on l'a vu plusieurs fois, une liste chainée se construit par ajouts successifs d'éléments en tête de la liste.</p>
+</div>
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Méthode <code>__str__</code> :</p>
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">Analyse</label><div class="tabbed-content">
+<p>Rien de particulier, il suffit de renvoyer la chaîne de caractères correspondant à la tête.</p>
+</div>
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Méthode <code>__len__</code> :</p>
+<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">Analyse</label><div class="tabbed-content">
+<p>La fonction built-in <code>len</code> fait appel à la méthode <code>__len__</code> de l'objet passé en argument. Il suffit donc de créer une telle méthode, en réutilisant la fonction <code>longueur</code> déjà crée.</p>
+</div>
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">longueur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Accès direct au i-ème élément :</p>
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">Analyse</label><div class="tabbed-content">
+<p>Lorsqu'on veut faire appel aux opérateurs <code>[i]</code> pour accéder au i-ème élément d'un objet déjà construit, python regarde si une méthode <code>__getitem__</code> a été définie pour ce type d'objet.</p>
+</div>
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">longueur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">niemeElement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Utilisation de <code>+</code></p>
+<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">Analyse</label><div class="tabbed-content">
+<p>Pour utiliser l'opérateur <code>+</code>, il faut implémenter une méthode <code>__add__</code>. Cette méthode doit renvoyer un nouvel objet, donc son implémentation est un peu plus complexe.
+Par ailleurs, il faut lever une erreur dans le cas où l'objet passé en argument n'est pas de type <code>ListeC</code>.</p>
+</div>
+<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">Code</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListeC</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A real docstring here&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Chainon</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">longueur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">niemeElement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ListeC</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to add ListeC object with </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2"> object&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">ListeC</span><span class="p">()</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">concatener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<p>Une fois cette classe implémentée, on peut l'utiliser aussi simplement qu'un objet de type <code>list</code> de python :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">ListeC</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">ListeC</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x033A8690</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="mi">42</span><span class="o">-&gt;</span><span class="mi">15</span><span class="o">-&gt;</span><span class="mi">12</span><span class="o">-&gt;</span><span class="kc">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">ListeC</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span><span class="o">.</span><span class="n">push</span> <span class="p">(</span><span class="mi">43</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span><span class="o">.</span><span class="n">push</span> <span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span><span class="o">.</span><span class="n">push</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="p">)</span>
+<span class="mi">42</span><span class="o">-&gt;</span><span class="mi">15</span><span class="o">-&gt;</span><span class="mi">12</span><span class="o">-&gt;-</span><span class="mi">5</span><span class="o">-&gt;</span><span class="mi">27</span><span class="o">-&gt;</span><span class="mi">43</span><span class="o">-&gt;</span><span class="kc">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">l2</span><span class="o">+</span><span class="n">l1</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">5</span><span class="o">-&gt;</span><span class="mi">27</span><span class="o">-&gt;</span><span class="mi">43</span><span class="o">-&gt;</span><span class="mi">42</span><span class="o">-&gt;</span><span class="mi">15</span><span class="o">-&gt;</span><span class="mi">12</span><span class="o">-&gt;</span><span class="kc">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="mi">12</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="o">-</span><span class="mi">5</span>
+</code></pre></div>
+<details class="question"><summary>Prolonger le travail</summary><div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">Enoncé</label><div class="tabbed-content">
+<p>Ajouter à la classe <code>ListeC</code> les méthodes suivantes</p>
+<ul>
+<li><code>pop</code> : qui supprime soit la tête de la liste si aucun argument n'est passé (<code>l1.pop()</code>, soit l'élément d'indice donné si un indice est passé en argument (<code>l1.pop(2)</code>) ;</li>
+<li><code>insert(v,i)</code> qui insère dans la liste la valeur <code>v</code> à la position <code>i</code>.</li>
+</ul>
+</div>
+<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</details>
                 
               
               
@@ -1647,13 +2041,13 @@ def creeDepuisTab(tab) :
       
       
         
-        <a href="../ToursHanoi/" class="md-footer__link md-footer__link--next" aria-label="Next: TP : Tours de Hanoï" rel="next">
+        <a href="../Piles_et_files/" class="md-footer__link md-footer__link--next" aria-label="Next: Piles et files" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              TP : Tours de Hanoï
+              Piles et files
             </div>
           </div>
           <div class="md-footer__button md-icon">
