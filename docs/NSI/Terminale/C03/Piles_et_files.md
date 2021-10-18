@@ -36,15 +36,57 @@
 	| `empiler(e : T, p : Pile[T])` | ajoute l'élément `e` de type `T` au sommet de la pile `p`. |
 	| `depiler(p : Pile[T]) -> e : T` | retire et renvoie l'élément `e` de type `T` situé au sommet de la pile `p`. |
 	
+!!! example "Exemples d'utilisations de Piles"
+
+	=== "Bouton retour dans un navigateur"
 	
+		Lors d'une navigation web, on utilise une pile pour stocker les différentes pages visitées les unes après les autres. Le bouton de retour a pour fonction de **dépiler** la pile ainsi constituée.
+		
+		Par exemple :
+		<p align="center">
+		![exemple retour](pileRetour.png){: style="width : 50%;"}
+		</p>
+	
+	
+	=== "Pile d'appels d'une fonction récursive"
+	
+		Une pile est crée lors des différents appels récursifs d'une fonction, et cette pile est dépilée à chaque retour de fonction.
+		
+		Par exemple, avec la fonction factorielle :
+		<p align="center">
+		![exemple factorielle](pileFacto.png){: style="width : 90%;"}
+		</p>
+	
+		
+	
+	
+	=== "Fonction « Annuler la frappe » d'un traitement de texte"
+	
+		De la même manière que pour le bouton retour d'une page web, les modifications apportées dans un traitement de texte sont stockées dans une pile. L'appuis sur ++ctrl++ + Z a pour effet de dépiler, 
+		et donc de rétablir le texte à la situation précédente sauvegardée dans la pile.
+		
 ### Files
 
 !!! abstract "Définition"
+	
+	Une {==**file**==} (*queue* en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :
+	
+	* un objet est ajouté toujours au début de la file (**emfiler**);
+	* quand on supprime un objet, il s'agit toujours du **dernier objet de la file** (**défiler**).
+	
+	On associe à cette struture l'image d'une *file de personnes faisant la queue* :	
 
 	<p align="center">
 	![file 1](files1.png){: style="width : 70%;"}
 	</p>
+	
+	Un tel type de structure est souvent appelé :
+	
+	* *Premier entré, premier sorti* (*PEPS*) en français ;
+	* *First in, first out* (*FIFO*) en anglais.
+	
 
+	
 
 
 ## Implémentation d'une Pile
