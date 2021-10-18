@@ -23,7 +23,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	Au total, nous avons réalisé un nombre d'opérations qui est **proportionnel à la taille du tableau !**Sur un petit, tel que celui-ci, il n'y a pas trop de problèmes, 
 	mais sur un tableau contenant *plusieurs millions* d'entrées, le nombre d'opérations devient bien trop important.
 	
-	Heureusement, il existe d'autres ménières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.	
+	Heureusement, il existe d'autres manières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.	
 	
 
 ## Les listes chaînées
@@ -79,6 +79,24 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	``` python
 	(21,(15, (45, (None))))
 	```
+!!! tips "Affichage d'un objet `Chainon`" 
+	
+	Afin de représenter à l'écran notre objet `Chainon`, on implémente la méthode `__str__` ainsi :
+	``` python linenums="1"
+	class Chainon :
+		"""Chainon d'une liste chainée"""
+		def __init__(self, valeur, suivant) :
+			self.valeur = valeur
+			self.suivant = suivant
+			
+		def __str__(self):
+			if self.suivant == None :
+				return f"{self.valeur} -> None"
+			else :
+				return f"{self.valeur} -> {str(self.suivant)}"
+	```
+	
+	Ainsi l'instruction `print(chaine)` affichera `21 -> 15 -> 45 -> None`.
 	
 ### Opérations sur les listes chaînées.
 
@@ -150,8 +168,8 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.On peut cependant corriger celà par la ligne :
 		
 		``` python
-		if chaine == None or i<0 
-		:
+		if chaine == None or i<0 :
+		...
 		```
 		
 		
@@ -215,6 +233,21 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		![LC2](ListeChaineeConcatener2.png){: style="width : 60%;"}
 		</p>
 		
+		{==**ET C'EST UNE TRES MAUVAISE IDEE**==}
+		
+		Imaginons qu'on exécute deux fois la concaténation `concatenerI(c1, c2)`, puis qu'on demande un affichage de `c1`.
+		
+		La première concaténation va donner le schéma ci-dessus, la châine `c1` ayant pour dernier chaînon le dernier chaînon de `c2`.
+		A l'exécution de la deuxième concaténation, il n'y aura pas de création de nouvelle chaîne, mais simplement la modification du dernier
+		chaînon de l'actuel `c1` vers le premier élément de `c2`, soit... une boucle menant du dernier élément de `c2` vers le premier de `c2` :
+		
+		<p align="center">
+		![LC2](ListeChaineeConcatener3.png){: style="width : 60%;"}
+		</p>
+		
+		La chaîne obtenue ne possède plus de fin (jamais elle ne pointe vers `None`). La méthode `__str__` effectuant un appel récursif dont le cas de basecorrespond au fait de pointer vers `None`, 
+		on aura alors une erreur de type `RecursionError: maximum recursion depth exceeded`, puisqu'il est devenu impossible de passer par le cas de base.
+		
 		
 		
 ??? bug "Un cas limite : renverser la liste"
@@ -233,7 +266,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 	Cependant cette solution n'est pas efficace ! En effet, à chaque appel de `renverser`, on fait aussi appel à la fonction `concatener` qui parcoure la totalité de la chaine, à part un élément. La complexité devient alors {==**quadratique**==} ! 
 	
-	{==**La récursivité n'est pas toujours la meilleure solution !==**} (mais parfois elle l'est quand même !)
+	{==**La récursivité n'est pas toujours la meilleure solution !**==} (mais parfois elle l'est quand même !)
 	
 	On va don passer en itératif, surtourt qu'il est facile d'attacher un chainon en tête d'une chaine déjà consrtituée :
 	
@@ -292,6 +325,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 				return Chainon(v, chaine)
 			else :
 				return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))
+		```
 	
 !!! question "Exercice 4 :  Suppression d'un chainon"
 
@@ -337,7 +371,7 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 	
 		Il existe de nombreuses possibilités, et toutes ne sont pas équivalentes en terme de complexité (la V4 ci-dessous est beaucoup moins efficace).
 		
-		=== "Pythonesque avec reversed"
+		=== "Itérative Pythonesque avec `reversed`"
 			``` python
 			def creeDepuisTab(tab) :
 				"""Version pythonesque avec reversed"""
@@ -347,7 +381,7 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 				return LC
 			```
 		
-		=== "Avec indices"
+		=== "Itérative avec indices"
 			``` python
 			def creeDepuisTab(tab) :
 				"""Version avec calcul de l'indice"""
@@ -366,7 +400,7 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 					return None
 				else :
 					return Chainon(tab[0], creeDepuisTabV3(tab[1:]))
-						```
+			```
 			
 !!! question "Exercice 6 :  Chercher le nombre d'occurences"
 
@@ -414,5 +448,229 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 
 ## Encapsulation
 
-Partie à venir...
+On va désormais **encapsuler** l'implémentation précédente dans une autre classe, nommée `ListeC` dont l'interface est la suivante  :
+
+1. la construction d'un objet `ListeC` vide  correspondre à un objet `None`;
+2. une méthode `is_empty` doit renvoyer un booléen correspondnat au statut vide ou non vide de la liste ;
+3. une méthode `push` permet d'ajouter une valeur en tête de la liste ;
+4. la méthode `__str__` doit renvoyer une chaîne correcte (telle que celle de la classe `Chainon`) ;
+5. l'appel à la fonction `len` doit renvoyer la longueur de la liste ;
+6. on doit pouvoir atteindre le i-ème élément d'un objet `lc`par l'intermédiaire de `lc[i]` ;
+7. l'opérateur `+` utilisé entre deux objets de type `ListeC` doit renvoyer un nouvel objet crée par concaténation.
+
+
+Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différences d'implémenations présentées dans la partie précédente :
+
+!!! question "Méthode constructeur `__init__` :"
+	=== "Analyse"
+		Un objet `ListeC` ne contient qu'un seul attribut : la tête de la liste. Soit c'est un objet de type Chainon`, soit c'est l'objet `None`. La méthode `__init__` ne doit
+		donc qu'initialiser un attribut `head` à la valeur `None`
 		
+	=== "Code"
+	
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+		```
+
+!!! question "Méthode `is_empty` :"
+
+	=== "Analyse"
+		si la tête est de type `None`, on renvoie `True`, sinon `False`
+		
+	=== "Code"
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+				
+			def is_empty(self) :
+				return self.head == None
+		```
+
+!!! question "Méthode `push` :"
+
+	=== "Analyse"
+		Comme on l'a vu plusieurs fois, une liste chainée se construit par ajouts successifs d'éléments en tête de la liste.
+		
+	=== "Code"
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+				
+			def is_empty(self) :
+				return self.head == None
+				
+			def push(self, v) :
+				self.head = Chainon(v, self.head)
+		```
+
+!!! question "Méthode `__str__` :"
+
+	=== "Analyse"
+		Rien de particulier, il suffit de renvoyer la chaîne de caractères correspondant à la tête.
+		
+	=== "Code"
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+				
+			def is_empty(self) :
+				return self.head == None
+				
+			def push(self, v) :
+				self.head = Chainon(v, self.head)
+				
+			def __str__(self) :
+				return str(self.head)
+		```
+		
+!!! question "Méthode `__len__` :"
+
+	=== "Analyse"
+		La fonction built-in `len` fait appel à la méthode `__len__` de l'objet passé en argument. Il suffit donc de créer une telle méthode, en réutilisant la fonction `longueur` déjà crée.
+		
+	=== "Code"
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+				
+			def is_empty(self) :
+				return self.head == None
+				
+			def push(self, v) :
+				self.head = Chainon(v, self.head)
+				
+			def __str__(self) :
+				return str(self.head)
+			
+			def __len__(self) :
+				if self.head == None :
+					return 0
+				else :
+					return longueur(self.head)
+		```
+
+!!! question "Accès direct au i-ème élément :"
+
+	=== "Analyse"
+		Lorsqu'on veut faire appel aux opérateurs `[i]` pour accéder au i-ème élément d'un objet déjà construit, python regarde si une méthode `__getitem__` a été définie pour ce type d'objet.
+		
+	=== "Code"
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+				
+			def is_empty(self) :
+				return self.head == None
+				
+			def push(self, v) :
+				self.head = Chainon(v, self.head)
+				
+			def __str__(self) :
+				return str(self.head)
+			
+			def __len__(self) :
+				if self.head == None :
+					return 0
+				else :
+					return longueur(self.head)
+					
+			def __getitem__(self, i) :
+				return niemeElement(self.head, i)
+		```
+!!! question "Utilisation de `+`"
+	=== "Analyse"
+		Pour utiliser l'opérateur `+`, il faut implémenter une méthode `__add__`. Cette méthode doit renvoyer un nouvel objet, donc son implémentation est un peu plus complexe.
+		Par ailleurs, il faut lever une erreur dans le cas où l'objet passé en argument n'est pas de type `ListeC`.
+		
+	=== "Code"
+		``` python linenums="1"
+		class ListeC :
+			"""A real docstring here"""
+			
+			def __init__(self) :
+				self.head = None
+				
+			def is_empty(self) :
+				return self.head == None
+				
+			def push(self, v) :
+				self.head = Chainon(v, self.head)
+				
+			def __str__(self) :
+				return str(self.head)
+			
+			def __len__(self) :
+				if self.head == None :
+					return 0
+				else :
+					return longueur(self.head)
+					
+			def __getitem__(self, i) :
+				return niemeElement(self.head, i)
+				
+			def __add__(self, other) :
+				if not isinstance(other, ListeC) :
+					raise TypeError(f"Unable to add ListeC object with {type(other)} object")
+				result = ListeC()
+				result.head = concatener(self.head, other.head)
+				return result
+		```
+		
+Une fois cette classe implémentée, on peut l'utiliser aussi simplement qu'un objet de type `list` de python :
+
+``` python
+>>> l1 = ListeC()
+>>> l1
+<__main__.ListeC object at 0x033A8690>
+>>> l1.push(12)
+>>> l1.push(15)
+>>> l1.push(42)
+>>> print(l1)
+42->15->12->None
+>>> len(l1)
+3
+>>> l1.is_empty()
+False
+>>> l2 = ListeC()
+>>> l2.push (43)
+>>> l2.push (27)
+>>> l2.push (-5)
+>>> print(l1+l2)
+42->15->12->-5->27->43->None
+>>> print(l2+l1)
+-5->27->43->42->15->12->None
+>>> l1[2]
+12
+>>> l2[0]
+-5
+```
+
+??? question "Prolonger le travail"
+	
+	=== "Enoncé"
+		Ajouter à la classe `ListeC` les méthodes suivantes
+
+		* `pop` : qui supprime soit la tête de la liste si aucun argument n'est passé (`l1.pop()`, soit l'élément d'indice donné si un indice est passé en argument (`l1.pop(2)`) ;
+		* `insert(v,i)` qui insère dans la liste la valeur `v` à la position `i`.
+	
+	=== "Solution"
+		A venir !

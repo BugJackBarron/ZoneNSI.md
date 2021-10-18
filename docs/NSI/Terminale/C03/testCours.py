@@ -115,6 +115,37 @@ def creeDepuisTabV4(tab) :
         print(i, v)
         LC = inserer(v,i,LC)
     return LC
+
+class ListeC :
+    """A real docstring here"""
+    
+    def __init__(self) :
+        self.head = None
+        
+    def is_empty(self) :
+        return self.head == None
+        
+    def push(self, v) :
+        self.head = Chainon(v, self.head)
+        
+    def __str__(self) :
+        return str(self.head)
+    
+    def __len__(self) :
+        if self.head == None :
+            return 0
+        else :
+            return longueur(self.head)
+            
+    def __getitem__(self, i) :
+        return niemeElement(self.head, i)
+        
+    def __add__(self, other) :
+        if not isinstance(other, ListeC) :
+            raise TypeError(f"Unable to add ListeC object with {type(other)} object")
+        result = ListeC()
+        result.head = concatener(self.head, other.head)
+        return result
     
 
 if __name__ == "__main__" :
