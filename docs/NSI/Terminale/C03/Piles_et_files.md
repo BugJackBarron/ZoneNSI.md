@@ -31,7 +31,7 @@
 	
 	| fonction|  description|
 	|:---:| :--- |
-	| `créer_pile() -> Pile[T]` | crée une pile vide |
+	| `creer_pile() -> Pile[T]` | crée une pile vide |
 	| `est_vide(p : Pile[T]) -> bool` | renvoie `True si l'objet `p` de`type `Pile[T]` est vide, `False` sinon. |
 	| `empiler(e : T, p : Pile[T]) -> None` | ajoute l'élément `e` de type `T` au sommet de la pile `p`. |
 	| `dépiler(p : Pile[T]) -> e : T` | retire et renvoie l'élément `e` de type `T` situé au sommet de la pile `p`. |
@@ -99,7 +99,7 @@
 	
 	| fonction|  description|
 	|:---:| :--- |
-	| `créer_file() -> File[T]` | crée une pile vide |
+	| `creer_file() -> File[T]` | crée une pile vide |
 	| `est_vide(f : File[T]) -> bool` | renvoie `True si l'objet `f` de`type `File[T]` est vide, `False` sinon. |
 	| `enfiler(e : T, f : File[T]) -> None` | ajoute l'élément `e` de type `T` à la fin de la file `f`. |
 	| `defiler(f : File[T]) -> e : T` | retire et renvoie l'élément `e` de type `T` situé au début de la file `f`. |
@@ -108,7 +108,7 @@
 
 	=== "Jeu de Bataille"
 	
-		Dans un jeu de bataille, chaque joueur possède une file de carte. On *défile* chaque paquet, compare les cartes, et le vainqueur *enfile* les cartes récoltyées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.
+		Dans un jeu de bataille, chaque joueur possède une file de carte. On *défile* chaque paquet, compare les cartes, et le vainqueur *enfile* les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.
 		
 	=== "Serveurs d'impressions"
 	
