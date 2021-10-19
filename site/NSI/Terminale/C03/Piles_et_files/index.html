@@ -995,16 +995,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-dune-pile" class="md-nav__link">
-    Implémentation d'une Pile
+  <a href="#implementations-dune-pile" class="md-nav__link">
+    Implémentations d'une Pile
   </a>
+  
+    <nav class="md-nav" aria-label="Implémentations d'une Pile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-partir-dune-liste-python" class="md-nav__link">
+    A partir d'une liste python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-partir-dune-liste-chainee" class="md-nav__link">
+    A partir d'une liste chaînée
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-dune-file" class="md-nav__link">
-    Implémentation d'une File
+  <a href="#implementations-dune-file" class="md-nav__link">
+    Implémentations d'une File
   </a>
+  
+    <nav class="md-nav" aria-label="Implémentations d'une File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation-par-une-liste-chainee-mutable" class="md-nav__link">
+    Implémentation par une liste chaînée mutable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-par-deux-piles" class="md-nav__link">
+    Implémentation par deux piles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1277,7 +1317,7 @@
 <li>un objet est ajouté toujours en haut de la pile (<strong>empiler</strong>);</li>
 <li>quand on supprime un objet, il s'agit toujours du <strong>dernier objet ajouté</strong> (<strong>dépiler</strong>).</li>
 </ul>
-<p>On associe à cette struture l'image d'une <em>pile d'assiettes</em> :</p>
+<p>On associe à cette structure l'image d'une <em>pile d'assiettes</em> :</p>
 <p><p align="center">
 <img alt="pile 1" src="../piles1.png" style="width : 50%;" />
 </p></p>
@@ -1289,9 +1329,9 @@
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Interface</p>
-<p>Pour définir l'interface d'un objet de type pile, nous supposeorns d'abord que les éléments de la pile sont tous du même type (la pile est <strong>homogène</strong>).</p>
+<p>Pour définir l'interface d'un objet de type <strong>pile</strong>, nous supposerons d'abord que les éléments de la pile sont tous du même type (la pile est <strong>homogène</strong>).</p>
 <p>Pour parler d'une pile d'éléments de type <code>T</code>, on utilisera la notation <code>Pile[T]</code>.</p>
-<p>L'interface sera simple puisque seulement 4 fonctions sont nécessaires : création d'une pile vide, empiler, dépiler, et tester la <em>vacuité</em> d'une pile.</p>
+<p>L'interface sera simple puisque seulement 4 fonctions sont nécessaires : création d'une pile vide, empiler (<em>push</em> en anglais), dépiler (<em>pop</em> en anglais), et tester la <em>vacuité</em> d'une pile.</p>
 <table>
 <thead>
 <tr>
@@ -1305,22 +1345,22 @@
 <td align="left">crée une pile vide</td>
 </tr>
 <tr>
-<td align="center"><code>est_vide(p : pile[T])</code></td>
+<td align="center"><code>est_vide(p : Pile[T]) -&gt; bool</code></td>
 <td align="left">renvoie <code>True si l'objet</code>p<code>de</code>type <code>Pile[T]</code> est vide, <code>False</code> sinon.</td>
 </tr>
 <tr>
-<td align="center"><code>empiler(e : T, p : Pile[T])</code></td>
+<td align="center"><code>empiler(e : T, p : Pile[T]) -&gt; None</code></td>
 <td align="left">ajoute l'élément <code>e</code> de type <code>T</code> au sommet de la pile <code>p</code>.</td>
 </tr>
 <tr>
-<td align="center"><code>depiler(p : Pile[T]) -&gt; e : T</code></td>
+<td align="center"><code>dépiler(p : Pile[T]) -&gt; e : T</code></td>
 <td align="left">retire et renvoie l'élément <code>e</code> de type <code>T</code> situé au sommet de la pile <code>p</code>.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="admonition example">
-<p class="admonition-title">Exemples d'utilisations de Piles</p>
+<p class="admonition-title">Situations utilisant des piles</p>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Bouton retour dans un navigateur</label><div class="tabbed-content">
 <p>Lors d'une navigation web, on utilise une pile pour stocker les différentes pages visitées les unes après les autres. Le bouton de retour a pour fonction de <strong>dépiler</strong> la pile ainsi constituée.</p>
 <p>Par exemple :
@@ -1336,7 +1376,7 @@
 </p></p>
 </div>
 <input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Fonction « Annuler la frappe » d'un traitement de texte</label><div class="tabbed-content">
-<p>De la même manière que pour le bouton retour d'une page web, les modifications apportées dans un traitement de texte sont stockées dans une pile. L'appuis sur <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + Z a pour effet de dépiler, 
+<p>De la même manière que pour le bouton retour d'une page web, les modifications apportées dans un traitement de texte sont stockées dans une pile. L'appui sur <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + Z a pour effet de dépiler, 
 et donc de rétablir le texte à la situation précédente sauvegardée dans la pile.</p>
 </div>
 </div>
@@ -1346,21 +1386,159 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <p class="admonition-title">Définition</p>
 <p>Une <mark class="critic"><strong>file</strong></mark> (<em>queue</em> en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :</p>
 <ul>
-<li>un objet est ajouté toujours au début de la file (<strong>emfiler</strong>);</li>
+<li>un objet est ajouté toujours au début de la file (<strong>enfiler</strong>);</li>
 <li>quand on supprime un objet, il s'agit toujours du <strong>dernier objet de la file</strong> (<strong>défiler</strong>).</li>
 </ul>
-<p>On associe à cette struture l'image d'une <em>file de personnes faisant la queue</em> :    </p>
+<p>On associe à cette structure l'image d'une <em>file de personnes faisant la queue</em> :   </p>
 <p><p align="center">
 <img alt="file 1" src="../files1.png" style="width : 70%;" />
 </p></p>
+<p>Une filer est particulièrement adaptée aux <em>traitements séquentiels</em>.</p>
 <p>Un tel type de structure est souvent appelé :</p>
 <ul>
 <li><em>Premier entré, premier sorti</em> (<em>PEPS</em>) en français ;</li>
 <li><em>First in, first out</em> (<em>FIFO</em>) en anglais.</li>
 </ul>
 </div>
-<h2 id="implementation-dune-pile">Implémentation d'une Pile</h2>
-<h2 id="implementation-dune-file">Implémentation d'une File</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Interface</p>
+<p>Pour définir l'interface d'un objet de type <strong>file</strong>, nous supposerons d'abord que les éléments de la file sont tous du même type (la file est <strong>homogène</strong>).</p>
+<p>Pour parler d'une file d'éléments de type <code>T</code>, on utilisera la notation <code>File[T]</code>.</p>
+<p>L'interface sera simple puisque seulement 4 fonctions sont nécessaires : création d'une file vide, enfiler (<em>enqueue</em> en anglais), défiler (<em>dequeue</em> nen aglais), et tester la <em>vacuité</em> d'une file.</p>
+<table>
+<thead>
+<tr>
+<th align="center">fonction</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>creer_file() -&gt; File[T]</code></td>
+<td align="left">crée une pile vide</td>
+</tr>
+<tr>
+<td align="center"><code>est_vide(f : File[T]) -&gt; bool</code></td>
+<td align="left">renvoie <code>True si l'objet</code>f<code>de</code>type <code>File[T]</code> est vide, <code>False</code> sinon.</td>
+</tr>
+<tr>
+<td align="center"><code>enfiler(e : T, f : File[T]) -&gt; None</code></td>
+<td align="left">ajoute l'élément <code>e</code> de type <code>T</code> à la fin de la file <code>f</code>.</td>
+</tr>
+<tr>
+<td align="center"><code>defiler(f : File[T]) -&gt; e : T</code></td>
+<td align="left">retire et renvoie l'élément <code>e</code> de type <code>T</code> situé au début de la file <code>f</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Situations utilisants une file</p>
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Jeu de Bataille</label><div class="tabbed-content">
+<p>Dans un jeu de bataille, chaque joueur possède une file de carte. On <em>défile</em> chaque paquet, compare les cartes, et le vainqueur <em>enfile</em> les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Serveurs d'impressions</label><div class="tabbed-content">
+<p>Les serveurs d'impression traitent les requêtes dans l'ordre dans lequel elles arrivent, et les insèrent dans une file d'attente (dite aussi queue ou spool), lorsque d'autres travaux sont en exécution.</p>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Mémoire tampon (<em>buffers</em>)</label><div class="tabbed-content">
+<p>Une <strong>mémoire tampon</strong>, ou <strong>buffer</strong>, est une zone de mémoire vive qui va être utilisée pour stocker des données circulant entre deux périphériques ne fonctionnant pâs à la même vitesse, par exemple entre la connexion internet et le flux vidéo :</p>
+<ul>
+<li>si la vitesse de connexion est supérieure au débit vidéo, le buffer va se remplir des données vidéo, et le lecteur vidéo les lira dans leur ordre d'arrivée (PEPS) ;</li>
+<li>si le lecteur vidéo constate une chute du débit - il n'a plus de données à lire, il va attendre que la file du buffer atteigne une certaine taille afin de relancer une lecture vidéo plus fluide - c'est le <em>buffering</em>.</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="implementations-dune-pile">Implémentations d'une Pile</h2>
+<h3 id="a-partir-dune-liste-python">A partir d'une liste python</h3>
+<div class="admonition question">
+<p class="admonition-title">Implémentation à partir du type <code>list</code></p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles, en utilisant le type <code>list</code> de python:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Pile</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Une solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Un code simple et efficace ?</p>
+<p>Certes le codage effectué est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type  <code>list</code> en python sont cachés, comme par exemple l'<strong>allocation dynamique de mémoire</strong>. Cette allocation se fait à la création, puis quand la lite dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... <a href="https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/">voir ici</a>), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.</p>
+</div>
+<h3 id="a-partir-dune-liste-chainee">A partir d'une liste chaînée</h3>
+<p>Une des possibilités les plus simple pour implémenter une pile est d'utiliser les liste chaînée. En effet, dans une liste chaînée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type <code>list</code> de python.</p>
+<div class="admonition question">
+<p class="admonition-title">Implémentation par les listes chainées</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
+
+<span class="k">class</span> <span class="nc">Pile</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;interface de pile&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Une solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h2 id="implementations-dune-file">Implémentations d'une File</h2>
+<h3 id="implementation-par-une-liste-chainee-mutable">Implémentation par une liste chaînée mutable</h3>
+<div class="admonition question">
+<p class="admonition-title">Implémentation par liste chaînée mutable</p>
+<p>Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une <a href="www.zonensi.fr/NSI/Terminale/C03/ListeChaineeConcatener3.png">mauvaise idée</a>, il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. </p>
+<p>Pour cela il faudra utiliser deux attributs <code>tete</code> et <code>queue</code>, qui représenteront respectivement le chainon de début et le chainon de fin de la file.</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<p>Compléter le code suivant pour qu'il respecte l'interface définie pour une file :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
+
+<span class="k">class</span> <span class="nc">File</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;interface de file&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tete</span> <span class="o">=</span> <span class="kc">None</span><span class="err">`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">enfiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">defiler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="implementation-par-deux-piles">Implémentation par deux piles</h3>
 <h2 id="exercices">Exercices</h2>
                 
               
