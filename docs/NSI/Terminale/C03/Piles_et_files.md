@@ -121,8 +121,8 @@
 	
 
 
-## Implémentation d'une Pile
+## Implémentations d'une Pile
 
-## Implémentation d'une File
+## Implémentations d'une File
 
 ## Exercices
