@@ -149,7 +149,21 @@
 		```
 	=== "Une solution"
 	
-		A venir !
+		``` python
+					
+		class Pile :
+			def __init__(self) :
+				self.p = []
+				
+			def est_vide(self) :
+				return self.p == []
+				
+			def empiler(self, v) :
+				self.p.append(v)
+				
+			def depiler(self) :
+				return self.p.pop()
+		```
 		
 !!! warning "Un code simple et efficace ?"
 
@@ -215,7 +229,7 @@ Une des possibilités les plus simple pour implémenter une pile est d'utiliser 
 		class File :
 			"""interface de file"""
 			def __init__(self) :
-				self.tete = None`
+				self.tete = None				
 				self.queue = None
 				
 			def est_vide(self) :
@@ -228,7 +242,12 @@ Une des possibilités les plus simple pour implémenter une pile est d'utiliser 
 				...
 		```
 		
+	=== "Solution"
+		A venir !
+		
 ### Implémentation par deux piles
+
+!!! 
 
 
 	

@@ -463,8 +463,8 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 
 !!! question "Méthode constructeur `__init__` :"
 	=== "Analyse"
-		Un objet `ListeC` ne contient qu'un seul attribut : la tête de la liste. Soit c'est un objet de type Chainon`, soit c'est l'objet `None`. La méthode `__init__` ne doit
-		donc qu'initialiser un attribut `head` à la valeur `None`
+		Un objet `ListeC` ne contient qu'un seul attribut : la tête de la liste. Soit c'est un objet de type `Chainon`, soit c'est l'objet `None`. La méthode `__init__` ne doit
+		donc qu'initialiser un attribut `head` à la valeur `None`.
 		
 	=== "Code"
 	
