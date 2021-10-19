@@ -116,6 +116,65 @@ def creeDepuisTabV4(tab) :
         LC = inserer(v,i,LC)
     return LC
 
+def occurences(valeur, chaine) :
+    if chaine.suivant == None :
+        return 0
+    if chaine.valeur == valeur :
+        return 1+ occurence(valeur, chaine.suivant)
+    else :
+        return occurence(valeur, chaine.suivant)
+        
+
+def occurencesI(valeur, chaine) :
+    nbOcc = 0
+    while chaine != None :
+        if chaine.valeur == valeur :
+            nbOcc +=1
+        chaine = chaine.suivant
+    return nbOcc
+
+def premiereOccurence(valeur, chaine) :
+    
+    def pOccR(valeur, chaine) :
+        if chaine == None :
+            return False, -1
+        if chaine.valeur == valeur :
+            return True, 0
+        else :
+            status, indice = pOccR(valeur, chaine.suivant)
+            return status, 1+ indice
+        
+    status, indice = pOccR(valeur, chaine)
+    if status :
+        return indice
+    else :
+        return -1
+
+def premiereOccurenceI(valeur, chaine) :
+    indice = 0
+    while chaine != None :
+        if chaine.valeur == valeur :
+            return indice
+        else :
+            indice = indice+1
+            chaine = chaine.suivant
+    return -1
+
+def identique (c1, c2) :
+    
+    def idR(c1, c2) :
+        if c1 == None and c2 == None :
+            return True
+        if c1.valeur == c2.valeur :
+            return idR(c1.suivant, c2.suivant)
+        else :
+            return False
+        
+    if longueur(c1)!=longueur(c2)  :
+        return False
+    else :
+        return idR(c1,c2)
+
 class ListeC :
     """A real docstring here"""
     
@@ -127,6 +186,10 @@ class ListeC :
         
     def push(self, v) :
         self.head = Chainon(v, self.head)
+        
+    def pop(self) :
+        self.head = self.head.suivant
+    
         
     def __str__(self) :
         return str(self.head)
@@ -147,9 +210,15 @@ class ListeC :
         result.head = concatener(self.head, other.head)
         return result
     
+    def __eq__(self, other) :
+        if not isinstance(other, ListeC) :
+            raise TypeError(f"Unable to compare ListeC object with {type(other)} object")
+        return identique(self.head, other.head)
+    
 
 if __name__ == "__main__" :
     chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
     chaine2 = Chainon(13, Chainon(16, None))
     creeDepuisTabV1([1,2,3,4])
-
+    print(premiereOccurenceI(15, creeDepuisTabV1([12,15,18,24,18,42,36])))
+    
