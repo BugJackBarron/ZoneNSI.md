@@ -217,15 +217,32 @@ Une des possibilités les plus simple pour implémenter une pile est d'utiliser 
 	
 	Pour cela il faudra utiliser deux attributs `tete` et `queue`, qui représenteront respectivement le chainon de début et le chainon de fin de la file.
 	
+	<p align="center">
+	![file](File_LC1.png){: style="width : 30%;"}
+	</p>
+	
+	Défiler consistera à changer la tête en sortant la valeur :
+	
+	<p align="center">
+	![file](File_LC2.png){: style="width : 30%;"}
+	</p>
+	
+	Enfiler consistera à changer la queue :
+	
+	<p align="center">
+	![file](File_LC3.png){: style="width : 30%;"}
+	</p>
+	
 	=== "Enoncé"
 
 		Compléter le code suivant pour qu'il respecte l'interface définie pour une file :
 	
 		``` python
 		
-		class Chainon(valeur, suivant) :
-			self.valeur = valeur
-			self.suivant = suivant
+		class Chainon
+			def __init__(self, valeur, suivant) :
+				self.valeur = valeur
+				self.suivant = suivant
 			
 		class File :
 			"""interface de file"""

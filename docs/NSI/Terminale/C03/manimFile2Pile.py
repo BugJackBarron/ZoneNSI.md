@@ -61,6 +61,11 @@ class QueueWith2Stacks(Scene):
         entrees = [baseObj.copy() for _ in range(4)]
         sorties = [baseObj.copy() for _ in range(3)]
         
+        
+        file = Rectangle(width = 6, height = 4).shift(DOWN)
+        self.add(file)
+        self.add(Text("La File").next_to(file, DOWN))
+        
         for i, e in enumerate(entrees) :
             e.move_to(2*LEFT +0.25*i*UP)
             if i<3 :
