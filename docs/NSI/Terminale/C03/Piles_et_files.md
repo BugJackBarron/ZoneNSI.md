@@ -173,7 +173,7 @@
 
 Une des possibilités les plus simple pour implémenter une pile est d'utiliser les liste chaînée. En effet, dans une liste chaînée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type `list` de python.
 
-!!! question "Implémentation par les listes chainées"
+!!! question "Implémentation par les listes chaînées"
 
 	=== "Enoncé"
 
@@ -181,9 +181,10 @@ Une des possibilités les plus simple pour implémenter une pile est d'utiliser 
 		
 		``` python
 		
-		class Chainon(valeur, suivant) :
-			self.valeur = valeur
-			self.suivant = suivant
+		class Chainon :
+			def __init__(self, valeur, suivant) :
+				self.valeur = valeur
+				self.suivant = suivant
 			
 		class Pile :
 			"""interface de pile"""

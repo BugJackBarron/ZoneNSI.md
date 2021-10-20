@@ -1493,12 +1493,13 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <h3 id="a-partir-dune-liste-chainee">A partir d'une liste chaînée</h3>
 <p>Une des possibilités les plus simple pour implémenter une pile est d'utiliser les liste chaînée. En effet, dans une liste chaînée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type <code>list</code> de python.</p>
 <div class="admonition question">
-<p class="admonition-title">Implémentation par les listes chainées</p>
+<p class="admonition-title">Implémentation par les listes chaînées</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
 <p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
 
 <span class="k">class</span> <span class="nc">Pile</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;interface de pile&quot;&quot;&quot;</span>
