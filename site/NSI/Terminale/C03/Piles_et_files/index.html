@@ -1470,7 +1470,19 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </code></pre></div>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Une solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Pile</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">==</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -1514,7 +1526,7 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <p class="admonition-title">Implémentation par liste chaînée mutable</p>
 <p>Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une <a href="www.zonensi.fr/NSI/Terminale/C03/ListeChaineeConcatener3.png">mauvaise idée</a>, il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. </p>
 <p>Pour cela il faudra utiliser deux attributs <code>tete</code> et <code>queue</code>, qui représenteront respectivement le chainon de début et le chainon de fin de la file.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
 <p>Compléter le code suivant pour qu'il respecte l'interface définie pour une file :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
@@ -1523,7 +1535,7 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <span class="k">class</span> <span class="nc">File</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;interface de file&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tete</span> <span class="o">=</span> <span class="kc">None</span><span class="err">`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tete</span> <span class="o">=</span> <span class="kc">None</span>                
         <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
@@ -1536,10 +1548,110 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
         <span class="o">...</span>
 </code></pre></div>
 </div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
 </div>
 </div>
 <h3 id="implementation-par-deux-piles">Implémentation par deux piles</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Une autre implémentation : Utiliser deux piles</p>
+<p>Une implémentation totalement différente de la première est d'utiliser deux piles, une pile d'entrées et une pile de sorties.</p>
+<p>Le principe est celui d'un jeu de carte dans lequel il y a une défausse :</p>
+<ul>
+<li>Le paquet de carte principal est le <em>paquet de sortie</em> : c'est la <strong>pile de sortie</strong>. On tire une carte à partir de cette pile.</li>
+<li>La défausse est composée de cartes jouées face ouverte, posées sur le sommet du paquet de défausse. C'est la pile d'entrées. </li>
+<li>Quand le paquet principal est vide, on prend la défausse et sans la mélanger on la retourne et elle prend la place du paquet principal.</li>
+</ul>
+<p><p align="center">
+<iframe src="../QueueWith2Stacks.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe>
+</p></p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
+<p>Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons défini plus haut :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">File</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entrees</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sorties</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">enfiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">defiler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
 <h2 id="exercices">Exercices</h2>
+<div class="admonition question">
+<p class="admonition-title">Ajouter des méthodes</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<p>Compléter le code de la classe <code>Pile</code> construite à partir d'une liste chaînée avec les méthodes suivantes :</p>
+<ol>
+<li>Une méthode <code>consulter</code> permettant de connaître l'élément au sommet de la pile <strong>sans le dépiler</strong>.</li>
+<li>Une méthode <code>vider</code> permettant de vider la pile de ses éléments</li>
+<li>Une méthode <code>taille</code> renvoyant la taille de la pile. Quelle est la complexité utilisée ?</li>
+</ol>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Solutions</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Améliorer le calcul de la taille</p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<p>Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe <code>Pile</code> .
+Nous allons ajouter un <em>attribut</em> <code>_taille</code> à la classe, qui contiendra en permanence la taille de la pile courante.</p>
+<p>Quelles méthodes modifier ? Quelle est alors la complexité ?</p>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solution</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Calculatrice à notation polonaise inversée</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Notation_polonaise_inverse">notation polonaie inversée</a> (NPI ou <em>RPN</em> en anglais) permet d'écrire
+de façon non ambiguë les formules arithmétiques <em>sans utiliser de parenthèses</em>.</p>
+<p>Par exemple, le calcul <span class="arithmatex">\(((1 + 2) \times 4) + 3\)</span> est noté en NPI :</p>
+<div class="arithmatex">\[
+1~2~+~4~\times~3~+ 
+\]</div>
+<p>Le calcul <span class="arithmatex">\(((1 + 2) \times 4) + 3\)</span> peut se lire intuitivement :</p>
+<ul>
+<li>je mets 1, (<span class="arithmatex">\(1\)</span>) ;</li>
+<li>j'ajoute 2, (<span class="arithmatex">\(2 +\)</span>) ;</li>
+<li>je multiplie par 4, (<span class="arithmatex">\(4 \times\)</span>) ;</li>
+<li>j'ajoute 3. (<span class="arithmatex">\(3 +\)</span>).</li>
+</ul>
+<p>Ce qui donne la notation précédente.</p>
+<p>On peut tester ce calcul et cette notation sur le simulateur <a href="https://getomega.dev/simulator">omega</a> de la calculatrice <em>Numworks</em>.</p>
+<p>La NPI  est dites <em><em>inversée car elle dérive de la </em>notation polonaise</em> présentée en 1924 par le mathématicien polonais <em>Jan Łukasiewicz,</em> 
+et elle s’en différencie par l’ordre des termes, les opérandes y étant présentés avant les opérateurs.</p>
+<p>La structure de calcul en NPI est utilise une <strong>pile</strong> de la manière suivante :</p>
+<ul>
+<li>quand on rencontre un nombre, on l'enpile ;</li>
+<li>quand on rencontre un opérateur (<span class="arithmatex">\(+,~\times~,-~,...\)</span>) on dépile les <strong>deux nombres au sommet de la pile</strong> et on effectue l'opération, 
+le résultat étant de nouveau empilé.</li>
+</ul>
+<p>Si le calcul est correctement écrit, il y a toujours au moins deux nombres dans la pile quand on rencontre un opérateur, et il reste un seul
+et unique nombre dans cette pile quand l'expresion  a été entièrement lue.</p>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>NPI</code> prenant en argument un calcul en NPI représenté sous la forme d'une chaîne de caractères dont les élements (opérandes et opérateurs) sont séparés d'un espace,
+et qui renvoie le résultat du calcul.</p>
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
                 
               
               
