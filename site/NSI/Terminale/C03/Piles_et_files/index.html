@@ -1527,11 +1527,23 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <p class="admonition-title">Implémentation par liste chaînée mutable</p>
 <p>Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une <a href="www.zonensi.fr/NSI/Terminale/C03/ListeChaineeConcatener3.png">mauvaise idée</a>, il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. </p>
 <p>Pour cela il faudra utiliser deux attributs <code>tete</code> et <code>queue</code>, qui représenteront respectivement le chainon de début et le chainon de fin de la file.</p>
+<p><p align="center">
+<img alt="file" src="../File_LC1.png" style="width : 30%;" />
+</p></p>
+<p>Défiler consistera à changer la tête en sortant la valeur :</p>
+<p><p align="center">
+<img alt="file" src="../File_LC2.png" style="width : 30%;" />
+</p></p>
+<p>Enfiler consistera à changer la queue :</p>
+<p><p align="center">
+<img alt="file" src="../File_LC3.png" style="width : 30%;" />
+</p></p>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
 <p>Compléter le code suivant pour qu'il respecte l'interface définie pour une file :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
 
 <span class="k">class</span> <span class="nc">File</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;interface de file&quot;&quot;&quot;</span>
