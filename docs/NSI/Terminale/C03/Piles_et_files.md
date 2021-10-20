@@ -247,10 +247,112 @@ Une des possibilités les plus simple pour implémenter une pile est d'utiliser 
 		
 ### Implémentation par deux piles
 
-!!! 
-
+!!! abstract "Une autre implémentation : Utiliser deux piles"
+	
+	Une implémentation totalement différente de la première est d'utiliser deux piles, une pile d'entrées et une pile de sorties.
+	
+	Le principe est celui d'un jeu de carte dans lequel il y a une défausse :
+	
+	* Le paquet de carte principal est le *paquet de sortie* : c'est la **pile de sortie**. On tire une carte à partir de cette pile.
+	* La défausse est composée de cartes jouées face ouverte, posées sur le sommet du paquet de défausse. C'est la pile d'entrées. 
+	* Quand le paquet principal est vide, on prend la défausse et sans la mélanger on la retourne et elle prend la place du paquet principal.
+	
+	<p align="center">
+	![type:video](QueueWith2Stacks.mp4)
+	</p>
+	
+	
+	
+	=== "Enoncé"
+	
+		Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons défini plus haut :
+		
+		``` python
+		class File :
+			def __init__(self) :
+				self.entrees = Pile()
+				self.sorties = Pile()
+				
+			def est_vide(self) :
+				...
+				
+			def enfiler(self, v) :
+				...
+				
+			def defiler(self) :
+				...
+		```
+	=== "Solution"
+		A venir !
 
 	
 	
 
 ## Exercices
+
+!!! question "Ajouter des méthodes"
+
+	=== "Enoncé"
+		Compléter le code de la classe `Pile` construite à partir d'une liste chaînée avec les méthodes suivantes :
+		
+		1. Une méthode `consulter` permettant de connaître l'élément au sommet de la pile **sans le dépiler**.
+		2. Une méthode `vider` permettant de vider la pile de ses éléments
+		3. Une méthode `taille` renvoyant la taille de la pile. Quelle est la complexité utilisée ?
+		
+	=== "Solutions"
+		A venir !
+		
+!!! question "Améliorer le calcul de la taille"
+	
+	=== "Enoncé"
+		Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe `Pile` .
+		Nous allons ajouter un *attribut* `_taille` à la classe, qui contiendra en permanence la taille de la pile courante.
+		
+		Quelles méthodes modifier ? Quelle est alors la complexité ?
+		
+	=== "Solution"
+		A venir
+
+!!! question "Calculatrice à notation polonaise inversée"
+	
+	La [notation polonaie inversée](https://fr.wikipedia.org/wiki/Notation_polonaise_inverse) (NPI ou *RPN* en anglais) permet d'écrire
+	de façon non ambiguë les formules arithmétiques *sans utiliser de parenthèses*.
+	
+	Par exemple, le calcul $((1 + 2) \times 4) + 3$ est noté en NPI :
+	
+	$$
+	1~2~+~4~\times~3~+ 
+	$$
+	
+	Le calcul $((1 + 2) \times 4) + 3$ peut se lire intuitivement :
+
+    * je mets 1, ($1$) ;
+    * j'ajoute 2, ($2 +$) ;
+    * je multiplie par 4, ($4 \times$) ;
+    * j'ajoute 3. ($3 +$).
+
+	Ce qui donne la notation précédente.
+	
+	On peut tester ce calcul et cette notation sur le simulateur [omega](https://getomega.dev/simulator) de la calculatrice *Numworks*.
+	
+	La NPI  est dites **inversée car elle dérive de la *notation polonaise* présentée en 1924 par le mathématicien polonais *Jan Łukasiewicz,* 
+	et elle s’en différencie par l’ordre des termes, les opérandes y étant présentés avant les opérateurs.
+	
+	La structure de calcul en NPI est utilise une **pile** de la manière suivante :
+	
+	* quand on rencontre un nombre, on l'enpile ;
+	* quand on rencontre un opérateur ($+,~\times~,-~,...$) on dépile les **deux nombres au sommet de la pile** et on effectue l'opération, 
+	le résultat étant de nouveau empilé.
+	
+	Si le calcul est correctement écrit, il y a toujours au moins deux nombres dans la pile quand on rencontre un opérateur, et il reste un seul
+	et unique nombre dans cette pile quand l'expresion  a été entièrement lue.
+	
+	=== "Enoncé"
+	
+		Créer une fonction `NPI` prenant en argument un calcul en NPI représenté sous la forme d'une chaîne de caractères dont les élements (opérandes et opérateurs) sont séparés d'un espace,
+		et qui renvoie le résultat du calcul.
+		
+	=== "Solution"
+		A venir !
+
+	
