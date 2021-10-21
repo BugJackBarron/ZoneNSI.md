@@ -1,47 +1,11 @@
 from manim import *
 
-class TableauManim :
-    def __init__(self, tab, center, counterName="i", cP=0) :
-        self.tab = tab
-        self.center = center
-        self.counterName = counterName
-        self.rect = Rectangle(width=len(self.tab), height=1.0, grid_xstep=1.0)
-        self.values = [DecimalNumber(v, num_decimal_places=0).scale(0.75).move_to((-(len(self.tab)//2)+((len(self.tab)+1)%2)*0.5+i)*RIGHT) for i,v in enumerate(self.tab)]       
-        self.counterPosition = cP
-        self.pointerText = Text(f"{self.counterName} = ").move_to((-(len(self.tab)//2)+((len(self.tab)+1)%2)*0.5+self.counterPosition)*RIGHT+1.5*DOWN).scale(0.5)
-        self.pointer = Arrow(start =np.array([0,0,0]), end = np.array([0,1,0])).scale(0.7).next_to(self.pointerText ,UP)
-        self.pointerCounter = DecimalNumber(0, num_decimal_places=0).scale(0.75)
-        self.pointerCounter.add_updater(lambda d : d.next_to(self.pointerText, RIGHT, buff=SMALL_BUFF))
-        self.pointerCounter.add_updater(lambda d : d.set_value(self.counterPosition))
-        
-        self.pointerGroup = VGroup(self.pointerCounter, self.pointerText, self.pointer)
-        
-        self.group = VGroup(self.rect, *self.values, self.pointerGroup).scale(0.75)
-        self.group.move_to(center[0]*RIGHT+center[1]*UP)
-        
-    def movecounter(self, np) :
-        move = np-self.counterPosition
-        self.counterPosition = np
-        return ApplyMethod(self.pointerGroup.shift, move*RIGHT*0.75)
-    
-    def changeColorNumber(self, position, color) :
-
-        return ApplyMethod(self.values[position].set_color,  color)
-    
-
-        
-    
-        
-        
-        
-
-
 
 class QueueWith2Stacks(Scene):
     def construct(self):
-        
         ## Titre de la vidéo.
-        titre = Text("Créer une file avec deux piles")
+        
+        titre=Text("Créer une file à l'aide de deux piles")
         self.play(Write(titre))
         self.wait(1)
         self.play(ApplyMethod(titre.shift,3*UP))
@@ -62,9 +26,11 @@ class QueueWith2Stacks(Scene):
         sorties = [baseObj.copy() for _ in range(3)]
         
         
-        file = Rectangle(width = 6, height = 4).shift(DOWN)
+        file = Rectangle(width = 7, height = 4).shift(UP)
         self.add(file)
-        self.add(Text("La File").next_to(file, DOWN))
+        self.add(Text("La File avec deux piles").scale(0.5).next_to(file, DOWN))
+           
+        
         
         for i, e in enumerate(entrees) :
             e.move_to(2*LEFT +0.25*i*UP)
@@ -75,11 +41,18 @@ class QueueWith2Stacks(Scene):
             e.move_to(2*RIGHT +0.25*i*UP)
             self.play(FadeIn(e), run_time=0.2)
             
-        entryObj = baseObj.copy().move_to(4*LEFT + 3*UP)
+        
+        queueLine = Line(start=np.array([-5.5, 2.9,0]), end = np.array([-4.5, 2.9, 0]))
+        self.add(queueLine)
+        self.add(Text("Queue").scale(0.5).next_to(queueLine, DOWN, buff=SMALL_BUFF))
+        headLine = Line(start=np.array([4.5, 2.9,0]), end = np.array([5.5, 2.9, 0]))
+        self.add(headLine)
+        self.add(Text("Tête").scale(0.5).next_to(headLine, DOWN, buff=SMALL_BUFF))
+       
+        entryObj = baseObj.copy().next_to(queueLine, UP)
         entryObj.set_color(GRAY)
         
-        
-        exitObj = baseObj.copy().move_to(4*RIGHT + 3*UP)
+        exitObj = baseObj.copy().next_to(headLine, UP)
         exitObj.set_color(GRAY)
             
         entreesText = Text("Pile d'entrées").scale(0.5).next_to(entrees[0], DOWN)
@@ -87,13 +60,23 @@ class QueueWith2Stacks(Scene):
         sortiesText = Text("Pile de sorties").scale(0.5).next_to(sorties[0], DOWN)
         self.play(FadeIn(sortiesText))
         
-        actualText=Text("On empile sur la pile d'entrées...").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        actualText=Text("Pour enfiler un élément,").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        self.play(Write(actualText))
+        self.play(FadeIn(entryObj))
+        self.play(FadeOut(actualText))
+        
+        
+        actualText=Text("on l'empile sur la pile d'entrées...").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
         self.play(Write(actualText))
         self.play(TransformFromCopy(entryObj, entrees[3]))
+        self.play(FadeOut(entryObj))
         self.play(FadeOut(actualText))
         
+        actualText=Text("Pour défiler un élément, ").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        self.play(Write(actualText))
+        self.play(FadeOut(actualText))
         
-        actualText=Text("On dépile sur la pile de sorties").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        actualText=Text("on dépile depuis la pile de sorties.").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
         self.play(Write(actualText))
         m = sorties.pop()
         self.play(Transform(m, exitObj))
@@ -101,7 +84,7 @@ class QueueWith2Stacks(Scene):
         self.play(FadeOut(actualText))
         
         
-        actualText=Text("Et on continue...").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        actualText=Text("Et on peut continuer...").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
         self.play(Write(actualText))
         m = sorties.pop()
         self.play(Transform(m, exitObj))
@@ -111,11 +94,16 @@ class QueueWith2Stacks(Scene):
         self.play(FadeOut(m))
         self.play(FadeOut(actualText))
         
-        actualText=Text("Et quand la pile de sortie est vide...").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        actualText=Text("jusqu'au moment où la pile de sortie est vide...").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
         self.play(Write(actualText))
         self.play(FadeOut(actualText))
         
-        actualText=Text("On dépile l'entrée sur la sortie.").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        actualText=Text("Pour poursuivre,").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        self.play(Write(actualText))
+        self.play(FadeOut(actualText))
+        
+        
+        actualText=Text("on doit dépiler l'entrée sur la sortie.").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
         self.play(Write(actualText))
         self.play(FadeOut(actualText))
         
@@ -155,7 +143,7 @@ class QueueWith2Stacks(Scene):
         self.play(FadeOut(VGroup(actualText, actualText2)))
         
         
-        actualText=Text("La structure est bien de type PEPS (FIFO)").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
+        actualText=Text("La structure est bien de type PEPS (FIFO) !").move_to(2*DOWN).scale(0.5).set_color(YELLOW)
         self.play(Write(actualText))      
         
         
