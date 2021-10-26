@@ -56,10 +56,20 @@ plugins :
     - macros
     - section-index
     - mkdocs-video
-    - page-to-pdf 
-    - add-number :
-        strict_mode: False
-        order: 1
+    - page-to-pdf :
+        disableOnServe : False
+        margin : 
+            top : 
+                10px
+            bottom :
+                10px
+            right :
+                10px
+            left : 
+                10px
+        
+    
+        
     
 theme:
     name: material
