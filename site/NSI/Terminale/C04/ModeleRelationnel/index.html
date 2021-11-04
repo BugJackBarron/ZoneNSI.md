@@ -1048,8 +1048,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#historique-des-differents-modeles" class="md-nav__link">
-    Historique des différents modèles
+  <a href="#historique-et-problematiques-des-differents-modeles" class="md-nav__link">
+    Historique et problématiques des différents modèles
   </a>
   
 </li>
@@ -1352,26 +1352,92 @@
 </div>
 <p>Nous verrons que cette définition impose un certain nombre de contraintes à la mise en place des BDD informatisées. La première est la question de la <mark class="critic"><strong>cohérence des données</strong></mark>.</p>
 <div class="admonition example">
-<p class="admonition-title">Exemple : Bases de données musicales<sup id="fnref3:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup></p>
-<p>Prenons l'exemple d'une base de données contenant des albums  musicaux, et qui mémorise pour chaque album son genre, son titre, et le nom de l'artiste/du groupe, comme dans l'extrait ci-dessous :</p>
+<p class="admonition-title">Exemple : Bases de données musicales<sup id="fnref4:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup></p>
+<p>Prenons l'exemple d'une base de données contenant des albums musicaux, et qui mémorise pour chaque album son genre, son titre, et le nom du groupe ainsi que le nom du chanteur principal. L'idée de base est de présenter les données sous la forme d'une table, comme dans l'extrait ci-dessous :</p>
 <table>
 <thead>
 <tr>
 <th>Genre</th>
 <th>Titre</th>
-<th>Artiste</th>
+<th>Groupe</th>
+<th>Chanteur</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Stoner</td>
+<td>Era Vulgaris</td>
+<td>Queen Of The Stone Age</td>
+<td>Josh Homme</td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>Master of Puppets</td>
+<td>Metallica</td>
 <td></td>
-<td></td>
-<td></td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>Them Crooked Vultures</td>
+<td>Them Crooked Vultures</td>
+<td>Josh Homme</td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>L'Enfant sauvage</td>
+<td>GOJIRA</td>
+<td>Jo Duplantier</td>
+</tr>
+<tr>
+<td>Stoner</td>
+<td>Dying surfer meet his maker</td>
+<td>All Them Withches</td>
+<td>Charles Michael Parks Jr</td>
+</tr>
+<tr>
+<td>Métal</td>
+<td>Fortitude</td>
+<td>Gojira</td>
+<td>Joseph Duplantier</td>
+</tr>
+<tr>
+<td>Stoner Rock</td>
+<td>Nothing as the ideal</td>
+<td>All Them Withches</td>
+<td>Charles Michael Parks Jr</td>
+</tr>
+<tr>
+<td>Metal Progressif</td>
+<td>Magma</td>
+<td>Gojira</td>
+<td>Joseph DUPLANTIER</td>
 </tr>
 </tbody>
 </table>
+<p>La condition <em>sine qua none</em> pour garantir la faisabilité et la pertinence d'une recherche de données est la <mark class="critic"><strong>cohérence de ces données</strong></mark>. Ici on constate plusieurs problèmes de cohérence :</p>
+<ul>
+<li>Le nom du groupe <em>Gojira</em> est orthographié de deux manières différentes. Une recherche utilisant la chaîne de caractères  <code>Gojira</code> ne donnera que deux résultats, alors que trois peuvent être attendus.</li>
+<li>Le genre <em>Metal</em> est aussi orthographié de deux manières différentes. On notera qu'une recherche stricte avec la chaîne <code>Metal</code>, c'est-à-dire basée sur l'égalité,  ne donnera que deux résultats, alors qu'une recherche étendue, c'est-à-dire basée sur l'appartenance de la sous-chaîne <code>Metal</code> à la chaîne donnant le genre, renverra elle trois résultats.</li>
+<li>Le nom du chanteur de <em>Gojira</em> est écrit de trois manières différentes.</li>
+<li>On peut aussi noter que le nom du chanteur de Metallica n'est pas renseigné, ce qui eput peut-être poser un problème de cohérence.</li>
+</ul>
+<p>Ces problèmes de cohérence sont liés (en partie), à un problème de <mark class="critic"><strong>redondance</strong></mark> des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaînes telles que <code>Metal</code> et <code>Gojira</code>, alors qu'elles ne représentent bien qu'une seule <em>entité</em> chacune. </p>
+<p>Pour régler la question de la <strong>cohérence des données</strong>, il faudra en premier lieu trouver un moyen d'éviter la <strong>redondance</strong> de certaines données.</p>
 </div>
-<h3 id="historique-des-differents-modeles">Historique des différents modèles</h3>
+<h3 id="historique-et-problematiques-des-differents-modeles">Historique et problématiques des différents modèles</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Modèles de données et structures de données</p>
+<p>Ces deux concepts se placent à différents niveaux d'abstraction. Les <mark class="critic"><strong>modèles de données</strong></mark> indique quelles caractéristiques d'une entité réelle on souhaite manipuler dans un programme, ainsi que les relations qui lient ces entités entre elles. Par exemple un groupe de musique va produire plusieurs albums, et un chanteur peut chanter dans plusieurs groupes. </p>
+<p>Une <mark class="critic"><strong>structure de donnée</strong></mark> indique la manière dont on va organiser les données <strong>en machine</strong>. Ainsi pour un même modèle il existe plusieurs structures pouvant représenter ce modèle (tableau, listes chaînées, objets...)</p>
+</div>
+<p>Le premier modèle ayant souhaité s'attaquer au problème de la redondance des données est le <strong>modèle hiérarchique</strong>, développé par IBM dans les années 1960, dans le cadre du programme Apollo de la NASA. Ce modèle, très dépendant de la manière dont fonctionnait les ordinateurs de cette époque, enregistre les données à la manière de l'organisation d'un système de fichier, sous la forme d'un arbre (<em>structure arborescente</em>), de façon à ce qu'un enregistrement n'ait qu'un seul possesseur. On peut en donner un exemple ci-dessous :</p>
+<p><img alt="ModeleHierarchique1" src="../modeleHierarchique1.png" style="width:100%;" /></p>
+<p>ce type de modèle peut être pratique, mais <em>il ne répond pas à toutes les problématiques</em>. En effet, ici nous n'avons pas introduit dans la hiérarchie les leads vocaux. Voici ce que donne le schéma lorsqu'on les introduits :</p>
+<p><img alt="ModeleHierarchique2" src="../modeleHierarchique2.png" style="width:100%;" /></p>
+<p>On constate ici que le choix d'organisation de l'arbre ne permet pas de régler la redondance des données, puisque non seulement un même chanteur peut être lead vocal sur plusieurs albums, mais il peut l'être aussi sur <strong>plusieurs groupes</strong> (comme Josh Homme par exemple). La structure hiérarchique n'est ici pas adaptée. </p>
+<p>Une des solutions proposée pour ce problème a été <strong>le modèle réseau</strong>, proposé par <a href="https://fr.wikipedia.org/wiki/Charles_Bachman">Charles William Bachman</a> à la fin des années 1960<sup id="fnref3:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup>. C.W. Bachman reçu le Prix Turing en 1973 pour ses contributions sur les technologies des bases de données. On lui doit aussi le modèle OSI (voir le cours de première...). Une représentation de nos albums dans le modèle réseau est la suivante :</p>
+<p><img alt="Modelereseau" src="../modeleReseau1.png" style="width:100%;" /></p>
+<p>Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaître la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs <mark class="critic"><strong>dépendants de la structure de donnée</strong></mark>.</p>
 <h2 id="le-modele-relationnel">Le modèle relationnel</h2>
 <h3 id="definition">Définition</h3>
 <h3 id="modelisation-relationnelles-des-donnees">Modélisation relationnelles des données</h3>
@@ -1383,7 +1449,7 @@
 <p><em>Numérique et Sciences Informatique Tle : 24 leçons avec exercices corrigés</em>, Balabonski, Conchon, Filliâtre, Nguyen, éditions Ellipses&#160;<a class="footnote-backref" href="#fnref:BCFN" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:LA">
-<p><em>Bases de données, de la modélisation au SQL</em>, Laurent Audibert, éditions Ellipses&#160;<a class="footnote-backref" href="#fnref:LA" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:LA" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:LA" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p><em>Bases de données, de la modélisation au SQL</em>, Laurent Audibert, éditions Ellipses&#160;<a class="footnote-backref" href="#fnref:LA" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:LA" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:LA" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:LA" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
