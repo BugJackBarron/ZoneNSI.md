@@ -40,6 +40,9 @@ nav:
                 - 'Listes chainées' :  'NSI/Terminale/C03/ListesChainees.md'
                 - 'Piles et files' : 'NSI/Terminale/C03/Piles_et_files.md'
                 - 'TP : Tours de Hanoï' : 'NSI/Terminale/C03/ToursHanoi.md'
+                
+            - 'Bases de Données et SQL' :
+                - 'Modèle relationnel' : 'NSI/Terminale/C04/ModeleRelationnel.md'
            
     - 'Miscellanées' :
         - 'Python' :
@@ -57,12 +60,13 @@ plugins :
     - section-index
     - mkdocs-video
     - page-to-pdf :
-        disableOnServe: False
+        disableOnServe: True
         scale : 0.85
         format : A4
-        displayHeaderFooter: true
-        
-        
+        displayHeaderFooter: True
+        pageLoadOptions :
+            timeout : 0
+                
     
 theme:
     name: material
@@ -115,6 +119,7 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.snippets
   - abbr
+  - footnotes
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
