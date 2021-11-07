@@ -1,0 +1,1951 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Bug_Jack_Barron">
+      
+      
+        <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C03/CSS/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>CSS - ZoneNSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mettre-en-forme-le-css" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ZoneNSI" class="md-header__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZoneNSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CSS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ZoneNSI" class="md-nav__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    ZoneNSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Mathématiques
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Mathématiques" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Mathématiques
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Seconde
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Seconde" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Seconde
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Ensembles de nombres et intervalles
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Ensembles de nombres et intervalles" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Ensembles de nombres et intervalles
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_01_Ensembles_Nombres/" class="md-nav__link">
+        Ensembles de nombres 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_02_Intervalles/" class="md-nav__link">
+        Intervalles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        Algorithmes, affectations et types de variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Première
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Terminale
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            SNT
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="SNT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            SNT
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le Web
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le Web
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Web/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            NSI
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="NSI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            NSI
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Première
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Première" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Première
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Variables et affectations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Boucles et conditions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Fonctions, assertions et tests unitaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/ProjetPendu/" class="md-nav__link">
+        Projet : Jeu du Pendu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le codage des données
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le codage des données" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le codage des données
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/BinaireCodageEntiers/" class="md-nav__link">
+        Binaire et codage des entiers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le web
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le web" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le web
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        HTML strict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            CSS
+          </a>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        CSS
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#separer-le-fond-et-la-forme-un-exemple-avec-un-traitement-de-texte" class="md-nav__link">
+    Séparer le fond et la forme : un exemple avec un traitement de texte
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cascading-style-sheets" class="md-nav__link">
+    Cascading Style Sheets
+  </a>
+  
+    <nav class="md-nav" aria-label="Cascading Style Sheets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    Définition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-dune-regle-css-vocabulaire-associe-et-premiers-exemples" class="md-nav__link">
+    Déclaration d'une règle CSS : vocabulaire associé et premiers exemples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-selecteurs-en-css" class="md-nav__link">
+    Les sélecteurs en CSS
+  </a>
+  
+    <nav class="md-nav" aria-label="Les sélecteurs en CSS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-dom-ou-comment-ca-marche-en-vrai" class="md-nav__link">
+    Le DOM, ou comment ça marche en vrai !
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecteur-de-type" class="md-nav__link">
+    Sélecteur de type :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecteur-de-classe" class="md-nav__link">
+    Sélecteur de classe :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecteur-didentifiant" class="md-nav__link">
+    Sélecteur d'identifiant :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecteur-denfants" class="md-nav__link">
+    Sélecteur d'enfants :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecteur-de-descendants" class="md-nav__link">
+    Sélecteur de descendants :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecteurs-de-pseudo-classes" class="md-nav__link">
+    Sélecteurs de pseudo-classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordre-dapplication-des-selecteurs" class="md-nav__link">
+    Ordre d'application des sélecteurs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-boites-css" class="md-nav__link">
+    Les boîtes CSS...
+  </a>
+  
+    <nav class="md-nav" aria-label="Les boîtes CSS...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#une-boite" class="md-nav__link">
+    Une boîte...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#des-boites" class="md-nav__link">
+    Des boites !
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-dimensions-et-unites-de-mesures-les-plus-utiles" class="md-nav__link">
+    Les dimensions et unités de mesures les plus utiles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptation-aux-differents-ecransmedias-de-sortie" class="md-nav__link">
+    Adaptation aux différents écrans/médias de sortie
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Terminale
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Terminale" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Terminale
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Modularite/" class="md-nav__link">
+        Modules, interfaces, encapsulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/IntroPOO/" class="md-nav__link">
+        Introduction à la POO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Récursivité
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Récursivité" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Récursivité
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/Recursivite/" class="md-nav__link">
+        Notion de récursivité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/RecursiviteFractales/" class="md-nav__link">
+        Applications : Fractales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/RecursiviteTris/" class="md-nav__link">
+        Applications : Tris
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Listes, Piles, Files
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Listes, Piles, Files" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Listes, Piles, Files
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/ListesChainees/" class="md-nav__link">
+        Listes chainées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/Piles_et_files/" class="md-nav__link">
+        Piles et files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/ToursHanoi/" class="md-nav__link">
+        TP : Tours de Hanoï
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Données et SQL
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Données et SQL" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Données et SQL
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/ModeleRelationnel/" class="md-nav__link">
+        Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Miscellanées
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellanées" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Miscellanées
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Le langage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/mkdocs_cmd/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Manim/BasesManim/" class="md-nav__link">
+        Manim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_5" type="checkbox" id="__nav_5_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Pygame" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/InstallationPygame/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/Base_pygame/" class="md-nav__link">
+        Bases de Pygame
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="CSS.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
+              
+                
+                
+                <h1 id="mettre-en-forme-le-css">Mettre en forme : le CSS</h1>
+<h2 id="separer-le-fond-et-la-forme-un-exemple-avec-un-traitement-de-texte">Séparer le fond et la forme : un exemple avec un traitement de texte</h2>
+<div class="admonition question">
+<p class="admonition-title">Activité avec un traitement de texte</p>
+<ol>
+<li>Téléchargez puis ouvrez le fichier <a href="https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=v4gFYAKTm62A"><code>StylesModeles.odt</code></a> avec <em>Libre Office</em>.</li>
+<li>Allez à la page 5 du document.</li>
+<li>Ouvrez la fenêtre de style  en appuyant sur <span class="keys"><kbd class="key-f11">F11</kbd></span>. </li>
+<li>Déployez le menu <code>Style par défaut</code> en appuyant sur <span class="keys"><kbd class="key-plus">+</kbd></span>.</li>
+<li>Déployez de même le menu <code>Titre</code>, puis cliquez droit sur <code>Titre 1</code>, puis <code>modifier</code>.</li>
+<li>Passez la couleur de la police en rouge, puis activez un surlignage simple en jaune. Validez puis observez le document. <ol>
+<li>Quelles parties ont été changées ? </li>
+<li>Y-a-t-il eu des changements sur d'autres pages ?</li>
+<li>Qu'ont en commun toutes les zones changées ?</li>
+</ol>
+</li>
+<li>Dans la fenêtre de style, modifiez <code>Liste Puce 1</code> en ajoutant une lettrine, et en ajoutant au fond un dégradé de tpe <code>Radial</code>. Observez les modifications du document.</li>
+<li>Allez à la page 31, partie 5.2.c,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en <code>Liste Puce 1</code>, en <code>Liste Puce 2</code>. le texte at-il été changé ?</li>
+</ol>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Séparer le fond de la forme</p>
+<p>Un même document numérique peut être lu de différentes manières :</p>
+<ul>
+<li>sur un écran couleur ;</li>
+<li>par un logiciel de synthèse vocale ;</li>
+<li>sur un écran monochrome ( ou dans la console) ;</li>
+<li>sur un écran de smartphone ;</li>
+<li>par une impression sur un papier A4, ou A3, ou autres formats ;</li>
+<li>...</li>
+</ul>
+<p>Pour éviter de créer un document différent pour chacun de ces supports, l'idée est apparue à la fin des années 1960 de créer une séparation complète entre la structure logique d'un document (titres, chapitres, paragraphes, illustrations...), et sa mise en page, qui dépend du support de présentation, et qui est définie en dehors du document lui-même dans une ou plusieurs <mark class="critic"><strong>feuilles de style</strong></mark>, regroupant police, style, taille et couleur des caractères, alignement et espacement des paragraphes...</p>
+</div>
+<h2 id="cascading-style-sheets">Cascading Style Sheets</h2>
+<h3 id="definition">Définition</h3>
+<div class="admonition asbtract">
+<p class="admonition-title">CSS</p>
+<p>CSS est l'acronyme de <mark class="critic"><strong>Cascading Style Sheets</strong></mark>, soit <em>Feuilles de Styles en cascades</em> en français. Un fichier <code>CSS</code> est appelé  par une ou plusieurs pages <code>HTML</code> (entre autre), et associe à certaines <mark class="critic"><strong>balises</strong></mark> et/ou <mark class="critic"><strong>attributs</strong></mark> <code>html</code> certaines caractéristiques graphiques, à l'aide d'un <mark class="critic"><strong>sélecteur</strong></mark> de balises.</p>
+<p>Pour utiliser une feuille de style nommée <code>toto.css</code> dans une page <code>html</code>, il faut inclure entre les balises <code>&lt;head&gt;</code> et <code>&lt;/head&gt;</code> la ligne suivante :</p>
+<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;toto.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">/&gt;</span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p>Dans l'exemple ci-dessous, le fichier <code>style.css</code> est utilisé par les différentes pages <em>html</em> :
+<p align="center">
+ <img alt="CSS_Fichiers.png" src="../CSS_Fichiers.png" style="width:50%;" />
+</p></p>
+</div>
+<h3 id="declaration-dune-regle-css-vocabulaire-associe-et-premiers-exemples">Déclaration d'une règle CSS : vocabulaire associé et premiers exemples</h3>
+<div class="admonition asbtract">
+<p class="admonition-title">Vocabulaire</p>
+<p>Au sein d'un fichier CSS, on déclare des <mark class="critic"><strong>règles</strong></mark>, qui vont permettre la mise en forme d'éléments bien précis. Par exemple :</p>
+<p><p align=center>
+<img alt="Css_regle.png" src="../CSS_Regle.png" style="width:30%;" title="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS" />
+</p></p>
+<ul>
+<li>le <mark class="critic"><em>sélécteur</em></mark> <code>p</code> signale que les déclarations suivantes s'appliquent à toutes les balises <code>&lt;p&gt;</code> et <code>&lt;/p&gt;</code>. Toutes les déclarations doivent être à l'intérieur d'une paire d'accolades ( <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-grave">`</kbd></span> ou <span class="keys"><kbd class="key-alt-graph">AltGr</kbd><span>+</span><kbd class="key-grave">`</kbd></span> donne <span class="keys"><kbd class="key-brace-left">{</kbd></span> et <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-equal">=</kbd></span> ou <span class="keys"><kbd class="key-alt-graph">AltGr</kbd><span>+</span><kbd class="key-equal">=</kbd></span> donne <span class="keys"><kbd class="key-brace-right">}</kbd></span>).</li>
+<li>la <mark class="critic"><em>propriété</em></mark> <code>color</code> indique que la règle concerne la couleur de police ;</li>
+<li>la <mark class="critic"><em>valeur</em></mark> associée <code>red</code> indique que la couleur de police sera rouge ;</li>
+<li>la <mark class="critic"><strong>déclaration</strong></mark> est terminée par un <strong>point-virgule</strong> (c'est important !), et <em>propriété</em> et <em>valeur</em> sont séparées par un symbole deux-points.</li>
+</ul>
+</div>
+<p>Il est possible et même souhaitable d'effectuer plusieurs déclarations au sein de la même règle. Par exemple, la déclaration suivante est parfaitement valable :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">h1</span> <span class="p">{</span>
+    <span class="k">color</span> <span class="p">:</span> <span class="kc">magenta</span><span class="p">;</span>
+    <span class="k">background-color</span> <span class="p">:</span> <span class="kc">lightblue</span><span class="p">;</span>
+    <span class="k">font-style</span> <span class="p">:</span> <span class="kc">italic</span><span class="p">;</span>
+    <span class="k">font-size</span> <span class="p">:</span> <span class="mi">3</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">font-variant</span> <span class="p">:</span> <span class="kc">small-caps</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Il existe des <strong>dizaines de propriétés</strong> et des <strong>centaines de déclarations possibles</strong>. Pour les trouver je vous conseille fortement le site <a href="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS">MDN webdocs</a> et surtourt (mais en anglais) <a href="https://www.w3schools.com/css/">W3Schools</a>.</p>
+<p>Vous pouvez essayer de modifier le CSS dans le <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c50c-144590">bac-à-sable suivant sur capytale</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">L'inspecteur d'objet</p>
+<p>Il est possible dans <code>Firefox</code>, comme dans de nombreux navigateurs actuels, d'afficher les informations d'une page web, y compris bien sûr les styles CSS attachés à cette page. Dans <code>Firefox</code>, vous obtiendrez cet inspecteur de style par l'intermédiaire des touches <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-i">I</kbd></span>, ou bien par <code>Menu &gt; Outils supplémentaires &gt; Outils de développement web</code>.</p>
+<p>L'intérêt de l'inspecteur est de pouvoir modifier à sa guise les attributs et valeurs CSS d'une page web et d'en voir immédiatement les effets. Les modifications sont bien entendues <strong>locales</strong> (elles ne sont valables que sur la copie de la page web dans votre navigateur, vous ne modifiez pas vraiment la page web réelle... Et heureusement !!!)</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice : Modifier une page web existante</p>
+<ol>
+<li>Rendez-vous sur la page <a href="https://www.zonensi.fr/SNT/Web/CSS/]">https://www.zonensi.fr/SNT/Web/CSS/</a>.</li>
+<li>Ouvrez <strong>l'inspecteur d'objets</strong>.</li>
+<li>Cliquez sur la petite flèche située à droite de la barre de menu de l'inspecteur, puis sélectionnez ensuite le titre de la page <code>Mettre en forme : le CSS</code>.</li>
+<li>Vous devez voir apparâitre toutes les déclarations dont dépend le titre de la page. Ajoutez au sélecteur <code>.md-typeset h1</code> la déclaration <code>background-color : pink</code>.</li>
+<li>Enjoy <img alt="😄" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f604.svg" title=":smile:" /></li>
+</ol>
+</div>
+<h2 id="les-selecteurs-en-css">Les sélecteurs en CSS</h2>
+<h3 id="le-dom-ou-comment-ca-marche-en-vrai">Le DOM, ou comment ça marche en vrai !</h3>
+<div class="admonition abstract">
+<p class="admonition-title">le DOM</p>
+<p>Le <mark class="critic"><strong>DOM</strong></mark>, ou <em>Document Object Model</em> est une interface de programmation pour des documents <code>HTML</code> ou <code>XML</code> qui représente le document (la page web actuelle) sous une forme qui permet aux langages de script comme le JavaScript d'y accéder et d'en manipuler le contenu et les styles.</p>
+<p>Le DOM est ainsi une représentation structurée du document sous forme &laquo; d'arbre &raquo; crée automatiquement par le navigateur </p>
+<p><p align="center">
+<img alt="Exemple_Dom1.png" src="../Exemple_Dom1.png" style="display : inline-block; width:45%;" />
+<img alt="Exemple_Dom2.png" src="../Exemple_Dom2.png" style="display : inline-block; width:45%;" />
+</p></p>
+<p>Pratiquement,le DOM est créé  à partir du code HTML, et chaque style CSS est attaché à un noeud du DOM :</p>
+<p><p align="center">
+<img alt="creation_dom.png" src="../creation_dom.png" style="width:50%;" />
+</p>
+Pour atteindre en CSS un noeud du DOM, ou pour interagir avec lui, il faut utiliser le bon <strong>sélecteur</strong>.</p>
+</div>
+<p>Il est possible de cibler de manière très précise des éléments d'une page web par l'intermédiaire de ces sélecteurs. La syntaxe permettant d'effectuer ce ciblage est très précise, mais particulièrement efficace quand elle est bien utilisée. L'objectif du cours n'est pas d'apprendre tous les sélecteurs, mais d'en discerner les plus utiles.</p>
+<h3 id="selecteur-de-type">Sélecteur de type :</h3>
+<p>Cible toutes les balises d'un certain nom. Par exemple :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">body</span> <span class="p">{</span>
+    <span class="k">background-color</span> <span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">p</span> <span class="p">{</span>
+    <span class="k">color</span> <span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="selecteur-de-classe">Sélecteur de classe :</h3>
+<p>Il est possible de regrouper des balises, même différentes, en leur donnant un attribut <code>class</code>. Toutes les balises possédant le même attribut <code>class</code> peuvent être alors ciblées en ajoutant un point <code>.</code> précédant le nom de la classe. Par exemples :</p>
+<ul>
+<li>cibler toutes les balises possédant l'attribut <code>class="definition"</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">definition</span> <span class="p">{</span>
+    <span class="k">color</span> <span class="p">:</span> <span class="kc">red</span><span class="p">;</span> 
+    <span class="k">border-width</span> <span class="p">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">border-style</span> <span class="p">:</span> <span class="kc">dashed</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>cible les titres de rang <code>h2</code> et possédant l'attribut <code>class="chapitre"</code> (les autres balises possédant uniquement l'un des deux attributs ne sont pas ciblées)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">h2</span><span class="p">.</span><span class="nc">chapitre</span> <span class="p">{</span>
+    <span class="k">text-decoration</span> <span class="p">:</span> <span class="kc">underline</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="selecteur-didentifiant">Sélecteur d'identifiant :</h3>
+<p>Il est aussi possible de spécifier une balise spécifique en lui attribuant un <mark class="critic"><strong>identifiant unique</strong></mark> par l'intermédiaire de l'attribut <code>id</code>. Par exemple, pour cibler la balise possédant l'attribut <code>id="titresite"</code>, on utilise le symbole <code>#</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="p">#</span><span class="nn">titresite</span><span class="p">{</span>
+    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="selecteur-denfants">Sélecteur d'enfants :</h3>
+<p>Cible toutes les balises descendantes directes d'un autre élément. Par exemple :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">body</span> <span class="o">&gt;</span> <span class="nt">p</span>  <span class="p">{</span>
+    <span class="k">background-color</span> <span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ici on sélectionne les balises <code>p</code> qui sont directement héritées de <code>body</code> (c'est-à-dire directement <strong>encadrées</strong> par les balises <code>&lt;body&gt;</code> et <code>&lt;/body&gt;</code>).</p>
+<h3 id="selecteur-de-descendants">Sélecteur de descendants :</h3>
+<p>Cible toutes les balises qui descendent d'un autre élément Par exemple :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">body</span>  <span class="nt">p</span>  <span class="p">{</span>
+    <span class="k">background-color</span> <span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ici on sélectionne toutes les balises <code>p</code> qui sont <strong>à l'intérieur</strong> de <code>&lt;body&gt;...&lt;/body&gt;</code>.</p>
+<h3 id="selecteurs-de-pseudo-classes">Sélecteurs de pseudo-classes</h3>
+<p>Lors de la construction de l'arbre du DOM, certaines <em>pseudo-classes</em> sont ajoutées automatiquement à certains noeuds. Il est possible d'intéragir avec ces pseudo-classes :</p>
+<ul>
+<li>
+<p><code>:first-child</code> : Cible un élément quand il est le premier enfant d'un autre élément.
+<div class="highlight"><pre><span></span><code><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span>  <span class="p">{</span>
+    <span class="k">background-color</span> <span class="p">:</span> <span class="kc">yellow</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+    Existe aussi en version <code>:last-child</code>, <code>:nth-child</code>, je vous laisse rechercher les possibilités  en ligne.</p>
+</li>
+<li>
+<p><code>:hover</code> : Cible un élément quand il possède la souris le survole.
+<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+    <span class="k">font-size</span> <span class="p">:</span><span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>:link</code> : Cible un lien qui n'a pas été visité.
+<div class="highlight"><pre><span></span><code><span class="nt">a</span><span class="p">:</span><span class="nd">link</span> <span class="p">{</span>
+    <span class="n">text-color</span> <span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>:visited</code> : Cible un lien qui a été visité.
+<div class="highlight"><pre><span></span><code><span class="nt">a</span><span class="p">:</span><span class="nd">link</span> <span class="p">{</span>
+    <span class="n">text-color</span> <span class="p">:</span> <span class="kc">orange</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+</ul>
+<p>Il existe bien d'autres pseudo-classes. Comme toujours Mozilla a fait un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-classes">travail remarquable de documentation</a>.</p>
+<h2 id="ordre-dapplication-des-selecteurs">Ordre d'application des sélecteurs</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Priorité des sélecteurs</p>
+<p>Il existe une priorité des sélecteurs, tout comme existe une priorité des opérations arithmétiques. Il s'agit d'une norme, donc par nature elle est à connaître pour éviter les comportement erratiques du CSS :</p>
+<ol>
+<li>La mise en forme définie pour le sélecteur le plus précis l'emporte (<code>id</code> est plus précis que <code>class</code> qui est plus précis que le nom de la balise).</li>
+<li>Le dernier défini est appliqué lorsque le niveau de priorité est égal.</li>
+</ol>
+</div>
+<h2 id="les-boites-css">Les boîtes CSS...</h2>
+<p><em>Cette partie est quasiment copié-collée depuis <a href="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS">MDN Mozilla</a>.</em></p>
+<h3 id="une-boite">Une boîte...</h3>
+<p>Vous verrez rapidement qu'avec les CSS, tout tourne autour de boîtes : définir leurs tailles, leurs couleurs, leurs positions, etc. Les éléments HTML d'une page peuvent, pour la plupart, être vus comme des boîtes placées les unes sur les autres.</p>
+<p>Chacun de ces blocs prend un certain espace sur la page, de cette façon :</p>
+<ul>
+<li><code>padding</code> : l'espace autour, proche du contenu (par exemple, l'espace autour du texte d'un paragraphe) (en français, on pourrait traduire cela par du « remplissage » mais le terme padding étant communément utilisé lorsqu'on parle de CSS, on continuera à utiliser ce terme)</li>
+<li><code>border</code> : la ligne qui est juste autour du padding (en français cela correspond à la bordure).</li>
+<li><code>margin</code> : l'espace extérieur, autour de l'élément (en français cela correspond à la marge).</li>
+</ul>
+<p><img alt="box-model.png" src="../box-model.png" style="width:50%;" /></p>
+<h3 id="des-boites">Des boites !</h3>
+<p>Chaque élément possède par défaut un type de placement :</p>
+<ul>
+<li>élément <code>block</code> : un élément <code>block</code> occupe par défaut toute la largeur de l'écran. Quand des éléments <code>block</code> s'enchainent, ils sont les uns au dessus des autres. Par défaut les éléments <code>&lt;h1&gt;,&lt;h2&gt;,...,&lt;h6&gt;</code>,  <code>&lt;p&gt;</code> et surtout <code>&lt;div&gt;</code> (balise générique de type <code>block</code>) sont des éléments de type <code>block</code>.</li>
+<li>élément <code>inline</code> : un élément <code>inline</code> s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après.Par défaut les éléments <code>&lt;a&gt;,&lt;img&gt;,&lt;strong&gt;,...</code> sont des éléments de type <code>inline</code>.</li>
+</ul>
+<p>Il existe bien des subtilités concernant les éléments <code>inline</code> et <code>block</code>, qui dépassent largement le cadre de ce cours. Ce <a href="https://la-cascade.io/la-difference-entre-block-et-inline/">document</a> permettra peut-être de répondre à certaines questions que vous poyurriez vous poser. </p>
+<div class="admonition tips">
+<p class="admonition-title">Modifier le type d'un élément : <code>display</code></p>
+<p>Il est possible de spécifier explicitement pour un élément son type d'apparition dans le flux de données d'une page html. Pour cela on utilise la propriété <code>display</code> et ses différentes valeurs :</p>
+<ul>
+<li><code>none</code> : retire l'élément des éléments disponibles. Cet élément ainsi que ses descendants ne sont plus accessibles.</li>
+<li><code>block</code> : rend l'élément de type <code>block</code>;</li>
+<li><code>inline</code> : rend l'élément de type <code>inline</code>;</li>
+<li><code>grid</code> : insère l'élément comme élément d'une grille(ou tableau) ;</li>
+<li><code>flex</code> : insère l'élément comme élément de dimension flexible - outil à privilégier pour rendre la page ou le site visible sur différents appareils. La <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex">documentation</a> en ligne est très bien faite.</li>
+</ul>
+</div>
+<h2 id="les-dimensions-et-unites-de-mesures-les-plus-utiles">Les dimensions et unités de mesures les plus utiles</h2>
+<p>En CSS, il est souvent impératif de donner des longueurs, ou des bases de dimensions pour les éléments. Les unités sont nombreuses, souvent mystérieuses ou absconses pour nous européens. En voici quelques types :</p>
+<ul>
+<li><strong>valeur en pourcentage :</strong> <code>font-size : 120\%;</code> définit une taille de police valant 120% de la valeur de l'élément parent. Il ne faut pas d'espace entre le nombre et le symbole %.</li>
+<li><strong>hauteur <code>em</code> :</strong> cadratin, ou hauteur de la fonte dans une police donnée égal à la largeur du caractère <code>M</code>. <code>font-size : 1.5em;</code> écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de <code>1em</code>.</li>
+<li><strong>valeur en pixels :</strong> il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple <code>width : 50px;</code> mettra la largeur de l'élément à 500 pixels. A proscrire sauf cas particuliers.</li>
+<li><strong>valeur en unité relative à la largeur de la fenêtre :</strong> <code>margin-left : 50vw;</code> permettra de créer une marge à gauche de la boite valant 50% de la largeur de la fenêtre.</li>
+<li><strong>valeur en unité relative à la largeur de la fenêtre :</strong> <code>margin-left : 50vh;</code> permettra de créer une marge en haut de la boite valant 50\% de la hauteur de la fenêtre.</li>
+</ul>
+<h2 id="adaptation-aux-differents-ecransmedias-de-sortie">Adaptation aux différents écrans/médias de sortie</h2>
+<p>Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes, et leur capacité à basculer du format portrait au format paysage.</p>
+<p>Afin d'afficher correctement  un site web, il faut donc prévoir à l'avance, dans le fichier <em>css</em>, différentes version du site. Pour cela on utilise des <strong>media-queries</strong> - soit <em>requêtes de media</em>. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.</p>
+<p>Il existe de nombreuses requêtes, mais en pratique nous n'utiliserons que les deux requêtes suivantes :</p>
+<ul>
+<li><code>max-width</code> : applique les règles si la largeur  de l'écran est <strong>inférieure ou égale</strong> à la taille donnée en pixel ;</li>
+<li><code>min-width</code> : applique les règles si la largeur de l'écran est <strong>supérieure ou égale</strong> à la taille donnée en pixel ;</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p><em>L'exemple suivant provient du document <a href="https://ensweb.users.info.unicaen.fr/pres/resp/">Outils CSS pour le responsive design</a> d'Alexandre Niveau, sur le site de l'Université de Caen.</em></p>
+<div class="highlight"><pre><span></span><code><span class="c">/* version par défaut: sur grand écran */</span>
+<span class="p">.</span><span class="nc">menu</span> <span class="p">{</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">30</span><span class="kt">em</span><span class="p">;</span> <span class="c">/* etc. */</span> 
+<span class="p">}</span>
+
+<span class="c">/* écran plus petit: on passe le menu en horizontal */</span>
+<span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">100em</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="nc">menu</span> <span class="p">{</span> <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">.</span><span class="nc">menu</span> <span class="nt">li</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c">/* etc. */</span>
+<span class="p">}</span>
+
+<span class="c">/* écran encore plus petit: on cache le menu */</span>
+<span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">50em</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="nc">menu</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HTML strict" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              HTML strict
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Javascript" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Javascript
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - F.Vergniaud
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:admin@zonensi.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="../../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
