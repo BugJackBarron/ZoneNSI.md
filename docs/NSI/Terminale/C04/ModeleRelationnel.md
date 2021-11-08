@@ -193,7 +193,7 @@ La  théorie et la pratique des bases de données relationnelles est un domaine 
 	3. définir les {==**contraintes**==} de la base de données, c'est-à-dire *l'ensemble des propriétés logiques* que les données doivent vérifier à tout moment. En particulier on veillera aux **contraintes d'intégrité** décrites ci-dessous qui garantissent la *cohérence des données*.
 	
 
-#### Contrainte de domaine
+### Contraintes de domaines
 
 Essayons de préciser davantage la relation `Usager`. Dans la description que nous en avons donné, nous pouvons définir quelques attributs :
 
@@ -219,5 +219,35 @@ On peut s'étonner de stocker le code postal sous la forme d'une chaîne de cara
 [^dates]: les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser JJ/MM/AAAA ou JJ/MM/AA. Pour un Etats-Unien, ce sera MM/JJ/AAAA. Pour d'autres ce sera AAAA/MM/JJ... Un grand nombre de [mèmes](https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&utm_medium=web2x&context=3) de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures...
 
 !!! abstract "Contraintes de domaines"
-	Les {==**contraintes de domaine**==} sont toutes les propriétés que le domaine d'un attribut va permettre de garantir. Elles sont souvent plus précises que le simple choix d'un type de données. Par exemple, une **contrainte de domaine** sur l'âge d'une personne ne peut se contenter d'utiliser le type `Int`. Il faudra en plus éliminer les valeurs négatives ainsi que les valeurs supérieures à 120 (en étant large...)
+	Les {==**contraintes de domaines**==} sont toutes les propriétés que le domaine d'un attribut va permettre de garantir. Elles sont souvent plus précises que le simple choix d'un type de données. Par exemple, une **contrainte de domaine** sur l'âge d'une personne ne peut se contenter d'utiliser le type `Int`. Il faudra en plus éliminer les valeurs négatives ainsi que les valeurs supérieures à 120 (en étant large...)
+	
+On rajoute maintenant les attributs suivants à la relation `Usager` :
+
+* **adresse** : l'adresse exacte de l'usager, sous la forme d'une chaîne de caractères ;
+* **inscription** : date d'inscription de l'usager à la médiathèque, sous le format `Date` ;
+* **code_barre** : le code-barre de la carte associée à l'usager, sous la forme d'une chaîne de caractères (pour la même raison que pour le code postal, il pourrait y avoir des zéros en début de code).
+
+On obtiendra ainsi le **schéma relationnel** suivant :
+
+```` SQL
+
+Usager(nom : String, prénom : String, email :String, cp : String, adresse : String, inscription : Date, code_barre : String)
+````
+ou bien par la table suivante : ![relationUsager1.png](relationUsager1.png){: style="width:15%;"}
+
+### Contraintes de relations
+
+Dans une relation, il faut s'assurer que chaque *entité* est {==unique==} et qu'il n'y a pas d'ambiguïté entre deux entités. C'est la {==**contrainte de relations**==}.
+
+Prenons la relation `Usager`. Si nous nous étions juste contentés des attributs `nom` et `prénom`, nous aurions pu avoir plusieurs usagers qui seraient confondus dans la BDD. On aurait alors une *violation de la contrainte de relation*.
+
+Pour évityer cette situation, il faut donc s'assurer lors de la modélisation, que pour chaque entité d'une relation, un **attribut** (ou un ensemble d'attributs) permet d'{==identifier de manière unique==} cette entité.
+
+!!! abstract "Clé primaire"
+	On appelle {==**clé primaire**==} d'une relation l'attribut ou l'ensemble d'attributs permettant d'identifier de manière unique chaque entité.
+	On signale cette **clé primaire** en la soulignant *en traits pleins* dans le schéma relationnel.
+	
+	
+	
+
 
