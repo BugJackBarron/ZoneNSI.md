@@ -80,10 +80,144 @@ Une des solutions proposée pour ce problème a été **le modèle réseau**, pr
 
 Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaître la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs {==**dépendants de la structure de donnée**==}.
 
+
+
 ## Le modèle relationnel
 
-### Définition
+### Historique
 
-### Modélisation relationnelles des données
+Chercheur au centre de recherche d'IBM, [Edgar Frank Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd){target=_blank}, insatisfait des modèles existant, chercha un modèle plus simple permettant de gérer un grand nombre de données. Mathématicien de formation, il se basa sur la théorie des ensembles et la logique des prédicats ([*logique de premier ordre*](https://fr.wikipedia.org/wiki/Calcul_des_pr%C3%A9dicats){target=_blank}) pour publier en 1970 un article[^Codd] où il proposait de stocker des *données hétérogènes* dans des *tables*, comme dans le schéma ci-dessous :
 
-### Les différentes contraintes
+![modeleRelationnel1.png](modeleRelationnel1.png){: style="width:100%;background-color:hsla(var(--md-hue),15%,21%,0.07);"}
+
+Ce modèle, qualifié de {==**relationnel**==} était à l'époque considéré comme une curiosité intellectuelle, car les ordinateurs en ce temps n'étaient pas capables de gérer de manière efficace des tables de données, et il n'était pas évident qu'ils le soient un jour.
+
+Ce scepticisme n'a pas empêché Codd de poursuivre ses travaux, et de concevoir un premier prototype de **Sytème de Gestion de Bases de Données Relationnelles** (**SGBDR**). Depuis les années 1980 cette technologie a mûri, pour être finalement adoptée par le monde de la recherche et des entreprises. 
+
+En parallèle, Codd mis au point un langage de manipulation des données *non-procédural*, où l'utilisateur *définit le résultat qu'il attend plutôt que la manière de l'obtenir*. Ce langage nommé dans un premier temps `SEQUEL` (*Structured English Query Language*), rebaptisé par la suite `SQL` (*Structured Query Language*), fut adopté comme norme internationale par l'ISO en 1987.
+
+[^Codd]: [https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277){target=_blank}
+
+### Principes, vocabulaires et définitons
+
+Imaginons la situation d'une médiathèque municipale classique, pour lequel nous souhaitons mettre en place un *système d'information*. Ce système doit pouvoir gérer l'emprunt et le retour de livres par un utilisateur inscrit.
+
+Ainsi, un utilisateur, Bob, va pouvoir s'inscrire à la médiathèque. On lui demandera :
+
+* son nom ;
+* son prénom ; 
+* son email ;
+* son code postal (les tarifs d'abonnement sont différents selon la commune de résidence);
+* son adresse exacte.
+
+Le système ne retiendra de lui que ces éléments, avec la date d'inscription. Sa taille, couleur des yeux ou cheveux, n'ont aucune importance dans le système. Le système ne retiens qu'une approximation de la réalité.
+
+Une fois inscrit, Bob se voit remettre une *carte* contenant un **code-barre**, c'est-à-dire un numéro unique qui est attribué à Bob.
+
+Bob peut alors emprunter le livre &laquo; Apprendre à programmer avec Python 3: Avec 60 pages d'exercices corrigés ! &raquo; de Gerard Swinnen, Eyrolles, 2012, ISBN 978-2212134346. Sur le livre est aussi placé un **code-barre**, qui identifie le livre de manière unique. En scannant ce code barre et sa carte de bibliothèque sur une des bornes disponible, le système devra retenir que Bob a emprunté ce livre à la date du jour.
+
+De la même manière, lorqu'il reviens quelques semaines plus trad, il doit pouvoir rendre ce livre en scannant sa carte et le livre, et le système doit retenir que le livre est à nouveau disponible et que Bob a de nouveau le droit d'emprunter d'autres livres.
+
+Bien entendu, d'autres utilisateurs doivent pouvoir faire des emprunts et des restitutions au même moment sur d'autres bornes de la médiathèque,  ce qui signifie que les données doivent pouvoire être accessibles depuis un réseau *a minima local*.
+
+De plus les documentalistes doivent pouvoir ajouter de nouveaux ouvrages, en supprimer certains trop anciens ou abimés, et mettre à jour l'ensemble des utilisateurs. Ces dernière opérations ne devant pas être accessibles aux usagers, il faudra mettre en place un système de *droits d'accès*.
+
+!!! abstract "Entités"
+	Dans le modèle relationnel, un objet modélisé est appelé {==**entité**==}. Il est représenté par un n-uplet de valeurs.
+
+	
+!!! example "Exemple"
+	Le livre emprunté par Bob peut-être représenté par le quintuplet :
+	
+	````
+	('Apprendre à programmer avec Python 3: Avec 60 pages d'exercices corrigés !', 'Gerard Swinnen', 'Eyrolles', 2012, '978-2212134346')
+	````
+	Dans ce quintuplet, 4 composantes sont des chaînes de caractères, et une seule est sous la forme d'un entier.
+	
+	
+!!! abstract "Relation"
+	Une *collection d'entités* est appelée une {==**relation**==}.
+	
+!!! example "Exemple"
+	La relation `Livre` de la médiathèque peut être représentée par :
+	````
+	Livre = {
+	('Apprendre à programmer avec Python 3: Avec 60 pages d'exercices corrigés !', 'Gerard Swinnen', 'Eyrolles', 2012, '978-2212134346'),
+	('Bases de données, de la modélisation au SQL', 'Laurent Audibert', 'Ellipses' ,  2009, '978-2729851200'),
+	...
+	}
+	````
+!!! abstract "Schéma relationnel, attributs"
+	Chaque *relation* se conforme à un {==**schéma**==}. Ce dernier est une description,  qui indique pour chaque composante des n-uplets de la relation leur *nom* et leur *domaine*, c'est-à-dire le type de valeurs que peuvent prendre les composantes.
+	Chaque composante s'appelle un {==**attribut**==}.
+	
+!!! example "Exemple"
+	La relation `Livre` contient 5 attributs :
+	
+	* **titre** : le titre du livre, qui est une chaîne de caractères ;
+	* **auteur** : le ou les auteurs du livre, sous la forme d'une chaîne de caractères ;
+	* **éditeur** : l'éditeur,  sous la forme d'une chaîne de caractères ;
+	* **année** : l'année d'édition, sous la forme d'un entier ;
+	* **ISBN** : l'identifiant du livre, sous la forme d'une chaîne de caractères.
+	
+	On peut aussi noter un schéma de relation de la manière suivante:
+	
+	```` SQL
+	Livre( titre : String, auteur : String, éditeur : String, année : Int, ISBN : String)
+	````
+	
+	ou par un tableau :	![schemaRelation.png](schemaRelation.png){: style="width:15%;}
+	
+!!! abstract "Base de données"
+	Dans le modèle relationnel, une {==**base de données**==} est un ensemble de relations.
+	Par extension, le **schéma** d'une base de donnée est l'ensemble des schémas relationnels représentant la base.
+	
+!!! example "Exemple"
+	Dans notre exemple de médiathèque, on pourra considérér la base de données contenant les relations :
+	
+	* Livre
+	* Usager
+	* Emprunt
+	
+	Nous détaillerons dans la suite les attributs des relations `Usager` et `Emprunt`.
+
+## Modélisation relationnelle des données
+
+La  théorie et la pratique des bases de données relationnelles est un domaine de recherche fortement actif et qui s'est largement complexifié depuis ses débuts. Il ne s'agit pas dans ce cours d'étudier cette théorie, qui dépasse largement le niveau de terminale, aussi bien d'un point de vue mathématique que informatique, mais d'en comprendre quelques principes.
+
+!!! tips "principes généraux"
+	La modélisation des données se décompose en plusieurs étapes :
+	
+	1. déterminer les **entités** qu'on souhaite manipuler ;
+	2. modéliser les collections d'entités en **relations**, en donnant leur **schéma relationnel**, et en veillant à choisir le bon **domaine** pour les **attributs**.
+	3. définir les {==**contraintes**==} de la base de données, c'est-à-dire *l'ensemble des propriétés logiques* que les données doivent vérifier à tout moment. En particulier on veillera aux **contraintes d'intégrité** décrites ci-dessous qui garantissent la *cohérence des données*.
+	
+
+#### Contrainte de domaine
+
+Essayons de préciser davantage la relation `Usager`. Dans la description que nous en avons donné, nous pouvons définir quelques attributs :
+
+* **nom** : le nom de la personne, une chaîne de caractères ;
+* **prénom** : le prénom de la personne, une chaîne de caractères ;
+* **email** : l'email de la personne, une chaîne de caractères ;
+* **cp** : le code postal de la commune de résidence, **une chaine de caractères**.
+
+On peut s'étonner de stocker le code postal sous la forme d'une chaîne de caractère, et pas d'un entier. Mais il faut prendre en compte certaines particularités : un code postal est un code de 5 chiffres. Celui de Guingamp est 22 200, et celui de Bourg-en-Bresse est 01 000. Or **les zéros précédants le nombres sont éliminés si on stocke le nombre sous la forme d'un entier!** On est alors obligé d'utiliser une chaîne de caractères de taille 5.
+
+!!! tips "Types de données"
+	Nous verrons dans la partie SQL quelques types de données spécifiques, mais nous pouvons donner quelques types génériques souvent utilisés dans les BDD :
+	
+	| Type | Utilisation|
+	| :---:| :--- |
+	| **String** | chaînes de caractères |
+	| **Int** | les entiers signés (d'une taille arbitraire) |
+	| ** Boolean** | les booléens `True` et `False` |
+	| **Float** | les flottants |
+	| **Date** | les dates (sous le format `JJ/MM/AAAA`)[^dates] |
+	| **Time** | les instants `heure : minutes : secondes ` |
+	
+[^dates]: les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser JJ/MM/AAAA ou JJ/MM/AA. Pour un Etats-Unien, ce sera MM/JJ/AAAA. Pour d'autres ce sera AAAA/MM/JJ... Un grand nombre de [mèmes](https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&utm_medium=web2x&context=3) de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures...
+
+!!! abstract "Contraintes de domaines"
+	Les {==**contraintes de domaine**==} sont toutes les propriétés que le domaine d'un attribut va permettre de garantir. Elles sont souvent plus précises que le simple choix d'un type de données. Par exemple, une **contrainte de domaine** sur l'âge d'une personne ne peut se contenter d'utiliser le type `Int`. Il faudra en plus éliminer les valeurs négatives ainsi que les valeurs supérieures à 120 (en étant large...)
+
