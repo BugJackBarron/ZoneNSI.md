@@ -193,7 +193,7 @@ La  théorie et la pratique des bases de données relationnelles est un domaine 
 	3. définir les {==**contraintes**==} de la base de données, c'est-à-dire *l'ensemble des propriétés logiques* que les données doivent vérifier à tout moment. En particulier on veillera aux **contraintes d'intégrité** décrites ci-dessous qui garantissent la *cohérence des données*.
 	
 
-#### Contraintes de domaines
+### Contraintes de domaines
 
 Essayons de préciser davantage la relation `Usager`. Dans la description que nous en avons donné, nous pouvons définir quelques attributs :
 
@@ -266,6 +266,73 @@ Imaginons que nous n'ayons utilisé dans la relation `Usager` comme attributs qu
 	
 	ou bien : ![relationLivre2.png](relationLivre2.png){: style="width:15%;"}
 	
+### Contraintes de références
+
+Prnons la relation `Emprunt`, que nous n'avons pas encore définie. Quel rôle doit-elle jouer ?
+
+Elle doit servir de lien entre une entité de la relation `Usager`, une entité de la relation `Livre`, et fournir une date de retour prévue pour le livre emprunté.
+
+Une version naïve serait d'utiliser pour une entité de la relation `Emprunt` un n-uplet de la forme :
+
+`('Dupont', 'Jean', 'Apprendre à programmer avec Python 3', 20/12/2021 )`
+
+Cependant ce type de n-uplet ne permet pas d'identifier de manière unique l'usager, comme nous l'avons vu dans les *contraintes de relations*. Il pourrait-y-avoir plusieurs Jean Dupont, alors que la relation `Emprunt` doit permettre d'identifier de manière unique une entité d'`Usager` ainsi qu'une de `Livre`.
+
+Il serait ainsi largement préférable d'utiliser les **clés primaires** ddes relations `Usager` et `Livre` dans la relation `Emprunt`, de la manière suivante :
+
+Emprunt(code_barre : String, ISBN : String, retour : Date)
+
+`code_barre` étant la clé primaire de la relation `Usager`, elle doit par contrainte de relations identifier de manière unique une entité de cette relation. Il en est de même pour `ISBN`, qui est la clé primaire de `Livre`.
+
+!!! abstract "Clé étrangère"
+	On appelle {==**clé étrangère**==} d'une relation un attribut faisant référence à la clé primaire d'une autre relation.
+	Une clé étrangère est signalée dans un schéma relationnel par un {==**soulignement en traits pointillés**==}.
+
+dans notre exemple de la relation `Emprunt` :
+	
+Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String, retour : Date)
+
+Le fait d'utiliser des clés étrangères nous permet de garantir ici un certain nombre de points :
+
+* un emprunteur sera forcément un usager inscrit. Il ne sera pas possible de saisir une valeur fictive pour l'attribut `code_barre` ;
+* de la même manière, on a une {==**contrainte de référence**==} sur l'attribut `ISBN`, qui doit forcément être la référence à une entité de la relation `Livre`.
+* de manière encore plus importante, l'utilisation d'une clé étrangère  {==**interdira de supprimer**==} une entité  `Usager` si elle est référencée dans la relation `Emprunt`. On aurait une *violation de la contrainte de référence*.
+
+
+Cependant notre travail n'est pas terminé pour la modélisation de la relation `Emprunt`. En effet, nous n'avons pas défini de *clé primaire* de cette relation : 
+
+* il serait peu judicieux d'utiliser l'attribut `code_barre` comme clé primaire, puisque celle-ci devant être unique, un usager ne pourrait emprunter qu'un unique livre ;
+* plusiurs emprunts pouvant avoir la même date de retour, il est impossible d'utiliser  l'attribut `retour` ;
+* il est par contre possible d'utiliser comme clé primaire l'attribut `isbn`, celui-ci ne pouvant être qu'unique, il granati le fait qu'un livre ne puisse être emprunté que par un usager à la fois.
+
+On obtient ainsi le schéma relationnel suivant :
+
+Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)
+
+ou bien : ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
+
+!!! question "Une erreur de modélisation ?"
+	
+	Dans la modélisation actuelle de la relation `Livre`, nous avons toujours un problème de cohérence et de redondance des données.
+	
+	En effet, nous avons écrit la liste des auteurs comme une chaîne de caractères. Si cette modélisation fonctionne, elle ne permet pas d'exprimer certaines contraintes sur les données, par exemple qu'un même auteur n'apparaît pas deux fois dans le même livre. On va donc simplifier la relation `Livre` de la manière suivante :
+	
+	Livre(titre : String, éditeur : String, année : Int, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN : String</span>)
+	
+	=== "Enoncé"
+	
+		1. Créer une relation `Auteur` qui devra retenir les informations importantes sur un auteur. 
+		2. Créer une relation `Auteur_de` permettant de lier un auteur à un livre.
+		3. Présenter le schéma global de la base de données
+		
+	=== "Solution"
+		
+		* Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre: String</span>)
+		* Livre(titre : String, éditeur : String, année : Int, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN : String</span>)
+		* Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)
+		* Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA : Int</span, nom : String, prenom : String)
+		* Auteur_de
+
 
 
 
