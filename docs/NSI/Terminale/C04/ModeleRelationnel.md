@@ -163,7 +163,7 @@ De plus les documentalistes doivent pouvoir ajouter de nouveaux ouvrages, en sup
 	On peut aussi noter un schéma de relation de la manière suivante:
 	
 	
-	Livre( titre : String, auteur : String, éditeur : String, année : Int, ISBN : String)
+	Livre( titre *String*, auteur *String*, éditeur *String*, année *Int*, ISBN *String*)
 	
 	
 	ou par un tableau :	![schemaRelation.png](schemaRelation.png){: style="width:15%;}
@@ -230,7 +230,7 @@ On termine la modélisation de la relation `Usager` en ajoutant  les attrtibuts 
 On obtient alors le **schéma relationnel** suivant :
 
 
-Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, code_barre: String)
+Usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, code_barre *String*)
 
 ou bien le tableau : ![relationUsager1.png](relationUsager1.png){: style="width:15%;"}
 
@@ -252,7 +252,7 @@ Imaginons que nous n'ayons utilisé dans la relation `Usager` comme attributs qu
 	* reste l'attribut `code_barre`, qui a priori, si le système est correctement configuré, est bien unique pour chaque usager. Il peut donc être choisi comme clé primaire, ce qu_i donne le schéma relationnel suivant :
 	
 	
-	Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <ins>code_barre: String</ins>)
+	Usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, <ins>code_barre *String*</ins>)
 	
 	ou bien : ![relationUsager2.png](relationUsager2.png){: style="width:15%;"}
 	
@@ -262,7 +262,7 @@ Imaginons que nous n'ayons utilisé dans la relation `Usager` comme attributs qu
 ??? done "Un choix"
 	Le choix de l'attribut `ISBN` comme clé primaire semble être une bonne idée, tant que la médiathèque ne commande pas plusieurs ouvrages identiques. Dans ce cas, il faudra rajouter à la relation un code-barre spécifique à la médiathèque. Mais nous considérerons que tel n'est pas le cas, et la relation sera donc :
 	
-	Livre( titre : String, auteur : String, éditeur : String, année : Int, <ins>ISBN : String</ins>)
+	Livre( titre *String*, auteur *String*, éditeur *String*, année *Int*, <ins>ISBN *String*</ins>)
 	
 	ou bien : ![relationLivre2.png](relationLivre2.png){: style="width:15%;"}
 	
@@ -280,7 +280,7 @@ Cependant ce type de n-uplet ne permet pas d'identifier de manière unique l'usa
 
 Il serait ainsi largement préférable d'utiliser les **clés primaires** ddes relations `Usager` et `Livre` dans la relation `Emprunt`, de la manière suivante :
 
-Emprunt(code_barre : String, ISBN : String, retour : Date)
+Emprunt(code_barre *String*, ISBN *String*, retour *Date*)
 
 `code_barre` étant la clé primaire de la relation `Usager`, elle doit par contrainte de relations identifier de manière unique une entité de cette relation. Il en est de même pour `ISBN`, qui est la clé primaire de `Livre`.
 
@@ -288,9 +288,9 @@ Emprunt(code_barre : String, ISBN : String, retour : Date)
 	On appelle {==**clé étrangère**==} d'une relation un attribut faisant référence à la clé primaire d'une autre relation.
 	Une clé étrangère est signalée dans un schéma relationnel par un {==**soulignement en traits pointillés**==}.
 
-dans notre exemple de la relation `Emprunt` :
+Dans notre exemple de la relation `Emprunt` :
 	
-Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String, retour : Date)
+Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> *String*, <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> *String*, retour *Date*)
 
 Le fait d'utiliser des clés étrangères nous permet de garantir ici un certain nombre de points :
 
@@ -307,7 +307,7 @@ Cependant notre travail n'est pas terminé pour la modélisation de la relation 
 
 On obtient ainsi le schéma relationnel suivant :
 
-Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)
+Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> *String*, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> *String*</span>, retour *Date*)
 
 ou bien : ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
 
@@ -327,11 +327,11 @@ ou bien : ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
 		
 	=== "Solution"
 		
-		* Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre: String</span>)
-		* Livre(titre : String, éditeur : String, année : Int, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN : String</span>)
-		* Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)
-		* Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA : Int</span>, nom : String, prenom : String)
-		* Auteur_de( <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">idA  </span>: Int , <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN </span> : String </span> 
+		* Usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre *String*</span>)
+		* Livre(titre *String*, éditeur *String*, année *Int*, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN *String*</span>)
+		* Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> *String*, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> *String*</span>, retour *Date*)
+		* Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA *Int*</span>, nom *String*, prenom *String*)
+		* Auteur_de( <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">idA  </span> *Int* , <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN </span> *String* </span> 
 		
 		Ou  le schéma complet : ![schemaBDD.png](schemaBDD.png){: style="width:30%;"}
 		
