@@ -162,9 +162,9 @@ De plus les documentalistes doivent pouvoir ajouter de nouveaux ouvrages, en sup
 	
 	On peut aussi noter un schéma de relation de la manière suivante:
 	
-	```` SQL
+	
 	Livre( titre : String, auteur : String, éditeur : String, année : Int, ISBN : String)
-	````
+	
 	
 	ou par un tableau :	![schemaRelation.png](schemaRelation.png){: style="width:15%;}
 	
@@ -193,7 +193,7 @@ La  théorie et la pratique des bases de données relationnelles est un domaine 
 	3. définir les {==**contraintes**==} de la base de données, c'est-à-dire *l'ensemble des propriétés logiques* que les données doivent vérifier à tout moment. En particulier on veillera aux **contraintes d'intégrité** décrites ci-dessous qui garantissent la *cohérence des données*.
 	
 
-### Contraintes de domaines
+#### Contraintes de domaines
 
 Essayons de préciser davantage la relation `Usager`. Dans la description que nous en avons donné, nous pouvons définir quelques attributs :
 
@@ -221,33 +221,51 @@ On peut s'étonner de stocker le code postal sous la forme d'une chaîne de cara
 !!! abstract "Contraintes de domaines"
 	Les {==**contraintes de domaines**==} sont toutes les propriétés que le domaine d'un attribut va permettre de garantir. Elles sont souvent plus précises que le simple choix d'un type de données. Par exemple, une **contrainte de domaine** sur l'âge d'une personne ne peut se contenter d'utiliser le type `Int`. Il faudra en plus éliminer les valeurs négatives ainsi que les valeurs supérieures à 120 (en étant large...)
 	
-On rajoute maintenant les attributs suivants à la relation `Usager` :
+On termine la modélisation de la relation `Usager` en ajoutant  les attrtibuts :
 
-* **adresse** : l'adresse exacte de l'usager, sous la forme d'une chaîne de caractères ;
-* **inscription** : date d'inscription de l'usager à la médiathèque, sous le format `Date` ;
-* **code_barre** : le code-barre de la carte associée à l'usager, sous la forme d'une chaîne de caractères (pour la même raison que pour le code postal, il pourrait y avoir des zéros en début de code).
+* `adresse` : l'adresse de l'usager, de format `String` ;
+* `inscription` : la date d'inscription, au format `Date` ;
+* `code_barre` : le code-barre de la carte qui lui a été attribuée, au format `String` (pour les même raisons que l'attribut `cp`)
 
-On obtiendra ainsi le **schéma relationnel** suivant :
+On obtient alors le **schéma relationnel** suivant :
 
-```` SQL
 
-Usager(nom : String, prénom : String, email :String, cp : String, adresse : String, inscription : Date, code_barre : String)
-````
-ou bien par la table suivante : ![relationUsager1.png](relationUsager1.png){: style="width:15%;"}
+Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, code_barre: String)
 
+ou bien le tableau : ![relationUsager1.png](relationUsager1.png){: style="width:15%;"}
+
+	
 ### Contraintes de relations
 
-Dans une relation, il faut s'assurer que chaque *entité* est {==unique==} et qu'il n'y a pas d'ambiguïté entre deux entités. C'est la {==**contrainte de relations**==}.
+Imaginons que nous n'ayons utilisé dans la relation `Usager` comme attributs que le nom et le prénom. Si deux personnes nommées *Jean Dupont* veulent s'inscrire à la médiathèque, il y aura dans la relation deux entités identiques, ce qui risque de causer des problèmes. Ce serait une *violation de la contrainte de relation*.
 
-Prenons la relation `Usager`. Si nous nous étions juste contentés des attributs `nom` et `prénom`, nous aurions pu avoir plusieurs usagers qui seraient confondus dans la BDD. On aurait alors une *violation de la contrainte de relation*.
-
-Pour évityer cette situation, il faut donc s'assurer lors de la modélisation, que pour chaque entité d'une relation, un **attribut** (ou un ensemble d'attributs) permet d'{==identifier de manière unique==} cette entité.
-
-!!! abstract "Clé primaire"
-	On appelle {==**clé primaire**==} d'une relation l'attribut ou l'ensemble d'attributs permettant d'identifier de manière unique chaque entité.
-	On signale cette **clé primaire** en la soulignant *en traits pleins* dans le schéma relationnel.
+!!! abstract "Contrainte de relation"
+	Lors de la modélisation d'une relation, il faut s'assurer que, pour **chaque entité**, un **attribut** ou un **ensemble d'attributs** permet d'identifier cette entité de **manière unique**.
+	
+	Un tel attribut ou ensemble d'attributs s'appelle une {==**clé primaire**==} de la relation, et est signalé par {==**un soulignement en traits pleins**==} dans le schéma relationnel.
+	
+!!! example "Exemple"
+	Dans le cas de notre relation `Usager` :
+	
+	* les attributs `nom`, `prénom`, `cp`, `inscription`, `adresse`, pris seuls, ne peuvebnt en aucun cas assurer le respect de la contrainte de relation. Ils ne peuvent donc pas être choisis comme clé primaire;
+	* l'attribut `email` pourrait être pertinent, mais ce choix empècherait un parent de fournir son email pour l'inscription de son enfant.
+	* reste l'attribut `code_barre`, qui a priori, si le système est correctement configuré, est bien unique pour chaque usager. Il peut donc être choisi comme clé primaire, ce qu_i donne le schéma relationnel suivant :
 	
 	
+	Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <ins>code_barre: String</ins>)
 	
+	ou bien : ![relationUsager2.png](relationUsager2.png){: style="width:15%;"}
+	
+!!! question "Relation `Livre`"
+	Quel choix raisonnable pouvons nous faire pour la clé primaire de la relation `Livre` ?
+	
+??? done "Un choix"
+	Le choix de l'attribut `ISBN` comme clé primaire semble être une bonne idée, tant que la médiathèque ne commande pas plusieurs ouvrages identiques. Dans ce cas, il faudra rajouter à la relation un code-barre spécifique à la médiathèque. Mais nous considérerons que tel n'est pas le cas, et la relation sera donc :
+	
+	Livre( titre : String, auteur : String, éditeur : String, année : Int, <ins>ISBN : String</ins>)
+	
+	ou bien : ![relationLivre2.png](relationLivre2.png){: style="width:15%;"}
+	
+
 
 
