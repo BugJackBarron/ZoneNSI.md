@@ -379,6 +379,7 @@ ou bien : ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
 		*La modélisation de ce réseau nécessite une réflexion au préalable sur la pertinence des informations à modéliser !*
 	
 	=== "Solution"
+		A venir
 
 
 
