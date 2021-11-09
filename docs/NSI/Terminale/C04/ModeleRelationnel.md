@@ -216,7 +216,7 @@ On peut s'étonner de stocker le code postal sous la forme d'une chaîne de cara
 	| **Date** | les dates (sous le format `JJ/MM/AAAA`)[^dates] |
 	| **Time** | les instants `heure : minutes : secondes ` |
 	
-[^dates]: les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser JJ/MM/AAAA ou JJ/MM/AA. Pour un Etats-Unien, ce sera MM/JJ/AAAA. Pour d'autres ce sera AAAA/MM/JJ... Un grand nombre de [mèmes](https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&utm_medium=web2x&context=3) de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures...
+[^dates]: les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser JJ/MM/AAAA ou JJ/MM/AA. Pour un Etats-Unien, ce sera MM/JJ/AAAA. Pour d'autres ce sera AAAA/MM/JJ... Un grand nombre de [mèmes](https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&utm_medium=web2x&context=3){ target=_blank} de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures...
 
 !!! abstract "Contraintes de domaines"
 	Les {==**contraintes de domaines**==} sont toutes les propriétés que le domaine d'un attribut va permettre de garantir. Elles sont souvent plus précises que le simple choix d'un type de données. Par exemple, une **contrainte de domaine** sur l'âge d'une personne ne peut se contenter d'utiliser le type `Int`. Il faudra en plus éliminer les valeurs négatives ainsi que les valeurs supérieures à 120 (en étant large...)
@@ -330,9 +330,55 @@ ou bien : ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
 		* Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre: String</span>)
 		* Livre(titre : String, éditeur : String, année : Int, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN : String</span>)
 		* Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)
-		* Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA : Int</span, nom : String, prenom : String)
-		* Auteur_de
+		* Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA : Int</span>, nom : String, prenom : String)
+		* Auteur_de( <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">idA  </span>: Int , <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN </span> : String </span> 
+		
+		Ou  le schéma complet : ![schemaBDD.png](schemaBDD.png){: style="width:30%;"}
+		
+		
+		Vous remarquerez qu'on a choisi comme clé primaire pour la relation `Auteur_de` le 2-uplet `(idA, ISBN)`. En effet :
+		
+		* on ne peut pas choisir simplement `idA`, car un auteur peut-être l'auteur de plusieurs livres ;
+		* on ne peut pas choisir simplement `ISBN`, car un livre peut avoir plusieurs auteurs.
+		
+		Par contre le 2-uplet `(idA, ISBN)` garanti bien la préservation des différentes contraintes.
+				
+## Exercices
 
+!!! question "Exercice 1"
+
+	=== "Enoncé"
+	
+		On souhaite modéliser un annuaire téléphonique simple, dans lequel chaque personne (identifiée par son nom et son prénom) est associée à son numéro de téléphone.
+	
+		Proposer une modélisation relationnelle de cet annuaire.
+	
+	=== "Solution"
+		A venir		
+	
+	
+!!! question "Exercice 2"
+
+	=== "Enoncé"
+		Donner la modélisation d'un bulletin scolaire. Cette dernière doit permettre de mentionner :
+		
+		* des élèves, chacun possédant un identifiant alphanumérique unique ;
+		* un ensemble de matières fixées, mais qui ne sont pas données ;
+		* au plus une note sur 20 par matière et par élève.
+	
+	=== "Solution"
+		A venir
+
+!!! question "Exercice 3"
+
+	=== "Enoncé"
+		Proposer une modélisation pour le réseau de métro et bus de la ville de Rennes (dont le plan est disponible [ici](https://www.lescommunes.com/carte/plandemetro/plandemetrobus_rennes.pdf){target=_blank}).
+		
+		Cette dernière doit être suffisamment riche pour permettre de générer, pour chaque arrêt de bus, une fiche donnant les horaires de passage de toutes les lignes qui déservent l'arrêt.
+		
+		*La modélisation de ce réseau nécessite une réflexion au préalable sur la pertinence des informations à modéliser !*
+	
+	=== "Solution"
 
 
 
