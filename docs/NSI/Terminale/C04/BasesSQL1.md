@@ -80,17 +80,43 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
     usager;    
 	````
 	Cette requête renvoie le résultat suivant :
-	
-	
-	
+		
 	| nom | prenom |
 	| --- | --- | 
 	| Pavie | Auguste |
 	| Prevert | Jacques |
 	| Camus | Albert |
 	
+	c'est-à-dire une {==**table**==} avec les attributs `nom` et `prenom`.
 	
+!!! warning "Différences entre modèle relationnel et SQL"
 	
+	Formellement, SQL n'est pas aussi strict que le modèle relationnel. En effet une table ne doit pas obligatoirement posséder une **clé primaire**.
+
+	La conséquence directe de ce choix est une violation de la contrainte de relation, et il est tout à fait possible d'avoir des doublons dans une table, ce qui sera toléré par SQL. Mais c'est une mauvaise pratique !
+	
+!!! question "Manipuler SQL"
+
+	Rendez-vous dans le [bac-à-sable SQL](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/b1c9-152465){target=_blank} sur Capytale.
+	
+	1. Exécutez les 4 premières cellules.
+	2. Exécutez la cinquième. Quel est le résultat fournit par cette requête ?
+	3. Exécutez la sixième. Quel est le résultat fournit par cette requête ?
+	4. Ajoutez à la base de données l'entité suivante :	
+	`('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')`
+	Que se passe-t-il ? Pourquoi ?
+	
+	5. Ajoutez à la base de données l'entité suivante :	
+	`('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')`	
+	Que se passe-t-il ? Pourquoi ?
+	
+	6. Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.
+	
+## Types de données en SQL
+
+## Créations et suppressions de tables
+
+## Insertions de données dans une table existante.
 	
 
 

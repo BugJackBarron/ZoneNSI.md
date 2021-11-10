@@ -1303,6 +1303,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BasesSQL1/" class="md-nav__link">
+        Bases de SQL 1
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1703,7 +1717,7 @@ Chaque composante s'appelle un <mark class="critic"><strong>attribut</strong></m
 <li><strong>ISBN</strong> : l'identifiant du livre, sous la forme d'une chaîne de caractères.</li>
 </ul>
 <p>On peut aussi noter un schéma de relation de la manière suivante:</p>
-<p>Livre( titre : String, auteur : String, éditeur : String, année : Int, ISBN : String)</p>
+<p>Livre( titre <em>String</em>, auteur <em>String</em>, éditeur <em>String</em>, année <em>Int</em>, ISBN <em>String</em>)</p>
 <p>ou par un tableau : <img alt="schemaRelation.png" src="../schemaRelation.png" style="&quot;width:15%;" /></p>
 </div>
 <div class="admonition abstract">
@@ -1790,7 +1804,7 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <li><code>code_barre</code> : le code-barre de la carte qui lui a été attribuée, au format <code>String</code> (pour les même raisons que l'attribut <code>cp</code>)</li>
 </ul>
 <p>On obtient alors le <strong>schéma relationnel</strong> suivant :</p>
-<p>Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, code_barre: String)</p>
+<p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, code_barre <em>String</em>)</p>
 <p>ou bien le tableau : <img alt="relationUsager1.png" src="../relationUsager1.png" style="width:15%;" /></p>
 <h3 id="contraintes-de-relations">Contraintes de relations</h3>
 <p>Imaginons que nous n'ayons utilisé dans la relation <code>Usager</code> comme attributs que le nom et le prénom. Si deux personnes nommées <em>Jean Dupont</em> veulent s'inscrire à la médiathèque, il y aura dans la relation deux entités identiques, ce qui risque de causer des problèmes. Ce serait une <em>violation de la contrainte de relation</em>.</p>
@@ -1807,7 +1821,7 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <li>l'attribut <code>email</code> pourrait être pertinent, mais ce choix empècherait un parent de fournir son email pour l'inscription de son enfant.</li>
 <li>reste l'attribut <code>code_barre</code>, qui a priori, si le système est correctement configuré, est bien unique pour chaque usager. Il peut donc être choisi comme clé primaire, ce qu_i donne le schéma relationnel suivant :</li>
 </ul>
-<p>Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <ins>code_barre: String</ins>)</p>
+<p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <ins>code_barre <em>String</em></ins>)</p>
 <p>ou bien : <img alt="relationUsager2.png" src="../relationUsager2.png" style="width:15%;" /></p>
 </div>
 <div class="admonition question">
@@ -1815,7 +1829,7 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <p>Quel choix raisonnable pouvons nous faire pour la clé primaire de la relation <code>Livre</code> ?</p>
 </div>
 <details class="done"><summary>Un choix</summary><p>Le choix de l'attribut <code>ISBN</code> comme clé primaire semble être une bonne idée, tant que la médiathèque ne commande pas plusieurs ouvrages identiques. Dans ce cas, il faudra rajouter à la relation un code-barre spécifique à la médiathèque. Mais nous considérerons que tel n'est pas le cas, et la relation sera donc :</p>
-<p>Livre( titre : String, auteur : String, éditeur : String, année : Int, <ins>ISBN : String</ins>)</p>
+<p>Livre( titre <em>String</em>, auteur <em>String</em>, éditeur <em>String</em>, année <em>Int</em>, <ins>ISBN <em>String</em></ins>)</p>
 <p>ou bien : <img alt="relationLivre2.png" src="../relationLivre2.png" style="width:15%;" /></p>
 </details>
 <h3 id="contraintes-de-references">Contraintes de références</h3>
@@ -1825,15 +1839,15 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <p><code>('Dupont', 'Jean', 'Apprendre à programmer avec Python 3', 20/12/2021 )</code></p>
 <p>Cependant ce type de n-uplet ne permet pas d'identifier de manière unique l'usager, comme nous l'avons vu dans les <em>contraintes de relations</em>. Il pourrait-y-avoir plusieurs Jean Dupont, alors que la relation <code>Emprunt</code> doit permettre d'identifier de manière unique une entité d'<code>Usager</code> ainsi qu'une de <code>Livre</code>.</p>
 <p>Il serait ainsi largement préférable d'utiliser les <strong>clés primaires</strong> ddes relations <code>Usager</code> et <code>Livre</code> dans la relation <code>Emprunt</code>, de la manière suivante :</p>
-<p>Emprunt(code_barre : String, ISBN : String, retour : Date)</p>
+<p>Emprunt(code_barre <em>String</em>, ISBN <em>String</em>, retour <em>Date</em>)</p>
 <p><code>code_barre</code> étant la clé primaire de la relation <code>Usager</code>, elle doit par contrainte de relations identifier de manière unique une entité de cette relation. Il en est de même pour <code>ISBN</code>, qui est la clé primaire de <code>Livre</code>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Clé étrangère</p>
 <p>On appelle <mark class="critic"><strong>clé étrangère</strong></mark> d'une relation un attribut faisant référence à la clé primaire d'une autre relation.
 Une clé étrangère est signalée dans un schéma relationnel par un <mark class="critic"><strong>soulignement en traits pointillés</strong></mark>.</p>
 </div>
-<p>dans notre exemple de la relation <code>Emprunt</code> :</p>
-<p>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String, retour : Date)</p>
+<p>Dans notre exemple de la relation <code>Emprunt</code> :</p>
+<p>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> <em>String</em>, <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> <em>String</em>, retour <em>Date</em>)</p>
 <p>Le fait d'utiliser des clés étrangères nous permet de garantir ici un certain nombre de points :</p>
 <ul>
 <li>un emprunteur sera forcément un usager inscrit. Il ne sera pas possible de saisir une valeur fictive pour l'attribut <code>code_barre</code> ;</li>
@@ -1847,7 +1861,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 <li>il est par contre possible d'utiliser comme clé primaire l'attribut <code>isbn</code>, celui-ci ne pouvant être qu'unique, il granati le fait qu'un livre ne puisse être emprunté que par un usager à la fois.</li>
 </ul>
 <p>On obtient ainsi le schéma relationnel suivant :</p>
-<p>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)</p>
+<p>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> <em>String</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> <em>String</em></span>, retour <em>Date</em>)</p>
 <p>ou bien : <img alt="relationEmprunt.png" src="../relationEmprunt.png" style="width:15%;" /></p>
 <div class="admonition question">
 <p class="admonition-title">Une erreur de modélisation ?</p>
@@ -1863,11 +1877,11 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
 <ul>
-<li>Usager(nom : String, prénom : String, email : String, cp : String, adresse : String, inscription : Date, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre: String</span>)</li>
-<li>Livre(titre : String, éditeur : String, année : Int, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN : String</span>)</li>
-<li>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> : String, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> : String</span>, retour : Date)</li>
-<li>Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA : Int</span>, nom : String, prenom : String)</li>
-<li>Auteur_de( <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">idA  </span>: Int , <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN </span> : String </span> </li>
+<li>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre <em>String</em></span>)</li>
+<li>Livre(titre <em>String</em>, éditeur <em>String</em>, année <em>Int</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN <em>String</em></span>)</li>
+<li>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> <em>String</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> <em>String</em></span>, retour <em>Date</em>)</li>
+<li>Auteur(<span style="border-bottom-width: 1px;border-bottom-style: solid;">idA <em>Int</em></span>, nom <em>String</em>, prenom <em>String</em>)</li>
+<li>Auteur_de( <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">idA  </span> <em>Int</em> , <span style="text-decoration:underline;text-decoration-style: dotted;">ISBN </span> <em>String</em> </span> </li>
 </ul>
 <p>Ou  le schéma complet : <img alt="schemaBDD.png" src="../schemaBDD.png" style="width:30%;" /></p>
 <p>Vous remarquerez qu'on a choisi comme clé primaire pour la relation <code>Auteur_de</code> le 2-uplet <code>(idA, ISBN)</code>. En effet :</p>
@@ -1975,13 +1989,13 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
       
       
         
-        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Le langage" rel="next">
+        <a href="../BasesSQL1/" class="md-footer__link md-footer__link--next" aria-label="Next: Bases de SQL 1" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Le langage
+              Bases de SQL 1
             </div>
           </div>
           <div class="md-footer__button md-icon">
