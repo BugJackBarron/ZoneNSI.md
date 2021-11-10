@@ -88,7 +88,7 @@ Un fichier `html` se présente donc sous la forme suivante :
 !!! tips "Notepad++"
 	Pour l'édition de fichier de type `.html`, il ne faut **surtout pas** utiliser un traitement de texte classique, comme Word ou LibreOffice. En effet ceux-ci rajoutent de manière cachée  des informations dans le fichier en édition, ce qui risque de présenter de sérieux problèmes lors de l'affichage de la page web par un navigateur.
 	
-	Dans la suite de ce chapitre, nous utiliserons majoritairement le logiciel `Notepad++`, qui est un éditeur de texte orienté codage, reconnaissant la plupart des langages informatiques. Ce logiciel est libre, disponible sur les ordinateurs du Lycée, et peut-être téléchargé en suivant \href{https://notepad-plus-plus.org/downloads/}{ce lien}. Notez qu'il existe aussi en version portable, et que vous pouvez donc l'installer sur une clé USB.
+	Dans la suite de ce chapitre, nous utiliserons majoritairement le logiciel `Notepad++`, qui est un éditeur de texte orienté codage, reconnaissant la plupart des langages informatiques. Ce logiciel est libre, disponible sur les ordinateurs du Lycée, et peut-être téléchargé en suivant [ce lien](https://notepad-plus-plus.org/downloads/){target=_blank}. Notez qu'il existe aussi en version portable, et que vous pouvez donc l'installer sur une clé USB.
 	
 !!! question "une première page web"
 	
