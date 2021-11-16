@@ -17,7 +17,7 @@ Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. P
 
 ## Du modèle relationnel à la base de donnée : une première approche
 
-SQL (*Structured Query Language*) est directement inspiré du modèle relationnel défini dans la [partie précédente](ModeleRelationnel.html). Ce langage est standardisé par la norme `ISO/IEC 9075`, dont la dernière version date de [2016](https://www.iso.org/fr/standard/63555.html){target=_blank}.
+SQL (*Structured Query Language*) est directement inspiré du modèle relationnel défini dans la [partie précédente](../ModeleRelationnel/). Ce langage est standardisé par la norme `ISO/IEC 9075`, dont la dernière version date de [2016](https://www.iso.org/fr/standard/63555.html){target=_blank}.
 
 La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.
 

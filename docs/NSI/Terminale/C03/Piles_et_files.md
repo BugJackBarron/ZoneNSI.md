@@ -213,7 +213,7 @@ Une des possibilités les plus simple pour implémenter une pile est d'utiliser 
 
 !!! question "Implémentation par liste chaînée mutable"
 	
-	Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une [mauvaise idée](www.zonensi.fr/NSI/Terminale/C03/ListeChaineeConcatener3.png), il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. 
+	Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une [mauvaise idée](ListeChaineeConcatener3.png), il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. 
 	
 	Pour cela il faudra utiliser deux attributs `tete` et `queue`, qui représenteront respectivement le chainon de début et le chainon de fin de la file.
 	
