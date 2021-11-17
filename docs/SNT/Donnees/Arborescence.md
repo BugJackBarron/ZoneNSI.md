@@ -4,7 +4,7 @@
 
 ### Définitions
 !!! abstract "Fichier informatique"
-	Un {==**fichier informatique**} est un ensemble de données cohérentes réunies, c'est-à-dire une suite de chiffres binaires dont l'ordre possède une signification pour un ou des programmes informatiques. Un fichier informatique est enregistré dans une mémoire de stockage (disque dur local ou réseau, clé USB ou carte mémoire Flash, CD/DVD, ... ) afin de pouvoir lire et/ou modifier les données qui y sont écrites.
+	Un {==**fichier informatique**==} est un ensemble de données cohérentes réunies, c'est-à-dire une suite de chiffres binaires dont l'ordre possède une signification pour un ou des programmes informatiques. Un fichier informatique est enregistré dans une mémoire de stockage (disque dur local ou réseau, clé USB ou carte mémoire Flash, CD/DVD, ... ) afin de pouvoir lire et/ou modifier les données qui y sont écrites.
 	
 	Un fichier informatique est repéré par son **nom**, qui possède souvent, mais pas toujours, la structure suivante :
  
@@ -29,10 +29,9 @@
 	
 	
 !!! info "Remarques"
-
-  * Il est tout à fait possible de changer le logiciel avec lequel on ouvre un fichier, grâce au menu contextuel  `Ouvrir avec`.
-  * Certaines extensions de fichiers ne sont pas reconnues par le système d'exploitation. Ce sera par exemple le cas avec les sauvegardes de l'application `frisechrono.fr`. Dans ce cas, il est nécessaire de *d'abord démarrer le logiciel ou l'application, puis utiliser le menu \`Ouvrir` de celui-ci* pour chercher le fichier à ouvrir.
-  * ⚠ En changeant l'extension d'un fichier, on ne change pas fondamentalement les données. Par contre on risque d'avoir un fichier illisible !
+	* Il est tout à fait possible de changer le logiciel avec lequel on ouvre un fichier, grâce au menu contextuel  `Ouvrir avec`.
+	* Certaines extensions de fichiers ne sont pas reconnues par le système d'exploitation. Ce sera par exemple le cas avec les sauvegardes de l'application `frisechrono.fr`. Dans ce cas, il est nécessaire de *d'abord démarrer le logiciel ou l'application, puis utiliser le menu \`Ouvrir` de celui-ci* pour chercher le fichier à ouvrir.
+	* ⚠ En changeant l'extension d'un fichier, on ne change pas fondamentalement les données. Par contre on risque d'avoir un fichier illisible !
  
 
 !!! question "Connaître les différentes extensions"
