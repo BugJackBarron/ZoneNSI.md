@@ -100,7 +100,26 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 
 !!! abstract "Jointure naturelle de deux tables"
 
-Par exemple, 
+	Prenons l'exemple de deux tables, l'une nommée `Personne` contient les noms, prénoms et âge de membres de l'ordre Jedi, et la seconde nommée `Rang` les rangs Jedi ainsi que l'âge minimum requis pour l'atteindre.
+	
+	Nous pouvons effectuer une {==**jointure**==} sur le critère de l'age, en créant une table contenant toutes les lignes des rangs ayant pu être atteints par une personne, sur le critère `Personne.Age>Rang.age` :
+	
+	<p align="center">
+	![Jointure SW](jointureSW.png){: style="width:30vw;"}
+	</p>
+	
+	On notera que pour éviter toute confusion, les deux colonnes `Age` originelles ont vu leurs noms **préfixés** par leur table d'origine, avec la notation `table.colonne`.
+	
+	Une table de jointure telle que celle-ci sera construite grâce à la clause suivante :
+	
+	```` SQL
+	Personne JOIN Rang ON Personne.Age > Rang.Age
+	````
+	
+	Il sera ensuite possible d'utiliser cette table au sein d'une clause `SELECT`.
+	
+!!! example "Exemple"
+	
 
 ### Requêtes imbriquées
 
