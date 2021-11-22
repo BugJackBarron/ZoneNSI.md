@@ -1004,17 +1004,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#utilisation-de-linspecteur-dobjet" class="md-nav__link">
+    Utilisation de l'inspecteur d'objet
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#utilisation-de-linspecteur-dobjet" class="md-nav__link">
-    Utilisation de l'inspecteur d'objet
+  <a href="#programmer-en-javascript-les-bases" class="md-nav__link">
+    Programmer en javascript : les bases
   </a>
   
-    <nav class="md-nav" aria-label="Utilisation de l'inspecteur d'objet">
+    <nav class="md-nav" aria-label="Programmer en javascript : les bases">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1027,6 +1034,13 @@
           <li class="md-nav__item">
   <a href="#operations-arithmetiques" class="md-nav__link">
     Opérations arithmétiques
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-chaines-de-caracteres" class="md-nav__link">
+    Les  chaînes de caractères
   </a>
   
 </li>
@@ -1061,6 +1075,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
   
 </li>
       
@@ -1766,7 +1787,7 @@ Un fichier javascript est donc simplement un fichier d'extension <code>.js</code
 <div style = "display:inline;width:30%;text-align:left;">
 <p align="center">
 
- Fichier `pagesimple.html`
+Fichier `pagesimple.html`
 
 </p>
 
@@ -1790,7 +1811,7 @@ Un fichier javascript est donc simplement un fichier d'extension <code>.js</code
 <div style = "display:inline;width:30%;text-align:left;padding-left: 10px;">
 <p align="center">
 
- Fichier `style.css`
+Fichier `style.css`
 
 </p>
 
@@ -1811,7 +1832,7 @@ Un fichier javascript est donc simplement un fichier d'extension <code>.js</code
 <div style = "display:inline;width:30%;text-align:left;padding-left: 10px;">
 <p align="center">
 
- Fichier `code.js`
+Fichier `code.js`
 
 </p>
 
@@ -1827,7 +1848,7 @@ Un fichier javascript est donc simplement un fichier d'extension <code>.js</code
 </div>
 </div>
 
-<h2 id="utilisation-de-linspecteur-dobjet">Utilisation de l'inspecteur d'objet</h2>
+<h3 id="utilisation-de-linspecteur-dobjet">Utilisation de l'inspecteur d'objet</h3>
 <p>L'inspecteur d'objet permet d'avoir accès à une console javascript, fort utile pour aider au déboggage de code.</p>
 <p>Celle-ci est disponible une fois l'inspecteur d'objet ouvert :</p>
 <p><img alt="Console JS" src="../inspecteurObjetConsole.png" style="width :100vw;" /></p>
@@ -1863,6 +1884,7 @@ Que se passe-t-il ?</p>
 <p class="admonition-title"> Utilisation de <code>console.log()</code></p>
 <p>Il est parfois difficile de voir comment s'exécute un code javscript. L'utilisation de <code>console.log(message);</code> dans votre code, avec comme message une chaîne de caractère explicative, est parfois un bon moyen de vérifier qu'un bloc de code est exécuté par javascript.</p>
 </div>
+<h2 id="programmer-en-javascript-les-bases">Programmer en javascript : les bases</h2>
 <h3 id="declaration-des-variables">Déclaration des variables</h3>
 <p>Javascript est un langage faiblement typé. Cela signifie que lorsqu'on déclare une variable, il n'est pas nécessaire de déclarer son type. Il suffit de déclarer son <strong>nom</strong>, en ajoutant devant les mots-clés <code>let</code> ou <code>var</code> selon la situation<sup id="fnref:LetVar"><a class="footnote-ref" href="#fn:LetVar">2</a></sup>. On peut aussi <strong>déclarer et initialiser</strong> une variable dans le même temps :</p>
 <p><div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">x</span> <span class="p">;</span> <span class="c1">// x est déclarée, mais pas initialisée</span>
@@ -1876,7 +1898,8 @@ Sachez seulement que :</p>
 <li><code>var</code> définit des variables dont la portée est celle de la fonction.</li>
 </ul>
 <p>Pour ceux intéressés les exemples ci-dessous sont parlants :</p>
-<details class="example"><summary>Exemples de portées<sup id="fnref2:LetVar"><a class="footnote-ref" href="#fn:LetVar">2</a></sup></summary><div class="highlight"><pre><span></span><code>    <span class="kd">function</span> <span class="nx">varTest</span><span class="p">()</span> <span class="p">{</span>
+<details class="example"><summary>Exemples de portées<sup id="fnref2:LetVar"><a class="footnote-ref" href="#fn:LetVar">2</a></sup></summary><p>les deux codes suivant expliquent en partie la différence entre <code>let</code> et <code>var</code>
+<div class="highlight"><pre><span></span><code>    <span class="kd">function</span> <span class="nx">varTest</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mf">31</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mf">71</span><span class="p">;</span>  <span class="c1">// c&#39;est la même variable (même fonction)!</span>
@@ -1893,7 +1916,8 @@ Sachez seulement que :</p>
     <span class="p">}</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>  <span class="c1">// 31</span>
     <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
+<p>Une exécution pas-à-pas est possible grâce au site <a href="https://pythontutor.com/javascript.html#code=function%20varTest%28%29%20%7B%0A%20%20%20%20%20%20%20%20var%20x%20%3D%2031%3B%0A%20%20%20%20%20%20%20%20if%20%28true%29%20%7B%0A%20%20%20%20%20%20%20%20var%20x%20%3D%2071%3B%20%20//%20c'est%20la%20m%C3%AAme%20variable%20%28m%C3%AAme%20fonction%29!%0A%20%20%20%20%20%20%20%20console.log%28x%29%3B%20%20//%2071%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20console.log%28x%29%3B%20%20//%2071%0A%20%20%20%20%20%20%20%20%7D%0A%0Afunction%20letTest%28%29%20%7B%0A%20%20%20%20%20%20%20%20let%20x%20%3D%2031%3B%0A%20%20%20%20%20%20%20%20if%20%28true%29%20%7B%0A%20%20%20%20%20%20%20%20let%20x%20%3D%2071%3B%20%20//%20c'est%20une%20variable%20diff%C3%A9rente%20%28changement%20de%20bloc%29%0A%20%20%20%20%20%20%20%20console.log%28x%29%3B%20%20//%2071%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20console.log%28x%29%3B%20%20//%2031%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0AvarTest%28%29%3B%0A%0AletTest%28%29%3B&amp;curInstr=14&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=js&amp;rawInputLstJSON=%5B%5D" target="_blank">pythontutor.com</a>.</p>
 </details>
 <h3 id="operations-arithmetiques">Opérations arithmétiques</h3>
 <p>Les opérations arithmétiques de base sont les même qu'en Python : <span class="arithmatex">\(+\)</span>, <span class="arithmatex">\(-\)</span>, <span class="arithmatex">\(\times\)</span> et <span class="arithmatex">\(\div\)</span> sont représentées par 
@@ -1910,12 +1934,191 @@ Sachez seulement que :</p>
 <span class="o">&gt;&gt;</span> <span class="mf">5</span><span class="o">**</span><span class="mf">3</span>
 <span class="mf">125</span>
 </code></pre></div>
-<p>Les fonctions mathématiques </p>
+<p>Les fonctions mathématiques plus complexes ( <span class="arithmatex">\(\sqrt{~~}\)</span>, <span class="arithmatex">\(sin\)</span>, <span class="arithmatex">\(cos\)</span>...) peuvent être utlisées en les <strong>préfixant</strong> par <code>Math.</code></p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
+<span class="mf">5</span>
+<span class="o">&gt;&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="mf">45</span><span class="p">)</span>
+<span class="mf">0.5253219888177297</span>
+</code></pre></div>
+<h3 id="les-chaines-de-caracteres">Les  chaînes de caractères</h3>
+<p>Le type primitif chaîne de caractère en javascript est repéré comme en python par un encadrement par des guillemets simples <code>'</code>, doubles <code>"</code> ou même des accents graves <code>`</code>.</p>
+<p>Ce type primitif est converti automatiquement en objets <code>String</code> dès qu'on fait appel aux méthodes des objets <code>String</code>. Ainsi si <code>ma_chaine</code> est une chaine de caractère :</p>
+<ul>
+<li><code>ma_chaine.length</code> donne la longueur de la chaîne de caractères ;</li>
+<li><code>ma_chaine.toLowerCase()</code> renvoie la chaîne de caractères en minuscules ( on a de même <code>.toUpperCase()</code>)</li>
+<li><code>ma_chaine[i]</code> renvoie le caractère d'indice <code>i</code> (toujours en partant de zéro !)</li>
+<li>...</li>
+</ul>
+<p>La totalité des méthodes liées aux objets <code>String</code> sont décrits dans <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String#m%C3%A9thodes_des_instances">cette page</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Javascript et le transtypage</p>
+<p>En Python, une instruction telle que <code>"Bonjour numéro "+6</code> ne fonctionne pas. On reçoit une erreur <code>TypeError: can only concatenate str (not "int") to str</code>, ce qui signifie qu'il est impossible de concaténer un type <code>str</code> avec autre chose.
+Contrairement à Python, en javascript il n'est pas nécessaire de <strong>transtyper</strong> une variable pour qu'elle soit intégrée à une opération avec d'autre types de variables. L'instruction <code>"Bonjour numéro "+6</code> renvoie la chaîne de caractères <code>"Bonjour numéro 6"</code><sup id="fnref:Prisonnier"><a class="footnote-ref" href="#fn:Prisonnier">3</a></sup>.</p>
+<p>C'est très pratique, mais attention ! Certaines erreurs peuvent très vite être commise ! Un petit exemple de comportement de Javascript est donné dans l'exemple ci-dessous :</p>
+<p><iframe width="800" height="370" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=let%20a%20%3D%20'5'%20-%203%3B%0Alet%20b%20%3D%20'5'%20%2B%203%3B%0Alet%20c%20%3D%20'5'-%20'4'%3B%0Alet%20d%20%3D%20'5'%20%2B%20%2B'5'%3B%0Alet%20e%20%3D%20'toto'%20%2B%20%2B%20'tata'%3B%0Alet%20f%20%3D%20'5'%20%2B%20-%20'2'%3B%0A%0Alet%20x%20%3D%203%0Alet%20y%20%3D%20'5'%20%2B%20x%20-%20x%3B%0Alet%20z%20%3D%20'5'%20-%20x%20%2B%20x%3B%0A&codeDivHeight=400&codeDivWidth=350&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D"> </iframe></p>
+</div>
 <h3 id="fonctions">Fonctions</h3>
+<p>Une <mark class="critic"><strong>fonction</strong></mark> en javascript est introduite par le mot-clé <code>function</code>, suivie du nom de la fonction, de parenthèses contenant ou non des <strong>arguments</strong>. Le bloc de code de la fonction est délimité par une <mark class="critic"><strong>paire d'accolades</strong></mark> ouvrantes et fermantes.</p>
+<p>Une valeur de retour est possible en utilisant le mot clé <code>return</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemples</p>
+<p>Fonction calculant le discriminant d'un polynôme de degré 2</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">discriminant</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">b</span><span class="o">**</span><span class="mf">2</span><span class="o">-</span><span class="mf">4</span><span class="o">*</span><span class="nx">a</span><span class="o">*</span><span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>       
+</code></pre></div>
+Fonction renvoyant <code>true</code> si les deux vecteurs <span class="arithmatex">\(\vec{u}\left(\begin{array}{c}x1\\y1\end{array}\right)\)</span> et  <span class="arithmatex">\(\vec{v}\left(\begin{array}{c}x2\\y2\end{array}\right)\)</span> sont colinéaires, et <code>false</code> sinon</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">colineaires</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">){</span>
+    <span class="nx">det</span> <span class="o">=</span> <span class="nx">x1</span><span class="o">*</span><span class="nx">y2</span><span class="o">-</span><span class="nx">x2</span><span class="o">*</span><span class="nx">y1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">det</span><span class="o">==</span><span class="mf">0</span><span class="p">;</span>      
+<span class="p">}</span>       
+</code></pre></div>
+</div>
 <h3 id="structures-conditionnelles">Structures conditionnelles</h3>
-<p>La structure conditionnelle de base est</p>
+<p>La structure conditionnelle de base est obtenue grâce au code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span> <span class="nx">booleen</span> <span class="p">){</span>
+    <span class="c1">// Bloc Si</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Bloc Sinon</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Remarques</p>
+<ul>
+<li>
+<p>la condition booléenne doit être entre parenthèses. L'interpréteur javascript signalera une erreur dans le cas contraire :</p>
+<p><img alt="JS01_if1.png" src="../JS01_if1.png" style="width:30vw;" /></p>
+</li>
+<li>
+<p>il n'y a pas comme en Python de clause <code>elif</code>. Si on veut tester plusieurs sous conditions, il faudra <strong>imbriquer</strong> les structures conditionnelles. Voici une comparaison entre python et javascript :    </p>
+<p><div style="display:flex;">
+<div style="display:inline;width:45%;margin-right:20px;"></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condition</span> <span class="mi">1</span> <span class="p">:</span>
+    <span class="c1"># bloc condition 1</span>
+<span class="k">elif</span> <span class="n">condition</span> <span class="mi">2</span> <span class="p">:</span>
+    <span class="c1"># bloc condition 2</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="c1"># bloc sinon    </span>
+</code></pre></div>
+<p></div>
+<div style="display:inline;width:50%;"></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="nx">condition</span> <span class="mf">1</span><span class="p">){</span>
+    <span class="c1">// bloc condition 1</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">condition</span> <span class="mf">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// bloc condition 2</span>
+    <span class="p">}</span> 
+    <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// bloc sinon</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p></div>
+</div></p>
+<p>L'imbrication est tout de suite plus compliquée... Il faut être <strong>rigoureux</strong>, et particulièrement être attentif à bien <strong>fermer les accolades dès qu'on en a ouvert une</strong>.</p>
+</li>
+<li>
+<p>Pour les cas avec trop d'imbrications, il est parfois nécessaire de se servir plutôt de l'instruction <code>switch</code> pour laquelle la <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/switch">documentation</a> est très bien faite.</p>
+</li>
+</ul>
+</div>
 <h3 id="boucles-bornees">Boucles bornées</h3>
+<p>Une boucle bornée en javascript s'écrit de la manière suivante :</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="nx">initialisation</span><span class="p">;</span> <span class="nx">conditions</span> <span class="nx">de</span> <span class="nx">continuité</span><span class="p">;</span> <span class="nx">incrémentation</span><span class="p">){</span>
+    <span class="c1">// bloc d&#39;instructions à répéter</span>
+<span class="p">}</span>
+</code></pre></div>
+Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser la structure suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">=</span><span class="nx">i</span><span class="o">+</span><span class="mf">1</span><span class="p">){</span>
+    <span class="c1">// bloc d&#39;instructions à répéter</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>on commence par créer une variable sur laquelle on va <em>itérer</em> : <code>var i=0;</code></li>
+<li>on indique une condition de continuité de l'action : <code>i&lt;10;</code> (tant que <code>i</code> est inférieur à <code>10</code>, on effectue le bloc d'instruction de la boucle)</li>
+<li>on indique comment varie la variable à chaque tour de boucle  : <code>i=i+1</code> (à chaque tour, la variable <code>i</code> est incrémentée de 1$.</li>
+</ul>
+<p>Il faut noter que la variable <code>i</code> n'existe plus une fois la boucle terminée, vu qu'n a utilisé <code>let</code> :</p>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=for%20%28let%20i%3D0%3B%20i%3C5%3B%20i%3Di%2B1%29%7B%0A%20%20console.log%28i%29%3B%0A%7D%0Alet%20k%20%3D%203*i%3B&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
 <h3 id="boucles-non-bornees">Boucles non-bornées</h3>
+<p>Une boucle non-bornée est obtenue en javascript par l'instruction suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="nx">booleen</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// bloc d&#39;instruction</span>
+  <span class="p">}</span>
+</code></pre></div>
+<p>Un exemple d'utilisation avec les chaines de caractères est disponible ici :</p>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=let%20mot%20%3D%20%22toto%22%3B%0Awhile%20%28mot.length%3C50%29%20%7B%0A%20%20mot%20%2B%3D%20mot%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D"> </iframe>
+
+<h2 id="exercices">Exercices</h2>
+<div class="admonition question">
+<p class="admonition-title">Exercice 1</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<p>Ecrivez une fonction nommée <code>isTooLong</code> qui :</p>
+<ul>
+<li>prend une chaîne de caractères comme argument;</li>
+<li>renvoie vrai si la longueur de la chaîne dépasse 10 caractères;</li>
+<li>renvoie faux dans les autres cas.</li>
+</ul>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 2</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Créez une fonction nommée <code>aprec</code> qui :</p>
+<ul>
+<li>prend une note sur 20 en argument ;</li>
+<li>renvoie <code>"Hideux"</code> si la note est entre 0 et 7 exclus ;</li>
+<li>renvoie <code>"Moche"</code> si la note entre 7 et 10 exclus ;</li>
+<li>renvoie <code>"Nice"</code> si la note entre 10 et 15 exclus ;</li>
+<li>renvoie <code>"GG"</code> si la note entre 15 et 20 inclus ;</li>
+<li>renvoie <code>"BUG"</code> si la note n'est pas correcte.</li>
+</ul>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 3</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>Écrivez une fonction <code>max3</code> qui renvoie le plus grand nombre parmi trois entiers passés en argument.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 4</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction affichant les 10 premiers multiples de 7.</p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 5</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>puissance2(v)</code> qui renvoie grâce à une boucle non-bornée l'entier <code>n</code> tel que :</p>
+<div class="arithmatex">\[
+2^n \leqslant v &lt; 2^{n+1}
+\]</div>
+<p>On supposera que <code>v</code> est bien un entier positif.</p>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content"></div>
+</div>
+<p>A venir</p>
+</div>
 <div class="footnote">
 <hr />
 <ol>
@@ -1924,6 +2127,9 @@ Sachez seulement que :</p>
 </li>
 <li id="fn:LetVar">
 <p>La question de l'utilisation de <code>let</code> ou <code>var</code> dépasse largement le cadre de ce cours. On trouvera <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/let" target="_blank">ici</a> un début d'explication.&#160;<a class="footnote-backref" href="#fnref:LetVar" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:LetVar" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Prisonnier">
+<p><a href="https://fr.wikipedia.org/wiki/Le_Prisonnier#Synopsis">https://fr.wikipedia.org/wiki/Le_Prisonnier#Synopsis</a>&#160;<a class="footnote-backref" href="#fnref:Prisonnier" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
