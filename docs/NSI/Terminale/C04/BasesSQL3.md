@@ -1,258 +1,110 @@
-# Requêtes SQL 
+# Modification des bases de données et requêtes complexes
 
 *Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank}.*
 
+##Modification des bases de données
 
+### Suppression de lignes
 
-## Projections
+Pour supprimer des lignes selon une condition donnée, on utilise l'ordre :
 
-!!! abstract "Projection"
-	L'opération de {==**projection**==} consite à ne récupérer que les champs (= les colonnes) d'une table donnée.
-	En SQL, on l'obtiens par l'instruction :
-	
-	```` SQL
-	SELECT
-		colonne1, colonne2,...
-	FROM
-		nom_table;
-	````
-	
-!!!example "Exemple 1 : Projection"
-	Pour récupérer les colonnes `titre` et `isbn` de la table `livre` :
-	```` SQL
-	SELECT 
-		titre, isbn
-	FROM
-		livre;
-	````
-	Pour récupérer l'intégralité des colonnes, on peut utiliser l'opérateur {==**joker**==}`*` :
-	```` SQL
-	SELECT 
-		*
-	FROM
-		auteur;
-	````
-	
-!!! tips "Renommer les colonnes"
-	Il est possible dans une opération de projection de renommer les colonnes obtenues, grâce à l'opérateur `AS` :
-	```` SQL
-	SELECT 
-		titre, isbn, annee AS annee_publication
-	FROM
-		livre;
-	````
+```` SQL
+DELETE FROM table WHERE conditions;
+````
 
-## Sélections
-
-!!! abstract "Sélection (ou restriction)"
-	L'opération de {==**sélection**==} consiste à interroger une base de données pour ne récupérer que les lignes d'une table correspondant à une ou des conditions spécifiées.
+!!! example "Exemple" 
 	
-	En SQL, on rajoute la {==**clause**==} `WHERE` suivie des conditions exprimées sous la forme d'une **expression booléenne**, utilisant les mots clés `AND` et `OR` par exemple :
-	
-	```` SQL
-		SELECT
-			colonne1, colonne2,...
-		FROM
-			nom_table
-		WHERE
-			conditions;
-	````
-	
-!!! example "Exemple 2 : Sélection"
-
-	* Sélection avec condition unique :
-	
-		```` SQL
-			SELECT 
-				titre
-			FROM
-				livre
-			WHERE
-				annee >= 2020;
-		````
-	* Sélection avec conditions multiples :
-	
-		```` SQL
-		SELECT 
-			titre
-		FROM
-			livre
-		WHERE
-			annee >= 1970 AND
-			annee <= 2000 AND
-			editeur='Dargaud';
-		````
-		
-!!! tips "Requête sur les chaînes de caractères"
-	Si on veut chercher tous les livres dont le titre contient la chaîne `Astérix`, il faudra utiliser une clause comme la suivante :
-	
-	```` SQL
-		SELECT 
-			titre
-		FROM
-			livre
-		WHERE
-			titre LIKE '%Astérix%';
-	````
-	
-	La chaîne de caractères `'%Astérix%'` s'appelle un {==**motif**==}. L'opération `s LIKE m` renverra `True` si la chaîne de caractères `s` correspond au motif `m`.
-	Le caractère `%` est un {==**joker**==} qui peut-être substitué par **n'importe quelle chaîne**. Il existe aussi l'opérateur `_` (underscore) qui lui représente **n'importe quel caractère**. Ainsi, pour chercher tous les auteurs dont le nom commence par F, se termine par R et fait 6 caractères de long :	
+	La requête suivante :
 	
 	````SQL
-		SELECT
-			nom, prenom
-		FROM
-			auteur
-		WHERE
-			nom LIKE 'F____R';
+	SELECT * FROM emprunt WHERE code_barre='934701281931582';
 	````
 	
-## Fonctions d'aggrégations
-
-Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent *fonctions d'aggrégations*, et renvoie un résultat sous al forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :
-
-### Fonction `COUNT`
-
-!!! abstract "Compter des lignes"
-	La fonction SQL `COUNT` permet de compter le nombre de lignes que possède une table, éventuellement aporès sélection. Sa syntaxe est :
+	donne la table suivante en réponse :
 	
-	```` SQL
-	SELECT 
-		COUNT(colonne)
-	FROM
-		table
-	WHERE conditions;
+	<table class="dataframe" border="1"><thead><tr style="text-align: right;"><th>code_barre</th><th>isbn</th><th>retour</th></tr></thead><tbody><tr><td>934701281931582</td><td>978-2260019183</td><td>2020-01-01</td></tr><tr><td>934701281931582</td><td>978-2371240087</td><td>2020-01-01</td></tr></tbody></table>
+	
+	Pour supprimer la ligne référençant l'isbn `978-2260019183` :
+	
+	````SQL
+	DELETE FROM emprunt WHERE code_barre='934701281931582' AND isbn='978-2260019183';
+	````
+	On vérifie ensuite :
+	
+	````SQL
+	SELECT * FROM emprunt WHERE code_barre='934701281931582';
 	````
 	
-!!! example "Exemples"
+	<table class="dataframe" border="1"><thead><tr style="text-align: right;"><th>code_barre</th><th>isbn</th><th>retour</th></tr></thead><tbody><tr><td>934701281931582</td><td>978-2371240087</td><td>2020-01-01</td></tr></tbody></table>
 	
-	* COmpter le nombre de lignes dans la table auteur :
+	
+!!! warning "Quelques points de remarques"
+
+	* L'**oubli** de la clause `WHERE` **supprime toutes les données** de la table ! Cependant la table existe encore et il est possible d'insérer de nouvelles données. Pour supprimer complètement une table, il faut utiliser l'instruction :
+	
 		```` SQL
-		SELECT 
-			COUNT(*)
-		FROM
-			auteur;
+		DROP TABLE nom_table;
 		````
-	* Compter le nombre de titres contenant le chaîne `Astérix`
-	```` SQL
-	SELECT 
-		count(titre)
-	FROM 
-		livre
-	WHERE titre LIKE '%Astérix%';
-	````
+		
+	* Il est impossible de supprimer une ligne dont l'absence violerait la contrainte de références (clé étrangère). Par exemple l'ordre suivant ne fonctionnera pas, car l'isbn donné est présent dans la table `emprunt` :
 	
-!!! warning "Un piège"
-	L'ordre SQL suivant 
-	```` SQL
-	SELECT 
-		count(titre), isbn
-	FROM 
-		livre
-	WHERE titre LIKE '%Astérix%';
-	````
-	renvoie une table avec une ligne et deux colonnes : ![erreur Count](erreurCount.png){: style="width:15vw;"}
+		```` SQL
+		DELETE FROM livre WHERE isbn='934701281931582';
+		````
+
+!!! info "Tout ou rien"
+
+	Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors **toutes les suppressions effectuées par cet ordre sont annulées** ! On parle d'éxecution de type &laquo: tout ou rien &raquo;.
 	
-	L'isbn renvoyé ne correspond qu'au premier titre trouvé contenant la chaîne `Astérix` :
-	```` SQL
-	SELECT 
-		titre, isbn
-	FROM 
-		livre
-	WHERE isbn = '978-2864972662';
-	````
-	
-!!! tips "Alias de colonne"
-	Avec la fonction `COUNT`, les titres des colonnes renvoyés ne sont pas forcémùent parlant. Il est possible de les changer en leur fournisdsant un **alias** par l'intermédiaire de `AS` :
-	```` SQL
-	SELECT 
-		count(titre) AS nombre_asterix
-	FROM 
-		livre
-	WHERE titre LIKE '%Astérix%';
-	````
+### Mise à jour de lignes
 
-### Fonctions numériques
-
-Les fonctions suivantes ne peuvent s'appliquer que sur des colonnes dont le type est numérique :
-
-* `SUM` : effectue la {==**somme**==} de toutes les valeurs de la colonne sélectionnée correspondant au conditions données
-* `AVG` (*average*) :  effectue la {==**moyenne**==} de toutes les valeurs de la colonne sélectionnée correspondant au conditions données.
+Pour mettre à jour des lignes, on utiise un ordre SQL de type :
 
 ```` SQL
-SELECT SUM(annee) as somme FROM livre ;
-SELECT AVG(annee) as moyenne FROM livre ;
+UPDATE nom_table
+SET attribut1 = nouvelle_valeur1,
+SET	attribut2 = nouvelle_valeur2,
+...
+WHERE conditions;	
 ````
 
-### Fonctions `MIN` et `MAX`
+!!! example "Exemple"
 
-Ces deux fonctions s'appliquent sur n'importe quel type, l'ordre sur les chaînes de caractères étant l'ordre lexicographique. :
-
-```` SQL
-SELECT MIN(nom) FROM auteur ;
-SELECT MAX(nom) FROM auteur ;
-````
-## Tri et suppression des doublons
-
-### Tri des colonnes 
-Les résultats d'une requête SQL sont en général fournis dans l'ordre dans lequel ils sont trouvés. Il est cependant possible d'**ordonner** les colonnes grâce à la clause `ORDER BY` et les mots clés `ASC`(*ascending*) et `DESC`(*descending*):
-
-* par ordre croissant :
-
-	```` SQL
-	SELECT 
-		titre
-	FROM	
-		livre
-	WHERE annee >=1990 
-	ORDER BY titre ASC;
-	````
-	
-* par ordre décroissant :
-
-	```` SQL
-	SELECT 
-		nom
-	FROM	
-		auteur
-	ORDER BY nom DESC;
-	````
-### Elimination des doublons
-
-Effectuons la requête suivante :
-
-```` SQL
-SELECT prenom FROM auteur WHERE prenom LIKE 'M%';
-````
-Le résultat est la table suivante : ![Exemple doublons](doublons.png){: style="width:7vw;"}
-
-Nous constatons la présence de 3 prénoms `Michel` dans la table résultat.
- Il est possible d'éliminer de tels doublons dans une table en utilisant la clause `DISTINCT` :
-
-```` SQL
-SELECT DISTINCT prenom FROM auteur WHERE prenom LIKE 'M%';
-````
-On récupère alors en résultat la table suivante : ![sans doublons](sansDoublons.png){: style="width:7vw;"}
-
-!!! warning "Attention"
-
-	Attention toutefois ! Une requête telle que la suivante n'élimineras pas les doublons de prénom :
+	La requête suivante :
 	
 	```` SQL
-	SELECT DISTINCT prenom, nom FROM auteur WHERE prenom LIKE 'M%';
+	SELECT * FROM usager WHERE prenom='ALAIN';
 	````
-	En effet la clause `DISTINCT` élimine les lignes exactement identiques. Ici les couples `(prenom, nom)` sont bien tous différents.
 	
-## Application
-
-!!! question "Exercice"
-	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474) (merci M. Leleu).
-
-
-
-
-
+	donne comme table résultat :
 	
+	<table class="dataframe" border="1"><thead><tr style="text-align: right;"><th>nom</th><th>prenom</th><th>adresse</th><th>cp</th><th>ville</th><th>email</th><th>code_barre</th></tr></thead><tbody><tr><td>MOREAU</td><td>ALAIN</td><td>48, Rue du Château</td><td>75005</td><td>Paris</td><td>amoreau1@abc.de</td><td>421921003090881</td></tr></tbody></table>
 	
+	Pour changer l'email de cet utilisateur, on peut utiliser l'ordre suivant :
+	
+	```` SQL
+	UPDATE usager
+	SET email = 'alain.moreau@truc.com'
+	WHERE code_barre ='421921003090881';
+	````
+	et une nouvelle requête de recherche renvoie bien comme table :
+	
+	<table class="dataframe" border="1"><thead><tr style="text-align: right;"><th>nom</th><th>prenom</th><th>adresse</th><th>cp</th><th>ville</th><th>email</th><th>code_barre</th></tr></thead><tbody><tr><td>MOREAU</td><td>ALAIN</td><td>48, Rue du Château</td><td>75005</td><td>Paris</td><td>alain.moreau@truc.com</td><td>421921003090881</td></tr></tbody></table>
+
+## Requêtes complexes
+
+### Jointures
+
+Jusqu'à présent, les requêtes que nous avons écrites ne nécessitent que l'utilisation d'une seule et unique table. mais bien souvent, nous avons a effectuer de requêtes récupérant des données de plusieurs tables simultanément.
+Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures de tables**==}.
+
+!!! abstract "Jointure naturelle de deux tables"
+
+Par exemple, 
+
+### Requêtes imbriquées
+
+## Exercices
+
 
 		
