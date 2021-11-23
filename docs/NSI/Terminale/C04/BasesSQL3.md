@@ -201,6 +201,9 @@ WHERE annee = (SELECT MIN(annee) FROM livre);
 ````
 
 !!! question "Ecrire une requête imbriquée"
+	=== "Enoncé"
+	
+		Ecrire une requête SQL donnant la liste des livres publiész la même année que 
 
 	
 
