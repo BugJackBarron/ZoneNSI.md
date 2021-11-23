@@ -98,6 +98,9 @@ WHERE conditions;
 Jusqu'à présent, les requêtes que nous avons écrites ne nécessitent que l'utilisation d'une seule et unique table. mais bien souvent, nous avons a effectuer de requêtes récupérant des données de plusieurs tables simultanément.
 Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures de tables**==}.
 
+
+#### Jointure sur deux tables
+
 !!! abstract "Jointure naturelle de deux tables"
 
 	Prenons l'exemple de deux tables, l'une nommée `Personne` contient les noms, prénoms et âge de membres de l'ordre Jedi, et la seconde nommée `Rang` les rangs Jedi ainsi que l'âge minimum requis pour l'atteindre.
@@ -118,10 +121,88 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 	
 	Il sera ensuite possible d'utiliser cette table au sein d'une clause `SELECT`.
 	
+!!! example "Exemples"
+	
+	* Pour connaître la liste des livres empruntés, on utilisera l'ordre SQL suivant :
+	
+		```` SQL
+		SELECT *
+		FROM
+			emprunt JOIN livre ON emprunt.isbn=livre.isbn;
+		````
+	
+	* Il est bien sûr possible de projeter le résultat de la requête et d'effectuer une sélection. Par exemple pour connaître la liste des personnes devant rendre au moins un livre avant le 01 février 2020 :
+	
+		```` SQL
+		SELECT DISTINCT usager.nom, usager.prenom, emprunt.retour
+		FROM 
+			usager JOIN emprunt ON usager.code_barre=emprunt.code_barre
+		WHERE 
+			emprunt.retour<'2020-02-01';
+		````
+		
+#### Jointures sur plusieurs tables
+
 !!! example "Exemple"
+
+	On souhaite connaître les titre et les auteurs correspondant aux livres actuellement empruntés. Il faut donc faire une jointure sur les 4 tables `livre`, `auteur`, `auteur_de` et `emprunt`. La requête a écrire va donc être plus longue que celles vues jusqu'alors :
+	
+	```` SQL
+	SELECT livre.titre, auteur.nom, auteur.prenom
+	FROM
+		emprunt JOIN livre ON emprunt.isbn=livre.isbn
+		JOIN auteur_de ON livre.isbn = auteur_de.isbn
+		JOIN auteur ON auteur_de.a_id = auteur.a_id;
+	````
+	
+!!! tps "Alias des tables"
+
+	Certaines requêtes deviennent rapidement pénibles à écrire. Pour simplifier un peu cette écriture, il est possible d'utiliser un alias pour les tables à l'aide du mot-clé `AS`. Ainsi l'ordre précédent peut-être écrit :
+	
+	```` SQL
+	SELECT l.titre, a.nom, a.prenom
+	FROM
+		emprunt AS e JOIN livre AS l ON e.isbn=l.isbn
+		JOIN auteur_de AS ad ON l.isbn = ad.isbn
+		JOIN auteur AS a ON ad.a_id = a.a_id;
+	````
+	
+	
 	
 
 ### Requêtes imbriquées
+
+Il est tout à fait possible d'imriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une *table temporaire* :
+
+```` SQL
+SELECT * FROM (
+	SELECT * FROM livre
+		WHERE annee >= 1990) AS tmp
+	WHERE tmp.annee<=2000;
+````
+
+Ici on crée une table temporaire aliasée par `tmp`, dans laquelle on stocke toute les lignes dont l'année de publication est supérieure ou égale à 1990, puis on effectue une nouvelle sélection sur cette table temporaire en ne gardant que les lignes dont l'année de publication est inférieure ou égale à 2000.
+
+!!! tips "Analyse par un SGBD"
+	UN SGBD analysera cette requête exactement de la même manière qu'il analysera la suivante :
+	
+	```` SQL
+	SELECT * FROM livre WHERE annee>=1990 AND annee<=2000;
+	````
+	
+	Il n'y aura aucune différence entre les deux en terme de vitesse de traitement.
+	
+Il est aussi possible d'imbriquer des requêtes **dans la clause  `WHERE`**, en respectant certaines conditions. Par exemple pour connaître la liste des livres dont l'année est la plus ancienne dans la base, on va utiliser :
+
+```` SQL
+SELECT titre, annee 
+FROM livre 
+WHERE annee = (SELECT MIN(annee) FROM livre);
+````
+
+!!! question "Ecrire une requête imbriquée"
+
+	
 
 ## Exercices
 
