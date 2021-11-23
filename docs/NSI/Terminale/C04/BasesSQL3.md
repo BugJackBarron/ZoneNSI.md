@@ -203,11 +203,18 @@ WHERE annee = (SELECT MIN(annee) FROM livre);
 !!! question "Ecrire une requête imbriquée"
 	=== "Enoncé"
 	
-		Ecrire une requête SQL donnant la liste des livres publiész la même année que 
+		Ecrire une requête SQL donnant la liste des livres publiés la même année que le livre dont le titre contient la chaîne de caractère `'Jack Barron'`.
+		
+	=== "Solution"
+		```` SQL
+		SELECT titre
+		FROM livre
+		WHERE annee = (SELECT annee FROM livre WHERE titre LIKE '%Jack Barron%');
+		````
 
-	
 
 ## Exercices
 
+Effectuer les requêtes **avec jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474) (merci M. Leleu).
 
 		
