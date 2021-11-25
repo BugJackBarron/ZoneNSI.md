@@ -2052,6 +2052,15 @@ Fonction renvoyant <code>true</code> si les deux vecteurs <span class="arithmate
 </li>
 </ul>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">ET et OU en javascript</p>
+<p>Attention ! En javascript les mots-clés <code>AND</code> et <code>OR</code> n'existent pas :</p>
+<ul>
+<li>pour obtenir <code>ET</code> on utilise <code>&amp;&amp;</code> ;</li>
+<li>pour obtenir <code>OU</code> on utilise <code>||</code> ;</li>
+</ul>
+<p>Une condition  <span class="arithmatex">\(\in [0;10]\)</span> s'exprimera alors sous la forme <code>(a&gt;=0) &amp;&amp; (a=&lt;10)</code>.</p>
+</div>
 <h3 id="boucles-bornees">Boucles bornées</h3>
 <p>Une boucle bornée en javascript s'écrit de la manière suivante :</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="nx">initialisation</span><span class="p">;</span> <span class="nx">conditions</span> <span class="nx">de</span> <span class="nx">continuité</span><span class="p">;</span> <span class="nx">incrémentation</span><span class="p">){</span>
@@ -2092,7 +2101,14 @@ Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser
 </ul>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">isTooLong</span><span class="p">(</span><span class="nx">mot</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">mot</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;</span><span class="mf">10</span><span class="p">){</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2110,7 +2126,21 @@ Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser
 </ul>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">aprec</span><span class="p">(</span><span class="nx">note</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">note</span><span class="o">&gt;=</span><span class="mf">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">note</span><span class="o">&lt;</span> <span class="mf">7</span><span class="p">)){</span>
+        <span class="k">return</span> <span class="s2">&quot;Hideux;         </span>
+<span class="s2">    } else if ((note&gt;=7) &amp;&amp; (note&lt; 10)){</span>
+<span class="s2">        return &quot;</span><span class="nx">Moche</span><span class="s2">&quot;;</span>
+<span class="s2">    } else if ((note&gt;=10) &amp;&amp; (note&lt; 15)){</span>
+<span class="s2">        return &quot;</span><span class="nx">Nice</span><span class="s2">&quot;;</span>
+<span class="s2">    } else if ((note&gt;=15) &amp;&amp; (note&lt;= 20)){</span>
+<span class="s2">        return &quot;</span><span class="nx">GG</span><span class="s2">&quot;;</span>
+<span class="s2">    } else {</span>
+<span class="s2">    return &quot;</span><span class="nx">BUG</span><span class="err">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
