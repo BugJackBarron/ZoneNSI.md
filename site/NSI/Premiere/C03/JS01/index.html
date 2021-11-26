@@ -1954,14 +1954,19 @@ Sachez seulement que :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;</span> <span class="mf">3</span> <span class="o">+</span> <span class="mf">4</span><span class="o">/</span><span class="p">(</span><span class="mf">2</span><span class="o">-</span><span class="mf">7</span><span class="p">)</span>
 <span class="mf">2.2</span>
 </code></pre></div>
-<p>Les opérations de divisions euclidiennes et de reste(modulo) sont utilisables comme en Python, ainsi que les exposants :</p>
+<p>Les opérations de modulo et d'exposants sont utilisables comme en Python :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;</span> <span class="mf">22</span><span class="o">%</span><span class="mf">5</span>
 <span class="mf">2</span>
-<span class="o">&gt;&gt;</span> <span class="mf">22</span><span class="c1">//5</span>
-<span class="mf">4</span>
 <span class="o">&gt;&gt;</span> <span class="mf">5</span><span class="o">**</span><span class="mf">3</span>
 <span class="mf">125</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Quotient de la division euclidienne</p>
+<p>Il n'est pas possible comme en Python d'utiliser l'opérateur <code>//</code> pour obtenir le quotient de la division euclidienne de deux entiers. Il faut donc utiliser une fonction spécifique du module <code>Math</code> pour l'obtenir :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mf">24</span><span class="o">/</span><span class="mf">5</span><span class="p">)</span>
+<span class="mf">4</span>
+</code></pre></div>
+</div>
 <p>Les fonctions mathématiques plus complexes ( <span class="arithmatex">\(\sqrt{~~}\)</span>, <span class="arithmatex">\(sin\)</span>, <span class="arithmatex">\(cos\)</span>...) peuvent être utlisées en les <strong>préfixant</strong> par <code>Math.</code></p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
 <span class="mf">5</span>
@@ -2136,7 +2141,7 @@ Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser
 <span class="s2">    } else if ((note&gt;=15) &amp;&amp; (note&lt;= 20)){</span>
 <span class="s2">        return &quot;</span><span class="nx">GG</span><span class="s2">&quot;;</span>
 <span class="s2">    } else {</span>
-<span class="s2">    return &quot;</span><span class="nx">BUG</span><span class="err">&quot;</span><span class="p">;</span>
+<span class="s2">        return &quot;</span><span class="nx">BUG</span><span class="err">&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -2150,7 +2155,16 @@ Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser
 <p>Écrivez une fonction <code>max3</code> qui renvoie le plus grand nombre parmi trois entiers passés en argument.</p>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">max3</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">n3</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">n1</span><span class="o">&gt;=</span><span class="nx">n2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">n1</span><span class="o">&gt;=</span><span class="nx">n3</span><span class="p">)){</span>
+        <span class="k">return</span> <span class="nx">n1</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="nx">n2</span><span class="o">&gt;=</span><span class="nx">n1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">n3</span><span class="o">&gt;=</span><span class="nx">n1</span><span class="p">)){</span>
+        <span class="k">return</span> <span class="nx">n2</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">n3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2160,7 +2174,12 @@ Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser
 <p>Créer une fonction affichant les 10 premiers multiples de 7.</p>
 </div>
 <input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">multiple7</span><span class="p">(){</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mf">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">=</span><span class="nx">i</span><span class="o">+</span><span class="mf">1</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;7x&quot;</span><span class="o">+</span><span class="nx">i</span><span class="o">+</span><span class="s2">&quot; = &quot;</span><span class="o">+</span><span class="p">(</span><span class="mf">7</span><span class="o">*</span><span class="nx">i</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2173,9 +2192,18 @@ Plus simplement, pour répéter 10 fois un bloc d'instructions, on peut utiliser
 \]</div>
 <p>On supposera que <code>v</code> est bien un entier positif.</p>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content"></div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">puissance2</span><span class="p">(</span><span class="nx">v</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span><span class="mf">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">v</span><span class="o">&gt;</span><span class="mf">1</span><span class="p">){</span>
+        <span class="nx">v</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">v</span><span class="o">/</span><span class="mf">2</span><span class="p">);</span>
+        <span class="nx">p</span> <span class="o">=</span> <span class="nx">p</span><span class="o">+</span><span class="mf">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">p</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
-<p>A venir</p>
+</div>
 </div>
 <div class="footnote">
 <hr />
