@@ -1392,6 +1392,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#les-tutoriels-a-suivre" class="md-nav__link">
+    Les tutoriels à suivre :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#des-ressources-utiles" class="md-nav__link">
+    Des ressources utiles
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1632,7 +1646,24 @@
                 
                 <h1 id="projet-base-de-donnee-web-pokemon">Projet : Base de donnée Web Pokemon.</h1>
 <h2 id="ce-quil-faut-faire">Ce qu'il faut faire :</h2>
-<p>L'objectif est de réaliser un site web HTML5</p>
+<p>L'objectif est de réaliser un site web HTML5 (HTML/CSS/javascript) permettant d'obtenir les informations importantes sur tous les Pokemons présent dans le fichier <code>csv</code> disponible <a href="https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=Rlu994uVRAyg">ici</a>. Cette base de donnée <code>SQL</code> sera interrogée au moyen d'un serveur Python <code>Flask</code> et du module <code>sqlite3</code>.</p>
+<p>Il faudra suivre le planning suivant :</p>
+<ol>
+<li>Extraire les lignes du fichier CSV de manière à construire le fichier de base de donnée (programme python indépendant).</li>
+<li>Créer un serveur minimal <code>Flask</code> permettant  d'accéder à 2 ou 3 <em>templates</em> différents : page de recherche de Pokemons, page de résultats de recherche, et éventuellement une page de comparaison entre Pokemons.</li>
+<li>Créer les templates HTML/Jinja2, en particulier la page de recherche dont le formulaire envoie par une méthode <code>POST</code> les données à une route de traitement (voir point suivant).</li>
+<li>Créer une route spécifique permettant de traiter les données du formulaire de la page de recherche, qui envoie ensuite les données extraites par des ordres <code>SQL</code> soit à la page d'affichage du Pokemon sélectionné, soit de nouveau à une page intermédiaire permettant d'obtenir la liste des pokemons correspondant aux critères de recherches sélectionné (génération, type, etc...)</li>
+<li>Habiller le tout avec du CSS (en dernier !)</li>
+</ol>
+<h2 id="les-tutoriels-a-suivre">Les tutoriels à suivre :</h2>
+<ul>
+<li>le tutoriel <code>sqlite3</code> trouvable <a href="https://zestedesavoir.com/tutoriels/1294/des-bases-de-donnees-en-python-avec-sqlite3/">ici</a>.</li>
+<li>Le tutoriel <code>Flask</code> trouvable <a href="https://www.kaherecode.com/tutorial/demarrer-avec-flask-un-micro-framework-python">ici</a>.</li>
+</ul>
+<h2 id="des-ressources-utiles">Des ressources utiles</h2>
+<p>Une base de donnée en ligne déjà existante est présente <a href="https://pokemondb.net/">ici</a>. En particulier les images fournies sont toutes de la forme :</p>
+<div class="highlight"><pre><span></span><code>https://img.pokemondb.net/artwork/large/{nom du pokemon}.jpg
+</code></pre></div>
                 
               
               
