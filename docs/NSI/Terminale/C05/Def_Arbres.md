@@ -4,11 +4,13 @@ Les listes, piles et files que nous avons croisé jusqu'ici sont utilisées pour
 
 ## Structures arborescentes
 
-Les {==**structures arborescentes**==}, c'est-à-dire sous forme d'arbre, sont une autre forme de **structure chaînée** dans laquel l'accès à un élément se fait potentiellement bien plus rapidement qu'avec les listes chaînées.
+Les {==**structures arborescentes**==}, c'est-à-dire sous forme d'arbre, sont une autre forme de **structures chaînées** dans laquel l'accès à un élément se fait potentiellement bien plus rapidement qu'avec les listes chaînées.
 
 Ces types de structures arborescentes sont omniprésentes en informatiques, ne serait-ce que par l'organisation du système de fichier :
 
+![Arbre Système de Fichier](CM1_Arbre.png){: style="width:50%;"}
 
 
 
-##é
+
+##
