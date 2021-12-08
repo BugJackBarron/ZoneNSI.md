@@ -91,6 +91,146 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 	
 		A venir !
 		
+!!! question "Exercice"
+
+	=== "Enoncé"
 		
+		Dessiner tous les arbres  binaires ayant respectivement 3 et 4 noeuds.
+		
+	=== "Solution"
+	
+		A venir.
+		
+!!! question "Exercice"
+	
+	=== "Enoncé"
+		
+		Sachant qu'il y a 1 arbre binaire vide, 1 arbre binaire contenant 1 noeud, 2 arbres binaires contenant 2 noeuds, 5 arbres binaires contenant 3 noeuds, et 14 arbres binaires contenant 4 noeuds, caclculer le nombre d'arbres binaires contenant 5 noeuds, sans chercher à les construire tous.
+		
+	=== "Solution"
+	
+		A venir.
+		
+		
+### Hauteur d'un arbre
+
+!!! abstract "Définition : hauteur d'un arbre"
+
+	La {==**hauteur d'un arbre**==} est égale au nombre maximal de noeuds reliant la racine aux feuilles, les extrémités étant comprises.
+	
+	Si un arbre est de taille $N$ et de hauteur $h$, on a la relation suivante :
+	
+	$$
+	h \leqslant N \leqslant 2^h-1
+	$$
 	
 	
+!!! note "Démonstration"
+
+	=== "Inégalité $h\leqslant N$"
+		Dans le cas d'un arbre ayant à chaque noeud au moins un de ses sous-arbre vide :
+				
+		<p align="center">
+		![Démo arbre 1](P1_Arbre4.png){: style="width:20%; background-color: #546d78;"}
+		</p>
+		
+		Il est évident que dans ce cas la hauteur de l'arbre est égale à sa taille, d'où $h\leqslant N$.
+		
+	=== "Inégalité $N\leqslant 2^h-1$"
+		dans le cas d'un {==**arbre binaire parfait**==}, c'est-à-dire dont toutes les feuilles sont situées à la même distance de la racine :
+		
+		<p align="center">
+		![Démo arbre 2](P1_Arbre5.png){: style="width:30%; background-color: #546d78;"}
+		</p>
+		
+		La taille est alors égale à 
+		
+		$$
+		\begin{align}
+		N&= 1 + 2 + 2^2 + \dots +2^{h-1}\\
+		&= \dfrac{2^h-1}{2-1}\\
+		N&= 2^h-1
+		\end{align}		
+		$$
+		
+		D'où l'inégalité recherchée.
+		
+!!! tips "Hauteur et récursivité"
+
+	La hauteur d'un arbre peut-aussi être définie récursivement :
+	
+	* la hauteur d'un arbre vide est 0 ;
+	* la hauteur d'un arbre est égale à un plus  le maximum de la hauteur des deux sous-arbres de la racine :
+	
+		$$
+		h = 1 + max(hauteur(Gauche), hauteur(Droit))
+		$$
+		
+### Implémentaion d'arbres en Python
+
+Il existe bien entendu différentes façons d'implémenter une structure d'arbre binaire en Python. Cependant, la méthode la plus simple est d'utiliser le *paradigme Objet* afin de représenter des noeuds :
+
+```` python
+class Node() :
+	def __init__(self, valeur, gauche, droit)
+		self.valeur=valeur
+		self.gauche = gauche
+		self.droit = droit
+		
+````
+un sous-arbre vide étant représenté par la valeur `None`.
+
+
+!!! example "Exemple d'utilisation des objets `Node`"
+
+	On considère l'arbre binaire ci-dessous :
+		
+	<p align="center">
+	![exemple arbre 1](P1_Arbre1.png){: style="width:30%; background-color: #546d78;"}
+	</p>
+	
+	Une représentation en Python de cet arbre est alors :
+	```` python
+	tree = Node(1,
+			Node(2,
+				Node(3, None, None),
+				None),
+			Node(4, None, None))
+	````
+	
+!!! question "Exercice"
+
+	=== "Enoncé"
+		
+		Donner le code de représentation de chacun des arbres ci-dessous en Python :
+		
+		<div class="container">
+		<div class="column2">
+		<h6>Arbre 1</h6>
+		
+		
+		![Exo arbre 1](P1_Arbre2.png){: style="width:90%; background-color: #546d78;"}
+			
+		</div>
+		<div class="column2">
+		<h6>Arbre 2</h6>
+		
+		![Exo arbre 2](P1_Arbre3.png){: style="width:70%; background-color: #546d78;"}
+			
+		</div>		 
+		</div>
+	
+	=== "Solution"
+	
+		A venir
+		
+!!! question "Exercice : Fonction `taille`"
+
+	=== "Enoncé"
+	
+		Coder une fonction `taille(t)` calculant la taille d'un arbre `t` qui lui est passé en argument (*indice : récursivité*).
+		
+	=== "Solution"
+	
+		A venir.
+
