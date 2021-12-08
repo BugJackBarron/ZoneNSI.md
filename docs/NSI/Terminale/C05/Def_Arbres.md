@@ -26,7 +26,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 	* Soit l'arbre n'est pas vide, et ses **noeuds** sont structurés de la façon suivante :
 		* un noeud est appelé {==**la racine**==} de l'arbre ;
 		* les noeuds restants sont séparés en deux sous-ensembles qui forment récursivement {==**deux sous-arbres binaires**==} appelés respectivemment **sous-arbre gauche** et **sous-arbre droit** ;
-		* la racine est reliée à chacune des racines de ces sous-arbres gauches et droits (àconditions su'ils ne soient pas vides).
+		* la racine est reliée à chacune des racines de ces sous-arbres gauches et droits (à conditions qu'ils ne soient pas vides).
 		
 	
 		
@@ -166,7 +166,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		h = 1 + max(hauteur(Gauche), hauteur(Droit))
 		$$
 		
-### Implémentaion d'arbres en Python
+### Implémentation d'arbres en Python
 
 Il existe bien entendu différentes façons d'implémenter une structure d'arbre binaire en Python. Cependant, la méthode la plus simple est d'utiliser le *paradigme Objet* afin de représenter des noeuds :
 
