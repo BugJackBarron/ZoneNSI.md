@@ -52,7 +52,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 	* La {==**taille de l'arbre**==} est $4$, c'est le nombre de noeuds qui le compose.
 	* Le noeud {==**racine**==} est le noeud $1$.
 	* Le sous-arbre gauche à partir de $1$ contient deux noeuds ($2$ et $3$), le sous-arbre droit un seul ($4$).
-	* le noeud $1$ possède deux {==**fils**==} : son {==**fils gauche**==} est $2$ et son {==**fils droit**==} est $3$.
+	* le noeud $1$ possède deux {==**fils**==} : son {==**fils gauche**==} est $2$ et son {==**fils droit**==} est $4$.
 	* Le sous-arbre gauche à partir de $2$ n'est pas vide (il contient le noeud $3$), le sous-arbre droit lui l'est.
 	* Le noeud {==**parent**==} du noeud $3$ est le noeud $2$.
 	* Les deux sous-arbres à partir de $3$ sont vides, touts comme ceux de $4$. On dira que les noeuds $3$ et $4$ sont des {==**feuilles**==} de l'arbre.
