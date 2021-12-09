@@ -273,15 +273,15 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
  
 Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de manière récursives, en partant de la racine. Il en existe trois type principaux :
 
-#### Parcours Préfixe
+!!! abstract "Parcours Préfixe"
 
-On appelle {==**parcours préfixe**==} un parcours où les noeuds seront affichés dans l'ordre suivant
+	On appelle {==**parcours préfixe**==} un parcours où les noeuds seront affichés dans l'ordre suivant
 
-* on affiche la racine ;
-* ensuite on affiche récursivement le sous-arbre gauche ;
-* enfin on affiche récursivement le sous-arbre droit.
+	* on affiche la racine ;
+	* ensuite on affiche récursivement le sous-arbre gauche ;
+	* enfin on affiche récursivement le sous-arbre droit.
 
-Le parcours est dans l'ordre {==**noeud - droit - gauche**==}
+	Le parcours est dans l'ordre {==**noeud - droit - gauche**==}
 
 ??? example "Exemple"
 
@@ -293,15 +293,15 @@ Le parcours est dans l'ordre {==**noeud - droit - gauche**==}
 
 	
 
-#### Parcours Infixe
+!!! abstract "Parcours Infixe"
 
-On appelle {==**parcours infixe**==} un parcours où les noeuds seront affichés dans l'ordre suivant
+	On appelle {==**parcours infixe**==} un parcours où les noeuds seront affichés dans l'ordre suivant
 
-* on affiche récursivement le sous-arbre gauche ;
-* ensuite on affiche la racine ;
-* enfin on affiche récursivement le sous-arbre droit.
+	* on affiche récursivement le sous-arbre gauche ;
+	* ensuite on affiche la racine ;
+	* enfin on affiche récursivement le sous-arbre droit.
 
-Le parcours est donc dans l'ordre {==**gauche - noeud -droit**==}.
+	Le parcours est donc dans l'ordre {==**gauche - noeud -droit**==}.
 
 ??? example "Exemple"
 
@@ -313,15 +313,15 @@ Le parcours est donc dans l'ordre {==**gauche - noeud -droit**==}.
 
 
 
-#### Parcours Suffixe (ou postfixe)
+!!! abstract "Parcours Suffixe (ou postfixe)"
 
-On appelle {==**parcours suffixe**==} un parcours où les noeuds seront affichés dans l'ordre suivant
+	On appelle {==**parcours suffixe**==} un parcours où les noeuds seront affichés dans l'ordre suivant
 
-* on affiche récursivement le sous-arbre gauche ;
-* ensuite on affiche récursivement le sous-arbre droit ;
-* enfin on on affiche la racine.
+	* on affiche récursivement le sous-arbre gauche ;
+	* ensuite on affiche récursivement le sous-arbre droit ;
+	* enfin on on affiche la racine.
 
-Le parcours est donc dans l'ordre {==**gauche - droit - noeud**==}.
+	Le parcours est donc dans l'ordre {==**gauche - droit - noeud**==}.
 
 ??? example "Exemple"
 
@@ -332,14 +332,36 @@ Le parcours est donc dans l'ordre {==**gauche - droit - noeud**==}.
 	L'ordre d'affichage des noeuds est donc :  4, 8, 9, 5, 2, 10, 6, 11, 7, 3, 1.
 
 
-#### Exercices
-
 !!! question "Exercice"
 
 	=== "Enoncé"
 	
-		Pour chacun des arbres suivants, donner
+		Pour chacun des arbres suivants, donner l'affichage par :
+		
+		1. un parcours préfixe ;
+		2. un parcours infixe ;
+		3. un parcours suffixe.
+		
+		<div class="container">
+		<div class="column2">
+		<h6>Arbre 1</h6>		
+		
+		![Exo arbre 1](P1_Arbre7.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+			
+		</div>
+		<div class="column2">
+		<h6>Arbre 2</h6>
+		
+		![Exo arbre 2](P1_Arbre8.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+			
+		</div>		 
+		</div>
+		
+	=== "Solution"
+	
+		A venir !
 
-#### Algorithmes
+
 
 ### Parcours en largeur
+7

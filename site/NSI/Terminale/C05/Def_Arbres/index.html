@@ -1466,8 +1466,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementaion-darbres-en-python" class="md-nav__link">
-    Implémentaion d'arbres en Python
+  <a href="#implementation-darbres-en-python" class="md-nav__link">
+    Implémentation d'arbres en Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parcours-darbres" class="md-nav__link">
+    Parcours d'arbres
+  </a>
+  
+    <nav class="md-nav" aria-label="Parcours d'arbres">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parcours-en-profondeur-dfs-ou-depth-first-search" class="md-nav__link">
+    Parcours en profondeur ( DFS ou Depth-First Search)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parcours-en-largeur" class="md-nav__link">
+    Parcours en largeur
   </a>
   
 </li>
@@ -1736,7 +1763,7 @@ Plus précisemment, un <mark class="critic"><strong>arbre binaire</strong></mark
 <li>Soit l'arbre n'est pas vide, et ses <strong>noeuds</strong> sont structurés de la façon suivante :<ul>
 <li>un noeud est appelé <mark class="critic"><strong>la racine</strong></mark> de l'arbre ;</li>
 <li>les noeuds restants sont séparés en deux sous-ensembles qui forment récursivement <mark class="critic"><strong>deux sous-arbres binaires</strong></mark> appelés respectivemment <strong>sous-arbre gauche</strong> et <strong>sous-arbre droit</strong> ;</li>
-<li>la racine est reliée à chacune des racines de ces sous-arbres gauches et droits (àconditions su'ils ne soient pas vides).</li>
+<li>la racine est reliée à chacune des racines de ces sous-arbres gauches et droits (à conditions qu'ils ne soient pas vides).</li>
 </ul>
 </li>
 </ul>
@@ -1759,7 +1786,7 @@ Plus précisemment, un <mark class="critic"><strong>arbre binaire</strong></mark
 <li>La <mark class="critic"><strong>taille de l'arbre</strong></mark> est <span class="arithmatex">\(4\)</span>, c'est le nombre de noeuds qui le compose.</li>
 <li>Le noeud <mark class="critic"><strong>racine</strong></mark> est le noeud <span class="arithmatex">\(1\)</span>.</li>
 <li>Le sous-arbre gauche à partir de <span class="arithmatex">\(1\)</span> contient deux noeuds (<span class="arithmatex">\(2\)</span> et <span class="arithmatex">\(3\)</span>), le sous-arbre droit un seul (<span class="arithmatex">\(4\)</span>).</li>
-<li>le noeud <span class="arithmatex">\(1\)</span> possède deux <mark class="critic"><strong>fils</strong></mark> : son <mark class="critic"><strong>fils gauche</strong></mark> est <span class="arithmatex">\(2\)</span> et son <mark class="critic"><strong>fils droit</strong></mark> est <span class="arithmatex">\(3\)</span>.</li>
+<li>le noeud <span class="arithmatex">\(1\)</span> possède deux <mark class="critic"><strong>fils</strong></mark> : son <mark class="critic"><strong>fils gauche</strong></mark> est <span class="arithmatex">\(2\)</span> et son <mark class="critic"><strong>fils droit</strong></mark> est <span class="arithmatex">\(4\)</span>.</li>
 <li>Le sous-arbre gauche à partir de <span class="arithmatex">\(2\)</span> n'est pas vide (il contient le noeud <span class="arithmatex">\(3\)</span>), le sous-arbre droit lui l'est.</li>
 <li>Le noeud <mark class="critic"><strong>parent</strong></mark> du noeud <span class="arithmatex">\(3\)</span> est le noeud <span class="arithmatex">\(2\)</span>.</li>
 <li>Les deux sous-arbres à partir de <span class="arithmatex">\(3\)</span> sont vides, touts comme ceux de <span class="arithmatex">\(4\)</span>. On dira que les noeuds <span class="arithmatex">\(3\)</span> et <span class="arithmatex">\(4\)</span> sont des <mark class="critic"><strong>feuilles</strong></mark> de l'arbre.</li>
@@ -1861,7 +1888,7 @@ h = 1 + max(hauteur(Gauche), hauteur(Droit))
 </li>
 </ul>
 </div>
-<h3 id="implementaion-darbres-en-python">Implémentaion d'arbres en Python</h3>
+<h3 id="implementation-darbres-en-python">Implémentation d'arbres en Python</h3>
 <p>Il existe bien entendu différentes façons d'implémenter une structure d'arbre binaire en Python. Cependant, la méthode la plus simple est d'utiliser le <em>paradigme Objet</em> afin de représenter des noeuds :</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">()</span> <span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">)</span>
@@ -1905,15 +1932,111 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.</p>
 </div>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Exercice : Fonction <code>taille</code></p>
+<p class="admonition-title">Exercice : Fonction <code>hauteur</code></p>
 <div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
-<p>Coder une fonction <code>taille(t)</code> calculant la taille d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
+<p>Coder une fonction <code>hauteur(t)</code> calculant la hauteur d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
 </div>
 <input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Solution</label><div class="tabbed-content">
 <p>A venir.</p>
 </div>
 </div>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Exercice : Fonction <code>taille</code></p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<p>Coder une fonction <code>taille(t)</code> calculant la taille d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Solution</label><div class="tabbed-content">
+<p>A venir.</p>
+</div>
+</div>
+</div>
+<div class="admonition tips">
+<p class="admonition-title">Arbres doublement chaînés</p>
+<p>Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre <strong>doublement chaînés</strong>. L'implémentation en POO de la classe <code>Node</code> est alors quasiment identique, en rajoutant seulement l'attribut <code>parent</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">()</span> <span class="p">:</span>
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="o">=</span><span class="n">valeur</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="n">droit</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+</code></pre></div>
+</div>
+<h2 id="parcours-darbres">Parcours d'arbres</h2>
+<p>Pour utiliser un arbre, il faut le <strong>parcourir</strong>. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt
+différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veux <strong>afficher les différents noeuds</strong> :</p>
+<p><img alt="Arbre exemple parcours" src="../P1_Arbre6.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
+<h3 id="parcours-en-profondeur-dfs-ou-depth-first-search">Parcours en profondeur ( DFS ou Depth-First Search)</h3>
+<p>Les <mark class="critic"><strong>parcours en profondeur</strong></mark> sont des parcours qui seront traités  de manière récursives, en partant de la racine. Il en existe trois type principaux :</p>
+<div class="admonition abstract">
+<p class="admonition-title">Parcours Préfixe</p>
+<p>On appelle <mark class="critic"><strong>parcours préfixe</strong></mark> un parcours où les noeuds seront affichés dans l'ordre suivant</p>
+<ul>
+<li>on affiche la racine ;</li>
+<li>ensuite on affiche récursivement le sous-arbre gauche ;</li>
+<li>enfin on affiche récursivement le sous-arbre droit.</li>
+</ul>
+<p>Le parcours est dans l'ordre <mark class="critic"><strong>noeud - droit - gauche</strong></mark></p>
+</div>
+<details class="example"><summary>Exemple</summary><p>Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :</p>
+<p><img alt="Arbre exemple parcours" src="../P1_Arbre6_prefixe.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>L'ordre d'affichage des noeuds est donc : 1, 2, 4, 5, 8, 9, 3, 6, 10, 7, 11.</p>
+</details>
+<div class="admonition abstract">
+<p class="admonition-title">Parcours Infixe</p>
+<p>On appelle <mark class="critic"><strong>parcours infixe</strong></mark> un parcours où les noeuds seront affichés dans l'ordre suivant</p>
+<ul>
+<li>on affiche récursivement le sous-arbre gauche ;</li>
+<li>ensuite on affiche la racine ;</li>
+<li>enfin on affiche récursivement le sous-arbre droit.</li>
+</ul>
+<p>Le parcours est donc dans l'ordre <mark class="critic"><strong>gauche - noeud -droit</strong></mark>.</p>
+</div>
+<details class="example"><summary>Exemple</summary><p>Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :</p>
+<p><img alt="Arbre exemple parcours" src="../P1_Arbre6_infixe.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>L'ordre d'affichage des noeuds est donc :  4, 2, 8, 5, 9, 1, 10, 6, 3, 7, 11.</p>
+</details>
+<div class="admonition abstract">
+<p class="admonition-title">Parcours Suffixe (ou postfixe)</p>
+<p>On appelle <mark class="critic"><strong>parcours suffixe</strong></mark> un parcours où les noeuds seront affichés dans l'ordre suivant</p>
+<ul>
+<li>on affiche récursivement le sous-arbre gauche ;</li>
+<li>ensuite on affiche récursivement le sous-arbre droit ;</li>
+<li>enfin on on affiche la racine.</li>
+</ul>
+<p>Le parcours est donc dans l'ordre <mark class="critic"><strong>gauche - droit - noeud</strong></mark>.</p>
+</div>
+<details class="example"><summary>Exemple</summary><p>Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :</p>
+<p><img alt="Arbre exemple parcours" src="../P1_Arbre6_suffixe.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>L'ordre d'affichage des noeuds est donc :  4, 8, 9, 5, 2, 10, 6, 11, 7, 3, 1.</p>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<p>Pour chacun des arbres suivants, donner l'affichage par :</p>
+<ol>
+<li>un parcours préfixe ;</li>
+<li>un parcours infixe ;</li>
+<li>un parcours suffixe.</li>
+</ol>
+<p><div class="container">
+<div class="column2">
+<h6>Arbre 1</h6>        </p>
+<p><img alt="Exo arbre 1" src="../P1_Arbre7.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div class="column2">
+<h6>Arbre 2</h6></p>
+<p><img alt="Exo arbre 2" src="../P1_Arbre8.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>     <br />
+</div></p>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h3 id="parcours-en-largeur">Parcours en largeur</h3>
+<p>7</p>
                 
               
               
