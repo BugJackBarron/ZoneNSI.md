@@ -1,8 +1,5 @@
 # Représentation des entiers relatifs et des flottants
 
-
-
-
 Nous avons vu précédemment comment écrire les nombres entiers naturels en binaire :
 
 * $(101)_{2} = 1 \times 2^2 +0 \times 2^1 + 1\times 2^0 = 4 + 0 +1 = 5$ 
@@ -110,141 +107,153 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 	En base 10, on a :
 	
 	$$
-	\begin{align}
+	\begin{array}{rl}
 	23,145 &= 2 \times 10^1 + 3 \times 10^{0}+ \dfrac{1}{10^1}+ \dfrac{4}{10^2}+ \dfrac{5}{10^3}\\
 	23,145 &= 2 \times 10^1 + 3 \times 10^{0} + 1 \times 10^{-1}+ 4 \times 10^{-2}+ 5 \times 10^{-3}
-	\end{align}
+	\end{array}
 	$$
 	
 !!! abstract "Partie &laquo; décimale &raquo; en écriture binaire"
 	De la même manière qu'en écriture de base $10$, on aura :
 	
 	$$
-	\begin{align*}
+	\begin{array}{rl}
 	(10,0101)_2 &= 1 \times 2^1 + 0 \times 2^0+ 0 \times 2^{-1}+ 1 \times 2^{-2}+ 0 \times 2^{-3}+ 1 \times 2^{-4}\\
 	&= 2 + 0 + \dfrac{0}{2} + \dfrac{1}{4}+ \dfrac{0}{8}+ \dfrac{1}{16}\\
 	&=2 + 0 +0 +0,25+0+0,0625\\
 	&= 2,3125
-	\end{align*}
+	\end{array}
 	$$
 	
-\begin{methode}{Convertir de la base 10 à la base 2}
-On cherche à convertir en binaire le nombre $13,6875$.\\
-On commence par convertir la partie entière $13 = (1101)_2$. Il faut ensuite convertir la partie décimale $0,6875$. Pour y arriver on applique l'algorithme suivant :
-\trianglenoir
-\begin{itemize}
-\item on multiplie $0,6875$ par $2$ : $0,6875 \times 2 = 1,375$, et on note le résultat $\mathbf{1} + 0,375$ ;
-\item on multiplie $0,375$ par $2$ : $0,375 \times 2 = 0,75$, et on note le résultat $\mathbf{0} + 0,75$ ;
-\item on multiplie $0,75$ par $2$ : $0,75 \times 2 = 1,5$, et on note le résultat $\mathbf{1} + 0,5$ ;
-\item on multiplie $0,5$ par $2$ : $0,5 \times 2 = 1$, et on note le résultat $\mathbf{1}$, la partie décimale étant nulle on arrête l'algorithme ;
-\end{itemize}
-On récupère les parties entières obtenues à chaque étape, soit $\mathbf{1011}$, qui représente la partie décimale de notre nombre. D'où :
-$$13,6875 = (1101,1011)_2$$
-\end{methode}
-\begin{enumerate}
-\item Trouver la représentation décimale de $(100,0011)_2$.
-\caserep{\linewidth}{2}
-\item Trouver la représentation binaire de $(6,625)_{10}$.
-\caserep{\linewidth}{2}
-\item Trouver la représentation binaire de $(0,1)_{10}$. Que remarque-t-on ? 
-\caserep{\linewidth}{6}
-\end{enumerate}
-\begin{remarque}
-Tout comme le nombre $\dfrac{1}{3}$ ne possède pas d'écriture décimale finie, certains nombres ne possèdent pas d'écritures binaire finie.
-\end{remarque}
-\subsection{Ecriture scientifique des nombres en écriture binaires}
-\begin{info}{Ecriture décimale scientifique}
-\noindent Pour écrire de très grands nombres, ou de très petits, on utilise souvent une écriture scientifique, c'est-à-dire sous la forme $a \times 10^n$, où $a \in [1;10[$ et $n\in\Z$. Ainsi :
-\trianglenoir
-\begin{itemize}
-\item $\np{4571,23} = 4,57123 \times 10^3$
-\item $\np{0,00345} = 3,45 \times 10^{-3}$
-\end{itemize}
-\end{info}
-\begin{definition}{Ecriture scientifique en binaire}
-\noindent Pour écrire un nombre binaire en \og écriture scientifique\fg, 
-on l'écrira sous la forme $a \times 2^n$, où :
-\trianglenoir
-\begin{itemize}
-\item $a$ est un nombre binaire, avec partie \og après la virgule \fg et dont la partie entière est $1$ ;
-\item $n$ est un nombre entier relatif, \textbf{écrit en binaire}.
-\end{itemize}
-\end{definition}
-\begin{exemples}
-\trianglenoir
-\begin{itemize}
-\item Pour écrire le nombre $11010$ en \og écriture scientifique \fg, 
-il faudra décaler la virgule de $4$ rangs sur la gauche, soit une puissance positive.  Or $4 = (100)_2$. 
-Donc $11010 = 1,1010\times 2^{100}$.
-\item Pour écrire le nombre $0,001011$ en \og écriture scientifique \fg, 
-il faudra décaler la virgule de $3$ rangs sur la droite, soit une puissance négative, or $3 = (11)_2$. 
-Donc $0,001011 = 1,011\times 2^{-11}$.
+!!! tips "Convertir de la base 10 à la base 2"
+	On cherche à convertir en binaire le nombre $13,6875$.
+	On commence par convertir la partie entière $13 = (1101)_2$. Il faut ensuite convertir la partie décimale $0,6875$. Pour y arriver on applique l'algorithme suivant :
 
-\end{itemize}
-\end{exemples}
-\subsection{Représentation des flottants en machine}
-\textit{Le contenu de cette partie est largement issu de \href{https://pixees.fr/informatiquelycee/n_site/nsi_prem_float.html}{Pixees.fr}}
-\begin{definition}{Norme IEEE 754}
-\noindent  La norme IEEE 754 est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.
+	* on multiplie $0,6875$ par $2$ : $0,6875 \times 2 = 1,375$, et on note le résultat $\mathbf{1} + 0,375$ ;
+	* on multiplie $0,375$ par $2$ : $0,375 \times 2 = 0,75$, et on note le résultat $\mathbf{0} + 0,75$ ;
+	* on multiplie $0,75$ par $2$ : $0,75 \times 2 = 1,5$, et on note le résultat $\mathbf{1} + 0,5$ ;
+	* on multiplie $0,5$ par $2$ : $0,5 \times 2 = 1$, et on note le résultat $\mathbf{1}$, la partie décimale étant nulle on arrête l'algorithme ;
 
-\noindent Nous allons étudier deux formats associés à cette norme : le format dit \og simple précision\fg et le format dit \og double précision\fg. Le format \og simple précision\fg utilise $32$ bits pour écrire un nombre flottant alors que le format \og double précision\fg utilise $64$ bits. Dans la suite nous travaillerons principalement sur le format $32$ bits.
-
-\noindent Que cela soit en simple précision ou en double précision, la norme IEEE754 utilise :
-\trianglenoir
-\begin{itemize}
-\item 1 bit de signe (1 si le nombre est négatif et 0 si le nombre est positif);
-\item des bits consacrés à l'\textbf{exposant} (8 bits pour la simple précision et 11 bits pour la double précision);
-\item des bits consacrés à la \textbf{mantisse} (23 bits pour la simple précision et 52 bits pour la double précision).
-\end{itemize}
-    \begin{center}
-    \includegraphics[width=0.7\linewidth]{Flottant_machine.png}
-    \end{center}
-
-\noindent Nous pouvons vérifier que l'on a bien $1 + 8 + 23 = 32$ bits pour la simple précision et $1 + 11 + 52 = 64$ bits pour la double précision. 
-\end{definition}
-\begin{methode}{Déterminer la mantisse}
-\noindent Pour écrire un nombre au format IEEE 754, il est nécessaire de commencer par écrire notre nombre sous \og écriture scientifique \fg binaire, sous la forme $1,XXXXX.2^e$.\\
-Ainsi on sait déjà que le nombre $11010 = 1,1010\times 2^{100}$.\\
-la partie \og $XXXXX$ \fg  du nombre, c'est-à-dire $1010$, correspond à la \textbf{mantisse}. Mais comme la mantisse doit contenir exactement $23$ bits en simple précision, il faut donc la compléter avec $23-4 = 19$ zéros à droite pour obtenir $23$ bits, soit : $$\mathbf{1010}0000000000000000000$$
-\end{methode}
-\begin{definition}{Exposant des nombres flottants}
-\noindent  Notre première intuition serait de dire que la partie "exposant" correspond simplement au \og e \fg de \\
-$1,XXXXX.2^e$ (dans notre exemple $1,1010\times 2^{100}$, nous aurions $100$). En fait, c'est un peu plus compliqué... En effet, comment représenter les exposants négatifs, sachant que dans la norme IEEE 754, aucun bit pour le signe de l'exposant n'a été prévu. Il a donc été nécessaire de choisir une méthode, et c'est celle du \textbf{décalage d'exposant} qui a été retenue : 
-\trianglenoir
-\begin{itemize}
-\item en simple précision, on décale l'exposant de $127$ ;
-\item en double précision, on décale l'exposant de $1023$.
-\end{itemize}
-\end{definition}
-\begin{methode}{Déterminer l'exposant}
-\noindent Pour le format simple précision, $8$ bits sont consacrés à l'exposant, il est donc possible de représenter $256$ valeurs, nous allons pouvoir représenter des exposants compris entre $(-126)_{10}$ et $(+127)_{10}$ (les valeurs $-127$ et $+128$ sont des valeurs réservées, nous n'aborderons pas ce sujet ici, mais vous trouverez des précisions sur l'article \href{https://fr.wikipedia.org/wiki/IEEE_754}{IEEE 754 de wikipedia}). Pour avoir des valeurs uniquement positives, il va falloir procéder à un \textbf{décalage} : ajouter systématiquement $127$ à la valeur de l'exposant.\\
-Dans notre exemple, on a $11010 = 1,1010\times 2^{100}$.\\
-L'exposant est donc $4 =(100)_2$, et pour le représenter il faut donc le \textbf{décaler} : $4 + 127 = 131$ soit $131=(10000011)_2$. L'exposant possède 8 chiffres binaires, il n'est donc pas nécessaire de rajouter de zéros \textbf{ à gauche}.\\
-
-Au format simple précision, le nombre $11010$ s'écrit donc :
-$$0\mathbf{10000011}10100000000000000000000$$
+	On récupère les parties entières obtenues à chaque étape, soit $\mathbf{1011}$, qui représente la partie décimale de notre nombre. D'où :
+	
+	$$
+	13,6875 = (1101,1011)_2
+	$$
 
 
-\end{methode}
-\begin{exemple}
-Soit le nombre \og $-10,125$\fg en base $10$ représentons-le au format simple précision :
-\coche
-\begin{itemize}
-\item nous avons $(10)_{10} = (1010)_2$ et $(0,125)_{10} = (0,001)_2$ soit $(10,125)_{10} = (1010,001)_2$ ;
-\item décalons la virgule : $1010,001$ = $1,010001.2^3$, soit avec le décalage de l'exposant $1,010001.2^{130}$, en écrivant l'exposant en base 2, nous obtenons $1,010001.2^{10000010}$ ;
-\item  nous avons donc : notre bit de signe = $1$ (nombre négatif), nos 8 bits d'exposant = $10000010$ et nos 23 bits de mantisse = $01000100000000000000000$
-\item soit en "collant" tous les "morceaux" : 
-$$11000001001000100000000000000000$$
-\end{itemize}
-\end{exemple}
-\begin{enumerate}
-\item Déterminez la représentation au format simple précision de $(0,25)_{10}$ en binaire. 
-\caserep{\linewidth}{6}
-\item Déterminez la représentation au format simple précision de $(0,1)_{10}$ en binaire. 
-\caserep{\linewidth}{6}
-\item Soit le nombre flottant au format simple précision : $00111101110011001100110011001100$. Trouvez la représentation en base 10 de ce nombre. 
-\caserep{\linewidth}{6}
-\item À l'aide de Thonny, tapez dans la console : $0.1+0.2$. Faites de même dans la console Javascript de Firefox. Que constate-t-on ? Pourquoi ?
-\caserep{\linewidth}{6}
-\end{enumerate}
-\end{document}
+!!! question "Exercice"
+	=== "Enoncé"
+
+		1. Trouver la représentation décimale de $(100,0011)_2$.
+		1. Trouver la représentation binaire de $(6,625)_{10}$.
+		1. Trouver la représentation binaire de $(0,1)_{10}$. Que remarque-t-on ? 
+
+	=== "Solution"
+		A venir !
+
+!!! info "Remarque"
+	Tout comme le nombre $\dfrac{1}{3}$ ne possède pas d'écriture décimale finie, certains nombres ne possèdent pas d'écritures binaire finie.
+
+### Ecriture scientifique des nombres en écriture binaires
+
+!!! info "Ecriture décimale scientifique"
+	Pour écrire de très grands nombres, ou de très petits, on utilise souvent une écriture scientifique, c'est-à-dire sous la forme $a \times 10^n$, où $a \in [1;10[$ et $n\in\mathbb{Z}$. Ainsi :
+
+
+	* $4~571,23 = 4,57123 \times 10^3$
+	* $0,003~45 = 3,45 \times 10^{-3}$
+
+!!! abstract "Ecriture scientifique en binaire"
+	Pour écrire un nombre binaire en &laquo; écriture scientifique &raquo; , 
+	on l'écrira sous la forme $a \times 2^n$, où :
+
+
+	* $a$ est un nombre binaire, avec partie &laquo; après la virgule &raquo; et dont la partie entière est $1$ ;
+	* $n$ est un nombre entier relatif, **écrit en binaire**.
+
+!!! example "Exemple"
+
+	* Pour écrire le nombre $11010$ en &laquo; écriture scientifique &raquo;, il faudra décaler la virgule de $4$ rangs sur la gauche, soit une puissance positive.  Or $4 = (100)_2$. 
+		Donc $11010 = 1,1010\times 2^{100}$.
+	* Pour écrire le nombre $0,001011$ en &laquo; écriture scientifique &raquo;, il faudra décaler la virgule de $3$ rangs sur la droite, soit une puissance négative, or $3 = (11)_2$. 
+		Donc $0,001011 = 1,011\times 2^{-11}$.
+
+
+### Représentation des flottants en machine
+
+*Le contenu de cette partie est largement issu de [Pixees.fr](https://pixees.fr/informatiquelycee/n_site/nsi_prem_float.html).*
+
+!!! abstract "Norme IEEE 754"
+	La norme IEEE 754 est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.
+
+	Nous allons étudier deux formats associés à cette norme : le format dit &laquo; simple précision&raquo; et le format dit &laquo; double précision&raquo;. Le format &laquo; simple précision&raquo; utilise $32$ bits pour écrire un nombre flottant alors que le format &laquo; double précision&raquo; utilise $64$ bits. Dans la suite nous travaillerons principalement sur le format $32$ bits.
+
+	Que cela soit en simple précision ou en double précision, la norme IEEE754 utilise :
+
+	* 1 bit de signe (1 si le nombre est négatif et 0 si le nombre est positif);
+	* des bits consacrés à l'{==**exposant**==} (8 bits pour la simple précision et 11 bits pour la double précision);
+	* des bits consacrés à la {==**mantisse**==} (23 bits pour la simple précision et 52 bits pour la double précision).
+    
+    ![Flottant_machine.png](Flottant_machine.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+
+
+	Nous pouvons vérifier que l'on a bien $1 + 8 + 23 = 32$ bits pour la simple précision et $1 + 11 + 52 = 64$ bits pour la double précision. 
+
+!!! tips "Déterminer la mantisse"
+	Pour écrire un nombre au format IEEE 754, il est nécessaire de commencer par écrire notre nombre sous &laquo; écriture scientifique &raquo; binaire, sous la forme $1,XXXXX.2^e$.
+	
+	Ainsi on sait déjà que le nombre $11010 = 1,1010\times 2^{100}$.
+	
+	La partie &laquo; $XXXXX$ &raquo;  du nombre, c'est-à-dire $1010$, correspond à la {==**mantisse**==}. Mais comme la mantisse doit contenir exactement $23$ bits en simple précision, il faut donc la compléter avec $23-4 = 19$ zéros à droite pour obtenir $23$ bits, soit : 
+	
+	$$
+	\mathbf{1010}0000000000000000000
+	$$
+
+!!! abstract "Exposant des nombres flottants"
+	Notre première intuition serait de dire que la partie *exposant* correspond simplement au &laquo; e &raquo; de $1,XXXXX.2^e$ (dans notre exemple $1,1010\times 2^{100}$, nous aurions $100$). En fait, c'est un peu plus compliqué... En effet, comment représenter les exposants négatifs, sachant que dans la norme IEEE 754, aucun bit pour le signe de l'exposant n'a été prévu. Il a donc été nécessaire de choisir une méthode, et c'est celle du {==**décalage d'exposant**==} qui a été retenue : 
+
+
+	* en simple précision, on décale l'exposant de $127$ ;
+	* en double précision, on décale l'exposant de $1~023$.
+
+!!! tips "Déterminer l'exposant"
+	Pour le format simple précision, $8$ bits sont consacrés à l'exposant, il est donc possible de représenter $256$ valeurs, nous allons pouvoir représenter des exposants compris entre $(-126)_{10}$ et $(+127)_{10}$ (les valeurs $-127$ et $+128$ sont des valeurs réservées, nous n'aborderons pas ce sujet ici, mais vous trouverez des précisions sur l'article [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754) de wikipedia}). Pour avoir des valeurs uniquement positives, il va falloir procéder à un **décalage** : ajouter systématiquement $127$ à la valeur de l'exposant.
+	
+	Dans notre exemple, on a $11010 = 1,1010\times 2^{100}$.
+	L'exposant est donc $4 =(100)_2$, et pour le représenter il faut donc le **décaler** : $4 + 127 = 131$ soit $131=(10000011)_2$. L'exposant possède 8 chiffres binaires, il n'est donc pas nécessaire de rajouter de zéros **à gauche**.\\
+
+	Au format simple précision, le nombre $11010$ s'écrit donc :
+	
+	$$
+	0\mathbf{10000011}10100000000000000000000
+	$$
+
+
+
+!!! example "Exemple"
+	Soit le nombre &laquo; $-10,125$&raquo; en base $10$. Représentons-le au format simple précision :
+
+	* nous avons $(10)_{10} = (1010)_2$ et $(0,125)_{10} = (0,001)_2$ soit $(10,125)_{10} = (1010,001)_2$ ;
+	* décalons la virgule : $1010,001$ = $1,010001.2^3$, soit avec le décalage de l'exposant $1,010001.2^{130}$, en écrivant l'exposant en base 2, nous obtenons $1,010001.2^{10000010}$ ;
+	*  nous avons donc : notre bit de signe = $1$ (nombre négatif), nos 8 bits d'exposant = $10000010$ et nos 23 bits de mantisse = $01000100000000000000000$
+	* soit en "collant" tous les "morceaux" : 
+	
+	$$
+	11000001001000100000000000000000
+	$$
+
+!!! question "Exercice"
+
+	=== "Enoncé"
+	
+		1. Déterminez la représentation au format simple précision de $(0,25)_{10}$ en binaire. 
+		2. Déterminez la représentation au format simple précision de $(0,1)_{10}$ en binaire. 
+		3. Soit le nombre flottant au format simple précision : $00111101110011001100110011001100$. Trouvez la représentation en base 10 de ce nombre. 
+		4. À l'aide de Thonny, tapez dans la console : $0.1+0.2$. Faites de même dans la console Javascript de Firefox. Que constate-t-on ? Pourquoi ?
+
+	=== "Solution"
+	
+		A venir !
+
+
