@@ -172,7 +172,7 @@ Il existe bien entendu différentes façons d'implémenter une structure d'arbre
 
 ```` python
 class Node() :
-	def __init__(self, valeur, gauche, droit)
+	def __init__(self, valeur, gauche, droit) :
 		self.valeur=valeur
 		self.gauche = gauche
 		self.droit = droit
@@ -246,16 +246,26 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	
 		A venir.
 		
+!!! question "Exercice : Fonction `nonVide(tree)`"
+	
+	=== "Enoncé"
+	
+		Coder une fonction `estVide(tree)` renvoyant `True` si l'arbre est vide, et `False` sinon.
+		
+	=== "Solution"
+	
+		A venir.
+		
 !!! tips "Arbres doublement chaînés"
 	Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre **doublement chaînés**. L'implémentation en POO de la classe `Node` est alors quasiment identique, en rajoutant seulement l'attribut `parent` :
 	
 	```` python
 	class Node() :
-	def __init__(self, valeur, gauche, droit, parent)
-		self.valeur=valeur
-		self.gauche = gauche
-		self.droit = droit
-		self.parent = parent
+		def __init__(self, valeur, gauche, droit, parent) :
+			self.valeur=valeur
+			self.gauche = gauche
+			self.droit = droit
+			self.parent = parent
 	````
 
 
@@ -363,5 +373,126 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 
 
+### Algorithmes et codage des parcours en profondeur
+
+
+!!! tips "Codage des arbres"
+
+	Les deux arbres précédents peucvent être codés en Python de la manière suivante :
+	
+	```` python
+	arbre1 = Node('A',
+				Node('B', None, None),
+				Node('C', None, None)
+				)
+	````
+	
+	```` python
+	arbre2 = Node('A',
+				Node('B', 
+					Node('C',
+						Node('D', None, None),
+						Node('E', None, None)),
+					Node('F', 
+						Node('G', None, None),
+						None)
+					),
+				Node('H',
+					Node('I',
+						None,
+						Node('J', None,None)),
+					Node('K',
+						Node('L', None,None),
+						None)
+					)					
+				)
+	````
+
+
+!!! example "Exemple : algorithme de parcours préfixe"
+
+	Un algorithme en langage naturel permettant d'afficher les noeuds d'un arbre par un parcours préfixe peut-être écrit comme suit :
+	
+	```` 
+	visiterPréfixe(Arbre A) :
+		Afficher (A)
+		Si nonVide (gauche(A))
+			  visiterPréfixe(gauche(A))
+		Si nonVide (droite(A))
+			  visiterPréfixe(droite(A))
+	````
+	
+	Sa traduction en Python est la suivante :
+	
+	```` python
+	def visitePrefixe(tree) :
+		print(tree.valeur, end=" ")
+		if not(estVide(tree.gauche)) :
+			visitePrefixe(tree.gauche)
+		if not(estVide(tree.droit)) :
+			visitePrefixe(tree.droit)
+	````
+
+!!! question "Exercice : Parcours infixe"
+	
+	=== "Enoncé" 
+		Créer une fonction `visiteInfixe` permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.
+		
+	=== "Solution"
+		A venir !
+		
+!!! question "Exercice : Parcours suffixe"
+	
+	=== "Enoncé" 
+		Créer une fonction `visiteSuffixe` permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.
+		
+	=== "Solution"
+		A venir !
+
 ### Parcours en largeur
-7
+
+Le {==**parcours en largeur**==} d'un arbre consiste à parcourir **chaque niveau** de l'arbre de droite à gauche, en partant de la racine.
+
+![Arbre exemple parcours](P1_Arbre6_largeur.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+
+Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 
+
+!!! question "Exercice : application directe"
+	=== "Enoncé"
+		Donner le résultat d'un parcours en largeur des deux arbres des exercices précédents.
+		
+	=== "Solution"
+		A venir
+
+!!! abstract "Algorithme de parcours en largeur"
+
+	Le parcours en largeur **n'est pas effectué récursivemment**. Il fonctionne avec le principe **d'une file** :
+	
+	````
+	ParcoursLargeur(Arbre A) {
+	   f = FileVide
+	   enfiler(Racine(A), f)
+	   Tant que (f != FileVide) {
+		   noeud = defiler(f)
+		   Afficher(noeud)                        
+		   Si (gauche(noeud) != null) Alors
+			   enfiler(gauche(noeud), f)
+		   Si (droite(noeud) != null) Alors
+			   enfiler(droite(noeud), f)
+	   }
+	}
+	````
+!!! question "Exercice"
+
+	=== "Enoncé"
+		Implémenter une fonction `visiteLargeur(tree)`, utilisant une structure de file basée sur les listes python, et utilisant :
+		
+		* `list.insert(0, e)` pour enfiler l'élément `e` à la position 0 ;
+		* `list.pop()` pour défiler le dernier élément de la file.
+		
+	=== "Solution"
+	
+		A venir !
+
+
+	

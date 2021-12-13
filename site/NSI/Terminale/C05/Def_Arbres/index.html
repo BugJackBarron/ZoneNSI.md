@@ -1493,6 +1493,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#algorithmes-et-codage-des-parcours-en-profondeur" class="md-nav__link">
+    Algorithmes et codage des parcours en profondeur
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parcours-en-largeur" class="md-nav__link">
     Parcours en largeur
   </a>
@@ -1891,7 +1898,7 @@ h = 1 + max(hauteur(Gauche), hauteur(Droit))
 <h3 id="implementation-darbres-en-python">Implémentation d'arbres en Python</h3>
 <p>Il existe bien entendu différentes façons d'implémenter une structure d'arbre binaire en Python. Cependant, la méthode la plus simple est d'utiliser le <em>paradigme Objet</em> afin de représenter des noeuds :</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">()</span> <span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="o">=</span><span class="n">valeur</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="n">droit</span>
@@ -1951,15 +1958,25 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.</p>
 </div>
 </div>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Exercice : Fonction <code>nonVide(tree)</code></p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<p>Coder une fonction <code>estVide(tree)</code> renvoyant <code>True</code> si l'arbre est vide, et <code>False</code> sinon.</p>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solution</label><div class="tabbed-content">
+<p>A venir.</p>
+</div>
+</div>
+</div>
 <div class="admonition tips">
 <p class="admonition-title">Arbres doublement chaînés</p>
 <p>Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre <strong>doublement chaînés</strong>. L'implémentation en POO de la classe <code>Node</code> est alors quasiment identique, en rajoutant seulement l'attribut <code>parent</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">()</span> <span class="p">:</span>
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="o">=</span><span class="n">valeur</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="n">droit</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="o">=</span><span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="n">droit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
 </code></pre></div>
 </div>
 <h2 id="parcours-darbres">Parcours d'arbres</h2>
@@ -2012,7 +2029,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 </details>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Enoncé</label><div class="tabbed-content">
 <p>Pour chacun des arbres suivants, donner l'affichage par :</p>
 <ol>
 <li>un parcours préfixe ;</li>
@@ -2030,13 +2047,124 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <p></div>     <br />
 </div></p>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solution</label><div class="tabbed-content">
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h3 id="algorithmes-et-codage-des-parcours-en-profondeur">Algorithmes et codage des parcours en profondeur</h3>
+<div class="admonition tips">
+<p class="admonition-title">Codage des arbres</p>
+<p>Les deux arbres précédents peucvent être codés en Python de la manière suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="n">arbre1</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">arbre2</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> 
+                <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span>
+                    <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                    <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> 
+                    <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                    <span class="kc">None</span><span class="p">)</span>
+                <span class="p">),</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span>
+                    <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)),</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">,</span>
+                    <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span>
+                    <span class="kc">None</span><span class="p">)</span>
+                <span class="p">)</span>                   
+            <span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple : algorithme de parcours préfixe</p>
+<p>Un algorithme en langage naturel permettant d'afficher les noeuds d'un arbre par un parcours préfixe peut-être écrit comme suit :</p>
+<div class="highlight"><pre><span></span><code>visiterPréfixe(Arbre A) :
+    Afficher (A)
+    Si nonVide (gauche(A))
+          visiterPréfixe(gauche(A))
+    Si nonVide (droite(A))
+          visiterPréfixe(droite(A))
+</code></pre></div>
+<p>Sa traduction en Python est la suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visitePrefixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">visitePrefixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">visitePrefixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice : Parcours infixe</p>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>visiteInfixe</code> permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
+</div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice : Parcours suffixe</p>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">Enoncé</label><div class="tabbed-content">
+<p>Créer une fonction <code>visiteSuffixe</code> permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Solution</label><div class="tabbed-content">
 <p>A venir !</p>
 </div>
 </div>
 </div>
 <h3 id="parcours-en-largeur">Parcours en largeur</h3>
-<p>7</p>
+<p>Le <mark class="critic"><strong>parcours en largeur</strong></mark> d'un arbre consiste à parcourir <strong>chaque niveau</strong> de l'arbre de droite à gauche, en partant de la racine.</p>
+<p><img alt="Arbre exemple parcours" src="../P1_Arbre6_largeur.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 </p>
+<div class="admonition question">
+<p class="admonition-title">Exercice : application directe</p>
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">Enoncé</label><div class="tabbed-content">
+<p>Donner le résultat d'un parcours en largeur des deux arbres des exercices précédents.</p>
+</div>
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">Solution</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme de parcours en largeur</p>
+<p>Le parcours en largeur <strong>n'est pas effectué récursivemment</strong>. Il fonctionne avec le principe <strong>d'une file</strong> :</p>
+<div class="highlight"><pre><span></span><code>ParcoursLargeur(Arbre A) {
+   f = FileVide
+   enfiler(Racine(A), f)
+   Tant que (f != FileVide) {
+       noeud = defiler(f)
+       Afficher(noeud)                        
+       Si (gauche(noeud) != null) Alors
+           enfiler(gauche(noeud), f)
+       Si (droite(noeud) != null) Alors
+           enfiler(droite(noeud), f)
+   }
+}
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">Enoncé</label><div class="tabbed-content">
+<p>Implémenter une fonction <code>visiteLargeur(tree)</code>, utilisant une structure de file basée sur les listes python, et utilisant :</p>
+<ul>
+<li><code>list.insert(0, e)</code> pour enfiler l'élément <code>e</code> à la position 0 ;</li>
+<li><code>list.pop()</code> pour défiler le dernier élément de la file.</li>
+</ul>
+</div>
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
                 
               
               
