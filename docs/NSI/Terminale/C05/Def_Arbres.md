@@ -246,7 +246,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	
 		A venir.
 		
-!!! question "Exercice : Fonction `nonVide(tree)`"
+!!! question "Exercice : Fonction `estVide(tree)`"
 	
 	=== "Enoncé"
 	
