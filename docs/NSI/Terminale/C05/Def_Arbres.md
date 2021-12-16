@@ -89,7 +89,14 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		
 	=== "Solution"
 	
-		A venir !
+		* Arbre 1 :
+			* taille : 7
+			* racine : &laquo; A &raquo;
+			* feuilles : &laquo; D &raquo;, &laquo; E &raquo;, &laquo; G &raquo;			
+		* Arbre 2 :
+			* taille : 7
+			* racine : &laquo; P &raquo;
+			* feuilles : &laquo; C &raquo;, &laquo; X &raquo;, &laquo; N &raquo;			
 		
 !!! question "Exercice"
 
@@ -109,8 +116,19 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		
 	=== "Solution"
 	
-		A venir.
+		Un arbre de taille 5 dispose d'un noeud racine et de 4 noeuds, pouvant être répartis de la manière suivante :
 		
+		* 4 noeuds dans le sous-arbre gauche, et 0 dans le sous-arbre droit ;
+		* 3 noeuds dans le sous-arbre gauche, et 1 dans le sous-arbre droit ;
+		* 2 noeuds dans le sous-arbre gauche, et 2 dans le sous-arbre droit ;
+		* 1 noeud dans le sous-arbre gauche, et 3 dans le sous-arbre droit ;
+		* 0 noeud dans le sous-arbre gauche, et 4 dans le sous-arbre droit.
+	
+		On en déduit que le nombre d'arbres différents à 5 noeuds est :
+		
+		$$
+		14\times 1 + 5 \times 1 + 2 \times 2 + 1 \times 5 + 1 \times 14 = 14 + 5 + 4 + 5 + 14 = 42
+		$$
 		
 ### Hauteur d'un arbre
 
@@ -222,7 +240,39 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	
 	=== "Solution"
 	
-		A venir
+		* Arbre 1 :
+			```` python
+			arbre1 = Node("A", 
+                  Node("B",
+						Node("D",None,None),#FG
+						Node("E",None,None),#FD
+                       ),
+                  Node("C",#FD
+						None,#FG
+						Node("F",#FD
+                            None,#FG
+                            Node("G", None, None)#FD
+                            )
+                       )    
+			)
+			````
+		* Arbre 2 :
+			```` python
+			arbre2 = Node("P",
+                  Node("A",
+                       Node("R",
+                            Node("C", None, None),
+                            None
+                            ),
+                       Node("I",
+                            Node("X", None, None),
+                            Node("N", None, None)
+                            )
+                       ),
+              None
+              )
+			````
+		
 		
 !!! question "Exercice : Fonction `hauteur`"
 
@@ -232,7 +282,13 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		
 	=== "Solution"
 	
-		A venir.
+		```` python
+		def hauteur(t) :
+			if t is None :
+				return 0
+			else :
+				return 1 + max(hauteur(t.gauche), hauteur(t.droit))
+		````
 
 
 		
@@ -244,7 +300,13 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		
 	=== "Solution"
 	
-		A venir.
+		```` python
+		def taille(t) :
+			if t is None :
+				return 0
+			else :
+				return 1 + taille(t.gauche)+taille(t.droit)
+		````
 		
 !!! question "Exercice : Fonction `estVide(tree)`"
 	
@@ -254,7 +316,10 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		
 	=== "Solution"
 	
-		A venir.
+		```` python
+		def estVide(t) :
+			return t is None
+		````
 		
 !!! tips "Arbres doublement chaînés"
 	Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre **doublement chaînés**. L'implémentation en POO de la classe `Node` est alors quasiment identique, en rajoutant seulement l'attribut `parent` :
@@ -291,7 +356,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 	* ensuite on affiche récursivement le sous-arbre gauche ;
 	* enfin on affiche récursivement le sous-arbre droit.
 
-	Le parcours est dans l'ordre {==**noeud - droit - gauche**==}
+	Le parcours est dans l'ordre {==**noeud - gauche - droit**==}
 
 ??? example "Exemple"
 
@@ -369,8 +434,17 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 		
 	=== "Solution"
 	
-		A venir !
-
+		* Arbre 1 :
+			* parcours Préfixe : `A B H`
+			* parcours Infixe :
+`B A H`
+			* parcours suffixe : `B H A`
+			
+		* Arbre 2 :
+			* parcours Préfixe : `A B C D E F G H I J K L`
+			* parcours Infixe :
+`B C D E F G A H I J K L`
+			* parcours suffixe : `B C D E F G H I J K L A`
 
 
 ### Algorithmes et codage des parcours en profondeur
@@ -451,7 +525,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 ### Parcours en largeur
 
-Le {==**parcours en largeur**==} d'un arbre consiste à parcourir **chaque niveau** de l'arbre de droite à gauche, en partant de la racine.
+Le {==**parcours en largeur**==} d'un arbre consiste à parcourir **chaque niveau** de l'arbre de gauche à droite, en partant de la racine.
 
 ![Arbre exemple parcours](P1_Arbre6_largeur.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
 

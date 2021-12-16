@@ -10,7 +10,7 @@ tree = Node(1,
             None),
         Node(4, None, None))
 
-arbre1 = Node("A", #Racine
+arbre1 = Node("A", 
                   Node("B", #FG
                        Node("D",None,None),#FG
                        Node("E",None,None),#FD
@@ -85,4 +85,31 @@ def visitePrefixe(tree) :
         visitePrefixe(tree.gauche)
     if not(estVide(tree.droit)) :
         visitePrefixe(tree.droit)
+        
+def visiteInfixe(tree) :
+    if not(estVide(tree.gauche)) :
+        visitePrefixe(tree.gauche)
+    print(tree.valeur, end=" ")
+    if not(estVide(tree.droit)) :
+        visitePrefixe(tree.droit)
 
+def visiteSuffixe(tree) :
+    if not(estVide(tree.gauche)) :
+        visitePrefixe(tree.gauche)
+    if not(estVide(tree.droit)) :
+        visitePrefixe(tree.droit)
+    print(tree.valeur, end=" ")
+    
+    
+def visiteLargeur(tree) :
+    f = []
+    f.insert(0, tree)
+    while f!= [] :
+        noeud = f.pop()
+        print(noeud.valeur, end=" ")
+        if noeud.gauche :
+            f.insert(0, noeud.gauche)
+        if noeud.droit :
+            f.insert(0, noeud.droit)
+            
+    
