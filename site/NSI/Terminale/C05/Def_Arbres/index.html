@@ -1837,7 +1837,20 @@ Plus précisemment, un <mark class="critic"><strong>arbre binaire</strong></mark
 </div></p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<ul>
+<li>Arbre 1 :<ul>
+<li>taille : 7</li>
+<li>racine : &laquo; A &raquo;</li>
+<li>feuilles : &laquo; D &raquo;, &laquo; E &raquo;, &laquo; G &raquo;            </li>
+</ul>
+</li>
+<li>Arbre 2 :<ul>
+<li>taille : 7</li>
+<li>racine : &laquo; P &raquo;</li>
+<li>feuilles : &laquo; C &raquo;, &laquo; X &raquo;, &laquo; N &raquo;            </li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1847,7 +1860,8 @@ Plus précisemment, un <mark class="critic"><strong>arbre binaire</strong></mark
 <p>Dessiner tous les arbres  binaires ayant respectivement 3 et 4 noeuds.</p>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
-<p>A venir.</p>
+<p><img alt="Arbres 3 Noeuds" src="../P1_Arbres_Taille3.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Arbres 4 Noeuds" src="../P1_Arbres_Taille4.png" style="width:100%; margin:auto;display:block;background-color: #546d78;" /></p>
 </div>
 </div>
 </div>
@@ -1857,7 +1871,18 @@ Plus précisemment, un <mark class="critic"><strong>arbre binaire</strong></mark
 <p>Sachant qu'il y a 1 arbre binaire vide, 1 arbre binaire contenant 1 noeud, 2 arbres binaires contenant 2 noeuds, 5 arbres binaires contenant 3 noeuds, et 14 arbres binaires contenant 4 noeuds, caclculer le nombre d'arbres binaires contenant 5 noeuds, sans chercher à les construire tous.</p>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
-<p>A venir.</p>
+<p>Un arbre de taille 5 dispose d'un noeud racine et de 4 noeuds, pouvant être répartis de la manière suivante :</p>
+<ul>
+<li>4 noeuds dans le sous-arbre gauche, et 0 dans le sous-arbre droit ;</li>
+<li>3 noeuds dans le sous-arbre gauche, et 1 dans le sous-arbre droit ;</li>
+<li>2 noeuds dans le sous-arbre gauche, et 2 dans le sous-arbre droit ;</li>
+<li>1 noeud dans le sous-arbre gauche, et 3 dans le sous-arbre droit ;</li>
+<li>0 noeud dans le sous-arbre gauche, et 4 dans le sous-arbre droit.</li>
+</ul>
+<p>On en déduit que le nombre d'arbres différents à 5 noeuds est :</p>
+<div class="arithmatex">\[
+14\times 1 + 5 \times 1 + 2 \times 2 + 1 \times 5 + 1 \times 14 = 14 + 5 + 4 + 5 + 14 = 42
+\]</div>
 </div>
 </div>
 </div>
@@ -1948,7 +1973,38 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.</p>
 </div></p>
 </div>
 <input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<ul>
+<li>Arbre 1 :
+    <div class="highlight"><pre><span></span><code><span class="n">arbre1</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> 
+      <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="c1">#FG</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="c1">#FD</span>
+           <span class="p">),</span>
+      <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="c1">#FD</span>
+            <span class="kc">None</span><span class="p">,</span><span class="c1">#FG</span>
+            <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="c1">#FD</span>
+                <span class="kc">None</span><span class="p">,</span><span class="c1">#FG</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="c1">#FD</span>
+                <span class="p">)</span>
+           <span class="p">)</span>    
+<span class="p">)</span>
+</code></pre></div></li>
+<li>Arbre 2 :
+    <div class="highlight"><pre><span></span><code><span class="n">arbre2</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span>
+      <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
+           <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="kc">None</span>
+                <span class="p">),</span>
+           <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="p">)</span>
+           <span class="p">),</span>
+  <span class="kc">None</span>
+  <span class="p">)</span>
+</code></pre></div></li>
+</ul>
 </div>
 </div>
 </div>
@@ -1958,7 +2014,12 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.</p>
 <p>Coder une fonction <code>hauteur(t)</code> calculant la hauteur d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
 </div>
 <input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Solution</label><div class="tabbed-content">
-<p>A venir.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hauteur</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">gauche</span><span class="p">),</span> <span class="n">hauteur</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -1968,7 +2029,12 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.</p>
 <p>Coder une fonction <code>taille(t)</code> calculant la taille d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
 </div>
 <input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Solution</label><div class="tabbed-content">
-<p>A venir.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">taille</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">taille</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span><span class="o">+</span><span class="n">taille</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -1978,7 +2044,9 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.</p>
 <p>Coder une fonction <code>estVide(tree)</code> renvoyant <code>True</code> si l'arbre est vide, et <code>False</code> sinon.</p>
 </div>
 <input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solution</label><div class="tabbed-content">
-<p>A venir.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">estVide</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2007,7 +2075,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <li>ensuite on affiche récursivement le sous-arbre gauche ;</li>
 <li>enfin on affiche récursivement le sous-arbre droit.</li>
 </ul>
-<p>Le parcours est dans l'ordre <mark class="critic"><strong>noeud - droit - gauche</strong></mark></p>
+<p>Le parcours est dans l'ordre <mark class="critic"><strong>noeud - gauche - droit</strong></mark></p>
 </div>
 <details class="example"><summary>Exemple</summary><p>Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :</p>
 <p><img alt="Arbre exemple parcours" src="../P1_Arbre6_prefixe.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
@@ -2062,10 +2130,24 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 </div></p>
 </div>
 <input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<ul>
+<li>Arbre 1 :<ul>
+<li>parcours Préfixe : <code>A B H</code></li>
+<li>parcours Infixe :</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
+<p><code>B A H</code>
+            * parcours suffixe : <code>B H A</code></p>
+<div class="highlight"><pre><span></span><code>    * Arbre 2 :
+        * parcours Préfixe : `A B C D E F G H I J K L`
+        * parcours Infixe :
+</code></pre></div>
+<p><code>D C E B G F A I J H L K</code>
+            * parcours suffixe : <code>D E C G F B J I L K H A</code></p>
 <h3 id="algorithmes-et-codage-des-parcours-en-profondeur">Algorithmes et codage des parcours en profondeur</h3>
 <div class="admonition tips">
 <p class="admonition-title">Codage des arbres</p>
@@ -2119,10 +2201,16 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Enoncé</label><div class="tabbed-content">
 <p>Créer une fonction <code>visiteInfixe</code> permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Solution</label><div class="tabbed-content"></div>
 </div>
-</div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visiteInfixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
+
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">visiteInfixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">visiteInfixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+</code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice : Parcours suffixe</p>
@@ -2130,12 +2218,18 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <p>Créer une fonction <code>visiteSuffixe</code> permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
 </div>
 <input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visiteSuffixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">visiteSuffixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">visiteSuffixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="parcours-en-largeur">Parcours en largeur</h3>
-<p>Le <mark class="critic"><strong>parcours en largeur</strong></mark> d'un arbre consiste à parcourir <strong>chaque niveau</strong> de l'arbre de droite à gauche, en partant de la racine.</p>
+<p>Le <mark class="critic"><strong>parcours en largeur</strong></mark> d'un arbre consiste à parcourir <strong>chaque niveau</strong> de l'arbre de gauche à droite, en partant de la racine.</p>
 <p><img alt="Arbre exemple parcours" src="../P1_Arbre6_largeur.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 </p>
 <div class="admonition question">
@@ -2144,7 +2238,10 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <p>Donner le résultat d'un parcours en largeur des deux arbres des exercices précédents.</p>
 </div>
 <input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">Solution</label><div class="tabbed-content">
-<p>A venir</p>
+<ul>
+<li>Arbre 1 : <code>A B H</code></li>
+<li>Arbre 2 :<code>A B H C F I K D E G J L</code></li>
+</ul>
 </div>
 </div>
 </div>
@@ -2175,7 +2272,17 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 </ul>
 </div>
 <input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">Solution</label><div class="tabbed-content">
-<p>A venir !</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visiteLargeur</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">f</span><span class="o">!=</span> <span class="p">[]</span> <span class="p">:</span>
+        <span class="n">noeud</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">noeud</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">noeud</span><span class="o">.</span><span class="n">gauche</span> <span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noeud</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">noeud</span><span class="o">.</span><span class="n">droit</span> <span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noeud</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
