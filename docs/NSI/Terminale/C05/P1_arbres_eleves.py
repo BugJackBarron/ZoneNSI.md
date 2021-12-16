@@ -88,16 +88,16 @@ def visitePrefixe(tree) :
         
 def visiteInfixe(tree) :
     if not(estVide(tree.gauche)) :
-        visitePrefixe(tree.gauche)
+        visiteInfixe(tree.gauche)
     print(tree.valeur, end=" ")
     if not(estVide(tree.droit)) :
-        visitePrefixe(tree.droit)
+        visiteInfixe(tree.droit)
 
 def visiteSuffixe(tree) :
     if not(estVide(tree.gauche)) :
-        visitePrefixe(tree.gauche)
+        visiteSuffixe(tree.gauche)
     if not(estVide(tree.droit)) :
-        visitePrefixe(tree.droit)
+        visiteSuffixe(tree.droit)
     print(tree.valeur, end=" ")
     
     

@@ -106,7 +106,9 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		
 	=== "Solution"
 	
-		A venir.
+		![Arbres 3 Noeuds](P1_Arbres_Taille3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		
+		![Arbres 4 Noeuds](P1_Arbres_Taille4.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
 		
 !!! question "Exercice"
 	
@@ -443,8 +445,8 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 		* Arbre 2 :
 			* parcours Préfixe : `A B C D E F G H I J K L`
 			* parcours Infixe :
-`B C D E F G A H I J K L`
-			* parcours suffixe : `B C D E F G H I J K L A`
+`D C E B G F A I J H L K`
+			* parcours suffixe : `D E C G F B J I L K H A`
 
 
 ### Algorithmes et codage des parcours en profondeur
@@ -513,7 +515,15 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 		Créer une fonction `visiteInfixe` permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.
 		
 	=== "Solution"
-		A venir !
+	```` python
+	def visiteInfixe(tree) :
+		
+		if not(estVide(tree.gauche)) :
+			visiteInfixe(tree.gauche)
+		print(tree.valeur, end=" ")
+		if not(estVide(tree.droit)) :
+			visiteInfixe(tree.droit)
+	````
 		
 !!! question "Exercice : Parcours suffixe"
 	
@@ -521,7 +531,14 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 		Créer une fonction `visiteSuffixe` permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.
 		
 	=== "Solution"
-		A venir !
+		```` python
+		def visiteSuffixe(tree) :
+			if not(estVide(tree.gauche)) :
+				visiteSuffixe(tree.gauche)
+			if not(estVide(tree.droit)) :
+				visiteSuffixe(tree.droit)
+			print(tree.valeur, end=" ")
+		````
 
 ### Parcours en largeur
 
@@ -536,7 +553,8 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 		Donner le résultat d'un parcours en largeur des deux arbres des exercices précédents.
 		
 	=== "Solution"
-		A venir
+		* Arbre 1 : `A B H`
+		* Arbre 2 :`A B H C F I K D E G J L`
 
 !!! abstract "Algorithme de parcours en largeur"
 
@@ -566,7 +584,17 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 		
 	=== "Solution"
 	
-		A venir !
-
+		```` python
+		def visiteLargeur(tree) :
+			f = []
+			f.insert(0, tree)
+			while f!= [] :
+				noeud = f.pop()
+				print(noeud.valeur, end=" ")
+				if noeud.gauche :
+					f.insert(0, noeud.gauche)
+				if noeud.droit :
+					f.insert(0, noeud.droit)
+		````
 
 	
