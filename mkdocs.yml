@@ -2,7 +2,7 @@ site_name: ZoneNSI
 site_url: https://www.zonensi.fr/
 site_author : Bug_Jack_Barron
 nav:
-    - 'Home' : index.md
+    - 'Home' : 'index.md'
     - 'Mathématiques' :
         - 'Seconde' : 
             - 'Présentation' : 'Maths/Seconde/home.md'
@@ -14,8 +14,8 @@ nav:
             - 'Algorithmique et bases de Python' :
                 - 'Algorithmes, affectations et types de variables' : 'Maths/Seconde/AlgoBases/AffectationTypes.md'
                 - 'Programmation en Python et utilisation de Thonny' : 'Maths/Seconde/AlgoBases/ProgrammationPythonThonny.md'
-        - 'Première' : 'WorkInProgress.md'
-        - 'Terminale' : 'WorkInProgress.md'
+        - 'Première' : 'Maths/Premiere/home.md'
+        - 'Terminale' : 'Maths/Terminale/home.md'
     - 'SNT' : 
         - 'Le Web' :
             - 'HTML' : 'WorkInProgress.md'
@@ -94,6 +94,7 @@ plugins :
     
 theme:
     name: material
+    custom_dir: overrides
     locale: fr
     logo  : assets/icons/house-fill.svg
     features:
