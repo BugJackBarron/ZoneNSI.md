@@ -17,7 +17,7 @@ Dans toute la suite de ce  thème, nous utiliserons le logiciel libre [Filius](h
 
 Commençons donc par connecter deux ordinateurs entre eux, et regardons comment ils communiquent :
 
-1. Ouvrez le logiciel \texttt{Filius}.
+1. Ouvrez le logiciel *Filius*.
 
 	!!! warning "Attention : choix de la langue"
 		Attention, la première chose que vous demandera `Filius` sera de choisir votre langue d'utilisation, et **il n'y a pas moyen de changer cette langue** sauf en supprimant le fichier de configuration qui se trouve dans le dossier `C:\Users\"nom d’utilisateur sur le réseau" \AppData\Local\.filius` (sous win7 et win 10).
@@ -43,7 +43,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 	
 	![Filius Config](Filius1.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
 
-5. Démarrez la simulation grâce à l'icône [Filius Demarrer](N1_icone_demarrer.png){: style="width:3em;"}.
+5. Démarrez la simulation grâce à l'icône ![Filius Demarrer](N1_icone_demarrer.png){: style="width:3em;"}.
 6. Cliquez-droit sur l'ordinateur portant l'IP `192.168.0.10` (en n'oubliant pas de régler de manière à avoir son IP comme nom), et cliquez sur *Afficher les échanges de données*. Déplacez la fenêtre sur la droite de l'écran afin de pouvoir voir à la fois cette fenêtre et les deux ordinateurs.
 
 	!!! tips ""
