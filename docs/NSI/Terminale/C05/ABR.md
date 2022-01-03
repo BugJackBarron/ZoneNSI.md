@@ -56,21 +56,50 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 	=== "Exemple 1"
 	
 		![P2_ABR_3.png](P2_ABR3.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		
+		Il s'agit bien d'un ABR.
 	
 	=== "Exemple 2"
 	
 		![P2_ABR_4.png](P2_ABR4.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 		
+		Il s'agit bien d'un ABR. On peut remarquer qu'il possède le même ensemble de noeuds que le précédent, mais pas dans le même ordre.
+		
 	=== "Contre-exemple 1"
 	
 		![P2_ABR_5.png](P2_ABR5.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		
+		Ce n'est pas un ABR, le noeud 5 étant dans le sous-arbre gauche du noeud 4, alors que les sous-arbres gauches doivent posséder des clés de valeurs inférieures.
 		
 	=== "Contre-exemple 2"
 		
 		![P2_ABR_6.png](P2_ABR6.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 
+		Ce n'est pas un ABR tout simplement parce qu'il n'est pas binaire.
+		
+### Implémentation en Python
 
-### Recherche dans un ABR
+Il n'y a aucune différence entre un ABR et un arbre binaire en terme d'implémentation, on pourra donc conserver :
+
+* les objets `Node` ;
+* les fonctions `hauteur`, `taille` et  `est_vide` ;
+* les fonctions `visitePrefixe`, `visiteInfixe` et ``visiteSuffixe`.
+
+
+### Recherches dans un ABR
+
+Un ABR est spécialement conçu pour la recherche, particulièrement pour la recherche récursive. La méthdoe est la suivante :
+
+
+!!! asbtract "Algorithme de recherche"
+
+	On compare la valeur cherchée avec la clé de la racine :
+	
+	* si elle est égale, la valeur est trouvée et on peut renvoyer `Vrai` ;
+	* si elle est inférieure, alors on recherche récursivement dans le sous-arbre gauche ;
+	* si elle est supérieure, alors on recherche récursivement dans le sous-arbre droit.
+	
+	Si on atteint une feuille dont la clé n'est pas la valeur recherchée, on sait alors que la valeur recherchée n'est la clé d'aucun nœud, elle ne figure donc pas dans l'arbre de recherche. Pratiquement dès qu'on tombe sur un arbre vide, on peut affirmer que la clé n'est pas dans l'arbre, et on renvoie `Faux`
 
 ### Ajout dans un ABR
 

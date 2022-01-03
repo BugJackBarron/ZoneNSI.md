@@ -1,0 +1,2469 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Bug_Jack_Barron">
+      
+      
+        <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C04/BasesSQL1/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Bases de SQL 1 - ZoneNSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#commandes-de-base-en-sql-creations-de-tables-et-types-de-donnees" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ZoneNSI" class="md-header__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZoneNSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bases de SQL 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ZoneNSI" class="md-nav__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    ZoneNSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Mathématiques
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Mathématiques" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Mathématiques
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Seconde
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Seconde" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Seconde
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Ensembles de nombres et intervalles
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Ensembles de nombres et intervalles" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Ensembles de nombres et intervalles
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_01_Ensembles_Nombres/" class="md-nav__link">
+        Ensembles de nombres 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_02_Intervalles/" class="md-nav__link">
+        Intervalles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Notion de fonctions
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Notion de fonctions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Notion de fonctions
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C03/C03_01_Generalite_fonctions/" class="md-nav__link">
+        Vocabulaire et rappels
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" type="checkbox" id="__nav_2_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        Algorithmes, affectations et types de variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/ProgrammationPythonThonny/" class="md-nav__link">
+        Programmation en Python et utilisation de Thonny
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Premiere/home.md" class="md-nav__link">
+        Première
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Terminale/home.md" class="md-nav__link">
+        Terminale
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            SNT
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="SNT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            SNT
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le Web
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le Web
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Web/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Données Structurées
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Données Structurées" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Données Structurées
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Donnees/Arborescence/" class="md-nav__link">
+        Arborescence des fichiers et dossiers 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Reseaux Informatiques
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Reseaux Informatiques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Reseaux Informatiques
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/TCP_IP/" class="md-nav__link">
+        Adresses IP et TCP/IP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            NSI
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="NSI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            NSI
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Première
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Première" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Première
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Variables et affectations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Boucles et conditions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Fonctions, assertions et tests unitaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C01/ProjetPendu/" class="md-nav__link">
+        Projet : Jeu du Pendu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le codage des données
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le codage des données" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le codage des données
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C02/BinaireCodageEntiers/" class="md-nav__link">
+        Binaire et codage des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C02/Entiers_relatifs_Flottants/" class="md-nav__link">
+        Entiers relatifs et flottants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le web
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le web" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le web
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/HTML/" class="md-nav__link">
+        HTML strict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/JS01/" class="md-nav__link">
+        Introduction à Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/JS02/" class="md-nav__link">
+        Javascript, le DOM et les formulaires
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_4" type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Les séquences
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Les séquences" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Les séquences
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/Tuples/" class="md-nav__link">
+        Tuples et algorithmes de parcours
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Terminale
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Terminale" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Terminale
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Modularite/" class="md-nav__link">
+        Modules, interfaces, encapsulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/IntroPOO/" class="md-nav__link">
+        Introduction à la POO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Récursivité
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Récursivité" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Récursivité
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/Recursivite/" class="md-nav__link">
+        Notion de récursivité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/RecursiviteFractales/" class="md-nav__link">
+        Applications : Fractales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/RecursiviteTris/" class="md-nav__link">
+        Applications : Tris
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Listes, Piles, Files
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Listes, Piles, Files" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Listes, Piles, Files
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/ListesChainees/" class="md-nav__link">
+        Listes chainées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/Piles_et_files/" class="md-nav__link">
+        Piles et files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/ToursHanoi/" class="md-nav__link">
+        TP : Tours de Hanoï
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Données et SQL
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Données et SQL" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Données et SQL
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ModeleRelationnel/" class="md-nav__link">
+        Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Bases de SQL 1
+          </a>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Bases de SQL 1
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#du-modele-relationnel-a-la-base-de-donnee-une-premiere-approche" class="md-nav__link">
+    Du modèle relationnel à la base de donnée : une première approche
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-de-donnees-en-sql" class="md-nav__link">
+    Types de données en SQL
+  </a>
+  
+    <nav class="md-nav" aria-label="Types de données en SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-numeriques" class="md-nav__link">
+    Types numériques
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-textes" class="md-nav__link">
+    Types textes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-booleens" class="md-nav__link">
+    Types booléens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-temporels" class="md-nav__link">
+    Types temporels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-null" class="md-nav__link">
+    Type NULL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creations-et-suppressions-de-tables" class="md-nav__link">
+    Créations et suppressions de tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Créations et suppressions de tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-de-tables" class="md-nav__link">
+    Création de tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suppressions-de-tables" class="md-nav__link">
+    Suppressions de tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nouvelles-contraintes-dintegrites" class="md-nav__link">
+    Nouvelles Contraintes d'intégrités
+  </a>
+  
+    <nav class="md-nav" aria-label="Nouvelles Contraintes d'intégrités">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contraintes-dunicite-et-de-non-nullite" class="md-nav__link">
+    Contraintes d'unicité et de non-nullité
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-increment" class="md-nav__link">
+    Auto-incrément
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto-incrément">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contraintes-specifiques" class="md-nav__link">
+    Contraintes spécifiques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insertions-de-donnees-dans-une-table-existante" class="md-nav__link">
+    Insertions de données dans une table existante.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BasesSQL2/" class="md-nav__link">
+        Bases de SQL 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BasesSQL3/" class="md-nav__link">
+        Bases de SQL 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Projet_Pokemon/" class="md-nav__link">
+        Projet Pokemon
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Arbres Binaires
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Arbres Binaires" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Arbres Binaires
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/Def_Arbres/" class="md-nav__link">
+        Définition et propriétés des arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/ABR/" class="md-nav__link">
+        Arbres Binaires de Recherche
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Miscellanées
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellanées" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Miscellanées
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Le langage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/mkdocs_cmd/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Manim/BasesManim/" class="md-nav__link">
+        Manim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_5" type="checkbox" id="__nav_5_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Pygame" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/InstallationPygame/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/Base_pygame/" class="md-nav__link">
+        Bases de Pygame
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="BasesSQL1.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
+              
+                
+                
+                <h1 id="commandes-de-base-en-sql-creations-de-tables-et-types-de-donnees">Commandes de base en SQL : créations de tables et types de données</h1>
+<p>Une utilisation efficace des bases de données relationnelles n'est réalisable qu'avec un SGBDR (Système de Gestion de Bases d Données Relationnelles), c'esst-à-dire un logiciel offrant :</p>
+<ul>
+<li>la définition des données sous forme de relations ;</li>
+<li>la manipulation des données par un langage déclaratif ;</li>
+<li>l’administration des données.</li>
+</ul>
+<p>Dans ce chapitre, nous nous contenterons d'utiliser de manière sommaire des fonctionnalités de SGBDR offertes :</p>
+<ul>
+<li>soit par les notebooks <a href="https://capytale2.ac-paris.fr/web/accueil" target="_blank">Capytale</a> ;</li>
+<li>soit par le logiciel portable <a href="https://sqlitebrowser.org/dl/" target="_blank">DB Browser for SQLite</a> ;</li>
+<li>soit par l'intermédiaire de modules python.</li>
+</ul>
+<p>Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. Pour l'instant nous nous contenterons des fonctionnalités de base du langage SQL</p>
+<h2 id="du-modele-relationnel-a-la-base-de-donnee-une-premiere-approche">Du modèle relationnel à la base de donnée : une première approche</h2>
+<p>SQL (<em>Structured Query Language</em>) est directement inspiré du modèle relationnel défini dans la <a href="../ModeleRelationnel/">partie précédente</a>. Ce langage est standardisé par la norme <code>ISO/IEC 9075</code>, dont la dernière version date de <a href="https://www.iso.org/fr/standard/63555.html" target="_blank">2016</a>.</p>
+<p>La syntaxe du SQL est volontairement <em>verbeuse</em> et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple : Création de la table <code>usager</code></p>
+<p>Les lignes de code SQL suivantes permettent la création d'une <mark class="critic"><strong>table</strong></mark> <code>usager</code>, qui correspond globalement à la <strong>relation</strong> <code>usager</code> telle que définie par le schéma :</p>
+<p>usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre <em>String</em></span>)</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">usager</span> <span class="p">(</span><span class="n">nom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+                     <span class="n">prenom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+                     <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span>
+                     <span class="n">cp</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                     <span class="n">adresse</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+                     <span class="n">inscription</span> <span class="nb">DATE</span><span class="p">,</span>
+                     <span class="n">code_barre</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">);</span>
+</code></pre></div>
+On envoie ici au SGBD un ordre SQL de création de table, par l'intermédiare de  la commande <code>CREATE TABLE</code>.
+Le nom de la table sera <code>usager</code>. Cette table contiendra des <mark class="critic"><strong>colonnes</strong></mark> (ou <mark class="critic"><strong>champs</strong></mark> qui correspondent aux <strong>attributs</strong> de la relation.
+La première colonne <code>nom</code> est définie comme étant du type <code>VARCHAR</code>, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.
+La colonne <code>inscription</code> est définie comme étant du type <code>DATE</code>.
+La dernière colonne <code>code_barre</code> est définie comme étant du type <code>VARCHAR</code> de longueur maximale 15, auquel on adjoint la contrainte <code>PRIMARY KEY</code>, qui indique simplement qu'il s'agit bien de la <strong>clé primaire</strong> de la relation.</p>
+<p>L'ordre se termine par un <code>;</code>.</p>
+</div>
+<div class="admonition tips">
+<p class="admonition-title">SQL et case des caractères</p>
+<p>SQL est <strong>insensible à la casse</strong>. Il aurait été tout aussi efficace d'écrire <code>create table</code> ou <code>CrEaTE tABlE</code>.</p>
+<p>De fait certaines règles de bonnes pratiques sont à suivre :</p>
+<ul>
+<li>les mots réservés de SQL sont écrits en  <strong>majuscule</strong> ;</li>
+<li>les attributs sont écrits en <strong>minuscules</strong>, ainsi que les noms de tables<sup id="fnref:nomTables"><a class="footnote-ref" href="#fn:nomTables">1</a></sup> ;</li>
+<li>les noms d'attributs et de tables ne pouvant contenir d'espaces, ceux-ci sont remplacés par le caractère <code>_</code> (<em>underscore</em>).</li>
+<li>les noms de table sont écrits au singulier.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple : insertions de lignes</p>
+<p>Les lignes SQL suivantes permettent l'insertion de trois <mark class="critic"><strong>lignes</strong></mark>  dans la table <code>usager</code>, qui correspondent à trois <strong>entités</strong> de la relation <code>Usager</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">usager</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;Pavie&#39;</span><span class="p">,</span> <span class="s1">&#39;Auguste&#39;</span><span class="p">,</span> <span class="s1">&#39;auguste.pavie@ggp.fr&#39;</span><span class="p">,</span> <span class="s1">&#39;22200&#39;</span><span class="p">,</span> <span class="s1">&#39;13 rue Anatole Le Braz, Guingamp&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-11-09&#39;</span><span class="p">,</span> <span class="s1">&#39;012345678910111&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Prevert&#39;</span><span class="p">,</span> <span class="s1">&#39;Jacques&#39;</span><span class="p">,</span> <span class="s1">&#39;jacques.prevert@ggp.fr&#39;</span><span class="p">,</span> <span class="s1">&#39;22200&#39;</span><span class="p">,</span> <span class="s1">&#39;58 Rue de la Trinité, Guingamp&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-11-10&#39;</span><span class="p">,</span> <span class="s1">&#39;012345678910112&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Camus&#39;</span><span class="p">,</span> <span class="s1">&#39;Albert&#39;</span><span class="p">,</span> <span class="s1">&#39;albert.camus@grace&#39;</span><span class="p">,</span> <span class="s1">&#39;22205&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Rue de Kerpaour, Grâces&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-10-09&#39;</span><span class="p">,</span> <span class="s1">&#39;012345678910113&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+<p>Chacune des <strong>lignes</strong> est un tuple, chaque composante correspondant à la <strong>colonne</strong> définie dans l'ordre de création de table, <strong>dans l'ordre de définition</strong> (il existe un moyen d'être plus explicite et de s'affranchir de l'ordre, que nous verrons plus tard).
+Vous pouvez constater que dans la troisième ligne, l'email n'est pas correctement écrit. Nous n'avons pour l'instant pas mis de contraintes supplémentaires sur le <mark class="critic"><strong>champ</strong></mark> <code>email</code>, donc le SGBD acceptera cette entrée comme correcte.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple : Première requête</p>
+<p>Nous allons maintenant interroger cette table par l'intermédiaire d'une <mark class="critic"><strong>requête</strong></mark> (<em>query</em> en anglais) : </p>
+<p><div class="highlight"><pre><span></span><code><span class="k">SELECT</span> 
+<span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span>
+<span class="k">FROM</span>
+<span class="n">usager</span><span class="p">;</span>    
+</code></pre></div>
+Cette requête renvoie le résultat suivant :</p>
+<table>
+<thead>
+<tr>
+<th>nom</th>
+<th>prenom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pavie</td>
+<td>Auguste</td>
+</tr>
+<tr>
+<td>Prevert</td>
+<td>Jacques</td>
+</tr>
+<tr>
+<td>Camus</td>
+<td>Albert</td>
+</tr>
+</tbody>
+</table>
+<p>c'est-à-dire une <mark class="critic"><strong>table</strong></mark> avec les attributs <code>nom</code> et <code>prenom</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Différences entre modèle relationnel et SQL</p>
+<p>Formellement, SQL n'est pas aussi strict que le modèle relationnel. En effet une table ne doit pas obligatoirement posséder une <strong>clé primaire</strong>.</p>
+<p>La conséquence directe de ce choix est une violation de la contrainte de relation, et il est tout à fait possible d'avoir des doublons dans une table, ce qui sera toléré par SQL. Mais c'est une mauvaise pratique !</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Manipuler SQL</p>
+<p>Rendez-vous dans le <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/b1c9-152465" target="_blank">bac-à-sable SQL</a> sur Capytale.</p>
+<ol>
+<li>Exécutez les 4 premières cellules.</li>
+<li>Exécutez la cinquième. Quel est le résultat fournit par cette requête ?</li>
+<li>Exécutez la sixième. Quel est le résultat fournit par cette requête ?</li>
+<li>
+<p>Ajoutez à la base de données l'entité suivante : 
+<code>('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')</code>
+Que se passe-t-il ? Pourquoi ?</p>
+</li>
+<li>
+<p>Ajoutez à la base de données l'entité suivante : 
+<code>('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')</code>  <br />
+Que se passe-t-il ? Pourquoi ?</p>
+</li>
+<li>
+<p>Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.</p>
+</li>
+</ol>
+</div>
+<h2 id="types-de-donnees-en-sql">Types de données en SQL</h2>
+<p>Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standards édictés par l'ISO. On peut néanmoins dégager des constantes  dans les différents types utilisés </p>
+<h3 id="types-numeriques">Types numériques</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Types numériques</p>
+<p>De manière générale, le standard SQL définit des types numériques représentants de manière <em>exacte</em> ou <em>approchée</em>.</p>
+<table>
+<thead>
+<tr>
+<th align="center">nom du type</th>
+<th align="center">exact/approché</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>SMALLINT</code></td>
+<td align="center">exact</td>
+<td align="left">Entiers signés sur 16 bits (<span class="arithmatex">\(-32~768\)</span> à <span class="arithmatex">\(32~768\)</span>)</td>
+</tr>
+<tr>
+<td align="center"><code>INT</code> ou <code>INTEGER</code></td>
+<td align="center">exact</td>
+<td align="left">Entiers signés sur 32 bits (<span class="arithmatex">\(-2~147~483~647\)</span> à <span class="arithmatex">\(2~147~483~647\)</span>)</td>
+</tr>
+<tr>
+<td align="center"><code>BIGINT</code></td>
+<td align="center">exact</td>
+<td align="left">Entiers signés sur 64 bits (<span class="arithmatex">\(\simeq -9\times 10^{18}\)</span> à $\simeq 9\times 10^{18})</td>
+</tr>
+<tr>
+<td align="center"><code>DECIMAL(t,f)</code></td>
+<td align="center">exact</td>
+<td align="left">Décimal signé de <span class="arithmatex">\(t\)</span> chiffres dont <span class="arithmatex">\(f\)</span> après la virgule</td>
+</tr>
+<tr>
+<td align="center"><code>REAL</code></td>
+<td align="center">approché</td>
+<td align="left">Flottant sur 32 bits (<span class="arithmatex">\(-3,40\times 10^{38}\)</span> à <span class="arithmatex">\(3,40\times 10^{38}\)</span>)</td>
+</tr>
+<tr>
+<td align="center"><code>DOUBLE PRECISION</code></td>
+<td align="center">approché</td>
+<td align="left">Flottant sur 64 bits (<span class="arithmatex">\(-1,79\times 10^{308}\)</span> à <span class="arithmatex">\(1,79\times 10^{308}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p>On peut noter le cas particulier du type <code>DECIMAL(t,f)</code>, qui permet du calcul en valeur exacte, par exemple sur des sommes d'argent. Par exemple, l'utilisation du type <code>DECIMAL(5,2</code> permettra de travailler avec des sommes de <span class="arithmatex">\(-999,99\)</span> € à <span class="arithmatex">\(999,99\)</span> €.</p>
+</div>
+<h3 id="types-textes">Types textes</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Types textes</p>
+<p>En SQL, les chaînes de carcatères sont délimitées par des guillemets simples <code>'</code>. Il est possible d'<em>échapper</em> un guillemet simple en le doublant, comme par exemple dans <code>'n''oubliez pas d''échapper'</code>.
+Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaîne pour avoir des chaînes multilignes.</p>
+<table>
+<thead>
+<tr>
+<th align="center">nom du type</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>CHAR(n)</code></td>
+<td align="left">Chaîne d'exactement <span class="arithmatex">\(n\)</span> caractères</td>
+</tr>
+<tr>
+<td align="center"><code>VARCHAR(n)</code></td>
+<td align="left">Chaîne d'au plus <span class="arithmatex">\(n\)</span> caractères</td>
+</tr>
+<tr>
+<td align="center"><code>TEXT</code></td>
+<td align="left">Chaîne de taille quelconque</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La taille maximale dépend du SGBD, mais tous supportent au moins <span class="arithmatex">\(8~000\)</span> caractères. La valeur minimale pour <span class="arithmatex">\(n\)</span> est 1.</li>
+<li>Pour le type <code>CHAR(n)</code>, si la chaîne stockée est de longueur inférieure à <span class="arithmatex">\(n\)</span>, on complète la chaîne <strong>à droite</strong> par le nombre d'espaces nécesaires.</li>
+<li>Le type <code>TEXT</code> est en fait un type <code>VARCHAR</code> de la dimension maximale supportée par le SGBD.</li>
+</ul>
+</div>
+<h3 id="types-booleens">Types booléens</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Type Booléen</p>
+<p>Selon les SGBD, le type booléen est in,également supporté. Dans notre cas cette année, on supposera qu'il l'est correctement (mais il existe de nombreuses possibilités pour le simuler, par exemple avec un type <code>SMALLINT</code> où <span class="arithmatex">\(0\)</span> représente <code>False</code> et le reste <code>True</code>).</p>
+</div>
+<h3 id="types-temporels">Types temporels</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Types temporels</p>
+<p>Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeurs...</p>
+<p>Nous nous contenterons ici d'aborder de manière très superficielle ces types :</p>
+<table>
+<thead>
+<tr>
+<th align="center">nom du type</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>DATE</code></td>
+<td align="left">Une date au format <code>'AAAA-MM-JJ'</code></td>
+</tr>
+<tr>
+<td align="center"><code>TIME</code></td>
+<td align="left">Une heure au format <code>'hh:mm:ss'</code></td>
+</tr>
+<tr>
+<td align="center"><code>TIMESTAMP</code></td>
+<td align="left">Un instant au format <code>'AAAA-MM-JJ hh:mm:ss'</code></td>
+</tr>
+</tbody>
+</table>
+<p>Une propriété intéressante du type <code>DATE</code> est qu'il supporte l'addition correctement. si <code>d</code> est du type <code>DATE</code>, <code>d+7</code> produira une date corerspondante à 7 jours après <code>d</code>, en changeant jours, mois et années correctement.</p>
+</div>
+<h3 id="type-null">Type <code>NULL</code></h3>
+<p>Une valeur <code>NULL</code> existe en SQL, et correspond à l'absence de donnée. Elle s'utilise comme la valeur <code>None</code> en Python. Elle est juste <strong>interdite pour les clés primaires</strong>.</p>
+<p>Il est possible de tester si une valeur est nulle ou non grâce aux commandes <code>IS NULL</code> ou <code>IS NOT NULL</code>.</p>
+<h2 id="creations-et-suppressions-de-tables">Créations et suppressions de tables</h2>
+<h3 id="creation-de-tables">Création de tables</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Création de tables</p>
+<p>La création d'une table se fait par l'intermédiaire de la commande suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">nom_table</span> <span class="p">(</span><span class="n">attribut_1</span> <span class="n">domaine_1</span> <span class="n">contrainte_1_1</span> <span class="n">contrainte_1_2</span> <span class="p">...,</span>
+                        <span class="n">attribut_2</span> <span class="n">domaine_2</span> <span class="n">contrainte_2_1</span> <span class="n">contrainte_2_2</span> <span class="p">...,</span>
+                        <span class="p">...,</span>
+                        <span class="n">attribut_n</span> <span class="n">domaine_n</span> <span class="n">contrainte_n_1</span><span class="p">...,</span>
+                        <span class="n">contrainte_globale_1</span><span class="p">,</span>
+                        <span class="p">...,</span>
+                        <span class="n">contrainte_globale_n</span><span class="p">);</span>
+</code></pre></div>
+<p>Une définition d'attributs consiste en :</p>
+<ul>
+<li>la donnée d'un <em>nom</em> d'attribut (obigatoire) ;</li>
+<li>la donnée d'un <em>domaine</em> (obligatoire) ;</li>
+<li>la donnée de contraintes sur cet attribut (optionnel).</li>
+</ul>
+<p>Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de déinition, avant la parenthèse fermante.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple avec clé primaire simple</p>
+<p>La relation <code>Livre</code>  suivante <img alt="relationLivre" src="../relationLivre3.png" style="width:15%;" /> peut être crée en SQL par la commande suivante :</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Livre</span> <span class="p">(</span><span class="n">titre</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+                    <span class="n">editeur</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+                    <span class="n">annee</span> <span class="nb">SMALLINT</span><span class="p">,</span>
+                    <span class="n">ISBN</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">);</span>                     
+</code></pre></div>
+On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exécution de code</p>
+<p>Dans le bac à sable SQL, créer la table <code>Livre</code>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple avec clé primaire et clés étrangères</p>
+<p>Maintenant que nous avopns crée les tables <code>Usager</code> et <code>Livre</code>, nous pouvons créer la table <code>Emprunt</code> telle que définie dans le schéma <img alt="relationEmprunt.png" src="../relationEmprunt.png" style="width:15%;" /></p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Emprunt</span> <span class="p">(</span>  <span class="n">code_barre</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">usager</span><span class="p">(</span><span class="n">code_barre</span><span class="p">),</span>
+                        <span class="n">ISBN</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">REFERENCES</span> <span class="n">Livre</span><span class="p">(</span><span class="n">ISBN</span><span class="p">),</span>
+                        <span class="n">retour</span> <span class="nb">DATE</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Création de code</p>
+<p>Créer le code SQL nécessaire pour obtenir la table <code>Auteur</code> correspondant  à la relation <img alt="relationAuteur.png" src="../relationAuteur.png" style="width:15%;" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple de création de clé primaire avec de multiples attributs</p>
+<p>Pour la table <code>Auteur_de</code> définie par <img alt="relationAuteur_de.png" src="../relationAuteur_de.png" style="width:15%;" />, on peut utiliser le code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Auteur_de</span> <span class="p">(</span> <span class="n">idA</span> <span class="nb">INT</span> <span class="k">REFERENCES</span> <span class="n">Auteur</span><span class="p">(</span><span class="n">idA</span><span class="p">),</span>
+                        <span class="n">ISBN</span> <span class="k">REFERENCES</span> <span class="n">Livre</span><span class="p">(</span><span class="n">ISBN</span><span class="p">),</span>
+                        <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ida</span><span class="p">,</span> <span class="n">ISBN</span><span class="p">));</span>
+</code></pre></div>
+</div>
+<h3 id="suppressions-de-tables">Suppressions de tables</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Suprression de tables</p>
+<p>Pour supprimer une table, il suffit d'utiliser :</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">nom_de_la_table</span><span class="p">;</span>
+</code></pre></div>
+<p>Attention toutefois, <strong>il n'est pas possible de supprimer une table si elle sert de référence pour une clé étrangère !</strong> Cela violerait une <strong>contrainte de référence</strong>.</p>
+</div>
+<h3 id="nouvelles-contraintes-dintegrites">Nouvelles Contraintes d'intégrités</h3>
+<p>Nous avons vu l'utilisation de <code>PRIMARY KEY</code> et <code>REFERENCES</code>, qui permettent de définir les contraintes de relation et de références. Il est possible de rajouter en SQL d'autres types de contraintes.</p>
+<h4 id="contraintes-dunicite-et-de-non-nullite">Contraintes d'unicité et de non-nullité</h4>
+<p>Entre autres :</p>
+<ul>
+<li>il est possible de préciser qu'un attribut (une colonne en langage SQL) ne peut être vbide, en ajoutant la contrainte <code>NOT NULL</code>;</li>
+<li>de même il est possible de préciser qu'un attribut ne peut exister en doublon, en ajoutant la contrainte <code>UNIQUE</code>.</li>
+</ul>
+<p>Ainsi, la table <code>Usager</code> peut être redéfinie par :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">usager</span> <span class="p">(</span><span class="n">nom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">prenom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+                     <span class="n">cp</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">adresse</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+                     <span class="n">inscription</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">code_barre</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">);</span>
+</code></pre></div>
+<p>Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pâs être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).</p>
+<h3 id="auto-increment">Auto-incrément</h3>
+<p>Pour les <mark class="critic"><strong>clé primaires numériques</strong></mark>, il est possible d'ajouter la contrainte d'<mark class="critic"><strong>auto-incrémentation</strong></mark> de cet identifiant. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>)  dans la table, une nouvelle valeur de clé sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Auteur</span> <span class="p">(</span><span class="n">nom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">prenom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">idA</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">);</span>
+</code></pre></div>
+<p>Par défaut l'incrémentation commence à 1.</p>
+<h4 id="contraintes-specifiques">Contraintes spécifiques</h4>
+<p>Il est aussi possible de placer certaines contraintes spécifiques lors de la création d'une table, grâce au mot clé <code>CHECK</code> suivi d'une formule booléenne. Par exemple, si on souhaite introduire les années de naissance et de décès des auteurs, il est possible d'utiliser l'instruction suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Auteur</span> <span class="p">(</span><span class="n">nom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">prenom</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+                     <span class="n">idA</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+                     <span class="n">naissance</span> <span class="nb">SMALLINT</span><span class="p">,</span>
+                     <span class="n">deces</span> <span class="nb">SMALLINT</span><span class="p">,</span>
+                     <span class="k">CHECK</span> <span class="p">(</span><span class="n">naissance</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">OR</span> <span class="n">deces</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">OR</span> <span class="n">naissance</span> <span class="o">&lt;</span> <span class="n">deces</span><span class="p">)</span> <span class="p">);</span>
+</code></pre></div>
+<p>Ainsi, on vérifie qu'il n'y a pas d'erreurs sur une date de naissance postérieure à une date de décès.</p>
+<p>On notera que cette contrainte s'écrit <strong>directement après la dernière définition d'attributs</strong> et que l'expression booléenne est entre parenthèses.    </p>
+<div class="admonition question">
+<p class="admonition-title">Mise à jour des tables</p>
+<p>Dans le bac à sable, mettre à jour les tables afin qu'elles correspondent aux dernières instructions données.</p>
+</div>
+<h2 id="insertions-de-donnees-dans-une-table-existante">Insertions de données dans une table existante.</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Insertion de données</p>
+<p>Pour insérer des données dans une table existante, on utilise l'instruction <code>ÌNSERT INTO</code>. Il existe deux possibilités pour insérer des données :</p>
+<ul>
+<li>
+<p>En insérant les valeurs sans préciser le nom des colonnes :</p>
+<p><code>`SQL
+INSERT INTO nom_table VALUES (valeur1, valeur2, ..., valeurn);</code>
+les valeurs seront insérées dans l'ordre défini lors de la création de la table.</p>
+</li>
+<li>
+<p>En insérant les valeurs en précisant les colonnes concernées :</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">nom_table</span><span class="p">(</span><span class="n">attribut1</span><span class="p">,</span> <span class="n">attribut3</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="n">valeur1</span><span class="p">,</span> <span class="n">valeur3</span><span class="p">);</span>
+</code></pre></div>
+Ici les valeurs ne seront insérées que dans les colonnes qui correspondent au nom donné.</p>
+</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple d'insertions</p>
+<ul>
+<li>Insertion complète :
+    <div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Livre</span> <span class="k">VALUES</span><span class="p">(</span><span class="ss">&quot;Dune&quot;</span><span class="p">,</span> <span class="ss">&quot;Pocket&quot;</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="ss">&quot;978-2266320542&quot;</span><span class="p">);</span>
+</code></pre></div>
+    Les informations fournies seront insérées dans l'ordre <code>titre</code>, <code>éditeur</code>, <code>année</code> et <code>ÌSBN</code>.</li>
+<li>Insertion selon les colonnes :
+    <div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Livre</span><span class="p">(</span><span class="n">ISBN</span><span class="p">,</span> <span class="n">titre</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="ss">&quot;978-2070319015&quot;</span><span class="p">,</span> <span class="ss">&quot;H2G2, tome 1 : Le Guide du voyageur galactique &quot;</span><span class="p">);</span>
+</code></pre></div>
+    Seules les colonnes <code>ISBN</code> et <code>titre</code> sont renseignées. les autres seront mises à une valeur <code>NULL</code>.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Il est à noter que les contraintes d'intégrités sont vérifiées lors de l'insertion. Une instruction du type :</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Auteur</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">naissance</span><span class="p">,</span> <span class="n">deces</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="ss">&quot;ADAMS&quot;</span><span class="p">,</span> <span class="ss">&quot;Douglas&quot;</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">1952</span><span class="p">);</span>
+</code></pre></div>
+<p>donnera une erreur par violation d'intégrité<sup id="fnref:Baleine"><a class="footnote-ref" href="#fn:Baleine">2</a></sup>, la date de naissance étant supérieure à la date de décès.</p>
+</div>
+<h2 id="exercices">Exercices</h2>
+<div class="admonition question">
+<p class="admonition-title">Exercice 1</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<p>Reprendre l'énooncé de l'exercice 1 de la fiche <a href="../ModeleRelationnel/#exercices" target="_blank">modèle relationnel</a> et donner l'instruction SQL permettant de créer la table correspondante.</p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 2</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Reprendre l'énooncé de l'exercice 2 de la fiche <a href="../ModeleRelationnel/#exercices" target="_blank">modèle relationnel</a> et donner l'instruction SQL permettant de créer les tables correspondantes.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice 2</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>Reprendre l'énooncé de l'exercice 3 de la fiche <a href="../ModeleRelationnel/#exercices" target="_blank">modèle relationnel</a> et donner l'instruction SQL permettant de créer les tables correspondantes.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:nomTables">
+<p>tout le monde n'est pas forcément d'accord sur ce point. Certains mettent une majuscule à la première lettre du nom de la table...&#160;<a class="footnote-backref" href="#fnref:nomTables" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Baleine">
+<p>Pauvre <a href="https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)" target="_blank">Marvin</a>...&#160;<a class="footnote-backref" href="#fnref:Baleine" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../ModeleRelationnel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Modèle relationnel" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Modèle relationnel
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../BasesSQL2/" class="md-footer__link md-footer__link--next" aria-label="Next: Bases de SQL 2" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Bases de SQL 2
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - F.Vergniaud
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:admin@zonensi.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="../../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

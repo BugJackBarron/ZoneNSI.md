@@ -438,15 +438,12 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 	
 		* Arbre 1 :
 			* parcours Préfixe : `A B H`
-			* parcours Infixe :
-`B A H`
-			* parcours suffixe : `B H A`
-			
+			* parcours Infixe : `B A H`
+			* parcours Suffixe : `B H A`
 		* Arbre 2 :
 			* parcours Préfixe : `A B C D E F G H I J K L`
-			* parcours Infixe :
-`D C E B G F A I J H L K`
-			* parcours suffixe : `D E C G F B J I L K H A`
+			* parcours Infixe : `D C E B G F A I J H L K`
+			* parcours Suffixe : `D E C G F B J I L K H A`
 
 
 ### Algorithmes et codage des parcours en profondeur
