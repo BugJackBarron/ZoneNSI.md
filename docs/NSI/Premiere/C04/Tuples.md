@@ -1,256 +1,230 @@
-%%!TEX encoding = UTF-8 Unicode
+# Tuples et algorithmes de parcours
 
-\documentclass[a4paper,12pt]{article}
-\input{../../preambule.tex}
-\input{../../figures.tex}
+**Largement inspiré du fabuleux site [Pixees.fr](http://pixees.fr){: target="_blank"}**
 
-
-
-\lhead{\ccby}
-\rhead{\small{ $1^{\text{ère}}$ NSI}}
-\chead{\small{ $C05$ Tuples, tableaux et algorithmes de tableaux}}
-
-
-\lfoot{\tiny{Ann\'ee 2020-2021}}
-\cfoot{\textbf{Page \thepage/\pageref{LastPage}}}
-%\cfoot{}
-\rfoot{\tiny{www.zonensi.fr}}
-
-\begin{document}
-\sffamily %Pourutiliser une police sans empatement
-\begin{center}
- \large{\textbf{$C05-01$ Tuples et algorithmes de parcours}}
-\end{center}
-\textit{Largement inspiré du fabuleux site Pixees.fr}
-
-\section*{Introduction : les séquences}
-
- En informatique, il est possible de \og stocker \fg plusieurs grandeurs dans une même structure, appelée une \textbf{séquence}. De façon plus précise, une séquence est un ensemble \textbf{fini et ordonné} d'éléments, repérés par un \textbf{indice}.\\
+!!! abstract "Définition : Séquences"
+	En informatique, il est possible de &laquo; stocker &raquo; plusieurs grandeurs dans une même structure, appelée une {==**séquence**==}. De façon plus précise, une séquence est un ensemble **fini et ordonné** d'éléments, repérés par un **indice**.
+	 
+	 Dans de très nombreux langages informatiques, mais pas dans tous, les indices **démarrent à zéro**.
  
- Dans de très nombreux langages informatiques, mais pas dans tous, les indices \textbf{démarrent à zéro}.
+!!! example "Exemples"
+	* La liste des mois de l'année est une séquence, chaque mois étant repéré par son indice (le numéro du mois), qui commence à $1$.
+	* Les chaînes de cracatères en Python sont aussi des séquences, chaque caractère étant repéré par son *indice* commençant à $0$.
+	
  
- \begin{exemple}
-  La liste des mois de l'année est une séquence, chaque mois étant repéré par son indice (le numéro du mois), qui commence à $1$.
- \end{exemple}
 
- Nous étudierons deux types de séquences en Python : les tuples et les tableaux (listes).
+Nous étudierons deux types de séquences particulières en Python : les tuples et les tableaux (listes).
 
-\section{Définition et utilisation}
-\begin{definition}{Tuples}
- En Python, un \textbf{tuple} est une séquence, qui est définie \textbf{entre parenthèses}, et dont les éléments sont séparés par des \textbf{virgules}, et dont les \textbf{indices commencent à $0$}. Les éléments peuvent être de même nature ( \texttt{int}, \texttt{float},\texttt{str} ou \texttt{bool}), ou bien de natures variées.\\
- Un tuple possède une \textbf{longueur}, qui est le nombre d'éléments le composant. Elle est obtenue grâce à la fonction \texttt{len()}.\\
+## Premier types de séquences : les tuples
+
+!!! abstract "Tuples"
+	En Python, un {==**tuple**==} est une séquence, qui est définie **entre parenthèses**, et dont les éléments sont séparés par des **virgules**, et dont les **indices commencent à $0$**. Les éléments peuvent être de même nature ( `int`, `float`, `str`, `bool` et même `tuple`), ou bien de natures variées.
+	
+	Un tuple possède une **longueur**, qui est le nombre d'éléments le composant. Elle est obtenue grâce à la fonction *built-in* `len()`.
  
-\end{definition}
-\begin{exemple}
- \begin{lstlisting}
->>> mon_tuple = (2, 7, 5, 8, 6)
->>> mon_autre_tuple = ("chien", "chat", "poisson rouge")
->>> un_tuple_bizarre = (2, 3.1, "toto", True)
->>> tuple_vide = ()
- \end{lstlisting}
-Dans \texttt{mon\_autre\_tuple} :
-\trianglenoir
-\begin{itemize}
- \item \texttt{"chien"} est l'élément d'indice $0$ ;
- \item \texttt{"chat"} est l'élément d'indice $1$ ;
- \item \texttt{"poisson rouge"} est l'élément d'indice $2$.
-\end{itemize}
- \begin{lstlisting}
->>> len(mon_tuple)
-5
->>> len(mon_autre_tuple)
-3
->>> len(un_tuple_bizarre)
-4
->>> len(tuple_vide)
-0
- \end{lstlisting}
+Par exemple, on peut voir la création d'objets de type `tuple` dans Python-tutor :
+
+<iframe width="800" height="500" src="https://pythontutor.com/iframe-embed.html#code=mon_tuple%20%3D%20%282,%207,%205,%208,%206%29%0Al1%20%3D%20len%28mon_tuple%29%0Amon_autre_tuple%20%3D%20%28%22chien%22,%20%22chat%22,%20%22poisson%20rouge%22%29%0Al2%20%3D%20len%28mon_autre_tuple%29%0Aun_tuple_bizarre%20%3D%20%282,%203.1,%20%22toto%22,%20True%29%0Al3%20%3D%20len%28un_tuple_bizarre%29%0Atuple_vide%20%3D%20%28%29%0Al4%20%3D%20len%28tuple_vide%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 
-\end{exemple}
-\begin{propriete}{Accéder aux éléments}
-Pour accéder aux élements d'un tuple, on utilise la même notation que pour accéder aux caratères d'une chaines de caractères : le notation \textbf{entre crochets}.
-\end{propriete}
-\begin{exemple}
- \begin{lstlisting}
->>> mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
->>> mon_tuple[2]
-5	  
- \end{lstlisting}
-\end{exemple}
-\begin{Exercice}
-\begin{enumerate}
-\item Que renvoie \texttt{un\_tuple\_bizarre[1]} ?\hfill\caserepsanssaut{5}{0.75}
-\item A quelle valeur est associée le nom \texttt{a} après exécution du code suivant ?
- \begin{lstlisting}
->>> mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
->>> a = mon_tuple[6]	  
- \end{lstlisting}
-\caserep{\linewidth}{0.75}
-\item Dans le code précédent, que faut-il mettre entre les crochets pour que le nom \texttt{a} soit associé à la valeur $1$ ?
-\caserepsanssaut{5}{0.75}
-\item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
->>> a = mon_tuple[-1]	  
- \end{lstlisting}
- \caserep{\linewidth}{0.75}
- \item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
->>> a = mon_tuple[10]	  
- \end{lstlisting}
- \caserep{\linewidth}{1.5}
-  \item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
->>> mon_tuple[5] = 42	  
- \end{lstlisting}
- \caserep{\linewidth}{2.5}
-  \item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = ("le", "bonjour", "monde")
->>> print(f"{mon_tuple[1].capitalize()} {mon_tuple[0]} {mon_tuple[2]} !")	  
- \end{lstlisting}
-  \caserep{\linewidth}{0.75}
-    \item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> def add(a, b) :
-	return (a, b, a+b)
->>> mon_tuple = add(5,8)
->>> print(f"{mon_tuple[0]} + {mon_tuple[1]} = {mon_tuple[2]}")
- \end{lstlisting}
-  \caserep{\linewidth}{0.75}
-  \item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = ("Luke Skywalker", "Mark Hamill", "Jedi", "Dark Vador")
->>> personnage, acteur, metier, pere = mon_tuple
- \end{lstlisting}
-  \caserep{\linewidth}{1.5}
- \begin{info}{Tuple unpacking}
- La méthode utilisée ci-dessus s'appelle le \textbf{tuple unpacking}, soit \og désempaquetage \fg de tuple. Elle est très souvent utilisée pour décomposer des tuples renvoyés comme valeur de retour d'une fonction.
-  \end{info}
-    \item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> def euclide(a, b) :
-	return (a,b,a//b,a%b)
->>> res = euclide(20,7)
->>> type(res)		
->>> diviseur, dividende, quotient, reste = res
->>> type(quotient)
- \end{lstlisting}
-  \caserep{\linewidth}{0.75}
-\end{enumerate}
-\end{Exercice}
-\section{Parcourir une séquence}
-\begin{propriete}{Parcours de séquence}
-Le parcours d'une séquence ( tuple ou tableau), se fait par l'intermédiaire d'une boucle \texttt{for}. dans de nombreux langages de programmation, le parcours se fait par l'intermédiaire d'un compteur qui \texttt{itère} jusqu'à atteindre l'indice maximal du tableau.
-\end{propriete}
-\begin{exemple}
- \begin{lstlisting}
->>> mon_tuple = (1, 3, 5, 7)
->>> for i in range(0,len(mon_tuple)) :
-	print(mon_tuple[i])
-\end{lstlisting}
-\coche
-\begin{itemize}
-\item Pour rappel, la fonction \texttt{range(a,b)} itère sur les entiers naturels de $a$ inclus à $b$ exclu. Ici, la parcours se fait donc pour $i$ allant de $0$ à \texttt{len(mon\_tuple)}, soit $4$.
-\item La valeur de départ de la fonction \texttt{range} étant $0$, on aurait pu l'omettre.
-\end{itemize}
-\end{exemple}
-\begin{propriete}{La spécificité de Python}
-Le parcours par indice est possible en Python, et parfois nécessaire. Mais il existe  une possibilité de parcours de la séquence plus directe :
- \begin{lstlisting}
->>> mon_tuple = (1, 3, 5, 7)
->>> for element in mon_tuple :
-	print(element)
-\end{lstlisting}
-A chaque tour de boucle, le nom \texttt{element} va être associé à une valeur du tuple.
-\end{propriete}
-\begin{remarques}
-\coche
-\begin{itemize}
-\item le nom \texttt{element} n'est qu'un choix de ma part, j'aurais tout aussi bien pu écrire \texttt{toto}.
-\item Ce type de boucle existe aussi dans d'autres langages, et porte souvent le nom de boucle \texttt{foreach}.
-\item Un inconvénient est que vous n'avez que l'élément, qu'il vous manque son indice. heureusement, une fonction Python (\texttt{enumerate}), peu permettre de combiner les deux types de boucles. Je vous laisserai chercher les informations nécessaires si vous rencontrez une situation où vous avez besoin de l'élément et de son indice.
-\end{itemize}
-\end{remarques}
-\begin{Exercice}
-\begin{enumerate}
-\item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = (12, 15, 34, 23, 11, 15, 36)
->>> for n in mon_tuple :
-	if n%2 == 0 :
-		print(n)
- \end{lstlisting}
-  \caserep{\linewidth}{1.25}
-\item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = (12, 15, 34, 23, 11, 15, 36)
->>> for i in range(len(mon_tuple)) :
-	if mon_tuple[i]%2 == 0 :
+
+Dans la variable `mon_autre_tuple` :
+
+* `"chien"` est l'élément d'indice $0$ ;
+* `"chat"` est l'élément d'indice $1$ ;
+* `"poisson rouge"` est l'élément d'indice $2$.
+
+Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bien 3 !
+
+!!! warning "Différencier indices et longueur"
+	Dans une séquence en Python, la longueur est égale au dernier indice plus $1$ !
+	
+	Le dernier indice d'un tuple `t` est donc `len(t)-1` !
+
+!!! abstract "Accéder aux éléments d'un tuple"
+	Pour accéder aux élements d'un tuple, on utilise la même notation que pour accéder aux caratères d'une chaines de caractères : la notation **entre crochets**.
+
+	=== "Le code"
+		```` python
+		>>> mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
+		>>> mon_tuple[2]
+		5	  
+		````
+	=== "Visualisation dans Python-Tutor"
+		
+		<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=mon_tuple%20%3D%20%282,%207,%205,%208,%206,%209,%204,%203,%201,%2012%29%0Aa%20%3D%20mon_tuple%5B2%5D&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=2&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+ 
+
+!!! question "Exercice 1"
+
+	=== "Enoncé"
+
+		1. Sachant que `un_tuple_bizarre = (2, 3.1, "toto", True)`, quelle est la valeur renvoyée par `un_tuple_bizarre[1]` ?
+		2. A quelle valeur est associée le nom `a` après exécution du code suivant ?
+			```` python
+			mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
+			a = mon_tuple[6]	  
+			````
+		3. Dans le code précédent, que faut-il mettre entre les crochets pour que le nom `a` soit associé à la valeur $1$ ?
+		4. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
+			a = mon_tuple[-1]	  
+			````
+		5. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
+			a = mon_tuple[10]	  
+			````
+		6. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = (2, 7, 5, 8, 6, 9, 4, 3, 1, 12)
+			mon_tuple[5] = 42	  
+			````
+	=== "Solutions"
+		A venir !
+		 
+!!! question "Exercice 2"
+	
+	=== "Enoncé"
+		1. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = ("le", "bonjour", "monde")
+			print(f"{mon_tuple[1].capitalize()} {mon_tuple[0]} {mon_tuple[2]} !")	  
+			````
+		2. Essayez et commentez le code suivant :
+			```` python
+			def add(a, b) :
+				return (a, b, a+b)
+				
+			mon_tuple = add(5,8)
+			print(f"{mon_tuple[0]} + {mon_tuple[1]} = {mon_tuple[2]}")
+			````
+		3. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = ("Luke Skywalker", "Mark Hamill", "Jedi", "Dark Vador")
+			personnage, acteur, metier, pere = mon_tuple
+			````
+	=== "Solutions"
+		A venir !
+			
+!!! tips "Tuple unpacking"
+	La méthode utilisée dans l'exercice précédent s'appelle le {==**tuple unpacking**==}, soit &laquo; désempaquetage &raquo; de tuple. Elle est très souvent utilisée pour décomposer des tuples renvoyés comme valeur de retour d'une fonction.
+	
+!!! question "Exercice 3"
+	=== "Enoncé" 
+		Essayez et commentez le code suivant :
+		```` python
+		def euclide(a, b) :
+			return (a,b,a//b,a%b)
+		res = euclide(20,7)
+		print(type(res))
+		diviseur, dividende, quotient, reste = res
+		print(type(quotient))
+		````
+	=== "Solution"
+		A venir !
+
+## Parcourir une séquence
+
+!!! abstract "Parcours de séquence"
+	Le parcours d'une séquence peut être fait de deux manières différentes :
+	
+	* par les indices ;
+	* par les éléments.
+	
+	En python ces deux types de parcours sont effectués par l'intermédiaire d'une boucle `for`.
+ 
+!!! tips "Parcours par les indices"
+	```` python
+	mon_tuple = (1, 3, 5, 7)
+	for i in range(0,len(mon_tuple)) :
 		print(mon_tuple[i])
- \end{lstlisting}
-  \caserep{\linewidth}{1.25}
-\item Essayez et commentez le code suivant :
- \begin{lstlisting}
->>> mon_tuple = (12, 15, 34, 23, 11, 15, 36)
->>> for i in range(len(mon_tuple)) :
-	if i%2 == 0 :
-		print(mon_tuple[i])
- \end{lstlisting}
-  \caserep{\linewidth}{1.25}
- \item Que faut-il écrire pour obtenir les termes impairs du tuple ?
-   \caserep{\linewidth}{2.5}
-\item Que faut-il écrire pour obtenir les termes de rang impairs du tuple ?
-   \caserep{\linewidth}{2.5}
-\end{enumerate}
-\end{Exercice}
-\begin{ExerciceNomme}{Algorithmes de parcours}
-\noindent Pour chacun des exercices ci-dessous, je vous demande :
-\coche
-\begin{itemize}
-\item de vous mettre par 2;
-\item de chercher d'abord à la main, sur papier ;
-\item de décrire l'algorithme demandé en langage naturel;
-\item enfin d'en proposer une version Python.
-\end{itemize}
+	````
+	
+	* Pour rappel, la fonction `range(a,b)` itère sur les entiers naturels de $a$ inclus à $b$ exclu. Ici, la parcours se fait donc pour $i$ allant de $0$ à `len(mon\tuple)`, soit $4$.
+	* La valeur de départ de la fonction `range` étant $0$, on aurait pu l'omettre.
 
-\noindent Pour chacun des exercices suivants, on suppose que les tuples donnés sont des tuples de nombres, entiers ou flottants, et que ces tuples sont non vides.
+!!! tips "Parcours par les éléments"
+	Le parcours par indice est possible en Python, et parfois nécessaire. Mais il existe  une possibilité de parcours de la séquence plus directe :
+	```` python
+	mon_tuple = (1, 3, 5, 7)
+	for element in mon_tuple :
+		print(element)
+	````
+	A chaque tour de boucle, le nom `element` va être associé à une valeur du tuple.
 
-\begin{enumerate}
-\item Trouver un algorithme puis écrire une fonction Python \texttt{maximum(t)} qui prend un tuple en entrée et renvoie le plus grand nombre de ce tuple, \emph{sans utiliser la fonction built-in \texttt{max}}.
-\item Trouver un algorithme puis écrire une fonction Python \texttt{minimum(t)} qui prend un tuple en entrée et renvoie le plus petit nombre de ce tuple, \emph{sans utiliser la fonction built-in \texttt{min}}.
-\item Trouver un algorithme puis écrire une fonction Python \texttt{somme(t)} qui prend un tuple en entrée et renvoie la somme des valeurs de ce tuple, \emph{sans utiliser la fonction built-in \texttt{sum}}.
-\item Trouver un algorithme puis écrire une fonction Python \texttt{moyenne(t)} qui prend un tuple en entrée et renvoie la moyenne des valeurs de ce tuple, \emph{sans utiliser la fonction built-in \texttt{sum}}.
+	* le nom `element` n'est qu'un choix de ma part, j'aurais tout aussi bien pu écrire `toto`.
+	* Ce type de boucle existe aussi dans d'autres langages, et porte souvent le nom de boucle `foreach`.
+	* Un inconvénient est que vous n'avez que l'élément, et que par conséquent il vous manque son indice. Heureusement, une fonction Python (`enumerate`), peut permettre de combiner les deux types de boucles :
+		```` python
+		mon_tuple = (1, 3, 5, 7)
+		for indice, element in enumerate(mon_tuple) :
+			print(f"{indice}->{element}")
+		````
 
-\item Trouver un algorithme puis écrire une fonction Python \texttt{palindrome(t)} qui prend un tuple en entrée et renvoie \texttt{True} si le tuple est un palindrome, et \texttt{False} sinon.
-\begin{info}{Palindrome}
-Un palindrome est une séquence qui peut se lire dans les deux sens sans changer ses valeurs :
-\coche
-\begin{itemize}
-\item $(6, 4, 3, 4, 6)$ est un palindrome;
-\item $(2, 4, 4, 2)$ est un palindrome;
-\item $(12)$ est un palindrome ;
-\item $(3, 4, 5, 3)$ n'est pas un palindrome.
-\end{itemize}
-Si vous le codez suffisamment bien, votre code devrait aussi fonctionner pour les chaines de caractères comme : \og été \fg, \og kayak \fg, \og Noël a trop par rapport à Léon \fg ou \og Engage le jeu que je le gagne \fg.
-\end{info}
+!!! question "Exercice 4"
 
-\begin{histoire}{Une citation}
-\og Les tentatives de création de machines pensantes nous seront d’une grande aide pour découvrir comment nous pensons nous-mêmes. \fg
-\begin{flushright}
-De Alan Turing / Conférence à la BBC - 15 Mai 1951
-\end{flushright}
-\end{histoire}
+	=== "Enoncé"
+		1. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = (12, 15, 34, 23, 11, 15, 36)
+			for n in mon_tuple :
+				if n%2 == 0 :
+					print(n)
+			````
+		2. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = (12, 15, 34, 23, 11, 15, 36)
+			for i in range(len(mon_tuple)) :
+				if mon_tuple[i]%2 == 0 :
+					print(mon_tuple[i])
+			````
+		3. Essayez et commentez le code suivant :
+			```` python
+			mon_tuple = (12, 15, 34, 23, 11, 15, 36)
+			for i in range(len(mon_tuple)) :
+				if i%2 == 0 :
+					print(mon_tuple[i])
+			````
+		4. Que faut-il écrire pour obtenir les termes impairs du tuple ?
+		5. Que faut-il écrire pour obtenir les termes de rang impairs du tuple ?
+	
+	=== "Solutions"
+		A venir !
 
-\end{enumerate}
+!!! question "Algorithmes de parcours"
+	
+	=== "Enoncé"
+		Pour chacune des questions ci-dessous, je vous demande :
+			
+		* de vous mettre par 2;
+		* de chercher d'abord à la main, sur papier ;
+		* de décrire l'algorithme demandé en langage naturel;
+		* enfin d'en proposer une version Python.
 
-\end{ExerciceNomme}
+
+		Pour chacune des questions suivants, on suppose que les **tuples donnés sont des tuples de nombres, entiers ou flottants, et que ces tuples sont non vides**.
 
 
+		1. Trouver un algorithme puis écrire une fonction Python `maximum(t)` qui prend un tuple en entrée et renvoie le plus grand nombre de ce tuple, *sans utiliser la fonction built-in `max`*.
+		2.Trouver un algorithme puis écrire une fonction Python `minimum(t)` qui prend un tuple en entrée et renvoie le plus petit nombre de ce tuple, *sans utiliser la fonction built-in `min`*.
+		3. Trouver un algorithme puis écrire une fonction Python `somme(t)` qui prend un tuple en entrée et renvoie la somme des valeurs de ce tuple, *sans utiliser la fonction built-in `sum`*.
+		4. Trouver un algorithme puis écrire une fonction Python `moyenne(t)` qui prend un tuple en entrée et renvoie la moyenne des valeurs de ce tuple, *sans utiliser la fonction built-in `sum`*.
+		5. Trouver un algorithme puis écrire une fonction Python `palindrome(t)` qui prend un tuple en entrée et renvoie `True` si le tuple est un palindrome, et `False` sinon.
+		
+			!!! info "Palindrome"
+				Un palindrome est une séquence qui peut se lire dans les deux sens sans changer ses valeurs :
+				
+				* $(6, 4, 3, 4, 6)$ est un palindrome;
+				* $(2, 4, 4, 2)$ est un palindrome;
+				* $(12)$ est un palindrome ;
+				* $(3, 4, 5, 3)$ n'est pas un palindrome.
+	
+			Si vous le codez suffisamment bien, votre code devrait aussi fonctionner pour les chaines de caractères comme : &laquo; été &raquo;, &laquo; kayak &raquo;, &laquo; Noël a trop par rapport à Léon &raquo; ou &laquo; Engage le jeu que je le gagne &raquo;.
 
 
+!!! quote "Une citation"
+	&laquo; Les tentatives de création de machines pensantes nous seront d’une grande aide pour 	découvrir comment nous pensons nous-mêmes. &raquo;
 
-\end{document}
+	De Alan Turing, Conférence à la BBC - 15 Mai 1951
