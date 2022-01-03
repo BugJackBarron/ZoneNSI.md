@@ -77,13 +77,21 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 
 		Ce n'est pas un ABR tout simplement parce qu'il n'est pas binaire.
 		
+!!! question "Exercice"
+
+	=== "Enoncé"
+		Appliquer à la main les parcours préfixe, infixe et suffixe pour chacun des exemples d'ABR précédents. Que remarque-t-on ?
+		
+	=== "Réponse"
+		A venir !
+		
 ### Implémentation en Python
 
 Il n'y a aucune différence entre un ABR et un arbre binaire en terme d'implémentation, on pourra donc conserver :
 
 * les objets `Node` ;
 * les fonctions `hauteur`, `taille` et  `est_vide` ;
-* les fonctions `visitePrefixe`, `visiteInfixe` et ``visiteSuffixe`.
+* les fonctions `visitePrefixe`, `visiteInfixe` et ``visiteSuffixe`, mais on utilisera surtout les parcours infixes au vu de la remarque de l'exercice précédent.
 
 
 ### Recherches dans un ABR
@@ -91,7 +99,7 @@ Il n'y a aucune différence entre un ABR et un arbre binaire en terme d'impléme
 Un ABR est spécialement conçu pour la recherche, particulièrement pour la recherche récursive. La méthdoe est la suivante :
 
 
-!!! asbtract "Algorithme de recherche"
+!!! abstract "Algorithme de recherche"
 
 	On compare la valeur cherchée avec la clé de la racine :
 	
@@ -99,8 +107,29 @@ Un ABR est spécialement conçu pour la recherche, particulièrement pour la rec
 	* si elle est inférieure, alors on recherche récursivement dans le sous-arbre gauche ;
 	* si elle est supérieure, alors on recherche récursivement dans le sous-arbre droit.
 	
-	Si on atteint une feuille dont la clé n'est pas la valeur recherchée, on sait alors que la valeur recherchée n'est la clé d'aucun nœud, elle ne figure donc pas dans l'arbre de recherche. Pratiquement dès qu'on tombe sur un arbre vide, on peut affirmer que la clé n'est pas dans l'arbre, et on renvoie `Faux`
+	Si on atteint une feuille dont la clé n'est pas la valeur recherchée, on sait alors que la valeur recherchée n'est la clé d'aucun nœud, elle ne figure donc pas dans l'arbre de recherche. Pratiquement dès qu'on tombe sur un arbre vide, on peut affirmer que la clé n'est pas dans l'arbre, et on renvoie `Faux`.
+	
+!!! tips "Implémentation en Python"
 
+	Si on suppose que `tree` est est ABR, la recherche de la clé `x` dans `tree` s'écrit :
+	
+	```` python
+	def recherche(tree, x) :
+		if tree == None :
+			return False
+		elif tree.valeur == x :
+			return True
+		elif x<tree.valeur :
+			return recherche(tree.gauche, x)
+		else :
+			return recherche(tree.droite, x)
+	````
+
+!!! question "Exercice"
+
+	=== "Enoncé"
+		
+		1. 
 ### Ajout dans un ABR
 
 ### Suppression dans un ABR
