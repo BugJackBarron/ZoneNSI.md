@@ -65,39 +65,39 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 		Que s'est-il passé ?
 		
 	=== "Réponse"
-		Les ordinateurs ont échangé des données.
+		A venir !
 		
 10. On  s'intéresse dans les échanges de données à la première ligne utilisant le protocole `ICMP` (**Internet Control Message Protocol**), qui doit être en toute logique la n°3. Cette ligne, appelée {==**trame**==}, représente un échange de données entre les deux machines.  Cliquez sur la ligne pour obtenir les informations Dans cette trame :
 	1. Quelle est l'IP de la source ?
 	
 		??? done
-			`192.168.0.10`
+			A venir !
 			
 	2. Quelle est l'IP de la destination ?
 		
 		??? done
-			`192.168.0.11`
+			A venir !
 			
 	3. Quel est le commentaire ? 
 	
 		??? done
-			ICMP Echo Request (ping), TTL: 64, Seq.-Nr.: 1
+			A venir !
 			
 11. Dans la trame suivante :
 	1. Quelle est l'IP de la source ?
 	
 		??? done
-			`192.168.0.11`
+			A venir !
 			
 	2. Quelle est l'IP de la destination ?
 		
 		??? done
-			`192.168.0.10`
+			A venir !
 			
 	3. Quel est le commentaire ? 
 	
 		??? done
-			ICMP Echo Reply (pong), TTL: 64, Seq.-Nr.: 1
+			A venir !
 
 !!! info "Commande `ping`"
 	La commande `ping` est une commande très souvent utilisée pour effectuer des tests réseau, en cas de dysfonctionnement. Elle s'utilise en donnant soit l'adresse IP de l'ordinateur cible, soit en donnant le **nom de domaine** de l'ordinateur cible, par exemple :
