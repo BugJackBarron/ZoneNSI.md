@@ -1,10 +1,8 @@
-# Encapsulation  et équilibrage d'un arbre
-
-## Encapsulation d'un ABR en Python
+# Encapsulation d'un ABR en Python
 
 Dans cette partie nous travaillerons dans un fichier `ABR.py` qui contiendra les classes, méthodes et fonctions nécessaires.
 
-### Classes Node et ABR
+## Classes Node et ABR
 
 Comme un ABR est avant tout un arbre binaire, nous allons utiliser une construction similaire pour la classe `Node` à celle déjà effectuée pour les arbres binaires :
 
@@ -87,9 +85,9 @@ class ABR :
 
 
 
-### Visualisation d'un ABR
+## Visualisation d'un ABR
 
-#### Sous forme de texte
+### Sous forme de texte
 
 L'objectif est de représenter un ABR soius la forme d'une chaîne de caractères multilignes, telle que celle-ci :
 
@@ -136,7 +134,7 @@ Dans cette représentation :
 	
 		A venir !
 	
-#### Avec le module Graphviz
+### Avec le module Graphviz
 
 Bon, ok, nous avons une représentation, mais elle est loin d'être lisible...
 
@@ -176,9 +174,9 @@ Heureusement il existe un module python, le module `graphviz`, qui va nous perme
 	!!! warning "Attention"
 		Si vous relancez le programme, celui-ci risque de renvoyer une erreur si vous avez gardé un PDF de même nom ouvert !
 		
-### Méthodes de la classe ABR
+## Méthodes de la classe ABR
 
-#### Méthode search
+### Méthode search
 
 La fonction `appartient(x, tree)` que nous avons vu dans la [partie précédente](Def_Arbres.md#recherche-dune-cle) n'est pas directement utilisable en tant que méthode, mais nous allons nous en inspirer :
 
@@ -193,7 +191,7 @@ La fonction `appartient(x, tree)` que nous avons vu dans la [partie précédente
 	
 		A venir !
 
-#### Méthodes minimum et maximum
+### Méthodes minimum et maximum
 
 !!! question "Méthodes `minimum` et `maximum`"
 
@@ -208,7 +206,7 @@ La fonction `appartient(x, tree)` que nous avons vu dans la [partie précédente
 	
 		
 
-#### Méthodes successor et predecessor
+### Méthodes successor et predecessor
 
 Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas être résolues récursivement. Il faudra donc effectuer une boucle `TantQue` pour rechercher l'un ou l'autre, tel que nous l'avons vu dans cet [algorithme](Def_Arbres.md#recherche-du-successeur-dune-cle){: target="_blank"}
 
@@ -272,7 +270,7 @@ Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas �
 		
 		A venir !
 
-#### Méthode insert
+### Méthode insert
 
 !!! question "Méthode `insert`"
 
@@ -298,7 +296,7 @@ for elem in [15,12,7,8,1,23,13] :
 tree.toImage()
 ````
 
-### Suppression d'une clé d'un ABR (hors programme)
+## Suppression d'une clé d'un ABR (hors programme)
 
 Pour l'instant, nous avons vu comment ajouter un élément à un ABR, mais nous n'avons pas encore abordé la question de la suppression d'un élément. Il s'agit d'une question bien plus complexe, dont je vais vous présenter les grandes lignes ici, bien qu'elles soient hors-programme (et donc il n'est pas du tout nécessaire de tout comprendre !)
 
