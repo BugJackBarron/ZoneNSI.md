@@ -49,7 +49,7 @@ class ABR :
 
 	=== " Enoncé"
 	 
-		1. Copier-coller la fonction `hauteur`, déjà vue dans la partie [sur les arbres binaires](Def_Arbres.md #implementation-darbres-en-python){: target="_blank"}, **en-dehors des classes `ABR` et `Node`**.
+		1. Copier-coller la fonction `hauteur`, déjà vue dans la partie [sur les arbres binaires](Def_Arbres.md#implementation-darbres-en-python){: target="_blank"}, **en-dehors des classes `ABR` et `Node`**.
 		2. Créer une méthode `hauteur` à la classe `ABR` renvoyant la hauteur de l'arbre, et utilisant la fonction `hauteur` ci-dessus. Vous pouvez utiliser le code suivant permettant d'implémenter l'ABR représenté ci-dessous pour tester vos différentes méthodes :
 		
 		=== "Arbre"
@@ -180,7 +180,7 @@ Heureusement il existe un module python, le module `graphviz`, qui va nous perme
 
 #### Méthode search
 
-La fonction `appartient(x, tree)` que nous avons vu dans la [partie précédente](Def_Arbres.md #recherche-dune-cle) n'est pas directement utilisable en tant que méthode, mais nous allons nous en inspirer :
+La fonction `appartient(x, tree)` que nous avons vu dans la [partie précédente](Def_Arbres.md#recherche-dune-cle) n'est pas directement utilisable en tant que méthode, mais nous allons nous en inspirer :
 
 !!! question "Méthodes `search` "
 
@@ -210,7 +210,7 @@ La fonction `appartient(x, tree)` que nous avons vu dans la [partie précédente
 
 #### Méthodes successor et predecessor
 
-Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas être résolues récursivement. Il faudra donc effectuer une boucle `TantQue` pour rechercher l'un ou l'autre, tel que nous l'avons vu dans cet [algorithme](Def_Arbres.md #recherche-du-successeur-dune-cle){: target="_blank"}
+Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas être résolues récursivement. Il faudra donc effectuer une boucle `TantQue` pour rechercher l'un ou l'autre, tel que nous l'avons vu dans cet [algorithme](Def_Arbres.md#recherche-du-successeur-dune-cle){: target="_blank"}
 
 !!! abstract "Recherche du successeur"
 
@@ -278,7 +278,7 @@ Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas �
 
 	=== "Enoncé"
 	
-		1. Sur le modèle de l'[algorithme](Def_Arbres.md #insertion-dans-un-abr){: target="_blank"}, écrire une méthode `ìnsert` pour la classe `Node` permettant d'insérer la clé passée en argument tout en conservant la structure d'ABR, et en respectant les conditions suivantes :
+		1. Sur le modèle de l'[algorithme](Def_Arbres.md#insertion-dans-un-abr){: target="_blank"}, écrire une méthode `ìnsert` pour la classe `Node` permettant d'insérer la clé passée en argument tout en conservant la structure d'ABR, et en respectant les conditions suivantes :
 		
 			* si une clé est déjà présente, la nouvelle clé sera inséree dans le sous-arbre droit.
 			* il faudra penser à mettre à jour le père du nouveau noeud créé ! (*Indice :le père du noeud crée est l'objet courant !*)

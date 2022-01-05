@@ -225,9 +225,9 @@ fonction Insertion(tree, elem)
 		retourner Noeud(elem,None,none)
 	Sinon 
 		Si elem < tree.valeur
-			retourner (tree.valeur,Insertion(tree.gauche, elem),tree.droit)
+			retourner Noeud(tree.valeur,Insertion(tree.gauche, elem),tree.droit)
 		Sinon
-			retourner (tree.valeur,tree.gauche,Insertion(tree.droit, elem))
+			retourner Noeud(tree.valeur,tree.gauche,Insertion(tree.droit, elem))
 ````
 
 !!! question "Implémentation en Python"

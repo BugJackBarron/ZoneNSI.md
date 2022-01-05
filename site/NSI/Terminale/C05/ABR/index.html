@@ -2108,9 +2108,9 @@ Insérer les noeuds de valeurs suivantes : 23, 19, 1 10, 8 et 5.</p>
         retourner Noeud(elem,None,none)
     Sinon 
         Si elem &lt; tree.valeur
-            retourner (tree.valeur,Insertion(tree.gauche, elem),tree.droit)
+            retourner Noeud(tree.valeur,Insertion(tree.gauche, elem),tree.droit)
         Sinon
-            retourner (tree.valeur,tree.gauche,Insertion(tree.droit, elem))
+            retourner Noeud(tree.valeur,tree.gauche,Insertion(tree.droit, elem))
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Implémentation en Python</p>

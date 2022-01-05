@@ -1968,7 +1968,7 @@
 <p class="admonition-title">Méthode <code>hauteur</code></p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1"> Enoncé</label><div class="tabbed-content">
 <ol>
-<li>Copier-coller la fonction <code>hauteur</code>, déjà vue dans la partie <a href="Def_Arbres.md #implementation-darbres-en-python" target="_blank">sur les arbres binaires</a>, <strong>en-dehors des classes <code>ABR</code> et <code>Node</code></strong>.</li>
+<li>Copier-coller la fonction <code>hauteur</code>, déjà vue dans la partie <a href="../Def_Arbres/#implementation-darbres-en-python" target="_blank">sur les arbres binaires</a>, <strong>en-dehors des classes <code>ABR</code> et <code>Node</code></strong>.</li>
 <li>Créer une méthode <code>hauteur</code> à la classe <code>ABR</code> renvoyant la hauteur de l'arbre, et utilisant la fonction <code>hauteur</code> ci-dessus. Vous pouvez utiliser le code suivant permettant d'implémenter l'ABR représenté ci-dessous pour tester vos différentes méthodes :</li>
 </ol>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Arbre</label><div class="tabbed-content">
@@ -2084,7 +2084,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </ol>
 <h3 id="methodes-de-la-classe-abr">Méthodes de la classe ABR</h3>
 <h4 id="methode-search">Méthode search</h4>
-<p>La fonction <code>appartient(x, tree)</code> que nous avons vu dans la <a href="Def_Arbres.md #recherche-dune-cle">partie précédente</a> n'est pas directement utilisable en tant que méthode, mais nous allons nous en inspirer :</p>
+<p>La fonction <code>appartient(x, tree)</code> que nous avons vu dans la <a href="../Def_Arbres/#recherche-dune-cle">partie précédente</a> n'est pas directement utilisable en tant que méthode, mais nous allons nous en inspirer :</p>
 <div class="admonition question">
 <p class="admonition-title">Méthodes <code>search</code> </p>
 <div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
@@ -2113,7 +2113,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </div>
 </div>
 <h4 id="methodes-successor-et-predecessor">Méthodes successor et predecessor</h4>
-<p>Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas être résolues récursivement. Il faudra donc effectuer une boucle <code>TantQue</code> pour rechercher l'un ou l'autre, tel que nous l'avons vu dans cet <a href="Def_Arbres.md #recherche-du-successeur-dune-cle" target="_blank">algorithme</a></p>
+<p>Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas être résolues récursivement. Il faudra donc effectuer une boucle <code>TantQue</code> pour rechercher l'un ou l'autre, tel que nous l'avons vu dans cet <a href="../Def_Arbres/#recherche-du-successeur-dune-cle" target="_blank">algorithme</a></p>
 <div class="admonition abstract">
 <p class="admonition-title">Recherche du successeur</p>
 <p>On va implémenter une méthode <code>successor</code> pour la classe <code>ABR</code>, qui prend en argument la clé du noeud dont on cherche le succeseur.</p>
@@ -2171,7 +2171,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 <div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">Enoncé</label><div class="tabbed-content">
 <ol>
 <li>
-<p>Sur le modèle de l'<a href="Def_Arbres.md #insertion-dans-un-abr" target="_blank">algorithme</a>, écrire une méthode <code>ìnsert</code> pour la classe <code>Node</code> permettant d'insérer la clé passée en argument tout en conservant la structure d'ABR, et en respectant les conditions suivantes :</p>
+<p>Sur le modèle de l'<a href="../Def_Arbres/#insertion-dans-un-abr" target="_blank">algorithme</a>, écrire une méthode <code>ìnsert</code> pour la classe <code>Node</code> permettant d'insérer la clé passée en argument tout en conservant la structure d'ABR, et en respectant les conditions suivantes :</p>
 <ul>
 <li>si une clé est déjà présente, la nouvelle clé sera inséree dans le sous-arbre droit.</li>
 <li>il faudra penser à mettre à jour le père du nouveau noeud créé ! (<em>Indice :le père du noeud crée est l'objet courant !</em>)</li>
