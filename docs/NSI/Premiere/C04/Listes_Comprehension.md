@@ -40,21 +40,24 @@
 	En particulier les algorithmes vus précédemment sont aussi valable pour un tableau.
 
 
-\begin{ExerciceNomme}{Algorithme de recherche séquentiel}
-\noindent On veut construire une fonction \texttt{chercheElement(elem, monTab)} qui renvoie :
-\coche
-\begin{itemize}
-\item l'indice de \emph{la première occurrence} de \texttt{elem} si \texttt{elem} est présent dans le tableau \texttt{monTab};
-\item la longueur du tableau si l'élément \texttt{elem} n'est pas présent dans le tableau \texttt{monTab}.
-\end{itemize}
-\begin{enumerate}
-\item Décrire en pseudo-code un algorithme définissant cette fonction.
-\item Proposer une implémentation de ce pseudo-code en Python.
-\item Quel est le \textbf{coût en temps} de cet algorithme ? \emph{(à faire avec le professeur.)}
-\end{enumerate}
-\end{ExerciceNomme}
-\begin{info}{Méthode \texttt{built-in} en Python}
-La fonction précédente est déjà implémentée en Python, avec une différence : elle renvoie une erreur si l'élément cherché n'est pas dans le tableau.
+!!! question "Algorithme de recherche séquentiel"
+
+	=== "Enoncé"
+		On veut construire une fonction `chercheElement(elem, monTab)` qui renvoie :
+
+		* l'indice de *la première occurrence* de `elem` si `elem` est présent dans le tableau `monTab` ;
+		* la longueur du tableau si l'élément `elem` n'est pas présent dans le tableau `monTab`.
+		
+		1. Décrire en pseudo-code un algorithme définissant cette fonction.
+		2. Proposer une implémentation de ce pseudo-code en Python.
+		3. Quel est le {==**coût en temps**==} de cet algorithme ? (*à faire avec le professeur.*)
+
+	=== "Solution"
+		
+		A venir !
+
+!!! info "Méthode *built-in* `index` en Python"
+	La fonction précédente est déjà implémentée en Python, avec une différence : elle renvoie une erreur si l'élément cherché n'est pas dans le tableau.
  \begin{lstlisting}
 >>> mon_tab =  [45, 24, -35, -12, 24]
 >>> mon_tab.index(24)
