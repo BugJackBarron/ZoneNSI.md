@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#equilibrage-des-arbres" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1572,10 +1577,81 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Equilibrage des ABR : les AVL
+          </a>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Equilibrage des ABR : les AVL
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arbres-desequilibres" class="md-nav__link">
+    Arbres déséquilibrés ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-arbres-avl" class="md-nav__link">
+    Les arbres AVL
+  </a>
+  
+    <nav class="md-nav" aria-label="Les arbres AVL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#presentation-des-avl" class="md-nav__link">
+    Présentation des AVL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotations-droites-et-gauches" class="md-nav__link">
+    Rotations droites et gauches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#techniques-desuilibrages" class="md-nav__link">
+    Techniques d'ésuilibrages :
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1811,9 +1887,202 @@
               
                 
                 
-                  <h1>Equilibrage des ABR : les AVL</h1>
-                
-                
+                <h1 id="equilibrage-des-arbres">Equilibrage des arbres</h1>
+<h2 id="arbres-desequilibres">Arbres déséquilibrés ?</h2>
+<div class="admonition question">
+<p class="admonition-title">Création d'arbres déséquilibrés</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>Créer quatre ABR <code>tree1</code>, <code>tree2</code>, ...,  à partir des listes suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">l3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">l4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Que peut-on dire des quatre listes précédentes.</p>
+</li>
+<li>Afficher les 4 arbres obtenus.</li>
+<li>
+<p>En considérant que le temps de recherche dans un ABR est directement proportionnel à la hauteur du noeud recherché, le temps moyen pour trouver dans <code>tree1</code> :</p>
+<ul>
+<li>le noeud 5 est de 1 ;</li>
+<li>les noeuds 2 et 11 de 2 ;</li>
+<li>les noeuds 3, 7 et 13 de 3 ;</li>
+<li>le noeud 9 de 4.</li>
+</ul>
+<p>le temps moyen de recherche sur cet arbre est donc $\dfrac{1+2\times 2 + 3\times 3 + 4}{7} = \dfrac{18}{7}.</p>
+<p>Calculer de même le temps moyen pour les ABR <code>tree2</code>, <code>tree3</code> et <code>tree4</code>.
+Que peut-on en conclure ?</p>
+</li>
+<li>
+<p>On considère l'arbre équilibré <code>tree2</code>.  Insérer maintenant les éléments suivants dans l'arbre : 17, 14, 15, 16. Comment est l'arbre obtenu ?</p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<p>On comprend aisément qu’un arbre équilibré (solution 2) donne en moyenne de meilleurs résultats que tout autre arbre, et qu’un arbre dégénéré (solution 4) donne
+des résultats plus mauvais que toute autre représentation. La notion formelle <mark class="critic"><strong>d’arbre équilibré</strong></mark> (<em>balanced tree</em> chez <a href="https://fr.wikipedia.org/wiki/Donald_Knuth" target="_blank">Donald Knuth</a>) n’est pas au programme, mais elle peut être abordée intuitivement.</p>
+<p>Sur un ABR équilibré, la recherche d’un élément est en moyenne en <span class="arithmatex">\(log_2(n)\)</span>, comme avec une recherche par dichotomie dans une liste. On peut alors se poser la question de l’intérêt d’utiliser un ABR. La réponse tient dans le temps mis à ajouter / supprimer un élément : dans une liste, on est en <span class="arithmatex">\(\mathscr{O}(n)\)</span> (complexité linéaire), alors qu’on est en <span class="arithmatex">\(\mathscr{O}(log_2(n))\)</span> dans un ABR (complexité logarithmique).</p>
+<p>Aussi, lorsqu’on doit stocker une collection d’éléments ordonnés, une liste Python peut être utilisée si la collection évolue peu ou bien si les éléments sont stockés dans l’ordre du tri. Mais si la collection doit être régulièrement modifiée et que les recherches par rapport au critère de tri sont fréquentes, on privilégie les ABR.</p>
+<p>Il est donc particulièrement important que notre ABR soit équilibré, et surtout que les insertions/délétions conservent la propriété d'équilibrage de ces ABR. Il existe plusieurs techniques pertmettant d'obtenir des ABR équilibrés :</p>
+<ul>
+<li>les arbres AVL ;</li>
+<li>les arbres rouge-noir ;</li>
+<li>les arbres 2-3 ;</li>
+<li>les arbres 2-3-4 ;</li>
+<li>les B-arbres.</li>
+</ul>
+<h2 id="les-arbres-avl">Les arbres AVL</h2>
+<h3 id="presentation-des-avl">Présentation des AVL</h3>
+<p>En informatique théorique, les arbres AVL ont été historiquement les premiers arbres binaires de recherche <strong>automatiquement équilibrés</strong>.</p>
+<p>La dénomination &laquo; arbre AVL &raquo; provient des noms respectifs de ses deux inventeurs, respectivement Georgii Adelson-Velsky et Evguenii Landis, qui l'ont publié en 1962 sous le titre <em>An Algorithm for the Organization of Information</em>. </p>
+<p>Dans un arbre AVL, les hauteurs des deux sous-arbres d'un même nœud diffèrent au plus de un, et cette propriété est conservée dynamiquement au moment de l'insertion ou de la déletion d'un nouveau noeud. La recherche, l'insertion et la suppression sont toutes en <span class="arithmatex">\(\mathscr{O}(log _{2}(n))\)</span> dans le pire des cas. </p>
+<p>Cependant les mécanismes d'insertion et de déletions sont modifiés par rapport à ceux déjà travaillés : ils nécessitent des <mark class="critic"><strong>rotations droites et gauches</strong></mark>.</p>
+<h3 id="rotations-droites-et-gauches">Rotations droites et gauches</h3>
+<p>Le mécanisme de rotation gauche consiste à remplacer un noeud <mark class="critic"><strong>racine</strong></mark> par son noeud droit (appelé <mark class="critic"><strong>pivot</strong></mark>).</p>
+<p><img alt="P4_RotGauche.png" src="../P4_RotGauche.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Après l'opération :</p>
+<ul>
+<li>les noeuds du sous-arbre <code>S1</code> demeurent bien inférieurs au noeud <code>Racine</code> ;</li>
+<li>les noeuds du sous-arbre <code>S2</code>, qui étaient tous supérieurs à <code>Racine</code> tout en étant inférieurs à <code>Pivot</code>, le demeurent toujours ; </li>
+<li>les noeuds du sous-arbre <code>S2</code> demeurent bien supérieurs au noeud <code>Pivot</code>.</li>
+</ul>
+<p>Ainsi par une rotation gauche, le nouvel arbre obtenu est aussi un ABR.</p>
+<p>Une version algorithmique de cette implémentation est :</p>
+<div class="highlight"><pre><span></span><code>Pivot &lt;- Racine.droit
+Racine.droit &lt;- Pivot.gauche
+Pivot.gauche &lt;- Racine
+Racine &lt;- Pivot
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Implémentation</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Créer une méthode <code>rotationGauche</code> pour la classe <code>Node</code>. Attention ! Pour pouvoir implémenter correctement cette méthode, <strong>il ne faudra pas oublier de mettre à jour les parents de chaque noeud !</strong></li>
+<li>
+<p>Créer de mémé une méthode <code>rotationDroite</code> pour la classe <code>Node</code>, en s'aidant du schéma suivant :</p>
+<p><img alt="P4_RotDroite.png" src="../P4_RotDroite.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h3 id="techniques-desuilibrages">Techniques d'ésuilibrages :</h3>
+<div class="admonition question">
+<p class="admonition-title">Application manuelle</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>Appliquer <strong>à la main</strong> une rotation gauche sur la racine de l'arbre suivant. Le résultat est-il plus équilibré ?</p>
+<p><img alt="P4_AVL1.png" src="../P4_AVL1.png" style="width:20%; margin:auto;display:block;background-color: #546d78;" /></p>
+</li>
+<li>
+<p>Appliquer <strong>à la main</strong> une rotation gauche sur la racine de l'arbre suivant. Le résultat est-il plus équilibré ?</p>
+<p><img alt="P4_AVL2.png" src="../P4_AVL2.png" style="width:20%; margin:auto;display:block;background-color: #546d78;" /></p>
+</li>
+<li>
+<p>Appliquer une rotation droite sur le noeud 3 de l'arbre précédent, puis une rotation gauche sur la racine de l'arbre obtenu. Que peut-on en conclure ?</p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<p>En pratique on équilibrera un arbre à chaque insertion et à chaque délétion. Pour ce faire, une fois le noeud inséré, on regardera la hauteur de chaque sous-arbre gauche et droit, et si ces hauteurs diffèrent de plus de 1, on effectuera les rotations nécessaires.</p>
+<div class="admonition question">
+<p class="admonition-title">Application manuelle 2</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>On considère l'abre suivant :</p>
+<p><img alt="P4_AVL3.png" src="../P4_AVL3.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Est-il équilibré au sens donné ?</p>
+</li>
+<li>
+<p>On insère maintenant la valeur 4. L'arbre est-il équilibré ?</p>
+</li>
+<li>Appliquer une rotation gauche sur la racine. Cela suffit-il pour que le résultat soit équilibré ?</li>
+<li>En repartant de l'arbre de la question 2, quelle roitation faudrait-il faire avant d'appliquer une rotation gauche sur la racine afin d'obtenir un arbre équilibré ?</li>
+</ol>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<p>L'algorithme réel d'équilbrage étant un peu trop complexe pour notre niveau, voici les codes à insérer dans les différentes classes pour obtenir un AVL :</p>
+<ul>
+<li>
+<p>dans la classe <code>ABR</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">insererAVL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estVide</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">racine</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">racine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">racine</span><span class="o">.</span><span class="n">inserer_AVL</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>dans la classe <code>Node</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inserer_AVL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">valeur</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">insererAVL</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">equilibrer</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">valeur</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">insererAVL</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">equilibrer</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<span class="k">def</span> <span class="nf">equilibrer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">hauteur_gauche</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+    <span class="n">hauteur_droit</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">hauteur_gauche</span> <span class="o">-</span> <span class="n">hauteur_droit</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">hauteur_gauche_gauche</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+        <span class="n">hauteur_gauche_droit</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hauteur_gauche_gauche</span> <span class="o">&gt;</span> <span class="n">hauteur_gauche_droit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationDroite</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">rotationGauche</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationDroite</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">hauteur_gauche</span> <span class="o">-</span> <span class="n">hauteur_droit</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">hauteur_droit_droit</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+        <span class="n">hauteur_droit_gauche</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hauteur_droit_droit</span> <span class="o">&gt;</span> <span class="n">hauteur_droit_gauche</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationGauche</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">rotationDroite</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationGauche</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<span class="k">def</span> <span class="nf">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">hauteur_gauche</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+    <span class="n">hauteur_droit</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">hauteur_gauche</span><span class="p">,</span> <span class="n">hauteur_droit</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ul>
+<p>Désormais, en créantun ABR et en utilisant la méthode <code>insertionAVL</code>, l'arbre obtenu doit être automatiquement équilibré.</p>
                 
               
               

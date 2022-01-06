@@ -73,6 +73,12 @@ class ABR :
             return
         else:
             self.racine = self.racine.supprimer(valeur)
+            
+    def insererAVL(self, valeur):
+        if self.estVide():
+            self.racine = Node(valeur)
+        else:
+            self.racine = self.racine.insererAVL(valeur)
     
     
         
@@ -174,8 +180,72 @@ class Node :
             ## éventuellement posséder une descendance droite
             noeudMin.parent.droit = noeudMin.droit
             ## et on retourne le noeud courant
-            return self        
+            return self
         
+    def rotationGauche(self) :
+        pivot = self.droit
+        RG = Node(self.valeur, gauche = self.gauche, droit = pivot.gauche, parent = pivot)
+        if RG.gauche is not None :
+            RG.gauche.parent = RG
+        if RG.droit is not None :
+            RG.droit.parent = RG
+        racine = Node(pivot.valeur, RG, pivot.droit, parent = self.parent)
+        return racine
+        
+    def rotationDroite(self) :
+        pivot = self.gauche
+        RD = Node(self.valeur, gauche = pivot.droit, droit = self.droit, parent = pivot)
+        if RD.gauche is not None :
+            RD.gauche.parent = RD
+        if RD.droit is not None :
+            RD.droit.parent = RD
+        racine = Node(pivot.valeur, pivot.gauche, RD, parent = self.parent)
+        return racine
+    
+    def insererAVL(self, valeur):
+        if valeur < self.valeur:
+            if self.gauche is None:
+                self.gauche = Node(valeur, parent=self)
+                return self
+            else:
+                self.gauche = self.gauche.insererAVL(valeur)
+                return self.equilibrer()
+        elif valeur > self.valeur:
+            if self.droit is None:
+                self.droit = Node(valeur, parent=self)
+                return self
+            else:
+                self.droit = self.droit.insererAVL(valeur)
+                return self.equilibrer()
+        else:
+            return self
+            
+    def equilibrer(self):
+        hauteur_gauche = hauteur(self.gauche)
+        hauteur_droit = hauteur(self.droit)
+        if hauteur_gauche - hauteur_droit == 2:
+            hauteur_gauche_gauche = hauteur(self.gauche.gauche)
+            hauteur_gauche_droit = hauteur(self.gauche.droit)
+            if hauteur_gauche_gauche > hauteur_gauche_droit:
+                return self.rotationDroite()
+            else:
+                self.gauche = self.gauche.rotationGauche()
+                return self.rotationDroite()
+        elif hauteur_gauche - hauteur_droit == -2:
+            hauteur_droit_droit = hauteur(self.droit.droit)
+            hauteur_droit_gauche = hauteur(self.droit.gauche)
+            if hauteur_droit_droit > hauteur_droit_gauche:
+                return self.rotationGauche()
+            else:
+                self.droit = self.droit.rotationDroite()
+                return self.rotationGauche()
+        else:
+            return self
+            
+    def hauteur(self):
+        hauteur_gauche = hauteur(self.gauche)
+        hauteur_droit = hauteur(self.droit)
+        return 1 + max(hauteur_gauche, hauteur_droit)
         
     
 if __name__ == "__main__" :
@@ -200,7 +270,8 @@ if __name__ == "__main__" :
     print(tree)
     
     tree = ABR()
-    for elem in [15,12,7,8,1,23,13] :
-        tree.insert(elem)
+    for elem in [15,12,7,8,1,23,13, 17, 28] :
+        tree.insererAVL(elem)
     tree.toImage()
+    
     
