@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#encapsulation-et-equilibrage-dun-arbre" class="md-skip">
+        <a href="#encapsulation-dun-abr-en-python" class="md-skip">
           Skip to content
         </a>
       
@@ -1059,6 +1059,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/Listes_Comprehension/" class="md-nav__link">
+        Listes et compréhensions
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1581,21 +1595,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#encapsulation-dun-abr-en-python" class="md-nav__link">
-    Encapsulation d'un ABR en Python
-  </a>
-  
-    <nav class="md-nav" aria-label="Encapsulation d'un ABR en Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#classes-node-et-abr" class="md-nav__link">
     Classes Node et ABR
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#visualisation-dun-abr" class="md-nav__link">
     Visualisation d'un ABR
   </a>
@@ -1621,8 +1627,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#methodes-de-la-classe-abr" class="md-nav__link">
     Méthodes de la classe ABR
   </a>
@@ -1662,16 +1668,11 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#suppression-dune-cle-dun-abr-hors-programme" class="md-nav__link">
     Suppression d'une clé d'un ABR (hors programme)
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1690,7 +1691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AVL.md" class="md-nav__link">
+      <a href="../AVL/" class="md-nav__link">
         Equilibrage des ABR : les AVL
       </a>
     </li>
@@ -1927,10 +1928,9 @@
               
                 
                 
-                <h1 id="encapsulation-et-equilibrage-dun-arbre">Encapsulation  et équilibrage d'un arbre</h1>
-<h2 id="encapsulation-dun-abr-en-python">Encapsulation d'un ABR en Python</h2>
+                <h1 id="encapsulation-dun-abr-en-python">Encapsulation d'un ABR en Python</h1>
 <p>Dans cette partie nous travaillerons dans un fichier <code>ABR.py</code> qui contiendra les classes, méthodes et fonctions nécessaires.</p>
-<h3 id="classes-node-et-abr">Classes Node et ABR</h3>
+<h2 id="classes-node-et-abr">Classes Node et ABR</h2>
 <p>Comme un ABR est avant tout un arbre binaire, nous allons utiliser une construction similaire pour la classe <code>Node</code> à celle déjà effectuée pour les arbres binaires :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span> <span class="p">:</span>
     <span class="n">def__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">droit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="p">:</span>
@@ -2003,8 +2003,8 @@
 </div>
 </div>
 </div>
-<h3 id="visualisation-dun-abr">Visualisation d'un ABR</h3>
-<h4 id="sous-forme-de-texte">Sous forme de texte</h4>
+<h2 id="visualisation-dun-abr">Visualisation d'un ABR</h2>
+<h3 id="sous-forme-de-texte">Sous forme de texte</h3>
 <p>L'objectif est de représenter un ABR soius la forme d'une chaîne de caractères multilignes, telle que celle-ci :</p>
 <div class="highlight"><pre><span></span><code><span class="mi">5</span>
   <span class="mi">2</span>
@@ -2047,7 +2047,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </div>
 </div>
 </div>
-<h4 id="avec-le-module-graphviz">Avec le module Graphviz</h4>
+<h3 id="avec-le-module-graphviz">Avec le module Graphviz</h3>
 <p>Bon, ok, nous avons une représentation, mais elle est loin d'être lisible...</p>
 <p>Heureusement il existe un module python, le module <code>graphviz</code>, qui va nous permettre de convertir notre ABR en un fichier pdf plus lisible. L'objectif n'étant pas de comprendre comment fonctionne graphviz, voici les codes nécessaires :</p>
 <ol>
@@ -2082,8 +2082,8 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </div>
 </li>
 </ol>
-<h3 id="methodes-de-la-classe-abr">Méthodes de la classe ABR</h3>
-<h4 id="methode-search">Méthode search</h4>
+<h2 id="methodes-de-la-classe-abr">Méthodes de la classe ABR</h2>
+<h3 id="methode-search">Méthode search</h3>
 <p>La fonction <code>appartient(x, tree)</code> que nous avons vu dans la <a href="../Def_Arbres/#recherche-dune-cle">partie précédente</a> n'est pas directement utilisable en tant que méthode, mais nous allons nous en inspirer :</p>
 <div class="admonition question">
 <p class="admonition-title">Méthodes <code>search</code> </p>
@@ -2098,7 +2098,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </div>
 </div>
 </div>
-<h4 id="methodes-minimum-et-maximum">Méthodes minimum et maximum</h4>
+<h3 id="methodes-minimum-et-maximum">Méthodes minimum et maximum</h3>
 <div class="admonition question">
 <p class="admonition-title">Méthodes <code>minimum</code> et <code>maximum</code></p>
 <div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
@@ -2112,7 +2112,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </div>
 </div>
 </div>
-<h4 id="methodes-successor-et-predecessor">Méthodes successor et predecessor</h4>
+<h3 id="methodes-successor-et-predecessor">Méthodes successor et predecessor</h3>
 <p>Les méthodes de recherches de successeurs et de prédecesseurs ne peuvent pas être résolues récursivement. Il faudra donc effectuer une boucle <code>TantQue</code> pour rechercher l'un ou l'autre, tel que nous l'avons vu dans cet <a href="../Def_Arbres/#recherche-du-successeur-dune-cle" target="_blank">algorithme</a></p>
 <div class="admonition abstract">
 <p class="admonition-title">Recherche du successeur</p>
@@ -2165,7 +2165,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 </div>
 </div>
 </div>
-<h4 id="methode-insert">Méthode insert</h4>
+<h3 id="methode-insert">Méthode insert</h3>
 <div class="admonition question">
 <p class="admonition-title">Méthode <code>insert</code></p>
 <div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">Enoncé</label><div class="tabbed-content">
@@ -2193,7 +2193,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
     <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 <span class="n">tree</span><span class="o">.</span><span class="n">toImage</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="suppression-dune-cle-dun-abr-hors-programme">Suppression d'une clé d'un ABR (hors programme)</h3>
+<h2 id="suppression-dune-cle-dun-abr-hors-programme">Suppression d'une clé d'un ABR (hors programme)</h2>
 <p>Pour l'instant, nous avons vu comment ajouter un élément à un ABR, mais nous n'avons pas encore abordé la question de la suppression d'un élément. Il s'agit d'une question bien plus complexe, dont je vais vous présenter les grandes lignes ici, bien qu'elles soient hors-programme (et donc il n'est pas du tout nécessaire de tout comprendre !)</p>
 <p>Lorsqu'on veut supprimer une clé d'un ABR, plusieurs situations peuvent se produire :</p>
 <ol>
@@ -2291,13 +2291,13 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
       
       
         
-        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Le langage" rel="next">
+        <a href="../AVL/" class="md-footer__link md-footer__link--next" aria-label="Next: Equilibrage des ABR : les AVL" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Le langage
+              Equilibrage des ABR : les AVL
             </div>
           </div>
           <div class="md-footer__button md-icon">

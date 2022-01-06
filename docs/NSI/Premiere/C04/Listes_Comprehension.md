@@ -73,106 +73,179 @@
 
 !!! abstract "Méthodes et pratiques des listes"
 
-	1. "Construire une liste vide :"
-\begin{lstlisting}
->>> monTab = [ ] # ou bien
->>> monTab = list()
- \end{lstlisting}
-\item \textbf{Ajouter un élément à la fin d'une liste :}
- \begin{lstlisting}
->>> monTab.append(3)
->>> monTab
-[3]
->>> monTab.append(5)
->>> monTab.append(7)
->>> monTab
-[3, 5, 7]
- \end{lstlisting}
- \item \textbf{Supprimer et récupérer le dernier élément du tableau :}
- \begin{lstlisting}
->>> dernier = monTab.pop()
->>> dernier 
-7
->>> monTab
-[3, 5]
- \end{lstlisting}
-La méthode \texttt{pop} possède d'autres propriétés que je vous laisse rechercher.
-  \item \textbf{Convertir un tableau en tuple :}
- \begin{lstlisting}
->>> monTuple = tuple(monTab)
->>> monTuple
-(3, 5)
- \end{lstlisting}
-  \item \textbf{Convertir un tuple en tableau :}
- \begin{lstlisting}
->>> monTab = list(monTuple)
->>> monTab
-[3, 5]
- \end{lstlisting}
-   \item \textbf{Extraire des parties d'un tableau grâce aux \texttt{slices} :}
- \begin{lstlisting}
->>> monTab = [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
->>> monTab[ :4]
-[35, 36, 37, 38]
->>> monTab[7: ]
-[42, 43, 44, 45, 46, 47]
->>> monTab[4:7]
-[39, 40, 41]
- \end{lstlisting}
-   \item \textbf{Concaténer des tableaux:}
- \begin{lstlisting}
->>> [1, 2, 3] + [7, 8, 9]
-[1, 2, 3, 7, 8, 9]
- \end{lstlisting}
- 
-\end{itemize}
-\end{propriete}
-\begin{Exercice}
-En utilisant les méthodes présentées ci-dessus :
-\begin{enumerate}
-\item Écrire une fonction \texttt{carre(n)} qui renvoie le tableau des carrés des nombres entiers compris entre $0$ et $n-1$ (\texttt{carre(4)} doit renvoyer \texttt{[0, 1, 4, 9]}).
-\item Écrire une fonction \texttt{imagesf(deb,fin)} qui renvoie le tableau  des images des nombres entiers compris entre \texttt{deb} et \texttt{fin} par la fonction $f :x \mapsto 3x^2-2x+1$ (\texttt{imagef(-2,3)} doit renvoyer \texttt{[17, 6, 1, 2, 9, 22]}).
-\item Écrire une fonction \texttt{genereListe(n)} qui renvoie un tableau de $n$ nombres aléatoires compris entre $1$ et $n^2$. ( On pourra importer une fois le module \texttt{random} et utiliser la fonction\texttt{random.randint(a,b}) qui renvoie un nombre aléatoire entre $a$ et $b$ inclus).
-\item Ecrire une fonction \texttt{insere(monTab, val, i)} qui insère dans le tableau \texttt{monTab} l'élément \texttt{val} à l'indice \texttt{i},en supposant que $i<len(monTab)$ (\texttt{insere([1, 2, 3, 4],5,2)} doit renvoyer \texttt{[1, 2, 5, 3, 4]})
-\item Écrire une fonction \texttt{compter(monTab,val)} permettant de compter le nombre d'occurrences de \texttt{val} dans \texttt{monTab} (\texttt{compter([4, 6, 8, 6, 7, 6, 9]▒, 6)} doit renvoyer $3$, et \texttt{compter([2, 4, 6],3)} doit renvoyer $0$).
-\item Écrire une fonction \texttt{compterIndices(monTab,val)} permettant de renvoyer un tableau des occurrences de \texttt{val} dans \texttt{monTab} (\texttt{compter([4, 6, 8, 6, 7, 6, 9]▒, 6)} doit renvoyer $[1, 3, 5]$, et \texttt{compter([2, 4, 6],3)} doit renvoyer $[~]$).
-\item Écrire une fonction \texttt{separer(monTab,val)}  permettant, à partir d'une liste de nombres \texttt{monTab} d'obtenir deux listes. La première comporte les nombres inférieurs ou égaux à un nombre donné, la seconde les nombre qui lui sont strictement supérieurs.
-\texttt{separer([45, 21, 56 ,12, 1, 8, 30, 22, 6, 33], 30)}  doit renvoyer :
-\texttt{[21, 12, 1, 8, 30, 22, 6], [45, 56, 33]}
-\item Écrire une fonction \texttt{plusProche(monTab,val)}  permettant de rechercher la plus proche valeur d'un nombre dans une liste.
-\texttt{plusProche([45, 21, 56 ,12, 1, 8, 30, 22, 6, 33], 20)}  doit renvoyer 21.
-\end{enumerate}
-\end{Exercice}
-\section{Construction de listes par compréhension}
-\begin{info}{Compréhensions de listes}
-\noindent Une des spécificités de Python est la capacité à construire des listes (et des tuples) par compréhension. Cette capacité est partagée avec d'autres langages, comme \texttt{Haskell}.
-\end{info}
-\begin{Application}{premières compréhensions}
-\begin{enumerate}
-\item Quel est le tableau associé à \texttt{monTab} ?
-\begin{lstlisting}
-monTab = [4*nb for nb in range(100)]
-\end{lstlisting}
-\item Quel est le tableau associé à \texttt{monTab} ? Pourquoi ?
-\begin{lstlisting}
-monTab = [3*nb for nb in range(100) if nb%2==0]
-\end{lstlisting}
-\item Quel est le tableau associé à \texttt{monTab} ?
-\begin{lstlisting}
-monTab = [let for let in 'Abracadabra']
-\end{lstlisting}
-\item Quel est le tableau associé à \texttt{monTab} ? Pourquoi ?
-\begin{lstlisting}
-monTab = [let for let in 'Abracadabra' if let.upper()!='A']
-\end{lstlisting}
-\item Quel est le tableau associé à \texttt{monTab} ? Pourquoi ?
-\begin{lstlisting}
-monTab = [ord(let) for let in 'Abracadabra']
-\end{lstlisting}
-\end{enumerate}
-\end{Application}
-\begin{ExerciceNomme}{Réduire le code}
-\noindent Comme vous avez pu le constater, les compréhensions sont rapides à écrire. Et certaines fonctions de l'exercice n°2 peuvent être considérablement réduites : les fonctions \texttt{carre}, \texttt{imagef} et \texttt{genereListe}. \\
-Utilisez les compréhensions pour réduire leur taille.
-\end{ExerciceNomme}
-\end{document}
+	1. **Construire une liste vide :**
+	
+		```` python
+		>>> monTab = [ ] # ou bien
+		>>> monTab = list()
+		````
+	2. **Ajouter un élément à la fin d'une liste :**
+	
+		```` python
+		>>> monTab.append(3)
+		>>> monTab
+		[3]
+		>>> monTab.append(5)
+		>>> monTab.append(7)
+		>>> monTab
+		[3, 5, 7]
+		````
+
+	3. **Supprimer et récupérer le dernier élément du tableau :**
+	
+		```` python
+		>>> dernier = monTab.pop()
+		>>> dernier 
+		7
+		>>> monTab
+		[3, 5]
+		````
+		
+		La méthode `pop` possède d'autres propriétés que je vous laisse [rechercher](https://docs.python.org/fr/3/tutorial/datastructures.html?highlight=list%20pop).
+	
+	4. **Convertir un tableau en tuple :**
+	
+		```` python
+		>>> monTuple = tuple(monTab)
+		>>> monTuple
+		(3, 5)
+		````
+		
+	5. **Convertir un tuple en tableau :**
+	
+		```` python
+		>>> monTab = list(monTuple)
+		>>> monTab
+		[3, 5]
+		````
+		
+	6. **Extraire des parties d'un tableau grâce aux *slices* :**
+	
+		```` python
+		>>> monTab = [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+		>>> monTab[ :4]
+		[35, 36, 37, 38]
+		>>> monTab[7: ]
+		[42, 43, 44, 45, 46, 47]
+		>>> monTab[4:7]
+		[39, 40, 41]
+		````
+		
+	7. **Concaténer des tableaux:**
+	
+		```` python
+		>>> [1, 2, 3] + [7, 8, 9]
+		[1, 2, 3, 7, 8, 9]
+		````
+		
+!!! question "Exercice"
+
+	=== "Enoncé"
+	
+		En utilisant les méthodes présentées ci-dessus :
+		
+		1. Écrire une fonction `carre(n)` qui renvoie le tableau des carrés des nombres entiers compris entre $0$ et $n-1$.
+		
+			```` python
+			>>> carre(4)
+			[0, 1, 4, 9]
+			````
+			
+		2. Écrire une fonction `imagesf(deb,fin)` qui renvoie le tableau  des images des nombres entiers compris entre `deb` et `fin` par la fonction $f :x \mapsto 3x^2-2x+1$.
+			
+			```` python
+			>>> imagef(-2,3)
+			[17, 6, 1, 2, 9, 22]
+			````
+			
+		3. Écrire une fonction `genereListe(n)` qui renvoie un tableau de $n$ nombres aléatoires compris entre $1$ et $n^2$. ( On pourra importer une fois le module `random` et utiliser la fonction`random.randint(a,b)` qui renvoie un nombre aléatoire entre $a$ et $b$ inclus).
+		4. Ecrire une fonction `insere(monTab, val, i)` qui renvoie une liste dans laquelle est inéserer l'élément `val` à l'indice `i` au sein des éléments de `monTab`, en supposant que $i<len(monTab)$.
+		
+			```` python
+			>>> insere([1, 2, 3, 4],5,2)
+			[1, 2, 5, 3, 4]
+			````
+			
+		5. Écrire une fonction `compter(monTab,val)` permettant de compter le nombre d'occurrences de `val` dans `monTab`.
+		
+			```` python 
+			>>> compter([4, 6, 8, 6, 7, 6, 9], 6)
+			3
+			>>> compter([2, 4, 6],3)
+			0
+			````
+			
+		6. Écrire une fonction `compterIndices(monTab,val)` permettant de renvoyer un tableau des indices des  occurrences de `val` dans `monTab`.
+			
+			```` python
+			>>> compter([4, 6, 8, 6, 7, 6, 9], 6)
+			[1, 3, 5]
+			>>> compter([2, 4, 6],3)
+			[]
+			````
+			
+		7. Écrire une fonction `separer(monTab,val)`  permettant, à partir d'une liste de nombres `monTab` d'obtenir deux listes. La première comporte les nombres inférieurs ou égaux à un nombre donné, la seconde les nombres qui lui sont strictement supérieurs :
+		
+			```` python
+			>>> separer([45, 21, 56 ,12, 1, 8, 30, 22, 6, 33], 30)
+			[21, 12, 1, 8, 30, 22, 6], [45, 56, 33]
+			````
+			
+		8. Écrire une fonction `plusProche(monTab,val)`  permettant de rechercher la plus proche valeur d'un nombre dans une liste :
+			
+			```` python 
+			>>> plusProche([45, 21, 56 ,12, 1, 8, 30, 22, 6, 33], 20)
+			21.
+			````
+
+	=== "Solution"
+		A venir !
+
+## Construction de listes par compréhension
+
+Jusqu'à présent nous avons défini nos listes {==**par extension**==}, c'est-à-dire en donnant exactement les élements de la liste. Cependant cette méthode n'est pas efficace pour de très grandes listes. Il faudra donc donner une méthode de construction de la liste, en essayant de *comprendre* les liens entre les différents éléments de cette liste. On parle alors de listes définies par {==**compréhension**==}.
+
+!!! info "Compréhensions de listes"
+	Une des spécificités de Python est la capacité à construire des listes (et des tuples) par compréhension. Cette capacité est partagée avec d'autres langages, comme `Haskell`.
+
+!!! question "premières compréhensions"
+
+	=== "Enoncé"
+		1. Quel est le tableau associé à `monTab` ?
+		
+			```` python
+			monTab = [4*nb for nb in range(100)]
+			````
+			
+		2. Quel est le tableau associé à `monTab` ? Pourquoi ?
+
+			```` python
+			monTab = [3*nb for nb in range(100) if nb%2==0]
+			````
+		
+		3.Quel est le tableau associé à `monTab` ?
+
+			```` python
+			monTab = [let for let in 'Abracadabra']
+			````
+
+		4. Quel est le tableau associé à `monTab` ? Pourquoi ?
+
+			```` python
+			monTab = [let for let in 'Abracadabra' if let.upper()!='A']
+			````
+
+		5. Quel est le tableau associé à `monTab` ? Pourquoi ?
+
+			```` python
+			monTab = [ord(let) for let in 'Abracadabra']
+			````
+
+!!! question "Réduire le code"
+
+	=== "Enoncé"
+		Comme vous avez pu le constater, les compréhensions sont rapides à écrire. Et certaines fonctions de l'exercice n°2 peuvent être considérablement réduites : les fonctions `carre`, `imagef` et `genereListe`. 
+		Utilisez les compréhensions pour réduire leur taille.
+
+	=== "Solution"
+		A venir !
