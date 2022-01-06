@@ -58,22 +58,23 @@
 
 !!! info "Méthode *built-in* `index` en Python"
 	La fonction précédente est déjà implémentée en Python, avec une différence : elle renvoie une erreur si l'élément cherché n'est pas dans le tableau.
- \begin{lstlisting}
->>> mon_tab =  [45, 24, -35, -12, 24]
->>> mon_tab.index(24)
-1
->>> mon_tab.index(36)
-Traceback (most recent call last):
-  File "<pyshell>", line 1, in <module>
-ValueError: 36 is not in list
- \end{lstlisting}
-\end{info}
-\section{Spécificité des listes en Python}
-\begin{propriete}{Méthodes et pratiques des listes}
-\trianglenoir
-\begin{itemize}
-\item \textbf{Construire une liste vide :}
- \begin{lstlisting}
+	
+	```` python
+	>>> mon_tab =  [45, 24, -35, -12, 24]
+	>>> mon_tab.index(24)
+	1
+	>>> mon_tab.index(36)
+	Traceback (most recent call last):
+	File "<pyshell>", line 1, in <module>
+	ValueError: 36 is not in list
+	````
+	
+## Spécificité des listes en Python
+
+!!! abstract "Méthodes et pratiques des listes"
+
+	1. "Construire une liste vide :"
+\begin{lstlisting}
 >>> monTab = [ ] # ou bien
 >>> monTab = list()
  \end{lstlisting}
