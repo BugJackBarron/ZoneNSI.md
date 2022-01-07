@@ -1,5 +1,11 @@
+from graphviz import Digraph
+
+import os
+os.environ["PATH"] += os.pathsep + 'P:\Documents\Graphviz\Graphviz\\bin'
+
 INDENTATION = "--"
 
+### Fonction utilitaire
 
 def hauteur(t) :
     if t is None :
@@ -31,6 +37,38 @@ class Node :
         else :
             representation += self.droit.toString(shift+INDENTATION)
         return representation
+    
+    def toImage(self, graphe, etiquette = None) :
+        noeud = str(self.valeur)
+        graphe.node(noeud)
+        if not(self.parent is None) :
+            graphe.edge(str(self.parent.valeur), noeud, label=etiquette)
+        if not(self.gauche is None) :
+            self.gauche.toImage(graphe, "G")
+        if not(self.droit is None) :
+            self.droit.toImage(graphe, "D")
+            
+    def search(self, x) :
+        if self.valeur == x :
+            return self
+        elif  self.valeur>x :
+            if self.gauche is None :
+                return None
+            else :
+                return self.gauche.search(x)
+        else :
+            if self.droit is None :
+                return None
+            else :
+                return self.droit.search(x)
+            
+    def minimum(self) :
+        if self.gauche is None :
+            return self
+        else :
+            return self.gauche.minimum()
+            
+
 
 
 #### CLASS ABR ####
@@ -48,9 +86,48 @@ class ABR :
         else :
             return hauteur(self.racine)
         
+    def __str__(self) :
+        return self.racine.toString("")
+
+    def toImage(self, title="arbre") :
+        if not(isinstance(title, str)) :
+            title = 'arbre'
+        graphe=Digraph()
+        self.racine.toImage(graphe)
+        graphe.render(title, view = True)
+        
+    def search(self, x) :
+        if self.estVide() :
+            return None
+        else :
+            return self.racine.search(x)
+        
+    def minimum(self) :
+        if self.estVide() :
+            return None
+        else :
+            return self.racine.minimum()
+        
+    def successor(self,x) :
+        n = self.search(x)
+        if n is None :
+            return None
+        else :
+            if not(n.droit is None) :
+                return n.droit.minimum()
+            else :
+                ancetre = n.parent
+                while not(ancetre  is None) and (n == ancetre.droit) :
+                    n = ancetre
+                    ancetre = n.parent
+                return ancetre
+
+        
 #### MAIN ####
         
 if __name__ == "__main__" :
+       
+
     n1 = Node(1)
     n2 = Node(3)
     n3 = Node(2, n1, n2)
@@ -69,3 +146,4 @@ if __name__ == "__main__" :
     n8.parent = n2
 
     tree = ABR(n7)
+    
