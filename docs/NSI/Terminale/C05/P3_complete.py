@@ -67,6 +67,24 @@ class Node :
             return self
         else :
             return self.gauche.minimum()
+        
+    def maximum(self) :
+        if self.droit is None :
+            return self
+        else :
+            return self.droit.maximum()
+        
+    def insert(self, v) :
+        if v< self.valeur :
+            if self.gauche is None :
+                self.gauche = Node(v, parent=self)
+            else :
+                self.gauche.insert(v)
+        else :
+            if self.droit is None :
+                self.droit = Node(v, parent=self)
+            else :
+                self.droit.insert(v)
             
 
 
@@ -108,6 +126,13 @@ class ABR :
         else :
             return self.racine.minimum()
         
+    def maximum(self) :
+        if self.estVide() :
+            return None
+        else :
+            return self.racine.maximum()
+        
+        
     def successor(self,x) :
         n = self.search(x)
         if n is None :
@@ -121,6 +146,25 @@ class ABR :
                     n = ancetre
                     ancetre = n.parent
                 return ancetre
+            
+    def predecessor(self,x) :
+        n = self.search(x)
+        if n is None :
+            return None
+        else :
+            if not(n.gauche is None) :
+                return n.gauce.maximum()
+            else :
+                ancetre = n.parent
+                while not(ancetre  is None) and (n == ancetre.gauche) :
+                    n = ancetre
+                    ancetre = n.parent
+                return ancetre
+    def insert(self, v) :
+        if self.racine is None :
+            self.racine= Node(v)
+        else :
+            self.racine.insert(v)
 
         
 #### MAIN ####
