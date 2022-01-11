@@ -23,7 +23,7 @@
 			* les noeuds 3, 7 et 13 de 3 ;
 			* le noeud 9 de 4.
 			
-			le temps moyen de recherche sur cet arbre est donc $\dfrac{1+2\times 2 + 3\times 3 + 4}{7} = \dfrac{18}{7}.
+			le temps moyen de recherche sur cet arbre est donc $\dfrac{1+2\times 2 + 3\times 3 + 4}{7} = \dfrac{18}{7}$.
 			
 			Calculer de même le temps moyen pour les ABR `tree2`, `tree3` et `tree4`.
 			Que peut-on en conclure ?
