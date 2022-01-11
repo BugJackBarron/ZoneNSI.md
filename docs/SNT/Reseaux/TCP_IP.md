@@ -154,7 +154,7 @@ Nos deux ordinateurs sont bien connectés, ils se reconnaissent l'un l'autre, et
 			
 ## Protocole TCP/IP
 
-Depuis le début de cette activité, j'utilise le mot \textbf{protocole}. Mais que signifie-t-il ?
+Depuis le début de cette activité, j'utilise le mot {==**protocole**==}. Mais que signifie-t-il ?
 
 !!! question "Protocole"
 	Cherchez la définition Wikipédia et donnez la définition de &laquo; protocole &raquo; dans le cas général puis en informatique :

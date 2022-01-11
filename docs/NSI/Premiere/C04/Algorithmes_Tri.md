@@ -7,7 +7,7 @@
 	=== "Enoncé"
 		On donne une main de 5 cartes d'un jeu de 54 cartes. Trier les cartes par ordre croissant, sans tenir compte des couleurs. Vous devrez marquer dans le tableau suivant l'ensemble des changements de positions des cartes dans votre main :
 		
-		![P3_premier_tri.png](P3_premier_tri.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![P3_premier_tri.png](P3_premier_tri.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
 		
 		Avez-vous tous utilisé la même méthode ?
 	
@@ -38,7 +38,7 @@ Le principe du {==**tri par insertion**==} est le suivant :
 	
 	=== "A compléter"
 
-		![Tri par insertion](P3_Tri_Insertion_1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri par insertion](P3_Tri_Insertion_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
 
 	=== "Version complétée"
 	
@@ -86,7 +86,7 @@ Le principe du {==**tri par sélection**==} est le suivant :
 	
 	=== "A compléter"
 
-		![Tri par sélection](P3_Tri_Selection_1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri par sélection](P3_Tri_Selection_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
 
 	=== "Version complétée"
 	
@@ -116,16 +116,16 @@ Le principe du {==**tri par sélection**==} est le suivant :
 
 L'algorithme de {==**tri à bulles**==} consiste à trier la liste en n'autorisant qu'à intervertir deux éléments consécutifs de la liste. On peut le décrire comme ceci:
 
-* Parcourir le tableau et comparer les éléments consécutifs. Lorsque deux éléments sont dans le désordre, les inverser.
+* Parcourir tout le tableau et comparer les éléments consécutifs. Lorsque deux éléments sont dans le désordre, les inverser.
 * Une fois la fin du tableau, recommencer.
 * S'arrêter dès qu'un parcours du tableau n'a échangé aucun élément.
 
 !!! example "Exemple"
-	Effectuer le tri à bulle du tableau `[5, 1, 4, 2, 8]`
+	Effectuer le tri à bulle du tableau `[5, 1, 4, 8, 2]`
 
 	=== "A compléter"
 
-		![Tri à bulle](P3_Fusion_1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri à bulle](P3_TriBulle_1.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 
 	=== "Version complétée"
 	
@@ -135,6 +135,8 @@ L'algorithme de {==**tri à bulles**==} consiste à trier la liste en n'autorisa
 
 	=== "Enoncé"
 	
+		1. Pourquoi, à votre avis, appelle-t-on ce tri un &laquo; tri à bulle &raquo; ?
+		2. Quelles propriété at-on après un parcours complet d'un tableau ?
 		1. Ecrire un algorithme représentant un tri à bulle.
 		2. Quelle est la complexité de cet algorithme ?
 		3. Implémenter une procédure python `triBulle(tab)`.

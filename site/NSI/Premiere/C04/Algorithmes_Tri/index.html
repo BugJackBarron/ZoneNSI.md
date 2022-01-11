@@ -1948,7 +1948,7 @@
 <p class="admonition-title">Trier à la main</p>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
 <p>On donne une main de 5 cartes d'un jeu de 54 cartes. Trier les cartes par ordre croissant, sans tenir compte des couleurs. Vous devrez marquer dans le tableau suivant l'ensemble des changements de positions des cartes dans votre main :</p>
-<p><img alt="P3_premier_tri.png" src="../P3_premier_tri.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_premier_tri.png" src="../P3_premier_tri.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Avez-vous tous utilisé la même méthode ?</p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution 1</label><div class="tabbed-content">
@@ -1975,7 +1975,7 @@
 <li>par des flèches rouges l'insertion de nouveau éléments dans le sous-tableau trié (cases jaunes).</li>
 </ul>
 <div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">A compléter</label><div class="tabbed-content">
-<p><img alt="Tri par insertion" src="../P3_Tri_Insertion_1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Tri par insertion" src="../P3_Tri_Insertion_1.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Version complétée</label><div class="tabbed-content">
 <p>A venir</p>
@@ -2020,7 +2020,7 @@
 <p class="admonition-title">Exemple</p>
 <p>On veut trier le tableau <code>[6, 5, 3, 1, 8, 7, 2, 4]</code>  par un tri par sélection. Compléter le tableau suivant en représentant par des flèches rouges les échanges de positions entre éléments</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">A compléter</label><div class="tabbed-content">
-<p><img alt="Tri par sélection" src="../P3_Tri_Selection_1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Tri par sélection" src="../P3_Tri_Selection_1.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
 </div>
 <input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Version complétée</label><div class="tabbed-content">
 <p>A venir</p>
@@ -2052,15 +2052,15 @@
 <h2 id="un-autre-algorithme-de-tri-le-tri-a-bulle">Un autre algorithme de tri : le tri à bulle</h2>
 <p>L'algorithme de <mark class="critic"><strong>tri à bulles</strong></mark> consiste à trier la liste en n'autorisant qu'à intervertir deux éléments consécutifs de la liste. On peut le décrire comme ceci:</p>
 <ul>
-<li>Parcourir le tableau et comparer les éléments consécutifs. Lorsque deux éléments sont dans le désordre, les inverser.</li>
+<li>Parcourir tout le tableau et comparer les éléments consécutifs. Lorsque deux éléments sont dans le désordre, les inverser.</li>
 <li>Une fois la fin du tableau, recommencer.</li>
 <li>S'arrêter dès qu'un parcours du tableau n'a échangé aucun élément.</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
-<p>Effectuer le tri à bulle du tableau <code>[5, 1, 4, 2, 8]</code></p>
+<p>Effectuer le tri à bulle du tableau <code>[5, 1, 4, 8, 2]</code></p>
 <div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">A compléter</label><div class="tabbed-content">
-<p><img alt="Tri à bulle" src="../P3_Fusion_1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Tri à bulle" src="../P3_TriBulle_1.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
 </div>
 <input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Version complétée</label><div class="tabbed-content">
 <p>A venir</p>
@@ -2071,6 +2071,8 @@
 <p class="admonition-title">Exercice</p>
 <div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
 <ol>
+<li>Pourquoi, à votre avis, appelle-t-on ce tri un &laquo; tri à bulle &raquo; ?</li>
+<li>Quelles propriété at-on après un parcours complet d'un tableau ?</li>
 <li>Ecrire un algorithme représentant un tri à bulle.</li>
 <li>Quelle est la complexité de cet algorithme ?</li>
 <li>Implémenter une procédure python <code>triBulle(tab)</code>.</li>
