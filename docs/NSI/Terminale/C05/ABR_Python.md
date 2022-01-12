@@ -303,7 +303,7 @@ Pour l'instant, nous avons vu comment ajouter un élément à un ABR, mais nous 
 Lorsqu'on veut supprimer une clé d'un ABR, plusieurs situations peuvent se produire :
 
 1. La clé n'est pas présente dans l'ABR, donc il n'y a rien à faire.
-2. La clé est celle d'une feuille. Dans ce cas la suppression est simple : on passe à `None` la fils correspondant du parent, ce qui a pour effet de supprimer le noeud.
+2. La clé est celle d'une feuille. Dans ce cas la suppression est simple : on passe à `None` le fils correspondant du parent, ce qui a pour effet de supprimer le noeud.
 
 	![P3_ABR2.png](P3_ABR2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
 	
@@ -311,7 +311,7 @@ Lorsqu'on veut supprimer une clé d'un ABR, plusieurs situations peuvent se prod
 
 	![P3_ABR3.png](P3_ABR3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
 	
-4. Si la clé possède deux fils, azlors il y a deux possibilités :
+4. Si la clé possède deux fils, alors il y a deux possibilités :
 	
 	* on remplace le noeud par le minimum du sous-arbre droit, qui est le succeseur du noeud supprimé ;
 	* ou on remplace par le maximum du sous-arbre gauche, qui est le prédecesseur du noeud supprimé.
