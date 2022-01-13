@@ -85,7 +85,39 @@ class Node :
                 self.droit = Node(v, parent=self)
             else :
                 self.droit.insert(v)
-            
+                
+    def supprimer(self, valeur):
+        if valeur < self.valeur:
+            self.gauche = self.gauche.supprimer(valeur)
+            if self.gauche is not None :
+                self.gauche.parent = self
+            return self
+        elif valeur > self.valeur:
+            self.droit = self.droit.supprimer(valeur)
+            if self.droit is not None :
+                self.droit.parent = self
+            return self
+        else:
+            return self.supprimerNoeudCourant()
+
+    def supprimerNoeudCourant(self):
+        if self.estFeuille():
+            return None
+        elif self.gauche is None:
+            return self.droit
+        elif self.droit is None:
+            return self.gauche
+        else:
+            ## on cherche le noeud minimum du sous-arbre droit
+            noeudMin = self.droit.minimum()
+            ## On met à jour la valeur du noeud courant
+            self.valeur = noeudMin.valeur
+            ## On supprime le noeud minimal, qui ne possède pas de fils gauche (mais peut
+            ## éventuellement posséder une descendance droite
+            noeudMin.parent.droit = noeudMin.droit
+            ## et on retourne le noeud courant
+            return self      
+
 
 
 
@@ -160,9 +192,10 @@ class ABR :
                     n = ancetre
                     ancetre = n.parent
                 return ancetre
+            
     def insert(self, v) :
         if self.racine is None :
-            self.racine= Node(v)
+            self.racine = Node(v)
         else :
             self.racine.insert(v)
 
@@ -190,4 +223,17 @@ if __name__ == "__main__" :
     n8.parent = n2
 
     tree = ABR(n7)
-    
+
+
+#    l1 = [5, 2, 11, 3, 7, 13, 9]
+#    l2 = [7, 3, 11, 2, 5, 9, 13]
+#    l3 = [2, 3, 5, 11, 7, 13, 9]
+#    l4 = [2, 3, 5, 7, 9, 11, 13]
+#    tree1 = ABR()
+#    tree2 = ABR()
+#    tree3 = ABR()
+#    tree4 = ABR()
+#    for i in range(1,5) :
+#        eval(f"[tree{i}.insert(e) for e in l{i}]")
+#        eval(f"tree{i}.toImage('arbre{i}')")
+        
