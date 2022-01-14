@@ -1,4 +1,8 @@
 from graphviz import Digraph
+from random import shuffle
+
+import os
+os.environ["PATH"] += os.pathsep + 'P:\Documents\Graphviz\Graphviz\\bin'
 
 INDENTATION = "  "
 
@@ -189,7 +193,7 @@ class Node :
             RG.gauche.parent = RG
         if RG.droit is not None :
             RG.droit.parent = RG
-        racine = Node(pivot.valeur, RG, pivot.droit, parent = self.parent)
+        racine = Node(pivot.valeur, gauche = RG, droit = pivot.droit, parent = self.parent)
         return racine
         
     def rotationDroite(self) :
@@ -270,7 +274,7 @@ if __name__ == "__main__" :
     print(tree)
     
     tree = ABR()
-    for elem in [15,12,7,8,1,23,13, 17, 28] :
+    for elem in suffle
         tree.insererAVL(elem)
     tree.toImage()
     
