@@ -82,7 +82,15 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 			mon_tuple[5] = 42	  
 			````
 	=== "Solutions"
-		A venir !
+		
+		1. c'est 3.1
+		2. `a` est associé à la valeur 4.
+		3. Pour obtenir la valeur 1, il faut saisir `a[8]`
+		4. On obtient 12, c'est-à-dire le dernier élément du tuple.
+		5. On obtient l'erreur `IndexError: tuple index out of range`, ce qui signifie qu'on recherche quelque chose en dehors du tuple, ce qui est une erreur `IndexError`.
+		6. On essaye de donner la valeur 42 à l'élément d'indice 5 du tuple, ce qui est impossible :
+			`TypeError: 'tuple' object does not support item assignment`
+		
 		 
 !!! question "Exercice 2"
 	
@@ -106,7 +114,10 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 			personnage, acteur, metier, pere = mon_tuple
 			````
 	=== "Solutions"
-		A venir !
+	
+		1. On obtient : `Bonjour le monde !`
+		2. On obtient : `5 + 8 = 13`
+		3. La variable `personnage` contient la chaîne de caractères `"Luke Skywalker"`, la variable `acteur`contient `"Mark Hamill"`, etc.
 			
 !!! tips "Tuple unpacking"
 	La méthode utilisée dans l'exercice précédent s'appelle le {==**tuple unpacking**==}, soit &laquo; désempaquetage &raquo; de tuple. Elle est très souvent utilisée pour décomposer des tuples renvoyés comme valeur de retour d'une fonction.
@@ -119,11 +130,12 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 			return (a,b,a//b,a%b)
 		res = euclide(20,7)
 		print(type(res))
-		diviseur, dividende, quotient, reste = res
+		dividende, diviseur, quotient, reste = res
 		print(type(quotient))
 		````
 	=== "Solution"
-		A venir !
+	
+		Quotient est un élément de type `int`, chacune des variables `dividende`, `diviseur`, etc... contient la valeur qui lui est associée. le tuple a été décompacté (**unpack**).
 
 ## Parcourir une séquence
 
@@ -191,7 +203,34 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 		5. Que faut-il écrire pour obtenir les termes de rang impairs du tuple ?
 	
 	=== "Solutions"
-		A venir !
+	
+		1. Le code écrit les nombres pairs du tuple, en effectuant un parcours par éléments.
+		2. Le code écrit les nombres pairs du tuple, en effectuant un parcours par indices.
+		3. Le code écrit les nombres *d'indices pairs* du tuple, en effectuant un parcours par indice.
+		4. Il faut écrire :
+		
+			```` python
+			for n in mon_tuple :
+				if n%2 == 1 :
+					print(n)
+			````
+			
+			ou 
+			
+			```` python
+			for i in range(len(mon_tuple)) :
+				if mon_tuple[i]%2 == 1 :
+					print(mon_tuple[i])
+			````
+		5. Il faut écrire :
+		
+			```` python
+			for i in range(len(mon_tuple)) :
+				if i%2 == 1 :
+					print(mon_tuple[i])
+			````
+		
+			
 
 !!! question "Algorithmes de parcours"
 	
@@ -222,6 +261,18 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 				* $(3, 4, 5, 3)$ n'est pas un palindrome.
 	
 			Si vous le codez suffisamment bien, votre code devrait aussi fonctionner pour les chaines de caractères comme : &laquo; été &raquo;, &laquo; kayak &raquo;, &laquo; Noël a trop par rapport à Léon &raquo; ou &laquo; Engage le jeu que je le gagne &raquo;.
+			
+	=== "Solution"
+	
+		1. ```` python
+			def maximum(t) :
+				maxi = t[0]
+				for e in t :
+					if e>maxi :
+						maxi = e
+				return e
+			````
+		2. 
 
 
 !!! quote "Une citation"
