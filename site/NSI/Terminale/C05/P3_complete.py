@@ -198,6 +198,8 @@ class ABR :
             self.racine = Node(v)
         else :
             self.racine.insert(v)
+            
+    def rotationGauche(
 
         
 #### MAIN ####

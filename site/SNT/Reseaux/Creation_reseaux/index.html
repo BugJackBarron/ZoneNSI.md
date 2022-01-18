@@ -1715,6 +1715,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C06/Processus/" class="md-nav__link">
+        Gestion des Processus
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2017,7 +2031,7 @@ Un routeur possède une adresse IP pour <strong>chacun des réseaux duquel il fa
 <li>Installez la ligne de commande sur une des machines de chacun des réseaux, et vérifiez si vous pouvez utiliser correctement la commande <code>ping</code>.</li>
 <li>Placez un routeur au milieu, avec deux interfaces, et joignez le par un câble à chaque switch.</li>
 <li>
-<p>Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP <code>192.168.1.254</code> pour le premier, et <code>172.180.100.254</code> pour le second.
+<p>Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP <code>192.168.0.254</code> pour le premier, et <code>172.180.100.254</code> pour le second.
     Testez la commande <code>ping</code> entre deux postes des deux réseaux. Que se passe-t-il ?</p>
 <div class="admonition abstract">
 <p class="admonition-title">Passerelle</p>
@@ -2025,10 +2039,10 @@ Un routeur possède une adresse IP pour <strong>chacun des réseaux duquel il fa
 </div>
 </li>
 <li>
-<p>Configurez les machines du réseau <code>192.168.1.X</code>  pour qu'elles aient comme passerelle l'IP du routeur, c'est-à-dire <code>192.168.1.254</code>. Faites de même avec le réseau <code>172.180.X.X</code>.
+<p>Configurez les machines du réseau <code>192.168.0.X</code>  pour qu'elles aient comme passerelle l'IP du routeur, c'est-à-dire <code>192.168.0.254</code>. Faites de même avec le réseau <code>172.180.X.X</code>.
     Testez de nouveau la commande <code>ping</code>. Que se passe-t-il ?</p>
 </li>
-<li>Installez sur une machine du réseau <code>192.168.1.X</code> un serveur web, et testez sur les machines du réseau <code>172.180.X.X</code> l'affichage de la page web d'accueil du serveur.</li>
+<li>Installez sur une machine du réseau <code>192.168.0.X</code> un serveur web, et testez sur les machines du réseau <code>172.180.X.X</code> l'affichage de la page web d'accueil du serveur.</li>
 </ol>
 </div>
 <h2 id="multiples-reseaux-multiples-routeurs">Multiples réseaux, multiples routeurs</h2>
