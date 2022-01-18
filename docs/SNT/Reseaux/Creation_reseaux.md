@@ -77,15 +77,15 @@ Créer un  réseau est donc une chose relativement aisée. Mais comment relier d
 	2. Créez dans `Filius` ces deux réseaux, le réseau `192.168.0.X`. étant situé à gauche de l'acran, et le réseau `172.180.X.X` étant à doite.
 	3. Installez la ligne de commande sur une des machines de chacun des réseaux, et vérifiez si vous pouvez utiliser correctement la commande `ping`.
 	4. Placez un routeur au milieu, avec deux interfaces, et joignez le par un câble à chaque switch.
-	5. Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP `192.168.1.254` pour le premier, et `172.180.100.254` pour le second.
+	5. Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP `192.168.0.254` pour le premier, et `172.180.100.254` pour le second.
 		Testez la commande `ping` entre deux postes des deux réseaux. Que se passe-t-il ?
 		
 		!!! abstract "Passerelle"
 			Une machine basique n'est normalement pas capable de résoudre (c'est-à-dire identifier) des adresses IP n'appartenant pas à son réseau. Elle délègue ce travail à une machine particulière, appelée **passerelle** (ou \emph{Gateway}). Cette machine particulière peut être une machine du réseau, comme un serveur spécifique, ou bien directement un routeur.
 
-	6. Configurez les machines du réseau `192.168.1.X`  pour qu'elles aient comme passerelle l'IP du routeur, c'est-à-dire `192.168.1.254`. Faites de même avec le réseau `172.180.X.X`.
+	6. Configurez les machines du réseau `192.168.0.X`  pour qu'elles aient comme passerelle l'IP du routeur, c'est-à-dire `192.168.0.254`. Faites de même avec le réseau `172.180.X.X`.
 		Testez de nouveau la commande `ping`. Que se passe-t-il ?
-	7. Installez sur une machine du réseau `192.168.1.X` un serveur web, et testez sur les machines du réseau `172.180.X.X` l'affichage de la page web d'accueil du serveur.
+	7. Installez sur une machine du réseau `192.168.0.X` un serveur web, et testez sur les machines du réseau `172.180.X.X` l'affichage de la page web d'accueil du serveur.
 
 
 ## Multiples réseaux, multiples routeurs
