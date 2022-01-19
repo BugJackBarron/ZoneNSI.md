@@ -264,7 +264,8 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 			
 	=== "Solution"
 	
-		1. ```` python
+		1. Code :
+			```` python
 			def maximum(t) :
 				maxi = t[0]
 				for e in t :
@@ -272,8 +273,36 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 						maxi = e
 				return e
 			````
-		2. 
-
+		2. Code :
+			```` python
+			def minimum(t) :
+				mini = t[0]
+				for e in t :
+					if e<mini :
+						mini = e
+				return e
+			````
+		3. Code :
+			```` python
+			def somme(t) :
+				somme = 0
+				for e in t :
+					somme += e
+				return somme
+			````
+		4. Code :
+			```` python
+			def moyenne(t) :
+				return somme(t)/len(t)
+			````
+		5. Code :
+			```` python
+			def palindrome(t) :
+				for i in range(len(t)//2) :
+					if t[i] != t[-(i+1)] :
+						return False
+				return True
+			````
 
 !!! quote "Une citation"
 	&laquo; Les tentatives de création de machines pensantes nous seront d’une grande aide pour 	découvrir comment nous pensons nous-mêmes. &raquo;
