@@ -76,15 +76,82 @@ Si le système d'exploitation **n'est pas préemptif**, on pourrait penser au pr
 
 Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.
 
-Regardons le temps d'attente nécessaire à l'exécution de chaque processus, qui correpond à la différence entre le temps de terminanison du processus et le temps d'entrée dans le processeur :
+Regardons le temps de séjour nécessaire à l'exécution de chaque processus, qui correpond à la différence entre le temps de terminanison du processus et le temps d'entrée dans le processeur :
 
 * `A` est terminé au tick 5, et est entré au tick 0 : $t_A = 5-0 = 5$
 * `B` est terminé au tick 8, et est entré au tick 1 : $t_B = 8-1 = 7$
 * `C` est terminé au tick 10, et est entré au tick 3 : $t_C = 10-3 = 7$
 * `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
 
-Le temps d'attente moyen avec cette méthode est donc $\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7$
+Le temps de séjour moyen avec cette méthode est donc $\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7$.
 
+Le temps d'attente, lui, est le temps de séjour auquel on retranche le temps d'exécution :
+
+* `A` a pour temps d'attente 5 et pour temps d'exécution 5 : $t'_A = 5-5 = 0$
+* `B` a pour temps d'attente 7 et pour temps d'exécution 3 : $t'_B = 7-3 = 4$
+* `C` a pour temps d'attente 7 et pour temps d'exécution 2 : $t'_C = 7-2 = 5$
+* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+
+Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+4+5+5}{4} = \dfrac{14}{4} = 3,5$.
+
+
+#### Système non-préemptif : Short Job First (SJF)
+
+Une autre possibilité est de prioriser dans les processus en attente celui qui sera le plus rapide à terminer.
+
+![P3_img3.png](P3_img3.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+
+Ainsi :
+
+* au tick 0, on exécute le processus `A`
+
+
+* `A` est terminé au tick 5, et est entré au tick 0 : $t_A = 5-0 = 5$
+* `B` est terminé au tick 10, et est entré au tick 1 : $t_B = 10-1 = 9$
+* `C` est terminé au tick 7, et est entré au tick 3 : $t_C = 7-3 = 4$
+* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+
+Le temps de séjour moyen avec cette méthode est donc $\dfrac{5+9+4+9}{4} = \dfrac{27}{4} = 6,75$.
+
+* `A` a pour temps d'attente 5 et pour temps d'exécution 5 : $t'_A = 5-5 = 0$
+* `B` a pour temps d'attente 9 et pour temps d'exécution 3 : $t'_B = 9-3 = 6$
+* `C` a pour temps d'attente 4 et pour temps d'exécution 2 : $t'_C = 4-2 = 2$
+* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+
+Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25$.
+
+
+### Préemptif Shortest Remaining Time (SRT)
+
+* `A` est terminé au tick 10, et est entré au tick 0 : $t_A = 10-0 = 10$
+* `B` est terminé au tick 4, et est entré au tick 1 : $t_B = 4-1 = 3$
+* `C` est terminé au tick 6, et est entré au tick 3 : $t_C = 6-3 = 3$
+* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+
+Le temps de séjour moyen avec cette méthode est donc $\dfrac{10+3+3+9}{4} = \dfrac{25}{4} = 6,25$.
+
+* `A` a pour temps d'attente 10 et pour temps d'exécution 5 : $t'_A = 10-5 = 5$
+* `B` a pour temps d'attente 3 et pour temps d'exécution 3 : $t'_B = 3-3 = 0$
+* `C` a pour temps d'attente 3 et pour temps d'exécution 2 : $t'_C = 3-2 = 1$
+* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+
+Le temps d'attente moyen avec cette méthode est donc $\dfrac{5+0+1+5}{4} = \dfrac{11}{4} = 2,75$.
+
+### Préemptif Round Robin (RR)
+
+* `A` est terminé au tick 12, et est entré au tick 0 : $t_A = 12-0 = 10$
+* `B` est terminé au tick 7, et est entré au tick 1 : $t_B = 7-1 = 6$
+* `C` est terminé au tick 8, et est entré au tick 3 : $t_C = 8-3 = 5$
+* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+
+Le temps de séjour moyen avec cette méthode est donc $\dfrac{10+3+3+9}{4} = \dfrac{30}{4} = 7,5$.
+
+* `A` a pour temps d'attente 10 et pour temps d'exécution 5 : $t'_A = 10-5 = 5$
+* `B` a pour temps d'attente 6 et pour temps d'exécution 3 : $t'_B = 6-3 = 3$
+* `C` a pour temps d'attente 5 et pour temps d'exécution 2 : $t'_C = 5-2 = 3$
+* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+
+Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+4+5+5}{4} = \dfrac{16}{4} = 4$.
 
 ### Exemple en Python : les Threads
 
