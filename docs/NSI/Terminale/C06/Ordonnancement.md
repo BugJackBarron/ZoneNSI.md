@@ -57,24 +57,33 @@ Pour répondre à ces objectifs parfois contradictoires, un ordonnanceur fait fa
 
 ### Différentes méthodes d'ordonnancement
 
-Imaginons que le processeur ait à exécuter 4 processus, dont les temps d'exécutions sont différents :
+Imaginons que le processeur ait à exécuter 4 processus, dont les temps d'exécutions sont différents, et qui se sont présentés à différents instants au processeur :
 
-* le processus `A` a besoin de 5 cycles d'horloge ;
-* le processus `B` a besoin de 3 cycles d'horloge ;
-* le processus `C` a besoin de 2 cycles d'horloge ;
-* le processus `D` a besoin de 4 cycles d'horloge ;
+* le processus `A` a besoin de 5 cycles d'horloge, et est arrivé au *tick* 0 ;
+* le processus `B` a besoin de 3 cycles d'horloge, et est arrivé au *tick* 1 ;
+* le processus `C` a besoin de 2 cycles d'horloge, et est arrivé au *tick* 3 ;
+* le processus `D` a besoin de 4 cycles d'horloge, et est arrivé au *tick* 5 ;
 
 ![P3_img1.png](P3_img1.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
 
-Ces 4 processus ont été demandés dans l'ordre `A, B, C, D` au processeur, qui était occupé jusque là.
+Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevauchements, il faudra ordonner les différents processus afin qu'ils soient tous exécutés.
 
 #### Système non-préemptifs : PAPS
 
-Si le système d'exploitation n'est pas préemptif, on pourrait penser au principe d'une file de type &laquo; Premier Arrivé, Premier Servi &raquo; (*FIFO*).
+Si le système d'exploitation **n'est pas préemptif**, on pourrait penser au principe d'une file de type &laquo; Premier Arrivé, Premier Servi &raquo; (*FIFO*).
 
 ![P3_img2.png](P3_img2.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
 
-Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus, 
+Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.
+
+Regardons le temps d'attente nécessaire à l'exécution de chaque processus, qui correpond à la différence entre le temps de terminanison du processus et le temps d'entrée dans le processeur :
+
+* `A` est terminé au tick 5, et est entré au tick 0 : $t_A = 5-0 = 5$
+* `B` est terminé au tick 8, et est entré au tick 1 : $t_B = 8-1 = 7$
+* `C` est terminé au tick 10, et est entré au tick 3 : $t_C = 10-3 = 7$
+* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+
+Le temps d'attente moyen avec cette méthode est donc $\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7$
 
 
 ### Exemple en Python : les Threads
