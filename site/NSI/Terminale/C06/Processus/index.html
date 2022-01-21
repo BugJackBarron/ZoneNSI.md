@@ -1738,6 +1738,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ordonnancement/" class="md-nav__link">
+        Ordonnancement des processus
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2137,6 +2151,81 @@ Lorsqu'on exécute ce programme, un processus est crée, et passe en état <code
 <p>parfois un processus se comporte de manière anormale, par exemple par une trop grande consommation de  mémoire, ou lorsqu'une application &laquo; ne répond plus &raquo;. Il est possible dans ce cas de tuer  le processus en question, en lui envoyant un signal de terminaison sans que l'application puisse l'intercepeter, en passant l'option <code>-9</code> à la commande <code>kill</code>, par exemple <code>kill -9 13259</code>. 
 En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne seront pas sauvegardées et des donénes risquent d'être perdues. C'est une commande à utiliser avec précaution.</p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Création et suppression de processus en Python</p>
+<p>Nous allons créer un processus à partir de Python. Pour cela :</p>
+<ol>
+<li>
+<p>Dans JupyterHub, créer un fichier texte vide, puis y insérer le code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;terminé&quot;</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Sauvegardez ce fichier sous le nom <code>test.py</code></p>
+</li>
+<li>Ouvrez <strong>DEUX</strong> terminaux JupyterHub.</li>
+<li>Dans le premier, utilisez la commande <code>python3 test.py</code>. </li>
+<li>Dans le second, lancez la commande <code>ps -aux</code>, et cherchez le processus correspondant à l'exécution du script <code>test.py</code>.</li>
+<li>Tuez le processus avec la commande <code>kill</code>, et observez ce qui se passe dans les deux terminaux.</li>
+<li>Recommencez la procédure à partir de 4 en tuant le processus avec la commande <code>kill -9</code>, et observez les deux terminaux.</li>
+</ol>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Utilisation de <code>fork()</code></p>
+<ol>
+<li>
+<p>Dans JupyterHub, créez un fichier nommé <code>testFork.py</code> dans lequel vous copierez les lignes suivantes :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Python program to explain os.fork() method </span>
+
+<span class="c1"># importing os module </span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
+
+
+<span class="c1"># Create a child process</span>
+<span class="c1"># using os.fork() method </span>
+<span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+
+<span class="c1"># pid greater than 0 represents</span>
+<span class="c1"># the parent process </span>
+<span class="k">if</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am parent process:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Process ID:&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Child&#39;s process ID:&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">)</span>
+
+<span class="c1"># pid equal to 0 represents</span>
+<span class="c1"># the created child process</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">I am child process:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Process ID:&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent&#39;s process ID:&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">())</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span>
+
+
+
+<span class="c1"># If any error occurred while</span>
+<span class="c1"># using os.fork() method</span>
+<span class="c1"># OSError will be raised</span>
+</code></pre></div>
+</li>
+<li>
+<p>Excéutez ce fichier par la commande <code>python3 testFork.py</code>. Observez dans ce terminal l'effet du script.</p>
+</li>
+<li>Dans un autre terminal, avec la commande <code>ps -ef</code>, observez les processus créés, ainsi que leurs PID et PPID.</li>
+<li>(Si nécessaire, relancez le script !) Tuez le processus enfant. Que se passe-t-il ?</li>
+<li>Relancez le script ! Tuez le processus parent et attendez quelques instants. Que se passe-t-il ?</li>
+</ol>
+</div>
 <div class="admonition tips">
 <p class="admonition-title">Processus Zombies</p>
 <p>Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de <mark class="critic"><strong>processus zombies</strong></mark>. Ceux-ci occupent une parrtie de la mémoire, tout en étant devenus inutiles...</p>
@@ -2181,13 +2270,13 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
       
       
         
-        <a href="../../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Le langage" rel="next">
+        <a href="../Ordonnancement/" class="md-footer__link md-footer__link--next" aria-label="Next: Ordonnancement des processus" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Le langage
+              Ordonnancement des processus
             </div>
           </div>
           <div class="md-footer__button md-icon">

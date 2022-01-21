@@ -184,9 +184,81 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 	parfois un processus se comporte de manière anormale, par exemple par une trop grande consommation de  mémoire, ou lorsqu'une application &laquo; ne répond plus &raquo;. Il est possible dans ce cas de tuer  le processus en question, en lui envoyant un signal de terminaison sans que l'application puisse l'intercepeter, en passant l'option `-9` à la commande `kill`, par exemple `kill -9 13259`. 
 	En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne seront pas sauvegardées et des donénes risquent d'être perdues. C'est une commande à utiliser avec précaution.
 	
+
+	
+!!! question "Création et suppression de processus en Python"
+
+	Nous allons créer un processus à partir de Python. Pour cela :
+	
+	1. Dans JupyterHub, créer un fichier texte vide, puis y insérer le code suivant :
+	
+		```` python
+		import time
+
+		a = 0
+		for i in range(100000):
+			a += a**3
+			time.sleep(0.01)
+		print("terminé")
+		````
+	2. Sauvegardez ce fichier sous le nom `test.py`
+	3. Ouvrez **DEUX** terminaux JupyterHub.
+	4. Dans le premier, utilisez la commande `python3 test.py`. 
+	5. Dans le second, lancez la commande `ps -aux`, et cherchez le processus correspondant à l'exécution du script `test.py`.
+	6. Tuez le processus avec la commande `kill`, et observez ce qui se passe dans les deux terminaux.
+	7. Recommencez la procédure à partir de 4 en tuant le processus avec la commande `kill -9`, et observez les deux terminaux.
+		
+		
+!!! question "Utilisation de `fork()`"
+
+	1. Dans JupyterHub, créez un fichier nommé `testFork.py` dans lequel vous copierez les lignes suivantes :
+	
+		```` python
+		# Python program to explain os.fork() method 
+  
+		# importing os module 
+		import os, time
+		  
+		  
+		# Create a child process
+		# using os.fork() method 
+		pid = os.fork()
+		  
+		# pid greater than 0 represents
+		# the parent process 
+		if pid > 0 :
+			print("I am parent process:")
+			print("Process ID:", os.getpid())
+			print("Child's process ID:", pid)
+		  
+		# pid equal to 0 represents
+		# the created child process
+		else :
+			print("\nI am child process:")
+			print("Process ID:", os.getpid())
+			print("Parent's process ID:", os.getppid())
+			
+		a = 0
+		for i in range(10000):
+			a += a**3
+			time.sleep(0.001)
+		print("Finished")
+			 
+		  
+		  
+		# If any error occurred while
+		# using os.fork() method
+		# OSError will be raised
+		````
+	2. Excéutez ce fichier par la commande `python3 testFork.py`. Observez dans ce terminal l'effet du script.
+	3. Dans un autre terminal, avec la commande `ps -ef`, observez les processus créés, ainsi que leurs PID et PPID.
+	4. (Si nécessaire, relancez le script !) Tuez le processus enfant. Que se passe-t-il ?
+	5. Relancez le script ! Tuez le processus parent et attendez quelques instants. Que se passe-t-il ?
+	
 !!! tips "Processus Zombies"
 
 	Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de {==**processus zombies**==}. Ceux-ci occupent une parrtie de la mémoire, tout en étant devenus inutiles...
+	
 
 
 
