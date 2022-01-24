@@ -16,10 +16,10 @@ def f1() :
 def f2() :
     verrou2.acquire()
     time.sleep(randint(0,100)/100)
-    print("Zone risquée f2.1")
+    print("Zone risquée f2.2")
     verrou1.acquire()
     
-    print("Zone risquée f2.2")
+    print("Zone risquée f2.1")
     verrou1.release()
     verrou2.release()
  
