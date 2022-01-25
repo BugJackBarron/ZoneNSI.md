@@ -199,7 +199,23 @@
 			````
 
 	=== "Solution"
-		A venir !
+		
+		1. 
+			```` python
+			def carre(n) :
+				t = []
+				for i in range(n+1) :
+					t.append(i**2)
+				return t
+			````
+			
+		2. ```` python
+			def imagesf(deb,fin) :
+				t =[]
+				for i in range(deb, fin+1) :
+					t.append(3*i**2 -2*i+1)
+				return t
+			````
 
 ## Construction de listes par compréhension
 
@@ -223,7 +239,7 @@ Jusqu'à présent nous avons défini nos listes {==**par extension**==}, c'est-�
 			monTab = [3*nb for nb in range(100) if nb%2==0]
 			````
 		
-		3.Quel est le tableau associé à `monTab` ?
+		3. Quel est le tableau associé à `monTab` ?
 
 			```` python
 			monTab = [let for let in 'Abracadabra']
