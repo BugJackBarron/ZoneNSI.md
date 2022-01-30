@@ -280,7 +280,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 
 	=== "Enoncé"
-		Copiez le code suivant dans uin fichier `seqence.py`
+		Copiez le code suivant dans uin fichier `sequence.py`
 		```` python
 		def f1():
 			for _ in range(5):
@@ -308,7 +308,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 	=== "Enoncé"
 	
-		Nous allons utiliser le module `threading` de Python avec le code ci-dessous, que vous copiezrez dans un fichier `concurrent.py` :
+		Nous allons utiliser le module `threading` de Python avec le code ci-dessous, que vous copierez dans un fichier `concurrent.py` :
 		
 		```` python
 		from threading import Thread
@@ -332,7 +332,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 			p1.join()
 			p2.join()
 		````
-		Exécutez plusieurs fois ce code. Quelle différence constatez cous avec le codde précédent ?
+		Exécutez plusieurs fois ce code. Quelle différence constatez vous avec le codd précédent ?
 		
 	=== "Réponses"
 	
