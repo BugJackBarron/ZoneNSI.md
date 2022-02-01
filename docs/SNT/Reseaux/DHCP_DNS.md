@@ -55,11 +55,11 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 3. Pour le routeur du réseau `192.168.0.X` :
 	* Donner sur l'interface de liaison entre routeurs l'IP `1.0.0.1`, avec un masque `255.0.0.0` ;
 	* Dans l'onglet `General`, cocher la case `Routage Automatique` ;
-	* Donner comme passerelle `1.0.0.2`
+	
 4. Pour le routeur du réseau `172.16.180.X` :
 	* Donner sur l'interface de liaison entre routeurs l'IP `1.0.0.2`, avec un masque `255.0.0.0` ;
 	* Dans l'onglet `General`, cocher la case `Routage Automatique` ;
-	* Donner comme passerelle `1.0.0.1`.
+	
 5. Placer un ordinateur que vous relierez par un câble au routeur directement lié au réseau `192.168.0.X`.
 6. Configurez cet ordinateur de la manière suivante :
 	* Nom : Serveur DNS
