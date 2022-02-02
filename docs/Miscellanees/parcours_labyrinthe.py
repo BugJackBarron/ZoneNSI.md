@@ -9,8 +9,9 @@ def convert(pos, scale = STANDARDSCALE) :
     return scale*c, -scale*l
 
 def getCase(pos, scale=STANDARDSCALE) :
+    """ Bien plus difficile..."""
     x,y = pos
-    return -y//scale, x//scale
+    return -(y-0.5*scale)//scale, (x+0.5*scale)//scale
 
 class Case :
     def __init__(self, pos, wall=[]) :
@@ -47,26 +48,16 @@ class Case :
 def nextMove(t,case) :
     cv = {90 : 0, 0 : 1, 180 : 3, 270 : 2}
     direction = cv[t.heading()]
-    print(f"Case {case.pos} Murs => {case.wall}")
     if not(case.wall[(direction+1)%4]) :
-        print(f"Choix : R")
         return 'R'
     elif not(case.wall[direction]) :
-        print(f"Choix : F")
         return 'F'
     elif not(case.wall[(direction-1)%4]) :
-        print(f"Choix : L")
         return 'L'
     else :
-        print(f"Choix : B")
         return 'B'    
 
-def truc(x,y) :
-    print(f"({x},{y})->{getCase((x,y))}")
-    
-        
-    
-        
+       
 if __name__  == "__main__" :
     s = "{"
     for i in range(4) :
@@ -108,10 +99,7 @@ if __name__  == "__main__" :
     t.down()
     path=''
     actualCase = (3,2)
-    print(f"START : case :{actualCase}, direction = {t.heading()}")
-    moveCount = 0
     while actualCase[0] in [0,1,2,3] and actualCase[1] in [0,1,2,3] :
-        moveCount+=1
         newMove = nextMove(t, lab[actualCase])
         path +=  newMove
         if newMove == 'F' :
@@ -124,6 +112,5 @@ if __name__  == "__main__" :
             t.left(180)
         t.forward(STANDARDSCALE)
         actualCase = getCase(t.pos())
-        print(f"MOVE {moveCount} : case :{actualCase}, direction = {t.heading()}")
-        screen.onclick(truc)
-    
+
+print(f"R :{path.count('R')}\n F :{path.count('F')}\n L :{path.count('L')}\n B :{path.count('B')}\n")
