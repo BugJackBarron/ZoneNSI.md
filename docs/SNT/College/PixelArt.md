@@ -71,8 +71,8 @@
 
 5. Sauvegarder cette nouvelle image dans le même dossier que le fichier `pixelArt.py` sous le nom `greatHeart.png`. Combien de pixels composent cette image ?
 6. Comment faire pour obtenir une image de $80\times 80$ pixels ?
-7. A l'aide des grilles suivantes, créez deux nouvelles images de dimension $8\times 8$ (vous pouvez vous inspirer du site [http://www.pixelart.name/pixel-art-8x8/](http://www.pixelart.name/pixel-art-8x8/){: target="_blank"}).
-<div style="display:flex;">
+7. A l'aide des grilles suivantes, créez deux nouvelles images de dimension $8\times 8$ (vous pouvez vous inspirer du site [www.pixelart.name](http://www.pixelart.name/pixel-art-8x8/){: target="_blank"}).
+	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 	
 	![grille.png](grille.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
@@ -83,8 +83,11 @@
 	![grille.png](grille.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
 	
 	</div>
-	</div>\item Modifier le programme Python afin d'afficher vous deux images en noir et blanc, en taille $80 \times 80$, et sauvegardez-les.
-8. Combien de nombres sont nécessaires pour une image de $16 \times 16$ pixels ? de $32 \times 32$ pixels ? de $64 \times 64$ pixels ?
+	</div>
+	
+8. Modifier le programme Python afin d'afficher vous deux images en noir et blanc, en taille $80 \times 80$, et sauvegardez-les.
+
+9. Combien de nombres sont nécessaires pour une image de $16 \times 16$ pixels ? de $32 \times 32$ pixels ? de $64 \times 64$ pixels ?
 
 
 ## Une image en niveau de gris
@@ -107,7 +110,7 @@
 
 1. Allez chercher sur le web une image - pas trop grande en dimension, et sauvegardez-là dans votre dossier.
 2. Ouvrez dans `Thonny` le fichier `makeMatrix.py`.
-3. Modifiez la ligne $11$ en remplaçant le nom `Mario.png` par le nom de votre image 5ou le no; aue vous choisissew-. Attention à bien conserver les guillemets !
+3. Modifiez la ligne $11$ en remplaçant le nom `Mario.png` par le nom de votre image (ou par le nom que vous choisissez). Attention à bien conserver les guillemets !
 4. Exécutez alors le code. Qu'obtenez-vous ?
 5. Copiez-collez la matrice obtenue à la place de la précédente dans le fichier `pixelArt.py`, puis modifiez le fichier afin de pouvoir l'exécuter. Attention, il vous faudra connaître le nombre de pixels de cette image pour pouvoir exécuter correctement le code !
 
