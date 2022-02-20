@@ -103,8 +103,8 @@
 	Puis exécutez le code. Qu'obtient-on ?
 
 
-!!! info "les niveaux de gris"
-	Nous avons vu qu'un pixel peut être &laquo; allumé &raquo; quand on lui donne la valeur $255$, et qu'il est &laquo; éteint &raquo; quand on lui donne la valeur $0$. Mais en réalité on peut lui donner n'importe quelle valeur entre $0$ et $255$, ce qui donnera un \textbf {niveau de gris}, sachant que plus la valeur est grande, plus la nuance se est éclaircie, et plus elle est proche de $0$ plus elle est assombrie.
+!!! info "Les niveaux de gris"
+	Nous avons vu qu'un pixel peut être &laquo; allumé &raquo; quand on lui donne la valeur $255$, et qu'il est &laquo; éteint &raquo; quand on lui donne la valeur $0$. Mais en réalité on peut lui donner n'importe quelle valeur entre $0$ et $255$, ce qui donnera un {==**niveau de gris**==}, sachant que plus la valeur est grande, plus la nuance se est éclaircie, et plus elle est proche de $0$ plus elle est assombrie.
 
 ## Votre propre matrice
 
