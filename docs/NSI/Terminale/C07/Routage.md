@@ -78,14 +78,68 @@ On constate ici qu'on a bien un passage par 8 machines (7 routeurs plus mon prop
 			1. Tester la commande `traceroute 8.8.8.8`.
 			2. Tester la commande `traceroute 95.142.174.138`
 			3. Tester la commande `traceroute www.toutatice.fr`. Que se passe-t-il ?
+			
+	=== "Réponses"
+		A venir !
 
 ## Routage des paquets deans un réseau
 
-### Routage et topologie de réseau
+### Un point sur les adresses IP
 
-### Protocoles de routages
+Nous avons vu qu'une adresse IP n'est jamais donnée seule, elle est toujours accompagnée d'un {==**masque de sous-réseau**==}, dont le rôle est de différencier l'adresse du réseau de celle de la machine.
 
-## Routage RIP à  vecteur de distance
+En IPV4, donc sur 4 octets, une adreese IP et un masque de sous-réseau sont représentés par une série de 32 bits. Pour déterminer le numéro de réseau d'une machine, une opération logique `ET` est effectuée bit à bit entre l'IP et le masque.
 
-## Routage OSPF
+!!! example "Exemple" 
+
+	Considérons une machine d'IP `194.152.20.12`, qui correspond donc à la suite binaire `11000010.10011000.00010100.00001100`, et de  masque '157.132.140.128' soit la suite binaire `10011101.10000100.10001100.10000000`. L'opération logique `ET` entre ces deux suites donne :
+	
+	![masqueET.png](masqueET.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	
+	Soit une adresse réseau `128.128.4.0`.
+
+Historiquement, le masque de sous-réseau pouvait être une suite quelconque de 0 et de 1, comme dans l'exemple précédent. Mais ceci n'est absolument pas pratique !
+
+Il a donc été décidé que la norme serait qu'un masque de sous-réseau serait constitué {==**d'une suite contigüe de 1 suivis de 0**==}, comme par exemple `11111111.11111111.11100000.00000000`. Ceci permet entre-autres de simplifier l'écriture des masques en donnant l'IP suivie d'un nombre représentant le nombre de bits de poids fort ayant pour valeur 1.
+
+Ainsi au lieu d'écrire :
+
+* IP : `192.168.20.4`
+* Masque : `255.255.224.0`, soit `11111111.11111111.11100000.00000000`, 
+
+on écrira : 
+
+* IP : `192.168.20.4/19`, 
+
+ce qui signifie que les 19 bits de poids forts du masque ont pour valeur 1, et que les 13 suivants sont à 0.
+
+!!! question "Exercice"
+
+	=== "Enoncé"
+		1. On considère une machine dont l'IP est `192.168.20.4/19`. Quel est l'adresse du réseau de cette machine ?
+		2. On considère une machine dont l'IP est `192.168.20.4/8`. Quel est l'adresse du réseau de cette machine ?
+		3. On considère une machine dont l'IP est `192.168.20.4/16`. Quel est l'adresse du réseau de cette machine ?
+		4. On considère une machine dont l'IP est `192.168.20.4/24`. Quel est l'adresse du réseau de cette machine ?
+		
+	=== "Réponses"
+		A venir !
+		
+??? tips "Simplification d'écriture"
+
+	Dans le cadre d'exercices de NSI, on cherchera souvent à simplifier les calculs, c'est pourquoi on trouvera souvent des adresses IP sous la forme : 
+	
+	* `X.X.X.X/8`, c'est-à-dire avec un masque `255.0.0.0` ;
+	* `X.X.X.X/16`, c'est-à-dire avec un masque `255.255.0.0` ;
+	* `X.X.X.X/24`, c'est-à-dire avec un masque `255.255.255.0`.
+
+### Notion de topologie de réseaux
+
+
+#### Un exemple avec routage manuel
+
+## Protocoles de routages
+
+### Routage RIP à  vecteur de distance
+
+### Routage OSPF
 

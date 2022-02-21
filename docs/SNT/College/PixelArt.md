@@ -11,7 +11,7 @@
 	Puis cliquez sur `Install` (si vous voyez à la place les boutons `Upgrade` et `Uninstall `, ce n'est pas nécessaire). Laissez le logiciel installer jusqu'au bout, cela prend quelques secondes.
 	
 3. Ouvrez l'explorateur de fichier `windows`, puis allez dans le dossier `Images`. Créez un sous-dossier avec votre nom et prénom. Ce dossier sera celui dans lequel vous devrez copier **tous les fichiers de cette activité**.
-4. Rendez-vous sur le site [www.zonensi.fr](, et cliquez sur `Activite Pixel Art`. Enregistrez tous les fichiers suivants dans votre dossier personnel.
+4. Rendez-vous sur le site [www.zonensi.fr](https:\\www.zonensi.fr), et cliquez sur `Activite Pixel Art`. Enregistrez tous les fichiers suivants dans votre dossier personnel.
 
 	* [PixelArt.py](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=bqphfzyLT0yK){: target="_blank"}
 	* [makeMatrix.py](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=wov9s1safq67){: target="_blank"}
