@@ -135,7 +135,35 @@ ce qui signifie que les 19 bits de poids forts du masque ont pour valeur 1, et q
 ### Notion de topologie de réseaux
 
 
-#### Un exemple avec routage manuel
+### Un exemple avec routage manuel sur 3 routeurs
+
+On considère les réseaux suivants dans le logiciel `Filius`, pour lesquels les routeurs R1, R2 et R3 **ne sont pas en routage automatique**.
+
+![RoutageManuel3R.png](RoutageManuel3R.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+
+* Les routeurs R1 et R3 sont appelés {==**routeurs d'accès**==}, car ils sont en bordure de réseaux.
+* Le routeur R2 est un {==**routeur interne**==}.
+
+L'objectif est de comprendre comment les routeurs font pour transmettre des paquets de l'ordinateur P1 du réseau `192.168.0.0/24` à l'ordinateur P2 du réseau `192.168.1.0/24`.
+
+!!! abstract "Tables de routage"
+
+	Une table de routage est une structure de données utilisée par un routeur ou un ordinateur en réseau, et qui définit en fonction des adressses de destination par quels routeurs passer.
+	
+!!! question "Compléter et comprendre une table de routage"
+
+	=== "Enoncé"
+		Voici la table de routage actuelle du routeur R1 :
+		
+		![TR_R1.png](TR_R1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		
+		1. Quels sont les champs de cette table ?
+		2. Chercher sur le web la signification informatique de {==**loopback**==} (ou **rebouclage**).
+		3. Que signifie alors la troisième ligne ? La quatrième ligne ?
+		
+	=== "Réponses"
+		A venir !
+		
 
 ## Protocoles de routages
 
