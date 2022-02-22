@@ -15,7 +15,7 @@ Parmi les informations données par la commande `ping`, on a bien entendu le tem
 !!! abstract "TTL"
 
 	La durée de vie `TTL` correspond à la durée pendant laquelle un paquet de données est valide. 
-	La valeur initiale est au maximum de 255. Habituellement, les implémentations ont une TTL initiale de 31, 63 ou 127. Pour chaque nœud de réseau que passe le paquet de données, le TTL est décrémenté de 1. On parle dans ce cas de {==**hops**==}. Si la TTL baisse jusque 0, le paquet de données est rejeté.
+	La valeur initiale est au maximum de 255. Habituellement, les implémentations ont une TTL initiale de 31, 63 ou 127. Pour chaque noeud de réseau que passe le paquet de données, le TTL est décrémenté de 1. On parle dans ce cas de {==**hops**==}. Si la TTL baisse jusque 0, le paquet de données est rejeté.
 
 	En pratique, le TTL qui vous est communiqué correspond généralement à la **valeur initiale** de l’ordinateur distant, dont on aura **déduit le nombre de passages par un routeur**.
 
@@ -28,7 +28,7 @@ Dans notre exemple, on peut supposer qu'avec un TTL de 119, on est passé par 8 
 
 !!! question "Tester `ping`"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Depuis l'invite de commande de windows  :
 			1. Tester la commande `ping 8.8.8.8`. Quel est le TTL, que peut-on supposer ?
 			2. Tester la commande `ping -4 www.zonensi.fr`. Que se passe-t-il ?
@@ -82,13 +82,13 @@ On constate ici qu'on a bien un passage par 8 machines (7 routeurs plus mon prop
 	=== "Réponses"
 		A venir !
 
-## Routage des paquets deans un réseau
+## Routage des paquets dans un réseau
 
 ### Un point sur les adresses IP
 
 Nous avons vu qu'une adresse IP n'est jamais donnée seule, elle est toujours accompagnée d'un {==**masque de sous-réseau**==}, dont le rôle est de différencier l'adresse du réseau de celle de la machine.
 
-En IPV4, donc sur 4 octets, une adreese IP et un masque de sous-réseau sont représentés par une série de 32 bits. Pour déterminer le numéro de réseau d'une machine, une opération logique `ET` est effectuée bit à bit entre l'IP et le masque.
+En IPV4, donc sur 4 octets, une adresse IP et un masque de sous-réseau sont représentés par une série de 32 bits. Pour déterminer le numéro de réseau d'une machine, une opération logique `ET` est effectuée bit à bit entre l'IP et le masque.
 
 !!! example "Exemple" 
 
@@ -100,7 +100,7 @@ En IPV4, donc sur 4 octets, une adreese IP et un masque de sous-réseau sont rep
 
 Historiquement, le masque de sous-réseau pouvait être une suite quelconque de 0 et de 1, comme dans l'exemple précédent. Mais ceci n'est absolument pas pratique !
 
-Il a donc été décidé que la norme serait qu'un masque de sous-réseau serait constitué {==**d'une suite contigüe de 1 suivis de 0**==}, comme par exemple `11111111.11111111.11100000.00000000`. Ceci permet entre-autres de simplifier l'écriture des masques en donnant l'IP suivie d'un nombre représentant le nombre de bits de poids fort ayant pour valeur 1.
+Il a donc été décidé que la norme serait qu'un masque de sous-réseau serait constitué {==**d'une suite contiguë de 1 suivis de 0**==}, comme par exemple `11111111.11111111.11100000.00000000`. Ceci permet entre-autres de simplifier l'écriture des masques en donnant l'IP suivie d'un nombre représentant le nombre de bits de poids fort ayant pour valeur 1.
 
 Ainsi au lieu d'écrire :
 
@@ -148,9 +148,9 @@ L'objectif est de comprendre comment les routeurs font pour transmettre des paqu
 
 !!! abstract "Tables de routage"
 
-	Une table de routage est une structure de données utilisée par un routeur ou un ordinateur en réseau, et qui définit en fonction des adressses de destination par quels routeurs passer.
+	Une table de routage est une structure de données utilisée par un routeur ou un ordinateur en réseau, et qui définit en fonction des adresses de destination par quels routeurs passer.
 	
-!!! question "Compléter et comprendre une table de routage"
+!!! question "Comprendre une table de routage"
 
 	=== "Enoncé"
 		Voici la table de routage actuelle du routeur R1 :
@@ -160,14 +160,39 @@ L'objectif est de comprendre comment les routeurs font pour transmettre des paqu
 		1. Quels sont les champs de cette table ?
 		2. Chercher sur le web la signification informatique de {==**loopback**==} (ou **rebouclage**).
 		3. Que signifie alors la troisième ligne ? La quatrième ligne ?
+		4. Nous allons devoir indiquer au routeur R1 quelle direction devra prendre un paquet à destination du réseau `192.168.1.0/24` :
+			1. Ajoutez une ligne à la table de routage de R1.
+			2. Dans celle ci, complétez les champs :
+				* *IP de destination* : `192.168.1.0/24`
+				* *Masque* : `255.255.255.0`
+				* *Paserelle suivante* : `1.0.0.2`
+				* *Via l'interface* : `1.0.0.1`
+			3. Testez à partir de P1 et la commande `ping 192.168.1.0`. Le paquet est-il transmis à P2 ? *Vous pouvez oouvrir les fenêtres d'échanges de données nécesaires*.
+			4. Complétez les tables de routages de R2 et et R3 pour que la commande `ping` fonctionne correctement.
+		5. Nous allons modifier la {==**topologie**==} du réseau, en ajoutant un  routeur R4 et un portable P3 de la manière suivante (le portable P1 et le routeur R1 sont inchangés) :
+		
+			![RoutageManuel4R.png](RoutageManuel4R.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+			
+			!!! tips
+				Si vous êtes à cours de prises réseaux sur certains routeurs, vous pouvez en ajouter de nouvelles via le bouton `Gérer les connexions`
+			
+			Modifiez les tables de routages nécessaires pour que les 3 portables puissent communiquer.
 		
 	=== "Réponses"
 		A venir !
-		
+	
+	
+!!! info "Routage manuel"
+	Même pour des réseaux de petites taille, il est difficile de maintenir des tables de routages manuellement. Dès que le nombre de routeurs internes augmente, arrivent d'autres questions :
+	
+	![RoutageManuel6R.png](RoutageManuel6R.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+	
+	Dans une situation comme celle-ci, quelle route est à privilégier pour relier le client au serveur ?
+	
+	* `R1 -> R2 -> R3 -> R5 -> R6`
+	* `R1 -> R2 -> R4 -> R5 -> R6` 
+	* `R1 -> R2 -> R5 -> R6`
+	
+	Nous aurions tendance à penser naturellement qu'il faut prendre la troisième solution, pour laquelle un *hop* de moins est nécessaire, mais est-ce judicieux si les liaisons `R2->R3->R5` sont fibrées alors que la liaison `R2 -> R5` est une liaison cuivre classique ?
 
-## Protocoles de routages
-
-### Routage RIP à  vecteur de distance
-
-### Routage OSPF
 
