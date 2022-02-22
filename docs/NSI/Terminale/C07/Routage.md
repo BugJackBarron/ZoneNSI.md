@@ -132,9 +132,6 @@ ce qui signifie que les 19 bits de poids forts du masque ont pour valeur 1, et q
 	* `X.X.X.X/16`, c'est-à-dire avec un masque `255.255.0.0` ;
 	* `X.X.X.X/24`, c'est-à-dire avec un masque `255.255.255.0`.
 
-### Notion de topologie de réseaux
-
-
 ### Un exemple avec routage manuel sur 3 routeurs
 
 On considère les réseaux suivants dans le logiciel `Filius`, pour lesquels les routeurs R1, R2 et R3 **ne sont pas en routage automatique**.

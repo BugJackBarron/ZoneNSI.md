@@ -1944,8 +1944,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Terminale/C07/RIP_OSPF.md" class="md-nav__link">
-        Protocoles RIP et OSPF
+      <a href="../../../Terminale/C07/RIP/" class="md-nav__link">
+        Protocoles RIP
       </a>
     </li>
   
@@ -2185,18 +2185,20 @@
 <h2 id="definitions-et-premiers-exemples">Définitions et premiers exemples</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Matrices</p>
-<p>En mathématiques, on appelle <mark class="critic"><strong>matrice</strong></mark> un tableau <span class="arithmatex">\(M\)</span> de nombres <span class="arithmatex">\(a_{i,j}\)</span> où <span class="arithmatex">\(i\)</span> est le numéro de ligne et <span class="arithmatex">\(j\)</span> le numéro de colonne. On parlera de matrice de dimension <span class="arithmatex">\(m\times n\)</span> si la matrice possède <span class="arithmatex">\(m\)</span> lignes et <span class="arithmatex">\(n\)</span> colonnes.\</p>
+<p>En mathématiques, on appelle <mark class="critic"><strong>matrice</strong></mark> un tableau <span class="arithmatex">\(M\)</span> de nombres <span class="arithmatex">\(a_{i,j}\)</span> où <span class="arithmatex">\(i\)</span> est le numéro de ligne et <span class="arithmatex">\(j\)</span> le numéro de colonne. On parlera de matrice de dimension <span class="arithmatex">\(m\times n\)</span> si la matrice possède <span class="arithmatex">\(m\)</span> lignes et <span class="arithmatex">\(n\)</span> colonnes.</p>
 <p><img alt="Matrice.png" src="../Matrice.png" style="width:20%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Les matrices sont des éléments esentiels de l'algèbre linéaire, et elles sont un outils efficace dans beaucoup de problèmes aussi bien mathématiques qu'informatique.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Représentation informatique</p>
 <p>Pour représenter informatiquement une matrice de nombres, entiers ou flottant, on utilise un <strong>tableau de tableau</strong>. Ainsi la matrice <span class="arithmatex">\(M = \begin{pmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\end{pmatrix}\)</span> sera représentée sous la forme suivante :</p>
-<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]}</span>
+<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
 </code></pre></div>
 <p>En Python, il est souvent préférable de définir une matrice en utilisant la possibilité de sauter des lignes à l'intérieur de deux délimiteurs (paires de parenthèses, crochets, etc...) :</p>
-<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>      
+<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="p">]</span>       
 </code></pre></div>
 <p>On peut alors accéder aux éléments de la matrice par la notation suivante <code>M[1][2]</code>, ce qui correspond à <strong>l'élément d'indice 2 de la ligne d'indice 1</strong>, soit dans notre exemple <span class="arithmatex">\(6\)</span>. Autrement dit, il s'agit de l'élément de la ligne 1 et de la colonne 2 : </p>
 <p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=M%20%3D%20%5B%5B1,%202,%203%5D,%0A%20%20%20%20%5B4,%205,%206%5D%5D%0Aprint%28M%5B1%5D%5B2%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
@@ -2204,20 +2206,23 @@
 <div class="admonition warning">
 <p class="admonition-title">Une règle implicite</p>
 <p>Mathématiquement, toutes les lignes d'un matrice sont de la même dimension. Or ce n'est pas obligatoire dans une construction de liste de listes en Python. En effet une variable telle que la suivante est tout à fait possible :</p>
-<p><code>python title = "Ceci n'est pas une matrice !"
-M = [[1, 2],
-    [3, 4, 5, 6],
-    [],
-    [7, 8, 9, 10, 11, 12]
-    ]</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+    <span class="p">]</span>   
+</code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Lire une matrice</p>
 <p>On considère la matrice suivante :
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">M</span> <span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">M</span> <span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
         <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
         <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">]]</span>
+        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+        <span class="p">]</span>
 </code></pre></div></p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
 <ol>
@@ -2270,7 +2275,7 @@ Dans quel ordre apparaissent les éléments ?</p>
     A quoi sert la fonction <code>enumerate</code> ?</li>
 <li>
 <p>Ecrire une fonction <code>parcoursIndicesLignes(M)</code> qui effectue un parcours par indice et par ligne de la matrice qui lui est passée en argument. On pourra tester avec les matrices suivantes :</p>
-<div class="highlight"><pre><span></span><code><span class="n">M1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">M1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
 <span class="n">M2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 <span class="n">M2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
