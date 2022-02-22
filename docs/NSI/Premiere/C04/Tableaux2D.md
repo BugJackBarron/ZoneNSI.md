@@ -4,7 +4,7 @@
 ## Définitions et premiers exemples
 
 !!! abstract "Matrices"
-	En mathématiques, on appelle {==**matrice**==} un tableau $M$ de nombres $a_{i,j}$ où $i$ est le numéro de ligne et $j$ le numéro de colonne. On parlera de matrice de dimension $m\times n$ si la matrice possède $m$ lignes et $n$ colonnes.\\
+	En mathématiques, on appelle {==**matrice**==} un tableau $M$ de nombres $a_{i,j}$ où $i$ est le numéro de ligne et $j$ le numéro de colonne. On parlera de matrice de dimension $m\times n$ si la matrice possède $m$ lignes et $n$ colonnes.
  
  	![Matrice.png](Matrice.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
 	
@@ -14,14 +14,16 @@
 	Pour représenter informatiquement une matrice de nombres, entiers ou flottant, on utilise un **tableau de tableau**. Ainsi la matrice $M = \begin{pmatrix}1&2&3\\4&5&6\end{pmatrix}$ sera représentée sous la forme suivante :
 
 	```` python
-	M = [[1, 2, 3], [4, 5, 6]]}
+	M = [[1, 2, 3], [4, 5, 6]]
 	````
 	
 	En Python, il est souvent préférable de définir une matrice en utilisant la possibilité de sauter des lignes à l'intérieur de deux délimiteurs (paires de parenthèses, crochets, etc...) :
 	
 	```` python
-	M = [[1, 2, 3],
-	[4, 5, 6]]		
+	M = [
+		[1, 2, 3],
+		[4, 5, 6]
+		]		
 	````
 
 	On peut alors accéder aux éléments de la matrice par la notation suivante `M[1][2]`, ce qui correspond à **l'élément d'indice 2 de la ligne d'indice 1**, soit dans notre exemple $6$. Autrement dit, il s'agit de l'élément de la ligne 1 et de la colonne 2 : 
@@ -32,8 +34,9 @@
 
 	Mathématiquement, toutes les lignes d'un matrice sont de la même dimension. Or ce n'est pas obligatoire dans une construction de liste de listes en Python. En effet une variable telle que la suivante est tout à fait possible :
 	
-	```` python title = "Ceci n'est pas une matrice !"
-	M = [[1, 2],
+	```` python
+	M = [
+		[1, 2],
 		[3, 4, 5, 6],
 		[],
 		[7, 8, 9, 10, 11, 12]
@@ -43,10 +46,12 @@
 !!! question "Lire une matrice"
 	On considère la matrice suivante :
 	```` python
-	>>> M =[[1, 2, 3, 4, 5],
+	>>> M =[
+			[1, 2, 3, 4, 5],
 			[2, 4, 6, 8, 10],
 			[3, 6, 9, 12, 15],
-			[4, 8, 12, 16, 20]]
+			[4, 8, 12, 16, 20]
+			]
 	````
 	=== "Enoncé"
 
@@ -101,7 +106,7 @@
 		7. Ecrire une fonction `parcoursIndicesLignes(M)` qui effectue un parcours par indice et par ligne de la matrice qui lui est passée en argument. On pourra tester avec les matrices suivantes :
 		
 			```` python 
-			M1 = [0]
+			M1 = [[0]]
 			M2 = [[1, 2],
 				[3, 4]]
 			M2 = [[1, 2],
