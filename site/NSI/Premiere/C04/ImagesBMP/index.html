@@ -1256,23 +1256,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#notion-de-bitmap" class="md-nav__link">
-    Notion de BitMap
+  <a href="#notion-de-bitmap-une-image-en-noir-et-blanc" class="md-nav__link">
+    Notion de BitMap : une image en noir et blanc
   </a>
   
-    <nav class="md-nav" aria-label="Notion de BitMap">
+    <nav class="md-nav" aria-label="Notion de BitMap : une image en noir et blanc">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#une-image-en-noir-et-blanc" class="md-nav__link">
-    Une image en noir et blanc
+  <a href="#bitmap" class="md-nav__link">
+    Bitmap
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#le-niveau-de-gris" class="md-nav__link">
-    Le niveau de gris
+  <a href="#manipulation-dimages-avec-pillow" class="md-nav__link">
+    Manipulation d'images avec Pillow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-niveaux-de-gris" class="md-nav__link">
+    Les niveaux de gris
+  </a>
+  
+    <nav class="md-nav" aria-label="Les niveaux de gris">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-exemple" class="md-nav__link">
+    Un exemple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manipulation-dune-image-en-niveau-de-gris" class="md-nav__link">
+    Manipulation d'une image en niveau de gris
   </a>
   
 </li>
@@ -1312,28 +1339,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#negatif-dune-image" class="md-nav__link">
-    négatif d'une image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#filtres-colores" class="md-nav__link">
     Filtres colorés
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#agrandissements-et-reductions-dun-facteur-2" class="md-nav__link">
+    Agrandissements et réductions d'un facteur 2
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#steganographie" class="md-nav__link">
-    Stéganographie
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2236,16 +2256,195 @@
                 
                 
                 <h1 id="les-images-matricielles">Les images matricielles</h1>
-<h2 id="notion-de-bitmap">Notion de BitMap</h2>
-<h3 id="une-image-en-noir-et-blanc">Une image en noir et blanc</h3>
-<h3 id="le-niveau-de-gris">Le niveau de gris</h3>
+<p>Avant toutes choses, nous allons utiliser le module <code>pillow</code> de Python.
+Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; Manage Packages</code>, et dans la barre de recherche, chercher le module <code>pillow</code>, et l'installer si il n'est pas déjà installé.</p>
+<p><img alt="Thonny1.png" src="../../../../SNT/College/Thonny1.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<h2 id="notion-de-bitmap-une-image-en-noir-et-blanc">Notion de BitMap : une image en noir et blanc</h2>
+<h3 id="bitmap">Bitmap</h3>
+<div class="admonition question">
+<p class="admonition-title">Analyser une première image</p>
+<p>Considérons l'image suivante :</p>
+<p><img alt="YingYang.bmp" src="../YingYang.bmp" style="margin:auto;display:block;background-color: #546d78;" /></p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Téléchargez <a href="../YingYang.pgm" target="target">ici</a> cette image et sauvegardez-la dans un dossier <code>BitMap</code> que vous aurez créé.</li>
+<li>Quel est le format de cette image ? Recherchez sa signification sur le web.</li>
+<li>Quelles en sont les dimensions en pixels ? Quelle est sa taille en octets ?</li>
+<li>Ouvrez l'image grâce au logiciel <code>Hex Editor Neo</code> (que vous pouvez mettre en Français par l'intermédiaire de <code>Tools &gt; Settings &gt; Language</code>). Le réglage basique de <code>Hex Editor Neo</code> donne les valeurs hexadécimales des différents octets composant l'image. Dans la colonne située à droite de ces valeurs hexadécimales, on trouve une représentation de ces octets au format ANSI, c'est-à-dire sous forme de caractères. Que retrouve-t-on au tout début de cette colonne ?</li>
+<li>
+<p>En cliquant droit sur les groupes d'octets, effectuer le réglage suivant :</p>
+<ul>
+<li><code>Afficher comme &gt; Décimale</code></li>
+<li><code>Colonnes &gt; 32 colonnes</code></li>
+</ul>
+<p>Puis supprimer les 13 premiers octets (juste avant la première valeur 255). Dézoomer avec <code>CTRL + Molette de souris</code>. Que voit-on apparaître ?</p>
+</li>
+<li>
+<p>Que représente une valeur décimale <code>255</code> (ou  <code>ff</code> en hexadécimal) ?</p>
+</li>
+<li>Que représente une valeur décimale <code>0</code> (ou  <code>00</code> en hexadécimal) ?</li>
+</ol>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Réponses</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Les images matricielles</p>
+<p>Les <mark class="critic"><strong>images matricielles</strong></mark>, ou &laquo; cartes de points &raquo; (de l'anglais <em>Bitmap</em>) est une image constituée d'une matrice de points colorés. C'est-à-dire, constituée d'un tableau, d'une grille, où chaque case possède une couleur qui lui est propre et est considérée comme un point. Il s'agit donc d'une juxtaposition de points de couleurs formant, dans leur ensemble, une image. </p>
+<p>Dans notre cas, l'image est une matrice carrée de taille <span class="arithmatex">\(32\times 32\)</span> pixels. Chaque pixel peut donc être repéré par ses coordonnées, comme sur le schéma ci-dessous, où <code>width</code> (<em>largeur</em> en anglais) et <code>height</code> (<em>hauteur</em> en anglais) sont les dimensions de l'image. <strong>Attention ! Le sens de l'axe de ordonnées est inverés par rapport aux mathématiques !</strong></p>
+<p><img alt="PixelMap.png" src="../PixelMap.png" style="width:50%;margin:auto;display:block;background-color: #546d78;" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Taille des images en noir et blanc</p>
+<p>En fait notre image utilise beaucoup plus de place en mémoire qu'elle ne le devrait. En effet, pour représenter 2 couleurs (noir et blanc), un seul bit suffit. 0 représente un pixel noir, et 1 représente un pixel blanc. Le format <code>pgm</code> n'est pas vraiment adapté aux pures images en noir et blanc, puisqu'il utilise 1 octet complet pour représenter la couleur, soit 8 fois plus que ce qui est strictement nécesaire.</p>
+</div>
+<h3 id="manipulation-dimages-avec-pillow">Manipulation d'images avec Pillow</h3>
+<div class="admonition info">
+<p class="admonition-title">Module Pillow</p>
+<p>Le module <code>pillow</code> de python permet la manipulation des images. Son guide (en anglais) est disponible <a href="https://pillow.readthedocs.io/en/stable/handbook/index.html" target="_blank">ici</a>.</p>
+<p>Son utilisation basique est relativement simple, testez par exemple le code suivant :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span> 
+
+<span class="n">originale</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;YingYang.pgm&quot;</span><span class="p">)</span>
+<span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">originale</span><span class="o">.</span><span class="n">size</span> 
+
+<span class="n">copie</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">originale</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">originale</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>                         
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>                    
+        <span class="k">if</span> <span class="n">originale</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">==</span> <span class="mi">255</span> <span class="p">:</span>   
+            <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>  <span class="mi">255</span><span class="p">)</span>
+
+<span class="n">copie</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;YangYing.bmp&quot;</span><span class="p">)</span>
+<span class="n">copie</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>Explicitons alors ce code :</p>
+<ul>
+<li>Ligne 1 : on importe la <em>classe</em> <code>Image</code> du module <code>PIL</code> (c'est-à-dire <code>pillow</code>).</li>
+<li>Ligne 3 : on utilise la <em>méthode</em> <code>open</code> de la classe <code>Image</code> pour ouvrir l'image <code>YingYang.pgm</code> et la stocker dans la variable <code>originale</code>, qui est donc un objet de type <code>Image</code>.</li>
+<li>Ligne 4 : on utilise l'<em>attribut</em> <code>size</code> des objets <code>Image</code> extraire la largeur et la hauteur de notre image, et les stocker dans les varaibles <code>width</code> et <code>height</code>, de type <code>int</code>.</li>
+<li>Ligne 6 : <code>copie</code> est un nouvel objet de type <code>Image</code>, qui possède les mêmes caractéristiques que l'image originale : son <code>mode</code> (nous reviendrons dessus plus loin), et sa taille grâce à l'attribut <code>size</code>.</li>
+<li>Lignes 8-9 : on va parcourir l'image originale pixel par pixel, en efectuant le parcours colonnes par colonnes.</li>
+<li>Lignes 10 : on récupère la valeur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de l'image originale grâce à la <em>méthode</em> <code>getpixel</code>, et <strong>on regarde si il est blanc</strong> (<code>==255</code>).</li>
+<li>Ligne 11 : si la condition précédente est vraie, on va fixer la couleur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de la copie à noir (<code>0</code>), grâce à la méthode <code>putpixel</code> (<strong>Attention !</strong> <code>putpixel</code> et <code>getpixel</code> n'acceptent que des tuples pour les coordonnées ! Si vous oubliez la paire de parenthèses, vous risquez d'obtenir <code>TypeError: putpixel() takes 3 positional arguments but 4 were given</code>).</li>
+<li>Lignes 12-13 : si la condition est fausse, on va fixer la couleur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de la copie à blanc (<code>255</code>).</li>
+<li>Ligne 15 : on sauvegarde la copie sous le nom <code>YangYing.bmp</code>. Vous devriez trouver ce fichier dans votre dossier. On notera que pillow accepte de changer le type de fichier (ici on est passé de <code>pgm</code> à <code>bmp</code>).</li>
+<li>Ligne 16 : on affiche l'image <code>copie</code>.</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Factorisation du code</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Transformez le code précédenten créant une fonction <code>inverseNB(img)</code> qui prend en argument un objet <code>img</code> de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Correction</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<details class="question"><summary>Pour les cracks : améliorons le code</summary><div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>En fait le code ci dessus n'est valable que pédagogiquement, pour comprendre les . Il est tout à fait possible de se passer de la structure conditionnelle des lignes 10 à 13, qui peuvent être effectuées en une seule ligne ! Comment faire ?</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Réponse</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</details>
+<h2 id="les-niveaux-de-gris">Les niveaux de gris</h2>
+<h3 id="un-exemple">Un exemple</h3>
+<div class="admonition question">
+<p class="admonition-title">Une nouvelle image</p>
+<p>On considère maintenant l'image suivante :</p>
+<p><img alt="Troopers.bmp" src="../Troopers.bmp" style=";margin:auto;display:block;" /></p>
+<p>téléchargeable <a href="../Troopers.pgm" target="target">ici</a>.</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Quelle est la dimension de cette image en pixels ? Quelle est sa dimension en octets ?</li>
+<li>Ouvrez-là avec <code>Hex Editor Neo</code>. Quelle est la principale différence avec l'image précédente ?</li>
+<li>Testez sur cette image la fonction <code>inverseNB</code>. Obtient-on un négatif de cette image ?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Images en niveaux de gris - <em>Grayscale</em></p>
+<p>Pour représenter une palette de 256 couleurs allant du noir au blanc, on utilise un octet complet</p>
+<ul>
+<li>la valeur 0 représente le noir ;</li>
+<li>la valeur 255 représente le blanc ;</li>
+<li>une valeur proche de 0 représente un gris foncé</li>
+<li>une valeur proche de 255 représente un gris clair.</li>
+</ul>
+<p>Une telle image, dite en &laquo; niveaux de gris &raquo;, utilise 1 octet par pixel.</p>
+</div>
+<h3 id="manipulation-dune-image-en-niveau-de-gris">Manipulation d'une image en niveau de gris</h3>
+<div class="admonition question">
+<p class="admonition-title">Manipuler les images</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Téléchargez une image quelconque libre de droits sur internet - peu importe son format.</li>
+<li>
+<p>On cherche à obtenir un négatif de l'image. Pour ce faire, il faut utiliser une fonction mathématique. En effet, ce que nous voulons, c'est une fonction qui transforme :</p>
+<ul>
+<li>0 en 255</li>
+<li>1 en 254</li>
+<li>2 en 253 </li>
+<li>...</li>
+<li>254 en 1</li>
+<li>255 en 0</li>
+</ul>
+<p>Quelle est cette fonction ?</p>
+</li>
+<li>
+<p>Créer alors une fonction python <code>negatif(img)</code> qui renvoie le negatif de l'objet <code>img</code> de type <code>Image</code>.</p>
+</li>
+<li>
+<p><strong>Eclaircissement d'une image :</strong></p>
+<p>Pour éclaircir une image, il faut transformer les valeurs <em>grayscale</em> de chaque pixel en les augmentant. Une possibilité simples est de les augmenter d'un terme constant, comme 20 par exemple. Ainsi, un pixel initalement à 0 sera changé à 20, et un pixel à 147 sera changé à 167 (pillow n'autorisera pas les dépassement au delà de 255, donc un pixel à 250 sera bien transformé à 255).</p>
+<p>Créer alors une fonction python <code>eclaircir(img, t=20)</code> qui renvoie un nouvel objet de type <code>Image</code>, version éclaircie de l'objet <code>img</code> de type <code>Image</code> passé en argument, et utilisant l'argument optionnel <code>t</code>.</p>
+</li>
+<li>
+<p><strong>Assombrissement d'une image :</strong> </p>
+<p>Créer de même une fonction python <code>assombrir(img, t=20)</code> qui renvoie un nouvel objet de type <code>Image</code>, version assombrie de l'objet <code>img</code> de type <code>Image</code> passé en argument, et utilisant l'argument optionnel <code>t</code>.</p>
+</li>
+<li>
+<p>Etait-on vraiment obligé de faire deux fonctions ?</p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Correction</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<details class="question"><summary>Pour les cracks</summary><p>Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notrze mùéthode. Vous pouvez vous inspirer du travail de <a href="https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf" target="target">Paul Milan</a>, très mathématique, ou bien tester les fonctionnalités du module <code>pillow</code>, en suivant par exemple ce <a href="http://www.ordinateur.cc/programmation/Programmation-Python/93546.html" target="_blank">tutoriel</a>.</p>
+</details>
 <h3 id="systeme-rgb">Système RGB</h3>
 <h3 id="les-formats-dimages">Les formats d'images</h3>
 <h2 id="manipulation-des-images">Manipulation des images</h2>
 <h3 id="symetries">Symétries</h3>
-<h3 id="negatif-dune-image">négatif d'une image</h3>
 <h3 id="filtres-colores">Filtres colorés</h3>
-<h2 id="steganographie">Stéganographie</h2>
+<h3 id="agrandissements-et-reductions-dun-facteur-2">Agrandissements et réductions d'un facteur 2</h3>
                 
               
               
