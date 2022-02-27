@@ -169,13 +169,12 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 ??? question "Pour les cracks"
 
 	Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notrze mùéthode. Vous pouvez vous inspirer du travail de [Paul Milan](https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf){: target= "_blank"}, très mathématique, ou bien tester les fonctionnalités du module `pillow`, en suivant par exemple ce [tutoriel](http://www.ordinateur.cc/programmation/Programmation-Python/93546.html){: target="_blank"}.
-	
-			
-
-
 		 
 
 ### Système RGB
+
+Il est temps de mettre un peu de couleur !
+
 
 ### Les formats d'images
 
