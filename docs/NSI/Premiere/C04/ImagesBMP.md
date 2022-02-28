@@ -175,6 +175,12 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 
 Il est temps de mettre un peu de couleur !
 
+Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes.
+
+![RGB Wikipedia](https://commons.wikimedia.org/wiki/File:AdditiveColorMixing.png?uselang=fr){: style="width:50%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+
+De ce fait, dans un format non compressé comme le format `BMP`, chaque pixel est représenté par 3 octets.
+
 
 ### Les formats d'images
 
