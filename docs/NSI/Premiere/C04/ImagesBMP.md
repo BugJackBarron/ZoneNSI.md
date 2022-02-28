@@ -171,15 +171,34 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 	Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notrze mùéthode. Vous pouvez vous inspirer du travail de [Paul Milan](https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf){: target= "_blank"}, très mathématique, ou bien tester les fonctionnalités du module `pillow`, en suivant par exemple ce [tutoriel](http://www.ordinateur.cc/programmation/Programmation-Python/93546.html){: target="_blank"}.
 		 
 
-### Système RGB
+### Images en couleur
+
+#### système RGB
 
 Il est temps de mettre un peu de couleur !
 
-Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes.
+!!! asbtract "Synthèse additive RGB"
+	Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes, par **synthèse additive des couleurs**. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système *CYMB* - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).
 
-![RGB Wikipedia](https://commons.wikimedia.org/wiki/File:AdditiveColorMixing.png?uselang=fr){: style="width:50%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+	![RGB Wikipedia](https://upload.wikimedia.org/wikipedia/commons/1/14/AdditiveColorMixing.png?uselang=fr){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
 
-De ce fait, dans un format non compressé comme le format `BMP`, chaque pixel est représenté par 3 octets.
+	De ce fait, dans un format non compressé comme le format `BMP`, chaque pixel est représenté par 3 octets.
+
+!!! example "Exemple"
+	On considère l'image suivante :
+	
+	![Logo](logo.bmp){: style="width:50%;margin:auto;display:block;background-color: #546d78;"}
+	
+	L'image est de dimension $320 \times 100$ et pèse 96 ko, ce qui correspond $320 \times 100 \times 3 = 96~000~o$.
+	
+!!! question "RGB et pillow"
+
+	=== "Enoncé"
+		1. Téléchargez l'image suivante :
+		
+	
+
+	
 
 
 ### Les formats d'images
