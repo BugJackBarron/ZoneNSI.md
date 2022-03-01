@@ -78,7 +78,7 @@ Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables 
 
 	![RIP5.png](RIP5.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
 	
-* R2 reçoit les nouvelles routes de R2 et de R5 :
+* R2 reçoit les nouvelles routes de R3 et de R5 :
 
 	![RIP6.png](RIP6.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
 	
@@ -88,18 +88,18 @@ Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables 
 
 #### Etape 3
 
-Cette dern,ière table de R2 sera transmise à l'étape suivante à R1, et une liaison sera alors possible dès l'étape 3 entre le Client et le Serveur. Dans ce mini-réseau, les tables sont alors toutes stabilisées dès la troisième étape, et le réseau est totalement opérationnel.
+Cette dernière table de R2 sera transmise à l'étape suivante à R1, et une liaison sera alors possible dès l'étape 3 entre le Client et le Serveur. Dans ce mini-réseau, les tables sont alors toutes stabilisées dès la troisième étape, et le réseau est totalement opérationnel.
 
 
 ## Quelques points importants
 
 Un des inconvénients du protocole RIP est qu'il génère un traffic important entre voisins, chacun envoyant sa table de routage à tous ses voisins à intervalles réguliers. 	
 
-En conséquences, le protocole RIP est configuré pour se limiter à un {==**nombre maximum de 15 sauts**==}, ce qui le réserve à des réseaux de petitres taille.
+En conséquences, le protocole RIP est configuré pour se limiter à un {==**nombre maximum de 15 sauts**==}, ce qui le réserve à des réseaux de petites taille.
 
-L'avantage de cette limite est qu'elle permet  d'éviter les {==**éventuelles boucles de routage**==} (comme R2 => R3 => R5 => R2), en utilisantle TTL qui ne doit pas dépasser 15, afin qu'un paquet qui tourne en rond soit détruit.
+L'avantage de cette limite est qu'elle permet  d'éviter les {==**éventuelles boucles de routage**==} (comme R2 => R3 => R5 => R2), en utilisant le TTL qui ne doit pas dépasser 15, afin qu'un paquet qui tourne en rond soit détruit.
 
-De même, si un routeur ne reçoit pas d'informations d'un de ses voisins directs au bou d'un ordre de temps de trois minutes, il considère que ce routeur est hors-service et lui affecte une distance de 16, qui est alors considérée dans ce protocole comme une distance infinie. En conséquence tous ses voisins recalculeront  leurs vecteurs en évitant le lien qui est tombé.
+De même, si un routeur ne reçoit pas d'informations d'un de ses voisins directs au bout d'un ordre de temps de trois minutes, il considère que ce routeur est hors-service et lui affecte une distance de 16, qui est alors considérée dans ce protocole comme une distance infinie. En conséquence tous ses voisins recalculeront leurs vecteurs en évitant le lien qui est tombé.
 
 
 

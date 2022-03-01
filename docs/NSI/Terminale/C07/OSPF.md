@@ -44,7 +44,7 @@ Lorsque la table des liens est modifiée, chaque routeur recalcule le plus court
 
 L'algorithme de {==**Dijkstra**==}, crée par l'informaticien néerlandais [Edsger Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra), et publié en 1959, est un algorithme permettant de déterminer le plus court chemin entre deux sommets dans un *graphe orienté pondéré de réels positifs* (on définira plus tard ces termes dans le chapitre sur les graphes).
 
-Il consiste à partir d'un sommet, et de construire progressivement un sous-grahe dans lequel sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ, cette distance correspondant à la somme des *poids* des *arcs* empruntés.
+Il consiste à partir d'un sommet, et de construire progressivement un sous-graphe dans lequel sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ, cette distance correspondant à la somme des *poids* des *arcs* empruntés.
 
 On décrit l'algorithme ainsi :
 
@@ -64,7 +64,7 @@ On considère le graphe suivant représentant un ensemble de villes et les dista
 
 On va exécuter l'algorithme de Dijkstra en partant de la ville `A`, en complétant le tableau suiivant :
 
-![Dijkstra2.png](Dijkstra2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![Dijkstra2.png](Dijkstra2.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
 
 
 
@@ -75,11 +75,11 @@ On va exécuter l'algorithme de Dijkstra en partant de la ville `A`, en complét
 
 	=== "Enoncé"
 	
-		Un journaliste britannique d’une revue consacrée à l’automobile doit tester les autoroutes françaises. Pour remplir samission, il décide de louer une voiture et de circuler entre six grandes villes françaises : Bordeaux (B), Lyon (L),Marseille (M), Nantes (N), Paris (P) et Toulouse(T).
+		Un journaliste britannique d’une revue consacrée à l’automobile doit tester les autoroutes françaises. Pour remplir sa mission, il décide de louer une voiture et de circuler entre six grandes villes françaises : Bordeaux (B), Lyon (L),Marseille (M), Nantes (N), Paris (P) et Toulouse(T).
 		
 		![Dijkstra3.png](Dijkstra3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
 		
-		Le journaliste se trouve à Nantes et désire se rendre le plus rapidement possible à Marseille.Déterminer un trajet quiminimise son temps de parcours.
+		Le journaliste se trouve à Nantes et désire se rendre le plus rapidement possible à Marseille.Déterminer un trajet qui minimise son temps de parcours.
 	
 	=== "Solutions"
 	
@@ -91,7 +91,7 @@ On va exécuter l'algorithme de Dijkstra en partant de la ville `A`, en complét
 	=== "Enoncé"
 	
 		Un parcours sportif est composé d’un banc pour abdominaux, de haies et d’anneaux. Le graphe orienté ci-contre indique les différents parcours conseillés partant de D et terminant à F. Les sommets sont : D (départ), B (banc pour abdominaux), H (haies), A (anneaux) et F (fin du parcours). Les arêtes représentent les différents sentiers reliant les sommets.
-		Assia a relevé ses temps de course enminute entre les différents sommets. Ces durées sont portées sur le graphe ci-dessous. Lors d’un entraînement, Assia souhaite courir lemoins longtemps possible en allant de D à F. Déterminer le trajet pour lequel le temps de course estminimal et préciser la durée de sa course.
+		Assia a relevé ses temps de course en minute entre les différents sommets. Ces durées sont portées sur le graphe ci-dessous. Lors d’un entraînement, Assia souhaite courir le moins longtemps possible en allant de D à F. Déterminer le trajet pour lequel le temps de course estminimal et préciser la durée de sa course.
 		
 		![Dijkstra4.png](Dijkstra4.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
 	
@@ -107,7 +107,7 @@ Le protocole {==**OSPF**== } pour *Open Shortest Path First* est un protocole à
 L’algorithme pour trouver la meilleure route est celui de Dijkstra qui fournit dans ce cas **le coût cumulé le plus faible des liens de la route** vers une destination d’une zone donnée. Le coût utilisé pour chaque lien doit être **inversement proportionnel à la bande passante du lien** en question. Ce coût peut être défini manuellement ou calculé avec la formule suivante :
 
 $$
-Coût = \cfrac{Cst}{bande passante}
+Coût = \cfrac{Cst}{bande~~passante}
 $$
 
 !!! warning 
