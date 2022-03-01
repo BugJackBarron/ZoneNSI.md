@@ -180,7 +180,7 @@ Il est temps de mettre un peu de couleur !
 !!! asbtract "Synthèse additive RGB"
 	Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes, par **synthèse additive des couleurs**. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système *CYMB* - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).
 
-	![RGB Wikipedia](https://upload.wikimedia.org/wikipedia/commons/1/14/AdditiveColorMixing.png?uselang=fr){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+	![RGB Wikipedia](https://upload.wikimedia.org/wikipedia/commons/1/14/AdditiveColorMixing.png?uselang=fr){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
 
 	De ce fait, dans un format non compressé comme le format `BMP`, chaque pixel est représenté par 3 octets.
 
@@ -194,14 +194,58 @@ Il est temps de mettre un peu de couleur !
 !!! question "RGB et pillow"
 
 	=== "Enoncé"
-		1. Téléchargez l'image suivante :
-		
+		1. Téléchargez l'image suivante : ![RGB3](TroisCouleurs.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+		2. Créer un code  dans Thonny ouvrant l'image et affichant cette image :
+			
+			```` python
+			from PIL import Image	
+			originale = Image.open("TroisCouleurs.bmp") ## Attention si vous avez changé le nom !
+			originale.show()
+			````
+		3. .
+			1. Insérez dans ce code la commande :
+				```` python
+				print(image.getpixel((250,100)))			
+				````
+			Que renvoie-t-elle ?
+			2. A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées $(250 ; 100)$. Quelle est sa couleur ?
+		4. Reprendre la question 3 avec les pixels suivants :
+			1. $(100 ; 350)$
+			2. $(400 ; 350)$
+			3. $(150 ; 225)$
+			4. $(350 ; 225)$
+			5. $(250 ; 400)$
+			6. $(250 ; 300)$
+			
+	=== "Solutions"
 	
+		A venir !
 
-	
+#### La transparence
 
+Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la {==**transparence**==}(aussi appelée {==**canal alpha**==}) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel.
+
+Par exemple, les deux images suivantes sont construites de la manière suivante : une est construite en `jpg` (sans transparence), et la seconde est en `png`, avec transparence pour le fond de couleur noire :
+
+<div style="display:flex;">
+<div style="display : inline; width : 50%;">
+
+![Troopers.jpg](Troopers.jpg){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+
+</div>
+<div style="display : inline; width : 50%;">
+
+![Troopers.png](Troopers.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+
+</div>
+</div>
+
+Dans un format avec transparence, la valeur 0 correspond à un pixel totalement opaque, et une valeur 255 à un pixel totalement transparent.
 
 ### Les formats d'images
+
+
+
 
 ## Manipulation des images
 
