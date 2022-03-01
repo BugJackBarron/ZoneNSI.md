@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C07/OSPF/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2272,7 +2272,7 @@ stockée dans sa table de lien, il la met à jour.</p>
 <h2 id="algorithme-de-dijkstra">Algorithme de Dijkstra</h2>
 <h3 id="description-de-lalgorithme">Description de l'algorithme</h3>
 <p>L'algorithme de <mark class="critic"><strong>Dijkstra</strong></mark>, crée par l'informaticien néerlandais <a href="https://fr.wikipedia.org/wiki/Edsger_Dijkstra">Edsger Dijkstra</a>, et publié en 1959, est un algorithme permettant de déterminer le plus court chemin entre deux sommets dans un <em>graphe orienté pondéré de réels positifs</em> (on définira plus tard ces termes dans le chapitre sur les graphes).</p>
-<p>Il consiste à partir d'un sommet, et de construire progressivement un sous-grahe dans lequel sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ, cette distance correspondant à la somme des <em>poids</em> des <em>arcs</em> empruntés.</p>
+<p>Il consiste à partir d'un sommet, et de construire progressivement un sous-graphe dans lequel sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ, cette distance correspondant à la somme des <em>poids</em> des <em>arcs</em> empruntés.</p>
 <p>On décrit l'algorithme ainsi :</p>
 <ol>
 <li>Au départ, on considère que les distances de chaque sommet au sommet de départ sont <strong>infinies</strong>, sauf pour le sommet de départ pour lequel la <strong>distance est nulle</strong>. Le sous-graphe des sommets visités contient uniquement le sommet de départ. </li>
@@ -2296,9 +2296,9 @@ stockée dans sa table de lien, il la met à jour.</p>
 <div class="admonition question">
 <p class="admonition-title">Exercice n°1</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
-<p>Un journaliste britannique d’une revue consacrée à l’automobile doit tester les autoroutes françaises. Pour remplir samission, il décide de louer une voiture et de circuler entre six grandes villes françaises : Bordeaux (B), Lyon (L),Marseille (M), Nantes (N), Paris (P) et Toulouse(T).</p>
+<p>Un journaliste britannique d’une revue consacrée à l’automobile doit tester les autoroutes françaises. Pour remplir sa mission, il décide de louer une voiture et de circuler entre six grandes villes françaises : Bordeaux (B), Lyon (L),Marseille (M), Nantes (N), Paris (P) et Toulouse(T).</p>
 <p><img alt="Dijkstra3.png" src="../Dijkstra3.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
-<p>Le journaliste se trouve à Nantes et désire se rendre le plus rapidement possible à Marseille.Déterminer un trajet quiminimise son temps de parcours.</p>
+<p>Le journaliste se trouve à Nantes et désire se rendre le plus rapidement possible à Marseille.Déterminer un trajet qui minimise son temps de parcours.</p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solutions</label><div class="tabbed-content">
 <p>A venir !</p>
@@ -2309,7 +2309,7 @@ stockée dans sa table de lien, il la met à jour.</p>
 <p class="admonition-title">Exercice n°2</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
 <p>Un parcours sportif est composé d’un banc pour abdominaux, de haies et d’anneaux. Le graphe orienté ci-contre indique les différents parcours conseillés partant de D et terminant à F. Les sommets sont : D (départ), B (banc pour abdominaux), H (haies), A (anneaux) et F (fin du parcours). Les arêtes représentent les différents sentiers reliant les sommets.
-Assia a relevé ses temps de course enminute entre les différents sommets. Ces durées sont portées sur le graphe ci-dessous. Lors d’un entraînement, Assia souhaite courir lemoins longtemps possible en allant de D à F. Déterminer le trajet pour lequel le temps de course estminimal et préciser la durée de sa course.</p>
+Assia a relevé ses temps de course en minute entre les différents sommets. Ces durées sont portées sur le graphe ci-dessous. Lors d’un entraînement, Assia souhaite courir le moins longtemps possible en allant de D à F. Déterminer le trajet pour lequel le temps de course estminimal et préciser la durée de sa course.</p>
 <p><img alt="Dijkstra4.png" src="../Dijkstra4.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Solutions</label><div class="tabbed-content">
@@ -2321,7 +2321,7 @@ Assia a relevé ses temps de course enminute entre les différents sommets. Ces 
 <p>Le protocole {<mark><strong>OSPF</strong></mark> } pour <em>Open Shortest Path First</em> est un protocole à état de lien, normalisé en 1990, décrit dans la RFC 2328. Il est pris en charge par le protocole IP. C’est le protocole de routage interne dominant et il est supporté par la plupart des routeurs. Ce  protocole attribue un coût à chaque lien entre les routeurs du réseau. Le <em>O</em> du sigle <em>OSPF</em> signifie que sa spécification doit appartenir au domaine public et que toute solution propriétaire est exclue.</p>
 <p>L’algorithme pour trouver la meilleure route est celui de Dijkstra qui fournit dans ce cas <strong>le coût cumulé le plus faible des liens de la route</strong> vers une destination d’une zone donnée. Le coût utilisé pour chaque lien doit être <strong>inversement proportionnel à la bande passante du lien</strong> en question. Ce coût peut être défini manuellement ou calculé avec la formule suivante :</p>
 <div class="arithmatex">\[
-Coût = \cfrac{Cst}{bande passante}
+Coût = \cfrac{Cst}{bande~~passante}
 \]</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

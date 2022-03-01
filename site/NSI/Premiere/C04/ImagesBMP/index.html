@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C04/ImagesBMP/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -1309,31 +1309,18 @@
     Images en couleur
   </a>
   
-    <nav class="md-nav" aria-label="Images en couleur">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#systeme-rgb" class="md-nav__link">
-    système RGB
+  <a href="#compression-des-images" class="md-nav__link">
+    Compression des images
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#la-transparence" class="md-nav__link">
-    La transparence
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#les-formats-dimages" class="md-nav__link">
-    Les formats d'images
+  <a href="#les-formats-des-fichiers-images" class="md-nav__link">
+    Les formats des fichiers images
   </a>
   
 </li>
@@ -1350,6 +1337,13 @@
   
     <nav class="md-nav" aria-label="Manipulation des images">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-dimages" class="md-nav__link">
+    Création d'images
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#symetries" class="md-nav__link">
@@ -2474,29 +2468,28 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <details class="question"><summary>Pour les cracks</summary><p>Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notrze mùéthode. Vous pouvez vous inspirer du travail de <a href="https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf" target="target">Paul Milan</a>, très mathématique, ou bien tester les fonctionnalités du module <code>pillow</code>, en suivant par exemple ce <a href="http://www.ordinateur.cc/programmation/Programmation-Python/93546.html" target="_blank">tutoriel</a>.</p>
 </details>
 <h3 id="images-en-couleur">Images en couleur</h3>
-<h4 id="systeme-rgb">système RGB</h4>
 <p>Il est temps de mettre un peu de couleur !</p>
 <div class="admonition asbtract">
 <p class="admonition-title">Synthèse additive RGB</p>
 <p>Un pixel  de couleur est représenté par un triplet <span class="arithmatex">\((R;G;B)\)</span>, où <span class="arithmatex">\(R\)</span>, <span class="arithmatex">\(G\)</span> et <span class="arithmatex">\(B\)</span> sont des valeurs de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(255\)</span> représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter <span class="arithmatex">\(256^3 = 16~277~216\)</span> nuances de couleurs différentes, par <strong>synthèse additive des couleurs</strong>. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système <em>CYMB</em> - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).</p>
-<p><img alt="RGB Wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/1/14/AdditiveColorMixing.png?uselang=fr" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="title" /></p>
+<p><img alt="Trois Cercles" src="../TroisCercles.bmp" style="width:20%;margin:auto;display:block;background-color: #546d78;" /></p>
 <p>De ce fait, dans un format non compressé comme le format <code>BMP</code>, chaque pixel est représenté par 3 octets.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p>On considère l'image suivante :</p>
-<p><img alt="Logo" src="../logo.bmp" style="width:50%;margin:auto;display:block;background-color: #546d78;" /></p>
-<p>L'image est de dimension <span class="arithmatex">\(320 \times 100\)</span> et pèse 96 ko, ce qui correspond <span class="arithmatex">\(320 \times 100 \times 3 = 96~000~o\)</span>.</p>
+<p><img alt="Logo" src="../logo.bmp" style="width:30%;margin:auto;display:block;background-color: #546d78;" /></p>
+<p>L'image est de dimension <span class="arithmatex">\(320 \times 100\)</span> et pèse 96 ko, ce qui correspond <span class="arithmatex">\(320 \times 100 \times 3 = 96~000~o\)</span> (en n'oubliant pas les méta-données).</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">RGB et pillow</p>
 <div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
 <ol>
-<li>Téléchargez l'image suivante : <img alt="RGB3" src="../TroisCouleurs.bmp" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="title" /></li>
+<li>Téléchargez l'image suivante : <img alt="Trois Cercles" src="../TroisCercles.bmp" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="title" /></li>
 <li>
 <p>Créer un code  dans Thonny ouvrant l'image et affichant cette image :</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>   
-<span class="n">originale</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;TroisCouleurs.bmp&quot;</span><span class="p">)</span> <span class="c1">## Attention si vous avez changé le nom !</span>
+<span class="n">originale</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;TroisCercles.bmp&quot;</span><span class="p">)</span> <span class="c1">## Attention si vous avez changé le nom !</span>
 <span class="n">originale</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </li>
@@ -2504,19 +2497,19 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p>.</p>
 <ol>
 <li>Insérez dans ce code la commande :
-    <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">250</span><span class="p">,</span><span class="mi">100</span><span class="p">)))</span>            
+    <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">150</span><span class="p">,</span><span class="mi">50</span><span class="p">)))</span>         
 </code></pre></div>
 Que renvoie-t-elle ?</li>
 <li>A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées <span class="arithmatex">\((250 ; 100)\)</span>. Quelle est sa couleur ?</li>
 </ol>
 </li>
 <li>Reprendre la question 3 avec les pixels suivants :<ol>
-<li><span class="arithmatex">\((100 ; 350)\)</span></li>
-<li><span class="arithmatex">\((400 ; 350)\)</span></li>
-<li><span class="arithmatex">\((150 ; 225)\)</span></li>
-<li><span class="arithmatex">\((350 ; 225)\)</span></li>
-<li><span class="arithmatex">\((250 ; 400)\)</span></li>
-<li><span class="arithmatex">\((250 ; 300)\)</span></li>
+<li><span class="arithmatex">\((50 ; 100)\)</span></li>
+<li><span class="arithmatex">\((250 ; 100)\)</span></li>
+<li><span class="arithmatex">\((100 ; 130)\)</span></li>
+<li><span class="arithmatex">\((200 ; 130)\)</span></li>
+<li><span class="arithmatex">\((50 ; 230)\)</span></li>
+<li><span class="arithmatex">\((150 ; 150)\)</span></li>
 </ol>
 </li>
 </ol>
@@ -2526,27 +2519,241 @@ Que renvoie-t-elle ?</li>
 </div>
 </div>
 </div>
-<h4 id="la-transparence">La transparence</h4>
-<p>Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la <mark class="critic"><strong>transparence</strong></mark>(aussi appelée <mark class="critic"><strong>canal alpha</strong></mark>) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel.</p>
-<p>Par exemple, les deux images suivantes sont construites de la manière suivante : une est construite en <code>jpg</code> (sans transparence), et la seconde est en <code>png</code>, avec transparence pour le fond de couleur noire :</p>
-<div style="display:flex;">
-<div style="display : inline; width : 50%;">
-
-![Troopers.jpg](Troopers.jpg){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
-
-</div>
-<div style="display : inline; width : 50%;">
-
-![Troopers.png](Troopers.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
-
-</div>
-</div>
-
+<div class="admonition info">
+<p class="admonition-title">Transparence</p>
+<p>Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la <mark class="critic"><strong>transparence</strong></mark>(aussi appelée <mark class="critic"><strong>canal alpha</strong></mark>) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel, et donc de supperposer des images.</p>
+<p>Par exemple, les deux images suivantes sont construites ainsi : une est construite en <code>jpg</code>, sans transparence, avec fond noir, et la seconde est en <code>png</code>, avec transparence pour le fond de couleur noire :</p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="Troopers.jpg" src="../Troopers.jpg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="Troopers.png" src="../Troopers.bmp" style="width:15%; margin:auto;display:block;" /></p>
+<p></div>
+</div></p>
 <p>Dans un format avec transparence, la valeur 0 correspond à un pixel totalement opaque, et une valeur 255 à un pixel totalement transparent.</p>
-<h3 id="les-formats-dimages">Les formats d'images</h3>
+</div>
+<h3 id="compression-des-images">Compression des images</h3>
+<div class="admonition tips">
+<p class="admonition-title">Compression des images</p>
+<p>Les images sont très gourmandes en place mémoire. Un moniteur moderne supportant une résolution 4K a pour dimension <span class="arithmatex">\(4~096 \times 2~160\)</span> pixels, soit plus de 8,8 millions de pixels. Une image de fond d'écran couleur, avec transparence, <strong>non compresée</strong>,  représente donc plus de <span class="arithmatex">\(8,8 \times 4 \simeq 35\)</span> millions d'octets, soit plus de 35 Mo.</p>
+<p>Pourtant une image comme <a href="https://s1.1zoom.me/big3/272/Star_Wars_Soldiers_458514.jpg" target="_blank">celle-ci</a> (crédits inconnus), pourtant bien de la dimension <span class="arithmatex">\(4~096 \times 2~160\)</span>, pèse seulement 4,52 Mo.</p>
+<p>Ceci est du à un processus appelé <mark class="critic"><strong>compression d'images</strong></mark>, qui peut être effectué de plusieurs manières différentes :</p>
+<ul>
+<li>en réduisant le nombre de couleurs réelles de l'image (on crée une palette spécifique pour cette image, dont la table de correspondance est insérée dans les méta-données de l'image) ;</li>
+<li>en groupant les pixels contigüs de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position <span class="arithmatex">\((x_0;y_0)\)</span> &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour <span class="arithmatex">\(x_0\)</span>, un pour <span class="arithmatex">\(y_0\)</span> et 3 pour la couleur RGB) ;</li>
+<li>etc...</li>
+</ul>
+<p>Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs réattribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un <strong>taux de compression</strong> définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée (<mark class="critic"><strong>compression avec perte==</strong>}):</p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 30%;"></p>
+<p><img alt="Rebecca.jpg" src="../Rebecca.jpg" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Original : 1,42 Mo</p>
+<p>Format déjà compressé</p>
+<p></div>
+<div style="display : inline; width : 30%;"></p>
+<p><img alt="Rebecca2.jpg" src="../Rebecca2.jpg" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Copie 1 : 205 ko</p>
+<p>Compression depuis original : 90%</p>
+<p></div>
+<div style="display : inline; width : 30%;"></p>
+<p><img alt="Rebecca3.jpg" src="../Rebecca3.jpg" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Copie 2 : 162 ko</p>
+<p>Compression depuis original  : 99%</p>
+<p></div>
+</div></p>
+<p>Il existe cependant des algorithmes de {==<strong>compression sans perte</strong></mark>, comme par exemple avec le format <code>png</code>.</p>
+</div>
+<h3 id="les-formats-des-fichiers-images">Les formats des fichiers images</h3>
+<p>Il existe de nombreux formats d'images numériques de types <strong>matriciels</strong>. Les principaux sont donnés dans le tableau suivant :</p>
+<table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Extension</th>
+<th align="center">Compression</th>
+<th align="center">Transparence</th>
+<th align="center">Utilisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">JPEG</td>
+<td align="center">.jpg , .jpeg , .jfif , .pjpeg , .pjp</td>
+<td align="center">avec pertes</td>
+<td align="center">Non</td>
+<td align="center">Web, aperçus, impressions (si peu de compression)</td>
+</tr>
+<tr>
+<td align="center">PNG</td>
+<td align="center">.png</td>
+<td align="center">sans pertes</td>
+<td align="center">Oui</td>
+<td align="center">Besoin de transparence fine, peu de couleurs</td>
+</tr>
+<tr>
+<td align="center">GIF</td>
+<td align="center">.gif</td>
+<td align="center">avec pertes</td>
+<td align="center">Oui (partielle)</td>
+<td align="center">Images animées, fichiers de petites tailles</td>
+</tr>
+<tr>
+<td align="center">TIFF</td>
+<td align="center">.tiff, .tif</td>
+<td align="center">sans pertes</td>
+<td align="center">Non</td>
+<td align="center">Images hautes définition, scans précis</td>
+</tr>
+<tr>
+<td align="center">RAW</td>
+<td align="center">.raw, .data, ...</td>
+<td align="center">Non</td>
+<td align="center">Non</td>
+<td align="center">Images brutes, éditions de photos</td>
+</tr>
+<tr>
+<td align="center">BMP</td>
+<td align="center">.bmp</td>
+<td align="center">Non</td>
+<td align="center">En partie</td>
+<td align="center">Paint...</td>
+</tr>
+</tbody>
+</table>
+<p>Les logiciels de retouches et d'édition d'images matricielles sont nombreux, le plus connu étant le célèbre <code>Photoshop</code>, mais qui est un logiciel propriétaire. </p>
+<p>Son équivalent libre est <code>GIMP</code>. Il offre les mêmes fonctionnalités, et ne demande qu'une simple adaptation à l'interface...</p>
+<details class="tips"><summary>Images Vectorielles</summary><p>Dans le tableau précédent, vous n'avez que des format d'images <em>matricielles</em>. Il existe aussi un autre type d'images numériques appelé <strong>images vectorielles</strong>, construites sur un tout autre principe.</p>
+<p>Une image vectorielle est une image pour laquelle les élements constitutifs sont <strong>stockée sous la forme d'équations</strong>.</p>
+<p>Ainsi l'image du manchot <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg" target="_blank">Tux</a>, mascotte officielle du noyau Linux (à ne pas confondre avec <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg" target="_blank">GNU/Linux</a>, est une image vectorielle au format <code>SVG</code>, qui peut être ouverte par <code>Notepad++</code>. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. </p>
+<p>L'avantage d'une telle image est qu'elle ne pixelisera pas, quel que soit le zoom qui lui est appliqué (en théorie...).</p>
+<p>De telles images peuvent être crées et manipulées à l'aide du logiciel libre <code>Inkscape</code>.</p>
+</details>
 <h2 id="manipulation-des-images">Manipulation des images</h2>
+<h3 id="creation-dimages">Création d'images</h3>
+<div class="admonition info">
+<p class="admonition-title">Exemple de création d'image RGB avec Pillow</p>
+<p>Le code suivant permet de créer une image au format <code>png</code> des trois cercles colorés de la synthèse additive :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">makeCircles</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">a</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="mi">2</span><span class="o">+</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">distance</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">))</span><span class="o">&lt;</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">G</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">distance</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span><span class="o">&lt;</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">distance</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">))</span><span class="o">&lt;</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),(</span><span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span> <span class="p">:</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">makeCircles</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;TroisCercles.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Les lignes importantes sont les suivantes :</p>
+<ul>
+<li>Ligne 10 : on crée une nouvelle image utilisant le format RGB, de la largeur et de la hauteur donnée (sous la forme d'un tuple de dimension 2). On pourrait créer une image avec transparence en utilisant le format <code>RGBA</code> - voir [ici]'https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes){: target = "_blank"}</li>
+<li>Lignes 11-12, on parcours l'image colonne par colonne, <code>x</code> étant l'abscisse (= le numéro de colonne) et <code>y</code> étant l'ordonnée (= le numéro de ligne).</li>
+<li>ligne 16 : on place à la position <span class="arithmatex">\((x;y)\)</span> un pixel dont la couleur est donnée par le tuple <code>(R, G, B)</code>, conformément au mode choisi en ligne 10.</li>
+<li>ligne 21 : l'objet <code>image</code> renvoyé par la fonction <code>makeCircles</code> avec l'argument 100 est sauvegardée sous le nom <code>TroisCercles.png</code> grâce à la <em>méthode</em> <code>save</code>.</li>
+</ul>
+</div>
+<details class="info"><summary>Un peu de maths</summary><p>L'image est construite à partir d'un triangle équilatéral de côté <span class="arithmatex">\(a\)</span> dont les sommets sont les centres des trois cercles RGB, et dont les coordonnées sont respectivement <span class="arithmatex">\((2a ; (1+\cfrac{\sqrt{3}}{2}a)\)</span>, <span class="arithmatex">\((\cfrac{3}{2}a ; a)\)</span> et <span class="arithmatex">\((a ; (1+\cfrac{\sqrt{3}}{2}a)\)</span>.</p>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Créer des images simples</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Créer le drapeau français sous la forme d'une image de taille <span class="arithmatex">\(300 \times 200\)</span>.</li>
+<li>Créer le drapeau néerlandais sous la forme d'une image de taille <span class="arithmatex">\(300 \times 210\)</span>.</li>
+<li>Créer un damier noir et blanc (ou toute autre paire de couleurs), de dimension <span class="arithmatex">\(600 \times 400\)</span>, et donc chaque carré à une taille de 20 pixels (<em>Indice : pensez à la division euclidienne et à l'opérateur modulo %</em>).</li>
+</ol>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Corrigé</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
 <h3 id="symetries">Symétries</h3>
+<div class="admonition question">
+<p class="admonition-title">Symétries axiales et centrales</p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<p>Sélectionnez une image libre de droit sur le web.</p>
+<ol>
+<li>Créez une fonction <code>symetrieVerticale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel opbjet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'axe median vertical.</li>
+<li>Créez une fonction <code>symetrieHorizontale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel opbjet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'axe median horizontal.</li>
+<li>Créez une fonction <code>symetrieCentrale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel opbjet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'e centre correspondfant au centre de l'image.</li>
+</ol>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solutions</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
 <h3 id="filtres-colores">Filtres colorés</h3>
+<div class="admonition info">
+<p class="admonition-title">Filtre vert</p>
+<p>Quand on applique un filtre vert à une image numérique, on parcourt l'image entière en ne récupérant pour chaque pixel que sa composante verte, et en mettant le rouge et le bleu à 0. Par exemple, avec une image de type <code>png</code> et en gardant le canal alpha : </p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="Naruto" src="../Naruto.png" style="width:15%; margin:auto;display:block;" /></p>
+<p></div>
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="NarutoGreen" src="../NarutoGreen.png" style="width:15%; margin:auto;display:block;" /></p>
+<p></div>
+</div></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Filtres de couleur</p>
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>Créer une fonction <code>filtreCouleur</code> qui prend en argument un objet de type <code>Image</code> et un tuple <code>(r, g, b, a)</code>, où <code>r, g, b</code> et <code>a</code> sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est <code>True</code>. Par exemple, l'image de Naruto verte ci-dessu est obtenue par le code :</p>
+<div class="highlight"><pre><span></span><code><span class="n">naruto</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Naruto.png&quot;</span><span class="p">)</span>
+<span class="n">narutoGreen</span> <span class="o">=</span> <span class="n">filtreCouleur</span><span class="p">(</span><span class="n">naruto</span><span class="p">,</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+<span class="n">narutoGreen</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Créer ainsi des images <code>NarutoRouge.png</code>, <code>NarutoBleu.png</code>, <code>NarutoJaune.png</code>, <code>NarutoMagenta.png</code> et <code>NarutoCyan.png</code></p>
+</li>
+<li>
+<p>Créer maintenant l'image suivante à partir de pillow :</p>
+<p><img alt="Multiclonage" src="../Multiclonage.png" style="width:80%; margin:auto;display:block;" /></p>
+</li>
+<li>
+<p>Créer une fonction <code>negatif</code> qui prend en argument une image et inverse les octets de chacune de ses composantes, en conservant le canal alpha. On obtiendra par exemple :</p>
+<p><img alt="Naruto Négatif" src="../NarutoNegatif.png" style="width:15%; margin:auto;display:block;" /></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 <h3 id="agrandissements-et-reductions-dun-facteur-2">Agrandissements et réductions d'un facteur 2</h3>
                 
               

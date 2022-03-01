@@ -173,85 +173,273 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 
 ### Images en couleur
 
-#### système RGB
 
 Il est temps de mettre un peu de couleur !
 
 !!! asbtract "Synthèse additive RGB"
 	Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes, par **synthèse additive des couleurs**. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système *CYMB* - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).
 
-	![RGB Wikipedia](https://upload.wikimedia.org/wikipedia/commons/1/14/AdditiveColorMixing.png?uselang=fr){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+	![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;"}
 
 	De ce fait, dans un format non compressé comme le format `BMP`, chaque pixel est représenté par 3 octets.
 
 !!! example "Exemple"
 	On considère l'image suivante :
 	
-	![Logo](logo.bmp){: style="width:50%;margin:auto;display:block;background-color: #546d78;"}
+	![Logo](logo.bmp){: style="width:30%;margin:auto;display:block;background-color: #546d78;"}
 	
-	L'image est de dimension $320 \times 100$ et pèse 96 ko, ce qui correspond $320 \times 100 \times 3 = 96~000~o$.
+	L'image est de dimension $320 \times 100$ et pèse 96 ko, ce qui correspond $320 \times 100 \times 3 = 96~000~o$ (en n'oubliant pas les méta-données).
 	
 !!! question "RGB et pillow"
 
 	=== "Enoncé"
-		1. Téléchargez l'image suivante : ![RGB3](TroisCouleurs.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+		1. Téléchargez l'image suivante : ![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
 		2. Créer un code  dans Thonny ouvrant l'image et affichant cette image :
 			
 			```` python
 			from PIL import Image	
-			originale = Image.open("TroisCouleurs.bmp") ## Attention si vous avez changé le nom !
+			originale = Image.open("TroisCercles.bmp") ## Attention si vous avez changé le nom !
 			originale.show()
 			````
 		3. .
 			1. Insérez dans ce code la commande :
 				```` python
-				print(image.getpixel((250,100)))			
+				print(image.getpixel((150,50)))			
 				````
 			Que renvoie-t-elle ?
 			2. A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées $(250 ; 100)$. Quelle est sa couleur ?
 		4. Reprendre la question 3 avec les pixels suivants :
-			1. $(100 ; 350)$
-			2. $(400 ; 350)$
-			3. $(150 ; 225)$
-			4. $(350 ; 225)$
-			5. $(250 ; 400)$
-			6. $(250 ; 300)$
+			1. $(50 ; 100)$
+			2. $(250 ; 100)$
+			3. $(100 ; 130)$
+			4. $(200 ; 130)$
+			5. $(50 ; 230)$
+			6. $(150 ; 150)$
 			
 	=== "Solutions"
 	
 		A venir !
 
-#### La transparence
+!!! info "Transparence"
 
-Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la {==**transparence**==}(aussi appelée {==**canal alpha**==}) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel.
+	Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la {==**transparence**==}(aussi appelée {==**canal alpha**==}) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel, et donc de supperposer des images.
 
-Par exemple, les deux images suivantes sont construites de la manière suivante : une est construite en `jpg` (sans transparence), et la seconde est en `png`, avec transparence pour le fond de couleur noire :
+	Par exemple, les deux images suivantes sont construites ainsi : une est construite en `jpg`, sans transparence, avec fond noir, et la seconde est en `png`, avec transparence pour le fond de couleur noire :
 
-<div style="display:flex;">
-<div style="display : inline; width : 50%;">
+	<div style="display:flex;">
+	<div style="display : inline; width : 50%;">
 
-![Troopers.jpg](Troopers.jpg){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+	![Troopers.jpg](Troopers.jpg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
 
-</div>
-<div style="display : inline; width : 50%;">
+	</div>
+	<div style="display : inline; width : 50%;">
 
-![Troopers.png](Troopers.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	![Troopers.png](Troopers.bmp){: style="width:15%; margin:auto;display:block;"}
 
-</div>
-</div>
+	</div>
+	</div>
 
-Dans un format avec transparence, la valeur 0 correspond à un pixel totalement opaque, et une valeur 255 à un pixel totalement transparent.
-
-### Les formats d'images
+	Dans un format avec transparence, la valeur 0 correspond à un pixel totalement opaque, et une valeur 255 à un pixel totalement transparent.
 
 
+
+### Compression des images
+
+!!! tips "Compression des images"
+
+	Les images sont très gourmandes en place mémoire. Un moniteur moderne supportant une résolution 4K a pour dimension $4~096 \times 2~160$ pixels, soit plus de 8,8 millions de pixels. Une image de fond d'écran couleur, avec transparence, **non compresée**,  représente donc plus de $8,8 \times 4 \simeq 35$ millions d'octets, soit plus de 35 Mo.
+	
+	Pourtant une image comme [celle-ci](https://s1.1zoom.me/big3/272/Star_Wars_Soldiers_458514.jpg){: target="_blank"} (crédits inconnus), pourtant bien de la dimension $4~096 \times 2~160$, pèse seulement 4,52 Mo.
+	
+	Ceci est du à un processus appelé {==**compression d'images**==}, qui peut être effectué de plusieurs manières différentes :
+	
+	* en réduisant le nombre de couleurs réelles de l'image (on crée une palette spécifique pour cette image, dont la table de correspondance est insérée dans les méta-données de l'image) ;
+	* en groupant les pixels contigüs de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position $(x_0;y_0)$ &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour $x_0$, un pour $y_0$ et 3 pour la couleur RGB) ;
+	* etc...
+	
+	Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs réattribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un **taux de compression** définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée ({==**compression avec perte==**}):
+	
+	<div style="display:flex;">
+	<div style="display : inline; width : 30%;">
+
+	![Rebecca.jpg](Rebecca.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+
+	Original : 1,42 Mo
+	
+	Format déjà compressé
+	
+	</div>
+	<div style="display : inline; width : 30%;">
+
+	![Rebecca2.jpg](Rebecca2.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	
+	Copie 1 : 205 ko
+	
+	Compression depuis original : 90%
+
+	</div>
+	<div style="display : inline; width : 30%;">
+
+	![Rebecca3.jpg](Rebecca3.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	
+	Copie 2 : 162 ko
+	
+	Compression depuis original  : 99%
+
+	</div>
+	</div>
+	
+	Il existe cependant des algorithmes de {==**compression sans perte**==}, comme par exemple avec le format `png`.
+	
+### Les formats des fichiers images
+
+Il existe de nombreux formats d'images numériques de types **matriciels**. Les principaux sont donnés dans le tableau suivant :
+
+| Type | Extension | Compression | Transparence | Utilisation |
+| :---: | :---: | :---: | :---: | :---: |
+| JPEG | .jpg , .jpeg , .jfif , .pjpeg , .pjp | avec pertes | Non |  Web, aperçus, impressions (si peu de compression) |
+| PNG | .png | sans pertes | Oui | Besoin de transparence fine, peu de couleurs   |
+| GIF | .gif | avec pertes | Oui (partielle) | Images animées, fichiers de petites tailles |
+| TIFF | .tiff, .tif | sans pertes | Non | Images hautes définition, scans précis |
+| RAW |.raw, .data, ...| Non | Non | Images brutes, éditions de photos |
+| BMP | .bmp | Non | En partie | Paint... |
+
+
+Les logiciels de retouches et d'édition d'images matricielles sont nombreux, le plus connu étant le célèbre `Photoshop`, mais qui est un logiciel propriétaire. 
+
+Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne demande qu'une simple adaptation à l'interface...
+
+
+
+
+
+??? tips "Images Vectorielles"
+
+	Dans le tableau précédent, vous n'avez que des format d'images *matricielles*. Il existe aussi un autre type d'images numériques appelé **images vectorielles**, construites sur un tout autre principe.
+	
+	Une image vectorielle est une image pour laquelle les élements constitutifs sont **stockée sous la forme d'équations**.
+	
+	Ainsi l'image du manchot [Tux](https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg){: target="_blank"}, mascotte officielle du noyau Linux (à ne pas confondre avec [GNU/Linux](https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg){: target="_blank"}, est une image vectorielle au format `SVG`, qui peut être ouverte par `Notepad++`. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. 
+	
+	L'avantage d'une telle image est qu'elle ne pixelisera pas, quel que soit le zoom qui lui est appliqué (en théorie...).
+	
+	De telles images peuvent être crées et manipulées à l'aide du logiciel libre `Inkscape`.
 
 
 ## Manipulation des images
 
+### Création d'images
+
+!!! info "Exemple de création d'image RGB avec Pillow"
+
+	Le code suivant permet de créer une image au format `png` des trois cercles colorés de la synthèse additive :
+	
+	```` python linenums="1"
+	from PIL import Image
+	from math import sqrt
+
+	def distance(p1, p2) :
+		return sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)
+
+	def makeCircles(a) :
+		width = 3*a
+		height = int((2+sqrt(3)/2)*a)
+		img = Image.new("RGB", (width, height))
+		for x in range(width) :
+			for y in range(height) :
+				R = 255*(distance((x, y), (2*a, (1+sqrt(3)/2)*a))<a)
+				G = 255*(distance((x, y), (3*a/2, a))<a)
+				B = 255*(distance((x, y), (a, (1+sqrt(3)/2)*a))<a)
+				img.putpixel((x, y),(R, G, B))
+		return img
+		
+	if __name__ == "__main__" :
+		image = makeCircles(100)
+		image.save("TroisCercles.png")
+	````
+	
+	Les lignes importantes sont les suivantes :
+	
+	* Ligne 10 : on crée une nouvelle image utilisant le format RGB, de la largeur et de la hauteur donnée (sous la forme d'un tuple de dimension 2). On pourrait créer une image avec transparence en utilisant le format `RGBA` - voir [ici]'https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes){: target = "_blank"}
+	* Lignes 11-12, on parcours l'image colonne par colonne, `x` étant l'abscisse (= le numéro de colonne) et `y` étant l'ordonnée (= le numéro de ligne).
+	* ligne 16 : on place à la position $(x;y)$ un pixel dont la couleur est donnée par le tuple `(R, G, B)`, conformément au mode choisi en ligne 10.
+	* ligne 21 : l'objet `image` renvoyé par la fonction `makeCircles` avec l'argument 100 est sauvegardée sous le nom `TroisCercles.png` grâce à la *méthode* `save`.
+	
+??? info "Un peu de maths"
+
+	L'image est construite à partir d'un triangle équilatéral de côté $a$ dont les sommets sont les centres des trois cercles RGB, et dont les coordonnées sont respectivement $(2a ; (1+\cfrac{\sqrt{3}}{2}a)$, $(\cfrac{3}{2}a ; a)$ et $(a ; (1+\cfrac{\sqrt{3}}{2}a)$.
+	
+!!! question "Créer des images simples"
+
+	=== "Enoncé"
+	
+		1. Créer le drapeau français sous la forme d'une image de taille $300 \times 200$.
+		2. Créer le drapeau néerlandais sous la forme d'une image de taille $300 \times 210$.
+		3. Créer un damier noir et blanc (ou toute autre paire de couleurs), de dimension $600 \times 400$, et donc chaque carré à une taille de 20 pixels (*Indice : pensez à la division euclidienne et à l'opérateur modulo %*).
+		
+	=== "Corrigé"
+		A venir !
+		
 ### Symétries
 
+!!! question "Symétries axiales et centrales"
+
+	=== "Enoncé"
+		
+		Sélectionnez une image libre de droit sur le web.
+		
+		1. Créez une fonction `symetrieVerticale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel opbjet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'axe median vertical.
+		2. Créez une fonction `symetrieHorizontale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel opbjet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'axe median horizontal.
+		3. Créez une fonction `symetrieCentrale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel opbjet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'e centre correspondfant au centre de l'image.
+		
+	=== "Solutions"
+	
+		A venir !
+		
 ### Filtres colorés
+
+!!! info "Filtre vert"
+
+	Quand on applique un filtre vert à une image numérique, on parcourt l'image entière en ne récupérant pour chaque pixel que sa composante verte, et en mettant le rouge et le bleu à 0. Par exemple, avec une image de type `png` et en gardant le canal alpha : 
+	
+	<div style="display:flex;">
+	<div style="display : inline; width : 50%;">
+
+	![Naruto](Naruto.png){: style="width:15%; margin:auto;display:block;"}
+
+	</div>
+	<div style="display : inline; width : 50%;">
+
+	![NarutoGreen](NarutoGreen.png){: style="width:15%; margin:auto;display:block;"}
+
+	</div>
+	</div>
+	
+	
+!!! question "Filtres de couleur"
+
+	=== "Enoncé"
+	
+		1.  Créer une fonction `filtreCouleur` qui prend en argument un objet de type `Image` et un tuple `(r, g, b, a)`, où `r, g, b` et `a` sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est `True`. Par exemple, l'image de Naruto verte ci-dessu est obtenue par le code :
+		
+			```` python
+			naruto = Image.open("Naruto.png")
+			narutoGreen = filtreCouleur(naruto, (False, True, False, True))
+			narutoGreen.show()
+			````
+		
+			Créer ainsi des images `NarutoRouge.png`, `NarutoBleu.png`, `NarutoJaune.png`, `NarutoMagenta.png` et `NarutoCyan.png`
+		
+		3. Créer maintenant l'image suivante à partir de pillow :
+			
+			![Multiclonage](Multiclonage.png){: style="width:80%; margin:auto;display:block;"}
+			
+		2. Créer une fonction `negatif` qui prend en argument une image et inverse les octets de chacune de ses composantes, en conservant le canal alpha. On obtiendra par exemple :
+		
+			![Naruto Négatif](NarutoNegatif.png){: style="width:15%; margin:auto;display:block;"}
+		
+			
+
 
 ### Agrandissements et réductions d'un facteur 2
 

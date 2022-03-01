@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C07/RIP/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2320,7 +2320,7 @@
 <p><img alt="RIP5.png" src="../RIP5.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
 </li>
 <li>
-<p>R2 reçoit les nouvelles routes de R2 et de R5 :</p>
+<p>R2 reçoit les nouvelles routes de R3 et de R5 :</p>
 <p><img alt="RIP6.png" src="../RIP6.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
 </li>
 <li>
@@ -2329,12 +2329,12 @@
 </li>
 </ul>
 <h4 id="etape-3">Etape 3</h4>
-<p>Cette dern,ière table de R2 sera transmise à l'étape suivante à R1, et une liaison sera alors possible dès l'étape 3 entre le Client et le Serveur. Dans ce mini-réseau, les tables sont alors toutes stabilisées dès la troisième étape, et le réseau est totalement opérationnel.</p>
+<p>Cette dernière table de R2 sera transmise à l'étape suivante à R1, et une liaison sera alors possible dès l'étape 3 entre le Client et le Serveur. Dans ce mini-réseau, les tables sont alors toutes stabilisées dès la troisième étape, et le réseau est totalement opérationnel.</p>
 <h2 id="quelques-points-importants">Quelques points importants</h2>
 <p>Un des inconvénients du protocole RIP est qu'il génère un traffic important entre voisins, chacun envoyant sa table de routage à tous ses voisins à intervalles réguliers.  </p>
-<p>En conséquences, le protocole RIP est configuré pour se limiter à un <mark class="critic"><strong>nombre maximum de 15 sauts</strong></mark>, ce qui le réserve à des réseaux de petitres taille.</p>
-<p>L'avantage de cette limite est qu'elle permet  d'éviter les <mark class="critic"><strong>éventuelles boucles de routage</strong></mark> (comme R2 =&gt; R3 =&gt; R5 =&gt; R2), en utilisantle TTL qui ne doit pas dépasser 15, afin qu'un paquet qui tourne en rond soit détruit.</p>
-<p>De même, si un routeur ne reçoit pas d'informations d'un de ses voisins directs au bou d'un ordre de temps de trois minutes, il considère que ce routeur est hors-service et lui affecte une distance de 16, qui est alors considérée dans ce protocole comme une distance infinie. En conséquence tous ses voisins recalculeront  leurs vecteurs en évitant le lien qui est tombé.</p>
+<p>En conséquences, le protocole RIP est configuré pour se limiter à un <mark class="critic"><strong>nombre maximum de 15 sauts</strong></mark>, ce qui le réserve à des réseaux de petites taille.</p>
+<p>L'avantage de cette limite est qu'elle permet  d'éviter les <mark class="critic"><strong>éventuelles boucles de routage</strong></mark> (comme R2 =&gt; R3 =&gt; R5 =&gt; R2), en utilisant le TTL qui ne doit pas dépasser 15, afin qu'un paquet qui tourne en rond soit détruit.</p>
+<p>De même, si un routeur ne reçoit pas d'informations d'un de ses voisins directs au bout d'un ordre de temps de trois minutes, il considère que ce routeur est hors-service et lui affecte une distance de 16, qui est alors considérée dans ce protocole comme une distance infinie. En conséquence tous ses voisins recalculeront leurs vecteurs en évitant le lien qui est tombé.</p>
                 
               
               
