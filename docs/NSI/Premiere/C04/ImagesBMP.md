@@ -16,7 +16,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 
 	![YingYang.bmp](YingYang.bmp){: style="margin:auto;display:block;background-color: #546d78;"}
 		
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Téléchargez [ici](YingYang.pgm){:target = "_blank"} cette image et sauvegardez-la dans un dossier `BitMap` que vous aurez créé.
 		2. Quel est le format de cette image ? Recherchez sa signification sur le web.
@@ -40,12 +40,12 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 
 	Les {==**images matricielles**==}, ou &laquo; cartes de points &raquo; (de l'anglais *Bitmap*) est une image constituée d'une matrice de points colorés. C'est-à-dire, constituée d'un tableau, d'une grille, où chaque case possède une couleur qui lui est propre et est considérée comme un point. Il s'agit donc d'une juxtaposition de points de couleurs formant, dans leur ensemble, une image. 
 	
-	Dans notre cas, l'image est une matrice carrée de taille $32\times 32$ pixels. Chaque pixel peut donc être repéré par ses coordonnées, comme sur le schéma ci-dessous, où `width` (*largeur* en anglais) et `height` (*hauteur* en anglais) sont les dimensions de l'image. **Attention ! Le sens de l'axe de ordonnées est inverés par rapport aux mathématiques !**
+	Dans notre cas, l'image est une matrice carrée de taille $32\times 32$ pixels. Chaque pixel peut donc être repéré par ses coordonnées, comme sur le schéma ci-dessous, où `width` (*largeur* en anglais) et `height` (*hauteur* en anglais) sont les dimensions de l'image. **Attention ! Le sens de l'axe de ordonnées est inversés par rapport aux mathématiques !**
 	
 	![PixelMap.png](PixelMap.png){: style="width:50%;margin:auto;display:block;background-color: #546d78;"}
 	
 !!! info "Taille des images en noir et blanc"
-	En fait notre image utilise beaucoup plus de place en mémoire qu'elle ne le devrait. En effet, pour représenter 2 couleurs (noir et blanc), un seul bit suffit. 0 représente un pixel noir, et 1 représente un pixel blanc. Le format `pgm` n'est pas vraiment adapté aux pures images en noir et blanc, puisqu'il utilise 1 octet complet pour représenter la couleur, soit 8 fois plus que ce qui est strictement nécesaire.
+	En fait notre image utilise beaucoup plus de place en mémoire qu'elle ne le devrait. En effet, pour représenter 2 couleurs (noir et blanc), un seul bit suffit. 0 représente un pixel noir, et 1 représente un pixel blanc. Le format `pgm` n'est pas vraiment adapté aux pures images en noir et blanc, puisqu'il utilise 1 octet complet pour représenter la couleur, soit 8 fois plus que ce qui est strictement nécessaire.
 	
 ### Manipulation d'images avec Pillow
 	
@@ -78,9 +78,9 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 	
 	* Ligne 1 : on importe la *classe* `Image` du module `PIL` (c'est-à-dire `pillow`).
 	* Ligne 3 : on utilise la *méthode* `open` de la classe `Image` pour ouvrir l'image `YingYang.pgm` et la stocker dans la variable `originale`, qui est donc un objet de type `Image`.
-	* Ligne 4 : on utilise l'*attribut* `size` des objets `Image` extraire la largeur et la hauteur de notre image, et les stocker dans les varaibles `width` et `height`, de type `int`.
+	* Ligne 4 : on utilise l'*attribut* `size` des objets `Image` extraire la largeur et la hauteur de notre image, et les stocker dans les variables `width` et `height`, de type `int`.
 	* Ligne 6 : `copie` est un nouvel objet de type `Image`, qui possède les mêmes caractéristiques que l'image originale : son `mode` (nous reviendrons dessus plus loin), et sa taille grâce à l'attribut `size`.
-	* Lignes 8-9 : on va parcourir l'image originale pixel par pixel, en efectuant le parcours colonnes par colonnes.
+	* Lignes 8-9 : on va parcourir l'image originale pixel par pixel, en effectuant le parcours colonnes par colonnes.
 	* Lignes 10 : on récupère la valeur du pixel de coordonnées $(x;y)$ de l'image originale grâce à la *méthode* `getpixel`, et **on regarde si il est blanc** (`==255`).
 	* Ligne 11 : si la condition précédente est vraie, on va fixer la couleur du pixel de coordonnées $(x;y)$ de la copie à noir (`0`), grâce à la méthode `putpixel` (**Attention !** `putpixel` et `getpixel` n'acceptent que des tuples pour les coordonnées ! Si vous oubliez la paire de parenthèses, vous risquez d'obtenir `TypeError: putpixel() takes 3 positional arguments but 4 were given`).
 	* Lignes 12-13 : si la condition est fausse, on va fixer la couleur du pixel de coordonnées $(x;y)$ de la copie à blanc (`255`).
@@ -90,15 +90,15 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 	
 !!! question "Factorisation du code"
 
-	=== "Enoncé"
-		Transformez le code précédenten créant une fonction `inverseNB(img)` qui prend en argument un objet `img` de type `Image` et qui renvoie un nouvel objet de type `Image` de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.
+	=== "Énoncé"
+		Transformez le code précédent en créant une fonction `inverseNB(img)` qui prend en argument un objet `img` de type `Image` et qui renvoie un nouvel objet de type `Image` de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.
 		
 	=== "Correction"
 		A venir !
 	
 ??? question "Pour les cracks : améliorons le code"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		En fait le code ci dessus n'est valable que pédagogiquement, pour comprendre les . Il est tout à fait possible de se passer de la structure conditionnelle des lignes 10 à 13, qui peuvent être effectuées en une seule ligne ! Comment faire ?
 	=== "Réponse"
 		A venir !
@@ -116,7 +116,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 	téléchargeable [ici](Troopers.pgm){:target = "_blank"}.
 	
 	
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Quelle est la dimension de cette image en pixels ? Quelle est sa dimension en octets ?
 		2. Ouvrez-là avec `Hex Editor Neo`. Quelle est la principale différence avec l'image précédente ?
@@ -137,7 +137,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 
 !!! question "Manipuler les images"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Téléchargez une image quelconque libre de droits sur internet - peu importe son format.
 		2. On cherche à obtenir un négatif de l'image. Pour ce faire, il faut utiliser une fonction mathématique. En effet, ce que nous voulons, c'est une fonction qui transforme :
@@ -150,17 +150,17 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 			* 255 en 0
 			
 			Quelle est cette fonction ?
-		3. Créer alors une fonction python `negatif(img)` qui renvoie le negatif de l'objet `img` de type `Image`.
-		4. **Eclaircissement d'une image :**
+		3. Créer alors une fonction python `négatif(img)` qui renvoie le négatif de l'objet `img` de type `Image`.
+		4. **Éclaircissement d'une image :**
 		
-			Pour éclaircir une image, il faut transformer les valeurs *grayscale* de chaque pixel en les augmentant. Une possibilité simples est de les augmenter d'un terme constant, comme 20 par exemple. Ainsi, un pixel initalement à 0 sera changé à 20, et un pixel à 147 sera changé à 167 (pillow n'autorisera pas les dépassement au delà de 255, donc un pixel à 250 sera bien transformé à 255).
+			Pour éclaircir une image, il faut transformer les valeurs *grayscale* de chaque pixel en les augmentant. Une possibilité simples est de les augmenter d'un terme constant, comme 20 par exemple. Ainsi, un pixel initialement à 0 sera changé à 20, et un pixel à 147 sera changé à 167 (pillow n'autorisera pas les dépassement au delà de 255, donc un pixel à 250 sera bien transformé à 255).
 			
-			Créer alors une fonction python `eclaircir(img, t=20)` qui renvoie un nouvel objet de type `Image`, version éclaircie de l'objet `img` de type `Image` passé en argument, et utilisant l'argument optionnel `t`.
+			Créer alors une fonction python `éclaircir(img, t=20)` qui renvoie un nouvel objet de type `Image`, version éclaircie de l'objet `img` de type `Image` passé en argument, et utilisant l'argument optionnel `t`.
 		5. **Assombrissement d'une image :** 
 		
 			Créer de même une fonction python `assombrir(img, t=20)` qui renvoie un nouvel objet de type `Image`, version assombrie de l'objet `img` de type `Image` passé en argument, et utilisant l'argument optionnel `t`.
 			
-		6. Etait-on vraiment obligé de faire deux fonctions ?
+		6. Était-on vraiment obligé de faire deux fonctions ?
 			
 	=== "Correction" 
 	
@@ -168,7 +168,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 		
 ??? question "Pour les cracks"
 
-	Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notrze mùéthode. Vous pouvez vous inspirer du travail de [Paul Milan](https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf){: target= "_blank"}, très mathématique, ou bien tester les fonctionnalités du module `pillow`, en suivant par exemple ce [tutoriel](http://www.ordinateur.cc/programmation/Programmation-Python/93546.html){: target="_blank"}.
+	Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notre méthode. Vous pouvez vous inspirer du travail de [Paul Milan](https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf){: target= "_blank"}, très mathématique, ou bien tester les fonctionnalités du module `pillow`, en suivant par exemple ce [tutoriel](http://www.ordinateur.cc/programmation/Programmation-Python/93546.html){: target="_blank"}.
 		 
 
 ### Images en couleur
@@ -177,7 +177,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 Il est temps de mettre un peu de couleur !
 
 !!! asbtract "Synthèse additive RGB"
-	Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes, par **synthèse additive des couleurs**. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système *CYMB* - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).
+	Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant respectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes, par **synthèse additive des couleurs**. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système *CYMB* - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).
 
 	![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;"}
 
@@ -192,7 +192,7 @@ Il est temps de mettre un peu de couleur !
 	
 !!! question "RGB et pillow"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Téléchargez l'image suivante : ![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
 		2. Créer un code  dans Thonny ouvrant l'image et affichant cette image :
 			
@@ -222,7 +222,7 @@ Il est temps de mettre un peu de couleur !
 
 !!! info "Transparence"
 
-	Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la {==**transparence**==}(aussi appelée {==**canal alpha**==}) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel, et donc de supperposer des images.
+	Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la {==**transparence**==}(aussi appelée {==**canal alpha**==}) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel, et donc de superposer des images.
 
 	Par exemple, les deux images suivantes sont construites ainsi : une est construite en `jpg`, sans transparence, avec fond noir, et la seconde est en `png`, avec transparence pour le fond de couleur noire :
 
@@ -247,17 +247,17 @@ Il est temps de mettre un peu de couleur !
 
 !!! tips "Compression des images"
 
-	Les images sont très gourmandes en place mémoire. Un moniteur moderne supportant une résolution 4K a pour dimension $4~096 \times 2~160$ pixels, soit plus de 8,8 millions de pixels. Une image de fond d'écran couleur, avec transparence, **non compresée**,  représente donc plus de $8,8 \times 4 \simeq 35$ millions d'octets, soit plus de 35 Mo.
+	Les images sont très gourmandes en place mémoire. Un moniteur moderne supportant une résolution 4K a pour dimension $4~096 \times 2~160$ pixels, soit plus de 8,8 millions de pixels. Une image de fond d'écran couleur, avec transparence, **non compressée**,  représente donc plus de $8,8 \times 4 \simeq 35$ millions d'octets, soit plus de 35 Mo.
 	
 	Pourtant une image comme [celle-ci](https://s1.1zoom.me/big3/272/Star_Wars_Soldiers_458514.jpg){: target="_blank"} (crédits inconnus), pourtant bien de la dimension $4~096 \times 2~160$, pèse seulement 4,52 Mo.
 	
 	Ceci est du à un processus appelé {==**compression d'images**==}, qui peut être effectué de plusieurs manières différentes :
 	
 	* en réduisant le nombre de couleurs réelles de l'image (on crée une palette spécifique pour cette image, dont la table de correspondance est insérée dans les méta-données de l'image) ;
-	* en groupant les pixels contigüs de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position $(x_0;y_0)$ &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour $x_0$, un pour $y_0$ et 3 pour la couleur RGB) ;
+	* en groupant les pixels contigus de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position $(x_0;y_0)$ &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour $x_0$, un pour $y_0$ et 3 pour la couleur RGB) ;
 	* etc...
 	
-	Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs réattribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un **taux de compression** définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée ({==**compression avec perte==**}):
+	Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs ré-attribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un **taux de compression** définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée ({==**compression avec perte==**}):
 	
 	<div style="display:flex;">
 	<div style="display : inline; width : 30%;">
@@ -317,7 +317,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 
 	Dans le tableau précédent, vous n'avez que des format d'images *matricielles*. Il existe aussi un autre type d'images numériques appelé **images vectorielles**, construites sur un tout autre principe.
 	
-	Une image vectorielle est une image pour laquelle les élements constitutifs sont **stockée sous la forme d'équations**.
+	Une image vectorielle est une image pour laquelle les éléments constitutifs sont **stockée sous la forme d'équations**.
 	
 	Ainsi l'image du manchot [Tux](https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg){: target="_blank"}, mascotte officielle du noyau Linux (à ne pas confondre avec [GNU/Linux](https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg){: target="_blank"}, est une image vectorielle au format `SVG`, qui peut être ouverte par `Notepad++`. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. 
 	
@@ -371,7 +371,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 !!! question "Créer des images simples"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Créer le drapeau français sous la forme d'une image de taille $300 \times 200$.
 		2. Créer le drapeau néerlandais sous la forme d'une image de taille $300 \times 210$.
@@ -384,13 +384,13 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 
 !!! question "Symétries axiales et centrales"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		
 		Sélectionnez une image libre de droit sur le web.
 		
-		1. Créez une fonction `symetrieVerticale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel opbjet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'axe median vertical.
-		2. Créez une fonction `symetrieHorizontale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel opbjet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'axe median horizontal.
-		3. Créez une fonction `symetrieCentrale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel opbjet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'e centre correspondfant au centre de l'image.
+		1. Créez une fonction `symetrieVerticale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel objet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'axe médian vertical.
+		2. Créez une fonction `symetrieHorizontale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel objet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie d'axe médian horizontal.
+		3. Créez une fonction `symetrieCentrale` qui prend en argument un objet de type `Image` et qui renvoie un nouvel objet de type `Image` qui correspond à l'image symétrique de l'originale par une symétrie de centre correspondant au centre de l'image.
 		
 	=== "Solutions"
 	
@@ -418,9 +418,9 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 !!! question "Filtres de couleur"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
-		1.  Créer une fonction `filtreCouleur` qui prend en argument un objet de type `Image` et un tuple `(r, g, b, a)`, où `r, g, b` et `a` sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est `True`. Par exemple, l'image de Naruto verte ci-dessu est obtenue par le code :
+		1.  Créer une fonction `filtreCouleur` qui prend en argument un objet de type `Image` et un tuple `(r, g, b, a)`, où `r, g, b` et `a` sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est `True`. Par exemple, l'image de Naruto verte ci-dessus est obtenue par le code :
 		
 			```` python
 			naruto = Image.open("Naruto.png")
@@ -430,7 +430,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 		
 			Créer ainsi des images `NarutoRouge.png`, `NarutoBleu.png`, `NarutoJaune.png`, `NarutoMagenta.png` et `NarutoCyan.png`
 		
-		3. Créer maintenant l'image suivante à partir de pillow :
+		3. Créer maintenant l'image suivante à partir de `pillow` (*indice : pensez à l'opération modulo !*) :
 			
 			![Multiclonage](Multiclonage.png){: style="width:80%; margin:auto;display:block;"}
 			
@@ -443,6 +443,137 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 
 #### Version naïve
 
-!!! question "Agrandiseement d'un facteur 2"
+!!! question "Agrandissement d'un facteur 2"
 
-	Le principe d'agrandissement d'un facteur 2 est le suivant :
+	=== "Énoncé"
+
+		Le principe d'agrandissement d'un facteur 2 est le suivant : chaque pixel va être dupliqué 4 fois comme sur le schéma suivant :
+		
+		![Double Simple](doubleSimple.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		
+		Compléter la fonction `doubleSimple(image)` qui prend en argument un objet de type `Image` et renvoie un autre objet de type `Image` deux fois plus grand utilisant la technique montrée ci-dessus :
+		
+		```` python linenums="1"
+		def doubleSimple(image) :
+			w, h = image.size
+			double = Image.new('RGBA', ...)    
+			for x in range(...) :
+				for y in range(...) :
+					double.putpixel((2*x,2*y), image.getpixel((x, y)))
+					...
+					...
+					...
+			return double
+		````
+	=== "Solution"
+		```` python linenums="1"
+		def doubleSimple(image) :
+			w, h = image.size
+			double = Image.new('RGBA', (2*w, 2*h))    
+			for x in range(w) :
+				for y in range(h) :
+					double.putpixel((2*x,2*y), image.getpixel((x, y)))
+					double.putpixel((2*x+1,2*y), image.getpixel((x, y)))
+					double.putpixel((2*x,2*y+1), image.getpixel((x, y)))
+					double.putpixel((2*x+1,2*y+1), image.getpixel((x, y)))
+			return double
+		````
+	
+!!! question "Réduction d'un facteur 2"
+
+	=== "Énoncé"
+	
+		Encore une fois le principe est simple, on ne garde qu'un pixel sur deux, au choix, les pixels de rang pairs ou bien impairs (ici on garde ceux de rang impair):
+
+		![réduction Simple](reductionSimple.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		
+		Créer une fonction `reductionSimple(image)` qui prends en argument un objet de type `Image` est qui renvoie sa version réduite avec la méthode ci-dessus.
+		
+	=== "Solution"
+	
+		```` python linenums = "1"
+		def reductionSimple(image) :
+			w, h = image.size
+			reduction = Image.new('RGBA', (w//2, h//2))    
+			for x in range(w//2) :
+				for y in range(h//2) :
+					reduction.putpixel((x,y), image.getpixel((x*2, y*2)))
+			return reduction
+		````
+		
+!!! question "Combiner les deux"
+
+	=== "Énoncé"
+	
+		1. Créer, à partir d'une image de base, une image réduite, puis, à partir de cette image réduite, une nouvelle image agrandie.
+			1. Vérifier que cette dernière est bien de la même taille que l'image originale.
+			2. Comparer alors cette image avec l'originale. La transformation est-elle avec pertes ou sans pertes ?
+		2. Recommencer mais en agrandissant d'abord.
+		3. Comparer les images obtenues en 1 et en 2. Sont-elles identiques ?
+	
+	=== "Solution"
+	
+		A venir !
+		
+### Version "pour les cracks"
+
+!!! info "Interpolation"
+
+	Le principe de l'interpolation est d'augmenter ou de diminuer la matrice initiale d'une image, en créant les nouveaux points à partir de ceux de l'image originale, en y appliquant éventuellement des fonctions mathématiques.
+	
+	Il existe de nombreuses méthodes d'interpolation en imagerie numérique, certaines nécessitant des algorithmes complexes.
+	
+	Celles présentées ici font partie des plus simples.
+	
+	
+	
+	
+!!! question "Agrandissement avec interpolation par moyenne"
+
+	=== "Énoncé"
+	
+		La méthode que nous allons utiliser est la suivante :
+		
+		![double Interpolation](doubleInterpolation.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		
+		Entre deux pixels existants, que ce soit horizontalement, verticalement ou en diagonale, on insère un pixel dont la valeur `RGBA` est égale à la moyenne des valeurs `RGBA` des deux pixels qui l'encadrent.
+		
+		1. Créer une fonction `moyenne(px1, px2)` qui prend en argument les valeurs `RGBA` de ces deux pixels et renvoie un tuple de dimension 4 correspondant à la moyenne par composante `RGBA`.
+		2. Créer, en s'inspirant de la fonction à partir de la fonction `doubleSimple`, une fonction `doubleInterpolation(image)` qui prend en argument un objet de type `Image` et qui renvoie un nouvel objet de dimension double en utilisant la technique précédente. *Attention ! Il y a des cas limites à prévoir  dans la manipulation des pixels !*
+		
+	=== "Solution"
+	
+		A venir !
+		
+!!! question "Réduction avec interpolation par moyenne des voisins"
+
+	=== "Énoncé"
+	
+		La méthode que nous allons utiliser va consister à reprendre la méthode utilisée dans la réduction simple, c'est-à-dire de prendre un pixel sur deux, mais le pixel écrit dans la nouvelle image sera obtenu en effectuant la moyenne des valeurs `RGBA` de tous les voisins du pixel choisi :
+		
+		![réduction Interpolation](reductionInterpolation.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		
+		1. Créer une fonction `moyenneVoisin(image, x, y)` qui prend en argument un objet de type `Image`, et deux entiers `x` et `y`, et qui renvoie un tuple correspondant à la moyenne des valeurs `RGBA` des voisins du pixel de coordonnées $(x~;~y)$ de l'image `image`.
+		2. A l'aide de la fonction précédente, et en s'inspirant de la fonction `reductionSimple`, créer une fonction `reductionInterpolation(image)` qui renvoie une image réduite en utilisant la technique précédente.
+		
+!!! question "Combiner les deux"
+
+	=== "Énoncé"
+	
+		1. Créer, à partir d'une image de base, une image réduite, puis, à partir de cette image réduite, une nouvelle image agrandie.
+			1. Vérifier que cette dernière est bien de la même taille que l'image originale.
+			2. Comparer alors cette image avec l'originale. La transformation est-elle avec pertes ou sans pertes ?
+		2. Recommencer mais en agrandissant d'abord.
+		3. Comparer les images obtenues en 1 et en 2. Sont-elles identiques ?
+		4. Comparer maintenant les transformations simples avec les transformations avec interpolation.
+		
+	
+	=== "Solution"
+	
+		A venir !
+		
+
+		
+	
+	
+	

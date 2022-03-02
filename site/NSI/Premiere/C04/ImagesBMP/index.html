@@ -1364,6 +1364,26 @@
     Agrandissements et réductions d'un facteur 2
   </a>
   
+    <nav class="md-nav" aria-label="Agrandissements et réductions d'un facteur 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-naive" class="md-nav__link">
+    Version naïve
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-pour-les-cracks" class="md-nav__link">
+    Version "pour les cracks"
+  </a>
+  
 </li>
         
       </ul>
@@ -2293,7 +2313,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p class="admonition-title">Analyser une première image</p>
 <p>Considérons l'image suivante :</p>
 <p><img alt="YingYang.bmp" src="../YingYang.bmp" style="margin:auto;display:block;background-color: #546d78;" /></p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>Téléchargez <a href="../YingYang.pgm" target="target">ici</a> cette image et sauvegardez-la dans un dossier <code>BitMap</code> que vous aurez créé.</li>
 <li>Quel est le format de cette image ? Recherchez sa signification sur le web.</li>
@@ -2321,12 +2341,12 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <div class="admonition info">
 <p class="admonition-title">Les images matricielles</p>
 <p>Les <mark class="critic"><strong>images matricielles</strong></mark>, ou &laquo; cartes de points &raquo; (de l'anglais <em>Bitmap</em>) est une image constituée d'une matrice de points colorés. C'est-à-dire, constituée d'un tableau, d'une grille, où chaque case possède une couleur qui lui est propre et est considérée comme un point. Il s'agit donc d'une juxtaposition de points de couleurs formant, dans leur ensemble, une image. </p>
-<p>Dans notre cas, l'image est une matrice carrée de taille <span class="arithmatex">\(32\times 32\)</span> pixels. Chaque pixel peut donc être repéré par ses coordonnées, comme sur le schéma ci-dessous, où <code>width</code> (<em>largeur</em> en anglais) et <code>height</code> (<em>hauteur</em> en anglais) sont les dimensions de l'image. <strong>Attention ! Le sens de l'axe de ordonnées est inverés par rapport aux mathématiques !</strong></p>
+<p>Dans notre cas, l'image est une matrice carrée de taille <span class="arithmatex">\(32\times 32\)</span> pixels. Chaque pixel peut donc être repéré par ses coordonnées, comme sur le schéma ci-dessous, où <code>width</code> (<em>largeur</em> en anglais) et <code>height</code> (<em>hauteur</em> en anglais) sont les dimensions de l'image. <strong>Attention ! Le sens de l'axe de ordonnées est inversés par rapport aux mathématiques !</strong></p>
 <p><img alt="PixelMap.png" src="../PixelMap.png" style="width:50%;margin:auto;display:block;background-color: #546d78;" /></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Taille des images en noir et blanc</p>
-<p>En fait notre image utilise beaucoup plus de place en mémoire qu'elle ne le devrait. En effet, pour représenter 2 couleurs (noir et blanc), un seul bit suffit. 0 représente un pixel noir, et 1 représente un pixel blanc. Le format <code>pgm</code> n'est pas vraiment adapté aux pures images en noir et blanc, puisqu'il utilise 1 octet complet pour représenter la couleur, soit 8 fois plus que ce qui est strictement nécesaire.</p>
+<p>En fait notre image utilise beaucoup plus de place en mémoire qu'elle ne le devrait. En effet, pour représenter 2 couleurs (noir et blanc), un seul bit suffit. 0 représente un pixel noir, et 1 représente un pixel blanc. Le format <code>pgm</code> n'est pas vraiment adapté aux pures images en noir et blanc, puisqu'il utilise 1 octet complet pour représenter la couleur, soit 8 fois plus que ce qui est strictement nécessaire.</p>
 </div>
 <h3 id="manipulation-dimages-avec-pillow">Manipulation d'images avec Pillow</h3>
 <div class="admonition info">
@@ -2370,9 +2390,9 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <ul>
 <li>Ligne 1 : on importe la <em>classe</em> <code>Image</code> du module <code>PIL</code> (c'est-à-dire <code>pillow</code>).</li>
 <li>Ligne 3 : on utilise la <em>méthode</em> <code>open</code> de la classe <code>Image</code> pour ouvrir l'image <code>YingYang.pgm</code> et la stocker dans la variable <code>originale</code>, qui est donc un objet de type <code>Image</code>.</li>
-<li>Ligne 4 : on utilise l'<em>attribut</em> <code>size</code> des objets <code>Image</code> extraire la largeur et la hauteur de notre image, et les stocker dans les varaibles <code>width</code> et <code>height</code>, de type <code>int</code>.</li>
+<li>Ligne 4 : on utilise l'<em>attribut</em> <code>size</code> des objets <code>Image</code> extraire la largeur et la hauteur de notre image, et les stocker dans les variables <code>width</code> et <code>height</code>, de type <code>int</code>.</li>
 <li>Ligne 6 : <code>copie</code> est un nouvel objet de type <code>Image</code>, qui possède les mêmes caractéristiques que l'image originale : son <code>mode</code> (nous reviendrons dessus plus loin), et sa taille grâce à l'attribut <code>size</code>.</li>
-<li>Lignes 8-9 : on va parcourir l'image originale pixel par pixel, en efectuant le parcours colonnes par colonnes.</li>
+<li>Lignes 8-9 : on va parcourir l'image originale pixel par pixel, en effectuant le parcours colonnes par colonnes.</li>
 <li>Lignes 10 : on récupère la valeur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de l'image originale grâce à la <em>méthode</em> <code>getpixel</code>, et <strong>on regarde si il est blanc</strong> (<code>==255</code>).</li>
 <li>Ligne 11 : si la condition précédente est vraie, on va fixer la couleur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de la copie à noir (<code>0</code>), grâce à la méthode <code>putpixel</code> (<strong>Attention !</strong> <code>putpixel</code> et <code>getpixel</code> n'acceptent que des tuples pour les coordonnées ! Si vous oubliez la paire de parenthèses, vous risquez d'obtenir <code>TypeError: putpixel() takes 3 positional arguments but 4 were given</code>).</li>
 <li>Lignes 12-13 : si la condition est fausse, on va fixer la couleur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de la copie à blanc (<code>255</code>).</li>
@@ -2382,15 +2402,15 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 </div>
 <div class="admonition question">
 <p class="admonition-title">Factorisation du code</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
-<p>Transformez le code précédenten créant une fonction <code>inverseNB(img)</code> qui prend en argument un objet <code>img</code> de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Énoncé</label><div class="tabbed-content">
+<p>Transformez le code précédent en créant une fonction <code>inverseNB(img)</code> qui prend en argument un objet <code>img</code> de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.</p>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Correction</label><div class="tabbed-content">
 <p>A venir !</p>
 </div>
 </div>
 </div>
-<details class="question"><summary>Pour les cracks : améliorons le code</summary><div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<details class="question"><summary>Pour les cracks : améliorons le code</summary><div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Énoncé</label><div class="tabbed-content">
 <p>En fait le code ci dessus n'est valable que pédagogiquement, pour comprendre les . Il est tout à fait possible de se passer de la structure conditionnelle des lignes 10 à 13, qui peuvent être effectuées en une seule ligne ! Comment faire ?</p>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Réponse</label><div class="tabbed-content">
@@ -2405,7 +2425,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p>On considère maintenant l'image suivante :</p>
 <p><img alt="Troopers.bmp" src="../Troopers.bmp" style=";margin:auto;display:block;" /></p>
 <p>téléchargeable <a href="../Troopers.pgm" target="target">ici</a>.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>Quelle est la dimension de cette image en pixels ? Quelle est sa dimension en octets ?</li>
 <li>Ouvrez-là avec <code>Hex Editor Neo</code>. Quelle est la principale différence avec l'image précédente ?</li>
@@ -2428,7 +2448,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <h3 id="manipulation-dune-image-en-niveau-de-gris">Manipulation d'une image en niveau de gris</h3>
 <div class="admonition question">
 <p class="admonition-title">Manipuler les images</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>Téléchargez une image quelconque libre de droits sur internet - peu importe son format.</li>
 <li>
@@ -2444,19 +2464,19 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p>Quelle est cette fonction ?</p>
 </li>
 <li>
-<p>Créer alors une fonction python <code>negatif(img)</code> qui renvoie le negatif de l'objet <code>img</code> de type <code>Image</code>.</p>
+<p>Créer alors une fonction python <code>négatif(img)</code> qui renvoie le négatif de l'objet <code>img</code> de type <code>Image</code>.</p>
 </li>
 <li>
-<p><strong>Eclaircissement d'une image :</strong></p>
-<p>Pour éclaircir une image, il faut transformer les valeurs <em>grayscale</em> de chaque pixel en les augmentant. Une possibilité simples est de les augmenter d'un terme constant, comme 20 par exemple. Ainsi, un pixel initalement à 0 sera changé à 20, et un pixel à 147 sera changé à 167 (pillow n'autorisera pas les dépassement au delà de 255, donc un pixel à 250 sera bien transformé à 255).</p>
-<p>Créer alors une fonction python <code>eclaircir(img, t=20)</code> qui renvoie un nouvel objet de type <code>Image</code>, version éclaircie de l'objet <code>img</code> de type <code>Image</code> passé en argument, et utilisant l'argument optionnel <code>t</code>.</p>
+<p><strong>Éclaircissement d'une image :</strong></p>
+<p>Pour éclaircir une image, il faut transformer les valeurs <em>grayscale</em> de chaque pixel en les augmentant. Une possibilité simples est de les augmenter d'un terme constant, comme 20 par exemple. Ainsi, un pixel initialement à 0 sera changé à 20, et un pixel à 147 sera changé à 167 (pillow n'autorisera pas les dépassement au delà de 255, donc un pixel à 250 sera bien transformé à 255).</p>
+<p>Créer alors une fonction python <code>éclaircir(img, t=20)</code> qui renvoie un nouvel objet de type <code>Image</code>, version éclaircie de l'objet <code>img</code> de type <code>Image</code> passé en argument, et utilisant l'argument optionnel <code>t</code>.</p>
 </li>
 <li>
 <p><strong>Assombrissement d'une image :</strong> </p>
 <p>Créer de même une fonction python <code>assombrir(img, t=20)</code> qui renvoie un nouvel objet de type <code>Image</code>, version assombrie de l'objet <code>img</code> de type <code>Image</code> passé en argument, et utilisant l'argument optionnel <code>t</code>.</p>
 </li>
 <li>
-<p>Etait-on vraiment obligé de faire deux fonctions ?</p>
+<p>Était-on vraiment obligé de faire deux fonctions ?</p>
 </li>
 </ol>
 </div>
@@ -2465,13 +2485,13 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 </div>
 </div>
 </div>
-<details class="question"><summary>Pour les cracks</summary><p>Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notrze mùéthode. Vous pouvez vous inspirer du travail de <a href="https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf" target="target">Paul Milan</a>, très mathématique, ou bien tester les fonctionnalités du module <code>pillow</code>, en suivant par exemple ce <a href="http://www.ordinateur.cc/programmation/Programmation-Python/93546.html" target="_blank">tutoriel</a>.</p>
+<details class="question"><summary>Pour les cracks</summary><p>Nos éclaircissement et assombrissement précédents ne sont guère satisfaisants... car nous ne jouons pas sur le contraste. Il existe bien de fonctions mathématiques permettant d'améliorer notre méthode. Vous pouvez vous inspirer du travail de <a href="https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermS/08_integration/08_cours_algorithme_fonction_retouche.pdf" target="target">Paul Milan</a>, très mathématique, ou bien tester les fonctionnalités du module <code>pillow</code>, en suivant par exemple ce <a href="http://www.ordinateur.cc/programmation/Programmation-Python/93546.html" target="_blank">tutoriel</a>.</p>
 </details>
 <h3 id="images-en-couleur">Images en couleur</h3>
 <p>Il est temps de mettre un peu de couleur !</p>
 <div class="admonition asbtract">
 <p class="admonition-title">Synthèse additive RGB</p>
-<p>Un pixel  de couleur est représenté par un triplet <span class="arithmatex">\((R;G;B)\)</span>, où <span class="arithmatex">\(R\)</span>, <span class="arithmatex">\(G\)</span> et <span class="arithmatex">\(B\)</span> sont des valeurs de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(255\)</span> représentant rspectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter <span class="arithmatex">\(256^3 = 16~277~216\)</span> nuances de couleurs différentes, par <strong>synthèse additive des couleurs</strong>. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système <em>CYMB</em> - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).</p>
+<p>Un pixel  de couleur est représenté par un triplet <span class="arithmatex">\((R;G;B)\)</span>, où <span class="arithmatex">\(R\)</span>, <span class="arithmatex">\(G\)</span> et <span class="arithmatex">\(B\)</span> sont des valeurs de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(255\)</span> représentant respectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter <span class="arithmatex">\(256^3 = 16~277~216\)</span> nuances de couleurs différentes, par <strong>synthèse additive des couleurs</strong>. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système <em>CYMB</em> - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).</p>
 <p><img alt="Trois Cercles" src="../TroisCercles.bmp" style="width:20%;margin:auto;display:block;background-color: #546d78;" /></p>
 <p>De ce fait, dans un format non compressé comme le format <code>BMP</code>, chaque pixel est représenté par 3 octets.</p>
 </div>
@@ -2483,7 +2503,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 </div>
 <div class="admonition question">
 <p class="admonition-title">RGB et pillow</p>
-<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>Téléchargez l'image suivante : <img alt="Trois Cercles" src="../TroisCercles.bmp" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="title" /></li>
 <li>
@@ -2521,7 +2541,7 @@ Que renvoie-t-elle ?</li>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Transparence</p>
-<p>Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la <mark class="critic"><strong>transparence</strong></mark>(aussi appelée <mark class="critic"><strong>canal alpha</strong></mark>) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel, et donc de supperposer des images.</p>
+<p>Dans certains formats d'image il est possible d'utiliser un quatrième octet pour chaque pixel, qui permet de gérer la <mark class="critic"><strong>transparence</strong></mark>(aussi appelée <mark class="critic"><strong>canal alpha</strong></mark>) de ce pixel. Cette valeur défini un pourcentage de transparence permettant de voir au travers de ce pixel, et donc de superposer des images.</p>
 <p>Par exemple, les deux images suivantes sont construites ainsi : une est construite en <code>jpg</code>, sans transparence, avec fond noir, et la seconde est en <code>png</code>, avec transparence pour le fond de couleur noire :</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 50%;"></p>
@@ -2536,15 +2556,15 @@ Que renvoie-t-elle ?</li>
 <h3 id="compression-des-images">Compression des images</h3>
 <div class="admonition tips">
 <p class="admonition-title">Compression des images</p>
-<p>Les images sont très gourmandes en place mémoire. Un moniteur moderne supportant une résolution 4K a pour dimension <span class="arithmatex">\(4~096 \times 2~160\)</span> pixels, soit plus de 8,8 millions de pixels. Une image de fond d'écran couleur, avec transparence, <strong>non compresée</strong>,  représente donc plus de <span class="arithmatex">\(8,8 \times 4 \simeq 35\)</span> millions d'octets, soit plus de 35 Mo.</p>
+<p>Les images sont très gourmandes en place mémoire. Un moniteur moderne supportant une résolution 4K a pour dimension <span class="arithmatex">\(4~096 \times 2~160\)</span> pixels, soit plus de 8,8 millions de pixels. Une image de fond d'écran couleur, avec transparence, <strong>non compressée</strong>,  représente donc plus de <span class="arithmatex">\(8,8 \times 4 \simeq 35\)</span> millions d'octets, soit plus de 35 Mo.</p>
 <p>Pourtant une image comme <a href="https://s1.1zoom.me/big3/272/Star_Wars_Soldiers_458514.jpg" target="_blank">celle-ci</a> (crédits inconnus), pourtant bien de la dimension <span class="arithmatex">\(4~096 \times 2~160\)</span>, pèse seulement 4,52 Mo.</p>
 <p>Ceci est du à un processus appelé <mark class="critic"><strong>compression d'images</strong></mark>, qui peut être effectué de plusieurs manières différentes :</p>
 <ul>
 <li>en réduisant le nombre de couleurs réelles de l'image (on crée une palette spécifique pour cette image, dont la table de correspondance est insérée dans les méta-données de l'image) ;</li>
-<li>en groupant les pixels contigüs de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position <span class="arithmatex">\((x_0;y_0)\)</span> &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour <span class="arithmatex">\(x_0\)</span>, un pour <span class="arithmatex">\(y_0\)</span> et 3 pour la couleur RGB) ;</li>
+<li>en groupant les pixels contigus de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position <span class="arithmatex">\((x_0;y_0)\)</span> &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour <span class="arithmatex">\(x_0\)</span>, un pour <span class="arithmatex">\(y_0\)</span> et 3 pour la couleur RGB) ;</li>
 <li>etc...</li>
 </ul>
-<p>Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs réattribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un <strong>taux de compression</strong> définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée (<mark class="critic"><strong>compression avec perte==</strong>}):</p>
+<p>Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs ré-attribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un <strong>taux de compression</strong> définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée (<mark class="critic"><strong>compression avec perte==</strong>}):</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 30%;"></p>
 <p><img alt="Rebecca.jpg" src="../Rebecca.jpg" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
@@ -2624,7 +2644,7 @@ Que renvoie-t-elle ?</li>
 <p>Les logiciels de retouches et d'édition d'images matricielles sont nombreux, le plus connu étant le célèbre <code>Photoshop</code>, mais qui est un logiciel propriétaire. </p>
 <p>Son équivalent libre est <code>GIMP</code>. Il offre les mêmes fonctionnalités, et ne demande qu'une simple adaptation à l'interface...</p>
 <details class="tips"><summary>Images Vectorielles</summary><p>Dans le tableau précédent, vous n'avez que des format d'images <em>matricielles</em>. Il existe aussi un autre type d'images numériques appelé <strong>images vectorielles</strong>, construites sur un tout autre principe.</p>
-<p>Une image vectorielle est une image pour laquelle les élements constitutifs sont <strong>stockée sous la forme d'équations</strong>.</p>
+<p>Une image vectorielle est une image pour laquelle les éléments constitutifs sont <strong>stockée sous la forme d'équations</strong>.</p>
 <p>Ainsi l'image du manchot <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg" target="_blank">Tux</a>, mascotte officielle du noyau Linux (à ne pas confondre avec <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg" target="_blank">GNU/Linux</a>, est une image vectorielle au format <code>SVG</code>, qui peut être ouverte par <code>Notepad++</code>. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. </p>
 <p>L'avantage d'une telle image est qu'elle ne pixelisera pas, quel que soit le zoom qui lui est appliqué (en théorie...).</p>
 <p>De telles images peuvent être crées et manipulées à l'aide du logiciel libre <code>Inkscape</code>.</p>
@@ -2679,7 +2699,7 @@ Que renvoie-t-elle ?</li>
 </td></tr></table>
 <p>Les lignes importantes sont les suivantes :</p>
 <ul>
-<li>Ligne 10 : on crée une nouvelle image utilisant le format RGB, de la largeur et de la hauteur donnée (sous la forme d'un tuple de dimension 2). On pourrait créer une image avec transparence en utilisant le format <code>RGBA</code> - voir [ici]'https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes){: target = "_blank"}</li>
+<li>Ligne 10 : on crée une nouvelle image utilisant le format RGB, de la largeur et de la hauteur donnée (sous la forme d'un tuple de dimension 2). On pourrait créer une image avec transparence en utilisant le format <code>RGBA</code> - voir <a href="https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes" target="target">ici</a></li>
 <li>Lignes 11-12, on parcours l'image colonne par colonne, <code>x</code> étant l'abscisse (= le numéro de colonne) et <code>y</code> étant l'ordonnée (= le numéro de ligne).</li>
 <li>ligne 16 : on place à la position <span class="arithmatex">\((x;y)\)</span> un pixel dont la couleur est donnée par le tuple <code>(R, G, B)</code>, conformément au mode choisi en ligne 10.</li>
 <li>ligne 21 : l'objet <code>image</code> renvoyé par la fonction <code>makeCircles</code> avec l'argument 100 est sauvegardée sous le nom <code>TroisCercles.png</code> grâce à la <em>méthode</em> <code>save</code>.</li>
@@ -2689,7 +2709,7 @@ Que renvoie-t-elle ?</li>
 </details>
 <div class="admonition question">
 <p class="admonition-title">Créer des images simples</p>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>Créer le drapeau français sous la forme d'une image de taille <span class="arithmatex">\(300 \times 200\)</span>.</li>
 <li>Créer le drapeau néerlandais sous la forme d'une image de taille <span class="arithmatex">\(300 \times 210\)</span>.</li>
@@ -2704,12 +2724,12 @@ Que renvoie-t-elle ?</li>
 <h3 id="symetries">Symétries</h3>
 <div class="admonition question">
 <p class="admonition-title">Symétries axiales et centrales</p>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Énoncé</label><div class="tabbed-content">
 <p>Sélectionnez une image libre de droit sur le web.</p>
 <ol>
-<li>Créez une fonction <code>symetrieVerticale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel opbjet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'axe median vertical.</li>
-<li>Créez une fonction <code>symetrieHorizontale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel opbjet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'axe median horizontal.</li>
-<li>Créez une fonction <code>symetrieCentrale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel opbjet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'e centre correspondfant au centre de l'image.</li>
+<li>Créez une fonction <code>symetrieVerticale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'axe médian vertical.</li>
+<li>Créez une fonction <code>symetrieHorizontale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie d'axe médian horizontal.</li>
+<li>Créez une fonction <code>symetrieCentrale</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> qui correspond à l'image symétrique de l'originale par une symétrie de centre correspondant au centre de l'image.</li>
 </ol>
 </div>
 <input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solutions</label><div class="tabbed-content">
@@ -2732,10 +2752,10 @@ Que renvoie-t-elle ?</li>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Filtres de couleur</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>
-<p>Créer une fonction <code>filtreCouleur</code> qui prend en argument un objet de type <code>Image</code> et un tuple <code>(r, g, b, a)</code>, où <code>r, g, b</code> et <code>a</code> sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est <code>True</code>. Par exemple, l'image de Naruto verte ci-dessu est obtenue par le code :</p>
+<p>Créer une fonction <code>filtreCouleur</code> qui prend en argument un objet de type <code>Image</code> et un tuple <code>(r, g, b, a)</code>, où <code>r, g, b</code> et <code>a</code> sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est <code>True</code>. Par exemple, l'image de Naruto verte ci-dessus est obtenue par le code :</p>
 <div class="highlight"><pre><span></span><code><span class="n">naruto</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Naruto.png&quot;</span><span class="p">)</span>
 <span class="n">narutoGreen</span> <span class="o">=</span> <span class="n">filtreCouleur</span><span class="p">(</span><span class="n">naruto</span><span class="p">,</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
 <span class="n">narutoGreen</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -2743,7 +2763,7 @@ Que renvoie-t-elle ?</li>
 <p>Créer ainsi des images <code>NarutoRouge.png</code>, <code>NarutoBleu.png</code>, <code>NarutoJaune.png</code>, <code>NarutoMagenta.png</code> et <code>NarutoCyan.png</code></p>
 </li>
 <li>
-<p>Créer maintenant l'image suivante à partir de pillow :</p>
+<p>Créer maintenant l'image suivante à partir de <code>pillow</code> (<em>indice : pensez à l'opération modulo !</em>) :</p>
 <p><img alt="Multiclonage" src="../Multiclonage.png" style="width:80%; margin:auto;display:block;" /></p>
 </li>
 <li>
@@ -2755,6 +2775,151 @@ Que renvoie-t-elle ?</li>
 </div>
 </div>
 <h3 id="agrandissements-et-reductions-dun-facteur-2">Agrandissements et réductions d'un facteur 2</h3>
+<h4 id="version-naive">Version naïve</h4>
+<div class="admonition question">
+<p class="admonition-title">Agrandissement d'un facteur 2</p>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Énoncé</label><div class="tabbed-content">
+<p>Le principe d'agrandissement d'un facteur 2 est le suivant : chaque pixel va être dupliqué 4 fois comme sur le schéma suivant :</p>
+<p><img alt="Double Simple" src="../doubleSimple.png" style="width:30%; margin:auto;display:block;;background-color: #546d78;" /></p>
+<p>Compléter la fonction <code>doubleSimple(image)</code> qui prend en argument un objet de type <code>Image</code> et renvoie un autre objet de type <code>Image</code> deux fois plus grand utilisant la technique montrée ci-dessus :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">doubleSimple</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">double</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">double</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+            <span class="o">...</span>
+            <span class="o">...</span>
+            <span class="o">...</span>
+    <span class="k">return</span> <span class="n">double</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Solution</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">doubleSimple</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">double</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span>    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">double</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+            <span class="n">double</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+            <span class="n">double</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+            <span class="n">double</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">double</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Réduction d'un facteur 2</p>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">Énoncé</label><div class="tabbed-content">
+<p>Encore une fois le principe est simple, on ne garde qu'un pixel sur deux, au choix, les pixels de rang pairs ou bien impairs (ici on garde ceux de rang impair):</p>
+<p><img alt="réduction Simple" src="../reductionSimple.png" style="width:30%; margin:auto;display:block;;background-color: #546d78;" /></p>
+<p>Créer une fonction <code>reductionSimple(image)</code> qui prends en argument un objet de type <code>Image</code> est qui renvoie sa version réduite avec la méthode ci-dessus.</p>
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Solution</label><div class="tabbed-content">
+<p><code>python linenums = "1"
+def reductionSimple(image) :
+    w, h = image.size
+    reduction = Image.new('RGBA', (w//2, h//2))    
+    for x in range(w//2) :
+        for y in range(h//2) :
+            reduction.putpixel((x,y), image.getpixel((x*2, y*2)))
+    return reduction</code></p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Combiner les deux</p>
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">Énoncé</label><div class="tabbed-content">
+<ol>
+<li>Créer, à partir d'une image de base, une image réduite, puis, à partir de cette image réduite, une nouvelle image agrandie.<ol>
+<li>Vérifier que cette dernière est bien de la même taille que l'image originale.</li>
+<li>Comparer alors cette image avec l'originale. La transformation est-elle avec pertes ou sans pertes ?</li>
+</ol>
+</li>
+<li>Recommencer mais en agrandissant d'abord.</li>
+<li>Comparer les images obtenues en 1 et en 2. Sont-elles identiques ?</li>
+</ol>
+</div>
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h3 id="version-pour-les-cracks">Version "pour les cracks"</h3>
+<div class="admonition info">
+<p class="admonition-title">Interpolation</p>
+<p>Le principe de l'interpolation est d'augmenter ou de diminuer la matrice initiale d'une image, en créant les nouveaux points à partir de ceux de l'image originale, en y appliquant éventuellement des fonctions mathématiques.</p>
+<p>Il existe de nombreuses méthodes d'interpolation en imagerie numérique, certaines nécessitant des algorithmes complexes.</p>
+<p>Celles présentées ici font partie des plus simples.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Agrandissement avec interpolation par moyenne</p>
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">Énoncé</label><div class="tabbed-content">
+<p>La méthode que nous allons utiliser est la suivante :</p>
+<p><img alt="double Interpolation" src="../doubleInterpolation.png" style="width:30%; margin:auto;display:block;;background-color: #546d78;" /></p>
+<p>Entre deux pixels existants, que ce soit horizontalement, verticalement ou en diagonale, on insère un pixel dont la valeur <code>RGBA</code> est égale à la moyenne des valeurs <code>RGBA</code> des deux pixels qui l'encadrent.</p>
+<ol>
+<li>Créer une fonction <code>moyenne(px1, px2)</code> qui prend en argument les valeurs <code>RGBA</code> de ces deux pixels et renvoie un tuple de dimension 4 correspondant à la moyenne par composante <code>RGBA</code>.</li>
+<li>Créer, en s'inspirant de la fonction à partir de la fonction <code>doubleSimple</code>, une fonction <code>doubleInterpolation(image)</code> qui prend en argument un objet de type <code>Image</code> et qui renvoie un nouvel objet de dimension double en utilisant la technique précédente. <em>Attention ! Il y a des cas limites à prévoir  dans la manipulation des pixels !</em></li>
+</ol>
+</div>
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Réduction avec interpolation par moyenne des voisins</p>
+<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">Énoncé</label><div class="tabbed-content">
+<p>La méthode que nous allons utiliser va consister à reprendre la méthode utilisée dans la réduction simple, c'est-à-dire de prendre un pixel sur deux, mais le pixel écrit dans la nouvelle image sera obtenu en effectuant la moyenne des valeurs <code>RGBA</code> de tous les voisins du pixel choisi :</p>
+<p><img alt="réduction Interpolation" src="../reductionInterpolation.png" style="width:30%; margin:auto;display:block;;background-color: #546d78;" /></p>
+<ol>
+<li>Créer une fonction <code>moyenneVoisin(image, x, y)</code> qui prend en argument un objet de type <code>Image</code>, et deux entiers <code>x</code> et <code>y</code>, et qui renvoie un tuple correspondant à la moyenne des valeurs <code>RGBA</code> des voisins du pixel de coordonnées <span class="arithmatex">\((x~;~y)\)</span> de l'image <code>image</code>.</li>
+<li>A l'aide de la fonction précédente, et en s'inspirant de la fonction <code>reductionSimple</code>, créer une fonction <code>reductionInterpolation(image)</code> qui renvoie une image réduite en utilisant la technique précédente.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Combiner les deux</p>
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">Énoncé</label><div class="tabbed-content">
+<ol>
+<li>Créer, à partir d'une image de base, une image réduite, puis, à partir de cette image réduite, une nouvelle image agrandie.<ol>
+<li>Vérifier que cette dernière est bien de la même taille que l'image originale.</li>
+<li>Comparer alors cette image avec l'originale. La transformation est-elle avec pertes ou sans pertes ?</li>
+</ol>
+</li>
+<li>Recommencer mais en agrandissant d'abord.</li>
+<li>Comparer les images obtenues en 1 et en 2. Sont-elles identiques ?</li>
+<li>Comparer maintenant les transformations simples avec les transformations avec interpolation.</li>
+</ol>
+</div>
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
                 
               
               
