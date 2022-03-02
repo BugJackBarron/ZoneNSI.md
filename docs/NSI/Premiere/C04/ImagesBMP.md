@@ -360,7 +360,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 	Les lignes importantes sont les suivantes :
 	
-	* Ligne 10 : on crée une nouvelle image utilisant le format RGB, de la largeur et de la hauteur donnée (sous la forme d'un tuple de dimension 2). On pourrait créer une image avec transparence en utilisant le format `RGBA` - voir [ici]'https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes){: target = "_blank"}
+	* Ligne 10 : on crée une nouvelle image utilisant le format RGB, de la largeur et de la hauteur donnée (sous la forme d'un tuple de dimension 2). On pourrait créer une image avec transparence en utilisant le format `RGBA` - voir [ici](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes){: target = "_blank"}
 	* Lignes 11-12, on parcours l'image colonne par colonne, `x` étant l'abscisse (= le numéro de colonne) et `y` étant l'ordonnée (= le numéro de ligne).
 	* ligne 16 : on place à la position $(x;y)$ un pixel dont la couleur est donnée par le tuple `(R, G, B)`, conformément au mode choisi en ligne 10.
 	* ligne 21 : l'objet `image` renvoyé par la fonction `makeCircles` avec l'argument 100 est sauvegardée sous le nom `TroisCercles.png` grâce à la *méthode* `save`.
@@ -438,8 +438,11 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 		
 			![Naruto Négatif](NarutoNegatif.png){: style="width:15%; margin:auto;display:block;"}
 		
-			
-
 
 ### Agrandissements et réductions d'un facteur 2
 
+#### Version naïve
+
+!!! question "Agrandiseement d'un facteur 2"
+
+	Le principe d'agrandissement d'un facteur 2 est le suivant :
