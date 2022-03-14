@@ -165,8 +165,9 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		
 		````
 		
-		L'explication la plus simple du fonctionnement est visible ici, pour un exemple sur `fiboDesc(6)` :
+		L'explication la plus simple du fonctionnement est visible [ici}(https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){: target="_blank"}, pour un exemple sur `fiboDesc(6)`.
 		
-		<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29%0A%20%20%20%20%20%20%20%20return%20memo%5Bn%5D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20return%20compute%28n,%20memo%29%0A%20%20%20%20%0AfiboDesc%286%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+## Principes de la profg
+		
 		
 
