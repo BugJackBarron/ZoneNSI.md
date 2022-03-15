@@ -11,20 +11,20 @@
 ## Le format RGB
 
 !!! info "la synthèse additive RGB"
-Une norme fréquemment utilisée pour les images numériques est la norme `RGB` (Red Green Blue). Ce qu'on appelle un pixel d'écran est composé de trois leds des trois couleurs RGB. Un pixel informatique est alors représenté sous la forme de trois valeurs numériques comprises entre $0$ et $255$, $0$ représentant la led éteinte, et $255$ la led totalement allumée. 
-Ainsi  :
+	Une norme fréquemment utilisée pour les images numériques est la norme `RGB` (Red Green Blue). Ce qu'on appelle un pixel d'écran est composé de trois leds des trois couleurs RGB. Un pixel informatique est alors représenté sous la forme de trois valeurs numériques comprises entre $0$ et $255$, $0$ représentant la led éteinte, et $255$ la led totalement allumée. 
+	Ainsi  :
 
-* la couleur rouge est représentée par $(255,0,0)$ ;
-* la couleur verte est représentée par $(0,255,0)$ ;
-* la couleur bleue est représentée par $(0,0,255)$ ;
-* la couleur fuchsia (violet) est représentée par $(255,0,255)$ ...
+	* la couleur rouge est représentée par $(255,0,0)$ ;
+	* la couleur verte est représentée par $(0,255,0)$ ;
+	* la couleur bleue est représentée par $(0,0,255)$ ;
+	* la couleur fuchsia (violet) est représentée par $(255,0,255)$ ...
 
-Vous pouvez utiliser le site [suivant](https://www.w3schools.com/colors/colors_picker.asp){: target="_blank"} pour essayer les différentes valeurs.
+	Vous pouvez utiliser le site [suivant](https://www.w3schools.com/colors/colors_picker.asp){: target="_blank"} pour essayer les différentes valeurs.
 
 
 1. Quelle est le triplet de valeur RGB pour la couleur jaune ?
 2. Quelle est la couleur représentée par le triplet RGB $(255, 153, 0)$ ?
-3. Ouvrir le fichier `FunWithFlags.py`, puis déclenchez-le.
+3. Téléchargez puis ouvrez avec *Thonny* le fichier [`FunWithFlags.py`](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=vPQKmCp8Hoy0){: target="_blank"}, puis exécutez-le.
 	1. Quel est le nom du fichier image créé ?
 	2. Quelle est la dimension en pixel de l'image créée ?
 	3. A quoi sert la ligne d'instructions
@@ -67,10 +67,11 @@ Vous pouvez utiliser le site [suivant](https://www.w3schools.com/colors/colors_p
 
 N'étant pas (encore) des artistes émérites, nous nous contenterons donc de copier Andy Warhol, en commençant pas extraire et créer des images monochromes à partir d'une seule image. Pour cela, nous allons appliquer des filtres à une image originelle, filtres qui vont nous renvoyer une matrice de pixels modifiée par ces filtres.
 
-1. Récupérez et copiez dans votre espace personnel les fichiers `MonoChromes.py` et `Stormtroppers.png`.
+1. Téléchargez et copiez dans votre espace personnel les fichiers [`MonoChromes.py`](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=lNfZhVN93o67){: target="_blank"} et [`Stormtroppers.png`](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=dAyDA5xSToH8){: target="_blank"}.
 2. Ouvrez le fichier `MonoChromes.py` avec *Thonny*, puis exécutez-le. Normalement vous devriez voir apparaître une image de Stormtrooper en niveaux de gris. Observez ensuite les dernière lignes du code *Python*.
 
-	!!! info "Fonctions du code"
+!!! info "Fonctions du code"
+	Voici une description de quelques fonctions présente dans le code :
 	
 	* `makeMatrix` (L.98) : fabrique une matrice de  pixel RGB à partir d'une image sélectionnée et ouverte dans la ligne 97.
 	* `showFromMatrix` (L.99) : affiche dans le visionneur d'image l'image générée par la matrice qui lui est donnée en argument.
@@ -130,14 +131,14 @@ N'étant pas (encore) des artistes émérites, nous nous contenterons donc de co
 	!!! info "Postériser"
 		Pour postériser à la manière d'Andy Warhol notre image, nous devrons copier dans la matrice `poster` les images manquantes vertes et bleues. Pour cela il faut comprendre la façon dont les matrices devront s'organiser, et pour cela iol faut comprendre le système de coordonnées des images :
 		
-		![posterisation.png](posterisation.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		![posterisation.png](posterisation.png){: style="width:50%; margin:auto;display:block;;background-color: #546d78;"}
 	
 6. Modifier la ligne 69 puis les lignes situées après la ligne 77 pour obtenir une postérisation telle que celle-ci :
 
 	![StormPoster.png](StormPoster.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
 
 
-7.Vous pouvez désormais choisir votre propre image, et la postériser à la manière d'Andy Warhol. Vous pouvez même  créer des images telles que celles-ci, sans modifier beaucoup le code :
+7. Vous pouvez désormais choisir votre propre image, et la postériser à la manière d'Andy Warhol. Vous pouvez même  créer des images telles que celles-ci, sans modifier beaucoup le code :
 
 	![StormPosterLigne.png](StormPosterLigne.png){: style="width:60%; margin:auto;display:block;;background-color: #546d78;"}
 

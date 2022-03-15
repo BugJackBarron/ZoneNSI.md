@@ -165,9 +165,116 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		
 		````
 		
-		L'explication la plus simple du fonctionnement est visible [ici}(https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){: target="_blank"}, pour un exemple sur `fiboDesc(6)`.
+		L'explication la plus simple du fonctionnement est visible [ici](https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){: target="_blank"}, pour un exemple sur `fiboDesc(6)`.
 		
-## Principes de la profg
+### Principes de la programmation dynamique
+
+La {==**programmation dynamique**==}, introduite au début des années 1950 par [Richard Bellman](https://fr.wikipedia.org/wiki/Richard_Bellman){:target="_blank"}, est une méthode pour résoudre des problèmes en combinant des solutions de sous-problèmes, tout comme les méthodes de type *diviser pour régner*.
+
+Un algorithme de programmation dynamique résout chaque sous-sous-problème une seule fois et mémorise sa réponse dans un tableau, évitant ainsi le recalcul de la solution chaque fois qu'il résout chaque sous-sous-problème.
+
+La programmation dynamique s'applique généralement aux **problèmes d'optimisation**, comme ceux que nous avons vu l'an passélorsque nous avons étudié les algorithmes gloutons.
+
+### Le problème du rendu de monnaie
+
+*Largement inspiré de [https://isn-icn-ljm.pagesperso-orange.fr/NSI-TLE/res/res_rendu_de_monnaie.pdf](https://isn-icn-ljm.pagesperso-orange.fr/NSI-TLE/res/res_rendu_de_monnaie.pdf)*.
+
+
+#### Le problème : introduction et traitement débranché
+
+Vous avez à votre disposition un nombre illimité de pièces de 2 cts, 5 cts, 10 cts, 50 cts et 1euro (100 cts). Vous devez rendre une certaine somme (rendu de monnaie). Le problème est le suivant : "Quel est le nombre minimum de pièces qui doivent être utilisées pour rendre la monnaie"
+
+La résolution "gloutonne" de ce problème peut être la suivante :
+
+* On prend la pièce qui a la plus grande valeur (il faut que la valeur de cette pièce soit inférieure ou égale à la somme restant à rendre).
+* On recommence l’opération ci-dessus jusqu’au moment où la somme à rendre est égale à zéro.
+
+!!! question "Questions"
+
+	=== "Enoncé"
+	
+		1. Appliquer cette méthode pour une somme de 1€77 (177cts) à rendre.
+		2. Appliquer cette méthode à la somme de 11 centimes.
+			1. Quel est le problème ?
+			2. Proposer une solution permettant de rendre 11 centimes. Est-elle unique ?
+
+#### Mise au point d'un algorithme récursif
+
+Nous allons essayer de mettre au point un algorithme récursif donnant une solution au problème de rendu de monnaie en utilisant le **nombre minimal de pièces**.
+
+
+!!! question "Questions"
+
+	=== "Enoncé"
+		1. Compléter l'arbre suivant donnant l'ensemble des possibilités de répartition des pièces :
 		
+			![Monnaie1.png](Monnaie1.png){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+	
+		2. Combien de chemins sont des impasses (on termine avec 1 cts restant) ? Combien de solutions existent ? Quelle est la solution utilisant le nombre minimal de pièces ?
+		
+			!!! info "Force Brute"
+
+				Quand une méthode traite tous les cas possibles, on parle souvent de méthode en {==**force brute**==}.
+		3. Compléter la fonction suivante pour qu'elle donne le nombre minimal de pièces utilisées pour une somme `s` donnée :
+		
+			```` python
+					
+			def rendu_monnaie_rec(P : list, s : int) -> int:
+				""" renvoie le nombre minimal de pièces pour rendre la somme s
+				en utilisant le jeu de pièces P"""
+				
+				if s==0:
+					return 0
+				else:
+					mini = float('inf') # On fixe le nombre de piècé à l'infini
+				for i in range(len(P)):
+					if ... <= s:
+						nb = 1 + ...
+						if nb < mini:
+							mini = nb
+				return mini
+			````
+			
+		4. Testez la fonction avec le jeu de pièces `(2, 5, 10, 100)`, et pour des sommes augmentant à partir de 11 cts. A partir de quelle v somme le programme devient-il visiblement plus lent ?
+
+
+#### Passage en programmation dynamique
+
+On constate dans la partie précédente que la méthode précédente fait de trop nombreux appels récursifs, qui ralentissent considérablement le temps de calcul, voire plante le programme dès que la taille maximale de la pile est dépassée.
+
+On va donc utiliser la *programmation dynamique* pour accélérer la vitesse de traitement du problème :
+
+!!! question "Questions"
+
+	=== "Enoncé"
+		
+		On considère la fonction suivante :
+		
+		```` python 
+		
+		def renduMonnaie1(P, s) :
+			nb = [0] * (s + 1)
+			sol = [[]] * (s + 1)
+			for n in range(1, s+1) :
+				nb[n] = n
+				for p in pieces :
+					if p<=n and 1 + nb[n-p]< nb[n] :
+						nb[n] = 1 + nb[n-p]
+						sol[n] = sol[n-p].copy()
+						sol[n] . append(p)
+			return sol[s]
+		````
+
+
+			
+		
+
+
+	
+
+		
+
+
+
 		
 
