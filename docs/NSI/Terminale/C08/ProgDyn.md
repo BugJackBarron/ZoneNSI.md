@@ -250,21 +250,20 @@ On va donc utiliser la *programmation dynamique* pour accélérer la vitesse de 
 		
 		On considère la fonction suivante :
 		
-		```` python 
-		
-		def renduMonnaie1(P, s) :
-			nb = [0] * (s + 1)
-			sol = [[]] * (s + 1)
+		```` python 		
+		def renduMonnaie1(P : list, s : int) -> int | None :
+			nb = [0]+[None] * (s)
 			for n in range(1, s+1) :
-				nb[n] = n
-				for p in pieces :
-					if p<=n and 1 + nb[n-p]< nb[n] :
-						nb[n] = 1 + nb[n-p]
-						sol[n] = sol[n-p].copy()
-						sol[n] . append(p)
-			return sol[s]
+				for p in P :
+					if p <= ... and nb[...] is not None :
+						if nb[n] is ... or ... > 1 + nb[n-p]:
+							nb[n] = 1 + nb[n-p]											
+			return ...
 		````
-
+		1. Compléter la fonction afin qu'elle renvoie le nombre minimal de pièce pour rendre la monnaie, ou `None` si il est impossible de rendre la monnaie.
+		2. Est-ce une méthode ascendante ou descendante ?
+		3. Créer une fonction `renduMonnaie2(P : list, s : int) -> int | None` utilisant l'autre méthode.
+		
 
 			
 		
