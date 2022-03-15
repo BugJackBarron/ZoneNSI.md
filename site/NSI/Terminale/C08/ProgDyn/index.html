@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C08/ProgDyn/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
@@ -1022,6 +1022,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C02/CodageCaractere/" class="md-nav__link">
+        Codage des caractères
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1994,6 +2008,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#programmation-dynamique" class="md-nav__link">
+    Programmation dynamique
+  </a>
+  
+    <nav class="md-nav" aria-label="Programmation dynamique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premiers-exemples-sur-la-suite-de-fibonacci" class="md-nav__link">
+    Premiers exemples sur la suite de Fibonacci
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principes-de-la-programmation-dynamique_1" class="md-nav__link">
+    Principes de la programmation dynamique
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-probleme-du-rendu-de-monnaie" class="md-nav__link">
+    Le problème du rendu de monnaie
+  </a>
+  
+    <nav class="md-nav" aria-label="Le problème du rendu de monnaie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-probleme-introduction-et-traitement-debranche" class="md-nav__link">
+    Le problème : introduction et traitement débranché
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mise-au-point-dun-algorithme-recursif" class="md-nav__link">
+    Mise au point d'un algorithme récursif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passage-en-programmation-dynamique" class="md-nav__link">
+    Passage en programmation dynamique
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2284,7 +2359,7 @@ Par exemple <span class="arithmatex">\(F(0) = 0\)</span> et <span class="arithma
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fibo</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fibo</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
         <span class="k">return</span>  <span class="mi">0</span>
     <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
@@ -2293,7 +2368,7 @@ Par exemple <span class="arithmatex">\(F(0) = 0\)</span> et <span class="arithma
         <span class="k">return</span> <span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<p>Est-ce un choix judicieux ?</p>
+<p>La question que nous devons nous poser est : est-ce un choix judicieux ? </p>
 <div class="admonition question">
 <p class="admonition-title">Tester et voir les limites</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
@@ -2318,40 +2393,200 @@ Que constate-t'on ?</p>
 <ol>
 <li>Le temps d'exécution croît de manière exponentielle.</li>
 <li>
-<p>On a la construction suivante :
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script></p>
-<p><div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-<div class="carousel-indicators">
-<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-</div>
-<div class="carousel-inner">
-<div class="carousel-item active"></p>
-<p><img alt="Etape 0" class="d-block w-100" src="../Fibo20.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
-<p></div>
-<div class="carousel-item"></p>
-<p><img alt="Etape 1" class="d-block w-100" src="../Fibo19.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
-<p></div>
-<div class="carousel-item"></p>
-<p><img alt="Etape 2" class="d-block w-100" src="../Fibo18.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
-<p></div>
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-<span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-<span class="carousel-control-next-icon" aria-hidden="true"></span>
-<span class="visually-hidden">Next</span>
-</button>
+<p>On a la construction suivante :</p>
+<p><div class="container">
+<div id="slider" class="slider">
+<div class="slider-item active"><img src="../Fibo20.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo19.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo18.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo17.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo15.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo14.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo13.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo12.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo11.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo10.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo9.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo8.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo7.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo6.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo5.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo4.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo3.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo2.png" alt="" class="img-fluid"></div>
+<div class="slider-item"><img src="../Fibo1.png" alt="" class="img-fluid"></div></p>
+<p><ul id="dots" class="list-inline dots"></ul>
 </div></p>
+</div>
 </li>
 </ol>
 </div>
 </div>
 </div>
+<div class="admonition bug">
+<p class="admonition-title">Multiples appels</p>
+<p>Dans l'exemple précédent de calcul de <code>fibo(6)</code>, on peut constater que les appels récursifs sont nombreux, et souvent pour calculer plusieurs fois la même chose :</p>
+<p><img alt="NbAppelsFibo.png" src="../NbAppelsFibo.png" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Ainsi :</p>
+<ul>
+<li><code>fibo(2)</code> est calculé à 5 reprises ;</li>
+<li><code>fibo(3)</code> est calculé à 3 reprises ;</li>
+<li><code>fibo(4)</code> est calculé à 2 reprises.</li>
+</ul>
+<p>Le nombre d'appels augmente exponentiellement en fonction de <code>n</code>. Par exemple le calcul récursif de <code>fibo(20)</code> nécessite <span class="arithmatex">\(4~181\)</span> appels au calcul <code>fibo(2)</code>, celui de <code>fibo(30)</code> le nécessite <span class="arithmatex">\(514~229\)</span> fois, celui de <code>fibo(40)</code> le nécessite <span class="arithmatex">\(63~245~986\)</span> fois....</p>
+<p>Si la limite de récursion (qui est de 1000 par défaut pour Python) n'est pas atteinte pour <code>fibo(40)</code>, le temps de calcul, lui,  croît aussi exponentiellement...</p>
+</div>
+<h2 id="programmation-dynamique">Programmation dynamique</h2>
+<h3 id="premiers-exemples-sur-la-suite-de-fibonacci">Premiers exemples sur la suite de Fibonacci</h3>
+<p>En considérant l'algorithme précédant, on comprend bien qu'il est particulièrement inefficace de calculer plusieurs fois le même sous-calcul. Afin d'améliorer le temps de calcul de l'algorithme, nous décidons donc de <mark class="critic"><strong>mémoriser les calculs déjà effectués</strong></mark> dans un tableau. Il existe deux méthodes différentes :</p>
+<div class="admonition info">
+<p class="admonition-title">Programmation dynamique de la suite de Fibonacci</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Méthode ascendante</label><div class="tabbed-content">
+<p>On va calculer les nombres de la suite de Fibonacci jusqu'à <span class="arithmatex">\(n\)</span> en partant de <span class="arithmatex">\(F(0)\)</span> et <span class="arithmatex">\(F(1)\)</span> :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fiboAsc</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Méthode descendante</label><div class="tabbed-content">
+<p>On va calculer les nombres de Fibonacci récursivement, mais en sauvegardant les calculs déjà effectués dans une liste Python, en profitant de sa <em>mutabilité</em> :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fiboDesc</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="ow">is</span>  <span class="kc">None</span> <span class="p">:</span>
+            <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span> <span class="o">+</span> <span class="n">compute</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">compute</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>L'explication la plus simple du fonctionnement est visible <a href="https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">ici</a>, pour un exemple sur <code>fiboDesc(6)</code>.</p>
+</div>
+</div>
+</div>
+<h3 id="principes-de-la-programmation-dynamique_1">Principes de la programmation dynamique</h3>
+<p>La <mark class="critic"><strong>programmation dynamique</strong></mark>, introduite au début des années 1950 par <a href="https://fr.wikipedia.org/wiki/Richard_Bellman" target="_blank">Richard Bellman</a>, est une méthode pour résoudre des problèmes en combinant des solutions de sous-problèmes, tout comme les méthodes de type <em>diviser pour régner</em>.</p>
+<p>Un algorithme de programmation dynamique résout chaque sous-sous-problème une seule fois et mémorise sa réponse dans un tableau, évitant ainsi le recalcul de la solution chaque fois qu'il résout chaque sous-sous-problème.</p>
+<p>La programmation dynamique s'applique généralement aux <strong>problèmes d'optimisation</strong>, comme ceux que nous avons vu l'an passélorsque nous avons étudié les algorithmes gloutons.</p>
+<h3 id="le-probleme-du-rendu-de-monnaie">Le problème du rendu de monnaie</h3>
+<p><em>Largement inspiré de <a href="https://isn-icn-ljm.pagesperso-orange.fr/NSI-TLE/res/res_rendu_de_monnaie.pdf">https://isn-icn-ljm.pagesperso-orange.fr/NSI-TLE/res/res_rendu_de_monnaie.pdf</a></em>.</p>
+<h4 id="le-probleme-introduction-et-traitement-debranche">Le problème : introduction et traitement débranché</h4>
+<p>Vous avez à votre disposition un nombre illimité de pièces de 2 cts, 5 cts, 10 cts, 50 cts et 1euro (100 cts). Vous devez rendre une certaine somme (rendu de monnaie). Le problème est le suivant : "Quel est le nombre minimum de pièces qui doivent être utilisées pour rendre la monnaie"</p>
+<p>La résolution "gloutonne" de ce problème peut être la suivante :</p>
+<ul>
+<li>On prend la pièce qui a la plus grande valeur (il faut que la valeur de cette pièce soit inférieure ou égale à la somme restant à rendre).</li>
+<li>On recommence l’opération ci-dessus jusqu’au moment où la somme à rendre est égale à zéro.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Appliquer cette méthode pour une somme de 1€77 (177cts) à rendre.</li>
+<li>Appliquer cette méthode à la somme de 11 centimes.<ol>
+<li>Quel est le problème ?</li>
+<li>Proposer une solution permettant de rendre 11 centimes. Est-elle unique ?</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<h4 id="mise-au-point-dun-algorithme-recursif">Mise au point d'un algorithme récursif</h4>
+<p>Nous allons essayer de mettre au point un algorithme récursif donnant une solution au problème de rendu de monnaie en utilisant le <strong>nombre minimal de pièces</strong>.</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>Compléter l'arbre suivant donnant l'ensemble des possibilités de répartition des pièces :</p>
+<p><img alt="Monnaie1.png" src="../Monnaie1.png" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+</li>
+<li>
+<p>Combien de chemins sont des impasses (on termine avec 1 cts restant) ? Combien de solutions existent ? Quelle est la solution utilisant le nombre minimal de pièces ?</p>
+<div class="admonition info">
+<p class="admonition-title">Force Brute</p>
+<p>Quand une méthode traite tous les cas possibles, on parle souvent de méthode en <mark class="critic"><strong>force brute</strong></mark>.</p>
+</div>
+</li>
+<li>
+<p>Compléter la fonction suivante pour qu'elle donne le nombre minimal de pièces utilisées pour une somme <code>s</code> donnée :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rendu_monnaie_rec</span><span class="p">(</span><span class="n">P</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">s</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; renvoie le nombre minimal de pièces pour rendre la somme s</span>
+<span class="sd">    en utilisant le jeu de pièces P&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">s</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mini</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="c1"># On fixe le nombre de piècé à l&#39;infini</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="o">...</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">...</span>
+            <span class="k">if</span> <span class="n">nb</span> <span class="o">&lt;</span> <span class="n">mini</span><span class="p">:</span>
+                <span class="n">mini</span> <span class="o">=</span> <span class="n">nb</span>
+    <span class="k">return</span> <span class="n">mini</span>
+</code></pre></div>
+</li>
+<li>
+<p>Testez la fonction avec le jeu de pièces <code>(2, 5, 10, 100)</code>, et pour des sommes augmentant à partir de 11 cts. A partir de quelle v somme le programme devient-il visiblement plus lent ?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<h4 id="passage-en-programmation-dynamique">Passage en programmation dynamique</h4>
+<p>On constate dans la partie précédente que la méthode précédente fait de trop nombreux appels récursifs, qui ralentissent considérablement le temps de calcul, voire plante le programme dès que la taille maximale de la pile est dépassée.</p>
+<p>On va donc utiliser la <em>programmation dynamique</em> pour accélérer la vitesse de traitement du problème :</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<p>On considère la fonction suivante :</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">renduMonnaie1</span><span class="p">(</span><span class="n">P</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">s</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="p">:</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="o">...</span> <span class="ow">and</span> <span class="n">nb</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">nb</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="ow">is</span> <span class="o">...</span> <span class="ow">or</span> <span class="o">...</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nb</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="p">]:</span>
+                    <span class="n">nb</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nb</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="p">]</span>                                         
+    <span class="k">return</span> <span class="o">...</span>
+</code></pre></div>
+1. Compléter la fonction afin qu'elle renvoie le nombre minimal de pièce pour rendre la monnaie, ou <code>None</code> s'il est impossible de rendre la monnaie.</p>
+<ol>
+<li>
+<p>Est-ce une méthode ascendante ou descendante ?       </p>
+</li>
+<li>
+<p>Créer une fonction <code>renduMonnaie2(P : list, s : int) -&gt; int | None</code> utilisant l'autre méthode.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details class="question"><summary>Pour aller plus loin</summary><div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Enoncé</label><div class="tabbed-content">
+<p>Nos codes précédents ne nous permettent que de connaître le nombre minimal de pièces nécessaire pour un rendu de monnaie donné. Nous ne connaissons par contre pas quelles pièces sont nécessaires.</p>
+<p>Transformez une des fonction précédente afin qu'elle renvoie les pièces nécessaires au rendu de monnaie.</p>
+</div>
+</div>
+</details>
                 
               
               

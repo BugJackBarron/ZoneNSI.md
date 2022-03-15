@@ -49,7 +49,7 @@ $$
 Algorithmiquement parlant, la suite de Fibonacci étant une suite définie par récurence, nous serions tentés de créer une fonction récursive pour calculer les termes $F(n)$ de la suite. Pour ce faire, nous pourrions utiliser la fonction suivante :
 
 ```` python linenums="1"
-def fibo(n) :
+def fibo(n : int) -> int :
 	if n == 0 :
 		return 	0
 	elif n == 1 :
@@ -138,7 +138,7 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		On va calculer les nombres de la suite de Fibonacci jusqu'à $n$ en partant de $F(0)$ et $F(1)$ :
 		
 		```` python linenums="1"
-		def fiboAsc(n) :
+		def fiboAsc(n : int) -> int :
 			F = [0]*(n+1)
 			F[1] = 1
 			for i in range(2,n+1) :
@@ -152,7 +152,7 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		On va calculer les nombres de Fibonacci récursivement, mais en sauvegardant les calculs déjà effectués dans une liste Python, en profitant de sa *mutabilité* :
 		
 		```` python linenums="1"
-		def fiboDesc(n) :
+		def fiboDesc(n : int) -> int :
 		
 			memo = [0, 1]+[None]*(n-1)
 			
@@ -260,12 +260,19 @@ On va donc utiliser la *programmation dynamique* pour accélérer la vitesse de 
 							nb[n] = 1 + nb[n-p]											
 			return ...
 		````
-		1. Compléter la fonction afin qu'elle renvoie le nombre minimal de pièce pour rendre la monnaie, ou `None` si il est impossible de rendre la monnaie.
-		2. Est-ce une méthode ascendante ou descendante ?
+		1. Compléter la fonction afin qu'elle renvoie le nombre minimal de pièce pour rendre la monnaie, ou `None` s'il est impossible de rendre la monnaie.
+		
+		2. Est-ce une méthode ascendante ou descendante ?		
+		
 		3. Créer une fonction `renduMonnaie2(P : list, s : int) -> int | None` utilisant l'autre méthode.
 		
 
-			
+??? question "Pour aller plus loin"
+
+	=== "Enoncé"
+		Nos codes précédents ne nous permettent que de connaître le nombre minimal de pièces nécessaire pour un rendu de monnaie donné. Nous ne connaissons par contre pas quelles pièces sont nécessaires.
+		
+		Transformez une des fonction précédente afin qu'elle renvoie les pièces nécessaires au rendu de monnaie.
 		
 
 
