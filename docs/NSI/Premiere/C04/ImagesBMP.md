@@ -33,7 +33,13 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 		
 	=== "Réponses"
 	
-		A venir !
+		1. RAS
+		2. Format `pgm` : *Portable Gray Map*, permet de faire des images matricielles en nuances de gris.
+		3. $32 \times 32$ pixels, soit $1024$ pixels. En octets : $1037$
+		4. On retrouve les valeurs 255 et 0.
+		5. On voit apparaître l'image.
+		6. 255 représente un pixel blanc.
+		7. 0 représente un pixel noir.
 	
 		
 !!! info "Les images matricielles"
@@ -94,14 +100,35 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 		Transformez le code précédent en créant une fonction `inverseNB(img)` qui prend en argument un objet `img` de type `Image` et qui renvoie un nouvel objet de type `Image` de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.
 		
 	=== "Correction"
-		A venir !
+		```` python
+		def inverseNB(img) :
+			width, height = img.size 
+			copie = Image.new(img.mode, img.size) 	
+	
+			for x in range(width) : 						
+				for y in range(height) :					
+					if img.getpixel((x,y)) == 255 :	
+						copie.putpixel((x, y), 0)
+					else :
+						copie.putpixel((x, y),  255)
+			return copie
+		````
 	
 ??? question "Pour les cracks : améliorons le code"
 
 	=== "Énoncé"
 		En fait le code ci dessus n'est valable que pédagogiquement, pour comprendre les . Il est tout à fait possible de se passer de la structure conditionnelle des lignes 10 à 13, qui peuvent être effectuées en une seule ligne ! Comment faire ?
 	=== "Réponse"
-		A venir !
+		```` python
+		def inverseNB(img) :
+			width, height = img.size 
+			copie = Image.new(img.mode, img.size) 	
+	
+			for x in range(width) : 						
+				for y in range(height) :					
+					copie.putpixel((x, y), 255 - img.getpixel((x,y)))
+			return copie
+		````
 
 ## Les niveaux de gris
 
@@ -121,6 +148,11 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 		1. Quelle est la dimension de cette image en pixels ? Quelle est sa dimension en octets ?
 		2. Ouvrez-là avec `Hex Editor Neo`. Quelle est la principale différence avec l'image précédente ?
 		3. Testez sur cette image la fonction `inverseNB`. Obtient-on un négatif de cette image ?
+	=== "Réponses"
+		
+		1. $29 \times 54$ pixels, soit 1566 pixels, pour une taille de 1579 octets.
+		2. Il y a d'autres valeurs entre 0 et 255.
+		3. Non.
 		
 !!! abstract "Images en niveaux de gris - *Grayscale*"
 
@@ -164,7 +196,36 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 			
 	=== "Correction" 
 	
-		A venir !
+		1. RAS
+		2. $f : x \mapsto 255 -x$
+		3. La fonction :
+			```` python
+			def negatif(img) :
+				width, height = img.size 
+				copie = Image.new(img.mode, img.size) 	
+		
+				for x in range(width) : 						
+					for y in range(height) :					
+						copie.putpixel((x, y), 255 - img.getpixel((x,y)))
+				return copie
+			````
+		4. La fonction :
+			```` python
+			def eclaircir(img, t=20) :
+				width, height = img.size 
+				copie = Image.new(img.mode, img.size) 	
+		
+				for x in range(width) : 						
+					for y in range(height) :					
+						copie.putpixel((x, y), t + img.getpixel((x,y)))
+				return copie
+			````
+		5. La fonction :
+			```` python
+			def assombrir(img, t=20) :
+				return eclaircir(img, -t)
+			````
+		6. Non, au vu de la question précédente 
 		
 ??? question "Pour les cracks"
 
@@ -378,7 +439,42 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 		3. Créer un damier noir et blanc (ou toute autre paire de couleurs), de dimension $600 \times 400$, et donc chaque carré à une taille de 20 pixels (*Indice : pensez à la division euclidienne et à l'opérateur modulo %*).
 		
 	=== "Corrigé"
-		A venir !
+		
+		1. Le drapeau français :
+			```` python
+			def drapeauFR() :
+				drapeau = Image.new('RGB', (300,200))
+				for x in range(300) :
+					for y in range(200) :
+						drapeau.putpixel((x, y), (255*(x>=100), 255*(100<=x<200), 255*(x<200)))
+				drapeau.show()
+			````
+		2. Le drapeau Néerlandais
+			```` python
+			def drapeauNL() :
+				drapeau = Image.new('RGB', (300,210))
+				for x in range(300) :
+					for y in range(210) :
+						drapeau.putpixel((x, y), (255*(y<=140), 255*(70<=y<140), 255*(y>70)))
+				drapeau.show()				
+			````
+		3. Le damier de taille 20 pixels :
+		
+			```` python
+			def damier() :
+				damier = Image.new('RGB', (600,400))
+				for x in range(600) :
+					for y in range(400) :
+						c = x//20 # Numéro de colonne
+ 						l = y//20 # Numéro de ligne
+						if  c%2 == l%2 :
+							damier.putpixel((x, y), (0,0,0))
+						else :
+							damier.putpixel((x, y), (255,255,255))
+				damier.show()				
+			````
+		
+			
 		
 ### Symétries
 
@@ -394,8 +490,32 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 		
 	=== "Solutions"
 	
-		A venir !
-		
+		1. ```` python
+			def symetrieVerticale(originale) :
+				width, height = originale.size
+				nouvelle = Image.new(originale.mode, originale.size)
+				for x in range(width) :
+					for y in range(height) :
+						p = originale.getpixel((x,y))
+						nouvelle.putpixel((width-1-x, y) , p)
+				return nouvelle
+			````
+			
+		2. ```` python
+			def symetrieHorizontale(originale) :
+				width, height = originale.size
+				nouvelle = Image.new(originale.mode, originale.size)
+				for x in range(width) :
+					for y in range(height) :
+						p = originale.getpixel((x,y))
+						nouvelle.putpixel((x, height-1-y) , p)
+				return nouvelle
+			````
+		3. ```` python
+			def symetrieCentrale(originale) :
+				return symetrieHorizontale(symetrieVerticale(originale))
+			````
+			
 ### Filtres colorés
 
 !!! info "Filtre vert"
@@ -437,6 +557,21 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 		2. Créer une fonction `negatif` qui prend en argument une image et inverse les octets de chacune de ses composantes, en conservant le canal alpha. On obtiendra par exemple :
 		
 			![Naruto Négatif](NarutoNegatif.png){: style="width:15%; margin:auto;display:block;"}
+			
+	=== "Réponse"
+		
+		1. ```` python
+			def filtreCouleur(img, filtre) :
+				fr, fg, fb, fa = filtre
+				copie = Image.new(img.mode, img.size)
+				width, height = img.size
+				for x in range(width) :
+					for y in range(height) :
+					   pr, pg, pb, pa = img.getpixel((x,y))
+					   copie.putpixel((x,y), (pr*fr, pg*fg, pb*fb, pa*fa))
+					   # ou copie.putpixel((x,y), tuple(f*p for f, p in zip(filtre, img.getpixel(x,y))
+				return copie
+			````
 		
 
 ### Agrandissements et réductions d'un facteur 2
