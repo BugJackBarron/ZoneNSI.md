@@ -2342,6 +2342,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/p5_Thonny/" class="md-nav__link">
+        P5 et Thonny
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2399,7 +2413,15 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 </ol>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Réponses</label><div class="tabbed-content">
-<p>A venir !</p>
+<ol>
+<li>RAS</li>
+<li>Format <code>pgm</code> : <em>Portable Gray Map</em>, permet de faire des images matricielles en nuances de gris.</li>
+<li><span class="arithmatex">\(32 \times 32\)</span> pixels, soit <span class="arithmatex">\(1024\)</span> pixels. En octets : <span class="arithmatex">\(1037\)</span></li>
+<li>On retrouve les valeurs 255 et 0.</li>
+<li>On voit apparaître l'image.</li>
+<li>255 représente un pixel blanc.</li>
+<li>0 représente un pixel noir.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -2471,7 +2493,18 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p>Transformez le code précédent en créant une fonction <code>inverseNB(img)</code> qui prend en argument un objet <code>img</code> de type <code>Image</code> et qui renvoie un nouvel objet de type <code>Image</code> de même dimension et même mode que l'argument, mais ayant ses couleurs noirs et blanc inversées.</p>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Correction</label><div class="tabbed-content">
-<p>A venir !</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inverseNB</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span> 
+    <span class="n">copie</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>                         
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>                    
+            <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">==</span> <span class="mi">255</span> <span class="p">:</span> 
+                <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>  <span class="mi">255</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">copie</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2479,7 +2512,15 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p>En fait le code ci dessus n'est valable que pédagogiquement, pour comprendre les . Il est tout à fait possible de se passer de la structure conditionnelle des lignes 10 à 13, qui peuvent être effectuées en une seule ligne ! Comment faire ?</p>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Réponse</label><div class="tabbed-content">
-<p>A venir !</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inverseNB</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span> 
+    <span class="n">copie</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>                         
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>                    
+            <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">copie</span>
+</code></pre></div>
 </div>
 </div>
 </details>
@@ -2490,11 +2531,18 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <p>On considère maintenant l'image suivante :</p>
 <p><img alt="Troopers.bmp" src="../Troopers.bmp" style=";margin:auto;display:block;" /></p>
 <p>téléchargeable <a href="../Troopers.pgm" target="target">ici</a>.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Énoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>Quelle est la dimension de cette image en pixels ? Quelle est sa dimension en octets ?</li>
 <li>Ouvrez-là avec <code>Hex Editor Neo</code>. Quelle est la principale différence avec l'image précédente ?</li>
 <li>Testez sur cette image la fonction <code>inverseNB</code>. Obtient-on un négatif de cette image ?</li>
+</ol>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Réponses</label><div class="tabbed-content">
+<ol>
+<li><span class="arithmatex">\(29 \times 54\)</span> pixels, soit 1566 pixels, pour une taille de 1579 octets.</li>
+<li>Il y a d'autres valeurs entre 0 et 255.</li>
+<li>Non.</li>
 </ol>
 </div>
 </div>
@@ -2546,7 +2594,35 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 </ol>
 </div>
 <input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Correction</label><div class="tabbed-content">
-<p>A venir !</p>
+<ol>
+<li>RAS</li>
+<li><span class="arithmatex">\(f : x \mapsto 255 -x\)</span></li>
+<li>La fonction :
+    <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">negatif</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span> 
+    <span class="n">copie</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>                         
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>                    
+            <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">copie</span>
+</code></pre></div></li>
+<li>La fonction :
+    <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">eclaircir</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span> 
+    <span class="n">copie</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>                         
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>                    
+            <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">t</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">copie</span>
+</code></pre></div></li>
+<li>La fonction :
+    <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">assombrir</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">eclaircir</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div></li>
+<li>Non, au vu de la question précédente </li>
+</ol>
 </div>
 </div>
 </div>
@@ -2782,7 +2858,39 @@ Que renvoie-t-elle ?</li>
 </ol>
 </div>
 <input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Corrigé</label><div class="tabbed-content">
-<p>A venir !</p>
+<ol>
+<li>Le drapeau français :
+    <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">drapeauFR</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">drapeau</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">drapeau</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">100</span><span class="p">),</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">&lt;=</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">200</span><span class="p">),</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">200</span><span class="p">)))</span>
+    <span class="n">drapeau</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></li>
+<li>Le drapeau Néerlandais
+    <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">drapeauNL</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">drapeau</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">210</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">210</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">drapeau</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">&lt;=</span><span class="mi">140</span><span class="p">),</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="mi">70</span><span class="o">&lt;=</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">140</span><span class="p">),</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">70</span><span class="p">)))</span>
+    <span class="n">drapeau</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>              
+</code></pre></div></li>
+<li>
+<p>Le damier de taille 20 pixels :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">damier</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">damier</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">x</span><span class="o">//</span><span class="mi">20</span> <span class="c1"># Numéro de colonne</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">y</span><span class="o">//</span><span class="mi">20</span> <span class="c1"># Numéro de ligne</span>
+            <span class="k">if</span>  <span class="n">c</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="n">l</span><span class="o">%</span><span class="mi">2</span> <span class="p">:</span>
+                <span class="n">damier</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">damier</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+    <span class="n">damier</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               
+</code></pre></div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -2798,7 +2906,33 @@ Que renvoie-t-elle ?</li>
 </ol>
 </div>
 <input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Solutions</label><div class="tabbed-content">
-<p>A venir !</p>
+<ol>
+<li>
+<p><code>python
+    def symetrieVerticale(originale) :
+        width, height = originale.size
+        nouvelle = Image.new(originale.mode, originale.size)
+        for x in range(width) :
+            for y in range(height) :
+                p = originale.getpixel((x,y))
+                nouvelle.putpixel((width-1-x, y) , p)
+        return nouvelle</code></p>
+</li>
+<li>
+<p><code>python
+    def symetrieHorizontale(originale) :
+        width, height = originale.size
+        nouvelle = Image.new(originale.mode, originale.size)
+        for x in range(width) :
+            for y in range(height) :
+                p = originale.getpixel((x,y))
+                nouvelle.putpixel((x, height-1-y) , p)
+        return nouvelle</code></p>
+</li>
+<li><code>python
+    def symetrieCentrale(originale) :
+        return symetrieHorizontale(symetrieVerticale(originale))</code></li>
+</ol>
 </div>
 </div>
 </div>
@@ -2817,7 +2951,7 @@ Que renvoie-t-elle ?</li>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Filtres de couleur</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Énoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Énoncé</label><div class="tabbed-content">
 <ol>
 <li>
 <p>Créer une fonction <code>filtreCouleur</code> qui prend en argument un objet de type <code>Image</code> et un tuple <code>(r, g, b, a)</code>, où <code>r, g, b</code> et <code>a</code> sont des  booléens, et qui renvoie une nouvelle image pour lesquelles les couleurs RGBA sont conservées si le booléen correspondant est <code>True</code>. Par exemple, l'image de Naruto verte ci-dessus est obtenue par le code :</p>
@@ -2835,6 +2969,21 @@ Que renvoie-t-elle ?</li>
 <p>Créer une fonction <code>negatif</code> qui prend en argument une image et inverse les octets de chacune de ses composantes, en conservant le canal alpha. On obtiendra par exemple :</p>
 <p><img alt="Naruto Négatif" src="../NarutoNegatif.png" style="width:15%; margin:auto;display:block;" /></p>
 </li>
+</ol>
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Réponse</label><div class="tabbed-content">
+<ol>
+<li><code>python
+    def filtreCouleur(img, filtre) :
+        fr, fg, fb, fa = filtre
+        copie = Image.new(img.mode, img.size)
+        width, height = img.size
+        for x in range(width) :
+            for y in range(height) :
+               pr, pg, pb, pa = img.getpixel((x,y))
+               copie.putpixel((x,y), (pr*fr, pg*fg, pb*fb, pa*fa))
+               # ou copie.putpixel((x,y), tuple(f*p for f, p in zip(filtre, img.getpixel(x,y))
+        return copie</code></li>
 </ol>
 </div>
 </div>
