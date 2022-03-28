@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageOps
 from math import sqrt
 
 def getNeighboursMean(image, x, y) :
@@ -76,14 +76,38 @@ def doubleSizeInterpolate(image) :
                 double.putpixel((2*x+1,2*y+1), image.getpixel((x, y)))
             
     return double
+
+
+
+
+def detectContours(img) :
+    img  = ImageOps.grayscale(img)
+    newImg = Image.new('L', img.size)
+    width, height  = img.size
+    for x in range(width)  :
+        for y in range(height) :
+            neighbours = []
+            for vx in [-1, 0, 1] :
+                for vy in [-1,0,1] :
+                    if not(vx==0 and vy==0) :
+                        if 0<= x+vx < width and 0<= y+vy < height :
+                            neighbours.append(img.getpixel((x+vx, y+vy)))
+            nvpix = 0
+            for px in neighbours :
+                nvpix += -1*px
+            nvpix += img.getpixel((x,y))*8  
+            newImg.putpixel((x,y), nvpix)
+    return newImg
+                
     
 if __name__ == "__main__" :
-    image = Image.open('Naruto.png')
-    divideSizeBy2Simple(image).save('DemiNarutoSimple.png')
-    doubleSizeSimple(image).save('DoubleNarutoSimple.png')
-    doubleSizeSimple(divideSizeBy2Simple(image)).save('NarutoTransformeSimple.png')
-    
-    divideSizeBy2Interpolate(image).save('DemiNarutoInterpolate.png')
-    doubleSizeInterpolate(image).save('DoubleInterpolateNaruto.png')
-    doubleSizeInterpolate(divideSizeBy2Interpolate(image)).save('NarutoTransformeInterpolate.png')
+     image = Image.open( 'Naruto.png')
+#     divideSizeBy2Simple(image).save('DemiNarutoSimple.png')
+#     doubleSizeSimple(image).save('DoubleNarutoSimple.png')
+#     doubleSizeSimple(divideSizeBy2Simple(image)).save('NarutoTransformeSimple.png')
+#     
+#     divideSizeBy2Interpolate(image).save('DemiNarutoInterpolate.png')
+#     doubleSizeInterpolate(image).save('DoubleInterpolateNaruto.png')
+#     doubleSizeInterpolate(divideSizeBy2Interpolate(image)).save('NarutoTransformeInterpolate.png')
+     detectContours(image).save('NarutoContours.png')
     
