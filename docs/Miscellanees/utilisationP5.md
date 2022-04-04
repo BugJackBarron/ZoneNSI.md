@@ -146,10 +146,12 @@ Il est aussi possible de définir un certain nombre de fonctions :
 #### Evènements clavier
 
 Les deux principales variables sont :
+
 *  `key_is_pressed` : booléen valant `True` si une touche quelconque est pressée ;
 * `key` : variable globale traquant les touches appuyées. Elle vaut `None` si aucune touche n'est pressée, sinon elle peut être comparée à des chaînes de caractères **en majuscule** comme `"A"`, `"T"`, `"2"`, `"ESC"`, `"SPACE"`, `"ENTER"`, etc...
 
 On peut aussi utiliser les trois fonctions suivantes :
+
 * `key_pressed()` : permet de définir les actions à faire quand une touche est pressée ;
 * `key_released()` : permet de définir les actions à faire quand une touche est relâchée ;
 * `key_typed()` : permet de définir les actions à faire quand une touche est pressée puis immédiatement relachée.
