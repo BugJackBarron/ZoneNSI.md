@@ -21,65 +21,73 @@ Il reste donc $7$ bits pour encoder les caractères, soit $2^7 = 128$ possibilit
 ![ASCII.png](ASCII.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
 
 
-\noindent La table ASCII contient 95 caractère imprimables :
-\trianglenoir
-\begin{itemize}
- \item les chiffres de 0 à 9 ;
- \item les lettres minuscules de a à z et majuscules de A à Z ;
- \item des symboles mathématiques et de ponctuation.
-\end{itemize}
-\noindent Les 32 premiers caractères de $00$ à $1F$, ainsi que le 128ème caractère $FF$ ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère $FF$ est la commande pour effacer le caractère précédent, le $07$ provoque l'émission d'un signal sonore, etc).
+La table ASCII contient 95 caractère imprimables :
+* les chiffres de `0` à `9` ;
+* les lettres minuscules de `a` à `z` et majuscules de `A` à `Z` ;
+* des symboles mathématiques et de ponctuation.
 
-\noindent Il faut différencier la notion de \textbf{jeu de caractère} (\textit{Character set} en anglais) de celle de \textbf{police de caractère}. Dans une police de caractère, chaque glyphe est associé à un numéro correspondant à un caractère du \textbf{jeu de caractère}. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.
-\begin{info}{Glyphes}
- \noindent Un \textbf{glyphe} est  une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.\\
- \parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width = 0.6\linewidth]{Glyphe_a_Caliban.png}\\
-  Glyphe \texttt{a} police Caliban
- \end{center}
- }\hfill
- \parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width = 0.6\linewidth]{Glyphe_a_Caston_Italic.png}\\
-    Glyphe \texttt{a} police Caston Italic
- \end{center}
- }\hfill\parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width = 0.6\linewidth]{Glyphe_Ki.png}\\
-    Glyphe \texttt{ki} (kanji)
- \end{center}
- }
+Les 32 premiers caractères de `00` à `1F`, ainsi que le 128ème caractère `FF` ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère `FF` est la commande pour effacer le caractère précédent, le `07` provoque l'émission d'un signal sonore, etc).
+
+Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* en anglais) de celle de {==**police de caractère**==}. Dans une police de caractère, chaque *glyphe* est associé à un numéro correspondant à un caractère du **jeu de caractère*. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.
+!!! info "Glyphes"
+	Un **glyphe** est  une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.
+	 
+	<div style="display:flex;">
+	<div style="display : inline; width : 33%;">
+	
+	![Glyphe_a_Caliban.png](Glyphe_a_Caliban.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe a police Caliban"}
+	  
+	</div>
+	<div style="display : inline; width : 33%;">
+	
+	![Glyphe_a_Caston_Italic.png](Glyphe_a_Caston_Italic.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe a police Caston Italic"}
+	
+	</div>
+	<div style="display : inline; width : 33%;">
+
+	![Glyphe_Ki.png](Glyphe_Ki.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe ki kanji"}
+
+	</div>
+	</div>
+
+!!! question "En Python"
+	=== "Enoncé"
+
+		1. Pour obtenir un caractère correspondant à un code hexadécimal donné, il faut convertir en entier le nombre hexadécimalavec `int` puis passer par la fonction `chr` : 
+		
+			```` python
+			chr(int('Ox41',16))
+			````
+			Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?
+			
  
-\end{info}
-\begin{ExerciceNomme}{En Python}
-\begin{enumerate}
- \item Pour obtenir un caractère correspondant à un code hexadécimal donné, il faut convertir en entier le nombre hexadécimalavec `int` puis passer par la fonction `chr` : texttt{chr(int('Ox41',16))}.\\
- Vérifiez quelques caractères. Comment faire à partir du code binaire  ?
- \caserep{\linewidth}{1}
- \item testez \texttt{ord('A')}. Que renvoie cette fonction ? (\textit{Vous pourrez tester les fonctions \texttt{hex()} et \texttt{bin()}})
- \caserep{\linewidth}{2}
- \end{enumerate}
-\end{ExerciceNomme}
-\begin{ExerciceNomme}{Discussion}
- \noindent Quelles sont les  limites de la norme ASCII ?
- \caserep{\linewidth}{2}
-\end{ExerciceNomme}
+		2. Testez `ord('A')`. Que renvoie cette fonction ? 
+		3. Testez de même les fonctions `hex()` et `bin()`.
+ 
+	=== "Réponses"
+		A venir
+		
+!!! question "Discussion"
+
+	=== "Enoncé"
+		Quelles sont les  limites de la norme ASCII ?
+		
+	=== "Réponse"
 
 
-\section{La norme ISO-8859}
+## La norme ISO-8859
 
-Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de $2^8 = 256$ possibilités de codage. Les différentes constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées \textbf{ASCII étendues}, pour la plupart incompatibles entre elles. Par exemple IBM produit une table, la $CP437$, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :
-\begin{center}
- \includegraphics[width=0.6\linewidth]{CP437.jpg}
-\end{center}
+Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de $2^8 = 256$ possibilités de codage. Les différentes constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées **ASCII étendues**, pour **la plupart incompatibles entre elles**. Par exemple IBM produit une table, la $CP437$, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :
 
-\noindent Malgré tout, une norme arrive à être établie, l'ISO-8859, avec les conventions suivantes :
-\trianglenoir
-\begin{itemize}
- \item  le codage des caractères présents dans la tables ASCII est conservé (principe de \textbf{rétro-compatibilité}) ;
- \item on conserve le principe de caractères sur 1 octet, avec utilisation complète de $8$ bits.
-\end{itemize}
+![CP437.jpg](CP437.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="CP437"}
+
+
+
+Malgré tout, une norme arrive à être établie, l'**ISO-8859**, avec les conventions suivantes :
+
+*  le codage des caractères présents dans la tables ASCII est conservé (principe de **rétro-compatibilité**) ;
+* on conserve le principe de caractères sur 1 octet, avec utilisation complète de $8$ bits.
+
 
 \noindent Plusieurs jeus de caractères coexistent alors :\\
 \parbox{0.45\linewidth}{
