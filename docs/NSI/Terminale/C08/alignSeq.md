@@ -50,7 +50,19 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 		
 	=== "Réponse"
 		
-		A venir !
+		1. Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de `R` et de `-` doit contenir le nombre minimal de tirets nécessaire pour aligner `ENOR` avec une chaîne vide, c'est-à-dire 4.
+		
+			![tabAlign_Cas_Base.png](tabAlign_Cas_Base.png){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+			
+		2. Pour compléter ensuite le reste du tableau, il faut concevoir deux cas différents :
+			1. Soit la case correspond aux deux même lettres, comme dans l'exemple ci-dessous :
+			
+				![tabAlign_Cas_1.png](tabAlign_Cas_1.png){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+				
+				Le meilleur alignement de `ENO` et de `GENO` contient autant de tirets que le meilleur alignement de `EN` et de `GEN`, donc ici 1.
+				
+			2. Soit
+		
 ### Application en Python
 
 L'activité est disponible sous la forme d'un [notebook capytale](https://capytale2.ac-paris.fr/web/c/ade1-491791){: target = "_blank"}
