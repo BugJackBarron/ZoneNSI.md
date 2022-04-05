@@ -1,0 +1,53 @@
+%%!TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper,12pt]{article}
+\input{../../preambule.tex}
+\input{../../figures.tex}
+
+
+
+\lhead{\ccby}
+\rhead{\small{ $1^{\text{ère}}$ NSI}}
+\chead{\small{ $C06$ Architecture matérielle et systèmes d'exploitation}}
+
+
+\lfoot{\tiny{Ann\'ee 2020-2021}}
+\cfoot{\textbf{Page \thepage/\pageref{LastPage}}}
+%\cfoot{}
+\rfoot{\tiny{www.zonensi.fr}}
+
+\begin{document}
+\sffamily %Pourutiliser une police sans empatement
+\begin{center}
+ \large{\textbf{$C06-01$ Architecture Matérielle}}
+\end{center}
+
+
+https://www.clubic.com/raspberry-pi/article-850381-1-installation-os-raspberry-pi-utilitaire-noobs.html
+
+https://github.com/raspberrypi/noobs
+
+https://dadarevue.com/ajouter-gui-raspbian-lite/
+
+\begin{enumerate}
+\item La carte est formattée, et Noobs est installé
+\item Installer Raspian 32bits sans interface graphique
+\item Mise à jour possible si wifi configuré dans Noobs
+\item Login : pi MDP : raspberry
+\item sudo halt et sudo reboot
+
+
+\end{enumerate}
+Installation de l'environnement graphique
+
+\begin{enumerate}
+\item sudo apt-get update
+sudo apt-get dist-upgrade
+sudo reboot
+\item sudo apt-get install --no-install-recommends xserver-xorg
+\item sudo apt-get install raspberrypi-ui-mods
+\item sudo apt-get install lightdm
+\item sudo reboot
+\end{enumerate}
+
+\end{document}
