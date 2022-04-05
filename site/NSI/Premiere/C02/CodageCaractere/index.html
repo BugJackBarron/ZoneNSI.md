@@ -1076,6 +1076,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#la-norme-iso-8859" class="md-nav__link">
+    La norme ISO-8859
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2330,59 +2337,64 @@
 <p>Les ordinateurs de cette époque étant peu fiables au niveau des transmissions et traitement des bits, il arrivait des erreurs lors du traitement des signaux et un octet <code>1101 1011</code> pouvait vite se transformer en <code>1001 1011</code> : les données seraient corrompues et le mauvais caractère serait affiché. Le <strong>bit de parité</strong> est un bit qui prenait la valeur 0 ou 1 selon la parité du nombre de 1 dans les 7 bits représentant le caractère. Ainsi, si les 7 bits sont <code>101 1001</code>, le bit de parité est à <code>0</code>, et l'octet complet devient <code>0101 1001</code>. Si celui reçu est <code>0101 0001</code>, un simple calcul avec le bit de parité permet de constater que le traitement du signal est défectueux. </p>
 <p>Il reste donc <span class="arithmatex">\(7\)</span> bits pour encoder les caractères, soit <span class="arithmatex">\(2^7 = 128\)</span> possibilités. Ce codage est appelé American Standard Code for Information Interchange, soit <mark class="critic"><strong>ASCII</strong></mark>, et est présenté dans la <em>table de jeu de caractères ASCII</em> ci-dessous :</p>
 <p><img alt="ASCII.png" src="../ASCII.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
-<p>\noindent La table ASCII contient 95 caractère imprimables :
-\trianglenoir
-\begin{itemize}
- \item les chiffres de 0 à 9 ;
- \item les lettres minuscules de a à z et majuscules de A à Z ;
- \item des symboles mathématiques et de ponctuation.
-\end{itemize}
-\noindent Les 32 premiers caractères de <span class="arithmatex">\(00\)</span> à <span class="arithmatex">\(1F\)</span>, ainsi que le 128ème caractère <span class="arithmatex">\(FF\)</span> ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère <span class="arithmatex">\(FF\)</span> est la commande pour effacer le caractère précédent, le <span class="arithmatex">\(07\)</span> provoque l'émission d'un signal sonore, etc).</p>
-<p>\noindent Il faut différencier la notion de \textbf{jeu de caractère} (\textit{Character set} en anglais) de celle de \textbf{police de caractère}. Dans une police de caractère, chaque glyphe est associé à un numéro correspondant à un caractère du \textbf{jeu de caractère}. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.
-\begin{info}{Glyphes}
- \noindent Un \textbf{glyphe} est  une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.\
- \parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width = 0.6\linewidth]{Glyphe_a_Caliban.png}\
-  Glyphe \texttt{a} police Caliban
- \end{center}
- }\hfill
- \parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width = 0.6\linewidth]{Glyphe_a_Caston_Italic.png}\
-    Glyphe \texttt{a} police Caston Italic
- \end{center}
- }\hfill\parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width = 0.6\linewidth]{Glyphe_Ki.png}\
-    Glyphe \texttt{ki} (kanji)
- \end{center}
- }</p>
-<p>\end{info}
-\begin{ExerciceNomme}{En Python}
-\begin{enumerate}
- \item Pour obtenir un caractère correspondant à un code hexadécimal donné, il faut convertir en entier le nombre hexadécimalavec <code>int</code> puis passer par la fonction <code>chr</code> : texttt{chr(int('Ox41',16))}.\
- Vérifiez quelques caractères. Comment faire à partir du code binaire  ?
- \caserep{\linewidth}{1}
- \item testez \texttt{ord('A')}. Que renvoie cette fonction ? (\textit{Vous pourrez tester les fonctions \texttt{hex()} et \texttt{bin()}})
- \caserep{\linewidth}{2}
- \end{enumerate}
-\end{ExerciceNomme}
-\begin{ExerciceNomme}{Discussion}
- \noindent Quelles sont les  limites de la norme ASCII ?
- \caserep{\linewidth}{2}
-\end{ExerciceNomme}</p>
-<p>\section{La norme ISO-8859}</p>
-<p>Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de <span class="arithmatex">\(2^8 = 256\)</span> possibilités de codage. Les différentes constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées \textbf{ASCII étendues}, pour la plupart incompatibles entre elles. Par exemple IBM produit une table, la <span class="arithmatex">\(CP437\)</span>, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :
-\begin{center}
- \includegraphics[width=0.6\linewidth]{CP437.jpg}
-\end{center}</p>
-<p>\noindent Malgré tout, une norme arrive à être établie, l'ISO-8859, avec les conventions suivantes :
-\trianglenoir
-\begin{itemize}
- \item  le codage des caractères présents dans la tables ASCII est conservé (principe de \textbf{rétro-compatibilité}) ;
- \item on conserve le principe de caractères sur 1 octet, avec utilisation complète de <span class="arithmatex">\(8\)</span> bits.
-\end{itemize}</p>
+<p>La table ASCII contient 95 caractère imprimables :
+* les chiffres de <code>0</code> à <code>9</code> ;
+* les lettres minuscules de <code>a</code> à <code>z</code> et majuscules de <code>A</code> à <code>Z</code> ;
+* des symboles mathématiques et de ponctuation.</p>
+<p>Les 32 premiers caractères de <code>00</code> à <code>1F</code>, ainsi que le 128ème caractère <code>FF</code> ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère <code>FF</code> est la commande pour effacer le caractère précédent, le <code>07</code> provoque l'émission d'un signal sonore, etc).</p>
+<p>Il faut différencier la notion de <mark class="critic"><strong>jeu de caractère</strong></mark> (<em>Character set</em> en anglais) de celle de <mark class="critic"><strong>police de caractère</strong></mark>. Dans une police de caractère, chaque <em>glyphe</em> est associé à un numéro correspondant à un caractère du *<em>jeu de caractère</em>. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.</p>
+<div class="admonition info">
+<p class="admonition-title">Glyphes</p>
+<p>Un <strong>glyphe</strong> est  une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.</p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 33%;"></p>
+<p><img alt="Glyphe_a_Caliban.png" src="../Glyphe_a_Caliban.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe a police Caliban" /></p>
+<p></div>
+<div style="display : inline; width : 33%;"></p>
+<p><img alt="Glyphe_a_Caston_Italic.png" src="../Glyphe_a_Caston_Italic.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe a police Caston Italic" /></p>
+<p></div>
+<div style="display : inline; width : 33%;"></p>
+<p><img alt="Glyphe_Ki.png" src="../Glyphe_Ki.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe ki kanji" /></p>
+<p></div>
+</div></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">En Python</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>Pour obtenir un caractère correspondant à un code hexadécimal donné, il faut convertir en entier le nombre hexadécimalavec <code>int</code> puis passer par la fonction <code>chr</code> : </p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">chr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;Ox41&#39;</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+</code></pre></div>
+Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?</p>
+</li>
+<li>
+<p>Testez <code>ord('A')</code>. Que renvoie cette fonction ? </p>
+</li>
+<li>Testez de même les fonctions <code>hex()</code> et <code>bin()</code>.</li>
+</ol>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Réponses</label><div class="tabbed-content">
+<p>A venir</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Discussion</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Quelles sont les  limites de la norme ASCII ?</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Réponse</label><div class="tabbed-content"></div>
+</div>
+</div>
+<h2 id="la-norme-iso-8859">La norme ISO-8859</h2>
+<p>Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de <span class="arithmatex">\(2^8 = 256\)</span> possibilités de codage. Les différentes constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées <strong>ASCII étendues</strong>, pour <strong>la plupart incompatibles entre elles</strong>. Par exemple IBM produit une table, la <span class="arithmatex">\(CP437\)</span>, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :</p>
+<p><img alt="CP437.jpg" src="../CP437.jpg" style="width:80%; margin:auto;display:block;background-color: #546d78;" title="CP437" /></p>
+<p>Malgré tout, une norme arrive à être établie, l'<strong>ISO-8859</strong>, avec les conventions suivantes :</p>
+<ul>
+<li>le codage des caractères présents dans la tables ASCII est conservé (principe de <strong>rétro-compatibilité</strong>) ;</li>
+<li>on conserve le principe de caractères sur 1 octet, avec utilisation complète de <span class="arithmatex">\(8\)</span> bits.</li>
+</ul>
 <p>\noindent Plusieurs jeus de caractères coexistent alors :\
 \parbox{0.45\linewidth}{
 \begin{center}
