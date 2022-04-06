@@ -54,47 +54,39 @@ Ces cartes perforées sont les premiers exemples de supports de stockages permet
  
 Les métiers à tisser Jacquard sont la pointe de la technologie. Ils utilisent les cartes perforées pour réaliser des motifs complexes, et sont donc \&laquo; programmables &raquo; par l'introduction de nouvelles cartes.
 
-![Metier_jacquard.jpg](Metier_jacquard.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Métiert Jacquard"}
+![Metier_jacquard.jpg](Metier_jacquard.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Métier Jacquard"}
 
-\subsection{Les machines à calculer}
-\noindent\parbox{0.35\linewidth}{
-\begin{center}
-\includegraphics[width=0.8\linewidth]{Babbage.jpg}
-\end{center}
-}\hfill\parbox{0.6\linewidth}{
-\noindent Au XIXème siècle, l'Empire Britannique est à son ap&laquo;ée et sa puissance repose sur sa force navale, aussi bien commerciale que militaire. Or à bord d'un navire la navigation se fait toujours aux étoile et par l'intermédiaire de cartes marines de plus en plus détaillées. Un navigateur à cette époque utilise quotidiennement des tables de navigations, qui ne sont rien d'autre que des tables de trigonométrie et de *l&laquo;arithmes*. Et ces tables sont établiées et calculées à la main, et sont loin d'être exmptes d'erreurs de calcul. En 1833-1834, le mathématicien anglais Charles Babbage imagine une machine utilisant des cartes perforées qui permettrait d'effectuer des calculs scientifiques, la ` machine analytique` (*Differential engine*). Cette machine ne sera jamais opérationnelle du vivant de Babbage.
-}\\
-\noindent\parbox{0.6\linewidth}{
- **Ada Lovelace** (1815-1852), est une mathématicienne anglaise. Travaillant avec Charles Babbage, elle imagine pouvoir faire jouer de la musique, afficher des chiffres et des lettres avec la machine analytique. Elle décrit, plus d'un siècle avant son invention, l'ordinateur : \&laquo; La machine analytique n'a nullement la prétention de créer quelque chose par elle-même. Elle peut exécuter tout ce que nous saurons lui ordonner d'exécuter. Elle peut suivre une analyse ; mais elle n'a pas la faculté d'imaginer des relations analytiques ou des vérités. Son rôle est de nous aider à effectuer ce que nous savons déjà dominer.&raquo;
- }\hfill\parbox{0.35\linewidth}{
-\begin{center}
- \includegraphics[width=0.9\linewidth]{Ada.jpg}
- \end{center}
- }\\
- \noindent Vers 1842 elle écrit des algorithmes pour réaliser un pr&laquo;ramme informatique et toutes les instructions à donner à la machine, jusqu'aux positions des rouages. Elle invente le concept de boucle, et devient ainsi la première pr&laquo;rammeuse.
+### Les machines à calculer
 
- \vspace{0.2cm}
- 
- \noindent L'apparition de l'électricité comme source d'énergie va rapidement permettre le développement de moteurs  qui améliorent les machines à calculer. A la fin du XIXème siècle, Herman Holerith conçoit une machine utilisant des cartes perforées qui permet de simplifier le recensement de la population arrivant à New-York. Il fonde une société qui prendra rapidement le nom d'IBM. Les machines à calculer électromagnétiques se développent rapidement, et en parallèle les mathématiques pr&laquo;ressent à grand pas. 
- 
- \vspace{0.2cm}
- 
-\parbox{0.35\linewidth}{ 
- \begin{center}
- \includegraphics[width=0.9\linewidth]{Turing.jpg}
-\end{center}
-}\hfill\parbox{0.6\linewidth}{
- Mathématicien et cryptol&laquo;ue britannique (1912-1954), Alan Turing a d'abord travaillé sur l'idée de calculabilité. Il montre que ce qui est calculable peut se décomposer en un nombre fini d'étapes, et peut de ce fait être réalisé par une machine. Il imagine à la fin des années 1930 un calculateur, mais celui-ci ne sera construit que 20 ans plus tard. Il imagine le moyen pour une machine de reproduire certaines action humaines : \&laquo; Je crois que dans une cinquantaine d’années il sera possible de pr&laquo;rammer des ordinateurs, avec une capacité de mémoire d’à peu près $10^9$, pour les faire si bien jouer au jeu de l’imitation qu’un interr&laquo;ateur moyen n’aura pas plus de 70 pour cent de chances de procéder à l’identification exacte après cinq minutes d’interr&laquo;ation.&raquo;
- }\\
- \parbox {0.6\linewidth}{
- Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du décodage de la machine Enigma utilisée par les Nazis. Il construit une machine, le Colossus Mark II, surnommée \&laquo; La bombe &raquo;, qui permet le déchiffrement rapide des messages allemands. Cette machine peut être considére comme le premier ordinateur électronique, mais elle était difficilement repr&laquo;rammable car il fallait recabler pour changer de pr&laquo;ramme.
- }\hfill\parbox{0.35\linewidth}{
-\begin{center}
- \includegraphics[width=0.9\linewidth]{Enigma_Bombe.png}
-\end{center}
-}
+![Babbage.jpg](Babbage.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Charles Babbage"}
 
-\subsection{De l'électronique à la micro-informatique}
+Au XIXème siècle, l'Empire Britannique est à son apogée et sa puissance repose sur sa force navale, aussi bien commerciale que militaire. Or à bord d'un navire la navigation se fait toujours aux étoile et par l'intermédiaire de cartes marines de plus en plus détaillées. Un navigateur à cette époque utilise quotidiennement des tables de navigations, qui ne sont rien d'autre que des tables de trigonométrie et de *logarithmes*. Et ces tables sont établiées et calculées à la main, et sont loin d'être exmptes d'erreurs de calcul. En 1833 - 1834, le mathématicien anglais Charles Babbage imagine une machine utilisant des cartes perforées qui permettrait d'effectuer des calculs scientifiques, la {==**machine analytique**==} (*Differential engine*). Cette machine ne sera jamais opérationnelle du vivant de Babbage.
+
+
+{==**Ada Lovelace**==} (1815 - 1852), est une mathématicienne anglaise. Travaillant avec Charles Babbage, elle imagine pouvoir faire jouer de la musique, afficher des chiffres et des lettres avec la machine analytique. Elle décrit, plus d'un siècle avant son invention, l'ordinateur : &laquo; La machine analytique n'a nullement la prétention de créer quelque chose par elle-même. Elle peut exécuter tout ce que nous saurons lui ordonner d'exécuter. Elle peut suivre une analyse ; mais elle n'a pas la faculté d'imaginer des relations analytiques ou des vérités. Son rôle est de nous aider à effectuer ce que nous savons déjà dominer. &raquo;
+ 
+![Ada.jpg](Ada.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Charles Babbage"}
+ 
+ 
+Vers 1842 elle écrit des algorithmes pour réaliser un programme informatique et toutes les instructions à donner à la machine, jusqu'aux positions des rouages. Elle invente le concept de boucle, et devient ainsi la première programmeuse.
+
+
+L'apparition de l'électricité comme source d'énergie va rapidement permettre le développement de moteurs  qui améliorent les machines à calculer. A la fin du XIXème siècle, Herman Holerith conçoit une machine utilisant des cartes perforées qui permet de simplifier le recensement de la population arrivant à New-York. Il fonde une société qui prendra rapidement le nom d'IBM. Les machines à calculer électromagnétiques se développent rapidement, et en parallèle les mathématiques pr&laquo;ressent à grand pas. 
+ 
+  
+
+![Turing.jpg](Turing.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Charles Babbage"}
+
+Mathématicien et cryptologue britannique (1912-1954), Alan Turing a d'abord travaillé sur l'idée de calculabilité. Il montre que ce qui est calculable peut se décomposer en un nombre fini d'étapes, et peut de ce fait être réalisé par une machine. Il imagine à la fin des années 1930 un calculateur, mais celui-ci ne sera construit que 20 ans plus tard. Il imagine le moyen pour une machine de reproduire certaines action humaines : &laquo; Je crois que dans une cinquantaine d’années il sera possible de programmer des ordinateurs, avec une capacité de mémoire d’à peu près $10^9$, pour les faire si bien jouer au jeu de l’imitation qu’un interrogateur moyen n’aura pas plus de 70 pour cent de chances de procéder à l’identification exacte après cinq minutes d’interrogation. &raquo;
+ 
+ 
+Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du décodage de la machine Enigma utilisée par les Nazis. Il construit une machine, le Colossus Mark II, surnommée \&laquo; La bombe &raquo;, qui permet le déchiffrement rapide des messages allemands. Cette machine peut être considére comme le premier ordinateur électronique, mais elle était difficilement repr&laquo;rammable car il fallait recabler pour changer de pr&laquo;ramme.
+
+
+![Enigma_Bombe.png](Enigma_Bombe.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Charles Babbage"}
+
+
+### De l'électronique à la micro-informatique
 
 \noindent\parbox{0.6\linewidth}{
 L'électronique nait de l'invention des tubes à vides au début du XXème siècle. La machine **Colossus**, créée entre \np{1943} et \np{1945} (mais dontl'existence ne fur révélée qu'en \np{1970}) utilisent ces tubes à vides.\\
@@ -113,7 +105,7 @@ ENIAC & 3 s\\
 PC moderne & <30 \mu s
 \end{tabular}
 \end{center}
-\noindent Entre \np{1944} et \np{1955}, six femmes, Kathleen Antonelli, Jean Bartik, Betty Holberton, Marlyn Meltzer, Frances Spence et Ruth Teitelbaum sont les premières personnes à pr&laquo;rammer l'ENIAC, pour un calcul balistique. Elles sont toutes mathématiciennes. Kathleen Antonelli et Frances Spence sont recrutées en 1942 par l’armée américaine pour calculer manuellement les trajectoires de tir. Marlyn Meltzer et Ruth Teitelbaum sont également calculatrices. Elles travaillent sur l'ENIAC à partir de 1944. Il s'agit d'identifier les différentes étapes du calcul et ensuite de câbler physiquement la machine. Ruth Teitelbaum, Frances Spence et Kathleen Antonelli poursuivirent leur travail sur l’Eniac lorsque celui-ci est transféré à Aberdeen en 1947.
+\noindent Entre \np{1944} et \np{1955}, six femmes, Kathleen Antonelli, Jean Bartik, Betty Holberton, Marlyn Meltzer, Frances Spence et Ruth Teitelbaum sont les premières personnes à programmer l'ENIAC, pour un calcul balistique. Elles sont toutes mathématiciennes. Kathleen Antonelli et Frances Spence sont recrutées en 1942 par l’armée américaine pour calculer manuellement les trajectoires de tir. Marlyn Meltzer et Ruth Teitelbaum sont également calculatrices. Elles travaillent sur l'ENIAC à partir de 1944. Il s'agit d'identifier les différentes étapes du calcul et ensuite de câbler physiquement la machine. Ruth Teitelbaum, Frances Spence et Kathleen Antonelli poursuivirent leur travail sur l’Eniac lorsque celui-ci est transféré à Aberdeen en 1947.
 
 
 \noindent Le transistor est inventé en \np{1947}, et il remplace rapidement les tubes à vides à partir du milieu des années \np{1950}, le coût de frabrication d'un transistor commençant à être plus faible que celui d'un tube à vide.\\
@@ -121,7 +113,7 @@ PC moderne & <30 \mu s
 
 \noindent Dès \np{1958} apparraisent les premiers circuits intégrés, et en \np{1971} le premier **microprocesseur** voit le jour : c'est *l'Intel 4001*. Les machines sont désormais miniaturisées, fiables, et leur coût de fabrication décroit fortement. L'informatique s'ouvre aux particuliers.
 \noindent De multiples machines sont commercialisées : l’Altair 8008, l’Apple II (1977), l’IBM PC (1981), le ZX 81 (1981), le commodore 64 (1982), le Macintosh (1984) ... Le **ZX 81** est considéré à son époque comme le premier ordinateur familial en kit en France, sa résolution et sa capacité mémoire (1 ko) ne permettait pas énormément de prouesses au niveau des jeux.
-\subsection{Langages Informatiques}
+### Langages Informatiques
 \noindent Les premiers ordinateurs exécutaient déjà du code binaire, et les premiers pr&laquo;rammes étaient écrits sur des cartes perforées, à la main, directement en code binaire. Ils étaient donc particulièrement longs à produire, et le risuqe d'erreur était grand.\\
 En \np{1954}, IBM développe le premier langage **assembleur**. Il sert d'intermédiaire entre l'algorithme (`pour i allant de ...`) et le langage machine (`001011001...`). C'est un langage de *très bas niveau* (proche de la machine, encore très complexe à comprendre par un humain).\\
 En parallèle, **Grâce Hopper** développe le premier compilateur pour le langage informatique **FORTRAN** d'IBM, et ce langage est finalisé en \np{1956}. Suivent ensuite les langages **LISP**(\np{1958}), **ALGOL**(\np{1958}), **COBOL**(\np{1959}) puis le **BASIC** en \np{1964}.\\
@@ -131,8 +123,8 @@ Puis de \np{1970} à \np{1980} : le **C** (\np{1972}), le **ML** (\np{1973}) don
 
 \noindent En \np{1989}, **Guido van Rossum** crée à partir de **C** le langage **Python**, qui devient le langage de script de référence. En \np{1995}, **Javascript** s'impose dans les navigateurs.
 %\pagebreak
-\section{L'architecture de von Neumann}
-\subsection{Le principe}
+## L'architecture de von Neumann
+### Le principe
 
 \noindent\parbox{0.6\linewidth}{ John Von Neumann (1903-1957) est un ingénieur, mathématicien et physicien  américano-hongrois.Il a participé au projet Manhattan (première bombe atomique) et à l'ENIAC. Son nom reste attaché à un modèle qu'il propose en 1944,  modèle d'architecture novateur qui sert toujours de base à nos architectures actuelles.\\
 Le modèle de von Neumann précise les 4 composants essentiels d'un microprocesseur ainsi que les interactions entre ces différents composants. Ces composants sont les suivants :
@@ -160,13 +152,13 @@ Le modèle de von Neumann précise les 4 composants essentiels d'un microprocess
 \item Les **bus** sont les liaisons entre les différents éléments de l'architecture (mémoire, ALU, E/S,...).
 \item L'**horl&laquo;e** est le cadenceur qui organise l'accomplissement des instructions, et dont l'unité est appelé *cycle*.
 \end{itemize}
-\subsection{Cadence d'un processeur}
+### Cadence d'un processeur
 \noindent La vitesse d'un processeur est exprimée en GigaHertz (GHz). Elle signifie le nombre d'opérations que peut faire le processeur en une seconde. Ainsi, un processeur à **3 GigaHerz** effectue **3 milliards d'opérations à la seconde**. \\
 \noindent L'augmentation de la fréquence d'horl&laquo;e a longtemps été un attendu des pr&laquo;rès de l'informatique, mais cette augmentation génère une chaleur très importante au niveau processeur. Depuis \np{2005} environ, les fabricants se sont plutôt tourné vers une augmentation du nombre de cœurs dans leurs processeurs, en comptant sur le *parallélisme* pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation de la vitesse, qui actuellement plafonne aux environs de $3,8$ GHz.
 \begin{center}
 \includegraphics[width=0.5\linewidth]{Frequence.png}
 \end{center}
-\subsection{Cycles d'instructions et parallélisme}
+### Cycles d'instructions et parallélisme
 \noindent Dans un processeur, 5 étapes sont nécessaires pour traiter une instruction. Chacune de ces 5 étapes est exécutée :
 \begin{enumerate}
 \item **IF** (*Instruction Fetch*) : charge l'instruction à exécuter ;
@@ -186,7 +178,7 @@ Le modèle de von Neumann précise les 4 composants essentiels d'un microprocess
 \end{center}
 \noindent Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités, et les 5
 opérations ont lieu en même temps. .
-\subsection{L'évolution du modèle de von Neumann}
+### L'évolution du modèle de von Neumann
 \noindent Même si le modèle de von Neumann reste d'actualité, il a subi quelques évolutions récemment :
 \begin{center}
 \includegraphics[width=0.5\linewidth]{Evolution_von_Neumann.png}
@@ -235,8 +227,8 @@ Intel Core I7 LGA1156, \np{2009}\\
 12 Mo de cache L3 
 \end{center}
 }
-\section{Les mémoires informatiques}
-\subsection{La hiérarchie des mémoires}
+## Les mémoires informatiques
+### La hiérarchie des mémoires
 \noindent\parbox{0.45\linewidth}{
 \begin{center}
 \includegraphics[width=0.9\linewidth]{Hierarchie_Memoires.png}
@@ -272,7 +264,7 @@ SSD & 500 Mo & 600 Mo/s \\
 \hline 
 \end{tabular} 
 \end{center}
-\subsection{Random Access Memory}
+### Random Access Memory
 \noindent La mémoire RAM (*random Access Memory*, aussi appelée *mémoire vive*, est un type de mémoire **volatile**, ce qui signifie qu'elle perd toutes les données en mémoire une fois l'alimentation électrique coupée. Elles est caractérisée par un accès direct aux donnée, contrairement à un disque dure où l'accès se fait de manière séquentielle. On distingue deux principaux types de mémoire RAM :
 \coche
 \begin{itemize}
@@ -285,12 +277,13 @@ On trouve parfois la mémoire ECC (*Error Correcting Code*, pour code correcteur
 
 Les technol&laquo;ies de mémoire continuent d'évoluer. La génération de mémoire suivante, la DDR2, fonctionne à des vitesses supérieures et consomme moins d'énergie que la DDR originale. La DDR3 et la DDR4 ont également suivi cette tendance. Chaque génération successive est plus rapide et consomme moins d’électricité.
 
-\subsection{Read-Only Memory}
+### Read-Only Memory
 \noindent Originellement, l'expression *mémoire morte* (en anglais, *Read-Only Memory* : ROM) désignait une mémoire informatique non volatile (c'est-à-dire une mémoire qui ne s'efface pas lorsque l'appareil qui la contient n'est plus alimenté en électricité) et dont le contenu est fixé lors de sa pr&laquo;rammation, qui pouvait être lue plusieurs fois par l'utilisateur, mais ne pouvait plus être modifiée.\\
 
 \noindent Avec l'évolution des technol&laquo;ies, la définition du terme mémoire morte (en français) ou read only memory (en anglais) a été élargie pour inclure les mémoires non volatiles dont le contenu est fixé lors de leur fabrication, qui peuvent être lues plusieurs fois par l'utilisateur et qui ne sont pas prévues pour être modifiées. Elles peuvent parfois cependant l'être par un utilisateur expérimenté, éventuellement avec un matériel spécial. Ces mémoires sont les UVPROM, les PROM, les EPROM et les EEPROM. 
-\section{TP : pr&laquo;rammer en assembleur}
-\subsection{L'assembleur, késako ?}
+## TP : programmer en assembleur
+
+### L'assembleur, késako ?
 \noindent Un pr&laquo;ramme écrit dans un langage de **haut niveau** (comme Python) éloigné du **langage machine** (dit de bas niveau) dépend le moins possible du processeur et du système d'exploitation.\\
 \noindent Si on ouvre un fichier exécutable avec un éditeur (hexadécimal), on obtient :
 \begin{verbatim}
@@ -311,7 +304,7 @@ des registres $R1$ et $R2$.\\
 
 
 \noindent En pratique, un langage de haut niveau est compilé en assembleur puis directement codé en binaire pur. La plupart des pr&laquo;rammeuses et pr&laquo;rammeur ne touchent jamais à l'assembleur, sauf dans des cas très précis où il est nécessaire d'être au plus près de la machine. Mais pour comprendre le fonctionnement d'un processeur, il est quand même important d'avoir quelques notions...
-\subsection{Le M99, un ordinateur en papier}
+### Le M99, un ordinateur en papier
 *D'après le travail de Martin Quinson, ENS-Rennes*\\
 Le M99 est dote de 100 cases mémoire (la grille en haut), et d'un processeur (en bas).La **mémoire** est composée de 100 mots mémoire de 3 chiffres (valeur de 000 à 999). Chaque mot mémoire peut être désigné par une adresse codée sur deux chiffres. Cette mémoire va contenir *données et instructions*.\\
 
@@ -342,7 +335,7 @@ Ainsi on a les codes suivants:
 \end{ExerciceNomme}
 
 
-\subsection{Utilisation d'un simulateur RISC}
+### Utilisation d'un simulateur RISC
 *D'après le travail de David Roche, \url{https://pixees.fr/informatiquelycee/n_site/nsi_prem_sim_cpu.html*}\\
  Afin de mettre en pratique ce que nous avons étudié dans le cours "Modèle d'architecture de von Neumann", nous allons utiliser un simulateur développé par Peter L Higginson. Ce simulateur est basé sur une architecture de von Neumann. Nous allons trouver dans ce simulateur une RAM et un CPU.
 
