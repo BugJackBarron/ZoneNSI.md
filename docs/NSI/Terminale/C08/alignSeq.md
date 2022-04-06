@@ -84,7 +84,7 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 			
 		3. On termine alors de compléter le tableau :
 			
-			![tabAlign_Cas_2_2.png](tabAlign_Cas_2_2.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+			![tabAlignComplet.png](tabAlignComplet.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 		
 ### Application en Python
 
