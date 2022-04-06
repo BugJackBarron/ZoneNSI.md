@@ -52,16 +52,39 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 		
 		1. Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de `R` et de `-` doit contenir le nombre minimal de tirets nécessaire pour aligner `ENOR` avec une chaîne vide, c'est-à-dire 4.
 		
-			![tabAlign_Cas_Base.png](tabAlign_Cas_Base.png){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+			![tabAlign_Cas_Base.png](tabAlign_Cas_Base.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 			
 		2. Pour compléter ensuite le reste du tableau, il faut concevoir deux cas différents :
 			1. Soit la case correspond aux deux même lettres, comme dans l'exemple ci-dessous :
 			
-				![tabAlign_Cas_1.png](tabAlign_Cas_1.png){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+				![tabAlign_Cas_1.png](tabAlign_Cas_1.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 				
 				Le meilleur alignement de `ENO` et de `GENO` contient autant de tirets que le meilleur alignement de `EN` et de `GEN`, donc ici 1.
 				
-			2. Soit
+			2. Soit les deux lettre sont différentes, et on peut considérer deux situations :
+			
+				<div style="display:flex;">
+				<div style="display : inline; width : 50%;">
+				
+				![tabAlign_Cas_2_1.png](tabAlign_Cas_2_1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+				
+				On considère la case comme étant une *évolution* de l'alignement de `ENO` et `GE`, qui contenait 3 tirets, vers l'alignement de `ENO` et `GEN`, qui en contiendra donc **un de plus**, soit 4.
+				
+				</div>
+				<div style="display : inline; width : 50%;">
+				
+				![tabAlign_Cas_2_2.png](tabAlign_Cas_2_2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+				
+				On considère la case comme étant une *évolution* de l'alignement de `EN` et `GEN`, qui contenait 1 unique tiret, vers l'alignement de `ENO` et `GEN`, qui en contiendra donc **un de plus**, soit 2.
+				
+				</div>
+				</div>
+		
+			Comme nous cherchons un alignement minimisant le nombre de tirets, on va alors compléter la case avec la valeur 2, provenant de la situation de droite ci-dessus.
+			
+		3. On termine alors de compléter le tableau :
+			
+			![tabAlign_Cas_2_2.png](tabAlign_Cas_2_2.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 		
 ### Application en Python
 
