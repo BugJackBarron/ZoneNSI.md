@@ -88,12 +88,13 @@ Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du 
 
 ### De l'électronique à la micro-informatique
 
-\noindent\parbox{0.6\linewidth}{
-L'électronique nait de l'invention des tubes à vides au début du XXème siècle. La machine **Colossus**, créée entre \np{1943} et \np{1945} (mais dontl'existence ne fur révélée qu'en \np{1970}) utilisent ces tubes à vides.\\
-L'ENIAC est créé en \np{1944} d'une idée de John William Mauchly, aidé pour la résolution des problèmes d'ingénierie  par J. Presper Eckert. Il sert à calculer des trajectoires balistiques, et est financé par l'armée américaine, pour un coût important, les tubes à vides ayant une facheuse tendance à voir leur durée de vie fortement limitée. L'ENIAC est surtout connu pour son côté colossal : 30 tonnes, $167 ~m^2$ de surface au sol. 
-}\hfill\parbox{0.35\linewidth}{
-\includegraphics[width=0.9\linewidth]{ENIAC.png}
-}\\
+L'électronique nait de l'invention des {==**tubes à vides**==} au début du XXème siècle. La machine **Colossus**, créée entre 1943 et 1945 (mais dont l'existence ne fur révélée qu'en 1970) utilise ces tubes à vides.
+
+L'ENIAC est créé en 1944 d'une idée de John William Mauchly, aidé pour la résolution des problèmes d'ingénierie  par J. Presper Eckert. Il sert à calculer des trajectoires balistiques, et est financé par l'armée américaine, pour un coût important, les tubes à vides ayant une facheuse tendance à voir leur durée de vie fortement limitée. L'ENIAC est surtout connu pour son côté colossal : 30 tonnes, $167 ~m^2$ de surface au sol. 
+
+![ENIAC.png](ENIAC.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Charles Babbage"}
+
+
 Il est cependant d'un grand secours pour les calculs balistiques dont les calculs sont fastidieux. Par exemple voici le temps de calcul pour uene table de tir :
 \begin{center}
 \begin{tabular}{ll}
