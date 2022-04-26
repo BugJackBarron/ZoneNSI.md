@@ -1,4 +1,4 @@
-# Les graphes
+# Les graphes : définitions et vocabulaire
 
 !!! info "Problème des sept ponts de Königsberg"
 
@@ -13,9 +13,9 @@
 	
 
 
-## Définitions et vocabulaire
 
-### Graphes orientés et non-orientés
+
+## Graphes orientés et non-orientés
 
 !!! abstract "Graphe non oriernté et vocabulaire"
 
@@ -177,9 +177,9 @@
 		A venir !
 
 
-### Hors programme : le langage `dot`
+## Hors programme : le langage `dot`
 
-Il existe un ensemble d'outils informatiques spécialement dédiés à la création de graphes : `GraphViz`. Il en existe de nombreuses versions, mais vous pouvez en trouver une version en ligne [ici](https://bit.ly/3EQVblQ){: target="_blank"}, avec le graphe de l'exemple précédent comme exemple d'utilisation du langage.
+Il existe un ensemble d'outils informatiques spécialement dédiés à la création de graphes : `GraphViz`. Il en existe de nombreuses versions, mais vous pouvez en trouver une version en ligne [ici](https://bit.ly/3MmwQqu){: target="_blank"}, avec le graphe de l'exemple précédent comme exemple d'utilisation du langage.
 
 !!! question "pour s'amuser un peu"
 
@@ -195,7 +195,26 @@ Il existe un ensemble d'outils informatiques spécialement dédiés à la créat
 		La solution [ici](https://bit.ly/38nqxUI){: target="_blank"}
 		
 
-### Chemins et cycles
+## Graphes pondérés
+
+
+Parfois il est nécessaire d'associer une valeur aux arcs/arêtes d'un graphe (orienté ou non). On parle alors d'ajouter une {==**pondération**==}, et de {==**graphes pondérés**==}.
+
+Nous avons déjà rencontré ces graphes par exemple dans la partie routage, où les liaisons entre routeurs possèdent :
+
+* soit une distance ;
+* soit une vitesse;
+
+Les valeurs de pondérations sont données directement à côté des arcs/arêtes sur le graphe.
+
+!!! exemple "Exemple"
+
+	Le graphe pondéré suivant représente les distances routières minimales entre les villes de Paris (`P`), Lyon (`L`), Marseille (`M`), Nantes (`N`), Bordeaux (`B`) et Toulouse (`T`).
+	
+	![Routes.png](Routes.png){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe pondérés"}
+
+
+## Chemins et cycles
 
 !!! abstract "Chemins et cycles"
 	Dans un graphe donné, une {==**chaîne**==} (graphe non-orienté) ou un {==**chemin**==} (graphe orienté) reliant un sommet $u$ à un sommet $v$ est une séquence finie de sommets reliés deux à deux par des arcs/arêtes et menant de $u$ à $v$.
@@ -233,7 +252,7 @@ Il existe un ensemble d'outils informatiques spécialement dédiés à la créat
 	* Le chemin `a -> b -> c -> d -> e` est de longueur 4.
 	* La distance entre `a` et `e` est 3 (par le chemin `a -> c -> d -> e`).
 	
-### Connexité
+## Connexité
 
 !!! abstract "Connexité"
 
@@ -252,17 +271,58 @@ Il existe un ensemble d'outils informatiques spécialement dédiés à la créat
 	* Il existe des définitions similaires pour les graphes orientés (faible connexité et forte connexité), mais elles dépassent le cadre du programme.
 	* Un arbre est un **graphe connexe acyclique**.
 
-### Graphes Eulériens
+## Graphes Eulériens
 
 !!! abstract "Chaîne/Chemin Eulérien"
 
 	Une {==**Chaîne/Chemin Eulérien(ne)**==} ou {==**Parcours Eulérien**==} est une chaîne/chemin qui passe une fois et une seule par chaque arête du graphe.
 	
+	Un {==**Cycle/Circuit Eulérien**==}, ou une {==**Tournée Eulérienne**==}, est un cycle qui parcoure toutes les arêtes/arcs du graphe une et une seule fois (en revenant au sommet initial)
 	
+!!! question "Trouver des Chemins Eulériens"
 
+	=== "Enoncé"
+		Pour chacun des graphes suivants, trouver lorsque c'est possible une chaîne eulérienne / un parcours eulérien ( ce qui revient à tracer le graphe sans lever le stylo, en ne passant qu'une et une seule fois par chaque arête) : 
+		
+		<div style="display:flex;">
+		<div style="display : inline; width : 20%;">
 
-## Modélisation en Python
+		![Euler_1.svg](Euler_1.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
 
+		</div>
+		<div style="display : inline; width : 20%;">
+
+		![Euler_2.svg](Euler_2.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+
+		</div>
+		<div style="display : inline; width : 20%;">
+
+		![Euler_3.svg](Euler_3.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+
+		</div>
+		<div style="display : inline; width : 20%;">
+
+		![Euler_4.svg](Euler_4.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+
+		</div>
+		<div style="display : inline; width : 20%;">
+
+		![Euler_5.svg](Euler_5.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+
+		</div>
+		</div>
+	
+	=== "Réponses"
+		A venir !
+		
+!!! abstract "Théorème d'Euler"
+
+	Pour un graphe non-orienté, le {==**théorème d'Euler**==} énonce :
+
+	* Un graphe connexe admet un **parcours eulérien** si et seulement si ses sommets sont tous de degré pair sauf au plus deux.
+	* Un graphe connexe admet un **circuit eulérien** si et seulement si tous ses sommets sont de degré pair.
+
+Que peut-on conclure alors pour le problème des ponts de Königsberg ?
 
 
 
