@@ -72,161 +72,196 @@
 !!! abstract "Voisinage"
 
 	Si il existe un arc d'un sommet $s$ à un sommet $t$, on dit que $t$ est **adjacent** à $s$, où que $t$ est un {==**voisin**==} de $s$.
+
+
+!!! example "Exemple"	
+	Dans le graphe ci-dessous :
+
+	![Graphe voisins](Voisins_graph.svg){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Voisinages"}
+
+	* `A` a pour voisins `B`, `C` et `D` ;
+	* `B` a pour voisins `B` et `C` ;
+	* `C` n'a aucun voisin ;
+	* `D` a pour voisin `A`.
 	
-Dans le graphe ci-dessous :
+!!! abtsract "Divers vocabulaire"	
 
-![Graphe voisins](Voisins_graph.svg){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Voisinages"}
-
-* `A` a pour voisins `B`, `C` et `D` ;
-* `B` a pour voisins `B` et `C` ;
-* `C` n'a aucun voisin ;
-* `D` a pour voisin `A`.
-	
-	
-\begin{definition}{Vocabulaire des graphes}
-\trianglenoir
- \begin{itemize}
-  \item Deux sommets sont dits \textbf{adjacents} si ils sont reli\'es par la m\^eme ar\^ete.
-  \item \textbf{L'ordre} d'un graphe est le nombre de sommets qui composent ce graphe.
-  \item Le \textbf{degr\'e d'un sommet} est le nombre d'ar\^etes dont ce sommet est une extr\'emit\'e.
-  \item On dira qu'un graphe est \textbf{complet} si tous ses sommets sont adjacents les uns avec les autres.
-  \item On dira qu'un sommet est \textbf{isol\'e} s'il n'est reli\'e a aucun autre sommet.
- \end{itemize}
-
-\end{definition}
-
-\begin{ExerciceNomme}{Aventuriers du rail}
- \noindent \og Les aventuriers du Rail \fg est un jeu de plateau qui a pour
-but de relier les gares de différentes villes sur une carte préexistante,
-pour ainsi créer son réseau ferroviaire au détriment des autres joueurs.\\
-\noindent\parbox{0.5\linewidth}{
-\includegraphics[width=0.9\linewidth]{SPE02_01_Rail.JPG}}\hfill
-\parbox{0.5\linewidth}{
-\includegraphics[width=0.9\linewidth]{SPE02_01_Rail_graphe.png}}
-
-\noindent Si l’on extrait une partie des liaisons ferroviaires, on obtient le graphe
-ci-dessus.
-\begin{enumerate}
-\item A quoi correspond chacun des sommets ? chaque arête ?
-\item Quel est l’ordre du graphe ?
-\item Quel est le degré de Paris ? de Rome ? de Marseille ?
-\item Comment peut-on interpréter les résultats de la question 3 ?
-\item Ce graphe est-il complet ?
-\end{enumerate}
-\end{ExerciceNomme}
-\begin{ExerciceNomme}{R\'egion Midi-Pyr\'en\'ees}
-\noindent On donne ci-dessous un extrait de la carte de la France administrative ( avant remaniement des r\'egions...). On s’intéresse à la
-région Midi-Pyrénées et aux huit départements qui la composent. On s'int\'eresse aux frontières communes entre les départements de
-cette région.\\
-\begin{center}
- \includegraphics[width=0.75\linewidth]{SPE02_01_Midi_Pyrenees.png}
-\end{center}
-
-\begin{enumerate}
- \item   Représenter cette carte par un graphe mettant en évidence ce découpage.
- \item A quoi correspond chacun des sommets ? chaque arête ?
- \item Quel est l’ordre du graphe ?
- \item Ce graphe est-il complet ?
- \item Déterminer le degré de chaque sommet.
-\end{enumerate}
-\end{ExerciceNomme}
-\begin{Activite}{Une conjecture}
-\begin{enumerate}
- \item On considère l’échiquier $3 \times 3$ ci-dessous dans lequel on s’intéresse au déplacement du cavalier noir.
- \begin{center}
-  \includegraphics[width=0.15\linewidth]{SPE02_01_Echiquier.png}
- \end{center}
+	* {==**L'ordre**==} d'un graphe $G$ est le nombre de sommets qui composent ce graphe, et est noté $n = ord(G)$.
+	* La {==**taille**==} d'un graphe est le nombre d'arcs/arêtes qui le composent.
+	* Le {==**degré d'un sommet**==} est le nombre d'arêtes dont ce sommet est une extrémité.
+	* On dira qu'un graphe est {==**complet**==} si tous ses sommets sont adjacents les uns avec les autres.
+	* On dira qu'un sommet est {==**isolé**==} s'il n'est relié a aucun autre sommet.
+	* On parlera de **boucle** lorsqu'un arc ou une arêtea ses deux extrémités sur le meme sommet.
+	* Un graphe est **simple** lorsqu’ un graphe n’a aucune boucle et si deux arêtes ne relient jamais les mêmes paires de sommets.
+  
+!!! example "Exemple : graphe de recherche de texte"
  
-\begin{enumerate}
- \item Repr\'esenter par un graphe cet \'echiquier, les sommets \'etant les cases de l'\'echiquier, et les ar\^etes repr\'esentant les d\'eplacements
- possibles du cavalier.
- \item Quel est l'ordre de ce graphe ?
- \item Ce graphe est-il complet ?
- \item Que peut-on dire du sommet $b2$ ?
- \item Compl\'eter le tableau suivant :\\
- \begin{center}
-\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}\hline
-Sommet & a1 & a2 & a3 & b1 & b2 & b3 & c1 & c2 & c3\\\hline
-Degré &  &  &  &  &  &  &  &  & \\\hline
- \end{tabular}
- \item Calculer la somme des degr\'es des sommets ainsi que le nombre d'ar\^etes.
- \end{center}
-\end{enumerate}
-\item Pour chacun des graphes suivants, calculer la somme des degr\'es des sommets ainsi que le nombre d'ar\^etes, puis \'emettre une conjecture :
-\begin{center}
- \includegraphics[width=0.8\linewidth]{SPE02_01_Conjecture.png}
-\end{center}
-
- 
-\end{enumerate}
-
-
-\end{Activite}
-
-\begin{theoreme}{Lemme dit \og des poign\'ees de main\fg}
-La somme des degrés des sommets d’un graphe non orienté est égale \textbf{au double} du nombre d’arêtes du graphe. 
-\end{theoreme}
-\begin{preuve}
-\noindent  Lorsqu’on additionne les degrés des sommets, chaque arête est comptée deux fois, une fois pour chaque extrémité.
-\end{preuve}
-\begin{propriete}{Cons\'equence directe}
-\noindent Dans un graphe le nombre de sommets impairs est toujours pair.
-\end{propriete}
-\begin{preuve}
-D'apr\`es le lemme \og des poign\'ees de mains \fg, la somme des degr\'es est un nombre pair. Or si le nombre de sommets
-de degr\'e impair \'etait impair, alors cette somme serait impaire, ce qui est impossible.
-\end{preuve}
-\begin{definition}{Boucles et graphes simples}
- \trianglenoir
- \begin{itemize}
-  \item Une arête est une \textbf{boucle} lorsque ses deux extrémités sont confondues.
-  \item Un graphe est \textbf{simple} lorsqu’ un graphe n’a aucune boucle et si deux arêtes ne relient jamais les mêmes paires de
-  sommets.
- \end{itemize}
-\end{definition}
-\begin{exemples}
- \parbox{0.3\linewidth}{
- \begin{center}
-  \includegraphics[width=.9\linewidth]{SPE02_01_Graphe_Boucle.png}
- \end{center}
-
- }\hfill
- \parbox{0.6\linewidth}{
- Ce graphe comporte 4 sommets, c’est donc un graphe d’ordre 4.
- \trianglenoir
- \begin{itemize}
-\item Du sommet A partent 4 arrêtes. Le degré du sommet A est donc 4.
-\item Le degré du sommet B est 3, les deux ar\^etes \'etant compt\'ees s\'epar\'ement.
-\item Le degré du sommet C est 4, la boucle comptant pour deux ar\^etes.
-\item Le degré du sommet D est 1.
-\end{itemize}
-
- }
-\end{exemples}
-\begin{ExerciceNomme}{Poign\'ees de mains}
- \noindent Les vingt-quatre maires des vingt-quatre communes de l’île de la Réunion se sont donné rendez-vous lors de
-l’assemblée générale de l’Association des Maires du Département de la Réunion (AMDR). À cette occasion,
-chaque maire serre la main de tous les autres maires. Quel est le nombre de poignées de mains échangées ?
-
-\end{ExerciceNomme}	
+	On considère le graphe suivant :
+	
+	![Graphe Bob](AutomateBobGraph.svg){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Recherche Bob"}
+	
+	* Ce graphe est d'ordre 4 et de taille 6.
+	* Le noeud `2` est de degré 3
+	* Ce graphe n'est pas complet car le noeudd `fin` n'est pas pas relié à `0` et `1`.
+	* Il y a une boucle au noeud `0`, qui est donc d'ordre 5.
+	* Aucun sommet n'est isolé.
 	
 
+
+!!! question "Aventuriers du rail"
+
+	=== "Enoncé"
+		&laquo; Les aventuriers du Rail &raquo; est un jeu de plateau qui a pour but de relier les gares de différentes villes sur une carte préexistante, pour ainsi créer son réseau ferroviaire au détriment des autres joueurs. Il existe différentes versions du jeu, la carte ci-dessous étant la carte de la version Europe.
+
+		![Carte rail](Rail.JPG){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Les aventuriers du rail version Europe, Days of Wonder"}
+		
+		Une telle carte peut-être modélisée par un graphe. On en donne ci-dessous une partie en ayant extrait une partie des liaisons ferroviaires
+
+		![Graphe rail](Rail_graphe.png){: style="width:40%;margin:auto;display:block;background-color: #546d78;" title="Graphe Les aventuriers du rail version Europe, Days of Wonder"}
+
+		1. A quoi correspond chacun des sommets ? chaque arête ?
+		1. Quel est l’ordre du graphe ? Quelle est sa taille ?
+		1. Quel est le degré de Paris ? de Rome ? de Marseille ?
+		1. Comment peut-on interpréter les résultats de la question 3 ?
+		1. Ce graphe est-il complet ?
+		
+	=== "Réponses"
+		A venir !
+
+!!! question "Région Midi-Pyrénées"
+
+	=== "Enoncé"
+		On donne ci-dessous un extrait de la carte de la France administrative ( avant remaniement des régions...). On s’intéresse à la région Midi-Pyrénées et aux huit départements qui la composent. On s'intéresse aux frontières communes entre les départements de cette région.
+
+		![Midi_Pyrenees.png](Midi_Pyrenees.png){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="découpage départemental région Midi-Pyrénées"}
+		
+		1. Représenter cette carte par un graphe mettant en évidence ce découpage.
+		1. A quoi correspond chacun des sommets ? chaque arête ?
+		1. Quel est l’ordre du graphe ? sa taille ?
+		1. Ce graphe est-il complet ?
+		1. Déterminer le degré de chaque sommet.
+
+!!! question "Une conjecture su les graphes non-orientés"
+
+	=== "Enoncé"
+		1. On considère l’échiquier $3 \times 3$ ci-dessous dans lequel on s’intéresse au déplacement du cavalier noir.
 	
-### Chemins et cycles
+			![Echiquier.png](Echiquier.png){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Echiquier"}
+
+			1. Représenter par un graphe cet échiquier, les sommets étant les cases de l'échiquier, et les arêtes représentant les déplacementspossibles du cavalier.
+			1. Quel est l'ordre de ce graphe ?
+			1. Ce graphe est-il complet ?
+			1. Que peut-on dire du sommet $b2$ ?
+			1. Compléter le tableau des ordres des sommets du graphe.
+			1. Calculer la somme des degrés des sommets ainsi que le nombre d'arêtes.
+		2. Pour chacun des graphes suivants, calculer la somme des degrés des sommets ainsi que le nombre d'arêtes, puis émettre une conjecture :
+
+			![Conjecture.png](Conjecture.png){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Graphes simples"}
+			
+	=== "réponses"
+		A venir !
+		
+!!! abstract "Lemme dit &laquo; des poignées de main&raquo;"
+
+	=== "Théorème"
+		La somme des degrés des sommets d’un graphe non orienté est égale **au double** du nombre d’arêtes du graphe. 
+	=== "Preuve"
+		Lorsqu’on additionne les degrés des sommets, chaque arête est comptée deux fois, une fois pour chaque extrémité.
+
+!!! question "Les poignées de main"
+
+	=== "Enoncé"
+		 Les vingt-quatre maires des vingt-quatre communes de l’île de la Réunion se sont donné rendez-vous lors de l’assemblée générale de l’Association des Maires du Département de la Réunion (AMDR). À cette occasion, chaque maire serre la main de tous les autres maires. Quel est le nombre de poignées de mains échangées ?
+		 
+	=== "Solution"
+		A venir !
 
 
-###
-	
-
-	
-	
 ### Hors programme : le langage `dot`
 
-https://dreampuf.github.io/GraphvizOnline/#digraph%20G%20%7B%0A%0A%20%20subgraph%20cluster_0%20%7B%0A%20%20%20%20style%3Dfilled%3B%0A%20%20%20%20color%3Dlightgrey%3B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%2Ccolor%3Dwhite%5D%3B%0A%20%20%20%20a0%20-%3E%20a1%20-%3E%20a2%20-%3E%20a3%3B%0A%20%20%20%20label%20%3D%20%22process%20%231%22%3B%0A%20%20%7D%0A%0A%20%20subgraph%20cluster_1%20%7B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%5D%3B%0A%20%20%20%20b0%20-%3E%20b1%20-%3E%20b2%20-%3E%20b3%3B%0A%20%20%20%20label%20%3D%20%22process%20%232%22%3B%0A%20%20%20%20color%3Dblue%0A%20%20%7D%0A%20%20start%20-%3E%20a0%3B%0A%20%20start%20-%3E%20b0%3B%0A%20%20a1%20-%3E%20b3%3B%0A%20%20b2%20-%3E%20a3%3B%0A%20%20a3%20-%3E%20a0%3B%0A%20%20a3%20-%3E%20end%3B%0A%20%20b3%20-%3E%20end%3B%0A%0A%20%20start%20%5Bshape%3DMdiamond%5D%3B%0A%20%20end%20%5Bshape%3DMsquare%5D%3B%0A%7D
+Il existe un ensemble d'outils informatiques spécialement dédiés à la création de graphes : `GraphViz`. Il en existe de nombreuses versions, mais vous pouvez en trouver une version en ligne [ici](https://bit.ly/3EQVblQ){: target="_blank"}, avec le graphe de l'exemple précédent comme exemple d'utilisation du langage.
+
+!!! question "pour s'amuser un peu"
+
+	===  "Enoncé"
+	
+		Créer le graphe orienté suivant :
+		
+		* les sommets sont les nombres de 1 à 12 ;
+		* un arc existe entre `a` et `b` si et seulement si `a` est un multiple de `b`.
+		
+	=== "Réponse"
+		
+		La solution [ici](https://bit.ly/38nqxUI){: target="_blank"}
+		
+
+### Chemins et cycles
+
+!!! abstract "Chemins et cycles"
+	Dans un graphe donné, une {==**chaîne**==} (graphe non-orienté) ou un {==**chemin**==} (graphe orienté) reliant un sommet $u$ à un sommet $v$ est une séquence finie de sommets reliés deux à deux par des arcs/arêtes et menant de $u$ à $v$.
+	
+	Un chemin est dit **simple** s'il n'emprunte pas deux fois le même arc/arête, et **élémentaire** si il ne passe pas deux fois par le même sommet.
+	
+	Un chemin *simple* reliant  un sommet à lui même et contenant au moins un arc est appelé un {==**cycle**==}(graphe non-orienté) ou un {==**circuit**==}(graphe orienté).
+	
+!!! example "Exemple"
+
+	![DefChemins.svg](DefChemins.svg){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple chemins"}
+		
+	Sur le graphe ci-dessus, `a -> c -> d -> e` est un chemin de `a` à `e`, mais il n'est pas unique.
+	
+	On peut aussi avoir :
+	
+	* `a -> b -> c -> d -> e`
+	* `a -> c -> d -> b -> c -> d -> e`
+	* et tous les chemins empruntant plusieurs fois le cycle `b -> c -> d -> b`
+
+	Il n'existe par contre pas de chemins menant de `d` à `a`.
+	
+!!! abstract "Longueur d'un chemin et distance entre deux sommets"
+		
+	La **longueur d'un chemin** est définie comme étant le nombre d'arcs/arêtes composant ce chemin.
+	
+	La {==**distance**==} entre deux sommets est la **longueur du plus petit chemin** reliant ces deux sommets. Par convention la distance entre un sommet et lui-même est 0, et n'est pas définie s'il n'existe pas de chemins entre les deux sommets.
+	
+!!! example "Exemple"
+	
+	Dans le graphe précédent :
+	
+	![DefChemins.svg](DefChemins.svg){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple chemins"}
+	
+	* Le chemin `a -> b -> c -> d -> e` est de longueur 4.
+	* La distance entre `a` et `e` est 3 (par le chemin `a -> c -> d -> e`).
+	
+### Connexité
+
+!!! abstract "Connexité"
+
+	Un graphe *non-orienté* est dit {==**connexe**==} si il existe un chemin entre deux sommets quelconque du graphe (autrement dit il est en un seul morceau).
+	
+	Lorsqu'un graphe non-roienté est composé de plusieurs morceaux, on chaque morceau  est appelé une {==**composante connexe**==} du graphe.
+	
+!!! example "Exemple"
+	
+	![ExempleConnexite.svg](ExempleConnexite.svg){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple connexité"}
+	
+	Le graphe ci-dessus n'est pas connexe, mais possède deux composantes connexes : ${0;1;2;3;4}$ et ${5;6;7;8}$.
+	
+!!! warning
+
+	* Il existe des définitions similaires pour les graphes orientés (faible connexité et forte connexité), mais elles dépassent le cadre du programme.
+	* Un arbre est un **graphe connexe acyclique**.
+
+### Graphes Eulériens
+
+!!! abstract "Chaîne/Chemin Eulérien"
+
+	Une {==**Chaîne/Chemin Eulérien(ne)**==} ou {==**Parcours Eulérien**==} est une chaîne/chemin qui passe une fois et une seule par chaque arête du graphe.
+	
+	
 
 
-
-## Modélisation
+## Modélisation en Python
 
 
 
