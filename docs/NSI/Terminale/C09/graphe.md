@@ -179,7 +179,7 @@
 
 ## Hors programme : le langage `dot`
 
-Il existe un ensemble d'outils informatiques spécialement dédiés à la création de graphes : `GraphViz`. Il en existe de nombreuses versions, mais vous pouvez en trouver une version en ligne [ici](https://bit.ly/3MmwQqu){: target="_blank"}, avec le graphe de l'exemple précédent comme exemple d'utilisation du langage.
+Il existe un ensemble d'outils informatiques spécialement dédiés à la création de graphes : `GraphViz`. Il en existe de nombreuses versions, mais vous pouvez en trouver une version en ligne [ici](https://bit.ly/3EOF2x9){: target="_blank"}, avec le graphe de l'exemple précédent comme exemple d'utilisation du langage.
 
 !!! question "pour s'amuser un peu"
 

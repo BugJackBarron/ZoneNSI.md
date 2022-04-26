@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#les-graphes-definitions-et-vocabulaire" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2139,11 +2144,97 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Notion de Graphe
+          </a>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Notion de Graphe
       </a>
       
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graphes-orientes-et-non-orientes" class="md-nav__link">
+    Graphes orientés et non-orientés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hors-programme-le-langage-dot" class="md-nav__link">
+    Hors programme : le langage dot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphes-ponderes" class="md-nav__link">
+    Graphes pondérés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chemins-et-cycles" class="md-nav__link">
+    Chemins et cycles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connexite" class="md-nav__link">
+    Connexité
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphes-euleriens" class="md-nav__link">
+    Graphes Eulériens
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphe_python/" class="md-nav__link">
+        Les graphes en Python
+      </a>
     </li>
   
 
@@ -2471,9 +2562,299 @@
               
                 
                 
-                  <h1>Notion de Graphe</h1>
-                
-                
+                <h1 id="les-graphes-definitions-et-vocabulaire">Les graphes : définitions et vocabulaire</h1>
+<div class="admonition info">
+<p class="admonition-title">Problème des sept ponts de Königsberg</p>
+<p>La ville de Königsberg (aujourd'hui Kaliningrad) est construite autour de deux îles situées sur le Pregel et reliées entre elles par un pont. Six autres ponts relient les rives de la rivière à l'une ou l'autre des deux îles, comme représentés sur le plan ci-dessus. </p>
+<p><img alt="Koenigsberg.png" src="../Koenigsberg.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Le problème consiste à déterminer s'il existe ou non une promenade dans les rues de Königsberg permettant, à partir d'un point de départ au choix, de passer une et une seule fois par chaque pont, et de revenir à son point de départ, étant entendu qu'on ne peut traverser le Pregel qu'en passant sur les ponts. </p>
+<p>Le mathématicien <a href="https://fr.wikipedia.org/wiki/Leonhard_Euler" target="_blank">Leonhard Euler</a> donna la solution de ce problème en utilisant les prémices de ce qu'on appelera <mark class="critic"><strong>Théorie des graphes</strong></mark></p>
+</div>
+<h2 id="graphes-orientes-et-non-orientes">Graphes orientés et non-orientés</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Graphe non oriernté et vocabulaire</p>
+<p>Un Graphe <span class="arithmatex">\(G\)</span> est la donnée de d'un ensemble fini de <mark class="critic"><strong>noeuds</strong></mark>(<em>nodes</em> en anglais) ou <mark class="critic"><strong>sommets</strong></mark> (<em>vertices</em> en anglais) reliés entre eux par des liens (<em>edges</em> en anglais).</p>
+<p>Si les liens sont :</p>
+<ul>
+<li><mark class="critic"><strong>bidirectionnels</strong></mark> (on peut les emprunter dans les deux sens), le graphe sera alors appelé <mark class="critic"><strong>non-orienté</strong></mark>. On parlera alors de <strong>noeuds</strong> et les liens seront appelés <mark class="critic"><strong>arêtes</strong></mark>, et représentés par des <strong>segments</strong> ;</li>
+<li><mark class="critic"><strong>unidirectionnels</strong></mark> (on peut les emprunter dans un seul sens), le graphe sera alors appelé <mark class="critic"><strong>orienté</strong></mark>. On parlera alors de <strong>sommets</strong> et les liens seront appelés <mark class="critic"><strong>arcs</strong></mark>, et représentés par des <strong>flèches</strong>.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Graphe du problème des ponts de Königsberg</p>
+<p>Le graphe suivant est un représentatnt du problème des ponts de Königsberg :    </p>
+<p><img alt="Konigsberg.svg" src="../Konigsberg.svg" style="width:20%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg" /></p>
+<ul>
+<li>Les ponts pouvant être franchis dans les deux sens, le graphe est <strong>non-orienté</strong>.</li>
+<li>Les différentes zones (berges et iles) sont les sommets <span class="arithmatex">\(A, B, C, D\)</span> du graphe.</li>
+<li>les différents ponts sont les arêtes <span class="arithmatex">\(a, b, c, d, e, f, g\)</span>.</li>
+</ul>
+<p>On dira qu'il s'agit d'une représentation, car la forme du graphe n'est pas importante. Les dessins ci-dessous représentent le même graphe :</p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 33%;"></p>
+<p><img alt="Konigsberg2.svg" src="../Konigsberg2.svg" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg V2" /></p>
+<p></div>
+<div style="display : inline; width : 33%;"></p>
+<p><img alt="Konigsberg3.svg" src="../Konigsberg3.svg" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg V3" /></p>
+<p></div>
+<div style="display : inline; width : 33%;"></p>
+<p><img alt="Konigsberg4.svg" src="../Konigsberg4.svg" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg V4" /></p>
+<p></div>
+</div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Graphe d'état d'un procesus</p>
+<p>Dans le cours sur les processus, nous avons vu le schéma suivant :</p>
+<p><img alt="Etat processus" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Etat processus, image wikipedia" /></p>
+<ul>
+<li>Le graphe est <strong>orienté</strong></li>
+<li>Les différentes états sont les sommets <code>départ</code>, <code>Prêt</code>, <code>Elu</code>, <code>Bloqué</code> et <code>terminé</code>.</li>
+<li>les différentes transitions sont les arcs <code>Réveil</code>, <code>Election</code>, <code>Blocage</code>, <code>Déblocage</code> et <code>Fin</code>.</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Voisinage</p>
+<p>Si il existe un arc d'un sommet <span class="arithmatex">\(s\)</span> à un sommet <span class="arithmatex">\(t\)</span>, on dit que <span class="arithmatex">\(t\)</span> est <strong>adjacent</strong> à <span class="arithmatex">\(s\)</span>, où que <span class="arithmatex">\(t\)</span> est un <mark class="critic"><strong>voisin</strong></mark> de <span class="arithmatex">\(s\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p>Dans le graphe ci-dessous :</p>
+<p><img alt="Graphe voisins" src="../Voisins_graph.svg" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Voisinages" /></p>
+<ul>
+<li><code>A</code> a pour voisins <code>B</code>, <code>C</code> et <code>D</code> ;</li>
+<li><code>B</code> a pour voisins <code>B</code> et <code>C</code> ;</li>
+<li><code>C</code> n'a aucun voisin ;</li>
+<li><code>D</code> a pour voisin <code>A</code>.</li>
+</ul>
+</div>
+<div class="admonition abtsract">
+<p class="admonition-title">Divers vocabulaire</p>
+<ul>
+<li><mark class="critic"><strong>L'ordre</strong></mark> d'un graphe <span class="arithmatex">\(G\)</span> est le nombre de sommets qui composent ce graphe, et est noté <span class="arithmatex">\(n = ord(G)\)</span>.</li>
+<li>La <mark class="critic"><strong>taille</strong></mark> d'un graphe est le nombre d'arcs/arêtes qui le composent.</li>
+<li>Le <mark class="critic"><strong>degré d'un sommet</strong></mark> est le nombre d'arêtes dont ce sommet est une extrémité.</li>
+<li>On dira qu'un graphe est <mark class="critic"><strong>complet</strong></mark> si tous ses sommets sont adjacents les uns avec les autres.</li>
+<li>On dira qu'un sommet est <mark class="critic"><strong>isolé</strong></mark> s'il n'est relié a aucun autre sommet.</li>
+<li>On parlera de <strong>boucle</strong> lorsqu'un arc ou une arêtea ses deux extrémités sur le meme sommet.</li>
+<li>Un graphe est <strong>simple</strong> lorsqu’ un graphe n’a aucune boucle et si deux arêtes ne relient jamais les mêmes paires de sommets.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple : graphe de recherche de texte</p>
+<p>On considère le graphe suivant :</p>
+<p><img alt="Graphe Bob" src="../AutomateBobGraph.svg" style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Recherche Bob" /></p>
+<ul>
+<li>Ce graphe est d'ordre 4 et de taille 6.</li>
+<li>Le noeud <code>2</code> est de degré 3</li>
+<li>Ce graphe n'est pas complet car le noeudd <code>fin</code> n'est pas pas relié à <code>0</code> et <code>1</code>.</li>
+<li>Il y a une boucle au noeud <code>0</code>, qui est donc d'ordre 5.</li>
+<li>Aucun sommet n'est isolé.</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Aventuriers du rail</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<p>&laquo; Les aventuriers du Rail &raquo; est un jeu de plateau qui a pour but de relier les gares de différentes villes sur une carte préexistante, pour ainsi créer son réseau ferroviaire au détriment des autres joueurs. Il existe différentes versions du jeu, la carte ci-dessous étant la carte de la version Europe.</p>
+<p><img alt="Carte rail" src="../Rail.JPG" style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Les aventuriers du rail version Europe, Days of Wonder" /></p>
+<p>Une telle carte peut-être modélisée par un graphe. On en donne ci-dessous une partie en ayant extrait une partie des liaisons ferroviaires</p>
+<p><img alt="Graphe rail" src="../Rail_graphe.png" style="width:40%;margin:auto;display:block;background-color: #546d78;" title="Graphe Les aventuriers du rail version Europe, Days of Wonder" /></p>
+<ol>
+<li>A quoi correspond chacun des sommets ? chaque arête ?</li>
+<li>Quel est l’ordre du graphe ? Quelle est sa taille ?</li>
+<li>Quel est le degré de Paris ? de Rome ? de Marseille ?</li>
+<li>Comment peut-on interpréter les résultats de la question 3 ?</li>
+<li>Ce graphe est-il complet ?</li>
+</ol>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Réponses</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Région Midi-Pyrénées</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>On donne ci-dessous un extrait de la carte de la France administrative ( avant remaniement des régions...). On s’intéresse à la région Midi-Pyrénées et aux huit départements qui la composent. On s'intéresse aux frontières communes entre les départements de cette région.</p>
+<p><img alt="Midi_Pyrenees.png" src="../Midi_Pyrenees.png" style="width:60%;margin:auto;display:block;background-color: #546d78;" title="découpage départemental région Midi-Pyrénées" /></p>
+<ol>
+<li>Représenter cette carte par un graphe mettant en évidence ce découpage.</li>
+<li>A quoi correspond chacun des sommets ? chaque arête ?</li>
+<li>Quel est l’ordre du graphe ? sa taille ?</li>
+<li>Ce graphe est-il complet ?</li>
+<li>Déterminer le degré de chaque sommet.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Une conjecture su les graphes non-orientés</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>
+<p>On considère l’échiquier <span class="arithmatex">\(3 \times 3\)</span> ci-dessous dans lequel on s’intéresse au déplacement du cavalier noir.</p>
+<p><img alt="Echiquier.png" src="../Echiquier.png" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Echiquier" /></p>
+<ol>
+<li>Représenter par un graphe cet échiquier, les sommets étant les cases de l'échiquier, et les arêtes représentant les déplacementspossibles du cavalier.</li>
+<li>Quel est l'ordre de ce graphe ?</li>
+<li>Ce graphe est-il complet ?</li>
+<li>Que peut-on dire du sommet <span class="arithmatex">\(b2\)</span> ?</li>
+<li>Compléter le tableau des ordres des sommets du graphe.</li>
+<li>Calculer la somme des degrés des sommets ainsi que le nombre d'arêtes.</li>
+</ol>
+</li>
+<li>
+<p>Pour chacun des graphes suivants, calculer la somme des degrés des sommets ainsi que le nombre d'arêtes, puis émettre une conjecture :</p>
+<p><img alt="Conjecture.png" src="../Conjecture.png" style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Graphes simples" /></p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">réponses</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Lemme dit &laquo; des poignées de main&raquo;</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Théorème</label><div class="tabbed-content">
+<p>La somme des degrés des sommets d’un graphe non orienté est égale <strong>au double</strong> du nombre d’arêtes du graphe. </p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Preuve</label><div class="tabbed-content">
+<p>Lorsqu’on additionne les degrés des sommets, chaque arête est comptée deux fois, une fois pour chaque extrémité.</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Les poignées de main</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<p>Les vingt-quatre maires des vingt-quatre communes de l’île de la Réunion se sont donné rendez-vous lors de l’assemblée générale de l’Association des Maires du Département de la Réunion (AMDR). À cette occasion, chaque maire serre la main de tous les autres maires. Quel est le nombre de poignées de mains échangées ?</p>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Solution</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<h2 id="hors-programme-le-langage-dot">Hors programme : le langage <code>dot</code></h2>
+<p>Il existe un ensemble d'outils informatiques spécialement dédiés à la création de graphes : <code>GraphViz</code>. Il en existe de nombreuses versions, mais vous pouvez en trouver une version en ligne <a href="https://bit.ly/3EOF2x9" target="_blank">ici</a>, avec le graphe de l'exemple précédent comme exemple d'utilisation du langage.</p>
+<div class="admonition question">
+<p class="admonition-title">pour s'amuser un peu</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
+<p>Créer le graphe orienté suivant :</p>
+<ul>
+<li>les sommets sont les nombres de 1 à 12 ;</li>
+<li>un arc existe entre <code>a</code> et <code>b</code> si et seulement si <code>a</code> est un multiple de <code>b</code>.</li>
+</ul>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Réponse</label><div class="tabbed-content">
+<p>La solution <a href="https://bit.ly/38nqxUI" target="_blank">ici</a></p>
+</div>
+</div>
+</div>
+<h2 id="graphes-ponderes">Graphes pondérés</h2>
+<p>Parfois il est nécessaire d'associer une valeur aux arcs/arêtes d'un graphe (orienté ou non). On parle alors d'ajouter une <mark class="critic"><strong>pondération</strong></mark>, et de <mark class="critic"><strong>graphes pondérés</strong></mark>.</p>
+<p>Nous avons déjà rencontré ces graphes par exemple dans la partie routage, où les liaisons entre routeurs possèdent :</p>
+<ul>
+<li>soit une distance ;</li>
+<li>soit une vitesse;</li>
+</ul>
+<p>Les valeurs de pondérations sont données directement à côté des arcs/arêtes sur le graphe.</p>
+<div class="admonition exemple">
+<p class="admonition-title">Exemple</p>
+<p>Le graphe pondéré suivant représente les distances routières minimales entre les villes de Paris (<code>P</code>), Lyon (<code>L</code>), Marseille (<code>M</code>), Nantes (<code>N</code>), Bordeaux (<code>B</code>) et Toulouse (<code>T</code>).</p>
+<p><img alt="Routes.png" src="../Routes.png" style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe pondérés" /></p>
+</div>
+<h2 id="chemins-et-cycles">Chemins et cycles</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Chemins et cycles</p>
+<p>Dans un graphe donné, une <mark class="critic"><strong>chaîne</strong></mark> (graphe non-orienté) ou un <mark class="critic"><strong>chemin</strong></mark> (graphe orienté) reliant un sommet <span class="arithmatex">\(u\)</span> à un sommet <span class="arithmatex">\(v\)</span> est une séquence finie de sommets reliés deux à deux par des arcs/arêtes et menant de <span class="arithmatex">\(u\)</span> à <span class="arithmatex">\(v\)</span>.</p>
+<p>Un chemin est dit <strong>simple</strong> s'il n'emprunte pas deux fois le même arc/arête, et <strong>élémentaire</strong> si il ne passe pas deux fois par le même sommet.</p>
+<p>Un chemin <em>simple</em> reliant  un sommet à lui même et contenant au moins un arc est appelé un <mark class="critic"><strong>cycle</strong></mark>(graphe non-orienté) ou un <mark class="critic"><strong>circuit</strong></mark>(graphe orienté).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p><img alt="DefChemins.svg" src="../DefChemins.svg" style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple chemins" /></p>
+<p>Sur le graphe ci-dessus, <code>a -&gt; c -&gt; d -&gt; e</code> est un chemin de <code>a</code> à <code>e</code>, mais il n'est pas unique.</p>
+<p>On peut aussi avoir :</p>
+<ul>
+<li><code>a -&gt; b -&gt; c -&gt; d -&gt; e</code></li>
+<li><code>a -&gt; c -&gt; d -&gt; b -&gt; c -&gt; d -&gt; e</code></li>
+<li>et tous les chemins empruntant plusieurs fois le cycle <code>b -&gt; c -&gt; d -&gt; b</code></li>
+</ul>
+<p>Il n'existe par contre pas de chemins menant de <code>d</code> à <code>a</code>.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Longueur d'un chemin et distance entre deux sommets</p>
+<p>La <strong>longueur d'un chemin</strong> est définie comme étant le nombre d'arcs/arêtes composant ce chemin.</p>
+<p>La <mark class="critic"><strong>distance</strong></mark> entre deux sommets est la <strong>longueur du plus petit chemin</strong> reliant ces deux sommets. Par convention la distance entre un sommet et lui-même est 0, et n'est pas définie s'il n'existe pas de chemins entre les deux sommets.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p>Dans le graphe précédent :</p>
+<p><img alt="DefChemins.svg" src="../DefChemins.svg" style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple chemins" /></p>
+<ul>
+<li>Le chemin <code>a -&gt; b -&gt; c -&gt; d -&gt; e</code> est de longueur 4.</li>
+<li>La distance entre <code>a</code> et <code>e</code> est 3 (par le chemin <code>a -&gt; c -&gt; d -&gt; e</code>).</li>
+</ul>
+</div>
+<h2 id="connexite">Connexité</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Connexité</p>
+<p>Un graphe <em>non-orienté</em> est dit <mark class="critic"><strong>connexe</strong></mark> si il existe un chemin entre deux sommets quelconque du graphe (autrement dit il est en un seul morceau).</p>
+<p>Lorsqu'un graphe non-roienté est composé de plusieurs morceaux, on chaque morceau  est appelé une <mark class="critic"><strong>composante connexe</strong></mark> du graphe.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p><img alt="ExempleConnexite.svg" src="../ExempleConnexite.svg" style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple connexité" /></p>
+<p>Le graphe ci-dessus n'est pas connexe, mais possède deux composantes connexes : <span class="arithmatex">\({0;1;2;3;4}\)</span> et <span class="arithmatex">\({5;6;7;8}\)</span>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Il existe des définitions similaires pour les graphes orientés (faible connexité et forte connexité), mais elles dépassent le cadre du programme.</li>
+<li>Un arbre est un <strong>graphe connexe acyclique</strong>.</li>
+</ul>
+</div>
+<h2 id="graphes-euleriens">Graphes Eulériens</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Chaîne/Chemin Eulérien</p>
+<p>Une <mark class="critic"><strong>Chaîne/Chemin Eulérien(ne)</strong></mark> ou <mark class="critic"><strong>Parcours Eulérien</strong></mark> est une chaîne/chemin qui passe une fois et une seule par chaque arête du graphe.</p>
+<p>Un <mark class="critic"><strong>Cycle/Circuit Eulérien</strong></mark>, ou une <mark class="critic"><strong>Tournée Eulérienne</strong></mark>, est un cycle qui parcoure toutes les arêtes/arcs du graphe une et une seule fois (en revenant au sommet initial)</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Trouver des Chemins Eulériens</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Enoncé</label><div class="tabbed-content">
+<p>Pour chacun des graphes suivants, trouver lorsque c'est possible une chaîne eulérienne / un parcours eulérien ( ce qui revient à tracer le graphe sans lever le stylo, en ne passant qu'une et une seule fois par chaque arête) : </p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 20%;"></p>
+<p><img alt="Euler_1.svg" src="../Euler_1.svg" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 20%;"></p>
+<p><img alt="Euler_2.svg" src="../Euler_2.svg" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 20%;"></p>
+<p><img alt="Euler_3.svg" src="../Euler_3.svg" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 20%;"></p>
+<p><img alt="Euler_4.svg" src="../Euler_4.svg" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 20%;"></p>
+<p><img alt="Euler_5.svg" src="../Euler_5.svg" style="width:90%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+</div></p>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Réponses</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Théorème d'Euler</p>
+<p>Pour un graphe non-orienté, le <mark class="critic"><strong>théorème d'Euler</strong></mark> énonce :</p>
+<ul>
+<li>Un graphe connexe admet un <strong>parcours eulérien</strong> si et seulement si ses sommets sont tous de degré pair sauf au plus deux.</li>
+<li>Un graphe connexe admet un <strong>circuit eulérien</strong> si et seulement si tous ses sommets sont de degré pair.</li>
+</ul>
+</div>
+<p>Que peut-on conclure alors pour le problème des ponts de Königsberg ?</p>
                 
               
               
@@ -2514,13 +2895,13 @@
       
       
         
-        <a href="../parcours/" class="md-footer__link md-footer__link--next" aria-label="Next: Parcours de Graphes " rel="next">
+        <a href="../graphe_python/" class="md-footer__link md-footer__link--next" aria-label="Next: Les graphes en Python" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Parcours de Graphes 
+              Les graphes en Python
             </div>
           </div>
           <div class="md-footer__button md-icon">
