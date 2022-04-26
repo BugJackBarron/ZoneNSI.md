@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/IntroPOO/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2652,7 +2652,9 @@ Nous avons déjà rencontré un certain nombres d'objets prédéfinis dans Pytho
 <li>un objet de la classe <code>list</code> possède lui aussi une longueur, et ses propres <strong>méthodes</strong>
  comme  <code>append()</code>, <code>pop()</code>, etc...</li>
 </ul>
-<details class="warning"><summary>A lire quand vous avez fini la page !!!</summary><p>Je raconte n'importe quoi ci-dessus...</p>
+<details class="warning">
+<summary>A lire quand vous avez fini la page !!!</summary>
+<p>Je raconte n'importe quoi ci-dessus...</p>
 <p>Je voulais prendre l'exemple de la <strong>longueur</strong> comme étant un <strong>attribut</strong> des types <code>str</code> et <code>list</code>.</p>
 <p>En fait la valeur renvoyée par la fonction <em>built-in</em> <code>len()</code> correspond à celle calculée par le <strong>DUNDERS</strong> <code>__len__(self)</code>. Il ne s'agit donc pas réellement d'un attribut, mais du résultat renvoyé par une <strong>méthode</strong>. </p>
 <p>Comme quoi même après 30 ans de programmation on en apprend encore...</p>
@@ -2851,7 +2853,9 @@ Bonjour, je suis Bill, de niveau 1.J&#39;ai 34 en force, 10 en endurance, 20 en 
 de force du personnage auquel on ajoute un nombre aléatoire entre 1 et 20.</p>
 <p>Comment implémenter une telle méthode ?</p>
 </div>
-<details class="done"><summary>Une implémentation possible</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
+<details class="done">
+<summary>Une implémentation possible</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
 
 <span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>
@@ -2883,7 +2887,9 @@ niveau d'attaque, l'attaque a échouée et la méthode renvoie <code>True</code>
 de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie <code>False</code>.</p>
 <p>Comment implémenter une telle méthode ?</p>
 </div>
-<details class="done"><summary>Une implémentation possible</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
+<details class="done">
+<summary>Une implémentation possible</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
 
 <span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>
@@ -3023,7 +3029,9 @@ Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12en ra
 de bases (<code>force</code>, <code>endurance</code>, <code>rapidite</code> et <code>intelligence</code>).</p>
 <p>Redéfinir  la méthode DUNDERS <code>__eq__(self, u)</code> pour qu'elle corresponde à cette définition.</p>
 </div>
-<details class="done"><summary>Solution</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
+<details class="done">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> 
 
 <span class="k">class</span> <span class="nc">Personnage</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; une classe pour représenter un personnage générique du MMORPG &quot;&quot;&quot;</span>

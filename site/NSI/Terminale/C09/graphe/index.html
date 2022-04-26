@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C09/graphe/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2622,7 +2622,7 @@
 <p><img alt="Graphe voisins" src="../Voisins_graph.svg" style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Voisinages" /></p>
 <ul>
 <li><code>A</code> a pour voisins <code>B</code>, <code>C</code> et <code>D</code> ;</li>
-<li><code>B</code> a pour voisins <code>B</code> et <code>C</code> ;</li>
+<li><code>B</code> a pour voisins <code>D</code> et <code>C</code> ;</li>
 <li><code>C</code> n'a aucun voisin ;</li>
 <li><code>D</code> a pour voisin <code>A</code>.</li>
 </ul>
@@ -2635,7 +2635,7 @@
 <li>Le <mark class="critic"><strong>degré d'un sommet</strong></mark> est le nombre d'arêtes dont ce sommet est une extrémité.</li>
 <li>On dira qu'un graphe est <mark class="critic"><strong>complet</strong></mark> si tous ses sommets sont adjacents les uns avec les autres.</li>
 <li>On dira qu'un sommet est <mark class="critic"><strong>isolé</strong></mark> s'il n'est relié a aucun autre sommet.</li>
-<li>On parlera de <strong>boucle</strong> lorsqu'un arc ou une arêtea ses deux extrémités sur le meme sommet.</li>
+<li>On parlera de <mark class="critic"><strong>boucle</strong></mark> lorsqu'un arc ou une arête a ses deux extrémités sur le meme sommet.</li>
 <li>Un graphe est <strong>simple</strong> lorsqu’ un graphe n’a aucune boucle et si deux arêtes ne relient jamais les mêmes paires de sommets.</li>
 </ul>
 </div>
@@ -2644,10 +2644,10 @@
 <p>On considère le graphe suivant :</p>
 <p><img alt="Graphe Bob" src="../AutomateBobGraph.svg" style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Recherche Bob" /></p>
 <ul>
-<li>Ce graphe est d'ordre 4 et de taille 6.</li>
-<li>Le noeud <code>2</code> est de degré 3</li>
-<li>Ce graphe n'est pas complet car le noeudd <code>fin</code> n'est pas pas relié à <code>0</code> et <code>1</code>.</li>
-<li>Il y a une boucle au noeud <code>0</code>, qui est donc d'ordre 5.</li>
+<li>Ce graphe est d'ordre 4 et de taille 9.</li>
+<li>Le noeud <code>2</code> est de degré 4</li>
+<li>Ce graphe n'est pas complet car le noeud <code>2</code> n'est pas pas relié à <code>1</code>.</li>
+<li>Il y a une boucle au noeud <code>0</code>, qui est donc d'ordre 6.</li>
 <li>Aucun sommet n'est isolé.</li>
 </ul>
 </div>
@@ -2679,7 +2679,7 @@
 <ol>
 <li>Représenter cette carte par un graphe mettant en évidence ce découpage.</li>
 <li>A quoi correspond chacun des sommets ? chaque arête ?</li>
-<li>Quel est l’ordre du graphe ? sa taille ?</li>
+<li>Quel est l'ordre du graphe ? sa taille ?</li>
 <li>Ce graphe est-il complet ?</li>
 <li>Déterminer le degré de chaque sommet.</li>
 </ol>
@@ -2698,7 +2698,7 @@
 <li>Quel est l'ordre de ce graphe ?</li>
 <li>Ce graphe est-il complet ?</li>
 <li>Que peut-on dire du sommet <span class="arithmatex">\(b2\)</span> ?</li>
-<li>Compléter le tableau des ordres des sommets du graphe.</li>
+<li>Compléter le tableau des dégrés des sommets du graphe.</li>
 <li>Calculer la somme des degrés des sommets ainsi que le nombre d'arêtes.</li>
 </ol>
 </li>
@@ -2740,7 +2740,7 @@
 <div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
 <p>Créer le graphe orienté suivant :</p>
 <ul>
-<li>les sommets sont les nombres de 1 à 12 ;</li>
+<li>les sommets sont les nombres de 2 à 12 ;</li>
 <li>un arc existe entre <code>a</code> et <code>b</code> si et seulement si <code>a</code> est un multiple de <code>b</code>.</li>
 </ul>
 </div>

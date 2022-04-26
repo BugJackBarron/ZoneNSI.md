@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C09/graphe_python/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#modelisation-en-python" class="md-skip">
+        <a href="#modelisation-de-graphes-en-python" class="md-skip">
           Skip to content
         </a>
       
@@ -2158,6 +2158,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           <span class="md-nav__icon md-icon"></span>
@@ -2178,6 +2180,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2186,29 +2190,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modelisation-en-python" class="md-nav__link">
-    Modélisation en Python
-  </a>
-  
-    <nav class="md-nav" aria-label="Modélisation en Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#modelisation-par-une-matrice-dadjacence" class="md-nav__link">
-    Modélisation par une Matrice d'adjacence
+  <a href="#interface-dun-graphe" class="md-nav__link">
+    Interface d'un graphe
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#modelisation-par-un-dictionnaire" class="md-nav__link">
-    Modélisation par un dictionnaire
+      
+        <li class="md-nav__item">
+  <a href="#implementation-par-une-matrice-dadjacence" class="md-nav__link">
+    Implémentation par une Matrice d'adjacence
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-par-un-dictionnaire" class="md-nav__link">
+    Implémentation par un dictionnaire
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple-dutilisation" class="md-nav__link">
+    Exemple d'utilisation
+  </a>
   
 </li>
       
@@ -2543,12 +2548,182 @@
               
                 
                 
-                  <h1>Les graphes en Python</h1>
-                
-                <h2 id="modelisation-en-python">Modélisation en Python</h2>
-<h3 id="modelisation-par-une-matrice-dadjacence">Modélisation par une Matrice d'adjacence</h3>
-<p>Une des possibilités pour représenter</p>
-<h3 id="modelisation-par-un-dictionnaire">Modélisation par un dictionnaire</h3>
+                <h1 id="modelisation-de-graphes-en-python">Modélisation de graphes en Python</h1>
+<h2 id="interface-dun-graphe">Interface d'un graphe</h2>
+<p>Il existe de nombreuses manières d'<mark class="critic"><strong>implémenter</strong></mark> un graphe, mais dans de nombreux cas l'<mark class="critic"><strong>interface</strong></mark> recherchée est  assez simple à concevoir. A ce titre l'utilisation d'une classe semble être judicieuse. Afin de définir l'interface choisie nous devons d'abord considérér les spécifications minimales de la création d'un graphe, orienté ou non, et éventuellement pondéré :</p>
+<ol>
+<li>Obtenir un graphe vide par une méthode constructeur</li>
+<li>Etre capable d'ajouter un noeud/sommet à un graphe existant.</li>
+<li>Etre capable d'ajouter des arêtes/arcs à un graphe existant, avec <em>une éventuelle pondération</em>.</li>
+<li>Obtenir la liste des voisins d'un sommet.</li>
+</ol>
+<p>Une fois ces opérations élémentaires implémentées, nous pourrons rajouter des possibilités supplémentaires, comme par exemple</p>
+<ul>
+<li>obtenir l'ordre du graphe, sa taille ;</li>
+<li>obtenir donc le degré d'un sommet ;</li>
+<li>savoir si il existe un parcours eulérien ou un cycle eulérien dans ce graphe ;</li>
+<li>parcourir ce graphe en partant d'un sommet donné ;</li>
+<li>repérer les éventuels cycles du graphe ;</li>
+<li>appliquer un algorithme spécifique, comem celui de Dijkstra par exemple.</li>
+</ul>
+<p>Pour commencer, nous allons donc définir une classe <code>Graph</code>, dont l'interface minimale sera la suivante (des ajustements seront possibles selon si le graphe est orienté ou non, pondéré ou non) :</p>
+<table>
+<thead>
+<tr>
+<th align="left">Méthode</th>
+<th align="center">Arguments</th>
+<th align="center">Valeur de retour</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>__init__</code></td>
+<td align="center">aucun ou  ordre <code>n</code> du graphe</td>
+<td align="center">aucune</td>
+<td align="left">Crée un graphe vide, d'ordre <code>n</code>b si nécessaire</td>
+</tr>
+<tr>
+<td align="left"><code>add_vertice</code></td>
+<td align="center">aucun ou <code>label</code> du  sommet</td>
+<td align="center">aucune</td>
+<td align="left">Ajoute un sommet d'étiquette <code>label</code> si nécesaire</td>
+</tr>
+<tr>
+<td align="left"><code>add_edge</code></td>
+<td align="center"><code>s</code> et <code>e</code>, <code>p</code> éventuellement</td>
+<td align="center">aucune</td>
+<td align="left">Ajoute un arc allant de <code>s</code> à <code>e</code>, avec la pondération <code>p</code> si nécessaire</td>
+</tr>
+<tr>
+<td align="left"><code>exist_edge</code></td>
+<td align="center"><code>s</code> et <code>e</code></td>
+<td align="center">booléen</td>
+<td align="left">Renvoie <code>True</code> si il existe un arc entre <code>s</code> et <code>e</code></td>
+</tr>
+<tr>
+<td align="left"><code>get_neighbours</code></td>
+<td align="center"><code>s</code></td>
+<td align="center">itérable</td>
+<td align="left">renvoie un <em>itérable</em> contenant les voisins de <code>s</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-par-une-matrice-dadjacence">Implémentation par une Matrice d'adjacence</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Matrice d'adjacence</p>
+<p>Une des possibilités pour représenter un graphe est d'utiliser ce qu'on appelle une <mark class="critic"><strong>matrice d'adjacence</strong></mark>. Dans ce type de représentation, les sommets sont <strong>ordonnés</strong>, et considérés comme étiquetés par des entiers de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(n-1\)</span>, où <span class="arithmatex">\(n\)</span> est l'ordre du graphe.</p>
+<p>Dans cette représentation, le coefficient <span class="arithmatex">\(a_{i~j}\)</span> de la matrice vaut :</p>
+<ul>
+<li><span class="arithmatex">\(0\)</span> si il n'existe pas d'arc entre les sommets <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(j\)</span> ;</li>
+<li><span class="arithmatex">\(1\)</span> ou la pondération <span class="arithmatex">\(p\)</span> si il existe un arc entre les sommets <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(j\)</span>.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemples</p>
+<ul>
+<li>
+<p>la matrice d'adjacence  <span class="arithmatex">\(M = \begin{pmatrix}
+    0 &amp; 1 &amp; 0 &amp; 1\\
+    0 &amp; 0 &amp; 1 &amp; 1\\
+    0 &amp; 1 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 1 &amp; 0
+    \end{pmatrix}\)</span>      correspond au graphe suivant, avec les sommets dans l'ordre numérique  <img alt="Matrice1.svg" src="../Matrice1.svg" style="width:10%;background-color: #546d78;" /></p>
+</li>
+<li>
+<p>la matrice d'adjacence  <span class="arithmatex">\(M =  \begin{pmatrix}
+    0 &amp; 1 &amp; 1 \\
+    1 &amp; 0 &amp; 1 \\
+    1 &amp; 1 &amp; 0 
+    \end{pmatrix}\)</span> correspond au graphe suivant, avec les sommets dans l'ordre numérique <img alt="Matrice2.svg" src="../Matrice2.svg" style="width:10%;background-color: #546d78;" /></p>
+</li>
+<li>
+<p>la matrice d'adjacence <span class="arithmatex">\(M = \begin{pmatrix}
+    0 &amp; 10 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; 20 &amp; 0 \\
+    40 &amp; 0 &amp; 0 &amp; 30 \\
+    5 &amp; 0 &amp; 0 &amp; 0
+    \end{pmatrix}\)</span> correspond au graphe suivant, avec les sommets dans l'ordre <em>alphabétique</em> <img alt="Matrice3.svg" src="../Matrice3.svg" style="width:10%;background-color: #546d78;" /></p>
+</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Associer Matrices d'adjacence et graphes</p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Enoncé</label><div class="tabbed-content">
+<ol>
+<li>Déterminer la matrice d'adjacence associée à ce graphe <img alt="Matrice4.svg" src="../Matrice4.svg" style="width:15%;background-color: #546d78;" /></li>
+<li>Déterminer la matrice d'adjacence associée à ce graphe <img alt="Matrice5.svg" src="../Matrice5.svg" style="width:15%;background-color: #546d78;" /></li>
+<li>Déterminer la matrice d'adjacence associée à ce graphe <img alt="Matrice6.svg" src="../Matrice6.svg" style="width:15%;background-color: #546d78;" /></li>
+<li>Déterminer la matrice d'adjacence associée à ce graphe <img alt="Matrice7.svg" src="../Matrice7.svg" style="width:30%;background-color: #546d78;" />        </li>
+<li>Tracer un graphe pouvant correspondre à la matrice <span class="arithmatex">\(\begin{pmatrix}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 1 \\
+\end{pmatrix}\)</span> Est-ce un graphe orienté ou non-orienté ?</li>
+<li>Tracer un graphe pouvant correspondre à la matrice <span class="arithmatex">\(\begin{pmatrix}
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 
+\end{pmatrix}\)</span>. Est-ce un graphe orienté ou non-orienté ?</li>
+<li>Tracer un graphe pouvant correspondre à la matrice <span class="arithmatex">\(\begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+10 &amp; 20 &amp; 30 \\
+100 &amp; 200 &amp; 300 \\
+\end{pmatrix}\)</span> Est-ce un graphe orienté ou non-orienté ?</li>
+<li>Quelle propriété semble posséder les matrices d'adjacence d'un graphe non-orienté ?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Implémentation en Python</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Enoncé</label><div class="tabbed-content">
+<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec une matrice d'adjacence :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Graph</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+=</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="p">:</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>          
+</code></pre></div>
+<ol>
+<li>Compléter la <em>méthode</em>  <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Compléter la <em>méthode</em>  <code>get_neighbours</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Ajouter une méthode <code>get_order</code> à la classe <code>Graph</code> pour qu'elle renvoie l'ordre du graphe.</li>
+<li>Ajouter une méthode <code>get_degree</code> à la classe <code>Graph</code> pour qu'elle renvoie le degré d'un sommet passé en argument.</li>
+<li>Ajouter une méthode <code>is_directed</code> à la classe <code>Graph</code> pour qu'elle renvoie <code>True</code> si le graphe est orienté et <code>False</code> sinon.</li>
+<li>Ajouter une méthode <code>is_undirected_and_eulerian</code> qui renvoie :<ul>
+<li><code>False</code> si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe</li>
+<li><code>True</code> si le graphe est non-orienté et qu'il existe un cycle eulérien.</li>
+<li>un tuple <code>(s,e)</code> donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.</li>
+</ul>
+</li>
+<li>Ajouter une méthode <code>delete_edge</code> à la classe <code>Graph</code> pour qu'elle supprime l'arc situé entre les sommets <code>s</code> et <code>e</code> passés en argument.</li>
+<li>Ajouter une méthode DUNDERS <code>__repr__</code> afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction <code>print(G)</code>).</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Limites du modèle</p>
+<p>Si l'utilisation d'une matrice d'adjacence sous la forme présentée est très utile d'un point de vue mathématique (voir par exemple la propriété de l'itérée sur la page <a href="https://fr.wikipedia.org/wiki/Matrice_d%27adjacence" target="_blank">wikipedia</a>), et très facile à mettre en oeuvre, elle possède néanmoins ceryaines limites :</p>
+<ul>
+<li>Elle utilise une place en mémoire proportionnelle à <span class="arithmatex">\(n^2\)</span>. Pour un graphe de 1000 sommets, il faudra plus d'un million d'entiers pour stocker cette matrice d'adjacence, ce qui commence à être considérable;</li>
+<li>Pour connaître les voisins d'un sommet, il faut parcourir la totalité de la lign,e correspondant à ce sommet, ce qui peut rapidement être trop long   .</li>
+<li>Les sommets sont limités à des entiers, ou à un ordre défini, et il est difficile d'intégrer de nouveau sommets qui ne respecteraient pas la convention fixée.</li>
+</ul>
+</div>
+<h2 id="implementation-par-un-dictionnaire">Implémentation par un dictionnaire</h2>
+<h2 id="exemple-dutilisation">Exemple d'utilisation</h2>
                 
               
               
