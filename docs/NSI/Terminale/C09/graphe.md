@@ -80,7 +80,7 @@
 	![Graphe voisins](Voisins_graph.svg){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Voisinages"}
 
 	* `A` a pour voisins `B`, `C` et `D` ;
-	* `B` a pour voisins `B` et `C` ;
+	* `B` a pour voisins `D` et `C` ;
 	* `C` n'a aucun voisin ;
 	* `D` a pour voisin `A`.
 	
@@ -91,7 +91,7 @@
 	* Le {==**degré d'un sommet**==} est le nombre d'arêtes dont ce sommet est une extrémité.
 	* On dira qu'un graphe est {==**complet**==} si tous ses sommets sont adjacents les uns avec les autres.
 	* On dira qu'un sommet est {==**isolé**==} s'il n'est relié a aucun autre sommet.
-	* On parlera de **boucle** lorsqu'un arc ou une arêtea ses deux extrémités sur le meme sommet.
+	* On parlera de {==**boucle**==} lorsqu'un arc ou une arête a ses deux extrémités sur le meme sommet.
 	* Un graphe est **simple** lorsqu’ un graphe n’a aucune boucle et si deux arêtes ne relient jamais les mêmes paires de sommets.
   
 !!! example "Exemple : graphe de recherche de texte"
@@ -100,10 +100,10 @@
 	
 	![Graphe Bob](AutomateBobGraph.svg){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Recherche Bob"}
 	
-	* Ce graphe est d'ordre 4 et de taille 6.
-	* Le noeud `2` est de degré 3
-	* Ce graphe n'est pas complet car le noeudd `fin` n'est pas pas relié à `0` et `1`.
-	* Il y a une boucle au noeud `0`, qui est donc d'ordre 5.
+	* Ce graphe est d'ordre 4 et de taille 9.
+	* Le noeud `2` est de degré 4
+	* Ce graphe n'est pas complet car le noeud `2` n'est pas pas relié à `1`.
+	* Il y a une boucle au noeud `0`, qui est donc d'ordre 6.
 	* Aucun sommet n'est isolé.
 	
 
@@ -137,7 +137,7 @@
 		
 		1. Représenter cette carte par un graphe mettant en évidence ce découpage.
 		1. A quoi correspond chacun des sommets ? chaque arête ?
-		1. Quel est l’ordre du graphe ? sa taille ?
+		1. Quel est l'ordre du graphe ? sa taille ?
 		1. Ce graphe est-il complet ?
 		1. Déterminer le degré de chaque sommet.
 
@@ -152,7 +152,7 @@
 			1. Quel est l'ordre de ce graphe ?
 			1. Ce graphe est-il complet ?
 			1. Que peut-on dire du sommet $b2$ ?
-			1. Compléter le tableau des ordres des sommets du graphe.
+			1. Compléter le tableau des dégrés des sommets du graphe.
 			1. Calculer la somme des degrés des sommets ainsi que le nombre d'arêtes.
 		2. Pour chacun des graphes suivants, calculer la somme des degrés des sommets ainsi que le nombre d'arêtes, puis émettre une conjecture :
 
@@ -187,7 +187,7 @@ Il existe un ensemble d'outils informatiques spécialement dédiés à la créat
 	
 		Créer le graphe orienté suivant :
 		
-		* les sommets sont les nombres de 1 à 12 ;
+		* les sommets sont les nombres de 2 à 12 ;
 		* un arc existe entre `a` et `b` si et seulement si `a` est un multiple de `b`.
 		
 	=== "Réponse"
