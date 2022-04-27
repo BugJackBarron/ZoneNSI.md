@@ -28,7 +28,9 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 | `exist_edge` | `s` et `e` | booléen | Renvoie `True` si il existe un arc entre `s` et `e` |
 | `get_neighbours` | `s` | itérable | renvoie un *itérable* contenant les voisins de `s` |
 
-## Implémentation par une Matrice d'adjacence
+
+## Graphes non-orientés 
+### Implémentation par une Matrice d'adjacence
 
 
 !!! abstract "Matrice d'adjacence"
@@ -134,6 +136,106 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 	* Pour connaître les voisins d'un sommet, il faut parcourir la totalité de la lign,e correspondant à ce sommet, ce qui peut rapidement être trop long	.
 	* Les sommets sont limités à des entiers, ou à un ordre défini, et il est difficile d'intégrer de nouveau sommets qui ne respecteraient pas la convention fixée.
 
-## Implémentation par un dictionnaire
+### Implémentation par un dictionnaire
+
+Pour réduire la taille prise en mémoire par la matrice d'adjacence, il est possible d'utiliser un  {==**dictionnaire**==} de voisinage. Ce dictionnaire apportera en plus la capacité d'avoir des chaînes des caractères comme identifiant des sommets.
+
+Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'implémentation.
+
+#### Graphe non pondéré
+
+!!! question "Implémentation en Python"
+
+	=== "Enoncé"
+	
+		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage  :
+		
+		```` python
+		class Graph :
+			def __init__(self) :
+				self.adj = {}
+				
+			def add_vertice(self,s) :
+				if s not in self.adj :
+					self.adj[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+				
+			def add_edge(self, s, e) :
+				self.add_vertice(s)
+				self.add_vertice(e)
+				self.adj[s].add(e) # La méthode add des objets de type set fonctionne comme append
+					
+		````
+		
+		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
+		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
+		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
+		1. Ajouter une méthode `get_degree` à la classe `Graph` pour qu'elle renvoie le degré d'un sommet passé en argument.
+		1. Ajouter une méthode `is_directed` à la classe `Graph` pour qu'elle renvoie `True` si le graphe est orienté et `False` sinon.
+		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
+			* `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
+			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
+			* un tuple `(s,e)` donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.
+		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
+		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`).
+
+#### Graphes pondérés 
+
+Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque arc :
+
+*  on peut ajouter dans le dictionnaire de voisinage un tuple contenant à la fois le nom et le poids de l'arc considéré ;
+* on peut aussi ajouter un autre dictionnaire parallèle à `self.adj` dont les clés sont les couples de sommets et les valeurs le poids de l'arc considéré.
+
+
+!!! question "Implémentation en Python avec un tuple"
+
+	=== "Enoncé"
+	
+		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :
+		
+		```` python
+		class Graph :
+			def __init__(self) :
+				self.adj = {}
+				
+			def add_vertice(self,s) :
+				if s not in self.adj :
+					self.adj[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+				
+			def add_edge(self, s, e, p=1) :
+				self.add_vertice(s)
+				self.add_vertice(e)
+				self.adj[s].add((e,p)) # La méthode add des objets de type set
+					
+		````
+		
+		Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?
+		
+!!! question "Implémentation en Python avec un dictionnaire d'arcs"
+
+	=== "Enoncé"
+	
+		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :
+		
+		```` python
+		class Graph :
+			def __init__(self) :
+				self.adj = {}
+				self.edges= {}
+				
+			def add_vertice(self,s) :
+				if s not in self.adj :
+					self.adj[s] = set() 
+				
+			def add_edge(self, s, e, p=1) :
+				self.add_vertice(s)
+				self.add_vertice(e)
+				self.adj[s].add(e) 
+				self.edges[(s,e)]=p
+					
+		````
+		
+		Quels sont les changements à apporter aux autres méthodes par rapport à la situation précédente ?
+		
+
 
 ## Exemple d'utilisation
