@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C09/graphe_python/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
@@ -2197,16 +2197,49 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#graphes-non-orientes" class="md-nav__link">
+    Graphes non-orientés
+  </a>
+  
+    <nav class="md-nav" aria-label="Graphes non-orientés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#implementation-par-une-matrice-dadjacence" class="md-nav__link">
     Implémentation par une Matrice d'adjacence
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#implementation-par-un-dictionnaire" class="md-nav__link">
     Implémentation par un dictionnaire
   </a>
+  
+    <nav class="md-nav" aria-label="Implémentation par un dictionnaire">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphe-non-pondere" class="md-nav__link">
+    Graphe non pondéré
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphes-ponderes" class="md-nav__link">
+    Graphes pondérés
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2609,7 +2642,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="implementation-par-une-matrice-dadjacence">Implémentation par une Matrice d'adjacence</h2>
+<h2 id="graphes-non-orientes">Graphes non-orientés</h2>
+<h3 id="implementation-par-une-matrice-dadjacence">Implémentation par une Matrice d'adjacence</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Matrice d'adjacence</p>
 <p>Une des possibilités pour représenter un graphe est d'utiliser ce qu'on appelle une <mark class="critic"><strong>matrice d'adjacence</strong></mark>. Dans ce type de représentation, les sommets sont <strong>ordonnés</strong>, et considérés comme étiquetés par des entiers de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(n-1\)</span>, où <span class="arithmatex">\(n\)</span> est l'ordre du graphe.</p>
@@ -2722,7 +2756,95 @@
 <li>Les sommets sont limités à des entiers, ou à un ordre défini, et il est difficile d'intégrer de nouveau sommets qui ne respecteraient pas la convention fixée.</li>
 </ul>
 </div>
-<h2 id="implementation-par-un-dictionnaire">Implémentation par un dictionnaire</h2>
+<h3 id="implementation-par-un-dictionnaire">Implémentation par un dictionnaire</h3>
+<p>Pour réduire la taille prise en mémoire par la matrice d'adjacence, il est possible d'utiliser un  <mark class="critic"><strong>dictionnaire</strong></mark> de voisinage. Ce dictionnaire apportera en plus la capacité d'avoir des chaînes des caractères comme identifiant des sommets.</p>
+<p>Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'implémentation.</p>
+<h4 id="graphe-non-pondere">Graphe non pondéré</h4>
+<div class="admonition question">
+<p class="admonition-title">Implémentation en Python</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
+<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage  :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Graph</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># crée un objet set vide, et graranti l&#39;unicité de chaque élément</span>
+
+    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="c1"># La méthode add des objets de type set fonctionne comme append</span>
+</code></pre></div>
+<ol>
+<li>Compléter la <em>méthode</em>  <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Compléter la <em>méthode</em>  <code>get_neighbours</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Ajouter une méthode <code>get_order</code> à la classe <code>Graph</code> pour qu'elle renvoie l'ordre du graphe.</li>
+<li>Ajouter une méthode <code>get_degree</code> à la classe <code>Graph</code> pour qu'elle renvoie le degré d'un sommet passé en argument.</li>
+<li>Ajouter une méthode <code>is_directed</code> à la classe <code>Graph</code> pour qu'elle renvoie <code>True</code> si le graphe est orienté et <code>False</code> sinon.</li>
+<li>Ajouter une méthode <code>is_undirected_and_eulerian</code> qui renvoie :<ul>
+<li><code>False</code> si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe</li>
+<li><code>True</code> si le graphe est non-orienté et qu'il existe un cycle eulérien.</li>
+<li>un tuple <code>(s,e)</code> donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.</li>
+</ul>
+</li>
+<li>Ajouter une méthode <code>delete_edge</code> à la classe <code>Graph</code> pour qu'elle supprime l'arc situé entre les sommets <code>s</code> et <code>e</code> passés en argument.</li>
+<li>Ajouter une méthode DUNDERS <code>__repr__</code> afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction <code>print(G)</code>).</li>
+</ol>
+</div>
+</div>
+</div>
+<h4 id="graphes-ponderes">Graphes pondérés</h4>
+<p>Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque arc :</p>
+<ul>
+<li>on peut ajouter dans le dictionnaire de voisinage un tuple contenant à la fois le nom et le poids de l'arc considéré ;</li>
+<li>on peut aussi ajouter un autre dictionnaire parallèle à <code>self.adj</code> dont les clés sont les couples de sommets et les valeurs le poids de l'arc considéré.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Implémentation en Python avec un tuple</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Enoncé</label><div class="tabbed-content">
+<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Graph</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># crée un objet set vide, et graranti l&#39;unicité de chaque élément</span>
+
+    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">e</span><span class="p">,</span><span class="n">p</span><span class="p">))</span> <span class="c1"># La méthode add des objets de type set</span>
+</code></pre></div>
+<p>Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?</p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Implémentation en Python avec un dictionnaire d'arcs</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Graph</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> 
+
+    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)]</span><span class="o">=</span><span class="n">p</span>
+</code></pre></div>
+<p>Quels sont les changements à apporter aux autres méthodes par rapport à la situation précédente ?</p>
+</div>
+</div>
+</div>
 <h2 id="exemple-dutilisation">Exemple d'utilisation</h2>
                 
               
