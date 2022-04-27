@@ -49,5 +49,15 @@ class GraphV3 :
         
     def __repr__(self) :
         return str(self.adj)
+    
+class DiGraph(GraphV1) :
+    def __init__(self, n) :
+        super().__init__(n)
+        
+    def add_edge(self, s, e, p=1) :
+        super().add_edge(s,e,p)
+        super().add_edge(e,s,p)
+
+        
         
         

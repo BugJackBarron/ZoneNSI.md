@@ -29,8 +29,9 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 | `get_neighbours` | `s` | itérable | renvoie un *itérable* contenant les voisins de `s` |
 
 
-## Graphes non-orientés 
-### Implémentation par une Matrice d'adjacence
+
+
+## Implémentation par une Matrice d'adjacence
 
 
 !!! abstract "Matrice d'adjacence"
@@ -111,7 +112,7 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 				self.adj.append([0]*(self.n))
 				
 			def add_edge(self, s, e, p=1) :
-				self.adj[s][t] = p			
+				self.adj[s][e] = p			
 					
 		````
 		
@@ -136,13 +137,13 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 	* Pour connaître les voisins d'un sommet, il faut parcourir la totalité de la lign,e correspondant à ce sommet, ce qui peut rapidement être trop long	.
 	* Les sommets sont limités à des entiers, ou à un ordre défini, et il est difficile d'intégrer de nouveau sommets qui ne respecteraient pas la convention fixée.
 
-### Implémentation par un dictionnaire
+## Implémentation par un dictionnaire
 
 Pour réduire la taille prise en mémoire par la matrice d'adjacence, il est possible d'utiliser un  {==**dictionnaire**==} de voisinage. Ce dictionnaire apportera en plus la capacité d'avoir des chaînes des caractères comme identifiant des sommets.
 
 Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'implémentation.
 
-#### Graphe non pondéré
+### Graphe non pondéré
 
 !!! question "Implémentation en Python"
 
@@ -178,7 +179,7 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
 		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`).
 
-#### Graphes pondérés 
+### Graphes pondérés 
 
 Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque arc :
 
@@ -236,6 +237,11 @@ Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque a
 		
 		Quels sont les changements à apporter aux autres méthodes par rapport à la situation précédente ?
 		
+
+## Hors programme : utilisation d'héritage pour les graphes non-orientés
+
+Dans toutes les implémerntations que nous avons jusqu'ici crées, nous sommes resté sur une notion de graphe orienté. Plus précisémment, pour créer un graphe non orienté à partir 
+
 
 
 ## Exemple d'utilisation
