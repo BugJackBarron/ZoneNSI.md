@@ -324,9 +324,45 @@ Dan le code ci-dessus, même si nous n'avons pas surclasssé les méthodes `get_
 
 	Le [{==**théorème des 4 couleurs**==}](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_des_quatre_couleurs){: target="_blank"} est un théorème classique de théorie des graphes. D'après wikipedia :
 	
-	&laquo; Le théorème des quatre couleurs indique qu'il est possible, en n'utilisant que quatre couleurs différentes, de colorier n'importe quelle carte découpée en régions connexes, de sorte que deux régions adjacentes (ou limitrophes), c'est-à-dire ayant toutes une frontière (et non simplement un point) en commun reçoivent toujours deux couleurs distinctes. L'énoncé peut varier et concerner, de manière tout à fait équivalente, la coloration des faces d'un polyèdre ou celle des sommets d'un graphe planaire, en remplaçant la carte par un graphe dont les sommets sont les régions et les arêtes sont les frontières entre régions. 
+	&laquo; Le théorème des quatre couleurs indique qu'il est possible, **en n'utilisant que quatre couleurs différentes**, de colorier n'importe quelle carte découpée en régions connexes, de sorte que deux régions adjacentes (ou limitrophes), c'est-à-dire ayant toutes une frontière (et non simplement un point) en commun reçoivent toujours deux couleurs distinctes. L'énoncé peut varier et concerner, de manière tout à fait équivalente, la coloration des faces d'un polyèdre ou celle des sommets d'un graphe planaire, en remplaçant la carte par un graphe dont les sommets sont les régions et les arêtes sont les frontières entre régions. 
 	[...]
 	Même si l'énoncé de ce théorème est élémentaire, on n'en connaît pas de preuve simple. Les démonstrations connues décomposent le problème en un nombre de sous-cas tellement important qu'elles nécessitent l'assistance d'un ordinateur pour être vérifiées.
 
 	Le théorème se généralise à certaines classes de graphes non planaires. Cependant, lorsqu'on généralise le problème à un graphe quelconque, il devient [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet){: target="_blank"} de déterminer s'il est coloriable avec seulement quatre couleurs (ou même trois). 
 	&raquo;
+	
+Si cette possibilité de colorier avec au maximum 4 couleurs existe, il est par contre parfois difficile  de trouver un coloriage qui corresponde réellement.
+
+Il est cependant possible d'utiliser un {==**algorithme glouton**==} qui trouvera un coloriage &laquo; presque &raquo; optimal.
+
+!!! question "Création de l'algorithme de coloriage"
+
+	=== "Enoncé"
+		Considérons la carte des régions françaises suivantes :
+		
+		![france-region.jpg](france-region.jpg){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+		
+		et le code suivant permettant de créér un graphe non-orienté correspondant à cette carte dans le fichier [suivant](RegionFR.py){: target="_blank"} (en utilisant la classe `UndirectedGraph`).
+		
+		Le principe de l'algorithme et le suivant :
+		
+		* les couleurs seront  représentées par des entiers, en partant de $0$ ;		
+		* on prend un sommet du graphe au hasard, on regarde les couleurs déjà données à ses voisins, et on lui donnera comme couleur la plus petite valeur non-affectée à un de  ses voisins.
+		
+		
+		1.  Créer une fonction `min_couleurs_voisins` prenant deux arguments :
+		
+			* `voisins` : un itérable contenant une liste de noms de régions
+			* `couleur` : un *dictionnaire* associant à des noms de régions le numéro de couleur qui lui est associé.
+			
+			et qui renvoie la valeur de couleur la plus petite non associées aux voisins.
+			
+			Par exemple :
+			```` python
+			>>> min_couleurs_voisins(["Normandie", "Pays de la Loire"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
+			1
+			>>> min_couleurs_voisins([], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
+			0
+			>>> min_couleurs_voisins(["Hauts-de-France"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
+			0
+			````
