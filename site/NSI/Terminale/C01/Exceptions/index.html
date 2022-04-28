@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/Exceptions/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2568,7 +2568,9 @@ nous lançons le script suivant, nommé <code>testModule.py</code>, et situé da
 </ol>
 <p>Dans chacun des cas, qu'obtient-on en sortie ? Pourquoi ?</p>
 </div>
-<details class="done"><summary>Solution</summary><div class="tabbed-set" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1"><code>3,4,5</code></label><div class="tabbed-content">
+<details class="done">
+<summary>Solution</summary>
+<div class="tabbed-set" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1"><code>3,4,5</code></label><div class="tabbed-content">
 <p>La sortie est :</p>
 <div class="highlight"><pre><span></span><code>`y = 22.0(x-3) + 44.0`
 </code></pre></div>
@@ -2649,7 +2651,9 @@ en la passant en paramètre directement dans l'instruction <code>ValueError()</c
 <p>Malgré nos corrections, il reste plusieurs possibilités d'erreurs dans l'utilisation de la fonction <code>polynome(t)</code>.</p>
 <p>Quelles sont-elles et comment les corriger pour lever une exception explicite ?</p>
 </div>
-<details class="done"><summary>Solution</summary><div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Exécution de <code>polynome((2,3))</code> ou <code>polynome((4))</code></label><div class="tabbed-content">
+<details class="done">
+<summary>Solution</summary>
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Exécution de <code>polynome((2,3))</code> ou <code>polynome((4))</code></label><div class="tabbed-content">
 <p>Que se passe-t-il lorsqu'on utilise la fonction <code>polynome</code> avec un tuple de 1 ou 2 éléments ?</p>
 <p>Dans le cas d'un seul élément, l'erreur ressortie est :</p>
 <div class="highlight"><pre><span></span><code> a,b,*c = t
@@ -2752,7 +2756,9 @@ Le code du bloc <code>try</code> va être exécuté, et si une erreur du type fo
 <li>3²</li>
 </ul>
 </div>
-<details class="done"><summary>Réponse</summary><p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode<em>
+<details class="done">
+<summary>Réponse</summary>
+<p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode<em>
 permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
 qui peut se douter que les </em><em>fractions définies dans la table utf8</em><em>, ainsi que les caractères en </em><em>exposant et en indice</em>*, sont considérés comme 
 des valeurs numériques.</p>

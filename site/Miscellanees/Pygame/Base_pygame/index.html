@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/Miscellanees/Pygame/Base_pygame/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2632,7 +2632,9 @@ from pygame.locals import *
 <li>En ligne 6, nous appelons ensuite la fonction <code>set_mode()</code> contenue dans le module <code>display</code> de <code>pygame</code>, qui prend en argument un <strong>tuple</strong> contenant la <strong>largeur et la hauteur de la fenêtre voulue</strong> (attention, c'est bien un tuple ! <code>pygame.display.set_mode(640, 480)</code> ne fonctionne pas !).</li>
 </ul>
 </div>
-<details class="bug"><summary>Y'a un bug !</summary><p>La fenêtre reste bloquée  et ne se ferme pas sauf si on force l'arrêt du script !</p>
+<details class="bug">
+<summary>Y'a un bug !</summary>
+<p>La fenêtre reste bloquée  et ne se ferme pas sauf si on force l'arrêt du script !</p>
 <p>Effectivement, on se retrouve bloqué... Il faut rajouter à notre code une instruction supplémentaire pour que la fenëtre se ferme :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2652,7 +2654,9 @@ from pygame.locals import *
 </code></pre></div>
 </td></tr></table></p>
 </details>
-<details class="bug"><summary>Encore un</summary><p>Et oui ! Notre fenêtre s'ouvre mais se ferme immédiatement !</p>
+<details class="bug">
+<summary>Encore un</summary>
+<p>Et oui ! Notre fenêtre s'ouvre mais se ferme immédiatement !</p>
 <p>Or nous aimerions qu'elle ne se ferme que sur demande explicite de l'utilisateur, par exemple par un clic sur la croix.</p>
 </details>
 <p>C'est là qu'intervient la notion de <strong>boucle d'évènements</strong>. </p>
@@ -2695,7 +2699,9 @@ from pygame.locals import *
         <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table></p>
-<details class="bug"><summary>L'arnaque : ça ne marche pas !</summary><p>On retombe sur notre problème précédent : la fenêtre ne se ferme plus...</p>
+<details class="bug">
+<summary>L'arnaque : ça ne marche pas !</summary>
+<p>On retombe sur notre problème précédent : la fenêtre ne se ferme plus...</p>
 <p>C'est parce que la <strong>file</strong> d'évènements se construit et se nettoie très rapidement ! Nous n'avons pas le temps de cliquer sur la croix que déjà le parcours par la boucle <code>for</code> est terminé ! Et donc dans ce cas <strong>on ne passe jamais par l'instruction <code>pygame.quit()</code>.</strong></p>
 <p>Il va donc falloir répéter la lecture d'évènements pour pouvoir détecter quand l'utilisateur souhaite fermer sa fenêtre.</p>
 </details>
@@ -2707,7 +2713,9 @@ from pygame.locals import *
 </p></p>
 </div>
 <p>Pour notre exemple, nous allons créer une boucle <code>while</code> dépendant d'une variable <code>continuer</code> initialisée à <code>True</code>, que nous basculerons à <code>False</code> lorsque l'évènement <code>QUIT</code> est intercepté :</p>
-<details class="done"><summary>Un code fonctionnel</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="done">
+<summary>Un code fonctionnel</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2793,7 +2801,9 @@ Téléchargez cette image sous le nom <code>background.jpg</code> puis ajoutez l
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-<details class="bug"><summary>Mais pourquoi ça n'affiche rien !</summary><p>Parce que quand on <code>blit</code> une <code>Surface</code>, <code>pygame</code> calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraîchissement de l'écran pour y parvenir, par l'intermédiaire de la commande <code>pygame.display.update()</code>. </p>
+<details class="bug">
+<summary>Mais pourquoi ça n'affiche rien !</summary>
+<p>Parce que quand on <code>blit</code> une <code>Surface</code>, <code>pygame</code> calcule ce qu'il faut mais ne l'exécute pas réellement. Il faut forcer le rafraîchissement de l'écran pour y parvenir, par l'intermédiaire de la commande <code>pygame.display.update()</code>. </p>
 <p>Comme nous comptons bien faire bouger un personnage sur l'écran, et que les mouvements de celui-ci dépendront de la boucle d'évènements, autant mettre immédiatement cette commande en fin de boucle, pour que l'image soit systématiquement mise à jour. :</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3113,7 +3123,9 @@ position du <code>Rect</code>. On rajoute donc à la fin de la boucle <code>whil
 </div>
 </div>
 </div>
-<details class="bug"><summary>Mais c'est nul !</summary><div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">raisons et corrections</label><div class="tabbed-content">
+<details class="bug">
+<summary>Mais c'est nul !</summary>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">raisons et corrections</label><div class="tabbed-content">
 <p>Et oui, pour plusieurs raisons :
 * la page ne se rafraîchit pas totalement, et la trace des anciennes
 positions du sprite est gardée;
@@ -3198,7 +3210,9 @@ consiste à utiliser la méthode <code>set_repeat()</code> du module <code>key</
 </div>
 </div>
 </details>
-<details class="tips"><summary>Une solution plus élégante, et plus efficace (mais inutile ici)</summary><div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Solution</label><div class="tabbed-content">
+<details class="tips">
+<summary>Une solution plus élégante, et plus efficace (mais inutile ici)</summary>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Solution</label><div class="tabbed-content">
 <p>Le problème de l'utilisation de la méthode ci-dessus est qu'il est impossible
 de traiter des appuis sur des combinaisons de touches, puisqu'une seule
 touche est représentée par l'attribut <code>event.key</code>.</p>

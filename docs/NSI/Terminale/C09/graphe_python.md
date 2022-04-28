@@ -290,7 +290,7 @@ class UndirectedGraph(Graph) :
 ````
 
 * En ligne 1, on crée une classe `UndirectedGraph`, qui *dérive*, ou *hérite* de la classe `Graph`. 
-* En ligne 2, on définit la méthode constructeur des objets de classe `UndirectedGraph`.  Celle-ci se compose dune unique ligne, disant simplement que l'initialisation d'un objet de classe `UndirectedGraph` se fait de la même manière qu'un objet de la classe *mère* `Graph`, par l'intermédiaire du mot-clé `super()`. 
+* En ligne 2, on définit la méthode constructeur des objets de classe `UndirectedGraph`.  Celle-ci se compose d'une unique ligne, disant simplement que l'initialisation d'un objet de classe `UndirectedGraph` se fait de la même manière qu'un objet de la classe *mère* `Graph`, par l'intermédiaire du mot-clé `super()`. 
 	On fait ainsi appel à la méthode constructeur de la classe `Graph` pour construire un objet de classe `UndirectedGraph`.
 * En ligne 5, on va redéfinir la méthode `add_edge`. On appelle une telle redéfinition un **surcharge**  de méthode. Il s'agira en fait d'appeler deux fois la méthode `add_edge` de la classe `Graph`, encore une fois en utilisant le mot-clé `super()`.
 
@@ -307,7 +307,7 @@ G.get_order()
 print(G)
 ````
 
-Dan le code ci-dessus, même si nous n'avons pas surclasssé les méthodes `get_neighbours`, `get_order` et la méthode DUNDERS `__repr__`, elles demeurent accessible à tout objet de classe `UndirectedGraph`, puisque directement héritées de la classe mère `Graph`.
+Dans le code ci-dessus, même si nous n'avons pas surchargé les méthodes `get_neighbours`, `get_order` et la méthode DUNDERS `__repr__`, elles demeurent accessible à tout objet de classe `UndirectedGraph`, puisque directement héritées de la classe mère `Graph`.
 
 
 !!! abstract "Objets en Python"
@@ -349,8 +349,9 @@ Il est cependant possible d'utiliser un {==**algorithme glouton**==} qui trouver
 		* les couleurs seront  représentées par des entiers, en partant de $0$ ;		
 		* on prend un sommet du graphe au hasard, on regarde les couleurs déjà données à ses voisins, et on lui donnera comme couleur la plus petite valeur non-affectée à un de  ses voisins.
 		
+		Afin de créer les fonctions nécessaires :
 		
-		1.  Créer une fonction `min_couleurs_voisins` prenant deux arguments :
+		1.  Créer une fonction `min_neighbours_color` prenant deux arguments :
 		
 			* `voisins` : un itérable contenant une liste de noms de régions
 			* `couleur` : un *dictionnaire* associant à des noms de régions le numéro de couleur qui lui est associé.
@@ -364,5 +365,19 @@ Il est cependant possible d'utiliser un {==**algorithme glouton**==} qui trouver
 			>>> min_couleurs_voisins([], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
 			0
 			>>> min_couleurs_voisins(["Hauts-de-France"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
-			0
+			1
+			>>> min_couleurs_voisins(["Normandie", "Pays de la Loire" "Île-de-France"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
+			3
 			````
+			
+		2. Construire enfin une fonction `color_graph` qui prend en argument un graphe et renvoie un tuple contenant :
+			* le nombre de couleurs utilisées ;
+			* un dictionnaire affectant à chaque région sa couleur.
+			
+			Combien de couleurs sont alors utilisées ?
+			
+		3. Pouvez-vous donner un coloriage utilisant exactement 4 couleurs ?
+		
+	=== "Réponses"
+	
+		A venir !

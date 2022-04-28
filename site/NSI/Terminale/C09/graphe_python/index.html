@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C09/graphe_python/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -2197,21 +2197,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#graphes-non-orientes" class="md-nav__link">
-    Graphes non-orientés
-  </a>
-  
-    <nav class="md-nav" aria-label="Graphes non-orientés">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#implementation-par-une-matrice-dadjacence" class="md-nav__link">
     Implémentation par une Matrice d'adjacence
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#implementation-par-un-dictionnaire" class="md-nav__link">
     Implémentation par un dictionnaire
   </a>
@@ -2237,15 +2229,17 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#notion-dheritage-hors-programme" class="md-nav__link">
+    Notion d'héritage (hors programme)
+  </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-dutilisation" class="md-nav__link">
-    Exemple d'utilisation
+  <a href="#exemple-dutilisation-coloration-dun-graphe" class="md-nav__link">
+    Exemple d'utilisation : Coloration d'un graphe
   </a>
   
 </li>
@@ -2642,8 +2636,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="graphes-non-orientes">Graphes non-orientés</h2>
-<h3 id="implementation-par-une-matrice-dadjacence">Implémentation par une Matrice d'adjacence</h3>
+<h2 id="implementation-par-une-matrice-dadjacence">Implémentation par une Matrice d'adjacence</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Matrice d'adjacence</p>
 <p>Une des possibilités pour représenter un graphe est d'utiliser ce qu'on appelle une <mark class="critic"><strong>matrice d'adjacence</strong></mark>. Dans ce type de représentation, les sommets sont <strong>ordonnés</strong>, et considérés comme étiquetés par des entiers de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(n-1\)</span>, où <span class="arithmatex">\(n\)</span> est l'ordre du graphe.</p>
@@ -2727,7 +2720,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>          
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>          
 </code></pre></div>
 <ol>
 <li>Compléter la <em>méthode</em>  <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
@@ -2756,10 +2749,10 @@
 <li>Les sommets sont limités à des entiers, ou à un ordre défini, et il est difficile d'intégrer de nouveau sommets qui ne respecteraient pas la convention fixée.</li>
 </ul>
 </div>
-<h3 id="implementation-par-un-dictionnaire">Implémentation par un dictionnaire</h3>
+<h2 id="implementation-par-un-dictionnaire">Implémentation par un dictionnaire</h2>
 <p>Pour réduire la taille prise en mémoire par la matrice d'adjacence, il est possible d'utiliser un  <mark class="critic"><strong>dictionnaire</strong></mark> de voisinage. Ce dictionnaire apportera en plus la capacité d'avoir des chaînes des caractères comme identifiant des sommets.</p>
 <p>Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'implémentation.</p>
-<h4 id="graphe-non-pondere">Graphe non pondéré</h4>
+<h3 id="graphe-non-pondere">Graphe non pondéré</h3>
 <div class="admonition question">
 <p class="admonition-title">Implémentation en Python</p>
 <div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Enoncé</label><div class="tabbed-content">
@@ -2795,7 +2788,7 @@
 </div>
 </div>
 </div>
-<h4 id="graphes-ponderes">Graphes pondérés</h4>
+<h3 id="graphes-ponderes">Graphes pondérés</h3>
 <p>Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque arc :</p>
 <ul>
 <li>on peut ajouter dans le dictionnaire de voisinage un tuple contenant à la fois le nom et le poids de l'arc considéré ;</li>
@@ -2824,7 +2817,7 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Implémentation en Python avec un dictionnaire d'arcs</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Enoncé</label><div class="tabbed-content">
 <p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Graph</span> <span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
@@ -2843,9 +2836,143 @@
 </code></pre></div>
 <p>Quels sont les changements à apporter aux autres méthodes par rapport à la situation précédente ?</p>
 </div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">réponses</label><div class="tabbed-content">
+<p>A venir</p>
 </div>
 </div>
-<h2 id="exemple-dutilisation">Exemple d'utilisation</h2>
+</div>
+<h2 id="notion-dheritage-hors-programme">Notion d'héritage (hors programme)</h2>
+<div class="admonition warning">
+<p class="admonition-title">Construction d'un graphe non-orienté</p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="heritage.svg" src="../heritage.svg" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 50%;"></p>
+<p>Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisémment, pour créer un graphe non orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="n">G</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<p>On se retrouve donc à devoir doubler les lignes à chaque création d'arête... Ce qui n'est pas du tout ergonomique...</p>
+<p></div>
+</div></p>
+</div>
+<p>Bien entendu, il est possible de créer de nouveau une nouvelle classe qui implémenterait cette possibilité immédiatement. Mais il exsite aussi en POO une notion fondamentale qui va nous permettre, sans changer le code de notre classe <code>Graph</code> actuelle et en effectuant qu'un codage minimal, de créer une nouvelle classe permettant d'implémenter spécifiquement des graphes non orientés.</p>
+<p>Il s'agit de le notion d'<mark class="critic"><strong>héritage de classe</strong></mark>. Sans rentrer dans les détails(que vous pouvez par exemple trouver <a href="https://devstory.net/11417/python-inheritance-polymorphism" target="target">ici</a>), il s'agira de créer une classe <em>fille</em> héritant de toutes les capacités de la classe <em>mère</em> - attributs et méthodes, mais dans laquelle on pourra rajouter ou modifier des caractéristiques spécifiques.</p>
+<p>Ainsi, en simplifiant, on peut dire qu'un graphe non-orienté est un graphe orienté dans lequel les arcs sont doublés. Les graphes non-orientés sont donc une <strong>sous-classe</strong> des graphes orientés, d'un point de vue codage.</p>
+<p>Voici le code permettant de créer cette nouvelle classe :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UndirectedGraph</span><span class="p">(</span><span class="n">Graph</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>En ligne 1, on crée une classe <code>UndirectedGraph</code>, qui <em>dérive</em>, ou <em>hérite</em> de la classe <code>Graph</code>. </li>
+<li>En ligne 2, on définit la méthode constructeur des objets de classe <code>UndirectedGraph</code>.  Celle-ci se compose d'une unique ligne, disant simplement que l'initialisation d'un objet de classe <code>UndirectedGraph</code> se fait de la même manière qu'un objet de la classe <em>mère</em> <code>Graph</code>, par l'intermédiaire du mot-clé <code>super()</code>. 
+    On fait ainsi appel à la méthode constructeur de la classe <code>Graph</code> pour construire un objet de classe <code>UndirectedGraph</code>.</li>
+<li>En ligne 5, on va redéfinir la méthode <code>add_edge</code>. On appelle une telle redéfinition un <strong>surcharge</strong>  de méthode. Il s'agira en fait d'appeler deux fois la méthode <code>add_edge</code> de la classe <code>Graph</code>, encore une fois en utilisant le mot-clé <code>super()</code>.</li>
+</ul>
+<p>Une fois cette nouvelle classe créé, elle peut être directement utilisée <em>tout en conservant toutes les méthodes de la classe mère</em> :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">G</span> <span class="o">=</span> <span class="n">UndirectedGraph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">get_neighbours</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">get_order</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Dans le code ci-dessus, même si nous n'avons pas surchargé les méthodes <code>get_neighbours</code>, <code>get_order</code> et la méthode DUNDERS <code>__repr__</code>, elles demeurent accessible à tout objet de classe <code>UndirectedGraph</code>, puisque directement héritées de la classe mère <code>Graph</code>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Objets en Python</p>
+<p>En Python, tout est objet. Cette phrase n'est pas qu'une déclaration de principe, puisqu'il existe une classe générique (appelée <strong>classe abstraite</strong>) <code>Object</code>, dont dérivent toutes les autres classes, comme <code>int</code>, <code>float</code>, <code>tuple</code>,...</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Polymorphisme</p>
+<p>Il est tout à fait possible de faire hériter une classe de plusieurs autres classes. Cette notion s'appelle le <mark class="critic"><strong>polymorphisme</strong></mark>, mais est complètement hors du programme de terminale...</p>
+</div>
+<h2 id="exemple-dutilisation-coloration-dun-graphe">Exemple d'utilisation : Coloration d'un graphe</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Théorème des 4 couleurs</p>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_des_quatre_couleurs" target="_blank"><mark class="critic"><strong>théorème des 4 couleurs</strong></mark></a> est un théorème classique de théorie des graphes. D'après wikipedia :</p>
+<p>&laquo; Le théorème des quatre couleurs indique qu'il est possible, <strong>en n'utilisant que quatre couleurs différentes</strong>, de colorier n'importe quelle carte découpée en régions connexes, de sorte que deux régions adjacentes (ou limitrophes), c'est-à-dire ayant toutes une frontière (et non simplement un point) en commun reçoivent toujours deux couleurs distinctes. L'énoncé peut varier et concerner, de manière tout à fait équivalente, la coloration des faces d'un polyèdre ou celle des sommets d'un graphe planaire, en remplaçant la carte par un graphe dont les sommets sont les régions et les arêtes sont les frontières entre régions. 
+[...]
+Même si l'énoncé de ce théorème est élémentaire, on n'en connaît pas de preuve simple. Les démonstrations connues décomposent le problème en un nombre de sous-cas tellement important qu'elles nécessitent l'assistance d'un ordinateur pour être vérifiées.</p>
+<p>Le théorème se généralise à certaines classes de graphes non planaires. Cependant, lorsqu'on généralise le problème à un graphe quelconque, il devient <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet" target="_blank">NP-complet</a> de déterminer s'il est coloriable avec seulement quatre couleurs (ou même trois). 
+&raquo;</p>
+</div>
+<p>Si cette possibilité de colorier avec au maximum 4 couleurs existe, il est par contre parfois difficile  de trouver un coloriage qui corresponde réellement.</p>
+<p>Il est cependant possible d'utiliser un <mark class="critic"><strong>algorithme glouton</strong></mark> qui trouvera un coloriage &laquo; presque &raquo; optimal.</p>
+<div class="admonition question">
+<p class="admonition-title">Création de l'algorithme de coloriage</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Enoncé</label><div class="tabbed-content">
+<p>Considérons la carte des régions françaises suivantes :</p>
+<p><img alt="france-region.jpg" src="../france-region.jpg" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>et le code suivant permettant de créér un graphe non-orienté correspondant à cette carte dans le fichier <a href="../RegionFR.py" target="_blank">suivant</a> (en utilisant la classe <code>UndirectedGraph</code>).</p>
+<p>Le principe de l'algorithme et le suivant :</p>
+<ul>
+<li>les couleurs seront  représentées par des entiers, en partant de <span class="arithmatex">\(0\)</span> ;        </li>
+<li>on prend un sommet du graphe au hasard, on regarde les couleurs déjà données à ses voisins, et on lui donnera comme couleur la plus petite valeur non-affectée à un de  ses voisins.</li>
+</ul>
+<p>Afin de créer les fonctions nécessaires :</p>
+<ol>
+<li>
+<p>Créer une fonction <code>min_neighbours_color</code> prenant deux arguments :</p>
+<ul>
+<li><code>voisins</code> : un itérable contenant une liste de noms de régions</li>
+<li><code>couleur</code> : un <em>dictionnaire</em> associant à des noms de régions le numéro de couleur qui lui est associé.</li>
+</ul>
+<p>et qui renvoie la valeur de couleur la plus petite non associées aux voisins.</p>
+<p>Par exemple :
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">min_couleurs_voisins</span><span class="p">([</span><span class="s2">&quot;Normandie&quot;</span><span class="p">,</span> <span class="s2">&quot;Pays de la Loire&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;Normandie&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pays de la Loire&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Île-de-France&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">min_couleurs_voisins</span><span class="p">([],</span> <span class="p">{</span><span class="s2">&quot;Normandie&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pays de la Loire&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Île-de-France&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">min_couleurs_voisins</span><span class="p">([</span><span class="s2">&quot;Hauts-de-France&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;Normandie&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pays de la Loire&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Île-de-France&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">min_couleurs_voisins</span><span class="p">([</span><span class="s2">&quot;Normandie&quot;</span><span class="p">,</span> <span class="s2">&quot;Pays de la Loire&quot;</span> <span class="s2">&quot;Île-de-France&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;Normandie&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pays de la Loire&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Île-de-France&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="mi">3</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Construire enfin une fonction <code>color_graph</code> qui prend en argument un graphe et renvoie un tuple contenant :</p>
+<ul>
+<li>le nombre de couleurs utilisées ;</li>
+<li>un dictionnaire affectant à chaque région sa couleur.</li>
+</ul>
+<p>Combien de couleurs sont alors utilisées ?</p>
+</li>
+<li>
+<p>Pouvez-vous donner un coloriage utilisant exactement 4 couleurs ?</p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Réponses</label><div class="tabbed-content">
+<p>A venir !</p>
+</div>
+</div>
+</div>
                 
               
               
