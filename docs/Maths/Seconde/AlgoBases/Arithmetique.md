@@ -21,8 +21,8 @@ Cet algorithme en lanage naturel peut être quasiment traduit à l'identique en 
 def diviseurs(n) :
 	L = list()
 	for i in range(1, n+1) :
-	if n%i == 0 :
-		L.append(i)
+		if n%i == 0 :
+			L.append(i)
 	return L
 ````
 
@@ -86,7 +86,7 @@ def diviseurs(n) :
 
 	=== "Enoncé"
 		
-		1. Ajoputer la fonction `ìnter` au fichier `arithmetique.py`.
+		1. Ajouter la fonction `ìnter` au fichier `arithmetique.py`.
 		1. Que faut-il écrire en Python pour obtenir la liste des diviseurs de $60$ ?
 		1. Que faut-il écrire en Python pour obtenir la liste des diviseurs de $132$ ?
 		3. Que faut-il écrire en Python pour obtenir les diviseurs communs à $60$ et $132$ ?
