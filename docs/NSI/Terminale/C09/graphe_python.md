@@ -115,7 +115,13 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 				self.adj[s][e] = p			
 					
 		````
-		
+		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :
+			`````python
+			>>> e = 15
+			>>> f"BOB{e: >3}"
+			BOB 15
+			````
+			où l'expression `e: >3` signifie d'écrire e sous la forme d'une chaîne de caractères alignée à droite d'au moins 3 caractères, des espaces étant insérés si nécessaire.
 		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
@@ -126,7 +132,81 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
 			* un tuple `(s,e)` donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
-		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`).
+		
+	=== "Réponses"
+	
+		```` python
+		class Graph :
+			def __init__(self, n=0) :
+				self.n = n
+				self.adj = [[0]*n for _ in range(n)]
+
+			def add_vertice(self) :
+				self.n +=1
+				for l in self.adj :
+					l.append(0)
+				self.adj.append([0]*(self.n))
+
+			def add_edge(self, s, e, p=1) :
+				self.adj[s][e] = p
+				
+			def exist_edge(self, s, e) :
+				return self.adj[s][e] !=0
+			
+			def get_order(self) :
+				return self.n
+			
+			def get_neighbours(self,s) :
+				neighbours = []
+				for i in range(self.n) :
+					if self.adj[s][i] !=0 :
+						neighbours.append(i)
+				return neighbours
+			
+			def get_degree(self, s):
+				deg = 0
+				for i in range(self.n) :
+					deg += self.adj[s][i]!=0
+					deg += self.adj[i][s]!=0
+				return deg
+			
+			def is_directed(self) :
+				for i in range(self.n) :
+					for j in range(i,self.n) :
+						if self.adj[i][j] != self.adj[j][i] :
+							return True
+				return False
+			
+			def is_undirected_and_eulerian(self) :
+				if self.is_directed() :
+					return False
+				degrees=[]
+				for i in range(self.n) :
+					# ATTENTION ! La méthode get_degree renvoie le double
+					# du degré réel dans le cas d'un graphe non-orienté
+					# Pour que le théorème d'Euler fonctionne
+					# il faut donc diviser par 2 la valeur obtenue !
+					degrees.append((self.get_degree(i)//2)%2)
+				print(degrees)
+				if sum(degrees) == 0 :
+					return True
+				elif sum(degrees) == 2 :
+					return degrees.index(1), self.n-1-degrees[::-1].index(1)
+				return False
+					
+			def delete(self,s, e) :
+				self.adj[s][e] = 0
+			
+
+			def __repr__(self) :
+				rep =""
+				for l in self.adj :
+					for e in l :
+						rep+=f'{e: >3} '
+					rep += "\n"
+				return rep
+		
+		````
 		
 
 !!! warning "Limites du modèle"		
