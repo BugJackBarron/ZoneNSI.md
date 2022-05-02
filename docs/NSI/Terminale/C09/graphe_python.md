@@ -115,6 +115,7 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 				self.adj[s][e] = p			
 					
 		````
+		
 		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :
 			`````python
 			>>> e = 15
@@ -234,16 +235,16 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 		```` python
 		class Graph :
 			def __init__(self) :
-				self.adj = {}
+				self.vertice = {}
 				
 			def add_vertice(self,s) :
-				if s not in self.adj :
-					self.adj[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+				if s not in self.vertice :
+					self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
 				
 			def add_edge(self, s, e) :
 				self.add_vertice(s)
 				self.add_vertice(e)
-				self.adj[s].add(e) # La méthode add des objets de type set fonctionne comme append
+				self.vertice[s].add(e) # La méthode add des objets de type set fonctionne comme append
 					
 		````
 		
@@ -276,16 +277,16 @@ Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque a
 		```` python
 		class Graph :
 			def __init__(self) :
-				self.adj = {}
+				self.vertice = {}
 				
 			def add_vertice(self,s) :
-				if s not in self.adj :
-					self.adj[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+				if s not in self.vertice :
+					self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
 				
 			def add_edge(self, s, e, p=1) :
 				self.add_vertice(s)
 				self.add_vertice(e)
-				self.adj[s].add((e,p)) # La méthode add des objets de type set
+				self.vertice[s].add((e,p)) 
 					
 		````
 		
@@ -300,17 +301,17 @@ Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque a
 		```` python
 		class Graph :
 			def __init__(self) :
-				self.adj = {}
+				self.vertice = {}
 				self.edges= {}
 				
 			def add_vertice(self,s) :
-				if s not in self.adj :
-					self.adj[s] = set() 
+				if s not in self.vertice :
+					self.vertice[s] = set() 
 				
 			def add_edge(self, s, e, p=1) :
 				self.add_vertice(s)
 				self.add_vertice(e)
-				self.adj[s].add(e) 
+				self.vertice[s].add(e) 
 				self.edges[(s,e)]=p
 					
 		````
