@@ -1,6 +1,6 @@
 # Parcours de graphes et applications
 
-## Parccours en profondeur
+## Parcours en profondeur
 
 ### Comparaison avec un arbre
 
@@ -35,7 +35,7 @@ fonction explore_graphe(G, s) :
 ````
 
 !!! warning "Graphes avec de multiples composantes connexes"
-	Cette fonction ne permet d'explorer tout le graphe si celui-ci comporte pluiseurs composantes connexes,  car on explore uniquement de voisins en voisins :
+	Cette fonction ne permet pas d'explorer tout le graphe si celui-ci comporte pluiseurs composantes connexes,  car on explore uniquement de voisins en voisins :
 	
 	![DFS_4.svg](DFS_4.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
 	
