@@ -146,7 +146,13 @@ fonction parcours_largeur(G) :
 	=== "Corrigé"
 		A venir !
 		
-## Recherche de cycles dans un graphe
+## Applications
+
+### Recherche de cycle dans un graphe
+
+### Recherche de chemin entre deux sommets du graphe
+
+
 		
 
 
