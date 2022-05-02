@@ -79,6 +79,19 @@ Pour pouvoir implémenter le parcours de graphe en profondeur, il nous faut util
 	* est parfois fort pratique ;
 	* est souvent un {==**générateur d'effets de bords indésirés**==} !
 	
+??? asbtract "Totalement hors programme : utilisation d'une liste en paramètre non-mutable"
+
+	En réalité, ce n'est pas tant la structure de liste utilisée qui est importante dans l'exemple ci-dessus, mais bien l'utilisation d'une méthode **en place** comme `append`. On peut en effet utiliser une liste comme un paramètre pseudo non-mutable comme dans l'exemple ci-dessous, avec la concaténation de listes :
+	
+	<iframe width="1000" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fibonacci%28n,%20mutable,%20pseudo_non_mutable%29%20%3A%0A%20%20%20%20mutable.append%28n%29%0A%20%20%20%20pseudo_non_mutable%20%3D%20pseudo_non_mutable%20%2B%20%5Bn%5D%0A%20%20%20%20if%20n%20%3C2%20%3A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20return%20n%0A%20%20%20%20else%20%3A%0A%20%20%20%20%20%20%20%20return%20fibonacci%28n-1,%20mutable,%20pseudo_non_mutable%29%20%2B%20fibonacci%28n-2,%20mutable,%20pseudo_non_mutable%29%0A%20%20%20%20%20%0Amutable%20%3D%20%5B%5D%0Apseudo_non_mutable%20%3D%20%5B%5D%0Afibonacci%284,%20mutable,%20pseudo_non_mutable%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=58&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+	
+	Au vu de mon expérience, un conseil : **NE FAITES SURTOUT PAS CA** ! Vous vous éviterez des heures de débuggage frustrantes !
+	
+	Si vous tenez à conserver un paramètre non-mutable, utilisez **TOUJOURS** une structure qui est construite en ce sens...
+	
+	
+	
+	
 
 !!! question "Implémentation en Python"
 
@@ -150,7 +163,19 @@ fonction parcours_largeur(G) :
 
 ### Recherche de cycle dans un graphe
 
+Il est parfois nécessaire de détecter dans un graphe la présence d'un cycle, comme par exemple
+
+
 ### Recherche de chemin entre deux sommets du graphe
+
+
+https://en.wikipedia.org/wiki/Cycle_detection#Applications
+
+https://en.wikipedia.org/wiki/Linear_congruential_generator#Python_code
+
+https://en.wikipedia.org/wiki/Pseudorandom_number_generator
+
+
 
 
 		
