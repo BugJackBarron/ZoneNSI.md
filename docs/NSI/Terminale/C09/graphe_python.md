@@ -127,6 +127,7 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
 		1. Ajouter une méthode `get_degree` à la classe `Graph` pour qu'elle renvoie le degré d'un sommet passé en argument.
+		1. Ajouter une méthode `get_vertices` à la classe `Graph` qui renvoie la liste des sommets.
 		1. Ajouter une méthode `is_directed` à la classe `Graph` pour qu'elle renvoie `True` si le graphe est orienté et `False` sinon.
 		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
 			* `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
@@ -170,7 +171,10 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 					deg += self.adj[s][i]!=0
 					deg += self.adj[i][s]!=0
 				return deg
-			
+				
+			def get_vertices(self) :
+				return [i for i in range(self.n)]
+							
 			def is_directed(self) :
 				for i in range(self.n) :
 					for j in range(i,self.n) :
@@ -248,21 +252,23 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 					
 		````
 		
+		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`).
 		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
 		1. Ajouter une méthode `get_degree` à la classe `Graph` pour qu'elle renvoie le degré d'un sommet passé en argument.
+		1. Ajouter une méthode `get_vertices` à la classe `Graph` qui renvoie la liste des sommets.
 		1. Ajouter une méthode `is_directed` à la classe `Graph` pour qu'elle renvoie `True` si le graphe est orienté et `False` sinon.
 		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
 			* `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
 			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
 			* un tuple `(s,e)` donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
-		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`).
+		
 
 ### Graphes pondérés 
 
-Il existe pluseiurs méthodes permettant d'ajouter une pondération sur chaque arc :
+Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque arc :
 
 *  on peut ajouter dans le dictionnaire de voisinage un tuple contenant à la fois le nom et le poids de l'arc considéré ;
 * on peut aussi ajouter un autre dictionnaire parallèle à `self.adj` dont les clés sont les couples de sommets et les valeurs le poids de l'arc considéré.

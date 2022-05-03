@@ -119,7 +119,7 @@ Cependant un problème majeur demeurait : certaines langues, comme le chinois, n
 		* `.encode(charmap)` : transforme une chaine de caractère de la *charmap* passée en argument  en une séquence d'octets ;
 		* `.decode(charmap)` : transforme une séquence d'octets en une chaine de caractère de la *charmap* passée en argument.
 
-
+		**Questions :**
 	 
 		1. Tester l'encodage de la chaine `'A'` d'abord en `ascii`, puis en `ISO8859-1`, puis en `ISO8859-5` et enfin en `CP437`. Que constate-t-on ?
 		2. Faire de même avec la chaine `'é'`. Que constate-t-on ?
@@ -127,7 +127,7 @@ Cependant un problème majeur demeurait : certaines langues, comme le chinois, n
 			1. en Latin-1 ?
 			1. en CP437 ?
 			1. en ISO8859-5 ?
-		4. Quel est le code Latin-1 cordresponant à la lettre 'œ' ?
+		4. Quel est le code Latin-1 cordresponant à la lettre 'œ' ? Quel est le problème ?
 	
 	=== "Réponses"
 		A venir !
