@@ -265,6 +265,70 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 			* un tuple `(s,e)` donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
 		
+		
+	=== "Solution"
+	
+		```` python linenums="1"
+		class Graph :
+			def __init__(self) :
+				self.vertice = {}
+
+			def add_vertice(self,s) :
+				if s not in self.vertice :
+					self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+
+			def add_edge(self, s, e) :
+				self.add_vertice(s)
+				self.add_vertice(e)
+				self.vertice[s].add(e) # La méthode add des objets de type set fonctionne comme append
+			
+			def exist_edge(self, s, e) :
+				return  e in self.vertice[s]
+				
+			def get_vertices(self) :
+				return self.vertice.keys()
+			
+			def get_order(self) :
+				return len(self.vertice.keys())
+			
+			def get_degree(self, s) :
+				return len(self.vertice[s])
+			
+			def get_neighbours(self,s) :
+				return list(self.vertice[s])
+			
+			def is_directed(self) :
+				for s in self.get_vertices() :
+					for t in self.get_neighbours(s) :
+						if s not in self.get_neighbours(t) :
+							return True
+				return False
+			
+			def is_undirected_and_eulerian(self) :
+				if self.is_directed() :
+					return False
+				degrees=[]
+				for s in self.get_vertices() :
+					degrees.append(self.get_degree(s)%2)
+				if sum(degrees) == 0 :
+					return True
+				elif sum(degrees) == 2 :
+					return degrees.index(1), self.get_order()-1-degrees[::-1].index(1)
+				return False
+			
+			def delete_edge(self, s, e) :
+				self.vertices[s].remove(e)
+			
+			
+				
+			def __repr__(self) :
+				rep = ""
+				for s in self.get_vertices() :
+					rep += f"{s} :\n"
+					for t in self.vertice[s] :
+						rep += f"   ->{t}\n"
+				return rep
+		````
 
 ### Graphes pondérés 
 
