@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C09/parcours/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.12">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.27ad92d8.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -1371,6 +1371,57 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_6" type="checkbox" id="__nav_4_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Traitement des données en tables
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Traitement des données en tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Traitement des données en tables
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C06/Dictionnaires/" class="md-nav__link">
+        Les dictionnaires
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2688,6 +2739,13 @@
 <li>est souvent un <mark class="critic"><strong>générateur d'effets de bords indésirés</strong></mark> !</li>
 </ul>
 </div>
+<details class="asbtract">
+<summary>Totalement hors programme : utilisation d'une liste en paramètre non-mutable</summary>
+<p>En réalité, ce n'est pas tant la structure de liste utilisée qui est importante dans l'exemple ci-dessus, mais bien l'utilisation d'une méthode <strong>en place</strong> comme <code>append</code>. On peut en effet utiliser une liste comme un paramètre pseudo non-mutable comme dans l'exemple ci-dessous, avec la concaténation de listes :</p>
+<p><iframe width="1000" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fibonacci%28n,%20mutable,%20pseudo_non_mutable%29%20%3A%0A%20%20%20%20mutable.append%28n%29%0A%20%20%20%20pseudo_non_mutable%20%3D%20pseudo_non_mutable%20%2B%20%5Bn%5D%0A%20%20%20%20if%20n%20%3C2%20%3A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20return%20n%0A%20%20%20%20else%20%3A%0A%20%20%20%20%20%20%20%20return%20fibonacci%28n-1,%20mutable,%20pseudo_non_mutable%29%20%2B%20fibonacci%28n-2,%20mutable,%20pseudo_non_mutable%29%0A%20%20%20%20%20%0Amutable%20%3D%20%5B%5D%0Apseudo_non_mutable%20%3D%20%5B%5D%0Afibonacci%284,%20mutable,%20pseudo_non_mutable%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=58&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
+<p>Au vu de mon expérience, un conseil : <strong>NE FAITES SURTOUT PAS CA</strong> ! Vous vous éviterez des heures de débuggage frustrantes !</p>
+<p>Si vous tenez à conserver un paramètre non-mutable, utilisez <strong>TOUJOURS</strong> une structure qui est construite en ce sens...</p>
+</details>
 <div class="admonition question">
 <p class="admonition-title">Implémentation en Python</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Corrigé</label></div>
@@ -2758,7 +2816,11 @@
 </div>
 <h2 id="applications">Applications</h2>
 <h3 id="recherche-de-cycle-dans-un-graphe">Recherche de cycle dans un graphe</h3>
+<p>Il est parfois nécessaire de détecter dans un graphe la présence d'un cycle, comme par exemple</p>
 <h3 id="recherche-de-chemin-entre-deux-sommets-du-graphe">Recherche de chemin entre deux sommets du graphe</h3>
+<p>https://en.wikipedia.org/wiki/Cycle_detection#Applications</p>
+<p>https://en.wikipedia.org/wiki/Linear_congruential_generator#Python_code</p>
+<p>https://en.wikipedia.org/wiki/Pseudorandom_number_generator</p>
 
               
             </article>
