@@ -1,0 +1,2997 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Bug_Jack_Barron">
+      
+      
+        <link rel="canonical" href="https://www.zonensi.fr/Miscellanees/Bases_Python/Fichiers_Textes/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.12">
+    
+    
+      
+        <title>Manipulation des fichiers textes - ZoneNSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.27ad92d8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manipulation-des-fichiers-textes-en-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ZoneNSI" class="md-header__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZoneNSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Manipulation des fichiers textes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ZoneNSI" class="md-nav__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    ZoneNSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Mathématiques
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Mathématiques" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Mathématiques
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Seconde
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Seconde" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Seconde
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Ensembles de nombres et intervalles
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Ensembles de nombres et intervalles" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Ensembles de nombres et intervalles
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/C01/C01_01_Ensembles_Nombres/" class="md-nav__link">
+        Ensembles de nombres 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/C01/C01_02_Intervalles/" class="md-nav__link">
+        Intervalles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Notion de fonctions
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Notion de fonctions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Notion de fonctions
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/C03/C03_01_Generalite_fonctions/" class="md-nav__link">
+        Vocabulaire et rappels
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" type="checkbox" id="__nav_2_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Algorithmique et bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        Algorithmes, affectations et types de variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/AlgoBases/ProgrammationPythonThonny/" class="md-nav__link">
+        Programmation en Python et utilisation de Thonny
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Seconde/AlgoBases/Arithmetique/" class="md-nav__link">
+        Arithmétique
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Premiere/home.md" class="md-nav__link">
+        Première
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Maths/Terminale/home.md" class="md-nav__link">
+        Terminale
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            SNT
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="SNT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            SNT
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/College/PixelArt/" class="md-nav__link">
+        Session Collège
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le Web
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le Web
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WorkInProgress/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Web/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Données Structurées
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Données Structurées" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Données Structurées
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Donnees/Arborescence/" class="md-nav__link">
+        Arborescence des fichiers et dossiers 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Reseaux Informatiques
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Reseaux Informatiques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Reseaux Informatiques
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Reseaux/TCP_IP/" class="md-nav__link">
+        Adresses IP et TCP/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Reseaux/Creation_reseaux/" class="md-nav__link">
+        Création de réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Reseaux/DHCP_DNS/" class="md-nav__link">
+        Pour aller plus loin, DHCP et DNS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Images Numériques
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Images Numériques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Images Numériques
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Images/NB/" class="md-nav__link">
+        Noir, Blanc, Gris
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Images/RGB/" class="md-nav__link">
+        La couleur et le RGB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Géolocalisation
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Géolocalisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Géolocalisation
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SNT/Geolocalisation/geolocalisation/" class="md-nav__link">
+        Coordonnées et GPS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            NSI
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="NSI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            NSI
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Première
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Première" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Première
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WorkInProgress/" class="md-nav__link">
+        Variables et affectations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WorkInProgress/" class="md-nav__link">
+        Boucles et conditions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WorkInProgress/" class="md-nav__link">
+        Fonctions, assertions et tests unitaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C01/ProjetPendu/" class="md-nav__link">
+        Projet : Jeu du Pendu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le codage des données
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le codage des données" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le codage des données
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C02/BinaireCodageEntiers/" class="md-nav__link">
+        Binaire et codage des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C02/Entiers_relatifs_Flottants/" class="md-nav__link">
+        Entiers relatifs et flottants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C02/CodageCaractere/" class="md-nav__link">
+        Codage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le web
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le web" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le web
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C03/HTML/" class="md-nav__link">
+        HTML strict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C03/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C03/JS01/" class="md-nav__link">
+        Introduction à Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C03/JS02/" class="md-nav__link">
+        Javascript, le DOM et les formulaires
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_4" type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Les séquences
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Les séquences" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Les séquences
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C04/Tuples/" class="md-nav__link">
+        Tuples et algorithmes de parcours
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C04/Listes_Comprehension/" class="md-nav__link">
+        Listes et compréhensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C04/Algorithmes_Tri/" class="md-nav__link">
+        Premiers algorithmes de tris
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C04/Tableaux2D/" class="md-nav__link">
+        Tableaux à 2 dimensions : Matrices 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C04/ImagesBMP/" class="md-nav__link">
+        Les images Matricielles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_5" type="checkbox" id="__nav_4_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Architecture matérielle
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture matérielle" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Architecture matérielle
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C05/Historique/" class="md-nav__link">
+        Historique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C05/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_6" type="checkbox" id="__nav_4_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Traitement des données en tables
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Traitement des données en tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Traitement des données en tables
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C06/Dictionnaires/" class="md-nav__link">
+        Les dictionnaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Premiere/C06/CSV/" class="md-nav__link">
+        Les fichiers CSV
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Terminale
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Terminale" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Terminale
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Modularité et POO
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C01/Intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C01/Modularite/" class="md-nav__link">
+        Modules, interfaces, encapsulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C01/Exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C01/IntroPOO/" class="md-nav__link">
+        Introduction à la POO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Récursivité
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Récursivité" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Récursivité
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C02/Recursivite/" class="md-nav__link">
+        Notion de récursivité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C02/RecursiviteFractales/" class="md-nav__link">
+        Applications : Fractales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C02/RecursiviteTris/" class="md-nav__link">
+        Applications : Tris
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Listes, Piles, Files
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Listes, Piles, Files" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Listes, Piles, Files
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C03/ListesChainees/" class="md-nav__link">
+        Listes chainées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C03/Piles_et_files/" class="md-nav__link">
+        Piles et files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C03/ToursHanoi/" class="md-nav__link">
+        TP : Tours de Hanoï
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Données et SQL
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Données et SQL" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Bases de Données et SQL
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C04/ModeleRelationnel/" class="md-nav__link">
+        Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C04/BasesSQL1/" class="md-nav__link">
+        Bases de SQL 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C04/BasesSQL2/" class="md-nav__link">
+        Bases de SQL 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C04/BasesSQL3/" class="md-nav__link">
+        Bases de SQL 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C04/Projet_Pokemon/" class="md-nav__link">
+        Projet Pokemon
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Arbres Binaires
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Arbres Binaires" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Arbres Binaires
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C05/Def_Arbres/" class="md-nav__link">
+        Définition et propriétés des arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C05/ABR/" class="md-nav__link">
+        Arbres Binaires de Recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C05/ABR_Python/" class="md-nav__link">
+        Implémentation des ABR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C05/AVL/" class="md-nav__link">
+        Equilibrage des ABR : les AVL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Processeurs et Ordonnancement
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Processeurs et Ordonnancement" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Processeurs et Ordonnancement
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C06/Socs/" class="md-nav__link">
+        Les SOCs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C06/Processus/" class="md-nav__link">
+        Gestion des Processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C06/Ordonnancement/" class="md-nav__link">
+        Ordonnancement des processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C06/Interblocage/" class="md-nav__link">
+        Interblocage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Réseaux
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Réseaux
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C07/Routage/" class="md-nav__link">
+        Notion de routage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C07/RIP/" class="md-nav__link">
+        Protocoles RIP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C07/OSPF/" class="md-nav__link">
+        Protocole OSPF
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_9" type="checkbox" id="__nav_4_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Programmation dynamique
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Programmation dynamique" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Programmation dynamique
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C08/ProgDyn/" class="md-nav__link">
+        Principes et exemples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C08/alignSeq/" class="md-nav__link">
+        Alignements de séquences
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_10" type="checkbox" id="__nav_4_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Graphes et parcours
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Graphes et parcours" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Graphes et parcours
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C09/graphe/" class="md-nav__link">
+        Notion de Graphe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C09/graphe_python/" class="md-nav__link">
+        Les graphes en Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NSI/Terminale/C09/parcours/" class="md-nav__link">
+        Parcours de Graphes 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Miscellanées
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellanées" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Miscellanées
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Python
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Python
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_1" type="checkbox" id="__nav_5_1_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le langage
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Le langage" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Le langage
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Manipulation des fichiers textes
+          </a>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Manipulation des fichiers textes
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-principes-de-lecture-de-fichier-textes" class="md-nav__link">
+    1. Principes de lecture de fichier textes
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Principes de lecture de fichier textes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-premier-exemple-ouvrir-et-lire-la-totalite-dun-fichier" class="md-nav__link">
+    1.1 Premier exemple : ouvrir et lire la totalité d'un fichier
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-lire-un-fichier-ligne-par-ligne" class="md-nav__link">
+    1.2 Lire un fichier ligne par ligne
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Lire un fichier ligne par ligne">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#13-simplification-decriture-avec-le-gestionnaire-de-contexte-with" class="md-nav__link">
+    1.3 Simplification d'écriture avec le gestionnaire de contexte with
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-autres-methodes-de-lecture" class="md-nav__link">
+    1.4 Autres méthodes de lecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ecriture-dans-un-fichier-texte" class="md-nav__link">
+    2. Ecriture dans un fichier texte
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Ecriture dans un fichier texte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#22-ajouter-des-chaines-a-un-fichier-preexistant" class="md-nav__link">
+    2.2 Ajouter des chaines à un fichier préexistant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ajouter-et-lire-des-donnees-non-textuelles" class="md-nav__link">
+    2.3 Ajouter et lire des données non textuelles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WorkInProgress/" class="md-nav__link">
+        Flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs_cmd/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manim/BasesManim/" class="md-nav__link">
+        Manim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_5" type="checkbox" id="__nav_5_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="Pygame" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Pygame
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pygame/InstallationPygame/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pygame/Base_pygame/" class="md-nav__link">
+        Bases de Pygame
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_6" type="checkbox" id="__nav_5_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            P5
+          
+        </label>
+      
+      <nav class="md-nav" aria-label="P5" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          
+            P5
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p5_Thonny/" class="md-nav__link">
+        P5 et Thonny
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilisationP5/" class="md-nav__link">
+        Bases de P5 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../regex/" class="md-nav__link">
+        REGEX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="Fichiers_Textes.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
+              
+                
+
+
+<h1 id="manipulation-des-fichiers-textes-en-python">Manipulation des fichiers textes en Python</h1>
+<h2 id="1-principes-de-lecture-de-fichier-textes">1. Principes de lecture de fichier textes</h2>
+<h3 id="11-premier-exemple-ouvrir-et-lire-la-totalite-dun-fichier">1.1 Premier exemple : ouvrir et lire la totalité d'un fichier</h3>
+<p>Copiez-collez le fichier <code>zoo.txt</code>dans le même dossier que ce notebook, puis déclenchez les deux cellules suivantes :</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span>  <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;zoo.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">file</span>
+</code></pre></div>
+<p>La première cellule ouvre le fichier <code>zoo.txt</code> en mode lecture seule, comme l'indique le second argument <code>r</code> (pour <em>read</em>) de la fonction <code>open()</code>. Remarquez que le fichier n'est pas encore lu, mais simplement <strong>ouvert</strong> (un peu comme lorsqu'on ouvre un livre, mais qu'on ne l'a pas encore lu). Le <strong>curseur de lecture</strong> est prêt à lire le premier caractère du fichier, et lira les caractères avec l'<strong>encodage <code>utf8</code></strong>. L'instruction <code>open("zoo.txt", "r",encoding="utf8")</code> suppose que le fichier <code>zoo.txt</code> est dans le répertoire depuis lequel l'interpréteur Python a été lancé. Si ce n'est pas le cas, il faut préciser le chemin d'accès au fichier, soit de manière absolue soit de manière relative.</p>
+<p>La seconde cellule nous confirme que la <strong>variable</strong> <code>file</code> contient la référence vers la zone de la mémoire vive dans laquelle est stockée le fichier.</p>
+<div class="highlight"><pre><span></span><code><span class="n">lignes</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">lignes</span>
+</code></pre></div>
+<p>On lit ici la totalité du fichier grâce à la <strong>méthode</strong> <code>.readlines()</code>. Cette méthode renvoie un tableau stocké dans la varaible <code>lignes</code> où chaque élément est une ligne du fichier texte. Le <strong>curseur de lecture</strong> est déplacé à la fin de la dernière ligne du fichier.</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</code></pre></div>
+<p>Si on tente de relire une fois de plus les données, la méthode <code>.readlines()</code> renvoie une liste vide, car le <strong>curseur de lecture</strong> ne trouve plus rien.</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>La ligne précédente ferme le fichier, plus précisément elle ne renvoie rien mais modifie l'état de l'objet <code>file</code> en fichier fermé. </p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</code></pre></div>
+<p>Il est donc impossible de lire de nouveau des informations.</p>
+<p><span style="color:blue;font-weight: bold;"> Exercice :</span></p>
+<p>1) Quel est le type des éléments du tableau renvoyé par la méthode <code>.readlines()</code> ?</p>
+<p>2) Ajouter à l'aide de <code>Notepad++</code> les animaux <code>perroquets</code> et <code>ornithorynque</code> à la suite de <code>zoo.txt</code>, puis relancer l'ouverture, la lecture et la fermeture du fichier. </p>
+<p>3) Lors de la lecture du fichier, apparaissent les caractères <code>\n</code>. A quoi correspondent-ils ?</p>
+<h2 id="12-lire-un-fichier-ligne-par-ligne">1.2 Lire un fichier ligne par ligne</h2>
+<p>Il ne vous a pas échappé que l'objet renvoyé par la méthode <code>.readlines()</code> renvoie une liste. Il est donc possible d'<strong>itérer</strong> sur cette liste, en utilisant une boucle <code>for</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span>  <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;zoo.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ligne </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="13-simplification-decriture-avec-le-gestionnaire-de-contexte-with">1.3 Simplification d'écriture avec le gestionnaire de contexte <code>with</code></h3>
+<p>Il est nécessaire de faire une remarque importante :</p>
+<p><span style="color:red;font-weight : bold;"> Il est impératif de fermer un fichier dès qu'on en a fini avec lui !</span> </p>
+<p>En effet, si le fichier reste ouvert en mémoire vive, il est possible qu'un appel du système d'exploitation modifie la zone mémoire liée à ce fichier, ce qui risque de ne pas enregistrer les changements(au mieux), voire de le rendre illisible (au pire - c'est ce qui arrivait souvent sur les clés USB quand elles étaient mal éjectées).</p>
+<p>Pire que ça, si une exception (= erreur) se produit avant l'appel à la méthode <code>.close()</code>, le fichier demeurera ouvert en mémoire et... advienne que pourra...</p>
+<p>Il est bien entendu possible de prévoir un tel problème avec un bloc <code>try : ... finally : ...</code>, de la manière suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">:</span>
+    <span class="n">file</span>  <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;zoo.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+
+<span class="k">finally</span> <span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>Cependant ce type de  structure est très lourd à mettre en place, et heureusement les développeurs de Python ont prévu un mécanisme plus simple : le <strong>gestionnaire de contexte</strong> <code>with</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;zoo.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+</code></pre></div>
+<p>L'utilisation de <code>with</code> garanti la bonne fermeture du fichier, même dans le cas d'exceptions.</p>
+<h3 id="14-autres-methodes-de-lecture">1.4 Autres méthodes de lecture</h3>
+<p>En plus de la méthode <code>.readlines()</code>, il existe aussi d'autres possibilités pour lire un fichier texte :
+- la méthode <code>.read</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;zoo.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="n">contenu</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">contenu</span>
+</code></pre></div>
+<p>Cette méthode lit l'intégralité d'un fichier comme une unique chaine de caractères.</p>
+<ul>
+<li>la méthode <code>.readline()</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;zoo.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="n">contenu</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="n">contenu</span>
+</code></pre></div>
+<p>Cette méthode lit le fichier ligne par ligne, en déplacant le <strong>curseur de lecture</strong> d'une ligne à chaque appel.</p>
+<h2 id="2-ecriture-dans-un-fichier-texte">2. Ecriture dans un fichier texte</h2>
+<p>### 2.1 Création d'un fichier texte</p>
+<p>La méthode d'écriture dans un fichier texte est sensiblement la même que pour la lecture :</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;monPremierFichierTexte.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;J&#39;écris dans un fichier texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;J&#39;écris une deuxième ligne dans un fichier texte.&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;J&#39;écris la suite de la deuxième ligne.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Ici, le gestionnaire de contexte <code>with</code> ouvre le fichier en écriture seule, ce qui est signalé par le deuxième paramètre <code>w</code> ( comme <em>write</em>). Le fichier n'existant pas au départ, il est automatiquement créé par Python. Le <strong>curseur d'écriture</strong> est placé au début du fichier.Puis l'appel de la méthode <code>.write()</code> écrit la chaine de caractère passée en argument dans le fichier, et place le <strong>curseur d'écriture</strong> à la fin de la dernière chaine de caractère écrite. Notez qu'il n'y a pas de saut de ligne dans le fichier entre les chaines 2 et 3, pusisqu'on n'a pas explicitement demandé un saut à l'aide du caractère spécial <code>\n</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;monPremierFichierTexte.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Je réécris dans un fichier&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Après exécution de la cellule ci-dessus, on constate l'effacement des données précédentes du fichier. En effet, si le fichier existe déjà, l'ouvertur avec le paramètre <code>w</code> va écraser l'ancien contenu, le <strong>curseur d'écriture</strong> étant placé au début du fichier.</p>
+<h3 id="22-ajouter-des-chaines-a-un-fichier-preexistant">2.2 Ajouter des chaines à un fichier préexistant</h3>
+<p>Pour ajouter des chaines de caractères à un fichier préexistant, il faut utiliser la fonction <code>open()</code> de la mlanière suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;monPremierFichierTexte.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Maintenant, j&#39;ajoute à mon fichier précédent.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="23-ajouter-et-lire-des-donnees-non-textuelles">2.3 Ajouter et lire des données non textuelles</h3>
+<p>Comment faire pour ajouter des données numériques à un fichier texte ?</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;monPremierFichierTexte.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
+</code></pre></div>
+<p>On constate que l'erreur donnée est <code>TypeError: write() argument must be str, not int</code>. Il est donc impossible d'ajouter directement des données numériques, il faut d'abord les caster en type <code>str</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;monPremierFichierTexte.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+</code></pre></div>
+<p>Il devient alors possible de passer dans un fichier texte le contenu de variables, en utilisant directement les <code>f-string</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="n">dico</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Vache&quot;</span> <span class="p">:</span> <span class="s2">&quot;Meuh&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Chien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Wouf&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Chat&quot;</span> <span class="p">:</span> <span class="s2">&quot;Miaou&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Poule&quot;</span> <span class="p">:</span> <span class="s2">&quot;Cot-cot&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Ane&quot;</span> <span class="p">:</span> <span class="s2">&quot;Hi-Han&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Cochon&quot;</span> <span class="p">:</span> <span class="s2">&quot;Gruik&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Dindon&quot;</span> <span class="p">:</span> <span class="s2">&quot;Leon&quot;</span>
+           <span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sauvDico.txt&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dico</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+</code></pre></div>
+<p>Pour lire ces données, il suffit alors de relire l'intégralité du fichier et de caster à l'aide de la fonction <em>built-in</em> <code>eval()</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sauvDico.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">textdic</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>    
+<span class="n">newDico</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">textdic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">newDico</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le chien fait </span><span class="si">{</span><span class="n">newDico</span><span class="p">[</span><span class="s1">&#39;Chien&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h1 id="3-exercices">3. Exercices</h1>
+<h3 id="31-exercice-1">3.1 Exercice 1</h3>
+<p>Le fichier <code>Notes.txt</code> contient les notes reçues par des élèves à un examen de Python.</p>
+<ol>
+<li>Ecrire une fonction <code>ouvreNote()</code> qui ouvre le fichier, et renvoie la liste des notes sous la forme d'une liste d'entiers.</li>
+<li>Ecrire une fonction <code>calculeMoyenne()</code> qui calcule la moyenne du groupe d'élève</li>
+<li>Ecrire une fonction <code>admis()</code> qui crée un nouveau fichier <code>listeAdmis.txt</code>, avec en face de chaque note la mention <em>admis</em> si la note est supérieure ou égale à 10, ou la mention <em>recalé</em> si la note est strictement inférieure à 10.</li>
+</ol>
+<h3 id="32-exercice-2">3.2 Exercice 2</h3>
+<p>Le <strong>Zen de Python</strong> est un ensemble de 19 principes qui influencent le design du langage de programmation Python, et sont utiles pour comprendre et utiliser le langage.</p>
+<p>Écrit et publié sur la liste de discussion de Python en juin 1999 par Tim Peters, le Zen de Python a été ensuite publié comme le Python Enhancement Proposal <strong>(PEP) numéro 20</strong>, et est aussi présent sur le site web officiel de Python, en anglais. Il est aussi inclus comme <em>Easter egg</em> dans la distribution de l'interpréteur Python, et apparait quand on tape la commande <code>import this</code>. (extrait de wikipedia)</p>
+<p>Sa traduction en français est donnée dans la cellule suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="n">zen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Préfère :</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;la beauté à la laideur,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;l&#39;explicite à l&#39;implicite,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;le simple au complexe</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;et le complexe au compliqué,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;le déroulé à l&#39;imbriqué,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;l&#39;aéré au compact.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Prends en compte la lisibilité.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Les cas particuliers ne le sont jamais assez pour violer les règles.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Mais, à la pureté, privilégie l&#39;aspect pratique.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Ne passe pas les erreurs sous silence,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;... ou bâillonne-les explicitement.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Face à l&#39;ambiguïté, à deviner ne te laisse pas aller.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Sache qu&#39;il ne devrait [y] avoir qu&#39;une et une seule façon de procéder,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;même si, de prime abord, elle n&#39;est pas évidente, à moins d&#39;être Néerlandais.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Mieux vaut maintenant que jamais.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Cependant jamais est souvent mieux qu&#39;immédiatement.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Si l&#39;implémentation s&#39;explique difficilement, c&#39;est une mauvaise idée.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Si l&#39;implémentation s&#39;explique aisément, c&#39;est peut-être une bonne idée.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Les espaces de nommage ! Sacrée bonne idée ! Faisons plus de trucs comme ça.&quot;</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>Ecrire une fonction <code>ecritZen()</code> qui écrit le contenu de la variable <code>zen</code> dans le fichier <code>zenPython.txt</code></li>
+<li>Ecrire une fonction <code>inverseZen()</code> qui lit le contenu du fichier <code>zenPython.txt</code>, et <strong>renvoie une chaine de caractère contenant les phrases dans l'ordre inverse</strong>.</li>
+</ol>
+<h3 id="33-exercice-3">3.3 Exercice 3</h3>
+<p>Créer une fonction qui ouvre le fichier <code>codeJedi.txt</code>, et qui remplace le mot <em>Jedi</em> par le mot <em>Sith</em>, les négations <em>ne</em> et <em>pas</em> étant ajoutées aux bonnes positions, sauf pour la ligne 2 où <em>pour défendre et protéger</em> est supprimé.</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;codeJedi.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
+    <span class="n">toto</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">toto</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;Les Jedi sont les gardiens de la paix dans la galaxie.\n&#39;,
+ &#39;Les Jedi utilisent leurs pouvoirs pour défendre et protéger.\n&#39;,
+ &#39;Les Jedi respectent la vie, en toutes ses formes.\n&#39;,
+ &#39;Les Jedi servent autrui plutôt que les dominer, pour le bien de la galaxie.\n&#39;,
+ &quot;Les Jedi cherchent à s&#39;améliorer à travers le savoir et l&#39;instruction.&quot;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">toto</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ligne</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;Les&#39;, &#39;Jedi&#39;, &#39;sont&#39;, &#39;les&#39;, &#39;gardiens&#39;, &#39;de&#39;, &#39;la&#39;, &#39;paix&#39;, &#39;dans&#39;, &#39;la&#39;, &#39;galaxie.\n&#39;]
+[&#39;Les&#39;, &#39;Jedi&#39;, &#39;utilisent&#39;, &#39;leurs&#39;, &#39;pouvoirs&#39;, &#39;pour&#39;, &#39;défendre&#39;, &#39;et&#39;, &#39;protéger.\n&#39;]
+[&#39;Les&#39;, &#39;Jedi&#39;, &#39;respectent&#39;, &#39;la&#39;, &#39;vie,&#39;, &#39;en&#39;, &#39;toutes&#39;, &#39;ses&#39;, &#39;formes.\n&#39;]
+[&#39;Les&#39;, &#39;Jedi&#39;, &#39;servent&#39;, &#39;autrui&#39;, &#39;plutôt&#39;, &#39;que&#39;, &#39;les&#39;, &#39;dominer,&#39;, &#39;pour&#39;, &#39;le&#39;, &#39;bien&#39;, &#39;de&#39;, &#39;la&#39;, &#39;galaxie.\n&#39;]
+[&#39;Les&#39;, &#39;Jedi&#39;, &#39;cherchent&#39;, &#39;à&#39;, &quot;s&#39;améliorer&quot;, &#39;à&#39;, &#39;travers&#39;, &#39;le&#39;, &#39;savoir&#39;, &#39;et&#39;, &quot;l&#39;instruction.&quot;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">toto</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;Les Jedi sont les gardiens de la paix dans la galaxie.\n&#39;,
+ &#39;Les Jedi utilisent leurs pouvoirs pour défendre et protéger.\n&#39;,
+ &#39;Les Jedi respectent la vie, en toutes ses formes.\n&#39;,
+ &#39;Les Jedi servent autrui plutôt que les dominer, pour le bien de la galaxie.\n&#39;,
+ &quot;Les Jedi cherchent à s&#39;améliorer à travers le savoir et l&#39;instruction.&quot;]
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../../NSI/Terminale/C09/parcours/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Parcours de Graphes " rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Parcours de Graphes 
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../WorkInProgress/" class="md-footer__link md-footer__link--next" aria-label="Next: Flask" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Flask
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2022 - F.Vergniaud
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:admin@zonensi.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js"></script>
+      
+    
+  </body>
+</html>
