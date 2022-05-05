@@ -13,7 +13,7 @@
 
 		```` python 
 		  
-		animaux = ['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Dindon']
+		animaux = ['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon']
 		cris = ['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon']
 		 
 		````
@@ -228,7 +228,7 @@ Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple :
 ```` python
 >>> cris['Girafe'] = 'Tic-Tic'
 >>> cris
-{'Vache': 'Meuh', 'Chien': 'Wouf', 'Chat': 'Miaou', 'Poule': 'Cot-cot', 'Ane': 'Hi-Han', 'Cochon': 'Gruik', 'Dindon': 'Leon', 'Girafe': 'Tic-Tic'}
+{'Vache': 'Meuh', 'Chien': 'Wouf', 'Chat': 'Miaou', 'Poule': 'Cot-cot', 'Ane': 'Hi-Han', 'Cochon': 'Gruik', 'Paon': 'Leon', 'Girafe': 'Tic-Tic'}
 ````
 
 #### Supprimer un élément
@@ -238,7 +238,7 @@ On supprime le couple clé/valeur d'un dictionnaire grâce au mot-clé `del` :
 ```` python
 >>> del cris['Girafe']
 >>> cris
-{'Vache': 'Meuh', 'Chien': 'Wouf', 'Chat': 'Miaou', 'Poule': 'Cot-cot', 'Ane': 'Hi-Han', 'Cochon': 'Gruik', 'Dindon': 'Leon'} 
+{'Vache': 'Meuh', 'Chien': 'Wouf', 'Chat': 'Miaou', 'Poule': 'Cot-cot', 'Ane': 'Hi-Han', 'Cochon': 'Gruik', 'Paon': 'Leon'} 
 ````
 
 #### Longueur d'un dictionnaire
@@ -278,7 +278,7 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 
 	```` python   
 	>>> cris.keys()
-	 dict_keys(['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Dindon'])
+	 dict_keys(['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon'])
 	````
 	L'objet obtenu est dyu type `dict_keys`, qui se comporte comme un **itérable** classique (c'est-à-dire qu'on peut l'utiliser dans une boucle `for`) :
 
@@ -304,7 +304,7 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 
 	```` python 
 	>>> cris.items()
-	dict_items([('Vache', 'Meuh'), ('Chien', 'Wouf'), ('Chat', 'Miaou'), ('Poule', 'Cot-cot'), ('Ane', 'Hi-Han'), ('Cochon', 'Gruik'), ('Dindon', 'Leon')])
+	dict_items([('Vache', 'Meuh'), ('Chien', 'Wouf'), ('Chat', 'Miaou'), ('Poule', 'Cot-cot'), ('Ane', 'Hi-Han'), ('Cochon', 'Gruik'), ('Paon', 'Leon')])
 	````
 	Et on peut encore itérer sur cet objet :
 	```` python  
