@@ -389,16 +389,16 @@ Mais encore une fois un problème apparâit : **les données ne sont pas toutes 
 		```python
 		>>> [(c['Name'],c['Continent'],c['Area']) for c in countries if float(c['Population'])>10**8]
 		[('Bangladesh', 'AS', '144000'),
-     ('Brazil', 'SA', '8511965'),
-     ('China', 'AS', '9596960'),
-     ('Indonesia', 'AS', '1919440'),
-     ('India', 'AS', '3287590'),
-     ('Japan', 'AS', '377835'),
-     ('Mexico', 'NA', '1972550'),
-     ('Nigeria', 'AF', '923768'),
-     ('Pakistan', 'AS', '803940'),
-     ('Russia', 'EU', '17100000'),
-     ('United States', 'NA', '9629091')]		
+		('Brazil', 'SA', '8511965'),
+		('China', 'AS', '9596960'),
+		('Indonesia', 'AS', '1919440'),
+		('India', 'AS', '3287590'),
+		('Japan', 'AS', '377835'),
+		('Mexico', 'NA', '1972550'),
+		('Nigeria', 'AF', '923768'),
+		('Pakistan', 'AS', '803940'),
+		('Russia', 'EU', '17100000'),
+		('United States', 'NA', '9629091')]		
 		```
 
 ### Trier les données
@@ -674,19 +674,16 @@ Le fichier `cities.csv` téléchargeable [ici](cities.csv){: target="_blank"} co
 
 
 
-Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichier `cities.csv`. Il s'agit, dans `countries.csv` de `Capital_Id`, qui correspond au descripteur `Id` de `cities.csv`. Il est donc possible de joindre des données des deux tables :
+Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichier `cities.csv`. Il s'agit, dans `countries.csv` de `Capital_Id`, qui correspond au descripteur `Id` de `cities.csv`. Il est donc possible de joindre des données des deux tables, comme dans l'exemple ci-dessous :
 
 
 ```python
->>> [(co['Name'],co['Population'],co['Area'],ci['Name'], ci['Population']) for co in countries for ci in cities if co['Capital_Id']==ci['Id'] and int(co['Population'])> 50*10**6]
+>>> [(co['Name'],co['Population'],co['Area'],ci['Name'], ci['Population']
+) for co in countries for ci in cities if int(co['Population'])> 50*10**6 and co['Capital_Id']==ci['Id'] ]
 
     [('Bangladesh', '156118464', '144000', 'Dhaka', '10356500'),
      ('Brazil', '201103330', '8511965', 'Brasília', '2207718'),
-     ('Democratic Republic of the Congo',
-      '70916439',
-      '2345410',
-      'Kinshasa',
-      '7785965'),
+     ('Democratic Republic of the Congo', '70916439', '2345410', 'Kinshasa', '7785965'),
      ('China', '1330044000', '9596960', 'Beijing', '11716620'),
      ('Germany', '81802257', '357021', 'Berlin', '3426354'),
      ('Egypt', '80471869', '1001450', 'Cairo', '7734614'),
@@ -710,6 +707,7 @@ Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichi
      ('Vietnam', '89571130', '329560', 'Hanoi', '1431270')]
 
 ```
+
 
 !!! question "Exercice"
 
@@ -752,7 +750,62 @@ Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichi
 			'2')]
 			```
 
+??? warning "Pour les cracks : Attention !"
 
+	La technique de fusion montrée ci-dessus n'est vraiment pas très efficace ! En effet il s'agit d'un parcours double de boucle : à chaque tour de la boucle parcourant `countries`, on parcoure **toute la liste  `cities`**. 
+	
+	C'est absolument horrible !
+	
+	En effet, si `countries` est une liste de longueur $1~000~000$ et que `cities` est une liste de taille $1~000$, alors le nombre de comparaison sera de $1~000~000 \times 1~000 = 1~000~000~000$ ! 
+	
+	En termes mathématiques, si `countries` est de taille $n$ et `cities` de taille $m$, alors cet algorithme aura un coût temporel en $\mathbb{O}(n\times m)$.
+	
+	Pour accélérer une telle fusion de liste, il peut-être judicieux de transformer ces listes en des dictionnaires, **avec un choix judicieux de clés !**. 
+	
+	Par exemple, ici on pourrait transformer la liste `cities` en un dictionnaire dont la clé est l'`Id`, puis effectuer une boucle sur la liste.
+	
+	```` python
+	dicCities = {}
+	for ci in cities :
+			dicCities[ci['Id']] = ci
+	result = []
+	for co in countries :
+		if int(co['Population'])> 50*10**6 :
+			result.append([(co['Name'], 
+							co['Population'], 
+							co['Area'], 
+							dicCities[co['Capital_Id']]['Name'], 
+							dicCities[co['Capital_Id']]['Population']))		
+	````
+
+	Certes le code paraît plus complexe. Mais en terme de coût temporel :
+	
+	* Il n'y a qu'un seul parcours de la liste `cities` ;
+	* A chaque tour de boucle parcourant `countries`, on ne fera appel qu'à des actions en **temps constant** (en $\mathbb{O}(1)$) sur le dictionnaire `dicCities`.
+	
+	En reprenant les données précédentes :
+	
+	* on fait $1~000$ tours de boucles pour la construction du dictionnaire ;
+	* on fait $1~000~000$ de tours de boucles sur la liste `countries`.
+	
+	En ordre de grandeur, on reste sur environ $1~000~000$ d'opérations, soit $1~000$ fois moins que précédemment !
+	
+	En termes mathématiques, le coût en temps est $\mathbb{O}(max(m,n))$.
+	
+	Pour être encore plus clair, voici un ordre de comparaison en temps dépendant des tailles $n$ et $m$ des deux listes fusionnées, le contenu d'une case donne la comparaison en temps entre $\mathbb{O}(m \times n)$ et $\mathbb{O}(max(m,n))$, avec le principe de $1~000$ opérations par secondes.
+	
+	| n\m | $1$ | $10^3$ | $10^6$ | $10^9$ |
+	| :---: | :---: | :---: | :---: | :---: |
+	| $1$ | $0,001''~/~0,001''$  | $1''~/~1''$ | $16'40''~/~16'40''$ | $11j13h46'40''~/~11j13h46'40''$ |
+	| $10^3$ | ...  | $16'40''~/~1''$ | $277h46'40''~/~16'40''$ | $\simeq 31~ans/~11j13h46'40''$ |
+	| $10^6$ | ...  | ... | $\simeq 31~ans/~16'40''$ | $\simeq 31~000~années~/~11j13h46'40''$ |
+	| $10^9$ | ...  | ... | ... | $\simeq 31~000~000~années~/~11j13h46'40''$ |
+	
+	Il y a 30 millions d'années, apparaissaient seulement les grands singes, l'Himalaya n'était pas totalement formé...
+	
+	Oui, direz-vous, mais les ordinateurs actuels sont 1 million de fois plus rapides !
+	
+	Certes, mais alors combien de temps faudrait-il dans les deux cas pour traiter deux listes de 1 milliard de données chacune ?
 
 ### Ecrire un nouveau fichier csv
 

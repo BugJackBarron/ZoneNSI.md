@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C06/CSV/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.12">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.27ad92d8.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -3083,29 +3083,22 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
 <p>Écrire une compréhension de liste donnant le nom, le continent et la superficie des pays de plus de 100 millions d'habitants</p>
 </div>
 <div class="tabbed-block">
-<p>```python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>[(c['Name'],c['Continent'],c['Area']) for c in countries if float(c['Population'])&gt;10**8]
-[('Bangladesh', 'AS', '144000'),</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Continent&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Bangladesh&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;144000&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="s1">&#39;SA&#39;</span><span class="p">,</span> <span class="s1">&#39;8511965&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;9596960&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Indonesia&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;1919440&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;India&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;3287590&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Japan&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;377835&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Mexico&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;1972550&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Nigeria&#39;</span><span class="p">,</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span> <span class="s1">&#39;923768&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Pakistan&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;803940&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Russia&#39;</span><span class="p">,</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span> <span class="s1">&#39;17100000&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;9629091&#39;</span><span class="p">)]</span>     
+</code></pre></div>
 </div>
 </div>
 </div>
-<p>('Brazil', 'SA', '8511965'),
- ('China', 'AS', '9596960'),
- ('Indonesia', 'AS', '1919440'),
- ('India', 'AS', '3287590'),
- ('Japan', 'AS', '377835'),
- ('Mexico', 'NA', '1972550'),
- ('Nigeria', 'AF', '923768'),
- ('Pakistan', 'AS', '803940'),
- ('Russia', 'EU', '17100000'),
- ('United States', 'NA', '9629091')]      <br />
-    ```</p>
 </div>
 <h3 id="trier-les-donnees">Trier les données</h3>
 <p>Les résultats precédents sont encore peu lisibles, il serait préférable que les données obtenues soient triées. On va utiliser la fonction <em>built-in</em> <code>sorted</code> :</p>
@@ -3179,7 +3172,9 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
      <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">)]</span>
 </code></pre></div>
-<details class="tips"><summary>Fonctions anonymes</summary><p><strong>Pour information</strong>, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une <strong>fonction anonyme</strong> :</p>
+<details class="tips">
+<summary>Fonctions anonymes</summary>
+<p><strong>Pour information</strong>, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une <strong>fonction anonyme</strong> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="p">[(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
@@ -3367,16 +3362,13 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
 </div>
 </div>
 </div>
-<p>Un des descripteurs est commun à la fois au fichier <code>countries.csv</code> et au fichier <code>cities.csv</code>. Il s'agit, dans <code>countries.csv</code> de <code>Capital_Id</code>, qui correspond au descripteur <code>Id</code> de <code>cities.csv</code>. Il est donc possible de joindre des données des deux tables :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">]</span>
+<p>Un des descripteurs est commun à la fois au fichier <code>countries.csv</code> et au fichier <code>cities.csv</code>. Il s'agit, dans <code>countries.csv</code> de <code>Capital_Id</code>, qui correspond au descripteur <code>Id</code> de <code>cities.csv</code>. Il est donc possible de joindre des données des deux tables, comme dans l'exemple ci-dessous :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span>
+<span class="p">)</span> <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="p">]</span>
 
     <span class="p">[(</span><span class="s1">&#39;Bangladesh&#39;</span><span class="p">,</span> <span class="s1">&#39;156118464&#39;</span><span class="p">,</span> <span class="s1">&#39;144000&#39;</span><span class="p">,</span> <span class="s1">&#39;Dhaka&#39;</span><span class="p">,</span> <span class="s1">&#39;10356500&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="s1">&#39;201103330&#39;</span><span class="p">,</span> <span class="s1">&#39;8511965&#39;</span><span class="p">,</span> <span class="s1">&#39;Brasília&#39;</span><span class="p">,</span> <span class="s1">&#39;2207718&#39;</span><span class="p">),</span>
-     <span class="p">(</span><span class="s1">&#39;Democratic Republic of the Congo&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;70916439&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;2345410&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;Kinshasa&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;7785965&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Democratic Republic of the Congo&#39;</span><span class="p">,</span> <span class="s1">&#39;70916439&#39;</span><span class="p">,</span> <span class="s1">&#39;2345410&#39;</span><span class="p">,</span> <span class="s1">&#39;Kinshasa&#39;</span><span class="p">,</span> <span class="s1">&#39;7785965&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;1330044000&#39;</span><span class="p">,</span> <span class="s1">&#39;9596960&#39;</span><span class="p">,</span> <span class="s1">&#39;Beijing&#39;</span><span class="p">,</span> <span class="s1">&#39;11716620&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;81802257&#39;</span><span class="p">,</span> <span class="s1">&#39;357021&#39;</span><span class="p">,</span> <span class="s1">&#39;Berlin&#39;</span><span class="p">,</span> <span class="s1">&#39;3426354&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Egypt&#39;</span><span class="p">,</span> <span class="s1">&#39;80471869&#39;</span><span class="p">,</span> <span class="s1">&#39;1001450&#39;</span><span class="p">,</span> <span class="s1">&#39;Cairo&#39;</span><span class="p">,</span> <span class="s1">&#39;7734614&#39;</span><span class="p">),</span>
@@ -3445,6 +3437,84 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
 </div>
 </div>
 </div>
+<details class="warning">
+<summary>Pour les cracks : Attention !</summary>
+<p>La technique de fusion montrée ci-dessus n'est vraiment pas très efficace ! En effet il s'agit d'un parcours double de boucle : à chaque tour de la boucle parcourant <code>countries</code>, on parcoure <strong>toute la liste  <code>cities</code></strong>. </p>
+<p>C'est absolument horrible !</p>
+<p>En effet, si <code>countries</code> est une liste de longueur <span class="arithmatex">\(1~000~000\)</span> et que <code>cities</code> est une liste de taille <span class="arithmatex">\(1~000\)</span>, alors le nombre de comparaison sera de <span class="arithmatex">\(1~000~000 \times 1~000 = 1~000~000~000\)</span> ! </p>
+<p>En termes mathématiques, si <code>countries</code> est de taille <span class="arithmatex">\(n\)</span> et <code>cities</code> de taille <span class="arithmatex">\(m\)</span>, alors cet algorithme aura un coût temporel en <span class="arithmatex">\(\mathbb{O}(n\times m)\)</span>.</p>
+<p>Pour accélérer une telle fusion de liste, il peut-être judicieux de transformer ces listes en des dictionnaires, <strong>avec un choix judicieux de clés !</strong>. </p>
+<p>Par exemple, ici on pourrait transformer la liste <code>cities</code> en un dictionnaire dont la clé est l'<code>Id</code>, puis effectuer une boucle sur la liste.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dicCities</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="p">:</span>
+        <span class="n">dicCities</span><span class="p">[</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ci</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span> <span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> 
+                        <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span> 
+                        <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span> 
+                        <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]][</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> 
+                        <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]][</span><span class="s1">&#39;Population&#39;</span><span class="p">]))</span>     
+</code></pre></div>
+<p>Certes le code paraît plus complexe. Mais en terme de coût temporel :</p>
+<ul>
+<li>Il n'y a qu'un seul parcours de la liste <code>cities</code> ;</li>
+<li>A chaque tour de boucle parcourant <code>countries</code>, on ne fera appel qu'à des actions en <strong>temps constant</strong> (en <span class="arithmatex">\(\mathbb{O}(1)\)</span>) sur le dictionnaire <code>dicCities</code>.</li>
+</ul>
+<p>En reprenant les données précédentes :</p>
+<ul>
+<li>on fait <span class="arithmatex">\(1~000\)</span> tours de boucles pour la construction du dictionnaire ;</li>
+<li>on fait <span class="arithmatex">\(1~000~000\)</span> de tours de boucles sur la liste <code>countries</code>.</li>
+</ul>
+<p>En ordre de grandeur, on reste sur environ <span class="arithmatex">\(1~000~000\)</span> d'opérations, soit <span class="arithmatex">\(1~000\)</span> fois moins que précédemment !</p>
+<p>En termes mathématiques, le coût en temps est <span class="arithmatex">\(\mathbb{O}(max(m,n))\)</span>.</p>
+<p>Pour être encore plus clair, voici un ordre de comparaison en temps dépendant des tailles <span class="arithmatex">\(n\)</span> et <span class="arithmatex">\(m\)</span> des deux listes fusionnées, le contenu d'une case donne la comparaison en temps entre <span class="arithmatex">\(\mathbb{O}(m \times n)\)</span> et <span class="arithmatex">\(\mathbb{O}(max(m,n))\)</span>, avec le principe de <span class="arithmatex">\(1~000\)</span> opérations par secondes.</p>
+<table>
+<thead>
+<tr>
+<th align="center">n\m</th>
+<th align="center"><span class="arithmatex">\(1\)</span></th>
+<th align="center"><span class="arithmatex">\(10^3\)</span></th>
+<th align="center"><span class="arithmatex">\(10^6\)</span></th>
+<th align="center"><span class="arithmatex">\(10^9\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><span class="arithmatex">\(1\)</span></td>
+<td align="center"><span class="arithmatex">\(0,001''~/~0,001''\)</span></td>
+<td align="center"><span class="arithmatex">\(1''~/~1''\)</span></td>
+<td align="center"><span class="arithmatex">\(16'40''~/~16'40''\)</span></td>
+<td align="center"><span class="arithmatex">\(11j13h46'40''~/~11j13h46'40''\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(10^3\)</span></td>
+<td align="center">...</td>
+<td align="center"><span class="arithmatex">\(16'40''~/~1''\)</span></td>
+<td align="center"><span class="arithmatex">\(277h46'40''~/~16'40''\)</span></td>
+<td align="center"><span class="arithmatex">\(\simeq 31~ans/~11j13h46'40''\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(10^6\)</span></td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center"><span class="arithmatex">\(\simeq 31~ans/~16'40''\)</span></td>
+<td align="center"><span class="arithmatex">\(\simeq 31~000~années~/~11j13h46'40''\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(10^9\)</span></td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center"><span class="arithmatex">\(\simeq 31~000~000~années~/~11j13h46'40''\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Il y a 30 millions d'années, apparaissaient seulement les grands singes, l'Himalaya n'était pas totalement formé...</p>
+<p>Oui, direz-vous, mais les ordinateurs actuels sont 1 million de fois plus rapides !</p>
+<p>Certes, mais alors combien de temps faudrait-il dans les deux cas pour traiter deux listes de 1 milliard de données chacune ?</p>
+</details>
 <h3 id="ecrire-un-nouveau-fichier-csv">Ecrire un nouveau fichier csv</h3>
 <p>Après avoir extrait, modifié et fusionné des fichiers de type <code>.csv</code>, il est normal de vouloir en créer de nouveaux à partir de données existantes. Le module <code>csv</code> propose une méthode <code>.DictWriter</code> dont l'utilisation est la suivante : </p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;capitales.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
