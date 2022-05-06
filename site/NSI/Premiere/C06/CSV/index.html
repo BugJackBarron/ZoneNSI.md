@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C06/CSV/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.12">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.27ad92d8.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -3172,9 +3172,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
      <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">)]</span>
 </code></pre></div>
-<details class="tips">
-<summary>Fonctions anonymes</summary>
-<p><strong>Pour information</strong>, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une <strong>fonction anonyme</strong> :</p>
+<details class="tips"><summary>Fonctions anonymes</summary><p><strong>Pour information</strong>, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une <strong>fonction anonyme</strong> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="p">[(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
@@ -3437,8 +3435,8 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
 </div>
 </div>
 </div>
-<details class="warning">
-<summary>Pour les cracks : Attention !</summary>
+<div class="admonition warning">
+<p class="admonition-title">Pour les cracks : Attention !</p>
 <p>La technique de fusion montrée ci-dessus n'est vraiment pas très efficace ! En effet il s'agit d'un parcours double de boucle : à chaque tour de la boucle parcourant <code>countries</code>, on parcoure <strong>toute la liste  <code>cities</code></strong>. </p>
 <p>C'est absolument horrible !</p>
 <p>En effet, si <code>countries</code> est une liste de longueur <span class="arithmatex">\(1~000~000\)</span> et que <code>cities</code> est une liste de taille <span class="arithmatex">\(1~000\)</span>, alors le nombre de comparaison sera de <span class="arithmatex">\(1~000~000 \times 1~000 = 1~000~000~000\)</span> ! </p>
@@ -3514,7 +3512,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :</p>
 <p>Il y a 30 millions d'années, apparaissaient seulement les grands singes, l'Himalaya n'était pas totalement formé...</p>
 <p>Oui, direz-vous, mais les ordinateurs actuels sont 1 million de fois plus rapides !</p>
 <p>Certes, mais alors combien de temps faudrait-il dans les deux cas pour traiter deux listes de 1 milliard de données chacune ?</p>
-</details>
+</div>
 <h3 id="ecrire-un-nouveau-fichier-csv">Ecrire un nouveau fichier csv</h3>
 <p>Après avoir extrait, modifié et fusionné des fichiers de type <code>.csv</code>, il est normal de vouloir en créer de nouveaux à partir de données existantes. Le module <code>csv</code> propose une méthode <code>.DictWriter</code> dont l'utilisation est la suivante : </p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;capitales.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>

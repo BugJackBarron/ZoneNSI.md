@@ -750,7 +750,7 @@ Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichi
 			'2')]
 			```
 
-??? warning "Pour les cracks : Attention !"
+!!! warning "Pour les cracks : Attention !"
 
 	La technique de fusion montrée ci-dessus n'est vraiment pas très efficace ! En effet il s'agit d'un parcours double de boucle : à chaque tour de la boucle parcourant `countries`, on parcoure **toute la liste  `cities`**. 
 	
