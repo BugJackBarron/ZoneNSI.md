@@ -427,7 +427,7 @@ Cependant elle implique un certain nombre de r√®gles et de contraintes pouvant √
 
 	Par exemple, collisions comprises, avec cette fonction de hachage on obtiendrait la table de hachage suivante :
 
-	![Hash_Table2.png](Hash_Table2.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Table de Hachage avec collisions"}
+	![Hash_Table_2.png](Hash_Table_2.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Table de Hachage avec collisions"}
 	
 	
 
