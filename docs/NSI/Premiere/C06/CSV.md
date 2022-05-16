@@ -831,3 +831,6 @@ with open("capitales.csv", "w", encoding="utf8",newline="") as file :
                                 }
                 )
 ```
+## TP : Explorer IMDB
+
+Le TP se fait sur Capytale par [ce lien](https://capytale2.ac-paris.fr/web/c/91b6-547954){: target = "_blank"}.
