@@ -516,12 +516,12 @@ Il est cependant possible d'utiliser un {==**algorithme glouton**==} qui trouver
 			>>> min_couleurs_voisins([], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
 			0
 			>>> min_couleurs_voisins(["Hauts-de-France"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
-			1
-			>>> min_couleurs_voisins(["Normandie", "Pays de la Loire" "Île-de-France"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
+			0
+			>>> min_couleurs_voisins(["Normandie", "Pays de la Loire", "Île-de-France"], {"Normandie" : 0, "Pays de la Loire" : 2, "Île-de-France" : 1})
 			3
 			````
 			
-		2. Construire enfin une fonction `color_graph` qui prend en argument un graphe et renvoie un tuple contenant :
+		2. Construire enfin une fonction `color_graph` qui prend en argument un graphe et une région de départ et renvoie un tuple contenant :
 			* le nombre de couleurs utilisées ;
 			* un dictionnaire affectant à chaque région sa couleur.
 			
