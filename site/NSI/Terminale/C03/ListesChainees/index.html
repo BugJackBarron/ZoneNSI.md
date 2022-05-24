@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C03/ListesChainees/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.12">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.27ad92d8.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -2821,9 +2821,7 @@ la fonction effectuera :</p>
 <li><span class="arithmatex">\(1~000\)</span> appels récursifs.</li>
 </ul>
 <p>On en conclut que la complexité en temps de cette fonction est en <span class="arithmatex">\(\mathbb{O}(n)\)</span>.</p>
-<details class="question">
-<summary>Et en itératif ?</summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+<details class="question"><summary>Et en itératif ?</summary><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">longueur</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">chainon</span> <span class="o">=</span> <span class="n">chaine</span>
     <span class="k">while</span> <span class="n">chainon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="p">:</span>
@@ -2929,9 +2927,7 @@ on aura alors une erreur de type <code>RecursionError: maximum recursion depth e
 </div>
 </div>
 </div>
-<details class="bug">
-<summary>Un cas limite : renverser la liste</summary>
-<p>Comment faire pour renverser une liste chaînée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes,
+<details class="bug"><summary>Un cas limite : renverser la liste</summary><p>Comment faire pour renverser une liste chaînée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes,
 nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélectionnant le premier chaînon et en le concaténant
 à la liste renversée de la suite de la chaîne, Le cas de base étant celui d'une liste vide, auquel cas on renvoie cette liste :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">renverser</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
@@ -3463,9 +3459,7 @@ Par ailleurs, il faut lever une erreur dans le cas où l'objet passé en argumen
 <span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="o">-</span><span class="mi">5</span>
 </code></pre></div>
-<details class="question">
-<summary>Prolonger le travail</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Enoncé</label><label for="__tabbed_17_2">Solution</label></div>
+<details class="question"><summary>Prolonger le travail</summary><div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Enoncé</label><label for="__tabbed_17_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Ajouter à la classe <code>ListeC</code> les méthodes suivantes</p>

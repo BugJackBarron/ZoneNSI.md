@@ -159,28 +159,93 @@ fonction parcours_largeur(G) :
 	=== "Corrigé"
 		A venir !
 		
-## Applications
+## Application : Recherche de cycle dans un graphe
 
-### Recherche de cycle dans un graphe
+Il est parfois nécessaire de détecter dans un graphe la présence d'un cycle, comme par exemple :
 
-Il est parfois nécessaire de détecter dans un graphe la présence d'un cycle, comme par exemple
+* pour déterminer la longueur de cycle d'un [générateur de nombre pseudo-aléatoires](https://en.wikipedia.org/wiki/Pseudorandom_number_generator){: target="_blank"} ;
+* en cryptographie, en particulier pour détecter des collisions dans des fonctions de hachage cryptographiques ([CHF](https://en.wikipedia.org/wiki/Cryptographic_hash_function){: target="_blank"}) ;
+* pour détecter des boucles infinies dans certains programmes, en utilisant une représentation du programme sous la forme d'un graphe ([Méthodes formelles](https://fr.wikipedia.org/wiki/M%C3%A9thode_formelle_(informatique)){: target="_blank"}) ;
+* etc.
 
-
-### Recherche de chemin entre deux sommets du graphe
-
-
-https://en.wikipedia.org/wiki/Cycle_detection#Applications
-
-https://en.wikipedia.org/wiki/Linear_congruential_generator#Python_code
-
-https://en.wikipedia.org/wiki/Pseudorandom_number_generator
+Le parcours en profondeur est adapté aux recherches de cycles dans un graphe, mais il faudra lui apporter quelques modifications. En effet, dans le parcours en profondeur, on **marque un noeud avant d'explorer ses voisins**. Quand on retombe sur un noeud déjà marqué, on ne peut pas forcément savoir si c'est à cause de la présence d'un cycle. Prenons comme exemple les deux graphes ci-dessous :
 
 
+!!! tips
+	<div style="display:flex;">
+	<div style="display : inline; width : 50%;">
+
+	![Cycles_1.svg](Cycles_1.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+
+	</div>
+	<div style="display : inline; width : 50%;">
+
+	![Cycles_2.svg](Cycles_2.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+
+	</div>
+	</div>
+
+* Dans le cas du graphe de gauche, on va explorer `A`, puis `B` puis `C`, et donc `C` sera marqué. Puis on retombera sur `C` en venant de `D`, mais sans cycle puisqu'il s'agit de chemins parallèles.
+* Dans le cas du graphe de droite, on va explorer `A`, puis `B` puis `C`, et donc `C` sera marqué. Puis on retombera sur `C` en venant de `D`, mais *par un cycle* !
+
+La différence entre les deux situations est que dans le premier cas, *la visite des voisins de `C` est terminée*, alors qu'elle est *toujours en cours dans le deuxième cas*. On va donc devoir {==**différencier ces deux situations**==}.
 
 
-		
 
+!!! abstract "Algorithme de détection de cycles"
 
-
-
+	Nous adopterons une solution en utilisant {==**3 couleurs**==} pour marquer ces sommets : blanc, gris et noir. Initialement, tous les sommets seront de {==**couleur blanche**==}.
 	
+	Lorsqu'on visitera un sommet `s` :
+	
+	* s'il est blanc :
+		1. on colore le sommet `s` en gris ;
+		2. on visite tous les voisins de `s` récursivement ;
+		3. on colore le sommet `s` en noir une fois toutes les étapes précédentes franchies.
+	* s'il est gris, c'est qu'on vient de découvrir un cycle ;
+	* s'il est noir, on ne fait rien.
+	
+!!! question "Application"
+
+	Pour chacun des graphes ci-dessous, appliquez l'algorithme de détection d'un cycle au graphe ci-dessous (vous partirez du sommet de votre choix). 
+	
+	=== "Graphe 1"
+	
+		![Cycles_3.svg](Cycles_3.svg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+		
+	=== "Graphe 2"
+	
+		![Cycles_4.svg](Cycles_4.svg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+
+
+!!! tips "Codage en Python"
+
+	```` python linenums="1"
+	
+	BLANC, GRIS, NOIR = 1, 2, 3
+	
+	### Un dictionnaire est mutable, donc on peut le modifier par appels récursifs.
+	
+	def parcours_cycle(graphe : Graph, couleur : dict , s : Sommet) -> boolean :
+		if couleur[s] == ... :
+			return True
+		if couleur[s] == ... :
+			return False
+		couleur[s] = ...
+		for v in graphe.get_neighbours(s) :
+			got_cycle = parcours_cycle(g, couleur, s)
+			if  got_cycle :
+				return True
+		couleur[s] = ...
+		return False
+		
+	def cycle(graphe) :
+		couleur = {}	
+		for s in ... :
+			couleur[s] = BLANC
+		for s in ... :
+			if parcours_cycle(graphe, couleur, s) :
+				return True
+		return False		
+	
+	````

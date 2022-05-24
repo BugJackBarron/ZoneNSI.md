@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C09/parcours/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.12">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.27ad92d8.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -2364,29 +2364,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#applications" class="md-nav__link">
-    Applications
+  <a href="#application-recherche-de-cycle-dans-un-graphe" class="md-nav__link">
+    Application : Recherche de cycle dans un graphe
   </a>
-  
-    <nav class="md-nav" aria-label="Applications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#recherche-de-cycle-dans-un-graphe" class="md-nav__link">
-    Recherche de cycle dans un graphe
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recherche-de-chemin-entre-deux-sommets-du-graphe" class="md-nav__link">
-    Recherche de chemin entre deux sommets du graphe
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2804,9 +2784,7 @@
 <li>est souvent un <mark class="critic"><strong>générateur d'effets de bords indésirés</strong></mark> !</li>
 </ul>
 </div>
-<details class="asbtract">
-<summary>Totalement hors programme : utilisation d'une liste en paramètre non-mutable</summary>
-<p>En réalité, ce n'est pas tant la structure de liste utilisée qui est importante dans l'exemple ci-dessus, mais bien l'utilisation d'une méthode <strong>en place</strong> comme <code>append</code>. On peut en effet utiliser une liste comme un paramètre pseudo non-mutable comme dans l'exemple ci-dessous, avec la concaténation de listes :</p>
+<details class="asbtract"><summary>Totalement hors programme : utilisation d'une liste en paramètre non-mutable</summary><p>En réalité, ce n'est pas tant la structure de liste utilisée qui est importante dans l'exemple ci-dessus, mais bien l'utilisation d'une méthode <strong>en place</strong> comme <code>append</code>. On peut en effet utiliser une liste comme un paramètre pseudo non-mutable comme dans l'exemple ci-dessous, avec la concaténation de listes :</p>
 <p><iframe width="1000" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fibonacci%28n,%20mutable,%20pseudo_non_mutable%29%20%3A%0A%20%20%20%20mutable.append%28n%29%0A%20%20%20%20pseudo_non_mutable%20%3D%20pseudo_non_mutable%20%2B%20%5Bn%5D%0A%20%20%20%20if%20n%20%3C2%20%3A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20return%20n%0A%20%20%20%20else%20%3A%0A%20%20%20%20%20%20%20%20return%20fibonacci%28n-1,%20mutable,%20pseudo_non_mutable%29%20%2B%20fibonacci%28n-2,%20mutable,%20pseudo_non_mutable%29%0A%20%20%20%20%20%0Amutable%20%3D%20%5B%5D%0Apseudo_non_mutable%20%3D%20%5B%5D%0Afibonacci%284,%20mutable,%20pseudo_non_mutable%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=58&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
 <p>Au vu de mon expérience, un conseil : <strong>NE FAITES SURTOUT PAS CA</strong> ! Vous vous éviterez des heures de débuggage frustrantes !</p>
 <p>Si vous tenez à conserver un paramètre non-mutable, utilisez <strong>TOUJOURS</strong> une structure qui est construite en ce sens...</p>
@@ -2879,13 +2857,113 @@
 </div>
 </div>
 </div>
-<h2 id="applications">Applications</h2>
-<h3 id="recherche-de-cycle-dans-un-graphe">Recherche de cycle dans un graphe</h3>
-<p>Il est parfois nécessaire de détecter dans un graphe la présence d'un cycle, comme par exemple</p>
-<h3 id="recherche-de-chemin-entre-deux-sommets-du-graphe">Recherche de chemin entre deux sommets du graphe</h3>
-<p>https://en.wikipedia.org/wiki/Cycle_detection#Applications</p>
-<p>https://en.wikipedia.org/wiki/Linear_congruential_generator#Python_code</p>
-<p>https://en.wikipedia.org/wiki/Pseudorandom_number_generator</p>
+<h2 id="application-recherche-de-cycle-dans-un-graphe">Application : Recherche de cycle dans un graphe</h2>
+<p>Il est parfois nécessaire de détecter dans un graphe la présence d'un cycle, comme par exemple :</p>
+<ul>
+<li>pour déterminer la longueur de cycle d'un <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator" target="_blank">générateur de nombre pseudo-aléatoires</a> ;</li>
+<li>en cryptographie, en particulier pour détecter des collisions dans des fonctions de hachage cryptographiques (<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank">CHF</a>) ;</li>
+<li>pour détecter des boucles infinies dans certains programmes, en utilisant une représentation du programme sous la forme d'un graphe (<a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_formelle_(informatique)" target="_blank">Méthodes formelles</a>) ;</li>
+<li>etc.</li>
+</ul>
+<p>Le parcours en profondeur est adapté aux recherches de cycles dans un graphe, mais il faudra lui apporter quelques modifications. En effet, dans le parcours en profondeur, on <strong>marque un noeud avant d'explorer ses voisins</strong>. Quand on retombe sur un noeud déjà marqué, on ne peut pas forcément savoir si c'est à cause de la présence d'un cycle. Prenons comme exemple les deux graphes ci-dessous :</p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p><div style="display:flex;">
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="Cycles_1.svg" src="../Cycles_1.svg" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+<div style="display : inline; width : 50%;"></p>
+<p><img alt="Cycles_2.svg" src="../Cycles_2.svg" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p></div>
+</div></p>
+</div>
+<ul>
+<li>Dans le cas du graphe de gauche, on va explorer <code>A</code>, puis <code>B</code> puis <code>C</code>, et donc <code>C</code> sera marqué. Puis on retombera sur <code>C</code> en venant de <code>D</code>, mais sans cycle puisqu'il s'agit de chemins parallèles.</li>
+<li>Dans le cas du graphe de droite, on va explorer <code>A</code>, puis <code>B</code> puis <code>C</code>, et donc <code>C</code> sera marqué. Puis on retombera sur <code>C</code> en venant de <code>D</code>, mais <em>par un cycle</em> !</li>
+</ul>
+<p>La différence entre les deux situations est que dans le premier cas, <em>la visite des voisins de <code>C</code> est terminée</em>, alors qu'elle est <em>toujours en cours dans le deuxième cas</em>. On va donc devoir <mark class="critic"><strong>différencier ces deux situations</strong></mark>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme de détection de cycles</p>
+<p>Nous adopterons une solution en utilisant <mark class="critic"><strong>3 couleurs</strong></mark> pour marquer ces sommets : blanc, gris et noir. Initialement, tous les sommets seront de <mark class="critic"><strong>couleur blanche</strong></mark>.</p>
+<p>Lorsqu'on visitera un sommet <code>s</code> :</p>
+<ul>
+<li>s'il est blanc :<ol>
+<li>on colore le sommet <code>s</code> en gris ;</li>
+<li>on visite tous les voisins de <code>s</code> récursivement ;</li>
+<li>on colore le sommet <code>s</code> en noir une fois toutes les étapes précédentes franchies.</li>
+</ol>
+</li>
+<li>s'il est gris, c'est qu'on vient de découvrir un cycle ;</li>
+<li>s'il est noir, on ne fait rien.</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Application</p>
+<p>Pour chacun des graphes ci-dessous, appliquez l'algorithme de détection d'un cycle au graphe ci-dessous (vous partirez du sommet de votre choix). </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Graphe 1</label><label for="__tabbed_3_2">Graphe 2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Cycles_3.svg" src="../Cycles_3.svg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Cycles_4.svg" src="../Cycles_4.svg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition tips">
+<p class="admonition-title">Codage en Python</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">BLANC</span><span class="p">,</span> <span class="n">GRIS</span><span class="p">,</span> <span class="n">NOIR</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="c1">### Un dictionnaire est mutable, donc on peut le modifier par appels récursifs.</span>
+
+<span class="k">def</span> <span class="nf">parcours_cycle</span><span class="p">(</span><span class="n">graphe</span> <span class="p">:</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">couleur</span> <span class="p">:</span> <span class="nb">dict</span> <span class="p">,</span> <span class="n">s</span> <span class="p">:</span> <span class="n">Sommet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">boolean</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">==</span> <span class="o">...</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">==</span> <span class="o">...</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graphe</span><span class="o">.</span><span class="n">get_neighbours</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">got_cycle</span> <span class="o">=</span> <span class="n">parcours_cycle</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">couleur</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span>  <span class="n">got_cycle</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">cycle</span><span class="p">(</span><span class="n">graphe</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">couleur</span> <span class="o">=</span> <span class="p">{}</span>    
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="o">...</span> <span class="p">:</span>
+        <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLANC</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="o">...</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">parcours_cycle</span><span class="p">(</span><span class="n">graphe</span><span class="p">,</span> <span class="n">couleur</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>        
+</code></pre></div></td></tr></table></div>
+</div>
 
               
             </article>
