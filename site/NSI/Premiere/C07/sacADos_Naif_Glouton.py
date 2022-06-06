@@ -111,7 +111,7 @@ if __name__ == "__main__" :
     gtT = [0]*NREP
     vnT = [ [] for _ in range(NREP) ]
     vgT = [ [] for _ in range(NREP) ]
-    LISSAGE  = 1
+    LISSAGE  = 3
     for i in range(LISSAGE) :
         nt,gt, vn, vg = compare(NREP)
         for i in range(NREP) :
