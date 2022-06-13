@@ -9,4 +9,4 @@ L'ancien site peut-être trouvé [ici](https://old.zonensi.fr).
 
 {{ terminal() }}
 
-{{ IDE() }}
+{{ IDE('ExercicesBinairesEntiers') }}
