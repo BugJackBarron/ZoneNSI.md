@@ -261,7 +261,7 @@ def define_env(env):
         Last span hides the code content of the IDE if loaded.
         """
         path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
-
+        print(f"path_img : {path_img}")
         path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[2:-2]))
         content, tc = generate_content(nom_script, path_file)
 
@@ -281,8 +281,11 @@ def define_env(env):
             div_edit += f'<div class="wrapper"><div class="interior_wrapper"><div id="editor_{tc}"></div></div><div id="term_editor_{tc}" class="term_editor"></div></div>'
         else:
             div_edit += f'<div class="wrapper_h"><div class="line" id="editor_{tc}"></div><div id="term_editor_{tc}" class="term_editor_h terminal_f_h"></div></div>'
-
-        div_edit += f"""<button class="tooltip" onclick='interpretACE("editor_{tc}","{mode}")'><img src="/{path_img}/images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button>"""
+        if path_img == "" :
+            actual_path = "/"
+        else :
+            actual_path = f"/{path_img}/"
+        div_edit += f"""<button class="tooltip" onclick='interpretACE("editor_{tc}","{mode}")'><img src="{actual_path}images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button>"""
         print(f"/{path_img}/images/buttons/icons8-play-64.png")
         div_edit += create_unittest_button(tc, nom_script, path_file, mode, MAX) 
         div_edit += f"""{blank_space(1)}<button class="tooltip" onclick=\'downloadFile("editor_{tc}","{nom_script}")\'><img src="/{path_img}/images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button>{blank_space()}"""
