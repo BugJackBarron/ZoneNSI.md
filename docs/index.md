@@ -5,3 +5,4 @@ Ceci est mon nouveau site. Il est prioritairement à destination de mes élèves
 L'ancien site peut-être trouvé [ici](https://old.zonensi.fr).
 
 
+{{ IDE() }}
