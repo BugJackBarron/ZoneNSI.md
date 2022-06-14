@@ -148,15 +148,18 @@ def define_env(env):
         Methods : The content of the file is hidden in the webpage. Replacing \n by a string makes it possible
         to integrate the content in mkdocs admonitions.
         """
-        short_path = f"""docs/"""
+        short_path = f"""docs"""
 
         try: 
             if path == "":
                 try : # base case 
+                    print(f"""Try to open : {short_path}/scripts/{nom_script}.{filetype}""")
                     f = open(f"""{short_path}/scripts/{nom_script}.{filetype}""")
                 except : # minor subcase : .py directly in docs/ (should not happen...)
-                    f = open(f"""{short_path}/{path}/{nom_script}.{filetype}""")
+                    print(f"""Try to open : {short_path}/{nom_script}.{filetype}""")
+                    f = open(f"""{short_path}/{nom_script}.{filetype}""")
             else:
+                print(f"""Try to open : {short_path}/{path}/{nom_script}.{filetype}""")
                 f = open(f"""{short_path}/{path}/{nom_script}.{filetype}""")
             content = ''.join(f.readlines())
             f.close()
@@ -188,7 +191,11 @@ def define_env(env):
         that triggers the hidden input.
         """
         path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
-        return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="/{path_img}/images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
+        if path_img == "" :
+            actual_path = "/"
+        else :
+            actual_path = f"/{path_img}/"
+        return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="{actual_path}images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
                 <input type="file" id="input_editor_{tc}" name="file" enctype="multipart/form-data" class="hide"/>"""
 
     def create_unittest_button(tc: str, nom_script: str, path : str, mode: str, MAX : int = 5) -> str:
@@ -202,9 +209,13 @@ def define_env(env):
         content = read_ext_file(nom_script, path)
         if content is not None: 
             path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
+            if path_img == "" :
+                actual_path = "/"
+            else :
+                actual_path = f"/{path_img}/"
             return f"""<span id="test_term_editor_{tc}" class="hide">{content}</span>\
                 <button class="tooltip" onclick=\'executeTest("{tc}","{mode}")\'>\
-                <img src="/{path_img}/images/buttons/icons8-check-64.png">\
+                <img src="{actual_path}images/buttons/icons8-check-64.png">\
                 <span class="tooltiptext">Valider</span></button><span class="compteur">\
                 {MAX}/{MAX}\
                 </span>"""
@@ -261,7 +272,6 @@ def define_env(env):
         Last span hides the code content of the IDE if loaded.
         """
         path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
-        print(f"path_img : {path_img}")
         path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[2:-2]))
         content, tc = generate_content(nom_script, path_file)
 
@@ -285,13 +295,14 @@ def define_env(env):
             actual_path = "/"
         else :
             actual_path = f"/{path_img}/"
+        print(actual_path)
         div_edit += f"""<button class="tooltip" onclick='interpretACE("editor_{tc}","{mode}")'><img src="{actual_path}images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button>"""
-        print(f"/{path_img}/images/buttons/icons8-play-64.png")
+        print(f"{path_img}images/buttons/icons8-play-64.png")
         div_edit += create_unittest_button(tc, nom_script, path_file, mode, MAX) 
-        div_edit += f"""{blank_space(1)}<button class="tooltip" onclick=\'downloadFile("editor_{tc}","{nom_script}")\'><img src="/{path_img}/images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button>{blank_space()}"""
+        div_edit += f"""{blank_space(1)}<button class="tooltip" onclick=\'downloadFile("editor_{tc}","{nom_script}")\'><img src="{actual_path}images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button>{blank_space()}"""
         div_edit += create_upload_button(tc) 
-        div_edit += f"""{blank_space(1)}<button class="tooltip" onclick=\'reload("{tc}","content")\'><img src="/{path_img}/images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button>{blank_space()}"""
-        div_edit += f"""<button class="tooltip" onclick=\'saveEditor("{tc}","content")\'><img src="/{path_img}/images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button>"""
+        div_edit += f"""{blank_space(1)}<button class="tooltip" onclick=\'reload("{tc}","content")\'><img src="{actual_path}images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button>{blank_space()}"""
+        div_edit += f"""<button class="tooltip" onclick=\'saveEditor("{tc}","content")\'><img src="{actual_path}images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button>"""
         div_edit += '</div>'
 
         div_edit += f"""<span id="content_editor_{tc}" class="hide">{content}</span>"""
@@ -306,7 +317,7 @@ def define_env(env):
 {indent}--8<--- "docs/xtra/start_REM.md"
 '''
         div_edit += f'''
-{indent}--8<--- "docs/{path_file if path_file != "" else 'scripts'}/{nom_script}_REM.md"''' if clef == "" else f""
+{indent}--8<--- "docs/{path_file if path_file != "" else ''}{nom_script}_REM.md"''' if clef == "" else f""
         if indent == "":
             div_edit += f'''
 {indent}--8<--- "docs/xtra/end_REM.md"

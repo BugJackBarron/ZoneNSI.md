@@ -159,6 +159,9 @@ Il existe une verion simplifiée, développée par Nigel Horspool en 1980, que n
 
 	Compléter la fonction suivante (on se servira des assertions comme tests) :
 	
+	
+	{{ IDEv('Exo_BMH') }}
+	
 	```` python
 	def recherche_BMH(mot : str, chaine : str) -> bool :
 		N = len(chaine)
@@ -178,3 +181,4 @@ Il existe une verion simplifiée, développée par Nigel Horspool en 1980, que n
 	assert recherche_BMH('bonjour maman', 'maman')
 	assert recherche_BMH('bonjour maman', 'papa') is False
 	````
+	
