@@ -167,8 +167,11 @@ def define_env(env):
             # Hack to integrate code lines in admonitions in mkdocs
             # change backslash_newline by backslash-newline
             return content.replace('\n','bksl-nl').replace('_','py-und').replace('*','py-str')
-        except :
+        except OSError :
             print("The file you're looking for is not where you say it is !")
+            print(f"File is {path}/{nom_script}.{filetype}")
+        except :
+            print("Inconnu !")
             return
         
     def generate_content(nom_script : str, path : str, filetype : str = 'py') -> str:
