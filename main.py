@@ -75,6 +75,7 @@ def define_env(env):
         except :
             print("Error in openning")
             return ""
+
         
     def generate_content(nom_script : str, path : str, filetype : str = 'py') -> str:
         """
