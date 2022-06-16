@@ -1,4 +1,4 @@
-
+    
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -7,13 +7,13 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <meta name="author" content="Bug_Jack_Barron">
+        <meta name="author" content="F. Vergniaud">
       
       
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C07/Routage/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
     
     
       
@@ -21,17 +21,34 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
         
-          
-          
-          <meta name="theme-color" content="#546d78">
-        
+      
       
     
+    
+        
+        <!-- favicons -->
+        <!--
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon_32x32.png" sizes="32x32">
+        <link rel="icon" href="../assets/images/favicon_96x96.png" sizes="96x96">
+        <link rel="icon" href="../assets/images/favicon_144x144.png" sizes="144x144">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css">
+        -->
+        <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-md5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
     
     
       
@@ -45,10 +62,17 @@
     
       <link rel="stylesheet" href="../../../../extra.css">
     
+      <link rel="stylesheet" href="../../../../xtra/stylesheets/pyoditeur.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
+    
+    
+    
+    <input id="ace_palette" autocomplete="off" class="md-toggle" data-ace-dark-mode="tomorrow_night_bright" data-ace-light-mode="crimson_editor" type="checkbox"></input>
     
     
   </head>
@@ -56,12 +80,16 @@
   
     
     
+      
+    
     
     
     
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -107,6 +135,28 @@
         </div>
       </div>
     </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
     
     
     
@@ -212,18 +262,14 @@
       
       
         <label class="md-nav__link" for="__nav_2">
+          Mathématiques
           <span class="md-nav__icon md-icon"></span>
-          
-            Mathématiques
-          
         </label>
       
       <nav class="md-nav" aria-label="Mathématiques" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            Mathématiques
-          
+          Mathématiques
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -242,18 +288,14 @@
       
       
         <label class="md-nav__link" for="__nav_2_1">
+          Seconde
           <span class="md-nav__icon md-icon"></span>
-          
-            Seconde
-          
         </label>
       
       <nav class="md-nav" aria-label="Seconde" data-md-level="2">
         <label class="md-nav__title" for="__nav_2_1">
           <span class="md-nav__icon md-icon"></span>
-          
-            Seconde
-          
+          Seconde
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -286,18 +328,14 @@
       
       
         <label class="md-nav__link" for="__nav_2_1_2">
+          Ensembles de nombres et intervalles
           <span class="md-nav__icon md-icon"></span>
-          
-            Ensembles de nombres et intervalles
-          
         </label>
       
       <nav class="md-nav" aria-label="Ensembles de nombres et intervalles" data-md-level="3">
         <label class="md-nav__title" for="__nav_2_1_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            Ensembles de nombres et intervalles
-          
+          Ensembles de nombres et intervalles
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -351,18 +389,14 @@
       
       
         <label class="md-nav__link" for="__nav_2_1_3">
+          Notion de fonctions
           <span class="md-nav__icon md-icon"></span>
-          
-            Notion de fonctions
-          
         </label>
       
       <nav class="md-nav" aria-label="Notion de fonctions" data-md-level="3">
         <label class="md-nav__title" for="__nav_2_1_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            Notion de fonctions
-          
+          Notion de fonctions
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -402,18 +436,14 @@
       
       
         <label class="md-nav__link" for="__nav_2_1_4">
+          Algorithmique et bases de Python
           <span class="md-nav__icon md-icon"></span>
-          
-            Algorithmique et bases de Python
-          
         </label>
       
       <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
         <label class="md-nav__title" for="__nav_2_1_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            Algorithmique et bases de Python
-          
+          Algorithmique et bases de Python
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -524,18 +554,14 @@
       
       
         <label class="md-nav__link" for="__nav_3">
+          SNT
           <span class="md-nav__icon md-icon"></span>
-          
-            SNT
-          
         </label>
       
       <nav class="md-nav" aria-label="SNT" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            SNT
-          
+          SNT
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -568,18 +594,14 @@
       
       
         <label class="md-nav__link" for="__nav_3_2">
+          Le Web
           <span class="md-nav__icon md-icon"></span>
-          
-            Le Web
-          
         </label>
       
       <nav class="md-nav" aria-label="Le Web" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            Le Web
-          
+          Le Web
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -633,18 +655,14 @@
       
       
         <label class="md-nav__link" for="__nav_3_3">
+          Données Structurées
           <span class="md-nav__icon md-icon"></span>
-          
-            Données Structurées
-          
         </label>
       
       <nav class="md-nav" aria-label="Données Structurées" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            Données Structurées
-          
+          Données Structurées
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -684,18 +702,14 @@
       
       
         <label class="md-nav__link" for="__nav_3_4">
+          Reseaux Informatiques
           <span class="md-nav__icon md-icon"></span>
-          
-            Reseaux Informatiques
-          
         </label>
       
       <nav class="md-nav" aria-label="Reseaux Informatiques" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            Reseaux Informatiques
-          
+          Reseaux Informatiques
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -763,18 +777,14 @@
       
       
         <label class="md-nav__link" for="__nav_3_5">
+          Images Numériques
           <span class="md-nav__icon md-icon"></span>
-          
-            Images Numériques
-          
         </label>
       
       <nav class="md-nav" aria-label="Images Numériques" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            Images Numériques
-          
+          Images Numériques
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -828,18 +838,14 @@
       
       
         <label class="md-nav__link" for="__nav_3_6">
+          Géolocalisation
           <span class="md-nav__icon md-icon"></span>
-          
-            Géolocalisation
-          
         </label>
       
       <nav class="md-nav" aria-label="Géolocalisation" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_6">
           <span class="md-nav__icon md-icon"></span>
-          
-            Géolocalisation
-          
+          Géolocalisation
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -903,18 +909,14 @@
       
       
         <label class="md-nav__link" for="__nav_4">
+          NSI
           <span class="md-nav__icon md-icon"></span>
-          
-            NSI
-          
         </label>
       
       <nav class="md-nav" aria-label="NSI" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            NSI
-          
+          NSI
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -933,18 +935,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1">
+          Première
           <span class="md-nav__icon md-icon"></span>
-          
-            Première
-          
         </label>
       
       <nav class="md-nav" aria-label="Première" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_1">
           <span class="md-nav__icon md-icon"></span>
-          
-            Première
-          
+          Première
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -963,18 +961,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_1">
+          Bases de Python
           <span class="md-nav__icon md-icon"></span>
-          
-            Bases de Python
-          
         </label>
       
       <nav class="md-nav" aria-label="Bases de Python" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_1">
           <span class="md-nav__icon md-icon"></span>
-          
-            Bases de Python
-          
+          Bases de Python
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1056,18 +1050,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_2">
+          Le codage des données
           <span class="md-nav__icon md-icon"></span>
-          
-            Le codage des données
-          
         </label>
       
       <nav class="md-nav" aria-label="Le codage des données" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            Le codage des données
-          
+          Le codage des données
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1135,18 +1125,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_3">
+          Le web
           <span class="md-nav__icon md-icon"></span>
-          
-            Le web
-          
         </label>
       
       <nav class="md-nav" aria-label="Le web" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            Le web
-          
+          Le web
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1228,18 +1214,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_4">
+          Les séquences
           <span class="md-nav__icon md-icon"></span>
-          
-            Les séquences
-          
         </label>
       
       <nav class="md-nav" aria-label="Les séquences" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            Les séquences
-          
+          Les séquences
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1335,18 +1317,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_5">
+          Architecture matérielle
           <span class="md-nav__icon md-icon"></span>
-          
-            Architecture matérielle
-          
         </label>
       
       <nav class="md-nav" aria-label="Architecture matérielle" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            Architecture matérielle
-          
+          Architecture matérielle
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1400,18 +1378,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_6">
+          Traitement des données en tables
           <span class="md-nav__icon md-icon"></span>
-          
-            Traitement des données en tables
-          
         </label>
       
       <nav class="md-nav" aria-label="Traitement des données en tables" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_6">
           <span class="md-nav__icon md-icon"></span>
-          
-            Traitement des données en tables
-          
+          Traitement des données en tables
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1465,18 +1439,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_7">
+          Les algorithmes gloutons
           <span class="md-nav__icon md-icon"></span>
-          
-            Les algorithmes gloutons
-          
         </label>
       
       <nav class="md-nav" aria-label="Les algorithmes gloutons" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_7">
           <span class="md-nav__icon md-icon"></span>
-          
-            Les algorithmes gloutons
-          
+          Les algorithmes gloutons
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1516,18 +1486,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1_8">
+          Réseaux
           <span class="md-nav__icon md-icon"></span>
-          
-            Réseaux
-          
         </label>
       
       <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_1_8">
           <span class="md-nav__icon md-icon"></span>
-          
-            Réseaux
-          
+          Réseaux
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1604,18 +1570,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Terminale
           <span class="md-nav__icon md-icon"></span>
-          
-            Terminale
-          
         </label>
       
       <nav class="md-nav" aria-label="Terminale" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            Terminale
-          
+          Terminale
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1648,18 +1610,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_2">
+          Modularité et POO
           <span class="md-nav__icon md-icon"></span>
-          
-            Modularité et POO
-          
         </label>
       
       <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            Modularité et POO
-          
+          Modularité et POO
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1741,18 +1699,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_3">
+          Récursivité
           <span class="md-nav__icon md-icon"></span>
-          
-            Récursivité
-          
         </label>
       
       <nav class="md-nav" aria-label="Récursivité" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            Récursivité
-          
+          Récursivité
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1820,18 +1774,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_4">
+          Listes, Piles, Files
           <span class="md-nav__icon md-icon"></span>
-          
-            Listes, Piles, Files
-          
         </label>
       
       <nav class="md-nav" aria-label="Listes, Piles, Files" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            Listes, Piles, Files
-          
+          Listes, Piles, Files
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1899,18 +1849,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_5">
+          Bases de Données et SQL
           <span class="md-nav__icon md-icon"></span>
-          
-            Bases de Données et SQL
-          
         </label>
       
       <nav class="md-nav" aria-label="Bases de Données et SQL" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            Bases de Données et SQL
-          
+          Bases de Données et SQL
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2006,18 +1952,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_6">
+          Arbres Binaires
           <span class="md-nav__icon md-icon"></span>
-          
-            Arbres Binaires
-          
         </label>
       
       <nav class="md-nav" aria-label="Arbres Binaires" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_6">
           <span class="md-nav__icon md-icon"></span>
-          
-            Arbres Binaires
-          
+          Arbres Binaires
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2099,18 +2041,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_7">
+          Processeurs et Ordonnancement
           <span class="md-nav__icon md-icon"></span>
-          
-            Processeurs et Ordonnancement
-          
         </label>
       
       <nav class="md-nav" aria-label="Processeurs et Ordonnancement" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_7">
           <span class="md-nav__icon md-icon"></span>
-          
-            Processeurs et Ordonnancement
-          
+          Processeurs et Ordonnancement
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2194,18 +2132,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_8">
+          Réseaux
           <span class="md-nav__icon md-icon"></span>
-          
-            Réseaux
-          
         </label>
       
       <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_8">
           <span class="md-nav__icon md-icon"></span>
-          
-            Réseaux
-          
+          Réseaux
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2225,13 +2159,8 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
+          Notion de routage
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="./" class="md-nav__link md-nav__link--active"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Notion de routage
-          </a>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
@@ -2366,18 +2295,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_9">
+          Programmation dynamique
           <span class="md-nav__icon md-icon"></span>
-          
-            Programmation dynamique
-          
         </label>
       
       <nav class="md-nav" aria-label="Programmation dynamique" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_9">
           <span class="md-nav__icon md-icon"></span>
-          
-            Programmation dynamique
-          
+          Programmation dynamique
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2431,18 +2356,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2_10">
+          Graphes et parcours
           <span class="md-nav__icon md-icon"></span>
-          
-            Graphes et parcours
-          
         </label>
       
       <nav class="md-nav" aria-label="Graphes et parcours" data-md-level="3">
         <label class="md-nav__title" for="__nav_4_2_10">
           <span class="md-nav__icon md-icon"></span>
-          
-            Graphes et parcours
-          
+          Graphes et parcours
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2539,18 +2460,14 @@
       
       
         <label class="md-nav__link" for="__nav_5">
+          Miscellanées
           <span class="md-nav__icon md-icon"></span>
-          
-            Miscellanées
-          
         </label>
       
       <nav class="md-nav" aria-label="Miscellanées" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            Miscellanées
-          
+          Miscellanées
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2569,18 +2486,14 @@
       
       
         <label class="md-nav__link" for="__nav_5_1">
+          Python
           <span class="md-nav__icon md-icon"></span>
-          
-            Python
-          
         </label>
       
       <nav class="md-nav" aria-label="Python" data-md-level="2">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
-          
-            Python
-          
+          Python
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2599,18 +2512,14 @@
       
       
         <label class="md-nav__link" for="__nav_5_1_1">
+          Le langage
           <span class="md-nav__icon md-icon"></span>
-          
-            Le langage
-          
         </label>
       
       <nav class="md-nav" aria-label="Le langage" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_1_1">
           <span class="md-nav__icon md-icon"></span>
-          
-            Le langage
-          
+          Le langage
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2692,18 +2601,14 @@
       
       
         <label class="md-nav__link" for="__nav_5_1_5">
+          Pygame
           <span class="md-nav__icon md-icon"></span>
-          
-            Pygame
-          
         </label>
       
       <nav class="md-nav" aria-label="Pygame" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_1_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            Pygame
-          
+          Pygame
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2757,18 +2662,14 @@
       
       
         <label class="md-nav__link" for="__nav_5_1_6">
+          P5
           <span class="md-nav__icon md-icon"></span>
-          
-            P5
-          
         </label>
       
       <nav class="md-nav" aria-label="P5" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_1_6">
           <span class="md-nav__icon md-icon"></span>
-          
-            P5
-          
+          P5
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2845,6 +2746,7 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="Routage.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
               
+    
                 
 
 
@@ -3058,11 +2960,14 @@ Cette possibilité existe aussi sous windows mais :
 </div>
 
               
+    <script src="../../../../js/ide.js"></script> 
+    
             </article>
+            
           </div>
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
           </a>
@@ -3071,7 +2976,8 @@ Cette possibilité existe aussi sous windows mais :
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../../C06/Interblocage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Interblocage" rel="prev">
@@ -3140,10 +3046,10 @@ Cette possibilité existe aussi sous windows mais :
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
@@ -3152,6 +3058,8 @@ Cette possibilité existe aussi sous windows mais :
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js"></script>
+      
+        <script src="../../../../xtra/javascripts/interpreter.js"></script>
       
     
   </body>
