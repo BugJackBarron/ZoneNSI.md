@@ -101,9 +101,9 @@ def define_env(env):
         #path_img = env.variables.page.abs_url.split('/')[1]
         len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
         if len_path> 3 :
-            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
+            path_img = ''+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
         else : 
-            path_img =""
+            path_img =".."
         return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="{path_img}/images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
                 <input type="file" id="input_editor_{tc}" name="file" enctype="multipart/form-data" class="hide"/>"""
 
@@ -181,7 +181,12 @@ def define_env(env):
 
     def tooltip_button(onclick_action : str, button_style : str):
         return f"""<button class="tooltip" onclick={onclick_action}>{button_style}</button>"""
-
+		
+    @env.macro
+    def TEST() :
+        return env.variables
+	
+	
     @env.macro
     def IDE(nom_script : str = '', mode : str = 'h', MAX : int = 5, SANS : str = "") -> str:
         """
@@ -192,8 +197,8 @@ def define_env(env):
         print("docs_dirs", env.conf['docs_dir'])
         #path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
         len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
-        if len_path> 3 :
-            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
+        if len_path> 1 :
+            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-2)
         else : 
             path_img =""
         print(path_img)
