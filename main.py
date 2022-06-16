@@ -98,8 +98,13 @@ def define_env(env):
         Methods : Use an HTML input to upload a file from user. The user clicks on the button to fire a JS event
         that triggers the hidden input.
         """
-        path_img = env.variables.page.abs_url.split('/')[1]
-        return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="/{path_img}/images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
+        #path_img = env.variables.page.abs_url.split('/')[1]
+        len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
+        if len_path> 3 :
+            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
+        else : 
+            path_img =""
+        return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="{path_img}/images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
                 <input type="file" id="input_editor_{tc}" name="file" enctype="multipart/form-data" class="hide"/>"""
 
     def create_unittest_button(tc: str, nom_script: str, path : str, mode: str, MAX : int = 5) -> str:
@@ -113,10 +118,15 @@ def define_env(env):
         content = read_ext_file(nom_script, path)
         # print(nom_script, path, content, content == "")
         if content != "":
-            path_img = env.variables.page.abs_url.split('/')[1]
+            len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
+            if len_path> 3 :
+                path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
+            else : 
+                path_img =""
+            #path_img = env.variables.page.abs_url.split('/')[1]
             return f"""<span id="test_term_editor_{tc}" class="hide">{content}</span>\
                 <button class="tooltip" onclick=\'executeTest("{tc}","{mode}")\'>\
-                <img src="/{path_img}/images/buttons/icons8-check-64.png">\
+                <img src="{path_img}/images/buttons/icons8-check-64.png">\
                 <span class="tooltiptext">Valider</span></button><span class="compteur">\
                 {MAX}/{MAX}\
                 </span>"""
@@ -180,9 +190,13 @@ def define_env(env):
         Last span hides the code content of the IDE if loaded.
         """
         print("docs_dirs", env.conf['docs_dir'])
-        path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
-        print(f"abs.url.split : {convert_url_to_utf8(env.variables.page.abs_url).split('/')}" )
-        print(f"Path_img : {path_img}")
+        #path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
+        len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
+        if len_path> 3 :
+            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
+        else : 
+            path_img =""
+        print(path_img)
         path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2]))
         print('P1','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.url).split('/')[:-2])))
         print('P2','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2])))
@@ -204,12 +218,12 @@ def define_env(env):
         else:
             div_edit += f'<div class="wrapper_h"><span id="comment_editor_{tc}" class="comment">###</span><div class="line" id="editor_{tc}"></div><div id="term_editor_{tc}" class="term_editor_h terminal_f_h"></div></div>'
 
-        div_edit += tooltip_button(f"""'interpretACE("editor_{tc}","{mode}")'""", f"""<img src="/{path_img}/images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span>""")
+        div_edit += tooltip_button(f"""'interpretACE("editor_{tc}","{mode}")'""", f"""<img src="{path_img}/images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span>""")
         div_edit += create_unittest_button(tc, nom_script, path_file, mode, MAX) + blank_space(1)
-        div_edit += tooltip_button(f"""\'downloadFile("editor_{tc}","{nom_script}")\'""", f"""<img src="/{path_img}/images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span>""")+ blank_space()
+        div_edit += tooltip_button(f"""\'downloadFile("editor_{tc}","{nom_script}")\'""", f"""<img src="{path_img}/images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span>""")+ blank_space()
         div_edit += create_upload_button(tc) + blank_space(1)
-        div_edit += tooltip_button(f"""\'reload("{tc}")\'""", f"""<img src="/{path_img}/images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span>""") + blank_space()
-        div_edit += tooltip_button(f"""\'saveEditor("{tc}")\'""", f"""<img src="/{path_img}/images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span>""")
+        div_edit += tooltip_button(f"""\'reload("{tc}")\'""", f"""<img src="{path_img}/images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span>""") + blank_space()
+        div_edit += tooltip_button(f"""\'saveEditor("{tc}")\'""", f"""<img src="{path_img}/images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span>""")
         div_edit += '</div>'
 
         div_edit += f"""<span id="content_editor_{tc}" class="hide">{content}</span>"""
