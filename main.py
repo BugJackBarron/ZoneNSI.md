@@ -54,21 +54,21 @@ def define_env(env):
         """
         #docs_path = f"""docs/"""
         docs_path = f"""docs"""
-        print(f"""In read_ext_file :
-        path -> {path}
-        nom_script ->{nom_script}""")
+        #print(f"""In read_ext_file :
+        #path -> {path}
+        #nom_script ->{nom_script}""")
 
         try: 
             if path == "":
-                print(f"Try to open {docs_path}/{nom_script}.{filetype}")
+                #print(f"Try to open {docs_path}/{nom_script}.{filetype}")
                 f = open(f"""{docs_path}/{nom_script}.{filetype}""")
             else:
-                print(f"Try to open {docs_path}/{path}/{nom_script}.{filetype}")
+                #print(f"Try to open {docs_path}/{path}/{nom_script}.{filetype}")
                 f = open(f"""{docs_path}/{path}/{nom_script}.{filetype}""")
             content = ''.join(f.readlines())
             f.close()
             content = content + "\n"
-            print(f""" Content is : {content}""")
+            #print(f""" Content is : {content}""")
             # Hack to integrate code lines in admonitions in mkdocs
             # change backslash_newline by backslash-newline
             return content.replace('\n','bksl-nl').replace('_','py-und').replace('*','py-str')
@@ -101,7 +101,7 @@ def define_env(env):
         #path_img = env.variables.page.abs_url.split('/')[1]
         len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
         if len_path> 3 :
-            path_img = ''+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
+            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
         else : 
             path_img =".."
         return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="{path_img}/images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
@@ -182,9 +182,7 @@ def define_env(env):
     def tooltip_button(onclick_action : str, button_style : str):
         return f"""<button class="tooltip" onclick={onclick_action}>{button_style}</button>"""
 		
-    @env.macro
-    def TEST() :
-        return env.variables
+    
 	
 	
     @env.macro
@@ -197,11 +195,13 @@ def define_env(env):
         print("docs_dirs", env.conf['docs_dir'])
         #path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
         len_path = len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))
+        fix_url = env.macros.fix_url
         if len_path> 1 :
-            path_img = '/'+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-2)
+            path_img = "/"+'../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
         else : 
             path_img =""
-        print(path_img)
+        if '127.0.0.1' not in env.variables.config['site_url'] :
+            path_img = fix_url(path_img)
         path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2]))
         print('P1','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.url).split('/')[:-2])))
         print('P2','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2])))
@@ -223,12 +223,12 @@ def define_env(env):
         else:
             div_edit += f'<div class="wrapper_h"><span id="comment_editor_{tc}" class="comment">###</span><div class="line" id="editor_{tc}"></div><div id="term_editor_{tc}" class="term_editor_h terminal_f_h"></div></div>'
 
-        div_edit += tooltip_button(f"""'interpretACE("editor_{tc}","{mode}")'""", f"""<img src="{path_img}/images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span>""")
+        div_edit += tooltip_button(f"""'interpretACE("editor_{tc}","{mode}")'""", f"""<img src="{path_img}images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span>""")
         div_edit += create_unittest_button(tc, nom_script, path_file, mode, MAX) + blank_space(1)
-        div_edit += tooltip_button(f"""\'downloadFile("editor_{tc}","{nom_script}")\'""", f"""<img src="{path_img}/images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span>""")+ blank_space()
+        div_edit += tooltip_button(f"""\'downloadFile("editor_{tc}","{nom_script}")\'""", f"""<img src="{path_img}images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span>""")+ blank_space()
         div_edit += create_upload_button(tc) + blank_space(1)
-        div_edit += tooltip_button(f"""\'reload("{tc}")\'""", f"""<img src="{path_img}/images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span>""") + blank_space()
-        div_edit += tooltip_button(f"""\'saveEditor("{tc}")\'""", f"""<img src="{path_img}/images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span>""")
+        div_edit += tooltip_button(f"""\'reload("{tc}")\'""", f"""<img src="{path_img}images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span>""") + blank_space()
+        div_edit += tooltip_button(f"""\'saveEditor("{tc}")\'""", f"""<img src="{path_img}images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span>""")
         div_edit += '</div>'
 
         div_edit += f"""<span id="content_editor_{tc}" class="hide">{content}</span>"""
