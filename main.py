@@ -200,8 +200,8 @@ def define_env(env):
             path_img = '../'*(len(convert_url_to_utf8(env.variables.page.abs_url).split('/'))-3)
         else : 
             path_img =""
-        if '127.0.0.1' not in env.variables.config['site_url'] :
-            path_img = fix_url(path_img)
+        #if '127.0.0.1' not in env.variables.config['site_url'] :
+        #    path_img = fix_url(path_img)
             
         path_img = "/" + path_img
         path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2]))
