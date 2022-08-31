@@ -1,30 +1,61 @@
-<h1> <font color="red">Débuter avec </font></h1>
-
-![logo Python](python-logo.png)
+# Débuter avec  ![logo Python](https://www.python.org/static/img/python-logo.png)
 
 
-<h2><font color="blue">I : Types de base </font></h2>
+## Types de base 
 
-<h3><font color="green">a : Objets et types de base</font></h3>
+### Objets et types de base
 
-En Python, tout est objet. par exemple, dans la cellule suivante :
+Le principe d'un programme est de manipuler des **données** pour en produire de nouvelles.
+
+En Python, des données sont appellées des **==objets==**, et tout ce qui est manipulable est un objet.
+
+!!! question "Tester les objets"
+	
+	=== "Test1"
+		
+		Exécuter la commande suivante dans le terminal ci-dessous :
+		
+		```` python
+		5 / 3
+		````
+	=== "Test2"	
+	
+		Exécuter la commande suivante dans le terminal ci-dessous :
+		
+		```` python
+		"abra"+"cadabra"
+		````
+	
+	=== "Test3"
+	
+		Exécuter la commande suivante dans le terminal ci-dessous :
+		
+		```` python
+		5<9
+		````
+	
+	=== "Test4"
+	
+		Exécuter la commande suivante dans le terminal ci-dessous :
+		
+		```` python
+		4.5 + "3.2"
+		````
+		
+	=== "Une astuce"
+	
+		Dans un terminal, la seule ligne active est celle du **prompt**, c'est-à-dire celle marquée par les chevrons `>>>`. On ne peut pas réexécuter une ligne déjà tapée. Cependant, il est possible de récupérer une ligne déjà tapée, en utilisant l'historique de commande, en utilisant les flèches de direction ++arrow-up++ et ++arrow-down++
+		
+	{{ terminal() }}
+
+Par exemple, dans le code suivant:
 
 
-```python
-5
-"Toto"
-True
-4.5 # Attention, il s'agit de la notation américaine, donc pas de virgule mais un point...
-```
+{{ IDE('Code1') }}
 
+Lorsqu'on **exécute** ce code, on crée 4 objets différents, présents dans ce qu'on appelle l'==**espace des objets**==. 
 
-
-
-    4.5
-
-
-
-on a crée 4 objets différents, présents dans ce qu'on appelle l'**espace des objets**. En déclenchant la cellule précédente ( *CTRL+Entrée*), on obtient cependant que l'affichage de `4.5`. En effet, un mécanisme existant dans tous les langages de programmation, appelé **garbage collector** ( soit *collecteur d'ordure*), nettoie tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement ( plusieurs centaines de fois par seconde) cette mémoire afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `5`, `"Toto"` et `True`.
+Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans tous les langages de programmation, appelé **garbage collector** ( soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement ( plusieurs centaines de fois par seconde) cette mémoire afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `5`, `"Toto"`, `True` et `4.5`.
 
 Regardons plus précisemment ces objets, en demandant à Python grâce aux instructions **built-in** `print()` et `type()` la nature des objets crées (vous pouvez éditer, modifier, compléter à loisir les cellules IPython ci-dessous ):
 

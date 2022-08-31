@@ -96,11 +96,11 @@ def bubble_sort(items):
  
 ## Keys
 
-++ctrl++
+++ctrl++ => `++ctrl++`
 
-++alt++
+++alt++ => `++alt++`
 
-++delete++
+++delete++ => `++delete++`
 
 
 ## Latex
@@ -140,4 +140,8 @@ that $f(a)=f(b)$.
 	
 	
 !!! Note
-On teste l'auto deploiement
+	On teste l'auto deploiement
+	
+## Quelques points précis :
+
+[https://squidfunk.github.io/mkdocs-material/reference/formatting/](https://squidfunk.github.io/mkdocs-material/reference/formatting/){:target="_blank"}
