@@ -8,9 +8,6 @@
 
 L'ancien site peut-être trouvé [ici](https://old.zonensi.fr).
 
-https://github.com/backstage/mkdocs-monorepo-plugin
-
-[https://bouillotvincent.gitlab.io/pyodide-mkdocs/#syntaxe-markdown](https://bouillotvincent.gitlab.io/pyodide-mkdocs/#syntaxe-markdown){: target="_blank"}
 
 
 {{ IDE('concatenate', MAX=3) }}

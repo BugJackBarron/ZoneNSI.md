@@ -7,7 +7,7 @@
 
 Le principe d'un programme est de manipuler des **données** pour en produire de nouvelles.
 
-En Python, des données sont appellées des **==objets==**, et tout ce qui est manipulable est un objet.
+En Python, des données sont appelées des **==objets==**, et tout ce qui est manipulable est un objet.
 
 !!! question "Tester les objets"
 	
@@ -44,7 +44,7 @@ En Python, des données sont appellées des **==objets==**, et tout ce qui est m
 		
 	=== "Une astuce"
 	
-		Dans un terminal, la seule ligne active est celle du **prompt**, c'est-à-dire celle marquée par les chevrons `>>>`. On ne peut pas réexécuter une ligne déjà tapée. Cependant, il est possible de récupérer une ligne déjà tapée, en utilisant l'historique de commande, en utilisant les flèches de direction ++arrow-up++ et ++arrow-down++
+		Dans un terminal, la seule ligne active est celle du **prompt**, c'est-à-dire celle marquée par les chevrons `>>>`. On ne peut pas ré-exécuter une ligne déjà tapée. Cependant, il est possible de récupérer une ligne déjà tapée, en utilisant l'historique de commande, en utilisant les flèches de direction ++arrow-up++ et ++arrow-down++
 		
 	{{ terminal() }}
 
@@ -57,608 +57,574 @@ Lorsqu'on **exécute** ce code, on crée 4 objets différents, présents dans ce
 
 Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans tous les langages de programmation, appelé **garbage collector** ( soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement ( plusieurs centaines de fois par seconde) cette mémoire afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `5`, `"Toto"`, `True` et `4.5`.
 
-Regardons plus précisemment ces objets, en demandant à Python grâce aux instructions **built-in** `print()` et `type()` la nature des objets crées (vous pouvez éditer, modifier, compléter à loisir les cellules IPython ci-dessous ):
+Regardons plus précisément ces objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets crées.
 
+!!! question "Les types d'objets"
+	
+	Dans la console ci-dessous, testez une par une les commandes suivantes :
+	
+	=== "Test 1"
+		```` python
+		type("Toto")
+		````
+	=== "Test 2"
+		```` python
+		type(True)
+		````
+	=== "Test 3"
+		```` python
+		type(5)
+		````
+	=== "Test 4"
+		```` python
+			type(4.5)
+		````
+	
+	{{ terminal() }}
 
-```python
- print(type("toto"))
-```
+??? warning "Une erreur ?"
+	Si vous avez fait un copié-collé du **Test 4** précédent, vous avez obtenu une erreur telle que celle ci-dessous :
+	
+	```` python
+	>>>     type(4.5)
+  
+	File "<console>", line 1
+		type(4.5)
+		^
+	IndentationError: unexpected indent
+	````
+	Il s'agit d'une ==**erreur d'indentation**==, ce qui signifie que le code `type(4.5)` est décalé par rapport au départ de ligne. Ici, il y a 4 espaces devant, ce qui est obtenu en général en appuyant sur la touche ++tab++ dans les consoles Python ainsi que dans les principaux éditeurs.
+	Il s'agit d'une ==**erreur d'indentation**==, ce qui signifie que le code `type(4.5)` est décalé par rapport au départ de ligne. Ici, il y a 4 espaces devant, ce qui est obtenu en général en appuyant sur la touche ++tab++ dans les consoles Python ainsi que dans les principaux éditeurs.
+	
+!!! abstract "Types de bases et objets spécifiques"
+	Les types basiques de Python sont donc les suivants :
 
-    <class 'str'>
+	* le type `int` : qui permet de manipuler des nombres entiers relatifs, de $-2.10^{9}$ à $+2.10^9$ (mais la plage pouvant être étendue, en pratique on ne s'intéresse pairs en python aux limites des entiers) ;
+	* le type `float` : qui permet de manipuler des nombres décimaux à $32$ bits (s'écrivant avec 32 chiffres binaires) entre $-10^{302}$ et $+10^{302}$ (*avec quelques subtilités, que nous verrons dans le chapitre correspondant au codage des nombres flottants*);
+	* le type `str` : qui permet de manipuler des chaînes de caractères ;
+	* le type `bool` : qui permet de manipuler des valeurs **booléennes**, c'est à dire vraies ou fausses, utilisées par défaut dans les instructions nécessitant une condition (`if` ou `while` par exemple).
 
+	Chacun de ces types possède des opérations qui lui sont propres. Elles sont nombreuses, et largement documentées dans la doc Python 3 officielle, en suivant le lien ci contre : [Doc Python 3 en français](https://docs.python.org/fr/3/).
 
-Les types basiques de Python sont donc les suivants :
-* le type `int` : qui permet de manipuler des nombres entiers relatifs, de $-2.10^{9}$ à $+2.10^9$, mais la plage pouvant être étendus ;
-* le type `float` : qui permet de manipuler des nombres décimaux à $32$ bits entre $-10^{302}$ et $+10^{302}$;
-* le type `str` : qui permet de manipuler des chaînes de caractères ;
-* le type `bool` : qui permet de manipuler des valeurs **booléennes**, c'est à dire vraies ou fausses, utilisées par défaut dans les intsructions nécessitant une condition (`if` ou `while` par exemple).
+	Il existe aussi des *constantes* spécifiques, c'est-à-dire des objets spéciaux, comme par exemple `None`, qui est un objet sans type, signifiant une absence de valeur.
 
-Chacun de ces types possède des opérations qui lui sont propres. Elles sont nombreuses, et largement documentées dans la doc Python 3 officielle, en suivant le lien ci contre : [Doc Python 3.6 en français](https://docs.python.org/fr/3.6/) ( La dernière version de Python est la 3.8, mais les notebooks Jupyter ne fonctionnent ici qu'en Python 3.6. Certaines fonctionnalités de la dernière version de Python ne sont donc pas accessibles, mais pour la majorité des cas nous pourrons travailler correctemnt ).
-
-Il existe aussi des *constantes* spécifiques, c'est-à-dire des objets spéciaux, comme par exemple `None`, qui est une valeur signifiant l'absence de type.
-
-<h3><font color="green">b : Nommage des objets et affectations</font></h3>
+### Nommage des objets et affectations
 
 Bien entendu, de manière quasi obligatoire, il est nécessaire de conserver des objets et d'éviter que ceux-ci disparaissent avec le **garbage collector**.
 
-Pour cela, on va associer à chaque objet un **nom** dans l'**espace de nom**, grâce à l'opération d'**affectation** `=`.
+Pour cela, on va associer à chaque objet un **nom** dans l'**espace de nom**, grâce à l'opération d'**affectation** `=`, comme par exemple `un_inconnu = "Toto"`. Ici le nom de variable `un_inconnu` est associé à l'objet de type chaîne de caractère `"Toto"`. 
+
+Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par le *garbage collector*, et peut être rappelé plus tard dans le code en utilisant son nom.
+
+!!! example "Exemple"
+
+	Exécutez le code suivant, puis testez dans la console à droite le type des objets suivants, en utilisant leur nom.
+
+	{{ IDEv('Code2') }}
+	
+	Testez ensuite chacune des propositions ci-dessous. Pour chacune d'entre elles, expliquez ce qui se passe.
+
+	=== "1"
+				
+		```python
+		mon_entier**2
+		```
+	=== "2"
+				
+		```python
+		le_vrai_hero+c_est_lui
+		```
+	=== "3"
+				
+		```python
+		mon_flottant if est_actif else mon_entier
+		```
+	=== "4"
+				
+		```python
+		mon_flottant if not(est_actif) else mon_entier
+		```
+	=== "5"
+				
+		```python
+		type(mon_flottant*mon_entier)
+		```
+	=== "6"
+				
+		```python
+		mon_entier == mon_flottant
+		```
+		
+	=== "7"
+		
+		
+		```python
+		le_vrai_hero*10
+		```
+
+!!! question "Comprendre l'affectation"
+	
+	=== "Énoncé"
+		On considère le code suivant :
+		```` python
+		a = 5
+		b = 4.2
+		c = a+b
+		a*c
+		a = a*3
+		````
+		
+		Quel est l'état de la mémoire après exécution du code ci-dessus ?
+		
+	=== "Solution"
+	
+		 ![type:video](https://video.toutatice.fr/video/23382-affectations-de-variables-en-python-et-etat-memoire).
 
 
-```python
-nombreEntier = 5
-leVraiHero = "Dark"
-print1 = True
-```
 
 
-```python
-print(type(5))
-```
+!!! warning "Règles de nommage des variables"
 
-    <class 'int'>
+	Le nom donné à l'objet peut être n'importe lequel, en respectant les règles **impératives** suivantes :
 
-
-
-```python
-5 == 2+2
-```
-
-
-
-
-    False
-
-
-
-Pour mieux comprendre les mécanismes d'affectation, voici la [vidéo de ce lien](https://video.toutatice.fr/video_priv/23382/4a499fd39c4aeea48eb7fd51a53f853b803e761925f5b7f6e737e3430177f86d/).
-
-Le nom donné à l'objet peut être n'importe lequel, en respectant les règles **impératives** suivantes :
-* Un nom de variable est une séquence de lettres, de chiffres, qui ne doit pas commencer par un chiffre.
-* La **casse est significative** (les caractères majuscules et minuscules sont distingués). Donc `Joseph`, `joseph`, et `JOSEPH` sont des variables différentes.
-* Les **« mots réservés »** du langage sont déjà pris (ex : `print()`). Il s'agit des instructions de bases et des fonctions natives ( voir [ici](https://docs.python.org/fr/3/library/functions.html) ). Si vous nommez une variable comme un de ces mots, vous ne pourrez plus utiliser la fonctionnalité du mot réservé. Pour la liste des mots réservés : 
+	* Un nom de variable est une séquence de lettres, de chiffres, ==**qui ne doit pas commencer par un chiffre**==.
+	* La **casse est significative** (les caractères majuscules et minuscules sont distingués). Donc `Joseph`, `joseph`, et `JOSEPH` sont des variables différentes.
+	* Les ==**« mots réservés »**== du langage sont déjà pris (ex : `type()`, `float`, `str`...). Il s'agit des instructions de bases et des fonctions natives ( voir [ici](https://docs.python.org/fr/3/library/functions.html){:target="_blank"} ). Si vous nommez une variable comme un de ces mots, vous ne pourrez plus utiliser la fonctionnalité du mot réservé. 
   
-Il faut également noter que les variables dont le nom commence par le caractère `_` ont une signification particulière :
-* les noms commençant par un `_` ne sont pas exportés lorsqu'ils se trouvent dans un module ;
-* les noms commençant par deux `_` et finissant par deux `_` sont réservés par le langage lui même, notamment pour la programmation orientée objet.
+??? info "Pour les cracks"
+	Il faut également noter que les variables dont le nom commence par le caractère `_` ont une signification particulière :
+	
+	* les noms commençant par un `_` ne sont pas exportés lorsqu'ils se trouvent dans un module ;
+	* les noms commençant par deux `_` et finissant par deux `_` sont réservés par le langage lui même, notamment pour la programmation orientée objet.
 
-Ces deux points ci-dessus sont juste des indications pour l'instant, ils seront vu dans le futur, en particulier en terminale.
-
-Il existe quelques règles de "bien nommage" des variables :
-*  il est recommandé d'écrire les noms de variables avec une minuscule, car l'usage veut qu'on le réserve plutôt la majuscule aux noms de classes ou aux constantes ;
-* Si le nom d'une variable doit comporter plusieurs mots, il y a deux possibilités d'écrire le nom de la variable :
-    * En **snake_case** (à la C), c'est à dire en séparant les mots par le caractère `_`. Exemple : `marge_brut`.
-    * En **camelCase** (à la Java), c'est à dire en séparant les mots par un passage en haut de casse (lettre majuscule). Exemple : `margeBrut`.
-* Il convient aussi d'éviter autant que possible l'énumération de variables (`toto1`, `toto2`, `toto3`, ...), cela rend le programme parfaitement incompréhensible et sujet à des erreurs.
-* De manière générale, il convient de suivre aussi strictement que possible les règles édictées par la **Python Software Foundation** à travers les normes PEP, dont la dernière en date est disponible ici : [PEP8](https://www.python.org/dev/peps/pep-0008/)
-
-Une fois l'affectation réalisée, les objets sont donc récupérables grâce à leur nom, ils sont protégés du **garbage collector** et on peut effectuer des actions sur ces objets :
+	Ces deux points ci-dessus sont juste des indications pour l'instant, ils seront vu dans le futur, en particulier en terminale.
 
 
-```python
-nombreEntier**2
-```
+!!! info "Conventions de nommage et PEP8"
+	Il existe quelques règles de "bien nommage" des variables, définies dans ce qu'on appelle la [PEP8](https://nguyen.univ-tln.fr/share/Python/pep8.pdf){:target="_blank"}, c'est-à-dire une description des bonnes pratiques d'écriture en Python. La PEP8 donne les conventions principales, qui permettent de lire plus facilement le code fourni par un·e autre codeur·euse. Les principales recommandations sont :
+
+	* Ne jamais utiliser les caractères "l" (L minuscule), "O" (o majuscule), ou "I" (i majuscule) seuls comme nom de variables. Dans certaines polices, ces caractères sont impossibles à distinguer des numériques un et zéro. Lorsque vous êtes tenté·e d’utiliser "l", utilisez "L" à la place.
+	* Il est recommandé d'écrire les noms de variables en minuscule. Si le nom de variable doit contenir plusieurs mots, on conseille d'écrire en **snake_case**, c'est-à-dire en séparant les mots par le caractère `_`. Exemple : `marge_brut`.
+	* Il convient aussi d'éviter autant que possible l'énumération de variables (`toto1`, `toto2`, `toto3`, ...), cela rend le programme parfaitement incompréhensible et sujet à des erreurs.
+	* De manière générale, il convient de suivre aussi strictement que possible les règles édictées par la **Python Software Foundation** à travers les normes PEP.
 
 
 
+## Exercices
 
-    25
+1. Écrire un code qui affecte l'objet `15` de type `int`  à une variable nommé ``valeur``, puis exécuter l'instruction ``valeur*4``.
 
-
-
-
-```python
-leVraiHero+"Vador"
-```
+{{ IDEv('P1_Exo1') }}
 
 
+2. Écrire un code qui affecte l'objet `"15"` de type `str`  à une variable nommé ``texte``, puis exécuter l'instruction ``texte*4``.
 
+{{ IDEv('P1_Exo2') }}
 
-    'DarkVador'
+3. Compléter le code suivant afin que les objets des variables `a` et `b` soient inversés, **SANS UTILISER D'AFFECTATIONS DE NOMBRES, et sans toucher la valeur de `c`.**
 
+{{ IDEv('P1_Exo3') }}
 
+4. Écrivez un code qui **permute** les objets des variables `a`, `b` et `c` ( l'objet de `a` est affecté à `b`, l'objet de `b` est affecté à `c` et l'objet de `c` est affecté à `a`) **sans utiliser de valeurs numériques**.
 
+{{ IDEv('P1_Exo4') }}
 
-```python
-not(print)
-```
+## Opérations sur les objets
 
-<h4><font color="blue">Exercices</font></h4>
+### Types numériques et opérations
 
-1. Ecrire un code qui affecte l'objet `15` de type `int`  à une variable nommé ``valeur``, puis exécuter l'instruction ``valeur*4``.
+Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qui n'est pas vu en maths avant la terminale ), on trouve toutes les opérations classiques. 
 
+#### Addition entière
 
 ```python
-valeur = 15
-valeur * 4
+>>> 5 + 2 #Addition entière
+7
 ```
 
-2. Ecrire un code qui affecte l'objet `"15"` de type `str`  à une variable nommé ``texte``, puis exécuter l'instruction ``texte*4``.
-
+#### Addition flottante
 
 ```python
-
+>>> 5.6 + 3.4 # Addition flottante ( Quel est le type du résultat ?)
+9.0
 ```
 
-3. Ecrivez un code qui crée 3 variables `A,B` et `C`, et leur affecte les valeurs entières respectives 10, 20, 400.
-
+#### Addition mixte
 
 ```python
-A,B,C = 10, 20, 400
+>>> 5 + 3.4 # Addition entre un entier et un flottant ( Quel est le type du résultat ?)
+8.4
 ```
 
-4. Ecrivez un code qui **permute** les contenus des variables `A` et `B` **sans utiliser de valeurs numériques**.
+!!! warning "Attention avec les flottants"
 
+	Testez dans la console ci-dessous l'instruction suivante `0.1 + 0.2 == 0.3`. Qu'obtient-on ?
+
+	{{ terminal() }}
+
+#### Soustractions
 
 ```python
-
+>>> 3.2-4 #Soustraction ( A tester de la même manière)
+-0.79999999999
 ```
 
-5. Ecrivez un code qui **permute** les contenus des variables `A`, `B` et `C` ( le contenu de `A` est affecté à `B`, le contenu de `B` est affecté à `C` et le contenu de `C` est affecté à `A`) **sans utiliser de valeurs numériques**.
-
+#### Multiplication
 
 ```python
-D = C
-C = B
-B = A
-A = D
+>>> 4*8.5 #Multiplication ( idem)
+34.0
 ```
 
+#### Division flottante
 
 ```python
-print(A, B, C)
+>>> 1/3 #Division
+0.3333333333333333
 ```
 
-    20 400 10
+Attention ! Au résultat ci-dessus, le type obtenu est `float`, même si le dividende et le diviseur sont entiers et que le résultat &laquo; tombe juste &raquo;... 
 
-
-<h3><font color="green">c : Types numériques et opérations</font></h3>
-
-Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qui n'est pas vu en maths avant la terminale ), on trouve toutes les opérations classiques :
-
-
-```python
-5 + 2 #Addition entière
+``` python
+>>> 4/2
+2.0
 ```
 
+#### Division Euclidienne
 
-
-
-    7
-
-
-
-
-```python
-5.6 + 3.4 # Addition flottante ( Quel est le type du résultat ?)
+``` python
+>>> 72//5 #Quotient de la division euclidienne
+14
 ```
-
-
-
-
-    9.0
-
-
-
-
-```python
-5 + 3.4 # Addition entre un entier et un flottant ( Quel est le type du résultat ?)
-```
-
-
-
-
-    8.4
-
-
-
-
-```python
-0.1+0.2 == 0.3
-```
-
-
-
-
-    False
-
-
-
-
-```python
-3.2-4 #Soustraction ( A tester de la même manière)
-```
-
-
-
-
-    -0.7999999999999998
-
-
-
-
-```python
-4*8.5 #Multiplication ( idem)
-```
-
-
-
-
-    34.0
-
-
-
-
-```python
-1/3 #Division
-```
-
-
-
-
-    0.3333333333333333
-
-
-
-Attention ! Au résultat ci-dessus, le type obtenu est `float`, même si le dividende et le diviseur dont entiers et que résultat "tombe juste"... (A tester...)
-
-
-```python
-72//5 #Quotient de la division euclidienne
-```
-
-
-
-
-    14
-
-
 
 Ici par contre le résultat est bien de type `int` (A tester aussi...)
 
+#### Reste de la Division Euclidienne
 
-```python
-72%5 #reste de la division euclidienne ( ou modulo).
+``` python
+>>> 72%5 #reste de la division euclidienne ( ou modulo).
+2
 ```
 
-
-
-
-    2
-
-
-
-
-```python
-23%2 == 0 # Pour savoir si un nombre est pair par exemple
-```
-
-
-
-
-    False
-
-
-
-
-```python
-10**7 #Puissance
-```
-
-
-
-
-    10000000
-
-
-
-<h3><font color="green">d : Types `str` ( chaines de caractères ) et opérations</font></h3>
-
-Chaque caractère d'une chaîne est repéré par son **index**, c'est-à-dire par un **numéro donnant sa position**. Attention toutefois,en informatique, les index commencent à 0 dans quasiment tous les langages !
-Ainsi :
-    ![image stanford](https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1204/handouts/python-str-index.png)
+C'est un point important en informatique, nous avons souvent besoin du reste, aussi appelé ==**modulo**==. Par exemple pour savoir si un nombre entier est pair, on utilise :
     
-Dans la chaïne précédente, ``P`` à pour indice 0, ``y`` a pour indice 1 et ``n`` a pour indice 5.
-La longueur de la chaîne ``Python`` est par contre bien de 6, et on peut y accéder grâce à la fonction **built-in** ``len()``.
-
-
-
-```python
-"Abcdefg"[10]#Accès direct à un caractère par son index.
+``` python
+>>> 23%2 == 0 
+False
 ```
 
-    Traceback (most recent call last):
-      File "<input>", line 1, in <module>
-    IndexError: string index out of range
+#### Puissances
 
-
-
-```python
-len("aeiouy")
+``` python
+>>> 10**7 #Puissance
+10000000
 ```
 
 
+!!! warning "Opérations avec les noms des objets"
+
+	Tourtes les opérations faites avec les objets ci-dessus peuvent être effectuées directement sur les noms si ils existent :
+	
+	```` python
+	>>> a = 5
+	>>> b = 2
+	>>> a + b
+	7
+	>>> a%b
+	1
+	````
+	
+Vous pouvez tester ces éléments dans le terminal ci-dessous :
+	
+{{ terminal() }}
+
+### Types `str` (chaînes de caractères) et opérations
+
+#### Déclarations
+
+Une chaîne de caractère doit être décalrée :
+
+* soit entre une paire de guillemets simples (*simple quote*) : `'Toto'` ;
+* soit entre une paire de guillemets doubles (*double quote*) : `"Toto"`.
+
+L'utilisation de l'un ou de l'autre n'a pas d'importance, mais on peut rapidement se tromper selon le contenu de la chaîne :
+
+!!! question "Tester les chaînes de caractères"
+
+	Tester les chaînes suivantes dans le terminal ci-dessous:
+	
+	=== "1"
+	
+		```` python
+		texte = "Hello World !"
+		````
+	=== "2"
+	
+		```` python
+		texte = 'Hello World !'
+		````
+	=== "3"
+	
+		```` python
+		texte = "Salut l'ami !"
+		````
+	=== "4"
+	
+		```` python
+		texte = 'Salut l'ami !'
+		````
+	=== "5"
+	
+		```` python
+		texte = 'Alors là je dis : "Non !"'
+		````
+	
+	=== "6"
+	
+		```` python
+		texte = "Alors là je dis : "Non !""
+		````
+	
+	{{ terminal() }}
+
+Normalement, une chaîne de caractère, quelle que soit sa longueur, n'est considérée être que sur une seule et unique ligne. Il est cependant possible d'avoir des chaînes de caractères multi-lignes, à condition de les déclarer entre **trois paires** de guillemets identiques :
+
+```` python
+>>> zen = """
+Préfère :
+      la beauté à la laideur,
+      l'explicite à l'implicite,
+      le simple au complexe
+      et le complexe au compliqué,
+      le déroulé à l'imbriqué,
+      l'aéré au compact.
+Prends en compte la lisibilité.
+Les cas particuliers ne le sont jamais assez pour violer les règles.
+Mais, à la pureté, privilégie l'aspect pratique.
+Ne passe pas les erreurs sous silence,
+... ou bâillonne-les explicitement.
+Face à l'ambiguïté, à deviner ne te laisse pas aller.
+Sache qu'il ne devrait [y] avoir qu'une et une seule façon de procéder,
+même si, de prime abord, elle n'est pas évidente, à moins d'être Néerlandais.
+Mieux vaut maintenant que jamais.
+Cependant jamais est souvent mieux qu'immédiatement.
+Si l'implémentation s'explique difficilement, c'est une mauvaise idée.
+Si l'implémentation s'explique aisément, c'est peut-être une bonne idée.
+Les espaces de nommage ! Sacrée bonne idée ! Faisons plus de trucs comme ça. 
+"""
+````
+
+#### Indice d'un caractère
+
+Chaque caractère d'une chaîne est repéré par son ==**indice**==, c'est-à-dire par un **numéro donnant sa position**. Attention toutefois,en informatique, les indices commencent à 0 dans quasiment tous les langages !
+
+Ainsi :
+
+![image stanford](https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1204/handouts/python-str-index.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="D'après https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1204/handouts/python-str-index.png"}
+    
+Dans la chaîne précédente, ``"P"`` à pour indice 0, ``"y"`` a pour indice 1 et ``"n"`` a pour indice 5.
 
 
-    6
 
+#### Accès à un caractère par son indice
 
+```` python
+>>> "Python"[3]
+'h'
+````
 
-Le type `str` possède lui aussi ses propres opérations ( ou **méthodes**) qui permettent de transformer ou modifier une chaine de caractère. Parmi celles-ci, en voici quelques une utiles :
+Si la chaîne est associée à un nom :
 
+```` python
+>>> texte = "DarkVador"
+>>> texte[4]
+'V'
+````
+Attention, si on cherche un indice qui n'existe pas, on a l'erreur suivante :
 
 ```python
-"Toto"+"Tata" #Concaténation
+>>> "Abcdefg"[10]
+Traceback (most recent call last):
+    File "<input>", line 1, in <module>
+IndexError: string index out of range
+
+```
+
+Cependant il est aussi possible de parcourir une chaîne à l'envers :
+
+```` python
+>>> "Python"[-1]
+'n'
+>>> "Python"[-3]
+'h'
+````
+
+#### Longueur d'une chaîne
+
+La longueur de la chaîne ``"Python"``, c'est-à-dire **le nombre de caractères qui la composent**,  est par contre bien de 6, et on peut y accéder grâce à la fonction **built-in** ``len()``.
+
+```` python
+>>> len("Python")
+6
+````
+
+La longueur d'une chaîne vide est 0 :
+
+```` python
+>>> len("")
+0
+````
+
+
+
+
+
+#### Concaténation
+
+La ==**concaténation**== est l'opération consistant à accoler deux chaînes de caractères :
+
+```python
+>>> "Toto"+"Tata" 
+'TotoTata'
+```
+
+On peut aussi concaténer une chaîne avec elle-même à plusieurs reprises :
+
+```python
+>>> "Toto"*5
+'TotoTotoTotoTotoToto'
 ```
 
 
 
-
-    'TotoTata'
-
+### Méthodes des chaînes de caractères
 
 
+Le type `str` possède lui aussi ses propres fonctionnalités ( ou ==**méthodes**==) qui permettent de transformer ou modifier une chaîne de caractère. Parmi celles-ci, en voici quelques une utiles :
+
+#### Substitution d'une sous-chaîne par une autre
 
 ```python
-"Toto"*5
+>>> "abracadabra".replace("bra","BRUHHH") 
+"'aBRUHHHcadaBRUHHH'"
+```
+
+On utilise ici la ==**méthode**== `replace` sur la chaîne de caractère `"abracadabra"`, et on va récupérer la nouvelle chaîne `'aBRUHHHcadaBRUHHH'`
+
+!!! question "Modifications en place ou non ?"
+
+	Exécutez les lignes suivantes une par une dans le terminal ci-dessous :
+	
+	```` python
+	>>> texte = 'abracadabra'
+	>>> texte.replace('a', 'U')
+	>>> texte
+	````
+	
+	Le contenu de la variable `texte` n'a pas été remplacé. Un **nouvel objet de type `str`** a été créé, mais il a été immédiatemment ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
+	
+	* la chaîne originale et la chaîne modifiée, il faut donner un nouveau nom et affecter de la manière suivante :
+	
+		{{ IDEv('Code3') }}
+		
+	* uniquement la chaîne modifiée, il suffit de réaffecter la modification au nom `texte` :
+	
+		{{ IDEv('Code4') }}
+		
+
+
+    
+#### Changement de casse
+
+Il existe les méthodes `.lower()` , `.upper()` et `.capitalize()` qui mettent respectivement la chaïne originale en minuscule, en majuscule, et la première lettre en majuscule puis le reste en minuscule.
+
+```python
+>>> "Toto".lower() #mise en minuscule, appel encore une fois à une méthode de classe.
+'toto'
+>>> "Toto".upper() #mise en majuscule, idem
+'TOTO'
+>>> "une phrase SANS QUEUE ni tÊte.".capitalize()
+#Met en majuscule le premier caractère de la chaîne, et en minuscule les autres, idem
+'Une phrase sans queue ni tête.'
+```
+
+#### Suppression des espaces inutiles avant et après une chaîne
+
+Supprime les espaces inutiles devant et après une chaîne de caractères
+
+```python
+>>> "              Des Blancs            ".strip()
+
+'Des Blancs'
+```
+
+#### Séparation d'une chaîne selon un motif donné
+
+Sépare  une chaîne de caractère en, fonction d'une chaîne passée en argument, et renvoie une liste (que nous étudierons plus tard)
+
+```python
+>>> "Une phrase est faite avec des mots".split("est")
+['Une phrase ', ' faite avec des mots']
+>>> "12:34:45:78".split(":")
+['12', '34', '45', '78']
 ```
 
 
+## Interactions avec l'utilisateur, transtypage des données, notions de formatage des chaînes de caractères
 
+### Afficher à l'écran
 
-    'TotoTotoTotoTotoToto'
+Jusqu'à présent, les seules choses que nous avons obtenu dans le terminal étaient des affichages simples des objets attachés à un nom connu. Il est possible de personnaliser, de différer, et de multiplier les affichages grâce à la fonction *built_in* `print()'.
 
+Exécutez le code ci-dessous :
 
+{{ IDEv('Code5') }}
 
 
-```python
-"Toto".replace("o","&&&12") #Substitution, en utilisant le point (.) pour accéder aux méthodes de classe.
-```
+D'une part la fonction `print()` écrit les chaînes de caractères dans la console, mais en plus, grâce au `f` situé devant les chaînes comme :
 
+```` python
+f"La variable a contient {a}."
+````
+on a le remplacement du **nom de variable** situé entre accolades par sa valeur.  On appelle cela le formatage des chaînes de caractères, la [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécesaires. 
 
+!!! tips "Les accolades"
 
+	Vous utiliserez beaucoup les accolades en Python, pour les obtenir sur un clavier AZERTY :
+	
+	* `{` s'obtient par ++alt-graph+single-quote++ ;
+	* `}` s'obtient par ++alt-graph+equal++ ;
 
-    'T&&&12t&&&12'
+### Demander à l'utilisateur de saisir quelque chose au clavier
 
+Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument**  une chaîne de caractères. Celle-ci interrompt le programme et attend une saisie clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaîne de caractère.
 
-
-
-```python
-"Toto".lower() #mise en minuscule, appel encore une fois à une méthode de classe.
-```
-
-
-
-
-    'toto'
-
-
-
-
-```python
-"Toto".upper() #mise en majuscule, idem
-```
-
-
-
-
-    'TOTO'
-
-
-
-
-```python
-"une phrase SANS QUEUE ni tÊte.".capitalize()
-#Met en majuscule le premier caractère de la chaine, et en minuscule les autres, idem
-```
-
-
-
-
-    'Une phrase sans queue ni tête.'
-
-
-
-
-```python
-"              Des Blancs            ".strip()
-# Supprime les espaces inutiles devant et après une chaine de caractères
-```
-
-
-
-
-    'Des Blancs'
-
-
-
-
-```python
-"Une phrase est faite avec des mots".split("est")
-#Sépare  une chaine de caractère en, fonction d'un caractère passé en argument ( ici le caractère espace " ")
-# renvoie une liste
-```
-
-
-
-
-    ['Une phrase ', ' faite avec des mots']
-
-
-
-
-```python
-#On peut aussi passer un autre caractère, par exemple :
-"12:34:45:78".split(":")
-```
-
-
-
-
-    ['12', '34', '45', '78']
-
-
-
-Il existe aussi la fonction **built-in** `len()` qui donne la longueur de la chaîne de caractères.
-
-<h2><font color="blue">II : Interactions avec l'utilisateur, transtypage des données, notions de formatage des chaines de caractères</font></h2>
-
-Pour demander une saise clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant éventuellement en **argument**  une chaîne de caractères. Celle-ci interrompt le programme et attend une saise clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaîne de caractère.
-
-Pour afficher le contenu d'une variable, ou une chaîne de caractère, on utilise la fonction **built-in** `print()`.
-
-
-```python
-a=input("Entrez votre nom :")
-print(a)
-```
-
-    Entrez votre nom :tutu
-    tutu
-
+{{ IDEv('Code6') }}
 
 Il faut cependant être attentif à ce qui est réalisé par la  fonction `input()`. En effet, le **retour** effectué par cette fonction est renvoyé sous la forme de chaîne de caractères, ce qui peut poser un problème, comme par exemple dans la situation ci-dessous :
 
-
-```python
-nb = input("Entrez un nombre entier :")
-print(type(nb))
-print(2*nb)
-```
-
-    Entrez un nombre entier :dfghlqjkdghlkqfghqd
-    <class 'str'>
-    dfghlqjkdghlkqfghqddfghlqjkdghlkqfghqd
+{{ IDEv('Code7') }}
 
 
-Pour lever cette ambiguïté, nous sommes parfois obligés d'effectuer un **transtypage** des données, avec l'aide des fonctions **built-in** suivantes :
+Pour lever cette ambiguïté, nous sommes parfois obligés d'effectuer un ==**transtypage des données**==, c'est-à-dire une modification du **type**,  avec l'aide des fonctions **built-in** suivantes :
 * `str()`
 * `int()`
 * `float()`
 * ...
 
-En modifiant l'exemple ci-dessus :
+Par exemple :
 
+{{ IDEv('Code8') }}
 
+on a forcé ici dans la première ligne Python à transformer (si il le peut) le contenu de la variable `nb` comme étant un nombre entier.
 
-```python
- A = "15"
-```
-
-
-```python
-type(A)
-```
-
-
-
-
-    <class 'str'>
-
-
-
-
-```python
-B = float(A)
-```
-
-
-```python
-type(B)
-```
-
-
-
-
-    <class 'float'>
-
-
-
-
-```python
-B
-```
-
-
-
-
-    15.0
-
-
-
-
-```python
-str(-15.2).split(".")
-```
-
-
-
-
-    ['-15', '2']
-
-
-
-
-```python
-nb=input("Entrez un nombre entier :")
-print(2*float(nb))
-type (nb)
-```
-
-on a forcé ici dans la deuxième ligne Python à considérer le contenu de la variable `nb` comme étant un nombre entier.
 Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur saisis une chaîne de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
 
-Il est à noter qu'une solution plus élégante serait  de transtyper dès la saisie :
+!!! question "Exercice"
 
+Écrire dans l'éditeur ci dessous un code python qui :
 
-```python
-nb=float(input("Entrez un nombre entier :"))
-print(nb)
-type(nb)
-```
+* demande deux nombres `a` et `b` à l'utilisateur ;
+* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaîne de caractères du type `3x4 = 12. Le résultat est de type int'                                                                                                                             
 
-    Entrez un nombre entier :157
-    157.0
-
-
-
-
-
-    <class 'float'>
-
-
-
-Essayez le code suivant :
-
-
-```python
-nom=input("Saisissez votre nom :")
-prenom=input("Saisissez votre nom :")
-print("Votre nom de famille est {a} et votre prénom est {b}".format(a=nom.upper(),b=prenom.capitalize()))
-```
-
-    Saisissez votre nom :toto
-    Saisissez votre nom :TATA
-    Votre nom de famille est TOTO et votre prénom est Tata
-
-
-Dans la chaïne de caractère `"Votre nom..."`, on a inséré **entre accolades** deux variables `a` et `b`, qui ont été substituées grâce à la **méthode** `format()`, spécifique aux chaînes de caractères. Cette méthode est très utile pour obtenir des messages clairs pour les utilisateurs.
-
-La méthode précédente peut-être améliorée grâce aux **f-string** depuis Python 3.6 :
-
-
-```python
-nom=input("Saisissez votre nom :")
-prenom=input("Saisissez votre nom :")
-print(f"Votre nom de famille est {nom.upper()} et votre prénom est {prenom.capitalize()}")
-```
-
-<h4><font color="blue">Exercice</font></h4>
-
-Ecrire dans la cellule suivante un code python qui :
-* demande deux nombres à l'utilisateur ;
-* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaine de caractères dy type `3x4 = 12 Le résultat est de type int`.                                                                                                                             
-
-
-```python
-
-```
+	{{ IDEv() }}

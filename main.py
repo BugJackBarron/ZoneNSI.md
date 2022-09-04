@@ -73,7 +73,7 @@ def define_env(env):
             # change backslash_newline by backslash-newline
             return content.replace('\n','bksl-nl').replace('_','py-und').replace('*','py-str')
         except :
-            print("Error in openning")
+            print(f"Error in openning {docs_path}/{nom_script}.{filetype}")
             return ""
 
         
@@ -205,8 +205,8 @@ def define_env(env):
             
         path_img = "/" + path_img
         path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2]))
-        print('P1','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.url).split('/')[:-2])))
-        print('P2','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2])))
+       # print('P1','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.url).split('/')[:-2])))
+        #print('P2','/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[1:-2])))
 
         clef = generate_key(path_file)
 

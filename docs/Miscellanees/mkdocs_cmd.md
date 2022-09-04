@@ -145,3 +145,10 @@ that $f(a)=f(b)$.
 ## Quelques points précis :
 
 [https://squidfunk.github.io/mkdocs-material/reference/formatting/](https://squidfunk.github.io/mkdocs-material/reference/formatting/){:target="_blank"}
+
+## Pyodide et autre :
+
+
+[https://github.com/backstage/mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin)
+
+[https://bouillotvincent.gitlab.io/pyodide-mkdocs/#syntaxe-markdown](https://bouillotvincent.gitlab.io/pyodide-mkdocs/#syntaxe-markdown){: target="_blank"}
