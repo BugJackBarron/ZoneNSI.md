@@ -186,10 +186,10 @@ Pour chaque module, on peut donc distinguer :
 	def _calcule(p,x) :
 		...
 
-	def _nombreDerive(p,x) :
+	def _nombreDerive(p, x0) :
 		...
 		
-	def tangente(p,x) :
+	def tangente(p, x0) :
 		...
 
 
@@ -202,7 +202,7 @@ Pour chaque module, on peut donc distinguer :
 	
 ??? done "Une solution possible"
 
-	{{ IDEv('secondDegre_corr') }}
+	{{ IDEv('secondDegre_v1') }}
 	
 !!! note "Encapsulation dans d'autres langages"
 	Il faut noter que la notion de fonction ou variable privée en `Python` n'est qu'une convention. **Rien n'empêche réellement l'utilisateur·trice du module d'utiliser ces fonctions privées**.
