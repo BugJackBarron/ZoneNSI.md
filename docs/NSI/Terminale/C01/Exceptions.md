@@ -4,9 +4,10 @@
 
 
 !!! abstract "Utilisation malheureuse d'un module"
-	Reprenons le module `secondDegre.py`, mais en temps qu'utilisateur. Nous
-	connaissons l'interface qui nous a été fournie par l'auteur. Pour tester le module
+	Reprenons le module `secondDegre.py`, mais en temps qu'utilisateur·trice. Nous
+	connaissons l'interface qui nous a été fournie par l'auteur·trice. Pour tester le module
 	nous lançons le script suivant, nommé `testModule.py`, et situé dans le même dossier que `secondDegre.py` :
+
 	``` python
 		import secondDegre as sD
 
@@ -16,6 +17,9 @@
 		p = sD.polynome(p)
 		print(sD.tangente(p,3))
 	```
+
+	{{ IDEv('testModule') }}
+
 !!! question "Un problème ?"
 	Copiez-collez le code ci-dessus dans un fichier `testModule.py`, puis exécutez-le en saisissant :
 	
@@ -45,10 +49,8 @@
 		
 !!! tips "Lever les bonnes erreurs"
 	Dans l'exemple précédent, les trois erreurs, pourtant très différentes, **sont signalées
-	 par le même message. L'utilisateur, qui lui ne connaît pas l'implémentation,
-	  **ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de débuggage
-	   particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur,
-	    pour qu'il n'ait pas à ses préoccuper des détails d'implémentation.
+	 par le même message. L'utilisateur·trice, qui lui ne connaît pas l'implémentation,
+	  **ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de débuggage particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur·trice, pour qu'il ou elle n'ait pas à ses préoccuper des détails d'implémentation.
 	
 	Il est par exemple possible de {==**rajouter un message**==} lorsque l'erreur est levée, 
 	en la passant en paramètre directement dans l'instruction `ValueError()` :
@@ -96,13 +98,17 @@ Voici quelques exceptions courantes, et leurs utilisations
 		
 		Dans le cas d'un seul élément, l'erreur ressortie est :
 		
-			 a,b,*c = t
-			 TypeError: cannot unpack non-iterable int object
+		```` python
+		a,b,*c = t
+		TypeError: cannot unpack non-iterable int object
+		````
 			 
 		Dans le cas de deux éléments, l'erreur levée est  :
-		
-			) or not(isinstance(*c,(int, float))) :
-			TypeError: isinstance expected 2 arguments, got 1
+
+		```` python	
+		) or not(isinstance(*c,(int, float))) :
+		TypeError: isinstance expected 2 arguments, got 1
+		````
 			
 		Dans les deux cas, on voit apparaître les détails d'implémentation du code de la fonction, 
 		qui sont peu clairs en particulier pour le cas n°2.
@@ -208,17 +214,15 @@ On a ici l'utilisation d'une structure spéciale : l'interception d'ereurs.
 !!! question "Exercice"
 	Evidemment, la différence ne saute pas vraiment aux yeux... Pourquoi faire tout un plat d'une seule ligne gagnée ?
 	
-	Essayez donc, pour chacune des 2 fonctions précédentes, avec les chaines de caractères suivantes :
+	Essayez donc, pour chacune des 2 fonctions précédentes, avec les chaines de caractères suivantes (à copier-coller) :
 	
-	* ½
-	* 3²
+	* `½`
+	* `3²`
 	
 ??? done "Réponse"
 	
-	En fait le problème provient de la *méthode* `isnumeric()`, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode*
-	permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
-	qui peut se douter que les **fractions définies dans la table utf8**, ainsi que les caractères en **exposant et en indice**, sont considérés comme 
-	des valeurs numériques.
+	En fait le problème provient de la *méthode* `isnumeric()`, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
+	qui peut se douter que les **fractions définies dans la table utf8**, ainsi que les caractères en **exposant et en indice**, sont considérés comme des valeurs numériques.
 	
 	L'intérêt du bloc `try` est qu'il se déclenchera dès qu'il y aura une exception levée. Et cette exception a peu de chance de se produire dans le bloc `if / else `. La fonction devient **dumbproof** (mais si vous réussissez à déclencher une erreur bloquante, signalez-le moi !!).
 			
