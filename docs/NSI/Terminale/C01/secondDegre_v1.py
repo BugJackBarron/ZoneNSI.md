@@ -16,7 +16,7 @@ def _discriminant(p) :
         
 def _nombreRacines(p) :
     delta = _discriminant(p)
-    if _discr<0 :
+    if delta<0 :
         return 0
     elif delta == 0 :
         return 1
@@ -24,6 +24,7 @@ def _nombreRacines(p) :
         return 2
     
 def valeursracines(p) :
+    a,b,c = polynome(p)
     n = _nombreRacines(p)
     if n == 0 :
         return None
