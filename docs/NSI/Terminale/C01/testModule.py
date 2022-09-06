@@ -1,4 +1,4 @@
-import secondDegre as sD
+import docs.NSI.Terminale.C01.secondDegre_corr as sD
 
 p = input("Donnez les coefficients du polynome séparés par des virgules :")
 

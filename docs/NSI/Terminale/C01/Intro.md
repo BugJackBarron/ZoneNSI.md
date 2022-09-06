@@ -1,6 +1,6 @@
 # Modularité et initiation à la Programmation Orientée Objet
 
-Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient *built-in* ou bien importés à partir de *modules*, nous nous posons rarement la question de savoir quelle est leur **implémentation**, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons globalement confiance aux concepteurs du langage ou du module. 
+Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient *built-in* ou bien importés à partir de *modules*, nous nous posons rarement la question de savoir quelle est leur **implémentation**, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons *globalement confiance* aux concepteurs du langage ou du module. 
 
 Ce qui nous importe est plutôt **l'interface** de ces objets, c'est-à-dire la façon dont nous pouvons interagir avec ces objets : les créer, les affecter, les additionner, les supprimer,...
 
@@ -20,51 +20,44 @@ Nous allons construire un programme Python qui permettra de vérifier expérimen
 Pour modéliser le problème :
 
 * plutôt que d'utiliser des dates, nous allons utiliser des entiers de 1 à 365 ;
-* nous allons créer une procédure (*une fonction sans paramètres*) ``genere_groupe()`` qui renvoie un tableau aléatoire de 23 entiers de 1 à 365 ;
+* nous allons créer une fonction *sans paramètres* ``genere_groupe()`` qui renvoie un tableau aléatoire de 23 entiers de 1 à 365  ;
 * nous allons créer une fonction ``contient_doublon(t)`` qui renverra `True` si le tableau contient un doublon, et ``False`` sinon ;
-* puis nous créerons une procédure ``teste_hypothese()`` qui testera sur un échantillon de 100 groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.
+* puis nous créerons une fonction ``teste_hypothese(n)`` qui testera sur un échantillon de `n` groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.
 
 !!! question "Exercice"
 	Créer un fichier ``recherchesDates.py`` et **implémenter** les fonctions précédentes.
-	Des solutions sont proposées dans les parties ci-dessous, mais vous {==**devez d'abord tester par vous-mêmes**==}.
+	Des solutions sont proposées dans les parties ci-dessous, mais vous {==**devez d'abord tester par vous-mêmes**==. VOus pouvez cependant utiliser les indices ci-dessous pour vous aider
 
-??? done "Solutions"
-	=== "``genere_groupe()``"
-		``` python
-		from random import randint
-		
-		def genere_groupe() :
-			"""fonction renvoyant un tableau de 23 nombres aléatoires entre 1 et 365"""
-			return [randint(1,365) for _ in range(23)]
-		```
-	=== "``contient_doublon(t)``"
-		``` python
-		def contient_doublon(t) :
-			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
-			s = [] # s est un tableau temporaire contenant les valeurs testées
-			for data in t :
-				if data in s : # si data est déjà dans s, alors c'est un doublon
-					return True
-				else : # sinon on ajoute data à la liste des valeurs testées.
-					s.append(data)
-			return False
-			
-		```
-	=== "``teste_hypothese()``"
-		``` python
-		def teste_hypothese() :
-			"""fonction renvoyant le nombre de groupes contenant un doublon
-			sur un échantillon de 100 groupes"""
-			nbDoublons = 0 
-			for _ in range(100) :
-				t = genere_groupe()
-				if contient_doublon(t) :
-					nbDoublons +=1
-			return nbDoublons
-		```
+	??? tips "Procédure `genere_groupe()`"
 
-??? info "Exécution dans Basthon"
-	<iframe src="https://console.basthon.fr/?script=eJyFU8Fq4zAQPTuQfxiyhzpsKUnD7qHQ27JfsLdSgmyNExVlxkijQv9mr_kO_9iOLKdJSssKg-UnzZv3ZsZd4AMEQ1Zf7tBzkPHLkcxnVTWfWexgh4QBt7vAqcd6CQ_zGehaLBYdUyuOCQLSK78ZEkgEYhqPJoFFuN8A8aEJGMH44WiEXd4jSUBYAwpsfv5QosIYUFIgeJoU1OtbPV1CxwG24Cgr22F9v1k-z2dFWsskTtm2llPjmWr5v7yGWaUgQXQ7Mj6j3kAfhmNEahE4qWYCe6N3J1qwhiJ4PFl7VxzhEZ6e4ZtuMF6ZF8zVNGp3FIk05lHvr8ZjClEvRFEZsRBlj9aIyTblZCEv173jER5yJleAnM8Ox5fhb1EXb7XErMTtzSRlEn_muqjxn5DwfIA-4kSeretjXjgJlkyaQQvkXczAJw7urjPEO9P3SLbOwcurzv42mkgHqzQvx-N2_9az7DFOk1V93jetfRmkPFVlEuNFYS_dVjGFDAzHdq9nzo8N1HFbrU6RY_8qan6VmNzFFSjyYdI0omiqRG98-A0y7L6cwKq6pP_-uFZoKsIZ_wfGJR4o" width="100%" height="400"> </iframe>
+		1. Utiliser la fonction `randint` du module `random` (voir la [doc](https://docs.python.org/fr/3/library/random.html){:target="_blank"})
+		2. Utiliser les méthodes de listes (voir la [doc](https://docs.python.org/fr/3/tutorial/datastructures.html){:target="_blank"})
+
+	??? tips "Fonction `contient_doublon(t)`"
+
+		Une possibilité est de créer d'abord une liste vide `vus`, dans laquelle on ajoutera les valeurs déjà vue lors du parcours de la liste `t`.
+
+		Ainsi, on parcourt la liste `t`
+
+		1. si l'élément est dans `vus`, c'est qu'il y a un doublon, donc on arrête la fonction en renvoyant `True`
+		2. si l'élément n'est pas dans `vus`, c'est donc la première fois qu'on le voit, et on l'ajoute à `vus`.
+		3. Si on atteint la fin de la liste, c'est qu'il n'y a pas de doublons.
+
+	??? tips "fonction ``teste_hypothese(n)``"
+
+		Il faut :
+
+		1. Initialiser une variable comptant le nombre de doublons à 0.
+		2. Effectuer `n` fois une boucle qui :
+			1. Génère un groupe aléatoire.
+			2. Incrémente de 1 le compteur si ce groupe contient un doublon
+		3. Renvoie le compteur.
+
+
+??? info "Solution"
+
+	{{ IDEv('rechercheDates') }}
+	
 	
 ??? info "Preuve mathématique"
 	*Cette pruve est donnée à titre indicatif, et n'a ni à être connue, ni même à être comprise.*
@@ -138,7 +131,7 @@ Il est tout à fait possible de proposer d'autres **implémentations** du code, 
 ??? done "Solution"
 
 	=== "Solution originale"
-		L'avantage est la simplicité du code, et c'est à peu près tout... Par contre les inconvénients sont nombreux, en particulier le {==**coût en temps**==} : en effet à chaque tour de boucle `for data in t`, on exécute l'instruction `data in s`, qui parcoure tout le tableau `s`... On a donc une complexité en temps en $\mathscr{O}(n^2)$ (au pire). Pour un tableau de 23 éléments, c'est acceptable, mais dans l'hypothèse d'un tableau de plus grande taille, c'est absolument à éviter !
+		L'avantage est la simplicité du code, et c'est à peu près tout... Par contre les inconvénients sont nombreux, en particulier le ==**coût en temps**== : en effet à chaque tour de boucle `for data in t`, on exécute l'instruction `data in s`, qui parcoure tout le tableau `s`... On a donc une complexité en temps en $\mathscr{O}(n^2)$ (au pire). Pour un tableau de 23 éléments, c'est acceptable, mais dans l'hypothèse d'un tableau de plus grande taille, c'est absolument à éviter !
 		
 	=== "Solution tableau de booléens"
 		Un des avantages est que la complexité en temps est bien meilleure que pour la première solution. Il n'y a plus les deux boucles imbriquées, d'où un gain considérable. Cependant on peut avoir un problème de {==**coût en mémoire**==}, car on utilise un tableau de taille 365 pour uniquement vérifier 23 dates. Dans le cadre d'une comparaison sur un ensemble de valeurs possibles supérieures à 365, le coût en mémoire peut vite devenir problématique.
@@ -152,13 +145,13 @@ Il est tout à fait possible de proposer d'autres **implémentations** du code, 
 		Il faut noter que le **tableau de bits** (ou *bit set* ou *bit array*) est une structure compacte qui permet de représenter facilement des tableaux de booléens. Elle permet une meilleure utilisation des ressources mémoires dans les cas où celle-ci est limitée, comme par exemple dans la mémoire cache du processeur.
 	
 	=== "Solution table de hachage"
-		Comme nous l'avons vu en classede première, la table de hachage est une solkution efficace et élégante qui permet de gangner à la fois du **coût en temps** (on ne parcoure pas un tableau, on atteint directement l'objet par sa *clé*, ou en tout on parcoure un sous-ensemble beaucoup plus petit), et du **coût en mémoire** (le tableau des clés est de la taille strictement nécessaire).
+		Comme nous l'avons vu en classe de première, la table de hachage est une solution efficace et élégante qui permet de gagner à la fois du **coût en temps** (on ne parcourt pas un tableau, on atteint directement l'objet par sa *clé*, ou en tout on parcourt un sous-ensemble beaucoup plus petit), et du **coût en mémoire** (le tableau des clés est de la taille strictement nécessaire).
 		
 		
 ## Une même interface
 	
 !!! question "Exercice"
-	Quand on observe les 4 propositions de codes pour la fonction `contient_doublon(t)`, on peut constater que ces 4 codes  sont quasiment identiques. Quelles sont ces parties identiques ?
+	Quand on observe les 4 propositions de codes pour la fonction `contient_doublon(t)`, on peut constater que ces 4 codes sont quasiment identiques. Quelles sont ces parties identiques ?
 
 ??? done "Solution"
 
@@ -184,7 +177,7 @@ Seules ces trois parties changent dans les 4 programmes.
 
 On pourrait alors isoler ces trois aspects dans trois fonctions différentes et obtenir le code *factorisé* suivant :
 
-??? done "Code factorisé"
+!!! done "Code factorisé"
 	``` python
 	def contient_doublon(t) :
 			"""fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""
@@ -199,15 +192,15 @@ On pourrait alors isoler ces trois aspects dans trois fonctions différentes et 
 
 On définit ainsi une fonction `contient_doublon(t)` {== complètement séparée ==} de la représentation de la structure `s`.
 
-Le programmeur qui souhaite simplement utiliser la structure de donnée `s` {== n'a pas à se préoccuper ==} de la façon dont elle a été {== **implémentée** ==}. Il n'a besoin que de connaître son {== **interface**==}  :
+Le ou la programmeur·euse qui souhaite simplement utiliser la structure de donnée `s` {== n'a pas à se préoccuper ==} de la façon dont elle a été {== **implémentée** ==}. Il ou elle n'a besoin que de connaître son {== **interface**==}  :
 
 * la fonction `cree()` sert à construire une structure ;
 * la fonction `contient(data,s)` sert à regarder si `data` est contenu dans la structure `s` ;
 * La fonction `ajoute(data,s)` ajoute l'élément `data` à la structure `s`.
 
-C'est exactement ce qui se passe quand on utilise des modules python : on ne cherche pas à savoir *comment sont programmés* les fonctions du modules(= {== l'implémentation du module ==}) - car on fait confiance aux programmeurs de ce module, mais juste à savoir *comment utiliser* ces fonctions(= {==l'interface du module==}).
+C'est exactement ce qui se passe quand on utilise des modules python : on ne cherche pas à savoir *comment sont programmés* les fonctions du modules(c'est-à-dire {== l'implémentation du module ==}) - car on fait confiance aux programmeur·euse·s de ce module, mais juste à savoir *comment utiliser* ces fonctions(= {==l'interface du module==}).
 
-Encore mieux, le programmeur du module peut, si il ne change pas l'**interface** (= la manière d'utiliser les fonctions), améliorer ces fonctions (en temps, en mémoire, etc...) sans même que l'utilisateur n'ait à changer quoi que ce soit à son propre programme, qui continuera à fonctionner (mieux, du moins on espère...).
+Encore mieux, le ou la  programmeur·euse du module peut, si il ou elle ne change pas l'**interface** (c'est-à-dire la manière *d'utiliser* les fonctions), améliorer ces fonctions (en temps, en mémoire, etc...) sans même que l'utilisateur·trice n'ait à changer quoi que ce soit à son propre programme, qui continuera à fonctionner (mieux, du moins on espère...).
 
 	
 	
