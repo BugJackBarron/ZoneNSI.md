@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/Intro/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2718,7 +2718,7 @@
 
 
 <h1 id="modularite-et-initiation-a-la-programmation-orientee-objet">Modularité et initiation à la Programmation Orientée Objet</h1>
-<p>Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient <em>built-in</em> ou bien importés à partir de <em>modules</em>, nous nous posons rarement la question de savoir quelle est leur <strong>implémentation</strong>, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons globalement confiance aux concepteurs du langage ou du module. </p>
+<p>Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient <em>built-in</em> ou bien importés à partir de <em>modules</em>, nous nous posons rarement la question de savoir quelle est leur <strong>implémentation</strong>, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons <em>globalement confiance</em> aux concepteurs du langage ou du module. </p>
 <p>Ce qui nous importe est plutôt <strong>l'interface</strong> de ces objets, c'est-à-dire la façon dont nous pouvons interagir avec ces objets : les créer, les affecter, les additionner, les supprimer,...</p>
 <p>Dans cette partie nous verrons comment créer un module, le documenter, et définir une interface claire. Nous verrons les prémices d'un nouveau <strong>paradigme de programmation</strong> : la Programmation Orientée Objet(<strong>POO</strong>).</p>
 <p><em>La suite de cette partie est grandement inspirée de <a href="https://www.editions-ellipses.fr/accueil/10445-specialite-numerique-et-sciences-informatiques-lecons-avec-exercices-corriges-terminale-nouveaux-programmes-9782340038554.html">Numériques et Sciences Informatique, 24 leçons avec exercices corrigé, Ellipse</a></em></p>
@@ -2733,57 +2733,48 @@ d'anniversaire soit supérieure à 50%.</p>
 <p>Pour modéliser le problème :</p>
 <ul>
 <li>plutôt que d'utiliser des dates, nous allons utiliser des entiers de 1 à 365 ;</li>
-<li>nous allons créer une procédure (<em>une fonction sans paramètres</em>) <code>genere_groupe()</code> qui renvoie un tableau aléatoire de 23 entiers de 1 à 365 ;</li>
+<li>nous allons créer une fonction <em>sans paramètres</em> <code>genere_groupe()</code> qui renvoie un tableau aléatoire de 23 entiers de 1 à 365  ;</li>
 <li>nous allons créer une fonction <code>contient_doublon(t)</code> qui renverra <code>True</code> si le tableau contient un doublon, et <code>False</code> sinon ;</li>
-<li>puis nous créerons une procédure <code>teste_hypothese()</code> qui testera sur un échantillon de 100 groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.</li>
+<li>puis nous créerons une fonction <code>teste_hypothese(n)</code> qui testera sur un échantillon de <code>n</code> groupes la présence d'un doublon ou non, et renverra le nombre de groupes ayant eu des doublons.</li>
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
 <p>Créer un fichier <code>recherchesDates.py</code> et <strong>implémenter</strong> les fonctions précédentes.
-Des solutions sont proposées dans les parties ci-dessous, mais vous <mark class="critic"><strong>devez d'abord tester par vous-mêmes</strong></mark>.</p>
-</div>
-<details class="done">
-<summary>Solutions</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>genere_groupe()</code></label><label for="__tabbed_1_2"><code>contient_doublon(t)</code></label><label for="__tabbed_1_3"><code>teste_hypothese()</code></label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-
-<span class="k">def</span> <span class="nf">genere_groupe</span><span class="p">()</span> <span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;fonction renvoyant un tableau de 23 nombres aléatoires entre 1 et 365&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">365</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;fonction renvoyant un booléen signalant la présence ou non d&#39;un doublon dans le tableau&quot;&quot;&quot;</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># s est un tableau temporaire contenant les valeurs testées</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">t</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">s</span> <span class="p">:</span> <span class="c1"># si data est déjà dans s, alors c&#39;est un doublon</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span> <span class="p">:</span> <span class="c1"># sinon on ajoute data à la liste des valeurs testées.</span>
-            <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">False</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">teste_hypothese</span><span class="p">()</span> <span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;fonction renvoyant le nombre de groupes contenant un doublon</span>
-<span class="sd">    sur un échantillon de 100 groupes&quot;&quot;&quot;</span>
-    <span class="n">nbDoublons</span> <span class="o">=</span> <span class="mi">0</span> 
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">genere_groupe</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
-            <span class="n">nbDoublons</span> <span class="o">+=</span><span class="mi">1</span>
-    <span class="k">return</span> <span class="n">nbDoublons</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+Des solutions sont proposées dans les parties ci-dessous, mais vous <mark class="critic"><strong>devez d'abord tester par vous-mêmes</strong>==. VOus pouvez cependant utiliser les indices ci-dessous pour vous aider</p>
+<details class="tips">
+<summary>Procédure <code>genere_groupe()</code></summary>
+<ol>
+<li>Utiliser la fonction <code>randint</code> du module <code>random</code> (voir la <a href="https://docs.python.org/fr/3/library/random.html" target="_blank">doc</a>)</li>
+<li>Utiliser les méthodes de listes (voir la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html" target="_blank">doc</a>)</li>
+</ol>
 </details>
+<details class="tips">
+<summary>Fonction <code>contient_doublon(t)</code></summary>
+<p>Une possibilité est de créer d'abord une liste vide <code>vus</code>, dans laquelle on ajoutera les valeurs déjà vue lors du parcours de la liste <code>t</code>.</p>
+<p>Ainsi, on parcourt la liste <code>t</code></p>
+<ol>
+<li>si l'élément est dans <code>vus</code>, c'est qu'il y a un doublon, donc on arrête la fonction en renvoyant <code>True</code></li>
+<li>si l'élément n'est pas dans <code>vus</code>, c'est donc la première fois qu'on le voit, et on l'ajoute à <code>vus</code>.</li>
+<li>Si on atteint la fin de la liste, c'est qu'il n'y a pas de doublons.</li>
+</ol>
+</details>
+<details class="tips">
+<summary>fonction <code>teste_hypothese(n)</code></summary>
+<p>Il faut :</p>
+<ol>
+<li>Initialiser une variable comptant le nombre de doublons à 0.</li>
+<li>Effectuer <code>n</code> fois une boucle qui :<ol>
+<li>Génère un groupe aléatoire.</li>
+<li>Incrémente de 1 le compteur si ce groupe contient un doublon</li>
+</ol>
+</li>
+<li>Renvoie le compteur.</li>
+</ol>
+</details>
+</div>
 <details class="info">
-<summary>Exécution dans Basthon</summary>
-<p><iframe src="https://console.basthon.fr/?script=eJyFU8Fq4zAQPTuQfxiyhzpsKUnD7qHQ27JfsLdSgmyNExVlxkijQv9mr_kO_9iOLKdJSssKg-UnzZv3ZsZd4AMEQ1Zf7tBzkPHLkcxnVTWfWexgh4QBt7vAqcd6CQ_zGehaLBYdUyuOCQLSK78ZEkgEYhqPJoFFuN8A8aEJGMH44WiEXd4jSUBYAwpsfv5QosIYUFIgeJoU1OtbPV1CxwG24Cgr22F9v1k-z2dFWsskTtm2llPjmWr5v7yGWaUgQXQ7Mj6j3kAfhmNEahE4qWYCe6N3J1qwhiJ4PFl7VxzhEZ6e4ZtuMF6ZF8zVNGp3FIk05lHvr8ZjClEvRFEZsRBlj9aIyTblZCEv173jER5yJleAnM8Ox5fhb1EXb7XErMTtzSRlEn_muqjxn5DwfIA-4kSeretjXjgJlkyaQQvkXczAJw7urjPEO9P3SLbOwcurzv42mkgHqzQvx-N2_9az7DFOk1V93jetfRmkPFVlEuNFYS_dVjGFDAzHdq9nzo8N1HFbrU6RY_8qan6VmNzFFSjyYdI0omiqRG98-A0y7L6cwKq6pP_-uFZoKsIZ_wfGJR4o" width="100%" height="400"> </iframe></p>
+<summary>Solution</summary>
+<p><div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6" class="comment">###</span><div class="interior_wrapper"><div id="editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6"></div></div><div id="term_editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6","rechercheDates")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6" class="hide">from random import randintbksl-nl       bksl-nldef generepy-undgroupe() -&gt; list :bksl-nl    """fonction renvoyant un tableau de 23 nombres aléatoires entre 1 et 365"""bksl-nl    return [randint(1,365) for py-und in range(23)]bksl-nlbksl-nldef contientpy-unddoublon(t : list) -&gt; bool :bksl-nl    """fonction renvoyant un booléen signalant la présence ou non d'un doublon dans le tableau"""bksl-nl    if not(isinstance(t, list) or isinstance(t, tuple)) :bksl-nl        raise ValueError('t must be an iterable')bksl-nl    s = [] # s est un tableau temporaire contenant les valeurs testéesbksl-nl    for data in t :bksl-nl        if data in s : # si data est déjà dans s, alors c'est un doublonbksl-nl            return Truebksl-nl        else : # sinon on ajoute data à la liste des valeurs testées.bksl-nl            s.append(data)bksl-nl    return Falsebksl-nl bksl-nldef testepy-undhypothese(n : int) -&gt; int:bksl-nl    """fonction renvoyant le nombre de groupes contenant un doublonbksl-nl   sur un échantillon de n groupes"""bksl-nl    if not(isinstance(n, int) and n&gt;=1) :bksl-nl        raise ValueError("n must be an integer and greater than 1")bksl-nl    nbDoublons = 0 bksl-nl    for py-und in range(n) :bksl-nl        t = generepy-undgroupe()bksl-nl        if contientpy-unddoublon(t) :bksl-nl            nbDoublons +=1bksl-nl    return nbDoublonsbksl-nl</span><span id="corr_content_editor_1540097c8d1b0cf35f1adbd4d81ce94ca8c5b3f6" class="hide" data-strudel=""></span></p>
 </details>
 <details class="info">
 <summary>Preuve mathématique</summary>
@@ -2807,7 +2798,7 @@ Des solutions sont proposées dans les parties ci-dessous, mais vous <mark class
 Il est tout à fait possible de proposer d'autres <strong>implémentations</strong> du code, c'est-à-dire <strong>d'autres façons de coder</strong> la fonctionnalité voulue. Ainsi on pourrait regarder les implémentations suivantes, et les comparer entre elles :</p>
 <div class="admonition question">
 <p class="admonition-title">Exercice : autres implémentations de <code>contient_doublon(t)</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Tableau de booléens</label><label for="__tabbed_2_2">Tableau de bits</label><label for="__tabbed_2_3">Table de hachage</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Tableau de booléens</label><label for="__tabbed_1_2">Tableau de bits</label><label for="__tabbed_1_3">Table de hachage</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
@@ -2852,13 +2843,13 @@ C'est une solution beaucoup plus complexe (et hors programme de Terminale dans s
 </div>
 <details class="done">
 <summary>Solution</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Solution originale</label><label for="__tabbed_3_2">Solution tableau de booléens</label><label for="__tabbed_3_3">Solution tableau de bits</label><label for="__tabbed_3_4">Solution table de hachage</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Solution originale</label><label for="__tabbed_2_2">Solution tableau de booléens</label><label for="__tabbed_2_3">Solution tableau de bits</label><label for="__tabbed_2_4">Solution table de hachage</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>L'avantage est la simplicité du code, et c'est à peu près tout... Par contre les inconvénients sont nombreux, en particulier le <mark class="critic"><strong>coût en temps</strong></mark> : en effet à chaque tour de boucle <code>for data in t</code>, on exécute l'instruction <code>data in s</code>, qui parcoure tout le tableau <code>s</code>... On a donc une complexité en temps en <span class="arithmatex">\(\mathscr{O}(n^2)\)</span> (au pire). Pour un tableau de 23 éléments, c'est acceptable, mais dans l'hypothèse d'un tableau de plus grande taille, c'est absolument à éviter !</p>
+<p>L'avantage est la simplicité du code, et c'est à peu près tout... Par contre les inconvénients sont nombreux, en particulier le <mark><strong>coût en temps</strong></mark> : en effet à chaque tour de boucle <code>for data in t</code>, on exécute l'instruction <code>data in s</code>, qui parcoure tout le tableau <code>s</code>... On a donc une complexité en temps en <span class="arithmatex">\(\mathscr{O}(n^2)\)</span> (au pire). Pour un tableau de 23 éléments, c'est acceptable, mais dans l'hypothèse d'un tableau de plus grande taille, c'est absolument à éviter !</p>
 </div>
 <div class="tabbed-block">
-<p>Un des avantages est que la complexité en temps est bien meilleure que pour la première solution. Il n'y a plus les deux boucles imbriquées, d'où un gain considérable. Cependant on peut avoir un problème de <mark class="critic"><strong>coût en mémoire</strong></mark>, car on utilise un tableau de taille 365 pour uniquement vérifier 23 dates. Dans le cadre d'une comparaison sur un ensemble de valeurs possibles supérieures à 365, le coût en mémoire peut vite devenir problématique.</p>
+<p>Un des avantages est que la complexité en temps est bien meilleure que pour la première solution. Il n'y a plus les deux boucles imbriquées, d'où un gain considérable. Cependant on peut avoir un problème de {==<strong>coût en mémoire</strong></mark>, car on utilise un tableau de taille 365 pour uniquement vérifier 23 dates. Dans le cadre d'une comparaison sur un ensemble de valeurs possibles supérieures à 365, le coût en mémoire peut vite devenir problématique.</p>
 </div>
 <div class="tabbed-block">
 <p>La solution est très complexe, mais elle a un grand mérite : un booléen, en python, est en fait un <strong>entier</strong> (0 ou 1), donc stocké sur... <mark class="critic">8 octets</mark> ! (source <a href="https://www.python.org/dev/peps/pep-0237/">ici</a>)
@@ -2867,7 +2858,7 @@ Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un bo
 <p>Il faut noter que le <strong>tableau de bits</strong> (ou <em>bit set</em> ou <em>bit array</em>) est une structure compacte qui permet de représenter facilement des tableaux de booléens. Elle permet une meilleure utilisation des ressources mémoires dans les cas où celle-ci est limitée, comme par exemple dans la mémoire cache du processeur.</p>
 </div>
 <div class="tabbed-block">
-<p>Comme nous l'avons vu en classede première, la table de hachage est une solkution efficace et élégante qui permet de gangner à la fois du <strong>coût en temps</strong> (on ne parcoure pas un tableau, on atteint directement l'objet par sa <em>clé</em>, ou en tout on parcoure un sous-ensemble beaucoup plus petit), et du <strong>coût en mémoire</strong> (le tableau des clés est de la taille strictement nécessaire).</p>
+<p>Comme nous l'avons vu en classe de première, la table de hachage est une solution efficace et élégante qui permet de gagner à la fois du <strong>coût en temps</strong> (on ne parcourt pas un tableau, on atteint directement l'objet par sa <em>clé</em>, ou en tout on parcourt un sous-ensemble beaucoup plus petit), et du <strong>coût en mémoire</strong> (le tableau des clés est de la taille strictement nécessaire).</p>
 </div>
 </div>
 </div>
@@ -2875,7 +2866,7 @@ Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un bo
 <h2 id="une-meme-interface">Une même interface</h2>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<p>Quand on observe les 4 propositions de codes pour la fonction <code>contient_doublon(t)</code>, on peut constater que ces 4 codes  sont quasiment identiques. Quelles sont ces parties identiques ?</p>
+<p>Quand on observe les 4 propositions de codes pour la fonction <code>contient_doublon(t)</code>, on peut constater que ces 4 codes sont quasiment identiques. Quelles sont ces parties identiques ?</p>
 </div>
 <details class="done">
 <summary>Solution</summary>
@@ -2898,8 +2889,8 @@ Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un bo
 </ul>
 <p>Seules ces trois parties changent dans les 4 programmes.</p>
 <p>On pourrait alors isoler ces trois aspects dans trois fonctions différentes et obtenir le code <em>factorisé</em> suivant :</p>
-<details class="done">
-<summary>Code factorisé</summary>
+<div class="admonition done">
+<p class="admonition-title">Code factorisé</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contient_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;fonction renvoyant un booléen signalant la présence ou non d&#39;un doublon dans le tableau&quot;&quot;&quot;</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">cree</span><span class="p">()</span>
@@ -2910,16 +2901,16 @@ Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un bo
                 <span class="n">ajoute</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div>
-</details>
+</div>
 <p>On définit ainsi une fonction <code>contient_doublon(t)</code> <mark class="critic"> complètement séparée </mark> de la représentation de la structure <code>s</code>.</p>
-<p>Le programmeur qui souhaite simplement utiliser la structure de donnée <code>s</code> <mark class="critic"> n'a pas à se préoccuper </mark> de la façon dont elle a été <mark class="critic"> <strong>implémentée</strong> </mark>. Il n'a besoin que de connaître son <mark class="critic"> <strong>interface</strong></mark>  :</p>
+<p>Le ou la programmeur·euse qui souhaite simplement utiliser la structure de donnée <code>s</code> <mark class="critic"> n'a pas à se préoccuper </mark> de la façon dont elle a été <mark class="critic"> <strong>implémentée</strong> </mark>. Il ou elle n'a besoin que de connaître son <mark class="critic"> <strong>interface</strong></mark>  :</p>
 <ul>
 <li>la fonction <code>cree()</code> sert à construire une structure ;</li>
 <li>la fonction <code>contient(data,s)</code> sert à regarder si <code>data</code> est contenu dans la structure <code>s</code> ;</li>
 <li>La fonction <code>ajoute(data,s)</code> ajoute l'élément <code>data</code> à la structure <code>s</code>.</li>
 </ul>
-<p>C'est exactement ce qui se passe quand on utilise des modules python : on ne cherche pas à savoir <em>comment sont programmés</em> les fonctions du modules(= <mark class="critic"> l'implémentation du module </mark>) - car on fait confiance aux programmeurs de ce module, mais juste à savoir <em>comment utiliser</em> ces fonctions(= <mark class="critic">l'interface du module</mark>).</p>
-<p>Encore mieux, le programmeur du module peut, si il ne change pas l'<strong>interface</strong> (= la manière d'utiliser les fonctions), améliorer ces fonctions (en temps, en mémoire, etc...) sans même que l'utilisateur n'ait à changer quoi que ce soit à son propre programme, qui continuera à fonctionner (mieux, du moins on espère...).</p>
+<p>C'est exactement ce qui se passe quand on utilise des modules python : on ne cherche pas à savoir <em>comment sont programmés</em> les fonctions du modules(c'est-à-dire <mark class="critic"> l'implémentation du module </mark>) - car on fait confiance aux programmeur·euse·s de ce module, mais juste à savoir <em>comment utiliser</em> ces fonctions(= <mark class="critic">l'interface du module</mark>).</p>
+<p>Encore mieux, le ou la  programmeur·euse du module peut, si il ou elle ne change pas l'<strong>interface</strong> (c'est-à-dire la manière <em>d'utiliser</em> les fonctions), améliorer ces fonctions (en temps, en mémoire, etc...) sans même que l'utilisateur·trice n'ait à changer quoi que ce soit à son propre programme, qui continuera à fonctionner (mieux, du moins on espère...).</p>
 
               
     <script src="../../../../js/ide.js"></script> 
@@ -3008,10 +2999,10 @@ Or il n'est pas nécessaire d'utilier 8 octets, soit 64 bits, pour stocker un bo
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

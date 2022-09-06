@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/Modularite/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2770,7 +2770,7 @@ La fonction <code>truc()</code> n'est pas appelable (elle n'existe pas pour l'in
 <span class="n">bidule</span><span class="p">()</span>
 <span class="n">truc</span><span class="p">()</span>
 </code></pre></div>
-Toutes les fonctions sont appelées <strong>directement dans le namespace principal</strong> (=<strong>main</strong>) du fichier effectuant l'import. </p>
+Toutes les fonctions sont appelées <strong>directement dans l'espace de nom principal</strong> (=<strong>namespace de main</strong>) du fichier effectuant l'import. </p>
 <p>⚠️ C'est une pratique périlleuse ! Si une fonction du module porte le même nom qu'une fonction du fichier appelant, celle importée écrasera celle du fichiert courant, et ça peut-être facheux... Voir l'exemple ci-dessous...</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Fichier principal</label><label for="__tabbed_2_2">Fichier mon_module.py</label><label for="__tabbed_2_3">Sortie attendue</label><label for="__tabbed_2_4">Sortie réelle</label></div>
 <div class="tabbed-content">
@@ -2811,7 +2811,7 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.<
 <h2 id="interfaces">Interfaces</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Conception logicielle</p>
-<p>Dans la conception de logiciels à grande échelle, ou à pluseiurs programmeurs (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeurs concevant un logiciel),  il est important de pouvoir séparer les différents éléments du programme en sous-ensembles cohérents et ayant le minimum d'interactions entre eux. En particuliers ils se doivent d'être le plus étanches possibles quant à leur fonctionnement. On retrouve ici que la notion d'<mark class="critic"><strong>interface</strong></mark> est essentielle.</p>
+<p>Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel),  il est important de pouvoir séparer les différents éléments du programme en <mark><strong>sous-ensembles cohérents et ayant le minimum d'interactions entre eux</strong></mark>. En particuliers ils se doivent d'être le plus <em>étanches</em> possibles quant à leur fonctionnement. On retrouve ici que la notion d'<mark class="critic"><strong>interface</strong></mark> est essentielle.</p>
 </div>
 <p>Pour chaque module, on peut donc distinguer :</p>
 <ul>
@@ -2853,28 +2853,27 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.<
 <li>un module <code>dateBool</code>, dont la structure est implémentée sous la forme d'un tableau de booléen.</li>
 <li>un module <code>dateHash</code>, dont la structure est implémentée sous la forme d'une table de hachage.</li>
 </ol>
-<p>🧩 Il est bien entendu essentiel de s'inspirer des exemples donné dans la page <a href="../Intro/">d'introduction</a>.</p>
+<p>🧩 Il est bien entendu essentiel de s'inspirer des exemples donné dans la page <a href="../Intro/" target="_blank">d'introduction</a>.</p>
 </div>
 <h2 id="notions-dencapsulation">Notions d'encapsulation</h2>
 <div class="admonition tip">
 <p class="admonition-title">Notion d'encapsulation</p>
-<p>Le contrat qu'une <strong>interface</strong> établit entre l'utilisateur et l'auteur d'un module
- ne porte pas sur les moyens, mais <strong>sur les résultats</strong> : l'auteur s'engage
+<p>Le contrat qu'une <strong>interface</strong> établit entre l'utilisateur·trice et l'auteur·trice d'un module
+ ne porte pas sur les moyens, mais <strong>sur les résultats</strong> : l'auteur·trice s'engage
  à ce que les résultats produits par l'utilisation de ses fonctions 
- soient bien ceux décrits dans l'interface, mais il est libre de s'y prendre comme 
- il le souhaite.</p>
-<p>En particulier il est libre d'introduire des fonctions, variables, constantes, ..., 
- qui <strong>ne sont pas inclues dans l'interface</strong>. On parle alors de fonctions, variables, constantes
+ soient bien ceux décrits dans l'interface, mais il ou elle est libre de s'y prendre comme 
+ il ou elle le souhaite.</p>
+<p>En particulier il ou elle est libre d'introduire des fonctions, variables, constantes, ..., 
+ qui <strong>ne sont pas incluses dans l'interface</strong>. On parle alors de fonctions, variables, constantes
  <mark class="critic"><strong>encapsulées</strong></mark> dans le module.</p>
-<p>Le contrat explicite est que l'utilisateur <mark class="critic"><strong> ne doit en aucun cas</strong></mark> utiliser
- ces données encapsulées. Dans le cas contraire, si l'auteur du module
- change son approche et modifie ces données internes, le programme du client risque
+<p>Le contrat explicite est que l'utilisateur·trice <mark class="critic"><strong> ne doit en aucun cas</strong></mark> utiliser
+ ces données encapsulées. Dans le cas contraire, si l'auteur·trice du module
+ change son approche et modifie ces données internes, le programme du ou de la  client·e risque
  de devenir non fonctionnel.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Norme en Python</p>
-<p>En Python, l'auteur d'un module peut indiquer que certains éléments sont <mark class="critic"><strong>privés</strong></mark> (= encapsulés)
-en faisant commencer leur nom par un cracatère <em>underscore</em> _</p>
+<p>En Python, l'auteur·trice d'un module peut indiquer que certains éléments sont <mark class="critic"><strong>privés</strong></mark> (c'est-à-dire encapsulés) en faisant commencer leur nom par un caractère <em>underscore</em> <code>_</code>.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -2905,15 +2904,15 @@ en faisant commencer leur nom par un cracatère <em>underscore</em> _</p>
 </tr>
 </tbody>
 </table>
-<p>Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
-On aurait alors comme possibilité d'implémentation (non complète):
+<p>Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.</p>
+<p>On aurait alors comme possibilité d'implémentation (non complète):</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
-<span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-<span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-<span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+    <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+    <span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
@@ -2935,12 +2934,12 @@ On aurait alors comme possibilité d'implémentation (non complète):
 <span class="k">def</span> <span class="nf">_calcule</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
     <span class="o">...</span>
 
-<span class="k">def</span> <span class="nf">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+<span class="k">def</span> <span class="nf">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span> <span class="p">:</span>
     <span class="o">...</span>
 
-<span class="k">def</span> <span class="nf">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+<span class="k">def</span> <span class="nf">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span> <span class="p">:</span>
     <span class="o">...</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Dans ce module, les fonctions préfixées par _ sont considérées comme privées, et ne faisant pas partie de l'interface.</p>
 </div>
 <div class="admonition question">
@@ -2949,75 +2948,12 @@ On aurait alors comme possibilité d'implémentation (non complète):
 </div>
 <details class="done">
 <summary>Une solution possible</summary>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-
-<span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
-<span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-<span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-<span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">t</span>
-
-<span class="k">def</span> <span class="nf">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
-
-<span class="k">def</span> <span class="nf">_nombreRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span> <span class="p">:</span> 
-        <span class="k">return</span> <span class="mi">2</span>
-
-<span class="k">def</span> <span class="nf">valeursRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">nbR</span> <span class="o">=</span> <span class="n">_nombreRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">nbR</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">elif</span> <span class="n">nbR</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">p</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">p</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-        <span class="k">return</span>  <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">convexite</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;convexe&quot;</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;concave&quot;</span>
-
-<span class="k">def</span> <span class="nf">_calcule</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)))</span> <span class="p">:</span>
-        <span class="k">raise</span> <span class="n">valueError</span><span class="p">()</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">c</span>
-
-<span class="k">def</span> <span class="nf">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)))</span> <span class="p">:</span>
-        <span class="k">raise</span> <span class="n">valueError</span><span class="p">()</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span>
-
-<span class="k">def</span> <span class="nf">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">_nombreDerive</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s1">(x-</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">) + </span><span class="si">{</span><span class="n">_calcule</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
-</code></pre></div>
+<p><div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_603d6caf0d35a955c93acfb3482db10cd107a6e4" class="comment">###</span><div class="interior_wrapper"><div id="editor_603d6caf0d35a955c93acfb3482db10cd107a6e4"></div></div><div id="term_editor_603d6caf0d35a955c93acfb3482db10cd107a6e4" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_603d6caf0d35a955c93acfb3482db10cd107a6e4","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_603d6caf0d35a955c93acfb3482db10cd107a6e4","secondDegre_v1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_603d6caf0d35a955c93acfb3482db10cd107a6e4').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_603d6caf0d35a955c93acfb3482db10cd107a6e4" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("603d6caf0d35a955c93acfb3482db10cd107a6e4")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("603d6caf0d35a955c93acfb3482db10cd107a6e4")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_603d6caf0d35a955c93acfb3482db10cd107a6e4" class="hide">from math import sqrtbksl-nl    bksl-nldef polynome(t) :bksl-nl    a,b,py-strc = tbksl-nl    if not(isinstance(a,(int, float))bksl-nl    ) or not(isinstance(b,(int, float))bksl-nl    ) or len&copy; &gt;1 or not(isinstance(py-strc,(int, float))) :bksl-nl           raise ValueError()bksl-nl    if a == 0 :bksl-nl           raise ValueError()bksl-nl    return tbksl-nl    bksl-nldef py-unddiscriminant(p) :bksl-nl    a,b,c = polynome(p)bksl-nl    return bpy-strpy-str2 - 4py-strapy-strcbksl-nl        bksl-nldef py-undnombreRacines(p) :bksl-nl    delta = py-unddiscriminant(p)bksl-nl    if delta&lt;0 :bksl-nl        return 0bksl-nl    elif delta == 0 :bksl-nl        return 1bksl-nl    else :bksl-nl        return 2bksl-nl    bksl-nldef valeursracines(p) :bksl-nl    a,b,c = polynome(p)bksl-nl    n = py-undnombreRacines(p)bksl-nl    if n == 0 :bksl-nl        return Nonebksl-nl    elif n == 1 :bksl-nl        return -b/(2py-stra)bksl-nl    else :bksl-nl        delta = py-unddiscriminant(p)bksl-nl        return ((-b-sqrt(delta)/(2py-stra)), (-b+sqrt(delta)/(2py-stra)))bksl-nlbksl-nl    bksl-nldef convexite(p) :bksl-nl    a,b,c = polynome(p)bksl-nl    if a &gt;0 :bksl-nl        return 'convexe'bksl-nl    return 'concave'bksl-nl    bksl-nldef py-undcalcule(p,x) :bksl-nl    a,b,c = polynome(p)bksl-nl    return apy-strxpy-strpy-str2 + bpy-strx + cbksl-nlbksl-nldef py-undnombreDerive(p, x0) :bksl-nl    a,b,c = polynome(p)bksl-nl    return 2py-strapy-strx0+bbksl-nl    bksl-nldef tangente(p, x0) :bksl-nl    a,b,c = polynome(p)bksl-nl    return f'y = {py-undnombreDerive(p,x0)}(x - {x0}) + {py-undcalcule(p, x0)}'bksl-nlbksl-nl</span><span id="corr_content_editor_603d6caf0d35a955c93acfb3482db10cd107a6e4" class="hide" data-strudel=""></span></p>
 </details>
 <div class="admonition note">
 <p class="admonition-title">Encapsulation dans d'autres langages</p>
-<p>Il faut noter que la notion de fonction ou variable privée en <code>Python</code> n'est qu'une convention. <strong>Rien n'empêche réellement
-l'utilisateur du module d'utiliser ces fonctions privées</strong>.</p>
-<p>C'est loin d'être le cas dans d'autres langages (comme <code>C++</code> ou <code>Java</code>), qui introduisent un contrôle strict de l'encapsulation
-en rendant l'accès aux éléments privés impossible.</p>
+<p>Il faut noter que la notion de fonction ou variable privée en <code>Python</code> n'est qu'une convention. <strong>Rien n'empêche réellement l'utilisateur·trice du module d'utiliser ces fonctions privées</strong>.</p>
+<p>C'est loin d'être le cas dans d'autres langages (comme <code>C++</code> ou <code>Java</code>), qui introduisent un contrôle strict de l'encapsulation en rendant l'accès aux éléments privés impossible.</p>
 </div>
 
               
@@ -3107,10 +3043,10 @@ en rendant l'accès aux éléments privés impossible.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

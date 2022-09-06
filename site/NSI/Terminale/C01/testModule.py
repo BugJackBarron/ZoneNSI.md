@@ -1,4 +1,4 @@
-import secondDegre as sD
+import secondDegre_v1 as sD
 
 p = input("Donnez les coefficients du polynome séparés par des virgules :")
 

@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/Exceptions/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2721,9 +2721,9 @@
 <h2 id="un-exemple-derreur-a-ne-pas-commettre">Un exemple d'erreur à ne pas commettre</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Utilisation malheureuse d'un module</p>
-<p>Reprenons le module <code>secondDegre.py</code>, mais en temps qu'utilisateur. Nous
-connaissons l'interface qui nous a été fournie par l'auteur. Pour tester le module
-nous lançons le script suivant, nommé <code>testModule.py</code>, et situé dans le même dossier que <code>secondDegre.py</code> :
+<p>Reprenons le module <code>secondDegre.py</code>, mais en temps qu'utilisateur·trice. Nous
+connaissons l'interface qui nous a été fournie par l'auteur·trice. Pour tester le module
+nous lançons le script suivant, nommé <code>testModule.py</code>, et situé dans le même dossier que <code>secondDegre.py</code> :</p>
 <div class="highlight"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">secondDegre</span> <span class="k">as</span> <span class="nn">sD</span>
 
     <span class="n">p</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Donnez les coefficients du polynome séparés par des virgules :&quot;</span><span class="p">)</span>
@@ -2731,7 +2731,8 @@ nous lançons le script suivant, nommé <code>testModule.py</code>, et situé da
 
     <span class="n">p</span> <span class="o">=</span> <span class="n">sD</span><span class="o">.</span><span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sD</span><span class="o">.</span><span class="n">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-</code></pre></div></p>
+</code></pre></div>
+<p><div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac" class="comment">###</span><div class="interior_wrapper"><div id="editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac"></div></div><div id="term_editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac","testModule")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac" class="hide">import secondDegrepy-undv1 as sDbksl-nlbksl-nlp = input("Donnez les coefficients du polynome séparés par des virgules :")bksl-nlbksl-nlp = tuple(map(float, p.split(",")))bksl-nlbksl-nlp = sD.polynome(p)bksl-nlbksl-nlprint(sD.tangente(p,3))bksl-nlbksl-nl</span><span id="corr_content_editor_2c13bd1fa1427833f9ed35c6e33a2f8c511b68ac" class="hide" data-strudel=""></span></p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Un problème ?</p>
@@ -2769,10 +2770,8 @@ nous lançons le script suivant, nommé <code>testModule.py</code>, et situé da
 <div class="admonition tips">
 <p class="admonition-title">Lever les bonnes erreurs</p>
 <p>Dans l'exemple précédent, les trois erreurs, pourtant très différentes, <strong>sont signalées
- par le même message. L'utilisateur, qui lui ne connaît pas l'implémentation,
-  </strong>ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de débuggage
-   particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur,
-    pour qu'il n'ait pas à ses préoccuper des détails d'implémentation.</p>
+ par le même message. L'utilisateur·trice, qui lui ne connaît pas l'implémentation,
+  </strong>ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de débuggage particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur·trice, pour qu'il ou elle n'ait pas à ses préoccuper des détails d'implémentation.</p>
 <p>Il est par exemple possible de <mark class="critic"><strong>rajouter un message</strong></mark> lorsque l'erreur est levée, 
 en la passant en paramètre directement dans l'instruction <code>ValueError()</code> :
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
@@ -2837,12 +2836,12 @@ en la passant en paramètre directement dans l'instruction <code>ValueError()</c
 <div class="tabbed-block">
 <p>Que se passe-t-il lorsqu'on utilise la fonction <code>polynome</code> avec un tuple de 1 ou 2 éléments ?</p>
 <p>Dans le cas d'un seul élément, l'erreur ressortie est :</p>
-<div class="highlight"><pre><span></span><code> a,b,*c = t
- TypeError: cannot unpack non-iterable int object
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">unpack</span> <span class="n">non</span><span class="o">-</span><span class="n">iterable</span> <span class="nb">int</span> <span class="nb">object</span>
 </code></pre></div>
 <p>Dans le cas de deux éléments, l'erreur levée est  :</p>
-<div class="highlight"><pre><span></span><code>) or not(isinstance(*c,(int, float))) :
-TypeError: isinstance expected 2 arguments, got 1
+<div class="highlight"><pre><span></span><code><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="nb">isinstance</span> <span class="n">expected</span> <span class="mi">2</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span>
 </code></pre></div>
 <p>Dans les deux cas, on voit apparaître les détails d'implémentation du code de la fonction, 
 qui sont peu clairs en particulier pour le cas n°2.</p>
@@ -2935,18 +2934,16 @@ Le code du bloc <code>try</code> va être exécuté, et si une erreur du type fo
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
 <p>Evidemment, la différence ne saute pas vraiment aux yeux... Pourquoi faire tout un plat d'une seule ligne gagnée ?</p>
-<p>Essayez donc, pour chacune des 2 fonctions précédentes, avec les chaines de caractères suivantes :</p>
+<p>Essayez donc, pour chacune des 2 fonctions précédentes, avec les chaines de caractères suivantes (à copier-coller) :</p>
 <ul>
-<li>½</li>
-<li>3²</li>
+<li><code>½</code></li>
+<li><code>3²</code></li>
 </ul>
 </div>
 <details class="done">
 <summary>Réponse</summary>
-<p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode<em>
-permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
-qui peut se douter que les </em><em>fractions définies dans la table utf8</em><em>, ainsi que les caractères en </em><em>exposant et en indice</em>*, sont considérés comme 
-des valeurs numériques.</p>
+<p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
+qui peut se douter que les <strong>fractions définies dans la table utf8</strong>, ainsi que les caractères en <strong>exposant et en indice</strong>, sont considérés comme des valeurs numériques.</p>
 <p>L'intérêt du bloc <code>try</code> est qu'il se déclenchera dès qu'il y aura une exception levée. Et cette exception a peu de chance de se produire dans le bloc <code>if / else</code>. La fonction devient <strong>dumbproof</strong> (mais si vous réussissez à déclencher une erreur bloquante, signalez-le moi !!).</p>
 </details>
 <div class="admonition info">
@@ -3054,10 +3051,10 @@ des valeurs numériques.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

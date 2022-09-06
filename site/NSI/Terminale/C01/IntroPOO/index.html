@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C01/IntroPOO/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2789,14 +2789,14 @@
 <p>Aussi simpliste que Scratch paraisse, il n'en est néanmoins pas un <strong>véritable langage de programmation</strong>, qui plus est <mark class="critic"><strong>multiparadigme</strong></mark> : il est en effet conçu pour gérer la programmation <mark class="critic"><strong>impérative</strong></mark>, la programmation <mark class="critic"><strong>orientée objet</strong></mark> ainsi que la programmation <mark class="critic"><strong>événementielle</strong></mark>.</p>
 <div class="admonition tips">
 <p class="admonition-title">Paradigmes de programmation</p>
-<p>Un paradigme est <em>"une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini"</em>.<a :=":" href="https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique" target="_blank">Wkipedia</a>.</p>
+<p>Un paradigme est &laquo; une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini &raquo; .<a :=":" href="https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique" target="_blank">Wkipedia</a>.</p>
 <p>En programmation, plus précisément, on parle de <mark class="critic"><strong>paradigmes de programmation</strong></mark> pour exprimer la manière dont sont conçus et envisagés les programmes.
 On distingue entre autres :</p>
 <ul>
 <li>le paradigme de la <mark class="critic"><strong>programmation impérative</strong></mark>, qui est celui que nous avons utilisé jusqu'ici : on décrit les opérations en séquences d'instructions exécutées par l'ordinateur dans un ordre précis (que le langage soit compilé ou interprété). C'est le paradigme classique, celui auquel tout le monde pense quand on parle de programme informatique.</li>
-<li>le paradigme de la <mark class="critic"><strong>programmation orienté objet</strong></mark>, qui "consiste en la définition et l'interaction de briques logicielles appelées objets ; un objet représente un concept, une idée ou toute entité du monde physique, comme une voiture, une personne ou encore une page d'un livre. Il possède une structure interne et un comportement, et il sait interagir avec ses pairs. Il s'agit donc de représenter ces objets et leurs relation[...]". <a href="https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet">Wikipedia</a>. </li>
+<li>le paradigme de la <mark class="critic"><strong>programmation orienté objet</strong></mark>, qui &laquo; consiste en la définition et l'interaction de briques logicielles appelées objets ; un objet représente un concept, une idée ou toute entité du monde physique, comme une voiture, une personne ou encore une page d'un livre. Il possède une structure interne et un comportement, et il sait interagir avec ses pairs. Il s'agit donc de représenter ces objets et leurs relation[...] &raquo;. <a href="https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet">Wikipedia</a>.   </li>
 <li>le paradigme de la <mark class="critic"><strong>programmation fonctionnelle</strong></mark>, qui considère le calcul en tant qu'évaluation de fonctions mathématiques.</li>
-<li>le paradigme de la <mark class="critic"><strong>programmation événementielle</strong></mark>, qui est fondé sur la notion d'événements. Le programme sera principalement défini par ses réactions aux différents événements qui peuvent se produire, c'est-à-dire des changements d'état de variable, par exemple l'incrémentation d'une liste, un déplacement ou un click de souris, une saisie au clavier... </li>
+<li>le paradigme de la <mark class="critic"><strong>programmation événementielle</strong></mark>, qui est fondé sur la notion d'événements. Le programme sera principalement défini par ses réactions aux différents événements qui peuvent se produire, c'est-à-dire des changements d'état de variable, par exemple l'incrémentation d'une liste, un déplacement ou un clic de souris, une saisie au clavier... </li>
 <li>et <a href="https://fr.wikipedia.org/wiki/Paradigme_(programmation)">bien d'autres</a>...</li>
 </ul>
 </div>
@@ -2900,7 +2900,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 d'une <code>méthode</code> de la classe, la méthode <code>__init__()</code>, appelée <mark class="critic"><strong>méthode constructeur de la classe</strong></mark>.</p>
 <p>Cette méthode prend plusieurs paramètres :</p>
 <ol>
-<li>le paramètre <code>self</code>, <strong>obligatoire</strong>, qui représente <em>'l'instance</em> de l'objet créé.</li>
+<li>le paramètre <code>self</code>, <strong>obligatoire</strong>, qui représente <em>'l'instance</em> de l'objet créé (c'est une notion importante), qu'il est pour l'instant difficile d'expliquer).</li>
 <li>une série de paramètres qui correspondent aux paramètres définis dans l'interface
 de l'objet <code>Personnage</code>.</li>
 </ol>
@@ -2919,12 +2919,12 @@ plus tard.</p>
  Vous noterez que l'argument <code>self</code> n'est pas renseigné ! On appelle cet argument un <mark class="critic">argument implicite</mark>.</p>
 <p>Ainsi pour créer un objet de type <code>Personnage</code> nommé Bob, et ayant les attributs
  20 en force, 25 en endurance, 10 en rapidité et 30 en intelligence, on utilise l'instruction suivante :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; Personnage(&quot;Bob&quot;, 20, 25, 10, 30)
-&lt;__main__.Personnage object at 0x7fb674844e48&gt;
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Personnage</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Personnage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fb674844e48</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>On constate donc bien qu'un objet de type <code>Personnage</code> est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
-  par le <em>garbage collector</em>. On crée donc une variable <code>playerBob</code> comme référence à l'objet :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob = Personnage(&quot;Bob&quot;, 20, 25, 10, 30)
+  par le <em>garbage collector</em>. On crée donc une variable <code>firstPlayer</code> comme référence à l'objet :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -2933,27 +2933,26 @@ plus tard.</p>
 <img alt="perso" src="../Perso2.png" width="25%" />
 </p></p>
 </div>
-<p>L'appel au nom de la classe <code>Personnage</code> fait en réalité appel à la <strong>méthode constructeur</strong>, qui va permettre de créer un
-nouvel objet de type <code>Personnage</code>. On peut le vérifier avec la ligne suivante :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; type(playerBob)
-&lt;class &#39;__main__.Personnage&#39;&gt;
+<p>L'appel au nom de la classe <code>Personnage</code> fait en réalité appel à la <strong>méthode constructeur</strong>, qui va permettre de créer un nouvel objet de type <code>Personnage</code>. On peut le vérifier avec la ligne suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">firstPlayer</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">Personnage</span><span class="s1">&#39;&gt;</span>
 </code></pre></div>
 <h3 id="acceder-aux-attributs-et-les-modifier">Accéder aux attributs et les modifier</h3>
-<p>Pour accéder à l'attribut <code>pv</code> de l'objet <code>playerBob</code>, il suffit d'utiliser la notation</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.pv
-35
+<p>Pour accéder à l'attribut <code>pv</code> de l'objet <code>firstPayer</code>, il suffit d'utiliser la notation</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">pv</span>
+<span class="mi">35</span>
 </code></pre></div>
 <p>Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.force = 18
-&gt;&gt;&gt; playerBob.force
-18
-&gt;&gt;&gt; playerBob.rapidite = playerBob.rapidite + 2
-&gt;&gt;&gt; playerBob.rapidite
-12
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">force</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">force</span>
+<span class="mi">18</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">rapidite</span> <span class="o">=</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">rapidite</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">rapidite</span>
+<span class="mi">12</span>
 </code></pre></div>
 <h3 id="deux-objets">Deux objets</h3>
 <p>Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBill = Personnage(&#39;Bill&#39;, 34, 10, 20, 12)
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">secondPlayer</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bill&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -2967,6 +2966,7 @@ nouvel objet de type <code>Personnage</code>. On peut le vérifier avec la ligne
 <p>Chaque <mark class="critic"><strong>instance</strong></mark> d'objet possède son propre espace de nommage. </p>
 <p>Ici même si les deux objets de type <code>Personnage</code> ont le même nom d'attribut <code>force</code>, ils ne 
 représentent pas le même objet.</p>
+<p>C'est exactement la signification de <code>self</code>, qui signifie bien que chacun des objets <code>Personnage</code> aura bien son propre attribut <code>force</code>, son propre attribut <code>intelligence</code>, etc...</p>
 </div>
 <h3 id="definitions-de-methodes">Définitions de méthodes</h3>
 <div class="admonition abstract">
@@ -2976,12 +2976,12 @@ représentent pas le même objet.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Essayons d'abord avec la fonction <em>built-in</em> <code>print()</code> :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(playerBob)
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">firstPlayer</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>La sortie sur la console Python  est :</p>
-<div class="highlight"><pre><span></span><code>&lt;__main__.Personnage object at 0x7fb6748590f0&gt;
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Personnage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fb6748590f0</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>C'est peu parlant !  La fonction <code>print</code> ne renvoie que l'adresse
 mémoire et le type de l'objet que nous venons de lui passer.</p>
@@ -2989,11 +2989,11 @@ mémoire et le type de l'objet que nous venons de lui passer.</p>
 </div>
 </div>
 </div>
-<p>Nous allons donc devoir améliorer cet affichage, en construisant notre propre <mark class="critic"><strong>méthode</strong></mark>, que nous nommerons
-<code>affiche</code>. Cette méthode devra avoir le comportement suivant :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.affiche()
-    &quot;Bonjour, je suis Bob, de niveau 1. J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30
-    en intelligence. J&#39;ai 35 Points de Vie&quot;
+<p>Nous allons donc devoir améliorer cet affichage, en construisant notre propre <mark class="critic"><strong>méthode</strong></mark>, que nous nommerons <code>affiche</code>. Cette méthode devra avoir le comportement suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">affiche</span><span class="p">()</span>
+
+    <span class="s2">&quot;Bonjour, je suis Bob, de niveau 1. J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30</span>
+    <span class="n">en</span> <span class="n">intelligence</span><span class="o">.</span> <span class="n">J</span><span class="s1">&#39;ai 35 Points de Vie&quot;</span>
 </code></pre></div>
 <div class="admonition tips">
 <p class="admonition-title">Méthodes et attributs</p>
@@ -3020,11 +3020,11 @@ parfois implicites : la méthode <code>__init__</code> renvoie le nouvel objet c
 est impératif d'utiliser pour avoir accès aux <strong>attributs</strong> de l'objet.</li>
 <li>Dans l'appel de la méthode <mark class="critic"><strong>aucun argument n'est passé</strong></mark>.</li>
 </ol>
-<p>En rechargeant le module, puis en recréant les objets <code>playerBill</code> puis <code>playerBob</code>, on obtient alors les affichages suivants :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.affiche()
-Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie
-&gt;&gt;&gt; playerBill.affiche()
-Bonjour, je suis Bill, de niveau 1.J&#39;ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J&#39;ai 27 Points de Vie
+<p>En rechargeant le module, puis en recréant les objets <code>secondPlayer</code> puis <code>firstPlayer</code>, on obtient alors les affichages suivants :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">affiche</span><span class="p">()</span>
+<span class="s2">&quot;Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">secondPlayer</span><span class="o">.</span><span class="n">affiche</span><span class="p">()</span>
+<span class="s2">&quot;Bonjour, je suis Bill, de niveau 1.J&#39;ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J&#39;ai 27 Points de Vie&quot;</span>
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Implémenter la méthode <code>attaque</code></p>
@@ -3050,20 +3050,18 @@ de force du personnage auquel on ajoute un nombre aléatoire entre 1 et 20.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
 <p>Cette méthode peut alors être utilisée comme dans les exemples ci-dessous :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob.attaque()
-22
-&gt;&gt;&gt; playerBob.attaque()
-27
-&gt;&gt;&gt; playerBill.attaque()
-38
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">attaque</span><span class="p">()</span>
+<span class="mi">22</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">attaque</span><span class="p">()</span>
+<span class="mi">27</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">secondPlayer</span><span class="o">.</span><span class="n">attaque</span><span class="p">()</span>
+<span class="mi">38</span>
 </code></pre></div>
 </details>
 <div class="admonition question">
 <p class="admonition-title">Implémenter la méthode <code>defense(valeurAttaque)</code></p>
 <p>Dans notre interface de départ, nous avions prévu une méthode <code>defense(valeurAttaque)</code> 
-qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au 
-niveau d'attaque, l'attaque a échouée et la méthode renvoie <code>True</code>. Sinon le personnage perd un nombre de points 
-de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie <code>False</code>.</p>
+qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au niveau d'attaque, l'attaque a échouée et la méthode renvoie <code>True</code>. Sinon le personnage perd un nombre de points de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie <code>False</code>.</p>
 <p>Comment implémenter une telle méthode ?</p>
 </div>
 <details class="done">
@@ -3091,10 +3089,10 @@ de vie  égal à la différence entre le niveau d'attaque et le niveau de défen
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
 <p>cette méthode peut alors être utilisée ainsi :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBill.defense(playerBob.attaque())
-False
-&gt;&gt;&gt; playerBill.pv
-18
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">secondPlayer</span><span class="o">.</span><span class="n">defense</span><span class="p">(</span><span class="n">firstPlayer</span><span class="o">.</span><span class="n">attaque</span><span class="p">())</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">secondPlayer</span><span class="o">.</span><span class="n">pv</span>
+<span class="mi">18</span>
 </code></pre></div>
 </details>
 <h3 id="methodes-specifiques">Méthodes spécifiques</h3>
@@ -3102,14 +3100,14 @@ False
 <p class="admonition-title">Info</p>
 <p>La liste de toutes les méthodes d'une classe, y compris des <strong>DUNDERS</strong>,
  peut-être obtenue par l'intermédiaire de la commande suivante :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; dir(Personnage)
-[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;,
- &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;,
-  &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;,
-   &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;,
-    &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;,
-     &#39;__subclasshook__&#39;, &#39;__weakref__&#39;,
-      &#39;affiche&#39;, &#39;attaque&#39;, &#39;defense&#39;]
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">Personnage</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__lt__&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__weakref__&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;affiche&#39;</span><span class="p">,</span> <span class="s1">&#39;attaque&#39;</span><span class="p">,</span> <span class="s1">&#39;defense&#39;</span><span class="p">]</span>
 </code></pre></div>
 </div>
 <div class="admonition info">
@@ -3196,16 +3194,15 @@ changer la méthode <code>affiche(self)</code> qui renverra la chaîne de caract
     <span class="o">...</span>
 </code></pre></div>
 <p>On a alors la possibilité d'utiliser les commandes suivantes :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; str(playerBob)
-&quot;Bonjour, je suis Bob, de niveau 1.\n         J&#39;ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie&quot;
-&gt;&gt;&gt; playerBob.affiche()
-Bonjour, je suis Bob, de niveau 1.J&#39;ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="n">firstPlayer</span><span class="p">)</span>
+<span class="s2">&quot;Bonjour, je suis Bob, de niveau 1.</span><span class="se">\n</span><span class="s2">         J&#39;ai 18 en force, 25 en endurance, 12</span><span class="se">\n</span><span class="s2">           en rapidité et 30 en intelligence. J&#39;ai 34 Points de Vie&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">affiche</span><span class="p">()</span>
+<span class="n">Bonjour</span><span class="p">,</span> <span class="n">je</span> <span class="n">suis</span> <span class="n">Bob</span><span class="p">,</span> <span class="n">de</span> <span class="n">niveau</span> <span class="mf">1.</span><span class="n">J</span><span class="s1">&#39;ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J&#39;</span><span class="n">ai</span> <span class="mi">34</span> <span class="n">Points</span> <span class="n">de</span> <span class="n">Vie</span>
 </code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Définir l'égalité entre deux personnages</p>
-<p>On considère que deux personnages sont égaux quand ils possèdent les mêmes caractéristiques numériques
-de bases (<code>force</code>, <code>endurance</code>, <code>rapidite</code> et <code>intelligence</code>).</p>
+<p>On considère que deux personnages sont égaux quand ils possèdent les mêmes caractéristiques numériques de bases (<code>force</code>, <code>endurance</code>, <code>rapidite</code> et <code>intelligence</code>).</p>
 <p>Redéfinir  la méthode DUNDERS <code>__eq__(self, u)</code> pour qu'elle corresponde à cette définition.</p>
 </div>
 <details class="done">
@@ -3227,10 +3224,10 @@ de bases (<code>force</code>, <code>endurance</code>, <code>rapidite</code> et <
     <span class="o">...</span>
 </code></pre></div>
 <p>On a alors l'utilisation :</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; playerBob == playerBill
-False
-&gt;&gt;&gt; playerBob == Personnage(&#39;Marty&#39;, 18, 25, 12, 30)
-True
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span> <span class="o">==</span> <span class="n">secondPlayer</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span> <span class="o">==</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Marty&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="kc">True</span>
 </code></pre></div>
 </details>
 <div class="admonition question">
@@ -3240,26 +3237,27 @@ True
 <li>Chaque personnage tire son <em>initiative</em> en ajoutant un nombre aléatoire entre 1 et 20 à sa
 valeur de rapidite.</li>
 <li>Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le joeur d'attaque sera celui qui possède la rapidité la plus élevée. En cas d'égalité de rapidité, le premier joueur sera déterminé aléatoirement.</li>
-<li>Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
-et le premier se défend.</li>
+<li>Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque, et le premier se défend.</li>
 <li>Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.</li>
 <li>
 <p>Le vainqueur récolte un nombre de points d'expérience égal à :</p>
-<p>nombre d'attaque réussie * 2 + nombre de defense réussie</p>
+<div class="highlight"><pre><span></span><code>nombre d&#39;attaque réussie * 2 + nombre de defense réussie
+</code></pre></div>
 </li>
 </ol>
 <p>Vous devrez implémenter un programme simulant un combat entre <code>Bob</code> et <code>Bill</code>, dont la sortie console sera sous la forme suivante :</p>
-<div class="highlight"><pre><span></span><code>Round 1
-Bob a l&#39;initiative et attaque avec 28
-Bill réussit sa défense
-Bill attaque avec 40
-Bob rate sa défense et n&#39;a plus que 25 points de vie
+<div class="highlight"><pre><span></span><code><span class="n">Round</span> <span class="mi">1</span>
+<span class="n">Bob</span> <span class="n">a</span> <span class="n">l</span><span class="s1">&#39;initiative et attaque avec 28</span>
+<span class="n">Bill</span> <span class="n">réussit</span> <span class="n">sa</span> <span class="n">défense</span>
+<span class="n">Bill</span> <span class="n">attaque</span> <span class="n">avec</span> <span class="mi">40</span>
+<span class="n">Bob</span> <span class="n">rate</span> <span class="n">sa</span> <span class="n">défense</span> <span class="n">et</span> <span class="n">n</span><span class="s1">&#39;a plus que 25 points de vie</span>
 
-Round 2
-...
+<span class="n">Round</span> <span class="mi">2</span>
+<span class="o">...</span>
 
-Round n
-Le vainqueur est ..., il lui reste ... points de vie. Il gagne ... points d&#39;expériences.
+
+<span class="n">Round</span> <span class="n">n</span>
+<span class="n">Le</span> <span class="n">vainqueur</span> <span class="n">est</span> <span class="o">...</span><span class="p">,</span> <span class="n">il</span> <span class="n">lui</span> <span class="n">reste</span> <span class="o">...</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span><span class="o">.</span> <span class="n">Il</span> <span class="n">gagne</span> <span class="o">...</span> <span class="n">points</span> <span class="n">d</span><span class="s1">&#39;expériences.</span>
 </code></pre></div>
 <p>Pour réaliser ce programme, vopus devrez :</p>
 <ol>
@@ -3276,11 +3274,11 @@ Le vainqueur est ..., il lui reste ... points de vie. Il gagne ... points d&#39;
 </li>
 <li>
 <p>Le programme permettant le combat devra être dans un fichier <code>combat.py</code> séparé de celui contenant la classe <code>Personnage</code> (la classe <code>Personnage</code> étant importée depuis le module <code>personnage.py</code> par la commande suivante :</p>
-<p>from personnage import Personnage</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">personnage</span> <span class="kn">import</span> <span class="n">Personnage</span>
+</code></pre></div>
 </li>
 <li>
-<p>Un fichier compressé <code>.zip</code> ou <code>.7z</code> contenant les deux fichiers (celui du programme et le module contenant 
-la classe <code>Personnage</code>) sera rendu via le cahier de texte de pronote, dans la partie <strong>Travail à rendre</strong>.</p>
+<p>Un fichier compressé <code>.zip</code> ou <code>.7z</code> contenant les deux fichiers (celui du programme et le module contenant  la classe <code>Personnage</code>) sera rendu via le cahier de texte de pronote, dans la partie <strong>Travail à rendre</strong>.</p>
 </li>
 </ol>
 </div>
@@ -3372,10 +3370,10 @@ la classe <code>Personnage</code>) sera rendu via le cahier de texte de pronote,
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

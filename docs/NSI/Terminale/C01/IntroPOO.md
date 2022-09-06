@@ -28,15 +28,15 @@ Aussi simpliste que Scratch paraisse, il n'en est néanmoins pas un **véritable
 
 !!! tips "Paradigmes de programmation"
 
-	Un paradigme est *"une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini"*.[Wkipedia](https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique){ : target="_blank" }.
+	Un paradigme est &laquo; une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini &raquo; .[Wkipedia](https://fr.wikipedia.org/wiki/Paradigme#Paradigme_en_linguistique){ : target="_blank" }.
 	
 	En programmation, plus précisément, on parle de {==**paradigmes de programmation**==} pour exprimer la manière dont sont conçus et envisagés les programmes.
 	On distingue entre autres :
 	
 	* le paradigme de la {==**programmation impérative**==}, qui est celui que nous avons utilisé jusqu'ici : on décrit les opérations en séquences d'instructions exécutées par l'ordinateur dans un ordre précis (que le langage soit compilé ou interprété). C'est le paradigme classique, celui auquel tout le monde pense quand on parle de programme informatique.
-	* le paradigme de la {==**programmation orienté objet**==}, qui "consiste en la définition et l'interaction de briques logicielles appelées objets ; un objet représente un concept, une idée ou toute entité du monde physique, comme une voiture, une personne ou encore une page d'un livre. Il possède une structure interne et un comportement, et il sait interagir avec ses pairs. Il s'agit donc de représenter ces objets et leurs relation[...]". [Wikipedia](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet).	
+	* le paradigme de la {==**programmation orienté objet**==}, qui &laquo; consiste en la définition et l'interaction de briques logicielles appelées objets ; un objet représente un concept, une idée ou toute entité du monde physique, comme une voiture, une personne ou encore une page d'un livre. Il possède une structure interne et un comportement, et il sait interagir avec ses pairs. Il s'agit donc de représenter ces objets et leurs relation[...] &raquo;. [Wikipedia](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet).	
 	* le paradigme de la {==**programmation fonctionnelle**==}, qui considère le calcul en tant qu'évaluation de fonctions mathématiques.
-	* le paradigme de la {==**programmation événementielle**==}, qui est fondé sur la notion d'événements. Le programme sera principalement défini par ses réactions aux différents événements qui peuvent se produire, c'est-à-dire des changements d'état de variable, par exemple l'incrémentation d'une liste, un déplacement ou un click de souris, une saisie au clavier... 
+	* le paradigme de la {==**programmation événementielle**==}, qui est fondé sur la notion d'événements. Le programme sera principalement défini par ses réactions aux différents événements qui peuvent se produire, c'est-à-dire des changements d'état de variable, par exemple l'incrémentation d'une liste, un déplacement ou un clic de souris, une saisie au clavier... 
 	* et [bien d'autres](https://fr.wikipedia.org/wiki/Paradigme_(programmation))...
 	
 Les différents langages de programmation peuvent être plus ou moins spécialisé selon un certain nombre de paradigmes. Quasiment tous respectent le {==**paradigme originel impératif**==}. Certains langages ne dépassent pas ce paradigme (assembleur, Fortran, Algol, BASIC,... ). D'autres sont spécialisés sur un paradigme spécifique ( comme Lisp, ML, OCaml en programmation fonctionnelle, Ada, Smalltalk, C++, Ruby, C# Swift... en POO). Mais en général tous les langages cités possèdent des composantes {==**multiparadigmes**==}.
@@ -48,7 +48,6 @@ C'est le cas de Python, qui supporte la programmation :
 * procédurale ;
 * orientée objet ;
 * et en partie événementielle.
-
 
 ## Principes	
 	
@@ -151,7 +150,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 	 
 	Cette méthode prend plusieurs paramètres :
 	 
-	1. le paramètre `self`, **obligatoire**, qui représente *'l'instance* de l'objet créé.
+	1. le paramètre `self`, **obligatoire**, qui représente *'l'instance* de l'objet créé (c'est une notion importante), qu'il est pour l'instant difficile d'expliquer).
 	2. une série de paramètres qui correspondent aux paramètres définis dans l'interface
 	de l'objet `Personnage`.
 	
@@ -172,15 +171,18 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
  
  Ainsi pour créer un objet de type `Personnage` nommé Bob, et ayant les attributs
  20 en force, 25 en endurance, 10 en rapidité et 30 en intelligence, on utilise l'instruction suivante :
- 
-	>>> Personnage("Bob", 20, 25, 10, 30)
-	<__main__.Personnage object at 0x7fb674844e48>
+
+```` python
+>>> Personnage("Bob", 20, 25, 10, 30)
+<__main__.Personnage object at 0x7fb674844e48>
+```` 
 	
  On constate donc bien qu'un objet de type `Personnage` est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
-  par le *garbage collector*. On crée donc une variable `playerBob` comme référence à l'objet :
+  par le *garbage collector*. On crée donc une variable `firstPlayer` comme référence à l'objet :
   
-
-	>>> playerBob = Personnage("Bob", 20, 25, 10, 30)
+```` python
+>>> firstPlayer = Personnage("Bob", 20, 25, 10, 30)
+````
 
 !!! abstract	
 	On peut schématiser avec le dessin suivant : 
@@ -190,33 +192,40 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
 	</p>
 
 
-L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthode constructeur**, qui va permettre de créer un
-nouvel objet de type `Personnage`. On peut le vérifier avec la ligne suivante :
+L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthode constructeur**, qui va permettre de créer un nouvel objet de type `Personnage`. On peut le vérifier avec la ligne suivante :
 
-	>>> type(playerBob)
-	<class '__main__.Personnage'>
+```` python
+>>> type(firstPlayer)
+<class '__main__.Personnage'>
+````
 	
 ### Accéder aux attributs et les modifier
 
-Pour accéder à l'attribut `pv` de l'objet `playerBob`, il suffit d'utiliser la notation
+Pour accéder à l'attribut `pv` de l'objet `firstPayer`, il suffit d'utiliser la notation
 
-	>>> playerBob.pv
-	35
+```` python
+>>> firstPlayer.pv
+35
+```` 
 	
 Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :
 
-	>>> playerBob.force = 18
-	>>> playerBob.force
-	18
-	>>> playerBob.rapidite = playerBob.rapidite + 2
-	>>> playerBob.rapidite
-	12
+```` python
+>>> firstPlayer.force = 18
+>>> firstPlayer.force
+18
+>>> firstPlayer.rapidite = firstPlayer.rapidite + 2
+>>> firstPlayer.rapidite
+12
+```` 
 	
 ### Deux objets 
 
 Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 
-	>>> playerBill = Personnage('Bill', 34, 10, 20, 12)
+```` python 
+>>> secondPlayer = Personnage('Bill', 34, 10, 20, 12)
+```` 
 
 !!! abstract 
 	Cette seconde {==**instance	**==} de type `Personnage` possède aussi ses propres attributs, comme montré dans le schéma suivant :
@@ -231,6 +240,8 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 	
 	Ici même si les deux objets de type `Personnage` ont le même nom d'attribut `force`, ils ne 
 	représentent pas le même objet.
+
+	C'est exactement la signification de `self`, qui signifie bien que chacun des objets `Personnage` aura bien son propre attribut `force`, son propre attribut `intelligence`, etc...
 	
 
 ### Définitions de méthodes
@@ -241,24 +252,30 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 	=== "Test de `print`"
 		Essayons d'abord avec la fonction *built-in* `print()` :
 		
-			>>> print(playerBob)
+		```` python
+		>>> print(firstPlayer)
+		````
 
 	=== "Sortie et commentaires" 
 		
 		La sortie sur la console Python  est :
 		
-			<__main__.Personnage object at 0x7fb6748590f0>
+		```` python
+		<__main__.Personnage object at 0x7fb6748590f0>
+		````
 			
 		C'est peu parlant !  La fonction `print` ne renvoie que l'adresse
 		mémoire et le type de l'objet que nous venons de lui passer.
 		
 
-Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**==}, que nous nommerons
-`affiche`. Cette méthode devra avoir le comportement suivant :
+Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**==}, que nous nommerons `affiche`. Cette méthode devra avoir le comportement suivant :
 
-	>>> playerBob.affiche()
-		"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30
-		en intelligence. J'ai 35 Points de Vie"
+```` python
+>>> firstPlayer.affiche()
+
+	"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30
+	en intelligence. J'ai 35 Points de Vie"
+````
 		
 !!! tips "Méthodes et attributs"
 
@@ -291,12 +308,14 @@ Vous constatez que :
 est impératif d'utiliser pour avoir accès aux **attributs** de l'objet.
 2. Dans l'appel de la méthode {==**aucun argument n'est passé**==}.
 
-En rechargeant le module, puis en recréant les objets `playerBill` puis `playerBob`, on obtient alors les affichages suivants :
+En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firstPlayer`, on obtient alors les affichages suivants :
 
-	>>> playerBob.affiche()
-	Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 34 Points de Vie
-	>>> playerBill.affiche()
-	Bonjour, je suis Bill, de niveau 1.J'ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J'ai 27 Points de Vie
+```` python
+>>> firstPlayer.affiche()
+"Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
+>>> secondPlayer.affiche()
+"Bonjour, je suis Bill, de niveau 1.J'ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J'ai 27 Points de Vie"
+````
 
 !!! question "Implémenter la méthode `attaque`"
 
@@ -328,19 +347,20 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	
 	Cette méthode peut alors être utilisée comme dans les exemples ci-dessous :
 	
-		>>> playerBob.attaque()
-		22
-		>>> playerBob.attaque()
-		27
-		>>> playerBill.attaque()
-		38
+
+	``` python
+	>>> firstPlayer.attaque()
+	22
+	>>> firstPlayer.attaque()
+	27
+	>>> secondPlayer.attaque()
+	38
+	```
 
 !!! question "Implémenter la méthode `defense(valeurAttaque)`"
 
 	Dans notre interface de départ, nous avions prévu une méthode `defense(valeurAttaque)` 
-	qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au 
-	niveau d'attaque, l'attaque a échouée et la méthode renvoie `True`. Sinon le personnage perd un nombre de points 
-	de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie `False`.
+	qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au niveau d'attaque, l'attaque a échouée et la méthode renvoie `True`. Sinon le personnage perd un nombre de points de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie `False`.
 	
 	Comment implémenter une telle méthode ?
 	
@@ -373,10 +393,12 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	
 	cette méthode peut alors être utilisée ainsi :
 	
-		>>> playerBill.defense(playerBob.attaque())
-		False
-		>>> playerBill.pv
-		18
+	``` python
+	>>> secondPlayer.defense(firstPlayer.attaque())
+	False
+	>>> secondPlayer.pv
+	18
+	```
 	
 
 ### Méthodes spécifiques
@@ -386,14 +408,16 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	La liste de toutes les méthodes d'une classe, y compris des **DUNDERS**,
 	 peut-être obtenue par l'intermédiaire de la commande suivante :
 	 
-		>>> dir(Personnage)
-		['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',
-		 '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__',
-		  '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__',
-		   '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
-		    '__repr__', '__setattr__', '__sizeof__', '__str__',
-		     '__subclasshook__', '__weakref__',
-		      'affiche', 'attaque', 'defense']
+	``` python
+	>>> dir(Personnage)
+	['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',
+		'__eq__', '__format__', '__ge__', '__getattribute__', '__gt__',
+		'__hash__', '__init__', '__init_subclass__', '__le__', '__lt__',
+		'__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+		'__repr__', '__setattr__', '__sizeof__', '__str__',
+			'__subclasshook__', '__weakref__',
+			'affiche', 'attaque', 'defense']
+	```
 
 !!! info "DUNDERS"
 	Il existe plusieurs méthodes spécifiques définies automatiquement dès qu'on crée une classe
@@ -450,15 +474,16 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	
 	On a alors la possibilité d'utiliser les commandes suivantes :
 	
-		>>> str(playerBob)
-		"Bonjour, je suis Bob, de niveau 1.\n         J'ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
-		>>> playerBob.affiche()
-		Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J'ai 34 Points de Vie
+	``` python
+	>>> str(firstPlayer)
+	"Bonjour, je suis Bob, de niveau 1.\n         J'ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
+	>>> firstPlayer.affiche()
+	Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J'ai 34 Points de Vie
+	```
 
 !!! question "Définir l'égalité entre deux personnages"
 	
-	On considère que deux personnages sont égaux quand ils possèdent les mêmes caractéristiques numériques
-	de bases (`force`, `endurance`, `rapidite` et `intelligence`).
+	On considère que deux personnages sont égaux quand ils possèdent les mêmes caractéristiques numériques de bases (`force`, `endurance`, `rapidite` et `intelligence`).
 	
 	Redéfinir  la méthode DUNDERS `__eq__(self, u)` pour qu'elle corresponde à cette définition.
 	
@@ -485,10 +510,12 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	
 	On a alors l'utilisation :
 	
-		>>> playerBob == playerBill
-		False
-		>>> playerBob == Personnage('Marty', 18, 25, 12, 30)
-		True
+	``` python
+	>>> firstPlayer == secondPlayer
+	False
+	>>> firstPlayer == Personnage('Marty', 18, 25, 12, 30)
+	True
+	```
 
 !!! question "Fight !"
 
@@ -497,27 +524,29 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	1. Chaque personnage tire son *initiative* en ajoutant un nombre aléatoire entre 1 et 20 à sa
 	valeur de rapidite.
 	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le joeur d'attaque sera celui qui possède la rapidité la plus élevée. En cas d'égalité de rapidité, le premier joueur sera déterminé aléatoirement.
-	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque,
-	et le premier se défend.
+	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque, et le premier se défend.
 	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.
 	5. Le vainqueur récolte un nombre de points d'expérience égal à :
 		
-		nombre d'attaque réussie * 2 + nombre de defense réussie
+
+			nombre d'attaque réussie * 2 + nombre de defense réussie
 	
 	Vous devrez implémenter un programme simulant un combat entre `Bob` et `Bill`, dont la sortie console sera sous la forme suivante :
 	
-		Round 1
-		Bob a l'initiative et attaque avec 28
-		Bill réussit sa défense
-		Bill attaque avec 40
-		Bob rate sa défense et n'a plus que 25 points de vie
-		
-		Round 2
-		...
-		
-		
-		Round n
-		Le vainqueur est ..., il lui reste ... points de vie. Il gagne ... points d'expériences.
+	``` python
+	Round 1
+	Bob a l'initiative et attaque avec 28
+	Bill réussit sa défense
+	Bill attaque avec 40
+	Bob rate sa défense et n'a plus que 25 points de vie
+	
+	Round 2
+	...
+	
+	
+	Round n
+	Le vainqueur est ..., il lui reste ... points de vie. Il gagne ... points d'expériences.
+	```
 	
 	Pour réaliser ce programme, vopus devrez :
 	
@@ -530,10 +559,9 @@ En rechargeant le module, puis en recréant les objets `playerBill` puis `player
 	2. Vous devrez pour réussir construire une méthode supplémentaire pour la classe `Personnage` : la méthode `initiative(self)` qui renvoie un entier représentant le score d'initiative du personnage.
 	3. Le programme permettant le combat devra être dans un fichier `combat.py` séparé de celui contenant la classe `Personnage` (la classe `Personnage` étant importée depuis le module `personnage.py` par la commande suivante :
 	
+		``` python
 		from personnage import Personnage
+		```
 	
-	4. Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant 
-	la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
-	
-	
+	4. Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant  la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
 	
