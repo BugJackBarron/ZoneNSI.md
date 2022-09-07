@@ -1,2 +1,0 @@
-from testCours import ListeC
-
