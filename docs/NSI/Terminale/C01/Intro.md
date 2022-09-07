@@ -26,7 +26,7 @@ Pour modéliser le problème :
 
 !!! question "Exercice"
 	Créer un fichier ``recherchesDates.py`` et **implémenter** les fonctions précédentes.
-	Des solutions sont proposées dans les parties ci-dessous, mais vous {==**devez d'abord tester par vous-mêmes**==. VOus pouvez cependant utiliser les indices ci-dessous pour vous aider
+	Des solutions sont proposées dans les parties ci-dessous, mais vous {==**devez d'abord tester par vous-mêmes**==}. Vous pouvez cependant utiliser les indices ci-dessous pour vous aider
 
 	??? tips "Procédure `genere_groupe()`"
 
