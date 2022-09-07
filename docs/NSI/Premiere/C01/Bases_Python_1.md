@@ -427,6 +427,18 @@ Dans la chaîne précédente, ``"P"`` à pour indice 0, ``"y"`` a pour indice 1 
 
 #### Accès à un caractère par son indice
 
+
+
+!!! tips "Les crochets"
+
+	Vous utiliserez beaucoup les crochets en Python, pour les obtenir sur un clavier AZERTY :
+	
+	* `[` s'obtient par ++alt-graph+open-bracket++ ;
+	* `]` s'obtient par ++alt-graph+close-bracket++ ;
+
+On utilise l'indice entre crochets, juste après la chaîne de caractère.
+
+
 ```` python
 >>> "Python"[3]
 'h'
@@ -596,7 +608,7 @@ on a le remplacement du **nom de variable** situé entre accolades par sa valeur
 
 ### Demander à l'utilisateur de saisir quelque chose au clavier
 
-Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument**  une chaîne de caractères. Celle-ci interrompt le programme et attend une saisie clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaîne de caractère.
+Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument**  une chaîne de caractères. Celle-ci interrompt le programme et attend une saisie clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaîne de caractère dès que la touche ++return++ est pressée.
 
 {{ IDEv('Code6') }}
 
@@ -606,24 +618,26 @@ Il faut cependant être attentif à ce qui est réalisé par la  fonction `input
 
 
 Pour lever cette ambiguïté, nous sommes parfois obligés d'effectuer un ==**transtypage des données**==, c'est-à-dire une modification du **type**,  avec l'aide des fonctions **built-in** suivantes :
+
 * `str()`
 * `int()`
 * `float()`
+* `bool()`
 * ...
 
 Par exemple :
 
 {{ IDEv('Code8') }}
 
-on a forcé ici dans la première ligne Python à transformer (si il le peut) le contenu de la variable `nb` comme étant un nombre entier.
+On a forcé ici dans la première ligne Python à transformer (si il le peut) le contenu de la variable `nb` comme étant un nombre entier.
 
-Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur saisis une chaîne de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
+Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice saisit une chaîne de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
 
 !!! question "Exercice"
 
-Écrire dans l'éditeur ci dessous un code python qui :
+	Écrire dans l'éditeur ci dessous un code python qui :
 
-* demande deux nombres `a` et `b` à l'utilisateur ;
-* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaîne de caractères du type `3x4 = 12. Le résultat est de type int'                                                                                                                             
+	* demande deux nombres entiers `a` et `b` à l'utilisateur·trice ;
+	* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaîne de caractères du type `3x4 = 12. Le résultat est de type int'.                                                                                                                    
 
 	{{ IDEv() }}
