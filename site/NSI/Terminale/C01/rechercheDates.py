@@ -22,4 +22,4 @@ def teste_hypothese(n : int) -> int:
         t = genere_groupe()
         if contient_doublon(t) :
             nbDoublons +=1
-    return nbDoublons
+    return nbDoublons/n*100

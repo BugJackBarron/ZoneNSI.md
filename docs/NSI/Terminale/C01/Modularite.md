@@ -146,10 +146,10 @@ Pour chaque module, on peut donc distinguer :
 	
 	| fonction | Description |
 	| :--- | :--- |
-	| `polynome(t)` | Vérifie que le tuple `t`  sous la forme `(a,b,c)` représente bien un polynôme de degré 2 |
-	| `valeursRacines(p)` | Renvoie les valeurs des racines, et `None` si il n'existe pas de recines réelles |
+	| `polynome(t)` | Vérifie que le tuple `t`  sous la forme `(a,b,c)` représente bien un polynôme de degré 2, et renvoie `t` dans ce cas, et `None` sinon |
+	| `valeursRacines(p)` | Renvoie les valeurs des racines, et `None` si il n'existe pas de racines réelles |
 	| `convexite(p)` | Renvoie la convexité de la courbe représentative du polynôme sous la forme d'une chaîne de caractère en minuscule|
-	| `tangente(p,x)` | Renvoie l'équation de la tangente à la courbe du polynôme `p` en `x` |
+	| `tangente(p,x0)` | Renvoie l'équation de la tangente à la courbe du polynôme `p` en `x0` |
 
 	
 	Dans l'interface de ce module, on considère que le calcul du discriminant est une opération privée.
@@ -161,13 +161,9 @@ Pour chaque module, on peut donc distinguer :
 	from math import sqrt
 	
 	def polynome(t) :
-		a,b,*c = t
-		if not(isinstance(a,(int, float))
-		) or not(isinstance(b,(int, float))
-		) or len(c) >1 or not(isinstance(*c,(int, float))) :
-			raise ValueError()
+		a,b, c = t
 		if a == 0 :
-			raise ValueError()
+			return None
 		return t
 		
 	def _discriminant(p) :
@@ -195,7 +191,7 @@ Pour chaque module, on peut donc distinguer :
 
 	````
 		
-	Dans ce module, les fonctions préfixées par _ sont considérées comme privées, et ne faisant pas partie de l'interface.
+	Dans ce module, les fonctions préfixées par `_` sont considérées comme privées, et ne faisant pas partie de l'interface.
 
 !!! question "Exercice"
 	Créer un module `secondDegre.py` contenant a minima la totalité des fonctions précédentes, et implémenter toutes ces fonctions.
