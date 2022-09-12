@@ -364,7 +364,7 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
         3. Compléter le programme précédent afin que l'algorithme donne l'heure qu'il sera 10 minutes après l'heure saisie.
         4. Une année est dite bissextile si cette année est divisible par 4, sauf si elle est divisible par 100 et pas par 400. Construire un programme qui dit si une année saisie par un utilisateur·trice est bissextile ou non.
         4. Ecrire un programme qui demande les coefficients $a$ et $b$ d'une fonction affine, et qui donne son nombre de racines et leurs valeurs éventuelles. Attention aux cas particuliers !
-        5. Etendre le programme précédent pour la résolution d'équations du type $ax+b = cx+d$, où $a,b,c,d$ sont des entiers saisis par l'utilisateur.
+        5. Etendre le programme précédent pour la résolution d'équations du type $ax+b = cx+d$, où $a,b,c,d$ sont des entiers saisis par l'utilisateur·trice.
         6. *Pour les élèves ayant encore des maths,* reprendre le problème n°5 pour un trinôme du second degré.
 
     === "Solutions"
@@ -389,7 +389,7 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
         3. Ecrire un programme qui affiche les restes des divisions euclidiennes des $300$ premières puissances de $2$ par $9$. Que constate-t-on ?
         4. Ecrire un programme qui affiche une suite de 12 nombres dont chaque terme soit égal au triple du nombre précédent, le nombre de départ étant choisi par l'utilisateur·trice.
         5. La suite de Syracuse est définie ainsi :
-        
+
             * on part d'un nombre entier choisis par l'utilisateur.trice ;
             * si le nombre est pair, on le divise par 2, et on recommence avec le résultat ;
             * sinon on le multiplie par 3 et on ajoute 1, et on recommence avec le résultat.
