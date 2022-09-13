@@ -164,43 +164,19 @@ Ce qui a l'avantage d'être vraiment vraiment plus clair.
             return table
         ```
 
-<h3><font color="green">c : Augmenter la capacité des fonctions : les arguments obligatoires </font></h3>
+### Augmenter la capacité des fonctions : les arguments obligatoires 
 
 L'exemple de la fonction `askUserInt` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables.
 
-Pour ce faire, il faut, dans la définition de la fonction, préciser des **arguments** qui seront des noms spécifiques de variables :
+Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**arguments**==} qui seront des variables **initialisées à certaines valeurs lors de l'appel à la fonction** :
 
+{{ IDEv('askUserIntV3') }}
 
-```python
-def askUserInt(borne_min,borne_max) :
-    if not(isinstance(borne_min,int)) or not(isinstance(borne_max,int)) :
-        raise ValueError("One or both of the arguments are not of type int")
-    if borne_min>borne_max :
-        raise ValueError("First argument must be lesser or equal to second argument")
-    while True :
-        nb = input(f"Entrez un nombre entier entre {borne_min} et {borne_max} : ")
-        try :
-            nb=int(nb)
-        except ValueError :
-            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")
-        else :
-            if borne_min<= nb<= borne_max :
-                break
-            else :
-                print(f"Votre nombre n'est pas compris entre {borne_min} et {borne_max}. Veuillez recommencer !")
-    return nb    
-```
-
-Une fois la fonction définie, on peut l'appeler en précisant les vaaleurs des deux arguments :
-
+Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :
 
 ```python
-askUserInt(1,100)
-```
-
-
-```python
-askUserInt(-10,10)
+>>> askUserInt(1,100)
+>>> askUserInt(-10,10)
 ```
 
 On a aussi un certain nombre d'erreurs qui sont déclenchées. Testez les lignes suivantes :
