@@ -22,7 +22,7 @@ Dans la partie précédente, nous avons terminé par un petit programme qu deman
         {{ IDEv('askIntV2') }}
 
 
-!!! questoin "Multiplier les codes"
+!!! question "Application 1 : Multiplier les codes"
 
 
     === "Enoncé"
@@ -142,7 +142,7 @@ Ce qui a l'avantage d'être vraiment vraiment plus clair.
 
 ### Exercices
 
-!!! question "Exercices"
+!!! question "Application 2"
 
     === "Enoncé"
 
@@ -179,109 +179,108 @@ Une fois la fonction définie, on peut l'appeler en précisant les valeurs des d
 >>> askUserInt(-10,10)
 ```
 
-On a aussi un certain nombre d'erreurs qui sont déclenchées. Testez les lignes suivantes :
+!!! warning "Des erreurs classiques" 
+    On a aussi un certain nombre d'erreurs qui sont déclenchées. Testez les lignes suivantes :
+
+    === "1"
+
+        ```python
+        askUserInt()
+        ```
+
+    === "2"
+
+        ```python
+        askUserInt(45)
+        ```
+
+    === "3"
+
+        ```python
+        askUserInt(0.5,2.5)
+        ```
+
+    === "4"
+
+        ```python
+        askUserInt(30,10)
+        ```
+
+!!! question "Application 3"
 
 
-```python
-askUserInt()
-```
+    === "Enoncé"
+        Créer une fonction `tableMulti` qui prend un argument entier, le multiplicande, et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
+
+    === "Solution"
+
+        ```` python
+        def tableMulti(nb) :
+            table = ''
+            for i in range(11) :
+                table += f'{nb}}x{i} = {nb*i} \n'
+            return table
+
+        ````
+
+!!! question "Application 4 : motif dans une chaine"
+
+    === "Enoncé"
+        Créer une fonction `trouveChaine`qui prend deux arguments, un `motif` ( une chaine de caractères )  et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
+
+        ```python
+        assert trouveChaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+        assert trouveChaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
+        assert trouveChaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
+        assert trouveChaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
+        assert trouveChaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
+        ```
+
+    === "Solution"
+
+        ```` python
+        def trouveChaine(motif,texte) :
+            return motif.lower() in texte;lower()
+        ````
 
 
-```python
-askUserInt(45)
-```
 
-
-```python
-askUserInt(0.5,2.5)
-```
-
-
-```python
-askUserInt(30,10)
-```
-
-<h4><font color="blue">Application 3 : </font></h4>
-
-Créer une fonction `tableMulti` qui prend un argument entier, le multiplicande, et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
-
-
-```python
-
-```
-
-<h4><font color="blue">Application 4 : </font></h4>
-
-Créer une fonction `trouveChaine`qui prend deux arguments, un `motif` ( une chaine de caractères ) et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon. Vous pouvez tester avec la cellule suivant votre code :
-
-
-```python
-def trouveChaine(motif,texte) :
-    ####ECRIVEZ VOTRE CODE ICI, 
-    ## en remplaçant l'expression retuen par votre propre code
-    return -1
-```
-
-
-```python
-### Cette cellule est une cellule vous permettant de tester votre fonction
-assert trouveChaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
-assert trouveChaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
-assert trouveChaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
-assert trouveChaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
-assert trouveChaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
-```
-
-<h3><font color="green">d : Augmenter la capacité des fonctions : les arguments optionnels </font></h3>
+### Augmenter la capacité des fonctions : les arguments optionnels 
 
 Notre fonction `askUserInt` commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
 C'est tout à fait possible en Python, grâce aux **arguments optionnels**. Il s'agit d'arguments dont le nom est donné dans la fonction, mais avec **une valeur par défaut**. Ainsi :
 
 
-```python
-def askUserInt(borne_min,borne_max, prenom='Inconnu') :
-    if not(isinstance(borne_min,int)) or not(isinstance(borne_max,int)) :
-        raise ValueError("One or both of the arguments are not of type int")
-    if borne_min>borne_max :
-        raise ValueError("First argument must be lesser or equal to second argument")
-    while True :
-        nb = input(f"{prenom}, entrez un nombre entier entre {borne_min} et {borne_max} : ")
-        try :
-            nb=int(nb)
-        except ValueError :
-            print(f"{Inconnu}, vous n'avez pas saisi un entier. Veuillez recommencer !")
-        else :
-            if borne_min<= nb<= borne_max :
-                break
-            else :
-                print(f"{Inconnu}, votre nombre n'est pas compris entre {borne_min} et {borne_max}. Veuillez recommencer !")
-    return nb    
-```
+{{ IDEv('askUserIntV4') }}
 
 Ainsi, la fonction ci-dessus posssède trois arguments :
+
 * deux arguments **obligatoires**, `borne_min` et `borne_max` ;
 * un argument **optionnel**, `prenom`.
 
 
-
 Il est à noter qu'impérativement les **arguments obligatoires doivent être placés avant les arguments optionnels**.
 
-On peut alors appeller la fonction des différentes manières suivantes :
+On peut alors appeller la fonction des différentes manières suivantes (à tester) :
 
+=== "1"
 
-```python
-askUserInt(0,10)
-```
+    ```python
+    askUserInt(0,10)
+    ```
 
+=== "2"
 
-```python
-askUserInt(0,10,prenom='Toto')
-```
+    ```python
+    askUserInt(0,10,prenom='Toto')
+    ```
 
+=== "3"
 
-```python
-askUserInt(0,10,prenom='foo')
-```
+    ```python
+    askUserInt(0,10,prenom='foo')
+    ```
+{{ terminal() }}
 
 <h4><font color="blue">Application 5 : </font></h4>
 
