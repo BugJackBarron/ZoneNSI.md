@@ -282,203 +282,105 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
     ```
 {{ terminal() }}
 
-<h4><font color="blue">Application 5 : </font></h4>
+!!! question "Application 5 : arguments optionnels"
 
-Compléter la fonction `tableMulti` afin qu'elle utilise deux arguments optionnels, la valeur de départ et la valeur d'arrivée du multiplicateur :
+    === "Enoncé"
+        Compléter la fonction `tableMulti` afin qu'elle utilise deux arguments optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.
 
+    === "Solution"
 
-```python
+        ``` python
+        def tableMulti(nb, depart = 0, fin =10) :
+            table = ''
+            for i in range(depart, fin+1) :
+                table += f'{nb}}x{i} = {nb*i} \n'
+            return table
+        ```
 
-```
+!!! question "Application 6 : arguments optionnels"
 
-<h4><font color="blue">Application 6 : </font></h4>
+    === "Enoncé"
 
-Réécrire la fonction `trouveChaine` afin qu'elle utilise un *argument booléen optionnel* `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`
+        Réécrire la fonction `trouveChaine` afin qu'elle utilise un *argument booléen optionnel `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`. Vous pouvez utiliser les tests ci-dessous :
 
+        ```python
+        ### Cette cellule est une cellule vous permettant de tester votre fonction
+        ##les assertions suivantes sont les même que précédemment
+        assert trouveChaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+        assert trouveChaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
+        assert trouveChaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
+        assert trouveChaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
+        assert trouveChaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
+        # Mais on rajoute celles-ci :
+        assert trouveChaine('Toto', 'Toto va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
+        assert trouveChaine('TOTO', 'TOTO va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
+        assert trouveChaine('Totos', 'Toto va à la plage',verifCasse = True)==False, 'Chaine non présente trouvée'
+        assert trouveChaine('TOTO', 'Toto va à la plage',verifCasse = True)==False, 'Problème de majuscules dans le motif'
+        assert trouveChaine('toto', 'TOTO va à la plage',verifCasse = True)==False, 'Problème de minuscules dans le motif'
+        assert trouveChaine('ToTo', 'OtOtO va à la plage',verifCasse = True)==False, 'Que dire ?'
+        ```
 
-```python
-def trouveChaine(motif,texte,verifCasse=False) :
-    if verifCasse==True :
-        if motif in texte :            
-            return True
-        else :
-            return False
-    else :
-        if  motif.lower() in texte.lower() :
-            return True
-        else :
-            return False
-        
-```
+    === "Solution"
 
+        ```python
+        def trouveChaine(motif,texte,verifCasse=False) :
+            if verifCasse==True :
+                return motif in texte
+            else :
+                return  motif.lower() in texte.lower() :
+        ```
 
-```python
-### Cette cellule est une cellule vous permettant de tester votre fonction
-##les assertions suivantes sont les même que précédemment
-assert trouveChaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
-assert trouveChaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
-assert trouveChaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
-assert trouveChaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
-assert trouveChaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
-# Mais on rajoute celles-ci :
-assert trouveChaine('Toto', 'Toto va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
-assert trouveChaine('TOTO', 'TOTO va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
-assert trouveChaine('Totos', 'Toto va à la plage',verifCasse = True)==False, 'Chaine non présente trouvée'
-assert trouveChaine('TOTO', 'Toto va à la plage',verifCasse = True)==False, 'Problème de majuscules dans le motif'
-assert trouveChaine('toto', 'TOTO va à la plage',verifCasse = True)==False, 'Problème de minuscules dans le motif'
-assert trouveChaine('ToTo', 'OtOtO va à la plage',verifCasse = True)==False, 'Que dire ?'
-```
 
-<h2><font color="blue">II : Portée des variables  </font></h2>
 
-Au sein d'un même programme, ou bien d'un même notebook, les variables définies n'ont pas la même **portée**. La **portée d'une variable**, c'est l'espace dans lequel est défini cette variable.
+## Portée des variables  
 
-Essayons les deux cellules suivantes :
+Au sein d'un même programme, les variables définies n'ont pas systématiquement la même **portée**. La **portée d'une variable**, c'est l'espace des objets/noms dans lequel est défini cette variable.
 
+En utilisant le site [Python Tutor](https://pythontutor.com/){: target="_blank"}, nous allons essayer de comprendre cette notion de portée des variables.
 
-```python
-gvar = 8
-def f() :
-    print(f"Dans la fonction, la variable gvar vaut {gvar}")
+### Variables globales
 
-f()
-print(f"En dehors de la fonction, la variable gvar vaut {gvar}")
-```
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%20%3D%208%0Adef%20f%28%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-    Dans la fonction, la variable gvar vaut 8
-    En dehors de la fonction, la variable gvar vaut 8
+Dans l'exemple ci-dessus, la variable `gvar` est définie dans {==**l'espace de nom global**==} (*global frame*). Elle est accessible en lecture depuis l'intérieur de la fonction `f`. On parlera alors de {==**variable globale**==}.
 
+### Variables locales
 
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20gvar2%20%3D%208%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-```python
-def f() :
-    gvar2 = 8
-    print(f"Dans la fonction, la variable gvar2 vaut {gvar2}")
+Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des noms associé à la fonction `f`, et qui est crée {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminé (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `gvar2` puisqu'elle a disparue. `gvar2` est une {==**variable locale**==} à la fonction `f`.
 
-f()
-print(f"En dehors de la fonction, la variable gvar2 vaut {gvar2}")
-```
+!!! warning "Changer la valeur d'une variable globale"
 
-    Dans la fonction, la variable gvar2 vaut 8
+    Regardons maintenant le code suivant :
 
+    <iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%3D%2010%0Adef%20f%28%29%20%3A%0A%20%20%20%20gvar%3Dgvar%2B2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
+    Le code précédent déclenche une erreur `UnboundLocalError` en ligne 3. Cela signifie que l'interpréteur Python ne peut pas effectuer la ligne `gvar=gvar+2` car il cherche une variable `gvar` qu'il peut modifier. Or {==**une variable définie hors d'une fonction ne peut pas être modifiée par celle-ci**==}.
 
-    ---------------------------------------------------------------------------
+    Il est par contre possible de travailler sur {==**une copie**==} de la variable souhaitée (*uniquement dans le cas des types primitifs `int`, `float`, `str`...), en utilisant une fonction ayant un argument. Il faudra par conséquent **retourner la valeur changée** pour qu'elle soit effective. Par exemple comparez les deux scripts suivants :
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-6-9a775bf5b042> in <module>
-          4 
-          5 f()
-    ----> 6 print(f"En dehors de la fonction, la variable gvar2 vaut {gvar2}")
-    
+    === "Code incorrect"
 
-    NameError: name 'gvar2' is not defined
+        <iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28a%29%20%3A%0A%20%20%20%20%23print%28f%22Dans%20la%20fonction,%20avant%20modification,%20a%3D%7Ba%7D%22%29%0A%20%20%20%20a%3Da*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20a%3D%7Ba%7D%22%29%0Af%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
+        Ici on constate qu'en fait il y a deux variables `a` :
 
-* Dans le premier exemple, la variable `gvar` est définie **en dehors de la fonction**. Sa valeur est cependant accessible **dans la fonction**.
-* Dans le deuxième exemple, la variable `gvar2` est définie uniquement **dans la fonction**. sa valeur est **inaccessible en dehors de cette fonction**. On voit une erreur `NameError` apparaître.
+        * une en dehors de la fonction, qui n'est pas modifiée. C'est une variable **globale**.
+        * une à l'intérieur de la fonction, qui peut être modifiée, mais qui ne change pas la variable globale. C'est une variable **locale** à la fonction.
 
-Regardons maintenant le code suivant :
+        La fonction `f` ne renvoyant aucune donnée, la variable locale `a` est détruite après la fin de la fonction `f`. 
 
+    === "Code correct"
 
-```python
-gvar= 10
-def f() :
-    gvar=gvar+2
-    print(f"Dans la fonction, la variable gvar vaut {gvar}")
+        <iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28x%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20avant%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20x%3Dx*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20return%20x%0Aa%3Df%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-f()
-print(f"En dehors de la fonction, la variable gvar vaut {gvar}")
-```
 
+        Ici on a rajouté deux lignes :
 
-    ---------------------------------------------------------------------------
-
-    UnboundLocalError                         Traceback (most recent call last)
-
-    <ipython-input-9-836b31058de9> in <module>
-          4     print(f"Dans la fonction, la variable gvar vaut {gvar}")
-          5 
-    ----> 6 f()
-          7 print(f"En dehors de la fonction, la variable gvar vaut {gvar}")
-
-
-    <ipython-input-9-836b31058de9> in f()
-          1 gvar= 10
-          2 def f() :
-    ----> 3     gvar=gvar+2
-          4     print(f"Dans la fonction, la variable gvar vaut {gvar}")
-          5 
-
-
-    UnboundLocalError: local variable 'gvar' referenced before assignment
-
-
-Le déclenchement de la cellule précédente déclenche une erreur `UnboundLocalError` en ligne 3. Cela signifie que l'interpréteur Python ne peut pas effectuer la ligne `gvar=gvar+2` car il cherche une variable `gvar` qu'il peut modifier. Or une variable définie hors d'une fonction **ne peut pas être modifiée par celle-ci**.
-Par contre on peut passer la référence à cette variable par l'intermédiaire d'un argument. Il faudra alors *retourner la valeur changée* pour qu'elle soit effective. Par exemple comparez les deux scripts suivants :
-
-
-```python
-a=10
-print(f"Avant la fonction, a={a}")
-def f(a) :
-    #print(f"Dans la fonction, avant modification, a={a}")
-    a=a*2
-    print(f"Dans la fonction, après modification, a={a}")
-f(a)
-print(f"Après la fonction, a={a}")
-```
-
-    Avant la fonction, a=10
-    Dans la fonction, après modification, a=20
-    Après la fonction, a=10
-
-
-Ici on constate qu'en fait il y a deux variables `a` :
-* une en dehors de la fonction, qui n'est pas modifiée. C'est une variable **globale**.
-* une à l'intérieur de la fonction, qui peut être modifiée, mais qui ne change pas la variable globale. C'est une variable **locale** à la fonction.
-
-
-```python
-a=10
-print(f"Avant la fonction, a={a}")
-def f(x) :
-    print(f"Dans la fonction, avant modification, x={x}")
-    x=x*2
-    print(f"Dans la fonction, après modification, x={x}")
-    return x
-a=f(a)
-print(f"Après la fonction, a={a}")
-```
-
-    Avant la fonction, a=10
-    Dans la fonction, avant modification, x=10
-    Dans la fonction, après modification, x=20
-    Après la fonction, a=20
-
-
-
-```python
-x=12
-x=f(x)
-x
-```
-
-    Dans la fonction, avant modification, x=12
-    Dans la fonction, après modification, x=24
-
-
-
-
-
-    24
-
-
-
-Ici on a rajouté deux lignes :
-* `return a` qui permet à la fonction de renvoyer la valeur modifiée ;
-* `a=f(a)` La valeur renvoyée par l'appel `f(a)` est affecté au nom de variable `a`. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée à l'extérieur.
+        * `return a` qui permet à la fonction de renvoyer la valeur modifiée ;
+        * `a = f(a)` La valeur renvoyée par l'appel `f(a)` est affecté au nom de variable `a`. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée sur la variable globale `a`.
 
 
 <h2><font color="blue">III : Prototypage des fonctions : les tests unitaires  </font></h2>
