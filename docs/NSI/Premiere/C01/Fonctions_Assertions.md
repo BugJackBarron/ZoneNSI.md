@@ -100,24 +100,24 @@ Pour notre exemple :
 
 La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet *callable* ( "appelable"). Le bloc de code est ensuite défini grâce à une indentation en dessous du nom, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
 
-On fait appel  à cette fonction en appelant le nom `askUserInt()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
+On fait appel  à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
 
 !!! warning "Oubli des parenthèses"
 
     Dans le cas d'un oubli des parenthèses lorsqu'on appelle une fonction, on obtient dans le terminal le message suivant :
 
     ```` python
-    >>> askUserInt
-    <function askUserInt at 0xe8c1a0>
+    >>> ask_user_int
+    <function ask_user_int at 0xe8c1a0>
     ````
 
-    Qui signifie simplement que le nom `askUserInt` fait référence à une fonction dont l'adresse mémoire est donnée sous forme hexadécimale.
+    Qui signifie simplement que le nom `ask_user_int` fait référence à une fonction dont l'adresse mémoire est donnée sous forme hexadécimale.
 
-    Notez que `askUserInt` est juste un nom, l'objet correspondant est stocké dans l'espace des objets. On peut donc écrire les choses suivantes :
+    Notez que `ask_user_int` est juste un nom, l'objet correspondant est stocké dans l'espace des objets. On peut donc écrire les choses suivantes :
 
     ```python
-    >>> demandeEntier=askUserInt
-    >>> demandeEntier()
+    >>> demande_entier=ask_user_int
+    >>> demande_entier()
     ```
 
 
@@ -126,7 +126,7 @@ On fait appel  à cette fonction en appelant le nom `askUserInt()`, ce qui décl
 Comme tout objet, la valeur de retour d'une fonction doit elle même être stockée dans une variableafin de ne pas être ramassée par le *garbage collector* :
 
 ```python
->>> entier=askUserInt()
+>>> entier=ask_user_int()
 >>> print(f'La racine carrée du nombre {entier} est {entier**(1/2)}')
 ```
 
@@ -166,17 +166,17 @@ Ce qui a l'avantage d'être vraiment vraiment plus clair.
 
 ### Augmenter la capacité des fonctions : les arguments obligatoires 
 
-L'exemple de la fonction `askUserInt` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables.
+L'exemple de la fonction `ask_user_int` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables.
 
 Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**arguments**==} qui seront des variables **initialisées à certaines valeurs lors de l'appel à la fonction** :
 
-{{ IDEv('askUserIntV3') }}
+{{ IDEv('ask_user_intV3') }}
 
 Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :
 
 ```python
->>> askUserInt(1,100)
->>> askUserInt(-10,10)
+>>> ask_user_int(1,100)
+>>> ask_user_int(-10,10)
 ```
 
 !!! warning "Des erreurs classiques" 
@@ -185,37 +185,37 @@ Une fois la fonction définie, on peut l'appeler en précisant les valeurs des d
     === "1"
 
         ```python
-        askUserInt()
+        ask_user_int()
         ```
 
     === "2"
 
         ```python
-        askUserInt(45)
+        ask_user_int(45)
         ```
 
     === "3"
 
         ```python
-        askUserInt(0.5,2.5)
+        ask_user_int(0.5,2.5)
         ```
 
     === "4"
 
         ```python
-        askUserInt(30,10)
+        ask_user_int(30,10)
         ```
 
 !!! question "Application 3"
 
 
     === "Enoncé"
-        Créer une fonction `tableMulti` qui prend un argument entier, le multiplicande, et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
+        Créer une fonction `table_multi` qui prend un argument entier, le multiplicande, et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
 
     === "Solution"
 
         ```` python
-        def tableMulti(nb) :
+        def table_multi(nb) :
             table = ''
             for i in range(11) :
                 table += f'{nb}}x{i} = {nb*i} \n'
@@ -226,20 +226,20 @@ Une fois la fonction définie, on peut l'appeler en précisant les valeurs des d
 !!! question "Application 4 : motif dans une chaine"
 
     === "Enoncé"
-        Créer une fonction `trouveChaine`qui prend deux arguments, un `motif` ( une chaine de caractères )  et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
+        Créer une fonction `trouve_chaine`qui prend deux arguments, un `motif` ( une chaine de caractères )  et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
 
         ```python
-        assert trouveChaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
-        assert trouveChaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
-        assert trouveChaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
-        assert trouveChaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
-        assert trouveChaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
+        assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+        assert trouve_chaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
+        assert trouve_chaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
+        assert trouve_chaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
+        assert trouve_chaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
         ```
 
     === "Solution"
 
         ```` python
-        def trouveChaine(motif,texte) :
+        def trouve_chaine(motif,texte) :
             return motif.lower() in texte;lower()
         ````
 
@@ -247,11 +247,11 @@ Une fois la fonction définie, on peut l'appeler en précisant les valeurs des d
 
 ### Augmenter la capacité des fonctions : les arguments optionnels 
 
-Notre fonction `askUserInt` commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
+Notre fonction `ask_user_int` commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
 C'est tout à fait possible en Python, grâce aux **arguments optionnels**. Il s'agit d'arguments dont le nom est donné dans la fonction, mais avec **une valeur par défaut**. Ainsi :
 
 
-{{ IDEv('askUserIntV4') }}
+{{ IDEv('ask_user_intV4') }}
 
 Ainsi, la fonction ci-dessus posssède trois arguments :
 
@@ -266,31 +266,31 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
 === "1"
 
     ```python
-    askUserInt(0,10)
+    ask_user_int(0,10)
     ```
 
 === "2"
 
     ```python
-    askUserInt(0,10,prenom='Toto')
+    ask_user_int(0,10,prenom='Toto')
     ```
 
 === "3"
 
     ```python
-    askUserInt(0,10,prenom='foo')
+    ask_user_int(0,10,prenom='foo')
     ```
 {{ terminal() }}
 
 !!! question "Application 5 : arguments optionnels"
 
     === "Enoncé"
-        Compléter la fonction `tableMulti` afin qu'elle utilise deux arguments optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.
+        Compléter la fonction `table_multi` afin qu'elle utilise deux arguments optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.
 
     === "Solution"
 
         ``` python
-        def tableMulti(nb, depart = 0, fin =10) :
+        def table_multi(nb, depart = 0, fin =10) :
             table = ''
             for i in range(depart, fin+1) :
                 table += f'{nb}}x{i} = {nb*i} \n'
@@ -301,34 +301,82 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
 
     === "Enoncé"
 
-        Réécrire la fonction `trouveChaine` afin qu'elle utilise un *argument booléen optionnel `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`. Vous pouvez utiliser les tests ci-dessous :
+        Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *argument booléen optionnel `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`. Vous pouvez utiliser les tests ci-dessous :
 
         ```python
         ### Cette cellule est une cellule vous permettant de tester votre fonction
         ##les assertions suivantes sont les même que précédemment
-        assert trouveChaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
-        assert trouveChaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
-        assert trouveChaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
-        assert trouveChaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
-        assert trouveChaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
+        assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+        assert trouve_chaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
+        assert trouve_chaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
+        assert trouve_chaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
+        assert trouve_chaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
         # Mais on rajoute celles-ci :
-        assert trouveChaine('Toto', 'Toto va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
-        assert trouveChaine('TOTO', 'TOTO va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
-        assert trouveChaine('Totos', 'Toto va à la plage',verifCasse = True)==False, 'Chaine non présente trouvée'
-        assert trouveChaine('TOTO', 'Toto va à la plage',verifCasse = True)==False, 'Problème de majuscules dans le motif'
-        assert trouveChaine('toto', 'TOTO va à la plage',verifCasse = True)==False, 'Problème de minuscules dans le motif'
-        assert trouveChaine('ToTo', 'OtOtO va à la plage',verifCasse = True)==False, 'Que dire ?'
+        assert trouve_chaine('Toto', 'Toto va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
+        assert trouve_chaine('TOTO', 'TOTO va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
+        assert trouve_chaine('Totos', 'Toto va à la plage',verifCasse = True)==False, 'Chaine non présente trouvée'
+        assert trouve_chaine('TOTO', 'Toto va à la plage',verifCasse = True)==False, 'Problème de majuscules dans le motif'
+        assert trouve_chaine('toto', 'TOTO va à la plage',verifCasse = True)==False, 'Problème de minuscules dans le motif'
+        assert trouve_chaine('ToTo', 'OtOtO va à la plage',verifCasse = True)==False, 'Que dire ?'
         ```
 
     === "Solution"
 
         ```python
-        def trouveChaine(motif,texte,verifCasse=False) :
+        def trouve_chaine(motif,texte,verifCasse=False) :
             if verifCasse==True :
                 return motif in texte
             else :
                 return  motif.lower() in texte.lower() :
         ```
+
+
+### Commenter son code : les docstrings
+
+!!! tips "Commenter son code"
+
+    Une bonne habitude, à prendre immédiatement, etst celle de commenter son code, c'est-à-dire d'expliquer l'impolémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont **des lignes non-lues par l'interpréteur Python**, commençant par le symbole *dièse* `#`.
+
+    Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un cvode que vous avez écrit vous-même quelques semaines voir quelques jours auparavant !
+
+    Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... 
+
+
+Les concepteur·trice·s de Python ont crée une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction `help`.
+
+Testez par exemple la commande `help(print)` dans la console suivante, puis essayez avec d'autres objets de Python.
+
+{{ terminal() }}
+
+La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring**==}, littéralement *chaine de documentation*, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une **docstring** est construite comme une chaîne de caractères *non nommée* présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :
+
+{{ IDEv('docstring1') }}
+
+
+La fonction `somme` contient donc une **docstring** - introduite par trois guillemets ( pour permettre les sauts de lignes ). Celle-ci décrit l'effet de la fonction, de manière exacte.
+
+On peut alors accéder à la **docstring** d'une fonction en utilisant la fonction *built-in* `help` :
+
+Testez par exemple ``help(somme)`.
+  
+
+!!! tips "Les docstrings"
+    {==**Une docstring est essentielle pour comprendre l'utilité d'une fonction ! Vous devrez en utiliser le plus souvent possible !**==}
+
+
+!!! tips "Typage des arguments"
+
+    Une possibilité offerte depuis la version 3.7 de Python est de présenter dans la fonction le type des arguments attendus, ainsi que le type du retour. On appelle ceci les {==**type hints**==} (*indices de types) Ces indications sont précieuses pour l'utilisateur·trice de cette fonction.
+
+    La fonction `trouve_chaine` peut être iomplémentée ainsi :
+
+    ```python
+        def trouve_chaine(motif : str, texte : str, verifCasse : bool=False) -> bool:
+            if verifCasse==True :
+                return motif in texte
+            else :
+                return  motif.lower() in texte.lower() :
+    ```
 
 
 
@@ -383,387 +431,75 @@ Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des nom
         * `a = f(a)` La valeur renvoyée par l'appel `f(a)` est affecté au nom de variable `a`. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée sur la variable globale `a`.
 
 
-<h2><font color="blue">III : Prototypage des fonctions : les tests unitaires  </font></h2>
+## Tests, assertions et module Doctest
 
-<h3><font color="green">a : Réfléchir avant d'agir : ecrire les tests avant la fonction </font></h3>
+### Réfléchir avant d'agir : écrire les tests avant la fonction
 
-Lorqsu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les *cas tordus* ou limites.
-Par exemple, on pourrait considérer une fonction `coefficientDirecteur` qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points $A$ et $B$.
+Lorqsu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les *cas extrêmes* ou *cas spécifiques*.
+
+Par exemple, on pourrait considérer une fonction `coefficient_directeur` qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points $A$ et $B$.
 Je rappelle que le calcul du coefficient directeur de la droite $(AB)$ se fait par l'intermédiare de la formule :
+
 $$m = \frac{y_B-y_A}{x_B-x_A}$$
 
-Ainsi nous aimerions que la fonction travaille avec 4 arguments : `xA,yA,xB,yB`, qu'elle renvoie le coefficient directeur de $(AB)$ quand il y en a un, et qu'elle renvoie `None` quand il n'y en a pas ( dans quels cas n'y-a-t'il pas de coefficient directeur ? )
-
+Ainsi nous aimerions que la fonction travaille avec 4 arguments de type entiers  `xA, yA, xB, yB`, qu'elle renvoie le coefficient directeur de $(AB)$ sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie `None` quand il n'existe pas. On, définit ici ce qu'on appelle une {==**interface**==} de la fonction :
 
 ```python
-def coeffDirecteur(xA,yA,xB,yB) :
-    return (yB-yA)/(xB-xA)
+def coefficient_directeur(xA : int, yA : int, xB : int, yB : int) -> float :
+    """ Renvoie le coefficient directeur de la droite (AB) telle que :
+        A (xA ; yA) et B(xB ; yB), et les coordonnées de A ety B sont entières.
+        Dans le cas ou le coefficient directeur n'existe pas, renvoie None
+    """
+    ... 
+    
 ```
 
 
-```python
-coeffDirecteur(3,6,3,6)
-```
+On souhaite donc **prévoir en avance** différents cas de fonctionnement de la fonction, et on aimerait vérifier que les calculs effectués par la fonction correspondent bien à ces cas.
+
+Par exemple, nous aimerions que la fonction vérifie le test suivant :
+
+```` python
+>>> coefficient_directeur(2, 4, 3, 7)
+3.0
+````
 
 
-    ---------------------------------------------------------------------------
 
-    ZeroDivisionError                         Traceback (most recent call last)
+!!! question "Ecrire des tests"
 
-    <ipython-input-22-fc283e5e9829> in <module>
-    ----> 1 coeffDirecteur(3,6,3,6)
-    
+    === "Enoncé"
 
-    <ipython-input-17-7e9f03d0af29> in coeffDirecteur(xA, yA, xB, yB)
-          1 def coeffDirecteur(xA,yA,xB,yB) :
-    ----> 2     return (yB-yA)/(xB-xA)
-    
+        1. Ecrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les tyypes fournis en argument soient bien des entiers.
+        2. Compléter la fonction `coefficient_directeur` afin qu'elle remplisse le rôle qui lui est demandé.
 
-    ZeroDivisionError: division by zero
+    === "Solution"
+
+        A venir !
 
 
-On peut donc **prévoir en avance** différents cas, et on aimerai vérifier que les calculs faits correspondent à ces cas - sans pour autant avoir à tout retaper en permanence.
 
-Pyhton étant *user friendly*, il permet au programmeur de tester automatiquement ces différents cas, grâce au module `doctest`.
+#### Tester avec des assertions
 
+Vous avez vu plus haut dans ce document des {==**assertions**==} sous la forme :
 
-C'est pourquoi il est **fortement conseillé** d'utiliser le module `doctest` de Python
+```` python
+ assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+ ````
+La fonction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à la plage')==True`.  Il peut alors se produire deux cas :
 
-<h3><font color="green">b : La docstring d'une fonction</font></h3>
-
-A chaque fonction, on peut associer une **docstring**, littéralement *chaine de documentation*, qui est une chaine de caractères présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels :
-
-
-```python
-def somme(a,b) :
-    """ fonction qui renvoie la somme des arguments a et b, 
-    en vérifiant si a et b sont bien du même type, 
-    et qui renvoie None sinon"""
-    if type(a) == type(b) :
-        return a+b
-    else :
-        return None
-```
+* soit le booléen est `True`, auquel cas l'interpréteur passe à la ligne suivante ;
+* soit le booléen est `False`, auquel cas l'interpréteur arrête le code et affiche la chaine de caractère passée en second argument, ici `'Meme casse pas trouvée'`.
 
 
-```python
-print(somme(4,"toto"))
-```
+J'utiliserai souvent les assertions dans les TP notés sur la plateforme Capytale, certaines vous seront fournies, d'autres seront cachées.
 
-    None
+#### Tester avec le module doctest
 
+Pyhton étant *user friendly*, il permet au programmeur de tester automatiquement, grâce au module `doctest`.
 
-La fonction `somme` contient donc une **docstring** - introduite par trois guillemets ( pour permettre les sauts de lignes ). Celle-ci décrit l'effet de la fonction, de manière exacte.
+Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalité de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :
 
-On peut accéder à la **docstring** d'une fonction en utilisant la fonction *built-in* `help` :
-
-
-```python
-help(somme)
-```
-
-    Help on function somme in module __main__:
-    
-    somme(a, b)
-        fonction qui renvoie la somme des arguments a et b, 
-        en vérifiant si a et b sont bien du même type, 
-        et qui renvoie None sinon
-    
-
-
-On peut aussi l'appeler sur des fonctions *built-in* :
-
-
-```python
-help(int)
-```
-
-    Help on class int in module builtins:
-    
-    class int(object)
-     |  int([x]) -> integer
-     |  int(x, base=10) -> integer
-     |  
-     |  Convert a number or string to an integer, or return 0 if no arguments
-     |  are given.  If x is a number, return x.__int__().  For floating point
-     |  numbers, this truncates towards zero.
-     |  
-     |  If x is not a number or if base is given, then x must be a string,
-     |  bytes, or bytearray instance representing an integer literal in the
-     |  given base.  The literal can be preceded by '+' or '-' and be surrounded
-     |  by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-     |  Base 0 means to interpret the base from the string as an integer literal.
-     |  >>> int('0b100', base=0)
-     |  4
-     |  
-     |  Methods defined here:
-     |  
-     |  __abs__(self, /)
-     |      abs(self)
-     |  
-     |  __add__(self, value, /)
-     |      Return self+value.
-     |  
-     |  __and__(self, value, /)
-     |      Return self&value.
-     |  
-     |  __bool__(self, /)
-     |      self != 0
-     |  
-     |  __ceil__(...)
-     |      Ceiling of an Integral returns itself.
-     |  
-     |  __divmod__(self, value, /)
-     |      Return divmod(self, value).
-     |  
-     |  __eq__(self, value, /)
-     |      Return self==value.
-     |  
-     |  __float__(self, /)
-     |      float(self)
-     |  
-     |  __floor__(...)
-     |      Flooring an Integral returns itself.
-     |  
-     |  __floordiv__(self, value, /)
-     |      Return self//value.
-     |  
-     |  __format__(self, format_spec, /)
-     |      Default object formatter.
-     |  
-     |  __ge__(self, value, /)
-     |      Return self>=value.
-     |  
-     |  __getattribute__(self, name, /)
-     |      Return getattr(self, name).
-     |  
-     |  __getnewargs__(self, /)
-     |  
-     |  __gt__(self, value, /)
-     |      Return self>value.
-     |  
-     |  __hash__(self, /)
-     |      Return hash(self).
-     |  
-     |  __index__(self, /)
-     |      Return self converted to an integer, if self is suitable for use as an index into a list.
-     |  
-     |  __int__(self, /)
-     |      int(self)
-     |  
-     |  __invert__(self, /)
-     |      ~self
-     |  
-     |  __le__(self, value, /)
-     |      Return self<=value.
-     |  
-     |  __lshift__(self, value, /)
-     |      Return self<<value.
-     |  
-     |  __lt__(self, value, /)
-     |      Return self<value.
-     |  
-     |  __mod__(self, value, /)
-     |      Return self%value.
-     |  
-     |  __mul__(self, value, /)
-     |      Return self*value.
-     |  
-     |  __ne__(self, value, /)
-     |      Return self!=value.
-     |  
-     |  __neg__(self, /)
-     |      -self
-     |  
-     |  __or__(self, value, /)
-     |      Return self|value.
-     |  
-     |  __pos__(self, /)
-     |      +self
-     |  
-     |  __pow__(self, value, mod=None, /)
-     |      Return pow(self, value, mod).
-     |  
-     |  __radd__(self, value, /)
-     |      Return value+self.
-     |  
-     |  __rand__(self, value, /)
-     |      Return value&self.
-     |  
-     |  __rdivmod__(self, value, /)
-     |      Return divmod(value, self).
-     |  
-     |  __repr__(self, /)
-     |      Return repr(self).
-     |  
-     |  __rfloordiv__(self, value, /)
-     |      Return value//self.
-     |  
-     |  __rlshift__(self, value, /)
-     |      Return value<<self.
-     |  
-     |  __rmod__(self, value, /)
-     |      Return value%self.
-     |  
-     |  __rmul__(self, value, /)
-     |      Return value*self.
-     |  
-     |  __ror__(self, value, /)
-     |      Return value|self.
-     |  
-     |  __round__(...)
-     |      Rounding an Integral returns itself.
-     |      Rounding with an ndigits argument also returns an integer.
-     |  
-     |  __rpow__(self, value, mod=None, /)
-     |      Return pow(value, self, mod).
-     |  
-     |  __rrshift__(self, value, /)
-     |      Return value>>self.
-     |  
-     |  __rshift__(self, value, /)
-     |      Return self>>value.
-     |  
-     |  __rsub__(self, value, /)
-     |      Return value-self.
-     |  
-     |  __rtruediv__(self, value, /)
-     |      Return value/self.
-     |  
-     |  __rxor__(self, value, /)
-     |      Return value^self.
-     |  
-     |  __sizeof__(self, /)
-     |      Returns size in memory, in bytes.
-     |  
-     |  __str__(self, /)
-     |      Return str(self).
-     |  
-     |  __sub__(self, value, /)
-     |      Return self-value.
-     |  
-     |  __truediv__(self, value, /)
-     |      Return self/value.
-     |  
-     |  __trunc__(...)
-     |      Truncating an Integral returns itself.
-     |  
-     |  __xor__(self, value, /)
-     |      Return self^value.
-     |  
-     |  bit_length(self, /)
-     |      Number of bits necessary to represent self in binary.
-     |      
-     |      >>> bin(37)
-     |      '0b100101'
-     |      >>> (37).bit_length()
-     |      6
-     |  
-     |  conjugate(...)
-     |      Returns self, the complex conjugate of any int.
-     |  
-     |  to_bytes(self, /, length, byteorder, *, signed=False)
-     |      Return an array of bytes representing an integer.
-     |      
-     |      length
-     |        Length of bytes object to use.  An OverflowError is raised if the
-     |        integer is not representable with the given number of bytes.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is 'big',
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is 'little', the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder' as the byte order value.
-     |      signed
-     |        Determines whether two's complement is used to represent the integer.
-     |        If signed is False and a negative integer is given, an OverflowError
-     |        is raised.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Class methods defined here:
-     |  
-     |  from_bytes(bytes, byteorder, *, signed=False) from builtins.type
-     |      Return the integer represented by the given array of bytes.
-     |      
-     |      bytes
-     |        Holds the array of bytes to convert.  The argument must either
-     |        support the buffer protocol or be an iterable object producing bytes.
-     |        Bytes and bytearray are examples of built-in objects that support the
-     |        buffer protocol.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is 'big',
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is 'little', the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder' as the byte order value.
-     |      signed
-     |        Indicates whether two's complement is used to represent the integer.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods defined here:
-     |  
-     |  __new__(*args, **kwargs) from builtins.type
-     |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors defined here:
-     |  
-     |  denominator
-     |      the denominator of a rational number in lowest terms
-     |  
-     |  imag
-     |      the imaginary part of a complex number
-     |  
-     |  numerator
-     |      the numerator of a rational number in lowest terms
-     |  
-     |  real
-     |      the real part of a complex number
-    
-
-
-Voir sur elle-même...
-
-
-```python
-help(help)
-```
-
-    Help on _Helper in module _sitebuiltins object:
-    
-    class _Helper(builtins.object)
-     |  Define the builtin 'help'.
-     |  
-     |  This is a wrapper around pydoc.help that provides a helpful message
-     |  when 'help' is typed at the Python interactive prompt.
-     |  
-     |  Calling help() at the Python prompt starts an interactive help session.
-     |  Calling help(thing) prints help for the python object 'thing'.
-     |  
-     |  Methods defined here:
-     |  
-     |  __call__(self, *args, **kwds)
-     |      Call self as a function.
-     |  
-     |  __repr__(self)
-     |      Return repr(self).
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors defined here:
-     |  
-     |  __dict__
-     |      dictionary for instance variables (if defined)
-     |  
-     |  __weakref__
-     |      list of weak references to the object (if defined)
-    
-
-
-**Une docstring est essentielle pour comprendre l'utilité d'une fonction ! Vous devrez en utiliser le plus souvent possible !**
-
-<h3><font color="green">c : Le module doctest</font></h3>
-
-Un module Python est un fichier ( ou un ensemble de fichiers ) qui comportent des objets et des fonctions qui peuvent être ajoutées aux fonctionnalité de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :
 * le module *math*, qui contient beaucoup de fonctions mathématiques ;
 * le module *turtle*, qui permet de dessiner géométriquement ;
 * le module *pygame*, qui est un module permettant de gérer les différents éléments d'un jeu vidéo ;
@@ -771,217 +507,185 @@ Un module Python est un fichier ( ou un ensemble de fichiers ) qui comportent de
 * le module *flask*, qui permet de créer une application web
 * ...
 
-Le module *doctest*, lui, permet d'intégrer à la **docstring** un ensemble de tests qui sont vérifiés par l'appel de la fonction **testmod** du module *doctest*.
-Par exemple :
+Un module doit être chargé en mémoire une fois (de préférence au début du code), par l'intermédiaire de la commande :
 
+```` python
+import nom_du_module
+````
+??? warning "Mais non, ca ne se fait pas que comme ça !"
+    Oui, vous avez raison, mais ce n'est pas le cas de ce cours, nous verrons l'import de modules plus tard dans l'année...
+
+Le module *doctest*, lui, permet d'intégrer à la **docstring un ensemble de tests** qui sont vérifiés par l'appel de la fonction **testmod** du module *doctest*.
+
+Par exemple, copiez-collez le code suivant dans un fichier :
 
 ```python
-import doctest # On charge en mémoire le module doctest( à faire une seule fois par programme, ou par notebook )
-def times2(n) :
+import doctest # On charge en mémoire le module doctest
+
+# Zone de déclaration des fonctions
+
+def times2(n : object) -> object:
     """
-    Fonction qui multiplie par 2
+    Fonction qui multiplie par 2, selon le type d'objet
+
 >>> times2(4)
 8
->>> times2(5)
-10
+>>> times2(5.4)
+10.8
 >>> times2('a')
 'aa'
 """
     return 2*n
 
-doctest.testmod()
 
+# Zone du script global
+
+doctest.testmod() # Lance les tests des fonctions déclarées
 ```
-
-
-
-
-    TestResults(failed=0, attempted=3)
 
 
 
 L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents dans la doctsring, et vérifie que les résultats de la fonctions correspondent à ceux fournit dans la docstring.
 
+!!! question "Application 7 : Ajouter une fonction et des tests"
 
-```python
-def times3(n) :
-    """
-    Fonction qui multiplie par 3
->>> times3(10)
-30
->>> times3(5)
-15
->>> times3('a')
-'aaa'
-"""
-    return 3*n
+    === "Enoncé"
 
+        Créez une fonction `times3` qui multiplie un objet par 3, en écrivant les tests correspondants.
+        
+    === "Solution"
 
+        A venir !
 
-doctest.testmod()
-```
+**Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.**
 
+## Exercices  
 
-
-
-    TestResults(failed=0, attempted=6)
-
-
-
-L'appel à la fonction `doctest.testmod()` re-teste une nouvelle fois toutes les docstring des fonctions. Icic il y a 6 tests, 3 pour `times2` et 3 pour `times3`, dont un à échoué : celui pour `times3(5)` qui ne donne pas le résultat attendu ( à savoir 12 ).
-
-Un échec des tests amène donc deux problèmes :
-* soit la fonction ne fonctionne pas comme voulue ;
-* soit les exemples proposés sont faux.
-
-dans tous les cas, **seule la constitution d'un ensemble d'exemples bien choisis** permettra de tester efficacement une fonction - si les tests sont imprécis ou incomplets, la fonction risuqe de poser problème dans certains cas.
-
-**Je me servirai des doctests ou bien des assertions vues plus haut dans ce notebook pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.**
-
-<h2><font color="blue">IV : Exercices  </font></h2>
-
-*Dans tous les exercices suivants, on supposera que l'utilisateur de la fonction fournit des arguments duy bon type*
+*Dans tous les exercices suivants, on supposera que l'utilisateur·trice de la fonction fournit des arguments du bon type*
 
 **Pour tester vos fonctions avec les jeux fournis, n'oubliez pas :**
-1. d'importer le module avec `import doctest`.
-2. de lancer les tests avec `doctest.testmod()`
+
+* d'importer le module avec `import doctest` ;
+* de lancer les tests avec `doctest.testmod()` ;
+
+Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.
 
 
 1. Ecrire une fonction qui renvoie le maximum de deux nombres donnés :
 
-
-```python
-def maxi(a,b ) :
-    """
-    Fonction qui renvoie le maximum de deux nombres
->>> maxi(12,3)
-12
->>> maxi(-5,9)
-9
->>> maxi(6,6)
-6
-    """
-    
-```
+    ```python
+    def maxi(a,b ) :
+        """
+        Fonction qui renvoie le maximum de deux nombres
+    >>> maxi(12,3)
+    12
+    >>> maxi(-5,9)
+    9
+    >>> maxi(6,6)
+    6
+        """
+        
+    ```
 
 2. Ecrire une fonction qui renvoie le minimum de deux nombres donnés :
 
 
-
-```python
-def mini(a,b) :
-    """
-    Fonction qui renvoie le maximum de deux nombres
->>> mini(12,3)
-3
->>> mini(-5,9)
--5
->>> mini(6,6)
-6
-    """
-    
-```
+    ```python
+    def mini(a,b) :
+        """
+        Fonction qui renvoie le maximum de deux nombres
+    >>> mini(12,3)
+    3
+    >>> mini(-5,9)
+    -5
+    >>> mini(6,6)
+    6
+        """
+        
+    ```
 
 3. Ecrire une fonction qui renvoie le maximum de trois nombres donnés :
 
-
-```python
-def maxi3(a,b,c):
-    """
-     Fonction qui renvoie le maximum de trois nombres
->>> maxi3(5,12,3)
-12
->>> maxi3(-5,-7,2)
-2
->>> maxi3(6,6,6)
-6
->>> maxi3(5,7,7)
-7
-    """
-```
+    ```python
+    def maxi3(a,b,c):
+        """
+        Fonction qui renvoie le maximum de trois nombres
+    >>> maxi3(5,12,3)
+    12
+    >>> maxi3(-5,-7,2)
+    2
+    >>> maxi3(6,6,6)
+    6
+    >>> maxi3(5,7,7)
+    7
+        """
+    ```
 
 4. Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres donnés
 
-
-```python
-def intermediaire(a,b,c) :
-      """
-    Fonction qui renvoie le nombre intermédiaire deux nombres
->>> intermediaire(12,8,3)
-8
->>> intermediaire(-5,0,9)
-0
->>> intermediaire(7,7,7)
-7
->>> intermediaire(4,7,7)
-7
->>> intermediaire(4,4,7)
-4
-    """
-```
+    ```python
+    def intermediaire(a,b,c) :
+        """
+        Fonction qui renvoie le nombre intermédiaire deux nombres
+    >>> intermediaire(12,8,3)
+    8
+    >>> intermediaire(-5,0,9)
+    0
+    >>> intermediaire(7,7,7)
+    7
+    >>> intermediaire(4,7,7)
+    7
+    >>> intermediaire(4,4,7)
+    4
+        """
+    ```
 
 5. Erire une fonction qui supprime tous les caractères qui ne sont pas des lettres ( majuscules ou minuscules, sans accents ) d'une chaine de caractères donnée.
 
+    ```python
+    def rienQueDesLettres(chaine) :
+        """
+    >>> rienQueDesLettres('  toto  ')
+    'toto'
+    >>> rienQueDesLettres('123Toto456')
+    'Toto'
+    >>> rienQueDesLettres('Et!C'est Toto ?')
+    'EtCestToto'
+        """
+    ```
 
-```python
-def rienQueDesLettres(chaine) :
-    """
->>> rienQueDesLettres('  toto  ')
-'toto'
->>> rienQueDesLettres('123Toto456')
-'Toto'
->>> rienQueDesLettres('Et!C'est Toto ?')
-'EtCestToto'
-    """
-```
-
-7. Ecrire la fonction coefficientDirecteur qui vérifie les conditions ci-dessous 
+7. Ecrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous 
 
 
-```python
-def coefficientDirecteur(xA,yA,xB,yB) :
-    """Fonction renvoyant le coefficient directeur de la droite (AB)
+    ```python
+    def coefficient_directeur(xA,yA,xB,yB) :
+        """Fonction renvoyant le coefficient directeur de la droite (AB)
     en connaissant les coordonnées des points A et B, ou None si c'est impossible
->>> coefficientDirecteur(0,0,1,5)
-5
->>> coefficientDirecteur(0,0,2,10)
-5
->>> coefficientDirecteur(3,4,4,6)
-2
->>> coefficientDirecteur(3,4,4,6)
-2
->>> coefficientDirecteur(3,4,4,4)
-0
->>> coefficientDirecteur(3,4,4,3)
--1
->>> coefficientDirecteur(3,4,3,7)==None
-True
->>> coefficientDirecteur(3,4,3,4)==None
-True
->>> coefficientDirecteur(4,4,3,4)==None
-False
-"""
+    >>> coefficient_directeur(0,0,1,5)
+    5
+    >>> coefficient_directeur(0,0,2,10)
+    5
+    >>> coefficient_directeur(3,4,4,6)
+    2
+    >>> coefficient_directeur(3,4,4,6)
+    2
+    >>> coefficient_directeur(3,4,4,4)
+    0
+    >>> coefficient_directeur(3,4,4,3)
+    -1
+    >>> coefficient_directeur(3,4,3,7)==None
+    True
+    >>> coefficient_directeur(3,4,3,4)==None
+    True
+    >>> coefficient_directeur(4,4,3,4)==None
+    False
+        """
     ###VOTRE CODE ICI
-```
+    ```
 
 8. Ecrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite $(AB)$, en prenant en argument les coordonnées des points $A$ et $B$ comme la fonction précédente, et qui renvoie None si c'est impossible.
-
-
-
-```python
-
-```
 
 9. Ecrire une fonction - et le jeu de test qui va avec,  qui renvoie l'équation réduite de la droite $(AB)$, en prenant en argument les coordonnées des points $A$ et $B$ comme dans les fonctions précédentes.
 
 
-```python
-
-```
-
 10. Ecrire une fonction qui donne le discriminant d'un trinome du second degré $ax^2 +bx+c $, en fournissant un jeu d'exemples complets.
-
-
-```python
-
-```

@@ -1,0 +1,3543 @@
+    
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="F. Vergniaud">
+      
+      
+        <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C01/Fonctions_Assertions/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+    
+    
+      
+        <title>Fonctions, assertions et tests unitaires - ZoneNSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+        
+        <!-- favicons -->
+        <!--
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon_32x32.png" sizes="32x32">
+        <link rel="icon" href="../assets/images/favicon_96x96.png" sizes="96x96">
+        <link rel="icon" href="../assets/images/favicon_144x144.png" sizes="144x144">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css">
+        -->
+        <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-md5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+      <link rel="stylesheet" href="../../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    
+    <input id="ace_palette" autocomplete="off" class="md-toggle" data-ace-dark-mode="tomorrow_night_bright" data-ace-light-mode="crimson_editor" type="checkbox"></input>
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fonctions-assertions-et-docstring-en" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ZoneNSI" class="md-header__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZoneNSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fonctions, assertions et tests unitaires
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ZoneNSI" class="md-nav__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    ZoneNSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Mathématiques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Mathématiques" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mathématiques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Seconde
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Seconde" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Seconde
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_2">
+          Ensembles de nombres et intervalles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ensembles de nombres et intervalles" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ensembles de nombres et intervalles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_01_Ensembles_Nombres/" class="md-nav__link">
+        Ensembles de nombres 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_02_Intervalles/" class="md-nav__link">
+        Intervalles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          Notion de fonctions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notion de fonctions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Notion de fonctions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C03/C03_01_Generalite_fonctions/" class="md-nav__link">
+        Vocabulaire et rappels
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" type="checkbox" id="__nav_2_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_4">
+          Algorithmique et bases de Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithmique et bases de Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        Algorithmes, affectations et types de variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/ProgrammationPythonThonny/" class="md-nav__link">
+        Programmation en Python et utilisation de Thonny
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/Arithmetique/" class="md-nav__link">
+        Arithmétique
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Premiere/home.md" class="md-nav__link">
+        Première
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Terminale/home.md" class="md-nav__link">
+        Terminale
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SNT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/College/PixelArt/" class="md-nav__link">
+        Session Collège
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Le Web
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Le Web
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Web/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Données Structurées
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Données Structurées" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Données Structurées
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Donnees/Arborescence/" class="md-nav__link">
+        Arborescence des fichiers et dossiers 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Reseaux Informatiques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reseaux Informatiques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reseaux Informatiques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/TCP_IP/" class="md-nav__link">
+        Adresses IP et TCP/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/Creation_reseaux/" class="md-nav__link">
+        Création de réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/DHCP_DNS/" class="md-nav__link">
+        Pour aller plus loin, DHCP et DNS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Images Numériques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images Numériques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Images Numériques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Images/NB/" class="md-nav__link">
+        Noir, Blanc, Gris
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Images/RGB/" class="md-nav__link">
+        La couleur et le RGB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Géolocalisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Géolocalisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Géolocalisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Geolocalisation/geolocalisation/" class="md-nav__link">
+        Coordonnées et GPS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Geolocalisation/Dijkstra/" class="md-nav__link">
+        Recherche du chemin le plus court
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NSI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Première
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Première" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Première
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_1">
+          Bases de Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bases de Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bases_Python_1/" class="md-nav__link">
+        Variables et affectations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../C01_Conditions_Boucles/" class="md-nav__link">
+        Boucles et conditions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Fonctions, assertions et tests unitaires
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Fonctions, assertions et tests unitaires
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#premiers-pas-avec-les-fonctions" class="md-nav__link">
+    Premiers pas avec les fonctions
+  </a>
+  
+    <nav class="md-nav" aria-label="Premiers pas avec les fonctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-des-fonctions" class="md-nav__link">
+    Pourquoi des fonctions ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premiere-fonction" class="md-nav__link">
+    Première fonction
+  </a>
+  
+    <nav class="md-nav" aria-label="Première fonction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-dune-fonction" class="md-nav__link">
+    Définition d'une fonction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-de-la-valeur-de-retour" class="md-nav__link">
+    Utilisation de la valeur de retour
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factorisation-du-code-de-pythagore" class="md-nav__link">
+    Factorisation du code de Pythagore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#augmenter-la-capacite-des-fonctions-les-arguments-obligatoires" class="md-nav__link">
+    Augmenter la capacité des fonctions : les arguments obligatoires
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#augmenter-la-capacite-des-fonctions-les-arguments-optionnels" class="md-nav__link">
+    Augmenter la capacité des fonctions : les arguments optionnels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commenter-son-code-les-docstrings" class="md-nav__link">
+    Commenter son code : les docstrings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portee-des-variables" class="md-nav__link">
+    Portée des variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Portée des variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-globales" class="md-nav__link">
+    Variables globales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-locales" class="md-nav__link">
+    Variables locales
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-assertions-et-module-doctest" class="md-nav__link">
+    Tests, assertions et module Doctest
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests, assertions et module Doctest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reflechir-avant-dagir-ecrire-les-tests-avant-la-fonction" class="md-nav__link">
+    Réfléchir avant d'agir : écrire les tests avant la fonction
+  </a>
+  
+    <nav class="md-nav" aria-label="Réfléchir avant d'agir : écrire les tests avant la fonction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tester-avec-des-assertions" class="md-nav__link">
+    Tester avec des assertions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices_1" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProjetPendu/" class="md-nav__link">
+        Projet : Jeu du Pendu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          Le codage des données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le codage des données" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Le codage des données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/BinaireCodageEntiers/" class="md-nav__link">
+        Binaire et codage des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/Entiers_relatifs_Flottants/" class="md-nav__link">
+        Entiers relatifs et flottants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/CodageCaractere/" class="md-nav__link">
+        Codage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Le web
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le web" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Le web
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/HTML/" class="md-nav__link">
+        HTML strict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/JS01/" class="md-nav__link">
+        Introduction à Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/JS02/" class="md-nav__link">
+        Javascript, le DOM et les formulaires
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_4" type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4">
+          Les séquences
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Les séquences" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Les séquences
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Tuples/" class="md-nav__link">
+        Tuples et algorithmes de parcours
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Listes_Comprehension/" class="md-nav__link">
+        Listes et compréhensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Algorithmes_Tri/" class="md-nav__link">
+        Premiers algorithmes de tris
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Tableaux2D/" class="md-nav__link">
+        Tableaux à 2 dimensions : Matrices 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/ImagesBMP/" class="md-nav__link">
+        Les images Matricielles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_5" type="checkbox" id="__nav_4_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_5">
+          Architecture matérielle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture matérielle" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture matérielle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/Historique/" class="md-nav__link">
+        Historique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_6" type="checkbox" id="__nav_4_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_6">
+          Traitement des données en tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Traitement des données en tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Traitement des données en tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C06/Dictionnaires/" class="md-nav__link">
+        Les dictionnaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C06/CSV/" class="md-nav__link">
+        Les fichiers CSV
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_7" type="checkbox" id="__nav_4_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_7">
+          Les algorithmes gloutons
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Les algorithmes gloutons" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Les algorithmes gloutons
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C07/Algorithmes_Gloutons/" class="md-nav__link">
+        Algorithmes Gloutons
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_8" type="checkbox" id="__nav_4_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_8">
+          Réseaux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Réseaux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/Histoire/" class="md-nav__link">
+        Internet : historique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/Trames/" class="md-nav__link">
+        Réseaux, Trames, Paquets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/Client_Serveur/" class="md-nav__link">
+        Transmission Client-Serveur
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Terminale
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terminale" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Terminale
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Modularité et POO
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Modularité et POO
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Modularite/" class="md-nav__link">
+        Modules, interfaces, encapsulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/IntroPOO/" class="md-nav__link">
+        Introduction à la POO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          Récursivité
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Récursivité" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Récursivité
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/Recursivite/" class="md-nav__link">
+        Notion de récursivité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/RecursiviteFractales/" class="md-nav__link">
+        Applications : Fractales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/RecursiviteTris/" class="md-nav__link">
+        Applications : Tris
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Listes, Piles, Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Listes, Piles, Files" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Listes, Piles, Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/ListesChainees/" class="md-nav__link">
+        Listes chainées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/Piles_et_files/" class="md-nav__link">
+        Piles et files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/ToursHanoi/" class="md-nav__link">
+        TP : Tours de Hanoï
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Bases de Données et SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Données et SQL" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Bases de Données et SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/ModeleRelationnel/" class="md-nav__link">
+        Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/BasesSQL1/" class="md-nav__link">
+        Bases de SQL 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/BasesSQL2/" class="md-nav__link">
+        Bases de SQL 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/BasesSQL3/" class="md-nav__link">
+        Bases de SQL 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/Projet_Pokemon/" class="md-nav__link">
+        Projet Pokemon
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Arbres Binaires
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Arbres Binaires" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Arbres Binaires
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/Def_Arbres/" class="md-nav__link">
+        Définition et propriétés des arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/ABR/" class="md-nav__link">
+        Arbres Binaires de Recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/ABR_Python/" class="md-nav__link">
+        Implémentation des ABR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/AVL/" class="md-nav__link">
+        Equilibrage des ABR : les AVL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Processeurs et Ordonnancement
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Processeurs et Ordonnancement" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Processeurs et Ordonnancement
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Socs/" class="md-nav__link">
+        Les SOCs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Processus/" class="md-nav__link">
+        Gestion des Processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Ordonnancement/" class="md-nav__link">
+        Ordonnancement des processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Interblocage/" class="md-nav__link">
+        Interblocage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_8">
+          Réseaux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Réseaux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C07/Routage/" class="md-nav__link">
+        Notion de routage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C07/RIP/" class="md-nav__link">
+        Protocoles RIP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C07/OSPF/" class="md-nav__link">
+        Protocole OSPF
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_9" type="checkbox" id="__nav_4_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_9">
+          Programmation dynamique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programmation dynamique" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Programmation dynamique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C08/ProgDyn/" class="md-nav__link">
+        Principes et exemples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C08/alignSeq/" class="md-nav__link">
+        Alignements de séquences
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_10" type="checkbox" id="__nav_4_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_10">
+          Graphes et parcours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Graphes et parcours" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Graphes et parcours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C09/graphe/" class="md-nav__link">
+        Notion de Graphe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C09/graphe_python/" class="md-nav__link">
+        Les graphes en Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C09/parcours/" class="md-nav__link">
+        Parcours de Graphes 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C10/BoyerMoore/" class="md-nav__link">
+        Recherche textuelles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Miscellanées
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellanées" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellanées
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_1" type="checkbox" id="__nav_5_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_1">
+          Le langage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le langage" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Le langage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Bases_Python/Fichiers_Textes/" class="md-nav__link">
+        Manipulation des fichiers textes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/mkdocs_cmd/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Manim/BasesManim/" class="md-nav__link">
+        Manim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_5" type="checkbox" id="__nav_5_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_5">
+          Pygame
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pygame" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Pygame
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/InstallationPygame/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/Base_pygame/" class="md-nav__link">
+        Bases de Pygame
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_6" type="checkbox" id="__nav_5_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_6">
+          P5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="P5" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          P5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/p5_Thonny/" class="md-nav__link">
+        P5 et Thonny
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/utilisationP5/" class="md-nav__link">
+        Bases de P5 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/regex/" class="md-nav__link">
+        REGEX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="Fonctions_Assertions.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
+              
+    
+                
+
+
+<h1 id="fonctions-assertions-et-docstring-en">Fonctions, assertions et docstring en  <img alt="logo Python" src="python-logo.png" /></h1>
+<h2 id="premiers-pas-avec-les-fonctions">Premiers pas avec les fonctions</h2>
+<h3 id="pourquoi-des-fonctions">Pourquoi des fonctions ?</h3>
+<p>Dans la partie précédente, nous avons terminé par un petit programme qu demande à un·e utilisateur·trice de donner un nombre entier entre 1 et 10, et qui vérifie la saisie jusqu'à ce que l'utilisateur·trice ait effectuer une saisie correcte. Voici un exemple simple d'implémentation de ce programme :</p>
+<div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846" class="comment">###</span><div class="interior_wrapper"><div id="editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846"></div></div><div id="term_editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846","askIntV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("ff0fe39e19337b2bc47367b6d0ea6a26051b2846")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("ff0fe39e19337b2bc47367b6d0ea6a26051b2846")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846" class="hide">while True : # Il s'agit d'une boucle infinie, la condition Ã©tant toujours vraiebksl-nl    nb = input("Entrez un nombre entre 1 et 10 : ")bksl-nl    nb=int(nb)bksl-nl    if 1&lt;=nb&lt;=10 :bksl-nl        # L'instruction 'break' arrÃªte immÃ©diatement la boucle  et sort de la boucle whilebksl-nl        breakbksl-nl    else :bksl-nl        print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nl        bksl-nl#Une fois sorti de la boucle, on peut donc utiliser 'nb' en Ã©tant certain qu'il s'agit d'un entier entre 1 et 10.bksl-nlprint(f'Le carrÃ© de {nb} est {nbpy-strpy-str2}')bksl-nl</span><span id="corr_content_editor_ff0fe39e19337b2bc47367b6d0ea6a26051b2846" class="hide" data-strudel=""></span></p>
+<div class="admonition question">
+<p class="admonition-title">Un blocage ?</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Essayez de saisir différentes valeurs <strong>de différents types</strong>. Quel est le problème rencontré ?</p>
+</div>
+<div class="tabbed-block">
+<p>Si 'utilisateur·trice saisi quelque chose qui ne peut pas être <strong>transtypé</strong> en <code>int</code>, il y a une erreur levée et le programme est totalement interrompu. Ce peut-être parfois complètement bloquant pour le fonctionnement réel d'une application.</p>
+<p>La version ci-dessous est un peu plus <em>dumbproof</em>, mais je ne vous demande pas encore de comprendre les blocs <code>try/except/else</code>.</p>
+<p><div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_1d157e5d8995d714570c10aa494a9509f8967a04" class="comment">###</span><div class="interior_wrapper"><div id="editor_1d157e5d8995d714570c10aa494a9509f8967a04"></div></div><div id="term_editor_1d157e5d8995d714570c10aa494a9509f8967a04" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_1d157e5d8995d714570c10aa494a9509f8967a04","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_1d157e5d8995d714570c10aa494a9509f8967a04","askIntV2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_1d157e5d8995d714570c10aa494a9509f8967a04').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_1d157e5d8995d714570c10aa494a9509f8967a04" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("1d157e5d8995d714570c10aa494a9509f8967a04")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("1d157e5d8995d714570c10aa494a9509f8967a04")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_1d157e5d8995d714570c10aa494a9509f8967a04" class="hide">bksl-nlwhile True :bksl-nl    nb = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl    #  Ici nb est du type 'str'bksl-nl    # Il faut donc d'abord le convertir en entier, mais si l'utilisateur a saisi une chaine qu'il est impossiblebksl-nl    # de convertir, l'interprÃ©teur lÃ¨vera par dÃ©faut une erreur et arrÃªtera le programme.bksl-nl    # Or nous ne voulons pas d'interruption , nous signifions donc explicitement au programme ce que nous souhaitonsbksl-nl    # qu'il fasse avec le bloc 'try : ...' 'except : ...' <code>else : ...</code>bksl-nl    try :bksl-nl        nb=int(nb)bksl-nl        # si l'interprÃ©teur n'arrive pas Ã  exÃ©cuter l'instruction ci-dessus, il dÃ©clenche une erreur et passebksl-nl        # directement au bloc 'except'. Sinon il passe au bloc 'else'.bksl-nl    except ValueError :bksl-nl        print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl    else :bksl-nl        if 1&lt;= nb&lt;= 10 :bksl-nl            breakbksl-nl        else :bksl-nl            print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nl    bksl-nlbksl-nlprint(f'Le carrÃ© de {nb} est {nbpy-strpy-str2}')bksl-nl</span><span id="corr_content_editor_1d157e5d8995d714570c10aa494a9509f8967a04" class="hide" data-strudel=""></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Application 1 : Multiplier les codes</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Imaginons maintenant un programme qui demande <strong>trois fois</strong> à l'utilisateur d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore.</p>
+<p>Vous devez vous inspirer du programme précédent pour compléter le programme ci-dessous afin d'obtenir trois nombres entiers <code>nb1</code>, <code>nb2</code> et <code>nb3</code> saisis par l'utilisateur :</p>
+</div>
+<div class="tabbed-block">
+<p>Un code pouvant être inséré (avec notre niveau actuel en Python et sans utiliser de structures de listes) est le suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+    <span class="n">nb1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre entier entre 1 et 10 : &quot;</span><span class="p">)</span>
+    <span class="k">try</span> <span class="p">:</span>
+        <span class="n">nb1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous n&#39;avez pas saisi un entier. Veuillez recommencer !&quot;</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb1</span><span class="o">=</span> <span class="mi">10</span> <span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre nombre n&#39;est pas compris entre 1 et 10. Veuillez recommencer !&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+    <span class="n">nb2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre entier entre 1 et 10 : &quot;</span><span class="p">)</span>
+    <span class="k">try</span> <span class="p">:</span>
+        <span class="n">nb2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb2</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous n&#39;avez pas saisi un entier. Veuillez recommencer !&quot;</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb2</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre nombre n&#39;est pas compris entre 1 et 10. Veuillez recommencer !&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+    <span class="n">nb3</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre entier entre 1 et 10 : &quot;</span><span class="p">)</span>
+    <span class="k">try</span> <span class="p">:</span>
+        <span class="n">nb3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb3</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous n&#39;avez pas saisi un entier. Veuillez recommencer !&quot;</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb3</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre nombre n&#39;est pas compris entre 1 et 10. Veuillez recommencer !&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="comment">###</span><div class="interior_wrapper"><div id="editor_c9c68c06266257e18f69ae9a07b397c5414287e3"></div></div><div id="term_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_c9c68c06266257e18f69ae9a07b397c5414287e3","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_c9c68c06266257e18f69ae9a07b397c5414287e3","ask3Int")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_c9c68c06266257e18f69ae9a07b397c5414287e3').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("c9c68c06266257e18f69ae9a07b397c5414287e3")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("c9c68c06266257e18f69ae9a07b397c5414287e3")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="hide">#### TAPEZ VOTRE CODE ENTRE LES DEUX COMMENTAIRESbksl-nlbksl-nlbksl-nl#### NE TOUCHEZ PAS AU CODE CI-DESSOUSbksl-nlbksl-nlif (nb1py-strpy-str2 == nb2py-strpy-str2 + nb3py-strpy-str2) or (nb2py-strpy-str2 == nb1py-strpy-str2 + nb3py-strpy-str2) or (nb3py-strpy-str2 == nb2py-strpy-str2 + nb1py-strpy-str2) :bksl-nl    print("C'est une configuration de Pythagore !")bksl-nlelse :bksl-nl    print("Ce n'est pas une configuration de Pythagore !")bksl-nl</span><span id="corr_content_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="hide" data-strudel=""></span></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Mauvaise pratique</p>
+<p>Si ce code fait le travail demandé, il n'en est pas moins de <em>mauvaise qualité</em> pour plusieurs raisons :</p>
+<ul>
+<li>Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur.</li>
+<li>Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification doit être <strong>réécrite à chaque fois</strong> que le morceau de code est appelé. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.</li>
+<li>Le code n'est plus lisible. Dans le cas d'un travail en équipe, il est impératif d'avoir un code clairement écrit, avec des fonctionnalités clairement définies.</li>
+</ul>
+</div>
+<h3 id="premiere-fonction">Première fonction</h3>
+<h4 id="definition-dune-fonction">Définition d'une fonction</h4>
+<p>On va donc améliorer non seulement la lisibilité de notre code, mais aussi son efficacité et sa simplicité, en utilisant une <strong>fonction</strong>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Définition : fonction</p>
+<p>Une <mark class="critic"><strong>fonction</strong></mark> est un bloc de code nommé (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable). L'appel par l'interpréteur du nom de la fonction <mark class="critic"><strong>suivi d'une paire de parenthèses</strong></mark> exécutera alors l'intégralité du code et renverra une <strong>valeur de retour</strong>.</p>
+</div>
+<p>Pour notre exemple :</p>
+<div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7" class="comment">###</span><div class="interior_wrapper"><div id="editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7"></div></div><div id="term_editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7","askIntFctV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7" class="hide">def askpy-unduserpy-undint() :bksl-nl    while True :bksl-nl        nb = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl        try :bksl-nl            nb=int(nb)bksl-nl        except ValueError :bksl-nl            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl        else :bksl-nl            if 1&lt;= nb&lt;= 10 :bksl-nl                breakbksl-nl            else :bksl-nl                print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nl    return nb #Renvoie l'objet associÃ© Ã  nbbksl-nl</span><span id="corr_content_editor_73cb83d1333a3b0b251eeb3e2561ab9e55ad03b7" class="hide" data-strudel=""></span></p>
+<p>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>, ce qui rend l'objet <em>callable</em> ( "appelable"). Le bloc de code est ensuite défini grâce à une indentation en dessous du nom, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.</p>
+<p>On fait appel  à cette fonction en appelant le nom <code>ask_user_int()</code>, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.</p>
+<div class="admonition warning">
+<p class="admonition-title">Oubli des parenthèses</p>
+<p>Dans le cas d'un oubli des parenthèses lorsqu'on appelle une fonction, on obtient dans le terminal le message suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span>
+<span class="o">&lt;</span><span class="n">function</span> <span class="n">ask_user_int</span> <span class="n">at</span> <span class="mh">0xe8c1a0</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>Qui signifie simplement que le nom <code>ask_user_int</code> fait référence à une fonction dont l'adresse mémoire est donnée sous forme hexadécimale.</p>
+<p>Notez que <code>ask_user_int</code> est juste un nom, l'objet correspondant est stocké dans l'espace des objets. On peut donc écrire les choses suivantes :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">demande_entier</span><span class="o">=</span><span class="n">ask_user_int</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">demande_entier</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<h4 id="utilisation-de-la-valeur-de-retour">Utilisation de la valeur de retour</h4>
+<p>Comme tout objet, la valeur de retour d'une fonction doit elle même être stockée dans une variableafin de ne pas être ramassée par le <em>garbage collector</em> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">entier</span><span class="o">=</span><span class="n">ask_user_int</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La racine carrée du nombre </span><span class="si">{</span><span class="n">entier</span><span class="si">}</span><span class="s1"> est </span><span class="si">{</span><span class="n">entier</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="factorisation-du-code-de-pythagore">Factorisation du code de Pythagore</h4>
+<p>Le code du programme de vérification de Pythagore peut alors être <mark class="critic"><strong>factorisé</strong></mark>, et devient alors :</p>
+<div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_5f187cef66d4103d11c1f2238f82122003269c8b" class="comment">###</span><div class="interior_wrapper"><div id="editor_5f187cef66d4103d11c1f2238f82122003269c8b"></div></div><div id="term_editor_5f187cef66d4103d11c1f2238f82122003269c8b" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_5f187cef66d4103d11c1f2238f82122003269c8b","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_5f187cef66d4103d11c1f2238f82122003269c8b","askIntFctV2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_5f187cef66d4103d11c1f2238f82122003269c8b').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_5f187cef66d4103d11c1f2238f82122003269c8b" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("5f187cef66d4103d11c1f2238f82122003269c8b")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("5f187cef66d4103d11c1f2238f82122003269c8b")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_5f187cef66d4103d11c1f2238f82122003269c8b" class="hide">#### Zone des fonctionsbksl-nlbksl-nldef askpy-unduserpy-undint() :bksl-nl    while True :bksl-nl        nb = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl        try :bksl-nl            nb=int(nb)bksl-nl        except ValueError :bksl-nl            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl        else :bksl-nl            if 1&lt;= nb&lt;= 10 :bksl-nl                breakbksl-nl            else :bksl-nl                print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nl    return nb #Renvoie l'objet associÃ© Ã  nbbksl-nlbksl-nl### Code principalbksl-nlbksl-nlnb1 = askpy-unduserpy-undint()bksl-nlnb2 = askpy-unduserpy-undint()bksl-nlnb3 = askpy-unduserpy-undint()bksl-nlif (nb1py-strpy-str2 == nb2py-strpy-str2 + nb3py-strpy-str2) or (nb2py-strpy-str2 == nb1py-strpy-str2 + nb3py-strpy-str2) or (nb3py-strpy-str2 == nb2py-strpy-str2 + nb1py-strpy-str2) :bksl-nl    print("C'est une configuration de Pythagore !")bksl-nlelse :bksl-nl    print("Ce n'est pas une configuration de Pythagore !")bksl-nl</span><span id="corr_content_editor_5f187cef66d4103d11c1f2238f82122003269c8b" class="hide" data-strudel=""></span></p>
+<p>Ce qui a l'avantage d'être vraiment vraiment plus clair.</p>
+<h3 id="exercices">Exercices</h3>
+<div class="admonition question">
+<p class="admonition-title">Application 2</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Créer une fonction nommée <code>table7</code> qui <strong>renvoie</strong> la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :</p>
+<div class="highlight"><pre><span></span><code>&quot;7x0=0 \n 7x1=7 \n 7x2=14 ...&quot;
+</code></pre></div>
+<p><strong>Indication :</strong> le symbole <code>\n</code>, insère un saut de ligne dans une chaîne de caractères.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">table7</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;7x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="mi">7</span><span class="o">*</span><span class="n">i</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">table</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="augmenter-la-capacite-des-fonctions-les-arguments-obligatoires">Augmenter la capacité des fonctions : les arguments obligatoires</h3>
+<p>L'exemple de la fonction <code>ask_user_int</code> est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables.</p>
+<p>Pour ce faire, il faut, dans la définition de la fonction, préciser des <mark class="critic"><strong>arguments</strong></mark> qui seront des variables <strong>initialisées à certaines valeurs lors de l'appel à la fonction</strong> :</p>
+<div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_23" class="comment">###</span><div class="interior_wrapper"><div id="editor_23"></div></div><div id="term_editor_23" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_23","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_23","ask_user_intV3")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_23').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_23" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("23")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("23")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_23" class="hide"></span><span id="corr_content_editor_23" class="hide" data-strudel=""></span></p>
+<p>Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Des erreurs classiques</p>
+<p>On a aussi un certain nombre d'erreurs qui sont déclenchées. Testez les lignes suivantes :</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">1</label><label for="__tabbed_4_2">2</label><label for="__tabbed_4_3">3</label><label for="__tabbed_4_4">4</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Application 3</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label><label for="__tabbed_5_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Créer une fonction <code>table_multi</code> qui prend un argument entier, le multiplicande, et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">table_multi</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">nb</span><span class="si">}}</span><span class="s1">x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">nb</span><span class="o">*</span><span class="n">i</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">table</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Application 4 : motif dans une chaine</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Enoncé</label><label for="__tabbed_6_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Créer une fonction <code>trouve_chaine</code>qui prend deux arguments, un <code>motif</code> ( une chaine de caractères )  et un <code>texte</code> ( une autre chaine de caractères )  et qui renvoie <code>True</code> si le <code>motif</code> est présent dans la <code>chaine</code>, quel que soit la casse du motif ou celle de la chaine, et <code>False</code> sinon.  Vous pouvez tester avec les lignes suivantes :</p>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Toto&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Meme casse pas trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Totos&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Chaine non présente trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;TOTO&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Problème de majuscules dans le motif&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;toto&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTO va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Problème de minuscules dans le motif&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;ToTo&#39;</span><span class="p">,</span> <span class="s1">&#39;OtOtO va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Que dire ?&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">trouve_chaine</span><span class="p">(</span><span class="n">motif</span><span class="p">,</span><span class="n">texte</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="p">;</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="augmenter-la-capacite-des-fonctions-les-arguments-optionnels">Augmenter la capacité des fonctions : les arguments optionnels</h3>
+<p>Notre fonction <code>ask_user_int</code> commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
+C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</strong>. Il s'agit d'arguments dont le nom est donné dans la fonction, mais avec <strong>une valeur par défaut</strong>. Ainsi :</p>
+<div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_25" class="comment">###</span><div class="interior_wrapper"><div id="editor_25"></div></div><div id="term_editor_25" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_25","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_25","ask_user_intV4")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_25').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_25" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("25")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("25")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_25" class="hide"></span><span id="corr_content_editor_25" class="hide" data-strudel=""></span></p>
+<p>Ainsi, la fonction ci-dessus posssède trois arguments :</p>
+<ul>
+<li>deux arguments <strong>obligatoires</strong>, <code>borne_min</code> et <code>borne_max</code> ;</li>
+<li>un argument <strong>optionnel</strong>, <code>prenom</code>.</li>
+</ul>
+<p>Il est à noter qu'impérativement les <strong>arguments obligatoires doivent être placés avant les arguments optionnels</strong>.</p>
+<p>On peut alors appeller la fonction des différentes manières suivantes (à tester) :</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">1</label><label for="__tabbed_7_2">2</label><label for="__tabbed_7_3">3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">prenom</span><span class="o">=</span><span class="s1">&#39;Toto&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">prenom</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div onclick='start_term("id6")' id="fake_id6" class="terminal_f"><label class="terminal"><span>>>> </span></label></div>
+<div id="id6" class="hide"></div>
+
+<div class="admonition question">
+<p class="admonition-title">Application 5 : arguments optionnels</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Enoncé</label><label for="__tabbed_8_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Compléter la fonction <code>table_multi</code> afin qu'elle utilise deux arguments optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">table_multi</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">depart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fin</span> <span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depart</span><span class="p">,</span> <span class="n">fin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">nb</span><span class="si">}}</span><span class="s1">x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">nb</span><span class="o">*</span><span class="n">i</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">table</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Application 6 : arguments optionnels</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Enoncé</label><label for="__tabbed_9_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Réécrire la fonction <code>trouve_chaine</code> afin qu'elle utilise un *argument booléen optionnel <code>verifCasse</code>, afin de déterminer si le <code>motif</code> est présent dans le <code>texte</code> en vérifiant la casse ou non. Par défaut l'argument sera <code>False</code>. Vous pouvez utiliser les tests ci-dessous :</p>
+<div class="highlight"><pre><span></span><code><span class="c1">### Cette cellule est une cellule vous permettant de tester votre fonction</span>
+<span class="c1">##les assertions suivantes sont les même que précédemment</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Toto&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Meme casse pas trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Totos&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Chaine non présente trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;TOTO&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Problème de majuscules dans le motif&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;toto&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTO va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Problème de minuscules dans le motif&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;ToTo&#39;</span><span class="p">,</span> <span class="s1">&#39;OtOtO va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Que dire ?&#39;</span>
+<span class="c1"># Mais on rajoute celles-ci :</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Toto&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Meme casse pas trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;TOTO&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTO va à la plage&#39;</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Meme casse pas trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Totos&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Chaine non présente trouvée&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;TOTO&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Problème de majuscules dans le motif&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;toto&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTO va à la plage&#39;</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Problème de minuscules dans le motif&#39;</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;ToTo&#39;</span><span class="p">,</span> <span class="s1">&#39;OtOtO va à la plage&#39;</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Que dire ?&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">trouve_chaine</span><span class="p">(</span><span class="n">motif</span><span class="p">,</span><span class="n">texte</span><span class="p">,</span><span class="n">verifCasse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">verifCasse</span><span class="o">==</span><span class="kc">True</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">texte</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span>  <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="commenter-son-code-les-docstrings">Commenter son code : les docstrings</h3>
+<div class="admonition tips">
+<p class="admonition-title">Commenter son code</p>
+<p>Une bonne habitude, à prendre immédiatement, etst celle de commenter son code, c'est-à-dire d'expliquer l'impolémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont <strong>des lignes non-lues par l'interpréteur Python</strong>, commençant par le symbole <em>dièse</em> <code>#</code>.</p>
+<p>Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un cvode que vous avez écrit vous-même quelques semaines voir quelques jours auparavant !</p>
+<p>Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... </p>
+</div>
+<p>Les concepteur·trice·s de Python ont crée une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction <code>help</code>.</p>
+<p>Testez par exemple la commande <code>help(print)</code> dans la console suivante, puis essayez avec d'autres objets de Python.</p>
+<div onclick='start_term("id7")' id="fake_id7" class="terminal_f"><label class="terminal"><span>>>> </span></label></div>
+<div id="id7" class="hide"></div>
+
+<p>La fonction <code>help</code> va chercher dans l'objet passé en argument sa <mark class="critic"><strong>docstring</strong></mark>, littéralement <em>chaine de documentation</em>, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une <strong>docstring</strong> est construite comme une chaîne de caractères <em>non nommée</em> présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :</p>
+<div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_42337f6f5fdd1215f50fc626e1d503565997fcb9" class="comment">###</span><div class="interior_wrapper"><div id="editor_42337f6f5fdd1215f50fc626e1d503565997fcb9"></div></div><div id="term_editor_42337f6f5fdd1215f50fc626e1d503565997fcb9" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_42337f6f5fdd1215f50fc626e1d503565997fcb9","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_42337f6f5fdd1215f50fc626e1d503565997fcb9","docstring1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_42337f6f5fdd1215f50fc626e1d503565997fcb9').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_42337f6f5fdd1215f50fc626e1d503565997fcb9" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("42337f6f5fdd1215f50fc626e1d503565997fcb9")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("42337f6f5fdd1215f50fc626e1d503565997fcb9")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_42337f6f5fdd1215f50fc626e1d503565997fcb9" class="hide">def somme(a,b) :bksl-nl    """ fonction qui renvoie la somme des arguments a et b, bksl-nl    en vÃ©rifiant si a et b sont bien du mÃªme type, bksl-nl    et qui renvoie None sinon.bksl-nl    Par exemple :bksl-nlbksl-nl    somme(4, 3) renvoie 7bksl-nlbksl-nl    somme(4, "3") renvoie Nonebksl-nl   bksl-nl    """bksl-nl    if type(a) == type(b) :bksl-nl        return a+bbksl-nl    else :bksl-nl        return Nonebksl-nl</span><span id="corr_content_editor_42337f6f5fdd1215f50fc626e1d503565997fcb9" class="hide" data-strudel=""></span></p>
+<p>La fonction <code>somme</code> contient donc une <strong>docstring</strong> - introduite par trois guillemets ( pour permettre les sauts de lignes ). Celle-ci décrit l'effet de la fonction, de manière exacte.</p>
+<p>On peut alors accéder à la <strong>docstring</strong> d'une fonction en utilisant la fonction <em>built-in</em> <code>help</code> :</p>
+<p>Testez par exemple <code>`help(somme)</code>.</p>
+<div class="admonition tips">
+<p class="admonition-title">Les docstrings</p>
+<p><mark class="critic"><strong>Une docstring est essentielle pour comprendre l'utilité d'une fonction ! Vous devrez en utiliser le plus souvent possible !</strong></mark></p>
+</div>
+<div class="admonition tips">
+<p class="admonition-title">Typage des arguments</p>
+<p>Une possibilité offerte depuis la version 3.7 de Python est de présenter dans la fonction le type des arguments attendus, ainsi que le type du retour. On appelle ceci les <mark class="critic"><strong>type hints</strong></mark> (*indices de types) Ces indications sont précieuses pour l'utilisateur·trice de cette fonction.</p>
+<p>La fonction <code>trouve_chaine</code> peut être iomplémentée ainsi :</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">trouve_chaine</span><span class="p">(</span><span class="n">motif</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">texte</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verifCasse</span> <span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verifCasse</span><span class="o">==</span><span class="kc">True</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">texte</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span>  <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span>
+</code></pre></div>
+</div>
+<h2 id="portee-des-variables">Portée des variables</h2>
+<p>Au sein d'un même programme, les variables définies n'ont pas systématiquement la même <strong>portée</strong>. La <strong>portée d'une variable</strong>, c'est l'espace des objets/noms dans lequel est défini cette variable.</p>
+<p>En utilisant le site <a href="https://pythontutor.com/" target="_blank">Python Tutor</a>, nous allons essayer de comprendre cette notion de portée des variables.</p>
+<h3 id="variables-globales">Variables globales</h3>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%20%3D%208%0Adef%20f%28%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+<p>Dans l'exemple ci-dessus, la variable <code>gvar</code> est définie dans <mark class="critic"><strong>l'espace de nom global</strong></mark> (<em>global frame</em>). Elle est accessible en lecture depuis l'intérieur de la fonction <code>f</code>. On parlera alors de <mark class="critic"><strong>variable globale</strong></mark>.</p>
+<h3 id="variables-locales">Variables locales</h3>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20gvar2%20%3D%208%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+<p>Dans l'exemple ci-dessus, la variable <code>gvar2</code> est définie dans l'espace des noms associé à la fonction <code>f</code>, et qui est crée <mark class="critic"><strong>au moment de l'appel à cette fonction</strong></mark> (<em>frame f</em>). Cet espace est détruit par le <em>garbage collector</em> dès que l'exécution de la fonction est terminé (une fois la valeur de <code>return</code> renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable <code>gvar2</code> puisqu'elle a disparue. <code>gvar2</code> est une <mark class="critic"><strong>variable locale</strong></mark> à la fonction <code>f</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Changer la valeur d'une variable globale</p>
+<p>Regardons maintenant le code suivant :</p>
+<p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%3D%2010%0Adef%20f%28%29%20%3A%0A%20%20%20%20gvar%3Dgvar%2B2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
+<p>Le code précédent déclenche une erreur <code>UnboundLocalError</code> en ligne 3. Cela signifie que l'interpréteur Python ne peut pas effectuer la ligne <code>gvar=gvar+2</code> car il cherche une variable <code>gvar</code> qu'il peut modifier. Or <mark class="critic"><strong>une variable définie hors d'une fonction ne peut pas être modifiée par celle-ci</strong></mark>.</p>
+<p>Il est par contre possible de travailler sur <mark class="critic"><strong>une copie</strong></mark> de la variable souhaitée (<em>uniquement dans le cas des types primitifs <code>int</code>, <code>float</code>, <code>str</code>...), en utilisant une fonction ayant un argument. Il faudra par conséquent </em><em>retourner la valeur changée</em>* pour qu'elle soit effective. Par exemple comparez les deux scripts suivants :</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Code incorrect</label><label for="__tabbed_10_2">Code correct</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28a%29%20%3A%0A%20%20%20%20%23print%28f%22Dans%20la%20fonction,%20avant%20modification,%20a%3D%7Ba%7D%22%29%0A%20%20%20%20a%3Da*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20a%3D%7Ba%7D%22%29%0Af%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
+<p>Ici on constate qu'en fait il y a deux variables <code>a</code> :</p>
+<ul>
+<li>une en dehors de la fonction, qui n'est pas modifiée. C'est une variable <strong>globale</strong>.</li>
+<li>une à l'intérieur de la fonction, qui peut être modifiée, mais qui ne change pas la variable globale. C'est une variable <strong>locale</strong> à la fonction.</li>
+</ul>
+<p>La fonction <code>f</code> ne renvoyant aucune donnée, la variable locale <code>a</code> est détruite après la fin de la fonction <code>f</code>. </p>
+</div>
+<div class="tabbed-block">
+<p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28x%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20avant%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20x%3Dx*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20return%20x%0Aa%3Df%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
+<p>Ici on a rajouté deux lignes :</p>
+<ul>
+<li><code>return a</code> qui permet à la fonction de renvoyer la valeur modifiée ;</li>
+<li><code>a = f(a)</code> La valeur renvoyée par l'appel <code>f(a)</code> est affecté au nom de variable <code>a</code>. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée sur la variable globale <code>a</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h2 id="tests-assertions-et-module-doctest">Tests, assertions et module Doctest</h2>
+<h3 id="reflechir-avant-dagir-ecrire-les-tests-avant-la-fonction">Réfléchir avant d'agir : écrire les tests avant la fonction</h3>
+<p>Lorqsu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les <em>cas extrêmes</em> ou <em>cas spécifiques</em>.</p>
+<p>Par exemple, on pourrait considérer une fonction <code>coefficient_directeur</code> qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span>.
+Je rappelle que le calcul du coefficient directeur de la droite <span class="arithmatex">\((AB)\)</span> se fait par l'intermédiare de la formule :</p>
+<div class="arithmatex">\[m = \frac{y_B-y_A}{x_B-x_A}\]</div>
+<p>Ainsi nous aimerions que la fonction travaille avec 4 arguments de type entiers  <code>xA, yA, xB, yB</code>, qu'elle renvoie le coefficient directeur de <span class="arithmatex">\((AB)\)</span> sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie <code>None</code> quand il n'existe pas. On, définit ici ce qu'on appelle une <mark class="critic"><strong>interface</strong></mark> de la fonction :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">xB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; Renvoie le coefficient directeur de la droite (AB) telle que :</span>
+<span class="sd">        A (xA ; yA) et B(xB ; yB), et les coordonnées de A ety B sont entières.</span>
+<span class="sd">        Dans le cas ou le coefficient directeur n&#39;existe pas, renvoie None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span> 
+</code></pre></div>
+<p>On souhaite donc <strong>prévoir en avance</strong> différents cas de fonctionnement de la fonction, et on aimerait vérifier que les calculs effectués par la fonction correspondent bien à ces cas.</p>
+<p>Par exemple, nous aimerions que la fonction vérifie le test suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">coefficient_directeur</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="mf">3.0</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Ecrire des tests</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Enoncé</label><label for="__tabbed_11_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Ecrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les tyypes fournis en argument soient bien des entiers.</li>
+<li>Compléter la fonction <code>coefficient_directeur</code> afin qu'elle remplisse le rôle qui lui est demandé.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+</div>
+<h4 id="tester-avec-des-assertions">Tester avec des assertions</h4>
+<p>Vous avez vu plus haut dans ce document des <mark class="critic"><strong>assertions</strong></mark> sous la forme :</p>
+<div class="highlight"><pre><span></span><code> <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Toto&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Meme casse pas trouvée&#39;</span>
+ <span class="err">````</span>
+<span class="n">La</span> <span class="n">fonction</span> <span class="err">`</span><span class="k">assert</span><span class="err">`</span> <span class="n">teste</span> <span class="n">un</span> <span class="n">booléen</span><span class="p">,</span> <span class="n">ici</span> <span class="err">`</span><span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">&#39;Toto&#39;</span><span class="p">,</span> <span class="s1">&#39;Toto va à la plage&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="err">`</span><span class="o">.</span>  <span class="n">Il</span> <span class="n">peut</span> <span class="n">alors</span> <span class="n">se</span> <span class="n">produire</span> <span class="n">deux</span> <span class="n">cas</span> <span class="p">:</span>
+
+<span class="o">*</span> <span class="n">soit</span> <span class="n">le</span> <span class="n">booléen</span> <span class="n">est</span> <span class="err">`</span><span class="kc">True</span><span class="err">`</span><span class="p">,</span> <span class="n">auquel</span> <span class="n">cas</span> <span class="n">l</span><span class="s1">&#39;interpréteur passe à la ligne suivante ;</span>
+<span class="o">*</span> <span class="n">soit</span> <span class="n">le</span> <span class="n">booléen</span> <span class="n">est</span> <span class="err">`</span><span class="kc">False</span><span class="err">`</span><span class="p">,</span> <span class="n">auquel</span> <span class="n">cas</span> <span class="n">l</span><span class="s1">&#39;interpréteur arrête le code et affiche la chaine de caractère passée en second argument, ici `&#39;</span><span class="n">Meme</span> <span class="n">casse</span> <span class="n">pas</span> <span class="n">trouvée</span><span class="s1">&#39;`.</span>
+
+
+<span class="n">J</span><span class="s1">&#39;utiliserai souvent les assertions dans les TP notés sur la plateforme Capytale, certaines vous seront fournies, d&#39;</span><span class="n">autres</span> <span class="n">seront</span> <span class="n">cachées</span><span class="o">.</span>
+
+<span class="c1">#### Tester avec le module doctest</span>
+
+<span class="n">Pyhton</span> <span class="n">étant</span> <span class="o">*</span><span class="n">user</span> <span class="n">friendly</span><span class="o">*</span><span class="p">,</span> <span class="n">il</span> <span class="n">permet</span> <span class="n">au</span> <span class="n">programmeur</span> <span class="n">de</span> <span class="n">tester</span> <span class="n">automatiquement</span><span class="p">,</span> <span class="n">grâce</span> <span class="n">au</span> <span class="n">module</span> <span class="err">`</span><span class="n">doctest</span><span class="err">`</span><span class="o">.</span>
+
+<span class="n">Un</span> <span class="n">module</span> <span class="n">Python</span> <span class="n">est</span> <span class="n">un</span> <span class="n">fichier</span> <span class="p">(</span><span class="n">ou</span> <span class="n">un</span> <span class="n">ensemble</span> <span class="n">de</span> <span class="n">fichiers</span><span class="p">)</span> <span class="n">qui</span> <span class="n">comporte</span><span class="p">(</span><span class="n">nt</span><span class="p">)</span> <span class="n">des</span> <span class="n">objets</span> <span class="n">et</span> <span class="n">des</span> <span class="n">fonctions</span> <span class="n">qui</span> <span class="n">peuvent</span> <span class="n">être</span> <span class="n">ajoutés</span> <span class="n">aux</span> <span class="n">fonctionnalité</span> <span class="n">de</span> <span class="n">base</span> <span class="n">de</span> <span class="n">Python</span><span class="o">.</span> <span class="n">Il</span> <span class="n">en</span> <span class="n">existe</span> <span class="n">un</span> <span class="n">très</span> <span class="n">grand</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">tous</span> <span class="n">étant</span> <span class="n">spécialisés</span> <span class="n">dans</span> <span class="n">un</span> <span class="n">domaine</span><span class="o">.</span> <span class="n">On</span> <span class="n">trouve</span> <span class="n">par</span> <span class="n">exemple</span> <span class="p">:</span>
+
+<span class="o">*</span> <span class="n">le</span> <span class="n">module</span> <span class="o">*</span><span class="n">math</span><span class="o">*</span><span class="p">,</span> <span class="n">qui</span> <span class="n">contient</span> <span class="n">beaucoup</span> <span class="n">de</span> <span class="n">fonctions</span> <span class="n">mathématiques</span> <span class="p">;</span>
+<span class="o">*</span> <span class="n">le</span> <span class="n">module</span> <span class="o">*</span><span class="n">turtle</span><span class="o">*</span><span class="p">,</span> <span class="n">qui</span> <span class="n">permet</span> <span class="n">de</span> <span class="n">dessiner</span> <span class="n">géométriquement</span> <span class="p">;</span>
+<span class="o">*</span> <span class="n">le</span> <span class="n">module</span> <span class="o">*</span><span class="n">pygame</span><span class="o">*</span><span class="p">,</span> <span class="n">qui</span> <span class="n">est</span> <span class="n">un</span> <span class="n">module</span> <span class="n">permettant</span> <span class="n">de</span> <span class="n">gérer</span> <span class="n">les</span> <span class="n">différents</span> <span class="n">éléments</span> <span class="n">d</span><span class="s1">&#39;un jeu vidéo ;</span>
+<span class="o">*</span> <span class="n">le</span> <span class="n">module</span> <span class="o">*</span><span class="n">panda</span><span class="o">*</span><span class="p">,</span> <span class="n">qui</span> <span class="n">est</span> <span class="n">utilisé</span> <span class="n">pour</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">traitement</span> <span class="n">de</span> <span class="n">données</span> <span class="p">;</span>
+<span class="o">*</span> <span class="n">le</span> <span class="n">module</span> <span class="o">*</span><span class="n">flask</span><span class="o">*</span><span class="p">,</span> <span class="n">qui</span> <span class="n">permet</span> <span class="n">de</span> <span class="n">créer</span> <span class="n">une</span> <span class="n">application</span> <span class="n">web</span>
+<span class="o">*</span> <span class="o">...</span>
+
+<span class="n">Un</span> <span class="n">module</span> <span class="n">doit</span> <span class="n">être</span> <span class="n">chargé</span> <span class="n">en</span> <span class="n">mémoire</span> <span class="n">une</span> <span class="n">fois</span> <span class="p">(</span><span class="n">de</span> <span class="n">préférence</span> <span class="n">au</span> <span class="n">début</span> <span class="n">du</span> <span class="n">code</span><span class="p">),</span> <span class="n">par</span> <span class="n">l</span><span class="s1">&#39;intermédiaire de la commande :</span>
+
+<span class="err">````</span> <span class="n">python</span>
+<span class="kn">import</span> <span class="nn">nom_du_module</span>
+</code></pre></div>
+<details class="warning">
+<summary>Mais non, ca ne se fait pas que comme ça !</summary>
+<p>Oui, vous avez raison, mais ce n'est pas le cas de ce cours, nous verrons l'import de modules plus tard dans l'année...</p>
+</details>
+<p>Le module <em>doctest</em>, lui, permet d'intégrer à la <strong>docstring un ensemble de tests</strong> qui sont vérifiés par l'appel de la fonction <strong>testmod</strong> du module <em>doctest</em>.</p>
+<p>Par exemple, copiez-collez le code suivant dans un fichier :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">doctest</span> <span class="c1"># On charge en mémoire le module doctest</span>
+
+<span class="c1"># Zone de déclaration des fonctions</span>
+
+<span class="k">def</span> <span class="nf">times2</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction qui multiplie par 2, selon le type d&#39;objet</span>
+
+<span class="sd">&gt;&gt;&gt; times2(4)</span>
+<span class="sd">8</span>
+<span class="sd">&gt;&gt;&gt; times2(5.4)</span>
+<span class="sd">10.8</span>
+<span class="sd">&gt;&gt;&gt; times2(&#39;a&#39;)</span>
+<span class="sd">&#39;aa&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span>
+
+
+<span class="c1"># Zone du script global</span>
+
+<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span> <span class="c1"># Lance les tests des fonctions déclarées</span>
+</code></pre></div>
+<p>L'appel à la fonction <code>doctest.testmod()</code> déclenche les trois tests présents dans la doctsring, et vérifie que les résultats de la fonctions correspondent à ceux fournit dans la docstring.</p>
+<div class="admonition question">
+<p class="admonition-title">Application 7 : Ajouter une fonction et des tests</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Enoncé</label><label for="__tabbed_12_2">Solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Créez une fonction <code>times3</code> qui multiplie un objet par 3, en écrivant les tests correspondants.</p>
+</div>
+<div class="tabbed-block">
+<p>A venir !</p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.</strong></p>
+<h2 id="exercices_1">Exercices</h2>
+<p><em>Dans tous les exercices suivants, on supposera que l'utilisateur·trice de la fonction fournit des arguments du bon type</em></p>
+<p><strong>Pour tester vos fonctions avec les jeux fournis, n'oubliez pas :</strong></p>
+<ul>
+<li>d'importer le module avec <code>import doctest</code> ;</li>
+<li>de lancer les tests avec <code>doctest.testmod()</code> ;</li>
+</ul>
+<p>Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.</p>
+<ol>
+<li>
+<p>Ecrire une fonction qui renvoie le maximum de deux nombres donnés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maxi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction qui renvoie le maximum de deux nombres</span>
+<span class="sd">&gt;&gt;&gt; maxi(12,3)</span>
+<span class="sd">12</span>
+<span class="sd">&gt;&gt;&gt; maxi(-5,9)</span>
+<span class="sd">9</span>
+<span class="sd">&gt;&gt;&gt; maxi(6,6)</span>
+<span class="sd">6</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Ecrire une fonction qui renvoie le minimum de deux nombres donnés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mini</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction qui renvoie le maximum de deux nombres</span>
+<span class="sd">&gt;&gt;&gt; mini(12,3)</span>
+<span class="sd">3</span>
+<span class="sd">&gt;&gt;&gt; mini(-5,9)</span>
+<span class="sd">-5</span>
+<span class="sd">&gt;&gt;&gt; mini(6,6)</span>
+<span class="sd">6</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Ecrire une fonction qui renvoie le maximum de trois nombres donnés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maxi3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction qui renvoie le maximum de trois nombres</span>
+<span class="sd">&gt;&gt;&gt; maxi3(5,12,3)</span>
+<span class="sd">12</span>
+<span class="sd">&gt;&gt;&gt; maxi3(-5,-7,2)</span>
+<span class="sd">2</span>
+<span class="sd">&gt;&gt;&gt; maxi3(6,6,6)</span>
+<span class="sd">6</span>
+<span class="sd">&gt;&gt;&gt; maxi3(5,7,7)</span>
+<span class="sd">7</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres donnés</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">intermediaire</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction qui renvoie le nombre intermédiaire deux nombres</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(12,8,3)</span>
+<span class="sd">8</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(-5,0,9)</span>
+<span class="sd">0</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(7,7,7)</span>
+<span class="sd">7</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(4,7,7)</span>
+<span class="sd">7</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(4,4,7)</span>
+<span class="sd">4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Erire une fonction qui supprime tous les caractères qui ne sont pas des lettres ( majuscules ou minuscules, sans accents ) d'une chaine de caractères donnée.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rienQueDesLettres</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&gt;&gt;&gt; rienQueDesLettres(&#39;  toto  &#39;)</span>
+<span class="sd">&#39;toto&#39;</span>
+<span class="sd">&gt;&gt;&gt; rienQueDesLettres(&#39;123Toto456&#39;)</span>
+<span class="sd">&#39;Toto&#39;</span>
+<span class="sd">&gt;&gt;&gt; rienQueDesLettres(&#39;Et!C&#39;est Toto ?&#39;)</span>
+<span class="sd">&#39;EtCestToto&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Ecrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span><span class="p">,</span><span class="n">yA</span><span class="p">,</span><span class="n">xB</span><span class="p">,</span><span class="n">yB</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Fonction renvoyant le coefficient directeur de la droite (AB)</span>
+<span class="sd">en connaissant les coordonnées des points A et B, ou None si c&#39;est impossible</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(0,0,1,5)</span>
+<span class="sd">5</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(0,0,2,10)</span>
+<span class="sd">5</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,6)</span>
+<span class="sd">2</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,6)</span>
+<span class="sd">2</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,4)</span>
+<span class="sd">0</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,3)</span>
+<span class="sd">-1</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,3,7)==None</span>
+<span class="sd">True</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,3,4)==None</span>
+<span class="sd">True</span>
+<span class="sd">&gt;&gt;&gt; coefficient_directeur(4,4,3,4)==None</span>
+<span class="sd">False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="c1">###VOTRE CODE ICI</span>
+</code></pre></div>
+</li>
+<li>
+<p>Ecrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite <span class="arithmatex">\((AB)\)</span>, en prenant en argument les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme la fonction précédente, et qui renvoie None si c'est impossible.</p>
+</li>
+<li>
+<p>Ecrire une fonction - et le jeu de test qui va avec,  qui renvoie l'équation réduite de la droite <span class="arithmatex">\((AB)\)</span>, en prenant en argument les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme dans les fonctions précédentes.</p>
+</li>
+<li>
+<p>Ecrire une fonction qui donne le discriminant d'un trinome du second degré $ax^2 +bx+c $, en fournissant un jeu d'exemples complets.</p>
+</li>
+</ol>
+
+              
+    <script src="../../../../js/ide.js"></script> 
+    
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../C01_Conditions_Boucles/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Boucles et conditions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Boucles et conditions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ProjetPendu/" class="md-footer__link md-footer__link--next" aria-label="Next: Projet : Jeu du Pendu" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Projet : Jeu du Pendu
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2022 - F.Vergniaud
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:admin@zonensi.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      
+        <script src="../../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js"></script>
+      
+        <script src="../../../../xtra/javascripts/interpreter.js"></script>
+      
+    
+  </body>
+</html>
