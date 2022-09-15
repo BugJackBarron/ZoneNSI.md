@@ -13,7 +13,7 @@ class HappinessLevel :
     
 class KawaiiMonster :
     
-    def __init__(self, name : str, image_base :list[str], happiness_max  : int = 100, happiness_speed : int = 2, base_value : int =100) :
+    def __init__(self, name : str, image_base :str, happiness_max  : int = 100, happiness_speed : int = 2, base_value : int =100) :
         """
         Méthode constructeur d'un monstre :
 
@@ -25,13 +25,14 @@ class KawaiiMonster :
          """
 
         self. name = name
-        self.image_base = image_base
+        self.image_base = pg.image.load(image_base).convert_alpha()
+        self.imaghe_rect = self.image_base.get_rect()
         self.happiness_max = happiness_max
         self.happiness_speed = happiness_speed
         self.happiness = self.happiness_max
         self.level = 1
         self.base_value = base_value
-        self.cursor_happiness = self.happiness % 5
+        
         
     def sad(self) :
         self.happiness -= self.happiness_speed*self.level
