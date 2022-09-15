@@ -17,11 +17,47 @@ sur des textes), ou encore sur d'autres types de données (musiques, images, ou 
 
 Mais souvent les algorithmes sont répétitifs, longs à faire à la main, et nécessitent de fastidieux calculs. Ce qui est particulièrement pénible pour un être humain...
 
-Mais les humains ont inventé les ordinateurs, qui eux sont capables de faire des tâches répétitives et des calculs très très rapidement - un ordinateur dont le processeur est cadencé
-à 3 GHz effectue **3 milliards d'opérations élémentaires par seconde** (les opérations élémentaires sont généralement des additions sur des entiers pas trop grands).
+!!! question "Appliquer une méthode"
+
+	=== "Enoncé"
+
+		!!! info inline end 
+			On rappelle que la division euclidienne est la dicision classique des entiers, avec quotient et reste :
+
+			![div_euclidienne.png](div_euclidienne.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	
+		On considère l'algorithme suivant :
+
+		1. Choisir un nombre entier naturel, qu'on appellera $x$.
+		2. Fixer un nombre $p$ à 0.
+		3. Si le quotient de la **division euclidienne** de $x$ par $2$ est supérieur ou égal à $1$ :
+
+			* Ajouter $1$ à $p$ ;
+			* Remplacer la valeur de $x$ par ce quotient.
+			* Recommencer l'étape 3
+		4. Si le quotient de $x$ par $2$ est inférieur à $1$, on arrête l'algorithme.
+
+		Appliquer cet algorithme sur les nombres $15$, $57$ puis 312$. Quelles sont les valeurs finales obtenus par $p$ à chaque fois ?
+
+	=== "Solution pour $15$"
+
+		On obtient $p = 3$.
+
+	=== "Solution pour $57$"
+
+		On obtient $p = 5$
+
+	=== "Solution pour $312$"
+
+		On obtient $p = 8$
+
+
+
+Certains algorithmes peuvent être véritablement fastidieux ! Mais les humains ont inventé les ordinateurs, qui eux sont capables de faire des tâches répétitives et des calculs très très rapidement - un ordinateur dont le processeur est cadencé à 3 GHz effectue **3 milliards d'opérations élémentaires par seconde** (les opérations élémentaires sont généralement des additions sur des entiers pas trop grands).
 
 Donc, dans un ordinateur, les données vont être utilisées et modifiées par l'algorithme, afin de produire son résultat, qui sera lui-même une donnée.
- Pour cela les données sont stockées dans des *cases mémoires* de l'ordinateur, cases que l'on repèrera par leur **nom**
+
+Pour manipuler les données , l'ordinateur les stockera dans des *cases mémoires*, cases que l'on repèrera par leur **nom**.
  
 !!! abstract "Variables, types et affectations"
 
@@ -29,18 +65,18 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
  
 	Les données informatiques de base peuvent être classées dans 4 types différents :
  
-	* les **entiers** (*nombre entier relatif*) ;
-	* les **flottants** (*en simplifiant, les nombres décimaux*);
-	* les **chaînes de caractères** (*des suites de lettres, chiffres, symboles, encadrées par des guillemets*);
-	* les **booléens** (*une valeur qui ne peut être que dans deux états : Vrai et Faux*).
+	* les {==**entiers**==} (*nombre entier relatif*) ;
+	* les {==**flottants**==} (*en simplifiant, les nombres décimaux*);
+	* les {==**chaînes de caractères**==} (*des suites de lettres, chiffres, symboles, encadrées par des guillemets*);
+	* les {==**booléens**==} (*une valeur qui ne peut être que dans deux états : Vrai et Faux*).
 
-	L'affectation est l'opération qui consiste à &laquo; ranger &raquo; une donnée dans une variable. En pseudo-code elle est symbolisée par une flèche pointant vers la gauche  : $\leftarrow$. On lira l'instruction 
+	L'affectation est l'opération qui consiste à &laquo; ranger &raquo; une donnée dans une variable. En *pseudo-code* elle est symbolisée par une flèche pointant vers la gauche  : $\leftarrow$. On lira l'instruction :
 	
 	$$
 	X \leftarrow 7
 	$$
 	
-	par &laquo; X prend la valeur 7 &raquo;.
+	par &laquo; X prend la valeur 7 &raquo;, ce qui signifie que la valeur $7$ a été rangée dans une case mémoire nommée $X$.
 	
 !!! example "Exemple"
 
@@ -74,7 +110,7 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 	\end{array}
 	$$
 	
-	On peut alors représenter le {==**tableau d'état de la variable X**==} :
+	On peut alors représenter le {==**tableau d'état de la variable X**==}, qui représente l'évolution des valeurs dans les différentes cases mémoires nommées lors de l'exécution de l'algorithme :
 	
 	
 	| Etat de X | Commentaire |
@@ -82,6 +118,8 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 	| 7 | C'est la ligne  $X~<--~ 7$ |
 	| 35 | C'est la ligne $X~<--~ 5\times X$ , $X$ prend 5 fois la valeur qu'il possède|
 	| 39 | C'est la ligne $X~<--~ X+4$, $X$ prend la valeur qu'il possède plus 4 |
+
+	A la fin de l'algorithme, la case mémoire contient $39$, les autres valeurs ayant totalement disparues.
 	
 !!! exemple "Exemples de types de variables " 
 
@@ -105,11 +143,12 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 
 	C'est un {==**langage de haut niveau**==}, ce qui signifie qu'il est assez éloigné du code machine qui est très difficile à lire et à comprendre pour un être humain. En ce sens, Python est un langage informatique simple à apprendre, et dont l'écriture est proche du langage naturel. Il est ainsi devenu le langage générant le plus de recherches sur le web en octobre 2021.
 
-	Pour autant, l'ordinateur qui exécute un programme Python reste une machine *sans intelligence*, et le programmeur doit respecter une {==**syntaxe très stricte**==} pour que l'ordinateur exécutela tâche qui lui est confiée.
+	Pour autant, l'ordinateur qui exécute un programme Python reste une machine *sans intelligence*, et la programmeuse ou le programmeur doit respecter une {==**syntaxe très stricte**==} pour que l'ordinateur exécute la tâche qui lui est confiée.
 
 !!! example "Exemple"
 
 	Voici le code python correspondant à l'algorithme que nous avons écrit précédemment :
+
 	``` python
 	X = 7
 	X = 5*X
@@ -147,20 +186,20 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 	
 	1. Compléter le tableau d'état des variables suivants :
 	
-	$$
-	\begin{array}{|c|c|}
-	\hline
-	A & B\\\hline
-	& \\\hline
-	& \\\hline
-	& \\\hline
-	\end{array}
-	$$
+		$$
+		\begin{array}{|c|c|}
+		\hline
+		A & B\\\hline
+		& \\\hline
+		& \\\hline
+		& \\\hline
+		\end{array}
+		$$
 	
 	2. Quelles sont les valeurs contenues par les variables $A$ et $B$ après l'exécution de l'algorithme ?
 	3. Vérifier vos réponses précédentes ci-dessous :
 	
-	<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/live.html#code=A%20%3D%203%0A&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"></iframe>
+		<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=A%20%3D%203%0AB%20%3D%20A%20%2B%202%0AA%20%3D%20A%20*%20B%0AB%20%3D%20A%20%2B%20B&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 	
 !!! question "Exercice 2"
 
@@ -211,7 +250,7 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 		$$
 		
 		1. Justifier qu'à l'issue de l'algorithme ci-dessous, la valeur de la variable B est 12.
-		2. A la fin de l'algorithme, on  ajoute l'instruction $C \leftarrow (A=12)$. Quel est le type de la donnée contenue par C ? Quel est sa valeur ?
+		2. A la fin de l'algorithme, on  ajoute l'instruction $C \leftarrow (A=12)$. Quel est le type de la donnée contenue par C ? Quelle est sa valeur ?
 		3. Ecrire ce code en Python (attention il y a un piège sur la dernière ligne !)
 		
 		<iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/visualize.html#code=&cumulative=false&heapPrimitives=nevernest&mode=edit&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"></iframe>
@@ -229,7 +268,7 @@ Donc, dans un ordinateur, les données vont être utilisées et modifiées par l
 		C = (A == 12)
 		```
 		
-		Le piège est d'écrire `A=12`, car en python, le symbole `=` **ne permet pas de tester une égalité**, vu qu'il est utilisé pour l'affectation. Pour tester une égaklité, et donc récupérer une valeur {==**booléenne**==}, il faut utiliser un double-égal : `A==12`.
+		Le piège est d'écrire `A=12`, car en python, le symbole `=` **ne permet pas de tester une égalité**, vu qu'il est utilisé pour l'affectation. Pour tester une égalité, et donc récupérer une valeur {==**booléenne**==}, il faut utiliser un double-égal : `A==12`.
 
 !!! question "Exercice 4"
 

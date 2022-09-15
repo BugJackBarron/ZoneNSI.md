@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/Maths/Seconde/AlgoBases/AffectationTypes/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2732,25 +2732,64 @@
 <p>Des algorithmes, il en existe beaucoup. Certains sont des algorithmes numériques (ils travaillent sur des nombres), d'autres sont des algorithmes textuels (ils travaillent
 sur des textes), ou encore sur d'autres types de données (musiques, images, ou données plus abstraites). </p>
 <p>Mais souvent les algorithmes sont répétitifs, longs à faire à la main, et nécessitent de fastidieux calculs. Ce qui est particulièrement pénible pour un être humain...</p>
-<p>Mais les humains ont inventé les ordinateurs, qui eux sont capables de faire des tâches répétitives et des calculs très très rapidement - un ordinateur dont le processeur est cadencé
-à 3 GHz effectue <strong>3 milliards d'opérations élémentaires par seconde</strong> (les opérations élémentaires sont généralement des additions sur des entiers pas trop grands).</p>
-<p>Donc, dans un ordinateur, les données vont être utilisées et modifiées par l'algorithme, afin de produire son résultat, qui sera lui-même une donnée.
- Pour cela les données sont stockées dans des <em>cases mémoires</em> de l'ordinateur, cases que l'on repèrera par leur <strong>nom</strong></p>
+<div class="admonition question">
+<p class="admonition-title">Appliquer une méthode</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution pour <span class="arithmatex">\(15\)</span></label><label for="__tabbed_1_3">Solution pour <span class="arithmatex">\(57\)</span></label><label for="__tabbed_1_4">Solution pour <span class="arithmatex">\(312\)</span></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition info inline end">
+<p class="admonition-title">Info</p>
+<p>On rappelle que la division euclidienne est la dicision classique des entiers, avec quotient et reste :</p>
+<p><img alt="div_euclidienne.png" src="../div_euclidienne.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+</div>
+<p>On considère l'algorithme suivant :</p>
+<ol>
+<li>Choisir un nombre entier naturel, qu'on appellera <span class="arithmatex">\(x\)</span>.</li>
+<li>Fixer un nombre <span class="arithmatex">\(p\)</span> à 0.</li>
+<li>
+<p>Si le quotient de la <strong>division euclidienne</strong> de <span class="arithmatex">\(x\)</span> par <span class="arithmatex">\(2\)</span> est supérieur ou égal à <span class="arithmatex">\(1\)</span> :</p>
+<ul>
+<li>Ajouter <span class="arithmatex">\(1\)</span> à <span class="arithmatex">\(p\)</span> ;</li>
+<li>Remplacer la valeur de <span class="arithmatex">\(x\)</span> par ce quotient.</li>
+<li>Recommencer l'étape 3</li>
+</ul>
+</li>
+<li>
+<p>Si le quotient de <span class="arithmatex">\(x\)</span> par <span class="arithmatex">\(2\)</span> est inférieur à <span class="arithmatex">\(1\)</span>, on arrête l'algorithme.</p>
+</li>
+</ol>
+<p>Appliquer cet algorithme sur les nombres <span class="arithmatex">\(15\)</span>, <span class="arithmatex">\(57\)</span> puis 312$. Quelles sont les valeurs finales obtenus par <span class="arithmatex">\(p\)</span> à chaque fois ?</p>
+</div>
+<div class="tabbed-block">
+<p>On obtient <span class="arithmatex">\(p = 3\)</span>.</p>
+</div>
+<div class="tabbed-block">
+<p>On obtient <span class="arithmatex">\(p = 5\)</span></p>
+</div>
+<div class="tabbed-block">
+<p>On obtient <span class="arithmatex">\(p = 8\)</span></p>
+</div>
+</div>
+</div>
+</div>
+<p>Certains algorithmes peuvent être véritablement fastidieux ! Mais les humains ont inventé les ordinateurs, qui eux sont capables de faire des tâches répétitives et des calculs très très rapidement - un ordinateur dont le processeur est cadencé à 3 GHz effectue <strong>3 milliards d'opérations élémentaires par seconde</strong> (les opérations élémentaires sont généralement des additions sur des entiers pas trop grands).</p>
+<p>Donc, dans un ordinateur, les données vont être utilisées et modifiées par l'algorithme, afin de produire son résultat, qui sera lui-même une donnée.</p>
+<p>Pour manipuler les données , l'ordinateur les stockera dans des <em>cases mémoires</em>, cases que l'on repèrera par leur <strong>nom</strong>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Variables, types et affectations</p>
 <p>Une <mark class="critic"><strong>variable</strong></mark> est une <em>case mémoire</em> possédant un <strong>nom</strong>, dans lequel on range une <strong>donnée</strong>.</p>
 <p>Les données informatiques de base peuvent être classées dans 4 types différents :</p>
 <ul>
-<li>les <strong>entiers</strong> (<em>nombre entier relatif</em>) ;</li>
-<li>les <strong>flottants</strong> (<em>en simplifiant, les nombres décimaux</em>);</li>
-<li>les <strong>chaînes de caractères</strong> (<em>des suites de lettres, chiffres, symboles, encadrées par des guillemets</em>);</li>
-<li>les <strong>booléens</strong> (<em>une valeur qui ne peut être que dans deux états : Vrai et Faux</em>).</li>
+<li>les <mark class="critic"><strong>entiers</strong></mark> (<em>nombre entier relatif</em>) ;</li>
+<li>les <mark class="critic"><strong>flottants</strong></mark> (<em>en simplifiant, les nombres décimaux</em>);</li>
+<li>les <mark class="critic"><strong>chaînes de caractères</strong></mark> (<em>des suites de lettres, chiffres, symboles, encadrées par des guillemets</em>);</li>
+<li>les <mark class="critic"><strong>booléens</strong></mark> (<em>une valeur qui ne peut être que dans deux états : Vrai et Faux</em>).</li>
 </ul>
-<p>L'affectation est l'opération qui consiste à &laquo; ranger &raquo; une donnée dans une variable. En pseudo-code elle est symbolisée par une flèche pointant vers la gauche  : <span class="arithmatex">\(\leftarrow\)</span>. On lira l'instruction </p>
+<p>L'affectation est l'opération qui consiste à &laquo; ranger &raquo; une donnée dans une variable. En <em>pseudo-code</em> elle est symbolisée par une flèche pointant vers la gauche  : <span class="arithmatex">\(\leftarrow\)</span>. On lira l'instruction :</p>
 <div class="arithmatex">\[
 X \leftarrow 7
 \]</div>
-<p>par &laquo; X prend la valeur 7 &raquo;.</p>
+<p>par &laquo; X prend la valeur 7 &raquo;, ce qui signifie que la valeur <span class="arithmatex">\(7\)</span> a été rangée dans une case mémoire nommée <span class="arithmatex">\(X\)</span>.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -2779,7 +2818,7 @@ X &amp; \leftarrow &amp; 5\times X\\
 X &amp; \leftarrow &amp; X + 4\\
 \end{array}
 \]</div>
-<p>On peut alors représenter le <mark class="critic"><strong>tableau d'état de la variable X</strong></mark> :</p>
+<p>On peut alors représenter le <mark class="critic"><strong>tableau d'état de la variable X</strong></mark>, qui représente l'évolution des valeurs dans les différentes cases mémoires nommées lors de l'exécution de l'algorithme :</p>
 <table>
 <thead>
 <tr>
@@ -2802,6 +2841,7 @@ X &amp; \leftarrow &amp; X + 4\\
 </tr>
 </tbody>
 </table>
+<p>A la fin de l'algorithme, la case mémoire contient <span class="arithmatex">\(39\)</span>, les autres valeurs ayant totalement disparues.</p>
 </div>
 <div class="admonition exemple">
 <p class="admonition-title">Exemples de types de variables </p>
@@ -2822,15 +2862,15 @@ X &amp; \leftarrow &amp; X + 4\\
 <img alt="GVR" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Guido-portrait-2014-drc.jpg/1024px-Guido-portrait-2014-drc.jpg" style="width:30%;" title="Photograph by Daniel Stroud" />
 </p></p>
 <p>C'est un <mark class="critic"><strong>langage de haut niveau</strong></mark>, ce qui signifie qu'il est assez éloigné du code machine qui est très difficile à lire et à comprendre pour un être humain. En ce sens, Python est un langage informatique simple à apprendre, et dont l'écriture est proche du langage naturel. Il est ainsi devenu le langage générant le plus de recherches sur le web en octobre 2021.</p>
-<p>Pour autant, l'ordinateur qui exécute un programme Python reste une machine <em>sans intelligence</em>, et le programmeur doit respecter une <mark class="critic"><strong>syntaxe très stricte</strong></mark> pour que l'ordinateur exécutela tâche qui lui est confiée.</p>
+<p>Pour autant, l'ordinateur qui exécute un programme Python reste une machine <em>sans intelligence</em>, et la programmeuse ou le programmeur doit respecter une <mark class="critic"><strong>syntaxe très stricte</strong></mark> pour que l'ordinateur exécute la tâche qui lui est confiée.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
-<p>Voici le code python correspondant à l'algorithme que nous avons écrit précédemment :
+<p>Voici le code python correspondant à l'algorithme que nous avons écrit précédemment :</p>
 <div class="highlight"><pre><span></span><code><span class="n">X</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">X</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">X</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">+</span><span class="mi">4</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>On peut voir son exécution pas à pas depuis le site <a href="https://pythontutor.com/">python tutor</a> :</p>
 <p><iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=X%20%3D%207%0AX%20%3D%205*X%0AX%20%3D%20X%2B4&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
 <p>On constate que :</p>
@@ -2853,8 +2893,8 @@ B \leftarrow A+B\\\hline
 \end{array}
 \]</div>
 <ol>
-<li>Compléter le tableau d'état des variables suivants :</li>
-</ol>
+<li>
+<p>Compléter le tableau d'état des variables suivants :</p>
 <div class="arithmatex">\[
 \begin{array}{|c|c|}
 \hline
@@ -2864,15 +2904,19 @@ A &amp; B\\\hline
 &amp; \\\hline
 \end{array}
 \]</div>
-<ol>
-<li>Quelles sont les valeurs contenues par les variables <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> après l'exécution de l'algorithme ?</li>
-<li>Vérifier vos réponses précédentes ci-dessous :</li>
+</li>
+<li>
+<p>Quelles sont les valeurs contenues par les variables <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> après l'exécution de l'algorithme ?</p>
+</li>
+<li>
+<p>Vérifier vos réponses précédentes ci-dessous :</p>
+<p><iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=A%20%3D%203%0AB%20%3D%20A%20%2B%202%0AA%20%3D%20A%20*%20B%0AB%20%3D%20A%20%2B%20B&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></p>
+</li>
 </ol>
-<p><iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/live.html#code=A%20%3D%203%0A&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"></iframe></p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On considère les deux algorithmes S1 et S2 suivants :</p>
@@ -2912,7 +2956,7 @@ A &amp; \leftarrow &amp; \text{"bonjour"}\\\hline
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 3</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Soient deux variables <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span>, et l'algorithme suivant :</p>
@@ -2927,7 +2971,7 @@ B &amp; \leftarrow &amp; A\times B\\\hline
 \]</div>
 <ol>
 <li>Justifier qu'à l'issue de l'algorithme ci-dessous, la valeur de la variable B est 12.</li>
-<li>A la fin de l'algorithme, on  ajoute l'instruction <span class="arithmatex">\(C \leftarrow (A=12)\)</span>. Quel est le type de la donnée contenue par C ? Quel est sa valeur ?</li>
+<li>A la fin de l'algorithme, on  ajoute l'instruction <span class="arithmatex">\(C \leftarrow (A=12)\)</span>. Quel est le type de la donnée contenue par C ? Quelle est sa valeur ?</li>
 <li>Ecrire ce code en Python (attention il y a un piège sur la dernière ligne !)</li>
 </ol>
 <p><iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/visualize.html#code=&cumulative=false&heapPrimitives=nevernest&mode=edit&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"></iframe></p>
@@ -2940,14 +2984,14 @@ B &amp; \leftarrow &amp; A\times B\\\hline
 <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">B</span>
 <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span>
 </code></pre></div>
-<p>Le piège est d'écrire <code>A=12</code>, car en python, le symbole <code>=</code> <strong>ne permet pas de tester une égalité</strong>, vu qu'il est utilisé pour l'affectation. Pour tester une égaklité, et donc récupérer une valeur <mark class="critic"><strong>booléenne</strong></mark>, il faut utiliser un double-égal : <code>A==12</code>.</p>
+<p>Le piège est d'écrire <code>A=12</code>, car en python, le symbole <code>=</code> <strong>ne permet pas de tester une égalité</strong>, vu qu'il est utilisé pour l'affectation. Pour tester une égalité, et donc récupérer une valeur <mark class="critic"><strong>booléenne</strong></mark>, il faut utiliser un double-égal : <code>A==12</code>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 4</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On considère l'algorithme suivant :</p>
@@ -2978,7 +3022,7 @@ X &amp; \leftarrow &amp; X\times X\\\hline
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 5</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label><label for="__tabbed_5_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On considère l'algorithme suivant :</p>
@@ -3090,10 +3134,10 @@ X &amp; \leftarrow &amp; 2 X\\\hline
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
