@@ -3,7 +3,13 @@ from pygame.locals import *
 from random import randint
 
 CURSOR_LEVEL= 5
-#CURSOR_COLOURS = [RED, ORANGE, YELLOW, GREEN, PURPLE ]
+RED = (255, 0, 0)
+ORANGE = (255, 173, 51)
+YELLOW = (255, 255, 0)
+GREEN = (0, 255, 0)
+PURPLE = (255, 0, 255)
+BLUE = (0, 0, 255)
+CURSOR_COLOURS = [RED, ORANGE, GREEN, BLUE, PURPLE ]
 pg.init()
 STARFONT = pg.font.Font(pg.font.match_font('starjedioutline'), 64)
 
@@ -65,6 +71,9 @@ class KawaiiMonster :
     -> happiness speed : {self.happiness_speed}
     """
     
+class Flamme :
+    def __init(self, 
+    
 class ForceButton :
     def __init__(self) :
         self. image = pg.Surface((100,50))
@@ -73,6 +82,8 @@ class ForceButton :
         
     def show(self, frame_to_blit) :
         frame_to_blit.blit(self.image, self.rect)
+        
+
 
 class ForceCounter :
     def __init__(self) :
@@ -103,7 +114,6 @@ class ForceCounter :
         
     
 def main() :
-    pg.init()
     main_frame = pg.display.set_mode((1200, 675))
     background = pg.image.load('Cantina.png').convert()
     pg.display.set_caption('KawaiiWars')
@@ -111,14 +121,16 @@ def main() :
     game_playing = True
     force_button = ForceButton()
     force_counter = ForceCounter()
-    red_flamme = pg.Surface((64,76))
-    red_flamme_image = (pg.image.load('FlammeR.png').convert_alpha(),
-                  pg.image.load('FlammeRI.png').convert_alpha())
+    red_flamme = pg.Surface((64,76), pg.SRCALPHA, 32).convert_alpha()
+    red_flamme = pg.transform.scale(red_flamme, (128, 152))
+    red_flamme_image = (pg.transform.scale(pg.image.load('FlammeP.png').convert_alpha(), (128, 152)),
+                  pg.transform.scale(pg.image.load('FlammePI.png').convert_alpha(), (128, 152)))
+    
     red_flamme_rect=red_flamme.get_rect()
     red_flamme_rect.midbottom = (600, 300)
     
     
-    troop = pg.image.load('Troops.png').convert_alpha()
+    troop = pg.transform.scale(pg.image.load('Troops.png').convert_alpha(), (128, 152))
     troop_rect=troop.get_rect()
     troop_rect.midbottom=(600,300)
     
@@ -127,7 +139,7 @@ def main() :
     pg.time.set_timer(decrease_force, 1000)
     tc = 0
     while game_playing :
-        flamme_counter+=1
+        flamme_counter = 1 -flamme_counter
         for event in pg.event.get() :
             if event.type ==QUIT :
                 game_playing = False
@@ -136,11 +148,11 @@ def main() :
                 if force_button.rect.collidepoint(mouse_position) :
                     force_counter.update()
             if event.type == decrease_force :
-                tc -=1
-                print(tc)
+                ...
+                
                     
         main_frame.blit(background, (0,0))
-        red_flamme.blit(red_flamme_image[flamme_counter%2], (0,0))
+        red_flamme.blit(red_flamme_image[flamme_counter], (0,0))
         main_frame.blit(red_flamme, red_flamme_rect)
         main_frame.blit(troop, troop_rect)
         force_counter.show(main_frame)
