@@ -2893,8 +2893,9 @@ avec les valeurs restantes du premier tableau.</li>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Copiez-collez le code ci-dessous permettant d'utiliser le décorateur <code>@timeit</code> :
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>                                                
+<li>
+<p>Copiez-collez le code ci-dessous permettant d'utiliser le décorateur <code>@timeit</code> :
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>                                                
 
 <span class="k">def</span> <span class="nf">timeit</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
 
@@ -2906,8 +2907,7 @@ avec les valeurs restantes du premier tableau.</li>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">return</span> <span class="n">timed</span>
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Décorateur <code>@timeit</code></p>
 <p>pour utiliser le décorateur, on le place dans la ligne précédant la définition
@@ -2921,8 +2921,10 @@ et exécuterala fonction <code>timed</code>, qui calcule le temps d'exécution d
 <p>Il faudra être attentif à son utilisation <strong>dans le cas des fonctions récursives !</strong> (Je vous laisse
 constater par vous même le problème rencontré.)</p>
 </div>
-<ol>
-<li>Créer une fonction <code>genereTab(n)</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</li>
+</li>
+<li>
+<p>Créer une fonction <code>genereTab(n)</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</p>
+</li>
 <li>
 <p>Créer à l'aide de toutes les fonctions précédentes une fonction <code>testeTemps(n)</code> qui compare les temps d'exécution des différents tris pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
 <strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau, et donc créer des copies du tableau original avant de le trier (on peut utiliser la fonction 

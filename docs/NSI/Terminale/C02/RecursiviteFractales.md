@@ -52,7 +52,8 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	![Turtle Base](Turtle_Base.png){: style="width : 100%;"}
 	</div>
 	</div>
-	Vous observerez que la tortue est représentée par une {==**pointe de flèche**==}, pointant vers la droite.
+
+	Vous observerez que la tortue est représentée par une **pointe de flèche**, pointant vers la droite.
 	
 	Par défaut, la tortue apparaît au centre du repère, c'est-à-dire au centre de la fenêtre de dessin, donc aux coordonnées $(0; 0)$.
 	
@@ -82,8 +83,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	
 
 !!! tips "Méthodes de la classe `Turtle`"
-	Comme toujours, la [doc python](https://docs.python.org/fr/3/library/turtle.html) est très claire sur le module `turtle`,
-	mais voici {==**quelques méthodes**==} des objets de classe `Turle` :
+	Comme toujours, la [doc python](https://docs.python.org/fr/3/library/turtle.html) est très claire sur le module `turtle`, mais voici **quelques méthodes** des objets de classe `Turle` :
 	
 	* `forward(d)` : déplace l'objet `Turtle` de $d$ pixels dans la direction où pointe la tête de la tortue. A mettre en parallèle avec la méthode `backward(d)`.
 	* `left(a)` : tourne la tête de la tortue vers sa gauche de $a$°. A mettre en parallèle avec la méthode `right(a)`.
@@ -184,61 +184,62 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 !!! question "Construction du flocon"
 
 	1. Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.
-	=== "Énoncé"
-	
-		a. Créer une fonction `segment(long)` qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).
+
+		=== "Énoncé"
 		
-		b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.
+			a. Créer une fonction `segment(long)` qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).
+			
+			b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.
+			
+		=== "Solution"
+			
+			``` python
+			def segment(long) :
+				t.forward(long//3)
+				t.left(60)
+				t.forward(long//3)
+				t.right(120)
+				t.forward(long//3)
+				t.left(60)
+				t.forward(long//3)
 		
-	=== "Solution"
-		
-		``` python
-		def segment(long) :
-			t.forward(long//3)
-			t.left(60)
-			t.forward(long//3)
-			t.right(120)
-			t.forward(long//3)
-			t.left(60)
-			t.forward(long//3)
-    
-		```
+			```
 		
 	2. Passons à la construction récursive d'un segment :
 	
-	=== "Énoncé"
-	
-		En se basant sur la fonction précédente, implémenter une fonction `segmentR(long, n)` qui tracera
-		le résultat de $n$ itérations de la méthode sur un segment de longueur `long`.
+		=== "Énoncé"
 		
-		* Pour $n=0$, on obtiendra
-		<p align="center">
-		![VonKoch 0](VonKoch0.png){: style="width:25%;"}
-		</p>
-		* Pour $n=1$, on obtiendra
-		<p align="center">
-		![VonKoch 1](VonKoch1.png){: style="width:25%;"}
-		</p>
-		* Pour $n=2$, on obtiendra
-		<p align="center">
-		![VonKoch 2](VonKoch2.png){: style="width:25%;"}
-		</p>
-		
-	=== "Solution"
-		
-		``` python
-		def segmentR( long, n) :
-			if n == 0 :
-				t.forward(long)
-			else :
-				segmentR(long/3, n-1)
-				t.left(60)
-				segmentR(long/3, n-1)
-				t.right(120)
-				segmentR(long/3, n-1)
-				t.left(60)
-				segmentR(long/3, n-1)
-		```
+			En se basant sur la fonction précédente, implémenter une fonction `segmentR(long, n)` qui tracera
+			le résultat de $n$ itérations de la méthode sur un segment de longueur `long`.
+			
+			* Pour $n=0$, on obtiendra
+			<p align="center">
+			![VonKoch 0](VonKoch0.png){: style="width:25%;"}
+			</p>
+			* Pour $n=1$, on obtiendra
+			<p align="center">
+			![VonKoch 1](VonKoch1.png){: style="width:25%;"}
+			</p>
+			* Pour $n=2$, on obtiendra
+			<p align="center">
+			![VonKoch 2](VonKoch2.png){: style="width:25%;"}
+			</p>
+			
+		=== "Solution"
+			
+			``` python
+			def segmentR( long, n) :
+				if n == 0 :
+					t.forward(long)
+				else :
+					segmentR(long/3, n-1)
+					t.left(60)
+					segmentR(long/3, n-1)
+					t.right(120)
+					segmentR(long/3, n-1)
+					t.left(60)
+					segmentR(long/3, n-1)
+			```
 		
 	3. Terminer la construction en traçant le flocon sur une base de triangle équilatéral.
 	

@@ -29,7 +29,7 @@
 !!! question "Exercice"
 
 	=== "Enoncé"
-		Construire une fonction `suiteArithmetique(n)` qui  calcule le $n$-ième terme de la suite arithmétique de premier terme `3` et de raison `7`.
+		Construire une fonction `maSuiteArithmetique(n)` qui  calcule le $n$-ième terme de la suite arithmétique de premier terme `3` et de raison `7`.
 		Quelle formule avez-vous utilisée ?
 		
 	===  "Une solution"
@@ -80,6 +80,18 @@
 		
 		* dans ce code, je ne vérifie pas que $n \in \mathbb{N}$, et il faudrait... ;
 		* dans le cas où $n=0$, la boucle `for` n'est pas effectuée.
+
+		Une version plus correcte serait donc celle-ci :
+
+		``` python
+		def maSuiteAG(n) :
+			if not(isinstance(n, int)) or n<0 : 
+				raise ValueError("n must be a non negativ integer")
+			u = 7 
+			for i in range(1,n+1) : # j'utilise ce range plutôt que range(n) car le i utilisé correspond au terme du rang calculé.
+				u = -2*u + 5
+			return u
+		```
 		
 		Une telle fonction est dite {==**itérative**==}, car elle utilise une boucle de répétitions pour parvenir au résultat souhaité.
 		
@@ -104,7 +116,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 
 !!! tips "Fonction récursive"
 
-	Une fonction est dite **récursive** quand elle s'appelle elle-même, une ou plusieurs fois.
+	Une fonction est dite {==**récursive**==} quand elle s'appelle elle-même, une ou plusieurs fois.
 	
 !!! bug "Des problèmes"
 	
@@ -243,7 +255,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	=== "Solution Itérative"
 		``` python linenums="1"
 		def etoile(n) :
-			if not(isinstance(n, int)) or n<0 :
+			if not(isinstance(n, int)) or n<=0 :
 				raise valueError("n must be a positiv integer")
 			for i in range(1, n+1) :
 				print("*"*i)				
@@ -328,7 +340,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		??? done "Solution"
 			A venir
 			
-	5. *Facultatif : *  Implémenter une fonction `developpe(n)` qui renvoie la chaîne de caractères correspondant au développement de $(a+b)^n$.
+	5. *Facultatif :*  Implémenter une fonction `developpe(n)` qui renvoie la chaîne de caractères correspondant au développement de $(a+b)^n$.
 	
 		??? done "Solution"
 			A venir

@@ -2741,7 +2741,7 @@ u_n = u_0 + n \times r
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Une solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Construire une fonction <code>suiteArithmetique(n)</code> qui  calcule le <span class="arithmatex">\(n\)</span>-ième terme de la suite arithmétique de premier terme <code>3</code> et de raison <code>7</code>.
+<p>Construire une fonction <code>maSuiteArithmetique(n)</code> qui  calcule le <span class="arithmatex">\(n\)</span>-ième terme de la suite arithmétique de premier terme <code>3</code> et de raison <code>7</code>.
 Quelle formule avez-vous utilisée ?</p>
 </div>
 <div class="tabbed-block">
@@ -2789,6 +2789,15 @@ Deux remarques :</p>
 <li>dans ce code, je ne vérifie pas que <span class="arithmatex">\(n \in \mathbb{N}\)</span>, et il faudrait... ;</li>
 <li>dans le cas où <span class="arithmatex">\(n=0\)</span>, la boucle <code>for</code> n'est pas effectuée.</li>
 </ul>
+<p>Une version plus correcte serait donc celle-ci :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maSuiteAG</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span> 
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n must be a non negativ integer&quot;</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="mi">7</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="c1"># j&#39;utilise ce range plutôt que range(n) car le i utilisé correspond au terme du rang calculé.</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="n">u</span>
+</code></pre></div>
 <p>Une telle fonction est dite <mark class="critic"><strong>itérative</strong></mark>, car elle utilise une boucle de répétitions pour parvenir au résultat souhaité.</p>
 </div>
 </div>
@@ -2808,7 +2817,7 @@ Ca vaudrait peut-être le coup de tester, en prenant <span class="arithmatex">\(
 <h2 id="principe-de-recursivite">Principe de récursivité</h2>
 <div class="admonition tips">
 <p class="admonition-title">Fonction récursive</p>
-<p>Une fonction est dite <strong>récursive</strong> quand elle s'appelle elle-même, une ou plusieurs fois.</p>
+<p>Une fonction est dite <mark class="critic"><strong>récursive</strong></mark> quand elle s'appelle elle-même, une ou plusieurs fois.</p>
 </div>
 <div class="admonition bug">
 <p class="admonition-title">Des problèmes</p>
@@ -2974,7 +2983,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">etoile</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">&quot;n must be a positiv integer&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>                
@@ -3076,7 +3085,7 @@ p\\
 </details>
 </li>
 <li>
-<p>*Facultatif : *  Implémenter une fonction <code>developpe(n)</code> qui renvoie la chaîne de caractères correspondant au développement de <span class="arithmatex">\((a+b)^n\)</span>.</p>
+<p><em>Facultatif :</em>  Implémenter une fonction <code>developpe(n)</code> qui renvoie la chaîne de caractères correspondant au développement de <span class="arithmatex">\((a+b)^n\)</span>.</p>
 <details class="done">
 <summary>Solution</summary>
 <p>A venir</p>
