@@ -111,11 +111,23 @@ def main() :
     game_playing = True
     force_button = ForceButton()
     force_counter = ForceCounter()
+    red_flamme = pg.Surface((64,76))
+    red_flamme_image = (pg.image.load('FlammeR.png').convert_alpha(),
+                  pg.image.load('FlammeRI.png').convert_alpha())
+    red_flamme_rect=red_flamme.get_rect()
+    red_flamme_rect.midbottom = (600, 300)
     
+    
+    troop = pg.image.load('Troops.png').convert_alpha()
+    troop_rect=troop.get_rect()
+    troop_rect.midbottom=(600,300)
+    
+    flamme_counter = 0
     decrease_force = pg.USEREVENT +0
     pg.time.set_timer(decrease_force, 1000)
     tc = 0
     while game_playing :
+        flamme_counter+=1
         for event in pg.event.get() :
             if event.type ==QUIT :
                 game_playing = False
@@ -128,6 +140,9 @@ def main() :
                 print(tc)
                     
         main_frame.blit(background, (0,0))
+        red_flamme.blit(red_flamme_image[flamme_counter%2], (0,0))
+        main_frame.blit(red_flamme, red_flamme_rect)
+        main_frame.blit(troop, troop_rect)
         force_counter.show(main_frame)
         force_button.show(main_frame)
         pg.display.update()
