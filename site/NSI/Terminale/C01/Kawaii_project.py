@@ -2,6 +2,11 @@ import pygame as pg
 from random import randint
 
 CURSOR_LEVEL= 5
+RED = (255, 0, 0)
+ORANGE = (255, 173, 51)
+YELLOW = (255, 255, 0)
+GREEN = (0, 255, 0)
+PURPLE = (255, 0, 255)
 CURSOR_COLOURS = [RED, ORANGE, YELLOW, GREEN, PURPLE ]
 
 

@@ -8,7 +8,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	Le module `turtle` est un module faisant partie de toute distribution `python`. 
 	Son intérêt repose sur la simplicité (relative) des commandes utilisées pour dessiner.
 	
-	Un objet de classe {==**`Turtle`**=} se comporte comme un **crayon de table traçante**
+	Un objet de classe {==**`Turtle`**==} se comporte comme un **crayon de table traçante**
 	sur une feuille de papier munie d'un repère orthonormé.
 	<div style="display :flex;">
 	<div style="display:inline;width:50%;text-align:center;padding-left: 10px;padding-bottom : 1em">
@@ -108,8 +108,34 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	Je ne détaillerai pas ici les méthodes des objets `Screen`.
 	
 !!! question "Prise en main de `turtle`"
+
 	
 	=== "Énoncé"
+	
+		En partant d'un fichier `sandbox_turtle.py` contenant les lignes suivantes :
+		
+		```` python
+import turtle
+
+def triangleEquilateral(c) :
+    ...
+    
+def pentagramme(c, color="red") :
+    ...
+    
+def hexagone(c, diag = False) :
+    ...
+    
+    
+    
+if __name__ == "__main__" :
+    screen = turtle.Screen()
+    screen.bgcolor('lightgray')
+    donatello = turtle.Turtle()
+
+		
+		````
+		
 		1. Créer une fonction `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
 		la position courante.
 		2. Créer une fonction `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
@@ -162,7 +188,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 !!! abstract "Le Flocon de Von Koch"
 	
 	Le flocon de Von Koch, inventée en 1904 par le mathématicien suédois Helge von Koch, est une des premières
-	courbes fractales décrites, avant même l'invention du terme [{==**fractale**==}](https://fr.wikipedia.org/wiki/Fractale) par Benoit Mandelbrot en 1967.
+	courbes fractales décrites, avant même l'invention du terme [**fractale**](https://fr.wikipedia.org/wiki/Fractale) par Benoit Mandelbrot en 1967.
 	
 	<p align="center">
 	![Flocon](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Von_Koch_curve.gif/180px-Von_Koch_curve.gif){: style="width:25%;"}
