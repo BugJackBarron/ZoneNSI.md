@@ -170,7 +170,7 @@ L'exemple de la fonction `ask_user_int` est assez limité. Dans l'absolu, on pou
 
 Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**arguments**==} qui seront des variables **initialisées à certaines valeurs lors de l'appel à la fonction** :
 
-{{ IDEv('ask_user_intV3') }}
+{{ IDEv('askUserIntV3') }}
 
 Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :
 
@@ -251,7 +251,7 @@ Notre fonction `ask_user_int` commence à être intéressante. Mais nous pourrio
 C'est tout à fait possible en Python, grâce aux **arguments optionnels**. Il s'agit d'arguments dont le nom est donné dans la fonction, mais avec **une valeur par défaut**. Ainsi :
 
 
-{{ IDEv('ask_user_intV4') }}
+{{ IDEv('askUserIntV4') }}
 
 Ainsi, la fonction ci-dessus posssède trois arguments :
 
@@ -301,7 +301,7 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
 
     === "Enoncé"
 
-        Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *argument booléen optionnel `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`. Vous pouvez utiliser les tests ci-dessous :
+        Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *argument booléen optionnel* `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`. Vous pouvez utiliser les tests ci-dessous :
 
         ```python
         ### Cette cellule est une cellule vous permettant de tester votre fonction
@@ -335,9 +335,9 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
 
 !!! tips "Commenter son code"
 
-    Une bonne habitude, à prendre immédiatement, etst celle de commenter son code, c'est-à-dire d'expliquer l'impolémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont **des lignes non-lues par l'interpréteur Python**, commençant par le symbole *dièse* `#`.
+    Une bonne habitude, à prendre immédiatement, est celle de commenter son code, c'est-à-dire d'expliquer l'implémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont **des lignes non-lues par l'interpréteur Python**, commençant par le symbole *dièse* `#`.
 
-    Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un cvode que vous avez écrit vous-même quelques semaines voir quelques jours auparavant !
+    Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un code que vous avez écrit vous-même quelques semaines voir quelques jours auparavant !
 
     Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... 
 
@@ -357,7 +357,7 @@ La fonction `somme` contient donc une **docstring** - introduite par trois guill
 
 On peut alors accéder à la **docstring** d'une fonction en utilisant la fonction *built-in* `help` :
 
-Testez par exemple ``help(somme)`.
+Testez par exemple `help(somme)`.
   
 
 !!! tips "Les docstrings"
@@ -382,7 +382,7 @@ Testez par exemple ``help(somme)`.
 
 ## Portée des variables  
 
-Au sein d'un même programme, les variables définies n'ont pas systématiquement la même **portée**. La **portée d'une variable**, c'est l'espace des objets/noms dans lequel est défini cette variable.
+Au sein d'un même programme, les variables définies n'ont pas systématiquement la même **portée**. La **portée d'une variable**, c'est l'espace des objets/noms (on parle aussi de *monde*) dans lequel est défini cette variable.
 
 En utilisant le site [Python Tutor](https://pythontutor.com/){: target="_blank"}, nous allons essayer de comprendre cette notion de portée des variables.
 
