@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame.locals import *
-from random import randint
+
 
 #CURSOR_LEVEL= 5
 RED = (255, 0, 0)
@@ -11,7 +11,7 @@ PURPLE = (255, 0, 255)
 BLUE = (0, 0, 255)
 CURSOR_COLOURS = [RED, ORANGE, GREEN, BLUE, PURPLE ]
 pg.init()
-STARFONT = pg.font.Font(pg.font.match_font('starjedioutline'), 64)
+STARFONT = pg.font.Font(pg.font.match_font('starjedioutline'), 40)
 
 
 class ForceMonster :
@@ -141,7 +141,7 @@ class ForceButton :
     def __init__(self) :
         self. image = pg.Surface((100,50))
         self.rect = self.image.fill((0,255,0))
-        self.rect.center=(1000, 500)
+        self.rect.center=(600, 525)
         self.text = pg.font.Font(pg.font.match_font('starjedioutline'), 25).render('FARM', 1, (50,50,50))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = self.rect.center
@@ -184,7 +184,7 @@ class ForceCounter :
     def __init__(self) :
         self.value = 0
         self.growth_rate = 1
-        self.text = f"Force Points : {self.value}"
+        self.text = f"Force : {self.value}"
         self.surface = STARFONT.render(self.text, 1, (0, 255, 0))
         self.rect = self.surface.get_rect()
         self.rect.topleft = (50,550)
@@ -194,7 +194,7 @@ class ForceCounter :
         
     def update_text(self) :
         #self.value +=self.growth_rate
-        self.text = f"Force Points :{self.value}"
+        self.text = f"Force : {self.value}"
         self.surface = STARFONT.render(self.text, 1, (0, 255, 0))
         
     def reinit(self, value) :
@@ -214,7 +214,36 @@ class ForceCounter :
     def set_growth_rate(self, value) :
         self.growth_rate = value
     
-
+class ScoreCounter :
+    def __init__(self) :
+        self.value = 0
+        self.text = f"Score : {self.value:06d}"
+        self.surface = STARFONT.render(self.text, 1, (0, 255, 0))
+        self.rect = self.surface.get_rect()
+        self.rect.topleft = (700,550)
+        
+    def show(self, frame_to_blit) :
+        frame_to_blit.blit(self.surface, self.rect)
+        
+    def update_text(self) :
+        self.text = f"Score : {self.value:06d}"
+        self.surface = STARFONT.render(self.text, 1, (0, 255, 0))
+        
+    def reinit(self, value) :
+        self.valeur = value
+        self.update()
+        
+    def get_value(self) :
+        return self.value
+    
+    def set_value(self, value) :
+        self.value = value
+        
+    def update_value(self, value) :
+        self.value += value
+        self.update_text()
+        
+   
 
 class Flamme :
     def __init__(self, center, level=2) :
@@ -250,6 +279,7 @@ def main() :
     game_playing = True
     force_button = ForceButton()
     force_counter = ForceCounter()
+    score_counter = ScoreCounter()
     
     monsters = [ForceMonster(1, "Troops.png" , force_max = 10),
                 ForceMonster(2, "Yoda.png", force_buff=5 ),
@@ -274,6 +304,7 @@ def main() :
                 mouse_position = pg.mouse.get_pos()
                 if force_button.rect.collidepoint(mouse_position) :
                     force_counter.update_value()
+                    score_counter.update_value(force_counter.growth_rate)
                 for monster in monsters :
                     if monster.is_alive and monster.collidepoint(mouse_position) :
                         force_counter.set_value(monster.feed_button.feed(force_counter.get_value()))
@@ -292,7 +323,7 @@ def main() :
         main_frame.blit(background, (0,0))
         for monster in monsters :
             monster.show(main_frame, blit)
-        
+        score_counter.show(main_frame)
         force_counter.show(main_frame)
         force_button.show(main_frame)
         pg.display.update()
