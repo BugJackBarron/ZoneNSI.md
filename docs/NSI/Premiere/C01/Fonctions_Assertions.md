@@ -485,7 +485,8 @@ Vous avez vu plus haut dans ce document des {==**assertions**==} sous la forme :
 
 ```` python
  assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
- ````
+````
+
 La fonction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à la plage')==True`.  Il peut alors se produire deux cas :
 
 * soit le booléen est `True`, auquel cas l'interpréteur passe à la ligne suivante ;
@@ -512,6 +513,7 @@ Un module doit être chargé en mémoire une fois (de préférence au début du 
 ```` python
 import nom_du_module
 ````
+
 ??? warning "Mais non, ca ne se fait pas que comme ça !"
     Oui, vous avez raison, mais ce n'est pas le cas de ce cours, nous verrons l'import de modules plus tard dans l'année...
 
