@@ -11,7 +11,7 @@ PURPLE = (255, 0, 255)
 BLUE = (0, 0, 255)
 CURSOR_COLOURS = [RED, ORANGE, GREEN, BLUE, PURPLE ]
 pg.init()
-STARFONT = pg.font.Font(pg.font.match_font('starjedioutline'), 40)
+STARFONT = pg.font.Font('Starjout.ttf', 40)
 
 
 class ForceMonster :
@@ -37,8 +37,7 @@ class ForceMonster :
         self.image_rect.center = (65, 144)
         self.force_bar = ForceBar(self.actual_force, self.force_max, (65, 310))
         self.feed_button = FeedButton(self, (65, 425))
-        self.text = pg.font.Font(
-            pg.font.match_font('starjedioutline'), 20
+        self.text = pg.font.Font('Starjout.ttf', 20
             ).render(f"Level {self.level:02d}", 1, (0,255,255))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = (65,30)
@@ -62,8 +61,7 @@ class ForceMonster :
             self.actual_force = self.force_max//2
             self.force_speed += self.force_speed_buff+self.level%2
             self.collect_pts += self.level
-            self.text = pg.font.Font(
-            pg.font.match_font('starjedioutline'), 20
+            self.text = pg.font.Font('Starjout.ttf', 20
             ).render(f"Level {self.level:02d}", 1, (0, 255, 255))
             
             
@@ -123,7 +121,7 @@ class ForceBar :
         if blit :
             self.last_blitting= not(self.last_blitting)
         surface.blit(self.container, self.rect)
-        level = (self.actual_force *5)// self.force_max-1*self.last_blitting
+        level = (self.actual_force*5)//self.force_max-1*self.last_blitting
         if level <= -1 :
             level = 0
         if level >= 5 :
@@ -171,7 +169,7 @@ class FeedButton :
             self.monster.actual_force += force_point
             return 0
         else :
-            self.monster.actual_force = self.monster.force_max
+            
             self.monster.level_up()
             return force_point-diff
             
@@ -294,6 +292,9 @@ def main() :
     pg.time.set_timer(decrease_force, 1000)
     pg.time.set_timer(set_blit, 50)
     while game_playing :
+        for monster in monsters :
+            if monster.actual_force > monster.force_max :
+                raise ValueError("Bug sur niveau de force")
         
         blit = False
         force_counter.set_growth_rate(sum([monster.collect_pts for monster in monsters]))
