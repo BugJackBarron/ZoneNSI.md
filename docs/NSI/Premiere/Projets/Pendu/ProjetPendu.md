@@ -38,18 +38,6 @@
 
 ## Les fichiers nécessaires
 
-!!! warning "Mise en place du dossier de projet"
-	
-	1.Vous commencerez par créer un dossier `NSI` dans votre dossier `Documents` de votre répertoire personnel.
-	
-	2.Puis vous créerez un sous dossier `C01` dans le dossier `NSI`.
-	
-	Ce dossier final devra donc avoir comme adresse absolue :
-	
-	`P:\Documents\NSI\C01`
-	
-	
-
 !!! tips "Fichier de mots"
 
 	Pour mener à bien le projet, vous aurez d'abord besoin du fichier
