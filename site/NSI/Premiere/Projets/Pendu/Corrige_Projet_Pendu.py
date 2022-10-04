@@ -119,6 +119,7 @@ La valeur renvoyée est un entier
             restantes +=1
     return restantes
         
+        
 def affichePendu(motATrouver, lettresUtilisees, nbEchecs) :
     """ fonction affichant à la fois la potence mais aussi le mot
 à trouver sous sa forme de tirets"""

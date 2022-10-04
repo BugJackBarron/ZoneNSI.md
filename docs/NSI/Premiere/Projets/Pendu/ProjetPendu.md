@@ -20,7 +20,7 @@
 	(`ç`, `œ`, `æ`, ...) puis converti en majuscules. **Les tirets des mots 
 	composés sont conservés !**
 	3. On affiche une série de tirets correspondant aux emplacements des lettres ainsi que la potence de départ du pendu.
-	4. On demande à l'utilisateur une lettre saisie au clavier, et on vérifie que : 
+	4. On demande à l'utilisateur·trice une lettre saisie au clavier, et on vérifie que : 
 		* c'est bien **une unique lettre** ;
 		* elle n'a pas déjà été proposée.
 	5. Si la lettre fait partie du mot cherché, les tirets correspondants
@@ -28,7 +28,7 @@
 	6. On reprend à l'étape 4 tant que :
 		* soit il reste des lettres à trouver ;
 		* soit le pendu est complètement dessiné (6 échecs).
-	7. Une fois la partie terminée, le joueur peut alors choisir de recommencer ou non une nouvelle partie.
+	7. Une fois la partie terminée, le joueur/la joueuse" peut alors choisir de recommencer ou non une nouvelle partie.
 		
 	Le rendu final devrait ressembler si possible à celui de la vidéo suivante  :
 	
@@ -43,7 +43,7 @@
 	Pour mener à bien le projet, vous aurez d'abord besoin du fichier
 	{==**[des mots français.](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=6yiGXrQkojGt)**==}.
 	
-	Vous téléchargerez celui-ci et le copierez dans `P:\Documents\NSI\C01`
+	Vous téléchargerez celui-ci et le copierez dans votre dossier de travail, à côté du fichier python utilisé.
 
 	J'ai retiré de celui-ci tous les mots contenant des signes diacritiques autres que :
 
@@ -56,159 +56,8 @@
 	
 !!! tips "Base de code Python"
 	
-	Je vous donne le code ci-dessous qui doit être votre base de travail. Ce code sera sauvegardé
-	dans un fichier `ProjetPendu.py` qui sera enregistré à l'aide du logiciel `Thonny` dans 
-	`P:\Documents\NSI\C01`
+	Je vous donne [ici](./Projet_Pendu_Eleve.py) le code qui doit être votre base de travail.
 	
-	
-	``` python 
-	from random import choice
-
-
-	def choix_mot(adresse_f_ichier) :
-		""" fonction ouvrant un fichier texte dont l'adresse absolue ou relative
-		est passée en argument sous la forme d'une chaine de caractère
-		et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
-	"""
-		with open(adresse_f_ichier,'r', encoding='utf8') as file :
-			mot = choice([m for m in file.readlines()]).replace('\n', '').strip()
-		return mot
-
-	def formate_mot(mot : str) -> str :
-		""" fonction transformant une chaine de caractères accentués
-	en une chaine de caractère latin strict (sans accents ni signes diacritiques).
-	La chaine renvoyée est en majuscule.
-
-	>>> formate_mot('tRuC')
-	'TRUC'
-	>>> formate_mot('Abécédaire')
-	'ABECEDAIRE'
-	>>> formate_mot('')
-	''
-	>>> formate_mot('où')
-	'OU'
-	>>> formate_mot('garçONs')
-	'GARCONS'
-	>>> formate_mot('àâäéèêëîïôöûùüç')
-	'AAAEEEEIIOOUUUC'
-	>>> formate_mot('œil')
-	'OEIL'
-	>>> formate_mot('Lætitia')
-	'LAETITIA'
-	"""
-		...
-		
-	def genere_tirets(mot_a_trouver : str, lettres_utilisees: str ) -> str :
-		""" fonction renvoyant une chaine de caractère correspondant
-	au mot à trouver pour lequel :
-	* les caractères non présents dans la chaine lettreUtilisees
-	sont remplacés par des _ (underscores) ;
-	* les tirest hauts "-" sont conservés ;
-	* tous les caractères sont suivis d'un espace, y compris le dernier.
-
-	>>> genere_tirets("Bidules", "Ble")
-	'B _ _ _ l e _ '
-	>>> genere_tirets("toto", "")
-	'_ _ _ _ '
-	>>> genere_tirets("bananes", "bn")
-	'b _ n _ n _ _ '
-	>>> genere_tirets("toto", "ot")
-	't o t o '
-	>>> genere_tirets("pull-over", "plr")
-	'p _ l l - _ _ _ r '
-	>>> genere_tirets("pull-over", "pulover")
-	'p u l l - o v e r '
-	"""
-		...
-		
-		
-	def compte_restantes(mot_a_trouver : str, lettres_utilisees : str ) -> int :
-		""" fonction renvoyant le nombre de lettres non encore trouvées
-	dans le mot, en connaissant les lettres déjà utilisées.
-	Un tiret haut "-" ne compte pas dans les lettres à trouver.
-	La valeur renvoyée est un entier
-
-	>>> compte_restantes("bananes","bn")
-	4
-	>>> compte_restantes("toto","to")
-	0
-	>>> compte_restantes("toto","")
-	4
-	>>> compte_restantes("","")
-	0
-	>>> compte_restantes("","z")
-	0
-	>>> compte_restantes("bidules","bidule")
-	1
-	>>> compte_restantes("pull-over", "plr")
-	4
-	>>> compte_restantes("pull-over", "pulover")
-	0
-
-	"""
-		...
-			
-	def affiche_pendu(mot_a_trouver : str, lettres_utilisees : str, nb_echecs : int) -> None :
-		""" fonction affichant à la fois la potence mais aussi le mot
-	à trouver sous sa forme de tirets
-		"""
-		...
-		
-	def demande_joueur_lettre() -> str:
-		""" fonction demandant une lettre latine non accentuée au joueur,
-	et renvoyant cette lettre en majuscule. La fonction redemande au joueur
-	tant que celui-ci n'a pas fourni une lettre correcte.
-	La lettre est renvoyée en par la fonction.
-	"""
-		...
-		
-		
-	def une_manche() -> None :
-		""" fonction déclenchant une manche de jeu. On entend par manche de jeu :
-	* le choix d'un mot dans le fichier 'liste_francais_modifiee.txt' ;
-	* le formatage de ce mot ;
-	* puis la répétitions de :
-		* la demande d'une lettre au joueur ;
-		* la mise à jour des lettres utilisée le cas échéant ;
-		* la mise à jour de l'affichage
-		
-		jusqu'à ce que soit le mot complet ait été trouvé,
-		soit que le dessin du pendu soit terminé (6 étapes).
-		"""
-		...
-			
-	def presentation() -> None :
-		""" fonction affichant uniquement la présentation"""
-		print("""
-	##############################################
-	#                                            #
-	#                Jeu du Pendu                #
-	#                                            #
-	# 1ère NSI 2021-2022                         #
-	##############################################
-	""")
-		
-				
-	def main() -> None:
-		""" fonction principale du jeu, permettant d'effectuer plusieurs manches"""
-		while True :
-			presentation()
-			une_manche()
-			rep = input("Voulez-vous rejouer ? (o/n)")
-			if rep.lower() not in ['o', 'oui', 'y', 'yes'] :
-				break
-		print("Au revoir !")
-
-	## La partie ci-dessous n'est effectuée que si vous déclenchez le programme
-	## en tant que programme principal (notion de modules, vue en terminale)
-				
-	if __name__ == "__main__" :
-		
-		import doctest
-		doctest.testmod()
-		main()
-
-	```
 
 !!! warning "fonction `choix_mot(adresseFichier)`"
 
@@ -284,13 +133,12 @@ complétant la fonction `une_manche()`.
 
 | intitulé | barême | Détails |
 | :---: | :---: | :--- |
-| fonction `formate_mot` | 2 pt | passage de tous les tests unitaires |
+| fonction `formate_mot` | 3 pt | passage de tous les tests unitaires |
 | fonction `genere_tirets` | 2 pt | passage de tous les tests unitaires  |
-| fonction `compte_restantes` | 1 pt | passage de tous les tests unitaires |
+| fonction `compte_restantes` | 2 pt | passage de tous les tests unitaires |
 | fonction `demande_joueur_lettre` | 1 pt | *dumbproof* |
-| fonction `affiche_pendu` | 2 pt | Affichage correct |
+| fonction `affiche_pendu` | 3 pt | Affichage correct |
 | fonction `une_manche` | 3 pts | On attend un jeu a minima fonctionnel |
 | Noms des variables clairs | 2 pts | On proscrira les noms de variable d'un seul caractère, sauf compteurs précis |
 | Code commenté et clair | 3 pts | Des explications minimales doivent être écrites pour expliquer votre code |
-| Réalisation d'un dossier personnel | 2pts | Rendu au format PDF ou ODT |
 | Améliorations,   qualité du code, etc... | 2 pts | |
