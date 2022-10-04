@@ -2,10 +2,9 @@
 
 !!! warning "principe du projet"
 
-	* Vous travaillerez par binomes sur ce projet.
-	* Vous rendrez le code complet + votre dossier personnel pour le 16 octobre 2021 au plus tard.
-	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne 
-	sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
+	* Vous travaillerez par binomes sur ce projet (ou exceptionnellement par trinome).
+	* Vous rendrez le code complet + votre dossier personnel pour le 09 novembre 2022 au plus tard.
+	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
 	
 	
 
@@ -65,7 +64,7 @@
 	* les cédilles ;
 	* les lettres combinées (e dans l'o,...)
 
-	Les mots peuvent être en majuscule, en minuscule, ou toute autre combinanison de casse.
+	Les mots peuvent être en majuscule, en minuscule, ou toute autre combinaison de casse.
 	
 !!! tips "Base de code Python"
 	
@@ -78,40 +77,40 @@
 	from random import choice
 
 
-	def choixMot(adresseFichier) :
+	def choix_mot(adresse_f_ichier) :
 		""" fonction ouvrant un fichier texte dont l'adresse absolue ou relative
 		est passée en argument sous la forme d'une chaine de caractère
 		et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
 	"""
-		with open(adresseFichier,'r', encoding='utf8') as file :
+		with open(adresse_f_ichier,'r', encoding='utf8') as file :
 			mot = choice([m for m in file.readlines()]).replace('\n', '').strip()
 		return mot
 
-	def formateMot(mot) :
+	def formate_mot(mot : str) -> str :
 		""" fonction transformant une chaine de caractères accentués
 	en une chaine de caractère latin strict (sans accents ni signes diacritiques).
 	La chaine renvoyée est en majuscule.
 
-	>>> formateMot('tRuC')
+	>>> formate_mot('tRuC')
 	'TRUC'
-	>>> formateMot('Abécédaire')
+	>>> formate_mot('Abécédaire')
 	'ABECEDAIRE'
-	>>> formateMot('')
+	>>> formate_mot('')
 	''
-	>>> formateMot('où')
+	>>> formate_mot('où')
 	'OU'
-	>>> formateMot('garçONs')
+	>>> formate_mot('garçONs')
 	'GARCONS'
-	>>> formateMot('àâäéèêëîïôöûùüç')
+	>>> formate_mot('àâäéèêëîïôöûùüç')
 	'AAAEEEEIIOOUUUC'
-	>>> formateMot('œil')
+	>>> formate_mot('œil')
 	'OEIL'
-	>>> formateMot('Lætitia')
+	>>> formate_mot('Lætitia')
 	'LAETITIA'
 	"""
 		...
 		
-	def genereTirets(motATrouver,lettresUtilisees) :
+	def genere_tirets(mot_a_trouver : str, lettres_utilisees: str ) -> str :
 		""" fonction renvoyant une chaine de caractère correspondant
 	au mot à trouver pour lequel :
 	* les caractères non présents dans la chaine lettreUtilisees
@@ -119,55 +118,55 @@
 	* les tirest hauts "-" sont conservés ;
 	* tous les caractères sont suivis d'un espace, y compris le dernier.
 
-	>>> genereTirets("Bidules", "Ble")
+	>>> genere_tirets("Bidules", "Ble")
 	'B _ _ _ l e _ '
-	>>> genereTirets("toto", "")
+	>>> genere_tirets("toto", "")
 	'_ _ _ _ '
-	>>> genereTirets("bananes", "bn")
+	>>> genere_tirets("bananes", "bn")
 	'b _ n _ n _ _ '
-	>>> genereTirets("toto", "ot")
+	>>> genere_tirets("toto", "ot")
 	't o t o '
-	>>> genereTirets("pull-over", "plr")
+	>>> genere_tirets("pull-over", "plr")
 	'p _ l l - _ _ _ r '
-	>>> genereTirets("pull-over", "pulover")
+	>>> genere_tirets("pull-over", "pulover")
 	'p u l l - o v e r '
 	"""
 		...
 		
 		
-	def compteRestantes(motATrouver,lettresUtilisees) :
+	def compte_restantes(mot_a_trouver : str, lettres_utilisees : str ) -> int :
 		""" fonction renvoyant le nombre de lettres non encore trouvées
 	dans le mot, en connaissant les lettres déjà utilisées.
 	Un tiret haut "-" ne compte pas dans les lettres à trouver.
 	La valeur renvoyée est un entier
 
-	>>> compteRestantes("bananes","bn")
+	>>> compte_restantes("bananes","bn")
 	4
-	>>> compteRestantes("toto","to")
+	>>> compte_restantes("toto","to")
 	0
-	>>> compteRestantes("toto","")
+	>>> compte_restantes("toto","")
 	4
-	>>> compteRestantes("","")
+	>>> compte_restantes("","")
 	0
-	>>> compteRestantes("","z")
+	>>> compte_restantes("","z")
 	0
-	>>> compteRestantes("bidules","bidule")
+	>>> compte_restantes("bidules","bidule")
 	1
-	>>> compteRestantes("pull-over", "plr")
+	>>> compte_restantes("pull-over", "plr")
 	4
-	>>> compteRestantes("pull-over", "pulover")
+	>>> compte_restantes("pull-over", "pulover")
 	0
 
 	"""
 		...
 			
-	def affichePendu(motATrouver, lettresUtilisees, nbEchecs) :
+	def affiche_pendu(mot_a_trouver : str, lettres_utilisees : str, nb_echecs : int) -> None :
 		""" fonction affichant à la fois la potence mais aussi le mot
 	à trouver sous sa forme de tirets
 		"""
 		...
 		
-	def demandeJoueurLettre():
+	def demande_joueur_lettre() -> str:
 		""" fonction demandant une lettre latine non accentuée au joueur,
 	et renvoyant cette lettre en majuscule. La fonction redemande au joueur
 	tant que celui-ci n'a pas fourni une lettre correcte.
@@ -176,7 +175,7 @@
 		...
 		
 		
-	def uneManche() :
+	def une_manche() -> None :
 		""" fonction déclenchant une manche de jeu. On entend par manche de jeu :
 	* le choix d'un mot dans le fichier 'liste_francais_modifiee.txt' ;
 	* le formatage de ce mot ;
@@ -190,7 +189,7 @@
 		"""
 		...
 			
-	def presentation() :
+	def presentation() -> None :
 		""" fonction affichant uniquement la présentation"""
 		print("""
 	##############################################
@@ -202,11 +201,11 @@
 	""")
 		
 				
-	def main() :
+	def main() -> None:
 		""" fonction principale du jeu, permettant d'effectuer plusieurs manches"""
 		while True :
 			presentation()
-			uneManche()
+			une_manche()
 			rep = input("Voulez-vous rejouer ? (o/n)")
 			if rep.lower() not in ['o', 'oui', 'y', 'yes'] :
 				break
@@ -223,7 +222,7 @@
 
 	```
 
-!!! warning "fonction `choixMot(adresseFichier)`"
+!!! warning "fonction `choix_mot(adresseFichier)`"
 
 	Cette fonction **ne doit pas être modifiée !**
 	
@@ -237,31 +236,31 @@
 	répertoire que `ProjetPendu.py`. Donc vous pouvez utiliser cette fonction de la manière suivante :
 	
 	``` python
-	mot = choixMot("liste_francais_modifiee.txt")
+	mot = choix_mot("liste_francais_modifiee.txt")
 	```
 	Ainsi la variable `mot` contiendra un mot extrait aléatoirement du fichier.
 
 ## Plan de travail
 
-1. Vous commencerez par compléter la fonction `formateMot(mot)`, afin qu'elle renvoie 
+1. Vous commencerez par compléter la fonction `formate_mot(mot)`, afin qu'elle renvoie 
 une chaîne de caractères en {==**majuscule**==} dans laquelle tous les {==**signes diacritiques**==} ont été
 supprimés (à par les tirets des mots composés). Des **tests unitaires** sont donnés à titre d'exemple
 Vous pouvez éventuellement rajouter les votres.
 
-2. Vous complèterez ensuite la fonction `genereTirets(motATrouver,lettresUtilisees)`, qui 
-renvoie une chaîne de caractères correspondant à celle passée en premier argument `motATrouver`, pour laquelle
-les lettres {==**non présentes**==} dans la chaîne de caractère `lettresUtilisees`.
+2. Vous complèterez ensuite la fonction `genere_tirets(mot_a_trouver,lettres_utilisees)`, qui 
+renvoie une chaîne de caractères correspondant à celle passée en premier argument `mot_a_trouver`, pour laquelle
+les lettres {==**non présentes**==} dans la chaîne de caractère `lettres_utilisees`.
 De plus, chaque caractère de la chaîne finale {==**devra être suivi d'un espace**==}. Des **tests unitaires** sont donnés à titre d'exemple
 Vous pouvez éventuellement rajouter les votres.
 
-3. Vous complèterez la fonction `compteRestantes(motATrouver,lettresUtilisees)` qui renvoie un entier
-correspondant au nombre de lettres restant à trouver dans `motATrouver`
-sachant la chaîne de lettres déjà utilisées `lettresUtilisees`.
+3. Vous complèterez la fonction `compte_restantes(mot_a_trouver,lettres_utilisees)` qui renvoie un entier
+correspondant au nombre de lettres restant à trouver dans `mot_a_trouver`
+sachant la chaîne de lettres déjà utilisées `lettres_utilisees`.
 
-4. Vous complèterez ensuite la fonction `demandeJoueurLettre()` et la rendrez *dumbproof* : cette fonction doit 
+4. Vous complèterez ensuite la fonction `demande_joueur_lettre()` et la rendrez *dumbproof* : cette fonction doit 
 continuer à redemander au joueur de saisir une lettre tant que celle-ci n'est pas compatible avec les règles du jeu.
 
-5. Vous complèterez ensuite la fonction `affichePendu(motATrouver, lettresUtilisees, nbEchecs)` qui affiche non seulement la potence, 
+5. Vous complèterez ensuite la fonction `affiche_pendu(mot_a_trouver, lettres_utilisees, nb_echecs)` qui affiche non seulement la potence, 
 amis aussi le mot à trouver sous sa forme de tirets.
 Pour construire cette fonction, vous utiliserez une *f-string* multi-lignes telle que :
 
@@ -278,7 +277,7 @@ f"""
 """
 ```
 6. A partir de toutes les fonctions précédentes, vous finaliserez le jeu en
-complétant la fonction `uneManche()`.
+complétant la fonction `une_manche()`.
 
 7. Une fois le jeu complété, vous devrez en outre compléter un **dossier personnel** d'une ou
  deux pages présentant : 
@@ -297,12 +296,12 @@ complétant la fonction `uneManche()`.
 
 | intitulé | barême | Détails |
 | :---: | :---: | :--- |
-| fonction `formateMot` | 2 pt | passage de tous les tests unitaires |
-| fonction `genereTirets` | 2 pt | passage de tous les tests unitaires  |
-| fonction `compteRestantes` | 1 pt | passage de tous les tests unitaires |
-| fonction `demandeJoueurLettre` | 1 pt | *dumbproof* |
-| fonction `affichePendu` | 2 pt | Affichage correct |
-| fonction `uneManche` | 3 pts | On attend un jeu a minima fonctionnel |
+| fonction `formate_mot` | 2 pt | passage de tous les tests unitaires |
+| fonction `genere_tirets` | 2 pt | passage de tous les tests unitaires  |
+| fonction `compte_restantes` | 1 pt | passage de tous les tests unitaires |
+| fonction `demande_joueur_lettre` | 1 pt | *dumbproof* |
+| fonction `affiche_pendu` | 2 pt | Affichage correct |
+| fonction `une_manche` | 3 pts | On attend un jeu a minima fonctionnel |
 | Noms des variables clairs | 2 pts | On proscrira les noms de variable d'un seul caractère, sauf compteurs précis |
 | Code commenté et clair | 3 pts | Des explications minimales doivent être écrites pour expliquer votre code |
 | Réalisation d'un dossier personnel | 2pts | Rendu au format PDF ou ODT |
