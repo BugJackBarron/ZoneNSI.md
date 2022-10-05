@@ -573,12 +573,12 @@ L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents 
 Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.
 
 
-1. Ecrire une fonction qui renvoie le maximum de deux nombres donnés :
+1. Ecrire une fonction qui renvoie le maximum de deux nombres `ìnt` donnés :
 
     ```python
-    def maxi(a,b ) :
+    def maxi(a : int,b :int) -> int :
         """
-        Fonction qui renvoie le maximum de deux nombres
+        Fonction qui renvoie le maximum de deux nombres de type int.
     >>> maxi(12,3)
     12
     >>> maxi(-5,9)
@@ -589,13 +589,13 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         
     ```
 
-2. Ecrire une fonction qui renvoie le minimum de deux nombres donnés :
+2. Ecrire une fonction qui renvoie le minimum de deux nombres `int` donnés :
 
 
     ```python
-    def mini(a,b) :
+    def mini(a : int, b : int ) -> int :
         """
-        Fonction qui renvoie le maximum de deux nombres
+        Fonction qui renvoie le minimum de deux nombres
     >>> mini(12,3)
     3
     >>> mini(-5,9)
@@ -606,10 +606,10 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         
     ```
 
-3. Ecrire une fonction qui renvoie le maximum de trois nombres donnés :
+3. Ecrire une fonction qui renvoie le maximum de trois nombres `int` donnés :
 
     ```python
-    def maxi3(a,b,c):
+    def maxi3(a : int, b : int, c : int) -> int :
         """
         Fonction qui renvoie le maximum de trois nombres
     >>> maxi3(5,12,3)
@@ -623,19 +623,19 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         """
     ```
 
-4. Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres donnés
+4. Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres `int` donnés
 
     ```python
-    def intermediaire(a,b,c) :
+    def intermediaire(a : int, b : int, c : int) -> int :
         """
         Fonction qui renvoie le nombre intermédiaire deux nombres
     >>> intermediaire(12,8,3)
     8
-    >>> intermediaire(-5,0,9)
+    >>> intermediaire(-5,9,0)
     0
     >>> intermediaire(7,7,7)
     7
-    >>> intermediaire(4,7,7)
+    >>> intermediaire(7,4,7)
     7
     >>> intermediaire(4,4,7)
     4
@@ -651,7 +651,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     'toto'
     >>> rienQueDesLettres('123Toto456')
     'Toto'
-    >>> rienQueDesLettres('Et!C'est Toto ?')
+    >>> rienQueDesLettres("Et!C'est Toto ?")
     'EtCestToto'
         """
     ```
