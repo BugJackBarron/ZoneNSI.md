@@ -27,12 +27,12 @@ L'objectif est de simuler une partie de machine à sous de casino de type Bandit
 
     | Chaîne | Gain | Détails |
     | :---: | ---: | :--- |
-    | `777` | 2000 € | |
-    | `ΩΩΩ` | 1000 € | |
-    | ``♥♥♥`` | 500 € | On aura de même pour les autres symboles ``♠``, ``♦`` et ``♣`` |
-    | ``Ω7Ω`` | 300 € | On aura de même si l'ordre des symboles change |
-    | ``♠♠7`` | 100 € | On aura de même si l'ordre des symboles change, et avec les symboles,`♥` ``♦`` et `♣` |
-    | ``♠Ω7`` | 50 € | ou pour toute autre série de trois symboles différents |
+    | `777` | 100 fois la mise | |
+    | `ΩΩΩ` | 50 fois la mise | |
+    | ``♥♥♥`` | 20 fois la mise | On aura de même pour les autres symboles ``♠``, ``♦`` et ``♣`` |
+    | ``Ω7Ω`` | 10 fois la mise | On aura de même si l'ordre des symboles change |
+    | ``♠♠7`` | 5 fois la mise | On aura de même si l'ordre des symboles change, et avec les symboles,`♥` ``♦`` et `♣` |
+    | ``♠Ω7`` | 2 fois la mise | ou pour toute autre série de trois symboles différents |
 
 
 ## Les fonctions nécessaires
@@ -52,7 +52,7 @@ Voii quelques éléments sur le code, dont un plan de travail :
 3. La fonction `fabriquer_chaine` doit fournir une chaîne de caractères de taille `taille` (par défaut 3), dont tous les caractères sont aléatoirement choisis parmi une liste de caractères `symboles`. Inutile de réiçnventer l'eau chaude, puisque vous avez déjà fait la question précédente.
 4. Vous implémenterez ensuite une fonction ``compte_symboles_identiques``, qui prend en argument un caractère `s`, et qui cherche le nombre d'occurence de ce caractère dans la chaine `chaine` passée en argument. Les exemples donnés dans la docstring doivent vous aider.
 5. Vous pourrez ensuite implémenter la fonction ``presence_symboles_identiques_multiples`` (pénible à taper ce nom... mais ne le changez pas !) qui prend en argument une liste de symboles `symboles`, et une chaine de caractères `chaine`, et qui renvoie `True` si **un des symboles est présent plusieurs fois dans la chaine**, ou `False` si ce n'est pas le cas.
-6. En parallèle (c'est-à-dire que vous pouvez faire cette fonction indépendamment des autres), vous pourrez implémenter la fonction ``table_gain`` qui renvoie le gain associé à la chaine passée en argument.
+6. En parallèle (c'est-à-dire que vous pouvez faire cette fonction indépendamment des autres), vous pourrez implémenter la fonction ``table_gain`` qui renvoie le gain associé à la chaine passée en argument, en fonction de la mise de départ.
 7. En parallèle, vous pourrez implémenter la fonction `saisir_mise` qui prend en argument une valeur (le pot actuel du joueur/de la joueuse), et renvoie la mise saisie par le joueur/la joueuse.
 8. En parallèle, vous implémenterez la fonction ``demander_continuer``, qui demande à l'utilisateur·trice si il souhaite refaire une nouvelle manche de jeu, et renvoie un booléen correspondant à la réponse.
 9. En parallèle, vous implémenterez une fonction ``afficher_bandit`` sans valeur de retour, qui affiche dans la console le bandit-manchot ainsi que le gain correspondant. Vous pouvez vous inspirer de la fonction `presentation` qui vous est fournie.

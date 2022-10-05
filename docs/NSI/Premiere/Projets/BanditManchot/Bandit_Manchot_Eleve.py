@@ -68,25 +68,25 @@ False
     ...
     return ...
 
-def table_gain(chaine) :
+def table_gain(chaine : str, mise: int) -> int:
     """
     Fonction renvoyant le gain selon la chaine passée en argument
     A titre d'information, l'espérance de gain avec la table donnée est de 37.5
->>> table_gain('777')
+>>> table_gain('777', 20)
 2000
->>> table_gain('ΩΩΩ')
+>>> table_gain('ΩΩΩ', 20)
 1000
->>> table_gain('♥♥♥')
+>>> table_gain('♥♥♥', 10)
 500
->>> table_gain('Ω7Ω')
+>>> table_gain('Ω7Ω', 15)
 300
->>> table_gain('♠♠7')
+>>> table_gain('♠♠7', 10)
 100
->>> table_gain('7♠♠')
+>>> table_gain('7♠♠', 10)
 100
->>> table_gain('♠7♣')
+>>> table_gain('♠7♣', 25)
 50
->>> table_gain('♠77')
+>>> table_gain('♠77', 50)
 0
     """
     ...
