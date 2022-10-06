@@ -3367,10 +3367,10 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 <p>Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.</p>
 <ol>
 <li>
-<p>Ecrire une fonction qui renvoie le maximum de deux nombres donnés :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maxi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="p">)</span> <span class="p">:</span>
+<p>Ecrire une fonction qui renvoie le maximum de deux nombres <code>ìnt</code> donnés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maxi</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span><span class="n">b</span> <span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fonction qui renvoie le maximum de deux nombres</span>
+<span class="sd">    Fonction qui renvoie le maximum de deux nombres de type int.</span>
 <span class="sd">&gt;&gt;&gt; maxi(12,3)</span>
 <span class="sd">12</span>
 <span class="sd">&gt;&gt;&gt; maxi(-5,9)</span>
@@ -3381,10 +3381,10 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </code></pre></div>
 </li>
 <li>
-<p>Ecrire une fonction qui renvoie le minimum de deux nombres donnés :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mini</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="p">:</span>
+<p>Ecrire une fonction qui renvoie le minimum de deux nombres <code>int</code> donnés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mini</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fonction qui renvoie le maximum de deux nombres</span>
+<span class="sd">    Fonction qui renvoie le minimum de deux nombres</span>
 <span class="sd">&gt;&gt;&gt; mini(12,3)</span>
 <span class="sd">3</span>
 <span class="sd">&gt;&gt;&gt; mini(-5,9)</span>
@@ -3395,8 +3395,8 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </code></pre></div>
 </li>
 <li>
-<p>Ecrire une fonction qui renvoie le maximum de trois nombres donnés :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maxi3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+<p>Ecrire une fonction qui renvoie le maximum de trois nombres <code>int</code> donnés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maxi3</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fonction qui renvoie le maximum de trois nombres</span>
 <span class="sd">&gt;&gt;&gt; maxi3(5,12,3)</span>
@@ -3411,17 +3411,17 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </code></pre></div>
 </li>
 <li>
-<p>Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres donnés</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">intermediaire</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span>
+<p>Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres <code>int</code> donnés</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">intermediaire</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fonction qui renvoie le nombre intermédiaire deux nombres</span>
 <span class="sd">&gt;&gt;&gt; intermediaire(12,8,3)</span>
 <span class="sd">8</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(-5,0,9)</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(-5,9,0)</span>
 <span class="sd">0</span>
 <span class="sd">&gt;&gt;&gt; intermediaire(7,7,7)</span>
 <span class="sd">7</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(4,7,7)</span>
+<span class="sd">&gt;&gt;&gt; intermediaire(7,4,7)</span>
 <span class="sd">7</span>
 <span class="sd">&gt;&gt;&gt; intermediaire(4,4,7)</span>
 <span class="sd">4</span>
@@ -3436,7 +3436,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 <span class="sd">&#39;toto&#39;</span>
 <span class="sd">&gt;&gt;&gt; rienQueDesLettres(&#39;123Toto456&#39;)</span>
 <span class="sd">&#39;Toto&#39;</span>
-<span class="sd">&gt;&gt;&gt; rienQueDesLettres(&#39;Et!C&#39;est Toto ?&#39;)</span>
+<span class="sd">&gt;&gt;&gt; rienQueDesLettres(&quot;Et!C&#39;est Toto ?&quot;)</span>
 <span class="sd">&#39;EtCestToto&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>

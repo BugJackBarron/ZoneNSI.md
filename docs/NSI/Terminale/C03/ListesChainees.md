@@ -2,15 +2,11 @@
 
 ## Le problème de la structure tableau
 
-La structure de type **tableau** permet de stocker des séquences d'éléments dans des zones contigües de la mémoire, mais n'est pas forcément adaptée 
-à toutes les opérations  possibles sur ces séquences.
+La structure de type **tableau** permet de stocker des séquences d'éléments dans des zones contigües de la mémoire, mais n'est pas forcément adaptée à toutes les opérations  possibles sur ces séquences.
 
-Par exemple, la structure de tableau de Python permet grâce aux méthodes `append` et `pop` d'ajouter et de supprimer
- relativement efficacement un élément en **dernière position** dans un tableau déjà existant (ce n'est pas le cas dans d'autres
- langages, *où de telles méthodes n'existent pas forcément*). 
+Par exemple, la structure de tableau de Python permet grâce aux méthodes `append` et `pop` d'ajouter et de supprimer relativement efficacement un élément en **dernière position** dans un tableau déjà existant (ce n'est pas le cas dans d'autres langages, *où de telles méthodes n'existent pas forcément*). 
  
-Lorsqu'on veut insérer un élément à une autre position on peut, toujours en Python, utiliser a méthode `insert` qui insère un élément à une position donnée. Mais cette méthode
-*cache un certain nombre de problèmes*, dont le **coût en temps**.
+Lorsqu'on veut insérer un élément à une autre position on peut, toujours en Python, utiliser la méthode `insert` qui insère un élément à une position donnée. Mais cette méthode *cache un certain nombre de problèmes*, dont le **coût en temps**.
 
 !!! example "Que fait `insert` lorsqu'on veut ajouter un élément en position 0"
 	
@@ -24,6 +20,22 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	mais sur un tableau contenant *plusieurs millions* d'entrées, le nombre d'opérations devient bien trop important.
 	
 	Heureusement, il existe d'autres manières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.	
+
+	??? warning "La face cachée de Python"
+
+		Lorsqu'un objet de type `list` est crée en Python, l'interpréteur réserve une taille en mémoire proportionnelle à une puissances de 2 nécessaire pour stocker le tableau. Cela signifie qu'un tableau de taille 3 occuper une taille mémoire égale à celle d'un tableau de taille 4, mais dont la dernière cellule n'est pas utilisée. De même un tableau de taille 5 est en fait stocké comme un tableau de taille 8 dont les trois dernières cellules ne sont pas utilisées. Un tableau de taille 16 sera stocké dans une structure dont toutes les cases sont occupées.
+
+		La méthode `append` va donc fonctionner de deux manières différentes selon la situation envisagée :
+
+		* il **reste des cases de libres** dans la réservation mémoire, alors la valeur ajoutée par `append` sera simplement stockée dans la première case libre :
+
+			![list python 1](list_taille_python_1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+
+		* si la **réservation mémoire est pleine**, il faudra alors **créer une nouvelle réservation mémoire d'une taille 2 fois supérieure à la précédente**, copier chaque élément de l'ancienne liste dans la nouvelle, puis enfin la valeur ajoutée par `append` sera simplement stockée dans la première case libre :
+
+			![list python 2](list_taille_python_2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+
+		On constate une utilisation mémoire très important pour juste un élément supplémentaire ajouté...
 	
 
 ## Les listes chaînées
@@ -31,8 +43,8 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 ### Construction d'une liste chaînées
 
 !!! abstract "Liste chaînée"
-	Une {==**liste chaînée**==} est une structure permettant d'implémenter une liste, c'est-à-dire une séquence finie de valeurs (de même type ou non). Les éléments dont dits **chaînés**
-	car chque élément possède l'adresse mémoire de l'élément suivant de la liste.
+	Une {==**liste chaînée**==} est une structure permettant d'implémenter une liste, c'est-à-dire une séquence finie de valeurs (de même type ou non). Les éléments sont dits **chaînés**
+	car à chaque élément est associé l'adresse mémoire de l'élément suivant de la liste.
 	
 !!! example "Exemple"
 	
@@ -48,7 +60,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 !!! tips "Implémentation d'une liste chaînée en Python"
 
-	La méthode classique pour implémenter une liste chaînée est de construire une **classe d'objets** possédant deux attributs : un pour la **valeur** et un pour l'adresse du chainon suivant :
+	La méthode classique pour implémenter une liste chaînée est de construire une **classe d'objets** possédant deux attributs : un pour la {==**valeur**==} et un pour l'{==**adresse**==} du chainon suivant :
 	
 	``` python linenums="1"
 	
@@ -61,17 +73,25 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 	
 	Une fois cette classe définie, la construction de la liste s'effectue de la manière suivante :
+
+	* pour une liste chaînée contenant un unique chainon :
+
+		``` python
+		chaine = Chainon(35, None)
+		```
+
+	* pour une liste chaînée contenant plusieurs chainons :
 	
-	``` python
-	chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
-	```
-	
-	
-	Ici, on a créé une liste nommée `chaine` à partir de trois objets de classe `Chainon` qu'on peut visualiser ainsi :
-	
-	<p align="center">
-	![LC2](ListeChainee2.png){: style="width : 70%;"}
-	</p>
+		``` python
+		chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
+		```
+		
+		
+		Ici, on a créé une liste nommée `chaine` à partir de trois objets de classe `Chainon` qu'on peut visualiser ainsi :
+		
+		<p align="center">
+		![LC2](ListeChainee2.png){: style="width : 70%;"}
+		</p>
 
 !!! info "Remarque"
 
@@ -144,28 +164,28 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `niemeElement(chaine, i)` qui renvoie la valeur du i-ième élément de la liste chaînée passée en argument.
+		Créer une fonction `n_ieme_element(chaine, n)` qui renvoie la valeur du $n$-ième élément de la liste chaînée passée en argument.
 		
 	=== "Solution récursive"
 	
 		``` python
-		def niemeElement(chaine, i) :
+		def n_ieme_element(chaine, n) :
 			if chaine == None :
 				raise IndexError("Invalid index")
-			if i == 0 :
+			if n == 0 :
 				return chaine.valeur
 			else :
-				return niemeElement(chaine.suivant, i-1)
+				return n_ieme_element(chaine.suivant, n-1)
 		```
 		
 		La question de la complexité est un peu plus subtile :
 		
-		* dans un cas correct (l'indice `i` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `i` ;
-		* dans le cas où `i` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
-		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $i$, car le calcul de la longueur parcoure déjà toutes la liste.
+		* dans un cas correct (l'indice `n` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `n` ;
+		* dans le cas où `n` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
+		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $n$, car le calcul de la longueur parcoure déjà toute la liste.
 		Faire ce calcul en appel récursif générerait donc une complexité **quadratique**. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
 		de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.
-		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice.On peut cependant corriger celà par la ligne :
+		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger celà par la ligne :
 		
 		``` python
 		if chaine == None or i<0 :
@@ -176,12 +196,12 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	=== "Solution Itérative"
 	
 		``` python
-		def niemeElementI(chaine, i) :
-			if i<0 :
+		def n_ieme_elementI(chaine, n) :
+			if n < 0 :
 				raise IndexError("Invalid index")
 			ni = 0
 			chainon = chaine
-			while  chainon != None and ni != i :
+			while  chainon != None and ni != n :
 				ni += 1
 				chainon = chainon.suivant
 			if chainon != None :
@@ -189,8 +209,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 			else :
 				raise IndexError("Invalid index")
 		```
-		 On retrouve en terme de complexité les mêmes éléments que pour la fonction récursive. Cependant les erreurs 
-		 ainsi que les conditions de sorties sont plus complexes à prendre en compte.
+		 On retrouve en terme de complexité les mêmes éléments que pour la fonction récursive. Cependant les erreurs ainsi que les conditions de sorties sont plus complexes à prendre en compte.
 		
 		
 !!! question "Exercice 2 :  Concaténation de deux listes"
@@ -245,8 +264,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		![LC2](ListeChaineeConcatener3.png){: style="width : 60%;"}
 		</p>
 		
-		La chaîne obtenue ne possède plus de fin (jamais elle ne pointe vers `None`). La méthode `__str__` effectuant un appel récursif dont le cas de basecorrespond au fait de pointer vers `None`, 
-		on aura alors une erreur de type `RecursionError: maximum recursion depth exceeded`, puisqu'il est devenu impossible de passer par le cas de base.
+		La chaîne obtenue ne possède plus de fin (jamais elle ne pointe vers `None`). La méthode `__str__` effectuant un appel récursif dont le cas de base correspond au fait de pointer vers `None`, on aura alors une erreur de type `RecursionError: maximum recursion depth exceeded`, puisqu'il est devenu impossible de passer par le cas de base.
 		
 		
 		
@@ -359,13 +377,13 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 
 	=== "Enoncé" 
 		
-		Créer une fonction `creeDepuisTab(tab)` qui crée une liste chaînée depuis un tableau donné en argument.
+		Créer une fonction `creer_depuis_tab(tab)` qui crée une liste chaînée depuis un tableau donné en argument.
 		
 		Par exemple :
 		
-		* `creeDepuisTab([12, 15, 17])` crée la liste chaînée `12 -> 15 -> 17 -> None` ;
-		* `creeDepuisTab([])` crée un objet `None` ;
-		* `creeDepuisTab([42])` crée une liste chaînée `42 -> None`.
+		* `creer_depuis_tab([12, 15, 17])` crée la liste chaînée `12 -> 15 -> 17 -> None` ;
+		* `creer_depuis_tab([])` crée un objet `None` ;
+		* `creer_depuis_tab([42])` crée une liste chaînée `42 -> None`.
 		
 	=== "Solutions"
 	
@@ -373,7 +391,7 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 		
 		=== "Itérative Pythonesque avec `reversed`"
 			``` python
-			def creeDepuisTab(tab) :
+			def creer_depuis_tab(tab) :
 				"""Version pythonesque avec reversed"""
 				LC = None
 				for e in reversed(tab) :
@@ -383,7 +401,7 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 		
 		=== "Itérative avec indices"
 			``` python
-			def creeDepuisTab(tab) :
+			def creer_depuis_tab(tab) :
 				"""Version avec calcul de l'indice"""
 				LC = None
 				l = len(tab)
@@ -394,12 +412,12 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 
 		=== "Récursive avec slices"
 			``` python
-			def creeDepuisTab(tab) :
+			def creer_depuis_tab(tab) :
 			 """Version récursive"""
 				if  tab == [] :
 					return None
 				else :
-					return Chainon(tab[0], creeDepuisTabV3(tab[1:]))
+					return Chainon(tab[0], creer_depuis_tabV3(tab[1:]))
 			```
 			
 !!! question "Exercice 6 :  Chercher le nombre d'occurences"
@@ -423,13 +441,13 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 
 	=== "Enoncé" 
 		
-		Créer une fonction `premiereOccurence(valeur, chaine)` qui renvoie *l'indice de la première occurence* de `valeur` dans la liste chaînée `chaine`. Si \valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
+		Créer une fonction `premiere_occurence(valeur, chaine)` qui renvoie *l'indice de la première occurence* de `valeur` dans la liste chaînée `chaine`. Si \valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
 		
 		Par exemple :
 		
-		* `premiereOccurences(12, chaine)` devra renvoyer 0 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
-		* `premiereOccurences(27,chaine)` devra renvoyer -1 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
-		* `premiereOccurences(42,chaine)` devra renvoyer 3 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
+		* `premiere_occurences(12, chaine)` devra renvoyer 0 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `premiere_occurences(27,chaine)` devra renvoyer -1 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `premiere_occurences(42,chaine)` devra renvoyer 3 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
 		
 	=== "Solution"
 	
@@ -470,7 +488,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -484,7 +502,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	=== "Code"
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -501,7 +519,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	=== "Code"
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -521,7 +539,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	=== "Code"
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -544,7 +562,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	=== "Code"
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -573,7 +591,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	=== "Code"
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -594,7 +612,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 					return longueur(self.head)
 					
 			def __getitem__(self, i) :
-				return niemeElement(self.head, i)
+				return n_ieme_element(self.head, i)
 		```
 !!! question "Utilisation de `+`"
 	=== "Analyse"
@@ -604,7 +622,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 	=== "Code"
 		``` python linenums="1"
 		class ListeC :
-			"""A real docstring here"""
+			"""Classe permettant de représenter une liste chainée, ou chaque chainon est un objet de classe Chainon"""
 			
 			def __init__(self) :
 				self.head = None
@@ -625,7 +643,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 					return longueur(self.head)
 					
 			def __getitem__(self, i) :
-				return niemeElement(self.head, i)
+				return n_ieme_element(self.head, i)
 				
 			def __add__(self, other) :
 				if not isinstance(other, ListeC) :
