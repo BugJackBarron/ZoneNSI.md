@@ -30,20 +30,39 @@ def presence_symboles_identiques_multiples(symboles : str, chaine : str) -> bool
             return True
     return False
 
-def table_gain(chaine) :
-    """ Espérance de gain = 37.5"""
+def table_gain(chaine, mise) :
+    """
+renvoie les gains
+
+>>> table_gain('777', 20)
+2000
+>>> table_gain('ΩΩΩ', 20)
+1000
+>>> table_gain('♥♥♥', 10)
+500
+>>> table_gain('Ω7Ω', 15)
+300
+>>> table_gain('♠♠7', 10)
+100
+>>> table_gain('7♠♠', 10)
+100
+>>> table_gain('♠7♣', 25)
+50
+>>> table_gain('♠77', 50)
+0
+"""
     if chaine == "777" :
-        return 2000
+        return 100*mise
     elif chaine == "ΩΩΩ" :
-        return 1000
+        return 50*mise
     elif chaine in ['♠'*3, '♥'*3, '♦'*3, '♣'*3] :
-        return 500
+        return 20*mise
     elif '7' in chaine and presence_symboles_identiques_multiples('Ω', chaine) :
-        return 300
+        return 10*mise
     elif '7' in chaine and presence_symboles_identiques_multiples('♠♥♦♣', chaine) :
-        return 100
+        return 5*mise
     elif not presence_symboles_identiques_multiples('♠♥♦♣7Ω', chaine) :
-        return 50
+        return 2*mise
     else :
         return 0
     
@@ -83,6 +102,14 @@ def afficher_bandit(chaine, gain) :
 Vous gagnez {gain} €
 """)
     
+    
+def demande_nom() -> str :
+    while True :
+        nom = input("Entrez votre nom : ")
+        if len(nom)<15 and len(nom)>0 :
+            return nom
+        print("Veuillez recommencer et saisir un nom de taille comprise entre 1 et 14")
+    
 def presentation() -> None :
     """ fonction affichant la présentation, et donnant les règles du jeu"""
     print("\n"*50)
@@ -109,7 +136,7 @@ def main_game() :
         mise = saisir_mise(pot)
         pot = pot - mise
         resultat = fabriquer_chaine(symboles)
-        gain = table_gain(resultat)
+        gain = table_gain(resultat, mise)
         pot += gain
         afficher_bandit(resultat, gain)
         print(f"Votre pot actuel est de {pot} €")
@@ -121,9 +148,14 @@ def main_game() :
                 print("Merci de votre visite ! Vous n'avez ni gagné ni perdu !")
             else :
                 print(f"Merci de votre visite ! Vous avez gagné {pot-500} € !")
+            
         else :
             continuer = False
             print("Vous ne pouvez plus jouer ! Le casino vous dit merci !")
+    if pot>0 :
+        sauve_score(demande_nom(), pot)
+    print(get_score())
+            
     
     
 def sauve_score(nom_j, score_j):
@@ -167,16 +199,14 @@ def get_score() :
         final +=f"{i+1} {d['nom']:>15} : {d['score']:>10} €\n"
     return final
                 
-            
-            
-        
-        
-            
-        
-        
 
-sauve_score("Bob",30)
-sauve_score("Bill",45)
-sauve_score("Boule",40)
-sauve_score("Bouba",100)
-sauve_score("Biniou",20)
+if __name__ == "__main__" :
+    import doctest
+    doctest.testmod()
+    main_game()
+            
+        
+        
+            
+        
+        
