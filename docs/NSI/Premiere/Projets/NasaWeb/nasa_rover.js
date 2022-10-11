@@ -15,12 +15,14 @@ photo_date.addEventListener('change', newrequest)
 
 function previous_img(){
     if (actualImage > 0){ actualImage = actualImage -1;} 
-    document.getElementById("curiosity").src =  imgArray[actualImage];
+    document.getElementById("curiosity").src =  imgArray[actualImage]['img_src'];
+	document.getElementById("photo_info").innerText =  (parseInt(imgArray[actualImage]['id'])- parseInt(imgArray[0]['id']))+ " / " + (parseInt(imgArray[imgArray.length-1]['id'])-parseInt(imgArray[0]['id']));
 }
 
 function next_img(){
     if (actualImage <imgArray.length-1){ actualImage = actualImage +1;} 
-    document.getElementById("curiosity").src =  imgArray[actualImage];
+    document.getElementById("curiosity").src =  imgArray[actualImage]['img_src'];
+	document.getElementById("photo_info").innerText =  (parseInt(imgArray[actualImage]['id'])- parseInt(imgArray[0]['id']))+ " / " + (parseInt(imgArray[imgArray.length-1]['id'])-parseInt(imgArray[0]['id']));
 }
 
 
@@ -31,10 +33,11 @@ function my_rover_curiosity_request(date) {
             function testrover(jsonobj){
                  
                 var image = jsonobj['photos'][0]['img_src'];
-                imgArray = jsonobj.photos.map(p => p.img_src);
+                imgArray = jsonobj.photos.map(p => p);
 
                 console.log(imgArray);
                 document.getElementById("curiosity").src =  image;
+				document.getElementById("photo_info").innerText =  (parseInt(imgArray[actualImage]['id'])- parseInt(imgArray[0]['id']))+ " / " + (parseInt(imgArray[imgArray.length-1]['id'])-parseInt(imgArray[0]['id']));
                 
             }
         )
@@ -42,6 +45,7 @@ function my_rover_curiosity_request(date) {
 
 function newrequest(){
     date = photo_date.value;
+	actualImage = 0 ;
     my_rover_curiosity_request(date);
 
 }
