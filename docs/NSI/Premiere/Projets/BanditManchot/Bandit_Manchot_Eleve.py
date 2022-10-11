@@ -77,13 +77,13 @@ def table_gain(chaine : str, mise: int) -> int:
 >>> table_gain('ΩΩΩ', 20)
 1000
 >>> table_gain('♥♥♥', 10)
-500
+200
 >>> table_gain('Ω7Ω', 15)
-300
+150
 >>> table_gain('♠♠7', 10)
-100
+50
 >>> table_gain('7♠♠', 10)
-100
+50
 >>> table_gain('♠7♣', 25)
 50
 >>> table_gain('♠77', 50)
