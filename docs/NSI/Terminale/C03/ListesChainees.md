@@ -216,7 +216,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `concatener(c1, c2)` qui renvoie la liste chaînée obtenue par concaténation de `c1` et `c2`.
+		Créer une fonction `concatener(c1, c2)` qui renvoie une liste chaînée obtenue par concaténation de `c1` et `c2`.
 		
 	=== "Solution récursive"
 	
@@ -325,7 +325,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `inserer(v, n, chaine)` qui insère l'élément `v` à la position `n` dans la liste passée en argument.
+		Créer une fonction `inserer(v, n, chaine)` qui renvoie la liste chainée dans laquelle on a inséré insère l'élément `v` à la position `n` dans la liste `chaine` passée en argument.
 		
 		Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :
 		
