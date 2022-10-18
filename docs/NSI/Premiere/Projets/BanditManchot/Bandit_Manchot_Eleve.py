@@ -3,6 +3,7 @@
 
 #### PROJET MACHINE A SOUS
 ### 1ère NSI Pavie 2022-2023
+### version corrigée avec assertions au 18/10/2022
 
 import random
 
@@ -12,16 +13,34 @@ symboles = '♠♥♦♣7Ω' ## Symboles utilisés dans le bandit-manchot
 def choisir_symbole(symboles : str) -> str :
     """
 fonction renvoyant un symbole aléatoire parmi une suite de symbole passée en argument
+
+>>> choisir_symbole('abc') in 'abc'
+True
+>>> choisir_symbole('abc') in 'def'
+False
+>>> len(choisir_symbole('abc'))
+1
+>>> type(choisir_symbole('123456')) == str
+True
 """
-    assert ..., "Bad symbole argument"
+    assert type(symboles) == str and symboles != "", "Symboles must be a non-empty string"
     return ...
+
 
 def fabriquer_chaine(symboles : str, taille : int = 3) -> str :
     """ fonction renvoyant une chaine aléatoire de dimension taille,
 à partir de la liste de symbole symboles.
+
+>>> len(fabriquer_chaine('atcg'))
+3
+>>> len(fabriquer_chaine('atcg', 100))
+100
+>>> chaine = fabriquer_chaine('atcg')
+>>> chaine[0] in 'atcg' and chaine[1] in 'atcg' and chaine[2] in 'atcg'
+True
 """
-    assert ..., "Bad symbole argument"
-    assert ..., 'Bad taille argument'
+    assert ..., "symboles must be a non-empty string"
+    assert ..., "taille must be a positive integer"
     ...
     return ...
 
@@ -38,11 +57,8 @@ Si le symbole n'est pas présent, renvoie 0
 0
 >>> compte_symboles_identiques("a", "")
 0
->>> compte_symboles_identiques("", "abracadabra")
-0
->>> compte_symboles_identiques("", "")
-0
 """
+    assert type(s) == str and len(s) == 1, "s must be a string of length 1"
     ...
     return ...
 
@@ -58,13 +74,11 @@ False
 True
 >>> presence_symboles_identiques_multiples('abc', 'efgh')
 False
->>> presence_symboles_identiques_multiples('', 'treytlei')
-False
+
 >>> presence_symboles_identiques_multiples('a', '')
 False
->>> presence_symboles_identiques_multiples('', '')
-False
 """
+    assert type(symboles) == str and len(symboles) >=1, "symboles must be a non empty string"
     ...
     return ...
 
