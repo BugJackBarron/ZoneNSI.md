@@ -4,11 +4,10 @@
 
 !!! question "Activité avec un traitement de texte"
 	
-	1. Téléchargez puis ouvrez le fichier [`StylesModeles.odt`](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=v4gFYAKTm62A) avec *Libre Office*.
-	2. Allez à la page 5 du document.
+	1. Téléchargez puis ouvrez le fichier [`Styles_et_modèles.odt`]() avec *Libre Office*.
+	2. Allez à la page 7 du document.
 	3. Ouvrez la fenêtre de style  en appuyant sur ++f11++. 
-	4. Déployez le menu `Style par défaut` en appuyant sur ++plus++.
-	5. Déployez de même le menu `Titre`, puis cliquez droit sur `Titre 1`, puis `modifier`.
+	4. cherchez le menu `Titre 1`,  puis cliquez-droit et `Modifier`.
 	6. Passez la couleur de la police en rouge, puis activez un surlignage simple en jaune. Validez puis observez le document. 
 		1. Quelles parties ont été changées ? 
 		2. Y-a-t-il eu des changements sur d'autres pages ?
