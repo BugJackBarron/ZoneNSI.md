@@ -2055,11 +2055,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#auto-increment" class="md-nav__link">
-    Auto-incrément
+  <a href="#auto-incrementation" class="md-nav__link">
+    Auto-incrémentation
   </a>
   
-    <nav class="md-nav" aria-label="Auto-incrément">
+    <nav class="md-nav" aria-label="Auto-incrémentation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3021,7 +3021,7 @@ Cette requête renvoie le résultat suivant :</p>
 <tr>
 <td align="center"><code>BIGINT</code></td>
 <td align="center">exact</td>
-<td align="left">Entiers signés sur 64 bits (<span class="arithmatex">\(\simeq -9\times 10^{18}\)</span> à $\simeq 9\times 10^{18})</td>
+<td align="left">Entiers signés sur 64 bits (<span class="arithmatex">\(\simeq -9\times 10^{18}\)</span> à <span class="arithmatex">\(\simeq 9\times 10^{18}\)</span>)</td>
 </tr>
 <tr>
 <td align="center"><code>DECIMAL(t,f)</code></td>
@@ -3045,7 +3045,7 @@ Cette requête renvoie le résultat suivant :</p>
 <h3 id="types-textes">Types textes</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Types textes</p>
-<p>En SQL, les chaînes de carcatères sont délimitées par des guillemets simples <code>'</code>. Il est possible d'<em>échapper</em> un guillemet simple en le doublant, comme par exemple dans <code>'n''oubliez pas d''échapper'</code>.
+<p>En SQL, les chaînes de caractères sont délimitées par des guillemets simples <code>'</code>. Il est possible d'<em>échapper</em> un guillemet simple en le doublant, comme par exemple dans <code>'n''oubliez pas d''échapper'</code>.
 Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaîne pour avoir des chaînes multilignes.</p>
 <table>
 <thead>
@@ -3107,7 +3107,7 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 </tr>
 </tbody>
 </table>
-<p>Une propriété intéressante du type <code>DATE</code> est qu'il supporte l'addition correctement. si <code>d</code> est du type <code>DATE</code>, <code>d+7</code> produira une date corerspondante à 7 jours après <code>d</code>, en changeant jours, mois et années correctement.</p>
+<p>Une propriété intéressante du type <code>DATE</code> est qu'il supporte l'addition correctement. si <code>d</code> est du type <code>DATE</code>, <code>d+7</code> produira une date correspondante à 7 jours après <code>d</code>, en changeant jours, mois et années correctement.</p>
 </div>
 <h3 id="type-null">Type <code>NULL</code></h3>
 <p>Une valeur <code>NULL</code> existe en SQL, et correspond à l'absence de donnée. Elle s'utilise comme la valeur <code>None</code> en Python. Elle est juste <strong>interdite pour les clés primaires</strong>.</p>
@@ -3127,11 +3127,11 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 </code></pre></div>
 <p>Une définition d'attributs consiste en :</p>
 <ul>
-<li>la donnée d'un <em>nom</em> d'attribut (obigatoire) ;</li>
+<li>la donnée d'un <em>nom</em> d'attribut (obligatoire) ;</li>
 <li>la donnée d'un <em>domaine</em> (obligatoire) ;</li>
 <li>la donnée de contraintes sur cet attribut (optionnel).</li>
 </ul>
-<p>Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de déinition, avant la parenthèse fermante.</p>
+<p>Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de définition, avant la parenthèse fermante.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple avec clé primaire simple</p>
@@ -3149,7 +3149,7 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple avec clé primaire et clés étrangères</p>
-<p>Maintenant que nous avopns crée les tables <code>Usager</code> et <code>Livre</code>, nous pouvons créer la table <code>Emprunt</code> telle que définie dans le schéma <img alt="relationEmprunt.png" src="../relationEmprunt.png" style="width:15%;" /></p>
+<p>Maintenant que nous avons crée les tables <code>Usager</code> et <code>Livre</code>, nous pouvons créer la table <code>Emprunt</code> telle que définie dans le schéma <img alt="relationEmprunt.png" src="../relationEmprunt.png" style="width:15%;" /></p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">code_barre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">usager</span><span class="p">(</span><span class="n">code_barre</span><span class="p">),</span><span class="w"></span>
 <span class="w">                        </span><span class="n">ISBN</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Livre</span><span class="p">(</span><span class="n">ISBN</span><span class="p">),</span><span class="w"></span>
 <span class="w">                        </span><span class="n">retour</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span><span class="w"></span>
@@ -3169,7 +3169,7 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
 </div>
 <h3 id="suppressions-de-tables">Suppressions de tables</h3>
 <div class="admonition abstract">
-<p class="admonition-title">Suprression de tables</p>
+<p class="admonition-title">Suppression de tables</p>
 <p>Pour supprimer une table, il suffit d'utiliser :</p>
 <div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nom_de_la_table</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -3180,7 +3180,7 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
 <h4 id="contraintes-dunicite-et-de-non-nullite">Contraintes d'unicité et de non-nullité</h4>
 <p>Entre autres :</p>
 <ul>
-<li>il est possible de préciser qu'un attribut (une colonne en langage SQL) ne peut être vbide, en ajoutant la contrainte <code>NOT NULL</code>;</li>
+<li>il est possible de préciser qu'un attribut (une colonne en langage SQL) ne peut être vide, en ajoutant la contrainte <code>NOT NULL</code>;</li>
 <li>de même il est possible de préciser qu'un attribut ne peut exister en doublon, en ajoutant la contrainte <code>UNIQUE</code>.</li>
 </ul>
 <p>Ainsi, la table <code>Usager</code> peut être redéfinie par :</p>
@@ -3192,19 +3192,37 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
 <span class="w">                     </span><span class="n">inscription</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
 <span class="w">                     </span><span class="n">code_barre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<p>Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pâs être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).</p>
-<h3 id="auto-increment">Auto-incrément</h3>
-<p>Pour les <mark class="critic"><strong>clé primaires numériques</strong></mark>, il est possible d'ajouter la contrainte d'<mark class="critic"><strong>auto-incrémentation</strong></mark> de cet identifiant. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>)  dans la table, une nouvelle valeur de clé sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
+<p>Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).</p>
+<h3 id="auto-incrementation">Auto-incrémentation</h3>
+<p>Pour les <mark class="critic"><strong>clé primaires numériques</strong></mark> et correspondantes au type <code>INTEGER</code>, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
-<span class="w">                     </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
-<span class="w">                     </span><span class="n">idA</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">idA</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Dans ce cas, l'insertion sera faites avec une structure d'entité plus spécifique :</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Auteur</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">prenom</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"></span>
+<span class="p">(</span><span class="s1">&#39;Tolkien&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;JRR&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="p">(</span><span class="s1">&#39;Dick&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Philip K.&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="p">(</span><span class="s1">&#39;Adams&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Douglas&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>On constate alors par la requête suivante la bonne insertion du champ <code>idA</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Auteur</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>Par défaut l'incrémentation commence à 1.</p>
+<details class="warning">
+<summary>Auto-incrément -&gt; Vieille version non viable en SQLite</summary>
+<p>Pour les <mark class="critic"><strong>clé primaires numériques</strong></mark>, il est possible d'ajouter la contrainte d'<mark class="critic"><strong>auto-incrémentation</strong></mark> de cet identifiant. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>)  dans la table, une nouvelle valeur de clé sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">idA</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Par défaut l'incrémentation commence à 1.</p>
+</details>
 <h4 id="contraintes-specifiques">Contraintes spécifiques</h4>
 <p>Il est aussi possible de placer certaines contraintes spécifiques lors de la création d'une table, grâce au mot clé <code>CHECK</code> suivi d'une formule booléenne. Par exemple, si on souhaite introduire les années de naissance et de décès des auteurs, il est possible d'utiliser l'instruction suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
 <span class="w">                     </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
-<span class="w">                     </span><span class="n">idA</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="n">idA</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">                     </span><span class="n">naissance</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"></span>
 <span class="w">                     </span><span class="n">deces</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"></span>
 <span class="w">                     </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">naissance</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">deces</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">naissance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">deces</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
@@ -3228,9 +3246,9 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
 </li>
 <li>
 <p>En insérant les valeurs en précisant les colonnes concernées :</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">nom_table</span><span class="p">(</span><span class="n">attribut1</span><span class="p">,</span><span class="w"> </span><span class="n">attribut3</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">valeur1</span><span class="p">,</span><span class="w"> </span><span class="n">valeur3</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">nom_table</span><span class="p">(</span><span class="n">attribut1</span><span class="p">,</span><span class="w"> </span><span class="n">attribut3</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">valeur1</span><span class="p">,</span><span class="w"> </span><span class="n">valeur3</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-Ici les valeurs ne seront insérées que dans les colonnes qui correspondent au nom donné.</p>
+<p>Ici les valeurs ne seront insérées que dans les colonnes qui correspondent au nom donné.</p>
 </li>
 </ul>
 </div>

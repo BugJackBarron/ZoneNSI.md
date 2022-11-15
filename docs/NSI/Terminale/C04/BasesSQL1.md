@@ -132,7 +132,7 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 	| :---: | :---: | :--- |
 	| `SMALLINT` | exact | Entiers signés sur 16 bits ($-32~768$ à $32~768$) |
 	| `INT` ou `INTEGER` | exact | Entiers signés sur 32 bits ($-2~147~483~647$ à $2~147~483~647$) |
-	| `BIGINT` | exact | Entiers signés sur 64 bits ($\simeq -9\times 10^{18}$ à $\simeq 9\times 10^{18}) |
+	| `BIGINT` | exact | Entiers signés sur 64 bits ($\simeq -9\times 10^{18}$ à $\simeq 9\times 10^{18}$) |
 	| `DECIMAL(t,f)` | exact | Décimal signé de $t$ chiffres dont $f$ après la virgule |
 	| `REAL` | approché | Flottant sur 32 bits ($-3,40\times 10^{38}$ à $3,40\times 10^{38}$)  |
 	| `DOUBLE PRECISION` | approché | Flottant sur 64 bits ($-1,79\times 10^{308}$ à $1,79\times 10^{308}$)  |
@@ -144,7 +144,7 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 	
 !!! abstract "Types textes"
 	
-	En SQL, les chaînes de carcatères sont délimitées par des guillemets simples `'`. Il est possible d'*échapper* un guillemet simple en le doublant, comme par exemple dans `'n''oubliez pas d''échapper'`.
+	En SQL, les chaînes de caractères sont délimitées par des guillemets simples `'`. Il est possible d'*échapper* un guillemet simple en le doublant, comme par exemple dans `'n''oubliez pas d''échapper'`.
 	Il est possible  d'insérer un caractère *retour chariot* dans une chaîne pour avoir des chaînes multilignes.
 
 	| nom du type | description |
@@ -176,7 +176,7 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 	| `TIME` | Une heure au format `'hh:mm:ss'` |
 	| `TIMESTAMP` | Un instant au format `'AAAA-MM-JJ hh:mm:ss'`  |
 	
-	Une propriété intéressante du type `DATE` est qu'il supporte l'addition correctement. si `d` est du type `DATE`, `d+7` produira une date corerspondante à 7 jours après `d`, en changeant jours, mois et années correctement.
+	Une propriété intéressante du type `DATE` est qu'il supporte l'addition correctement. si `d` est du type `DATE`, `d+7` produira une date correspondante à 7 jours après `d`, en changeant jours, mois et années correctement.
 	
 ### Type `NULL`
 
@@ -203,11 +203,11 @@ Il est possible de tester si une valeur est nulle ou non grâce aux commandes `I
 	
 	Une définition d'attributs consiste en :
 	
-	* la donnée d'un *nom* d'attribut (obigatoire) ;
+	* la donnée d'un *nom* d'attribut (obligatoire) ;
 	* la donnée d'un *domaine* (obligatoire) ;
 	* la donnée de contraintes sur cet attribut (optionnel).
 	
-	Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de déinition, avant la parenthèse fermante.
+	Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de définition, avant la parenthèse fermante.
 	
 !!! example "Exemple avec clé primaire simple" 
 	La relation `Livre`  suivante ![relationLivre](relationLivre3.png){: style="width:15%;"} peut être crée en SQL par la commande suivante :
@@ -225,7 +225,7 @@ Il est possible de tester si une valeur est nulle ou non grâce aux commandes `I
 	Dans le bac à sable SQL, créer la table `Livre`.
 	
 !!! example "Exemple avec clé primaire et clés étrangères"
-	Maintenant que nous avopns crée les tables `Usager` et `Livre`, nous pouvons créer la table `Emprunt` telle que définie dans le schéma ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
+	Maintenant que nous avons crée les tables `Usager` et `Livre`, nous pouvons créer la table `Emprunt` telle que définie dans le schéma ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
 	
 	```` SQL
 	CREATE TABLE Emprunt (	code_barre CHAR(15) REFERENCES usager(code_barre),
@@ -249,7 +249,7 @@ Il est possible de tester si une valeur est nulle ou non grâce aux commandes `I
 	
 ### Suppressions de tables
 
-!!! abstract "Suprression de tables"
+!!! abstract "Suppression de tables"
 
 	Pour supprimer une table, il suffit d'utiliser :
 	
@@ -270,7 +270,7 @@ Nous avons vu l'utilisation de `PRIMARY KEY` et `REFERENCES`, qui permettent de 
 
 Entre autres :
 	
-* il est possible de préciser qu'un attribut (une colonne en langage SQL) ne peut être vbide, en ajoutant la contrainte `NOT NULL`;
+* il est possible de préciser qu'un attribut (une colonne en langage SQL) ne peut être vide, en ajoutant la contrainte `NOT NULL`;
 * de même il est possible de préciser qu'un attribut ne peut exister en doublon, en ajoutant la contrainte `UNIQUE`.
 
 Ainsi, la table `Usager` peut être redéfinie par :
@@ -285,19 +285,54 @@ CREATE TABLE usager (nom VARCHAR(90) NOT NULL,
 					 code_barre CHAR(15) PRIMARY KEY);
 ````
 
-Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pâs être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).
+Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).
 
-### Auto-incrément
+### Auto-incrémentation
 
-Pour les {==**clé primaires numériques**==}, il est possible d'ajouter la contrainte d'{==**auto-incrémentation**==} de cet identifiant. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**)  dans la table, une nouvelle valeur de clé sera automatiquement fournie. Par exemple pour la table `Auteur` :
+
+Pour les {==**clé primaires numériques**==} et correspondantes au type `INTEGER`, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table `Auteur` :
 
 ```` SQL
 CREATE TABLE Auteur (nom VARCHAR(90) NOT NULL,
-					 prenom VARCHAR(90) NOT NULL,
-					 idA INT PRIMARY KEY AUTO_INCREMENT);
+					prenom VARCHAR(90) NOT NULL,
+					idA INTEGER PRIMARY KEY );
+
+````
+
+Dans ce cas, l'insertion sera faites avec une structure d'entité plus spécifique :
+
+```` SQL
+INSERT INTO Auteur(nom, prenom) VALUES
+('Tolkien', 'JRR'),
+('Dick', 'Philip K.'),
+('Adams', 'Douglas');
+````
+
+On constate alors par la requête suivante la bonne insertion du champ `idA`:
+
+```` SQL
+SELECT * FROM Auteur;
 ````
 
 Par défaut l'incrémentation commence à 1.
+
+
+ 
+??? warning "Auto-incrément -> Vieille version non viable en SQLite"
+
+	Pour les {==**clé primaires numériques**==}, il est possible d'ajouter la contrainte d'{==**auto-incrémentation**==} de cet identifiant. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**)  dans la table, une nouvelle valeur de clé sera automatiquement fournie. Par exemple pour la table `Auteur` :
+
+	```` SQL
+	CREATE TABLE Auteur (nom VARCHAR(90) NOT NULL,
+						prenom VARCHAR(90) NOT NULL,
+						idA INTEGER PRIMARY KEY AUTO_INCREMENT);
+	````
+
+	Par défaut l'incrémentation commence à 1.
+
+
+
+
 
 #### Contraintes spécifiques
 
@@ -306,7 +341,7 @@ Il est aussi possible de placer certaines contraintes spécifiques lors de la cr
 ```` SQL
 CREATE TABLE Auteur (nom VARCHAR(90) NOT NULL,
 					 prenom VARCHAR(90) NOT NULL,
-					 idA INT PRIMARY KEY AUTO_INCREMENT,
+					 idA INTEGER PRIMARY KEY ,
 					 naissance SMALLINT,
 					 deces SMALLINT,
 					 CHECK (naissance IS NULL OR deces IS NULL OR naissance < deces) );
@@ -338,6 +373,7 @@ On notera que cette contrainte s'écrit **directement après la dernière défin
 		```` SQL
 		INSERT INTO nom_table(attribut1, attribut3) VALUES (valeur1, valeur3);
 		````
+		
 		Ici les valeurs ne seront insérées que dans les colonnes qui correspondent au nom donné.
 		
 !!! example "Exemple d'insertions"
