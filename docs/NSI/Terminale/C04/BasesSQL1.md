@@ -17,9 +17,31 @@ Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. P
 
 ## Du modèle relationnel à la base de donnée : une première approche
 
+
+
+
 SQL (*Structured Query Language*) est directement inspiré du modèle relationnel défini dans la [partie précédente](../ModeleRelationnel/). Ce langage est standardisé par la norme `ISO/IEC 9075`, dont la dernière version date de [2016](https://www.iso.org/fr/standard/63555.html){target=_blank}.
 
 La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.
+
+
+!!! question "Une première approche du SQL"
+
+	Rendez-vous dans le [bac-à-sable SQL](https://capytale2.ac-paris.fr/web/c/4df6-948322){target=_blank}(Code `4df6-948322`) sur Capytale.
+	
+	1. Exécutez les 4 premières cellules.
+	2. Exécutez la cinquième. Quel est le résultat fournit par cette requête ?
+	3. Exécutez la sixième. Quel est le résultat fournit par cette requête ?
+	4. Ajoutez à la base de données l'entité suivante :	
+	`('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')`
+	Que se passe-t-il ? Pourquoi ?
+	
+	5. Ajoutez à la base de données l'entité suivante :	
+	`('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')`	
+	Que se passe-t-il ? Pourquoi ?
+	
+	6. Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.
+
 
 !!! example "Exemple : Création de la table `usager`"
 	Les lignes de code SQL suivantes permettent la création d'une {==**table**==} `usager`, qui correspond globalement à la **relation** `usager` telle que définie par le schéma :
@@ -66,7 +88,7 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 
 	````
 	
-	Chacune des **lignes** est un tuple, chaque composante correspondant à la **colonne** définie dans l'ordre de création de table, **dans l'ordre de définition** (il existe un moyen d'être plus explicite et de s'affranchir de l'ordre, que nous verrons plus tard).
+	Chacune des **lignes** est un tuple, chaque composante correspondant à la **colonne** définie dans l'ordre de création de table, **dans l'ordre de définition** (NB : *il existe un moyen d'être plus explicite et de s'affranchir de l'ordre*, que nous verrons plus tard).
 	Vous pouvez constater que dans la troisième ligne, l'email n'est pas correctement écrit. Nous n'avons pour l'instant pas mis de contraintes supplémentaires sur le {==**champ**==} `email`, donc le SGBD acceptera cette entrée comme correcte.
 	
 !!! example "Exemple : Première requête"
@@ -93,24 +115,8 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 	
 	Formellement, SQL n'est pas aussi strict que le modèle relationnel. En effet une table ne doit pas obligatoirement posséder une **clé primaire**.
 
-	La conséquence directe de ce choix est une violation de la contrainte de relation, et il est tout à fait possible d'avoir des doublons dans une table, ce qui sera toléré par SQL. Mais c'est une mauvaise pratique !
+	La conséquence directe de ce choix est une **violation de la contrainte de relation**, et il est tout à fait possible d'avoir des doublons dans une table, ce qui sera toléré par SQL. Mais c'est une mauvaise pratique !
 	
-!!! question "Manipuler SQL"
-
-	Rendez-vous dans le [bac-à-sable SQL](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/b1c9-152465){target=_blank} sur Capytale.
-	
-	1. Exécutez les 4 premières cellules.
-	2. Exécutez la cinquième. Quel est le résultat fournit par cette requête ?
-	3. Exécutez la sixième. Quel est le résultat fournit par cette requête ?
-	4. Ajoutez à la base de données l'entité suivante :	
-	`('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')`
-	Que se passe-t-il ? Pourquoi ?
-	
-	5. Ajoutez à la base de données l'entité suivante :	
-	`('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')`	
-	Que se passe-t-il ? Pourquoi ?
-	
-	6. Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.
 	
 ## Types de données en SQL
 
@@ -155,12 +161,12 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 ### Types booléens
 	
 !!!abstract "Type Booléen"
-	Selon les SGBD, le type booléen est in,également supporté. Dans notre cas cette année, on supposera qu'il l'est correctement (mais il existe de nombreuses possibilités pour le simuler, par exemple avec un type `SMALLINT` où $0$ représente `False` et le reste `True`).
+	Selon les SGBD, le type booléen est inégalement supporté. Dans notre cas cette année, on supposera qu'il l'est correctement (mais il existe de nombreuses possibilités pour le simuler, par exemple avec un type `SMALLINT` où $0$ représente `False` et le reste `True`).
 	
 ### Types temporels
 
 !!! abstract "Types temporels"
-	Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeurs...
+	Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeur×s...
 	
 	Nous nous contenterons ici d'aborder de manière très superficielle ces types :
 	

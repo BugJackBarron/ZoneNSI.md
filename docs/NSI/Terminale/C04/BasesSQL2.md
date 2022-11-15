@@ -1,6 +1,6 @@
 # Requêtes SQL 
 
-*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank}.*
+*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank} (Code `c156-162763`).*
 
 
 
@@ -246,7 +246,7 @@ On récupère alors en résultat la table suivante : ![sans doublons](sansDoublo
 ## Application
 
 !!! question "Exercice"
-	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474) (merci M. Leleu).
+	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
 
 
 

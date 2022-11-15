@@ -215,6 +215,6 @@ WHERE annee = (SELECT MIN(annee) FROM livre);
 
 ## Exercices
 
-Effectuer les requêtes **avec jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474) (merci M. Leleu).
+Effectuer les requêtes **avec jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
 
 		

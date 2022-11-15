@@ -337,6 +337,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		``` python
 		def inserer(v, n, chaine) :
+			
 			if n<0 :
 				raise IndexError("Invalid index")
 			if n == 0 or chaine == None:

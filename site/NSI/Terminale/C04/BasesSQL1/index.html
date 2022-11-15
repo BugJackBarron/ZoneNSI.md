@@ -2891,6 +2891,28 @@
 <h2 id="du-modele-relationnel-a-la-base-de-donnee-une-premiere-approche">Du modèle relationnel à la base de donnée : une première approche</h2>
 <p>SQL (<em>Structured Query Language</em>) est directement inspiré du modèle relationnel défini dans la <a href="../ModeleRelationnel/">partie précédente</a>. Ce langage est standardisé par la norme <code>ISO/IEC 9075</code>, dont la dernière version date de <a href="https://www.iso.org/fr/standard/63555.html" target="_blank">2016</a>.</p>
 <p>La syntaxe du SQL est volontairement <em>verbeuse</em> et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.</p>
+<div class="admonition question">
+<p class="admonition-title">Une première approche du SQL</p>
+<p>Rendez-vous dans le <a href="https://capytale2.ac-paris.fr/web/c/4df6-948322" target="_blank">bac-à-sable SQL</a>(Code <code>4df6-948322</code>) sur Capytale.</p>
+<ol>
+<li>Exécutez les 4 premières cellules.</li>
+<li>Exécutez la cinquième. Quel est le résultat fournit par cette requête ?</li>
+<li>Exécutez la sixième. Quel est le résultat fournit par cette requête ?</li>
+<li>
+<p>Ajoutez à la base de données l'entité suivante : 
+<code>('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')</code>
+Que se passe-t-il ? Pourquoi ?</p>
+</li>
+<li>
+<p>Ajoutez à la base de données l'entité suivante : 
+<code>('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')</code>  <br />
+Que se passe-t-il ? Pourquoi ?</p>
+</li>
+<li>
+<p>Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.</p>
+</li>
+</ol>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Exemple : Création de la table <code>usager</code></p>
 <p>Les lignes de code SQL suivantes permettent la création d'une <mark class="critic"><strong>table</strong></mark> <code>usager</code>, qui correspond globalement à la <strong>relation</strong> <code>usager</code> telle que définie par le schéma :</p>
@@ -2930,7 +2952,7 @@ La dernière colonne <code>code_barre</code> est définie comme étant du type <
 <span class="p">(</span><span class="s1">&#39;Camus&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Albert&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;albert.camus@grace&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22205&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2 Rue de Kerpaour, Grâces&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-10-09&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;012345678910113&#39;</span><span class="p">)</span><span class="w"></span>
 <span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>Chacune des <strong>lignes</strong> est un tuple, chaque composante correspondant à la <strong>colonne</strong> définie dans l'ordre de création de table, <strong>dans l'ordre de définition</strong> (il existe un moyen d'être plus explicite et de s'affranchir de l'ordre, que nous verrons plus tard).
+<p>Chacune des <strong>lignes</strong> est un tuple, chaque composante correspondant à la <strong>colonne</strong> définie dans l'ordre de création de table, <strong>dans l'ordre de définition</strong> (NB : <em>il existe un moyen d'être plus explicite et de s'affranchir de l'ordre</em>, que nous verrons plus tard).
 Vous pouvez constater que dans la troisième ligne, l'email n'est pas correctement écrit. Nous n'avons pour l'instant pas mis de contraintes supplémentaires sur le <mark class="critic"><strong>champ</strong></mark> <code>email</code>, donc le SGBD acceptera cette entrée comme correcte.</p>
 </div>
 <div class="admonition example">
@@ -2969,29 +2991,7 @@ Cette requête renvoie le résultat suivant :</p>
 <div class="admonition warning">
 <p class="admonition-title">Différences entre modèle relationnel et SQL</p>
 <p>Formellement, SQL n'est pas aussi strict que le modèle relationnel. En effet une table ne doit pas obligatoirement posséder une <strong>clé primaire</strong>.</p>
-<p>La conséquence directe de ce choix est une violation de la contrainte de relation, et il est tout à fait possible d'avoir des doublons dans une table, ce qui sera toléré par SQL. Mais c'est une mauvaise pratique !</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Manipuler SQL</p>
-<p>Rendez-vous dans le <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/b1c9-152465" target="_blank">bac-à-sable SQL</a> sur Capytale.</p>
-<ol>
-<li>Exécutez les 4 premières cellules.</li>
-<li>Exécutez la cinquième. Quel est le résultat fournit par cette requête ?</li>
-<li>Exécutez la sixième. Quel est le résultat fournit par cette requête ?</li>
-<li>
-<p>Ajoutez à la base de données l'entité suivante : 
-<code>('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')</code>
-Que se passe-t-il ? Pourquoi ?</p>
-</li>
-<li>
-<p>Ajoutez à la base de données l'entité suivante : 
-<code>('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')</code>  <br />
-Que se passe-t-il ? Pourquoi ?</p>
-</li>
-<li>
-<p>Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.</p>
-</li>
-</ol>
+<p>La conséquence directe de ce choix est une <strong>violation de la contrainte de relation</strong>, et il est tout à fait possible d'avoir des doublons dans une table, ce qui sera toléré par SQL. Mais c'est une mauvaise pratique !</p>
 </div>
 <h2 id="types-de-donnees-en-sql">Types de données en SQL</h2>
 <p>Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standards édictés par l'ISO. On peut néanmoins dégager des constantes  dans les différents types utilisés </p>
@@ -3078,12 +3078,12 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 <h3 id="types-booleens">Types booléens</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Type Booléen</p>
-<p>Selon les SGBD, le type booléen est in,également supporté. Dans notre cas cette année, on supposera qu'il l'est correctement (mais il existe de nombreuses possibilités pour le simuler, par exemple avec un type <code>SMALLINT</code> où <span class="arithmatex">\(0\)</span> représente <code>False</code> et le reste <code>True</code>).</p>
+<p>Selon les SGBD, le type booléen est inégalement supporté. Dans notre cas cette année, on supposera qu'il l'est correctement (mais il existe de nombreuses possibilités pour le simuler, par exemple avec un type <code>SMALLINT</code> où <span class="arithmatex">\(0\)</span> représente <code>False</code> et le reste <code>True</code>).</p>
 </div>
 <h3 id="types-temporels">Types temporels</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Types temporels</p>
-<p>Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeurs...</p>
+<p>Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeur×s...</p>
 <p>Nous nous contenterons ici d'aborder de manière très superficielle ces types :</p>
 <table>
 <thead>

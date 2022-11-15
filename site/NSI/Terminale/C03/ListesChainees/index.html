@@ -2996,7 +2996,7 @@ de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution récursive</label><label for="__tabbed_2_3">Solution Itérative</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>concatener(c1, c2)</code> qui renvoie la liste chaînée obtenue par concaténation de <code>c1</code> et <code>c2</code>.</p>
+<p>Créer une fonction <code>concatener(c1, c2)</code> qui renvoie une liste chaînée obtenue par concaténation de <code>c1</code> et <code>c2</code>.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">concatener</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span> <span class="p">:</span>
@@ -3078,7 +3078,7 @@ modifient la valeur du deuxième élément de la chaine, qui devient <code>21 -&
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>inserer(v, n, chaine)</code> qui insère l'élément <code>v</code> à la position <code>n</code> dans la liste passée en argument.</p>
+<p>Créer une fonction <code>inserer(v, n, chaine)</code> qui renvoie la liste chainée dans laquelle on a inséré insère l'élément <code>v</code> à la position <code>n</code> dans la liste <code>chaine</code> passée en argument.</p>
 <p>Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :</p>
 <p><p align="center">
 <img alt="LC Insertion" src="../Insertion.png" style="width : 50%;" />
@@ -3086,6 +3086,7 @@ modifient la valeur du deuxième élément de la chaine, qui devient <code>21 -&
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inserer</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+
     <span class="k">if</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Invalid index&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
