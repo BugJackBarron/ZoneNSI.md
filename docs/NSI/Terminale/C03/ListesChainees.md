@@ -442,7 +442,7 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 
 	=== "Enoncé" 
 		
-		Créer une fonction `premiere_occurence(valeur, chaine)` qui renvoie *l'indice de la première occurence* de `valeur` dans la liste chaînée `chaine`. Si \valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
+		Créer une fonction `premiere_occurence(valeur, chaine)` qui renvoie *l'indice de la première occurence* de `valeur` dans la liste chaînée `chaine`. Si `valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
 		
 		Par exemple :
 		

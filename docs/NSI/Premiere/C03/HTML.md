@@ -115,7 +115,7 @@ où :
 
 !!! tips "Cas particulier : la balise `<img />`"
 
-	La balise `<img />` est la balise permétant d'insérer des images dans le document HTML. Elle possède une particularité : elle est **auto-fermante**  (car elle n'encadre aucun élément, elle contient la référence vers l'image).
+	La balise `<img />` est la balise permettant d'insérer des images dans le document HTML. Elle possède une particularité : elle est **auto-fermante**  (car elle n'encadre aucun élément, elle contient la référence vers l'image).
 	Elle possède entre-autres les attributs suivants :
 	
 	* `src` : l'adresse de l'image, absolue ou relative, ou sous la forme d'une URL (Attention aux URL google image, qui ne sont que temporaires !) ;
@@ -143,20 +143,28 @@ Il s'agit donc de préciser un **découpage logique** de la page.
 	6. `<header>` et `<footer>`
 	8. `<h1>`, `<h2>`, ..., `<h6>`
 	9. `<ol>`, `<ul>` et `<li>`
-	10. `<div>` et `<span>`
+	10. `<div>`
 	11. `<a>`
-	
+	12. `<br>`
+
+!!! warning "Les balises et attributs obsolètes"
+
+	Attention, vous trouverez dans de nombreux sites web des conseils forts mauvais pour l'utilisation des balises. certains en effet continuent d'utiliser des {==**balises dépréciées ou obsolètes**==}, comme `<center>` par exemple.
+
+	Vous pouvez trouver [ici](https://www.alsacreations.com/tuto/lire/550-Les-balises-et-proprietes-HTML-depreciees-et-obsoletes.html){target = "_blank"} quelques-unes de ces balises et attributs
+
+
 !!! question "A vous de jouer"
 
 	Créez une page web sur le sujet que vous souhaitez, et qui respecte au moins les conditions suivantes :
 	
 	1. Un titre
-	2. Deux parties de 3 paragraphes, avec au moins une liste
+	2. Deux parties de 3 paragraphes, avec au moins une liste (numérotée ou non).
 	3. Un lien interne à la page
 	4. Un lien externe à la page
 	5. Une image locale (sur l'ordinateur)
 	6. une image distante (par URL)	
-	7. Une incrustation vidéo
+	7. Une incrustation vidéo (voir directement depuis YT pour obtenir le lien)
 	
 	
 

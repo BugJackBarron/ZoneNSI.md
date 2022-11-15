@@ -10,6 +10,17 @@ def choisir_symbole(symboles : str) -> str :
     return random.choice(symboles)
 
 def fabriquer_chaine(symboles : str, taille : int = 3) -> str :
+    """ fonction renvoyant une chaine aléatoire de dimension taille,
+à partir de la liste de symbole symboles.
+
+>>> len(fabriquer_chaine('atcg'))
+3
+>>> len(fabriquer_chaine('atcg', 100))
+100
+>>> chaine = fabriquer_chaine('atcg')
+>>> chaine[0] in 'atcg' and chaine[1] in 'atcg' and chaine[2] in 'atcg'
+True
+"""
     assert type(symboles) == str and len(symboles)>0, "Bad argument"
     assert type(taille) == int and taille>0, 'Bad argument taille'
     chaine = ""
