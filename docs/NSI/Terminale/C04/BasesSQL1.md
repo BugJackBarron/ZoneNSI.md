@@ -8,8 +8,8 @@ Une utilisation efficace des bases de données relationnelles n'est réalisable 
 
 Dans ce chapitre, nous nous contenterons d'utiliser de manière sommaire des fonctionnalités de SGBDR offertes :
 
-* soit par les notebooks [Capytale](https://capytale2.ac-paris.fr/web/accueil){target=_blank} ;
-* soit par le logiciel portable [DB Browser for SQLite](https://sqlitebrowser.org/dl/){target=_blank} ;
+* soit par les notebooks [Capytale](https://capytale2.ac-paris.fr/web/accueil){target="_blank"} ;
+* soit par le logiciel portable [DB Browser for SQLite](https://sqlitebrowser.org/dl/){target="_blank"} ;
 * soit par l'intermédiaire de modules python.
 
 Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. Pour l'instant nous nous contenterons des fonctionnalités de base du langage SQL
@@ -20,14 +20,14 @@ Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. P
 
 
 
-SQL (*Structured Query Language*) est directement inspiré du modèle relationnel défini dans la [partie précédente](../ModeleRelationnel/). Ce langage est standardisé par la norme `ISO/IEC 9075`, dont la dernière version date de [2016](https://www.iso.org/fr/standard/63555.html){target=_blank}.
+SQL (*Structured Query Language*) est directement inspiré du modèle relationnel défini dans la [partie précédente](../ModeleRelationnel/){target="_blank"}. Ce langage est standardisé par la norme `ISO/IEC 9075`, dont la dernière version date de [2016](https://www.iso.org/fr/standard/63555.html){target="_blank"}.
 
 La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.
 
 
 !!! question "Une première approche du SQL"
 
-	Rendez-vous dans le [bac-à-sable SQL](https://capytale2.ac-paris.fr/web/c/4df6-948322){target=_blank}(Code `4df6-948322`) sur Capytale.
+	Rendez-vous dans le [bac-à-sable SQL](https://capytale2.ac-paris.fr/web/c/4df6-948322){target="_blank"}(Code `4df6-948322`) sur Capytale.
 	
 	1. Exécutez les 4 premières cellules.
 	2. Exécutez la cinquième. Quel est le résultat fournit par cette requête ?
@@ -44,10 +44,11 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 
 
 !!! example "Exemple : Création de la table `usager`"
-	Les lignes de code SQL suivantes permettent la création d'une {==**table**==} `usager`, qui correspond globalement à la **relation** `usager` telle que définie par le schéma :
+	Les lignes de code SQL suivantes permettent la création d'une {==**table**==} `usager`, qui correspond globalement à la **relation** `Usager` telle que définie par le schéma :
 	
-	usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre *String*</span>)
+	Usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre *String*</span>)NAVCAM
 	
+
 	```` SQL
 	CREATE TABLE usager (nom VARCHAR(90),
 						 prenom VARCHAR(90),
@@ -57,20 +58,22 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 						 inscription DATE,
 						 code_barre CHAR(15) PRIMARY KEY);
 	````
+
 	On envoie ici au SGBD un ordre SQL de création de table, par l'intermédiare de  la commande `CREATE TABLE`.
-	Le nom de la table sera `usager`. Cette table contiendra des {==**colonnes**==} (ou {==**champs**==} qui correspondent aux **attributs** de la relation.
-	La première colonne `nom` est définie comme étant du type `VARCHAR`, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.
-	La colonne `inscription` est définie comme étant du type `DATE`.
-	La dernière colonne `code_barre` est définie comme étant du type `VARCHAR` de longueur maximale 15, auquel on adjoint la contrainte `PRIMARY KEY`, qui indique simplement qu'il s'agit bien de la **clé primaire** de la relation.
+	Le nom de la table sera `usager`. Cette table contiendra des {==**colonnes**==} (ou {==**champs**==}) qui correspondent aux **attributs** de la relation.
+
+	* La première colonne `nom` est définie comme étant du type `VARCHAR`, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.
+	* La colonne `inscription` est définie comme étant du type `DATE`.
+	* La dernière colonne `code_barre` est définie comme étant du type `VARCHAR` de longueur maximale 15, auquel on adjoint la contrainte `PRIMARY KEY`, qui indique simplement qu'il s'agit bien de la **clé primaire** de la relation.
 	
-	L'ordre se termine par un `;`.
+	On remarque que {==**l'ordre se termine par un `;`**==}.
 	
 !!! tips "SQL et case des caractères"
 	SQL est **insensible à la casse**. Il aurait été tout aussi efficace d'écrire `create table` ou `CrEaTE tABlE`.
 	
 	De fait certaines règles de bonnes pratiques sont à suivre :
 	
-	* les mots réservés de SQL sont écrits en  **majuscule** ;
+	* les mots réservés de SQL sont écrits en  **majuscules** ;
 	* les attributs sont écrits en **minuscules**, ainsi que les noms de tables[^nomTables] ;
 	[^nomTables]: tout le monde n'est pas forcément d'accord sur ce point. Certains mettent une majuscule à la première lettre du nom de la table...
 	* les noms d'attributs et de tables ne pouvant contenir d'espaces, ceux-ci sont remplacés par le caractère `_` (*underscore*).
@@ -207,7 +210,7 @@ Il est possible de tester si une valeur est nulle ou non grâce aux commandes `I
 	* la donnée d'un *domaine* (obligatoire) ;
 	* la donnée de contraintes sur cet attribut (optionnel).
 	
-	Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de définition, avant la parenthèse fermante.
+	Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est **reportée en fin de définition**, avant la parenthèse fermante.
 	
 !!! example "Exemple avec clé primaire simple" 
 	La relation `Livre`  suivante ![relationLivre](relationLivre3.png){: style="width:15%;"} peut être crée en SQL par la commande suivante :
@@ -287,10 +290,10 @@ CREATE TABLE usager (nom VARCHAR(90) NOT NULL,
 
 Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).
 
-### Auto-incrémentation
+#### Clé primaire et auto-incrémentation
 
 
-Pour les {==**clé primaires numériques**==} et correspondantes au type `INTEGER`, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table `Auteur` :
+Pour les {==**clé primaires numériques**==} et correspondantes au type `INTEGER`[^intouinteger], il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table `Auteur` :
 
 ```` SQL
 CREATE TABLE Auteur (nom VARCHAR(90) NOT NULL,
@@ -298,6 +301,8 @@ CREATE TABLE Auteur (nom VARCHAR(90) NOT NULL,
 					idA INTEGER PRIMARY KEY );
 
 ````
+
+[^intouinteger]: du moins sur les versions `SQLite`, seul le type `INTEGER` permet une auto-incrémentation d'une clé primaire. Le type `INT` ne semble pas supporté (voir [ici](https://www.sqlite.org/datatype3.html){target="_blank"} et [là](https://stackoverflow.com/questions/7337882/what-is-the-difference-between-sqlite-integer-data-types-like-int-integer-bigi){target="_blank"}).
 
 Dans ce cas, l'insertion sera faites avec une structure d'entité plus spécifique :
 
@@ -363,7 +368,7 @@ On notera que cette contrainte s'écrit **directement après la dernière défin
 	
 	* En insérant les valeurs sans préciser le nom des colonnes :
 	
-		`````SQL
+		````SQL
 		INSERT INTO nom_table VALUES (valeur1, valeur2, ..., valeurn);
 		````
 		les valeurs seront insérées dans l'ordre défini lors de la création de la table.
@@ -398,27 +403,27 @@ On notera que cette contrainte s'écrit **directement après la dernière défin
 
 	donnera une erreur par violation d'intégrité[^Baleine], la date de naissance étant supérieure à la date de décès.
 
-[^Baleine]: Pauvre [Marvin](https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)){target=_blank}... 
+[^Baleine]: Pauvre [Marvin](https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)){target="_blank"}... 
 	
 ## Exercices
 
 !!! question "Exercice 1"
 	=== "Enoncé"
-		Reprendre l'énooncé de l'exercice 1 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target=_blank} et donner l'instruction SQL permettant de créer la table correspondante.
+		Reprendre l'énooncé de l'exercice 1 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer la table correspondante.
 		
 	=== "Solution"
 		A venir !
 		
 !!! question "Exercice 2"
 	=== "Enoncé"
-		Reprendre l'énooncé de l'exercice 2 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target=_blank} et donner l'instruction SQL permettant de créer les tables correspondantes.
+		Reprendre l'énooncé de l'exercice 2 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer les tables correspondantes.
 		
 	=== "Solution"
 		A venir !
 
 !!! question "Exercice 2"
 	=== "Enoncé"
-		Reprendre l'énooncé de l'exercice 3 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target=_blank} et donner l'instruction SQL permettant de créer les tables correspondantes.
+		Reprendre l'énooncé de l'exercice 3 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer les tables correspondantes.
 		
 	=== "Solution"
 		A venir !

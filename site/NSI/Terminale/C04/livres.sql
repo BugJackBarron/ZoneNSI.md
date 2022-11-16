@@ -1,8 +1,8 @@
-DROP TABLE emprunt;
-DROP TABLE auteur_de;
-DROP TABLE auteur;
-DROP TABLE usager;
-DROP TABLE livre;
+DROP TABLE IF EXISTS emprunt;
+DROP TABLE IF EXISTS auteur_de;
+DROP TABLE IF EXISTS auteur;
+DROP TABLE IF EXISTS usager;
+DROP TABLE IF EXISTS livre;
 
 CREATE TABLE usager (nom VARCHAR(90) NOT NULL, prenom VARCHAR(90) NOT NULL,
                            adresse VARCHAR(300) NOT NULL, cp VARCHAR(5) NOT NULL,

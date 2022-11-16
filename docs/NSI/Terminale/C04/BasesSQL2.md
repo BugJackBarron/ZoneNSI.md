@@ -7,8 +7,11 @@
 ## Projections
 
 !!! abstract "Projection"
-	L'opération de {==**projection**==} consite à ne récupérer que les champs (= les colonnes) d'une table donnée.
-	En SQL, on l'obtiens par l'instruction :
+	L'opération de {==**projection**==} consiste à ne récupérer que certains **champs** (c'est-à-dire les **colonnes**) d'une table donnée.
+
+	![Projection](Projection.png){: style="width:10%; margin:auto;display:block;background-color: #546d78;"}
+
+	En SQL, on l'obtient par l'instruction :
 	
 	```` SQL
 	SELECT
@@ -45,7 +48,9 @@
 ## Sélections
 
 !!! abstract "Sélection (ou restriction)"
-	L'opération de {==**sélection**==} consiste à interroger une base de données pour ne récupérer que les lignes d'une table correspondant à une ou des conditions spécifiées.
+	L'opération de {==**sélection**==} consiste à interroger une base de données pour ne récupérer que **les lignes d'une table correspondant à une ou des conditions spécifiées** (exprimées sous la forme d'expressions booléennes).
+
+	![Sélection](Selection.png){: style="width:10%; margin:auto;display:block;background-color: #546d78;"}
 	
 	En SQL, on rajoute la {==**clause**==} `WHERE` suivie des conditions exprimées sous la forme d'une **expression booléenne**, utilisant les mots clés `AND` et `OR` par exemple :
 	
@@ -109,12 +114,12 @@
 	
 ## Fonctions d'aggrégations
 
-Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent *fonctions d'aggrégations*, et renvoie un résultat sous al forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :
+Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent {==**fonctions d'aggrégations**==}, et renvoie un résultat sous la forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :
 
 ### Fonction `COUNT`
 
 !!! abstract "Compter des lignes"
-	La fonction SQL `COUNT` permet de compter le nombre de lignes que possède une table, éventuellement aporès sélection. Sa syntaxe est :
+	La fonction SQL `COUNT` permet de compter le nombre de lignes que possède une table, éventuellement après sélection. Sa syntaxe est :
 	
 	```` SQL
 	SELECT 
@@ -191,6 +196,8 @@ Ces deux fonctions s'appliquent sur n'importe quel type, l'ordre sur les chaîne
 ```` SQL
 SELECT MIN(nom) FROM auteur ;
 SELECT MAX(nom) FROM auteur ;
+SELECT MIN(annee) FROM livre; 
+SELECT MAX(annee) FROM livre; 
 ````
 ## Tri et suppression des doublons
 

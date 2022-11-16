@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C04/BasesSQL1/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2049,18 +2049,12 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#auto-incrementation" class="md-nav__link">
-    Auto-incrémentation
+  <a href="#cle-primaire-et-auto-incrementation" class="md-nav__link">
+    Clé primaire et auto-incrémentation
   </a>
   
-    <nav class="md-nav" aria-label="Auto-incrémentation">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#contraintes-specifiques" class="md-nav__link">
@@ -2889,7 +2883,7 @@
 </ul>
 <p>Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. Pour l'instant nous nous contenterons des fonctionnalités de base du langage SQL</p>
 <h2 id="du-modele-relationnel-a-la-base-de-donnee-une-premiere-approche">Du modèle relationnel à la base de donnée : une première approche</h2>
-<p>SQL (<em>Structured Query Language</em>) est directement inspiré du modèle relationnel défini dans la <a href="../ModeleRelationnel/">partie précédente</a>. Ce langage est standardisé par la norme <code>ISO/IEC 9075</code>, dont la dernière version date de <a href="https://www.iso.org/fr/standard/63555.html" target="_blank">2016</a>.</p>
+<p>SQL (<em>Structured Query Language</em>) est directement inspiré du modèle relationnel défini dans la <a href="../ModeleRelationnel/" target="_blank">partie précédente</a>. Ce langage est standardisé par la norme <code>ISO/IEC 9075</code>, dont la dernière version date de <a href="https://www.iso.org/fr/standard/63555.html" target="_blank">2016</a>.</p>
 <p>La syntaxe du SQL est volontairement <em>verbeuse</em> et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.</p>
 <div class="admonition question">
 <p class="admonition-title">Une première approche du SQL</p>
@@ -2915,9 +2909,9 @@ Que se passe-t-il ? Pourquoi ?</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple : Création de la table <code>usager</code></p>
-<p>Les lignes de code SQL suivantes permettent la création d'une <mark class="critic"><strong>table</strong></mark> <code>usager</code>, qui correspond globalement à la <strong>relation</strong> <code>usager</code> telle que définie par le schéma :</p>
-<p>usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre <em>String</em></span>)</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">usager</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="w"></span>
+<p>Les lignes de code SQL suivantes permettent la création d'une <mark class="critic"><strong>table</strong></mark> <code>usager</code>, qui correspond globalement à la <strong>relation</strong> <code>Usager</code> telle que définie par le schéma :</p>
+<p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre <em>String</em></span>)NAVCAM</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">usager</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="w"></span>
 <span class="w">                     </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="w"></span>
 <span class="w">                     </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span><span class="w"></span>
 <span class="w">                     </span><span class="n">cp</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"></span>
@@ -2925,19 +2919,21 @@ Que se passe-t-il ? Pourquoi ?</p>
 <span class="w">                     </span><span class="n">inscription</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w"></span>
 <span class="w">                     </span><span class="n">code_barre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-On envoie ici au SGBD un ordre SQL de création de table, par l'intermédiare de  la commande <code>CREATE TABLE</code>.
-Le nom de la table sera <code>usager</code>. Cette table contiendra des <mark class="critic"><strong>colonnes</strong></mark> (ou <mark class="critic"><strong>champs</strong></mark> qui correspondent aux <strong>attributs</strong> de la relation.
-La première colonne <code>nom</code> est définie comme étant du type <code>VARCHAR</code>, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.
-La colonne <code>inscription</code> est définie comme étant du type <code>DATE</code>.
-La dernière colonne <code>code_barre</code> est définie comme étant du type <code>VARCHAR</code> de longueur maximale 15, auquel on adjoint la contrainte <code>PRIMARY KEY</code>, qui indique simplement qu'il s'agit bien de la <strong>clé primaire</strong> de la relation.</p>
-<p>L'ordre se termine par un <code>;</code>.</p>
+<p>On envoie ici au SGBD un ordre SQL de création de table, par l'intermédiare de  la commande <code>CREATE TABLE</code>.
+Le nom de la table sera <code>usager</code>. Cette table contiendra des <mark class="critic"><strong>colonnes</strong></mark> (ou <mark class="critic"><strong>champs</strong></mark>) qui correspondent aux <strong>attributs</strong> de la relation.</p>
+<ul>
+<li>La première colonne <code>nom</code> est définie comme étant du type <code>VARCHAR</code>, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.</li>
+<li>La colonne <code>inscription</code> est définie comme étant du type <code>DATE</code>.</li>
+<li>La dernière colonne <code>code_barre</code> est définie comme étant du type <code>VARCHAR</code> de longueur maximale 15, auquel on adjoint la contrainte <code>PRIMARY KEY</code>, qui indique simplement qu'il s'agit bien de la <strong>clé primaire</strong> de la relation.</li>
+</ul>
+<p>On remarque que <mark class="critic"><strong>l'ordre se termine par un <code>;</code></strong></mark>.</p>
 </div>
 <div class="admonition tips">
 <p class="admonition-title">SQL et case des caractères</p>
 <p>SQL est <strong>insensible à la casse</strong>. Il aurait été tout aussi efficace d'écrire <code>create table</code> ou <code>CrEaTE tABlE</code>.</p>
 <p>De fait certaines règles de bonnes pratiques sont à suivre :</p>
 <ul>
-<li>les mots réservés de SQL sont écrits en  <strong>majuscule</strong> ;</li>
+<li>les mots réservés de SQL sont écrits en  <strong>majuscules</strong> ;</li>
 <li>les attributs sont écrits en <strong>minuscules</strong>, ainsi que les noms de tables<sup id="fnref:nomTables"><a class="footnote-ref" href="#fn:nomTables">1</a></sup> ;</li>
 <li>les noms d'attributs et de tables ne pouvant contenir d'espaces, ceux-ci sont remplacés par le caractère <code>_</code> (<em>underscore</em>).</li>
 <li>les noms de table sont écrits au singulier.</li>
@@ -3131,7 +3127,7 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 <li>la donnée d'un <em>domaine</em> (obligatoire) ;</li>
 <li>la donnée de contraintes sur cet attribut (optionnel).</li>
 </ul>
-<p>Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est reportée en fin de définition, avant la parenthèse fermante.</p>
+<p>Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est <strong>reportée en fin de définition</strong>, avant la parenthèse fermante.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple avec clé primaire simple</p>
@@ -3193,8 +3189,8 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
 <span class="w">                     </span><span class="n">code_barre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).</p>
-<h3 id="auto-incrementation">Auto-incrémentation</h3>
-<p>Pour les <mark class="critic"><strong>clé primaires numériques</strong></mark> et correspondantes au type <code>INTEGER</code>, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
+<h4 id="cle-primaire-et-auto-incrementation">Clé primaire et auto-incrémentation</h4>
+<p>Pour les <mark class="critic"><strong>clé primaires numériques</strong></mark> et correspondantes au type <code>INTEGER</code><sup id="fnref:intouinteger"><a class="footnote-ref" href="#fn:intouinteger">2</a></sup>, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="n">idA</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
@@ -3240,8 +3236,8 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.</p>
 <ul>
 <li>
 <p>En insérant les valeurs sans préciser le nom des colonnes :</p>
-<p><code>`SQL
-INSERT INTO nom_table VALUES (valeur1, valeur2, ..., valeurn);</code>
+<p><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">nom_table</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">valeur1</span><span class="p">,</span><span class="w"> </span><span class="n">valeur2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">valeurn</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 les valeurs seront insérées dans l'ordre défini lors de la création de la table.</p>
 </li>
 <li>
@@ -3270,7 +3266,7 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
 <p>Il est à noter que les contraintes d'intégrités sont vérifiées lors de l'insertion. Une instruction du type :</p>
 <div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Auteur</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">prenom</span><span class="p">,</span><span class="w"> </span><span class="n">naissance</span><span class="p">,</span><span class="w"> </span><span class="n">deces</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;ADAMS&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Douglas&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"> </span><span class="mi">1952</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<p>donnera une erreur par violation d'intégrité<sup id="fnref:Baleine"><a class="footnote-ref" href="#fn:Baleine">2</a></sup>, la date de naissance étant supérieure à la date de décès.</p>
+<p>donnera une erreur par violation d'intégrité<sup id="fnref:Baleine"><a class="footnote-ref" href="#fn:Baleine">3</a></sup>, la date de naissance étant supérieure à la date de décès.</p>
 </div>
 <h2 id="exercices">Exercices</h2>
 <div class="admonition question">
@@ -3318,8 +3314,11 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
 <li id="fn:nomTables">
 <p>tout le monde n'est pas forcément d'accord sur ce point. Certains mettent une majuscule à la première lettre du nom de la table...&#160;<a class="footnote-backref" href="#fnref:nomTables" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
+<li id="fn:intouinteger">
+<p>du moins sur les versions <code>SQLite</code>, seul le type <code>INTEGER</code> permet une auto-incrémentation d'une clé primaire. Le type <code>INT</code> ne semble pas supporté (voir <a href="https://www.sqlite.org/datatype3.html" target="_blank">ici</a> et <a href="https://stackoverflow.com/questions/7337882/what-is-the-difference-between-sqlite-integer-data-types-like-int-integer-bigi" target="_blank">là</a>).&#160;<a class="footnote-backref" href="#fnref:intouinteger" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
 <li id="fn:Baleine">
-<p>Pauvre <a href="https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)" target="_blank">Marvin</a>...&#160;<a class="footnote-backref" href="#fnref:Baleine" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>Pauvre <a href="https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)" target="_blank">Marvin</a>...&#160;<a class="footnote-backref" href="#fnref:Baleine" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -3411,10 +3410,10 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
