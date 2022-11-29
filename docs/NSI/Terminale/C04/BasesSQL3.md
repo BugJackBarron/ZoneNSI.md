@@ -1,6 +1,6 @@
 # Modification des bases de données et requêtes complexes
 
-*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank}.*
+*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank} (Code `C156-162763`).*
 
 ##Modification des bases de données
 
@@ -54,7 +54,7 @@ DELETE FROM table WHERE conditions;
 
 !!! info "Tout ou rien"
 
-	Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors **toutes les suppressions effectuées par cet ordre sont annulées** ! On parle d'éxecution de type &laquo: tout ou rien &raquo;.
+	Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors **toutes les suppressions effectuées par cet ordre sont annulées** ! On parle d'éxecution de type &laquo; tout ou rien &raquo;.
 	
 ### Mise à jour de lignes
 
@@ -172,7 +172,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 
 ### Requêtes imbriquées
 
-Il est tout à fait possible d'imriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une *table temporaire* :
+Il est tout à fait possible d'imbriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une *table temporaire* :
 
 ```` SQL
 SELECT * FROM (

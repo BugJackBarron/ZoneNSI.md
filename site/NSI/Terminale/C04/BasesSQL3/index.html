@@ -2820,7 +2820,7 @@
 
 
 <h1 id="modification-des-bases-de-donnees-et-requetes-complexes">Modification des bases de données et requêtes complexes</h1>
-<p><em>Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763" target="_blank">notebook Capytale</a>.</em></p>
+<p><em>Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763" target="_blank">notebook Capytale</a> (Code <code>C156-162763</code>).</em></p>
 <h2 id="modification-des-bases-de-donnees">Modification des bases de données</h2>
 <h3 id="suppression-de-lignes">Suppression de lignes</h3>
 <p>Pour supprimer des lignes selon une condition donnée, on utilise l'ordre :</p>
@@ -2858,7 +2858,7 @@ On vérifie ensuite :</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Tout ou rien</p>
-<p>Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors <strong>toutes les suppressions effectuées par cet ordre sont annulées</strong> ! On parle d'éxecution de type &amp;laquo: tout ou rien &raquo;.</p>
+<p>Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors <strong>toutes les suppressions effectuées par cet ordre sont annulées</strong> ! On parle d'éxecution de type &laquo; tout ou rien &raquo;.</p>
 </div>
 <h3 id="mise-a-jour-de-lignes">Mise à jour de lignes</h3>
 <p>Pour mettre à jour des lignes, on utiise un ordre SQL de type :</p>
@@ -2944,7 +2944,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 </code></pre></div>
 </div>
 <h3 id="requetes-imbriquees">Requêtes imbriquées</h3>
-<p>Il est tout à fait possible d'imriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une <em>table temporaire</em> :</p>
+<p>Il est tout à fait possible d'imbriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une <em>table temporaire</em> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">livre</span><span class="w"></span>
 <span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">annee</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1990</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tmp</span><span class="w"></span>
