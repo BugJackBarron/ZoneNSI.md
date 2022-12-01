@@ -63,8 +63,8 @@ Pour mettre à jour des lignes, on utiise un ordre SQL de type :
 ```` SQL
 UPDATE nom_table
 SET attribut1 = nouvelle_valeur1,
-SET	attribut2 = nouvelle_valeur2,
-...
+	attribut2 = nouvelle_valeur2,
+	...
 WHERE conditions;	
 ````
 

@@ -19,7 +19,8 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 ### Définitions et vocabulaire
 
 !!! abstract "définition : Arbre Binaire"
-	Un {==**arbre binaire**==} est un cas particulier de structure arborescente ou chaque position ouvre sur exaactement deux branches.
+	Un {==**arbre binaire**==} est un cas particulier de structure arborescente où chaque position ouvre sur exaactement deux branches.
+	
 	Plus précisemment, un {==**arbre binaire**==} est un ensemble fini de {==**noeuds**==} correspondant à l'un des deux cas suivants :
 	
 	* Soit l'arbre est vide, c'est-à-dire qu'il ne contient aucun **noeud**.
