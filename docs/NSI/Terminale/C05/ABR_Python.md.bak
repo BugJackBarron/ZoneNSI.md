@@ -140,16 +140,7 @@ Bon, ok, nous avons une représentation, mais elle est loin d'être lisible...
 
 Heureusement il existe un module python, le module `graphviz`, qui va nous permettre de convertir notre ABR en un fichier pdf plus lisible. L'objectif n'étant pas de comprendre comment fonctionne graphviz, voici les codes nécessaires :
 
-1. Commençons par [télécharger](https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/7.0.4/windows_10_msbuild_Release_graphviz-7.0.4-win32.zip){: target="_blank"} et décompacter le programme `Graphviz` dans le dossier `Documents`
-2. Installez le module `graphviz` dans `Thonny`.
-3. Dans le fichier Python contenant la classe `ABR`, ajoutez les lignes suivantes (Si le dossier `bin` contenant le programme `dot.exe` correspond bien au chemin donné :
-
-	```` python
-	import os
-
-	os.environ['PATH'] += os.pathsep +"P:\\Documents\\Graphviz\\Graphviz\\bin"
-
-	```` 
+1. Installez le module `graphviz` dans `Thonny`.
 2. Importez la classe `Digraph` depuis ce module en ajoutant :
 
 	```` python
