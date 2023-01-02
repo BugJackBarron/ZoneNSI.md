@@ -274,8 +274,8 @@ if __name__ == "__main__" :
     print(tree)
     
     tree = ABR()
-    for elem in suffle
-        tree.insererAVL(elem)
-    tree.toImage()
+#     for elem in suffle
+#         tree.insererAVL(elem)
+#     tree.toImage()
     
     

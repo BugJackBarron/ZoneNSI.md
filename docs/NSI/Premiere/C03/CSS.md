@@ -112,7 +112,7 @@ Vous pouvez essayer de modifier le CSS dans le [bac-à-sable suivant sur capytal
 	
 	Pratiquement,le DOM est créé  à partir du code HTML[^1], et chaque style CSS est attaché à un noeud du DOM :
 
-	[^1]: Le HTML n'a pas besoin d'être intégralement chargé pour que le CSS lui soit ajouté. Il est tout à fait possible de passer le HTML par morceaux depuis le serveur, et l'arbre du DO%M se construit petit à petit. Merci Armand pour cette remarque pertinente !
+	[^1]: Le HTML n'a pas besoin d'être intégralement chargé pour que le CSS lui soit ajouté. Il est tout à fait possible de passer le HTML par morceaux depuis le serveur, et l'arbre du DOM se construit petit à petit. Merci Armand pour cette remarque pertinente !
 	
 	<p align="center">
 	![creation_dom.png](creation_dom.png){: style="width:50%;"}
