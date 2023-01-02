@@ -2884,7 +2884,7 @@
 <li>Lister les repertoires déjà présents dans votre repertoire personnel.</li>
 <li>Remonter l'arborescence jusqu'à la racine. Quel est le chemin absolu de votre répertoire personnel ?</li>
 <li>Déplacez-vous jusqu'au répertoire <code>/usr/bin</code> et listez les fichiers présents</li>
-<li>Retournez dans votre dossier personnel, puis listez les fichiers présents,en affichant les détails. Quelles sont les informations données ?</li>
+<li>Retournez dans votre dossier personnel, puis listez les fichiers présents,en affichant les détails. Quelles sont les informations données ? Quels sont les utilisateurs recensés du système ?</li>
 </ol>
 </div>
 <h3 id="les-utilisateurs-et-les-droits">Les utilisateurs et les droits</h3>
@@ -2957,9 +2957,9 @@
 </ul>
 </li>
 <li>
-<p><code>mkdir</code> (pour <em>make directory</em>) : crée un nouveau répertoire dont le nom est passé en argument.</p>
+<p><code>mkdir nv_dossier</code> (pour <em>make directory</em>) : crée un nouveau répertoire dont le nom est passé en argument.</p>
 </li>
-<li><code>rmdir</code> (pour <em>remove directory</em>) : supprime un répertoire <strong>vide</strong> dont le nom est passé en argument.</li>
+<li><code>rmdir nom_dossier</code> (pour <em>remove directory</em>) : supprime un répertoire <strong>vide</strong> dont le nom est passé en argument.</li>
 <li>
 <p><code>rm</code> (pour <em>remove</em>) : supprime le ou les fichiers passés en arguments. Attention à cette commande qui <strong>peut tout casser !</strong> :</p>
 <ul>
@@ -2969,17 +2969,18 @@
 </ul>
 </li>
 <li>
-<p><code>touch</code> : permet de créer un nouveau fichier vide en lui passant le nom en argument. A préférer à la commande <code>cat</code>. </p>
+<p><code>touch nv_fichier</code> : permet de créer un nouveau fichier vide en lui passant le nom en argument. A préférer à la commande <code>cat</code>. </p>
 </li>
 <li>
-<p><code>find</code></p>
+<p><code>find</code> : permet de chercher des fichiers et/ou des dossier dans un dossier donné. Par exemple <code>find /home/ -name mon_texte.txt</code> cherche le fichier <code>mon_texte.txt</code> dans le répertoire <code>home</code> et tous ses sous-dossiers.</p>
 </li>
-<li><code>locate</code></li>
-<li><code>grep</code></li>
-<li><code>head</code></li>
-<li><code>tail</code></li>
-<li><code>diff</code></li>
+<li><code>locate</code> : permet de donner la localisation d'un fichier dans le système de fichier. <code>locate</code> est très rapide car elle utilise une base de donnée mise à jour régulièrement qui recense tous les fichiers du système.</li>
+<li><code>grep</code> : permet de chercher une chaîne de caractère dans un fichier. <code>grep toto bob.txt</code> renverra toutes les lignes du fichier <code>bob.txt</code> contenant la chaîne <code>toto</code>. <code>grep</code>est très efficace, mais ne fonctionne pas correctement sur les fichiers <code>pdf</code> et <code>odt</code> ...</li>
+<li><code>head</code> : renvoie les 10 premières lignes d'un fichier. On peut paramétrer le nombre de lignes obtenues avec l'option <code>-n</code> : <code>head -n 5 bob.txt</code> envoie les 5 premières lignes du fichier <code>bob.txt</code>.</li>
+<li><code>tail</code> : fonctionne de la même manière que <code>head</code>, mais en renvoyant les 10 dernières lignes.</li>
+<li><code>diff</code> : compare deux fichiers lignes par lignes, et renvoie toutes celles présentant une différence. Pratique !</li>
 </ul>
+<p>Il reste une commande essentielle, qui est la commande <code>sudo</code> : celle-ci permet d'exécuter une autre commande avec les privilègess de super-utilisateur (<code>root</code>). Attention ! Avec de grands pouvoirs viennent de grandes responsabilités ! </p>
 <div class="footnote">
 <hr />
 <ol>

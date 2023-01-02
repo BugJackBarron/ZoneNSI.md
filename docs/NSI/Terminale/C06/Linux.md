@@ -101,7 +101,7 @@ Pour naviguer dans l'arborescence, il est nécessaire de connaître deux command
     1. Lister les repertoires déjà présents dans votre repertoire personnel.
     2. Remonter l'arborescence jusqu'à la racine. Quel est le chemin absolu de votre répertoire personnel ?
     3. Déplacez-vous jusqu'au répertoire `/usr/bin` et listez les fichiers présents
-    4. Retournez dans votre dossier personnel, puis listez les fichiers présents,en affichant les détails. Quelles sont les informations données ?
+    4. Retournez dans votre dossier personnel, puis listez les fichiers présents,en affichant les détails. Quelles sont les informations données ? Quels sont les utilisateurs recensés du système ?
 
 ### Les utilisateurs et les droits
 
@@ -170,18 +170,21 @@ Voici, de manière non-exhaustive, quelques unes des commandes les plus utiles s
     * `mv bidule.jpg /home/bob/photo` déplace le fichier `bidule.jpg` vers `/home/bob/photo` ;
     * `mv bidule.jpg truc.jpg` renomme le fichier `bidule.jpg` en `truc.jpg`.
 
-* `mkdir` (pour *make directory*) : crée un nouveau répertoire dont le nom est passé en argument.
-* `rmdir` (pour *remove directory*) : supprime un répertoire **vide** dont le nom est passé en argument.
+* `mkdir nv_dossier` (pour *make directory*) : crée un nouveau répertoire dont le nom est passé en argument.
+* `rmdir nom_dossier` (pour *remove directory*) : supprime un répertoire **vide** dont le nom est passé en argument.
 * `rm` (pour *remove*) : supprime le ou les fichiers passés en arguments. Attention à cette commande qui **peut tout casser !** :
     * `rm *` : supprime tous les fichiers du répertoire courant
     * `rm -R`: supprime de manière récursive tous les fichiers et sous-dossiers du répertoire courant !
     * Il existe aussi des [commandes interdites](https://korben.info/les-commandes-a-ne-jamais-lancer-sous-linux.html){:target="_blank"}, à ne jamais utiliser sous peine de mise au ban de la société, lynchage en place publique, etc...
 
-* `touch` : permet de créer un nouveau fichier vide en lui passant le nom en argument. A préférer à la commande `cat`. 
+* `touch nv_fichier` : permet de créer un nouveau fichier vide en lui passant le nom en argument. A préférer à la commande `cat`. 
 
-* `find`
-* `locate`
-* `grep`
-* `head`
-* `tail`
-* `diff`
+* `find` : permet de chercher des fichiers et/ou des dossier dans un dossier donné. Par exemple ` find /home/ -name mon_texte.txt` cherche le fichier `mon_texte.txt` dans le répertoire `home` et tous ses sous-dossiers.
+* `locate` : permet de donner la localisation d'un fichier dans le système de fichier. `locate` est très rapide car elle utilise une base de donnée mise à jour régulièrement qui recense tous les fichiers du système.
+* `grep` : permet de chercher une chaîne de caractère dans un fichier. `grep toto bob.txt` renverra toutes les lignes du fichier `bob.txt` contenant la chaîne `toto`. `grep`est très efficace, mais ne fonctionne pas correctement sur les fichiers `pdf` et `odt` ...
+* `head` : renvoie les 10 premières lignes d'un fichier. On peut paramétrer le nombre de lignes obtenues avec l'option `-n` : `head -n 5 bob.txt` envoie les 5 premières lignes du fichier `bob.txt`.
+* `tail` : fonctionne de la même manière que `head`, mais en renvoyant les 10 dernières lignes.
+* `diff` : compare deux fichiers lignes par lignes, et renvoie toutes celles présentant une différence. Pratique !
+
+Il reste une commande essentielle, qui est la commande `sudo` : celle-ci permet d'exécuter une autre commande avec les privilègess de super-utilisateur (`root`). Attention ! Avec de grands pouvoirs viennent de grandes responsabilités ! 
+

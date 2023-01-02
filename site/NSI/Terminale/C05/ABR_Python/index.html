@@ -2961,9 +2961,15 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 <p>Bon, ok, nous avons une représentation, mais elle est loin d'être lisible...</p>
 <p>Heureusement il existe un module python, le module <code>graphviz</code>, qui va nous permettre de convertir notre ABR en un fichier pdf plus lisible. L'objectif n'étant pas de comprendre comment fonctionne graphviz, voici les codes nécessaires :</p>
 <ol>
+<li>Commençons par <a href="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/7.0.4/windows_10_msbuild_Release_graphviz-7.0.4-win32.zip" target="_blank">télécharger</a> et décompacter le programme <code>Graphviz</code> dans le dossier <code>Documents</code></li>
 <li>Installez le module <code>graphviz</code> dans <code>Thonny</code>.</li>
 <li>
-<p>Importez la classe <code>Digraph</code> depuis ce module en ajoutant :</p>
+<p>Dans le fichier Python contenant la classe <code>ABR</code>, ajoutez les lignes suivantes (Si le dossier <code>bin</code> contenant le programme <code>dot.exe</code> correspond bien au chemin donné :</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span><span class="s2">&quot;P:</span><span class="se">\\</span><span class="s2">Documents</span><span class="se">\\</span><span class="s2">Graphviz</span><span class="se">\\</span><span class="s2">Graphviz</span><span class="se">\\</span><span class="s2">bin&quot;</span>
+</code></pre></div>
+2. Importez la classe <code>Digraph</code> depuis ce module en ajoutant :</p>
 <p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
 </code></pre></div>
 3. Ajoutez à la classe <code>Node</code> la méthode suivante :</p>
