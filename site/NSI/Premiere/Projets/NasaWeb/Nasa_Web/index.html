@@ -17,7 +17,7 @@
     
     
       
-        <title>Projet Rover Curiosity Nasa - ZoneNSI</title>
+        <title>Projet Rover Mars - ZoneNSI</title>
       
     
     
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Projet Rover Curiosity Nasa
+              Projet Rover Mars
             
           </span>
         </div>
@@ -896,12 +896,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -922,12 +924,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
       
       
       
@@ -1140,12 +1144,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" checked>
       
       
       
@@ -1213,6 +1219,108 @@
       <a href="../../../C03/JS02/" class="md-nav__link">
         Javascript, le DOM et les formulaires
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projet Rover Mars
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projet Rover Mars
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lapi-de-la-nasa" class="md-nav__link">
+    L'API de la NASA
+  </a>
+  
+    <nav class="md-nav" aria-label="L'API de la NASA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-format-json-et-les-types-de-donnees" class="md-nav__link">
+    Le format JSON et les types de données
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyse-des-donnees-recues-par-une-requete" class="md-nav__link">
+    Analyse des données reçues par une requête
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    Applications
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applications-en-python" class="md-nav__link">
+    Applications en Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-en-html" class="md-nav__link">
+    Application en HTML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2700,8 +2808,199 @@
 
 <h1 id="projet-rover-curiosity-nasa">Projet Rover Curiosity Nasa</h1>
 <p>L'objectif est de créer une page web permettant d'afficher les photos prises par le rover Curiosity de la planète Mars, en choisissant la date de prise de vue et la caméra à partir d'un formulaire, et avec des boutons permettant de naviguer d'une photo à l'autre.</p>
-<h2 id="liens-utiles">Liens utiles</h2>
-<p><a href="https://api.nasa.gov/" target="_blank">API Nasa</a></p>
+<h2 id="lapi-de-la-nasa">L'API de la NASA</h2>
+<div class="admonition info">
+<p class="admonition-title">Notion d'API</p>
+<p>*D'après <a href="https://fr.wikipedia.org/wiki/Interface_de_programmation" target="target">wikipedia</a></p>
+<p>Une <mark class="critic"><strong>API</strong></mark> (<em>application programming interface</em> ou &laquo; interface de programmation d'application &raquo;) est un ensemble normalisé de <em>classes</em>, de <em>méthodes</em>, de <em>fonctions</em> et de <em>constantes</em> qui sert de façade par laquelle un logiciel offre des services à d'autres logiciels. </p>
+<p>Elle est offerte par une <strong>bibliothèque logicielle</strong> ou un <strong>service web</strong>, le plus souvent accompagnée d'une description qui spécifie comment des programmes &laquo; consommateurs &raquo; peuvent se servir des fonctionnalités du programme &laquo; fournisseur &raquo;. </p>
+</div>
+<p>La NASA offre des <a href="https://api.nasa.gov/" target="_blank">API</a> libres d'accès (avec une clé personnelle) permettant de parcourir des données collectées par des satellites, des téléscopes, des robots, etc...</p>
+<p>Nous nous interesserons à l'API <mark class="critic"><strong>Mars Rover Photos</strong></mark>. Cette API permet de consulter les photos prises par les différents Rovers sur Mars, à différentes dates. Par exemple, en utilisant l'url suivante :</p>
+<p><a href="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&amp;camera=FHAZ&amp;api_key=DEMO_KEY" target="_blank"> https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&amp;camera=FHAZ&amp;api_key=DEMO_KEY
+</a></p>
+<p>on récupère des données au format <code>JSON</code> donnant toutes les informations sur les images prises par la caméra avant (<code>FHAZ</code>) du rover <em>Curiosity</em> le 3 juin 2016.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+
+<span class="nt">&quot;photos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102685</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;camera&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FHAZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rover_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;full_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Front Hazard Avoidance Camera&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;img_src&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FLB_486615455EDR_F0481570FHAZ00323M_.JPG&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;earth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-06-03&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;rover&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Curiosity&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;landing_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-08-06&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;launch_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2011-11-26&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102686</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;camera&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FHAZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rover_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;full_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Front Hazard Avoidance Camera&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;img_src&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FRB_486615455EDR_F0481570FHAZ00323M_.JPG&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;earth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-06-03&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;rover&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Curiosity&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;landing_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-08-06&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;launch_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2011-11-26&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="le-format-json-et-les-types-de-donnees">Le format JSON et les types de données</h3>
+<div class="admonition infos">
+<p class="admonition-title">Format JSON</p>
+<p><code>JSON</code> (<em>JavaScript Object Notation</em> – Notation Objet issue de JavaScript) est un format léger d'échange de données. Il est facile à lire ou à écrire pour des humains. Il est aisément analysable ou générable par des machines, et il utilise des notations familières aux langages descendant du langage <code>C</code>, comme <code>C, C++, java, Javascript, Python...</code></p>
+<p><code>JSON</code> se base sur deux structures:</p>
+<ul>
+<li>Une <mark class="critic"><strong>liste</strong></mark> de valeurs ordonnées, qui correspond au type <code>list</code> de Python, donc encadré par des <strong>crochets</strong> <code>[</code> et <code>]</code>. Les valeurs sont accessibles par <strong>leur indice</strong> ;</li>
+<li>Une <mark class="critic"><strong>collection</strong></mark> de couples nom/valeur, qui correspond au type <code>dict</code> (dictionnaire) de Python, c'est-à-dire encadré par des <strong>accolades</strong> <code>{</code> et <code>}</code>. Les valeurs sont accessibles par <strong>leur clé</strong>.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Aperçu rapide des dictionnaires de Python / Collections en Javascript</p>
+<p>Le but ici n'est pas de détaillé le fonctionnement des dictionnaires/collections, chose que nous ferons plus tard dans un chapitre dédié, mais de vous donner un aperçu de l'utilisation de ces dictionnaires. Considérons le code suivant</p>
+<p><div class="ide_classe" data-max=5 data-exclude=eval,exec ><div class="wrapper"><span id="comment_editor_64e72c5639cbbeda73f262eec5dc185b5e337db9" class="comment">###</span><div class="interior_wrapper"><div id="editor_64e72c5639cbbeda73f262eec5dc185b5e337db9"></div></div><div id="term_editor_64e72c5639cbbeda73f262eec5dc185b5e337db9" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_64e72c5639cbbeda73f262eec5dc185b5e337db9","v")'><img src="/../../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_64e72c5639cbbeda73f262eec5dc185b5e337db9","dico1")'><img src="/../../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_64e72c5639cbbeda73f262eec5dc185b5e337db9').click()"><img src="/../../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_64e72c5639cbbeda73f262eec5dc185b5e337db9" name="file" enctype="multipart/form-data" class="hide"/><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("64e72c5639cbbeda73f262eec5dc185b5e337db9")'><img src="/../../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("64e72c5639cbbeda73f262eec5dc185b5e337db9")'><img src="/../../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_64e72c5639cbbeda73f262eec5dc185b5e337db9" class="hide">perso1 = {'nom' : 'DarkVador', bksl-nl'Age' : 41,bksl-nl'Pilote' : 'Tie Fighter',bksl-nl'Sabre' : 'Rouge', bksl-nl'enfants' : ['Luke Skywalker', 'Leia Organa']}bksl-nlbksl-nlperso2 = {'nom' : 'Luke Skywalker', bksl-nl'Age' : 19,bksl-nl'Pilote' : 'X-Wing',bksl-nl'Sabre' : 'Vert', bksl-nl'enfants' : None }bksl-nl</span><span id="corr_content_editor_64e72c5639cbbeda73f262eec5dc185b5e337db9" class="hide" data-strudel=""></span></p>
+<ul>
+<li>
+<p>Pour le dictionnaire <code>perso1</code>, l'appel à la clé <code>"nom"</code> renverra la chaîne de caractère <code>"Dark Vador"</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">perso1</span><span class="p">[</span><span class="s2">&quot;nom&quot;</span><span class="p">]</span>
+<span class="s2">&quot;Dark Vador&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Pour le dictionnaire <code>perso2</code>, l'appel à la clé <code>"Sabre"</code> renverra la chaîne de caractère <code>"Vert"</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">perso2</span><span class="p">[</span><span class="s2">&quot;Sabre&quot;</span><span class="p">]</span>
+<span class="s2">&quot;Vert&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Pour le dictionnaire <code>perso1</code>, l'appel à la clé <code>"enfants"</code> renverra la liste  <code>['Luke Skywalker', 'Leia Organa']</code> :</p>
+<p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">perso1</span><span class="p">[</span><span class="s2">&quot;enfants&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;Luke Skywalker&#39;</span><span class="p">,</span> <span class="s1">&#39;Leia Organa&#39;</span><span class="p">]</span>
+</code></pre></div>
+Il sera alors possible d'atteindre  la chaîne <code>'Leia Organa'</code> en utilisant l'indice de celle-ci dans la liste :
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">perso1</span><span class="p">[</span><span class="s2">&quot;enfants&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">&#39;Leia Organa&#39;</span>
+</code></pre></div></p>
+</li>
+</ul>
+</div>
+<h3 id="analyse-des-donnees-recues-par-une-requete">Analyse des données reçues par une requête</h3>
+<p>La requête  <a href="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&amp;camera=FHAZ&amp;api_key=DEMO_KEY" target="target">https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&amp;camera=FHAZ&amp;api_key=DEMO_KEY</a> renvoie les données <code>JSON</code> suivantes :</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">&quot;photos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102685</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;camera&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FHAZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;rover_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;full_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Front Hazard Avoidance Camera&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;img_src&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FLB_486615455EDR_F0481570FHAZ00323M_.JPG&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;earth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-06-03&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rover&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Curiosity&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;landing_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-08-06&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;launch_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2011-11-26&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102686</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;camera&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FHAZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;rover_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;full_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Front Hazard Avoidance Camera&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;img_src&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FRB_486615455EDR_F0481570FHAZ00323M_.JPG&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;earth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-06-03&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rover&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Curiosity&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;landing_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-08-06&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;launch_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2011-11-26&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+Qu'on peut analyser ainsi :</p>
+<ol>
+<li>Le résultat est un dictionnaire, ayant une unique clé <code>"Photos"</code>, auquel la valeur associée est de type liste.</li>
+<li>La liste contient deux éléments de type dictionnaire.</li>
+<li>Les deux dictionnaires possèdent les mêmes clés <ul>
+<li><code>"id"</code> : l'identifiant de la photo, un entier ;</li>
+<li><code>"sol"</code> : le nombre de jour depuis l'aterrissage du rover à la date donnée ;</li>
+<li><code>"camera"</code> : un dictionnaire contenant les informations sur la caméra utilisée pour prendre la photo</li>
+<li><code>"img_src"</code> : l'URL de la photo ;</li>
+<li><code>"earth_date"</code> : la date terrienne à laquelle a été prise la photo ;</li>
+<li><code>"rover"</code> : un dictionnaire contenant les informations sur le rover qui a pris cette photo.</li>
+</ul>
+</li>
+</ol>
+<h2 id="applications">Applications</h2>
+<h3 id="applications-en-python">Applications en Python</h3>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<ol>
+<li>
+<p>En utilisant la clé <code>API</code> que je vous fournirais en classe, copiez-collez le code suivant dans un nouveau fichier de Thonny :</p>
+<div class="highlight"><pre><span></span><code><span class="n">nasa_key</span><span class="o">=</span> <span class="o">...</span>
+<span class="c1"># importation du module webbrowser</span>
+<span class="kn">import</span> <span class="nn">webbrowser</span>
+<span class="c1"># importation du sous-module MarsRovers du module nasaapi</span>
+<span class="kn">from</span> <span class="nn">nasaapi</span> <span class="kn">import</span> <span class="n">MarsRovers</span>
+<span class="c1"># initialisation de la connexion avec l’API et création de l’objet rovers</span>
+<span class="n">rovers</span> <span class="o">=</span> <span class="n">MarsRovers</span><span class="p">(</span><span class="n">nasa_key</span><span class="p">,</span> <span class="mi">50</span> <span class="p">,</span> <span class="s2">&quot;NAVCAM&quot;</span><span class="p">)</span>
+<span class="c1"># récupération des données de Curiosity (dictionnaire)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">rovers</span><span class="o">.</span><span class="n">curiosity</span><span class="p">()</span>
+
+<span class="c1"># accès à l’URL de la quatrième photo</span>
+
+<span class="n">url</span><span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="s1">&#39;photos&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;img_src&#39;</span><span class="p">]</span>
+
+<span class="c1"># envoi de l’URL dans le navigateur</span>
+<span class="n">webbrowser</span><span class="o">.</span><span class="n">open_new_tab</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Installez les modules <code>webbrowser</code>, <code>python-nasa-api</code>et <code>requests</code> dans Thonny, en utilisant le menu <code>Outils &gt; Gérer les paquets</code>.</p>
+</li>
+<li>Exécutez le code. Que se passe-t-il ?</li>
+<li>Modifiez le code pour recevoir la première photo prise par la caméra <code>FHAZ</code> (<em>Front Hazard Avoidance Camera</em>).</li>
+<li>Combien de photos ont été prises par la caméra panoramique le 30ème jour par Opportunity ? Les afficher toutes !</li>
+<li>Combien de photos ont été prises par toutes les caméras de Curiosity le 100ème jour ? Les afficher toutes !</li>
+</ol>
+</div>
+<h3 id="application-en-html">Application en HTML</h3>
+<p>A venir !</p>
 
               
     <script src="../../../../../js/ide.js"></script> 
@@ -2719,6 +3018,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../../C03/JS02/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Javascript, le DOM et les formulaires" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Javascript, le DOM et les formulaires
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../C04/Tuples/" class="md-footer__link md-footer__link--next" aria-label="Next: Tuples et algorithmes de parcours" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tuples et algorithmes de parcours
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
