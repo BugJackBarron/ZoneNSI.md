@@ -2788,12 +2788,6 @@
 <li><a href="http://lycee.educinfo.org/index.php?page=creation_thread&amp;activite=processus">http://lycee.educinfo.org/index.php?page=creation_thread&amp;activite=processus</a></li>
 </ul>
 <p><em>et bien entendu de l'habituel</em> Numérique et Sciences Informatique, 24 leçons avec exercices corrigés <em>aux editions</em> Ellipses.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Le contexte</p>
-<p>Les années 1960 ont constitué un tournant pour les système d'exploitation. Dans le cadre du projet MAC au MIT (Massachusset Institute of Technology), le système d'exploitation CTTS est publié en 1961. C'est l'un des tout premiers système d'exploitation <strong>à temps partagé</strong>, permettant à plusieurs utilisateurs d'utiliser <strong>un ordinateur en même temps</strong>. Cette <strong>apparente simultaneité dans l'exécution des programmes</strong> a permis de se diriger vers l'informatique moderne. </p>
-<p>Le MIT s'accocia aux laboratoires BELL et à General Electric pour créer Multics qui était un système innovant, héritant de CTTS, et était l'un des premier système d'exploitation avec système de fichier hiérarchique, temps partagé, multitâche préemptif, multiutilisateur, avec une prise en compte de la sécurité. La première version sortit en 1965.</p>
-<p>En 1969, les laboratoires BELL sortirent du projet et deux de leurs plus brillants informaticiens, <a href="https://fr.wikipedia.org/wiki/Ken_Thompson" target="_blank">Ken THOMPSON</a> et <a href="https://fr.wikipedia.org/wiki/Dennis_Ritchie" target="_blank">Dennis RITCHIE</a> qui avaient travaillé sur le projet MULTICS en conçurent une version simplifiée (ils considéraient MULTICS inutilement complexe) qu'ils nommèrent initialement UNICS puis <mark class="critic"><strong>UNIX</strong></mark>. L'informatique moderne était née ! </p>
-</div>
 <p>L'objectif de cette partie est de comprendre comment une machine peut exécuter plusieurs tâcches de manière simultanées : si l'on prend l'exemple du smartphone,  alors que nous regardons une vidéo, il va suivre les antennes relais et se synchroniser avec, écouter s'il y a un appel téléphonique ou des SMS qui arrive, vérifier les nouveaux courriers électroniques, mettre à jour les notifications des différents réseaux sociaux,etc.</p>
 <p>Pour comprendre, il nous faudra nous poser les questions suivantes :</p>
 <ol>
@@ -2817,22 +2811,27 @@
 <li>sur windows, en utilisant <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span>, mais pas au Lycée... La gestion des processus étant critique, seuls les administrateurs de la machine peuvent y accéder...</li>
 <li>sur linux simplement par l'utilisation d'un <em>terminal</em> (la ligne de commande)</li>
 </ul>
-<div class="admonition question">
-<p class="admonition-title">Retour sur JupyterHub</p>
-<p>Et oui ! Même si nous n'utilisons plus les notebooks de <em>JupyterHub</em> avec le remplacement par <em>Capytale</em>, nous pouvons toujours en avoir une utilité : un terminal <strong>Linux</strong> est toujours disponible !</p>
+<details class="warning">
+<summary>En cas de problème avec les Raspberry Pi, ou pour vous entrainer chez vous</summary>
+<p><em>JupyterHub</em> est un serveur de Notebook que j'avais installé il y a fort longtemps, avant l'appartition de <em>Capytale</em>. Il est obsolète pour l'utilisation des notebooks, mais nous pouvons toujours en avoir une utilité : un terminal <strong>Linux</strong> est toujours disponible !</p>
 <ol>
-<li>Connectez vous sur <a href="https://zonensi.fr:8443" target="_blank">jupyterHub</a> (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, nous verrons en classe...)</li>
+<li>Connectez vous sur <a href="https://zonensi.fr:8443" target="_blank">jupyterHub</a> (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, vous le choisissez à la pemière connexion)</li>
 <li>
 <p>Ouvrir un terminal :</p>
 <p><img alt="P2_img1.png" src="../P2_img1.png" style="width:20%; margin:auto;display:block;background-color: #546d78;" /></p>
 </li>
+</ol>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Manipulations</p>
+<ol>
 <li>
-<p>Sous linux, les programmes sont par convention situées dans les dossiers <code>bin</code> (pour binaries en anglais):</p>
 <ul>
 <li><code>/bin/</code>: commandes de base nécessaires au démarrage et à l'utilisation d'un système minimaliste.</li>
 <li><code>/sbin/</code>: Exécutables pour les administrateurs (abréviation de <em>system binaries</em>, soit binaires système en français).</li>
 <li><code>/usr/bin/</code>: Binaires exécutables qui ne sont pas déjà présents dans <code>/bin</code> et donc pas indispensables à un système minimaliste.</li>
 </ul>
+<p>Sous linux, les programmes sont par convention situées dans les dossiers <code>bin</code> (pour binaries en anglais):</p>
 <p>Utiliser la commande <code>ls</code> pour <strong>lister les programmes</strong> présents dans <code>/bin/</code>.</p>
 </li>
 <li>
@@ -2886,7 +2885,7 @@
 <li><code>apache2</code></li>
 <li><code>cron</code></li>
 <li><code>python3</code> (situé dans le dossier <code>/opt/</code>)</li>
-<li><code>jupyterhub_idle_culler</code></li>
+<li>Commencez par exécuter Thonny, puis cherchez le PID et PPID du processus qui lui correspond.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -2958,7 +2957,7 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <p>Nous allons créer un processus à partir de Python. Pour cela :</p>
 <ol>
 <li>
-<p>Dans JupyterHub, créer un fichier texte vide, puis y insérer le code suivant :</p>
+<p>Dans Thonny, créer un fichier texte vide, puis y insérer le code suivant :</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2971,7 +2970,7 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <li>
 <p>Sauvegardez ce fichier sous le nom <code>test.py</code></p>
 </li>
-<li>Ouvrez <strong>DEUX</strong> terminaux JupyterHub.</li>
+<li>Ouvrez <strong>DEUX</strong> terminaux .</li>
 <li>Dans le premier, utilisez la commande <code>python3 test.py</code>. </li>
 <li>Dans le second, lancez la commande <code>ps -aux</code>, et cherchez le processus correspondant à l'exécution du script <code>test.py</code>.</li>
 <li>Tuez le processus avec la commande <code>kill</code>, et observez ce qui se passe dans les deux terminaux.</li>
@@ -2982,7 +2981,7 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <p class="admonition-title">Utilisation de <code>fork()</code></p>
 <ol>
 <li>
-<p>Dans JupyterHub, créez un fichier nommé <code>testFork.py</code> dans lequel vous copierez les lignes suivantes :</p>
+<p>Dans Thonny, créez un fichier nommé <code>testFork.py</code> dans lequel vous copierez les lignes suivantes :</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Python program to explain os.fork() method </span>
 
 <span class="c1"># importing os module </span>

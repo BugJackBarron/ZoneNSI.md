@@ -9,13 +9,7 @@
 *et bien entendu de l'habituel* Numérique et Sciences Informatique, 24 leçons avec exercices corrigés *aux editions* Ellipses.
 
 
-!!! abstract "Le contexte"
 
-	Les années 1960 ont constitué un tournant pour les système d'exploitation. Dans le cadre du projet MAC au MIT (Massachusset Institute of Technology), le système d'exploitation CTTS est publié en 1961. C'est l'un des tout premiers système d'exploitation **à temps partagé**, permettant à plusieurs utilisateurs d'utiliser **un ordinateur en même temps**. Cette **apparente simultaneité dans l'exécution des programmes** a permis de se diriger vers l'informatique moderne. 
-	
-	Le MIT s'accocia aux laboratoires BELL et à General Electric pour créer Multics qui était un système innovant, héritant de CTTS, et était l'un des premier système d'exploitation avec système de fichier hiérarchique, temps partagé, multitâche préemptif, multiutilisateur, avec une prise en compte de la sécurité. La première version sortit en 1965.
-
-	En 1969, les laboratoires BELL sortirent du projet et deux de leurs plus brillants informaticiens, [Ken THOMPSON](https://fr.wikipedia.org/wiki/Ken_Thompson){: target="_blank"} et [Dennis RITCHIE](https://fr.wikipedia.org/wiki/Dennis_Ritchie){: target="_blank"} qui avaient travaillé sur le projet MULTICS en conçurent une version simplifiée (ils considéraient MULTICS inutilement complexe) qu'ils nommèrent initialement UNICS puis {==**UNIX**==}. L'informatique moderne était née ! 
 	
 	
 L'objectif de cette partie est de comprendre comment une machine peut exécuter plusieurs tâcches de manière simultanées : si l'on prend l'exemple du smartphone,  alors que nous regardons une vidéo, il va suivre les antennes relais et se synchroniser avec, écouter s'il y a un appel téléphonique ou des SMS qui arrive, vérifier les nouveaux courriers électroniques, mettre à jour les notifications des différents réseaux sociaux,etc.
@@ -43,24 +37,26 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 * sur windows, en utilisant ++ctrl+alt+delete++, mais pas au Lycée... La gestion des processus étant critique, seuls les administrateurs de la machine peuvent y accéder...
 * sur linux simplement par l'utilisation d'un *terminal* (la ligne de commande)
 
-!!! question "Retour sur JupyterHub"
+??? warning "En cas de problème avec les Raspberry Pi, ou pour vous entrainer chez vous"
 
-	Et oui ! Même si nous n'utilisons plus les notebooks de *JupyterHub* avec le remplacement par *Capytale*, nous pouvons toujours en avoir une utilité : un terminal **Linux** est toujours disponible !
+	*JupyterHub* est un serveur de Notebook que j'avais installé il y a fort longtemps, avant l'appartition de *Capytale*. Il est obsolète pour l'utilisation des notebooks, mais nous pouvons toujours en avoir une utilité : un terminal **Linux** est toujours disponible !
 	
-	1. Connectez vous sur [jupyterHub](https://zonensi.fr:8443){: target="_blank"} (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, nous verrons en classe...)
+	1. Connectez vous sur [jupyterHub](https://zonensi.fr:8443){: target="_blank"} (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, vous le choisissez à la pemière connexion)
 	2. Ouvrir un terminal :
 	
 		![P2_img1.png](P2_img1.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
 		
-	3. Sous linux, les programmes sont par convention situées dans les dossiers `bin` (pour binaries en anglais):
+
+!!! question "Manipulations"
+	1. Sous linux, les programmes sont par convention situées dans les dossiers `bin` (pour binaries en anglais):
 		* `/bin/`: commandes de base nécessaires au démarrage et à l'utilisation d'un système minimaliste.
 		* `/sbin/`: Exécutables pour les administrateurs (abréviation de *system binaries*, soit binaires système en français).
 		* `/usr/bin/`: Binaires exécutables qui ne sont pas déjà présents dans `/bin` et donc pas indispensables à un système minimaliste.
 		
 		Utiliser la commande `ls` pour **lister les programmes** présents dans `/bin/`.
-	4. Utilisez la commande `cat /bin/ls` pour afficher le contenu du programme `ls`. On constate que le fichier est un fichier  compilé (utilisez ++ctrl+c++ pour revenir au *prompt*).
-	5. Pour lancer un programme, il suffit d'écrire son **nom** (sans préciser le chemin si le dossier a été ajouté aux variables d'environnement). Par exemple vous pouvez lancer un interpréteur python par la commande `python3` (tapez `exit()` pour sortir de l'interpréteur). 
-	6. Vous pouvez visualiser les {==**processus en exécution**==} par l'intermédiaire de la commande `ps` :
+	2. Utilisez la commande `cat /bin/ls` pour afficher le contenu du programme `ls`. On constate que le fichier est un fichier  compilé (utilisez ++ctrl+c++ pour revenir au *prompt*).
+	3. Pour lancer un programme, il suffit d'écrire son **nom** (sans préciser le chemin si le dossier a été ajouté aux variables d'environnement). Par exemple vous pouvez lancer un interpréteur python par la commande `python3` (tapez `exit()` pour sortir de l'interpréteur). 
+	4. Vous pouvez visualiser les {==**processus en exécution**==} par l'intermédiaire de la commande `ps` :
 		1. `ps` simplement listera *vos propres processus utilisateurs*
 		2. `ps -l` donnera plus de détails
 		3. `ps -a -u -x` ou `ps -aux` affichera tous les processus de tous les utilisateurs(`-a`), avec le propriétaire du processus (`-u`), ainsi que les processus qui ne sont pas attachés à un  terminal (`-x`).
@@ -110,7 +106,7 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 		2. `apache2`
 		3. `cron`
 		4. `python3` (situé dans le dossier `/opt/`)
-		5. `jupyterhub_idle_culler`
+		5. Commencez par exécuter Thonny, puis cherchez le PID et PPID du processus qui lui correspond.
 		
 	=== "Réponses"
 		A venir !
@@ -190,7 +186,7 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 
 	Nous allons créer un processus à partir de Python. Pour cela :
 	
-	1. Dans JupyterHub, créer un fichier texte vide, puis y insérer le code suivant :
+	1. Dans Thonny, créer un fichier texte vide, puis y insérer le code suivant :
 	
 		```` python
 		import time
@@ -202,7 +198,7 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 		print("terminé")
 		````
 	2. Sauvegardez ce fichier sous le nom `test.py`
-	3. Ouvrez **DEUX** terminaux JupyterHub.
+	3. Ouvrez **DEUX** terminaux .
 	4. Dans le premier, utilisez la commande `python3 test.py`. 
 	5. Dans le second, lancez la commande `ps -aux`, et cherchez le processus correspondant à l'exécution du script `test.py`.
 	6. Tuez le processus avec la commande `kill`, et observez ce qui se passe dans les deux terminaux.
@@ -211,7 +207,7 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 		
 !!! question "Utilisation de `fork()`"
 
-	1. Dans JupyterHub, créez un fichier nommé `testFork.py` dans lequel vous copierez les lignes suivantes :
+	1. Dans Thonny, créez un fichier nommé `testFork.py` dans lequel vous copierez les lignes suivantes :
 	
 		```` python
 		# Python program to explain os.fork() method 

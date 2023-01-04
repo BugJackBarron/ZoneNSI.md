@@ -188,3 +188,17 @@ Voici, de manière non-exhaustive, quelques unes des commandes les plus utiles s
 
 Il reste une commande essentielle, qui est la commande `sudo` : celle-ci permet d'exécuter une autre commande avec les privilègess de super-utilisateur (`root`). Attention ! Avec de grands pouvoirs viennent de grandes responsabilités ! 
 
+!!! question "Un petit TP"
+
+    1. Téléchargez le fichier [Arborescence.tar.gz](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=VG1CzC0hjXdP){:target="_blank"}
+    2. Créez dans votre dossier personnel un dossier `TP`
+    3. Copiez le fichier précédent dans ce dossier, puis décompressez le avec la commande
+
+        ``` bash
+        tar -xvzf Arborescence.tar.gz
+
+        ```
+
+        Attention, ce peut-être long...
+
+    4. Pour débuter, cherchez le fichier `commencement.txt`dans l'arborescence, et lisez-le ! Bon courage !
