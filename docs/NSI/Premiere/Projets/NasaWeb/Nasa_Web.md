@@ -217,5 +217,33 @@ Qu'on peut analyser ainsi :
 
 ### Application en HTML
 
-A venir !
+!!! info "Le projet individuel"
+    L'objectif est de constuire un ensemble de pages web permettant de sélectionner un rover, une caméra et une date ou un sol afin d'obtenir un carroussel des photos correspondantes, comme par exemple sur la capture d'écran suivante :
 
+    ![Exemple rover](Exemple_rover.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Exemple de page"}
+
+
+
+    Afin de simplifier votre travail de récupération des données, un fichier javascript [nasa_js.js](nasa_js.js){target="_blank"} vous est fourni, comprenant :
+
+    * une **constante** `MY_NASA_KEY` devant contenir la clé de connexion à la NASA ;
+    * une variable `imgArray` servant à contenir les résultats de réquêtes sur l'API de la NASA ;
+    * un objet de `request_parameters` de type `Map` (dictionnaire/collection), servant à contenir les paramètres de la requête ;
+    * une fonction `request_to_nasa` qui, une fois appelée avec les bons paramètres, peuple la variable `imgArray` des résultats de la requête.
+
+
+Le projet est individuel, et doit contenir :
+
+* une ou pluseiurs fichiers `HTML` ;
+* un ou plusieurs fichiers `CSS` (mais un seul suffit) ;
+* le fichier `nasa_js.js` complété avec vos propres fonctions si nécessaires ;
+
+
+Le barême est le suivant :
+
+* 10 points pour un site fonctionnel, plus particulièrement :
+    * 5 points pour une(des) page(s) contenant un formulaire de sélection des options ;
+    * 5 points pour une méthode de visualisation des photos obtenues ;
+* 4 points pour l'esthétique du site (fichier `CSS` cohérent et ergonomie du site ) ;
+* 3 points pour un code sans erreur HTML/CSS (vérifier sur [W3C](https://validator.w3.org/){:target="_blank"});
+* 3 points bonus, selon les améliorations  que vous apporterez !
