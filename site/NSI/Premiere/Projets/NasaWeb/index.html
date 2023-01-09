@@ -8,34 +8,40 @@
         <link href="rover.css"  rel="stylesheet" />
     </head>
     <body>
-        <h1 id="titre">Curiosity-show</h1>
-        <div id="Presentation">
-
-        </div>
+        <h1 id="titre">Mars Show</h1>
+        <div id="en_attendant" class="lds-ring"><div></div><div></div><div></div><div></div></div>
         <div id="Contenu">
             <div id ="img_container">
-                <img id="curiosity" alt="Curiosity" src=""/>
+                <img id="photo" alt="photos de Mars" src=""/>
                 <p id ="photo_info">No data</p>
             </div>
             <div id="form_container">
                 <button id="previous"> << </button>
+                <select name="rover" id="rover">
+                    <option value="">--choisissez un rover--</option>"
+                    <option selected="selected" value = "curiosity" select="selected"> Curiosity</option>
+                    <option value = "opportunity"> Opportunity</option>
+                    <option value = "spirit"> spirit</option>
+                </select>
                 <input type="date" id="date" name="photos_date"
-                    value="2018-07-22"
+                    value="2018-01-01"
                     min="2018-01-01" max="2022-08-30">
                 <select name="camera" id="camera">
-                    <option value=""">--choisissez une camera</option>"
+                    <option value="">--choisissez une camera--</option>"
                     <option value = "FHAZ"> Caméra Avant</option>
                     <option value = "RHAZ"> Caméra Arrière</option>
                     <option value = "MAST"> Caméra du mât</option>
-                    <option value = "CHEMCAM">Caméra Avant</option>
-                    <option value = "NAVCAM">Caméra Avant</option>
+                    <option value = "CHEMCAM">CHEMCAM</option>
+                    <option selected="selected" value = "NAVCAM">Caméra de navigation</option>
                 </select>
                 <button id="next"> >> </button>
             </div>
 
         </div>
        
-        <script src="nasa_rover.js">
+        <!-- <script src="nasa_rover.js">
+        </script> -->
+        <script src="nasa_js.js">
         </script>
     </body>
 </html>

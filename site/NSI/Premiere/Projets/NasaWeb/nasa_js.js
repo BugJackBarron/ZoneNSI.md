@@ -27,7 +27,7 @@ request_parameters =  new Map()
 // alors la variable imgArray contiendra le résultat de la requếté pour les photos de la NAVCAM 
 // de curiosity au sol 50.
 
-function request_to_nasa(parameters){
+async function request_to_nasa(parameters){
     let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/";
     if ((parameters.has('rover'))&&(['curiosity', 'opportunity', 'spirit'].includes(parameters.get('rover')))){
         url += parameters.get('rover')+"/photos";        
@@ -43,6 +43,7 @@ function request_to_nasa(parameters){
             );
         }
         url +="api_key="+MY_NASA_KEY;
+        console.log(url);
         return fetch(url).then( (reponse) => {
                 if(reponse.ok) {
                     return  reponse.json();                    
@@ -56,6 +57,76 @@ function request_to_nasa(parameters){
     }
 }
 
-// VOTRE CODE DOIT ETRE SITUE EN DESSOUS
+// LES FONCTIONS CI-DESSUS NE DOIVENT PAS ETRE MODIFIEES !!!
+
+// Les élements ci-dessous peuvent être modifiés.
 
 
+
+// La fonction main ci-dessous permet plusieurs choses :
+// 1) elle fait apparaître/disparaître deux divisions d'id "en_attendant" et "Contenu", selon l'état
+// de la requête.
+// 2) Elle peuple l'attribut "src" d'une balise image d'ID "photo" avec l'image de numéro "actualImage"
+//, ainsi que le contenu d'une balise d'ID  "photo_info" avec une numérotation de type "3/5"
+
+
+async function main(request_parameters){
+    let attente_div = document.getElementById("en_attendant");
+    let contenu_div = document.getElementById("Contenu");
+    attente_div.style.display = 'block';
+    contenu_div.style.display = 'none';
+    
+    await request_to_nasa(request_parameters).then(()=>{
+        if (imgArray.length !=0){
+            let image = imgArray[actualImage];
+            
+            document.getElementById("photo").src =  image['img_src'];
+            document.getElementById("photo_info").innerText =  (parseInt(image['id'])- parseInt(imgArray[0]['id']))+ " / " + (parseInt(imgArray[imgArray.length-1]['id'])-parseInt(imgArray[imgArray.length-1]['id']));
+        } else {
+            document.getElementById("photo").src =  '';
+            document.getElementById("photo_info").innerText =  'No data found !'
+        }
+        });
+    attente_div.style.display = 'none';
+    contenu_div.style.display = 'block';
+        
+    }
+
+
+
+var actualImage = 0
+
+let previous_button = document.getElementById('previous');
+previous_button.addEventListener('click', previous_img);
+let next_button = document.getElementById('next');
+next_button.addEventListener('click', next_img);
+
+let photo_date=document.getElementById('date');
+photo_date.addEventListener('change', get_parameters);
+let rover = document.getElementById('rover');
+rover.addEventListener('click', get_parameters);
+let camera = document.getElementById('camera');
+camera.addEventListener('click', get_parameters);
+
+function get_parameters(){
+    request_parameters.set('rover',rover.value);
+    request_parameters.set('earth_date',photo_date.value);
+    request_parameters.set('camera',camera.value);
+    main(request_parameters);
+
+}
+
+function previous_img(){
+    if (actualImage > 0){ actualImage = actualImage -1;} 
+    document.getElementById("photo").src =  imgArray[actualImage]['img_src'];
+	document.getElementById("photo_info").innerText =  (parseInt(imgArray[actualImage]['id'])- parseInt(imgArray[0]['id']))+ " / " + (parseInt(imgArray[imgArray.length-1]['id'])-parseInt(imgArray[0]['id']));
+}
+
+function next_img(){
+    if (actualImage <imgArray.length-1){ actualImage = actualImage +1;} 
+    document.getElementById("photo").src =  imgArray[actualImage]['img_src'];
+	document.getElementById("photo_info").innerText =  (parseInt(imgArray[actualImage]['id'])- parseInt(imgArray[0]['id']))+ " / " + (parseInt(imgArray[imgArray.length-1]['id'])-parseInt(imgArray[0]['id']));
+}
+
+
+get_parameters();
