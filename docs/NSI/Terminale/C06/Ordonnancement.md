@@ -2,7 +2,9 @@
 
 ## Une vision faussée ?
 
-Nous rappelons qu’un {==**exécutable**==} est un fichier (par exemple stocké sur le disque dur) contenant une suite d’instructions en langage machine. C’est donc une suite d’octets  que le processeur est capable de décoder et exécuter. Concrètement,  lorsque l’on exécute un programme (par exemple en cliquant sur l’icône du fichier exécutable ou en renseignant son chemin dans un terminal), le système d’exploitation effectue les actions suivantes :
+Nous rappelons qu’un {==**exécutable**==} est un fichier (par exemple stocké sur le disque dur) contenant une suite d’instructions en langage machine. C’est donc une suite d’octets que le processeur est capable de décoder et exécuter. Concrètement, lorsqu'on exécute un programme (par exemple en cliquant sur l’icône du fichier exécutable ou en renseignant son chemin dans un terminal), le système d’exploitation effectue les actions suivantes[^rappel] :
+
+[^rappel]: voir [le cours de première](../../Premiere/C05/Architecture.md#cycles-dinstructions-et-parallelisme)
 
 1. le fichier contenant le programme (l’exécutable) est copié dans la mémoire RAM, à une certaine adresse `a` ;
 2. le système d’exploitation écrit la valeur `a` dans le registre `IP` (*Instruction Pointer*).
@@ -13,7 +15,7 @@ Nous rappelons qu’un {==**exécutable**==} est un fichier (par exemple stocké
 * le décodage (déterminer dans la suite d’octets chargés quelle instruction ils encodent) ;
 * l’exécution proprement dite.
 
-!!! warning 
+!!! warning "Descriptif incomplet"
 	Même si elle semble correcte, la description que nous avons faite de l’exécution d’un programme est incomplète. En effet, si rien de plus n’est fait, alors **la seule chose que l’on peut attendre, c’est que le programme en question s'exécute jusqu’à sa dernière instruction, puis rende la main au système d'exploitation**. Impossible alors de l’interrompre ! Impossible aussi de pouvoir exécuter deux programmes en même temps.
 
 
@@ -22,18 +24,18 @@ Nous rappelons qu’un {==**exécutable**==} est un fichier (par exemple stocké
 Pour pallier ce problème, les systèmes d’exploitation utilisent une fonctionnalité importante des processeurs modernes : la notion d ‘{==**interruption**==}.
 
 !!! asbtract "Interruption"
-	Une interruption est un signal envoyé au processeur lorsqu'un événement se produit. Il existe plusieurs types d’interruptions. Certaines sont générées par le matériel (par exemple, un disque dur signale qu’il a fini d'écrire des octets, une carte réseau signale que des paquets de données arrivent, etc.), d'autres par du logiciel.
+	Une {==**interruption**==} est un signal envoyé au processeur lorsqu'un évènement se produit. Il existe plusieurs types d’interruptions. Certaines sont générées par le {==matériel==} (par exemple, un disque dur signale qu’il a fini d'écrire des octets, une carte réseau signale que des paquets de données arrivent, etc.), d'autres par du {==logiciel==}.
 	
 	Lorsque le processeur reçoit une interruption, il interrompt son exécution à la fin de l'instruction courante et exécute un programme se trouvant à une adresse prédéfinie. Ce programme reçoit en argument une copie des valeurs courante des registres, ainsi qu’un code numérique lui permettant de savoir à quel type d’interruption il fait face. Ce programme spécial s'appelle le	{==**gestionnaire d'interruption**==}. Il est installé à une certaine adresse mémoire par le système d'exploitation, très tôt après le démarrage de la machine.
 
 
 !!! abstract "Interruption d'horloge"
-	Parmi les interruptions matérielles, on retrouve les {==**interruptions d’horloge**==}. Le processeur génère de lui-même une interruption matérielle à intervalles de temps fixe. Historiquement, sur processeur *Intel*, cette interruption était levée toutes les 55 ms (environ 18 fois par seconde). Le gestionnaire d'interruption était donc appelé au moins toutes les 55 ms. De nos jours, les processeurs disposent d’horloges de haute précision capables d'émettre des interruptions avec une fréquence de 10 Mhz, donc toutes les 100 ns. Ces interruptions d’horloges, alliées au gestionnaire d'interruption, sont les pièces essentielles permettant d'**exécuter des programmes de façon concurrente.**
+	Parmi les interruptions matérielles, on retrouve les {==**interruptions d’horloge**==}. Le processeur génère de lui-même une interruption matérielle à intervalles de temps fixe. Historiquement, sur processeur *Intel*, cette interruption était levée toutes les 55 ms (environ 18 fois par seconde). Le gestionnaire d'interruption était donc appelé au moins toutes les 55 ms. De nos jours, les processeurs disposent d’horloges de haute précision capables d'émettre des interruptions avec une fréquence de 10 Mhz, donc toutes les 100 ns. Ces interruptions d’horloges, alliées au gestionnaire d'interruption, sont les pièces essentielles permettant d'{==**exécuter des programmes de façon concurrente**==}.
 
 
 ## Principe de l'ordonnanceur
 
-Dans un système d'exploitation moderne, plusieurs processus peuvent être présents en mémoire centrale en attente d’exécution. Si plusieurs processus sont prêts, le système d’exploitation doit gérer l’allocation du processeur aux différents processus à exécuter. C’est l’{==**ordonnanceur**==} qui s’acquitte de cette tâche.
+Dans un système d'exploitation moderne, **plusieurs processus** peuvent être présents en mémoire centrale en attente d’exécution. Si plusieurs processus sont prêts, le système d’exploitation doit gérer l’allocation du processeur aux différents processus à exécuter. C’est l’{==**ordonnanceur**==} qui s’acquitte de cette tâche.
 
 
 !!! abstract  "Notion d’ordonnancement"
@@ -78,31 +80,31 @@ Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevau
 
 	Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.
 
-	Regardons le temps de séjour nécessaire à l'exécution de chaque processus, qui correpond à la différence entre le temps de terminanison du processus et le temps d'entrée dans le processeur :
+	Regardons le {==**temps de séjour**==} nécessaire à l'exécution de chaque processus, qui correspond à la *différence entre le temps de terminaison du processus et le temps d'entrée dans le processeur* :
 
-	* `A` est terminé au tick 5, et est entré au tick 0 : $t_A = 5-0 = 5$
-	* `B` est terminé au tick 8, et est entré au tick 1 : $t_B = 8-1 = 7$
-	* `C` est terminé au tick 10, et est entré au tick 3 : $t_C = 10-3 = 7$
-	* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+	* `A` est terminé au tick 5, et est entré au tick 0 , donc son temps de séjour est $t_A = 5-0 = 5$
+	* `B` est terminé au tick 8, et est entré au tick 1 d'où : $t_B = 8-1 = 7$
+	* `C` est terminé au tick 10, et est entré au tick 3 d'où : $t_C = 10-3 = 7$
+	* `D` est terminé au tick 14, et est entré au tick 5 d'où : $t_D = 14-5 = 9$
 
-	Le temps de séjour moyen avec cette méthode est donc $\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7$.
+	Le {==**temps de séjour moyen**==} avec cette méthode est donc $\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7$.
 
-	Le temps d'attente, lui, est le temps de séjour auquel on retranche le temps d'exécution :
+	Le {==**temps d'attente**==}, lui, est le temps de séjour auquel on retranche le temps d'exécution :
 
-	* `A` a pour temps d'attente 5 et pour temps d'exécution 5 : $t'_A = 5-5 = 0$
-	* `B` a pour temps d'attente 7 et pour temps d'exécution 3 : $t'_B = 7-3 = 4$
-	* `C` a pour temps d'attente 7 et pour temps d'exécution 2 : $t'_C = 7-2 = 5$
-	* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+	* `A` a pour temps de séjour 5 et pour temps d'exécution 5. Son temps d'attente est donc $t'_A = 5-5 = 0$, ce qui signifie que le processus `A` n'a passé aucun temps en état prêt ou bloqué ;
+	* `B` a pour temps de séjour 7 et pour temps d'exécution 3 : $t'_B = 7-3 = 4$. 
+	* `C` a pour temps de séjour 7 et pour temps d'exécution 2 : $t'_C = 7-2 = 5$
+	* `D` a pour temps de séjour 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
 
-	Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+4+5+5}{4} = \dfrac{14}{4} = 3,5$.
+	Le {==**temps d'attente moyen**==} avec cette méthode est donc $\dfrac{0+4+5+5}{4} = \dfrac{14}{4} = 3,5$.
 
-!!! example "Méthode Short Job First (SJF)"
+!!! example "Méthode Short Job First (`SJF`)"
 
-	Une autre possibilité est de prioriser dans les processus en attente celui qui sera le plus rapide à terminer.Ainsi :
+	Une autre possibilité est de prioriser dans les processus en attente celui qui sera le {==**plus rapide**==} à terminer. Ainsi :
 
-	* au tick 0, on exécute le processus `A`
-	* au tick 5, on a le choix entre les processus `B`, `C` et `D` sui sont dans al file d'attente, donc on exécute `C`.
-	* au tick 7 on exécute `B`, 
+	* au tick 0, on exécute le processus `A` ;
+	* au tick 5, on a le choix entre les processus `B`, `C` et `D` qui sont dans la file d'attente, donc on exécute `C`, qui est le plus rapide ;
+	* au tick 7 on exécute `B` ;
 	* et on termine par `D`.
 
 	![P3_img3.png](P3_img3.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
@@ -116,31 +118,30 @@ Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevau
 
 	Le temps de séjour moyen avec cette méthode est donc $\dfrac{5+9+4+9}{4} = \dfrac{27}{4} = 6,75$.
 
-	* `A` a pour temps d'attente 5 et pour temps d'exécution 5 : $t'_A = 5-5 = 0$
-	* `B` a pour temps d'attente 9 et pour temps d'exécution 3 : $t'_B = 9-3 = 6$
-	* `C` a pour temps d'attente 4 et pour temps d'exécution 2 : $t'_C = 4-2 = 2$
-	* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
-
-	Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25$.
+	* `A` a pour temps de séjour 5 et pour temps d'exécution 5 : $t'_A = 5-5 = 0$
+	* `B` a pour temps de séjour 9 et pour temps d'exécution 3 : $t'_B = 9-3 = 6$
+	* `C` a pour temps de séjour 4 et pour temps d'exécution 2 : $t'_C = 4-2 = 2$
+	* `D` a pour temps de séjour 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25$.
 
 
 ### Systèmes préemptifs 
 
-Dans un schéma d’ordonnanceur préemptif, pour s’assurer qu’aucun processus ne s’exécute pendant trop de temps, ll'horloge électronique génère périodiquement une interruption. A chaque interruption d’horloge, le système d’exploitation reprend la main et décide si le processus courant doit poursuivre son exécution ou s’il doit être suspendu pour laisser place à un autre.
+Dans un schéma {==**d’ordonnanceur préemptif**==}, pour s’assurer qu’aucun processus ne s’exécute pendant trop de temps, l'horloge électronique génère périodiquement une interruption. {==**À chaque interruption d’horloge, le système d’exploitation reprend la main et décide si le processus courant doit poursuivre son exécution ou s’il doit être suspendu pour laisser place à un autre**==}.
 
-S’il décide de suspendre son exécution au profit d’un autre, il doit d’abord sauvegarder l’état des registres du processeur avant de charger dans les registres les données du processus à lancer. C’est qu’on appelle la {==**commutation de contexte**==} ou le changement de contexte. Cette sauvegarde est nécessaire pour pouvoir poursuivre ultérieurement l’exécution du processus suspendu.
+S’il décide de suspendre son exécution au profit d’un autre, il doit d’abord sauvegarder l’état des registres du processeur avant de charger dans les registres les données du processus à lancer. C’est qu’on appelle la {==**commutation de contexte**==}(ou changement de contexte, *context switch* en anglais). Cette sauvegarde est nécessaire pour pouvoir poursuivre ultérieurement l’exécution du processus suspendu.
 
-Le processeur passe donc d’un processus à un autre en exécutant chaque processus pendant quelques dizaines ou centaines de millisecondes. Le temps d’allocation du processeur au processus est appelé {==**quantum**==}. Cette commutation entre processus doit être rapide, c’est-à-dire, exiger un temps nettement inférieur au quantum. Le processeur, à un instant donné, **n’exécute réellement qu’un seul processus, mais pendant une seconde, le processeur peut exécuter plusieurs processus** et donne ainsi l’**impression de** {==**parallélisme**==} (pseudo-parallélisme).
+Le processeur passe donc d’un processus à un autre en exécutant chaque processus pendant quelques dizaines ou centaines de millisecondes. Le temps d’allocation du processeur au processus est appelé un {==**quantum**==}. Cette commutation entre processus doit être rapide, c’est-à-dire, exiger un temps nettement inférieur au quantum. Le processeur, à un instant donné, **n’exécute réellement qu’un seul processus, mais pendant une seconde, le processeur peut exécuter plusieurs processus** et donne ainsi l’**impression de** {==**parallélisme**==} (pseudo-parallélisme).
 
-!!! example "Méthode Shortest Remaining Time (SRT)"
+!!! example "Méthode Shortest Remaining Time (`SRT`)"
 
-	L’ordonnancement du plus petit temps de séjour ou Shortest Remaining Time (SRT) est la version préemptive de l’algorithme SJF. Un processus arrive dans la file de processus, l’ordonnanceur compare la valeur espérée pour ce processus contre la valeur du processus actuellement en exécution. Si le temps du nouveau processus est plus petit, il rentre en exécution immédiatement. Ainsi :
+	L’ordonnancement du plus petit temps de séjour ou *Shortest Remaining Time* (`SRT`) est la version préemptive de l’algorithme `SJF`. Un processus arrive dans la file de processus, l’ordonnanceur compare la valeur espérée pour ce processus contre la valeur du processus actuellement en exécution. Si le temps du nouveau processus est plus petit, il rentre en exécution immédiatement. Ainsi :
 	
 	* au tick 0, le processus `A` est exécuté ;
 	* au tick 1, le processus `B` est estimé plus court que la partie restante de `A` (3 contre 4), donc `A` est suspendu et `B` est exécuté ;
 	* au tick 3, il reste 4 temps au processus `A`, 1 seul pour `B`, et 2 pour `C`, donc on ternmine `B` ;
 	* au tick 4, on exécute `C`, qui est le plus court ;
-	* au ticke 6, il reste 4 temps pour `A` et `D`, un choix est fait : comme `À` est déjà en cours, on le termine en priorité.
+	* au tick 6, il reste 4 temps pour `A` et `D`, un choix est fait : comme `À` est déjà en cours, on le termine en priorité.
 	
 	![P3_img4.png](P3_img4.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
 	
@@ -153,107 +154,123 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 	Le temps de séjour moyen avec cette méthode est donc $\dfrac{10+3+3+9}{4} = \dfrac{25}{4} = 6,25$.
 
-	* `A` a pour temps d'attente 10 et pour temps d'exécution 5 : $t'_A = 10-5 = 5$
-	* `B` a pour temps d'attente 3 et pour temps d'exécution 3 : $t'_B = 3-3 = 0$
-	* `C` a pour temps d'attente 3 et pour temps d'exécution 2 : $t'_C = 3-2 = 1$
-	* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+	* `A` a pour temps de séjour 10 et pour temps d'exécution 5 : $t'_A = 10-5 = 5$
+	* `B` a pour temps de séjour 3 et pour temps d'exécution 3 : $t'_B = 3-3 = 0$
+	* `C` a pour temps de séjour 3 et pour temps d'exécution 2 : $t'_C = 3-2 = 1$
+	* `D` a pour temps de séjour 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
 
 	Le temps d'attente moyen avec cette méthode est donc $\dfrac{5+0+1+5}{4} = \dfrac{11}{4} = 2,75$.
 	
-	Cet algorithme est nettement plus performant que les algorithmes des systèmes préemptifs, mais il faut tenir compte d'un temps d'estimation des temps restants, qui peut parfois rendre cette méthodes beaucoup plus longue et moins efficace.
+	Cet algorithme est nettement plus performant que les algorithmes des systèmes non-préemptifs, mais il faut tenir compte d'un temps d'estimation des temps restants, qui peut parfois rendre cette méthodes beaucoup plus longue et moins efficace.
 
-!!! example "Méthode Round Robin (RR)"
+!!! example "Méthode Round Robin (`RR`)"
 
-	L’algorithme du {==**tourniquet**==} ou *Round Robin* (RR) représenté sur la figure ci-dessous est un algorithme ancien, simple, fiable et très utilisé. Il mémorise dans une file du type FIFO (First In First Out) la liste des processus prêts, c’est-à-dire en attente d’exécution.
+	L’algorithme du {==**tourniquet**==} ou *Round Robin* (`RR`) représenté sur la figure ci-dessous est un algorithme ancien, simple, fiable et très utilisé. Il mémorise dans une file du type `FIFO` (*First In First Out*) la liste des processus prêts, c’est-à-dire en attente d’exécution.
 	
 	![P3_RR.png](P3_RR.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
 
-	Il alloue le processeur au processus en tête de file, **pendant un quantum de temps**. Si le processus se bloque ou se termine avant la fin de son quantum, le processeur est immédiatement alloué à un autre processus (celui en tête de file). Si le processus ne se termine pas au bout de son quantum, son exécution est suspendue. Le processeur est alloué à un autre processus (celui en tête de file). Le processus suspendu est inséré en queue de file. Les processus qui arrivent ou qui passent de l’état bloqué à l’état prêt sont insérés en queue de file.
+	Il alloue le processeur au processus en tête de file, {==**pendant un quantum de temps**==}. Si le processus se bloque ou se termine avant la fin de son quantum, le processeur est immédiatement alloué à un autre processus (celui en tête de file). Si le processus ne se termine pas au bout de son quantum, son exécution est suspendue. Le processeur est alloué à un autre processus (celui en tête de file). Le processus suspendu est inséré en queue de file. Les processus qui arrivent ou qui passent de l’état bloqué à l’état prêt sont insérés en queue de file.
 	
-	Voici des exemples avec des valeurs de quantum  différentes :
+	!!! example "Comparer les performances de l'algorithme `RR`"
 
-	=== "Quantum 1"
-	
-		![P3_img5.png](P3_img5.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		Toujours en utilisant l'exemple :
+
+		![P3_img1.png](P3_img1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+
+		=== "Quantum 1"
+
+			Si le quantum de temps est de 1 tick :
 		
-		Pour les performances :
-	
-		* `A` est terminé au tick 13, et est entré au tick 0 : $t_A = 13-0 = 13$
-		* `B` est terminé au tick 9, et est entré au tick 1 : $t_B = 9-1 = 8$
-		* `C` est terminé au tick 8, et est entré au tick 3 : $t_C = 8-3 = 5$
-		* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+			![File Vide](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
 
-		Le temps de séjour moyen avec cette méthode est donc $\dfrac{13+8+5+9}{4} = \dfrac{35}{4} = 8,75$.
-
-		* `A` a pour temps d'attente 13 et pour temps d'exécution 5 : $t'_A = 13-5 = 8$
-		* `B` a pour temps d'attente 8 et pour temps d'exécution 3 : $t'_B = 8-3 = 5$
-		* `C` a pour temps d'attente 5 et pour temps d'exécution 2 : $t'_C = 5-2 = 3$
-		* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
-
-		Le temps d'attente moyen avec cette méthode est donc $\dfrac{8+5+3+5}{4} = \dfrac{21}{4} = 5,25$.
-
-	=== "Quantum 2"
-	
-		![P3_img6.png](P3_img6.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			
+			Pour les performances :
 		
-		Pour les performances :
-	
-		* `A` est terminé au tick 14, et est entré au tick 0 : $t_A = 14-0 = 14$
-		* `B` est terminé au tick 11, et est entré au tick 1 : $t_B = 11-1 = 10$
-		* `C` est terminé au tick 6, et est entré au tick 3 : $t_C = 6-3 = 3$
-		* `D` est terminé au tick 13, et est entré au tick 5 : $t_D = 13-5 = 8$
+			* `A` est terminé au tick ..., et est entré au tick ... : $t_A =...$
+			* `B` est terminé au tick ..., et est entré au tick ... : $t_B = ...$
+			* `C` est terminé au tick ..., et est entré au tick ... : $t_C = ...$
+			* `D` est terminé au tick ..., et est entré au tick ... : $t_D = ...$
 
-		Le temps de séjour moyen avec cette méthode est donc $\dfrac{14+10+3+8}{4} = \dfrac{35}{4} = 8,75$.
+			Le temps de séjour moyen avec cette méthode est donc ...
 
-		* `A` a pour temps d'attente 14 et pour temps d'exécution 5 : $t'_A = 14-5 = 9$
-		* `B` a pour temps d'attente 10 et pour temps d'exécution 3 : $t'_B = 10-3 = 7$
-		* `C` a pour temps d'attente 3 et pour temps d'exécution 2 : $t'_C = 3-2 = 1$
-		* `D` a pour temps d'attente 8 et pour temps d'exécution 4 : $t'_B = 8-4 = 4$
+			* `A` a pour temps d'attente ... et pour temps d'exécution ... : $t'_A = ...$
+			* `B` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
+			* `C` a pour temps d'attente ... et pour temps d'exécution ... : $t'_C = ...$
+			* `D` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
 
-		Le temps d'attente moyen avec cette méthode est donc $\dfrac{9+7+1+4}{4} = \dfrac{21}{4} = 5,25$.
+			Le temps d'attente moyen avec cette méthode est donc ...
 
-	=== "Quantum 3"
+		=== "Quantum 2"
+
+			Si le quantum de temps est de 2 ticks :
 		
-		![P3_img7.png](P3_img7.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![P3_img5.png](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+
+			
+			Pour les performances :
 		
-		Pour les performances :
-	
-		* `A` est terminé au tick 13, et est entré au tick 0 : $t_A = 13-0 = 13$
-		* `B` est terminé au tick 6, et est entré au tick 1 : $t_B = 6-1 = 5$
-		* `C` est terminé au tick 8, et est entré au tick 3 : $t_C = 8-3 = 5$
-		* `D` est terminé au tick 14, et est entré au tick 5 : $t_D = 14-5 = 9$
+			* `A` est terminé au tick ..., et est entré au tick ... : $t_A =...$
+			* `B` est terminé au tick ..., et est entré au tick ... : $t_B = ...$
+			* `C` est terminé au tick ..., et est entré au tick ... : $t_C = ...$
+			* `D` est terminé au tick ..., et est entré au tick ... : $t_D = ...$
 
-		Le temps de séjour moyen avec cette méthode est donc $\dfrac{13+5+5+9}{4} = \dfrac{32}{4} = 8$.
+			Le temps de séjour moyen avec cette méthode est donc ...
 
-		* `A` a pour temps d'attente 13 et pour temps d'exécution 5 : $t'_A = 13-5 = 8$
-		* `B` a pour temps d'attente 5 et pour temps d'exécution 3 : $t'_B = 5-3 = 2$
-		* `C` a pour temps d'attente 5 et pour temps d'exécution 2 : $t'_C = 5-2 = 1$
-		* `D` a pour temps d'attente 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
+			* `A` a pour temps d'attente ... et pour temps d'exécution ... : $t'_A = ...$
+			* `B` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
+			* `C` a pour temps d'attente ... et pour temps d'exécution ... : $t'_C = ...$
+			* `D` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
 
-		Le temps d'attente moyen avec cette méthode est donc $\dfrac{8+2+1+5}{4} = \dfrac{16}{4} = 4$.
+			Le temps d'attente moyen avec cette méthode est donc ...
 
-	=== "Quantum 4"
-	
-		![P3_img8.png](P3_img8.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		=== "Quantum 3"
+
+			Si le quantum de temps est de 3 ticks :
 		
-		Pour les performances :
-	
-		* `A` est terminé au tick 14, et est entré au tick 0 : $t_A = 14-0 = 14$
-		* `B` est terminé au tick 7, et est entré au tick 1 : $t_B = 7-1 = 6$
-		* `C` est terminé au tick 9, et est entré au tick 3 : $t_C = 9-3 = 6$
-		* `D` est terminé au tick 13, et est entré au tick 5 : $t_D = 13-5 = 8$
+			![P3_img5.png](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
 
-		Le temps de séjour moyen avec cette méthode est donc $\dfrac{14+6+6+8}{4} = \dfrac{34}{4} = 8,5$.
+			
+			Pour les performances :
+		
+			* `A` est terminé au tick ..., et est entré au tick ... : $t_A =...$
+			* `B` est terminé au tick ..., et est entré au tick ... : $t_B = ...$
+			* `C` est terminé au tick ..., et est entré au tick ... : $t_C = ...$
+			* `D` est terminé au tick ..., et est entré au tick ... : $t_D = ...$
 
-		* `A` a pour temps d'attente 14 et pour temps d'exécution 5 : $t'_A = 14-5 = 9$
-		* `B` a pour temps d'attente 6 et pour temps d'exécution 3 : $t'_B = 6-3 = 3$
-		* `C` a pour temps d'attente 6 et pour temps d'exécution 2 : $t'_C = 6-2 = 4$
-		* `D` a pour temps d'attente 8 et pour temps d'exécution 4 : $t'_B = 8-4 = 4$
+			Le temps de séjour moyen avec cette méthode est donc ...
 
-		Le temps d'attente moyen avec cette méthode est donc $\dfrac{9+3+4+4}{4} = \dfrac{21}{4} = 5,25$.
+			* `A` a pour temps d'attente ... et pour temps d'exécution ... : $t'_A = ...$
+			* `B` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
+			* `C` a pour temps d'attente ... et pour temps d'exécution ... : $t'_C = ...$
+			* `D` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
 
-	Un quantum trop petit provoque trop de commutations de processus et abaisse l’efficacité du processeur. Un quantum trop élevé augmente le temps de réponse des courtes commandes en mode interactif. Un quantum entre 20 et 50 ms est souvent un compromis raisonnable.
-	
+			Le temps d'attente moyen avec cette méthode est donc ...
+
+
+		=== "Quantum 4"
+
+			Si le quantum de temps est de 4 ticks :
+		
+			![File Vide](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+
+			
+			Pour les performances :
+		
+			* `A` est terminé au tick ..., et est entré au tick ... : $t_A =...$
+			* `B` est terminé au tick ..., et est entré au tick ... : $t_B = ...$
+			* `C` est terminé au tick ..., et est entré au tick ... : $t_C = ...$
+			* `D` est terminé au tick ..., et est entré au tick ... : $t_D = ...$
+
+			Le temps de séjour moyen avec cette méthode est donc ...
+
+			* `A` a pour temps d'attente ... et pour temps d'exécution ... : $t'_A = ...$
+			* `B` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
+			* `C` a pour temps d'attente ... et pour temps d'exécution ... : $t'_C = ...$
+			* `D` a pour temps d'attente ... et pour temps d'exécution ... : $t'_B = ...$
+
+			Le temps d'attente moyen avec cette méthode est donc ...
+
+		
 	
 !!! question "Exercice"
 
@@ -280,7 +297,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 
 	=== "Enoncé"
-		Copiez le code suivant dans uin fichier `sequence.py`
+		Copiez le code suivant dans un fichier `sequence.py`
 		```` python
 		def f1():
 			for _ in range(5):
@@ -298,11 +315,11 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 		Quel est l'ordre d'affichage ?
 		
 	=== "Réponses"
-		Comme d'habitude en programmation séquentielle, nous voyons apparâitre d'abord les 5 `"Bonjour !"` puis les 5 `"Ca va ?"`.
+		Comme d'habitude en programmation séquentielle, nous voyons apparaitre d'abord les 5 `"Bonjour !"` puis les 5 `"Ca va ?"`.
 		
 !!! asbtract "Threads"
 
-	Un {==**thread**==} est un processus qui va partager avec un programme l'espace des données et va s'éxécuter de façon simultané avec d'autres thread. On parle aussi de {==**processus légers**==}. Ils peuvent être très utile, mais peuvent aussi causer de multiples problèmes. 
+	Un {==**thread**==} est un processus qui va partager avec un programme l'espace des données et va s'exécuter de façon simultané avec d'autres thread. On parle aussi de {==**processus légers**==}. Ils peuvent être très utile, mais peuvent aussi causer de multiples problèmes. 
 	
 !!! question "Création de threads"
 
@@ -332,7 +349,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 			p1.join()
 			p2.join()
 		````
-		Exécutez plusieurs fois ce code. Quelle différence constatez vous avec le codd précédent ?
+		Exécutez plusieurs fois ce code. Quelle différence constatez vous avec le code précédent ?
 		
 	=== "Réponses"
 	
@@ -350,7 +367,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 		Ca va ?
 		````
 		
-		Nous créons deux objets de la classe `Thread`. Ce sont des processus légers qui vont partager l'espace mémoire de notre programme principal et s'éxécuter de façon parallèle. Les deux lignes suivantes appellent la méthode `start` sur les Thread, et va lancer leur exécution. Mais pendant que le premier s'éxécute, le programme continue et va lancer le second. 
+		Nous créons deux objets de la classe `Thread`. Ce sont des processus légers qui vont partager l'espace mémoire de notre programme principal et s'exécuter de façon parallèle. Les deux lignes suivantes appellent la méthode `start` sur les Thread, et va lancer leur exécution. Mais pendant que le premier s'exécute, le programme continue et va lancer le second. 
 		
 		Enfin, nous utilisons la méthode `join` sur ces deux threads. En effet, le programme principal continue de s'exécuter pendant que les threads tournent, et si il se termine, il met fin à tous ses threads. La méthode `join` force le programme principal à attendre la fin des threads. 
 		

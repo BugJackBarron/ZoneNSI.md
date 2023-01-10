@@ -2809,7 +2809,7 @@
 
 <h1 id="ordonnancement-des-processus">Ordonnancement des Processus</h1>
 <h2 id="une-vision-faussee">Une vision faussée ?</h2>
-<p>Nous rappelons qu’un <mark class="critic"><strong>exécutable</strong></mark> est un fichier (par exemple stocké sur le disque dur) contenant une suite d’instructions en langage machine. C’est donc une suite d’octets  que le processeur est capable de décoder et exécuter. Concrètement,  lorsque l’on exécute un programme (par exemple en cliquant sur l’icône du fichier exécutable ou en renseignant son chemin dans un terminal), le système d’exploitation effectue les actions suivantes :</p>
+<p>Nous rappelons qu’un <mark class="critic"><strong>exécutable</strong></mark> est un fichier (par exemple stocké sur le disque dur) contenant une suite d’instructions en langage machine. C’est donc une suite d’octets que le processeur est capable de décoder et exécuter. Concrètement, lorsqu'on exécute un programme (par exemple en cliquant sur l’icône du fichier exécutable ou en renseignant son chemin dans un terminal), le système d’exploitation effectue les actions suivantes<sup id="fnref:rappel"><a class="footnote-ref" href="#fn:rappel">1</a></sup> :</p>
 <ol>
 <li>le fichier contenant le programme (l’exécutable) est copié dans la mémoire RAM, à une certaine adresse <code>a</code> ;</li>
 <li>le système d’exploitation écrit la valeur <code>a</code> dans le registre <code>IP</code> (<em>Instruction Pointer</em>).</li>
@@ -2821,22 +2821,22 @@
 <li>l’exécution proprement dite.</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Descriptif incomplet</p>
 <p>Même si elle semble correcte, la description que nous avons faite de l’exécution d’un programme est incomplète. En effet, si rien de plus n’est fait, alors <strong>la seule chose que l’on peut attendre, c’est que le programme en question s'exécute jusqu’à sa dernière instruction, puis rende la main au système d'exploitation</strong>. Impossible alors de l’interrompre ! Impossible aussi de pouvoir exécuter deux programmes en même temps.</p>
 </div>
 <h2 id="les-interruptions-systemes">Les interruptions systèmes</h2>
 <p>Pour pallier ce problème, les systèmes d’exploitation utilisent une fonctionnalité importante des processeurs modernes : la notion d ‘<mark class="critic"><strong>interruption</strong></mark>.</p>
 <div class="admonition asbtract">
 <p class="admonition-title">Interruption</p>
-<p>Une interruption est un signal envoyé au processeur lorsqu'un événement se produit. Il existe plusieurs types d’interruptions. Certaines sont générées par le matériel (par exemple, un disque dur signale qu’il a fini d'écrire des octets, une carte réseau signale que des paquets de données arrivent, etc.), d'autres par du logiciel.</p>
+<p>Une <mark class="critic"><strong>interruption</strong></mark> est un signal envoyé au processeur lorsqu'un évènement se produit. Il existe plusieurs types d’interruptions. Certaines sont générées par le <mark class="critic">matériel</mark> (par exemple, un disque dur signale qu’il a fini d'écrire des octets, une carte réseau signale que des paquets de données arrivent, etc.), d'autres par du <mark class="critic">logiciel</mark>.</p>
 <p>Lorsque le processeur reçoit une interruption, il interrompt son exécution à la fin de l'instruction courante et exécute un programme se trouvant à une adresse prédéfinie. Ce programme reçoit en argument une copie des valeurs courante des registres, ainsi qu’un code numérique lui permettant de savoir à quel type d’interruption il fait face. Ce programme spécial s'appelle le    <mark class="critic"><strong>gestionnaire d'interruption</strong></mark>. Il est installé à une certaine adresse mémoire par le système d'exploitation, très tôt après le démarrage de la machine.</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Interruption d'horloge</p>
-<p>Parmi les interruptions matérielles, on retrouve les <mark class="critic"><strong>interruptions d’horloge</strong></mark>. Le processeur génère de lui-même une interruption matérielle à intervalles de temps fixe. Historiquement, sur processeur <em>Intel</em>, cette interruption était levée toutes les 55 ms (environ 18 fois par seconde). Le gestionnaire d'interruption était donc appelé au moins toutes les 55 ms. De nos jours, les processeurs disposent d’horloges de haute précision capables d'émettre des interruptions avec une fréquence de 10 Mhz, donc toutes les 100 ns. Ces interruptions d’horloges, alliées au gestionnaire d'interruption, sont les pièces essentielles permettant d'<strong>exécuter des programmes de façon concurrente.</strong></p>
+<p>Parmi les interruptions matérielles, on retrouve les <mark class="critic"><strong>interruptions d’horloge</strong></mark>. Le processeur génère de lui-même une interruption matérielle à intervalles de temps fixe. Historiquement, sur processeur <em>Intel</em>, cette interruption était levée toutes les 55 ms (environ 18 fois par seconde). Le gestionnaire d'interruption était donc appelé au moins toutes les 55 ms. De nos jours, les processeurs disposent d’horloges de haute précision capables d'émettre des interruptions avec une fréquence de 10 Mhz, donc toutes les 100 ns. Ces interruptions d’horloges, alliées au gestionnaire d'interruption, sont les pièces essentielles permettant d'<mark class="critic"><strong>exécuter des programmes de façon concurrente</strong></mark>.</p>
 </div>
 <h2 id="principe-de-lordonnanceur">Principe de l'ordonnanceur</h2>
-<p>Dans un système d'exploitation moderne, plusieurs processus peuvent être présents en mémoire centrale en attente d’exécution. Si plusieurs processus sont prêts, le système d’exploitation doit gérer l’allocation du processeur aux différents processus à exécuter. C’est l’<mark class="critic"><strong>ordonnanceur</strong></mark> qui s’acquitte de cette tâche.</p>
+<p>Dans un système d'exploitation moderne, <strong>plusieurs processus</strong> peuvent être présents en mémoire centrale en attente d’exécution. Si plusieurs processus sont prêts, le système d’exploitation doit gérer l’allocation du processeur aux différents processus à exécuter. C’est l’<mark class="critic"><strong>ordonnanceur</strong></mark> qui s’acquitte de cette tâche.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Notion d’ordonnancement</p>
 <p>Le système d’exploitation d’un ordinateur peut être vu comme un ensemble de processus dont l’exécution est gérée par un processus particulier : l’<mark class="critic"><strong>ordonnanceur</strong></mark> (<em>scheduler</em> en anglais). Il s'agit en gros du &laquo; chef d'orchestre &raquo; du système d'exploitation.</p>
@@ -2871,30 +2871,30 @@
 <p>Si le système d'exploitation <strong>n'est pas préemptif</strong>, on pourrait penser au principe d'une file de type &laquo; Premier Arrivé, Premier Servi &raquo; (<em>FIFO</em>).</p>
 <p><img alt="P3_img2.png" src="../P3_img2.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.</p>
-<p>Regardons le temps de séjour nécessaire à l'exécution de chaque processus, qui correpond à la différence entre le temps de terminanison du processus et le temps d'entrée dans le processeur :</p>
+<p>Regardons le <mark class="critic"><strong>temps de séjour</strong></mark> nécessaire à l'exécution de chaque processus, qui correspond à la <em>différence entre le temps de terminaison du processus et le temps d'entrée dans le processeur</em> :</p>
 <ul>
-<li><code>A</code> est terminé au tick 5, et est entré au tick 0 : <span class="arithmatex">\(t_A = 5-0 = 5\)</span></li>
-<li><code>B</code> est terminé au tick 8, et est entré au tick 1 : <span class="arithmatex">\(t_B = 8-1 = 7\)</span></li>
-<li><code>C</code> est terminé au tick 10, et est entré au tick 3 : <span class="arithmatex">\(t_C = 10-3 = 7\)</span></li>
-<li><code>D</code> est terminé au tick 14, et est entré au tick 5 : <span class="arithmatex">\(t_D = 14-5 = 9\)</span></li>
+<li><code>A</code> est terminé au tick 5, et est entré au tick 0 , donc son temps de séjour est <span class="arithmatex">\(t_A = 5-0 = 5\)</span></li>
+<li><code>B</code> est terminé au tick 8, et est entré au tick 1 d'où : <span class="arithmatex">\(t_B = 8-1 = 7\)</span></li>
+<li><code>C</code> est terminé au tick 10, et est entré au tick 3 d'où : <span class="arithmatex">\(t_C = 10-3 = 7\)</span></li>
+<li><code>D</code> est terminé au tick 14, et est entré au tick 5 d'où : <span class="arithmatex">\(t_D = 14-5 = 9\)</span></li>
 </ul>
-<p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7\)</span>.</p>
-<p>Le temps d'attente, lui, est le temps de séjour auquel on retranche le temps d'exécution :</p>
+<p>Le <mark class="critic"><strong>temps de séjour moyen</strong></mark> avec cette méthode est donc <span class="arithmatex">\(\dfrac{5+7+7+9}{4} = \dfrac{28}{4} = 7\)</span>.</p>
+<p>Le <mark class="critic"><strong>temps d'attente</strong></mark>, lui, est le temps de séjour auquel on retranche le temps d'exécution :</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 5 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 5-5 = 0\)</span></li>
-<li><code>B</code> a pour temps d'attente 7 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 7-3 = 4\)</span></li>
-<li><code>C</code> a pour temps d'attente 7 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 7-2 = 5\)</span></li>
-<li><code>D</code> a pour temps d'attente 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
+<li><code>A</code> a pour temps de séjour 5 et pour temps d'exécution 5. Son temps d'attente est donc <span class="arithmatex">\(t'_A = 5-5 = 0\)</span>, ce qui signifie que le processus <code>A</code> n'a passé aucun temps en état prêt ou bloqué ;</li>
+<li><code>B</code> a pour temps de séjour 7 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 7-3 = 4\)</span>. </li>
+<li><code>C</code> a pour temps de séjour 7 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 7-2 = 5\)</span></li>
+<li><code>D</code> a pour temps de séjour 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
 </ul>
-<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{0+4+5+5}{4} = \dfrac{14}{4} = 3,5\)</span>.</p>
+<p>Le <mark class="critic"><strong>temps d'attente moyen</strong></mark> avec cette méthode est donc <span class="arithmatex">\(\dfrac{0+4+5+5}{4} = \dfrac{14}{4} = 3,5\)</span>.</p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">Méthode Short Job First (SJF)</p>
-<p>Une autre possibilité est de prioriser dans les processus en attente celui qui sera le plus rapide à terminer.Ainsi :</p>
+<p class="admonition-title">Méthode Short Job First (<code>SJF</code>)</p>
+<p>Une autre possibilité est de prioriser dans les processus en attente celui qui sera le <mark class="critic"><strong>plus rapide</strong></mark> à terminer. Ainsi :</p>
 <ul>
-<li>au tick 0, on exécute le processus <code>A</code></li>
-<li>au tick 5, on a le choix entre les processus <code>B</code>, <code>C</code> et <code>D</code> sui sont dans al file d'attente, donc on exécute <code>C</code>.</li>
-<li>au tick 7 on exécute <code>B</code>, </li>
+<li>au tick 0, on exécute le processus <code>A</code> ;</li>
+<li>au tick 5, on a le choix entre les processus <code>B</code>, <code>C</code> et <code>D</code> qui sont dans la file d'attente, donc on exécute <code>C</code>, qui est le plus rapide ;</li>
+<li>au tick 7 on exécute <code>B</code> ;</li>
 <li>et on termine par <code>D</code>.</li>
 </ul>
 <p><img alt="P3_img3.png" src="../P3_img3.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
@@ -2907,26 +2907,26 @@
 </ul>
 <p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{5+9+4+9}{4} = \dfrac{27}{4} = 6,75\)</span>.</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 5 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 5-5 = 0\)</span></li>
-<li><code>B</code> a pour temps d'attente 9 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 9-3 = 6\)</span></li>
-<li><code>C</code> a pour temps d'attente 4 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 4-2 = 2\)</span></li>
-<li><code>D</code> a pour temps d'attente 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
+<li><code>A</code> a pour temps de séjour 5 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 5-5 = 0\)</span></li>
+<li><code>B</code> a pour temps de séjour 9 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 9-3 = 6\)</span></li>
+<li><code>C</code> a pour temps de séjour 4 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 4-2 = 2\)</span></li>
+<li><code>D</code> a pour temps de séjour 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
 </ul>
-<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25\)</span>.</p>
 </div>
+<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25\)</span>.</p>
 <h3 id="systemes-preemptifs">Systèmes préemptifs</h3>
-<p>Dans un schéma d’ordonnanceur préemptif, pour s’assurer qu’aucun processus ne s’exécute pendant trop de temps, ll'horloge électronique génère périodiquement une interruption. A chaque interruption d’horloge, le système d’exploitation reprend la main et décide si le processus courant doit poursuivre son exécution ou s’il doit être suspendu pour laisser place à un autre.</p>
-<p>S’il décide de suspendre son exécution au profit d’un autre, il doit d’abord sauvegarder l’état des registres du processeur avant de charger dans les registres les données du processus à lancer. C’est qu’on appelle la <mark class="critic"><strong>commutation de contexte</strong></mark> ou le changement de contexte. Cette sauvegarde est nécessaire pour pouvoir poursuivre ultérieurement l’exécution du processus suspendu.</p>
-<p>Le processeur passe donc d’un processus à un autre en exécutant chaque processus pendant quelques dizaines ou centaines de millisecondes. Le temps d’allocation du processeur au processus est appelé <mark class="critic"><strong>quantum</strong></mark>. Cette commutation entre processus doit être rapide, c’est-à-dire, exiger un temps nettement inférieur au quantum. Le processeur, à un instant donné, <strong>n’exécute réellement qu’un seul processus, mais pendant une seconde, le processeur peut exécuter plusieurs processus</strong> et donne ainsi l’<strong>impression de</strong> <mark class="critic"><strong>parallélisme</strong></mark> (pseudo-parallélisme).</p>
+<p>Dans un schéma <mark class="critic"><strong>d’ordonnanceur préemptif</strong></mark>, pour s’assurer qu’aucun processus ne s’exécute pendant trop de temps, l'horloge électronique génère périodiquement une interruption. <mark class="critic"><strong>À chaque interruption d’horloge, le système d’exploitation reprend la main et décide si le processus courant doit poursuivre son exécution ou s’il doit être suspendu pour laisser place à un autre</strong></mark>.</p>
+<p>S’il décide de suspendre son exécution au profit d’un autre, il doit d’abord sauvegarder l’état des registres du processeur avant de charger dans les registres les données du processus à lancer. C’est qu’on appelle la <mark class="critic"><strong>commutation de contexte</strong></mark>(ou changement de contexte, <em>context switch</em> en anglais). Cette sauvegarde est nécessaire pour pouvoir poursuivre ultérieurement l’exécution du processus suspendu.</p>
+<p>Le processeur passe donc d’un processus à un autre en exécutant chaque processus pendant quelques dizaines ou centaines de millisecondes. Le temps d’allocation du processeur au processus est appelé un <mark class="critic"><strong>quantum</strong></mark>. Cette commutation entre processus doit être rapide, c’est-à-dire, exiger un temps nettement inférieur au quantum. Le processeur, à un instant donné, <strong>n’exécute réellement qu’un seul processus, mais pendant une seconde, le processeur peut exécuter plusieurs processus</strong> et donne ainsi l’<strong>impression de</strong> <mark class="critic"><strong>parallélisme</strong></mark> (pseudo-parallélisme).</p>
 <div class="admonition example">
-<p class="admonition-title">Méthode Shortest Remaining Time (SRT)</p>
-<p>L’ordonnancement du plus petit temps de séjour ou Shortest Remaining Time (SRT) est la version préemptive de l’algorithme SJF. Un processus arrive dans la file de processus, l’ordonnanceur compare la valeur espérée pour ce processus contre la valeur du processus actuellement en exécution. Si le temps du nouveau processus est plus petit, il rentre en exécution immédiatement. Ainsi :</p>
+<p class="admonition-title">Méthode Shortest Remaining Time (<code>SRT</code>)</p>
+<p>L’ordonnancement du plus petit temps de séjour ou <em>Shortest Remaining Time</em> (<code>SRT</code>) est la version préemptive de l’algorithme <code>SJF</code>. Un processus arrive dans la file de processus, l’ordonnanceur compare la valeur espérée pour ce processus contre la valeur du processus actuellement en exécution. Si le temps du nouveau processus est plus petit, il rentre en exécution immédiatement. Ainsi :</p>
 <ul>
 <li>au tick 0, le processus <code>A</code> est exécuté ;</li>
 <li>au tick 1, le processus <code>B</code> est estimé plus court que la partie restante de <code>A</code> (3 contre 4), donc <code>A</code> est suspendu et <code>B</code> est exécuté ;</li>
 <li>au tick 3, il reste 4 temps au processus <code>A</code>, 1 seul pour <code>B</code>, et 2 pour <code>C</code>, donc on ternmine <code>B</code> ;</li>
 <li>au tick 4, on exécute <code>C</code>, qui est le plus court ;</li>
-<li>au ticke 6, il reste 4 temps pour <code>A</code> et <code>D</code>, un choix est fait : comme <code>À</code> est déjà en cours, on le termine en priorité.</li>
+<li>au tick 6, il reste 4 temps pour <code>A</code> et <code>D</code>, un choix est fait : comme <code>À</code> est déjà en cours, on le termine en priorité.</li>
 </ul>
 <p><img alt="P3_img4.png" src="../P3_img4.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>En terme de performances :</p>
@@ -2938,97 +2938,104 @@
 </ul>
 <p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{10+3+3+9}{4} = \dfrac{25}{4} = 6,25\)</span>.</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 10 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 10-5 = 5\)</span></li>
-<li><code>B</code> a pour temps d'attente 3 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 3-3 = 0\)</span></li>
-<li><code>C</code> a pour temps d'attente 3 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 3-2 = 1\)</span></li>
-<li><code>D</code> a pour temps d'attente 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
+<li><code>A</code> a pour temps de séjour 10 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 10-5 = 5\)</span></li>
+<li><code>B</code> a pour temps de séjour 3 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 3-3 = 0\)</span></li>
+<li><code>C</code> a pour temps de séjour 3 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 3-2 = 1\)</span></li>
+<li><code>D</code> a pour temps de séjour 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
 </ul>
 <p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{5+0+1+5}{4} = \dfrac{11}{4} = 2,75\)</span>.</p>
-<p>Cet algorithme est nettement plus performant que les algorithmes des systèmes préemptifs, mais il faut tenir compte d'un temps d'estimation des temps restants, qui peut parfois rendre cette méthodes beaucoup plus longue et moins efficace.</p>
+<p>Cet algorithme est nettement plus performant que les algorithmes des systèmes non-préemptifs, mais il faut tenir compte d'un temps d'estimation des temps restants, qui peut parfois rendre cette méthodes beaucoup plus longue et moins efficace.</p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">Méthode Round Robin (RR)</p>
-<p>L’algorithme du <mark class="critic"><strong>tourniquet</strong></mark> ou <em>Round Robin</em> (RR) représenté sur la figure ci-dessous est un algorithme ancien, simple, fiable et très utilisé. Il mémorise dans une file du type FIFO (First In First Out) la liste des processus prêts, c’est-à-dire en attente d’exécution.</p>
+<p class="admonition-title">Méthode Round Robin (<code>RR</code>)</p>
+<p>L’algorithme du <mark class="critic"><strong>tourniquet</strong></mark> ou <em>Round Robin</em> (<code>RR</code>) représenté sur la figure ci-dessous est un algorithme ancien, simple, fiable et très utilisé. Il mémorise dans une file du type <code>FIFO</code> (<em>First In First Out</em>) la liste des processus prêts, c’est-à-dire en attente d’exécution.</p>
 <p><img alt="P3_RR.png" src="../P3_RR.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
-<p>Il alloue le processeur au processus en tête de file, <strong>pendant un quantum de temps</strong>. Si le processus se bloque ou se termine avant la fin de son quantum, le processeur est immédiatement alloué à un autre processus (celui en tête de file). Si le processus ne se termine pas au bout de son quantum, son exécution est suspendue. Le processeur est alloué à un autre processus (celui en tête de file). Le processus suspendu est inséré en queue de file. Les processus qui arrivent ou qui passent de l’état bloqué à l’état prêt sont insérés en queue de file.</p>
-<p>Voici des exemples avec des valeurs de quantum  différentes :</p>
+<p>Il alloue le processeur au processus en tête de file, <mark class="critic"><strong>pendant un quantum de temps</strong></mark>. Si le processus se bloque ou se termine avant la fin de son quantum, le processeur est immédiatement alloué à un autre processus (celui en tête de file). Si le processus ne se termine pas au bout de son quantum, son exécution est suspendue. Le processeur est alloué à un autre processus (celui en tête de file). Le processus suspendu est inséré en queue de file. Les processus qui arrivent ou qui passent de l’état bloqué à l’état prêt sont insérés en queue de file.</p>
+<div class="admonition example">
+<p class="admonition-title">Comparer les performances de l'algorithme <code>RR</code></p>
+<p>Toujours en utilisant l'exemple :</p>
+<p><img alt="P3_img1.png" src="../P3_img1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Quantum 1</label><label for="__tabbed_1_2">Quantum 2</label><label for="__tabbed_1_3">Quantum 3</label><label for="__tabbed_1_4">Quantum 4</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><img alt="P3_img5.png" src="../P3_img5.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Si le quantum de temps est de 1 tick :</p>
+<p><img alt="File Vide" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Pour les performances :</p>
 <ul>
-<li><code>A</code> est terminé au tick 13, et est entré au tick 0 : <span class="arithmatex">\(t_A = 13-0 = 13\)</span></li>
-<li><code>B</code> est terminé au tick 9, et est entré au tick 1 : <span class="arithmatex">\(t_B = 9-1 = 8\)</span></li>
-<li><code>C</code> est terminé au tick 8, et est entré au tick 3 : <span class="arithmatex">\(t_C = 8-3 = 5\)</span></li>
-<li><code>D</code> est terminé au tick 14, et est entré au tick 5 : <span class="arithmatex">\(t_D = 14-5 = 9\)</span></li>
+<li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
+<li><code>B</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_B = ...\)</span></li>
+<li><code>C</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_C = ...\)</span></li>
+<li><code>D</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_D = ...\)</span></li>
 </ul>
-<p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{13+8+5+9}{4} = \dfrac{35}{4} = 8,75\)</span>.</p>
+<p>Le temps de séjour moyen avec cette méthode est donc ...</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 13 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 13-5 = 8\)</span></li>
-<li><code>B</code> a pour temps d'attente 8 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 8-3 = 5\)</span></li>
-<li><code>C</code> a pour temps d'attente 5 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 5-2 = 3\)</span></li>
-<li><code>D</code> a pour temps d'attente 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
+<li><code>A</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_A = ...\)</span></li>
+<li><code>B</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
+<li><code>C</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_C = ...\)</span></li>
+<li><code>D</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
 </ul>
-<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{8+5+3+5}{4} = \dfrac{21}{4} = 5,25\)</span>.</p>
+<p>Le temps d'attente moyen avec cette méthode est donc ...</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="P3_img6.png" src="../P3_img6.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Si le quantum de temps est de 2 ticks :</p>
+<p><img alt="P3_img5.png" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Pour les performances :</p>
 <ul>
-<li><code>A</code> est terminé au tick 14, et est entré au tick 0 : <span class="arithmatex">\(t_A = 14-0 = 14\)</span></li>
-<li><code>B</code> est terminé au tick 11, et est entré au tick 1 : <span class="arithmatex">\(t_B = 11-1 = 10\)</span></li>
-<li><code>C</code> est terminé au tick 6, et est entré au tick 3 : <span class="arithmatex">\(t_C = 6-3 = 3\)</span></li>
-<li><code>D</code> est terminé au tick 13, et est entré au tick 5 : <span class="arithmatex">\(t_D = 13-5 = 8\)</span></li>
+<li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
+<li><code>B</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_B = ...\)</span></li>
+<li><code>C</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_C = ...\)</span></li>
+<li><code>D</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_D = ...\)</span></li>
 </ul>
-<p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{14+10+3+8}{4} = \dfrac{35}{4} = 8,75\)</span>.</p>
+<p>Le temps de séjour moyen avec cette méthode est donc ...</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 14 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 14-5 = 9\)</span></li>
-<li><code>B</code> a pour temps d'attente 10 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 10-3 = 7\)</span></li>
-<li><code>C</code> a pour temps d'attente 3 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 3-2 = 1\)</span></li>
-<li><code>D</code> a pour temps d'attente 8 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 8-4 = 4\)</span></li>
+<li><code>A</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_A = ...\)</span></li>
+<li><code>B</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
+<li><code>C</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_C = ...\)</span></li>
+<li><code>D</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
 </ul>
-<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{9+7+1+4}{4} = \dfrac{21}{4} = 5,25\)</span>.</p>
+<p>Le temps d'attente moyen avec cette méthode est donc ...</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="P3_img7.png" src="../P3_img7.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Si le quantum de temps est de 3 ticks :</p>
+<p><img alt="P3_img5.png" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Pour les performances :</p>
 <ul>
-<li><code>A</code> est terminé au tick 13, et est entré au tick 0 : <span class="arithmatex">\(t_A = 13-0 = 13\)</span></li>
-<li><code>B</code> est terminé au tick 6, et est entré au tick 1 : <span class="arithmatex">\(t_B = 6-1 = 5\)</span></li>
-<li><code>C</code> est terminé au tick 8, et est entré au tick 3 : <span class="arithmatex">\(t_C = 8-3 = 5\)</span></li>
-<li><code>D</code> est terminé au tick 14, et est entré au tick 5 : <span class="arithmatex">\(t_D = 14-5 = 9\)</span></li>
+<li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
+<li><code>B</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_B = ...\)</span></li>
+<li><code>C</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_C = ...\)</span></li>
+<li><code>D</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_D = ...\)</span></li>
 </ul>
-<p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{13+5+5+9}{4} = \dfrac{32}{4} = 8\)</span>.</p>
+<p>Le temps de séjour moyen avec cette méthode est donc ...</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 13 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 13-5 = 8\)</span></li>
-<li><code>B</code> a pour temps d'attente 5 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 5-3 = 2\)</span></li>
-<li><code>C</code> a pour temps d'attente 5 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 5-2 = 1\)</span></li>
-<li><code>D</code> a pour temps d'attente 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
+<li><code>A</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_A = ...\)</span></li>
+<li><code>B</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
+<li><code>C</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_C = ...\)</span></li>
+<li><code>D</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
 </ul>
-<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{8+2+1+5}{4} = \dfrac{16}{4} = 4\)</span>.</p>
+<p>Le temps d'attente moyen avec cette méthode est donc ...</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="P3_img8.png" src="../P3_img8.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p>Si le quantum de temps est de 4 ticks :</p>
+<p><img alt="File Vide" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
 <p>Pour les performances :</p>
 <ul>
-<li><code>A</code> est terminé au tick 14, et est entré au tick 0 : <span class="arithmatex">\(t_A = 14-0 = 14\)</span></li>
-<li><code>B</code> est terminé au tick 7, et est entré au tick 1 : <span class="arithmatex">\(t_B = 7-1 = 6\)</span></li>
-<li><code>C</code> est terminé au tick 9, et est entré au tick 3 : <span class="arithmatex">\(t_C = 9-3 = 6\)</span></li>
-<li><code>D</code> est terminé au tick 13, et est entré au tick 5 : <span class="arithmatex">\(t_D = 13-5 = 8\)</span></li>
+<li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
+<li><code>B</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_B = ...\)</span></li>
+<li><code>C</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_C = ...\)</span></li>
+<li><code>D</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_D = ...\)</span></li>
 </ul>
-<p>Le temps de séjour moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{14+6+6+8}{4} = \dfrac{34}{4} = 8,5\)</span>.</p>
+<p>Le temps de séjour moyen avec cette méthode est donc ...</p>
 <ul>
-<li><code>A</code> a pour temps d'attente 14 et pour temps d'exécution 5 : <span class="arithmatex">\(t'_A = 14-5 = 9\)</span></li>
-<li><code>B</code> a pour temps d'attente 6 et pour temps d'exécution 3 : <span class="arithmatex">\(t'_B = 6-3 = 3\)</span></li>
-<li><code>C</code> a pour temps d'attente 6 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 6-2 = 4\)</span></li>
-<li><code>D</code> a pour temps d'attente 8 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 8-4 = 4\)</span></li>
+<li><code>A</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_A = ...\)</span></li>
+<li><code>B</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
+<li><code>C</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_C = ...\)</span></li>
+<li><code>D</code> a pour temps d'attente ... et pour temps d'exécution ... : <span class="arithmatex">\(t'_B = ...\)</span></li>
 </ul>
-<p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{9+3+4+4}{4} = \dfrac{21}{4} = 5,25\)</span>.</p>
+<p>Le temps d'attente moyen avec cette méthode est donc ...</p>
 </div>
 </div>
 </div>
-<p>Un quantum trop petit provoque trop de commutations de processus et abaisse l’efficacité du processeur. Un quantum trop élevé augmente le temps de réponse des courtes commandes en mode interactif. Un quantum entre 20 et 50 ms est souvent un compromis raisonnable.</p>
+</div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
@@ -3056,7 +3063,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Copiez le code suivant dans uin fichier <code>sequence.py</code>
+<p>Copiez le code suivant dans un fichier <code>sequence.py</code>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
          <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour !&quot;</span><span class="p">)</span>
@@ -3072,14 +3079,14 @@
 <p>Quel est l'ordre d'affichage ?</p>
 </div>
 <div class="tabbed-block">
-<p>Comme d'habitude en programmation séquentielle, nous voyons apparâitre d'abord les 5 <code>"Bonjour !"</code> puis les 5 <code>"Ca va ?"</code>.</p>
+<p>Comme d'habitude en programmation séquentielle, nous voyons apparaitre d'abord les 5 <code>"Bonjour !"</code> puis les 5 <code>"Ca va ?"</code>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="admonition asbtract">
 <p class="admonition-title">Threads</p>
-<p>Un <mark class="critic"><strong>thread</strong></mark> est un processus qui va partager avec un programme l'espace des données et va s'éxécuter de façon simultané avec d'autres thread. On parle aussi de <mark class="critic"><strong>processus légers</strong></mark>. Ils peuvent être très utile, mais peuvent aussi causer de multiples problèmes. </p>
+<p>Un <mark class="critic"><strong>thread</strong></mark> est un processus qui va partager avec un programme l'espace des données et va s'exécuter de façon simultané avec d'autres thread. On parle aussi de <mark class="critic"><strong>processus légers</strong></mark>. Ils peuvent être très utile, mais peuvent aussi causer de multiples problèmes. </p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Création de threads</p>
@@ -3108,7 +3115,7 @@
     <span class="n">p1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="n">p2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
-Exécutez plusieurs fois ce code. Quelle différence constatez vous avec le codd précédent ?</p>
+Exécutez plusieurs fois ce code. Quelle différence constatez vous avec le code précédent ?</p>
 </div>
 <div class="tabbed-block">
 <p>Cette fois ci, les <code>"Bonjour !"</code> et les <code>"Ca va ?"</code> se sont affichés de façon intercalée. Si vous avez exécuté le programme plusieurs fois, vous avez peut être vu qu'il n'y avait pas toujours le même ordre. Par exemple : 
@@ -3123,7 +3130,7 @@ Ca va ?
 Bonjour !
 Ca va ?
 </code></pre></div></p>
-<p>Nous créons deux objets de la classe <code>Thread</code>. Ce sont des processus légers qui vont partager l'espace mémoire de notre programme principal et s'éxécuter de façon parallèle. Les deux lignes suivantes appellent la méthode <code>start</code> sur les Thread, et va lancer leur exécution. Mais pendant que le premier s'éxécute, le programme continue et va lancer le second. </p>
+<p>Nous créons deux objets de la classe <code>Thread</code>. Ce sont des processus légers qui vont partager l'espace mémoire de notre programme principal et s'exécuter de façon parallèle. Les deux lignes suivantes appellent la méthode <code>start</code> sur les Thread, et va lancer leur exécution. Mais pendant que le premier s'exécute, le programme continue et va lancer le second. </p>
 <p>Enfin, nous utilisons la méthode <code>join</code> sur ces deux threads. En effet, le programme principal continue de s'exécuter pendant que les threads tournent, et si il se termine, il met fin à tous ses threads. La méthode <code>join</code> force le programme principal à attendre la fin des threads. </p>
 </div>
 </div>
@@ -3258,6 +3265,14 @@ Ca va ?
 <span class="nb">print</span><span class="p">(</span><span class="n">compteur</span><span class="p">)</span>
 </code></pre></div>
 <p>Le programme permet alors bien d'avoir le résultat escompté. Mais malheureusement, tous nos problèmes ne sont pas résolus...</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:rappel">
+<p>voir <a href="../../../Premiere/C05/Architecture/#cycles-dinstructions-et-parallelisme">le cours de première</a>&#160;<a class="footnote-backref" href="#fnref:rappel" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
 
               

@@ -2911,16 +2911,16 @@ L'application est plus riche qu'il n'y paraît. Il faut passer un peu de temps �
 <h2 id="etats-dun-processus">Etats d'un processus</h2>
 <p>Un processus n'a pas seulement besoin d'accéder au processeur, mais il a souvent besoin d'accéder à des ressources autres comme :</p>
 <ul>
-<li>la mémoire vive: RAM,</li>
-<li>la mémoire de masse: disques durs, clés USB, mémoire flash...</li>
+<li>la <mark class="critic"><strong>mémoire vive</strong></mark> : RAM,</li>
+<li>une <mark class="critic"><strong>mémoire de masse</strong></mark> : disques durs, clés USB, mémoire flash...</li>
 <li>la lecture ou l'écriture d'un fichier...</li>
-<li>les périphériques d'entrée et de sortie: clavier, souris, écran, imprimante...</li>
+<li>les <mark class="critic"><strong>périphériques d'entrée et de sortie</strong></mark> : clavier, souris, écran, imprimante...</li>
 </ul>
 <p>Ces ressources externes étant beaucoup moins rapides que le processeur, elles bloquent les processus lors de leur exécution.</p>
-<p>Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:</p>
+<p>Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :</p>
 <ul>
 <li><code>PRET</code> (<em>ready</em>) : le processus est lancé et attend l'accès au processeur.</li>
-<li><code>ELU</code> (<em>running</em>) : le processus a obtenu l'accès au processeur: il peut s'exécuter.</li>
+<li><code>ELU</code> (<em>running</em>) : le processus a obtenu l'accès au processeur : il peut s'exécuter.</li>
 <li><code>BLOQUE</code>(<em>sleeping</em>) : le processus est en cours d'exécution, mais attend une ressource en mémoire par exemple, il quitte le processeur pour libérer les ressources.</li>
 </ul>
 <p><img alt="Source : wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" /></p>
@@ -2930,27 +2930,27 @@ L'application est plus riche qu'il n'y paraît. Il faut passer un peu de temps �
 <p><div class="highlight"><pre><span></span><code><span class="n">texte</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez une phrase ?&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La longueur de votre phrase est </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">texte</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
 </code></pre></div>
-Lorsqu'on exécute ce programme, un processus est crée, et passe en état <code>PRET</code>. Dès qu'il a accès au proceseur, il passe dans l'état <code>Elu</code>. La première instruction est alors excécutée. Or celle ci <em>attend une saisie au clavier</em>, et le processus ne peut pas continuer tant que l'utilisateur n'a pas agit. L'OS met alors en attente le processus (en état <code>BLOQUE</code>).</p>
-<p>Lorsque l'OS, qui gère aussi les entrées et les sorties, repère une interaction avec le clavier, il va alors débloquer le processus, qui repassera en état <code>PRET</code>, puis en état <code>ELU</code> et exécutera alors la dfeuxième instruction. Sans autre intervention, le processus passera en état final (<em>stopped</em>), et se terminera naturellement. Il libèrera alors les ressources mémoire qu'il occupait, et enverra un signal à son processus parent, afin que celui-ci l'élimine de la table des processus.</p>
+Lorsqu'on exécute ce programme, un processus est crée, et passe en état <code>PRET</code>. Dès qu'il a accès au processeur, il passe dans l'état <code>Elu</code>. La première instruction est alors exécutée. Or celle ci <em>attend une saisie au clavier</em>, et le processus ne peut pas continuer tant que l'utilisateur n'a pas agit. L'OS met alors en attente le processus (en état <code>BLOQUE</code>).</p>
+<p>Lorsque l'OS, qui gère aussi les entrées et les sorties, repère une interaction avec le clavier, il va alors débloquer le processus, qui repassera en état <code>PRET</code>, puis en état <code>ELU</code> et exécutera alors la deuxième instruction. Sans autre intervention, le processus passera en état final (<em>stopped</em>), et se terminera naturellement. Il libèrera alors les ressources mémoire qu'il occupait, et <mark class="critic">enverra un signal à son processus parent, afin que celui-ci l'élimine de la table des processus</mark>.</p>
 </div>
 <h2 id="terminer-un-processus">Terminer un processus</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Terminer un processus</p>
-<p>Il est possible d'envoyer un <em>signal de terminaison</em> à un processus actif, par l'intermédiaire de la commande <code>kill</code>, en lui précisant le PID du processus qu'on souhaite arrêter. Un tel signal est équivalent au fait de fermer une fenêtre en interface graphique, ou bien au raccourci <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> dans la console.</p>
-<p>Un tel signal est intercepté par l'application du processus et géré par cette dernière. Parexemple un logiciel de traitement de texte peut alors proposer à l'utilisateur de sauvegarder ses fichiers avant de quitter.</p>
+<p>Il est possible d'envoyer un <em>signal de terminaison</em> à un processus actif, par l'intermédiaire de la commande <code>kill</code>, en lui précisant le <code>PID</code> du processus qu'on souhaite arrêter. Un tel signal est équivalent au fait de fermer une fenêtre en interface graphique (par la croix ou bien par <span class="keys"><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-f4">F4</kbd></span>), ou bien au raccourci <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> dans la console.</p>
+<p>Un tel signal est intercepté par l'application du processus et géré par cette dernière. Par exemple un logiciel de traitement de texte peut alors proposer à l'utilisateur de sauvegarder ses fichiers avant de quitter.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <ol>
 <li>Dans JupyterHub, ouvrir un des notebooks de première.</li>
-<li>Repérer le PID correspondant à cette instance de notebook ( processus de type <code>ipython</code>)</li>
+<li>Repérer le <code>PID</code> correspondant à cette instance de notebook ( processus de type <code>ipython</code>)</li>
 <li>Terminer le processus.</li>
 </ol>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Tuer un processus</p>
-<p>parfois un processus se comporte de manière anormale, par exemple par une trop grande consommation de  mémoire, ou lorsqu'une application &laquo; ne répond plus &raquo;. Il est possible dans ce cas de tuer  le processus en question, en lui envoyant un signal de terminaison sans que l'application puisse l'intercepeter, en passant l'option <code>-9</code> à la commande <code>kill</code>, par exemple <code>kill -9 13259</code>. 
-En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne seront pas sauvegardées et des donénes risquent d'être perdues. C'est une commande à utiliser avec précaution.</p>
+<p>Parfois un processus se comporte de manière anormale, par exemple par une trop grande consommation de  mémoire, ou lorsqu'une application &laquo; ne répond plus &raquo;. Il est possible dans ce cas de tuer le processus en question, en lui envoyant un signal de terminaison <mark class="critic">sans que l'application puisse l'intercepter</mark>, en passant l'option <code>-9</code> à la commande <code>kill</code>, par exemple <code>kill -9 13259</code>. 
+En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne seront pas sauvegardées et des données risquent d'être perdues. <mark class="critic"><strong>C'est une commande à utiliser avec précaution</strong></mark>.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Création et suppression de processus en Python</p>
@@ -2968,11 +2968,11 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 </code></pre></div>
 </li>
 <li>
-<p>Sauvegardez ce fichier sous le nom <code>test.py</code></p>
+<p>Sauvegardez ce fichier sous le nom <code>test_{votrenom}.py</code>, puis si nécessaire importez-le dans <code>JupyterHub</code>.</p>
 </li>
 <li>Ouvrez <strong>DEUX</strong> terminaux .</li>
 <li>Dans le premier, utilisez la commande <code>python3 test.py</code>. </li>
-<li>Dans le second, lancez la commande <code>ps -aux</code>, et cherchez le processus correspondant à l'exécution du script <code>test.py</code>.</li>
+<li>Dans le second, lancez la commande <code>ps -aux</code>, et cherchez le processus correspondant à l'exécution du script <code>test_{votrenom}.py</code>.</li>
 <li>Tuez le processus avec la commande <code>kill</code>, et observez ce qui se passe dans les deux terminaux.</li>
 <li>Recommencez la procédure à partir de 4 en tuant le processus avec la commande <code>kill -9</code>, et observez les deux terminaux.</li>
 </ol>
@@ -2981,7 +2981,7 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <p class="admonition-title">Utilisation de <code>fork()</code></p>
 <ol>
 <li>
-<p>Dans Thonny, créez un fichier nommé <code>testFork.py</code> dans lequel vous copierez les lignes suivantes :</p>
+<p>Dans Thonny, créez un fichier nommé <code>testFork_{votrenom}.py</code> dans lequel vous copierez les lignes suivantes :</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Python program to explain os.fork() method </span>
 
 <span class="c1"># importing os module </span>
@@ -3020,16 +3020,16 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 </code></pre></div>
 </li>
 <li>
-<p>Excéutez ce fichier par la commande <code>python3 testFork.py</code>. Observez dans ce terminal l'effet du script.</p>
+<p>Exécutez ce fichier par la commande <code>python3 testFork.py</code>. Observez dans ce terminal l'effet du script.</p>
 </li>
-<li>Dans un autre terminal, avec la commande <code>ps -ef</code>, observez les processus créés, ainsi que leurs PID et PPID.</li>
+<li>Dans un autre terminal, avec la commande <code>ps -ef</code>, observez les processus créés, ainsi que leurs <code>PID</code> et <code>PPID</code>.</li>
 <li>(Si nécessaire, relancez le script !) Tuez le processus enfant. Que se passe-t-il ?</li>
 <li>Relancez le script ! Tuez le processus parent et attendez quelques instants. Que se passe-t-il ?</li>
 </ol>
 </div>
 <div class="admonition tips">
 <p class="admonition-title">Processus Zombies</p>
-<p>Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de <mark class="critic"><strong>processus zombies</strong></mark>. Ceux-ci occupent une parrtie de la mémoire, tout en étant devenus inutiles...</p>
+<p>Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de <mark class="critic"><strong>processus zombies</strong></mark>. Ceux-ci occupent une partie de la mémoire, tout en étant devenus inutiles...</p>
 </div>
 
               

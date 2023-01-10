@@ -129,17 +129,17 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 
 Un processus n'a pas seulement besoin d'accéder au processeur, mais il a souvent besoin d'accéder à des ressources autres comme :
 
-* la mémoire vive: RAM,
-* la mémoire de masse: disques durs, clés USB, mémoire flash...
+* la {==**mémoire vive**==} : RAM,
+* une {==**mémoire de masse**==} : disques durs, clés USB, mémoire flash...
 * la lecture ou l'écriture d'un fichier...
-* les périphériques d'entrée et de sortie: clavier, souris, écran, imprimante...
+* les {==**périphériques d'entrée et de sortie**==} : clavier, souris, écran, imprimante...
 
 Ces ressources externes étant beaucoup moins rapides que le processeur, elles bloquent les processus lors de leur exécution.
 
-Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
+Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 
 * `PRET` (*ready*) : le processus est lancé et attend l'accès au processeur.
-* `ELU` (*running*) : le processus a obtenu l'accès au processeur: il peut s'exécuter.
+* `ELU` (*running*) : le processus a obtenu l'accès au processeur : il peut s'exécuter.
 * `BLOQUE`(*sleeping*) : le processus est en cours d'exécution, mais attend une ressource en mémoire par exemple, il quitte le processeur pour libérer les ressources.
 
 ![Etats processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" alt="Source : wikipedia"}
@@ -153,9 +153,9 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 	texte = input("Entrez une phrase ?")
 	print(f"La longueur de votre phrase est {len(texte)}")	
 	````
-	Lorsqu'on exécute ce programme, un processus est crée, et passe en état `PRET`. Dès qu'il a accès au proceseur, il passe dans l'état `Elu`. La première instruction est alors excécutée. Or celle ci *attend une saisie au clavier*, et le processus ne peut pas continuer tant que l'utilisateur n'a pas agit. L'OS met alors en attente le processus (en état `BLOQUE`).
+	Lorsqu'on exécute ce programme, un processus est crée, et passe en état `PRET`. Dès qu'il a accès au processeur, il passe dans l'état `Elu`. La première instruction est alors exécutée. Or celle ci *attend une saisie au clavier*, et le processus ne peut pas continuer tant que l'utilisateur n'a pas agit. L'OS met alors en attente le processus (en état `BLOQUE`).
 	
-	Lorsque l'OS, qui gère aussi les entrées et les sorties, repère une interaction avec le clavier, il va alors débloquer le processus, qui repassera en état `PRET`, puis en état `ELU` et exécutera alors la dfeuxième instruction. Sans autre intervention, le processus passera en état final (*stopped*), et se terminera naturellement. Il libèrera alors les ressources mémoire qu'il occupait, et enverra un signal à son processus parent, afin que celui-ci l'élimine de la table des processus.
+	Lorsque l'OS, qui gère aussi les entrées et les sorties, repère une interaction avec le clavier, il va alors débloquer le processus, qui repassera en état `PRET`, puis en état `ELU` et exécutera alors la deuxième instruction. Sans autre intervention, le processus passera en état final (*stopped*), et se terminera naturellement. Il libèrera alors les ressources mémoire qu'il occupait, et {==enverra un signal à son processus parent, afin que celui-ci l'élimine de la table des processus==}.
 	
 	
 
@@ -164,21 +164,21 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 
 !!! abstract "Terminer un processus"
 
-	Il est possible d'envoyer un *signal de terminaison* à un processus actif, par l'intermédiaire de la commande `kill`, en lui précisant le PID du processus qu'on souhaite arrêter. Un tel signal est équivalent au fait de fermer une fenêtre en interface graphique, ou bien au raccourci ++ctrl+c++ dans la console.
+	Il est possible d'envoyer un *signal de terminaison* à un processus actif, par l'intermédiaire de la commande `kill`, en lui précisant le `PID` du processus qu'on souhaite arrêter. Un tel signal est équivalent au fait de fermer une fenêtre en interface graphique (par la croix ou bien par ++alt+f4++), ou bien au raccourci ++ctrl+c++ dans la console.
 	
-	Un tel signal est intercepté par l'application du processus et géré par cette dernière. Parexemple un logiciel de traitement de texte peut alors proposer à l'utilisateur de sauvegarder ses fichiers avant de quitter.
+	Un tel signal est intercepté par l'application du processus et géré par cette dernière. Par exemple un logiciel de traitement de texte peut alors proposer à l'utilisateur de sauvegarder ses fichiers avant de quitter.
 	
 !!! question 
 
 	1. Dans JupyterHub, ouvrir un des notebooks de première.
-	2. Repérer le PID correspondant à cette instance de notebook ( processus de type `ipython`)
+	2. Repérer le `PID` correspondant à cette instance de notebook ( processus de type `ipython`)
 	3. Terminer le processus.
 	
 
 !!! abstract "Tuer un processus"
 
-	parfois un processus se comporte de manière anormale, par exemple par une trop grande consommation de  mémoire, ou lorsqu'une application &laquo; ne répond plus &raquo;. Il est possible dans ce cas de tuer  le processus en question, en lui envoyant un signal de terminaison sans que l'application puisse l'intercepeter, en passant l'option `-9` à la commande `kill`, par exemple `kill -9 13259`. 
-	En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne seront pas sauvegardées et des donénes risquent d'être perdues. C'est une commande à utiliser avec précaution.
+	Parfois un processus se comporte de manière anormale, par exemple par une trop grande consommation de  mémoire, ou lorsqu'une application &laquo; ne répond plus &raquo;. Il est possible dans ce cas de tuer le processus en question, en lui envoyant un signal de terminaison {==sans que l'application puisse l'intercepter==}, en passant l'option `-9` à la commande `kill`, par exemple `kill -9 13259`. 
+	En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne seront pas sauvegardées et des données risquent d'être perdues. {==**C'est une commande à utiliser avec précaution**==}.
 	
 
 	
@@ -197,17 +197,17 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 			time.sleep(0.01)
 		print("terminé")
 		````
-	2. Sauvegardez ce fichier sous le nom `test.py`
+	2. Sauvegardez ce fichier sous le nom `test_{votrenom}.py`, puis si nécessaire importez-le dans `JupyterHub`.
 	3. Ouvrez **DEUX** terminaux .
 	4. Dans le premier, utilisez la commande `python3 test.py`. 
-	5. Dans le second, lancez la commande `ps -aux`, et cherchez le processus correspondant à l'exécution du script `test.py`.
+	5. Dans le second, lancez la commande `ps -aux`, et cherchez le processus correspondant à l'exécution du script `test_{votrenom}.py`.
 	6. Tuez le processus avec la commande `kill`, et observez ce qui se passe dans les deux terminaux.
 	7. Recommencez la procédure à partir de 4 en tuant le processus avec la commande `kill -9`, et observez les deux terminaux.
 		
 		
 !!! question "Utilisation de `fork()`"
 
-	1. Dans Thonny, créez un fichier nommé `testFork.py` dans lequel vous copierez les lignes suivantes :
+	1. Dans Thonny, créez un fichier nommé `testFork_{votrenom}.py` dans lequel vous copierez les lignes suivantes :
 	
 		```` python
 		# Python program to explain os.fork() method 
@@ -246,14 +246,14 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états:
 		# using os.fork() method
 		# OSError will be raised
 		````
-	2. Excéutez ce fichier par la commande `python3 testFork.py`. Observez dans ce terminal l'effet du script.
-	3. Dans un autre terminal, avec la commande `ps -ef`, observez les processus créés, ainsi que leurs PID et PPID.
+	2. Exécutez ce fichier par la commande `python3 testFork.py`. Observez dans ce terminal l'effet du script.
+	3. Dans un autre terminal, avec la commande `ps -ef`, observez les processus créés, ainsi que leurs `PID` et `PPID`.
 	4. (Si nécessaire, relancez le script !) Tuez le processus enfant. Que se passe-t-il ?
 	5. Relancez le script ! Tuez le processus parent et attendez quelques instants. Que se passe-t-il ?
 	
 !!! tips "Processus Zombies"
 
-	Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de {==**processus zombies**==}. Ceux-ci occupent une parrtie de la mémoire, tout en étant devenus inutiles...
+	Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de {==**processus zombies**==}. Ceux-ci occupent une partie de la mémoire, tout en étant devenus inutiles...
 	
 
 
