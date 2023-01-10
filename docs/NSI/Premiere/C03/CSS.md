@@ -12,8 +12,8 @@
 		1. Quelles parties ont été changées ? 
 		2. Y-a-t-il eu des changements sur d'autres pages ?
 		3. Qu'ont en commun toutes les zones changées ?
-	7. Dans la fenêtre de style, modifiez `Liste Puce 1` en ajoutant une lettrine, et en ajoutant au fond un dégradé de tpe `Radial`. Observez les modifications du document.
-	8. Allez à la page 31, partie 5.2.c,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en `Liste Puce 1`, en `Liste Puce 2`. le texte at-il été changé ?
+	7. Dans la fenêtre de style, modifiez `Liste -> Puce 1` en ajoutant une lettrine, et en ajoutant au fond un dégradé de type `Radial`. Observez les modifications du document.
+	8. Allez à la page 11,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en `Liste Puce 1`, en `Liste Puce 2`. Le texte at-il été changé ?
 
 
 
