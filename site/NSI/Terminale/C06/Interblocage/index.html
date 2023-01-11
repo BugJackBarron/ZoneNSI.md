@@ -2774,7 +2774,7 @@
 
 
 <h1 id="interblocage">Interblocage</h1>
-<p>Nous avons vu dans la partie précédente que les <em>threads</em> peuvent être une solution pour accélérer le traitement de données. cepend ant cette pratique n'est pas sans risque, en particulier nous risquons un <mark class="critic"><strong>interblocage</strong></mark> (<em>deadlock</em> en anglais).</p>
+<p>Nous avons vu dans la partie précédente que les <em>threads</em> peuvent être une solution pour accélérer le traitement de données. Cependant cette pratique n'est pas sans risque, en particulier nous risquons un <mark class="critic"><strong>interblocage</strong></mark> (<em>deadlock</em> en anglais).</p>
 <h2 id="un-exemple-de-situation-problematique-avec-les-threads">Un exemple de situation problématique avec les threads</h2>
 <p>Copiez-collez le code suivant dans un programme <code>deadlock.py</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">time</span>
@@ -2814,15 +2814,15 @@
 <p>En analysant le code :</p>
 <ul>
 <li>deux threads <code>t1</code> et <code>t2</code> utilisent deux ressources <code>f1</code> et <code>f2</code>, contrôlées par des verrous 1 et 2</li>
-<li><code>f1</code> verouille (<code>acquire</code>) <code>verrou1</code>, puis verouille <code>verrou2</code>, avant de les relâcher (<code>release</code>)  dans l'ordre inverse de leur verouillage ;</li>
-<li><code>f2</code> verouille (<code>acquire</code>) <code>verrou2</code>, puis verouille <code>verrou1</code>, avant de les relâcher (<code>release</code>)  dans l'ordre inverse de leur verouillage ;</li>
+<li><code>f1</code> verrouille (<code>acquire</code>) <code>verrou1</code>, puis verrouille <code>verrou2</code>, avant de les relâcher (<code>release</code>)  dans l'ordre inverse de leur verrouillage ;</li>
+<li><code>f2</code> verrouille (<code>acquire</code>) <code>verrou2</code>, puis verrouille <code>verrou1</code>, avant de les relâcher (<code>release</code>)  dans l'ordre inverse de leur verrouillage ;</li>
 <li>l'exécution des codes de <code>f1</code> et de <code>f2</code> sont conditionné par un déclenchement aléatoire dans le temps.</li>
 </ul>
 <p>Quatre cas peuvent alors se produire : </p>
 <ul>
-<li><code>t1</code> démarre en premier, acquiert <code>verrou1</code> puis <code>verrou2</code>, <code>t2</code> est mis en attente de la libération, et peut agir dès que <code>verrou2</code>  est libéré.</li>
-<li><code>t2</code> démarre en premier, acquiert <code>verrou2</code> puis <code>verrou1</code>, <code>t1</code> est mis en attente de la libération, et peut agir dès que <code>verrou1</code>  est libéré.</li>
-<li><code>t1</code> démarre en premier et acquiert <code>verrou1</code>, <code>t2</code> démarre et acquiert <code>verrou2</code>. <code>t1</code> est alors bloqué, car il ne peut acquérir <code>verrou2</code>, et <code>t2</code> est dans la même situation avec <code>verrou1</code>. Les deux processus sont en attente, et ne pourront pas libérer leur verrous.</li>
+<li><code>t1</code> démarre en premier, acquiert <code>verrou1</code> puis <code>verrou2</code>, <code>t2</code> est mis en attente de la libération, et peut agir dès que <code>verrou2</code> est libéré.</li>
+<li><code>t2</code> démarre en premier, acquiert <code>verrou2</code> puis <code>verrou1</code>, <code>t1</code> est mis en attente de la libération, et peut agir dès que <code>verrou1</code> est libéré.</li>
+<li><code>t1</code> démarre en premier et acquiert <code>verrou1</code>, <code>t2</code> démarre et acquiert <code>verrou2</code>. <code>t1</code> est alors bloqué, car il ne peut acquérir <code>verrou2</code>, et <code>t2</code> est dans la même situation avec <code>verrou1</code>. Les deux processus sont en attente, et ne pourront pas libérer leurs verrous.</li>
 <li>Il s'agit de la même situation que précédemment, mais <code>t2</code> démarre avant <code>t1</code>.</li>
 </ul>
 <p>Dans les deux derniers cas, nous sommes dans une situation dite d'<mark class="critic"><strong>interblocage</strong></mark>, les deux <em>threads</em> ne pouvant continuer puisqu'ils se bloquent l'un l'autre.</p>
@@ -2830,11 +2830,11 @@
 <p>Les interblocages sont des situations de la vie quotidienne. Un exemple est celui du carrefour avec priorité à droite où chaque véhicule est bloqué car il doit laisser le passage au véhicule à sa droite.</p>
 <p><img alt="P4_priorite.png" src="../P4_Priorite.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>En informatique également, l'interblocage peut se produire lorsque <strong>des processus concurrents s'attendent mutuellement</strong>. Les processus bloqués dans cet état le sont définitivement. Ce scénario catastrophe peut se produire dans un environnement où des ressources sont partagées entre plusieurs processus et l'un d'entre eux détient indéfiniement une ressource nécessaire pour l'autre.</p>
-<p>Cette situation d'interblocage a été théorisée par l'informatitien <a href="https://en.wikipedia.org/wiki/Edward_G._Coffman_Jr.">Edward Coffman</a> (1934-) qui a énoncé quatre conditions (appelées conditions de coffman) menant à l'interblocage :</p>
+<p>Cette situation d'interblocage a été théorisée par l'informaticien <a href="https://en.wikipedia.org/wiki/Edward_G._Coffman_Jr.">Edward Coffman</a> (1934-) qui a énoncé quatre conditions (appelées conditions de Coffman) menant à l'interblocage :</p>
 <ul>
 <li><strong>Exclusion mutuelle</strong> : au moins une des ressources du système doit être en accès exclusif.</li>
 <li><strong>Rétention des ressources</strong> : un processus détient au moins une ressource et requiert une autre ressource détenue par un autre processus</li>
-<li><strong>Non préemption</strong> : Seul le détenteur d'une ressource peut la libérer.</li>
+<li><strong>Non-préemption</strong> : Seul le détenteur d'une ressource peut la libérer.</li>
 <li><strong>Attente circulaire</strong> : Chaque processus attend une ressource détenue par un autre processus. <span class="arithmatex">\(P_1\)</span> attend une ressource détenue par <span class="arithmatex">\(P_2\)</span> qui à son tour attend une ressource détenue par <span class="arithmatex">\(P_3\)</span> etc... qui attend une ressource détenue par <span class="arithmatex">\(P_1\)</span> ce qui clos la boucle.</li>
 </ul>
 <p>Il existe heureusement des stratégies pour éviter ces situations. Nous ne rentrerons pas ici dans ces considérations qui dépassent le cadre du programme.</p>

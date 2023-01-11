@@ -159,7 +159,7 @@
 			````
 			
 		3. Écrire une fonction `genereListe(n)` qui renvoie un tableau de $n$ nombres aléatoires compris entre $1$ et $n^2$. ( On pourra importer une fois le module `random` et utiliser la fonction`random.randint(a,b)` qui renvoie un nombre aléatoire entre $a$ et $b$ inclus).
-		4. Ecrire une fonction `insere(monTab, val, i)` qui renvoie une liste dans laquelle est inéserer l'élément `val` à l'indice `i` au sein des éléments de `monTab`, en supposant que $i<len(monTab)$.
+		4. Ecrire une fonction `insere(monTab, val, i)` qui renvoie une liste dans laquelle est inseré l'élément `val` à l'indice `i` au sein des éléments de `monTab`, en supposant que $i<len(monTab)$.
 		
 			```` python
 			>>> insere([1, 2, 3, 4],5,2)
@@ -184,14 +184,14 @@
 			[]
 			````
 			
-		7. Écrire une fonction `separer(monTab,val)`  permettant, à partir d'une liste de nombres `monTab` d'obtenir deux listes. La première comporte les nombres inférieurs ou égaux à un nombre donné, la seconde les nombres qui lui sont strictement supérieurs :
+		7. Écrire une fonction `separer(monTab,val)` permettant, à partir d'une liste de nombres `monTab` d'obtenir deux listes. La première comporte les nombres inférieurs ou égaux à un nombre donné, la seconde les nombres qui lui sont strictement supérieurs :
 		
 			```` python
 			>>> separer([45, 21, 56 ,12, 1, 8, 30, 22, 6, 33], 30)
 			[21, 12, 1, 8, 30, 22, 6], [45, 56, 33]
 			````
 			
-		8. Écrire une fonction `plusProche(monTab,val)`  permettant de rechercher la plus proche valeur d'un nombre dans une liste :
+		8. Écrire une fonction `plusProche(monTab,val)` permettant de rechercher la plus proche valeur d'un nombre dans une liste :
 			
 			```` python 
 			>>> plusProche([45, 21, 56 ,12, 1, 8, 30, 22, 6, 33], 20)
@@ -219,7 +219,7 @@
 
 ## Construction de listes par compréhension
 
-Jusqu'à présent nous avons défini nos listes {==**par extension**==}, c'est-à-dire en donnant exactement les élements de la liste. Cependant cette méthode n'est pas efficace pour de très grandes listes. Il faudra donc donner une méthode de construction de la liste, en essayant de *comprendre* les liens entre les différents éléments de cette liste. On parle alors de listes définies par {==**compréhension**==}.
+Jusqu'à présent nous avons défini nos listes {==**par extension**==}, c'est-à-dire en donnant exactement les éléments de la liste. Cependant, cette méthode n'est pas efficace pour de très grandes listes. Il faudra donc donner une méthode de construction de la liste, en essayant de *comprendre* les liens entre les différents éléments de cette liste. On parle alors de listes définies par {==**compréhension**==}.
 
 !!! info "Compréhensions de listes"
 	Une des spécificités de Python est la capacité à construire des listes (et des tuples) par compréhension. Cette capacité est partagée avec d'autres langages, comme `Haskell`.

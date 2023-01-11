@@ -2940,7 +2940,7 @@
 <p>Écrire une fonction <code>genereListe(n)</code> qui renvoie un tableau de <span class="arithmatex">\(n\)</span> nombres aléatoires compris entre <span class="arithmatex">\(1\)</span> et <span class="arithmatex">\(n^2\)</span>. ( On pourra importer une fois le module <code>random</code> et utiliser la fonction<code>random.randint(a,b)</code> qui renvoie un nombre aléatoire entre <span class="arithmatex">\(a\)</span> et <span class="arithmatex">\(b\)</span> inclus).</p>
 </li>
 <li>
-<p>Ecrire une fonction <code>insere(monTab, val, i)</code> qui renvoie une liste dans laquelle est inéserer l'élément <code>val</code> à l'indice <code>i</code> au sein des éléments de <code>monTab</code>, en supposant que <span class="arithmatex">\(i&lt;len(monTab)\)</span>.</p>
+<p>Ecrire une fonction <code>insere(monTab, val, i)</code> qui renvoie une liste dans laquelle est inseré l'élément <code>val</code> à l'indice <code>i</code> au sein des éléments de <code>monTab</code>, en supposant que <span class="arithmatex">\(i&lt;len(monTab)\)</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">insere</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </code></pre></div>
@@ -2962,13 +2962,13 @@
 </code></pre></div>
 </li>
 <li>
-<p>Écrire une fonction <code>separer(monTab,val)</code>  permettant, à partir d'une liste de nombres <code>monTab</code> d'obtenir deux listes. La première comporte les nombres inférieurs ou égaux à un nombre donné, la seconde les nombres qui lui sont strictement supérieurs :</p>
+<p>Écrire une fonction <code>separer(monTab,val)</code> permettant, à partir d'une liste de nombres <code>monTab</code> d'obtenir deux listes. La première comporte les nombres inférieurs ou égaux à un nombre donné, la seconde les nombres qui lui sont strictement supérieurs :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">separer</span><span class="p">([</span><span class="mi">45</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">56</span> <span class="p">,</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">33</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
 </code></pre></div>
 </li>
 <li>
-<p>Écrire une fonction <code>plusProche(monTab,val)</code>  permettant de rechercher la plus proche valeur d'un nombre dans une liste :</p>
+<p>Écrire une fonction <code>plusProche(monTab,val)</code> permettant de rechercher la plus proche valeur d'un nombre dans une liste :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">plusProche</span><span class="p">([</span><span class="mi">45</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">56</span> <span class="p">,</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">33</span><span class="p">],</span> <span class="mi">20</span><span class="p">)</span>
 <span class="mf">21.</span>
 </code></pre></div>
@@ -2999,7 +2999,7 @@
 </div>
 </div>
 <h2 id="construction-de-listes-par-comprehension">Construction de listes par compréhension</h2>
-<p>Jusqu'à présent nous avons défini nos listes <mark class="critic"><strong>par extension</strong></mark>, c'est-à-dire en donnant exactement les élements de la liste. Cependant cette méthode n'est pas efficace pour de très grandes listes. Il faudra donc donner une méthode de construction de la liste, en essayant de <em>comprendre</em> les liens entre les différents éléments de cette liste. On parle alors de listes définies par <mark class="critic"><strong>compréhension</strong></mark>.</p>
+<p>Jusqu'à présent nous avons défini nos listes <mark class="critic"><strong>par extension</strong></mark>, c'est-à-dire en donnant exactement les éléments de la liste. Cependant, cette méthode n'est pas efficace pour de très grandes listes. Il faudra donc donner une méthode de construction de la liste, en essayant de <em>comprendre</em> les liens entre les différents éléments de cette liste. On parle alors de listes définies par <mark class="critic"><strong>compréhension</strong></mark>.</p>
 <div class="admonition info">
 <p class="admonition-title">Compréhensions de listes</p>
 <p>Une des spécificités de Python est la capacité à construire des listes (et des tuples) par compréhension. Cette capacité est partagée avec d'autres langages, comme <code>Haskell</code>.</p>
