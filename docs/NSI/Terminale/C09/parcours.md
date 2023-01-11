@@ -8,7 +8,7 @@ Le {==**parcours en profondeur**==} d'un graphe (*Depth First Search* en anglais
 
 !!! warning "le cas d'une boucle"
 
-	![DFS_3.svg](DFS_3.svg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+	![DFS_3.svg](DFS_3.svg){: style="width:15%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Dans un parcours DFS d'un graphe comme ci-dessus, et en partant de $A$, on aura un parcours dans l'ordre suivant (en considérant les voisins dans l'ordre alphabétique) :
 	
@@ -22,7 +22,7 @@ Le {==**parcours en profondeur**==} d'un graphe (*Depth First Search* en anglais
 
 Pour que l'algorithme puisse fonctionner, il faudra donc *marquer* les sommets déjà visités, comme sur l'exemple suivant :
 
-![DFS_Complet.png](DFS_Complet.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+![DFS_Complet.png](DFS_Complet.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 On considèrera qu'il existe une méthode pour *marquer* les sommets, et donc qu'on n'explore plus un sommet déjà marqué.
 
@@ -37,7 +37,7 @@ fonction explore_graphe(G, s) :
 !!! warning "Graphes avec de multiples composantes connexes"
 	Cette fonction ne permet pas d'explorer tout le graphe si celui-ci comporte pluiseurs composantes connexes,  car on explore uniquement de voisins en voisins :
 	
-	![DFS_4.svg](DFS_4.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+	![DFS_4.svg](DFS_4.svg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Sur un graphe tel que ci-dessus, la fonction précédente appelée sur $A$ n'explorera que les sommets $A$, $B$, $C$ et $D$ dans cet ordre.
 	
@@ -110,7 +110,7 @@ Pour pouvoir implémenter le parcours de graphe en profondeur, il nous faut util
 		
 Le {==**parcours en largeur**==} d'un graphe (*Breadth First Search* en anglais), c'est-à-dire un parcours où on explore chaque chemin jusqu'à son extrémité finale,  est équivalent à celui pour un arbre comme présenté dans le chapitre [idoine](/NSI/Terminale/C05/Def_Arbres/#parcours-en-largeur){: target="_blank"}, tout en  ajoutant le même problème que pour le parcours en profondeur : il faut marquer les sommets déjà visités.
 
-![BFS_1.svg](BFS_1.svg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+![BFS_1.svg](BFS_1.svg){: style="width:15%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Ainsi, dans le graphe ci-dessus, l'ordre de parcours des sommets est : $A, B, E, C, D, F, G, H$.
 
@@ -175,12 +175,12 @@ Le parcours en profondeur est adapté aux recherches de cycles dans un graphe, m
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![Cycles_1.svg](Cycles_1.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+	![Cycles_1.svg](Cycles_1.svg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
 
-	![Cycles_2.svg](Cycles_2.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+	![Cycles_2.svg](Cycles_2.svg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	</div>
@@ -211,11 +211,11 @@ La différence entre les deux situations est que dans le premier cas, *la visite
 	
 	=== "Graphe 1"
 	
-		![Cycles_3.svg](Cycles_3.svg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+		![Cycles_3.svg](Cycles_3.svg){: style="width:15%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 	=== "Graphe 2"
 	
-		![Cycles_4.svg](Cycles_4.svg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+		![Cycles_4.svg](Cycles_4.svg){: style="width:15%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 !!! tips "Codage en Python"

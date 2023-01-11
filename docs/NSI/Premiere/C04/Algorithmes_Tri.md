@@ -7,17 +7,17 @@
 	=== "Enoncé"
 		On donne une main de 5 cartes d'un jeu de 54 cartes. Trier les cartes par ordre croissant, sans tenir compte des couleurs. Vous devrez marquer dans le tableau suivant l'ensemble des changements de positions des cartes dans votre main :
 		
-		![P3_premier_tri.png](P3_premier_tri.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+		![P3_premier_tri.png](P3_premier_tri.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		Avez-vous tous utilisé la même méthode ?
 	
 	=== "Solution 1"
 	
-		![Tri par insertion](Tri_Insertion/triInsertion.gif){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri par insertion](Tri_Insertion/triInsertion.gif){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 	=== "Solution 2"
 	
-		![Tri par sélection](Tri_Selection/triSelection.gif){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri par sélection](Tri_Selection/triSelection.gif){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 ## Tri par insertion
 
@@ -26,7 +26,7 @@
 Le principe du {==**tri par insertion**==} est le suivant :
 
 * un tableau de dimension 1 est considéré comme trié, donc le sous-tableau contenant le premier élément est trié ;
-* on prend ensuite le deuxième élément, et on l'insère à la bonne polace dans le sous-tableau trié ;
+* on prend ensuite le deuxième élément, et on l'insère à la bonne place dans le sous-tableau trié ;
 * on recommence en considérant chaque élément du tableau.
 
 !!! example "Exemple"
@@ -38,7 +38,7 @@ Le principe du {==**tri par insertion**==} est le suivant :
 	
 	=== "A compléter"
 
-		![Tri par insertion](P3_Tri_Insertion_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri par insertion](P3_Tri_Insertion_1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	=== "Version complétée"
 	
@@ -46,7 +46,7 @@ Le principe du {==**tri par insertion**==} est le suivant :
 		
 	=== "GIF extrait de wikipedia"
 	
-		![Animation wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![Animation wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		
 ### Algorithme en pseudo-code et complexité
@@ -95,7 +95,7 @@ Le principe du {==**tri par sélection**==} est le suivant :
 	
 	=== "A compléter"
 
-		![Tri par sélection](P3_Tri_Selection_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri par sélection](P3_Tri_Selection_1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	=== "Version complétée"
 	
@@ -145,7 +145,7 @@ L'algorithme de {==**tri à bulles**==} consiste à trier la liste en n'autorisa
 
 	=== "A compléter"
 
-		![Tri à bulle](P3_TriBulle_1.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		![Tri à bulle](P3_TriBulle_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	=== "Version complétée"
 	

@@ -9,7 +9,7 @@
 !!! abstract "Projection"
 	L'opération de {==**projection**==} consiste à ne récupérer que certains **champs** (c'est-à-dire les **colonnes**) d'une table donnée.
 
-	![Projection](Projection.png){: style="width:10%; margin:auto;display:block;background-color: #546d78;"}
+	![Projection](Projection.png){: style="width:10%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	En SQL, on l'obtient par l'instruction :
 	
@@ -50,7 +50,7 @@
 !!! abstract "Sélection (ou restriction)"
 	L'opération de {==**sélection**==} consiste à interroger une base de données pour ne récupérer que **les lignes d'une table correspondant à une ou des conditions spécifiées** (exprimées sous la forme d'expressions booléennes).
 
-	![Sélection](Selection.png){: style="width:10%; margin:auto;display:block;background-color: #546d78;"}
+	![Sélection](Selection.png){: style="width:10%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	En SQL, on rajoute la {==**clause**==} `WHERE` suivie des conditions exprimées sous la forme d'une **expression booléenne**, utilisant les mots clés `AND` et `OR` par exemple :
 	

@@ -32,14 +32,14 @@ Considérons le réseau suivant, pour lequel on admettra la norme suivante :
 * Entre deux interfaces internes, le routeur de plus bas indice possède la première adresse et le routeur de dernier indice la seconde adresse : par exemple entre R2 et R5, les interfaces sont connectées par le réseau `10.1.4.0/30`, donc l'interface de R2 est `10.1.4.1` et celle de R5 est `10.1.4.2` ;
 * tous les routeurs suivent le protocole RIP.
 
-![RoutageManuel6R.png](RoutageManuel6R.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+![RoutageManuel6R.png](RoutageManuel6R.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 #### Initialisation 
 
 Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables de routages pour les routeurs R1, R2 et R3 sont donc :
 
-![RIP1.png](RIP1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![RIP1.png](RIP1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 !!! info "Principe de l'algorithme"
 
@@ -60,15 +60,15 @@ Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables 
 
 * R1 reçoit les routes de R2. Sa table de routage devient :
 
-	![RIP2.png](RIP2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RIP2.png](RIP2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 * R3 reçoit les routes de R2, et celles de R5. On peut constater qu'on peut atteindre de deux manière différentes les routeurs R2 et R5, car R3 ne réalise pas que les interfaces `10.1.2.1` et `10.1.4.1` sont toutes les deux deux interfaces de R2. De même il sait rejoindre de deux manière ayant la même métrique le réseau `10.1.4.0/30`, donc il garde la première arrivée (ici on suppose d'il a reçu les informations de R2 avant celles de R5)
 
-	![RIP3.png](RIP3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RIP3.png](RIP3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 * R2 reçoit les routes de R1, puis de R3, mais aussi de R4 et de R5 :
 
-	![RIP4.png](RIP4.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RIP4.png](RIP4.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 
 	
@@ -76,15 +76,15 @@ Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables 
 
 * R1 reçoit les nouvelles routes de R2 :
 
-	![RIP5.png](RIP5.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RIP5.png](RIP5.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 * R2 reçoit les nouvelles routes de R3 et de R5 :
 
-	![RIP6.png](RIP6.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RIP6.png](RIP6.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 * R2 reçoit les nouvelles routes de R1 (qui ne lui apportent rien), de R3, de R4, de R5.... Très rapidement, la construction de ces routes devient absolument ingérable à la main... Mais voici quand même la table de routage :
 
-	![RIP7.png](RIP7.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RIP7.png](RIP7.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 #### Etape 3
 

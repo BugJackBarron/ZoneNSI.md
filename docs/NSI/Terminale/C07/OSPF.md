@@ -22,12 +22,12 @@ Au bout d'un certain temps, quand tous les routeurs ont échangés les informati
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![OSPF1.png](OSPF1.png){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+	![OSPF1.png](OSPF1.png){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
 
-	![OSPF2.png](OSPF2.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	![OSPF2.png](OSPF2.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	</div>
@@ -60,11 +60,11 @@ On décrit l'algorithme ainsi :
 
 On considère le graphe suivant représentant un ensemble de villes et les distances les séparant :
 
-![Dijkstra1.webp](Dijkstra1.webp){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![Dijkstra1.webp](Dijkstra1.webp){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 On va exécuter l'algorithme de Dijkstra en partant de la ville `A`, en complétant le tableau suiivant :
 
-![Dijkstra2.png](Dijkstra2.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+![Dijkstra2.png](Dijkstra2.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 
@@ -77,7 +77,7 @@ On va exécuter l'algorithme de Dijkstra en partant de la ville `A`, en complét
 	
 		Un journaliste britannique d’une revue consacrée à l’automobile doit tester les autoroutes françaises. Pour remplir sa mission, il décide de louer une voiture et de circuler entre six grandes villes françaises : Bordeaux (B), Lyon (L),Marseille (M), Nantes (N), Paris (P) et Toulouse(T).
 		
-		![Dijkstra3.png](Dijkstra3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![Dijkstra3.png](Dijkstra3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		Le journaliste se trouve à Nantes et désire se rendre le plus rapidement possible à Marseille.Déterminer un trajet qui minimise son temps de parcours.
 	
@@ -93,7 +93,7 @@ On va exécuter l'algorithme de Dijkstra en partant de la ville `A`, en complét
 		Un parcours sportif est composé d’un banc pour abdominaux, de haies et d’anneaux. Le graphe orienté ci-contre indique les différents parcours conseillés partant de D et terminant à F. Les sommets sont : D (départ), B (banc pour abdominaux), H (haies), A (anneaux) et F (fin du parcours). Les arêtes représentent les différents sentiers reliant les sommets.
 		Assia a relevé ses temps de course en minute entre les différents sommets. Ces durées sont portées sur le graphe ci-dessous. Lors d’un entraînement, Assia souhaite courir le moins longtemps possible en allant de D à F. Déterminer le trajet pour lequel le temps de course estminimal et préciser la durée de sa course.
 		
-		![Dijkstra4.png](Dijkstra4.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![Dijkstra4.png](Dijkstra4.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	
 	=== "Solutions"

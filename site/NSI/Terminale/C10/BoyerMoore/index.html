@@ -2877,27 +2877,27 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">1</label><label for="__tabbed_2_2">2</label><label for="__tabbed_2_3">3</label><label for="__tabbed_2_4">4</label><label for="__tabbed_2_5">5</label><label for="__tabbed_2_6">6</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><img alt="BMH1.png" src="../BMH1.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 1" /></p>
+<p><img alt="BMH1.png" src="../BMH1.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 1" /></p>
 <p>Le premier caractère du motif est placé à l'indice <code>i=0</code>. On compare alors le dernier caractère du motif, d'indice <code>j=2</code>, avec celui de la chaine d'indice <code>i+j</code>, soit 2. Ils sont différents, et le caractère de la chaîne est <code>R</code>, qui n'est pas présent dans le motif. On va donc décaler le motif de sa propre longueur, soit 3, vers la droite. Ce qui signifie que son premier caractère sera en <code>i = i+3</code>.</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="BMH2.png" src="../BMH2.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 2" /></p>
+<p><img alt="BMH2.png" src="../BMH2.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 2" /></p>
 <p>Après l'étape précédente, on a <code>i=3</code> et <code>j=2</code>, et on compare le dernier caractère du motif, avec celui de la chaîne d'indice <code>i+j</code>, soit 5. Ils diffèrent, mais le caractère <code>A</code> en position 5 de la chaîne est présent dans le motif <code>DAB</code>. On va décaler le motif d'un rang, car <code>A</code> est l'avant dernier caractère de <code>DAB</code>. Ce qui signifie que son premier caractère sera en <code>i = i+1</code>.</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="BMH3.png" src="../BMH3.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 3" /></p>
+<p><img alt="BMH3.png" src="../BMH3.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 3" /></p>
 <p>Après l'étape précédente, on a <code>i=4</code> et <code>j=2</code>, et on compare le dernier caractère du motif, avec celui de la chaîne d'indice <code>i+j</code>, soit 6. Ils diffèrent, mais le caractère <code>D</code> en position 6 de la chaîne est présent dans le motif <code>DAB</code>. On va décaler le motif d'un rang, car <code>D</code> est l'avant-avant-dernier caractère de <code>DAB</code>. Ce qui signifie que son premier caractère sera en <code>i = i+2</code>.</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="BMH4.png" src="../BMH4.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 4" /></p>
+<p><img alt="BMH4.png" src="../BMH4.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 4" /></p>
 <p>Après l'étape précédente, on a <code>i=6</code> et <code>j=2</code>, et on compare le dernier caractère du motif, avec celui de la chaîne d'indice <code>i+j</code>, soit 8. Ils sont identiques, donc on ne déplace pas le motif, mais on va le remonter vers la gauche, en décrémentant de 1 la valeur de <code>j</code>.</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="BMH5.png" src="../BMH5.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 5" /></p>
+<p><img alt="BMH5.png" src="../BMH5.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 5" /></p>
 <p>Après l'étape précédente, on a <code>i=6</code> et <code>j=1</code>, et on compare l'avant-dernier caractère du motif , avec celui de la chaîne d'indice <code>i+j</code>, soit 7. Ils sont identiques, donc on ne déplace pas le motif, mais on va le remonter vers la gauche, en décrémentant de 1 la valeur de <code>j</code>.</p>
 </div>
 <div class="tabbed-block">
-<p><img alt="BMH6.png" src="../BMH6.png" style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 6" /></p>
+<p><img alt="BMH6.png" src="../BMH6.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 6" /></p>
 <p>Après l'étape précédente, on a <code>i=6</code> et <code>j=0</code>, et on compare le premier caractère du motif , avec celui de la chaîne d'indice <code>i+j</code>, soit 6. Ils sont identiques, donc on ne déplace pas le motif, mais on va le remonter vers la gauche, en décrémentant de 1 la valeur de <code>j</code>. Mais <code>j</code> devenant négatif, c'est qu'on a fini la comparaison, et le motif a été trouvé. Il a donc suffit de faire 6 comparaisons pour trouver le motif, alors que 9 auraient été nécessaires avec la méthode naïve.</p>
 </div>
 </div>

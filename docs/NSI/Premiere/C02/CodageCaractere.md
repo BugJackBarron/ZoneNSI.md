@@ -20,7 +20,7 @@ La décision fut prise de représenter *les caractères de l'alphabet anglais* s
 
 Il reste donc $7$ bits pour encoder les caractères, soit $2^7 = 128$ possibilités. Ce codage est appelé American Standard Code for Information Interchange, soit {==**ASCII**==}, et est présenté dans la *table de jeu de caractères ASCII* ci-dessous :
 
-![ASCII.png](ASCII.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+![ASCII.png](ASCII.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 La table ASCII contient 95 caractère imprimables :
@@ -37,17 +37,17 @@ Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* 
 	<div style="display:flex;">
 	<div style="display : inline; width : 33%;">
 	
-	![Glyphe_a_Caliban.png](Glyphe_a_Caliban.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe a police Caliban"}
+	![Glyphe_a_Caliban.png](Glyphe_a_Caliban.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Glyphe a police Caliban"}
 	  
 	</div>
 	<div style="display : inline; width : 33%;">
 	
-	![Glyphe_a_Caston_Italic.png](Glyphe_a_Caston_Italic.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe a police Caston Italic"}
+	![Glyphe_a_Caston_Italic.png](Glyphe_a_Caston_Italic.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Glyphe a police Caston Italic"}
 	
 	</div>
 	<div style="display : inline; width : 33%;">
 
-	![Glyphe_Ki.png](Glyphe_Ki.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Glyphe ki kanji"}
+	![Glyphe_Ki.png](Glyphe_Ki.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Glyphe ki kanji"}
 
 	</div>
 	</div>
@@ -81,7 +81,7 @@ Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* 
 
 Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de $2^8 = 256$ possibilités de codage. Les différentes constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées **ASCII étendues**, pour **la plupart incompatibles entre elles**. Par exemple IBM produit une table, la $CP437$, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :
 
-![CP437.jpg](CP437.jpg){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="CP437"}
+![CP437.jpg](CP437.jpg){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="CP437"}
 
 !!! info "ISO-8859 ets es variantes"
 
@@ -96,12 +96,12 @@ Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, i
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![ISO88591.png](iso88591.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="ISO 8859-1 (Occidental)"}
+	![ISO88591.png](iso88591.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="ISO 8859-1 (Occidental)"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
 
-	![ISO88595.png](iso88595.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="ISO 8859-5 (Cyrillique)"}
+	![ISO88595.png](iso88595.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="ISO 8859-5 (Cyrillique)"}
 
 	</div>
 	</div>
@@ -150,7 +150,7 @@ Cependant un problème majeur demeurait : certaines langues, comme le chinois, n
 	</div>
 	<div style="display : inline; width : 30%;">
 
-	![Martine.jpg](Martine.jpg){: style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Martine et l'UTF8"}
+	![Martine.jpg](Martine.jpg){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Martine et l'UTF8"}
 
 	</div>
 	</div>

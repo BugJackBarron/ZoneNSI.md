@@ -2833,7 +2833,7 @@
 <p>Le <mark class="critic"><strong>parcours en profondeur</strong></mark> d'un graphe (<em>Depth First Search</em> en anglais), c'est-à-dire un parcours où on explore chaque chemin jusqu'à son extrémité finale,  est équivalent à celui pour un arbre comme présenté dans le chapitre <a href="/NSI/Terminale/C05/Def_Arbres/#parcours-en-profondeur-dfs-ou-depth-first-search" target="_blank">idoine</a>, à une subtilité prêt : dans un graphe il est possible de trouver des boucles, ce qui pourrait amener à un chemin infini :</p>
 <div class="admonition warning">
 <p class="admonition-title">le cas d'une boucle</p>
-<p><img alt="DFS_3.svg" src="../DFS_3.svg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="DFS_3.svg" src="../DFS_3.svg" style="width:15%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Dans un parcours DFS d'un graphe comme ci-dessus, et en partant de <span class="arithmatex">\(A\)</span>, on aura un parcours dans l'ordre suivant (en considérant les voisins dans l'ordre alphabétique) :</p>
 <ul>
 <li>On ira de <span class="arithmatex">\(A\)</span> à <span class="arithmatex">\(B\)</span> puis de <span class="arithmatex">\(B\)</span> à <span class="arithmatex">\(C\)</span> ;</li>
@@ -2843,7 +2843,7 @@
 </div>
 <h3 id="algorithme-en-langage-naturel">Algorithme en langage naturel</h3>
 <p>Pour que l'algorithme puisse fonctionner, il faudra donc <em>marquer</em> les sommets déjà visités, comme sur l'exemple suivant :</p>
-<p><img alt="DFS_Complet.png" src="../DFS_Complet.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="DFS_Complet.png" src="../DFS_Complet.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>On considèrera qu'il existe une méthode pour <em>marquer</em> les sommets, et donc qu'on n'explore plus un sommet déjà marqué.</p>
 <div class="highlight"><pre><span></span><code>fonction explore_graphe(G, s) :
     Marquer(s)
@@ -2854,7 +2854,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Graphes avec de multiples composantes connexes</p>
 <p>Cette fonction ne permet pas d'explorer tout le graphe si celui-ci comporte pluiseurs composantes connexes,  car on explore uniquement de voisins en voisins :</p>
-<p><img alt="DFS_4.svg" src="../DFS_4.svg" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="DFS_4.svg" src="../DFS_4.svg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Sur un graphe tel que ci-dessus, la fonction précédente appelée sur <span class="arithmatex">\(A\)</span> n'explorera que les sommets <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, <span class="arithmatex">\(C\)</span> et <span class="arithmatex">\(D\)</span> dans cet ordre.</p>
 </div>
 <p>Il faut donc encapsuler la fonction précédente dans une autre fonction :</p>
@@ -2913,7 +2913,7 @@
 <h2 id="parcours-en-largeur">Parcours en largeur</h2>
 <h3 id="comparaison-avec-un-arbre_1">Comparaison avec un arbre</h3>
 <p>Le <mark class="critic"><strong>parcours en largeur</strong></mark> d'un graphe (<em>Breadth First Search</em> en anglais), c'est-à-dire un parcours où on explore chaque chemin jusqu'à son extrémité finale,  est équivalent à celui pour un arbre comme présenté dans le chapitre <a href="/NSI/Terminale/C05/Def_Arbres/#parcours-en-largeur" target="_blank">idoine</a>, tout en  ajoutant le même problème que pour le parcours en profondeur : il faut marquer les sommets déjà visités.</p>
-<p><img alt="BFS_1.svg" src="../BFS_1.svg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="BFS_1.svg" src="../BFS_1.svg" style="width:15%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Ainsi, dans le graphe ci-dessus, l'ordre de parcours des sommets est : <span class="arithmatex">\(A, B, E, C, D, F, G, H\)</span>.</p>
 <h3 id="algorithme-en-langage-naturel_1">Algorithme en langage naturel</h3>
 <p>L'algorithme itératif s'implémente à l'aide d'une file :</p>
@@ -2974,10 +2974,10 @@
 <p class="admonition-title">Tips</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 50%;"></p>
-<p><img alt="Cycles_1.svg" src="../Cycles_1.svg" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Cycles_1.svg" src="../Cycles_1.svg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p></div>
 <div style="display : inline; width : 50%;"></p>
-<p><img alt="Cycles_2.svg" src="../Cycles_2.svg" style="width:30%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Cycles_2.svg" src="../Cycles_2.svg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p></div>
 </div></p>
 </div>
@@ -3007,10 +3007,10 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Graphe 1</label><label for="__tabbed_3_2">Graphe 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><img alt="Cycles_3.svg" src="../Cycles_3.svg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Cycles_3.svg" src="../Cycles_3.svg" style="width:15%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </div>
 <div class="tabbed-block">
-<p><img alt="Cycles_4.svg" src="../Cycles_4.svg" style="width:15%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Cycles_4.svg" src="../Cycles_4.svg" style="width:15%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </div>
 </div>
 </div>

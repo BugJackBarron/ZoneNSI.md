@@ -23,7 +23,7 @@ et comment le monde devient numérique (Chaire Innovation technologique — Lili
 12. Que signifie SOC ?
 13. Comment sont reliés tous les blocs fonctionnels à l’intérieur des puces ?
 
-	![Image_Socs](P1_Img1.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+	![Image_Socs](P1_Img1.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 ### La description des circuits
 
@@ -31,11 +31,11 @@ et comment le monde devient numérique (Chaire Innovation technologique — Lili
 
 1. Quel est le niveau de conception le plus basique décrit par M. Berry ?
 
-	![Image_NAND](P1_Img2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![Image_NAND](P1_Img2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 2. Comment s’appelle le niveau le plus central utilisé pour la description des circuits ?
 
-	![RTL](P1_Img3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![RTL](P1_Img3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 3. Quelle est la partie du signal d’horloge, qui est active, utilisée pour piloter le circuit ?
 4. Dans un calcul logique, que signifie l’expression « chemin critique » ?
@@ -51,7 +51,7 @@ et comment le monde devient numérique (Chaire Innovation technologique — Lili
 4. Que se passe-t-il dans ce type de fonctionnement ?
 5. Quel est le domaine technologique présenté qui réalise un très grand nombre d’opérations de calcul selon un mode pipeline ?
 
-	![additionneur rapide](http://wiki.hevs.ch/fsi/images/thumb/3/3b/Sem_labs_pipelined_adder.svg/698px-Sem_labs_pipelined_adder.svg.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" alt="Source : wikipedia"}
+	![additionneur rapide](http://wiki.hevs.ch/fsi/images/thumb/3/3b/Sem_labs_pipelined_adder.svg/698px-Sem_labs_pipelined_adder.svg.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" alt="Source : wikipedia"}
 	
 ### Le microprocesseur
 
@@ -95,7 +95,7 @@ et comment le monde devient numérique (Chaire Innovation technologique — Lili
 Le schéma ci-dessous est une vue partielle du microprocesseur 4004 d’Intel. Ce premier microprocesseur de l’histoire contenait 2300 transistors gravés avec une
 finesse de 10 μm. Le schéma complet tenait sur trois pages. En 2017, la finesse de gravure atteint 10 nm avec 10 milliards de transistors.
 
-![Image_Socs](P1_Img4.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+![Image_Socs](P1_Img4.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 
 1. Déterminer le nombre de pages nécessaire pour assurer l’impression du schéma d’un tel microprocesseur, en prenant comme base les données du 4004 et le ratio :
 nombre de transistors/nombre de pages.

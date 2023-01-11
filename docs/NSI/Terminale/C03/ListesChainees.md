@@ -29,11 +29,11 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 		* il **reste des cases de libres** dans la réservation mémoire, alors la valeur ajoutée par `append` sera simplement stockée dans la première case libre :
 
-			![list python 1](list_taille_python_1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+			![list python 1](list_taille_python_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		* si la **réservation mémoire est pleine**, il faudra alors **créer une nouvelle réservation mémoire d'une taille 2 fois supérieure à la précédente**, copier chaque élément de l'ancienne liste dans la nouvelle, puis enfin la valeur ajoutée par `append` sera simplement stockée dans la première case libre :
 
-			![list python 2](list_taille_python_2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+			![list python 2](list_taille_python_2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		On constate une utilisation mémoire très important pour juste un élément supplémentaire ajouté...
 	

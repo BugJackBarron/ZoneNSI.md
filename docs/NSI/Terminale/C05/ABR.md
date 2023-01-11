@@ -14,7 +14,7 @@ Imaginez une bibliothèque contenant un très très grand nombre de livres. Cett
 
 Une représentation de cette bibliothèque peut être donnée sous la forme d'un rabre binaire tel que le suivant :
 
-![P2_ABR_1.png](P2_ABR_1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![P2_ABR_1.png](P2_ABR_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 !!! question 
@@ -35,7 +35,7 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 !!! warning "Une mauvaise répartition"
 	L'importance de l'organisation des salles est ici primordial, toutes les solutions ne se valant pas. Ci-dessous une répartition qui est dans le pire des cas : les sous-arbres gauche sont toujours vide (on appelle un tel type d'arbre un {==**peigne**==}).
 	
-	![P2_ABR_2.png](P2_ABR_2.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+	![P2_ABR_2.png](P2_ABR_2.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Dans cette situation, il faudra traverser les 17 576 pièces pour atteindre les livres dont le titre commence par `ZZZ`.
 	
@@ -55,25 +55,25 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 	
 	=== "Exemple 1"
 	
-		![P2_ABR_3.png](P2_ABR3.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_3.png](P2_ABR3.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		Il s'agit bien d'un ABR.
 	
 	=== "Exemple 2"
 	
-		![P2_ABR_4.png](P2_ABR4.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_4.png](P2_ABR4.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		Il s'agit bien d'un ABR. On peut remarquer qu'il possède le même ensemble de noeuds que le précédent, mais pas dans le même ordre.
 		
 	=== "Contre-exemple 1"
 	
-		![P2_ABR_5.png](P2_ABR5.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_5.png](P2_ABR5.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		Ce n'est pas un ABR, le noeud 5 étant dans le sous-arbre gauche du noeud 4, alors que les sous-arbres gauches doivent posséder des clés de valeurs inférieures.
 		
 	=== "Contre-exemple 2"
 		
-		![P2_ABR_6.png](P2_ABR6.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_6.png](P2_ABR6.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 		Ce n'est pas un ABR tout simplement parce qu'il n'est pas binaire.
 		
@@ -154,7 +154,7 @@ On appelle {==**successeur**==} d'une clé donnée la valeur suivant cette clé 
 		
 		On considère l'ABR suivant :
 		
-		![P2_ABR_7.png](P2_ABR7.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_7.png](P2_ABR7.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		1. Quel est le successeur de 15 ? de 17 ? de 13 ? de 20 ?
 		2. Pour la structure d’ABR de l’arbre, que représente chacun de ces successeurs vis-à-vis du noeud initial ?
@@ -206,14 +206,14 @@ Dans cette méthode, les nouveaux noeuds sont ajoutés en tant que feuilles du n
 	
 	=== "Enoncé"
 			
-		![P2_ABR_8.png](P2_ABR8.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_8.png](P2_ABR8.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		On considère l'ABR ci-dessus :
 		Insérer les noeuds de valeurs suivantes : 23, 19, 1 10, 8 et 5.
 
 	=== "Solution"
 		
-		![P2_ABR_9.png](P2_ABR9.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_ABR_9.png](P2_ABR9.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 L'insertion aux feuilles d'un élément dans un ABR se fait tout comme une recherche : on cherche la clé du nœud à insérer ; lorsqu'on arrive à une feuille, on ajoute le nœud comme fils de la feuille en comparant sa clé à celle de la feuille : si elle est inférieure, le nouveau nœud sera à gauche ; sinon il sera à droite. 
 

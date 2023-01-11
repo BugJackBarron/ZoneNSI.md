@@ -194,7 +194,7 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 	* des bits consacrés à l'{==**exposant**==} (8 bits pour la simple précision et 11 bits pour la double précision);
 	* des bits consacrés à la {==**mantisse**==} (23 bits pour la simple précision et 52 bits pour la double précision).
     
-    ![Flottant_machine.png](Flottant_machine.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+    ![Flottant_machine.png](Flottant_machine.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 	Nous pouvons vérifier que l'on a bien $1 + 8 + 23 = 32$ bits pour la simple précision et $1 + 11 + 52 = 64$ bits pour la double précision. 

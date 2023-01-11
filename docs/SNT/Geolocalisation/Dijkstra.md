@@ -9,7 +9,7 @@
 
 On considère l'extrait de carte de la région Auvergne-Rhône-Alpes donné ci-dessous :
 
-![Carte_Auvergne.png](Carte_Auvergne.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;" title="Région Auvergne"}
+![Carte_Auvergne.png](Carte_Auvergne.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;" title="Région Auvergne"}
 
 Un technicien d'une entreprise doit se déplacer et pouvoir intervenir sur les différents sites de cette entreprises, situés dans les villes suivantes : Aurillac (A), Bourg-en-Bresse (B), Clermont-Ferrand (C), Saint-Etienne (E), Grenoble(G), Lyon (L), Le Puy-en-Velay(P), Valence(V). Il connait les distances suivantes par autoroute, en km :
 
@@ -64,11 +64,11 @@ De nombreux problèmes sont résolubles grâce à une implantation sous la forme
 
 * {==**Le problème des ponts de Königsberg**==} : est il possible de visiter à pied la ville de Königsberg en passant une et une seule fois par chacun des ponts ?
 
-	![Koenigsberg.png](Koenigsberg.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Königsberg"}
+	![Koenigsberg.png](Koenigsberg.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Königsberg"}
 
 * {==**Le problème de la coloration de graphe**==} : On veut colorier une carte géographique tracée sur le plan (ou la sphère) de manière que deux régions voisines soient toujours de couleurs différentes. Combien de couleurs sont nécessaires au minimum ?
 
-	![france-region.jpg](france-region.jpg){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Régions de France"}
+	![france-region.jpg](france-region.jpg){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Régions de France"}
 	
 
 
@@ -86,7 +86,7 @@ De nombreux problèmes sont résolubles grâce à une implantation sous la forme
 	</div>
 	<div style="display : inline; width : 33%;">
 
-	![Dijkstra.jpg](Dijkstra.jpg){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Dijkstra, image wikipedia"}
+	![Dijkstra.jpg](Dijkstra.jpg){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Dijkstra, image wikipedia"}
 
 	</div>
 	</div>
@@ -99,7 +99,7 @@ De nombreux problèmes sont résolubles grâce à une implantation sous la forme
 	Nous devons dons construire de proche en proche le chemin cherché en choisissant à chaque itération de l'algorithme, un sommet $s_i$ du graphe parmi ceux qui n'ont pas encore été traités, tel que la longueur connue provisoirement du plus court chemin allant de $E$ à $s_i$ soit la plus courte possible.
 	L'algogramme correspondant est donné ci-dessous : 
 	
-	![AlgogrammeDijkstra.png](AlgogrammeDijkstra.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="recherche du plus court chemin entre s et e"}
+	![AlgogrammeDijkstra.png](AlgogrammeDijkstra.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="recherche du plus court chemin entre s et e"}
 
 
 
@@ -115,7 +115,7 @@ De nombreux problèmes sont résolubles grâce à une implantation sous la forme
 	1. Ayant terminé sa semaine de travail à Bourg-en-Bresse, le technicien souhaite retourner chez lui à Aurillac en faisant le moins de kilomètres possibles.
 		Déterminer, en utilisant l'algorithme de Dijkstra, le plus court chemin entre les villes de Bourg-en-Bresse et Aurillac en empruntant le réseau routier, en s'aidant du tableau ci-dessous :
 	
-		![TableDijkstra.png](TableDijkstra.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Table_Dijkstra"}
+		![TableDijkstra.png](TableDijkstra.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Table_Dijkstra"}
 	
 		Quelle est alors la route à emprunter ?
 
@@ -125,7 +125,7 @@ De nombreux problèmes sont résolubles grâce à une implantation sous la forme
 !!! question "D'autres utilisations"
 	Alexis part en voyage dans l’Est des Etats-Unis. Il souhaite visiter les villes suivantes : Atlanta (A), Boston (B), Chicago (C), Miami (M), New York (N)et Washington (W).Une compagnie aérienne propose les liaisons suivantes représentées par le graphe ci-dessous :
 
-	![GrapheAeroports.png](GrapheAeroports.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Graphe aeroports"}
+	![GrapheAeroports.png](GrapheAeroports.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Graphe aeroports"}
 	
 	1. Alexis veut relier Boston à Miami.Déterminer le trajet le moins cher ainsi que le coût de ce trajet.
 	2. Le site [https://graphonline.ru/fr/](https://graphonline.ru/fr/){: target="_blank"} permet de tracer un graphe et de déterminer entre autre le chemin le plus court grâce à l'algorithme de Dijkstra. Vérifiez vos calculs précédents avec ce site.

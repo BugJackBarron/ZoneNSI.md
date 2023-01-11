@@ -6,7 +6,7 @@
 
 {==**John Von Neumann**==} (1903-1957) est un ingénieur, mathématicien et physicien  américano-hongrois.Il a participé au projet Manhattan (première bombe atomique) et à l'ENIAC. Son nom reste attaché à un modèle qu'il propose en 1944,  modèle d'architecture novateur qui sert toujours de base à nos architectures actuelles.
 
-![von_Neuman.jpg](von_Neuman.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="John Von Neumannn"}
+![von_Neuman.jpg](von_Neuman.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="John Von Neumannn"}
 
 
 Le {==**modèle de von Neumann**==} précise les 4 composants essentiels d'un microprocesseur ainsi que les interactions entre ces différents composants. Ces composants sont les suivants :
@@ -16,7 +16,7 @@ Le {==**modèle de von Neumann**==} précise les 4 composants essentiels d'un mi
 * **la mémoire** : contient les données *et les programmes* ;
 * l'unité d'entrée et sortie.
 
-![Modele_von_Neuman.png](Modele_von_Neuman.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Modèle de John Von Neumannn"}
+![Modele_von_Neuman.png](Modele_von_Neuman.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Modèle de John Von Neumannn"}
 
 Cette architecture est bien entendu une *architecture théorique*. Elle doit être complétée par un certain nombre d'autres sous-structures pour être effectivement fonctionnelle. On distingue entre autres :
 
@@ -29,12 +29,12 @@ La vitesse d'un processeur est exprimée en GigaHertz (GHz). Elle exprime le *no
 
 L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'**augmentation du nombre de transistors** dans les processeurs. Gordon E. Moore énonca en $1965$ une loi emprique prédisant un doublement du nombre de processeurs tous les deux ans.
 
-![Loi de Moore](https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Loi de Moore, image Wikipedia"}
+![Loi de Moore](https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Loi de Moore, image Wikipedia"}
 
 
 Mais cette augmentation génère une chaleur très importante au niveau processeur, et la dissipation de cette chaleur est rapidement devenue un problème. Depuis $2005$ environ, les fabricants se sont plutôt tourné vers une **augmentation du nombre de cœurs** dans leurs processeurs, en comptant sur le {==**parallélisme**==}(le fait de pouvoir gérer des instructyions en simultané sur plusieurs coeurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de $3,8$ GHz.
 
-![Frequence.png](Frequence.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Frequence des processeurs"}
+![Frequence.png](Frequence.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Frequence des processeurs"}
 
 
 ### Cycles d'instructions et parallélisme
@@ -49,13 +49,13 @@ Dans un processeur, 5 étapes sont nécessaires pour traiter une instruction. Ch
 
 En supposant que chaque étape met 1 cycle d'horloge pour s'exécuter, il faut normalement 5 cycles pour exécuter une instruction, 15 pour 3 instructions : 
 
-![3_cycles.png](3_cycles.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="3 instructions"}
+![3_cycles.png](3_cycles.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="3 instructions"}
 
 
 
 Il est cependant possible d'améliorer ce système, notamment par l'utilisation de **pipelines** dans des processeurs dits *superscalaires*. Si plusieurs opérations **d'un même programme sont indépendantes**, alors le processeur peut contenir plusieurs instructions, chacune à une étape différente. Le pipeline ci-dessous est le *Classic RISC pipeline*, créé par David Patterson, inventeur des processeurs RISC et du concept de pipeline, et mis en oeuvre dès 1961 par IBM :
 
-![Pipeline.png](Pipeline.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Pipeline"}
+![Pipeline.png](Pipeline.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Pipeline"}
 
 Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités, et les 5 opérations ont lieu en même temps.
 
@@ -63,7 +63,7 @@ Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cy
 
 Même si le modèle de von Neumann reste d'actualité, il a subi quelques évolutions récemment :
 
-![Evolution_von_Neumann.png](Evolution_von_Neumann.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Evolution du modèle de Von Neumann"}
+![Evolution_von_Neumann.png](Evolution_von_Neumann.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Evolution du modèle de Von Neumann"}
 
 
 * Les **Entrée-sorties** sont contrôlées par des processeurs autonomes.
@@ -72,31 +72,31 @@ Même si le modèle de von Neumann reste d'actualité, il a subi quelques évolu
 
 On peut voir cette évolution sur les processeurs eux-mêmes :
 
-![Intel_4004.jpg](Intel_4004.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Intel 4004"}
+![Intel_4004.jpg](Intel_4004.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Intel 4004"}
 
 | Nom |  Année | Nombre de transistors | Vitesse d'horloge | Mémoire |
 | :---: | :---: | :---: | :---: | :---: |
 | Intel 4004 | $1971$ | $2300$  | 100 KHz | 640 o |
 
-![Intel_808.jpg](Intel_8080.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Intel 8080"}
+![Intel_808.jpg](Intel_8080.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Intel 8080"}
 
 | Nom |  Année | Nombre de transistors | Vitesse d'horloge | Mémoire |
 | :---: | :---: | :---: | :---: | :---: |
 | Intel 8080 | $1974$ | $4500$ | 2 MHz | 64 ko |
 
-![Motorola 68060](https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/KL_Motorola_MC68060.jpg/330px-KL_Motorola_MC68060.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Motorola 68060"}
+![Motorola 68060](https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/KL_Motorola_MC68060.jpg/330px-KL_Motorola_MC68060.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Motorola 68060"}
 
 | Nom |  Année | Nombre de transistors | Vitesse d'horloge | Mémoire |
 | :---: | :---: | :---: | :---: | :---: |
 | Motorola 68060 | $1994$  | $2,5$ millions  | 50 MHz | 64 ko |
 
-![PowerPC_970FX.jpg](PowerPC_970FX.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="PowerPC 970FX"}
+![PowerPC_970FX.jpg](PowerPC_970FX.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="PowerPC 970FX"}
 
 | Nom |  Année | Nombre de transistors | Vitesse d'horloge | Mémoire |
 | :---: | :---: | :---: | :---: | :---: |
 | PowerPc 970Fx| $2003$ | $58$ millions | 1,6-2,7 GHz | 2Mo Cache L2 |
 
-![Core_I7.jpg](Core_I7.jpg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Core_I7"}
+![Core_I7.jpg](Core_I7.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Core_I7"}
 
 | Nom |  Année | Nombre de transistors | Vitesse d'horloge | Mémoire |
 | :---: | :---: | :---: | :---: | :---: |
@@ -106,7 +106,7 @@ On peut voir cette évolution sur les processeurs eux-mêmes :
 
 ### La hiérarchie des mémoires
 
-![Hierarchie_Memoires.png](Hierarchie_Memoires.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Hierachie des mémoires"}
+![Hierarchie_Memoires.png](Hierarchie_Memoires.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Hierachie des mémoires"}
 
 
 Dans un ordinateur, le processeur accède aux instructions du programme à exécuter ainsi qu'aux données nécessaires à son exécution depuis la mémoire.
@@ -194,7 +194,7 @@ Le processeur dispose aussi d'un quatrième registre nommé `PC` (*Program Count
 
 Le jeu d'instruction est défini ci-dessous :
 
-![Instructions_M99.png](Instructions_M99.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Instructions M99"}
+![Instructions_M99.png](Instructions_M99.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Instructions M99"}
 
 Ainsi on a les codes suivants:
 
@@ -225,7 +225,7 @@ Une version en français de ce simulateur est disponible [ici](simu_risc.zip) so
 
 Voici ce que vous devriez obtenir :
 
-![Sim_Risc.png](Sim_Risc.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Capture SimRisc"}
+![Sim_Risc.png](Sim_Risc.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Capture SimRisc"}
 
 
 

@@ -52,7 +52,7 @@ class ABR :
 		
 		=== "Arbre"
 		
-			![P3_ABR1.png](P3_ABR1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+			![P3_ABR1.png](P3_ABR1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		=== "Code"
 		
@@ -314,18 +314,18 @@ Lorsqu'on veut supprimer une clé d'un ABR, plusieurs situations peuvent se prod
 1. La clé n'est pas présente dans l'ABR, donc il n'y a rien à faire.
 2. La clé est celle d'une feuille. Dans ce cas la suppression est simple : on passe à `None` le fils correspondant du parent, ce qui a pour effet de supprimer le noeud.
 
-	![P3_ABR2.png](P3_ABR2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_ABR2.png](P3_ABR2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 3. La clé est celle d'un noeud possédant un seul fils. Dans ce cas, on remplace le noeud supprimé par son fils, ce qui conserve les propriétés de l'ABR.
 
-	![P3_ABR3.png](P3_ABR3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_ABR3.png](P3_ABR3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 4. Si la clé possède deux fils, alors il y a deux possibilités :
 	
 	* on remplace le noeud par le minimum du sous-arbre droit, qui est le succeseur du noeud supprimé ;
 	* ou on remplace par le maximum du sous-arbre gauche, qui est le prédecesseur du noeud supprimé.
 	
-	![P3_ABR4.png](P3_ABR4.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_ABR4.png](P3_ABR4.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 
 Pour réaliser une telle implémentation, il faut donc faire un choix, et nous choisissons de remplacer le noeud supprimé par le minium à droite. Pour simplifier la lecture du code, on séparera dans la classe `Node` en différentes méthodes :

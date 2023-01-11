@@ -69,7 +69,7 @@ Une fois l'image install√©e sur une carte micro-SD, le mini-ordinateur devrait-√
 
 Pour obtenir la ligne de commande dans **Raspbian**, il faut lancer le programme `Terminal`.
 
-![terminal](terminal_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+![terminal](terminal_1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Le prompt est de la forme `nom_utilisateur@nom_machine : chemin_dossier_courant $`.
 

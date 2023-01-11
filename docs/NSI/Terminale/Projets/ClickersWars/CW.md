@@ -8,7 +8,7 @@ Lorsque leur barre de vie est pleine, ils changent de niveau, ce qui augmente le
 
 Une présentation possible est la suivante :
 
-![ClickerWars Screenshot](ClickerWars_screenshot.png){: style="width:90%; margin:auto;display:block;background-color: #546d78;" title="ClickerWars Screenshot"}
+![ClickerWars Screenshot](ClickerWars_screenshot.png){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" title="ClickerWars Screenshot"}
 
 ## La structure du code
 

@@ -2863,13 +2863,13 @@
 <li>le processus <code>C</code> a besoin de 2 cycles d'horloge, et est arrivé au <em>tick</em> 3 ;</li>
 <li>le processus <code>D</code> a besoin de 4 cycles d'horloge, et est arrivé au <em>tick</em> 5 ;</li>
 </ul>
-<p><img alt="P3_img1.png" src="../P3_img1.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img1.png" src="../P3_img1.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevauchements, il faudra ordonner les différents processus afin qu'ils soient tous exécutés.</p>
 <h3 id="systemes-non-preemptifs">Systèmes non-préemptifs :</h3>
 <div class="admonition example">
 <p class="admonition-title">Méthode PÄPS</p>
 <p>Si le système d'exploitation <strong>n'est pas préemptif</strong>, on pourrait penser au principe d'une file de type &laquo; Premier Arrivé, Premier Servi &raquo; (<em>FIFO</em>).</p>
-<p><img alt="P3_img2.png" src="../P3_img2.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img2.png" src="../P3_img2.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.</p>
 <p>Regardons le <mark class="critic"><strong>temps de séjour</strong></mark> nécessaire à l'exécution de chaque processus, qui correspond à la <em>différence entre le temps de terminaison du processus et le temps d'entrée dans le processeur</em> :</p>
 <ul>
@@ -2897,7 +2897,7 @@
 <li>au tick 7 on exécute <code>B</code> ;</li>
 <li>et on termine par <code>D</code>.</li>
 </ul>
-<p><img alt="P3_img3.png" src="../P3_img3.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img3.png" src="../P3_img3.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>En terme de performances :</p>
 <ul>
 <li><code>A</code> est terminé au tick 5, et est entré au tick 0 : <span class="arithmatex">\(t_A = 5-0 = 5\)</span></li>
@@ -2928,7 +2928,7 @@
 <li>au tick 4, on exécute <code>C</code>, qui est le plus court ;</li>
 <li>au tick 6, il reste 4 temps pour <code>A</code> et <code>D</code>, un choix est fait : comme <code>À</code> est déjà en cours, on le termine en priorité.</li>
 </ul>
-<p><img alt="P3_img4.png" src="../P3_img4.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img4.png" src="../P3_img4.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>En terme de performances :</p>
 <ul>
 <li><code>A</code> est terminé au tick 10, et est entré au tick 0 : <span class="arithmatex">\(t_A = 10-0 = 10\)</span></li>
@@ -2949,17 +2949,17 @@
 <div class="admonition example">
 <p class="admonition-title">Méthode Round Robin (<code>RR</code>)</p>
 <p>L’algorithme du <mark class="critic"><strong>tourniquet</strong></mark> ou <em>Round Robin</em> (<code>RR</code>) représenté sur la figure ci-dessous est un algorithme ancien, simple, fiable et très utilisé. Il mémorise dans une file du type <code>FIFO</code> (<em>First In First Out</em>) la liste des processus prêts, c’est-à-dire en attente d’exécution.</p>
-<p><img alt="P3_RR.png" src="../P3_RR.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_RR.png" src="../P3_RR.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Il alloue le processeur au processus en tête de file, <mark class="critic"><strong>pendant un quantum de temps</strong></mark>. Si le processus se bloque ou se termine avant la fin de son quantum, le processeur est immédiatement alloué à un autre processus (celui en tête de file). Si le processus ne se termine pas au bout de son quantum, son exécution est suspendue. Le processeur est alloué à un autre processus (celui en tête de file). Le processus suspendu est inséré en queue de file. Les processus qui arrivent ou qui passent de l’état bloqué à l’état prêt sont insérés en queue de file.</p>
 <div class="admonition example">
 <p class="admonition-title">Comparer les performances de l'algorithme <code>RR</code></p>
 <p>Toujours en utilisant l'exemple :</p>
-<p><img alt="P3_img1.png" src="../P3_img1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img1.png" src="../P3_img1.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Quantum 1</label><label for="__tabbed_1_2">Quantum 2</label><label for="__tabbed_1_3">Quantum 3</label><label for="__tabbed_1_4">Quantum 4</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Si le quantum de temps est de 1 tick :</p>
-<p><img alt="File Vide" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="File Vide" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Pour les performances :</p>
 <ul>
 <li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
@@ -2978,7 +2978,7 @@
 </div>
 <div class="tabbed-block">
 <p>Si le quantum de temps est de 2 ticks :</p>
-<p><img alt="P3_img5.png" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img5.png" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Pour les performances :</p>
 <ul>
 <li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
@@ -2997,7 +2997,7 @@
 </div>
 <div class="tabbed-block">
 <p>Si le quantum de temps est de 3 ticks :</p>
-<p><img alt="P3_img5.png" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_img5.png" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Pour les performances :</p>
 <ul>
 <li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>
@@ -3016,7 +3016,7 @@
 </div>
 <div class="tabbed-block">
 <p>Si le quantum de temps est de 4 ticks :</p>
-<p><img alt="File Vide" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="File Vide" src="../FIFO_Vide.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Pour les performances :</p>
 <ul>
 <li><code>A</code> est terminé au tick ..., et est entré au tick ... : <span class="arithmatex">\(t_A =...\)</span></li>

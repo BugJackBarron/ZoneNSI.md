@@ -2858,7 +2858,7 @@
 <p>En apparence, la solution la plus simple dans le cas du sac à dos serait d'écrire un algorithme qui teste toutes les combinaisons d'objets possibles et qui retient les solutions qui offrent un gain maximum.</p>
 <p>Dans notre cas précis, avec seulement 4 objets, cette solution pourrait être envisagée, mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, deviendrait trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en <span class="arithmatex">\(\mathrm{O}(a^n)\)</span> avec <span class="arithmatex">\(a\)</span> une constante et <span class="arithmatex">\(n\)</span> le nombre d'objets.</p>
 <p>On parle dans ce cas d'une <mark class="critic"><strong>complexité exponentielle</strong></mark> (en temps), ce qu'on peut voir dans le graphique suivant (exécuté sur mon ordinateur personnel).</p>
-<p><img alt="KP_Naif.png" src="../KP_Naif.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Temps d'exécution selon le nombre d'objets, algorithme KP Naif" /></p>
+<p><img alt="KP_Naif.png" src="../KP_Naif.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution selon le nombre d'objets, algorithme KP Naif" /></p>
 <p>Les algorithmes à complexité exponentielle ne sont pas efficaces pour résoudre des problèmes, le temps de calcul devient beaucoup trop important quand <span class="arithmatex">\(n\)</span> devient très grand. </p>
 </div>
 <details class="question">
@@ -2960,10 +2960,10 @@
 <p>Sur les mêmes valeurs, voici une comparaison entre les temps d'éxécution des deux algorithmes :</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 50%;"></p>
-<p><img alt="KP_Glouton.png" src="../KP_Glouton.png" style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Temps d'exécution, algorithme glouton" /></p>
+<p><img alt="KP_Glouton.png" src="../KP_Glouton.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution, algorithme glouton" /></p>
 <p></div>
 <div style="display : inline; width : 50%;"></p>
-<p><img alt="KP_Compare.png" src="../KP_Compare.png" style="width:73%; margin:auto;display:block;background-color: #546d78;" title="Comparaison des temps d'exécution naïf/glouton" /></p>
+<p><img alt="KP_Compare.png" src="../KP_Compare.png" style="width:73%; margin:auto;display:block;background-color: #d2dce0;" title="Comparaison des temps d'exécution naïf/glouton" /></p>
 <p></div>
 </div></p>
 <p><ins class="critic"><strong>ATTENTION</strong></ins> Il faut bien comprendre que l'algorithme glouton ne donne pas forcément la même réponse que l'algorithme naïf, c'est-à-dire la solution optimale ! Cependant les différences de temps d'exécution lorsque <span class="arithmatex">\(n\)</span> est suffisamment grand sont telles que la solution approchée donnée par une méthode gloutonne est bien souvent acceptable.</p>

@@ -6,7 +6,7 @@
 1. Ouvrez le logiciel `Thonny` depuis le menu `Windows`.
 2. Dans le menu `Tools>Manage packages`, tapez dans la barre de saisie le mot `pillow` puis cliquez sur `Find package from PyPi`.
 
-	![Thonny1.png](Thonny1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+	![Thonny1.png](Thonny1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Puis cliquez sur `Install` (si vous voyez à la place les boutons `Upgrade` et `Uninstall `, ce n'est pas nécessaire). Laissez le logiciel installer jusqu'au bout, cela prend quelques secondes.
 	
@@ -28,7 +28,7 @@
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 	
-	![coeur.png](coeur.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![coeur.png](coeur.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	</div>
 	<div style="display : inline; width : 50%;">
@@ -51,7 +51,7 @@
 2. Ouvrir le logiciel `Thonny`, et depuis ce logiciel ouvrez le fichier `pixelArt.py`  (avec le menu `File>open`).
 3. Cliquez sur la petite flèche verte pour exécuter le script Python.
 
-	![Thonny2.png](Thonny2.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+	![Thonny2.png](Thonny2.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	Qu'obtient-on ?
 
@@ -75,12 +75,12 @@
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 	
-	![grille.png](grille.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![grille.png](grille.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	</div>
 	<div style="display : inline; width : 50%;">
 	
-	![grille.png](grille.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![grille.png](grille.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	</div>
 	</div>

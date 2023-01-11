@@ -3,7 +3,7 @@
 Avant toutes choses, nous allons utiliser le module `pillow` de Python.
 Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage Packages`, et dans la barre de recherche, chercher le module `pillow`, et l'installer si il n'est pas déjà installé.
 			
-![Thonny1.png](../../../SNT/College/Thonny1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![Thonny1.png](../../../SNT/College/Thonny1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 
@@ -14,7 +14,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 !!! question "Analyser une première image"
 	Considérons l'image suivante :
 
-	![YingYang.bmp](YingYang.bmp){: style="margin:auto;display:block;background-color: #546d78;"}
+	![YingYang.bmp](YingYang.bmp){: style="margin:auto;display:block;background-color: #d2dce0;"}
 		
 	=== "Énoncé"
 	
@@ -48,7 +48,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 	
 	Dans notre cas, l'image est une matrice carrée de taille $32\times 32$ pixels. Chaque pixel peut donc être repéré par ses coordonnées, comme sur le schéma ci-dessous, où `width` (*largeur* en anglais) et `height` (*hauteur* en anglais) sont les dimensions de l'image. **Attention ! Le sens de l'axe de ordonnées est inversés par rapport aux mathématiques !**
 	
-	![PixelMap.png](PixelMap.png){: style="width:50%;margin:auto;display:block;background-color: #546d78;"}
+	![PixelMap.png](PixelMap.png){: style="width:50%;margin:auto;display:block;background-color: #d2dce0;"}
 	
 !!! info "Taille des images en noir et blanc"
 	En fait notre image utilise beaucoup plus de place en mémoire qu'elle ne le devrait. En effet, pour représenter 2 couleurs (noir et blanc), un seul bit suffit. 0 représente un pixel noir, et 1 représente un pixel blanc. Le format `pgm` n'est pas vraiment adapté aux pures images en noir et blanc, puisqu'il utilise 1 octet complet pour représenter la couleur, soit 8 fois plus que ce qui est strictement nécessaire.
@@ -240,21 +240,21 @@ Il est temps de mettre un peu de couleur !
 !!! asbtract "Synthèse additive RGB"
 	Un pixel  de couleur est représenté par un triplet $(R;G;B)$, où $R$, $G$ et $B$ sont des valeurs de $0$ à $255$ représentant respectivement les couleurs rouges, vertes et bleues. Un tel système permet de représenter $256^3 = 16~277~216$ nuances de couleurs différentes, par **synthèse additive des couleurs**. Ce format est adapté à la lecture sur écran (on utilise un système différent pour l'impression des images, le système *CYMB* - Cyan Yellow Magenta Black - qui utilise la synthèse soustractive).
 
-	![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;"}
+	![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #d2dce0;"}
 
 	De ce fait, dans un format non compressé comme le format `BMP`, chaque pixel est représenté par 3 octets.
 
 !!! example "Exemple"
 	On considère l'image suivante :
 	
-	![Logo](logo.bmp){: style="width:30%;margin:auto;display:block;background-color: #546d78;"}
+	![Logo](logo.bmp){: style="width:30%;margin:auto;display:block;background-color: #d2dce0;"}
 	
 	L'image est de dimension $320 \times 100$ et pèse 96 ko, ce qui correspond $320 \times 100 \times 3 = 96~000~o$ (en n'oubliant pas les méta-données).
 	
 !!! question "RGB et pillow"
 
 	=== "Énoncé"
-		1. Téléchargez l'image suivante : ![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title ="Depuis wikipedia RGB"}
+		1. Téléchargez l'image suivante : ![Trois Cercles](TroisCercles.bmp){: style="width:20%;margin:auto;display:block;background-color: #d2dce0;" title ="Depuis wikipedia RGB"}
 		2. Créer un code  dans Thonny ouvrant l'image et affichant cette image :
 			
 			```` python
@@ -290,7 +290,7 @@ Il est temps de mettre un peu de couleur !
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![Troopers.jpg](Troopers.jpg){: style="width:15%; margin:auto;display:block;background-color: #546d78;"}
+	![Troopers.jpg](Troopers.jpg){: style="width:15%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
@@ -323,7 +323,7 @@ Il est temps de mettre un peu de couleur !
 	<div style="display:flex;">
 	<div style="display : inline; width : 30%;">
 
-	![Rebecca.jpg](Rebecca.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	![Rebecca.jpg](Rebecca.jpg){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	Original : 1,42 Mo
 	
@@ -332,7 +332,7 @@ Il est temps de mettre un peu de couleur !
 	</div>
 	<div style="display : inline; width : 30%;">
 
-	![Rebecca2.jpg](Rebecca2.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	![Rebecca2.jpg](Rebecca2.jpg){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Copie 1 : 205 ko
 	
@@ -341,7 +341,7 @@ Il est temps de mettre un peu de couleur !
 	</div>
 	<div style="display : inline; width : 30%;">
 
-	![Rebecca3.jpg](Rebecca3.jpg){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+	![Rebecca3.jpg](Rebecca3.jpg){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Copie 2 : 162 ko
 	
@@ -584,7 +584,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 
 		Le principe d'agrandissement d'un facteur 2 est le suivant : chaque pixel va être dupliqué 4 fois comme sur le schéma suivant :
 		
-		![Double Simple](doubleSimple.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		![Double Simple](doubleSimple.png){: style="width:30%; margin:auto;display:block;;background-color: #d2dce0;"}
 		
 		Compléter la fonction `doubleSimple(image)` qui prend en argument un objet de type `Image` et renvoie un autre objet de type `Image` deux fois plus grand utilisant la technique montrée ci-dessus :
 		
@@ -620,7 +620,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 		Encore une fois le principe est simple, on ne garde qu'un pixel sur deux, au choix, les pixels de rang pairs ou bien impairs (ici on garde ceux de rang impair):
 
-		![réduction Simple](reductionSimple.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		![réduction Simple](reductionSimple.png){: style="width:30%; margin:auto;display:block;;background-color: #d2dce0;"}
 		
 		Créer une fonction `reductionSimple(image)` qui prends en argument un objet de type `Image` est qui renvoie sa version réduite avec la méthode ci-dessus.
 		
@@ -669,7 +669,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 		La méthode que nous allons utiliser est la suivante :
 		
-		![double Interpolation](doubleInterpolation.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		![double Interpolation](doubleInterpolation.png){: style="width:30%; margin:auto;display:block;;background-color: #d2dce0;"}
 		
 		Entre deux pixels existants, que ce soit horizontalement, verticalement ou en diagonale, on insère un pixel dont la valeur `RGBA` est égale à la moyenne des valeurs `RGBA` des deux pixels qui l'encadrent.
 		
@@ -686,7 +686,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 		La méthode que nous allons utiliser va consister à reprendre la méthode utilisée dans la réduction simple, c'est-à-dire de prendre un pixel sur deux, mais le pixel écrit dans la nouvelle image sera obtenu en effectuant la moyenne des valeurs `RGBA` de tous les voisins du pixel choisi :
 		
-		![réduction Interpolation](reductionInterpolation.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+		![réduction Interpolation](reductionInterpolation.png){: style="width:30%; margin:auto;display:block;;background-color: #d2dce0;"}
 		
 		1. Créer une fonction `moyenneVoisin(image, x, y)` qui prend en argument un objet de type `Image`, et deux entiers `x` et `y`, et qui renvoie un tuple correspondant à la moyenne des valeurs `RGBA` des voisins du pixel de coordonnées $(x~;~y)$ de l'image `image`.
 		2. A l'aide de la fonction précédente, et en s'inspirant de la fonction `reductionSimple`, créer une fonction `reductionInterpolation(image)` qui renvoie une image réduite en utilisant la technique précédente.

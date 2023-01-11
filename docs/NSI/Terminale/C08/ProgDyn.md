@@ -8,11 +8,11 @@
 	
 		1. Combien y-a-t'il de chemin menant du point $D$ au point $A$ sur le graphique suivant, en ne se déplaçant à chaque pas que vers la droite ou vers le bas ?
 		
-			![ProgDyna.png](ProgDyna.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+			![ProgDyna.png](ProgDyna.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		2. Combien y-a-t'il de chemin menant du point $D$ au point $A$ sur le graphique suivant, en ne se déplaçant à chaque pas que vers la droite ou vers le bas ?
 		
-			![ProgDyna2.png](ProgDyna2.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+			![ProgDyna2.png](ProgDyna2.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	
 	=== "Solution"
@@ -112,7 +112,7 @@ La question que nous devons nous poser est : est-ce un choix judicieux ?
 
 	Dans l'exemple précédent de calcul de `fibo(6)`, on peut constater que les appels récursifs sont nombreux, et souvent pour calculer plusieurs fois la même chose :
 	
-	![NbAppelsFibo.png](NbAppelsFibo.png){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+	![NbAppelsFibo.png](NbAppelsFibo.png){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Ainsi :
 	
@@ -208,7 +208,7 @@ Nous allons essayer de mettre au point un algorithme récursif donnant une solut
 	=== "Enoncé"
 		1. Compléter l'arbre suivant donnant l'ensemble des possibilités de répartition des pièces :
 		
-			![Monnaie1.png](Monnaie1.png){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+			![Monnaie1.png](Monnaie1.png){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 		2. Combien de chemins sont des impasses (on termine avec 1 cts restant) ? Combien de solutions existent ? Quelle est la solution utilisant le nombre minimal de pièces ?
 		

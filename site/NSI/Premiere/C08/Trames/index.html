@@ -2826,7 +2826,7 @@
 <h2 id="le-principe-dencapsulation">Le principe d'encapsulation</h2>
 <p>Nous avons eu l'occasion de voir avec les protocoles TCP et IP le processus d'encapsulation des données :  &laquo; IP encapsule TCP &raquo;. On parle alors de <strong>communication en couches</strong>.</p>
 <p>Pour mieux comprendre ce que représente la communication en couches, imaginez la situation suivante. Deux philosophes (couche 3) souhaitent s'entretenir, mais l'un parle ourdou et anglais, et l'autre chinois et français. Faute de pouvoir partager une langue commune, ils engagent chacun un traducteur (couche 2), qui fait appel à son tour à une secrétaire (couche 1).</p>
-<p><img alt="Philosophes.png" src="../Philosophes.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="Philosophes.png" src="../Philosophes.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <p>Le premier philosophe souhaite communiquer à son homologue distant sa passion pour <em>Oryctolagus cuniculus</em>. Il transmet un message (en anglais) à son traducteur de vive voix (interface &#8532;), en indiquant &laquo; I like rabbits &raquo;. Comme les traducteurs se sont accordés sur une langue commune, en l'occurrence le néerlandais, le message est converti en &laquo; Ik vind konijnen leuk &raquo;.Le choix de cette langue fait partie du protocole de couche 2 et appartient aux seulement aux traducteurs.</p>
 <p>Le traducteur écrit le message et le passe à sa secrétaire (interface &frac12;) pour transmission. de la même manière les secrétaires se sont entendues pour correspondre par email (protocole de couche 1).</p>
 <p>Quand le message parvient à l'autre secrétaire, il est transmis au traducteur local, qui le traduit en français et le transmet au deuxième philosophe.</p>
@@ -2834,25 +2834,25 @@
 <h2 id="trames-ethernet">Trames Ethernet</h2>
 <p>Les paquets IP ne peuvent pas transiter sur un réseau tel quel, ils vont eux aussi être encapsulés avant de pouvoir &laquo; voyager&raquo; sur le réseau. L'encapsulation des paquets IP produit ce que l'on appelle une trame. Il n'est pas question d'étudier en détail ce qu'est une trame, vous devez juste savoir qu'il existe de nombreux types de trames : ATM, token ring, PPP, Ethernet, Wifi... Nous allons uniquement évoquer la dernière : la trame Ethernet (en sachant que la trame Wifi ressemble beaucoup à la trame Ethernet).</p>
 <p>Nous avons vu que le paquet IP contient les adresses IP de l'émetteur et du récepteur :</p>
-<p><img alt="CapsuleTCPIP.png" src="../CapsuleTCPIP.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="CapsuleTCPIP.png" src="../CapsuleTCPIP.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <p>Le paquet IP étant encapsulé par la trame Ethernet, les adresses IP ne sont plus directement disponibles (il faut désencapsuler le paquet IP pour pouvoir lire ces adresses IP), nous allons donc trouver un autre type d'adresse qui permet d'identifier l'émetteur et le récepteur : l'adresse <strong>MAC</strong> (<em>Media Access Control</em>) aussi appelée adresse physique.</p>
-<p><img alt="Capsule_Ethernet.png" src="../Capsule_Ethernet.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="Capsule_Ethernet.png" src="../Capsule_Ethernet.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <p>Une adresse MAC est codée sur 6 octets,et est écrite traditionnellement hexadécimal, chaque octet étant séparés par 2 points (exemple d'adresse MAC : <code>00:E0:4C:68:02:11</code>).</p>
 <p>L'adresse MAC est liée au matériel, chaque carte réseau (Ethernet ou Wifi) possède sa propre adresse MAC, il n'existe pas dans le monde, 2 cartes réseau (Ethernet ou Wifi) qui possèdent la même adresse MAC. Les 3 premiers octets d'une adresse MAC (<code>00:E0:4C</code> dans l'exemple ci-dessus) désignent le constructeur du matériel, par exemple, <code>00:E0:4C</code> désigne le constructeur &laquo; Realtek semiconductor corp&raquo;.</p>
 <p>Au moment de l'encapsulation d'un paquet IP, l'ordinateur émetteur va utiliser un protocole nommé <strong>ARP</strong> (<em>Address Resolution Protocol</em>) qui va permettre de déterminer l'adresse MAC de l'ordinateur destinataire, en effectuant une requête de type <strong>broadcast</strong> (requête destinée à tous les ordinateurs du réseau) du type :  &laquo; j'aimerais connaitre l'adresse MAC de l'ordinateur ayant pour IP <code>XXX.XXX.XXX.XXX</code> &raquo;. Une fois qu'il a obtenu une réponse à cette requête ARP, l'ordinateur émetteur encapsule le paquet IP dans une trame Ethernet et envoie cette trame sur le réseau. </p>
 <h2 id="lencapsulation-tcp">L'encapsulation TCP</h2>
 <p>En fait, TCP effectue lui aussi une encapsulation, les données encapsulées par TCP peuvent être de plusieurs natures : requêtes et réponses HTTP, ou <strong>FTP</strong> (<em>File Transfer Protocol</em>), <strong>SMTP</strong> (<em>Send Message Transfert Protocol</em>), <strong>DNS</strong>, etc...</p>
 <p>En conservant l'exemple d'une requête HTTP, on a donc :</p>
-<p><img alt="CapsuleHTTP.png" src="../CapsuleHTTP.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="CapsuleHTTP.png" src="../CapsuleHTTP.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <h3 id="le-modele-des-couches-tcpip">Le modèle des couches TCP/IP</h3>
 <p>Le modèle TCP/IP est donc un modèle en couches :</p>
-<p><img alt="TCP_Modele.png" src="../TCP_Modele.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="TCP_Modele.png" src="../TCP_Modele.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <p>La couche du &laquo; dessous &raquo; encapsule la couche située &laquo; au dessus &raquo;.On nomme ce système de couche &laquo; <strong>modèle de couches TCP/IP</strong>&raquo; car ce modèle repose principalement sur TCP et IP.</p>
 <p>Il existe aussi un modèle théorique, dit <strong>modèle OSI</strong> (<em>Open System Interconnectioon</em>), qui est un modèle conçu à la demande de l'ISO comme une première étape vers la normalisation internationale des protocoles utilisés dans les diverses couches. Une description en est donnée dans la figure ci-dessous :</p>
-<p><img alt="Tanenbaum_OSI.png" src="../Tanenbaum_OSI.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="Tanenbaum_OSI.png" src="../Tanenbaum_OSI.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <h3 id="une-veritable-trame">Une véritable trame</h3>
 <p>Le logiciel libre <code>Wireshark</code> permet la capture et l'analyse de toutes les trames pasant par les diverses interfaces réseau d'un ordinateur. Voici une copie d'écran d'une capture :</p>
-<p><img alt="Wireshark.png" src="../Wireshark.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
+<p><img alt="Wireshark.png" src="../Wireshark.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson" /></p>
 <p>Voici les données présentes dans chaque onglet :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ethernet</label><label for="__tabbed_1_2">IP</label><label for="__tabbed_1_3">TCP</label><label for="__tabbed_1_4">HTTP</label></div>
 <div class="tabbed-content">
@@ -2974,18 +2974,18 @@
 <p>Le protocole de bit alterné est implémenté au niveau de la couche de liaison de données du modèle OSI (couche 2), il ne concerne donc pas les paquets, mais les <strong>trames</strong>.</p>
 <p>Le principe de ce protocole est simple, considérons 2 ordinateurs en réseau : un ordinateur A qui sera l'émetteur des trames et un ordinateur B qui sera le destinataire des trames. Au moment d'émettre une trame, A va ajouter à cette trame un bit (1 ou 0) appelé drapeau (<em>flag</em> en anglais). B va envoyer un accusé de réception (<em>acknowledge</em> en anglais souvent noté <strong>ACK</strong>) à destination de A dès qu'il a reçu une trame en provenance de A. À cet accusé de réception on associe aussi un bit drapeau (1 ou 0).</p>
 <p>La règle est relativement simple : la première trame envoyée par A aura pour drapeau 0, dès cette trame reçue par B, ce dernier va envoyer un accusé de réception avec le drapeau 1 (ce 1 signifie &laquo; la prochaine trame que A va m'envoyer devra avoir son drapeau à 1&raquo;). Dès que A reçoit l'accusé de réception avec le drapeau à 1, il envoie la 2ème trame avec un drapeau à 1, et ainsi de suite... </p>
-<p><img alt="Bit_Alterne_1.png" id="546d78;" margin:auto_display:block_background-color:="margin:auto;display:block;background-color:" src="../Bit_Alterne_1.png" style="&quot;width:50%;" /></p>
+<p><img alt="Bit_Alterne_1.png" id="d2dce0;" margin:auto_display:block_background-color:="margin:auto;display:block;background-color:" src="../Bit_Alterne_1.png" style="&quot;width:50%;" /></p>
 <p>Le système de drapeau est complété avec un système d'horloge côté émetteur. Un &laquo;chronomètre&raquo; est déclenché à chaque envoi de trame, si au bout d'un certain temps, l'émetteur n'a pas reçu un acquittement correct (avec le bon drapeau), la trame précédemment envoyée par l'émetteur est considérée comme perdue et est de nouveau envoyée. </p>
 <h3 id="exemples-derreur">Exemples d'erreur</h3>
 <ul>
 <li>
 <p>La trame est perdue :</p>
-<p><img alt="Bit_Alterne_2.png" id="546d78;" margin:auto_display:block_background-color:="margin:auto;display:block;background-color:" src="../Bit_Alterne_2.png" style="&quot;width:50%;" />)</p>
+<p><img alt="Bit_Alterne_2.png" id="d2dce0;" margin:auto_display:block_background-color:="margin:auto;display:block;background-color:" src="../Bit_Alterne_2.png" style="&quot;width:50%;" />)</p>
 <p>Au bout d'un certain temps (<code>TIME OUT</code>) A n'a pas reçu d'accusé de réception, la trame est considérée comme perdue, elle est donc renvoyée. </p>
 </li>
 <li>
 <p>L'accusé de réception est perdu :</p>
-<p><img alt="Bit_Alterne_3.png" id="546d78;" margin:auto_display:block_background-color:="margin:auto;display:block;background-color:" src="../Bit_Alterne_3.png" style="&quot;width:50%;" />)</p>
+<p><img alt="Bit_Alterne_3.png" id="d2dce0;" margin:auto_display:block_background-color:="margin:auto;display:block;background-color:" src="../Bit_Alterne_3.png" style="&quot;width:50%;" />)</p>
 <p>A ne reçoit pas d'accusé de réception avec le drapeau à 1, il renvoie donc la trame 1 avec le drapeau 0. B reçoit donc cette trame avec un drapeau à 0 alors qu'il attend une trame avec un drapeau à 1 (puisqu'il a envoyé un accusé de réception avec un drapeau 1), il "en déduit" que l'accusé de réception précédent n'est pas arrivé à destination : il ne tient pas compte de la trame reçue et renvoie l'accusé de réception avec le drapeau à 1. Ensuite, le processus peut se poursuivre normalement. </p>
 </li>
 </ul>

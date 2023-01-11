@@ -10,7 +10,7 @@
 
 	Dans le cas du web, le logiciel client est **le navigateu**r et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme `Apache` ou `NGinx`. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme **PHP** ou **Python**.
 
-	![ClientServeur.png](ClientServeur.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title=""}
+	![ClientServeur.png](ClientServeur.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""}
 
 
 *Pour ce TP, nous allons être dans une situation particulière : le logiciel client et le logiciel serveur seront sur la même machine.*
@@ -150,7 +150,7 @@ Pour cette dernière remarque, nous allons parler des {==**templates**==} (ou *g
 !!! abstract "MVC"
 	Nous parlons souvent de l'**architecture MVC **(ce n'est pas uniquement lié à Flask). Il s'agit d'un modèle distinguant plusieurs rôles précis d'une application, qui doivent être accomplis. Comme son nom l'indique, l'architecture {==Modèle-Vue-Contrôleur==} est composée de trois entités distinctes, chacune ayant son propre rôle à remplir. Voici un schéma qui résume cela :
 
-	![ShellFlask.png](ShellFlask.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title=""}
+	![ShellFlask.png](ShellFlask.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""}
 
 	Le modèle MVC permet de **bien organiser son code source**. Il va vous aider à savoir quels fichiers créer, mais surtout à définir leur rôle. Le but de MVC est justement de séparer la logique du code en trois parties que l'on retrouve dans des fichiers distincts :
 	

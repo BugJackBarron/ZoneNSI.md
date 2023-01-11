@@ -220,7 +220,7 @@ Qu'on peut analyser ainsi :
 !!! info "Le projet individuel"
     L'objectif est de constuire un ensemble de pages web permettant de sélectionner un rover, une caméra et une date ou un sol afin d'obtenir un carroussel des photos correspondantes, comme par exemple sur la capture d'écran suivante :
 
-    ![Exemple rover](Exemple_rover.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Exemple de page"}
+    ![Exemple rover](Exemple_rover.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Exemple de page"}
 
 
 

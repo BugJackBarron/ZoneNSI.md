@@ -90,37 +90,37 @@ Il existe une verion simplifiée, développée par Nigel Horspool en 1980, que n
 	
 	=== "1"
 		
-		![BMH1.png](BMH1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 1"}
+		![BMH1.png](BMH1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 1"}
 		
 		Le premier caractère du motif est placé à l'indice `i=0`. On compare alors le dernier caractère du motif, d'indice `j=2`, avec celui de la chaine d'indice `i+j`, soit 2. Ils sont différents, et le caractère de la chaîne est `R`, qui n'est pas présent dans le motif. On va donc décaler le motif de sa propre longueur, soit 3, vers la droite. Ce qui signifie que son premier caractère sera en `i = i+3`.
 		
 	=== "2"
 		
-		![BMH2.png](BMH2.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 2"}
+		![BMH2.png](BMH2.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 2"}
 		
 		Après l'étape précédente, on a `i=3` et `j=2`, et on compare le dernier caractère du motif, avec celui de la chaîne d'indice `i+j`, soit 5. Ils diffèrent, mais le caractère `A` en position 5 de la chaîne est présent dans le motif `DAB`. On va décaler le motif d'un rang, car `A` est l'avant dernier caractère de `DAB`. Ce qui signifie que son premier caractère sera en `i = i+1`.
 		
 	=== "3"
 		
-		![BMH3.png](BMH3.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 3"}
+		![BMH3.png](BMH3.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 3"}
 		
 		Après l'étape précédente, on a `i=4` et `j=2`, et on compare le dernier caractère du motif, avec celui de la chaîne d'indice `i+j`, soit 6. Ils diffèrent, mais le caractère `D` en position 6 de la chaîne est présent dans le motif `DAB`. On va décaler le motif d'un rang, car `D` est l'avant-avant-dernier caractère de `DAB`. Ce qui signifie que son premier caractère sera en `i = i+2`.
 	
 	=== "4"
 		
-		![BMH4.png](BMH4.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 4"}
+		![BMH4.png](BMH4.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 4"}
 		
 		Après l'étape précédente, on a `i=6` et `j=2`, et on compare le dernier caractère du motif, avec celui de la chaîne d'indice `i+j`, soit 8. Ils sont identiques, donc on ne déplace pas le motif, mais on va le remonter vers la gauche, en décrémentant de 1 la valeur de `j`.
 		
 	=== "5"
 		
-		![BMH5.png](BMH5.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 5"}
+		![BMH5.png](BMH5.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 5"}
 		
 		Après l'étape précédente, on a `i=6` et `j=1`, et on compare l'avant-dernier caractère du motif , avec celui de la chaîne d'indice `i+j`, soit 7. Ils sont identiques, donc on ne déplace pas le motif, mais on va le remonter vers la gauche, en décrémentant de 1 la valeur de `j`.
 		
 	=== "6"
 		
-		![BMH6.png](BMH6.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" title="Boyer-Moore_Horspool, Etape 6"}
+		![BMH6.png](BMH6.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Boyer-Moore_Horspool, Etape 6"}
 		
 		Après l'étape précédente, on a `i=6` et `j=0`, et on compare le premier caractère du motif , avec celui de la chaîne d'indice `i+j`, soit 6. Ils sont identiques, donc on ne déplace pas le motif, mais on va le remonter vers la gauche, en décrémentant de 1 la valeur de `j`. Mais `j` devenant négatif, c'est qu'on a fini la comparaison, et le motif a été trouvé. Il a donc suffit de faire 6 comparaisons pour trouver le motif, alors que 9 auraient été nécessaires avec la méthode naïve.
 

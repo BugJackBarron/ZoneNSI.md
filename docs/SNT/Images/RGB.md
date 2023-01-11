@@ -60,7 +60,7 @@
 	Andy Warhol est un artiste américain, né le 6 août 1928 à Pittsburgh, en Pennsylvanie, et mort le 22 février 1987 à New York. Il est l'un des principaux représentants du pop art. Il est particulièrement célèbre pour certaines de ses oeuvres mettant en scène l'actrice Marilyn Monroe, le visage de cette dernière étant reproduit plusieurs fois avec différentes couleurs, et les portraits étant juxtaposés.
 
 
-	![AndyWarhol_Shots.jpg](AndyWarhol_Shots.jpg){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+	![AndyWarhol_Shots.jpg](AndyWarhol_Shots.jpg){: style="width:30%; margin:auto;display:block;;background-color: #d2dce0;"}
 	
 
 	De nombreux artistes du pop-art,du street-art et même de la culture geek ont repris cette oeuvre et l'ont détournée avec leurs propres personnages.
@@ -131,16 +131,16 @@ N'étant pas (encore) des artistes émérites, nous nous contenterons donc de co
 	!!! info "Postériser"
 		Pour postériser à la manière d'Andy Warhol notre image, nous devrons copier dans la matrice `poster` les images manquantes vertes et bleues. Pour cela il faut comprendre la façon dont les matrices devront s'organiser, et pour cela iol faut comprendre le système de coordonnées des images :
 		
-		![posterisation.png](posterisation.png){: style="width:50%; margin:auto;display:block;;background-color: #546d78;"}
+		![posterisation.png](posterisation.png){: style="width:50%; margin:auto;display:block;;background-color: #d2dce0;"}
 	
 6. Modifier la ligne 69 puis les lignes situées après la ligne 77 pour obtenir une postérisation telle que celle-ci :
 
-	![StormPoster.png](StormPoster.png){: style="width:30%; margin:auto;display:block;;background-color: #546d78;"}
+	![StormPoster.png](StormPoster.png){: style="width:30%; margin:auto;display:block;;background-color: #d2dce0;"}
 
 
 7. Vous pouvez désormais choisir votre propre image, et la postériser à la manière d'Andy Warhol. Vous pouvez même  créer des images telles que celles-ci, sans modifier beaucoup le code :
 
-	![StormPosterLigne.png](StormPosterLigne.png){: style="width:60%; margin:auto;display:block;;background-color: #546d78;"}
+	![StormPosterLigne.png](StormPosterLigne.png){: style="width:60%; margin:auto;display:block;;background-color: #d2dce0;"}
 
 
 ## Autres transformations

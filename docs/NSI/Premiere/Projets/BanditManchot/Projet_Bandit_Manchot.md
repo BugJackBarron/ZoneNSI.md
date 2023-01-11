@@ -19,7 +19,7 @@ L'objectif est de simuler une partie de machine à sous de casino de type Bandit
 
 !!! example "Exemple de réalisation"
 
-    ![Gif Manchot](./projet_Bandit_Manchot.gif){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+    ![Gif Manchot](./projet_Bandit_Manchot.gif){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" }
 
 !!! tips "Table des gains"
 

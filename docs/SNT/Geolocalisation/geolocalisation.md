@@ -18,12 +18,12 @@ J'ai pris cette photo lors de mes dernières vacances. Pouvez-vous dire précise
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 				
-	![latitude.png](latitude.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![latitude.png](latitude.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 				
 	</div>
 	<div style="display : inline; width : 50%;">
 				
-	![longitude.png](longitude.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}				
+	![longitude.png](longitude.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}				
 				
 	</div>
 	</div>
@@ -68,7 +68,7 @@ Pour comprendre le principe de localisation utilisé par les systèmes tels que 
 		
 		*Vous pouvez travailler directement sur la feuille, ou bien importer l'image [suivante](Plan_Scale.png){:target="_blank"} dans le logiciel `GeoGebra`.*
 
-		![Plan_Scale.png](Plan_Scale.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![Plan_Scale.png](Plan_Scale.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 	=== "Réponse"
 		A venir !

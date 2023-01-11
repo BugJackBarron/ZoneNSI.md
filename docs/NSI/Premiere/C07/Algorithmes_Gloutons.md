@@ -32,7 +32,7 @@
 
 	On parle dans ce cas d'une {==**complexité exponentielle**==} (en temps), ce qu'on peut voir dans le graphique suivant (exécuté sur mon ordinateur personnel).
 	
-	![KP_Naif.png](KP_Naif.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Temps d'exécution selon le nombre d'objets, algorithme KP Naif"}
+	![KP_Naif.png](KP_Naif.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution selon le nombre d'objets, algorithme KP Naif"}
 
 	Les algorithmes à complexité exponentielle ne sont pas efficaces pour résoudre des problèmes, le temps de calcul devient beaucoup trop important quand $n$ devient très grand. 
 
@@ -115,12 +115,12 @@
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![KP_Glouton.png](KP_Glouton.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;" title="Temps d'exécution, algorithme glouton"}
+	![KP_Glouton.png](KP_Glouton.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution, algorithme glouton"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
 
-	![KP_Compare.png](KP_Compare.png){: style="width:73%; margin:auto;display:block;background-color: #546d78;" title="Comparaison des temps d'exécution naïf/glouton"}
+	![KP_Compare.png](KP_Compare.png){: style="width:73%; margin:auto;display:block;background-color: #d2dce0;" title="Comparaison des temps d'exécution naïf/glouton"}
 
 	</div>
 	</div>

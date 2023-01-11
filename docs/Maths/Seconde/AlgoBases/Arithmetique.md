@@ -57,7 +57,7 @@ def diviseurs(n) :
 	
 	Par exemple la liste Python `L = [ 12 , 32 , 44 , -5 , 7]` correspond au schéma suivant :
 	
-	![Arith_1.png](Arith_1.png){: style="width:30%;margin:auto;display:block;background-color: #546d78;"}
+	![Arith_1.png](Arith_1.png){: style="width:30%;margin:auto;display:block;background-color: #d2dce0;"}
 
 	et il est possible d'accéder aux méthodes suivantes :
 	

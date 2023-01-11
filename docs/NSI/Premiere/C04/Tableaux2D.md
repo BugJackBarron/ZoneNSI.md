@@ -6,7 +6,7 @@
 !!! abstract "Matrices"
 	En mathématiques, on appelle {==**matrice**==} un tableau $M$ de nombres $a_{i,j}$ où $i$ est le numéro de ligne et $j$ le numéro de colonne. On parlera de matrice de dimension $m\times n$ si la matrice possède $m$ lignes et $n$ colonnes.
  
- 	![Matrice.png](Matrice.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
+ 	![Matrice.png](Matrice.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Les matrices sont des éléments esentiels de l'algèbre linéaire, et elles sont un outils efficace dans beaucoup de problèmes aussi bien mathématiques qu'informatique.
  

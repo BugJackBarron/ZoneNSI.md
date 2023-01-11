@@ -56,7 +56,7 @@ Créer un  réseau est donc une chose relativement aisée. Mais comment relier d
 
 	Avec les données de l'exercice précédent :
 	
-	![P2_Filius1.png](P2_Filius1.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+	![P2_Filius1.png](P2_Filius1.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 
 ## Le routeur : un appareil pour relier les réseaux
@@ -102,7 +102,7 @@ Nous avons vu comment relier deux réseaux différents. Internet fonctionne donc
 	Dans `Filius` ouvrez le fichier `snt_sim_res.fls` situé dans les documents en consultations de votre répertoire de classe.
 	Ce fichier représente une petite portion d'Internet simplifiée à l'extrême :
 	
-	![N2_DiagRes.png](N2_DiagRes.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+	![N2_DiagRes.png](N2_DiagRes.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Il contient :
 

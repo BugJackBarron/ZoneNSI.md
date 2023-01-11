@@ -73,13 +73,13 @@ Pour combiner ainsi pluseiurs conditions ensembles, on va utiliser la logique bo
 
 * `ET` qui renverra `Vrai` si les deux conditions sont simultanément `Vrai`, comme présenté dans la ==**table de vérité**== ci-dessous :
 
-    ![table Verite ET](Table_verite_ET.png){: style="width:10%; margin:auto;display:block;background-color: #546d78;"}
+    ![table Verite ET](Table_verite_ET.png){: style="width:10%; margin:auto;display:block;background-color: #d2dce0;"}
 
     En python on utilisera l'opérateur `and`.
 
 * `OU` qui renverra `Vrai` si au moins une des deux conditions est `Vrai`, comme présenté dans la ==**table de vérité**== ci-dessous :
 
-    ![table Verite OU](Table_verite_OU.png){: style="width:10%; margin:auto;display:block;background-color: #546d78;"}
+    ![table Verite OU](Table_verite_OU.png){: style="width:10%; margin:auto;display:block;background-color: #d2dce0;"}
 
     En python on utilisera l'opérateur `or`.
 

@@ -2888,7 +2888,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Arbre</label><label for="__tabbed_4_2">Code</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><img alt="P3_ABR1.png" src="../P3_ABR1.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_ABR1.png" src="../P3_ABR1.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span> <span class="p">:</span>
@@ -3145,11 +3145,11 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 <li>La clé n'est pas présente dans l'ABR, donc il n'y a rien à faire.</li>
 <li>
 <p>La clé est celle d'une feuille. Dans ce cas la suppression est simple : on passe à <code>None</code> le fils correspondant du parent, ce qui a pour effet de supprimer le noeud.</p>
-<p><img alt="P3_ABR2.png" src="../P3_ABR2.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_ABR2.png" src="../P3_ABR2.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>La clé est celle d'un noeud possédant un seul fils. Dans ce cas, on remplace le noeud supprimé par son fils, ce qui conserve les propriétés de l'ABR.</p>
-<p><img alt="P3_ABR3.png" src="../P3_ABR3.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_ABR3.png" src="../P3_ABR3.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>Si la clé possède deux fils, alors il y a deux possibilités :</p>
@@ -3157,7 +3157,7 @@ auquel il faudra ajouter le cas échéant la représentation du sous-arbre gauch
 <li>on remplace le noeud par le minimum du sous-arbre droit, qui est le succeseur du noeud supprimé ;</li>
 <li>ou on remplace par le maximum du sous-arbre gauche, qui est le prédecesseur du noeud supprimé.</li>
 </ul>
-<p><img alt="P3_ABR4.png" src="../P3_ABR4.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="P3_ABR4.png" src="../P3_ABR4.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 </ol>
 <p>Pour réaliser une telle implémentation, il faut donc faire un choix, et nous choisissons de remplacer le noeud supprimé par le minium à droite. Pour simplifier la lecture du code, on séparera dans la classe <code>Node</code> en différentes méthodes :</p>

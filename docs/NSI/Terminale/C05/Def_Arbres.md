@@ -34,7 +34,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 !!! example "Exemples et contre-exemples d'arbres binaires"
 
 	<p align="center">
-	![Extrait Wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/02/Nary_to_binary_tree_conversion.png){:	style="width:30%; background-color: #546d78;"}
+	![Extrait Wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/02/Nary_to_binary_tree_conversion.png){:	style="width:30%; background-color: #d2dce0;"}
 	</p>
 	
 	L'arbre de gauche n'est pas un arbre binaire : 6 sous-arbres sont-rattachés à $A$, les sous-arbres de racines $B,C,D,E,F,G$.
@@ -47,7 +47,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 	On considère l'arbre binaire ci-dessous :
 	
 	<p align="center">
-	![Arbre 4 Noeuds](P1_Arbre1.png){: style="width:30%; background-color: #546d78;"}
+	![Arbre 4 Noeuds](P1_Arbre1.png){: style="width:30%; background-color: #d2dce0;"}
 	</p>
 	
 	* La {==**taille de l'arbre**==} est $4$, c'est le nombre de noeuds qui le compose.
@@ -77,13 +77,13 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		<h6>Arbre 1</h6>
 		
 		
-		![Exo arbre 1](P1_Arbre2.png){: style="width:90%; background-color: #546d78;"}
+		![Exo arbre 1](P1_Arbre2.png){: style="width:90%; background-color: #d2dce0;"}
 			
 		</div>
 		<div class="column2">
 		<h6>Arbre 2</h6>
 		
-		![Exo arbre 2](P1_Arbre3.png){: style="width:90%; background-color: #546d78;"}
+		![Exo arbre 2](P1_Arbre3.png){: style="width:90%; background-color: #d2dce0;"}
 			
 		</div>		 
 		</div>
@@ -107,9 +107,9 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		
 	=== "Solution"
 	
-		![Arbres 3 Noeuds](P1_Arbres_Taille3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+		![Arbres 3 Noeuds](P1_Arbres_Taille3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 		
-		![Arbres 4 Noeuds](P1_Arbres_Taille4.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+		![Arbres 4 Noeuds](P1_Arbres_Taille4.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 !!! question "Exercice"
 	
@@ -152,7 +152,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		Dans le cas d'un arbre ayant à chaque noeud au moins un de ses sous-arbre vide :
 				
 		<p align="center">
-		![Démo arbre 1](P1_Arbre4.png){: style="width:20%; background-color: #546d78;"}
+		![Démo arbre 1](P1_Arbre4.png){: style="width:20%; background-color: #d2dce0;"}
 		</p>
 		
 		Il est évident que dans ce cas la hauteur de l'arbre est égale à sa taille, d'où $h\leqslant N$.
@@ -161,7 +161,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		dans le cas d'un {==**arbre binaire parfait**==}, c'est-à-dire dont toutes les feuilles sont situées à la même distance de la racine :
 		
 		<p align="center">
-		![Démo arbre 2](P1_Arbre5.png){: style="width:30%; background-color: #546d78;"}
+		![Démo arbre 2](P1_Arbre5.png){: style="width:30%; background-color: #d2dce0;"}
 		</p>
 		
 		La taille est alors égale à 
@@ -207,7 +207,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	On considère l'arbre binaire ci-dessous :
 		
 	<p align="center">
-	![exemple arbre 1](P1_Arbre1.png){: style="width:30%; background-color: #546d78;"}
+	![exemple arbre 1](P1_Arbre1.png){: style="width:30%; background-color: #d2dce0;"}
 	</p>
 	
 	Une représentation en Python de cet arbre est alors :
@@ -230,13 +230,13 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		<h6>Arbre 1</h6>
 		
 		
-		![Exo arbre 1](P1_Arbre2.png){: style="width:90%; background-color: #546d78;"}
+		![Exo arbre 1](P1_Arbre2.png){: style="width:90%; background-color: #d2dce0;"}
 			
 		</div>
 		<div class="column2">
 		<h6>Arbre 2</h6>
 		
-		![Exo arbre 2](P1_Arbre3.png){: style="width:70%; background-color: #546d78;"}
+		![Exo arbre 2](P1_Arbre3.png){: style="width:70%; background-color: #d2dce0;"}
 			
 		</div>		 
 		</div>
@@ -343,7 +343,7 @@ Pour utiliser un arbre, il faut le **parcourir**. Or il existe plusieurs ordres 
 différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veux **afficher les différents noeuds** :
 
 
-![Arbre exemple parcours](P1_Arbre6.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+![Arbre exemple parcours](P1_Arbre6.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 
@@ -365,7 +365,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 	Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :
 	
-	![Arbre exemple parcours](P1_Arbre6_prefixe.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+	![Arbre exemple parcours](P1_Arbre6_prefixe.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	L'ordre d'affichage des noeuds est donc : 1, 2, 4, 5, 8, 9, 3, 6, 10, 7, 11.
 
@@ -385,7 +385,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 	Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :
 	
-	![Arbre exemple parcours](P1_Arbre6_infixe.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+	![Arbre exemple parcours](P1_Arbre6_infixe.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	L'ordre d'affichage des noeuds est donc :  4, 2, 8, 5, 9, 1, 10, 6, 3, 7, 11.
 
@@ -405,7 +405,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 	Sur l'arbre ci-dessus, on a donc parcouru dans l'ordre suivant :
 	
-	![Arbre exemple parcours](P1_Arbre6_suffixe.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+	![Arbre exemple parcours](P1_Arbre6_suffixe.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	L'ordre d'affichage des noeuds est donc :  4, 8, 9, 5, 2, 10, 6, 11, 7, 3, 1.
 
@@ -424,13 +424,13 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 		<div class="column2">
 		<h6>Arbre 1</h6>		
 		
-		![Exo arbre 1](P1_Arbre7.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+		![Exo arbre 1](P1_Arbre7.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 		</div>
 		<div class="column2">
 		<h6>Arbre 2</h6>
 		
-		![Exo arbre 2](P1_Arbre8.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+		![Exo arbre 2](P1_Arbre8.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 		</div>		 
 		</div>
@@ -542,7 +542,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 Le {==**parcours en largeur**==} d'un arbre consiste à parcourir **chaque niveau** de l'arbre de gauche à droite, en partant de la racine.
 
-![Arbre exemple parcours](P1_Arbre6_largeur.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+![Arbre exemple parcours](P1_Arbre6_largeur.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 
 

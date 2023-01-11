@@ -2856,10 +2856,10 @@
 <li>Entre deux interfaces internes, le routeur de plus bas indice possède la première adresse et le routeur de dernier indice la seconde adresse : par exemple entre R2 et R5, les interfaces sont connectées par le réseau <code>10.1.4.0/30</code>, donc l'interface de R2 est <code>10.1.4.1</code> et celle de R5 est <code>10.1.4.2</code> ;</li>
 <li>tous les routeurs suivent le protocole RIP.</li>
 </ul>
-<p><img alt="RoutageManuel6R.png" src="../RoutageManuel6R.png" style="width:100%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RoutageManuel6R.png" src="../RoutageManuel6R.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <h4 id="initialisation">Initialisation</h4>
 <p>Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables de routages pour les routeurs R1, R2 et R3 sont donc :</p>
-<p><img alt="RIP1.png" src="../RIP1.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP1.png" src="../RIP1.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <div class="admonition info">
 <p class="admonition-title">Principe de l'algorithme</p>
 <p>Lorsqu'un routeur reçoit une nouvelle route de la part d'un voisin, 4 cas sont envisageables :</p>
@@ -2887,30 +2887,30 @@
 <ul>
 <li>
 <p>R1 reçoit les routes de R2. Sa table de routage devient :</p>
-<p><img alt="RIP2.png" src="../RIP2.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP2.png" src="../RIP2.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>R3 reçoit les routes de R2, et celles de R5. On peut constater qu'on peut atteindre de deux manière différentes les routeurs R2 et R5, car R3 ne réalise pas que les interfaces <code>10.1.2.1</code> et <code>10.1.4.1</code> sont toutes les deux deux interfaces de R2. De même il sait rejoindre de deux manière ayant la même métrique le réseau <code>10.1.4.0/30</code>, donc il garde la première arrivée (ici on suppose d'il a reçu les informations de R2 avant celles de R5)</p>
-<p><img alt="RIP3.png" src="../RIP3.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP3.png" src="../RIP3.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>R2 reçoit les routes de R1, puis de R3, mais aussi de R4 et de R5 :</p>
-<p><img alt="RIP4.png" src="../RIP4.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP4.png" src="../RIP4.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 </ul>
 <h4 id="etape-2">Etape 2</h4>
 <ul>
 <li>
 <p>R1 reçoit les nouvelles routes de R2 :</p>
-<p><img alt="RIP5.png" src="../RIP5.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP5.png" src="../RIP5.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>R2 reçoit les nouvelles routes de R3 et de R5 :</p>
-<p><img alt="RIP6.png" src="../RIP6.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP6.png" src="../RIP6.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>R2 reçoit les nouvelles routes de R1 (qui ne lui apportent rien), de R3, de R4, de R5.... Très rapidement, la construction de ces routes devient absolument ingérable à la main... Mais voici quand même la table de routage :</p>
-<p><img alt="RIP7.png" src="../RIP7.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RIP7.png" src="../RIP7.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 </ul>
 <h4 id="etape-3">Etape 3</h4>

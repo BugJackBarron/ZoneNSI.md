@@ -24,7 +24,7 @@ Mais souvent les algorithmes sont répétitifs, longs à faire à la main, et n�
 		!!! info inline end 
 			On rappelle que la division euclidienne est la dicision classique des entiers, avec quotient et reste :
 
-			![div_euclidienne.png](div_euclidienne.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+			![div_euclidienne.png](div_euclidienne.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 		On considère l'algorithme suivant :
 

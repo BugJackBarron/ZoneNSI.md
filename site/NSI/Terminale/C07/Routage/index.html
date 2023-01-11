@@ -2811,7 +2811,7 @@
 <h2 id="chacun-sa-route">Chacun sa route...</h2>
 <h3 id="la-commande-ping">La commande <code>ping</code></h3>
 <p>Nous connaissons la commande <code>ping</code> qui permet d'envoyer des paquets <code>ICMP</code> (<em>Internet Control Message Protocol</em>) à une adresse de destination. Le but de ce protocole <code>ICMP</code> est d'échanger des informations d'états et des messages d'erreurs. Par exemple, le commande <code>ping</code> sur l'adresse <code>8.8.8.8</code> (DNS de Google), donne depuis chez moi :</p>
-<p><img alt="Ping1.png" src="../Ping1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Ping1.png" src="../Ping1.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Parmi les informations données par la commande <code>ping</code>, on a bien entendu le temps d'aller-retour entre l'ordinateur émetteur et l'ordinateur cible, le nombre de paquets envoyés et reçus, mais aussi une information dont nous n'avons pas encore parlé : le <code>TTL</code> (<em>Time To Live</em> - attention seulement en IPV4).</p>
 <div class="admonition abstract">
 <p class="admonition-title">TTL</p>
@@ -2867,7 +2867,7 @@ Cette possibilité existe aussi sous windows mais :
 <li>On continue ainsi en augmentant le <code>TTL</code>.</li>
 </ul>
 <p>La commande permettant d'appliquer cette méthode est <code>tracert</code> sous windows (<code>traceroute</code>sous Linux) :</p>
-<p><img alt="Tracert.png" src="../Tracert.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Tracert.png" src="../Tracert.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>On constate ici qu'on a bien un passage par 8 machines (7 routeurs plus mon propre PC) :</p>
 <ul>
 <li>le premier routeur d'ip <code>192.168.1.254</code> (adresse classique des passerelles chez Free, c'est-à-dire de ma box);</li>
@@ -2907,7 +2907,7 @@ Cette possibilité existe aussi sous windows mais :
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p>Considérons une machine d'IP <code>194.152.20.12</code>, qui correspond donc à la suite binaire <code>11000010.10011000.00010100.00001100</code>, et de  masque '157.132.140.128' soit la suite binaire <code>10011101.10000100.10001100.10000000</code>. L'opération logique <code>ET</code> entre ces deux suites donne :</p>
-<p><img alt="masqueET.png" src="../masqueET.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="masqueET.png" src="../masqueET.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Soit une adresse réseau <code>128.128.4.0</code>.</p>
 </div>
 <p>Historiquement, le masque de sous-réseau pouvait être une suite quelconque de 0 et de 1, comme dans l'exemple précédent. Mais ceci n'est absolument pas pratique !</p>
@@ -2951,7 +2951,7 @@ Cette possibilité existe aussi sous windows mais :
 </details>
 <h3 id="un-exemple-avec-routage-manuel-sur-3-routeurs">Un exemple avec routage manuel sur 3 routeurs</h3>
 <p>On considère les réseaux suivants dans le logiciel <code>Filius</code>, pour lesquels les routeurs R1, R2 et R3 <strong>ne sont pas en routage automatique</strong>.</p>
-<p><img alt="RoutageManuel3R.png" src="../RoutageManuel3R.png" style="width:100%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RoutageManuel3R.png" src="../RoutageManuel3R.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <ul>
 <li>Les routeurs R1 et R3 sont appelés <mark class="critic"><strong>routeurs d'accès</strong></mark>, car ils sont en bordure de réseaux.</li>
 <li>Le routeur R2 est un <mark class="critic"><strong>routeur interne</strong></mark>.</li>
@@ -2967,7 +2967,7 @@ Cette possibilité existe aussi sous windows mais :
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Voici la table de routage actuelle du routeur R1 :</p>
-<p><img alt="TR_R1.png" src="../TR_R1.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="TR_R1.png" src="../TR_R1.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <ol>
 <li>Quels sont les champs de cette table ?</li>
 <li>Chercher sur le web la signification informatique de <mark class="critic"><strong>loopback</strong></mark> (ou <strong>rebouclage</strong>).</li>
@@ -2987,7 +2987,7 @@ Cette possibilité existe aussi sous windows mais :
 </li>
 <li>
 <p>Nous allons modifier la <mark class="critic"><strong>topologie</strong></mark> du réseau, en ajoutant un  routeur R4 et un portable P3 de la manière suivante (le portable P1 et le routeur R1 sont inchangés) :</p>
-<p><img alt="RoutageManuel4R.png" src="../RoutageManuel4R.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RoutageManuel4R.png" src="../RoutageManuel4R.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <div class="admonition tips">
 <p class="admonition-title">Tips</p>
 <p>Si vous êtes à cours de prises réseaux sur certains routeurs, vous pouvez en ajouter de nouvelles via le bouton <code>Gérer les connexions</code></p>
@@ -3005,7 +3005,7 @@ Cette possibilité existe aussi sous windows mais :
 <div class="admonition info">
 <p class="admonition-title">Routage manuel</p>
 <p>Même pour des réseaux de petites taille, il est difficile de maintenir des tables de routages manuellement. Dès que le nombre de routeurs internes augmente, arrivent d'autres questions :</p>
-<p><img alt="RoutageManuel6R.png" src="../RoutageManuel6R.png" style="width:100%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="RoutageManuel6R.png" src="../RoutageManuel6R.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Dans une situation comme celle-ci, quelle route est à privilégier pour relier le client au serveur ?</p>
 <ul>
 <li><code>R1 -&gt; R2 -&gt; R3 -&gt; R5 -&gt; R6</code></li>

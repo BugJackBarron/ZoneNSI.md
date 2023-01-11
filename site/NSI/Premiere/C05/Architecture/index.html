@@ -2865,7 +2865,7 @@
 <h2 id="le-modele-de-von-neumann">Le modèle de von Neumann</h2>
 <h3 id="le-principe">Le principe</h3>
 <p><mark class="critic"><strong>John Von Neumann</strong></mark> (1903-1957) est un ingénieur, mathématicien et physicien  américano-hongrois.Il a participé au projet Manhattan (première bombe atomique) et à l'ENIAC. Son nom reste attaché à un modèle qu'il propose en 1944,  modèle d'architecture novateur qui sert toujours de base à nos architectures actuelles.</p>
-<p><img alt="von_Neuman.jpg" src="../von_Neuman.jpg" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="John Von Neumannn" /></p>
+<p><img alt="von_Neuman.jpg" src="../von_Neuman.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="John Von Neumannn" /></p>
 <p>Le <mark class="critic"><strong>modèle de von Neumann</strong></mark> précise les 4 composants essentiels d'un microprocesseur ainsi que les interactions entre ces différents composants. Ces composants sont les suivants :</p>
 <ul>
 <li><strong>l'unité de commande</strong> : contrôle la séquence d'instructions ;</li>
@@ -2873,7 +2873,7 @@
 <li><strong>la mémoire</strong> : contient les données <em>et les programmes</em> ;</li>
 <li>l'unité d'entrée et sortie.</li>
 </ul>
-<p><img alt="Modele_von_Neuman.png" src="../Modele_von_Neuman.png" style="width:50%; margin:auto;display:block;background-color: #546d78;" title="Modèle de John Von Neumannn" /></p>
+<p><img alt="Modele_von_Neuman.png" src="../Modele_von_Neuman.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="Modèle de John Von Neumannn" /></p>
 <p>Cette architecture est bien entendu une <em>architecture théorique</em>. Elle doit être complétée par un certain nombre d'autres sous-structures pour être effectivement fonctionnelle. On distingue entre autres :</p>
 <ul>
 <li>Les <strong>bus</strong> sont les liaisons entre les différents éléments de l'architecture (mémoire, ALU, E/S,...).</li>
@@ -2882,9 +2882,9 @@
 <h3 id="cadence-dun-processeur">Cadence d'un processeur</h3>
 <p>La vitesse d'un processeur est exprimée en GigaHertz (GHz). Elle exprime le <em>nombre d'opérations que peut faire le processeur en une seconde</em>. Ainsi, un processeur à <strong>3 GigaHerz</strong> effectue <strong>3 milliards d'opérations à la seconde</strong>, c'est-à-dire 3 milliards de cycles par secondes. </p>
 <p>L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'<strong>augmentation du nombre de transistors</strong> dans les processeurs. Gordon E. Moore énonca en <span class="arithmatex">\(1965\)</span> une loi emprique prédisant un doublement du nombre de processeurs tous les deux ans.</p>
-<p><img alt="Loi de Moore" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Loi de Moore, image Wikipedia" /></p>
+<p><img alt="Loi de Moore" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Loi de Moore, image Wikipedia" /></p>
 <p>Mais cette augmentation génère une chaleur très importante au niveau processeur, et la dissipation de cette chaleur est rapidement devenue un problème. Depuis <span class="arithmatex">\(2005\)</span> environ, les fabricants se sont plutôt tourné vers une <strong>augmentation du nombre de cœurs</strong> dans leurs processeurs, en comptant sur le <mark class="critic"><strong>parallélisme</strong></mark>(le fait de pouvoir gérer des instructyions en simultané sur plusieurs coeurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de <span class="arithmatex">\(3,8\)</span> GHz.</p>
-<p><img alt="Frequence.png" src="../Frequence.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Frequence des processeurs" /></p>
+<p><img alt="Frequence.png" src="../Frequence.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Frequence des processeurs" /></p>
 <h3 id="cycles-dinstructions-et-parallelisme">Cycles d'instructions et parallélisme</h3>
 <p>Dans un processeur, 5 étapes sont nécessaires pour traiter une instruction. Chacune de ces 5 étapes est exécutée :</p>
 <ul>
@@ -2895,20 +2895,20 @@
 <li><strong>WB</strong> (<em>Write Back</em>) : stocke le résultat dans un registre. La source de ce résultat peut être la mémoire (suite à une instruction LOAD), l'unité de calcul (suite à un calcul à l'étape EX) ou bien un registre (cas d'une instruction MOV).</li>
 </ul>
 <p>En supposant que chaque étape met 1 cycle d'horloge pour s'exécuter, il faut normalement 5 cycles pour exécuter une instruction, 15 pour 3 instructions : </p>
-<p><img alt="3_cycles.png" src="../3_cycles.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="3 instructions" /></p>
+<p><img alt="3_cycles.png" src="../3_cycles.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="3 instructions" /></p>
 <p>Il est cependant possible d'améliorer ce système, notamment par l'utilisation de <strong>pipelines</strong> dans des processeurs dits <em>superscalaires</em>. Si plusieurs opérations <strong>d'un même programme sont indépendantes</strong>, alors le processeur peut contenir plusieurs instructions, chacune à une étape différente. Le pipeline ci-dessous est le <em>Classic RISC pipeline</em>, créé par David Patterson, inventeur des processeurs RISC et du concept de pipeline, et mis en oeuvre dès 1961 par IBM :</p>
-<p><img alt="Pipeline.png" src="../Pipeline.png" style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Pipeline" /></p>
+<p><img alt="Pipeline.png" src="../Pipeline.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Pipeline" /></p>
 <p>Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités, et les 5 opérations ont lieu en même temps.</p>
 <h3 id="levolution-du-modele-de-von-neumann">L'évolution du modèle de von Neumann</h3>
 <p>Même si le modèle de von Neumann reste d'actualité, il a subi quelques évolutions récemment :</p>
-<p><img alt="Evolution_von_Neumann.png" src="../Evolution_von_Neumann.png" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Evolution du modèle de Von Neumann" /></p>
+<p><img alt="Evolution_von_Neumann.png" src="../Evolution_von_Neumann.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Evolution du modèle de Von Neumann" /></p>
 <ul>
 <li>Les <strong>Entrée-sorties</strong> sont contrôlées par des processeurs autonomes.</li>
 <li>Les CPU sont <strong>multiprocesseurs</strong>, soit par unités séparés soit par multiples coeurs dans une même puce. On a ainsi une augmentation de la puissance sans augmenter la vitesse des processeurs. </li>
 <li>La <strong>mémoire</strong> est  au coeur du système, ce qui implique de plus en plus de parallélisme.</li>
 </ul>
 <p>On peut voir cette évolution sur les processeurs eux-mêmes :</p>
-<p><img alt="Intel_4004.jpg" src="../Intel_4004.jpg" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Intel 4004" /></p>
+<p><img alt="Intel_4004.jpg" src="../Intel_4004.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Intel 4004" /></p>
 <table>
 <thead>
 <tr>
@@ -2929,7 +2929,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Intel_808.jpg" src="../Intel_8080.jpg" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Intel 8080" /></p>
+<p><img alt="Intel_808.jpg" src="../Intel_8080.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Intel 8080" /></p>
 <table>
 <thead>
 <tr>
@@ -2950,7 +2950,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Motorola 68060" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/KL_Motorola_MC68060.jpg/330px-KL_Motorola_MC68060.jpg" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Motorola 68060" /></p>
+<p><img alt="Motorola 68060" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/KL_Motorola_MC68060.jpg/330px-KL_Motorola_MC68060.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Motorola 68060" /></p>
 <table>
 <thead>
 <tr>
@@ -2971,7 +2971,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="PowerPC_970FX.jpg" src="../PowerPC_970FX.jpg" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="PowerPC 970FX" /></p>
+<p><img alt="PowerPC_970FX.jpg" src="../PowerPC_970FX.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="PowerPC 970FX" /></p>
 <table>
 <thead>
 <tr>
@@ -2992,7 +2992,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Core_I7.jpg" src="../Core_I7.jpg" style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Core_I7" /></p>
+<p><img alt="Core_I7.jpg" src="../Core_I7.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Core_I7" /></p>
 <table>
 <thead>
 <tr>
@@ -3015,7 +3015,7 @@
 </table>
 <h2 id="les-memoires-informatiques">Les mémoires informatiques</h2>
 <h3 id="la-hierarchie-des-memoires">La hiérarchie des mémoires</h3>
-<p><img alt="Hierarchie_Memoires.png" src="../Hierarchie_Memoires.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Hierachie des mémoires" /></p>
+<p><img alt="Hierarchie_Memoires.png" src="../Hierarchie_Memoires.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Hierachie des mémoires" /></p>
 <p>Dans un ordinateur, le processeur accède aux instructions du programme à exécuter ainsi qu'aux données nécessaires à son exécution depuis la mémoire.</p>
 <p>Il existe une hiérarchie des mémoires informatiques : les <mark class="critic"><strong>plus rapides sont les plus coûteuses</strong></mark>, donc en nombre limité, et <strong>placées le plus près du processeur</strong> (les registres font partie intégrante du processeur). Les plus lentes sont les moins coûteuses et sont éloignées du processeur.</p>
 <p>Le matériel et le <em>système d'exploitation</em> sont responsables du déplacement des objets le long de cette hiérarchie. </p>
@@ -3112,7 +3112,7 @@ des registres <span class="arithmatex">\(R1\)</span> et <span class="arithmatex"
 <p>L'<strong>Unité Arithmétique et Logique (ALU)</strong> : le processeur dispose de trois registres directement utilisables. <code>A</code> et <code>B</code> sont utilisé pour les opérandes des opérations tandis que <code>R</code> est pour le résultat. Ces registres sont de 3 chiffres, mais contrairement à la mémoire, ils ont un signe. Leur étendue de valeurs est donc comprise entre <span class="arithmatex">\(-999\)</span> et <span class="arithmatex">\(999\)</span>.</p>
 <p>Le processeur dispose aussi d'un quatrième registre nommé <code>PC</code> (<em>Program Counter</em>). C'est le pointeur d'instruction, contenant l'adresse mémoire de la prochaine instruction à exécuter. Lorsqu'on utilise le <code>M99</code>, on peut noter le numéro de l'instruction à exécuter dans la case prévue à cet effet, mais en pratique, il est plus simple de le matérialiser avec un \&laquo; pion&raquo; situé sur une des cases de la grille mémoire, ou même de simplement suivre avec son doigt.</p>
 <p>Le jeu d'instruction est défini ci-dessous :</p>
-<p><img alt="Instructions_M99.png" src="../Instructions_M99.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Instructions M99" /></p>
+<p><img alt="Instructions_M99.png" src="../Instructions_M99.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Instructions M99" /></p>
 <p>Ainsi on a les codes suivants:</p>
 <ul>
 <li><span class="arithmatex">\(245\)</span> qui se traduit en <code>LDB 45</code>, soit &laquo; Charger le contenu de la case mémoire <span class="arithmatex">\(45\)</span> dans le registre <span class="arithmatex">\(B\)</span> &raquo; ;</li>
@@ -3141,7 +3141,7 @@ des registres <span class="arithmatex">\(R1\)</span> et <span class="arithmatex"
 <p>Afin de mettre en pratique ce que nous avons étudié dans le cours, nous allons utiliser un simulateur de processeur RISC développé en javascript par Peter L Higginson. Ce simulateur est basé sur une architecture de von Neumann. Nous allons trouver dans ce simulateur une RAM et un CPU.</p>
 <p>Une version en français de ce simulateur est disponible <a href="../simu_risc.zip">ici</a> sous la forme d'un dossier compressé.</p>
 <p>Voici ce que vous devriez obtenir :</p>
-<p><img alt="Sim_Risc.png" src="../Sim_Risc.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" title="Capture SimRisc" /></p>
+<p><img alt="Sim_Risc.png" src="../Sim_Risc.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Capture SimRisc" /></p>
 <p>Il est relativement facile de distinguer les différentes parties du simulateur :</p>
 <ul>
 <li>à droite, on trouve la mémoire centrale;</li>

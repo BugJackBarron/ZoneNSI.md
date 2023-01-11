@@ -41,7 +41,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 	
 	Modifiez l'adresse IP d'un des ordinateurs en la remplaçant par `192.168.0.11`. Vous pouvez aussi, pour chacun des ordinateurs,cocher l'option à droite &laquo; *Utiliser l'adresse IP comme nom* &raquo;.
 	
-	![Filius Config](Filius1.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+	![Filius Config](Filius1.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 
 5. Démarrez la simulation grâce à l'icône ![Filius Demarrer](N1_icone_demarrer.png){: style="width:3em;"}.
 6. Cliquez-droit sur l'ordinateur portant l'IP `192.168.0.10` (en n'oubliant pas de régler de manière à avoir son IP comme nom), et cliquez sur *Afficher les échanges de données*. Déplacez la fenêtre sur la droite de l'écran afin de pouvoir voir à la fois cette fenêtre et les deux ordinateurs.
@@ -52,7 +52,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 7. Cliquez droit toujours sur le même ordinateur, et sélectionnez *Afficher le bureau*.
 8. Dans ce bureau, cliquez sur l'installateur de logiciels, et installez *Ligne de commande*. Une fois l'installation effectuée (c'est immédiat !), ouvrez le logiciel *Ligne de commande* par un click gauche. Vous devriez avoir une situation telle que celle-ci :
 
-	![Filius Config 2](Filius2.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+	![Filius Config 2](Filius2.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 9. Dans l'invite de commande, tapez la ligne suivante :
 
@@ -173,7 +173,7 @@ Le protocole IP {==**encapsule**==} les données et rajoute, entre autre, l'adre
 
 Une analogie simple serait de considérer l'idée de transmettre par la poste un très très long texte. `TCP` écrirait ce texte sur des feuilles simples, et numéroterait ces feuilles. Chacune des feuille serait transmise au protocole `IP`, qui les mettrait dans une enveloppe, sur laquelle est écrit à la fois l'adresse du destinataire, ainsi que celle de l'expéditeur. `IP` envoie ensuite chacune des enveloppes à l'ordinateur $B$.
 
-![TCP IP](TCPIP.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+![TCP IP](TCPIP.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 
 `TCP` et `IP` ne se contentent pas d'envoyer. Ils travaillent aussi à la réception. `IP` {==**désencapsule**==} les données (il sort les feuilles des enveloppes), puis `TCP` remets les feuilles dans l'ordre tout en envoyant à l'expéditeur un accusé de réception (`ACK`) pour lui signaler que le paquet est bien arrivé.
 Une fois l'accusé reçu par l'émetteur, le protocole `TCP` de l'ordinateur $A$ envoie le paquet suivant. Au bout d'un certain temps, si l'ordinateur $A$ ne reçoit pas d'accusé, il renvoie le paquet une nouvelle fois.  D'où le `C` de `TCP`, qui signifie &laquo; Contrôle &raquo;, car le protocole `TCP` est un protocole qui contrôle l'intégrité des données.

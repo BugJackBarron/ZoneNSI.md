@@ -2814,7 +2814,7 @@
 <p>Les adresses IP, en version 4, sont de la forme : <code>a.b.c.d</code>, avec <span class="arithmatex">\(a, b, c\)</span> et <span class="arithmatex">\(d\)</span> qui sont des entiers compris entre 0 et 255. Il existe une version 6 des adresses IP, utilisant 6 valeurs, mais nous nous contenterons d'étudier l'IP V4 .</p>
 </div>
 <p>Modifiez l'adresse IP d'un des ordinateurs en la remplaçant par <code>192.168.0.11</code>. Vous pouvez aussi, pour chacun des ordinateurs,cocher l'option à droite &laquo; <em>Utiliser l'adresse IP comme nom</em> &raquo;.</p>
-<p><img alt="Filius Config" src="../Filius1.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Filius Config" src="../Filius1.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>Démarrez la simulation grâce à l'icône <img alt="Filius Demarrer" src="../N1_icone_demarrer.png" style="width:3em;" />.</p>
@@ -2829,7 +2829,7 @@
 </li>
 <li>
 <p>Dans ce bureau, cliquez sur l'installateur de logiciels, et installez <em>Ligne de commande</em>. Une fois l'installation effectuée (c'est immédiat !), ouvrez le logiciel <em>Ligne de commande</em> par un click gauche. Vous devriez avoir une situation telle que celle-ci :</p>
-<p><img alt="Filius Config 2" src="../Filius2.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="Filius Config 2" src="../Filius2.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
 <p>Dans l'invite de commande, tapez la ligne suivante :</p>
@@ -2988,7 +2988,7 @@
 <p>Lorsqu'un ordinateur <span class="arithmatex">\(A\)</span> veut envoyer des données, par exemple une image, à un ordinateur <span class="arithmatex">\(B\)</span>, le protocole <code>TCP</code> va, avec un certain nombre d'opérations, découper les données de l'image en petits <mark class="critic"><strong>paquets</strong></mark>, les numéroter,  puis les transmettre au protocole <code>IP</code>.</p>
 <p>Le protocole IP <mark class="critic"><strong>encapsule</strong></mark> les données et rajoute, entre autre, l'adresse <code>IP</code> de la source (ordinateur <span class="arithmatex">\(A\)</span>) et celle de la destination (ordinateur <span class="arithmatex">\(B\)</span>).</p>
 <p>Une analogie simple serait de considérer l'idée de transmettre par la poste un très très long texte. <code>TCP</code> écrirait ce texte sur des feuilles simples, et numéroterait ces feuilles. Chacune des feuille serait transmise au protocole <code>IP</code>, qui les mettrait dans une enveloppe, sur laquelle est écrit à la fois l'adresse du destinataire, ainsi que celle de l'expéditeur. <code>IP</code> envoie ensuite chacune des enveloppes à l'ordinateur <span class="arithmatex">\(B\)</span>.</p>
-<p><img alt="TCP IP" src="../TCPIP.png" style="width:70%; margin:auto;display:block;background-color: #546d78;" /></p>
+<p><img alt="TCP IP" src="../TCPIP.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p><code>TCP</code> et <code>IP</code> ne se contentent pas d'envoyer. Ils travaillent aussi à la réception. <code>IP</code> <mark class="critic"><strong>désencapsule</strong></mark> les données (il sort les feuilles des enveloppes), puis <code>TCP</code> remets les feuilles dans l'ordre tout en envoyant à l'expéditeur un accusé de réception (<code>ACK</code>) pour lui signaler que le paquet est bien arrivé.
 Une fois l'accusé reçu par l'émetteur, le protocole <code>TCP</code> de l'ordinateur <span class="arithmatex">\(A\)</span> envoie le paquet suivant. Au bout d'un certain temps, si l'ordinateur <span class="arithmatex">\(A\)</span> ne reçoit pas d'accusé, il renvoie le paquet une nouvelle fois.  D'où le <code>C</code> de <code>TCP</code>, qui signifie &laquo; Contrôle &raquo;, car le protocole <code>TCP</code> est un protocole qui contrôle l'intégrité des données.</p>
 <div class="admonition info">

@@ -8,7 +8,7 @@ Il est fortement conseillé d'avoir repris le cours de [SNT sur les réseaux](..
 
 Nous connaissons la commande `ping` qui permet d'envoyer des paquets `ICMP` (*Internet Control Message Protocol*) à une adresse de destination. Le but de ce protocole `ICMP` est d'échanger des informations d'états et des messages d'erreurs. Par exemple, le commande `ping` sur l'adresse `8.8.8.8` (DNS de Google), donne depuis chez moi :
 
-![Ping1.png](Ping1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+![Ping1.png](Ping1.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Parmi les informations données par la commande `ping`, on a bien entendu le temps d'aller-retour entre l'ordinateur émetteur et l'ordinateur cible, le nombre de paquets envoyés et reçus, mais aussi une information dont nous n'avons pas encore parlé : le `TTL` (*Time To Live* - attention seulement en IPV4).
 
@@ -58,7 +58,7 @@ Il est possible de globalement connaître les différents routeurs par lesquels 
 
 La commande permettant d'appliquer cette méthode est `tracert` sous windows (`traceroute`sous Linux) :
 
-![Tracert.png](Tracert.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+![Tracert.png](Tracert.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 On constate ici qu'on a bien un passage par 8 machines (7 routeurs plus mon propre PC) :
 
@@ -94,7 +94,7 @@ En IPV4, donc sur 4 octets, une adresse IP et un masque de sous-réseau sont rep
 
 	Considérons une machine d'IP `194.152.20.12`, qui correspond donc à la suite binaire `11000010.10011000.00010100.00001100`, et de  masque '157.132.140.128' soit la suite binaire `10011101.10000100.10001100.10000000`. L'opération logique `ET` entre ces deux suites donne :
 	
-	![masqueET.png](masqueET.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![masqueET.png](masqueET.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Soit une adresse réseau `128.128.4.0`.
 
@@ -136,7 +136,7 @@ ce qui signifie que les 19 bits de poids forts du masque ont pour valeur 1, et q
 
 On considère les réseaux suivants dans le logiciel `Filius`, pour lesquels les routeurs R1, R2 et R3 **ne sont pas en routage automatique**.
 
-![RoutageManuel3R.png](RoutageManuel3R.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+![RoutageManuel3R.png](RoutageManuel3R.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 
 * Les routeurs R1 et R3 sont appelés {==**routeurs d'accès**==}, car ils sont en bordure de réseaux.
 * Le routeur R2 est un {==**routeur interne**==}.
@@ -152,7 +152,7 @@ L'objectif est de comprendre comment les routeurs font pour transmettre des paqu
 	=== "Enoncé"
 		Voici la table de routage actuelle du routeur R1 :
 		
-		![TR_R1.png](TR_R1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![TR_R1.png](TR_R1.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		1. Quels sont les champs de cette table ?
 		2. Chercher sur le web la signification informatique de {==**loopback**==} (ou **rebouclage**).
@@ -168,7 +168,7 @@ L'objectif est de comprendre comment les routeurs font pour transmettre des paqu
 			4. Complétez les tables de routages de R2 et et R3 pour que la commande `ping` fonctionne correctement.
 		5. Nous allons modifier la {==**topologie**==} du réseau, en ajoutant un  routeur R4 et un portable P3 de la manière suivante (le portable P1 et le routeur R1 sont inchangés) :
 		
-			![RoutageManuel4R.png](RoutageManuel4R.png){: style="width:70%; margin:auto;display:block;background-color: #546d78;"}
+			![RoutageManuel4R.png](RoutageManuel4R.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 			!!! tips
 				Si vous êtes à cours de prises réseaux sur certains routeurs, vous pouvez en ajouter de nouvelles via le bouton `Gérer les connexions`
@@ -182,7 +182,7 @@ L'objectif est de comprendre comment les routeurs font pour transmettre des paqu
 !!! info "Routage manuel"
 	Même pour des réseaux de petites taille, il est difficile de maintenir des tables de routages manuellement. Dès que le nombre de routeurs internes augmente, arrivent d'autres questions :
 	
-	![RoutageManuel6R.png](RoutageManuel6R.png){: style="width:100%; margin:auto;display:block;background-color: #546d78;"}
+	![RoutageManuel6R.png](RoutageManuel6R.png){: style="width:100%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	Dans une situation comme celle-ci, quelle route est à privilégier pour relier le client au serveur ?
 	

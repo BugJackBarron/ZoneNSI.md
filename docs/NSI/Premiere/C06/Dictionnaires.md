@@ -394,7 +394,7 @@ Prenons comme exemple de fonction de hachage la fonction $f$ qui renvoie le **no
 * $f('Ane') = 3$, donc le couple `("Ane", "Hi-Han")` est rangé dans la case d'indice 3 du tableau.
 * $f('Chat') = 4$, donc le couple `("Chat", "Miaou")` est rangé dans la case d'indice 4 du tableau.
 
-![Hash_Table.png](Hash_Table.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Table de Hachage"}
+![Hash_Table.png](Hash_Table.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Table de Hachage"}
 
 Cette méthode de construction apporte un net avantage dans le temps d'accès aux éléments. En effet, comme dans un tableau normal, {==**accéder à un  élément avec son indice est une opération en $\mathcal{O}(1)$**==}. Et pour tester si une clé est bien dans le dictionnaire, il suffit de calculer son **hash** et de regarder dans le tableau si la case contient quelque chose.
 
@@ -427,7 +427,7 @@ Cependant elle implique un certain nombre de règles et de contraintes pouvant �
 
 	Par exemple, collisions comprises, avec cette fonction de hachage on obtiendrait la table de hachage suivante :
 
-	![Hash_Table_2.png](Hash_Table_2.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Table de Hachage avec collisions"}
+	![Hash_Table_2.png](Hash_Table_2.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Table de Hachage avec collisions"}
 	
 	
 

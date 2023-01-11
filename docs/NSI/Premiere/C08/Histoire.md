@@ -14,14 +14,14 @@ L'Internet n'est donc pas véritablement un réseau mais un immense regroupement
 
 Tout commence à la fin des années 1950, au plus fort de la Guerre Froide. Le ministère de la défense dse Etats-Unis (*DoD : Department of Defense*) souhaitait disposer d'un réseau de communication capable de résister à une attaque nucléaire. A l'époque, le réseau téléphonique des Etats-Unis était connecté comme sur le schéma ci-dessous.
 
-![Reseau_USA.png](Reseau_USA.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
+![Reseau_USA.png](Reseau_USA.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
 
 Chaque point noir représente un **commutateur téléphonique**, auquel étaient reliés des milliers de téléphones. Ces commutateurs locaux étaient eux-mêmes connectés à des **commutateurs centraux** pour former une hiérarchie nationale, avec une redondance minimale (c'est-à-dire sans duplication de systèmes ou de matériels). Le problème était que la destruction de quelques-uns seulement de ces centres pouvait conduire à l'éclatement du système, qui serait alors fragmenté en de nombreux îlots isolés.
 
 
 Vers 1960, le DoD passa un contrat avec la RAND Corporation pour trouver une solution. L'un de ses employés, [**Paul Baran**](https://www.zdnet.fr/blogs/infra-net/les-pionniers-de-l-it-paul-baran-leonard-kleinrock-et-donald-davies-inventeurs-de-la-commutation-de-paquets-39765390.htm){: target="_blank"}, alors âgé d'environ 35 ans, imagina une architecture hautement distribuée et tolérante aux pannes, illustrée ci-dessous. La distance entre deux commutateurs étant trop importante pour que les signaux analogiques puissent la parcourir sans distorsion, Baran proposa d'employer une technologie **numérique de commutation de paquets**. Il rédigea plusieurs rapports à l'intention du *DoD*, décrivant en détail son idée.
 
-![Reseau_Baran.png](Reseau_Baran.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
+![Reseau_Baran.png](Reseau_Baran.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
 
 Le Pentagone la trouva intéressante et demanda à AT&T, entreprise qui détenait à l'époque le monopole des communications téléphoniques sur le territoire des États-Unis, de développer un prototype. AT&T rejeta d'emblée le concept de Baran. Ce n'était pas un jeune employé qui allait apprendre à l'entreprise la plus grande et la plus riche du monde à concevoir un système téléphonique. Baran s'entendit finalement dire que son idée de réseau n'était pas réalisable, et elle fut donc abandonnée.
 
@@ -40,7 +40,7 @@ Le sous-réseau serait formé de mini-ordinateurs appelés **IMP** (*Interface M
 
 Chaque nœud du réseau consisterait en un IMP et un hôte, situés dans la même pièce et reliés par un câble court. L'hôte pourrait envoyer des messages de 8 063 bits maximum à son IMP, qui les diviserait alors en paquets de 1 008 bits maximum et les transmettrait indépendamment vers leur destination. Chaque paquet serait entièrement reçu par un nœud avant d'être retransmis.
 
-![ARPANET.png](ARPANET.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
+![ARPANET.png](ARPANET.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
 
 Il s'avéra que la société désignée pour concevoir le système s'était bornée au niveau logiciel à ne concevoir que les liaisons IMP, et laissa de côté le protocole hôte.
 
@@ -50,7 +50,7 @@ Le 29 octobre 1969, le premier message (le mot `login`) est envoyé depuis l'UCL
 
 C'est ainsi qu'un réseau expérimental vit le jour en décembre 1969, formé de quatre nœuds situés à l'université de Californie à Los Angeles (UCLA), à l'université de Californie à Santa Barbara (UCSB), au Stanford Research Institute (SRI) et à l'université d'Utah. Ces quatre institutions furent choisies en raison du grand nombre de contrats passés par chacune avec l'ARPA, mais aussi pour la diversité et l'incompatibilté de leurs ordinateurs respectifs (ce qui accentuait le défi). Le réseau se développa rapidement comme le montre le schéma suivant.
 
-![Tannenbaum_4_Arpanet_3(dvlpt).png](Tannenbaum_4_Arpanet_3(dvlpt).png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
+![Tannenbaum_4_Arpanet_3(dvlpt).png](Tannenbaum_4_Arpanet_3(dvlpt).png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
 
 ## D'ARPAnet à Internet
 
@@ -79,5 +79,5 @@ Au cours des années 1990, de nombreux autres pays et régions du monde mirent e
 Le schéma suivant donne une vision simplifiée de ce qu'est internet aujourd'hui :
 
 
-![Tannenbaum_5_Internet_Schema.png](Tannenbaum_5_Internet_Schema.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
+![Tannenbaum_5_Internet_Schema.png](Tannenbaum_5_Internet_Schema.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Réseaux, Andrew Tanenbaum et David Wetherall, 5ème édition, Pearson"}
 

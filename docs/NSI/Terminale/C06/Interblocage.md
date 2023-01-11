@@ -65,7 +65,7 @@ Dans les deux derniers cas, nous sommes dans une situation dite d'{==**interbloc
 
 Les interblocages sont des situations de la vie quotidienne. Un exemple est celui du carrefour avec priorité à droite où chaque véhicule est bloqué car il doit laisser le passage au véhicule à sa droite.
 
-![P4_priorite.png](P4_Priorite.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+![P4_priorite.png](P4_Priorite.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 
 En informatique également, l'interblocage peut se produire lorsque **des processus concurrents s'attendent mutuellement**. Les processus bloqués dans cet état le sont définitivement. Ce scénario catastrophe peut se produire dans un environnement où des ressources sont partagées entre plusieurs processus et l'un d'entre eux détient indéfiniement une ressource nécessaire pour l'autre.

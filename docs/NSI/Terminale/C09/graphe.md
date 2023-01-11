@@ -4,7 +4,7 @@
 
 	La ville de Königsberg (aujourd'hui Kaliningrad) est construite autour de deux îles situées sur le Pregel et reliées entre elles par un pont. Six autres ponts relient les rives de la rivière à l'une ou l'autre des deux îles, comme représentés sur le plan ci-dessus. 
 	
-	![Koenigsberg.png](Koenigsberg.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![Koenigsberg.png](Koenigsberg.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	
 	Le problème consiste à déterminer s'il existe ou non une promenade dans les rues de Königsberg permettant, à partir d'un point de départ au choix, de passer une et une seule fois par chaque pont, et de revenir à son point de départ, étant entendu qu'on ne peut traverser le Pregel qu'en passant sur les ponts. 
@@ -31,7 +31,7 @@
 
 	Le graphe suivant est un représentatnt du problème des ponts de Königsberg :	
 	
-	![Konigsberg.svg](Konigsberg.svg){: style="width:20%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg"}
+	![Konigsberg.svg](Konigsberg.svg){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;" title="Graphe Konigsberg"}
 
 	* Les ponts pouvant être franchis dans les deux sens, le graphe est **non-orienté**.
 	* Les différentes zones (berges et iles) sont les sommets $A, B, C, D$ du graphe.
@@ -42,17 +42,17 @@
 	<div style="display:flex;">
 	<div style="display : inline; width : 33%;">
 
-	![Konigsberg2.svg](Konigsberg2.svg){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg V2"}
+	![Konigsberg2.svg](Konigsberg2.svg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Graphe Konigsberg V2"}
 
 	</div>
 	<div style="display : inline; width : 33%;">
 
-	![Konigsberg3.svg](Konigsberg3.svg){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg V3"}
+	![Konigsberg3.svg](Konigsberg3.svg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Graphe Konigsberg V3"}
 
 	</div>
 	<div style="display : inline; width : 33%;">
 
-	![Konigsberg4.svg](Konigsberg4.svg){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Graphe Konigsberg V4"}
+	![Konigsberg4.svg](Konigsberg4.svg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Graphe Konigsberg V4"}
 
 	</div>
 	</div>
@@ -62,7 +62,7 @@
 
 	Dans le cours sur les processus, nous avons vu le schéma suivant :
 	
-	![Etat processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;" title="Etat processus, image wikipedia"}
+	![Etat processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Etat processus, image wikipedia"}
 	
 	* Le graphe est **orienté**
 	* Les différentes états sont les sommets `départ`, `Prêt`, `Elu`, `Bloqué` et `terminé`.
@@ -77,7 +77,7 @@
 !!! example "Exemple"	
 	Dans le graphe ci-dessous :
 
-	![Graphe voisins](Voisins_graph.svg){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Voisinages"}
+	![Graphe voisins](Voisins_graph.svg){: style="width:20%;margin:auto;display:block;background-color: #d2dce0;" title="Voisinages"}
 
 	* `A` a pour voisins `B`, `C` et `D` ;
 	* `B` a pour voisins `D` et `C` ;
@@ -98,7 +98,7 @@
  
 	On considère le graphe suivant :
 	
-	![Graphe Bob](AutomateBobGraph.svg){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Recherche Bob"}
+	![Graphe Bob](AutomateBobGraph.svg){: style="width:60%;margin:auto;display:block;background-color: #d2dce0;" title="Recherche Bob"}
 	
 	* Ce graphe est d'ordre 4 et de taille 9.
 	* Le noeud `2` est de degré 4
@@ -113,11 +113,11 @@
 	=== "Enoncé"
 		&laquo; Les aventuriers du Rail &raquo; est un jeu de plateau qui a pour but de relier les gares de différentes villes sur une carte préexistante, pour ainsi créer son réseau ferroviaire au détriment des autres joueurs. Il existe différentes versions du jeu, la carte ci-dessous étant la carte de la version Europe.
 
-		![Carte rail](Rail.JPG){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Les aventuriers du rail version Europe, Days of Wonder"}
+		![Carte rail](Rail.JPG){: style="width:60%;margin:auto;display:block;background-color: #d2dce0;" title="Les aventuriers du rail version Europe, Days of Wonder"}
 		
 		Une telle carte peut-être modélisée par un graphe. On en donne ci-dessous une partie en ayant extrait une partie des liaisons ferroviaires
 
-		![Graphe rail](Rail_graphe.png){: style="width:40%;margin:auto;display:block;background-color: #546d78;" title="Graphe Les aventuriers du rail version Europe, Days of Wonder"}
+		![Graphe rail](Rail_graphe.png){: style="width:40%;margin:auto;display:block;background-color: #d2dce0;" title="Graphe Les aventuriers du rail version Europe, Days of Wonder"}
 
 		1. A quoi correspond chacun des sommets ? chaque arête ?
 		1. Quel est l’ordre du graphe ? Quelle est sa taille ?
@@ -133,7 +133,7 @@
 	=== "Enoncé"
 		On donne ci-dessous un extrait de la carte de la France administrative ( avant remaniement des régions...). On s’intéresse à la région Midi-Pyrénées et aux huit départements qui la composent. On s'intéresse aux frontières communes entre les départements de cette région.
 
-		![Midi_Pyrenees.png](Midi_Pyrenees.png){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="découpage départemental région Midi-Pyrénées"}
+		![Midi_Pyrenees.png](Midi_Pyrenees.png){: style="width:60%;margin:auto;display:block;background-color: #d2dce0;" title="découpage départemental région Midi-Pyrénées"}
 		
 		1. Représenter cette carte par un graphe mettant en évidence ce découpage.
 		1. A quoi correspond chacun des sommets ? chaque arête ?
@@ -146,7 +146,7 @@
 	=== "Enoncé"
 		1. On considère l’échiquier $3 \times 3$ ci-dessous dans lequel on s’intéresse au déplacement du cavalier noir.
 	
-			![Echiquier.png](Echiquier.png){: style="width:20%;margin:auto;display:block;background-color: #546d78;" title="Echiquier"}
+			![Echiquier.png](Echiquier.png){: style="width:20%;margin:auto;display:block;background-color: #d2dce0;" title="Echiquier"}
 
 			1. Représenter par un graphe cet échiquier, les sommets étant les cases de l'échiquier, et les arêtes représentant les déplacementspossibles du cavalier.
 			1. Quel est l'ordre de ce graphe ?
@@ -156,7 +156,7 @@
 			1. Calculer la somme des degrés des sommets ainsi que le nombre d'arêtes.
 		2. Pour chacun des graphes suivants, calculer la somme des degrés des sommets ainsi que le nombre d'arêtes, puis émettre une conjecture :
 
-			![Conjecture.png](Conjecture.png){: style="width:60%;margin:auto;display:block;background-color: #546d78;" title="Graphes simples"}
+			![Conjecture.png](Conjecture.png){: style="width:60%;margin:auto;display:block;background-color: #d2dce0;" title="Graphes simples"}
 			
 	=== "réponses"
 		A venir !
@@ -211,7 +211,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 
 	Le graphe pondéré suivant représente les distances routières minimales entre les villes de Paris (`P`), Lyon (`L`), Marseille (`M`), Nantes (`N`), Bordeaux (`B`) et Toulouse (`T`).
 	
-	![Routes.png](Routes.png){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe pondérés"}
+	![Routes.png](Routes.png){: style="width:30%;margin:auto;display:block;background-color: #d2dce0;" title="Graphe pondérés"}
 
 
 ## Chemins et cycles
@@ -225,7 +225,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 	
 !!! example "Exemple"
 
-	![DefChemins.svg](DefChemins.svg){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple chemins"}
+	![DefChemins.svg](DefChemins.svg){: style="width:30%;margin:auto;display:block;background-color: #d2dce0;" title="Graphe exemple chemins"}
 		
 	Sur le graphe ci-dessus, `a -> c -> d -> e` est un chemin de `a` à `e`, mais il n'est pas unique.
 	
@@ -247,7 +247,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 	
 	Dans le graphe précédent :
 	
-	![DefChemins.svg](DefChemins.svg){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple chemins"}
+	![DefChemins.svg](DefChemins.svg){: style="width:30%;margin:auto;display:block;background-color: #d2dce0;" title="Graphe exemple chemins"}
 	
 	* Le chemin `a -> b -> c -> d -> e` est de longueur 4.
 	* La distance entre `a` et `e` est 3 (par le chemin `a -> c -> d -> e`).
@@ -262,7 +262,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 	
 !!! example "Exemple"
 	
-	![ExempleConnexite.svg](ExempleConnexite.svg){: style="width:30%;margin:auto;display:block;background-color: #546d78;" title="Graphe exemple connexité"}
+	![ExempleConnexite.svg](ExempleConnexite.svg){: style="width:30%;margin:auto;display:block;background-color: #d2dce0;" title="Graphe exemple connexité"}
 	
 	Le graphe ci-dessus n'est pas connexe, mais possède deux composantes connexes : ${0;1;2;3;4}$ et ${5;6;7;8}$.
 	
@@ -287,27 +287,27 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 		<div style="display:flex;">
 		<div style="display : inline; width : 20%;">
 
-		![Euler_1.svg](Euler_1.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+		![Euler_1.svg](Euler_1.svg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		</div>
 		<div style="display : inline; width : 20%;">
 
-		![Euler_2.svg](Euler_2.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+		![Euler_2.svg](Euler_2.svg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		</div>
 		<div style="display : inline; width : 20%;">
 
-		![Euler_3.svg](Euler_3.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+		![Euler_3.svg](Euler_3.svg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		</div>
 		<div style="display : inline; width : 20%;">
 
-		![Euler_4.svg](Euler_4.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+		![Euler_4.svg](Euler_4.svg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		</div>
 		<div style="display : inline; width : 20%;">
 
-		![Euler_5.svg](Euler_5.svg){: style="width:90%; margin:auto;display:block;background-color: #546d78;" }
+		![Euler_5.svg](Euler_5.svg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" }
 
 		</div>
 		</div>

@@ -44,12 +44,12 @@ Lors des années 1950 -1970, les comics américains ainsi qu'un certain nombre d
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![Star-Trek.jpg](Star-Trek.jpg){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![Star-Trek.jpg](Star-Trek.jpg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
 
-	![Star-Trek-zoom.jpg](Star-Trek-zoom.jpg){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![Star-Trek-zoom.jpg](Star-Trek-zoom.jpg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	</div>
 	</div>
@@ -67,7 +67,7 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 !!! example "Exemple"
 	A titre d'exemple, on peut considérer cette image sous trois résolutions différentes :
 	
-	![Trois_resolutions.jpg](Trois_resolutions.jpg){: style="width:90%; margin:auto;display:block;background-color: #546d78;"}
+	![Trois_resolutions.jpg](Trois_resolutions.jpg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	Si de près l'image de gauche est beaucoup plus nette que l'image de droite, en vous reculant par rapport à l'image, vous trouverez une distance pour laquelle vous ne verrez plus de différence entre les images. Vous aurez ainsi atteint la limite de résolution de votre oeil.
 
@@ -117,12 +117,12 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![Matrix](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matrix.glmatrix.2.png/669px-The.Matrix.glmatrix.2.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Depuis https://fr.m.wikipedia.org/wiki/Matrix_(film)"}
+	![Matrix](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matrix.glmatrix.2.png/669px-The.Matrix.glmatrix.2.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Depuis https://fr.m.wikipedia.org/wiki/Matrix_(film)"}
 
 	</div>
 	<div style="display : inline; width : 50%;">
 
-	![Star wars monochrome](https://i.stack.imgur.com/DK5MI.jpg){: style="width:60%; margin:auto;display:block;background-color: #546d78;" title="Depuis https://scifi.stackexchange.com/questions/141963/video-displays-in-star-wars?rq=1"}
+	![Star wars monochrome](https://i.stack.imgur.com/DK5MI.jpg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Depuis https://scifi.stackexchange.com/questions/141963/video-displays-in-star-wars?rq=1"}
 
 	</div>
 	</div>
@@ -140,7 +140,7 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 		1. Ouvrir le logiciel `Thonny`.
 		2. Ouvrir le menu `Tools > Manage packages` et dans la barre de recherche, chercher le module `pillow`, et l'installer si il n'est pas déjà installé.
 			
-			![Thonny1.png](../College/Thonny1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+			![Thonny1.png](../College/Thonny1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 		3. Téléchargez et sauvegardez le fichier [GenereBMP.py](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=aN9e0gyfm0cW){: target="_blank"}, puis ouvrez le dans `Thonny`.
 		4. Exécutez le programme, en sauvegardant le fichier sous le nom `Stripes.bmp`. Ouvrez l'image obtenue. Qu'obtient-on ?
@@ -152,19 +152,19 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 		6. Combien y-a-t-il de pixels dans cette image ?
 		7. Modifiez la matrice afin d'obtenir l'image suivante :
 			
-			![coeur.png](../College/coeur.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+			![coeur.png](../College/coeur.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 		8. A l'aide des grilles suivantes, créez deux nouvelles images :
 		
 			<div style="display:flex;">
 			<div style="display : inline; width : 50%;">
 			
-			![grille.png](../College/grille.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![grille.png](../College/grille.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 			</div>
 			<div style="display : inline; width : 50%;">
 			
-			![grille.png](../College/grille.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![grille.png](../College/grille.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 			</div>
 			</div>

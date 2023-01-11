@@ -44,7 +44,7 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 	1. Connectez vous sur [jupyterHub](https://zonensi.fr:8443){: target="_blank"} (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, vous le choisissez à la pemière connexion)
 	2. Ouvrir un terminal :
 	
-		![P2_img1.png](P2_img1.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
+		![P2_img1.png](P2_img1.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 
 !!! question "Manipulations"
@@ -94,7 +94,7 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 	
 	L'instruction `pstree` permet de visualiser l'arbre de processus :
 	
-	![P2_img2.png](P2_img2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+	![P2_img2.png](P2_img2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 !!! question "Chercher les PID"
 
@@ -142,7 +142,7 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 * `ELU` (*running*) : le processus a obtenu l'accès au processeur : il peut s'exécuter.
 * `BLOQUE`(*sleeping*) : le processus est en cours d'exécution, mais attend une ressource en mémoire par exemple, il quitte le processeur pour libérer les ressources.
 
-![Etats processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:40%; margin:auto;display:block;background-color: #546d78;" alt="Source : wikipedia"}
+![Etats processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" alt="Source : wikipedia"}
 
 
 !!! example "Exemple"

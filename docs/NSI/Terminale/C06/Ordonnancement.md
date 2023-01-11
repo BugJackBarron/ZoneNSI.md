@@ -66,7 +66,7 @@ Imaginons que le processeur ait à exécuter 4 processus, dont les temps d'exéc
 * le processus `C` a besoin de 2 cycles d'horloge, et est arrivé au *tick* 3 ;
 * le processus `D` a besoin de 4 cycles d'horloge, et est arrivé au *tick* 5 ;
 
-![P3_img1.png](P3_img1.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+![P3_img1.png](P3_img1.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevauchements, il faudra ordonner les différents processus afin qu'ils soient tous exécutés.
 
@@ -76,7 +76,7 @@ Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevau
 	
 	Si le système d'exploitation **n'est pas préemptif**, on pourrait penser au principe d'une file de type &laquo; Premier Arrivé, Premier Servi &raquo; (*FIFO*).
 
-	![P3_img2.png](P3_img2.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_img2.png](P3_img2.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.
 
@@ -107,7 +107,7 @@ Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevau
 	* au tick 7 on exécute `B` ;
 	* et on termine par `D`.
 
-	![P3_img3.png](P3_img3.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_img3.png](P3_img3.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	En terme de performances :
 
@@ -143,7 +143,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 	* au tick 4, on exécute `C`, qui est le plus court ;
 	* au tick 6, il reste 4 temps pour `A` et `D`, un choix est fait : comme `À` est déjà en cours, on le termine en priorité.
 	
-	![P3_img4.png](P3_img4.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_img4.png](P3_img4.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 	
 	En terme de performances :
 
@@ -167,7 +167,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 	L’algorithme du {==**tourniquet**==} ou *Round Robin* (`RR`) représenté sur la figure ci-dessous est un algorithme ancien, simple, fiable et très utilisé. Il mémorise dans une file du type `FIFO` (*First In First Out*) la liste des processus prêts, c’est-à-dire en attente d’exécution.
 	
-	![P3_RR.png](P3_RR.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+	![P3_RR.png](P3_RR.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	Il alloue le processeur au processus en tête de file, {==**pendant un quantum de temps**==}. Si le processus se bloque ou se termine avant la fin de son quantum, le processeur est immédiatement alloué à un autre processus (celui en tête de file). Si le processus ne se termine pas au bout de son quantum, son exécution est suspendue. Le processeur est alloué à un autre processus (celui en tête de file). Le processus suspendu est inséré en queue de file. Les processus qui arrivent ou qui passent de l’état bloqué à l’état prêt sont insérés en queue de file.
 	
@@ -175,13 +175,13 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 		Toujours en utilisant l'exemple :
 
-		![P3_img1.png](P3_img1.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+		![P3_img1.png](P3_img1.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 		=== "Quantum 1"
 
 			Si le quantum de temps est de 1 tick :
 		
-			![File Vide](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![File Vide](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 			
 			Pour les performances :
@@ -204,7 +204,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 			Si le quantum de temps est de 2 ticks :
 		
-			![P3_img5.png](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![P3_img5.png](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 			
 			Pour les performances :
@@ -227,7 +227,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 			Si le quantum de temps est de 3 ticks :
 		
-			![P3_img5.png](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![P3_img5.png](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 			
 			Pour les performances :
@@ -251,7 +251,7 @@ Le processeur passe donc d’un processus à un autre en exécutant chaque proce
 
 			Si le quantum de temps est de 4 ticks :
 		
-			![File Vide](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![File Vide](FIFO_Vide.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
 			
 			Pour les performances :

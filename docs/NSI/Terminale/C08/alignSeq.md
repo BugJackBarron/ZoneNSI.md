@@ -12,13 +12,13 @@ On dispose de deux chaînes de caractères : $A$, qui vaut `INFORMATIQUE`, et $B
 
 Voici un exemple d'alignement optimal :
 
-![exempleAlignement.gif](exempleAlignement.gif){: style="width:40%; margin:auto;display:block;background-color: #546d78;"}
+![exempleAlignement.gif](exempleAlignement.gif){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Dans cette situation on a besoin de 9 tirets, pas moins.
 
 L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de `-` possible). Ce n'est pas un problème simple, surtout quand les chaînes sont longues, comme pour les séquences d'ADN par exemple :
 
-![sequenceADN.png](sequenceADN.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+![sequenceADN.png](sequenceADN.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 ## Résolution par une méthode récursive 
 
@@ -29,11 +29,11 @@ Le principe est présenté dans la vidéo suivante :
 
 Pour les mots `GRAS` et `GERS`, l'arbre  obtenu est le suivant :
 
-![ArbreGrasGers.png](ArbreGrasGers.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+![ArbreGrasGers.png](ArbreGrasGers.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire récursive avec mémoïsation), on obtient le graphe suivant :
 
-![GrapheGrasGers.png](GrapheGrasGers.png){: style="width:80%; margin:auto;display:block;background-color: #546d78;"}
+![GrapheGrasGers.png](GrapheGrasGers.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 ## Résolution par une méthode itérative
 
@@ -41,7 +41,7 @@ Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire 
 
 Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de chercher le nombre minimal d'insertion à effectuer, nous allons compléter le tableau suivant, avec la convention suivante : à l'intersection de la colonne `N` et de la première ligne `E` se trouve le nombre minimal d'insertion nécessaire pour aligner les chaînes `EN` et `GE`, c'est-à-dire 2 tirets. Par convention la première ligne et la première colonne correspondent à une chaîne vide.
 
-![tabAlign.png](tabAlign.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![tabAlign.png](tabAlign.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 !!! question
 	=== "Enoncé"
@@ -52,12 +52,12 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 		
 		1. Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de `R` et de `-` doit contenir le nombre minimal de tirets nécessaire pour aligner `ENOR` avec une chaîne vide, c'est-à-dire 4.
 		
-			![tabAlign_Cas_Base.png](tabAlign_Cas_Base.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+			![tabAlign_Cas_Base.png](tabAlign_Cas_Base.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 		2. Pour compléter ensuite le reste du tableau, il faut concevoir deux cas différents :
 			1. Soit la case correspond aux deux même lettres, comme dans l'exemple ci-dessous :
 			
-				![tabAlign_Cas_1.png](tabAlign_Cas_1.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+				![tabAlign_Cas_1.png](tabAlign_Cas_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 				
 				Le meilleur alignement de `ENO` et de `GENO` contient autant de tirets que le meilleur alignement de `EN` et de `GEN`, donc ici 1.
 				
@@ -66,14 +66,14 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 				<div style="display:flex;">
 				<div style="display : inline; width : 50%;">
 				
-				![tabAlign_Cas_2_1.png](tabAlign_Cas_2_1.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+				![tabAlign_Cas_2_1.png](tabAlign_Cas_2_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 				
 				On considère la case comme étant une *évolution* de l'alignement de `ENO` et `GE`, qui contenait 3 tirets, vers l'alignement de `ENO` et `GEN`, qui en contiendra donc **un de plus**, soit 4.
 				
 				</div>
 				<div style="display : inline; width : 50%;">
 				
-				![tabAlign_Cas_2_2.png](tabAlign_Cas_2_2.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+				![tabAlign_Cas_2_2.png](tabAlign_Cas_2_2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 				
 				On considère la case comme étant une *évolution* de l'alignement de `EN` et `GEN`, qui contenait 1 unique tiret, vers l'alignement de `ENO` et `GEN`, qui en contiendra donc **un de plus**, soit 2.
 				
@@ -84,7 +84,7 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 			
 		3. On termine alors de compléter le tableau :
 			
-			![tabAlignComplet.png](tabAlignComplet.png){: style="width:30%; margin:auto;display:block;background-color: #546d78;"}
+			![tabAlignComplet.png](tabAlignComplet.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 ### Application en Python
 

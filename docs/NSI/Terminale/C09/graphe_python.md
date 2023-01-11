@@ -50,30 +50,30 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 		0 & 0 & 1 & 1\\
 		0 & 1 & 1 & 0 \\
 		0 & 0 & 1 & 0
-		\end{pmatrix}$  	correspond au graphe suivant, avec les sommets dans l'ordre numérique  ![Matrice1.svg](Matrice1.svg){: style="width:10%;background-color: #546d78;" }
+		\end{pmatrix}$  	correspond au graphe suivant, avec les sommets dans l'ordre numérique  ![Matrice1.svg](Matrice1.svg){: style="width:10%;background-color: #d2dce0;" }
 		
 	* la matrice d'adjacence  $M = 	\begin{pmatrix}
 		0 & 1 & 1 \\
 		1 & 0 & 1 \\
 		1 & 1 & 0 
-		\end{pmatrix}$ correspond au graphe suivant, avec les sommets dans l'ordre numérique ![Matrice2.svg](Matrice2.svg){: style="width:10%;background-color: #546d78;" }
+		\end{pmatrix}$ correspond au graphe suivant, avec les sommets dans l'ordre numérique ![Matrice2.svg](Matrice2.svg){: style="width:10%;background-color: #d2dce0;" }
 		
 	* la matrice d'adjacence $M = \begin{pmatrix}
 		0 & 10 & 0 & 0 \\
 		0 & 0 & 20 & 0 \\
 		40 & 0 & 0 & 30 \\
 		5 & 0 & 0 & 0
-		\end{pmatrix}$ correspond au graphe suivant, avec les sommets dans l'ordre *alphabétique* ![Matrice3.svg](Matrice3.svg){: style="width:10%;background-color: #546d78;" }
+		\end{pmatrix}$ correspond au graphe suivant, avec les sommets dans l'ordre *alphabétique* ![Matrice3.svg](Matrice3.svg){: style="width:10%;background-color: #d2dce0;" }
 		
 		
 !!! question "Associer Matrices d'adjacence et graphes"
 
 	=== "Enoncé"
 	
-		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice4.svg](Matrice4.svg){: style="width:15%;background-color: #546d78;" }
-		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice5.svg](Matrice5.svg){: style="width:15%;background-color: #546d78;" }
-		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice6.svg](Matrice6.svg){: style="width:15%;background-color: #546d78;" }
-		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice7.svg](Matrice7.svg){: style="width:30%;background-color: #546d78;" }		
+		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice4.svg](Matrice4.svg){: style="width:15%;background-color: #d2dce0;" }
+		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice5.svg](Matrice5.svg){: style="width:15%;background-color: #d2dce0;" }
+		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice6.svg](Matrice6.svg){: style="width:15%;background-color: #d2dce0;" }
+		1. Déterminer la matrice d'adjacence associée à ce graphe ![Matrice7.svg](Matrice7.svg){: style="width:30%;background-color: #d2dce0;" }		
 		1. Tracer un graphe pouvant correspondre à la matrice $\begin{pmatrix}
 		1 & 0 & 1 \\
 		0 & 0 & 0 \\
@@ -399,7 +399,7 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 
-	![heritage.svg](heritage.svg){: style="width:30%; margin:auto;display:block;background-color: #546d78;" }
+	![heritage.svg](heritage.svg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" }
 
 	</div>
 	<div style="display : inline; width : 50%;">
@@ -491,7 +491,7 @@ Il est cependant possible d'utiliser un {==**algorithme glouton**==} qui trouver
 	=== "Enoncé"
 		Considérons la carte des régions françaises suivantes :
 		
-		![france-region.jpg](france-region.jpg){: style="width:50%; margin:auto;display:block;background-color: #546d78;" }
+		![france-region.jpg](france-region.jpg){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" }
 		
 		et le code suivant permettant de créér un graphe non-orienté correspondant à cette carte dans le fichier [suivant](RegionFR.py){: target="_blank"} (en utilisant la classe `UndirectedGraph`).
 		

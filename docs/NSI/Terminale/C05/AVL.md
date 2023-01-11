@@ -66,7 +66,7 @@ Cependant les mécanismes d'insertion et de déletions sont modifiés par rappor
 
 Le mécanisme de rotation gauche consiste à remplacer un noeud {==**racine**==} par son noeud droit (appelé {==**pivot**==}).
 
-![P4_RotGauche.png](P4_RotGauche.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+![P4_RotGauche.png](P4_RotGauche.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Après l'opération :
 
@@ -92,7 +92,7 @@ Racine <- Pivot
 		1. Créer une méthode `rotationGauche` pour la classe `Node`. Attention ! Pour pouvoir implémenter correctement cette méthode, **il ne faudra pas oublier de mettre à jour les parents de chaque noeud !**
 		2. Créer de mémé une méthode `rotationDroite` pour la classe `Node`, en s'aidant du schéma suivant :
 			
-			![P4_RotDroite.png](P4_RotDroite.png){: style="width:60%; margin:auto;display:block;background-color: #546d78;"}
+			![P4_RotDroite.png](P4_RotDroite.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 	=== "Solution"
 	
@@ -107,11 +107,11 @@ Racine <- Pivot
 	
 		1. Appliquer **à la main** une rotation gauche sur la racine de l'arbre suivant. Le résultat est-il plus équilibré ?
 		
-			![P4_AVL1.png](P4_AVL1.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
+			![P4_AVL1.png](P4_AVL1.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		2. Appliquer **à la main** une rotation gauche sur la racine de l'arbre suivant. Le résultat est-il plus équilibré ?
 		
-			![P4_AVL2.png](P4_AVL2.png){: style="width:20%; margin:auto;display:block;background-color: #546d78;"}
+			![P4_AVL2.png](P4_AVL2.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 		3. Appliquer une rotation droite sur le noeud 3 de l'arbre précédent, puis une rotation gauche sur la racine de l'arbre obtenu. Que peut-on en conclure ?
 		
@@ -129,7 +129,7 @@ En pratique on équilibrera un arbre à chaque insertion et à chaque délétion
 	
 		1. On considère l'abre suivant :
 		
-			![P4_AVL3.png](P4_AVL3.png){: style="width:50%; margin:auto;display:block;background-color: #546d78;"}
+			![P4_AVL3.png](P4_AVL3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 			
 			Est-il équilibré au sens donné ?
 		
