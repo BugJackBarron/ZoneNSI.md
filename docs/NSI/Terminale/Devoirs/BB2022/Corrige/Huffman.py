@@ -1,3 +1,6 @@
+from graphviz import Digraph
+
+
 class Noeud:
     def __init__(self, poids, caractere=None, gauche=None,droit=None):
         self.poids = poids
@@ -8,6 +11,8 @@ class Noeud:
     def est_feuille(self):
         """Renvoie True si l’arbre est une feuille, False sinon."""
         return self.gauche is None and self.droit is None
+    
+
 
 def fusionner(G, D) :
     return Noeud(G.poids+D.poids, gauche=G, droit = D)
@@ -45,3 +50,37 @@ def construire_codes (A, chemin, dico ):
     else :
         construire_codes (A.gauche, chemin + "0", dico)
         construire_codes (A.droit , chemin + "1", dico)
+
+
+def trace_graph(G) :
+    dot = Digraph('Huffman',format='png', graph_attr={'rankdir': 'BT'})
+    file = [(G, None)]
+    num = -1
+    while file != [] :
+        node, parent = file.pop()
+        num += 1
+        txt = f"{node.poids}" if node.caractere is None else f"{node.caractere} | {node.poids}"
+        dot.node(str(num), txt)
+        if node.gauche is not None :
+            file.append((node.gauche, num))
+        if node.droit is not None :
+            file.append((node.droit, num))
+        
+        if parent != None :
+            dot.edge(str(num), str(parent))
+    dot.render(directory='', view=True)
+    
+    
+    
+if __name__ == "__main__" :
+    phrase = """
+specialite nsi
+"""
+    occurences = get_dict(phrase.replace("\n", ""))
+    huffman = construire_arbre_huffman(occurences)
+    trace_graph(huffman)
+    converter = dict()
+    construire_codes(huffman,"", converter)
+    compressed = "".join(converter[l] for l in phrase if l!= "\n")
+    print(f"Phrase compressée : {compressed}")
+    print(f"Compression : {len(compressed)}/{8*(len(phrase)-2)} = {len(compressed)/(8*(len(phrase)-2))}")
