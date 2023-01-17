@@ -11,16 +11,16 @@
 	Puis cliquez sur `Install` (si vous voyez à la place les boutons `Upgrade` et `Uninstall `, ce n'est pas nécessaire). Laissez le logiciel installer jusqu'au bout, cela prend quelques secondes.
 	
 3. Ouvrez l'explorateur de fichier `windows`, puis allez dans le dossier `Images`. Créez un sous-dossier avec votre nom et prénom. Ce dossier sera celui dans lequel vous devrez copier **tous les fichiers de cette activité**.
-4. Rendez-vous sur le site [www.zonensi.fr](https:\\www.zonensi.fr), et cliquez sur `Activite Pixel Art`. Enregistrez tous les fichiers suivants dans votre dossier personnel.
+4. Rendez-vous sur le site [www.zonensi.fr](https:\\www.zonensi.fr), menu `SNT` et cliquez sur ` > Session Collège`. Enregistrez tous les fichiers suivants dans votre dossier personnel.
 
-	* [PixelArt.py](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=bqphfzyLT0yK){: target="_blank"}
-	* [makeMatrix.py](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=wov9s1safq67){: target="_blank"}
-	* [bigMatrix.txt](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=Eq1v3AzO0X7d){: target="_blank"}
+	* [PixelArt.py](pixelArt.py){: target="_blank"}
+	* [makeMatrix.py](makeMatrix.py){: target="_blank"}
+	* [bigMatrix.txt](bigMatrix.txt){: target="_blank"}
 
 ## Du Pixel Art en Noir et Blanc
 
 !!! info "Pixels et tableaux de nombres"
-	Une image numérique est composée de pixels. Ces pixels sont les plus petites &laquo; lampes&raquo; allumables par l'ordinateur. Pour demander à l'ordinateur d'allumer un pixel, on lui donne une valeur numérique. Une image numérique est donc représentée dans un ordinateur par un tableau de nombres, appelé {==**matrice**==} en français  (*matrix* en anglais).
+	Une image numérique est composée de pixels. Ces pixels sont les plus petites &laquo; lampes &raquo; allumables par l'ordinateur. Pour demander à l'ordinateur d'allumer un pixel, on lui donne une valeur numérique. Une image numérique est donc représentée dans un ordinateur par un tableau de nombres, appelé {==**matrice**==} en français  (*matrix* en anglais).
 
 
 1. Voici une image en noir et blanc de 8 pixels de long, et de 8 pixels de haut, ainsi que sa représentation sous la forme d'une matrice dans le langage Python :
