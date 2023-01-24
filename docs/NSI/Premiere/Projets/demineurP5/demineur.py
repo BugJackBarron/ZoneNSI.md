@@ -1,6 +1,5 @@
-from random import randint
 import random
-import colorama
+
 from colorama import Fore, Style
 
 
@@ -188,7 +187,7 @@ Dans le cas où la case ne possède pas de bombe, fait appel à la fonction prop
     
     taille=len(grid)
     if flag :
-        grid[x][y].flag = True
+        grid[x][y].flag = not(grid[x][y].flag)
         return True
     else :
         if grid[x][y].value == -1 :
