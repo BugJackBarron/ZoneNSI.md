@@ -192,6 +192,7 @@ Dans le cas où la case ne possède pas de bombe, fait appel à la fonction prop
         return True
     else :
         if grid[x][y].value == -1 :
+            grid[x][y].covered = False
             return False
         else :
             propagate(grid,x,y)
