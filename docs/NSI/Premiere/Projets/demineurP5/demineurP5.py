@@ -4,18 +4,22 @@ from demineur import *
 f = None
 RED = Color(255,0,0)
 GREEN = Color(0,255,0)
+BLUE = Color(0,0,255)
+
 TAILLE = 10
 started = False
 grid = None
 cell_size = 0
 lost = False
 win = False
+game_mode ={'easy' : 1, 'normal' : TAILLE//4, 'hard' : TAILLE//2}
+actual_mode = None
 
 def start_game(mode, taille=TAILLE) :
-    game_mode ={'easy' : 1, 'normal' : TAILLE//4, 'hard' : TAILLE//2}
+    
     make_grid(grid, TAILLE+game_mode[mode])
 
-def draw_grid(grid, lost= False) :
+def draw_grid(grid, lost= False, win = False) :
     rect_mode(CENTER)
     
     for x in range(TAILLE) :
@@ -28,9 +32,13 @@ def draw_grid(grid, lost= False) :
                 if grid[x][y].flag :
                     if grid[x][y].value != -1 and lost :
                         fill(RED)
+                        rect((230+x*cell_size, 40+y*cell_size), cell_size/-2, cell_size-2)
+                    elif grid[x][y].value != -1 and win :
+                        fill(GREEN)
+                        rect((230+x*cell_size, 40+y*cell_size), cell_size/-2, cell_size-2)
                     else :
-                        fill(0)
-                    rect((230+x*cell_size, 40+y*cell_size), cell_size//2, cell_size//2)
+                        fill(BLUE)
+                        rect((230+x*cell_size, 40+y*cell_size), cell_size//2, cell_size//2)
                 else :
                     if lost and grid[x][y].value == -1 :
                         fill(RED)
@@ -56,6 +64,13 @@ def draw_grid(grid, lost= False) :
                           }
                     fill(colors[grid[x][y].value])
                     text(str(grid[x][y].value), 230+x*cell_size, 40+y*cell_size)
+
+def restart() :
+    global started, lost, win
+    started = False
+    win= False
+    lost = False
+    setup()
 
 def setup():
     global f, grid, cell_size
@@ -85,39 +100,65 @@ def draw():
         fill(GREEN)
         text(txt, (100, 60+20*i))
     
-    if started :
-        draw_grid(grid, lost)
-        
     
+    if started :
+        fill(RED)
+        rect(100,200, 80, 40)
+        fill(0)
+        text('RESTART', (100, 200))
+        draw_grid(grid, lost)
+        fill(RED)
+        text(f'Bombs : {TAILLE+game_mode[actual_mode]}', (100, 300))
+        fill(BLUE)
+        text(f'flags : {count_flagged(grid)}', (100, 350))
+        
+        
+    if win :
+        fill(GREEN)
+        text('YOU WIN ', (100, 400))
+        draw_grid(grid, win = True)
+
+    if lost :
+        fill(GREEN)
+        text('YOU LOST ', (100, 400))
+        draw_grid(grid, lost = True)
+
     
     
     
 def mouse_pressed() :
-    global started, lost
+    global started, lost, win, actual_mode
     if not(started) :
         if 60<= mouse_x <= 140 :
             if 50 <= mouse_y <= 70 :
-                start_game('easy')
+                actual_mode = 'easy'
+                
             elif 70 <= mouse_y <= 90 :
-                start_game('normal')
+                actual_mode = 'normal'
+                
             elif 70 <= mouse_y <= 90 :
-                start_game('hard')
+                actual_mode = 'hard'
+            start_game(actual_mode)
             started = True
-    elif not(lost) :
+    elif not(lost) and not(win):
+        if 60<=mouse_x<=140 and 180<=mouse_y<=220 :
+            restart()
         if 230-cell_size//2<= mouse_x <= 230+TAILLE*cell_size+cell_size//2 :
             if 40-cell_size//2<= mouse_y <= 40+TAILLE*cell_size+cell_size//2 :
                 px = int(mouse_x-230+cell_size//2)//cell_size
-                
                 py = int(mouse_y-40+cell_size//2)//cell_size
-                print(f"case :({px}; {py})")
-                print(mouse_button)
-                print(grid[px][py].value)
                 if mouse_button == 'LEFT' :
                     lost = not(apply_position(grid, False, px, py))
                 else :
                     lost = not(apply_position(grid, True, px, py))
-
                 
+    else :
+        if 60<=mouse_x<=140 and 180<=mouse_y<=220 :
+            restart()
+    print(count_uncovered(grid)+count_flagged(grid)==TAILLE**2)
+    if not(lost) and count_uncovered(grid)+count_flagged(grid) == TAILLE**2 :
+        win = True
+    
         
 if __name__ == '__main__':
-        run()
+    run()

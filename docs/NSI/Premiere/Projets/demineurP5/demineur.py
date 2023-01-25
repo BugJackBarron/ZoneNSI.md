@@ -206,7 +206,14 @@ def count_uncovered(grid) :
             uncovered += not(grid[x][y].covered)
     return uncovered
     
-
+def count_flagged(grid) :
+    """ fonction comptant le nombre de cases comportat un drapeau"""
+    taille=len(grid)
+    flagged = 0
+    for x in range(taille) :
+        for y in range(taille) :
+            flagged += grid[x][y].flag
+    return flagged
   
 
 def main_console(taille, difficulte = 1) :
