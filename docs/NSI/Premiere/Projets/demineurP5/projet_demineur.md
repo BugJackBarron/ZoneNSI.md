@@ -97,7 +97,7 @@ On utilisera le code suivant :
 
 Sur une grille `5x5`en mode `easy`, on pourra par exemple avoir la configuration suivante :
 
-![Capture d'écran 5x4](grille5x5.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}]
+![Capture d'écran 5x4](grille5x5.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 #### Fonction `make_grid(grid, nb_bombes)`
 
@@ -109,11 +109,11 @@ Cette fonction permet d'afficher dans la console la grille de jeu de la manière
 
 * en jeu la grille est affichée ainsi :
 
-    ![ console in game](console_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}]
+    ![ console in game](console_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 * à la fin de la partie, on utilise des couleurs (vert pour bon placement, rouge pour erreur) comme dans la capture ci-dessous :
 
-    ![ console end game](console_2.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}]
+    ![ console end game](console_2.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Afin de rendre l'interface agréable, vous **devrez utiliser une police `mono`dans la console** (comme `courrier`), et pourrez utiliser les caractères utf-8 suivants : 
 
@@ -132,7 +132,7 @@ Les arguments `colors` et `detonate` sont des booléens signifiants respectiveme
 
 #### Fonction `ask_position(grid)`
 
-Fonction demandant au joueur son prochain coup, sous la forme d'une chaine de caractères de la forme `B3`ou `fB3`, selon que le/la joueur·euse souhaite  découvrir ou *flaguer* une case, et qui renvoie un tuple sous la forme `(flag, indice_ligne, indice_colonne)`, où `flag` est un booléen donnant la nature du coup, `indice_ligne` est l'indice de la ligne de la grille correspondant au coup joué, et de même pour `indice_colonne`.
+Fonction demandant au joueur son prochain coup, sous la forme d'une chaine de caractères de la forme `B3`ou `fB3`, selon que le/la joueur·euse souhaite  découvrir ou *flaguer* une case (ou même supprimer un drapeau), et qui renvoie un tuple sous la forme `(flag, indice_ligne, indice_colonne)`, où `flag` est un booléen donnant la nature du coup, `indice_ligne` est l'indice de la ligne de la grille correspondant au coup joué, et de même pour `indice_colonne`.
 
 #### fonction `propagate(grid, x, y)`
 
@@ -140,11 +140,13 @@ Il s'agit d'une des fonctions essentielles du jeu. Si le/la joueur·euse clique 
 
 L'algorithme à utiliser pour permettre cette propagation est le suivant :
 
-* on crée deux listes `to_uncover`et `to_compute` qui contiennent respectivement les coordonnées des cellules à découvrir et de celles à traiter, qui sont toutes les deux initialisées avec le tuple `(x,y)` où `x` et `y` sont les arguments fournis à la fonction.
-* tant que la liste `to_compute` n'est pas vide, on effectue alors es opérations suivantes :
-    * on «pop» de la liste `to_compute` son dernier élément, qui donne les coordonnées de la cellule qui va être étudiée ;
-    * si la cellule a pour valeur 0, alors on ajoute toutes ses voisines à la fois à la liste `to_compute` et à la liste `to_uncover`, **si elles n'y sont pas déjà présentes**.
-* une fois la liste `to_compute`vide, on passe les attributs `covered`de chacune des cellules de la liste `to_uncover`à `False`.
+!!! info "Algorithme de propagation"
+
+    * on crée deux listes `to_uncover`et `to_compute` qui contiennent respectivement les coordonnées des cellules à découvrir et de celles à traiter, qui sont toutes les deux initialisées avec le tuple `(x,y)` où `x` et `y` sont les arguments fournis à la fonction.
+    * tant que la liste `to_compute` n'est pas vide, on effectue alors es opérations suivantes :
+        * on «pop» de la liste `to_compute` son dernier élément, qui donne les coordonnées de la cellule qui va être étudiée, et on change l'attribut `covered` de cette cellule à `False` ;
+        * si la cellule a pour valeur 0, alors on ajoute toutes ses voisines à la fois à la liste `to_compute` et à la liste `to_uncover`, **si elles n'y sont pas déjà présentes**.
+
 
 #### Fonction `apply_position(grid, flag, x, y)`
 
@@ -156,10 +158,37 @@ Cette fonction applique l'effet d'un coup du joueur sur la grille :
 
 Cette fonction **renvoie un booléen** qui vaut `True`si le jeu se poursuit, et `False`si le/la joueur·euse a joué sur une bombe.
 
-#### fonction `count_uncovered(grid)`
+#### Fonction `count_uncovered(grid)`
+
+Cette fonction renvoie le nombre de cases découvertes sur la grille (elle aidera à savoir si le /la joueur·euse a gagné).
+
+#### Fonction `count_flagged(grid)`
+
+Cette fonction renvoie le nombre de cases contenant un drapeau, utile pour l'interface graphique.
+
+#### Fonction `main_console(grid, difficulte = 1)`
+
+Cette fonction permet de lancer une partie de démineur dans la console, avec une difficulté qui représente le nombre de bombes supplémentaires (en plus de `taille`) à ajouter à la grille.
+
+Cette fonction traite tous les cas, et affiche donc au joueur s'il a gagné ou perdu.
 
 ### Fichier `demineurP5.py`
 
+Ce fichier utilise le module `P5`, qui est un portage en Python du module `p5`de javascript, qui permet de créer des interfaces graphiques.
+
+Pour utiliser `P5`avec Thonny, vous pouvez suivre [ce tutoriel](../../../../Miscellanees/p5_Thonny.md){:target="_blank"}
+
+Vous n'avez rien à changer dans ce module, sauf amélioration souhaitée, mais si vos fonctions respectent les spécifications données ci-dessus, le jeu devrait raisonnablement fonctionner (mais il peut être potentiellement très lent...).
 
 
 ### Barème du projet
+
+* Un jeu en console fonctionnel (c'est-à-dire permettant de faire une partie) vous apporte 7 pts ;
+* Un code correctement commenté vous apporte 3 pts ;
+* Si toutes les spécifications sont correctes, vous gagnez 2 pts ;
+* Un code lisible, donc avec des noms de variables parlants et des sauts de lignes adéquats, vous rapporte 3 pts ;
+* Les 5 points restants correspondent aux améliorations possibles, soit dans la console, soit dans l'interface graphique, par exemple :
+    * la possibilité de choisir une taille de grille différente ;
+    * l'introduction d'un chronomètre ;
+    * une sauvegarde du score possible (s'inspirer par exemple du projet de Bandit Manchot...)
+    * ...
