@@ -8,7 +8,7 @@
 
 	Pour simplifier, le modèle **client-serveur** désigne un mode de communication entre logiciels : l'un qualifié de **client** envoie des requêtes; l'autre, le **serveur**, y répond.
 
-	Dans le cas du web, le logiciel client est **le navigateu**r et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme `Apache` ou `NGinx`. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme **PHP** ou **Python**.
+	Dans le cas du web, le logiciel client est **le navigateur** et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme `Apache` ou `NGinx`. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme **PHP** ou **Python**.
 
 	![ClientServeur.png](ClientServeur.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""}
 
@@ -20,7 +20,7 @@
 ### Installation de Flask et démarrage du serveur
 
 !!! info "Flask"
-	Flask est un micro framework (ou micro *infrastructure logicielle*) open-source de développement web en Python. Il est classé comme micro framework car il est très léger. Flask a pour objectif de garder un noyau simple mais extensible. Il n'intègre pas de système d'authentification, pas de couche d'abstraction de base de données, ni d'outil de validation de formulaires. Cependant, de nombreuses extensions permettent d'ajouter facilement des fonctionnalités.
+	Flask est un micro framework (ou micro *infrastructure logicielle*) open-source de développement web en Python. Il est classé comme micro framework, car il est très léger. Flask a pour objectif de garder un noyau simple, mais extensible. Il n'intègre pas de système d'authentification, pas de couche d'abstraction de base de données, ni d'outil de validation de formulaires. Cependant, de nombreuses extensions permettent d'ajouter facilement des fonctionnalités.
 
 
 !!! tips "Méthodologie"
@@ -78,7 +78,7 @@
 
 ### Analyse du code Flask
 
-Comment comprendre le code que vous avez utilisé ? Rassurez-vous, vous devez le comprendre mais pas savoir le produire en partant de rien !
+Comment comprendre le code que vous avez utilisé ? Rassurez-vous, vous devez le comprendre, mais pas savoir le produire en partant de rien !
 
 Allons-y étape par étape :
 
@@ -102,14 +102,14 @@ def index():
     return "Hello World !"
 ````
 
-C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse `localhost:5000/`. Elle revoie toujours le même contenu, on parlera de contenu **statique**. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.
+C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse `localhost:5000/`. Elle renvoie toujours le même contenu, on parlera de contenu **statique**. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.
 
 ```` python  
 if __name__ == '__main__':
     app.run(debug=True)
 ````
 
- Ces 2 lignes permettent de démarrer le serveur et l'instance de l'appliscation web, en  mode `debug`. C'est un très bon moyen de visualiser les requêtes vers le serveur. 
+ Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, en mode `debug`. C'est un très bon moyen de visualiser les requêtes vers le serveur. 
  
 ### Ajouter une page
 
@@ -139,11 +139,11 @@ L'objectif est de créer une nouvelle page `contact`, qui sera donc accessible p
 
 ### Modèle Vue Contrôleur
 	
-Pour l'instant tout fonctionne mais il y a encore des choses que l'on peut améliorer :
+Pour l'instant tout fonctionne, mais il y a encore des choses que l'on peut améliorer :
 
 
 * il n'y a pas d'interaction avec l'utilisateur, nous verrons cela avec les paramètres des fonctions et les formulaires ;
-* taper du code HTML dans un fonction python, ce n'est pas très propre ! 
+* taper du code HTML dans une fonction python, ce n'est pas très propre ! 
 
 Pour cette dernière remarque, nous allons parler des {==**templates**==} (ou *gabarits* en français). Mais avant, un peu de théorie sur {==**le modèle MVC**==}.
 
@@ -207,7 +207,7 @@ Notre objectif est de créer une page d'accueil plus sympathique. Nous allons do
 ## Dynamiser les pages
 
 ### Introduire des variables
-Pour l'instant, le serveur Flask produit toujours les même pages. Mais Flask permet de générer des vues (pages HTML) en fonction de paramètres, de formulaires ...
+Pour l'instant, le serveur Flask produit toujours les mêmes pages. Mais Flask permet de générer des vues (pages HTML) en fonction de paramètres, de formulaires ...
 
 Commençons par améliorer l'affichage de notre page d'accueil en personnalisant l'affichage de la salutation.
 
@@ -289,7 +289,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 			Quelques indices :
 
 			* `datetime.datetime(a,m,j)` permet de créer un objet `date` de l'année `a`, mois `m` et jours `j` ;
-			* Pour récupérer le nombre de jour d'un objet date, if faut ajouter l'attribut `.days` à la suite de l'objet `date`.
+			* Pour récupérer le nombre de jour d'un objet date, if faut ajouter l'attribut `.day` à la suite de l'objet `date`.
 
 ### Utilisation d'un formulaire avec la méthode GET
 
@@ -324,7 +324,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 		
 		Les données envoyées **apparaissent dans l'URL**. C'est la méthode `GET` - qui est une méthode générale de HTTP, qui veut cela.
 		
-		Avec cette méthode, **les données du formulaire seront encodées dans une URL**. Celle-ci est composée du nom de la page ou du script à charger avec les données de formulaire empaquetée dans une chaîne. Les données sont séparées de l'adresse de la page par le code `?` et entre elles par le code `&`.
+		Avec cette méthode, **les données du formulaire seront encodées dans une URL**. Celle-ci est composée du nom de la page ou du script à charger avec les données de formulaire empaquetée dans une chaine. Les données sont séparées de l'adresse de la page par le code `?` et entre elles par le code `&`.
 
 
 		{==Imaginez si Facebook faisait ça quand vous entre votre login et votre mot de passe...==}
@@ -440,7 +440,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 	* des données de taille importante,
 	* et elle est recommandée pour modifier les données sur le serveur, et pour les données sensible comme expliqué par le W3C.
 
-## Une application :  chiffre de César
+## Une application : chiffre de César
 
 Vous devez créer une application web qui pourra coder ou décoder un texte codé avec la méthode de César. La méthode de César est expliquée [ici](https://fr.wikipedia.org/wiki/Chiffrement_par_d\%C3\%A9calage){: target="_blank"}.
 
