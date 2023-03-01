@@ -1,7 +1,7 @@
 # Les images matricielles
 
 Avant toutes choses, nous allons utiliser le module `pillow` de Python.
-Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage Packages`, et dans la barre de recherche, chercher le module `pillow`, et l'installer si il n'est pas déjà installé.
+Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage Packages`, et dans la barre de recherche, chercher le module `pillow`, et l'installer s'il n'est pas déjà installé.
 			
 ![Thonny1.png](../../../SNT/College/Thonny1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -21,13 +21,13 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 		1. Téléchargez [ici](YingYang.pgm){:target = "_blank"} cette image et sauvegardez-la dans un dossier `BitMap` que vous aurez créé.
 		2. Quel est le format de cette image ? Recherchez sa signification sur le web.
 		3. Quelles en sont les dimensions en pixels ? Quelle est sa taille en octets ?
-		4. Ouvrez l'image grâce au logiciel `Hex Editor Neo` (que vous pouvez mettre en Français par l'intermédiaire de `Tools > Settings > Language`). Le réglage basique de `Hex Editor Neo` donne les valeurs hexadécimales des différents octets composant l'image. Dans la colonne située à droite de ces valeurs hexadécimales, on trouve une représentation de ces octets au format ANSI, c'est-à-dire sous forme de caractères. Que retrouve-t-on au tout début de cette colonne ?
+		4. Ouvrez l'image grâce au logiciel `Hex Editor Neo` (que vous pouvez mettre en Français par l'intermédiaire de `Tools > Settings > Language`). Le réglage basique de `Hex Editor Neo` donne les valeurs hexadécimales des différents octets composant l'image. Dans la colonne située à droite de ces valeurs hexadécimales, on trouve une représentation de ces octets au format *ANSI*, c'est-à-dire sous forme de caractères. Que retrouve-t-on au tout début de cette colonne ?
 		5. En cliquant droit sur les groupes d'octets, effectuer le réglage suivant :
 		
 			* `Afficher comme > Décimale`
 			* `Colonnes > 32 colonnes`
 				
-			Puis supprimer les 13 premiers octets (juste avant la première valeur 255). Dézoomer avec `CTRL + Molette de souris`. Que voit-on apparaître ?
+			Puis supprimer les 13 premiers octets (juste avant la première valeur 255). Dézoomer avec `CTRL + Molette de souris`. Que voit-on apparaitre ?
 		6. Que représente une valeur décimale `255` (ou  `ff` en hexadécimal) ?
 		7. Que représente une valeur décimale `0` (ou  `00` en hexadécimal) ?
 		
@@ -37,7 +37,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 		2. Format `pgm` : *Portable Gray Map*, permet de faire des images matricielles en nuances de gris.
 		3. $32 \times 32$ pixels, soit $1024$ pixels. En octets : $1037$
 		4. On retrouve les valeurs 255 et 0.
-		5. On voit apparaître l'image.
+		5. On voit apparaitre l'image.
 		6. 255 représente un pixel blanc.
 		7. 0 représente un pixel noir.
 	
@@ -90,7 +90,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu `Tools > Manage P
 	* Lignes 10 : on récupère la valeur du pixel de coordonnées $(x;y)$ de l'image originale grâce à la *méthode* `getpixel`, et **on regarde si il est blanc** (`==255`).
 	* Ligne 11 : si la condition précédente est vraie, on va fixer la couleur du pixel de coordonnées $(x;y)$ de la copie à noir (`0`), grâce à la méthode `putpixel` (**Attention !** `putpixel` et `getpixel` n'acceptent que des tuples pour les coordonnées ! Si vous oubliez la paire de parenthèses, vous risquez d'obtenir `TypeError: putpixel() takes 3 positional arguments but 4 were given`).
 	* Lignes 12-13 : si la condition est fausse, on va fixer la couleur du pixel de coordonnées $(x;y)$ de la copie à blanc (`255`).
-	* Ligne 15 : on sauvegarde la copie sous le nom `YangYing.bmp`. Vous devriez trouver ce fichier dans votre dossier. On notera que pillow accepte de changer le type de fichier (ici on est passé de `pgm` à `bmp`).
+	* Ligne 15 : on sauvegarde la copie sous le nom `YangYing.bmp`. Vous devriez trouver ce fichier dans votre dossier. On notera que `pillow` accepte de changer le type de fichier (ici on est passé de `pgm` à `bmp`).
 	* Ligne 16 : on affiche l'image `copie`.
 	
 	
@@ -268,7 +268,7 @@ Il est temps de mettre un peu de couleur !
 				print(image.getpixel((150,50)))			
 				````
 			Que renvoie-t-elle ?
-			2. A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées $(250 ; 100)$. Quelle est sa couleur ?
+			2. A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées $(150 ; 50)$. Quelle est sa couleur ?
 		4. Reprendre la question 3 avec les pixels suivants :
 			1. $(50 ; 100)$
 			2. $(250 ; 100)$
@@ -318,7 +318,7 @@ Il est temps de mettre un peu de couleur !
 	* en groupant les pixels contigus de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position $(x_0;y_0)$ &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour $x_0$, un pour $y_0$ et 3 pour la couleur RGB) ;
 	* etc...
 	
-	Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs ré-attribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un **taux de compression** définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée ({==**compression avec perte==**}):
+	Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs ré-attribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un **taux de compression** définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée ({==**compression avec perte**==}):
 	
 	<div style="display:flex;">
 	<div style="display : inline; width : 30%;">
@@ -380,7 +380,7 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 	
 	Une image vectorielle est une image pour laquelle les éléments constitutifs sont **stockée sous la forme d'équations**.
 	
-	Ainsi l'image du manchot [Tux](https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg){: target="_blank"}, mascotte officielle du noyau Linux (à ne pas confondre avec [GNU/Linux](https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg){: target="_blank"}, est une image vectorielle au format `SVG`, qui peut être ouverte par `Notepad++`. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. 
+	Ainsi l'image du manchot [Tux](https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg){: target="_blank"}, mascotte officielle du noyau Linux (à ne pas confondre avec [GNU/Linux](https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg){: target="_blank"}), est une image vectorielle au format `SVG`, qui peut être ouverte par `Notepad++`. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. 
 	
 	L'avantage d'une telle image est qu'elle ne pixelisera pas, quel que soit le zoom qui lui est appliqué (en théorie...).
 	
@@ -490,7 +490,9 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 		
 	=== "Solutions"
 	
-		1. ```` python
+		1. Symétrie Verticale :
+
+			```` python
 			def symetrieVerticale(originale) :
 				width, height = originale.size
 				nouvelle = Image.new(originale.mode, originale.size)
@@ -501,7 +503,9 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 				return nouvelle
 			````
 			
-		2. ```` python
+		2. Symétrie horizontale :
+
+			```` python
 			def symetrieHorizontale(originale) :
 				width, height = originale.size
 				nouvelle = Image.new(originale.mode, originale.size)
@@ -511,7 +515,9 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 						nouvelle.putpixel((x, height-1-y) , p)
 				return nouvelle
 			````
-		3. ```` python
+		3. Symétrie centrale :
+		
+			```` python
 			def symetrieCentrale(originale) :
 				return symetrieHorizontale(symetrieVerticale(originale))
 			````
