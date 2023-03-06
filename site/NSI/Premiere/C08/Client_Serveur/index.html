@@ -1721,7 +1721,7 @@
       
         <li class="md-nav__item">
   <a href="#une-application-chiffre-de-cesar" class="md-nav__link">
-    Une application :  chiffre de César
+    Une application : chiffre de César
   </a>
   
 </li>
@@ -2888,7 +2888,7 @@
 <div class="admonition info">
 <p class="admonition-title">Modèle client-serveur</p>
 <p>Pour simplifier, le modèle <strong>client-serveur</strong> désigne un mode de communication entre logiciels : l'un qualifié de <strong>client</strong> envoie des requêtes; l'autre, le <strong>serveur</strong>, y répond.</p>
-<p>Dans le cas du web, le logiciel client est <strong>le navigateu</strong>r et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme <code>Apache</code> ou <code>NGinx</code>. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme <strong>PHP</strong> ou <strong>Python</strong>.</p>
+<p>Dans le cas du web, le logiciel client est <strong>le navigateur</strong> et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme <code>Apache</code> ou <code>NGinx</code>. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme <strong>PHP</strong> ou <strong>Python</strong>.</p>
 <p><img alt="ClientServeur.png" src="../ClientServeur.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="" /></p>
 </div>
 <p><em>Pour ce TP, nous allons être dans une situation particulière : le logiciel client et le logiciel serveur seront sur la même machine.</em></p>
@@ -2896,7 +2896,7 @@
 <h3 id="installation-de-flask-et-demarrage-du-serveur">Installation de Flask et démarrage du serveur</h3>
 <div class="admonition info">
 <p class="admonition-title">Flask</p>
-<p>Flask est un micro framework (ou micro <em>infrastructure logicielle</em>) open-source de développement web en Python. Il est classé comme micro framework car il est très léger. Flask a pour objectif de garder un noyau simple mais extensible. Il n'intègre pas de système d'authentification, pas de couche d'abstraction de base de données, ni d'outil de validation de formulaires. Cependant, de nombreuses extensions permettent d'ajouter facilement des fonctionnalités.</p>
+<p>Flask est un micro framework (ou micro <em>infrastructure logicielle</em>) open-source de développement web en Python. Il est classé comme micro framework, car il est très léger. Flask a pour objectif de garder un noyau simple, mais extensible. Il n'intègre pas de système d'authentification, pas de couche d'abstraction de base de données, ni d'outil de validation de formulaires. Cependant, de nombreuses extensions permettent d'ajouter facilement des fonctionnalités.</p>
 </div>
 <div class="admonition tips">
 <p class="admonition-title">Méthodologie</p>
@@ -2951,7 +2951,7 @@
 </ol>
 </div>
 <h3 id="analyse-du-code-flask">Analyse du code Flask</h3>
-<p>Comment comprendre le code que vous avez utilisé ? Rassurez-vous, vous devez le comprendre mais pas savoir le produire en partant de rien !</p>
+<p>Comment comprendre le code que vous avez utilisé ? Rassurez-vous, vous devez le comprendre, mais pas savoir le produire en partant de rien !</p>
 <p>Allons-y étape par étape :</p>
 <p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 </code></pre></div>
@@ -2965,11 +2965,11 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;Hello World !&quot;</span>
 </code></pre></div>
-<p>C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse <code>localhost:5000/</code>. Elle revoie toujours le même contenu, on parlera de contenu <strong>statique</strong>. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.</p>
+<p>C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse <code>localhost:5000/</code>. Elle renvoie toujours le même contenu, on parlera de contenu <strong>statique</strong>. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>Ces 2 lignes permettent de démarrer le serveur et l'instance de l'appliscation web, en  mode <code>debug</code>. C'est un très bon moyen de visualiser les requêtes vers le serveur. </p>
+<p>Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, en mode <code>debug</code>. C'est un très bon moyen de visualiser les requêtes vers le serveur. </p>
 <h3 id="ajouter-une-page">Ajouter une page</h3>
 <p>L'objectif est de créer une nouvelle page <code>contact</code>, qui sera donc accessible par l'URL <code>localhost:5000/contact</code>.</p>
 <div class="admonition tips">
@@ -2997,10 +2997,10 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 </div>
 <h2 id="le-modele-mvc">Le modèle MVC</h2>
 <h3 id="modele-vue-controleur">Modèle Vue Contrôleur</h3>
-<p>Pour l'instant tout fonctionne mais il y a encore des choses que l'on peut améliorer :</p>
+<p>Pour l'instant tout fonctionne, mais il y a encore des choses que l'on peut améliorer :</p>
 <ul>
 <li>il n'y a pas d'interaction avec l'utilisateur, nous verrons cela avec les paramètres des fonctions et les formulaires ;</li>
-<li>taper du code HTML dans un fonction python, ce n'est pas très propre ! </li>
+<li>taper du code HTML dans une fonction python, ce n'est pas très propre ! </li>
 </ul>
 <p>Pour cette dernière remarque, nous allons parler des <mark class="critic"><strong>templates</strong></mark> (ou <em>gabarits</em> en français). Mais avant, un peu de théorie sur <mark class="critic"><strong>le modèle MVC</strong></mark>.</p>
 <div class="admonition abstract">
@@ -3070,7 +3070,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 </div>
 <h2 id="dynamiser-les-pages">Dynamiser les pages</h2>
 <h3 id="introduire-des-variables">Introduire des variables</h3>
-<p>Pour l'instant, le serveur Flask produit toujours les même pages. Mais Flask permet de générer des vues (pages HTML) en fonction de paramètres, de formulaires ...</p>
+<p>Pour l'instant, le serveur Flask produit toujours les mêmes pages. Mais Flask permet de générer des vues (pages HTML) en fonction de paramètres, de formulaires ...</p>
 <p>Commençons par améliorer l'affichage de notre page d'accueil en personnalisant l'affichage de la salutation.</p>
 <div class="admonition tips">
 <p class="admonition-title">Méthodologie</p>
@@ -3143,7 +3143,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <p>Quelques indices :</p>
 <ul>
 <li><code>datetime.datetime(a,m,j)</code> permet de créer un objet <code>date</code> de l'année <code>a</code>, mois <code>m</code> et jours <code>j</code> ;</li>
-<li>Pour récupérer le nombre de jour d'un objet date, if faut ajouter l'attribut <code>.days</code> à la suite de l'objet <code>date</code>.</li>
+<li>Pour récupérer le nombre de jour d'un objet date, if faut ajouter l'attribut <code>.day</code> à la suite de l'objet <code>date</code>.</li>
 </ul>
 </div>
 </li>
@@ -3172,7 +3172,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <div class="highlight"><pre><span></span><code>http://localhost:5000/resultat?nom<span class="o">=</span>HATAKE<span class="p">&amp;</span><span class="nv">prenom</span><span class="o">=</span>Kakashi
 </code></pre></div>
 <p>Les données envoyées <strong>apparaissent dans l'URL</strong>. C'est la méthode <code>GET</code> - qui est une méthode générale de HTTP, qui veut cela.</p>
-<p>Avec cette méthode, <strong>les données du formulaire seront encodées dans une URL</strong>. Celle-ci est composée du nom de la page ou du script à charger avec les données de formulaire empaquetée dans une chaîne. Les données sont séparées de l'adresse de la page par le code <code>?</code> et entre elles par le code <code>&amp;</code>.</p>
+<p>Avec cette méthode, <strong>les données du formulaire seront encodées dans une URL</strong>. Celle-ci est composée du nom de la page ou du script à charger avec les données de formulaire empaquetée dans une chaine. Les données sont séparées de l'adresse de la page par le code <code>?</code> et entre elles par le code <code>&amp;</code>.</p>
 <p><mark class="critic">Imaginez si Facebook faisait ça quand vous entre votre login et votre mot de passe...</mark></p>
 <div class="admonition info">
 <p class="admonition-title">Méthode GET</p>
@@ -3280,7 +3280,7 @@ Par contre vous devez observer que <strong>les données ont bien disparu de l'UR
 <li>et elle est recommandée pour modifier les données sur le serveur, et pour les données sensible comme expliqué par le W3C.</li>
 </ul>
 </div>
-<h2 id="une-application-chiffre-de-cesar">Une application :  chiffre de César</h2>
+<h2 id="une-application-chiffre-de-cesar">Une application : chiffre de César</h2>
 <p>Vous devez créer une application web qui pourra coder ou décoder un texte codé avec la méthode de César. La méthode de César est expliquée <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_d\%C3\%A9calage" target="_blank">ici</a>.</p>
 <p>Pour réaliser cet exercice, il faut :</p>
 <ul>

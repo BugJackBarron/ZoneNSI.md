@@ -2918,7 +2918,7 @@
 
 <h1 id="les-images-matricielles">Les images matricielles</h1>
 <p>Avant toutes choses, nous allons utiliser le module <code>pillow</code> de Python.
-Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; Manage Packages</code>, et dans la barre de recherche, chercher le module <code>pillow</code>, et l'installer si il n'est pas déjà installé.</p>
+Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; Manage Packages</code>, et dans la barre de recherche, chercher le module <code>pillow</code>, et l'installer s'il n'est pas déjà installé.</p>
 <p><img alt="Thonny1.png" src="../../../../SNT/College/Thonny1.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <h2 id="notion-de-bitmap-une-image-en-noir-et-blanc">Notion de BitMap : une image en noir et blanc</h2>
 <h3 id="bitmap">Bitmap</h3>
@@ -2933,14 +2933,14 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <li>Téléchargez <a href="../YingYang.pgm" target="target">ici</a> cette image et sauvegardez-la dans un dossier <code>BitMap</code> que vous aurez créé.</li>
 <li>Quel est le format de cette image ? Recherchez sa signification sur le web.</li>
 <li>Quelles en sont les dimensions en pixels ? Quelle est sa taille en octets ?</li>
-<li>Ouvrez l'image grâce au logiciel <code>Hex Editor Neo</code> (que vous pouvez mettre en Français par l'intermédiaire de <code>Tools &gt; Settings &gt; Language</code>). Le réglage basique de <code>Hex Editor Neo</code> donne les valeurs hexadécimales des différents octets composant l'image. Dans la colonne située à droite de ces valeurs hexadécimales, on trouve une représentation de ces octets au format ANSI, c'est-à-dire sous forme de caractères. Que retrouve-t-on au tout début de cette colonne ?</li>
+<li>Ouvrez l'image grâce au logiciel <code>Hex Editor Neo</code> (que vous pouvez mettre en Français par l'intermédiaire de <code>Tools &gt; Settings &gt; Language</code>). Le réglage basique de <code>Hex Editor Neo</code> donne les valeurs hexadécimales des différents octets composant l'image. Dans la colonne située à droite de ces valeurs hexadécimales, on trouve une représentation de ces octets au format <em>ANSI</em>, c'est-à-dire sous forme de caractères. Que retrouve-t-on au tout début de cette colonne ?</li>
 <li>
 <p>En cliquant droit sur les groupes d'octets, effectuer le réglage suivant :</p>
 <ul>
 <li><code>Afficher comme &gt; Décimale</code></li>
 <li><code>Colonnes &gt; 32 colonnes</code></li>
 </ul>
-<p>Puis supprimer les 13 premiers octets (juste avant la première valeur 255). Dézoomer avec <code>CTRL + Molette de souris</code>. Que voit-on apparaître ?</p>
+<p>Puis supprimer les 13 premiers octets (juste avant la première valeur 255). Dézoomer avec <code>CTRL + Molette de souris</code>. Que voit-on apparaitre ?</p>
 </li>
 <li>
 <p>Que représente une valeur décimale <code>255</code> (ou  <code>ff</code> en hexadécimal) ?</p>
@@ -2954,7 +2954,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <li>Format <code>pgm</code> : <em>Portable Gray Map</em>, permet de faire des images matricielles en nuances de gris.</li>
 <li><span class="arithmatex">\(32 \times 32\)</span> pixels, soit <span class="arithmatex">\(1024\)</span> pixels. En octets : <span class="arithmatex">\(1037\)</span></li>
 <li>On retrouve les valeurs 255 et 0.</li>
-<li>On voit apparaître l'image.</li>
+<li>On voit apparaitre l'image.</li>
 <li>255 représente un pixel blanc.</li>
 <li>0 représente un pixel noir.</li>
 </ol>
@@ -3019,7 +3019,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
 <li>Lignes 10 : on récupère la valeur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de l'image originale grâce à la <em>méthode</em> <code>getpixel</code>, et <strong>on regarde si il est blanc</strong> (<code>==255</code>).</li>
 <li>Ligne 11 : si la condition précédente est vraie, on va fixer la couleur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de la copie à noir (<code>0</code>), grâce à la méthode <code>putpixel</code> (<strong>Attention !</strong> <code>putpixel</code> et <code>getpixel</code> n'acceptent que des tuples pour les coordonnées ! Si vous oubliez la paire de parenthèses, vous risquez d'obtenir <code>TypeError: putpixel() takes 3 positional arguments but 4 were given</code>).</li>
 <li>Lignes 12-13 : si la condition est fausse, on va fixer la couleur du pixel de coordonnées <span class="arithmatex">\((x;y)\)</span> de la copie à blanc (<code>255</code>).</li>
-<li>Ligne 15 : on sauvegarde la copie sous le nom <code>YangYing.bmp</code>. Vous devriez trouver ce fichier dans votre dossier. On notera que pillow accepte de changer le type de fichier (ici on est passé de <code>pgm</code> à <code>bmp</code>).</li>
+<li>Ligne 15 : on sauvegarde la copie sous le nom <code>YangYing.bmp</code>. Vous devriez trouver ce fichier dans votre dossier. On notera que <code>pillow</code> accepte de changer le type de fichier (ici on est passé de <code>pgm</code> à <code>bmp</code>).</li>
 <li>Ligne 16 : on affiche l'image <code>copie</code>.</li>
 </ul>
 </div>
@@ -3215,7 +3215,7 @@ Nous allons donc l'installer dans Thonny, en utilisant le menu <code>Tools &gt; 
     <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">150</span><span class="p">,</span><span class="mi">50</span><span class="p">)))</span>         
 </code></pre></div>
 Que renvoie-t-elle ?</li>
-<li>A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées <span class="arithmatex">\((250 ; 100)\)</span>. Quelle est sa couleur ?</li>
+<li>A l'aide d'un éditeur d'images, repérer dans l'image précédente le pixel de coordonnées <span class="arithmatex">\((150 ; 50)\)</span>. Quelle est sa couleur ?</li>
 </ol>
 </li>
 <li>Reprendre la question 3 avec les pixels suivants :<ol>
@@ -3260,7 +3260,7 @@ Que renvoie-t-elle ?</li>
 <li>en groupant les pixels contigus de même couleur (100 pixels de la même couleur sur la même ligne occupent a minima 300 octets, alors que l'information  &laquo; Il y a 100 pixels sur cette ligne de la même couleur à partir de la position <span class="arithmatex">\((x_0;y_0)\)</span> &raquo; peut occuper uniquement 6 octets - 1 pour le nombre 100, un pour <span class="arithmatex">\(x_0\)</span>, un pour <span class="arithmatex">\(y_0\)</span> et 3 pour la couleur RGB) ;</li>
 <li>etc...</li>
 </ul>
-<p>Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs ré-attribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un <strong>taux de compression</strong> définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée (<mark class="critic"><strong>compression avec perte==</strong>}):</p>
+<p>Par exemple, l'algorithme de compression JPEG redéfinit les couleurs des pixels en leurs ré-attribuant une couleur moyenne qui est calculée en fonction des couleurs des pixels voisins, et  qui dépend d'un <strong>taux de compression</strong> définissable par l'utilisateur. Plus le taux de compression est élevé, plus l'image sera dégradée (<mark class="critic"><strong>compression avec perte</strong></mark>):</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 30%;"></p>
 <p><img alt="Rebecca.jpg" src="../Rebecca.jpg" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
@@ -3278,7 +3278,7 @@ Que renvoie-t-elle ?</li>
 <p>Compression depuis original  : 99%</p>
 <p></div>
 </div></p>
-<p>Il existe cependant des algorithmes de {==<strong>compression sans perte</strong></mark>, comme par exemple avec le format <code>png</code>.</p>
+<p>Il existe cependant des algorithmes de <mark class="critic"><strong>compression sans perte</strong></mark>, comme par exemple avec le format <code>png</code>.</p>
 </div>
 <h3 id="les-formats-des-fichiers-images">Les formats des fichiers images</h3>
 <p>Il existe de nombreux formats d'images numériques de types <strong>matriciels</strong>. Les principaux sont donnés dans le tableau suivant :</p>
@@ -3343,7 +3343,7 @@ Que renvoie-t-elle ?</li>
 <summary>Images Vectorielles</summary>
 <p>Dans le tableau précédent, vous n'avez que des format d'images <em>matricielles</em>. Il existe aussi un autre type d'images numériques appelé <strong>images vectorielles</strong>, construites sur un tout autre principe.</p>
 <p>Une image vectorielle est une image pour laquelle les éléments constitutifs sont <strong>stockée sous la forme d'équations</strong>.</p>
-<p>Ainsi l'image du manchot <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg" target="_blank">Tux</a>, mascotte officielle du noyau Linux (à ne pas confondre avec <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg" target="_blank">GNU/Linux</a>, est une image vectorielle au format <code>SVG</code>, qui peut être ouverte par <code>Notepad++</code>. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. </p>
+<p>Ainsi l'image du manchot <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg" target="_blank">Tux</a>, mascotte officielle du noyau Linux (à ne pas confondre avec <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg" target="_blank">GNU/Linux</a>), est une image vectorielle au format <code>SVG</code>, qui peut être ouverte par <code>Notepad++</code>. On trouve dans le fichier la description des différentes courbes, surfaces, etc... qui décrivent l'image. </p>
 <p>L'avantage d'une telle image est qu'elle ne pixelisera pas, quel que soit le zoom qui lui est appliqué (en théorie...).</p>
 <p>De telles images peuvent être crées et manipulées à l'aide du logiciel libre <code>Inkscape</code>.</p>
 </details>
@@ -3471,30 +3471,35 @@ Que renvoie-t-elle ?</li>
 <div class="tabbed-block">
 <ol>
 <li>
-<p><code>python
-    def symetrieVerticale(originale) :
-        width, height = originale.size
-        nouvelle = Image.new(originale.mode, originale.size)
-        for x in range(width) :
-            for y in range(height) :
-                p = originale.getpixel((x,y))
-                nouvelle.putpixel((width-1-x, y) , p)
-        return nouvelle</code></p>
+<p>Symétrie Verticale :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">symetrieVerticale</span><span class="p">(</span><span class="n">originale</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">originale</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">nouvelle</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">originale</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">originale</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">originale</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+            <span class="n">nouvelle</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nouvelle</span>
+</code></pre></div>
 </li>
 <li>
-<p><code>python
-    def symetrieHorizontale(originale) :
-        width, height = originale.size
-        nouvelle = Image.new(originale.mode, originale.size)
-        for x in range(width) :
-            for y in range(height) :
-                p = originale.getpixel((x,y))
-                nouvelle.putpixel((x, height-1-y) , p)
-        return nouvelle</code></p>
+<p>Symétrie horizontale :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">symetrieHorizontale</span><span class="p">(</span><span class="n">originale</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">originale</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">nouvelle</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">originale</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">originale</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">originale</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+            <span class="n">nouvelle</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nouvelle</span>
+</code></pre></div>
 </li>
-<li><code>python
-    def symetrieCentrale(originale) :
-        return symetrieHorizontale(symetrieVerticale(originale))</code></li>
+<li>
+<p>Symétrie centrale :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">symetrieCentrale</span><span class="p">(</span><span class="n">originale</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">symetrieHorizontale</span><span class="p">(</span><span class="n">symetrieVerticale</span><span class="p">(</span><span class="n">originale</span><span class="p">))</span>
+</code></pre></div>
+</li>
 </ol>
 </div>
 </div>
