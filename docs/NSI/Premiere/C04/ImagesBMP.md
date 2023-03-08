@@ -566,7 +566,9 @@ Son équivalent libre est `GIMP`. Il offre les mêmes fonctionnalités, et ne de
 			
 	=== "Réponse"
 		
-		1. ```` python
+		1. Filtre couleur :
+
+			```` python
 			def filtreCouleur(img, filtre) :
 				fr, fg, fb, fa = filtre
 				copie = Image.new(img.mode, img.size)

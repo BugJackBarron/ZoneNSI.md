@@ -3544,17 +3544,20 @@ Que renvoie-t-elle ?</li>
 </div>
 <div class="tabbed-block">
 <ol>
-<li><code>python
-    def filtreCouleur(img, filtre) :
-        fr, fg, fb, fa = filtre
-        copie = Image.new(img.mode, img.size)
-        width, height = img.size
-        for x in range(width) :
-            for y in range(height) :
-               pr, pg, pb, pa = img.getpixel((x,y))
-               copie.putpixel((x,y), (pr*fr, pg*fg, pb*fb, pa*fa))
-               # ou copie.putpixel((x,y), tuple(f*p for f, p in zip(filtre, img.getpixel(x,y))
-        return copie</code></li>
+<li>
+<p>Filtre couleur :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">filtreCouleur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">filtre</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">fr</span><span class="p">,</span> <span class="n">fg</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fa</span> <span class="o">=</span> <span class="n">filtre</span>
+    <span class="n">copie</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">:</span>
+           <span class="n">pr</span><span class="p">,</span> <span class="n">pg</span><span class="p">,</span> <span class="n">pb</span><span class="p">,</span> <span class="n">pa</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+           <span class="n">copie</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">pr</span><span class="o">*</span><span class="n">fr</span><span class="p">,</span> <span class="n">pg</span><span class="o">*</span><span class="n">fg</span><span class="p">,</span> <span class="n">pb</span><span class="o">*</span><span class="n">fb</span><span class="p">,</span> <span class="n">pa</span><span class="o">*</span><span class="n">fa</span><span class="p">))</span>
+           <span class="c1"># ou copie.putpixel((x,y), tuple(f*p for f, p in zip(filtre, img.getpixel(x,y))</span>
+    <span class="k">return</span> <span class="n">copie</span>
+</code></pre></div>
+</li>
 </ol>
 </div>
 </div>
