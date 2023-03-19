@@ -8,19 +8,19 @@ Nous avons vu précédemment comment écrire les nombres entiers naturels en bin
 Nous avons vu aussi que les nombres entiers étaient codés au niveau machine sur un nombre d'octets bien défini :
 
 * sur 1 octet, on code $2^8 = 256$ nombres, soit les nombres de $0$ à $255$ ;
-* sur 2 octets, on code $2^{16} = 65~536$ nombres, soit les nombres de $0$ à $65~535$ (en C, c'est-le type `int`);
+* sur 2 octets, on code $2^{16} = 65~536$ nombres, soit les nombres de $0$ à $65~535$ (en C, c'est le type `int`);
 * sur 4 octets, on code $2^{32} \simeq  4,3 \times 10^9$ nombres (en C, c'est-le type `long`);
 * sur 8 octets, on code $2^{64} \simeq  1,8 \times 10^{19}$ nombres (en C, c'est-le type `long long`).
 
 Enfin nous avons constaté que les opérations arithmétiques basiques ( addition, soustraction, multiplication,...) étaient compatibles avec cette notation.
 
-IL nous faut maintenant nous intéresser aux autres possibilités de nombres : les nombres signés (relatifs) et les flottants.
+Il nous faut maintenant nous intéresser aux autres possibilités de nombres : les nombres signés (relatifs) et les flottants.
 
 ## Les Entiers Relatifs (entiers signés)
 
 ### Une version naïve
 !!! abstract "Bit de signe"
-	Sur un octet, le bit de poids fort - c'est-à-dire le bit le plus à gauche du nombre, représente le signe ( $0$ pour positif et $1$ pour négatif) et les 7 autres représentent la valeur absolue du nombre.
+	Sur un octet, le {==**bit de poids fort**==} - c'est-à-dire le bit le plus à gauche du nombre, représente le signe ($0$ pour positif et $1$ pour négatif) et les 7 autres représentent la valeur absolue du nombre.
 
 !!! question "Exercice"
 
@@ -40,11 +40,11 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 ### Complément à 2
 
 !!! abstract "Complément à 2"
-	Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en *complément à deux*. Dans cette notation, sur un octet :
+	Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en {==**complément à deux**==}. Dans cette notation, sur un octet :
 
 	* Les nombres positifs sont représentés comme pour les nombres entiers naturels.
 	* Pour les nombres négatifs, par contre :
-		* On inverse les bits de l'écriture binaire de la valeur absolue, ce qu'on appelle le *complément à 1*. Cela correspond à une opération logique `NON` sur chaque bit.
+		* On inverse les bits de l'écriture binaire de la valeur absolue, ce qu'on appelle le **complément à 1**. Cela correspond à une opération logique `NON` sur chaque bit.
 		* On ajoute $1$ au résultat, les dépassements (`overflow`) étant ignorés - ce qui signifie qu'on reste bien sur $8$ bits.
 		
 !!! example "Exemple"
@@ -101,9 +101,9 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 
 ## Les Flottants
 
-###Représentation de la partie décimale d'un nombre en écriture binaire
+### Représentation de la partie décimale d'un nombre en écriture binaire
 
-!!! abstract "Représentaion de la partie décimale en base 10"
+!!! abstract "Représentation de la partie décimale en base 10"
 	En base 10, on a :
 	
 	$$
@@ -152,18 +152,18 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 		A venir !
 
 !!! info "Remarque"
-	Tout comme le nombre $\dfrac{1}{3}$ ne possède pas d'écriture décimale finie, certains nombres ne possèdent pas d'écritures binaire finie.
+	Tout comme le nombre $\dfrac{1}{3}$ ne possède pas d'écriture décimale finie, certains nombres ne possèdent pas d'écritures binaires finies.
 
-### Ecriture scientifique des nombres en écriture binaires
+### Écriture scientifique des nombres en écriture binaires
 
-!!! info "Ecriture décimale scientifique"
+!!! info "Écriture décimale scientifique"
 	Pour écrire de très grands nombres, ou de très petits, on utilise souvent une écriture scientifique, c'est-à-dire sous la forme $a \times 10^n$, où $a \in [1;10[$ et $n\in\mathbb{Z}$. Ainsi :
 
 
 	* $4~571,23 = 4,57123 \times 10^3$
 	* $0,003~45 = 3,45 \times 10^{-3}$
 
-!!! abstract "Ecriture scientifique en binaire"
+!!! abstract "Écriture scientifique en binaire"
 	Pour écrire un nombre binaire en &laquo; écriture scientifique &raquo; , 
 	on l'écrira sous la forme $a \times 2^n$, où :
 
@@ -183,12 +183,12 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 
 *Le contenu de cette partie est largement issu de [Pixees.fr](https://pixees.fr/informatiquelycee/n_site/nsi_prem_float.html).*
 
-!!! abstract "Norme IEEE 754"
-	La norme IEEE 754 est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.
+!!! abstract "Norme `IEEE 754`"
+	La norme `IEEE 754` est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.
 
 	Nous allons étudier deux formats associés à cette norme : le format dit &laquo; simple précision&raquo; et le format dit &laquo; double précision&raquo;. Le format &laquo; simple précision&raquo; utilise $32$ bits pour écrire un nombre flottant alors que le format &laquo; double précision&raquo; utilise $64$ bits. Dans la suite nous travaillerons principalement sur le format $32$ bits.
 
-	Que cela soit en simple précision ou en double précision, la norme IEEE754 utilise :
+	Que cela soit en simple précision ou en double précision, la norme `IEEE 754` utilise :
 
 	* 1 bit de signe (1 si le nombre est négatif et 0 si le nombre est positif);
 	* des bits consacrés à l'{==**exposant**==} (8 bits pour la simple précision et 11 bits pour la double précision);
@@ -200,7 +200,7 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 	Nous pouvons vérifier que l'on a bien $1 + 8 + 23 = 32$ bits pour la simple précision et $1 + 11 + 52 = 64$ bits pour la double précision. 
 
 !!! tips "Déterminer la mantisse"
-	Pour écrire un nombre au format IEEE 754, il est nécessaire de commencer par écrire notre nombre sous &laquo; écriture scientifique &raquo; binaire, sous la forme $1,XXXXX.2^e$.
+	Pour écrire un nombre au format `IEEE 754`, il est nécessaire de commencer par écrire notre nombre sous &laquo; écriture scientifique &raquo; binaire, sous la forme $1,XXXXX.2^e$.
 	
 	Ainsi on sait déjà que le nombre $11010 = 1,1010\times 2^{100}$.
 	
@@ -211,7 +211,7 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 	$$
 
 !!! abstract "Exposant des nombres flottants"
-	Notre première intuition serait de dire que la partie *exposant* correspond simplement au &laquo; e &raquo; de $1,XXXXX.2^e$ (dans notre exemple $1,1010\times 2^{100}$, nous aurions $100$). En fait, c'est un peu plus compliqué... En effet, comment représenter les exposants négatifs, sachant que dans la norme IEEE 754, aucun bit pour le signe de l'exposant n'a été prévu. Il a donc été nécessaire de choisir une méthode, et c'est celle du {==**décalage d'exposant**==} qui a été retenue : 
+	Notre première intuition serait de dire que la partie *exposant* correspond simplement au &laquo; e &raquo; de $1,XXXXX.2^e$ (dans notre exemple $1,1010\times 2^{100}$, nous aurions $100$). En fait, c'est un peu plus compliqué... En effet, comment représenter les exposants négatifs, sachant que dans la norme `IEEE 754`, aucun bit pour le signe de l'exposant n'a été prévu. Il a donc été nécessaire de choisir une méthode, et c'est celle du {==**décalage d'exposant**==} qui a été retenue : 
 
 
 	* en simple précision, on décale l'exposant de $127$ ;
@@ -232,7 +232,7 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 
 
 !!! example "Exemple"
-	Soit le nombre &laquo; $-10,125$&raquo; en base $10$. Représentons-le au format simple précision :
+	Soit le nombre &laquo; $-10,125$ &raquo; en base $10$. Représentons-le au format simple précision :
 
 	* nous avons $(10)_{10} = (1010)_2$ et $(0,125)_{10} = (0,001)_2$ soit $(10,125)_{10} = (1010,001)_2$ ;
 	* décalons la virgule : $1010,001$ = $1,010001.2^3$, soit avec le décalage de l'exposant $1,010001.2^{130}$, en écrivant l'exposant en base 2, nous obtenons $1,010001.2^{10000010}$ ;
@@ -245,7 +245,7 @@ IL nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 
 !!! question "Exercice"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Déterminez la représentation au format simple précision de $(0,25)_{10}$ en binaire. 
 		2. Déterminez la représentation au format simple précision de $(0,1)_{10}$ en binaire. 
