@@ -2802,9 +2802,9 @@
 
 
 <h1 id="normes-dencodage-des-caracteres">Normes d'encodage des caractères</h1>
-<p>Nous avons vu que les nombres entiers et flottants sont codés en binaires, ainsi bien entendu que les booléens. Il en est de même pour les caractères. Cependant de nombreuses normes existent. Les raisons en sont pour la plupart historiques, mais pas seulement. Nous regarderons dans ce cours trois de ces normes, dont la dernière - l'<mark class="critic"><strong>unicode</strong></mark> - est aujourd'hui celle majoritairement utilisée.</p>
+<p>Nous avons vu que les nombres entiers et flottants sont codés en binaires, ainsi bien entendu que les booléens. Il en est de même pour les caractères. Cependant, de nombreuses normes existent. Les raisons en sont pour la plupart historiques, mais pas seulement. Nous regarderons dans ce cours trois de ces normes, dont la dernière - l'<mark class="critic"><strong>unicode</strong></mark> - est aujourd'hui celle majoritairement utilisée.</p>
 <h2 id="historiquement-la-norme-ascii">Historiquement - la norme ASCII</h2>
-<p>A partir des années 1960, les ordinateurs commencent à être équipés d'un clavier et d'un rouleau pour imprimer les sorties. Il fut donc nécessaire de décider comment manipuler les caractères alphanumériques.</p>
+<p>À partir des années 1960, les ordinateurs commencent à être équipés d'un clavier et d'un rouleau pour imprimer les sorties. Il fut donc nécessaire de décider comment manipuler les caractères alphanumériques.</p>
 <p>La décision fut prise de représenter <em>les caractères de l'alphabet anglais</em> sur un octet de la manière suivante :</p>
 <ul>
 <li>les 7 octets de poids faible (les plus à droite) serviront à associer une valeur numérique à chaque caractère ;</li>
@@ -2815,9 +2815,9 @@
 <p>Les ordinateurs de cette époque étant peu fiables au niveau des transmissions et traitement des bits, il arrivait des erreurs lors du traitement des signaux et un octet <code>1101 1011</code> pouvait vite se transformer en <code>1001 1011</code> : les données étaient alors corrompues et le mauvais caractère serait affiché. Le <mark class="critic"><strong>bit de parité</strong></mark> est un bit qui prenait la valeur 0 ou 1 selon la parité du nombre de 1 dans les 7 bits représentant le caractère. </p>
 <p>Ainsi, si les 7 bits sont <code>101 1001</code>, le bit de parité est à <code>0</code>, et l'octet complet devient <code>0101 1001</code>. Si celui reçu est <code>0101 0001</code>, un simple calcul avec le bit de parité permet de constater que le traitement du signal est défectueux. </p>
 </div>
-<p>Il reste donc <span class="arithmatex">\(7\)</span> bits pour encoder les caractères, soit <span class="arithmatex">\(2^7 = 128\)</span> possibilités. Ce codage est appelé American Standard Code for Information Interchange, soit <mark class="critic"><strong>ASCII</strong></mark>, et est présenté dans la <em>table de jeu de caractères ASCII</em> ci-dessous :</p>
+<p>Il reste donc <span class="arithmatex">\(7\)</span> bits pour encoder les caractères, soit <span class="arithmatex">\(2^7 = 128\)</span> possibilités. Ce codage est appelé <em>American Standard Code for Information Interchange</em>, soit <mark class="critic"><strong>ASCII</strong></mark>, et est présenté dans la <em>table de jeu de caractères ASCII</em> ci-dessous :</p>
 <p><img alt="ASCII.png" src="../ASCII.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
-<p>La table ASCII contient 95 caractère imprimables :
+<p>La table ASCII contient 95 caractères imprimables :
 * les chiffres de <code>0</code> à <code>9</code> ;
 * les lettres minuscules de <code>a</code> à <code>z</code> et majuscules de <code>A</code> à <code>Z</code> ;
 * des symboles mathématiques et de ponctuation.</p>
@@ -2825,7 +2825,7 @@
 <p>Il faut différencier la notion de <mark class="critic"><strong>jeu de caractère</strong></mark> (<em>Character set</em> en anglais) de celle de <mark class="critic"><strong>police de caractère</strong></mark>. Dans une police de caractère, chaque <em>glyphe</em> est associé à un numéro correspondant à un caractère du *<em>jeu de caractère</em>. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.</p>
 <div class="admonition info">
 <p class="admonition-title">Glyphes</p>
-<p>Un <strong>glyphe</strong> est  une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.</p>
+<p>Un <strong>glyphe</strong> est une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 33%;"></p>
 <p><img alt="Glyphe_a_Caliban.png" src="../Glyphe_a_Caliban.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Glyphe a police Caliban" /></p>
@@ -2840,12 +2840,12 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">En Python</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Pour obtenir un caractère correspondant à un code hexadécimal donné, il faut convertir en entier le nombre hexadécimalavec <code>int</code> puis passer par la fonction <code>chr</code> : </p>
+<p>Pour obtenir un caractère correspondant à un code hexadécimal donné, il faut convertir en entier le nombre hexadécimal avec <code>int</code> puis passer par la fonction <code>chr</code> : </p>
 <p><div class="highlight"><pre><span></span><code><span class="nb">chr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;Ox41&#39;</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
 </code></pre></div>
 Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?</p>
@@ -2874,16 +2874,16 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 </div>
 </div>
 <h2 id="la-norme-iso-8859">La norme ISO-8859</h2>
-<p>Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de <span class="arithmatex">\(2^8 = 256\)</span> possibilités de codage. Les différentes constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées <strong>ASCII étendues</strong>, pour <strong>la plupart incompatibles entre elles</strong>. Par exemple IBM produit une table, la <span class="arithmatex">\(CP437\)</span>, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :</p>
+<p>Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de <span class="arithmatex">\(2^8 = 256\)</span> possibilités de codage. Les différents constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées <strong>ASCII étendues</strong>, pour <strong>la plupart incompatibles entre elles</strong>. Par exemple IBM produit une table, la <code>CP437</code>, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :</p>
 <p><img alt="CP437.jpg" src="../CP437.jpg" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="CP437" /></p>
 <div class="admonition info">
-<p class="admonition-title">ISO-8859 ets es variantes</p>
+<p class="admonition-title">ISO-8859 et ses variantes</p>
 <p>Malgré tout, une norme arrive à être établie, l'<strong>ISO-8859</strong>, avec les conventions suivantes :</p>
 <ul>
-<li>le codage des caractères présents dans la tables ASCII est conservé (principe de <strong>rétro-compatibilité</strong>) ;</li>
+<li>le codage des caractères présents dans la tables <code>ASCII</code> est conservé (principe de <strong>rétro-compatibilité</strong>) ;</li>
 <li>on conserve le principe de caractères sur 1 octet, avec utilisation complète de <span class="arithmatex">\(8\)</span> bits.</li>
 </ul>
-<p>Plusieurs jeus de caractères coexistent alors :</p>
+<p>Plusieurs jeux de caractères coexistent alors :</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 50%;"></p>
 <p><img alt="ISO88591.png" src="../iso88591.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="ISO 8859-1 (Occidental)" /></p>
@@ -2892,13 +2892,13 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 <p><img alt="ISO88595.png" src="../iso88595.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="ISO 8859-5 (Cyrillique)" /></p>
 <p></div>
 </div></p>
-<p>Le jeu occidental ISO 8859-1, aussi appelé <mark class="critic"><strong>ISO-Latin-1</strong></mark>, a été le jeu par défaut du web avant d'être à son tour remplacé par l'<mark class="critic"><strong>unicode</strong></mark>. La norme ISO 8859-1 a été révisée en ISO 8859-15 à la fin des années 1990 pour y ajouter de nouveaux caractères (comme le symbole €). </p>
+<p>Le jeu occidental <code>ISO 8859-1</code>, aussi appelé <mark class="critic"><strong>ISO-Latin-1</strong></mark>, a été le jeu par défaut du web avant d'être à son tour remplacé par l'<mark class="critic"><strong>unicode</strong></mark>. La norme <code>ISO 8859-1</code> a été révisée en <code>ISO 8859-15</code> à la fin des années 1990 pour y ajouter de nouveaux caractères (comme le symbole €). </p>
 </div>
-<p>A noter que les efforts de normalisation ont parfois mené à des absurdités : pas moins de 5 normes ISO 8859 différentes coexistent pour l'aplphabet cyrillique...</p>
-<p>Cependant un problème majeur demeurait : certaines langues, comme le chinois, ne pouvaient tout simplement pas être utilisées, le nombres de glyphes nécessaires étant bien supérieur à <span class="arithmatex">\(256\)</span>.</p>
+<p>À noter que les efforts de normalisation ont parfois mené à des absurdités : pas moins de 5 normes <code>ISO 8859</code> différentes coexistent pour l'alphabet cyrillique...</p>
+<p>Cependant, un problème majeur demeurait : certaines langues, comme le chinois, ne pouvaient tout simplement pas être utilisées, le nombres de glyphes nécessaires étant bien supérieur à <span class="arithmatex">\(256\)</span>.</p>
 <div class="admonition question">
 <p class="admonition-title">Avec Python</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Il est possible avec Python de basculer d'un jeu de caractère à un autre. Le principe est de récupérer l'octet correspondant à un caractère dans un <em>charmap</em>, et d'afficher le caractère correspondant dans le nouveau <em>charmap</em>. Pour cela on utilise les méthodes suivantes :</p>
@@ -2908,15 +2908,15 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 </ul>
 <p><strong>Questions :</strong></p>
 <ol>
-<li>Tester l'encodage de la chaine <code>'A'</code> d'abord en <code>ascii</code>, puis en <code>ISO8859-1</code>, puis en <code>ISO8859-5</code> et enfin en <code>CP437</code>. Que constate-t-on ?</li>
+<li>Tester l'encodage de la chaine <code>'A'</code> d'abord en <code>ASCII</code>, puis en <code>ISO8859-1</code>, puis en <code>ISO8859-5</code> et enfin en <code>CP437</code>. Que constate-t-on ?</li>
 <li>Faire de même avec la chaine <code>'é'</code>. Que constate-t-on ?</li>
 <li>A quels caractères correspond l'octet dont le code Python est <code>b'\xe7'</code> selon l'encodage utilisé :<ol>
-<li>en Latin-1 ?</li>
-<li>en CP437 ?</li>
-<li>en ISO8859-5 ?</li>
+<li>en <code>Latin-1</code> ?</li>
+<li>en <code>CP437</code> ?</li>
+<li>en <code>ISO8859-5</code> ?</li>
 </ol>
 </li>
-<li>Quel est le code Latin-1 cordresponant à la lettre 'œ' ? Quel est le problème ?</li>
+<li>Quel est le code Latin-1 correspondant à la lettre 'œ' ? Quel est le problème ?</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -2925,15 +2925,15 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 </div>
 </div>
 </div>
-<h2 id="lencodage-unicode-utf-8">L'encodage unicode UTF-8</h2>
+<h2 id="lencodage-unicode-utf-8">L'encodage unicode <code>UTF-8</code></h2>
 <div class="admonition info">
 <p class="admonition-title">Naissance d'Unicode</p>
 <p><div style="display:flex;">
 <div style="display : inline; width : 70%;"></p>
-<p>Internet naisant, les problèmes liés aux différents encodages ont augmentés exponentiellement (et perdurent toujours aujourd'hui sur certains logiciels). La solution trouvée est le standard <mark class="critic"><strong>unicode</strong></mark>, né au début des années 1990.</p>
+<p>Internet naissant, les problèmes liés aux différents encodages ont augmentés exponentiellement (et perdurent toujours aujourd'hui sur certains logiciels). La solution trouvée est le standard <mark class="critic"><strong>unicode</strong></mark>, né au début des années 1990.</p>
 <p>L'objectif de cette norme est triple :</p>
 <ul>
-<li>Rétro-compatibilité avec ASCII, et en grande partie avec ISO8859-1 ;</li>
+<li>Rétro-compatibilité avec <code>ASCII</code>, et en grande partie avec <code>ISO8859-1</code> ;</li>
 <li>Gestion d'un plus grand nombre de caractères ;</li>
 <li>Affichage de textes bi-directionnels.</li>
 </ul>
@@ -2943,8 +2943,8 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 <p></div>
 </div></p>
 </div>
-<p>Un des formats d'encodage de l'unicode, et le plus utilisé, est l'<mark class="critic"><strong>UTF-8</strong></mark> pour &laquo;<em>8-Bit Universal Character Set Transformation Format</em> &raquo;. L’UTF-8 code les caractères en utilisant jusqu'à 4 octets. Il attribue à chaque caractère unicode existant une séquence de bits précise. La force de cette norme est de <strong>ne pas forcément utiliser 4 octets</strong>. La table ASCII est d’ailleurs codée sur 1 seul octet (8 bits), pour garantir la rétro-compatibilité.</p>
-<p>En utf-8, chaque caractère est représenté sous la forme d'un bloc <code>U+xxxx</code> (où <code>xxxx</code> est un hexadécimal de 4 à 6 chiffres, entre <code>U+0000</code> et <code>U+10FFFF</code>). La plage ainsi définie permet d'attribuer jusqu'à 1 114 112 caractères. A l'heure actuelle, on recense environ 130 000 caractères dans unicode.</p>
+<p>Un des formats d'encodage de l'unicode, et le plus utilisé, est l'<mark class="critic"><strong>UTF-8</strong></mark> pour &laquo;<em>8-Bit Universal Character Set Transformation Format</em> &raquo;. L’UTF-8 code les caractères en utilisant jusqu'à 4 octets. Il attribue à chaque caractère unicode existant une séquence de bits précise. La force de cette norme est de <strong>ne pas forcément utiliser 4 octets</strong>. La table <code>ASCII</code> est d’ailleurs codée sur 1 seul octet (8 bits), pour garantir la rétro-compatibilité.</p>
+<p>En <code>utf-8</code>, chaque caractère est représenté sous la forme d'un bloc <code>U+xxxx</code> (où <code>xxxx</code> est un hexadécimal de 4 à 6 chiffres, entre <code>U+0000</code> et <code>U+10FFFF</code>). La plage ainsi définie permet d'attribuer jusqu'à 1 114 112 caractères. À l'heure actuelle, on recense environ 130 000 caractères dans unicode.</p>
 <p>Pour savoir combien d’octets on va utiliser les bits de poids fort du premier octet (celui de gauche) et pour savoir qu’un octet est la suite du précédent on commence par 10 :</p>
 <table>
 <thead>
@@ -2977,7 +2977,7 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 </tr>
 </tbody>
 </table>
-<p>Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le 10ème caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’UTF-16, lui,  est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme UTF-32 utilise elle 32 bits en permanence. Cela consomme bien plus de mémoire mais permet de trouver très rapidement le x-ième caractère d’une chaîne de caractères.</p>
+<p>Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le 10ème caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’UTF-16, lui, est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme UTF-32 utilise, elle, 32 bits en permanence. Cela consomme bien plus de mémoire, mais permet de trouver très rapidement le x-ième caractère d’une, chaine de caractères.</p>
 <p>L'UTF-8 est utilisé par <span class="arithmatex">\(82,2\%\)</span> des sites web en décembre 2014, puis <span class="arithmatex">\(87.6\%\)</span> en 2016 et enfin <span class="arithmatex">\(95,2\%\)</span> en octobre 2020.</p>
 <p>Par sa nature, UTF-8 est d'un usage de plus en plus courant sur Internet, et dans les systèmes devant échanger de l'information.</p>
 <p>Il s'agit également du codage le plus utilisé dans les systèmes GNU/Linux et compatibles pour gérer le plus simplement possible des textes et leurs traductions dans tous les systèmes d'écritures et tous les alphabets du monde.</p>
@@ -2991,8 +2991,8 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 </code></pre></div></li>
 </ul>
 <div class="admonition question">
-<p class="admonition-title">Jouer avezc les encodages</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Réponses</label></div>
+<p class="admonition-title">Jouer avec les encodages</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
