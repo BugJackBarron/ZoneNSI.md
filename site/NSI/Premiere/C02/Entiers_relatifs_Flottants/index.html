@@ -1190,7 +1190,7 @@
         
           <li class="md-nav__item">
   <a href="#ecriture-scientifique-des-nombres-en-ecriture-binaires" class="md-nav__link">
-    Ecriture scientifique des nombres en écriture binaires
+    Écriture scientifique des nombres en écriture binaires
   </a>
   
 </li>
@@ -2850,17 +2850,17 @@
 <p>Nous avons vu aussi que les nombres entiers étaient codés au niveau machine sur un nombre d'octets bien défini :</p>
 <ul>
 <li>sur 1 octet, on code <span class="arithmatex">\(2^8 = 256\)</span> nombres, soit les nombres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(255\)</span> ;</li>
-<li>sur 2 octets, on code <span class="arithmatex">\(2^{16} = 65~536\)</span> nombres, soit les nombres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(65~535\)</span> (en C, c'est-le type <code>int</code>);</li>
+<li>sur 2 octets, on code <span class="arithmatex">\(2^{16} = 65~536\)</span> nombres, soit les nombres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(65~535\)</span> (en C, c'est le type <code>int</code>);</li>
 <li>sur 4 octets, on code <span class="arithmatex">\(2^{32} \simeq  4,3 \times 10^9\)</span> nombres (en C, c'est-le type <code>long</code>);</li>
 <li>sur 8 octets, on code <span class="arithmatex">\(2^{64} \simeq  1,8 \times 10^{19}\)</span> nombres (en C, c'est-le type <code>long long</code>).</li>
 </ul>
 <p>Enfin nous avons constaté que les opérations arithmétiques basiques ( addition, soustraction, multiplication,...) étaient compatibles avec cette notation.</p>
-<p>IL nous faut maintenant nous intéresser aux autres possibilités de nombres : les nombres signés (relatifs) et les flottants.</p>
+<p>Il nous faut maintenant nous intéresser aux autres possibilités de nombres : les nombres signés (relatifs) et les flottants.</p>
 <h2 id="les-entiers-relatifs-entiers-signes">Les Entiers Relatifs (entiers signés)</h2>
 <h3 id="une-version-naive">Une version naïve</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Bit de signe</p>
-<p>Sur un octet, le bit de poids fort - c'est-à-dire le bit le plus à gauche du nombre, représente le signe ( <span class="arithmatex">\(0\)</span> pour positif et <span class="arithmatex">\(1\)</span> pour négatif) et les 7 autres représentent la valeur absolue du nombre.</p>
+<p>Sur un octet, le <mark class="critic"><strong>bit de poids fort</strong></mark> - c'est-à-dire le bit le plus à gauche du nombre, représente le signe (<span class="arithmatex">\(0\)</span> pour positif et <span class="arithmatex">\(1\)</span> pour négatif) et les 7 autres représentent la valeur absolue du nombre.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
@@ -2886,11 +2886,11 @@
 <h3 id="complement-a-2">Complément à 2</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Complément à 2</p>
-<p>Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en <em>complément à deux</em>. Dans cette notation, sur un octet :</p>
+<p>Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en <mark class="critic"><strong>complément à deux</strong></mark>. Dans cette notation, sur un octet :</p>
 <ul>
 <li>Les nombres positifs sont représentés comme pour les nombres entiers naturels.</li>
 <li>Pour les nombres négatifs, par contre :<ul>
-<li>On inverse les bits de l'écriture binaire de la valeur absolue, ce qu'on appelle le <em>complément à 1</em>. Cela correspond à une opération logique <code>NON</code> sur chaque bit.</li>
+<li>On inverse les bits de l'écriture binaire de la valeur absolue, ce qu'on appelle le <strong>complément à 1</strong>. Cela correspond à une opération logique <code>NON</code> sur chaque bit.</li>
 <li>On ajoute <span class="arithmatex">\(1\)</span> au résultat, les dépassements (<code>overflow</code>) étant ignorés - ce qui signifie qu'on reste bien sur <span class="arithmatex">\(8\)</span> bits.</li>
 </ul>
 </li>
@@ -2959,7 +2959,7 @@
 <h2 id="les-flottants">Les Flottants</h2>
 <h3 id="representation-de-la-partie-decimale-dun-nombre-en-ecriture-binaire">Représentation de la partie décimale d'un nombre en écriture binaire</h3>
 <div class="admonition abstract">
-<p class="admonition-title">Représentaion de la partie décimale en base 10</p>
+<p class="admonition-title">Représentation de la partie décimale en base 10</p>
 <p>En base 10, on a :</p>
 <div class="arithmatex">\[
 \begin{array}{rl}
@@ -3014,11 +3014,11 @@ On commence par convertir la partie entière <span class="arithmatex">\(13 = (11
 </div>
 <div class="admonition info">
 <p class="admonition-title">Remarque</p>
-<p>Tout comme le nombre <span class="arithmatex">\(\dfrac{1}{3}\)</span> ne possède pas d'écriture décimale finie, certains nombres ne possèdent pas d'écritures binaire finie.</p>
+<p>Tout comme le nombre <span class="arithmatex">\(\dfrac{1}{3}\)</span> ne possède pas d'écriture décimale finie, certains nombres ne possèdent pas d'écritures binaires finies.</p>
 </div>
-<h3 id="ecriture-scientifique-des-nombres-en-ecriture-binaires">Ecriture scientifique des nombres en écriture binaires</h3>
+<h3 id="ecriture-scientifique-des-nombres-en-ecriture-binaires">Écriture scientifique des nombres en écriture binaires</h3>
 <div class="admonition info">
-<p class="admonition-title">Ecriture décimale scientifique</p>
+<p class="admonition-title">Écriture décimale scientifique</p>
 <p>Pour écrire de très grands nombres, ou de très petits, on utilise souvent une écriture scientifique, c'est-à-dire sous la forme <span class="arithmatex">\(a \times 10^n\)</span>, où <span class="arithmatex">\(a \in [1;10[\)</span> et <span class="arithmatex">\(n\in\mathbb{Z}\)</span>. Ainsi :</p>
 <ul>
 <li><span class="arithmatex">\(4~571,23 = 4,57123 \times 10^3\)</span></li>
@@ -3026,7 +3026,7 @@ On commence par convertir la partie entière <span class="arithmatex">\(13 = (11
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Ecriture scientifique en binaire</p>
+<p class="admonition-title">Écriture scientifique en binaire</p>
 <p>Pour écrire un nombre binaire en &laquo; écriture scientifique &raquo; , 
 on l'écrira sous la forme <span class="arithmatex">\(a \times 2^n\)</span>, où :</p>
 <ul>
@@ -3046,10 +3046,10 @@ on l'écrira sous la forme <span class="arithmatex">\(a \times 2^n\)</span>, où
 <h3 id="representation-des-flottants-en-machine">Représentation des flottants en machine</h3>
 <p><em>Le contenu de cette partie est largement issu de <a href="https://pixees.fr/informatiquelycee/n_site/nsi_prem_float.html">Pixees.fr</a>.</em></p>
 <div class="admonition abstract">
-<p class="admonition-title">Norme IEEE 754</p>
-<p>La norme IEEE 754 est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.</p>
+<p class="admonition-title">Norme <code>IEEE 754</code></p>
+<p>La norme <code>IEEE 754</code> est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.</p>
 <p>Nous allons étudier deux formats associés à cette norme : le format dit &laquo; simple précision&raquo; et le format dit &laquo; double précision&raquo;. Le format &laquo; simple précision&raquo; utilise <span class="arithmatex">\(32\)</span> bits pour écrire un nombre flottant alors que le format &laquo; double précision&raquo; utilise <span class="arithmatex">\(64\)</span> bits. Dans la suite nous travaillerons principalement sur le format <span class="arithmatex">\(32\)</span> bits.</p>
-<p>Que cela soit en simple précision ou en double précision, la norme IEEE754 utilise :</p>
+<p>Que cela soit en simple précision ou en double précision, la norme <code>IEEE 754</code> utilise :</p>
 <ul>
 <li>1 bit de signe (1 si le nombre est négatif et 0 si le nombre est positif);</li>
 <li>des bits consacrés à l'<mark class="critic"><strong>exposant</strong></mark> (8 bits pour la simple précision et 11 bits pour la double précision);</li>
@@ -3060,7 +3060,7 @@ on l'écrira sous la forme <span class="arithmatex">\(a \times 2^n\)</span>, où
 </div>
 <div class="admonition tips">
 <p class="admonition-title">Déterminer la mantisse</p>
-<p>Pour écrire un nombre au format IEEE 754, il est nécessaire de commencer par écrire notre nombre sous &laquo; écriture scientifique &raquo; binaire, sous la forme <span class="arithmatex">\(1,XXXXX.2^e\)</span>.</p>
+<p>Pour écrire un nombre au format <code>IEEE 754</code>, il est nécessaire de commencer par écrire notre nombre sous &laquo; écriture scientifique &raquo; binaire, sous la forme <span class="arithmatex">\(1,XXXXX.2^e\)</span>.</p>
 <p>Ainsi on sait déjà que le nombre <span class="arithmatex">\(11010 = 1,1010\times 2^{100}\)</span>.</p>
 <p>La partie &laquo; <span class="arithmatex">\(XXXXX\)</span> &raquo;  du nombre, c'est-à-dire <span class="arithmatex">\(1010\)</span>, correspond à la <mark class="critic"><strong>mantisse</strong></mark>. Mais comme la mantisse doit contenir exactement <span class="arithmatex">\(23\)</span> bits en simple précision, il faut donc la compléter avec <span class="arithmatex">\(23-4 = 19\)</span> zéros à droite pour obtenir <span class="arithmatex">\(23\)</span> bits, soit : </p>
 <div class="arithmatex">\[
@@ -3069,7 +3069,7 @@ on l'écrira sous la forme <span class="arithmatex">\(a \times 2^n\)</span>, où
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Exposant des nombres flottants</p>
-<p>Notre première intuition serait de dire que la partie <em>exposant</em> correspond simplement au &laquo; e &raquo; de <span class="arithmatex">\(1,XXXXX.2^e\)</span> (dans notre exemple <span class="arithmatex">\(1,1010\times 2^{100}\)</span>, nous aurions <span class="arithmatex">\(100\)</span>). En fait, c'est un peu plus compliqué... En effet, comment représenter les exposants négatifs, sachant que dans la norme IEEE 754, aucun bit pour le signe de l'exposant n'a été prévu. Il a donc été nécessaire de choisir une méthode, et c'est celle du <mark class="critic"><strong>décalage d'exposant</strong></mark> qui a été retenue : </p>
+<p>Notre première intuition serait de dire que la partie <em>exposant</em> correspond simplement au &laquo; e &raquo; de <span class="arithmatex">\(1,XXXXX.2^e\)</span> (dans notre exemple <span class="arithmatex">\(1,1010\times 2^{100}\)</span>, nous aurions <span class="arithmatex">\(100\)</span>). En fait, c'est un peu plus compliqué... En effet, comment représenter les exposants négatifs, sachant que dans la norme <code>IEEE 754</code>, aucun bit pour le signe de l'exposant n'a été prévu. Il a donc été nécessaire de choisir une méthode, et c'est celle du <mark class="critic"><strong>décalage d'exposant</strong></mark> qui a été retenue : </p>
 <ul>
 <li>en simple précision, on décale l'exposant de <span class="arithmatex">\(127\)</span> ;</li>
 <li>en double précision, on décale l'exposant de <span class="arithmatex">\(1~023\)</span>.</li>
@@ -3087,7 +3087,7 @@ L'exposant est donc <span class="arithmatex">\(4 =(100)_2\)</span>, et pour le r
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
-<p>Soit le nombre &laquo; <span class="arithmatex">\(-10,125\)</span>&raquo; en base <span class="arithmatex">\(10\)</span>. Représentons-le au format simple précision :</p>
+<p>Soit le nombre &laquo; <span class="arithmatex">\(-10,125\)</span> &raquo; en base <span class="arithmatex">\(10\)</span>. Représentons-le au format simple précision :</p>
 <ul>
 <li>nous avons <span class="arithmatex">\((10)_{10} = (1010)_2\)</span> et <span class="arithmatex">\((0,125)_{10} = (0,001)_2\)</span> soit <span class="arithmatex">\((10,125)_{10} = (1010,001)_2\)</span> ;</li>
 <li>décalons la virgule : <span class="arithmatex">\(1010,001\)</span> = <span class="arithmatex">\(1,010001.2^3\)</span>, soit avec le décalage de l'exposant <span class="arithmatex">\(1,010001.2^{130}\)</span>, en écrivant l'exposant en base 2, nous obtenons <span class="arithmatex">\(1,010001.2^{10000010}\)</span> ;</li>
@@ -3100,7 +3100,7 @@ L'exposant est donc <span class="arithmatex">\(4 =(100)_2\)</span>, et pour le r
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
