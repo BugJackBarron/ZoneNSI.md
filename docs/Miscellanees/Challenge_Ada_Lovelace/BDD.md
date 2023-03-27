@@ -147,6 +147,10 @@ On peut alors utiliser les variables comme dans tout autre langage :
 
 ``` PHP
 <?php
-
+$double_age = $age * 2 ; // la variable vaudra alors 50
+$nom_complet = $nom.' '.$prenom //Operation de concaténation avec .
+// La chaine de caractere associée à $nom_complet est alors 
+// 'Lovelace Ada'
 ?>
 ```
+

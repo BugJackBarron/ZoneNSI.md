@@ -1,10 +1,10 @@
 # Principes de la programmation dynamique
 
-## Un premier exmple débranché
+## Un premier exemple débranché
 
 !!! question "Parcours sur une grille"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Combien y-a-t'il de chemin menant du point $D$ au point $A$ sur le graphique suivant, en ne se déplaçant à chaque pas que vers la droite ou vers le bas ?
 		
@@ -21,7 +21,7 @@
 		
 ## La suite de Fibonacci
 
-La {==**suite de [Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci){: target="_blank"}**==} est une suite définie par une récurence d'ordre 2 de la manière suivante,  :
+La {==**suite de [Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci){: target="_blank"}**==} est une suite définie par une récurence d'ordre 2 de la manière suivante, :
 
 $$
 \left\lbrace\begin{array}{rcl}
@@ -33,7 +33,7 @@ $$
 
 !!! question "Calculer"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Calculer les 10 premiers termes de la suite de Fibonacci.
 		
@@ -46,7 +46,7 @@ $$
 	Par exemple $F(0) = 0$ et $F(6) = 13$.
 	
 	
-Algorithmiquement parlant, la suite de Fibonacci étant une suite définie par récurence, nous serions tentés de créer une fonction récursive pour calculer les termes $F(n)$ de la suite. Pour ce faire, nous pourrions utiliser la fonction suivante :
+Algorithmiquement parlant, la suite de Fibonacci étant une suite définie par récurrence, nous serions tentés de créer une fonction récursive pour calculer les termes $F(n)$ de la suite. Pour ce faire, nous pourrions utiliser la fonction suivante :
 
 ```` python linenums="1"
 def fibo(n : int) -> int :
@@ -62,7 +62,7 @@ La question que nous devons nous poser est : est-ce un choix judicieux ?
 
 !!! question "Tester et voir les limites"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Tester la fonction `fibo` avec le code suivant :
 		```` python
 		import time
@@ -77,6 +77,7 @@ La question que nous devons nous poser est : est-ce un choix judicieux ?
 		2. Réaliser un schéma de la pile d'appels récursif effectués lors de l'exécution de `fibo(6)`.
 	
 	=== "Solutions"
+		
 		
 		1. Le temps d'exécution croît de manière exponentielle.
 		2. On a la construction suivante :
@@ -107,6 +108,7 @@ La question que nous devons nous poser est : est-ce un choix judicieux ?
 			</div>
 
 			</div>
+		
 			
 !!! bug "Multiples appels"
 
@@ -135,7 +137,7 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 
 	=== "Méthode ascendante"
 	
-		On va calculer les nombres de la suite de Fibonacci jusqu'à $n$ en partant de $F(0)$ et $F(1)$ :
+		On va calculer les nombres de la suite de Fibonacci jusqu'à $F(n)$ en partant de $F(0)$ et $F(1)$. On appelle ce type de méthode une méthode {==**Bottom-Up**==}. Ce n'est pas une méthode récursive.
 		
 		```` python linenums="1"
 		def fiboAsc(n : int) -> int :
@@ -149,7 +151,7 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		
 	=== "Méthode descendante"
 	
-		On va calculer les nombres de Fibonacci récursivement, mais en sauvegardant les calculs déjà effectués dans une liste Python, en profitant de sa *mutabilité* :
+		On va calculer les nombres de Fibonacci récursivement, mais en sauvegardant les calculs déjà effectués dans une liste Python, en profitant de sa *mutabilité*. On appelle ce type de méthode une approche {==**Top-Down**==} :
 		
 		```` python linenums="1"
 		def fiboDesc(n : int) -> int :
@@ -165,15 +167,15 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		
 		````
 		
-		L'explication la plus simple du fonctionnement est visible [ici](https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){: target="_blank"}, pour un exemple sur `fiboDesc(6)`.
+		L'explication la plus simple du fonctionnement est visible dans Thonny, en utilisant le debugger, ou bien [ici](https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29%0A%20%20%20%20%20%20%20%20return%20memo%5Bn%5D%0A%20%20%20%20return%20compute%28n,%20memo%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%0AfiboDesc%286%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){: target="_blank"}, pour un exemple sur `fiboDesc(6)`.
 		
 ### Principes de la programmation dynamique
 
 La {==**programmation dynamique**==}, introduite au début des années 1950 par [Richard Bellman](https://fr.wikipedia.org/wiki/Richard_Bellman){:target="_blank"}, est une méthode pour résoudre des problèmes en combinant des solutions de sous-problèmes, tout comme les méthodes de type *diviser pour régner*.
 
-Un algorithme de programmation dynamique résout chaque sous-sous-problème une seule fois et mémorise sa réponse dans un tableau, évitant ainsi le recalcul de la solution chaque fois qu'il résout chaque sous-sous-problème.
+Un algorithme de programmation dynamique résout chaque sous-sous-problème une seule fois et mémorise sa réponse dans un tableau, évitant ainsi le re-calcul de la solution chaque fois qu'il résout chaque sous-sous-problème.
 
-La programmation dynamique s'applique généralement aux **problèmes d'optimisation**, comme ceux que nous avons vu l'an passélorsque nous avons étudié les algorithmes gloutons.
+La programmation dynamique s'applique généralement aux **problèmes d'optimisation**, comme ceux que nous avons vu l'an passé lorsque nous avons étudié les algorithmes gloutons.
 
 ### Le problème du rendu de monnaie
 
@@ -182,7 +184,7 @@ La programmation dynamique s'applique généralement aux **problèmes d'optimisa
 
 #### Le problème : introduction et traitement débranché
 
-Vous avez à votre disposition un nombre illimité de pièces de 2 cts, 5 cts, 10 cts, 50 cts et 1euro (100 cts). Vous devez rendre une certaine somme (rendu de monnaie). Le problème est le suivant : "Quel est le nombre minimum de pièces qui doivent être utilisées pour rendre la monnaie"
+Vous avez à votre disposition un nombre illimité de pièces de 2 cts, 5 cts, 10 cts, 50 cts et 1 euro (100 cts). Vous devez rendre une certaine somme (rendu de monnaie). Le problème est le suivant : "Quel est le nombre minimum de pièces qui doivent être utilisées pour rendre la monnaie"
 
 La résolution "gloutonne" de ce problème peut être la suivante :
 
@@ -191,7 +193,7 @@ La résolution "gloutonne" de ce problème peut être la suivante :
 
 !!! question "Questions"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		1. Appliquer cette méthode pour une somme de 1€77 (177cts) à rendre.
 		2. Appliquer cette méthode à la somme de 11 centimes.
@@ -205,7 +207,7 @@ Nous allons essayer de mettre au point un algorithme récursif donnant une solut
 
 !!! question "Questions"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Compléter l'arbre suivant donnant l'ensemble des possibilités de répartition des pièces :
 		
 			![Monnaie1.png](Monnaie1.png){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;"}
@@ -246,7 +248,7 @@ On va donc utiliser la *programmation dynamique* pour accélérer la vitesse de 
 
 !!! question "Questions"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		
 		On considère la fonction suivante :
 		
@@ -269,8 +271,8 @@ On va donc utiliser la *programmation dynamique* pour accélérer la vitesse de 
 
 ??? question "Pour aller plus loin"
 
-	=== "Enoncé"
-		Nos codes précédents ne nous permettent que de connaître le nombre minimal de pièces nécessaire pour un rendu de monnaie donné. Nous ne connaissons par contre pas quelles pièces sont nécessaires.
+	=== "Énoncé"
+		Nos codes précédents ne nous permettent que de connaitre le nombre minimal de pièces nécessaire pour un rendu de monnaie donné. Nous ne connaissons par contre pas quelles pièces sont nécessaires.
 		
 		Transformez une des fonction précédente afin qu'elle renvoie les pièces nécessaires au rendu de monnaie.
 		

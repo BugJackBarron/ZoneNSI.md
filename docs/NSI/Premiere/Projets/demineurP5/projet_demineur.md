@@ -152,7 +152,7 @@ L'algorithme à utiliser pour permettre cette propagation est le suivant :
 
 Cette fonction applique l'effet d'un coup du joueur sur la grille :
 
-* en plaçant un drapeau sur la cellule de coordonnées `(x, y)` si l'argument `flag`est `True`;
+* en plaçant un drapeau sur la cellule de coordonnées  `(x, y)` si l'argument `flag`est `True`;
 * en découvrant une bombe si le/la joueur·euse a joué sur une case en contenant une ;
 * en appliquant la fonction `propagate` dans le cas où le/la joueur·euse joue sur une case ne contenant pas de bombes.
 
