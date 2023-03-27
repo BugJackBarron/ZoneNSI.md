@@ -2802,7 +2802,7 @@
 
 
 <h1 id="normes-dencodage-des-caracteres">Normes d'encodage des caractères</h1>
-<p>Nous avons vu que les nombres entiers et flottants sont codés en binaires, ainsi bien entendu que les booléens. Il en est de même pour les caractères. Cependant, de nombreuses normes existent. Les raisons en sont pour la plupart historiques, mais pas seulement. Nous regarderons dans ce cours trois de ces normes, dont la dernière - l'<mark class="critic"><strong>unicode</strong></mark> - est aujourd'hui celle majoritairement utilisée.</p>
+<p>Nous avons vu que les nombres entiers et flottants sont codés en binaires, ainsi bien entendu que les booléens. Il en est de même pour les caractères. Cependant, <em>de nombreuses normes existent</em>. Les raisons en sont pour la plupart historiques, mais pas seulement. Nous regarderons dans ce cours trois de ces normes, dont la dernière - l'<mark class="critic"><strong>unicode</strong></mark> - est aujourd'hui celle majoritairement utilisée.</p>
 <h2 id="historiquement-la-norme-ascii">Historiquement - la norme ASCII</h2>
 <p>À partir des années 1960, les ordinateurs commencent à être équipés d'un clavier et d'un rouleau pour imprimer les sorties. Il fut donc nécessaire de décider comment manipuler les caractères alphanumériques.</p>
 <p>La décision fut prise de représenter <em>les caractères de l'alphabet anglais</em> sur un octet de la manière suivante :</p>
@@ -2817,12 +2817,14 @@
 </div>
 <p>Il reste donc <span class="arithmatex">\(7\)</span> bits pour encoder les caractères, soit <span class="arithmatex">\(2^7 = 128\)</span> possibilités. Ce codage est appelé <em>American Standard Code for Information Interchange</em>, soit <mark class="critic"><strong>ASCII</strong></mark>, et est présenté dans la <em>table de jeu de caractères ASCII</em> ci-dessous :</p>
 <p><img alt="ASCII.png" src="../ASCII.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
-<p>La table ASCII contient 95 caractères imprimables :
-* les chiffres de <code>0</code> à <code>9</code> ;
-* les lettres minuscules de <code>a</code> à <code>z</code> et majuscules de <code>A</code> à <code>Z</code> ;
-* des symboles mathématiques et de ponctuation.</p>
-<p>Les 32 premiers caractères de <code>00</code> à <code>1F</code>, ainsi que le 128ème caractère <code>FF</code> ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère <code>FF</code> est la commande pour effacer le caractère précédent, le <code>07</code> provoque l'émission d'un signal sonore, etc).</p>
-<p>Il faut différencier la notion de <mark class="critic"><strong>jeu de caractère</strong></mark> (<em>Character set</em> en anglais) de celle de <mark class="critic"><strong>police de caractère</strong></mark>. Dans une police de caractère, chaque <em>glyphe</em> est associé à un numéro correspondant à un caractère du *<em>jeu de caractère</em>. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.</p>
+<p>La table ASCII contient 95 caractères imprimables :</p>
+<ul>
+<li>les chiffres de <code>0</code> à <code>9</code> ;</li>
+<li>les lettres minuscules de <code>a</code> à <code>z</code> et majuscules de <code>A</code> à <code>Z</code> ;</li>
+<li>des symboles mathématiques et de ponctuation.</li>
+</ul>
+<p>Les 32 premiers caractères de <code>00</code> à <code>1F</code>, ainsi que le <span class="arithmatex">\(128^e\)</span> caractère <code>FF</code> ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère <code>FF</code> est la commande pour effacer le caractère précédent, le <code>07</code> provoque l'émission d'un signal sonore, etc).</p>
+<p>Il faut différencier la notion de <mark class="critic"><strong>jeu de caractère</strong></mark> (<em>Character set</em> en anglais) de celle de <mark class="critic"><strong>police de caractère</strong></mark>. Dans une police de caractère, chaque <em>glyphe</em> est associé à un numéro correspondant à un caractère du <strong>jeu de caractère</strong>. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.</p>
 <div class="admonition info">
 <p class="admonition-title">Glyphes</p>
 <p>Un <strong>glyphe</strong> est une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.</p>
@@ -2874,7 +2876,7 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 </div>
 </div>
 <h2 id="la-norme-iso-8859">La norme ISO-8859</h2>
-<p>Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de <span class="arithmatex">\(2^8 = 256\)</span> possibilités de codage. Les différents constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées <strong>ASCII étendues</strong>, pour <strong>la plupart incompatibles entre elles</strong>. Par exemple IBM produit une table, la <code>CP437</code>, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :</p>
+<p>Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de <span class="arithmatex">\(2^8 = 256\)</span> possibilités de codage. Les différents constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées <mark class="critic"><strong>ASCII étendues</strong></mark>, pour <mark class="critic"><strong>la plupart incompatibles entre elles</strong></mark>. Par exemple IBM produit une table, la <code>CP437</code>, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :</p>
 <p><img alt="CP437.jpg" src="../CP437.jpg" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="CP437" /></p>
 <div class="admonition info">
 <p class="admonition-title">ISO-8859 et ses variantes</p>
@@ -2950,38 +2952,43 @@ Vérifiez avec quelques caractères. Comment faire à partir du code binaire  ?<
 <thead>
 <tr>
 <th align="center">Codes</th>
+<th align="center">Qté</th>
 <th align="center">Encodage en UTF-8</th>
 <th align="center">Caractères dans cet intervalle</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">jusqu’à <code>U+007F</code> (<span class="arithmatex">\(2^7-1\)</span>)</td>
-<td align="center"><span class="arithmatex">\(0bbbbbbb\)</span></td>
+<td align="center">jusqu’à <code>U+007F</code></td>
+<td align="center"><span class="arithmatex">\(2^7-1 = 127\)</span></td>
+<td align="center"><code>0bbbbbbb</code></td>
 <td align="center">latin de base (ASCII)</td>
 </tr>
 <tr>
-<td align="center">jusqu’à <code>U+07FF</code> (<span class="arithmatex">\(2^{11}-1\)</span>)</td>
-<td align="center"><span class="arithmatex">\(110bbbbb~10bbbbbb\)</span></td>
+<td align="center">jusqu’à <code>U+07FF</code></td>
+<td align="center"><span class="arithmatex">\(2^{11}-1=2047\)</span></td>
+<td align="center"><code>110bbbbb 10bbbbbb</code></td>
 <td align="center">alphabets d’Europe et du Moyen-Orient</td>
 </tr>
 <tr>
-<td align="center">jusqu’à <code>U+FFFF</code> (<span class="arithmatex">\(2^{16-1}\)</span>)</td>
-<td align="center"><span class="arithmatex">\(1110bbbb~ 10bbbbbb~ 10bbbbbb\)</span></td>
+<td align="center">jusqu’à <code>U+FFFF</code></td>
+<td align="center"><span class="arithmatex">\(2^{16-1} = 65535\)</span></td>
+<td align="center"><code>1110bbbb 10bbbbbb 10bbbbbb</code></td>
 <td align="center">La quasi-totalité des alphabets actuels</td>
 </tr>
 <tr>
-<td align="center">jusqu’à \textbf{U+10FFFF} (<span class="arithmatex">\(2^{21}-1\)</span>)</td>
-<td align="center"><span class="arithmatex">\(11110bbb~ 10bbbbbb~ 10bbbbbb~ 10bbbbbb\)</span></td>
+<td align="center">jusqu’à <code>U+10FFFF</code></td>
+<td align="center"><span class="arithmatex">\(2^{21}-1\simeq 2\times 10^6\)</span></td>
+<td align="center"><code>11110bbb 10bbbbbb 10bbbbbb 10bbbbbb</code></td>
 <td align="center">tous les caractères</td>
 </tr>
 </tbody>
 </table>
-<p>Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le 10ème caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’UTF-16, lui, est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme UTF-32 utilise, elle, 32 bits en permanence. Cela consomme bien plus de mémoire, mais permet de trouver très rapidement le x-ième caractère d’une, chaine de caractères.</p>
-<p>L'UTF-8 est utilisé par <span class="arithmatex">\(82,2\%\)</span> des sites web en décembre 2014, puis <span class="arithmatex">\(87.6\%\)</span> en 2016 et enfin <span class="arithmatex">\(95,2\%\)</span> en octobre 2020.</p>
-<p>Par sa nature, UTF-8 est d'un usage de plus en plus courant sur Internet, et dans les systèmes devant échanger de l'information.</p>
+<p>Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le <span class="arithmatex">\(10^e\)</span> caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’<code>UTF-16</code>, lui, est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme <code>UTF-32</code> utilise, elle, 32 bits en permanence. Cela consomme bien plus de mémoire, mais permet de trouver très rapidement le x-ième caractère d’une, chaine de caractères.</p>
+<p>L'<code>UTF-8</code> est utilisé par <span class="arithmatex">\(82,2\%\)</span> des sites web en décembre 2014, puis <span class="arithmatex">\(87.6\%\)</span> en 2016 et enfin <span class="arithmatex">\(95,2\%\)</span> en octobre 2020.</p>
+<p>Par sa nature, <code>UTF-8</code> est d'un usage de plus en plus courant sur Internet, et dans les systèmes devant échanger de l'information.</p>
 <p>Il s'agit également du codage le plus utilisé dans les systèmes GNU/Linux et compatibles pour gérer le plus simplement possible des textes et leurs traductions dans tous les systèmes d'écritures et tous les alphabets du monde.</p>
-<p>Concrètement, <strong>UTF-8 est utilisé par quasi tous les serveurs Web</strong>. Aujourd'hui, il n'y a plus de questions à se poser : <mark class="critic"><strong>choisissez systématiquement l'encodage utf-8 pour vos travaux</strong></mark>, et comme <em>explicit is better than implicit</em>, comme dit le zen de Python, expliquez clairement dans tous vos codes l'encodage utilisé :</p>
+<p>Concrètement, <strong>UTF-8 est utilisé par quasi tous les serveurs Web</strong>. Aujourd'hui, il n'y a plus de questions à se poser : <mark class="critic"><strong>choisissez systématiquement l'encodage <code>utf-8</code> pour vos travaux</strong></mark>, et comme <em>explicit is better than implicit</em>, comme dit le zen de Python, expliquez clairement dans tous vos codes l'encodage utilisé :</p>
 <ul>
 <li>en HTML : 
     <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span><span class="p">&gt;</span>

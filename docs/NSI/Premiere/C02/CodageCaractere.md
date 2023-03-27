@@ -1,7 +1,7 @@
 # Normes d'encodage des caractères
 
 
-Nous avons vu que les nombres entiers et flottants sont codés en binaires, ainsi bien entendu que les booléens. Il en est de même pour les caractères. Cependant, de nombreuses normes existent. Les raisons en sont pour la plupart historiques, mais pas seulement. Nous regarderons dans ce cours trois de ces normes, dont la dernière - l'{==**unicode**==} - est aujourd'hui celle majoritairement utilisée.
+Nous avons vu que les nombres entiers et flottants sont codés en binaires, ainsi bien entendu que les booléens. Il en est de même pour les caractères. Cependant, *de nombreuses normes existent*. Les raisons en sont pour la plupart historiques, mais pas seulement. Nous regarderons dans ce cours trois de ces normes, dont la dernière - l'{==**unicode**==} - est aujourd'hui celle majoritairement utilisée.
 
 ## Historiquement - la norme ASCII
 
@@ -24,13 +24,15 @@ Il reste donc $7$ bits pour encoder les caractères, soit $2^7 = 128$ possibilit
 
 
 La table ASCII contient 95 caractères imprimables :
+
 * les chiffres de `0` à `9` ;
 * les lettres minuscules de `a` à `z` et majuscules de `A` à `Z` ;
 * des symboles mathématiques et de ponctuation.
 
-Les 32 premiers caractères de `00` à `1F`, ainsi que le 128ème caractère `FF` ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère `FF` est la commande pour effacer le caractère précédent, le `07` provoque l'émission d'un signal sonore, etc).
+Les 32 premiers caractères de `00` à `1F`, ainsi que le $128^e$ caractère `FF` ne sont pas imprimables, ils correspondent à des commandes de contrôle de terminaux informatiques (le caractère `FF` est la commande pour effacer le caractère précédent, le `07` provoque l'émission d'un signal sonore, etc).
 
-Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* en anglais) de celle de {==**police de caractère**==}. Dans une police de caractère, chaque *glyphe* est associé à un numéro correspondant à un caractère du **jeu de caractère*. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.
+Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* en anglais) de celle de {==**police de caractère**==}. Dans une police de caractère, chaque *glyphe* est associé à un numéro correspondant à un caractère du **jeu de caractère**. Intrinsèquement, un ordinateur ne fait aucune différence entre deux glyphes de la même lettre.
+
 !!! info "Glyphes"
 	Un **glyphe** est une représentation graphique d'un signe typographique, c'est-à-dire d'un caractère ou bien un idéogramme.
 	 
@@ -79,7 +81,7 @@ Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* 
 
 ## La norme ISO-8859
 
-Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de $2^8 = 256$ possibilités de codage. Les différents constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées **ASCII étendues**, pour **la plupart incompatibles entre elles**. Par exemple IBM produit une table, la `CP437`, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :
+Dès la fin des années 60, alors que la qualité des ordinateurs s'améliore, il devient possible de bénéficier de l'octet de poids fort pour disposer de $2^8 = 256$ possibilités de codage. Les différents constructeurs d'ordinateurs se précipitent sur cette possibilité afin de palier aux défauts de l'ASCII, malheureusement sans se coordonner. Différentes normes voient le jour, appelées {==**ASCII étendues**==}, pour {==**la plupart incompatibles entre elles**==}. Par exemple IBM produit une table, la `CP437`, possédant des accents, ainsi que de nombreux symboles de tracés de boites - les interfaces graphiques n'existant pas encore sur ces machines :
 
 ![CP437.jpg](CP437.jpg){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" title="CP437"}
 
@@ -161,22 +163,22 @@ En `utf-8`, chaque caractère est représenté sous la forme d'un bloc `U+xxxx` 
 
 Pour savoir combien d’octets on va utiliser les bits de poids fort du premier octet (celui de gauche) et pour savoir qu’un octet est la suite du précédent on commence par 10 :
 
-| Codes | Encodage en UTF-8 | Caractères dans cet intervalle |
-| :---: | :---: | :---: |
-| jusqu’à `U+007F` ($2^7-1$) | $0bbbbbbb$ | latin de base (ASCII) |
-| jusqu’à `U+07FF` ($2^{11}-1$) | $110bbbbb~10bbbbbb$ | alphabets d’Europe et du Moyen-Orient |
-| jusqu’à `U+FFFF` ($2^{16-1}$) | $1110bbbb~ 10bbbbbb~ 10bbbbbb$ | 	La quasi-totalité des alphabets actuels |
-| jusqu’à \textbf{U+10FFFF} ($2^{21}-1$) | $11110bbb~ 10bbbbbb~ 10bbbbbb~ 10bbbbbb$| tous les caractères |
+| Codes | Qté | Encodage en UTF-8 | Caractères dans cet intervalle |
+| :---: | :---: | :---: | :---: |
+| jusqu’à `U+007F` | $2^7-1 = 127$ | `0bbbbbbb` | latin de base (ASCII) |
+| jusqu’à `U+07FF` | $2^{11}-1=2047$ | `110bbbbb 10bbbbbb` | alphabets d’Europe et du Moyen-Orient |
+| jusqu’à `U+FFFF` | $2^{16-1} = 65535$ | `1110bbbb 10bbbbbb 10bbbbbb` | 	La quasi-totalité des alphabets actuels |
+| jusqu’à `U+10FFFF` | $2^{21}-1\simeq 2\times 10^6$ | `11110bbb 10bbbbbb 10bbbbbb 10bbbbbb` | tous les caractères |
 
-Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le 10ème caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’UTF-16, lui, est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme UTF-32 utilise, elle, 32 bits en permanence. Cela consomme bien plus de mémoire, mais permet de trouver très rapidement le x-ième caractère d’une, chaine de caractères.
+Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le $10^e$ caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’`UTF-16`, lui, est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme `UTF-32` utilise, elle, 32 bits en permanence. Cela consomme bien plus de mémoire, mais permet de trouver très rapidement le x-ième caractère d’une, chaine de caractères.
 
-L'UTF-8 est utilisé par $82,2\%$ des sites web en décembre 2014, puis $87.6\%$ en 2016 et enfin $95,2\%$ en octobre 2020.
+L'`UTF-8` est utilisé par $82,2\%$ des sites web en décembre 2014, puis $87.6\%$ en 2016 et enfin $95,2\%$ en octobre 2020.
 
-Par sa nature, UTF-8 est d'un usage de plus en plus courant sur Internet, et dans les systèmes devant échanger de l'information.
+Par sa nature, `UTF-8` est d'un usage de plus en plus courant sur Internet, et dans les systèmes devant échanger de l'information.
 
 Il s'agit également du codage le plus utilisé dans les systèmes GNU/Linux et compatibles pour gérer le plus simplement possible des textes et leurs traductions dans tous les systèmes d'écritures et tous les alphabets du monde.
 
-Concrètement, **UTF-8 est utilisé par quasi tous les serveurs Web**. Aujourd'hui, il n'y a plus de questions à se poser : {==**choisissez systématiquement l'encodage utf-8 pour vos travaux**==}, et comme *explicit is better than implicit*, comme dit le zen de Python, expliquez clairement dans tous vos codes l'encodage utilisé :
+Concrètement, **UTF-8 est utilisé par quasi tous les serveurs Web**. Aujourd'hui, il n'y a plus de questions à se poser : {==**choisissez systématiquement l'encodage `utf-8` pour vos travaux**==}, et comme *explicit is better than implicit*, comme dit le zen de Python, expliquez clairement dans tous vos codes l'encodage utilisé :
 
 * en HTML : 
 	```` html
