@@ -1,0 +1,3797 @@
+    
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="F. Vergniaud">
+      
+      
+        <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C06/CSV/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Les fichiers CSV - ZoneNSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+        
+        <!-- favicons -->
+        <!--
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon_32x32.png" sizes="32x32">
+        <link rel="icon" href="../assets/images/favicon_96x96.png" sizes="96x96">
+        <link rel="icon" href="../assets/images/favicon_144x144.png" sizes="144x144">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css">
+        -->
+        <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-md5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+      <link rel="stylesheet" href="../../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    
+    <input id="ace_palette" autocomplete="off" class="md-toggle" data-ace-dark-mode="tomorrow_night_bright" data-ace-light-mode="crimson_editor" type="checkbox"></input>
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fichiers-csv-traitement-des-donnees-en-tables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ZoneNSI" class="md-header__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZoneNSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Les fichiers CSV
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ZoneNSI" class="md-nav__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    ZoneNSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Mathématiques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Mathématiques" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mathématiques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Seconde
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Seconde" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Seconde
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_2">
+          Ensembles de nombres et intervalles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ensembles de nombres et intervalles" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ensembles de nombres et intervalles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_01_Ensembles_Nombres/" class="md-nav__link">
+        Ensembles de nombres 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_02_Intervalles/" class="md-nav__link">
+        Intervalles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          Notion de fonctions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notion de fonctions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Notion de fonctions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C03/C03_01_Generalite_fonctions/" class="md-nav__link">
+        Vocabulaire et rappels
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" type="checkbox" id="__nav_2_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_4">
+          Algorithmique et bases de Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithmique et bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithmique et bases de Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        Algorithmes, affectations et types de variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/ProgrammationPythonThonny/" class="md-nav__link">
+        Programmation en Python et utilisation de Thonny
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/Arithmetique/" class="md-nav__link">
+        Arithmétique
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Premiere/home.md" class="md-nav__link">
+        Première
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Terminale/home.md" class="md-nav__link">
+        Terminale
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SNT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/College/PixelArt/" class="md-nav__link">
+        Session Collège
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Le Web
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Le Web
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Web/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Données Structurées
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Données Structurées" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Données Structurées
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Donnees/Arborescence/" class="md-nav__link">
+        Arborescence des fichiers et dossiers 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Reseaux Informatiques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reseaux Informatiques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reseaux Informatiques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/TCP_IP/" class="md-nav__link">
+        Adresses IP et TCP/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/Creation_reseaux/" class="md-nav__link">
+        Création de réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/DHCP_DNS/" class="md-nav__link">
+        Pour aller plus loin, DHCP et DNS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Images Numériques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images Numériques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Images Numériques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Images/NB/" class="md-nav__link">
+        Noir, Blanc, Gris
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Images/RGB/" class="md-nav__link">
+        La couleur et le RGB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Géolocalisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Géolocalisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Géolocalisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Geolocalisation/geolocalisation/" class="md-nav__link">
+        Coordonnées et GPS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Geolocalisation/Dijkstra/" class="md-nav__link">
+        Recherche du chemin le plus court
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NSI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Première
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Première" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Première
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_1">
+          Bases de Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bases de Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Bases_Python_1/" class="md-nav__link">
+        Variables et affectations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/C01_Conditions_Boucles/" class="md-nav__link">
+        Boucles et conditions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Fonctions_Assertions/" class="md-nav__link">
+        Fonctions, assertions et tests unitaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/PFC/PFC/" class="md-nav__link">
+        Projet : Pierre-Feuille-Ciseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/BanditManchot/Projet_Bandit_Manchot/" class="md-nav__link">
+        Projet : Bandit-Manchot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/Pendu/ProjetPendu/" class="md-nav__link">
+        Projet : Jeu du Pendu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2">
+          Le codage des données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le codage des données" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Le codage des données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/BinaireCodageEntiers/" class="md-nav__link">
+        Binaire et codage des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/Entiers_relatifs_Flottants/" class="md-nav__link">
+        Entiers relatifs et flottants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/CodageCaractere/" class="md-nav__link">
+        Codage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Le web
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le web" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Le web
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/HTML/" class="md-nav__link">
+        HTML strict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/CSS/" class="md-nav__link">
+        CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/JS01/" class="md-nav__link">
+        Introduction à Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/JS02/" class="md-nav__link">
+        Javascript, le DOM et les formulaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/NasaWeb/Nasa_Web/" class="md-nav__link">
+        Projet Rover Mars
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_4" type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4">
+          Les séquences
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Les séquences" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Les séquences
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Tuples/" class="md-nav__link">
+        Tuples et algorithmes de parcours
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Listes_Comprehension/" class="md-nav__link">
+        Listes et compréhensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Algorithmes_Tri/" class="md-nav__link">
+        Premiers algorithmes de tris
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Tableaux2D/" class="md-nav__link">
+        Tableaux à 2 dimensions : Matrices 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/ImagesBMP/" class="md-nav__link">
+        Les images Matricielles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/demineurP5/projet_demineur/" class="md-nav__link">
+        Projet : Démineur
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_5" type="checkbox" id="__nav_4_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_5">
+          Architecture matérielle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture matérielle" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture matérielle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/Historique/" class="md-nav__link">
+        Historique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_6" type="checkbox" id="__nav_4_1_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_6">
+          Traitement des données en tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Traitement des données en tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Traitement des données en tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/" class="md-nav__link">
+        Les dictionnaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Les fichiers CSV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Les fichiers CSV
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#donnees-en-tables" class="md-nav__link">
+    Données en tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-csv" class="md-nav__link">
+    Fichiers CSV
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-csv" class="md-nav__link">
+    Module CSV
+  </a>
+  
+    <nav class="md-nav" aria-label="Module CSV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecture-de-base" class="md-nav__link">
+    Lecture de base
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lire-un-fichier-csv-premiers-traitements" class="md-nav__link">
+    Lire un fichier CSV, premiers traitements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-donnees-numeriques" class="md-nav__link">
+    Les données numériques
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trier-les-donnees" class="md-nav__link">
+    Trier les données
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fusions-de-tables" class="md-nav__link">
+    Fusions de tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecrire-un-nouveau-fichier-csv" class="md-nav__link">
+    Ecrire un nouveau fichier csv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tp-explorer-imdb" class="md-nav__link">
+    TP : Explorer IMDB
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_7" type="checkbox" id="__nav_4_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_7">
+          Les algorithmes gloutons
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Les algorithmes gloutons" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Les algorithmes gloutons
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C07/Algorithmes_Gloutons/" class="md-nav__link">
+        Algorithmes Gloutons
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_8" type="checkbox" id="__nav_4_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_8">
+          Réseaux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Réseaux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/Histoire/" class="md-nav__link">
+        Internet : historique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/Trames/" class="md-nav__link">
+        Réseaux, Trames, Paquets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/Client_Serveur/" class="md-nav__link">
+        Transmission Client-Serveur
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Terminale
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Terminale" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Terminale
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/home/" class="md-nav__link">
+        Présentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_2">
+          Modularité et POO
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modularité et POO" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Modularité et POO
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Modularite/" class="md-nav__link">
+        Modules, interfaces, encapsulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/Exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C01/IntroPOO/" class="md-nav__link">
+        Introduction à la POO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/Projets/ClickersWars/CW/" class="md-nav__link">
+        Projet : ClickerWars
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          Récursivité
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Récursivité" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Récursivité
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/Recursivite/" class="md-nav__link">
+        Notion de récursivité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/RecursiviteFractales/" class="md-nav__link">
+        Applications : Fractales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C02/RecursiviteTris/" class="md-nav__link">
+        Applications : Tris
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Listes, Piles, Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Listes, Piles, Files" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Listes, Piles, Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/ListesChainees/" class="md-nav__link">
+        Listes chainées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/Piles_et_files/" class="md-nav__link">
+        Piles et files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C03/ToursHanoi/" class="md-nav__link">
+        TP : Tours de Hanoï
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Bases de Données et SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bases de Données et SQL" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Bases de Données et SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/ModeleRelationnel/" class="md-nav__link">
+        Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/BasesSQL1/" class="md-nav__link">
+        Bases de SQL 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/BasesSQL2/" class="md-nav__link">
+        Bases de SQL 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/BasesSQL3/" class="md-nav__link">
+        Bases de SQL 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C04/Projet_Pokemon/" class="md-nav__link">
+        Projet Pokemon
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Arbres Binaires
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Arbres Binaires" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Arbres Binaires
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/Def_Arbres/" class="md-nav__link">
+        Définition et propriétés des arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/ABR/" class="md-nav__link">
+        Arbres Binaires de Recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/ABR_Python/" class="md-nav__link">
+        Implémentation des ABR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C05/AVL/" class="md-nav__link">
+        Equilibrage des ABR : les AVL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Processeurs et Ordonnancement
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Processeurs et Ordonnancement" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Processeurs et Ordonnancement
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Linux/" class="md-nav__link">
+        Système d'exploitation Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Processus/" class="md-nav__link">
+        Gestion des Processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Ordonnancement/" class="md-nav__link">
+        Ordonnancement des processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C06/Interblocage/" class="md-nav__link">
+        Interblocage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_8">
+          Réseaux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Réseaux" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Réseaux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C07/Routage/" class="md-nav__link">
+        Notion de routage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C07/RIP/" class="md-nav__link">
+        Protocoles RIP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C07/OSPF/" class="md-nav__link">
+        Protocole OSPF
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_9" type="checkbox" id="__nav_4_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_9">
+          Programmation dynamique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programmation dynamique" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Programmation dynamique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C08/ProgDyn/" class="md-nav__link">
+        Principes et exemples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C08/alignSeq/" class="md-nav__link">
+        Alignements de séquences
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_10" type="checkbox" id="__nav_4_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_10">
+          Graphes et parcours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Graphes et parcours" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Graphes et parcours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C09/graphe/" class="md-nav__link">
+        Notion de Graphe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C09/graphe_python/" class="md-nav__link">
+        Les graphes en Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C09/parcours/" class="md-nav__link">
+        Parcours de Graphes 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/C10/BoyerMoore/" class="md-nav__link">
+        Recherche textuelles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Miscellanées
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Miscellanées" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellanées
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_1" type="checkbox" id="__nav_5_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_1">
+          Le langage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Le langage" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Le langage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Bases_Python/Fichiers_Textes/" class="md-nav__link">
+        Manipulation des fichiers textes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        Flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/mkdocs_cmd/" class="md-nav__link">
+        MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Manim/BasesManim/" class="md-nav__link">
+        Manim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_5" type="checkbox" id="__nav_5_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_5">
+          Pygame
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pygame" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Pygame
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/InstallationPygame/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/Base_pygame/" class="md-nav__link">
+        Bases de Pygame
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_6" type="checkbox" id="__nav_5_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1_6">
+          P5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="P5" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          P5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/p5_Thonny/" class="md-nav__link">
+        P5 et Thonny
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/utilisationP5/" class="md-nav__link">
+        Bases de P5 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/regex/" class="md-nav__link">
+        REGEX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Challenge_Ada_Lovelace/BDD/" class="md-nav__link">
+        BDD, SQL et PHP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="CSV.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
+              
+    
+                
+
+
+<h1 id="fichiers-csv-traitement-des-donnees-en-tables">Fichiers CSV : Traitement des données en tables</h1>
+<h2 id="donnees-en-tables">Données en tables</h2>
+<p>Une des utilisations principales de l’informatique de nos jours est le <strong>traitement de quantités importantes de données</strong> dans des domaines très variés :</p>
+<ul>
+<li>un site de commerce en ligne peut avoir à gérer des bases données pour des dizaines de milliers d’articles en vente, de clients, de commandes ;</li>
+<li>un hôpital doit pouvoir accéder efficacement à tous les détails de traitements de ses patients ;</li>
+<li>un éditeur de jeux vidéo doit pouvoir stocker les informations relatives à chaque joueur et chaque élément du jeu ;</li>
+<li>etc …</li>
+</ul>
+<p>De tels traitements requierent souvent des logiciels de <strong>gestion de base de données (SGDB)</strong>, qui sont des programmes hautement spécialisés pour effectuer ce genre de tâches le plus efficacement et sûrement possible. L'étude plus détaillée des SGBD est au programme de terminale. Il est cependant facile de mettre en œuvre les opérations de bases sur certaines structures dans un langage de programmation comme Python.</p>
+<p>Il est en effet possible que de simples jeus de données soient <strong>organisés en tables</strong>. En informatique, une <strong>table de données</strong> correspondent à une liste de <strong>p-uplets</strong> nommés qui partagent les mêmes <strong>descripteurs</strong>. </p>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p>Par exemple on peut considérer la table suivante :</p>
+<table>
+<thead>
+<tr>
+<th align="center">Nom</th>
+<th align="center">Rang</th>
+<th align="center">Couleur du sabre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Luke Skywalker</td>
+<td align="center">Apprenti/Maitre Jedi</td>
+<td align="center">Vert</td>
+</tr>
+<tr>
+<td align="center">Anakin Skywalker</td>
+<td align="center">Apprenti Jedi</td>
+<td align="center">Bleu</td>
+</tr>
+<tr>
+<td align="center">Yoda</td>
+<td align="center">Maitre Jedi</td>
+<td align="center">Vert</td>
+</tr>
+<tr>
+<td align="center">Conte Dooku</td>
+<td align="center">Seigneur Sith</td>
+<td align="center">Ecarlate</td>
+</tr>
+<tr>
+<td align="center">Darth Vader</td>
+<td align="center">Apprenti Sith</td>
+<td align="center">Ecarlate</td>
+</tr>
+<tr>
+<td align="center">Rey</td>
+<td align="center">Apprentie Jedi</td>
+<td align="center">Jaune</td>
+</tr>
+</tbody>
+</table>
+<p>Chacune des lignes, appelée aussi <strong>enregistrement</strong>, est un  <strong>p-uplet nommé</strong> de taille 3.
+Chaque enregistrement correspond donc à un <strong>dictionnaire</strong> en Python. La première ligne correspond à :</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;Nom&#39;</span> <span class="p">:</span> <span class="s1">&#39;Luke Skywalker&#39;</span><span class="p">,</span> <span class="s1">&#39;Rang&#39;</span> <span class="p">:</span><span class="s1">&#39;Apprenti/Maitre Jedi&#39;</span><span class="p">,</span> <span class="s1">&#39;Couleur du sabre&#39;</span> <span class="p">:</span> <span class="s1">&#39;Vert&#39;</span><span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="fichiers-csv">Fichiers CSV</h2>
+<p>Le format <strong>CSV</strong> (pour <mark class="critic"><em>Comma Separated Values</em></mark>, soit en français <em>valeurs séparées par des virgules</em>) est un format très pratique pour représenter des données structurées.</p>
+<p>Dans ce format, <strong>chaque ligne représente un enregistrement</strong> et, sur une même ligne, <strong>les différents champs</strong> de l’enregistrement sont <strong>séparés par une virgule</strong> (d’où le nom).</p>
+<p>Pour des raisons pratiques, il est possible en fait de spécifier le caractère de séparation entre chaque champ, qui peut donc être <code>:</code>, <code>;</code>, <code>/</code>, etc...</p>
+<p>Nous allons dans la suite de cette partie utiliser un fichier nommé <code>countries.csv</code>, téléchargeable <a href="../countries.csv" target="target">ici</a>.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercice 1</p>
+<p>Une fois le fichier téléchargé, vous pouvez l'ouvrir avec <code>Notepad ++</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Réponses</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Quel est le symbole utilisé pour séparer les champs ?</li>
+<li>Combien de champs différents sont présents et quesl sont leurs descripteurs ?</li>
+<li>Il est aussi possible d'utiliser un <strong>tableur</strong> comme <code>LibreOffice.Calc</code> pour lire un fichier CSV. Vous pourrez constater que <code>LibreOffice.Calc</code> vous demande un certain nombre d'informations sur le contenu du fichier avant de l'ouvrir réellement. Quels intérêt voyez-vous à l'utilisation d'un tableur ? Quelles en sont les limites ?     </li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>C'est le point-virgule</li>
+<li>
+<p>Il y a 8 champs dont les descripteurs sont :</p>
+<ul>
+<li>ISO</li>
+<li>Name</li>
+<li>Capital_Id</li>
+<li>Area</li>
+<li>Population</li>
+<li>Continent</li>
+<li>Currency_Code</li>
+<li>Currency_Name</li>
+</ul>
+</li>
+<li>
+<p>Le tableur permet de visualiser rapidement les descripteurs et les données, quand elles ne sont pas trop nombreuses. Un tableur est limité a 1 000 000 de lignes, alors qu'un fichier CSV n'est pas limité (ce qui n'empêche pas des problèmes liées à la quantité de mémoire de l'ordinateur).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<h2 id="module-csv">Module CSV</h2>
+<h3 id="lecture-de-base">Lecture de base</h3>
+<p>Un fichier <code>csv</code> étant un fichier texte, il est tout à fait possible de lire les données grâce aux méthodes classiques des fichiers(voir <a href="Miscellanees\Bases_Python\Fichiers_Textes.md" target="_blank">ici</a>) :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;countries.csv&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">contenu</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">contenu</span><span class="p">)</span>
+</code></pre></div>
+<p>Le résultat est peu lisible, et difficilement exploitable ainsi. Mais il est tout à fait possible de reconstituer correctement chaque enregistrement, en utilisant des méthodes de chaines de caractères (<em>on se limite aux 5 premiers enregistrelments pour des raisons de lisbilités dans l'interpréteur</em>) :</p>
+<p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formatedContent</span><span class="o">=</span><span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">contenu</span><span class="p">[</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="p">:</span>
+        <span class="n">formatedContent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))</span>
+</code></pre></div>
+On peut alors récupérer les <strong>descripteurs</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formatedContent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;ISO&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Name&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Capital_Id&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Area&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Population&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Continent&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Currency_Code&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Currency_Name&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>Et le premier enregistrement :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formatedContent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;AD&#39;</span><span class="p">,</span> <span class="s1">&#39;Andorra&#39;</span><span class="p">,</span> <span class="s1">&#39;3041563&#39;</span><span class="p">,</span> <span class="s1">&#39;468&#39;</span><span class="p">,</span> <span class="s1">&#39;84000&#39;</span><span class="p">,</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="s1">&#39;Euro&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>Cependant cette solution n'est pas des plus efficace, car <strong>le lien entre descripteurs et valeurs n'est pas direct</strong>.</p>
+<h3 id="lire-un-fichier-csv-premiers-traitements">Lire un fichier CSV, premiers traitements</h3>
+<p><em>Dans la suite du cours, il sera nécessaire d'adapter au fur et à mesure un fichier python !</em></p>
+<p>Le module <code>csv</code>  est un des modules présents dans toute installation Python. Comme tout module, il est disponible par import direct :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+</code></pre></div>
+<p>Une fois importé, il offre de nombreuses possibilités, décrites dans <a href="https://docs.python.org/fr/3.6/library/csv.html" target="_blank">la doc Python</a>, dont la méthode <code>DictReader</code> qui permet der récupérer les enregistrements sous la forme d'un <mark class="critic"><strong>dictionnaire ordonné</strong></mark> :</p>
+<div class="highlight"><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;countries.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span> <span class="c1"># L&#39;objet reader est un itérable. On précise le delimiteur à l&#39;appel de DictReader</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span> <span class="p">:</span>
+        <span class="n">countries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+<p>La variable <code>countries</code> fait donc référence à une liste de dictionnaires, ayant tous les mêmes descripteurs. Une fois le programme exécuté, on peut donc tester dans le shell les comandes suivantes :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">countries</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">[{</span>    <span class="p">[{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;AD&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Andorra&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;3041563&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;468&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;84000&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Euro&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;AE&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;United Arab Emirates&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;292968&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;82880&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;4975593&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;AED&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dirham&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Afghanistan&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;1138958&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;647500&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;29121286&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;AFN&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Afghani&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;AG&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Antigua and Barbuda&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;3576022&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;443&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;86754&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dollar&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;AI&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;3573374&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;102&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;13254&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dollar&#39;</span><span class="p">}]</span>
+</code></pre></div>
+<p>On peut bien entendu connaître le nombre d'enregistrements contenus dans la variable countries :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span>
+<span class="mi">243</span>
+</code></pre></div>
+<p>On peut alors interroger cette variable à partir des descripteurs. Par exemple, nous pouvons chercher à obtenir la liste des pays dont la devise est en euro :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Currency_Code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EUR&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;Andorra&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Austria&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aland Islands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Belgium&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Cyprus&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Estonia&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Finland&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;French Guiana&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Guadeloupe&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Greece&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ireland&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Italy&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kosovo&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lithuania&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Luxembourg&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Latvia&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Monaco&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Montenegro&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Martinique&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Malta&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Portugal&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Reunion&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Slovenia&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Slovakia&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;San Marino&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;French Southern Territories&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vatican&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Mayotte&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Réponses</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>
+<p>Écrire une compréhension de listes permettant de lister les codes de toutes les monnaies qui s’appellent <code>‘Dollar’</code>.</p>
+</li>
+<li>
+<p>Écrire une compréhension de listes permettant de lister les pays du continent Nord-Américain, sous la forme <code>Nom, Superficie, Population</code></p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Currency_Code&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Currency_Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Dollar&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="s1">&#39;BBD&#39;</span><span class="p">,</span> <span class="s1">&#39;BMD&#39;</span><span class="p">,</span> <span class="s1">&#39;BND&#39;</span><span class="p">,</span> <span class="s1">&#39;BSD&#39;</span><span class="p">,</span> <span class="s1">&#39;BZD&#39;</span><span class="p">,</span><span class="s1">&#39;CAD&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span>
+<span class="s1">&#39;NZD&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;FJD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;GYD&#39;</span><span class="p">,</span> <span class="s1">&#39;HKD&#39;</span><span class="p">,</span> <span class="s1">&#39;JMD&#39;</span><span class="p">,</span>
+<span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;KYD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;LRD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;NAD&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span>
+<span class="s1">&#39;NZD&#39;</span><span class="p">,</span> <span class="s1">&#39;NZD&#39;</span><span class="p">,</span> <span class="s1">&#39;NZD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;SBD&#39;</span><span class="p">,</span> <span class="s1">&#39;SGD&#39;</span><span class="p">,</span> <span class="s1">&#39;SRD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span>
+<span class="s1">&#39;TTD&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="s1">&#39;TWD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="s1">&#39;ZWL&#39;</span><span class="p">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Le code :
+    <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Continent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;NA&#39;</span><span class="p">]</span>
+    <span class="p">[</span><span class="s1">&#39;Antigua and Barbuda&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aruba&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Barbados&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bermuda&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bahamas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Belize&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Costa Rica&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Cuba&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Curacao&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dominica&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dominican Republic&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Grenada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Greenland&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Guadeloupe&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Guatemala&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Honduras&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Haiti&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jamaica&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Kitts and Nevis&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Lucia&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Martinique&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Montserrat&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Mexico&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Nicaragua&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Panama&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Puerto Rico&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;El Salvador&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Turks and Caicos Islands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Trinidad and Tobago&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Saint Vincent and the Grenadines&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;British Virgin Islands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;U.S. Virgin Islands&#39;</span><span class="p">]</span>
+</code></pre></div></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<h3 id="les-donnees-numeriques">Les données numériques</h3>
+<p>Comment faire pour lister les pays dont la superficie est inférieure à 300 km² ? On pourrait penser à écrire une compréhension de liste identique à celles écrites précédfemment :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+    <span class="o">---------------------------------------------------------------------------</span>
+
+    <span class="ne">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+    <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">6</span><span class="n">debe1b6bf11</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="o">----&gt;</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+
+
+    <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">6</span><span class="n">debe1b6bf11</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">.0</span><span class="p">)</span>
+    <span class="o">----&gt;</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+
+
+    <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;&lt;&#39;</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">between</span> <span class="n">instances</span> <span class="n">of</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;int&#39;</span>
+</code></pre></div>
+<p>Mais nous avons un problème : les données extraites d'un fichier <code>csv</code> sont <mark class="critic"><strong>toutes sous la forme de chaines de caractères</strong></mark>. Il faut donc <strong>transtyper</strong> certaines données pour parvenir au résultat escompté. D'après les 5 premiers enregistrements, la superficie semble être sous la forme d'un nombre entier, donc on teste :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+
+
+    <span class="o">---------------------------------------------------------------------------</span>
+
+    <span class="ne">ValueError</span>                                <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+    <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">d2574c3771d7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="o">----&gt;</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+
+
+    <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">d2574c3771d7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">.0</span><span class="p">)</span>
+    <span class="o">----&gt;</span> <span class="mi">1</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+
+
+    <span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;6.5&#39;</span>
+</code></pre></div>
+<p>Mais encore une fois un problème apparâit : <strong>les données ne sont pas toutes transtypables sous la forme entière</strong>, chose que nous ne pouvions savoir avant de traiter. Il faut donc les convertir en flottant :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;American Samoa&#39;</span><span class="p">,</span> <span class="s1">&#39;199&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Aruba&#39;</span><span class="p">,</span> <span class="s1">&#39;193&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Bermuda&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cocos Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cook Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;240&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Christmas Island&#39;</span><span class="p">,</span> <span class="s1">&#39;135&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Guernsey&#39;</span><span class="p">,</span> <span class="s1">&#39;78&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Gibraltar&#39;</span><span class="p">,</span> <span class="s1">&#39;6.5&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Jersey&#39;</span><span class="p">,</span> <span class="s1">&#39;116&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Kitts and Nevis&#39;</span><span class="p">,</span> <span class="s1">&#39;261&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Liechtenstein&#39;</span><span class="p">,</span> <span class="s1">&#39;160&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Marshall Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;181.3&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Macao&#39;</span><span class="p">,</span> <span class="s1">&#39;254&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Montserrat&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Norfolk Island&#39;</span><span class="p">,</span> <span class="s1">&#39;34.6&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Nauru&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Niue&#39;</span><span class="p">,</span> <span class="s1">&#39;260&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span> <span class="s1">&#39;242&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Pitcairn&#39;</span><span class="p">,</span> <span class="s1">&#39;47&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;San Marino&#39;</span><span class="p">,</span> <span class="s1">&#39;61.2&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Tuvalu&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;British Virgin Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;153&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Réponse</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Écrire une compréhension de liste donnant le nom, le continent et la superficie des pays de plus de 100 millions d'habitants</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Continent&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Bangladesh&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;144000&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="s1">&#39;SA&#39;</span><span class="p">,</span> <span class="s1">&#39;8511965&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;9596960&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Indonesia&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;1919440&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;India&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;3287590&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Japan&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;377835&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Mexico&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;1972550&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Nigeria&#39;</span><span class="p">,</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span> <span class="s1">&#39;923768&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Pakistan&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;803940&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Russia&#39;</span><span class="p">,</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span> <span class="s1">&#39;17100000&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;9629091&#39;</span><span class="p">)]</span>     
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="trier-les-donnees">Trier les données</h3>
+<p>Les résultats precédents sont encore peu lisibles, il serait préférable que les données obtenues soient triées. On va utiliser la fonction <em>built-in</em> <code>sorted</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">])</span>
+    <span class="p">[(</span><span class="s1">&#39;American Samoa&#39;</span><span class="p">,</span> <span class="s1">&#39;199&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Aruba&#39;</span><span class="p">,</span> <span class="s1">&#39;193&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Bermuda&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;British Virgin Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;153&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Christmas Island&#39;</span><span class="p">,</span> <span class="s1">&#39;135&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cocos Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cook Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;240&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Gibraltar&#39;</span><span class="p">,</span> <span class="s1">&#39;6.5&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Guernsey&#39;</span><span class="p">,</span> <span class="s1">&#39;78&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Jersey&#39;</span><span class="p">,</span> <span class="s1">&#39;116&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Liechtenstein&#39;</span><span class="p">,</span> <span class="s1">&#39;160&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Macao&#39;</span><span class="p">,</span> <span class="s1">&#39;254&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Marshall Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;181.3&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Montserrat&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Nauru&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Niue&#39;</span><span class="p">,</span> <span class="s1">&#39;260&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Norfolk Island&#39;</span><span class="p">,</span> <span class="s1">&#39;34.6&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Pitcairn&#39;</span><span class="p">,</span> <span class="s1">&#39;47&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Kitts and Nevis&#39;</span><span class="p">,</span> <span class="s1">&#39;261&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span> <span class="s1">&#39;242&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;San Marino&#39;</span><span class="p">,</span> <span class="s1">&#39;61.2&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Tuvalu&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<p>On obtient bien une liste triée, mais par ordre alphabétique, ce qui est peu pertinent. En effet, pour trier une table, il faut préciser <strong>selon quels critères</strong>.</p>
+<p>On va donc passer un argument supplémentaire à la fonction <code>sorted</code> : une <mark class="critic"><strong>clé de tri</strong></mark>. Dans Python, la clé <strong>doit être une fonction</strong> permettant d'extraire la valeur à trier. On va donc créer une fonction qui va renvoyer la valeur voulue selon l'enrtegistrement passé en paramètre. Ici on va passer un <strong>tuple</strong> <code>(Nom;Superficie)</code> et on veut donc trier selon l'élément d'indice 1 :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">areaKey</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+<p>Puis on va passer cette fonction à la fonction <code>sorted</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="n">areaKey</span><span class="p">)</span>
+<span class="p">[(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Gibraltar&#39;</span><span class="p">,</span> <span class="s1">&#39;6.5&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cocos Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Nauru&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Tuvalu&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Norfolk Island&#39;</span><span class="p">,</span> <span class="s1">&#39;34.6&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Pitcairn&#39;</span><span class="p">,</span> <span class="s1">&#39;47&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Bermuda&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;San Marino&#39;</span><span class="p">,</span> <span class="s1">&#39;61.2&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Guernsey&#39;</span><span class="p">,</span> <span class="s1">&#39;78&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Montserrat&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Jersey&#39;</span><span class="p">,</span> <span class="s1">&#39;116&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Christmas Island&#39;</span><span class="p">,</span> <span class="s1">&#39;135&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;British Virgin Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;153&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Liechtenstein&#39;</span><span class="p">,</span> <span class="s1">&#39;160&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Marshall Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;181.3&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Aruba&#39;</span><span class="p">,</span> <span class="s1">&#39;193&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;American Samoa&#39;</span><span class="p">,</span> <span class="s1">&#39;199&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cook Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;240&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span> <span class="s1">&#39;242&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Macao&#39;</span><span class="p">,</span> <span class="s1">&#39;254&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Niue&#39;</span><span class="p">,</span> <span class="s1">&#39;260&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Kitts and Nevis&#39;</span><span class="p">,</span> <span class="s1">&#39;261&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<details class="tips">
+<summary>Fonctions anonymes</summary>
+<p><strong>Pour information</strong>, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une <strong>fonction anonyme</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="p">[(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Gibraltar&#39;</span><span class="p">,</span> <span class="s1">&#39;6.5&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cocos Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Nauru&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Tuvalu&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Norfolk Island&#39;</span><span class="p">,</span> <span class="s1">&#39;34.6&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Pitcairn&#39;</span><span class="p">,</span> <span class="s1">&#39;47&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Bermuda&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;San Marino&#39;</span><span class="p">,</span> <span class="s1">&#39;61.2&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Guernsey&#39;</span><span class="p">,</span> <span class="s1">&#39;78&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Montserrat&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Jersey&#39;</span><span class="p">,</span> <span class="s1">&#39;116&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Christmas Island&#39;</span><span class="p">,</span> <span class="s1">&#39;135&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;British Virgin Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;153&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Liechtenstein&#39;</span><span class="p">,</span> <span class="s1">&#39;160&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Marshall Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;181.3&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Aruba&#39;</span><span class="p">,</span> <span class="s1">&#39;193&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;American Samoa&#39;</span><span class="p">,</span> <span class="s1">&#39;199&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cook Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;240&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span> <span class="s1">&#39;242&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Macao&#39;</span><span class="p">,</span> <span class="s1">&#39;254&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Niue&#39;</span><span class="p">,</span> <span class="s1">&#39;260&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Kitts and Nevis&#39;</span><span class="p">,</span> <span class="s1">&#39;261&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<p>Il est aussi possible d'inverser l'ordre - donc d'obtenir un résultat par ordre décroissant :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[(</span><span class="s1">&#39;Wallis and Futuna&#39;</span><span class="p">,</span> <span class="s1">&#39;274&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cayman Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;262&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Kitts and Nevis&#39;</span><span class="p">,</span> <span class="s1">&#39;261&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Niue&#39;</span><span class="p">,</span> <span class="s1">&#39;260&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Macao&#39;</span><span class="p">,</span> <span class="s1">&#39;254&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Pierre and Miquelon&#39;</span><span class="p">,</span> <span class="s1">&#39;242&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cook Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;240&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;American Samoa&#39;</span><span class="p">,</span> <span class="s1">&#39;199&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Aruba&#39;</span><span class="p">,</span> <span class="s1">&#39;193&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Marshall Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;181.3&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Liechtenstein&#39;</span><span class="p">,</span> <span class="s1">&#39;160&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;British Virgin Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;153&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Christmas Island&#39;</span><span class="p">,</span> <span class="s1">&#39;135&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Jersey&#39;</span><span class="p">,</span> <span class="s1">&#39;116&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Anguilla&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Montserrat&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Guernsey&#39;</span><span class="p">,</span> <span class="s1">&#39;78&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;San Marino&#39;</span><span class="p">,</span> <span class="s1">&#39;61.2&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Bermuda&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Martin&#39;</span><span class="p">,</span> <span class="s1">&#39;53&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Pitcairn&#39;</span><span class="p">,</span> <span class="s1">&#39;47&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Norfolk Island&#39;</span><span class="p">,</span> <span class="s1">&#39;34.6&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Tuvalu&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Saint Barthelemy&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Nauru&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Cocos Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Gibraltar&#39;</span><span class="p">,</span> <span class="s1">&#39;6.5&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">)]</span>
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Réponses</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Ecrire un code qui donne la liste des 5 états ayant la plus grande superficie, sous la forme <code>(Nom, Superficie)</code></li>
+<li>Ecrire un code qui donne la liste des 5 états ayant la plus petite superficie parmi les 20 états ayant la plus grande population, sous la forme <code>(Nom, population)</code>.</li>
+<li>Écrire les instructions permettant de d’afficher les 8 pays possédant la plus grande densité de population, dans l’ordre inverse de densité, sous la forme <code>(Pays, population,superficie, densité)</code>.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Le code :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">reverse</span> <span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Russia&#39;</span><span class="p">,</span> <span class="s1">&#39;17100000&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;9984670&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="s1">&#39;9629091&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;9596960&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="s1">&#39;8511965&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<ol>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span> <span class="p">)[:</span><span class="mi">20</span><span class="p">],</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">])[:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="p">[{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;EG&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Egypt&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;360630&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;1001450&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;80471869&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;EGP&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Pound&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;ET&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Ethiopia&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;344979&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;1127127&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;88013491&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;ETB&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Birr&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;BD&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Bangladesh&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;1185241&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;144000&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;156118464&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;BDT&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Taka&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;IR&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Iran&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;112931&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;1648000&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;76923300&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;IRR&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Rial&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;ISO&#39;</span><span class="p">:</span> <span class="s1">&#39;RU&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Russia&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Capital_Id&#39;</span><span class="p">:</span> <span class="s1">&#39;524901&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Area&#39;</span><span class="p">:</span> <span class="s1">&#39;17100000&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="s1">&#39;140702000&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Continent&#39;</span><span class="p">:</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;RUB&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Currency_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Ruble&#39;</span><span class="p">}]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">8</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Monaco&#39;</span><span class="p">,</span> <span class="s1">&#39;1.95&#39;</span><span class="p">,</span> <span class="mf">16905.128205128207</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Singapore&#39;</span><span class="p">,</span> <span class="s1">&#39;692.7&#39;</span><span class="p">,</span> <span class="mf">6786.5872672152445</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Hong Kong&#39;</span><span class="p">,</span> <span class="s1">&#39;1092&#39;</span><span class="p">,</span> <span class="mf">6317.478021978022</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Gibraltar&#39;</span><span class="p">,</span> <span class="s1">&#39;6.5&#39;</span><span class="p">,</span> <span class="mf">4289.846153846154</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Vatican&#39;</span><span class="p">,</span> <span class="s1">&#39;0.44&#39;</span><span class="p">,</span> <span class="mf">2093.181818181818</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Sint Maarten&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">,</span> <span class="mf">1782.3333333333333</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Macao&#39;</span><span class="p">,</span> <span class="s1">&#39;254&#39;</span><span class="p">,</span> <span class="mf">1768.4960629921259</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;Maldives&#39;</span><span class="p">,</span> <span class="s1">&#39;300&#39;</span><span class="p">,</span> <span class="mf">1318.8333333333333</span><span class="p">)]</span>
+</code></pre></div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<h3 id="fusions-de-tables">Fusions de tables</h3>
+<p>Le fichier <code>cities.csv</code> téléchargeable <a href="../cities.csv" target="_blank">ici</a> contient une table des principales villes au niveayu mondial.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercice : exploration du fichier <code>cities.csv</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label><label for="__tabbed_5_2">Réponses</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Quels sont les descripteurs de ce fichier ?</li>
+<li>Ecrire un code sauvant dans une variable <code>cities</code> les enregistrements du fichiers <code>cities.csv</code>.</li>
+<li>Ecrire une compréhension de liste donnant les villes françaises sous la forme <code>(Nom, population)</code></li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li><code>Id;Name;Latitude;Longitude;Country_ISO;Population</code></li>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="n">cities</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cities.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span> <span class="p">:</span>
+        <span class="n">cities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Country_ISO&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;FR&#39;</span><span class="p">]</span>
+</code></pre></div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<p>Un des descripteurs est commun à la fois au fichier <code>countries.csv</code> et au fichier <code>cities.csv</code>. Il s'agit, dans <code>countries.csv</code> de <code>Capital_Id</code>, qui correspond au descripteur <code>Id</code> de <code>cities.csv</code>. Il est donc possible de joindre des données des deux tables, comme dans l'exemple ci-dessous :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span>
+<span class="p">)</span> <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="p">]</span>
+
+    <span class="p">[(</span><span class="s1">&#39;Bangladesh&#39;</span><span class="p">,</span> <span class="s1">&#39;156118464&#39;</span><span class="p">,</span> <span class="s1">&#39;144000&#39;</span><span class="p">,</span> <span class="s1">&#39;Dhaka&#39;</span><span class="p">,</span> <span class="s1">&#39;10356500&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="s1">&#39;201103330&#39;</span><span class="p">,</span> <span class="s1">&#39;8511965&#39;</span><span class="p">,</span> <span class="s1">&#39;Brasília&#39;</span><span class="p">,</span> <span class="s1">&#39;2207718&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Democratic Republic of the Congo&#39;</span><span class="p">,</span> <span class="s1">&#39;70916439&#39;</span><span class="p">,</span> <span class="s1">&#39;2345410&#39;</span><span class="p">,</span> <span class="s1">&#39;Kinshasa&#39;</span><span class="p">,</span> <span class="s1">&#39;7785965&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;1330044000&#39;</span><span class="p">,</span> <span class="s1">&#39;9596960&#39;</span><span class="p">,</span> <span class="s1">&#39;Beijing&#39;</span><span class="p">,</span> <span class="s1">&#39;11716620&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;81802257&#39;</span><span class="p">,</span> <span class="s1">&#39;357021&#39;</span><span class="p">,</span> <span class="s1">&#39;Berlin&#39;</span><span class="p">,</span> <span class="s1">&#39;3426354&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Egypt&#39;</span><span class="p">,</span> <span class="s1">&#39;80471869&#39;</span><span class="p">,</span> <span class="s1">&#39;1001450&#39;</span><span class="p">,</span> <span class="s1">&#39;Cairo&#39;</span><span class="p">,</span> <span class="s1">&#39;7734614&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Ethiopia&#39;</span><span class="p">,</span> <span class="s1">&#39;88013491&#39;</span><span class="p">,</span> <span class="s1">&#39;1127127&#39;</span><span class="p">,</span> <span class="s1">&#39;Addis Ababa&#39;</span><span class="p">,</span> <span class="s1">&#39;2757729&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;France&#39;</span><span class="p">,</span> <span class="s1">&#39;64768389&#39;</span><span class="p">,</span> <span class="s1">&#39;547030&#39;</span><span class="p">,</span> <span class="s1">&#39;Paris&#39;</span><span class="p">,</span> <span class="s1">&#39;2138551&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="s1">&#39;62348447&#39;</span><span class="p">,</span> <span class="s1">&#39;244820&#39;</span><span class="p">,</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="s1">&#39;7556900&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Indonesia&#39;</span><span class="p">,</span> <span class="s1">&#39;242968342&#39;</span><span class="p">,</span> <span class="s1">&#39;1919440&#39;</span><span class="p">,</span> <span class="s1">&#39;Jakarta&#39;</span><span class="p">,</span> <span class="s1">&#39;8540121&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;India&#39;</span><span class="p">,</span> <span class="s1">&#39;1173108018&#39;</span><span class="p">,</span> <span class="s1">&#39;3287590&#39;</span><span class="p">,</span> <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span> <span class="s1">&#39;10927986&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Iran&#39;</span><span class="p">,</span> <span class="s1">&#39;76923300&#39;</span><span class="p">,</span> <span class="s1">&#39;1648000&#39;</span><span class="p">,</span> <span class="s1">&#39;Tehran&#39;</span><span class="p">,</span> <span class="s1">&#39;7153309&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Italy&#39;</span><span class="p">,</span> <span class="s1">&#39;60340328&#39;</span><span class="p">,</span> <span class="s1">&#39;301230&#39;</span><span class="p">,</span> <span class="s1">&#39;Rome&#39;</span><span class="p">,</span> <span class="s1">&#39;2318895&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Japan&#39;</span><span class="p">,</span> <span class="s1">&#39;127288000&#39;</span><span class="p">,</span> <span class="s1">&#39;377835&#39;</span><span class="p">,</span> <span class="s1">&#39;Tokyo&#39;</span><span class="p">,</span> <span class="s1">&#39;8336599&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Myanmar&#39;</span><span class="p">,</span> <span class="s1">&#39;53414374&#39;</span><span class="p">,</span> <span class="s1">&#39;678500&#39;</span><span class="p">,</span> <span class="s1">&#39;Nay Pyi Taw&#39;</span><span class="p">,</span> <span class="s1">&#39;925000&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Mexico&#39;</span><span class="p">,</span> <span class="s1">&#39;112468855&#39;</span><span class="p">,</span> <span class="s1">&#39;1972550&#39;</span><span class="p">,</span> <span class="s1">&#39;Mexico City&#39;</span><span class="p">,</span> <span class="s1">&#39;12294193&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Nigeria&#39;</span><span class="p">,</span> <span class="s1">&#39;154000000&#39;</span><span class="p">,</span> <span class="s1">&#39;923768&#39;</span><span class="p">,</span> <span class="s1">&#39;Abuja&#39;</span><span class="p">,</span> <span class="s1">&#39;590400&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Philippines&#39;</span><span class="p">,</span> <span class="s1">&#39;99900177&#39;</span><span class="p">,</span> <span class="s1">&#39;300000&#39;</span><span class="p">,</span> <span class="s1">&#39;Manila&#39;</span><span class="p">,</span> <span class="s1">&#39;1600000&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Pakistan&#39;</span><span class="p">,</span> <span class="s1">&#39;184404791&#39;</span><span class="p">,</span> <span class="s1">&#39;803940&#39;</span><span class="p">,</span> <span class="s1">&#39;Islamabad&#39;</span><span class="p">,</span> <span class="s1">&#39;601600&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Russia&#39;</span><span class="p">,</span> <span class="s1">&#39;140702000&#39;</span><span class="p">,</span> <span class="s1">&#39;17100000&#39;</span><span class="p">,</span> <span class="s1">&#39;Moscow&#39;</span><span class="p">,</span> <span class="s1">&#39;10381222&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Thailand&#39;</span><span class="p">,</span> <span class="s1">&#39;67089500&#39;</span><span class="p">,</span> <span class="s1">&#39;514000&#39;</span><span class="p">,</span> <span class="s1">&#39;Bangkok&#39;</span><span class="p">,</span> <span class="s1">&#39;5104476&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Turkey&#39;</span><span class="p">,</span> <span class="s1">&#39;77804122&#39;</span><span class="p">,</span> <span class="s1">&#39;780580&#39;</span><span class="p">,</span> <span class="s1">&#39;Ankara&#39;</span><span class="p">,</span> <span class="s1">&#39;3517182&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="s1">&#39;310232863&#39;</span><span class="p">,</span> <span class="s1">&#39;9629091&#39;</span><span class="p">,</span> <span class="s1">&#39;Washington, D.C.&#39;</span><span class="p">,</span> <span class="s1">&#39;601723&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Vietnam&#39;</span><span class="p">,</span> <span class="s1">&#39;89571130&#39;</span><span class="p">,</span> <span class="s1">&#39;329560&#39;</span><span class="p">,</span> <span class="s1">&#39;Hanoi&#39;</span><span class="p">,</span> <span class="s1">&#39;1431270&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Enoncé</label><label for="__tabbed_6_2">Réponses</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Ecrire une compréhension donnant les pays dont la population de la capitale est supérieure à 100 000.</li>
+<li>Ecrire un code donnant les pays dont la capitale possède une latitude supérieure à 60°.</li>
+<li>Ecrire un code donnant les pays dont la capitale possède une latitude inférieure à -50°.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>
+<p>Le code :</p>
+<p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div>
+(La sortie est bien trop longue pour être affichée ici)</p>
+</li>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">60</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Aland Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;26711&#39;</span><span class="p">,</span> <span class="s1">&#39;1580&#39;</span><span class="p">,</span> <span class="s1">&#39;Mariehamn&#39;</span><span class="p">,</span> <span class="s1">&#39;10682&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Finland&#39;</span><span class="p">,</span> <span class="s1">&#39;5244000&#39;</span><span class="p">,</span> <span class="s1">&#39;337030&#39;</span><span class="p">,</span> <span class="s1">&#39;Helsinki&#39;</span><span class="p">,</span> <span class="s1">&#39;558457&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Faroe Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;48228&#39;</span><span class="p">,</span> <span class="s1">&#39;1399&#39;</span><span class="p">,</span> <span class="s1">&#39;Tórshavn&#39;</span><span class="p">,</span> <span class="s1">&#39;13200&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Greenland&#39;</span><span class="p">,</span> <span class="s1">&#39;56375&#39;</span><span class="p">,</span> <span class="s1">&#39;2166086&#39;</span><span class="p">,</span> <span class="s1">&#39;Nuuk&#39;</span><span class="p">,</span> <span class="s1">&#39;14798&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Iceland&#39;</span><span class="p">,</span> <span class="s1">&#39;308910&#39;</span><span class="p">,</span> <span class="s1">&#39;103000&#39;</span><span class="p">,</span> <span class="s1">&#39;Reykjavík&#39;</span><span class="p">,</span> <span class="s1">&#39;118918&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;Svalbard and Jan Mayen&#39;</span><span class="p">,</span> <span class="s1">&#39;2550&#39;</span><span class="p">,</span> <span class="s1">&#39;62049&#39;</span><span class="p">,</span> <span class="s1">&#39;Longyearbyen&#39;</span><span class="p">,</span> <span class="s1">&#39;2060&#39;</span><span class="p">)]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Le code :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="k">if</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">])</span><span class="o">&lt;-</span> <span class="mi">50</span><span class="p">]</span>
+<span class="p">[(</span><span class="s1">&#39;Falkland Islands&#39;</span><span class="p">,</span> <span class="s1">&#39;2638&#39;</span><span class="p">,</span> <span class="s1">&#39;12173&#39;</span><span class="p">,</span> <span class="s1">&#39;Stanley&#39;</span><span class="p">,</span> <span class="s1">&#39;2213&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;South Georgia and the South Sandwich Islands&#39;</span><span class="p">,</span>
+<span class="s1">&#39;30&#39;</span><span class="p">,</span>
+<span class="s1">&#39;3903&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Grytviken&#39;</span><span class="p">,</span>
+<span class="s1">&#39;2&#39;</span><span class="p">)]</span>
+</code></pre></div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Pour les cracks : Attention !</p>
+<p>La technique de fusion montrée ci-dessus n'est vraiment pas très efficace ! En effet il s'agit d'un parcours double de boucle : à chaque tour de la boucle parcourant <code>countries</code>, on parcoure <strong>toute la liste  <code>cities</code></strong>. </p>
+<p>C'est absolument horrible !</p>
+<p>En effet, si <code>countries</code> est une liste de longueur <span class="arithmatex">\(1~000~000\)</span> et que <code>cities</code> est une liste de taille <span class="arithmatex">\(1~000\)</span>, alors le nombre de comparaison sera de <span class="arithmatex">\(1~000~000 \times 1~000 = 1~000~000~000\)</span> ! </p>
+<p>En termes mathématiques, si <code>countries</code> est de taille <span class="arithmatex">\(n\)</span> et <code>cities</code> de taille <span class="arithmatex">\(m\)</span>, alors cet algorithme aura un coût temporel en <span class="arithmatex">\(\mathbb{O}(n\times m)\)</span>.</p>
+<p>Pour accélérer une telle fusion de liste, il peut-être judicieux de transformer ces listes en des dictionnaires, <strong>avec un choix judicieux de clés !</strong>. </p>
+<p>Par exemple, ici on pourrait transformer la liste <code>cities</code> en un dictionnaire dont la clé est l'<code>Id</code>, puis effectuer une boucle sur la liste.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dicCities</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="p">:</span>
+        <span class="n">dicCities</span><span class="p">[</span><span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ci</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span> <span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> 
+                        <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span> 
+                        <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span> 
+                        <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]][</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> 
+                        <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]][</span><span class="s1">&#39;Population&#39;</span><span class="p">]))</span>     
+</code></pre></div>
+<p>Certes le code paraît plus complexe. Mais en terme de coût temporel :</p>
+<ul>
+<li>Il n'y a qu'un seul parcours de la liste <code>cities</code> ;</li>
+<li>A chaque tour de boucle parcourant <code>countries</code>, on ne fera appel qu'à des actions en <strong>temps constant</strong> (en <span class="arithmatex">\(\mathbb{O}(1)\)</span>) sur le dictionnaire <code>dicCities</code>.</li>
+</ul>
+<p>En reprenant les données précédentes :</p>
+<ul>
+<li>on fait <span class="arithmatex">\(1~000\)</span> tours de boucles pour la construction du dictionnaire ;</li>
+<li>on fait <span class="arithmatex">\(1~000~000\)</span> de tours de boucles sur la liste <code>countries</code>.</li>
+</ul>
+<p>En ordre de grandeur, on reste sur environ <span class="arithmatex">\(1~000~000\)</span> d'opérations, soit <span class="arithmatex">\(1~000\)</span> fois moins que précédemment !</p>
+<p>En termes mathématiques, le coût en temps est <span class="arithmatex">\(\mathbb{O}(max(m,n))\)</span>.</p>
+<p>Pour être encore plus clair, voici un ordre de comparaison en temps dépendant des tailles <span class="arithmatex">\(n\)</span> et <span class="arithmatex">\(m\)</span> des deux listes fusionnées, le contenu d'une case donne la comparaison en temps entre <span class="arithmatex">\(\mathbb{O}(m \times n)\)</span> et <span class="arithmatex">\(\mathbb{O}(max(m,n))\)</span>, avec le principe de <span class="arithmatex">\(1~000\)</span> opérations par secondes.</p>
+<table>
+<thead>
+<tr>
+<th align="center">n\m</th>
+<th align="center"><span class="arithmatex">\(1\)</span></th>
+<th align="center"><span class="arithmatex">\(10^3\)</span></th>
+<th align="center"><span class="arithmatex">\(10^6\)</span></th>
+<th align="center"><span class="arithmatex">\(10^9\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><span class="arithmatex">\(1\)</span></td>
+<td align="center"><span class="arithmatex">\(0,001''~/~0,001''\)</span></td>
+<td align="center"><span class="arithmatex">\(1''~/~1''\)</span></td>
+<td align="center"><span class="arithmatex">\(16'40''~/~16'40''\)</span></td>
+<td align="center"><span class="arithmatex">\(11j13h46'40''~/~11j13h46'40''\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(10^3\)</span></td>
+<td align="center">...</td>
+<td align="center"><span class="arithmatex">\(16'40''~/~1''\)</span></td>
+<td align="center"><span class="arithmatex">\(277h46'40''~/~16'40''\)</span></td>
+<td align="center"><span class="arithmatex">\(\simeq 31~ans/~11j13h46'40''\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(10^6\)</span></td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center"><span class="arithmatex">\(\simeq 31~ans/~16'40''\)</span></td>
+<td align="center"><span class="arithmatex">\(\simeq 31~000~années~/~11j13h46'40''\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(10^9\)</span></td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center"><span class="arithmatex">\(\simeq 31~000~000~années~/~11j13h46'40''\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Il y a 30 millions d'années, apparaissaient seulement les grands singes, l'Himalaya n'était pas totalement formé...</p>
+<p>Oui, direz-vous, mais les ordinateurs actuels sont 1 million de fois plus rapides !</p>
+<p>Certes, mais alors combien de temps faudrait-il dans les deux cas pour traiter deux listes de 1 milliard de données chacune ?</p>
+</div>
+<h3 id="ecrire-un-nouveau-fichier-csv">Ecrire un nouveau fichier csv</h3>
+<p>Après avoir extrait, modifié et fusionné des fichiers de type <code>.csv</code>, il est normal de vouloir en créer de nouveaux à partir de données existantes. Le module <code>csv</code> propose une méthode <code>.DictWriter</code> dont l'utilisation est la suivante : </p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;capitales.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="c1">##On definit les descripteurs du nouveau fichier</span>
+    <span class="n">descripteurs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Pays&#39;</span><span class="p">,</span> <span class="s1">&#39;Population_pays&#39;</span><span class="p">,</span> <span class="s1">&#39;Superficie&#39;</span><span class="p">,</span> <span class="s1">&#39;Densite&#39;</span><span class="p">,</span> <span class="s1">&#39;Capitale&#39;</span><span class="p">,</span> <span class="s1">&#39;Population_capitale&#39;</span><span class="p">]</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">descripteurs</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+
+    <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span><span class="c1">##Ecrit les descripteurs en première ligne</span>
+    <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Capital_Id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">&#39;Pays&#39;</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span>
+                                 <span class="s1">&#39;Population_pays&#39;</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span>
+                                 <span class="s1">&#39;Superficie&#39;</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">],</span>
+                                 <span class="s1">&#39;Densite&#39;</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]),</span>
+                                 <span class="s1">&#39;Capitale&#39;</span> <span class="p">:</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span>
+                                 <span class="s1">&#39;Population_capitale&#39;</span> <span class="p">:</span> <span class="n">ci</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span>
+
+                                <span class="p">}</span>
+                <span class="p">)</span>
+</code></pre></div>
+<h2 id="tp-explorer-imdb">TP : Explorer IMDB</h2>
+<p>Le TP se fait sur Capytale par <a href="https://capytale2.ac-paris.fr/web/c/91b6-547954" target="target">ce lien</a>.</p>
+
+              
+    <script src="../../../../js/ide.js"></script> 
+    
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../Dictionnaires/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Les dictionnaires" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Les dictionnaires
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../C07/Algorithmes_Gloutons/" class="md-footer__link md-footer__link--next" aria-label="Next: Algorithmes Gloutons" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Algorithmes Gloutons
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2022 - F.Vergniaud
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:admin@zonensi.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="../../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js"></script>
+      
+        <script src="../../../../xtra/javascripts/interpreter.js"></script>
+      
+    
+  </body>
+</html>
