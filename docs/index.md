@@ -1,4 +1,4 @@
-# Maths/SNT/NSI au Lycée Pavie de Guingamp
+# Maths/SNT/NSI dans un petit Breton
 
 | Langages | Logiciels | Tutoriels |  |
 | --- | --- | --- | --- |
