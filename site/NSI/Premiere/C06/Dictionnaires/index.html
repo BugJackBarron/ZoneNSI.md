@@ -1538,8 +1538,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#premiers-apercu-des-dictionnaires" class="md-nav__link">
-    Premiers aperçu des dictionnaires
+  <a href="#premiers-apercus-des-dictionnaires" class="md-nav__link">
+    Premiers aperçus des dictionnaires
   </a>
   
 </li>
@@ -2931,10 +2931,10 @@
 <div class="highlight"><pre><span></span><code><span class="n">animaux</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vache&#39;</span><span class="p">,</span> <span class="s1">&#39;Chien&#39;</span><span class="p">,</span> <span class="s1">&#39;Chat&#39;</span><span class="p">,</span> <span class="s1">&#39;Poule&#39;</span><span class="p">,</span> <span class="s1">&#39;Ane&#39;</span><span class="p">,</span> <span class="s1">&#39;Cochon&#39;</span><span class="p">,</span> <span class="s1">&#39;Paon&#39;</span><span class="p">]</span>
 <span class="n">cris</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Meuh&#39;</span><span class="p">,</span> <span class="s1">&#39;Wouf&#39;</span><span class="p">,</span> <span class="s1">&#39;Miaou&#39;</span><span class="p">,</span> <span class="s1">&#39;Cot-cot&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi-Han&#39;</span><span class="p">,</span> <span class="s1">&#39;Gruik&#39;</span><span class="p">,</span> <span class="s1">&#39;Leon&#39;</span><span class="p">]</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Réponse</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Réponse</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Ecrire une fonction <code>afficheCri</code>  qui prend comme argument le nom d'un animal, et renvoie : </p>
+<p>Écrire une fonction <code>afficheCri</code>  qui prend comme argument le nom d'un animal, et renvoie : </p>
 <ul>
 <li>
 <p>soit une chaine de caractère telle que  dans l'exemple ci-dessous :</p>
@@ -2948,7 +2948,7 @@
 </ul>
 </div>
 <div class="tabbed-block">
-<p>Le principe est de parcourir par indice la liste <code>animaux</code> , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes <code>animaux</code> et <code>cris</code>, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se rtrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :</p>
+<p>Le principe est de parcourir par indice la liste <code>animaux</code> , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes <code>animaux</code> et <code>cris</code>, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">afficheCri</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">animaux</span><span class="p">))</span> <span class="p">:</span>
         <span class="k">if</span> <span class="n">animaux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">animal</span> <span class="p">:</span>
@@ -3002,13 +3002,15 @@
 <p>Copiez-collez ensuite la ligne suivante dans votre code, <strong>après la fonction précédente</strong> :</p>
 <div class="highlight"><pre><span></span><code><span class="n">etablissements</span><span class="p">,</span> <span class="n">GPS</span> <span class="o">=</span> <span class="n">makeBigArray</span><span class="p">()</span>
 </code></pre></div>
-<p>Le code ci-dessous crée deux listes : la première contient tous les différents établissements présents sur <strong>ParcourSup</strong>, et la deuxième contient les <strong>coordonnées GPS</strong> de chacun de ces établissements.</p>
+<p>Le code ci-dessous crée deux listes : 
+    * la première contient tous les différents établissements présents sur <strong>ParcourSup</strong>,
+    * la deuxième contient les <strong>coordonnées GPS</strong> de chacun de ces établissements.</p>
 </li>
 <li>
-<p>Vérifiez que les listes <code>etablissements</code> et <code>GPS</code> sont bien de la même dimension</p>
+<p>Vérifiez que les listes <code>etablissements</code> et <code>GPS</code> sont bien de la même dimension.</p>
 </li>
 <li>
-<p>A partir de la fonction <code>afficheCri</code>, créez une fonction <code>afficheGPS</code> afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a sais le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</p>
+<p>A partir de la fonction <code>afficheCri</code>, créez une fonction <code>afficheGPS</code> afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</p>
 </li>
 <li>
 <p>Testez ensuite la ligne suivante :</p>
@@ -3029,15 +3031,15 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Limite des listes</p>
-<p>Les listes sàont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :</p>
+<p>Les listes sont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :</p>
 <ul>
-<li>si la liste n'est pas triée, la recherche se fait en <span class="arithmatex">\(\mathbb{O}(n)\)</span>, ce qui signifie que la recherche prend un temps proportionnel à la longueur de la liste ;</li>
-<li>si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la recherche dichotomique (au programme de terminale), qui permettent de rechercher en un temps plus court, en <span class="arithmatex">\(\mathbb{O}(log(n))\)</span>.</li>
+<li>si la liste n'est pas triée, la recherche se fait en <span class="arithmatex">\(\mathbb{O}(n)\)</span>, ce qui signifie que la recherche prend <mark class="critic"><strong>un temps proportionnel à la longueur de la liste</strong></mark> ;</li>
+<li>si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la <strong>recherche dichotomique</strong> (au programme de terminale), qui permettent de rechercher en un temps plus court, en <span class="arithmatex">\(\mathbb{O}(log(n))\)</span>.</li>
 </ul>
-<p>Quoi qu'il en soit, <strong>ce temps est très long</strong> comparativemment au <mark class="critic"><strong>temps d'accès</strong></mark> à un élément, quand on connait son indice ! En effet, <strong>peu importe la taille de la liste</strong>, le temps d'accès à un élément reste constant, il est en <span class="arithmatex">\(\mathbb{O}(1)\)</span>.</p>
+<p>Quoi qu'il en soit, <strong>ce temps est très long</strong> comparativement au <mark class="critic"><strong>temps d'accès</strong></mark> à un élément, quand on connait son indice ! En effet, <strong>peu importe la taille de la liste</strong>, le temps d'accès à un élément reste constant, il est en <span class="arithmatex">\(\mathbb{O}(1)\)</span>.</p>
 </div>
 <h2 id="les-dictionnaires-en-python_1">Les dictionnaires en Python</h2>
-<h3 id="premiers-apercu-des-dictionnaires">Premiers aperçu des dictionnaires</h3>
+<h3 id="premiers-apercus-des-dictionnaires">Premiers aperçus des dictionnaires</h3>
 <div class="admonition asbtract">
 <p class="admonition-title">Dictionnaires en Python</p>
 <p>Un <mark class="critic"><strong>dictionnaire</strong></mark> est une structure déclarée <strong>entre accolades</strong>, où chaque déclaration est une paire de type <code>clé : valeur</code>.
@@ -3056,12 +3058,16 @@ La seule limite imposée dans les types des objets <code>clé</code> et <code>va
            <span class="p">}</span> 
 </code></pre></div>
 <p>La variable <code>cris</code> est associée à un objet de type <strong>dictionnaire</strong>, ce qu'on peut vérifier en testant :</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">cris</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">cris</span><span class="p">)</span>
 </code></pre></div>
-Par exemple dans le dictionnaire <code>cris</code>, on trouve la paire <code>"Chat" : "Miaou"</code> où :</p>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id8")' id="fake_id8" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id8" class="hide"></div></p>
+</details>
+<p>Par exemple dans le dictionnaire <code>cris</code>, on trouve la paire <code>"Chat" : "Miaou"</code> où :</p>
 <ul>
-<li><code>"Chat"</code> est la clé (de type chaîne de caractères) ;</li>
-<li><code>"Miaou"</code> est la valeur (aussi de type chacunîne de caractères).</li>
+<li><code>"Chat"</code> est la clé (de type chaine de caractères) ;</li>
+<li><code>"Miaou"</code> est la valeur (aussi de type chaine de caractères).</li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -3088,7 +3094,7 @@ Par exemple dans le dictionnaire <code>cris</code>, on trouve la paire <code>"Ch
 </code></pre></div>
 </li>
 <li>
-<p>Par contre, si on demande une clé qui n'existe pas, on obtient l'erreur suivante :</p>
+<p>Par contre, si on utilise <mark class="critic"><strong>une clé qui n'existe pas</strong></mark>, on obtient l'erreur suivante :</p>
 <p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="p">[</span><span class="s1">&#39;Perroquet&#39;</span><span class="p">]</span>
 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -3098,6 +3104,10 @@ Par exemple dans le dictionnaire <code>cris</code>, on trouve la paire <code>"Ch
 ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictionnaire.</p>
 </li>
 </ol>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id9")' id="fake_id9" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id9" class="hide"></div></p>
+</details>
 </div>
 <h3 id="manipulation-des-dictionnaires">Manipulation des dictionnaires</h3>
 <h4 id="creation-dun-dictionnaire-vide">Création d'un  dictionnaire vide</h4>
@@ -3111,8 +3121,12 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span>
 <span class="p">{</span><span class="s1">&#39;Vache&#39;</span><span class="p">:</span> <span class="s1">&#39;Meuh&#39;</span><span class="p">,</span> <span class="s1">&#39;Chien&#39;</span><span class="p">:</span> <span class="s1">&#39;Wouf&#39;</span><span class="p">,</span> <span class="s1">&#39;Chat&#39;</span><span class="p">:</span> <span class="s1">&#39;Miaou&#39;</span><span class="p">,</span> <span class="s1">&#39;Poule&#39;</span><span class="p">:</span> <span class="s1">&#39;Cot-cot&#39;</span><span class="p">,</span> <span class="s1">&#39;Ane&#39;</span><span class="p">:</span> <span class="s1">&#39;Hi-Han&#39;</span><span class="p">,</span> <span class="s1">&#39;Cochon&#39;</span><span class="p">:</span> <span class="s1">&#39;Gruik&#39;</span><span class="p">,</span> <span class="s1">&#39;Paon&#39;</span><span class="p">:</span> <span class="s1">&#39;Leon&#39;</span><span class="p">,</span> <span class="s1">&#39;Girafe&#39;</span><span class="p">:</span> <span class="s1">&#39;Tic-Tic&#39;</span><span class="p">}</span>
 </code></pre></div>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id10")' id="fake_id10" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id10" class="hide"></div></p>
+</details>
 <h4 id="supprimer-un-element">Supprimer un élément</h4>
-<p>On supprime le couple clé/valeur d'un dictionnaire grâce au mot-clé <code>del</code> :</p>
+<p>On supprime le couple <code>clé/valeur</code> d'un dictionnaire grâce au mot-clé <code>del</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">cris</span><span class="p">[</span><span class="s1">&#39;Girafe&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span>
 <span class="p">{</span><span class="s1">&#39;Vache&#39;</span><span class="p">:</span> <span class="s1">&#39;Meuh&#39;</span><span class="p">,</span> <span class="s1">&#39;Chien&#39;</span><span class="p">:</span> <span class="s1">&#39;Wouf&#39;</span><span class="p">,</span> <span class="s1">&#39;Chat&#39;</span><span class="p">:</span> <span class="s1">&#39;Miaou&#39;</span><span class="p">,</span> <span class="s1">&#39;Poule&#39;</span><span class="p">:</span> <span class="s1">&#39;Cot-cot&#39;</span><span class="p">,</span> <span class="s1">&#39;Ane&#39;</span><span class="p">:</span> <span class="s1">&#39;Hi-Han&#39;</span><span class="p">,</span> <span class="s1">&#39;Cochon&#39;</span><span class="p">:</span> <span class="s1">&#39;Gruik&#39;</span><span class="p">,</span> <span class="s1">&#39;Paon&#39;</span><span class="p">:</span> <span class="s1">&#39;Leon&#39;</span><span class="p">}</span> 
@@ -3122,6 +3136,10 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">cris</span><span class="p">)</span> 
 <span class="mi">7</span>
 </code></pre></div>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id11")' id="fake_id11" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id11" class="hide"></div></p>
+</details>
 <h4 id="test-de-presence-de-cles">Test de présence de clés</h4>
 <p>Il est possible de tester l'existence d'une clé dans le dictionnaire grâce à l'<em>opérateur</em> <code>ìn</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;Vache&#39;</span> <span class="ow">in</span> <span class="n">cris</span>
@@ -3129,22 +3147,30 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <span class="o">&gt;&gt;&gt;</span> <span class="err">`</span><span class="n">vache</span><span class="err">`</span> <span class="ow">in</span> <span class="n">cris</span>
 <span class="kc">False</span>
 </code></pre></div>
-<p>Par contre cet opérateur <strong>ne permet pas de tester l'existence d'une valeur</strong> :</p>
+<p>Par contre, cet opérateur <strong>ne permet pas de tester l'existence d'une valeur</strong> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;Meuh&#39;</span> <span class="ow">in</span> <span class="n">cris</span>
 <span class="kc">False</span>
 </code></pre></div>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id12")' id="fake_id12" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id12" class="hide"></div></p>
+</details>
 <h4 id="liste-des-cles-des-valeurs-et-des-couples">Liste des clés, des valeurs et des couples</h4>
-<p>Le <strong>type dictionnaire</strong> possède plusieurs méthodes, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :</p>
+<p>Le <mark class="critic"><strong>type dictionnaire</strong></mark> possède plusieurs <mark class="critic"><strong>méthodes</strong></mark>, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :</p>
 <ul>
 <li>
 <p>Pour obtenir la liste des <strong>clés</strong>, on utilise la <em>méthode</em> <code>keys()</code>.</p>
 <p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
  <span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;Vache&#39;</span><span class="p">,</span> <span class="s1">&#39;Chien&#39;</span><span class="p">,</span> <span class="s1">&#39;Chat&#39;</span><span class="p">,</span> <span class="s1">&#39;Poule&#39;</span><span class="p">,</span> <span class="s1">&#39;Ane&#39;</span><span class="p">,</span> <span class="s1">&#39;Cochon&#39;</span><span class="p">,</span> <span class="s1">&#39;Paon&#39;</span><span class="p">])</span>
 </code></pre></div>
-L'objet obtenu est dyu type <code>dict_keys</code>, qui se comporte comme un <strong>itérable</strong> classique (c'est-à-dire qu'on peut l'utiliser dans une boucle <code>for</code>) :</p>
+L'objet obtenu est du type <code>dict_keys</code>, qui se comporte comme un <strong>itérable</strong> classique (c'est-à-dire qu'on peut l'utiliser dans une boucle <code>for</code> pour un parcours par élément) :</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">bestiole</span> <span class="ow">in</span> <span class="n">cris</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">bestiole</span><span class="p">)</span> 
 </code></pre></div>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id13")' id="fake_id13" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id13" class="hide"></div></p>
+</details>
 </li>
 <li>
 <p>Pour obtenir la liste des <strong>valeurs</strong>, on utilise la <em>méthode</em> <code>values()</code>.</p>
@@ -3155,6 +3181,10 @@ De la même manière que pour les clés, l'objet obtenu est un <strong>itérable
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">cri</span> <span class="ow">in</span> <span class="n">cris</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">cri</span><span class="p">)</span>
 </code></pre></div>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id14")' id="fake_id14" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id14" class="hide"></div></p>
+</details>
 </li>
 <li>
 <p>On peut aussi obtenir le couple <em>clé/valeurs</em>  sous la forme d'un <em>tuple</em> par l'intermédiaire de la méthode <code>items()</code> :</p>
@@ -3165,6 +3195,14 @@ Et on peut encore itérer sur cet objet :
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cris</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> est le cri de </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
 </code></pre></div></p>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id15")' id="fake_id15" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id15" class="hide"></div></p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Attention à l'utilisation de la méthode <code>items</code> </p>
+<p>Comme nous le verrons plus loin, l'objectif de l'utilisation des dictionnaires est entre autre d'accélérer certaines opérations par rapport à l'utilisation de listes ou de tuples. La méthode <code>items</code> renvoyant une liste de tuples à partir du dictionnaire, il est parfois peu judicieux de l'utiliser (voir la partie sur les tables de hachages ci-dessous). </p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Tuple unpacking</p>
 <p>On peut aussi utiliser la technique du <strong>tuple unpacking</strong> pour extraire chaque élément clé et valeur grâce à la méthode <code>items</code>, en utilisant la technique suivante :
@@ -3176,7 +3214,7 @@ Et on peut encore itérer sur cet objet :
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Améliorer avec les dictionnaires</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Reconstruisez une nouvelle fonction <code>afficheCri2</code> sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.</p>
@@ -3194,18 +3232,18 @@ Et on peut encore itérer sur cet objet :
 </div>
 </div>
 <h3 id="et-avec-plus-de-donnees_1">Et avec plus de données ?</h3>
-<p>Re-créons à partir du même fichier Parcoursup un dictionnaire contenant les établissements et leurs coordonnées GPS :
+<p>Recréons à partir du même fichier Parcoursup un dictionnaire contenant les établissements et leurs coordonnées GPS :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBigDict</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span> <span class="nn">csv</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Long_Dico.csv&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
         <span class="n">dicReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
         <span class="n">etablissements</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">dicReader</span> <span class="p">:</span>
-            <span class="n">etablissements</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="s1">&#39;Nom&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="s1">&#39;GPS&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">dicReader</span> <span class="p">:</span> <span class="c1"># pour chaque ligne</span>
+            <span class="n">etablissements</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="s1">&#39;Nom&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="s1">&#39;GPS&#39;</span><span class="p">]</span> <span class="c1"># on crée une nouvelle paire clé/valeur dans le dictionnaire</span>
     <span class="k">return</span> <span class="n">etablissements</span>
 
 <span class="n">dicEtablissements</span> <span class="o">=</span> <span class="n">makeBigDict</span><span class="p">()</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Et vérifions que sa taille st bien cohérente :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dicEtablissements</span><span class="p">)</span>
 <span class="mi">6183</span> 
@@ -3216,7 +3254,7 @@ Et on peut encore itérer sur cet objet :
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Adaptez de nouveau la fonction <code>afficheCri2</code> en une fonction <code>afficheGPS2</code>afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a sais le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</li>
+<li>Adaptez de nouveau la fonction <code>afficheCri2</code> en une fonction <code>afficheGPS2</code>afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</li>
 <li>Comparez le temps d'exécution avec la fonction <code>afficheGPS</code>.</li>
 </ol>
 </div>
@@ -3227,8 +3265,8 @@ Et on peut encore itérer sur cet objet :
 </div>
 </div>
 <h2 id="les-dictionnaires-des-tables-de-hachage">Les dictionnaires : des tables de hachage</h2>
-<p><em>Cette partie est hors-programme. Mais elle n'en demeure pas moins intéresante !</em></p>
-<p>Si la structure de dictionnaire est plus rapide que celle d'un tableau simple, c'est parce qu'elle est construite sur le principe d'une <strong>table de hachage</strong>, à l'aide d'une <strong>fonction de hachage</strong>.</p>
+<p><em>Cette partie est hors-programme. Mais elle n'en demeure pas moins intéressante !</em></p>
+<p>Si la structure de dictionnaire est plus rapide que celle d'un tableau simple, c'est parce qu'elle est construite sur le principe d'une <mark class="critic"><strong>table de hachage</strong></mark>, à l'aide d'une <mark class="critic"><strong>fonction de hachage</strong></mark>.</p>
 <p>Une <strong>fonction de hachage</strong> est une fonction qui va renvoyer une valeur qui dépendra de l'objet qui lui est passé en argument.</p>
 <p>A la création d'un dictionnaire, un tableau vide est créé. Ce tableau est un tableau classique, indexé par des entiers. Lors de l'ajout d'un élément dans un dictionnaire, la fonction de hachage calcule l'image de la clé, donc un nombre, et range dans la case correspondante du tableau nommée <strong>alvéole</strong> (ou <strong>bucket</strong> ou <strong>slot</strong>) la paire clé/valeur.</p>
 <p>Prenons comme exemple de fonction de hachage la fonction <span class="arithmatex">\(f\)</span> qui renvoie le <strong>nombre de lettres de la chaine de caractère de la clé</strong>. Avec cet exemple :</p>
@@ -3243,16 +3281,20 @@ Et on peut encore itérer sur cet objet :
 <p>Cependant elle implique un certain nombre de règles et de contraintes pouvant être assez gênantes :</p>
 <ol>
 <li>
-<p><strong>La clé d'un objet doit être non mutable</strong>. En effet, si la clé change, la valeur de <strong>hash</strong> renvoyée par la fonction ne sera plus la même, et l'objet serait perdu. Ainsi Python impose d'utiliser des objets <strong>non-mutables</strong> comme clé, comme des entiers, des chaînes de caractères, et même des tuples :
+<p><strong>La clé d'un objet doit être non mutable</strong>. En effet, si la clé change, la valeur de <strong>hash</strong> renvoyée par la fonction ne sera plus la même et l'objet serait perdu. Ainsi Python impose d'utiliser des objets <strong>non-mutables</strong> comme clé, comme des entiers, des chaines de caractères, ou même des tuples :
     <div class="highlight"><pre><span></span><code><span class="n">newDic</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span> <span class="mi">3</span> <span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span><span class="mi">4</span><span class="p">}</span>
 </code></pre></div></p>
 <p>Remarquez que les clés peuvent être de types différents - tant que la fonction de hachage est capable de calculer, il n'y a pas de problèmes.</p>
 <p>Mais il est impossible d'utiliser des listes comme clé :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">newDic</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div>
+<details class="note">
+<summary>Terminal de test</summary>
+<p><div onclick='start_term("id16")' id="fake_id16" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id16" class="hide"></div></p>
+</details>
 </li>
 <li>
-<p><strong>Comme tous les tableaux</strong>, une taille de base est fixée au départ. Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau <strong>2 fois plus grand</strong> est créé, et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie <strong>peut être coûteues en temps et en mémoire</strong>.</p>
+<p><strong>Comme tous les tableaux</strong>, une taille de base est fixée au départ. Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau <strong>2 fois plus grand</strong> est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie <strong>peut être couteuse en temps et en mémoire</strong>.</p>
 </li>
 <li>
 <p>Avec certaines fonctions de hachage, <strong>plusieurs clés peuvent avoir la même image</strong>. Par exemple avec la fonction utilisant la longueur des chaines :</p>
@@ -3280,11 +3322,11 @@ Et on peut encore itérer sur cet objet :
 <h3 id="exercices-sur-les-dictionnaires">Exercices sur les dictionnaires</h3>
 <div class="admonition question">
 <p class="admonition-title">Exercice 1</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label><label for="__tabbed_5_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Énoncé</label><label for="__tabbed_5_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Ecrire un dictionnaire <code>mois</code> dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).</li>
+<li>Écrire un dictionnaire <code>mois</code> dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).</li>
 <li>Créer une fonction <code>quelMois</code> donnant les mois dont le nombre de jours est passé en argument.    </li>
 </ol>
 </div>
@@ -3296,12 +3338,12 @@ Et on peut encore itérer sur cet objet :
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Enoncé</label><label for="__tabbed_6_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Énonce</label><label for="__tabbed_6_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Ecrire une fonction <code>occurrence(chaine : str)</code> qui prend une chaine de caractères en argument, et qui renvoie un dictionnaire contenant le nombre d'occurrences de chaque caractère.</p>
+<p>Écrire une fonction <code>occurrence(chaine : str)</code> qui prend une chaine de caractères en argument, et qui renvoie un dictionnaire contenant le nombre d'occurrences de chaque caractère.</p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">occurrence</span><span class="p">(</span><span class="n">chaine</span> <span class="p">:</span><span class="nb">str</span> <span class="p">)</span> <span class="o">-&gt;</span><span class="nb">dict</span> <span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prend en argument une chaine de caractère quelconque mais non vide, et renvoi</span>
@@ -3319,7 +3361,7 @@ Et on peut encore itérer sur cet objet :
 </code></pre></div>
 </li>
 <li>
-<p>Ecrire une fonction <code>occurrenceMot(chaine :str)</code> qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .</p>
+<p>Écrire une fonction <code>occurrenceMot(chaine :str)</code> qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">occurenceMot</span><span class="p">(</span><span class="n">chaine</span> <span class="p">:</span><span class="nb">str</span> <span class="p">)</span> <span class="o">-&gt;</span><span class="nb">dict</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prend en argument une chaine de caractère quelconque mais non vide,</span>
@@ -3334,7 +3376,7 @@ Et on peut encore itérer sur cet objet :
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="o">...</span>    
 </code></pre></div>
-<p><strong>Indice</strong> :  on pourra utiliser la méthode de chaine <code>split(separateur)</code> qui renvoie une liste de sous chaines créé àpartir du séparateur passé en argument :</p>
+<p><strong>Indice</strong> :  on pourra utiliser la méthode de chaine <code>split(separateur)</code> qui renvoie une liste de sous chaines créé à partir du séparateur passé en argument :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;Martine va à la plage&quot;</span><span class="o">.</span> <span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="p">[</span><span class="s2">&quot;Martine&quot;</span><span class="p">,</span> <span class="s2">&quot;va&quot;</span><span class="p">,</span> <span class="s2">&quot;à&quot;</span><span class="p">,</span> <span class="s2">&quot;la&quot;</span><span class="p">,</span> <span class="s2">&quot;plage&quot;</span><span class="p">]</span>
 </code></pre></div>
@@ -3350,15 +3392,15 @@ Et on peut encore itérer sur cet objet :
 <div class="admonition question">
 <p class="admonition-title">Exercice 3</p>
 <p><em>(D'après Romain Tavenard, Université de Rennes 2)</em></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Enoncé</label><label for="__tabbed_7_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On dispose d'un dictionnaire associant à des noms de commerciaux d'une société le nombre de ventes qu'ils ont réalisées. Par exemple :</p>
-<div class="highlight"><pre><span></span><code><span class="n">ventes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Dupont&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;Hervy&quot;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s2">&quot;Geoffroy&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;Layec&quot;</span><span class="p">:</span><span class="mi">21</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">ventes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Dupont&quot;</span> <span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;Hervy&quot;</span> <span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">&quot;Geoffroy&quot;</span> <span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;Layec&quot;</span> <span class="p">:</span> <span class="mi">21</span><span class="p">}</span>
 </code></pre></div>
 <ol>
 <li>Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nombre total de ventes dans la société.</li>
-<li>Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-aequo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.</li>
+<li>Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-æquo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.et</li>
 </ol>
 </div>
 <div class="tabbed-block">

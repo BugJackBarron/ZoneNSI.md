@@ -2837,28 +2837,28 @@
 
 <h1 id="alignement-de-sequences">Alignement de séquences</h1>
 <h2 id="presentation-du-sujet">Présentation du sujet</h2>
-<p>On dispose de deux chaînes de caractères : <span class="arithmatex">\(A\)</span>, qui vaut <code>INFORMATIQUE</code>, et <span class="arithmatex">\(B\)</span>, qui vaut <code>NUMERIQUE</code>. On aimerait mettre ces deux chaînes de caractères en correspondance de la manière suivante :</p>
+<p>On dispose de deux chaînes de caractères : <span class="arithmatex">\(A\)</span>, qui vaut <code>INFORMATIQUE</code>, et <span class="arithmatex">\(B\)</span>, qui vaut <code>NUMERIQUE</code>. On aimerait mettre ces deux chaines de caractères en correspondance de la manière suivante :</p>
 <ul>
-<li>On place les 2 chaînes l'une en desous de l'autre;</li>
-<li>Si les derniers caractères des deux chaînes coïncident, alors on passe aux caractères suivants;</li>
-<li>Sinon, on va ajouter un trou dans une des deux chaînes, symbolisé par un - et on passe aux caractères suivant.</li>
+<li>On place les 2 chaines l'une en dessous de l'autre ;</li>
+<li>Si les derniers caractères des deux chaines coïncident, alors on passe aux caractères suivants ;</li>
+<li>Sinon, on va ajouter un trou dans une des deux chaines, symbolisé par un - et on passe aux caractères suivants.</li>
 </ul>
 <p>Voici un exemple d'alignement optimal :</p>
 <p><img alt="exempleAlignement.gif" src="../exempleAlignement.gif" style="width:40%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Dans cette situation on a besoin de 9 tirets, pas moins.</p>
-<p>L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de <code>-</code> possible). Ce n'est pas un problème simple, surtout quand les chaînes sont longues, comme pour les séquences d'ADN par exemple :</p>
+<p>L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de <code>-</code> possible). Ce n'est pas un problème simple, surtout quand les chaines sont longues, comme pour les séquences d'ADN par exemple :</p>
 <p><img alt="sequenceADN.png" src="../sequenceADN.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <h2 id="resolution-par-une-methode-recursive">Résolution par une méthode récursive</h2>
 <p>Le principe est présenté dans la vidéo suivante :</p>
 <iframe src="//video.toutatice.fr/video/28583-alignement-de-sequences-methode-recursive-et-programmation-dynamique/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
 
-<p>Pour les mots <code>GRAS</code> et <code>GERS</code>, l'arbre  obtenu est le suivant :</p>
+<p>Pour les mots <code>GRAS</code> et <code>GERS</code>, l'arbre obtenu est le suivant :</p>
 <p><img alt="ArbreGrasGers.png" src="../ArbreGrasGers.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <p>Après application d'une méthode dynamique (<mark class="critic"><strong>Top Down</strong></mark>) (c'est-à-dire récursive avec mémoïsation), on obtient le graphe suivant :</p>
 <p><img alt="GrapheGrasGers.png" src="../GrapheGrasGers.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <h2 id="resolution-par-une-methode-iterative">Résolution par une méthode itérative</h2>
 <h3 id="activite-debranchee">Activité débranchée</h3>
-<p>Considérons les deux chaînes de caractères <code>GENOME</code> et <code>ENORME</code>. Afin de chercher le nombre minimal d'insertion à effectuer, nous allons compléter le tableau suivant, avec la convention suivante : à l'intersection de la colonne <code>N</code> et de la première ligne <code>E</code> se trouve le nombre minimal d'insertion nécessaire pour aligner les chaînes <code>EN</code> et <code>GE</code>, c'est-à-dire 2 tirets. Par convention la première ligne et la première colonne correspondent à une chaîne vide.</p>
+<p>Considérons les deux chaines de caractères <code>GENOME</code> et <code>ENORME</code>. Afin de chercher le nombre minimal d'insertion à effectuer, nous allons compléter le tableau suivant, avec la convention suivante : à l'intersection de la colonne <code>N</code> et de la première ligne <code>E</code> se trouve le nombre minimal d'insertion nécessaire pour aligner les chaines <code>EN</code> et <code>GE</code>, c'est-à-dire 2 tirets. Par convention la première ligne et la première colonne correspondent à une chaine vide.</p>
 <p><img alt="tabAlign.png" src="../tabAlign.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -2870,7 +2870,7 @@
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de <code>R</code> et de <code>-</code> doit contenir le nombre minimal de tirets nécessaire pour aligner <code>ENOR</code> avec une chaîne vide, c'est-à-dire 4.</p>
+<p>Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de <code>R</code> et de <code>-</code> doit contenir le nombre minimal de tirets nécessaire pour aligner <code>ENOR</code> avec une chaine vide, c'est-à-dire 4.</p>
 <p><img alt="tabAlign_Cas_Base.png" src="../tabAlign_Cas_Base.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 </li>
 <li>
