@@ -13,11 +13,11 @@ Nous ne pourrons bien entendu pas répondre à toutes ces questions dans le cadr
 
 ## Connecter entre eux deux ordinateurs
 
-Dans toute la suite de ce  thème, nous utiliserons le logiciel libre [Filius](https://www.lernsoftware-filius.de/Herunterladen), qui permet de simuler de manière simplifiée les réseaux informatiques.
+Dans toute la suite de ce thème, nous utiliserons le logiciel libre [Filius](https://www.lernsoftware-filius.de/Herunterladen), qui permet de simuler de manière simplifiée les réseaux informatiques.
 
 Commençons donc par connecter deux ordinateurs entre eux, et regardons comment ils communiquent :
 
-1. Ouvrez le logiciel *Filius*.
+1. Ouvrez le logiciel `Filius`.
 
 	!!! warning "Attention : choix de la langue"
 		Attention, la première chose que vous demandera `Filius` sera de choisir votre langue d'utilisation, et **il n'y a pas moyen de changer cette langue** sauf en supprimant le fichier de configuration qui se trouve dans le dossier `C:\Users\"nom d’utilisateur sur le réseau" \AppData\Local\.filius` (sous win7 et win 10).
@@ -39,18 +39,18 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 
 		Les adresses IP, en version 4, sont de la forme : `a.b.c.d`, avec $a, b, c$ et $d$ qui sont des entiers compris entre 0 et 255. Il existe une version 6 des adresses IP, utilisant 6 valeurs, mais nous nous contenterons d'étudier l'IP V4 .
 	
-	Modifiez l'adresse IP d'un des ordinateurs en la remplaçant par `192.168.0.11`. Vous pouvez aussi, pour chacun des ordinateurs,cocher l'option à droite &laquo; *Utiliser l'adresse IP comme nom* &raquo;.
+	Modifiez l'adresse IP d'un des ordinateurs en la remplaçant par `192.168.0.11`. Vous devez aussi, pour *chacun des ordinateurs*, cocher l'option à droite &laquo; `Utiliser l'adresse IP comme nom` &raquo;.
 	
 	![Filius Config](Filius1.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 
 5. Démarrez la simulation grâce à l'icône ![Filius Demarrer](N1_icone_demarrer.png){: style="width:3em;"}.
-6. Cliquez-droit sur l'ordinateur portant l'IP `192.168.0.10` (en n'oubliant pas de régler de manière à avoir son IP comme nom), et cliquez sur *Afficher les échanges de données*. Déplacez la fenêtre sur la droite de l'écran afin de pouvoir voir à la fois cette fenêtre et les deux ordinateurs.
+6. Cliquez-droit sur l'ordinateur portant l'IP `192.168.0.10` (en n'oubliant pas de régler de manière à avoir son IP comme nom), et cliquez sur `Afficher les échanges de données`. Déplacez la fenêtre sur la droite de l'écran afin de pouvoir voir à la fois cette fenêtre et les deux ordinateurs.
 
-	!!! tips ""
-	En cas de besoin, vous pouvez toujours arrêter la simulation en  cliquant sur l'icône [Filius Arreter](N1_icone_arreter.png){: style="width:3em;"}, et ainsi pouvoir déplacer les ordinateurs dans le plan de travail.
+	!!! tips "Arrêter la simulation"
+	En cas de besoin, vous pouvez toujours arrêter la simulation en  cliquant sur l'icône ![Filius Arreter](N1_icone_arreter.png){: style="width:3em;"}, et ainsi pouvoir déplacer les ordinateurs dans le plan de travail.
 	
-7. Cliquez droit toujours sur le même ordinateur, et sélectionnez *Afficher le bureau*.
-8. Dans ce bureau, cliquez sur l'installateur de logiciels, et installez *Ligne de commande*. Une fois l'installation effectuée (c'est immédiat !), ouvrez le logiciel *Ligne de commande* par un click gauche. Vous devriez avoir une situation telle que celle-ci :
+7. Cliquez droit toujours sur le même ordinateur et sélectionnez `Afficher le bureau`.
+8. Dans ce bureau, cliquez sur l'installateur de logiciels et installez `Ligne de commande`. Une fois l'installation effectuée (c'est immédiat !), ouvrez le logiciel `Ligne de commande` par un click gauche. Vous devriez avoir une situation telle que celle-ci :
 
 	![Filius Config 2](Filius2.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 	
@@ -67,7 +67,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 	=== "Réponse"
 		A venir !
 		
-10. On  s'intéresse dans les échanges de données à la première ligne utilisant le protocole `ICMP` (**Internet Control Message Protocol**), qui doit être en toute logique la n°3. Cette ligne, appelée {==**trame**==}, représente un échange de données entre les deux machines.  Cliquez sur la ligne pour obtenir les informations Dans cette trame :
+10. On s'intéresse dans les échanges de données à la première ligne utilisant le protocole `ICMP` (**Internet Control Message Protocol**), qui doit être en toute logique la n°3. Cette ligne, appelée {==**trame**==}, représente un échange de données entre les deux machines. Cliquez sur la ligne pour obtenir les informations Dans cette trame :
 	1. Quelle est l'IP de la source ?
 	
 		??? done
@@ -100,7 +100,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 			A venir !
 
 !!! info "Commande `ping`"
-	La commande `ping` est une commande très souvent utilisée pour effectuer des tests réseau, en cas de dysfonctionnement. Elle s'utilise en donnant soit l'adresse IP de l'ordinateur cible, soit en donnant le **nom de domaine** de l'ordinateur cible, par exemple :
+	La commande `ping` est une commande très souvent utilisée pour effectuer des tests réseau, en cas de dysfonctionnement. Elle s'utilise en donnant soit l'adresse IP de l'ordinateur cible, soit en donnant le {==**nom de domaine**==} de l'ordinateur cible, par exemple :
 	
 	````
 	ping www.google.fr
@@ -111,16 +111,16 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 
 ## Échanger des données
 
-Nos deux ordinateurs sont bien connectés, ils se reconnaissent l'un l'autre, et forment donc un {==**réseau informatique**==}, que nous agrandirons plus tard. Nous allons maintenant simuler, avec ces deux ordinateurs, une requête web classique.
+Nos deux ordinateurs sont bien connectés, ils se reconnaissent l'un l'autre et forment donc un {==**réseau informatique**==}, que nous agrandirons plus tard. Nous allons maintenant simuler, avec ces deux ordinateurs, une requête web classique.
 
 1. Ne fermez les fenêtres de bureau et d'échanges de données de l'ordinateur `192.168.0.10`.
 2. Cliquez droit sur l'ordinateur `192.168.0.11`, et ouvrez le bureau.
-3. Installez le logiciel  *Serveur Web*.
-4. Cliquez sur le nouvel icône, et démarrez le serveur.
+3. Installez le logiciel *Serveur Web*.
+4. Cliquez sur le nouvel icône et démarrez le serveur.
 5. Sur l'ordinateur `192.168.0.10`, installez le navigateur web.
-6. Ouvrez le navigateur, et tapez dans la barre d'adresse l'IP du serveur web, c'est-à-dire `192.168.0.11`. Vous obtenez une page web, certes basique, mais réelle.
+6. Ouvrez le navigateur et tapez dans la barre d'adresse l'IP du serveur web, c'est-à-dire `192.168.0.11`. Vous obtenez une page web, certes basique, mais réelle.
 7. Si vous avez regardé la fenêtre montrant les échanges de données, vous avez constaté que beaucoup d'échanges se sont produits. Nous passerons sur les trois premières lignes (il s'agit de la négociation des paramètres de la transmission entre les deux ordinateurs, appelée [TCP-handshake](https://developer.mozilla.org/fr/docs/Glossary/TCP_handshake), qui est hors-programme de SNT), mais nous nous arrêterons sur les échanges des trames en bleu foncé :
-	1. Cliquez sur la première des lignes bleu foncée dont la source est `192.168.0.11` (en théorie la deuxième ligne bleu foncée):
+	1. Cliquez sur la première des lignes bleu foncé dont la source est `192.168.0.11` (en théorie la deuxième ligne bleu foncé):
 		1. Dans la couche `Transport`, quel est le numéro de séquence `SEQ` ?
 		
 			??? done
@@ -131,12 +131,12 @@ Nos deux ordinateurs sont bien connectés, ils se reconnaissent l'un l'autre, et
 			??? done
 				A venir !
 				
-		3. Quel est le numéro d'{==**acquittement**==} (`ACK`) de la ligne bleue-claire suivante ? Par qui cette trame at-elle été émise ?
+		3. Quel est le numéro d'{==**acquittement**==} (`ACK`) de la ligne bleue-claire suivante ? Par qui cette trame a-t-elle été émise ?
 		
 			??? done	
 				A venir !
 				
-	2. Cliquez sur la ligne bleue foncée suivante.
+	2. Cliquez sur la ligne bleu foncé suivante.
 		1. Qui est l'émetteur ?
 		
 			??? done	
@@ -147,7 +147,7 @@ Nos deux ordinateurs sont bien connectés, ils se reconnaissent l'un l'autre, et
 			??? done	
 				A venir !
 				
-	3. Que contiennent les lignes bleues foncées suivantes ?
+	3. Que contiennent les lignes bleu foncé suivantes ?
 		
 		??? done
 			A venir !
@@ -161,17 +161,17 @@ Depuis le début de cette activité, j'utilise le mot {==**protocole**==}. Mais 
 
 
 
-En informatique il existe de nombreux protocoles. Vous en avez quelques exemples avec *Filius* : `ARP`, `ICMP`, `TCP`, etc.
+En informatique, il existe de nombreux protocoles. Vous en avez quelques exemples avec *Filius* : `ARP`, `ICMP`, `TCP`, etc.
 
 Nous nous intéresserons uniquement à 2 protocoles : `IP` et `TCP` (**Transmission Control Protocol**), qui sont très utilisés pour les transmissions web. Ils sont tellement liés qu'on parle souvent de protocole `TCP/IP`.
 
 Détaillons-en un peu le fonctionnement !
 
-Lorsqu'un ordinateur $A$ veut envoyer des données, par exemple une image, à un ordinateur $B$, le protocole `TCP` va, avec un certain nombre d'opérations, découper les données de l'image en petits {==**paquets**==}, les numéroter,  puis les transmettre au protocole `IP`.
+Lorsqu'un ordinateur $A$ veut envoyer des données, par exemple une image, à un ordinateur $B$, le protocole `TCP` va, avec un certain nombre d'opérations, découper les données de l'image en petits {==**paquets**==}, les numéroter, puis les transmettre au protocole `IP`.
 
 Le protocole IP {==**encapsule**==} les données et rajoute, entre autre, l'adresse `IP` de la source (ordinateur $A$) et celle de la destination (ordinateur $B$).
 
-Une analogie simple serait de considérer l'idée de transmettre par la poste un très très long texte. `TCP` écrirait ce texte sur des feuilles simples, et numéroterait ces feuilles. Chacune des feuille serait transmise au protocole `IP`, qui les mettrait dans une enveloppe, sur laquelle est écrit à la fois l'adresse du destinataire, ainsi que celle de l'expéditeur. `IP` envoie ensuite chacune des enveloppes à l'ordinateur $B$.
+Une analogie simple serait de considérer l'idée de transmettre par la poste un très très long texte. `TCP` écrirait ce texte sur des feuilles simples et numéroterait ces feuilles. Chacune des feuilles serait transmise au protocole `IP`, qui les mettrait dans une enveloppe, sur laquelle est écrit à la fois l'adresse du destinataire, ainsi que celle de l'expéditeur. `IP` envoie ensuite chacune des enveloppes à l'ordinateur $B$.
 
 ![TCP IP](TCPIP.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -188,6 +188,6 @@ Une fois l'accusé reçu par l'émetteur, le protocole `TCP` de l'ordinateur $A$
 
 Évidemment, un réseau ne peut pas se contenter d'avoir uniquement deux ordinateurs. Pour connecter plusieurs ordinateurs entre eux, on utilise un {==**Switch**==}.
 
-1. Dans `Filius`, retirez le câble entre les deux ordinateurs, ajoutez un switch à l'aide de l'icône correspondant et ajoutez deux autres ordinateurs.
-2. Connectez les ordinateurs au switch à l'aide de câbles, puis configurez correctement votre réseau, en donnant à chacun des ordinateurs les IP de types `192.168.0.X` où `X` est un nombre entier entre $1$ et $254$
+1. Dans `Filius`, retirez le câble entre les deux ordinateurs, ajoutez un `switch` à l'aide de l'icône correspondant et ajoutez deux autres ordinateurs.
+2. Connectez les ordinateurs au `switch` à l'aide de câbles, puis configurez correctement votre réseau, en donnant à chacun des ordinateurs les IP de types `192.168.0.X` où `X` est un nombre entier entre $1$ et $254$
 3. Testez ensuite les connexions entre les machines à l'aide soit de la ligne de commandes, soit d'un navigateur web. Vous pouvez utiliser le cadre ci-dessous pour prendre des notes.
