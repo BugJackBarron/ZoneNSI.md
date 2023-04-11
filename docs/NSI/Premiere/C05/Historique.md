@@ -28,10 +28,9 @@ Les supports de type papyrus, vélins (peau) et papiers sont probablement très 
 
 ![Chine.jpg](Chine.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Texte Chinois"}
 
-La [machine d'Anticythère](https://fr.wikipedia.org/wiki/Machine_d%27Anticyth%C3%A8re){: target="_blank"}, découverte en 1900 et datée de 87 avant J.C. est une machine servant à calculer les positions astronomiques, et donc à naviguer. Elle nous montre que le calcul a toujours un enjeu capital, et que l'humanité a fait preuve d'une très grande ingéniosité pour améliorer ses capacités de calculs.
+La [machine d'Anticythère](https://fr.wikipedia.org/wiki/Machine_d%27Anticyth%C3%A8re){: target="_blank"}, découverte en 1900 et datée de 87 avant J.C. est une machine servant à calculer les positions astronomiques, et donc à naviguer. Elle nous montre que le calcul a toujours un enjeu capital, et que l'humanité a fait preuve d'une très grande ingéniosité pour améliorer ses capacités de calculs (une très bonne vidéo en anglais est disponible [ici](https://www.youtube.com/watch?v=mTsCx0E7YkA){: target="_blank"}).
 
 ![Anticythere.png](Anticythere.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Mécanisme d'Anticythere"}
-
 
 Jusqu'à la fin de l'époque médiévale, la possibilité la plus répandue pour obtenir un *manuscrit* était de le recopier à la main - d'où la grande importance des moines-copistes et des monastères qui s'y consacraient dans la sphère d'influence occidentale. Cependant, le procédé de *xylographie* (principe du tampon encreur avec une matrice en bois), ainsi que des procédés simplifiés de fabrication du papier transitent avec la grande horde mongole par l'intermédiaire de la route de la soie. Vers 1430, **Johannes Gutenberg** invente le principe de la presse à imprimer à caractères mobiles, et facilite grandement la copie d'œuvres écrites. Une nouvelle ère de développement de la science et des idées se répand sur l'Europe.
 
@@ -234,7 +233,7 @@ Le langage **C**, inventé au cours de l'année 1972 dans les Laboratoires Bell,
 	/* La fonction somme avec deux paramètres formels x et y */ 
 	int somme (int x, int y) { 
 		   return (x+y); 
-	}é
+	}
 		
 	````
 
