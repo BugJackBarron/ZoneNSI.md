@@ -4,11 +4,11 @@
 ## Présentation du sujet 
 
 
-On dispose de deux chaînes de caractères : $A$, qui vaut `INFORMATIQUE`, et $B$, qui vaut `NUMERIQUE`. On aimerait mettre ces deux chaînes de caractères en correspondance de la manière suivante :
+On dispose de deux chaînes de caractères : $A$, qui vaut `INFORMATIQUE`, et $B$, qui vaut `NUMERIQUE`. On aimerait mettre ces deux chaines de caractères en correspondance de la manière suivante :
 
-* On place les 2 chaînes l'une en desous de l'autre;
-* Si les derniers caractères des deux chaînes coïncident, alors on passe aux caractères suivants;
-* Sinon, on va ajouter un trou dans une des deux chaînes, symbolisé par un - et on passe aux caractères suivant.
+* On place les 2 chaines l'une en dessous de l'autre ;
+* Si les derniers caractères des deux chaines coïncident, alors on passe aux caractères suivants ;
+* Sinon, on va ajouter un trou dans une des deux chaines, symbolisé par un - et on passe aux caractères suivants.
 
 Voici un exemple d'alignement optimal :
 
@@ -16,7 +16,7 @@ Voici un exemple d'alignement optimal :
 
 Dans cette situation on a besoin de 9 tirets, pas moins.
 
-L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de `-` possible). Ce n'est pas un problème simple, surtout quand les chaînes sont longues, comme pour les séquences d'ADN par exemple :
+L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de `-` possible). Ce n'est pas un problème simple, surtout quand les chaines sont longues, comme pour les séquences d'ADN par exemple :
 
 ![sequenceADN.png](sequenceADN.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -27,7 +27,7 @@ Le principe est présenté dans la vidéo suivante :
 <iframe src="//video.toutatice.fr/video/28583-alignement-de-sequences-methode-recursive-et-programmation-dynamique/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
 
 
-Pour les mots `GRAS` et `GERS`, l'arbre  obtenu est le suivant :
+Pour les mots `GRAS` et `GERS`, l'arbre obtenu est le suivant :
 
 ![ArbreGrasGers.png](ArbreGrasGers.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -39,7 +39,7 @@ Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire 
 
 ### Activité débranchée
 
-Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de chercher le nombre minimal d'insertion à effectuer, nous allons compléter le tableau suivant, avec la convention suivante : à l'intersection de la colonne `N` et de la première ligne `E` se trouve le nombre minimal d'insertion nécessaire pour aligner les chaînes `EN` et `GE`, c'est-à-dire 2 tirets. Par convention la première ligne et la première colonne correspondent à une chaîne vide.
+Considérons les deux chaines de caractères `GENOME` et `ENORME`. Afin de chercher le nombre minimal d'insertion à effectuer, nous allons compléter le tableau suivant, avec la convention suivante : à l'intersection de la colonne `N` et de la première ligne `E` se trouve le nombre minimal d'insertion nécessaire pour aligner les chaines `EN` et `GE`, c'est-à-dire 2 tirets. Par convention la première ligne et la première colonne correspondent à une chaine vide.
 
 ![tabAlign.png](tabAlign.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -50,7 +50,7 @@ Considérons les deux chaînes de caractères `GENOME` et `ENORME`. Afin de cher
 		
 	=== "Réponse"
 		
-		1. Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de `R` et de `-` doit contenir le nombre minimal de tirets nécessaire pour aligner `ENOR` avec une chaîne vide, c'est-à-dire 4.
+		1. Pour compléter le tableau, on va commencer par compléter la première ligne et la première colonne. Par exemple, la case de la première ligne correspondant à l'intersection de `R` et de `-` doit contenir le nombre minimal de tirets nécessaire pour aligner `ENOR` avec une chaine vide, c'est-à-dire 4.
 		
 			![tabAlign_Cas_Base.png](tabAlign_Cas_Base.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 			

@@ -27,12 +27,12 @@ Cette architecture est bien entendu une *architecture théorique*. Elle doit êt
 
 La vitesse d'un processeur est exprimée en GigaHertz (GHz). Elle exprime le *nombre d'opérations que peut faire le processeur en une seconde*. Ainsi, un processeur à **3 GigaHerz** effectue **3 milliards d'opérations à la seconde**, c'est-à-dire 3 milliards de cycles par secondes. 
 
-L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'**augmentation du nombre de transistors** dans les processeurs. Gordon E. Moore énonca en $1965$ une loi emprique prédisant un doublement du nombre de processeurs tous les deux ans.
+L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'**augmentation du nombre de transistors** dans les processeurs. Gordon E. Moore énonça en $1965$ une loi empirique prédisant un doublement du nombre de processeurs tous les deux ans.
 
 ![Loi de Moore](https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Loi de Moore, image Wikipedia"}
 
 
-Mais cette augmentation génère une chaleur très importante au niveau processeur, et la dissipation de cette chaleur est rapidement devenue un problème. Depuis $2005$ environ, les fabricants se sont plutôt tourné vers une **augmentation du nombre de cœurs** dans leurs processeurs, en comptant sur le {==**parallélisme**==}(le fait de pouvoir gérer des instructyions en simultané sur plusieurs coeurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de $3,8$ GHz.
+Mais cette augmentation génère une chaleur très importante au niveau processeur, la dissipation de cette chaleur étant rapidement devenue un problème. Depuis $2005$ environ, les fabricants se sont plutôt tourné vers une **augmentation du nombre de cœurs** dans leurs processeurs, en comptant sur le {==**parallélisme**==}(le fait de pouvoir gérer des instructions en simultané sur plusieurs cœurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de $3,8$ GHz.
 
 ![Frequence.png](Frequence.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Frequence des processeurs"}
 
@@ -53,11 +53,11 @@ En supposant que chaque étape met 1 cycle d'horloge pour s'exécuter, il faut n
 
 
 
-Il est cependant possible d'améliorer ce système, notamment par l'utilisation de **pipelines** dans des processeurs dits *superscalaires*. Si plusieurs opérations **d'un même programme sont indépendantes**, alors le processeur peut contenir plusieurs instructions, chacune à une étape différente. Le pipeline ci-dessous est le *Classic RISC pipeline*, créé par David Patterson, inventeur des processeurs RISC et du concept de pipeline, et mis en oeuvre dès 1961 par IBM :
+Il est cependant possible d'améliorer ce système, notamment par l'utilisation de **pipelines** dans des processeurs dits *superscalaires*. Si plusieurs opérations **d'un même programme sont indépendantes**, alors le processeur peut contenir plusieurs instructions, chacune à une étape différente. Le pipeline ci-dessous est le *Classic RISC pipeline*, créé par David Patterson, inventeur des processeurs RISC et du concept de pipeline, et mis en œuvre dès 1961 par IBM :
 
 ![Pipeline.png](Pipeline.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Pipeline"}
 
-Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités, et les 5 opérations ont lieu en même temps.
+Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités et les 5 opérations ont lieu en même temps.
 
 ### L'évolution du modèle de von Neumann
 
@@ -67,8 +67,8 @@ Même si le modèle de von Neumann reste d'actualité, il a subi quelques évolu
 
 
 * Les **Entrée-sorties** sont contrôlées par des processeurs autonomes.
-* Les CPU sont **multiprocesseurs**, soit par unités séparés soit par multiples coeurs dans une même puce. On a ainsi une augmentation de la puissance sans augmenter la vitesse des processeurs. 
-* La **mémoire** est  au coeur du système, ce qui implique de plus en plus de parallélisme.
+* Les CPU sont **multiprocesseurs**, soit par unités séparées soit par multiples cœurs dans une même puce. On a ainsi une augmentation de la puissance sans augmenter la vitesse des processeurs. 
+* La **mémoire** est au cœur du système, ce qui implique de plus en plus de parallélisme.
 
 On peut voir cette évolution sur les processeurs eux-mêmes :
 
@@ -111,7 +111,7 @@ On peut voir cette évolution sur les processeurs eux-mêmes :
 
 Dans un ordinateur, le processeur accède aux instructions du programme à exécuter ainsi qu'aux données nécessaires à son exécution depuis la mémoire.
 
-Il existe une hiérarchie des mémoires informatiques : les {==**plus rapides sont les plus coûteuses**==}, donc en nombre limité, et **placées le plus près du processeur** (les registres font partie intégrante du processeur). Les plus lentes sont les moins coûteuses et sont éloignées du processeur.
+Il existe une hiérarchie des mémoires informatiques : les {==**plus rapides sont les plus coûteuses**==}, donc en nombre limité, et sont **placées le plus près du processeur** (les registres font partie intégrante du processeur). Les plus lentes sont les moins coûteuses et sont éloignées du processeur.
 
 Le matériel et le *système d'exploitation* sont responsables du déplacement des objets le long de cette hiérarchie. 
 
@@ -131,23 +131,23 @@ A titre d'information, voici une illustration des capacités et du temps d'accè
 
 ### Random Access Memory
 
-La mémoire {==**RAM**==} (*random Access Memory*, aussi appelée *mémoire vive*, est un type de mémoire **volatile**, ce qui signifie qu'elle perd toutes les données en mémoire une fois l'alimentation électrique coupée. Elles est caractérisée par un accès direct aux donnée (on accède directement aux &laquo; cases &raquo; contenant les données), contrairement à un disque dur où l'accès se fait de manière séquentielle (on parcourt le disque pour arriver aux données cherchées). On distingue deux principaux types de mémoire RAM :
+La mémoire {==**RAM**==} (*random Access Memory*, aussi appelée *mémoire vive*, est un type de mémoire **volatile**, ce qui signifie qu'elle perd toutes les données en mémoire une fois l'alimentation électrique coupée. Elle est caractérisée par un accès direct aux données (on accède directement aux &laquo; cases &raquo; contenant les données), contrairement à un disque dur où l'accès se fait de manière séquentielle (on parcourt le disque pour arriver aux données cherchées). On distingue deux principaux types de mémoire `RAM` :
 
-* la SRAM (*Static Random Access Memory*) : dans la SRAM, les données sont stockées à l'aide de l'état d'une cellule mémoire composée de 6 transistors. La SRAM est généralement utilisée en guise de mémoire cache pour le processeur. La SRAM n'est généralement pas remplaçable par l'utilisateur.
+* la `SRAM` (*Static Random Access Memory*) : dans la `SRAM`, les données sont stockées à l'aide de l'état d'une cellule mémoire composée de 6 transistors. La `SRAM` est généralement utilisée en guise de mémoire cache pour le processeur. La `SRAM` n'est généralement pas remplaçable par l'utilisateur.
 
-* DRAM (*Dynamic Random Acces Memory*) :  la DRAM stocke les données à l'aide d'un transistor et d'un accumulateur, qui constituent une cellule de DRAM. La DRAM coûte moins cher à produire, mais est légèrement moins rapide que la SRAM. La plupart des modules de mémoire remplaçables par l'utilisateur sont des modules DRAM.
+* `DRAM` (*Dynamic Random Acces Memory*) : la `DRAM` stocke les données à l'aide d'un transistor et d'un accumulateur, qui constituent une cellule de `DRAM`. La `DRAM` coute moins cher à produire, mais est légèrement moins rapide que la `SRAM`. La plupart des modules de mémoire remplaçables par l'utilisateur sont des modules `DRAM`.
 
-On trouve parfois la mémoire ECC (*Error Correcting Code*, pour code correcteur d’erreur), qui est un type de mémoire qui dispose d’une cellule supplémentaire pour détecter et corriger les erreurs aléatoires. La mémoire ECC est remplaçable par l’utilisateur, mais doit être compatible avec les autres composants.
+On trouve parfois la mémoire `ECC` (*Error Correcting Code*, pour code correcteur d’erreur), qui est un type de mémoire qui dispose d’une cellule supplémentaire pour détecter et corriger les erreurs aléatoires. La mémoire `ECC` est remplaçable par l’utilisateur, mais doit être compatible avec les autres composants.
 
-Au vu de l'accélération des différents composants informatiques, il a été nécessaire d'accélérer la mémoire qui devenait le maillon faible de la chaîne de traitement des données. Le **débit de données double**, ou **DDR** (*Double Data Rate*) fut alors développé, et la technologie qu'il a remplacée fut appelée \&laquo; débit de données simple &raquo;, ou SDR (*Single Data Rate*). La mémoire DDR était à la fois plus rapide et moins énergivore que la RAM SDR.
+Au vu de l'accélération des différents composants informatiques, il a été nécessaire d'accélérer la mémoire qui devenait le maillon faible de la chaine de traitement des données. Le **débit de données double**, ou **DDR** (*Double Data Rate*) fut alors développé, et la technologie qu'il a remplacée fut appelée \&laquo; débit de données simple &raquo;, ou SDR (*Single Data Rate*). La mémoire DDR était à la fois plus rapide et moins énergivore que la RAM SDR.
 
 Les technologies de mémoire continuent d'évoluer. La génération de mémoire suivante, la DDR2, fonctionne à des vitesses supérieures et consomme moins d'énergie que la DDR originale. La DDR3 et la DDR4 ont également suivi cette tendance. Chaque génération successive est plus rapide et consomme moins d’électricité.
 
 ### Read-Only Memory
 
-Originellement, l'expression *mémoire morte* (en anglais, *Read-Only Memory* : ROM) désignait une mémoire informatique non volatile (c'est-à-dire une mémoire qui ne s'efface pas lorsque l'appareil qui la contient n'est plus alimenté en électricité) et dont le contenu est fixé lors de sa programmation, qui pouvait être lue plusieurs fois par l'utilisateur, mais ne pouvait plus être modifiée.
+Originellement, l'expression *mémoire morte* (en anglais, *Read-Only Memory* : `ROM`) désignait une mémoire informatique non volatile (c'est-à-dire une mémoire qui ne s'efface pas lorsque l'appareil qui la contient n'est plus alimenté en électricité) et dont le contenu est fixé lors de sa programmation, qui pouvait être lue plusieurs fois par l'utilisateur, mais ne pouvait plus être modifiée.
 
-Avec l'évolution des technologies, la définition du terme mémoire morte (en français) ou read only memory (en anglais) a été élargie pour inclure les mémoires non volatiles dont le contenu est fixé lors de leur fabrication, qui peuvent être lues plusieurs fois par l'utilisateur et qui ne sont pas prévues pour être modifiées. Elles peuvent parfois cependant l'être par un utilisateur expérimenté, éventuellement avec un matériel spécial. Ces mémoires sont les UVPROM, les PROM, les EPROM et les EEPROM.
+Avec l'évolution des technologies, la définition du terme mémoire morte (en français) ou *read only memory* (en anglais) a été élargie pour inclure les mémoires non volatiles dont le contenu est fixé lors de leur fabrication, qui peuvent être lues plusieurs fois par l'utilisateur et qui ne sont pas prévues pour être modifiées. Elles peuvent parfois cependant l'être par un utilisateur expérimenté, éventuellement avec un matériel spécial. Ces mémoires sont les `UVPROM`, les `PROM`, les `EPROM` et les `EEPROM`.
 
 ## TP : programmer en assembleur
 
@@ -162,7 +162,7 @@ Si on ouvre un fichier exécutable avec un éditeur hexadécimal, on obtient que
 75780636f6d706c657465642e36353331064746f725f69
 ````
 
-C'est une suite d'instructions comme $01ebe814$, que l’on peut traduire directement de façon plus lisible :
+C'est une suite d'instructions comme $01ebe814$ que l’on peut traduire directement de façon plus lisible :
 
 ```` asm
 add R0, R1 , R2
@@ -171,9 +171,9 @@ add R0, R1 , R2
 C'est ce qu'on appelle de {==**l'assembleur**==}. Par exemple ici l'instruction `add`, va écrire dans le registre $R0$ la somme des valeurs
 des registres $R1$ et $R2$.
 
-L'assembleur est donc une représentation du langage machine, mais qui est **dépendante directement du processeur** (ou de la famille du processeur).  En effet, les différents processeurs ne reconnaissent pas exactement les même types de mots clé, ni exactement la même syntaxe. De même le nombre de registres accessibles est très différent selon le processeur utilisé.
+L'assembleur est donc une représentation du langage machine, mais qui est **dépendante directement du processeur** (ou de la famille du processeur).  En effet, les différents processeurs ne reconnaissent pas exactement les mêmes types de mots clé, ni exactement la même syntaxe. De même le nombre de registres accessibles est très différent selon le processeur utilisé.
 
-On peut distinguer deux grands types de processeurs . Les {==**processeurs RISC**'==} (*Reduced instruction set computer* ou processeur à jeu d'instructions réduit) sont des processeurs ou le nombre d'instruction est limité, et ces instructions sont généralistes - opérations arithmétiques, chargement de données dans/vers les registres, opérations binaires de décalage de bits,... La conséquence de ce choix est le nombre restreints de circuits spécifiques sur le processeurs, et donc le nombre restreint de transistors.
+On peut distinguer deux grands types de processeurs. Les {==**processeurs RISC**'==} (*Reduced instruction set computer* ou processeur à jeu d'instructions réduit) sont des processeurs ou le nombre d'instructions est limité et ces instructions sont généralistes - opérations arithmétiques, chargement de données dans/vers les registres, opérations binaires de décalage de bits, etc. La conséquence de ce choix est le nombre restreint de circuits spécifiques sur le processeur, et donc le nombre restreint de transistors.
 
 On trouve aussi les {==**processeurs de type CISC**==} (*(Complex Instruction Set Computer* ou processeurs à jeu d'instruction étendu). Ce sont les processeurs de type x86, AMD64, Intel64, dont la fabrication a été rendue possible par la miniaturisation des transistors et la capacité d'organiser finement les circuits afin d'avoir des circuits spécialisés.
 
@@ -186,7 +186,7 @@ En pratique, un langage de haut niveau est *compilé en assembleur* puis directe
 
 Dans un premier temps, vous aurez besoin du processeur [M99](Archi_Exo_Memoire.pdf){:target="_blank"}.
 
-Le `M99` est dote de 100 cases mémoire (la grille en haut), et d'un processeur (en bas).La **mémoire** est composée de 100 mots mémoire de 3 chiffres (valeur de 000 à 999). Chaque mot mémoire peut être désigné par une adresse codée sur deux chiffres. Cette mémoire va contenir *données et instructions*.\\
+Le `M99` est doté de 100 cases mémoire (la grille en haut), et d'un processeur (en bas). La **mémoire** est composée de 100 mots mémoire de 3 chiffres (valeur de 000 à 999). Chaque mot mémoire peut être désigné par une adresse codée sur deux chiffres. Cette mémoire va contenir *données et instructions*.\\
 
 L'**Unité Arithmétique et Logique (ALU)** : le processeur dispose de trois registres directement utilisables. `A` et `B` sont utilisé pour les opérandes des opérations tandis que `R` est pour le résultat. Ces registres sont de 3 chiffres, mais contrairement à la mémoire, ils ont un signe. Leur étendue de valeurs est donc comprise entre $-999$ et $999$.
 
@@ -196,7 +196,7 @@ Le jeu d'instruction est défini ci-dessous :
 
 ![Instructions_M99.png](Instructions_M99.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Instructions M99"}
 
-Ainsi on a les codes suivants:
+Ainsi on a les codes suivants :
 
 * $245$ qui se traduit en `LDB 45`, soit &laquo; Charger le contenu de la case mémoire $45$ dans le registre $B$ &raquo; ;
 * $312$ qui se traduit en `MOV 12`, soit &laquo; Copier le contenu du registre $B$ dans le registre$A$ &raquo; .
@@ -205,12 +205,12 @@ Ainsi on a les codes suivants:
 
 !!! question "Lire et écrire un programme en assembleur"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		Sur le processeur `M99` fourni, deux différents programmes sont déjà en mémoire.
 		
 		1. Dérouler &laquo; à la main &raquo; le programme chargé à l'adresse  $00$. Quel est le résultat obtenu ? Quel est l'objectif de ce programme ?
 		2. Dérouler &laquo; à la main &raquo; le programme chargé à l'adresse  $13$. Quel est le résultat obtenu ? Quel est l'objectif de ce programme ?
-		3. Ecrire un programme sur le M99, chargé en adresse $40$, qui prend deux nombres  en entrée (l'entrée étant considéré comme étant tout nombre mis en case $99$) et renvoie la somme de ces deux nombres en sortie.
+		3. Écrire un programme sur le M99, chargé en adresse $40$, qui prend deux nombres  en entrée (l'entrée étant considéré comme étant tout nombre mis en case $99$) et renvoie la somme de ces deux nombres en sortie.
 		
 	=== "Solution"
 		A venir !
@@ -219,7 +219,7 @@ Ainsi on a les codes suivants:
 
 *D'après le travail de [David Roche](https://pixees.fr/informatiquelycee/n_site/nsi_prem_sim_cpu.html)*
 
-Afin de mettre en pratique ce que nous avons étudié dans le cours, nous allons utiliser un simulateur de processeur RISC développé en javascript par Peter L Higginson. Ce simulateur est basé sur une architecture de von Neumann. Nous allons trouver dans ce simulateur une RAM et un CPU.
+Afin de mettre en pratique ce que nous avons étudié dans le cours, nous allons utiliser un simulateur de processeur RISC développé en `Javascript` par Peter L Higginson. Ce simulateur est basé sur une architecture de von Neumann. Nous allons trouver dans ce simulateur une `RAM` et un `CPU`.
 
 Une version en français de ce simulateur est disponible [ici](simu_risc.zip) sous la forme d'un dossier compressé.
 
@@ -231,18 +231,18 @@ Voici ce que vous devriez obtenir :
 
 Il est relativement facile de distinguer les différentes parties du simulateur :
 
-* à droite, on trouve la mémoire centrale;
-* au centre, on trouve le microprocesseur;
+* à droite, on trouve la mémoire centrale ;
+* au centre, on trouve le microprocesseur ;
 * à gauche on trouve la zone d'édition (&laquo; Code assembleur&raquo;), c'est dans cette zone que nous allons saisir nos programmes en assembleur.
 
 Plus spécifiquement :
 
-* pour la **RAM**, par défaut le contenu des différentes cellules de la mémoire est en base 10 (entier signé), mais d'autres options sont possibles : base 10 (entier non-signé), base 16 (hexadécimal), base 2 (binaire). On accède à ces options à l'aide du bouton `OPTIONS` situé en bas dans la partie gauche du simulateur.
+* pour la **RAM**, par défaut le contenu des différentes cellules de la mémoire est en base 10 (entier signé), mais d'autres options sont possibles : base 10 (entiers non-signés), base 16 (hexadécimal), base 2 (binaire). On accède à ces options à l'aide du bouton `OPTIONS` situé en bas dans la partie gauche du simulateur.
 
 
 	!!! question "Exercice"
 
-		=== "Enoncé"
+		=== "Énoncé"
 			À l'aide du bouton `OPTIONS`, passez à un affichage en binaire.
 			Quelle est la taille des mots utilisés dans ce simulateur ? Combien y-a-t'il de cases mémoires ?
 		
@@ -259,8 +259,8 @@ Plus spécifiquement :
 
 !!! question "Exercice"
 
-	=== "Enoncé"
-		1. Avec le bouton `OPTIONS`, repassez en entiers signésn, puis, dans la partie \&laquo; Code assembleur &raquo;, saisissez les lignes de codes suivantes :
+	=== "Énoncé"
+		1. Avec le bouton `OPTIONS`, repassez en entiers signés, puis, dans la partie \&laquo; Code assembleur &raquo;, saisissez les lignes de codes suivantes :
 			```` asm
 			MOV R0, #42
 			STR R0, 150

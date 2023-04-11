@@ -1,4 +1,4 @@
-#Les dictionnaires en Python
+# Les dictionnaires en Python
 
 
 ## Avant de commencer : tableaux simultanés
@@ -18,8 +18,8 @@
 		 
 		````
 
-		=== "Enoncé"
-			Ecrire une fonction `afficheCri`  qui prend comme argument le nom d'un animal, et renvoie : 
+		=== "Énoncé"
+			Écrire une fonction `afficheCri`  qui prend comme argument le nom d'un animal, et renvoie : 
 
 			*	soit une chaine de caractère telle que  dans l'exemple ci-dessous :
 
@@ -34,7 +34,7 @@
 				
 		=== "Réponse"
 
-			Le principe est de parcourir par indice la liste `animaux` , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes `animaux` et `cris`, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se rtrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :
+			Le principe est de parcourir par indice la liste `animaux` , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes `animaux` et `cris`, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :
 				
 			```` python 
   
@@ -101,12 +101,14 @@ Que se passe-t-il si les tableaux sont plus long ?
 			etablissements, GPS = makeBigArray()
 			````
 
-			Le code ci-dessous crée deux listes : la première contient tous les différents établissements présents sur **ParcourSup**, et la deuxième contient les **coordonnées GPS** de chacun de ces établissements.
+			Le code ci-dessous crée deux listes : 
+				* la première contient tous les différents établissements présents sur **ParcourSup**,
+				* la deuxième contient les **coordonnées GPS** de chacun de ces établissements.
 			
-		4. Vérifiez que les listes `etablissements` et `GPS` sont bien de la même dimension
+		4. Vérifiez que les listes `etablissements` et `GPS` sont bien de la même dimension.
 
 
-		5. A partir de la fonction `afficheCri`, créez une fonction `afficheGPS` afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a sais le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
+		5. A partir de la fonction `afficheCri`, créez une fonction `afficheGPS` afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
 		6. Testez ensuite la ligne suivante :
 		
 			```` python
@@ -126,19 +128,19 @@ Que se passe-t-il si les tableaux sont plus long ?
 			
 !!! warning "Limite des listes"
 
-	Les listes sàont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :
+	Les listes sont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :
 	
-	* si la liste n'est pas triée, la recherche se fait en $\mathbb{O}(n)$, ce qui signifie que la recherche prend un temps proportionnel à la longueur de la liste ;
-	* si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la recherche dichotomique (au programme de terminale), qui permettent de rechercher en un temps plus court, en $\mathbb{O}(log(n))$.
+	* si la liste n'est pas triée, la recherche se fait en $\mathbb{O}(n)$, ce qui signifie que la recherche prend {==**un temps proportionnel à la longueur de la liste**==} ;
+	* si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la **recherche dichotomique** (au programme de terminale), qui permettent de rechercher en un temps plus court, en $\mathbb{O}(log(n))$.
 	
-	Quoi qu'il en soit, **ce temps est très long** comparativemment au {==**temps d'accès**==} à un élément, quand on connait son indice ! En effet, **peu importe la taille de la liste**, le temps d'accès à un élément reste constant, il est en $\mathbb{O}(1)$.
+	Quoi qu'il en soit, **ce temps est très long** comparativement au {==**temps d'accès**==} à un élément, quand on connait son indice ! En effet, **peu importe la taille de la liste**, le temps d'accès à un élément reste constant, il est en $\mathbb{O}(1)$.
 	
 	
 	
 
 ## Les dictionnaires en Python
 
-### Premiers aperçu des dictionnaires
+### Premiers aperçus des dictionnaires
 
 !!! asbtract "Dictionnaires en Python"
 	Un {==**dictionnaire**==} est une structure déclarée **entre accolades**, où chaque déclaration est une paire de type `clé : valeur`.
@@ -164,10 +166,13 @@ Que se passe-t-il si les tableaux sont plus long ?
 	```` python   
 	type(cris)
 	````
+	??? note "Terminal de test"
+		{{ terminal() }}
+
 	Par exemple dans le dictionnaire `cris`, on trouve la paire `"Chat" : "Miaou"` où :
 
-	* `"Chat"` est la clé (de type chaîne de caractères) ;
-	* `"Miaou"` est la valeur (aussi de type chacunîne de caractères).
+	* `"Chat"` est la clé (de type chaine de caractères) ;
+	* `"Miaou"` est la valeur (aussi de type chaine de caractères).
 
 
 !!! abstract "Accès à un élément"
@@ -196,7 +201,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 		'Gruik'		
 		````
 
-	3. Par contre, si on demande une clé qui n'existe pas, on obtient l'erreur suivante :
+	3. Par contre, si on utilise {==**une clé qui n'existe pas**==}, on obtient l'erreur suivante :
 	
 		```` python 
 		>>> cris['Perroquet']
@@ -206,6 +211,10 @@ Que se passe-t-il si les tableaux sont plus long ?
 		KeyError: 'Perroquet'
 		````
 		ce qui signifie que `"Perroquet"` n'est pas une clé valide du dictionnaire.
+	
+	??? note "Terminal de test"
+		{{ terminal() }}
+
 
 
 
@@ -231,9 +240,13 @@ Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple :
 {'Vache': 'Meuh', 'Chien': 'Wouf', 'Chat': 'Miaou', 'Poule': 'Cot-cot', 'Ane': 'Hi-Han', 'Cochon': 'Gruik', 'Paon': 'Leon', 'Girafe': 'Tic-Tic'}
 ````
 
+??? note "Terminal de test"
+	{{ terminal() }}
+
+
 #### Supprimer un élément
 
-On supprime le couple clé/valeur d'un dictionnaire grâce au mot-clé `del` :
+On supprime le couple `clé/valeur` d'un dictionnaire grâce au mot-clé `del` :
 
 ```` python
 >>> del cris['Girafe']
@@ -249,6 +262,9 @@ Un dictionnaire possède une {==**longueur**==} : le nombre de clés disponibles
 >>> len(cris) 
 7
 ````
+??? note "Terminal de test"
+	{{ terminal() }}
+
 
 #### Test de présence de clés
 
@@ -259,9 +275,10 @@ Il est possible de tester l'existence d'une clé dans le dictionnaire grâce à 
 True
 >>> `vache` in cris
 False
+
 ````
 
-Par contre cet opérateur **ne permet pas de tester l'existence d'une valeur** :
+Par contre, cet opérateur **ne permet pas de tester l'existence d'une valeur** :
 
 ```` python 
  
@@ -269,9 +286,13 @@ Par contre cet opérateur **ne permet pas de tester l'existence d'une valeur** :
 False
 ````
 
+??? note "Terminal de test"
+	{{ terminal() }}
+
+
 #### Liste des clés, des valeurs et des couples
 
-Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :
+Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :
 
 
 * Pour obtenir la liste des **clés**, on utilise la *méthode* `keys()`.
@@ -280,12 +301,15 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 	>>> cris.keys()
 	 dict_keys(['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon'])
 	````
-	L'objet obtenu est dyu type `dict_keys`, qui se comporte comme un **itérable** classique (c'est-à-dire qu'on peut l'utiliser dans une boucle `for`) :
+	L'objet obtenu est du type `dict_keys`, qui se comporte comme un **itérable** classique (c'est-à-dire qu'on peut l'utiliser dans une boucle `for` pour un parcours par élément) :
 
 	```` python   
 	for bestiole in cris.keys() :
 		print(bestiole) 
 	````
+
+	??? note "Terminal de test"
+		{{ terminal() }}
 
 * Pour obtenir la liste des **valeurs**, on utilise la *méthode* `values()`.
 
@@ -300,6 +324,10 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 		print(cri)
 	````
 
+	??? note "Terminal de test"
+		{{ terminal() }}
+
+
 * On peut aussi obtenir le couple *clé/valeurs*  sous la forme d'un *tuple* par l'intermédiaire de la méthode `items()` :
 
 	```` python 
@@ -311,6 +339,14 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 	for item in cris.items() :
 		print(f"{item[1]} est le cri de {item[0]}") 
 	````
+
+	??? note "Terminal de test"
+		{{ terminal() }}
+
+	!!! warning "Attention à l'utilisation de la méthode `items` "
+
+		Comme nous le verrons plus loin, l'objectif de l'utilisation des dictionnaires est entre autre d'accélérer certaines opérations par rapport à l'utilisation de listes ou de tuples. La méthode `items` renvoyant une liste de tuples à partir du dictionnaire, il est parfois peu judicieux de l'utiliser (voir la partie sur les tables de hachages ci-dessous). 
+
 	
 	!!! info  "Tuple unpacking"
  	 
@@ -324,7 +360,7 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 
 !!! question "Améliorer avec les dictionnaires"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		Reconstruisez une nouvelle fonction `afficheCri2` sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.
 		
 	=== "Réponses"
@@ -344,15 +380,16 @@ Le **type dictionnaire** possède plusieurs méthodes, permettant d'obtenir les 
 		
 ### Et avec plus de données ?
 
-Re-créons à partir du même fichier Parcoursup un dictionnaire contenant les établissements et leurs coordonnées GPS :
+Recréons à partir du même fichier Parcoursup un dictionnaire contenant les établissements et leurs coordonnées GPS :
+
 ```` python   
 def makeBigDict() :
     import csv
     with open("Long_Dico.csv","r",encoding = "utf8") as file :
         dicReader = csv.DictReader(file, delimiter=';')
         etablissements=dict()
-        for line in dicReader :
-            etablissements[line['Nom']] = line['GPS']
+        for line in dicReader : # pour chaque ligne
+            etablissements[line['Nom']] = line['GPS'] # on crée une nouvelle paire clé/valeur dans le dictionnaire
     return etablissements
 
 dicEtablissements = makeBigDict()
@@ -370,7 +407,7 @@ Et vérifions que sa taille st bien cohérente :
 !!! question "Un gain de vitesse ?"
 
 	=== "Enoncé"
-		1. Adaptez de nouveau la fonction `afficheCri2` en une fonction `afficheGPS2`afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a sais le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
+		1. Adaptez de nouveau la fonction `afficheCri2` en une fonction `afficheGPS2`afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
 		2. Comparez le temps d'exécution avec la fonction `afficheGPS`.
 		
 	=== "Réponses"
@@ -378,9 +415,9 @@ Et vérifions que sa taille st bien cohérente :
 
 ## Les dictionnaires : des tables de hachage
 
-*Cette partie est hors-programme. Mais elle n'en demeure pas moins intéresante !*
+*Cette partie est hors-programme. Mais elle n'en demeure pas moins intéressante !*
 
-Si la structure de dictionnaire est plus rapide que celle d'un tableau simple, c'est parce qu'elle est construite sur le principe d'une **table de hachage**, à l'aide d'une **fonction de hachage**.
+Si la structure de dictionnaire est plus rapide que celle d'un tableau simple, c'est parce qu'elle est construite sur le principe d'une {==**table de hachage**==}, à l'aide d'une {==**fonction de hachage**==}.
 
 Une **fonction de hachage** est une fonction qui va renvoyer une valeur qui dépendra de l'objet qui lui est passé en argument.
 
@@ -400,7 +437,7 @@ Cette méthode de construction apporte un net avantage dans le temps d'accès au
 
 Cependant elle implique un certain nombre de règles et de contraintes pouvant être assez gênantes :
 
-1. **La clé d'un objet doit être non mutable**. En effet, si la clé change, la valeur de **hash** renvoyée par la fonction ne sera plus la même, et l'objet serait perdu. Ainsi Python impose d'utiliser des objets **non-mutables** comme clé, comme des entiers, des chaînes de caractères, et même des tuples :
+1. **La clé d'un objet doit être non mutable**. En effet, si la clé change, la valeur de **hash** renvoyée par la fonction ne sera plus la même et l'objet serait perdu. Ainsi Python impose d'utiliser des objets **non-mutables** comme clé, comme des entiers, des chaines de caractères, ou même des tuples :
 	```` python 
 	newDic = {(0,0) : 0, (0,1) : 5 , (0,2) : 3 , (0,1,2,3) :4}
  	````
@@ -413,8 +450,11 @@ Cependant elle implique un certain nombre de règles et de contraintes pouvant �
 	>>> newDic[[1,0]] = 0
  
 	````
+	??? note "Terminal de test"
+		{{ terminal() }}
 
-2. **Comme tous les tableaux**, une taille de base est fixée au départ. Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau **2 fois plus grand** est créé, et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie **peut être coûteues en temps et en mémoire**.
+
+2. **Comme tous les tableaux**, une taille de base est fixée au départ. Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau **2 fois plus grand** est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie **peut être couteuse en temps et en mémoire**.
 
 3. Avec certaines fonctions de hachage, **plusieurs clés peuvent avoir la même image**. Par exemple avec la fonction utilisant la longueur des chaines :
 
@@ -451,15 +491,15 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 
 !!! question "Exercice 1"
 
-	=== "Enoncé"
-		1. Ecrire un dictionnaire `mois` dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).
+	=== "Énoncé"
+		1. Écrire un dictionnaire `mois` dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).
 		2. Créer une fonction `quelMois` donnant les mois dont le nombre de jours est passé en argument.    
 	=== "Réponses"
 		A venir !
 
 !!! question "Exercice 2"
-	=== "Enoncé"
-		1. Ecrire une fonction `occurrence(chaine : str)` qui prend une chaine de caractères en argument, et qui renvoie un dictionnaire contenant le nombre d'occurrences de chaque caractère.
+	=== "Énonce"
+		1. Écrire une fonction `occurrence(chaine : str)` qui prend une chaine de caractères en argument, et qui renvoie un dictionnaire contenant le nombre d'occurrences de chaque caractère.
 		
 			```` python 
 				def occurrence(chaine :str ) ->dict :
@@ -480,7 +520,7 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 			````
 	
 
-		2. Ecrire une fonction `occurrenceMot(chaine :str)` qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .
+		2. Écrire une fonction `occurrenceMot(chaine :str)` qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .
 
 			```` python 
 			  
@@ -500,7 +540,7 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 			 
 			````
 			
-			**Indice** :  on pourra utiliser la méthode de chaine `split(separateur)` qui renvoie une liste de sous chaines créé àpartir du séparateur passé en argument :
+			**Indice** :  on pourra utiliser la méthode de chaine `split(separateur)` qui renvoie une liste de sous chaines créé à partir du séparateur passé en argument :
 			
 			```` python
 			>>> "Martine va à la plage". split(" ")
@@ -515,15 +555,15 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 	
 	*(D'après Romain Tavenard, Université de Rennes 2)*
 
-	=== "Enoncé"
+	=== "Énoncé"
 		On dispose d'un dictionnaire associant à des noms de commerciaux d'une société le nombre de ventes qu'ils ont réalisées. Par exemple :
 		
 		```` python 
-		ventes={"Dupont":14, "Hervy":19, "Geoffroy":15, "Layec":21}
+		ventes={"Dupont" : 14, "Hervy" : 19, "Geoffroy" : 15, "Layec" : 21}
 		````
 		
 		1. Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nombre total de ventes dans la société.
-		2. Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-aequo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.
+		2. Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-æquo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.et
 
 	=== "Réponses"
 		A venir !

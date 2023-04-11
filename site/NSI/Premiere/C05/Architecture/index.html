@@ -481,6 +481,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/Structures_conditionnelles/" class="md-nav__link">
+        Stuctures conditionnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../Maths/Seconde/AlgoBases/Arithmetique/" class="md-nav__link">
         Arithmétique
       </a>
@@ -2909,9 +2923,9 @@
 </ul>
 <h3 id="cadence-dun-processeur">Cadence d'un processeur</h3>
 <p>La vitesse d'un processeur est exprimée en GigaHertz (GHz). Elle exprime le <em>nombre d'opérations que peut faire le processeur en une seconde</em>. Ainsi, un processeur à <strong>3 GigaHerz</strong> effectue <strong>3 milliards d'opérations à la seconde</strong>, c'est-à-dire 3 milliards de cycles par secondes. </p>
-<p>L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'<strong>augmentation du nombre de transistors</strong> dans les processeurs. Gordon E. Moore énonca en <span class="arithmatex">\(1965\)</span> une loi emprique prédisant un doublement du nombre de processeurs tous les deux ans.</p>
+<p>L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'<strong>augmentation du nombre de transistors</strong> dans les processeurs. Gordon E. Moore énonça en <span class="arithmatex">\(1965\)</span> une loi empirique prédisant un doublement du nombre de processeurs tous les deux ans.</p>
 <p><img alt="Loi de Moore" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Loi de Moore, image Wikipedia" /></p>
-<p>Mais cette augmentation génère une chaleur très importante au niveau processeur, et la dissipation de cette chaleur est rapidement devenue un problème. Depuis <span class="arithmatex">\(2005\)</span> environ, les fabricants se sont plutôt tourné vers une <strong>augmentation du nombre de cœurs</strong> dans leurs processeurs, en comptant sur le <mark class="critic"><strong>parallélisme</strong></mark>(le fait de pouvoir gérer des instructyions en simultané sur plusieurs coeurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de <span class="arithmatex">\(3,8\)</span> GHz.</p>
+<p>Mais cette augmentation génère une chaleur très importante au niveau processeur, la dissipation de cette chaleur étant rapidement devenue un problème. Depuis <span class="arithmatex">\(2005\)</span> environ, les fabricants se sont plutôt tourné vers une <strong>augmentation du nombre de cœurs</strong> dans leurs processeurs, en comptant sur le <mark class="critic"><strong>parallélisme</strong></mark>(le fait de pouvoir gérer des instructions en simultané sur plusieurs cœurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de <span class="arithmatex">\(3,8\)</span> GHz.</p>
 <p><img alt="Frequence.png" src="../Frequence.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Frequence des processeurs" /></p>
 <h3 id="cycles-dinstructions-et-parallelisme">Cycles d'instructions et parallélisme</h3>
 <p>Dans un processeur, 5 étapes sont nécessaires pour traiter une instruction. Chacune de ces 5 étapes est exécutée :</p>
@@ -2924,16 +2938,16 @@
 </ul>
 <p>En supposant que chaque étape met 1 cycle d'horloge pour s'exécuter, il faut normalement 5 cycles pour exécuter une instruction, 15 pour 3 instructions : </p>
 <p><img alt="3_cycles.png" src="../3_cycles.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="3 instructions" /></p>
-<p>Il est cependant possible d'améliorer ce système, notamment par l'utilisation de <strong>pipelines</strong> dans des processeurs dits <em>superscalaires</em>. Si plusieurs opérations <strong>d'un même programme sont indépendantes</strong>, alors le processeur peut contenir plusieurs instructions, chacune à une étape différente. Le pipeline ci-dessous est le <em>Classic RISC pipeline</em>, créé par David Patterson, inventeur des processeurs RISC et du concept de pipeline, et mis en oeuvre dès 1961 par IBM :</p>
+<p>Il est cependant possible d'améliorer ce système, notamment par l'utilisation de <strong>pipelines</strong> dans des processeurs dits <em>superscalaires</em>. Si plusieurs opérations <strong>d'un même programme sont indépendantes</strong>, alors le processeur peut contenir plusieurs instructions, chacune à une étape différente. Le pipeline ci-dessous est le <em>Classic RISC pipeline</em>, créé par David Patterson, inventeur des processeurs RISC et du concept de pipeline, et mis en œuvre dès 1961 par IBM :</p>
 <p><img alt="Pipeline.png" src="../Pipeline.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Pipeline" /></p>
-<p>Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités, et les 5 opérations ont lieu en même temps.</p>
+<p>Il faut alors seulement 9 cycles pour exécuter 5 instructions. Au cinquième cycle, tous les étages du pipeline sont sollicités et les 5 opérations ont lieu en même temps.</p>
 <h3 id="levolution-du-modele-de-von-neumann">L'évolution du modèle de von Neumann</h3>
 <p>Même si le modèle de von Neumann reste d'actualité, il a subi quelques évolutions récemment :</p>
 <p><img alt="Evolution_von_Neumann.png" src="../Evolution_von_Neumann.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Evolution du modèle de Von Neumann" /></p>
 <ul>
 <li>Les <strong>Entrée-sorties</strong> sont contrôlées par des processeurs autonomes.</li>
-<li>Les CPU sont <strong>multiprocesseurs</strong>, soit par unités séparés soit par multiples coeurs dans une même puce. On a ainsi une augmentation de la puissance sans augmenter la vitesse des processeurs. </li>
-<li>La <strong>mémoire</strong> est  au coeur du système, ce qui implique de plus en plus de parallélisme.</li>
+<li>Les CPU sont <strong>multiprocesseurs</strong>, soit par unités séparées soit par multiples cœurs dans une même puce. On a ainsi une augmentation de la puissance sans augmenter la vitesse des processeurs. </li>
+<li>La <strong>mémoire</strong> est au cœur du système, ce qui implique de plus en plus de parallélisme.</li>
 </ul>
 <p>On peut voir cette évolution sur les processeurs eux-mêmes :</p>
 <p><img alt="Intel_4004.jpg" src="../Intel_4004.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Intel 4004" /></p>
@@ -3045,7 +3059,7 @@
 <h3 id="la-hierarchie-des-memoires">La hiérarchie des mémoires</h3>
 <p><img alt="Hierarchie_Memoires.png" src="../Hierarchie_Memoires.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Hierachie des mémoires" /></p>
 <p>Dans un ordinateur, le processeur accède aux instructions du programme à exécuter ainsi qu'aux données nécessaires à son exécution depuis la mémoire.</p>
-<p>Il existe une hiérarchie des mémoires informatiques : les <mark class="critic"><strong>plus rapides sont les plus coûteuses</strong></mark>, donc en nombre limité, et <strong>placées le plus près du processeur</strong> (les registres font partie intégrante du processeur). Les plus lentes sont les moins coûteuses et sont éloignées du processeur.</p>
+<p>Il existe une hiérarchie des mémoires informatiques : les <mark class="critic"><strong>plus rapides sont les plus coûteuses</strong></mark>, donc en nombre limité, et sont <strong>placées le plus près du processeur</strong> (les registres font partie intégrante du processeur). Les plus lentes sont les moins coûteuses et sont éloignées du processeur.</p>
 <p>Le matériel et le <em>système d'exploitation</em> sont responsables du déplacement des objets le long de cette hiérarchie. </p>
 <p>A titre d'information, voici une illustration des capacités et du temps d'accès aux différentes mémoires (sur un processeur de <span class="arithmatex">\(2012\)</span>) :</p>
 <table>
@@ -3100,21 +3114,21 @@
 </tbody>
 </table>
 <h3 id="random-access-memory">Random Access Memory</h3>
-<p>La mémoire <mark class="critic"><strong>RAM</strong></mark> (<em>random Access Memory</em>, aussi appelée <em>mémoire vive</em>, est un type de mémoire <strong>volatile</strong>, ce qui signifie qu'elle perd toutes les données en mémoire une fois l'alimentation électrique coupée. Elles est caractérisée par un accès direct aux donnée (on accède directement aux &laquo; cases &raquo; contenant les données), contrairement à un disque dur où l'accès se fait de manière séquentielle (on parcourt le disque pour arriver aux données cherchées). On distingue deux principaux types de mémoire RAM :</p>
+<p>La mémoire <mark class="critic"><strong>RAM</strong></mark> (<em>random Access Memory</em>, aussi appelée <em>mémoire vive</em>, est un type de mémoire <strong>volatile</strong>, ce qui signifie qu'elle perd toutes les données en mémoire une fois l'alimentation électrique coupée. Elle est caractérisée par un accès direct aux données (on accède directement aux &laquo; cases &raquo; contenant les données), contrairement à un disque dur où l'accès se fait de manière séquentielle (on parcourt le disque pour arriver aux données cherchées). On distingue deux principaux types de mémoire <code>RAM</code> :</p>
 <ul>
 <li>
-<p>la SRAM (<em>Static Random Access Memory</em>) : dans la SRAM, les données sont stockées à l'aide de l'état d'une cellule mémoire composée de 6 transistors. La SRAM est généralement utilisée en guise de mémoire cache pour le processeur. La SRAM n'est généralement pas remplaçable par l'utilisateur.</p>
+<p>la <code>SRAM</code> (<em>Static Random Access Memory</em>) : dans la <code>SRAM</code>, les données sont stockées à l'aide de l'état d'une cellule mémoire composée de 6 transistors. La <code>SRAM</code> est généralement utilisée en guise de mémoire cache pour le processeur. La <code>SRAM</code> n'est généralement pas remplaçable par l'utilisateur.</p>
 </li>
 <li>
-<p>DRAM (<em>Dynamic Random Acces Memory</em>) :  la DRAM stocke les données à l'aide d'un transistor et d'un accumulateur, qui constituent une cellule de DRAM. La DRAM coûte moins cher à produire, mais est légèrement moins rapide que la SRAM. La plupart des modules de mémoire remplaçables par l'utilisateur sont des modules DRAM.</p>
+<p><code>DRAM</code> (<em>Dynamic Random Acces Memory</em>) : la <code>DRAM</code> stocke les données à l'aide d'un transistor et d'un accumulateur, qui constituent une cellule de <code>DRAM</code>. La <code>DRAM</code> coute moins cher à produire, mais est légèrement moins rapide que la <code>SRAM</code>. La plupart des modules de mémoire remplaçables par l'utilisateur sont des modules <code>DRAM</code>.</p>
 </li>
 </ul>
-<p>On trouve parfois la mémoire ECC (<em>Error Correcting Code</em>, pour code correcteur d’erreur), qui est un type de mémoire qui dispose d’une cellule supplémentaire pour détecter et corriger les erreurs aléatoires. La mémoire ECC est remplaçable par l’utilisateur, mais doit être compatible avec les autres composants.</p>
-<p>Au vu de l'accélération des différents composants informatiques, il a été nécessaire d'accélérer la mémoire qui devenait le maillon faible de la chaîne de traitement des données. Le <strong>débit de données double</strong>, ou <strong>DDR</strong> (<em>Double Data Rate</em>) fut alors développé, et la technologie qu'il a remplacée fut appelée \&laquo; débit de données simple &raquo;, ou SDR (<em>Single Data Rate</em>). La mémoire DDR était à la fois plus rapide et moins énergivore que la RAM SDR.</p>
+<p>On trouve parfois la mémoire <code>ECC</code> (<em>Error Correcting Code</em>, pour code correcteur d’erreur), qui est un type de mémoire qui dispose d’une cellule supplémentaire pour détecter et corriger les erreurs aléatoires. La mémoire <code>ECC</code> est remplaçable par l’utilisateur, mais doit être compatible avec les autres composants.</p>
+<p>Au vu de l'accélération des différents composants informatiques, il a été nécessaire d'accélérer la mémoire qui devenait le maillon faible de la chaine de traitement des données. Le <strong>débit de données double</strong>, ou <strong>DDR</strong> (<em>Double Data Rate</em>) fut alors développé, et la technologie qu'il a remplacée fut appelée \&laquo; débit de données simple &raquo;, ou SDR (<em>Single Data Rate</em>). La mémoire DDR était à la fois plus rapide et moins énergivore que la RAM SDR.</p>
 <p>Les technologies de mémoire continuent d'évoluer. La génération de mémoire suivante, la DDR2, fonctionne à des vitesses supérieures et consomme moins d'énergie que la DDR originale. La DDR3 et la DDR4 ont également suivi cette tendance. Chaque génération successive est plus rapide et consomme moins d’électricité.</p>
 <h3 id="read-only-memory">Read-Only Memory</h3>
-<p>Originellement, l'expression <em>mémoire morte</em> (en anglais, <em>Read-Only Memory</em> : ROM) désignait une mémoire informatique non volatile (c'est-à-dire une mémoire qui ne s'efface pas lorsque l'appareil qui la contient n'est plus alimenté en électricité) et dont le contenu est fixé lors de sa programmation, qui pouvait être lue plusieurs fois par l'utilisateur, mais ne pouvait plus être modifiée.</p>
-<p>Avec l'évolution des technologies, la définition du terme mémoire morte (en français) ou read only memory (en anglais) a été élargie pour inclure les mémoires non volatiles dont le contenu est fixé lors de leur fabrication, qui peuvent être lues plusieurs fois par l'utilisateur et qui ne sont pas prévues pour être modifiées. Elles peuvent parfois cependant l'être par un utilisateur expérimenté, éventuellement avec un matériel spécial. Ces mémoires sont les UVPROM, les PROM, les EPROM et les EEPROM.</p>
+<p>Originellement, l'expression <em>mémoire morte</em> (en anglais, <em>Read-Only Memory</em> : <code>ROM</code>) désignait une mémoire informatique non volatile (c'est-à-dire une mémoire qui ne s'efface pas lorsque l'appareil qui la contient n'est plus alimenté en électricité) et dont le contenu est fixé lors de sa programmation, qui pouvait être lue plusieurs fois par l'utilisateur, mais ne pouvait plus être modifiée.</p>
+<p>Avec l'évolution des technologies, la définition du terme mémoire morte (en français) ou <em>read only memory</em> (en anglais) a été élargie pour inclure les mémoires non volatiles dont le contenu est fixé lors de leur fabrication, qui peuvent être lues plusieurs fois par l'utilisateur et qui ne sont pas prévues pour être modifiées. Elles peuvent parfois cependant l'être par un utilisateur expérimenté, éventuellement avec un matériel spécial. Ces mémoires sont les <code>UVPROM</code>, les <code>PROM</code>, les <code>EPROM</code> et les <code>EEPROM</code>.</p>
 <h2 id="tp-programmer-en-assembleur">TP : programmer en assembleur</h2>
 <h3 id="lassembleur-kesako">L'assembleur, késako ?</h3>
 <p>Un programme écrit dans un langage de <strong>haut niveau</strong> (comme Python) éloigné du <strong>langage machine</strong> (dit de bas niveau) dépend le moins possible du processeur et du système d'exploitation.</p>
@@ -3124,38 +3138,38 @@
 53545f5f05f5f646f5f676c6f62616c5f64746f72735f6
 75780636f6d706c657465642e36353331064746f725f69
 </code></pre></div></p>
-<p>C'est une suite d'instructions comme <span class="arithmatex">\(01ebe814\)</span>, que l’on peut traduire directement de façon plus lisible :</p>
+<p>C'est une suite d'instructions comme <span class="arithmatex">\(01ebe814\)</span> que l’on peut traduire directement de façon plus lisible :</p>
 <div class="highlight"><pre><span></span><code><span class="nf">add</span><span class="w"> </span><span class="no">R0</span><span class="p">,</span><span class="w"> </span><span class="no">R1</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="no">R2</span><span class="w"></span>
 </code></pre></div>
 <p>C'est ce qu'on appelle de <mark class="critic"><strong>l'assembleur</strong></mark>. Par exemple ici l'instruction <code>add</code>, va écrire dans le registre <span class="arithmatex">\(R0\)</span> la somme des valeurs
 des registres <span class="arithmatex">\(R1\)</span> et <span class="arithmatex">\(R2\)</span>.</p>
-<p>L'assembleur est donc une représentation du langage machine, mais qui est <strong>dépendante directement du processeur</strong> (ou de la famille du processeur).  En effet, les différents processeurs ne reconnaissent pas exactement les même types de mots clé, ni exactement la même syntaxe. De même le nombre de registres accessibles est très différent selon le processeur utilisé.</p>
-<p>On peut distinguer deux grands types de processeurs . Les <mark class="critic"><strong>processeurs RISC</strong>'</mark> (<em>Reduced instruction set computer</em> ou processeur à jeu d'instructions réduit) sont des processeurs ou le nombre d'instruction est limité, et ces instructions sont généralistes - opérations arithmétiques, chargement de données dans/vers les registres, opérations binaires de décalage de bits,... La conséquence de ce choix est le nombre restreints de circuits spécifiques sur le processeurs, et donc le nombre restreint de transistors.</p>
+<p>L'assembleur est donc une représentation du langage machine, mais qui est <strong>dépendante directement du processeur</strong> (ou de la famille du processeur).  En effet, les différents processeurs ne reconnaissent pas exactement les mêmes types de mots clé, ni exactement la même syntaxe. De même le nombre de registres accessibles est très différent selon le processeur utilisé.</p>
+<p>On peut distinguer deux grands types de processeurs. Les <mark class="critic"><strong>processeurs RISC</strong>'</mark> (<em>Reduced instruction set computer</em> ou processeur à jeu d'instructions réduit) sont des processeurs ou le nombre d'instructions est limité et ces instructions sont généralistes - opérations arithmétiques, chargement de données dans/vers les registres, opérations binaires de décalage de bits, etc. La conséquence de ce choix est le nombre restreint de circuits spécifiques sur le processeur, et donc le nombre restreint de transistors.</p>
 <p>On trouve aussi les <mark class="critic"><strong>processeurs de type CISC</strong></mark> (<em>(Complex Instruction Set Computer</em> ou processeurs à jeu d'instruction étendu). Ce sont les processeurs de type x86, AMD64, Intel64, dont la fabrication a été rendue possible par la miniaturisation des transistors et la capacité d'organiser finement les circuits afin d'avoir des circuits spécialisés.</p>
 <p>En pratique, un langage de haut niveau est <em>compilé en assembleur</em> puis directement codé en binaire pur. La plupart des programmeuses et programmeur ne touchent jamais à l'assembleur, sauf dans des cas très précis où il est nécessaire d'être au plus près de la machine. Mais pour comprendre le fonctionnement d'un processeur, il est quand même important d'avoir quelques notions...</p>
 <h3 id="le-m99-un-ordinateur-en-papier">Le M99, un ordinateur en papier</h3>
 <p><em>D'après le travail de Martin Quinson, ENS-Rennes</em></p>
 <p>Dans un premier temps, vous aurez besoin du processeur <a href="../Archi_Exo_Memoire.pdf" target="_blank">M99</a>.</p>
-<p>Le <code>M99</code> est dote de 100 cases mémoire (la grille en haut), et d'un processeur (en bas).La <strong>mémoire</strong> est composée de 100 mots mémoire de 3 chiffres (valeur de 000 à 999). Chaque mot mémoire peut être désigné par une adresse codée sur deux chiffres. Cette mémoire va contenir <em>données et instructions</em>.\</p>
+<p>Le <code>M99</code> est doté de 100 cases mémoire (la grille en haut), et d'un processeur (en bas). La <strong>mémoire</strong> est composée de 100 mots mémoire de 3 chiffres (valeur de 000 à 999). Chaque mot mémoire peut être désigné par une adresse codée sur deux chiffres. Cette mémoire va contenir <em>données et instructions</em>.\</p>
 <p>L'<strong>Unité Arithmétique et Logique (ALU)</strong> : le processeur dispose de trois registres directement utilisables. <code>A</code> et <code>B</code> sont utilisé pour les opérandes des opérations tandis que <code>R</code> est pour le résultat. Ces registres sont de 3 chiffres, mais contrairement à la mémoire, ils ont un signe. Leur étendue de valeurs est donc comprise entre <span class="arithmatex">\(-999\)</span> et <span class="arithmatex">\(999\)</span>.</p>
 <p>Le processeur dispose aussi d'un quatrième registre nommé <code>PC</code> (<em>Program Counter</em>). C'est le pointeur d'instruction, contenant l'adresse mémoire de la prochaine instruction à exécuter. Lorsqu'on utilise le <code>M99</code>, on peut noter le numéro de l'instruction à exécuter dans la case prévue à cet effet, mais en pratique, il est plus simple de le matérialiser avec un \&laquo; pion&raquo; situé sur une des cases de la grille mémoire, ou même de simplement suivre avec son doigt.</p>
 <p>Le jeu d'instruction est défini ci-dessous :</p>
 <p><img alt="Instructions_M99.png" src="../Instructions_M99.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Instructions M99" /></p>
-<p>Ainsi on a les codes suivants:</p>
+<p>Ainsi on a les codes suivants :</p>
 <ul>
 <li><span class="arithmatex">\(245\)</span> qui se traduit en <code>LDB 45</code>, soit &laquo; Charger le contenu de la case mémoire <span class="arithmatex">\(45\)</span> dans le registre <span class="arithmatex">\(B\)</span> &raquo; ;</li>
 <li><span class="arithmatex">\(312\)</span> qui se traduit en <code>MOV 12</code>, soit &laquo; Copier le contenu du registre <span class="arithmatex">\(B\)</span> dans le registre<span class="arithmatex">\(A\)</span> &raquo; .</li>
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Lire et écrire un programme en assembleur</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Sur le processeur <code>M99</code> fourni, deux différents programmes sont déjà en mémoire.</p>
 <ol>
 <li>Dérouler &laquo; à la main &raquo; le programme chargé à l'adresse  <span class="arithmatex">\(00\)</span>. Quel est le résultat obtenu ? Quel est l'objectif de ce programme ?</li>
 <li>Dérouler &laquo; à la main &raquo; le programme chargé à l'adresse  <span class="arithmatex">\(13\)</span>. Quel est le résultat obtenu ? Quel est l'objectif de ce programme ?</li>
-<li>Ecrire un programme sur le M99, chargé en adresse <span class="arithmatex">\(40\)</span>, qui prend deux nombres  en entrée (l'entrée étant considéré comme étant tout nombre mis en case <span class="arithmatex">\(99\)</span>) et renvoie la somme de ces deux nombres en sortie.</li>
+<li>Écrire un programme sur le M99, chargé en adresse <span class="arithmatex">\(40\)</span>, qui prend deux nombres  en entrée (l'entrée étant considéré comme étant tout nombre mis en case <span class="arithmatex">\(99\)</span>) et renvoie la somme de ces deux nombres en sortie.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -3166,23 +3180,23 @@ des registres <span class="arithmatex">\(R1\)</span> et <span class="arithmatex"
 </div>
 <h3 id="utilisation-dun-simulateur-risc">Utilisation d'un simulateur RISC</h3>
 <p><em>D'après le travail de <a href="https://pixees.fr/informatiquelycee/n_site/nsi_prem_sim_cpu.html">David Roche</a></em></p>
-<p>Afin de mettre en pratique ce que nous avons étudié dans le cours, nous allons utiliser un simulateur de processeur RISC développé en javascript par Peter L Higginson. Ce simulateur est basé sur une architecture de von Neumann. Nous allons trouver dans ce simulateur une RAM et un CPU.</p>
+<p>Afin de mettre en pratique ce que nous avons étudié dans le cours, nous allons utiliser un simulateur de processeur RISC développé en <code>Javascript</code> par Peter L Higginson. Ce simulateur est basé sur une architecture de von Neumann. Nous allons trouver dans ce simulateur une <code>RAM</code> et un <code>CPU</code>.</p>
 <p>Une version en français de ce simulateur est disponible <a href="../simu_risc.zip">ici</a> sous la forme d'un dossier compressé.</p>
 <p>Voici ce que vous devriez obtenir :</p>
 <p><img alt="Sim_Risc.png" src="../Sim_Risc.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;" title="Capture SimRisc" /></p>
 <p>Il est relativement facile de distinguer les différentes parties du simulateur :</p>
 <ul>
-<li>à droite, on trouve la mémoire centrale;</li>
-<li>au centre, on trouve le microprocesseur;</li>
+<li>à droite, on trouve la mémoire centrale ;</li>
+<li>au centre, on trouve le microprocesseur ;</li>
 <li>à gauche on trouve la zone d'édition (&laquo; Code assembleur&raquo;), c'est dans cette zone que nous allons saisir nos programmes en assembleur.</li>
 </ul>
 <p>Plus spécifiquement :</p>
 <ul>
 <li>
-<p>pour la <strong>RAM</strong>, par défaut le contenu des différentes cellules de la mémoire est en base 10 (entier signé), mais d'autres options sont possibles : base 10 (entier non-signé), base 16 (hexadécimal), base 2 (binaire). On accède à ces options à l'aide du bouton <code>OPTIONS</code> situé en bas dans la partie gauche du simulateur.</p>
+<p>pour la <strong>RAM</strong>, par défaut le contenu des différentes cellules de la mémoire est en base 10 (entier signé), mais d'autres options sont possibles : base 10 (entiers non-signés), base 16 (hexadécimal), base 2 (binaire). On accède à ces options à l'aide du bouton <code>OPTIONS</code> situé en bas dans la partie gauche du simulateur.</p>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Réponse</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Réponse</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>À l'aide du bouton <code>OPTIONS</code>, passez à un affichage en binaire.
@@ -3207,12 +3221,12 @@ Quelle est la taille des mots utilisés dans ce simulateur ? Combien y-a-t'il de
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Avec le bouton <code>OPTIONS</code>, repassez en entiers signésn, puis, dans la partie \&laquo; Code assembleur &raquo;, saisissez les lignes de codes suivantes :
+<p>Avec le bouton <code>OPTIONS</code>, repassez en entiers signés, puis, dans la partie \&laquo; Code assembleur &raquo;, saisissez les lignes de codes suivantes :
     <div class="highlight"><pre><span></span><code><span class="nf">MOV</span><span class="w"> </span><span class="no">R0</span><span class="p">,</span><span class="w"> </span><span class="mi">#42</span><span class="w"></span>
 <span class="nf">STR</span><span class="w"> </span><span class="no">R0</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="w"></span>
 </code></pre></div>
