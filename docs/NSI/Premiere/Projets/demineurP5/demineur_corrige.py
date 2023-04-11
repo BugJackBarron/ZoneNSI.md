@@ -1,6 +1,11 @@
+#-*- coding: utf-8 -*-
+
+
 import random
 
-from colorama import Fore, Style
+from colorama import init, Fore, Style
+
+init(convert=True)
 
 
 class Cell :

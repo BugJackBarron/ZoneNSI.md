@@ -155,7 +155,7 @@ def mouse_pressed() :
     else :
         if 60<=mouse_x<=140 and 180<=mouse_y<=220 :
             restart()
-    print(count_uncovered(grid)+count_flagged(grid)==TAILLE**2)
+    #print(count_uncovered(grid)+count_flagged(grid)==TAILLE**2)
     if not(lost) and count_uncovered(grid)+count_flagged(grid) == TAILLE**2 :
         win = True
     
