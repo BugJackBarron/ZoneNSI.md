@@ -147,7 +147,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 	La seule limite imposée dans les types des objets `clé` et `valeurs` est que la `clé` doit être d'un *type non-mutable* (un entier, une chaîne de caractères, un tuple, ... mais par contre pas une liste !).
 
 
-!!! example "exmple"
+!!! example "exemple"
 	On considère le code suivant :
 
 	```` python   
@@ -171,8 +171,8 @@ Que se passe-t-il si les tableaux sont plus long ?
 
 	Par exemple dans le dictionnaire `cris`, on trouve la paire `"Chat" : "Miaou"` où :
 
-	* `"Chat"` est la clé (de type chaine de caractères) ;
-	* `"Miaou"` est la valeur (aussi de type chaine de caractères).
+	* `"Chat"` est la clé (de type chaine de caractères `str`) ;
+	* `"Miaou"` est la valeur (aussi de type chaine de caractères `str`).
 
 
 !!! abstract "Accès à un élément"
@@ -201,7 +201,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 		'Gruik'		
 		````
 
-	3. Par contre, si on utilise {==**une clé qui n'existe pas**==}, on obtient l'erreur suivante :
+	3. Par contre, si on utilise {==**une clé qui n'existe pas**==}, on obtient l'erreur de type `KeyError` suivante :
 	
 		```` python 
 		>>> cris['Perroquet']
@@ -288,6 +288,31 @@ False
 
 ??? note "Terminal de test"
 	{{ terminal() }}
+	
+#### Parcourir un dictionnaire
+
+Pour parcourir un dictionnaire, on utilise une boucle `for` comme pour un parcours par élément d'une liste :
+
+```` python
+>>> for animal in cris :
+	print(animal)
+````
+??? note "Terminal de test"
+	{{ terminal() }}
+
+On peut remarquer que la variable ``animal`` fait alors référence à une {==**clé**==}.
+
+Pour obtenir la valeur associée on peut faire comme ci-dessous :
+
+```` python
+>>> for animal in cris :
+	print(animal, " => ", cris[animal])
+````
+??? note "Terminal de test"
+	{{ terminal() }}
+
+!!! warning "Ordre d'un dictionnaire"
+	Attention ! Selon les versions de Python, l'ordre obtenu par un parcours du dictionnaire ne respecte pas forcément l'ordre d'introduction ou de création des éléments dans le dictionnaire. Dans les versions supérieures à 3.6, l'implémentation des dictionnaires permet de conserver l'ordre d'introduction des éléments.
 
 
 #### Liste des clés, des valeurs et des couples
@@ -295,38 +320,20 @@ False
 Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :
 
 
-* Pour obtenir la liste des **clés**, on utilise la *méthode* `keys()`.
+* Pour obtenir la liste des **clés**, on utilise la *méthode* `keys()`, qui renvoie un objet de type `dict_keys`, assimilable à une liste.
 
 	```` python   
 	>>> cris.keys()
 	 dict_keys(['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon'])
 	````
-	L'objet obtenu est du type `dict_keys`, qui se comporte comme un **itérable** classique (c'est-à-dire qu'on peut l'utiliser dans une boucle `for` pour un parcours par élément) :
 
-	```` python   
-	for bestiole in cris.keys() :
-		print(bestiole) 
-	````
-
-	??? note "Terminal de test"
-		{{ terminal() }}
-
+	
 * Pour obtenir la liste des **valeurs**, on utilise la *méthode* `values()`.
 
 	```` python 
 	>>> cris.values()
 	dict_values(['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon'])
 	````
-	De la même manière que pour les clés, l'objet obtenu est un **itérable** et donc utilisable dans une boucle `for` :
-
-	```` python 
-	for cri in cris.values():
-		print(cri)
-	````
-
-	??? note "Terminal de test"
-		{{ terminal() }}
-
 
 * On peut aussi obtenir le couple *clé/valeurs*  sous la forme d'un *tuple* par l'intermédiaire de la méthode `items()` :
 
@@ -350,7 +357,7 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 	
 	!!! info  "Tuple unpacking"
  	 
-		On peut aussi utiliser la technique du **tuple unpacking** pour extraire chaque élément clé et valeur grâce à la méthode `items`, en utilisant la technique suivante :
+		On peut aussi utiliser la technique du **tuple unpacking** pour extraire chaque élément clé et valeur grâce à la méthode `items`, en utilisant la technique suivante (mais elle est encore une fois moins rapide...):
 		```` python   
 		for animal, cri in cris.items() :
 			print(f"L'animal {animal} fait {cri} !")
@@ -380,7 +387,7 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 		
 ### Et avec plus de données ?
 
-Recréons à partir du même fichier Parcoursup un dictionnaire contenant les établissements et leurs coordonnées GPS :
+Recréons à partir du même fichier Parcoursup ``Long_Dico.csv`` un dictionnaire contenant les établissements et leurs coordonnées GPS :
 
 ```` python   
 def makeBigDict() :
@@ -415,7 +422,7 @@ Et vérifions que sa taille st bien cohérente :
 
 ## Les dictionnaires : des tables de hachage
 
-*Cette partie est hors-programme. Mais elle n'en demeure pas moins intéressante !*
+*Cette partie est hors programme. Mais elle n'en demeure pas moins intéressante !*
 
 Si la structure de dictionnaire est plus rapide que celle d'un tableau simple, c'est parce qu'elle est construite sur le principe d'une {==**table de hachage**==}, à l'aide d'une {==**fonction de hachage**==}.
 
@@ -433,11 +440,11 @@ Prenons comme exemple de fonction de hachage la fonction $f$ qui renvoie le **no
 
 ![Hash_Table.png](Hash_Table.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Table de Hachage"}
 
-Cette méthode de construction apporte un net avantage dans le temps d'accès aux éléments. En effet, comme dans un tableau normal, {==**accéder à un  élément avec son indice est une opération en $\mathcal{O}(1)$**==}. Et pour tester si une clé est bien dans le dictionnaire, il suffit de calculer son **hash** et de regarder dans le tableau si la case contient quelque chose.
+Cette méthode de construction apporte un net avantage dans le temps d'accès aux éléments. En effet, comme dans un tableau normal, {==**accéder à un  élément avec son indice est une opération en temps constant ( en $\mathcal{O}(1)$**==}). Et pour tester si une clé est bien dans le dictionnaire, il suffit de calculer son **hash** et de regarder dans le tableau si la case contient quelque chose.
 
-Cependant elle implique un certain nombre de règles et de contraintes pouvant être assez gênantes :
+Cependant, elle implique un certain nombre de règles et de contraintes pouvant être assez gênantes :
 
-1. **La clé d'un objet doit être non mutable**. En effet, si la clé change, la valeur de **hash** renvoyée par la fonction ne sera plus la même et l'objet serait perdu. Ainsi Python impose d'utiliser des objets **non-mutables** comme clé, comme des entiers, des chaines de caractères, ou même des tuples :
+1. {==**La clé d'un objet doit être non mutable**==}. En effet, si la clé change, la valeur de **hash** renvoyée par la fonction ne sera plus la même et l'objet serait perdu. Ainsi Python impose d'utiliser des objets **non mutables** comme clé, comme des entiers, des chaines de caractères, ou même des tuples :
 	```` python 
 	newDic = {(0,0) : 0, (0,1) : 5 , (0,2) : 3 , (0,1,2,3) :4}
  	````
@@ -454,7 +461,7 @@ Cependant elle implique un certain nombre de règles et de contraintes pouvant �
 		{{ terminal() }}
 
 
-2. **Comme tous les tableaux**, une taille de base est fixée au départ. Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau **2 fois plus grand** est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie **peut être couteuse en temps et en mémoire**.
+2. {==**Comme pour tous les tableaux, une taille de base est fixée au départ.**==} Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau **2 fois plus grand** est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie **peut être couteuse en temps et en mémoire**.
 
 3. Avec certaines fonctions de hachage, **plusieurs clés peuvent avoir la même image**. Par exemple avec la fonction utilisant la longueur des chaines :
 

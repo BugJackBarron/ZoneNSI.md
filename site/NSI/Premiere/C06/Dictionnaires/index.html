@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C06/Dictionnaires/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4a0965b7.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1588,6 +1588,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#parcourir-un-dictionnaire" class="md-nav__link">
+    Parcourir un dictionnaire
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#liste-des-cles-des-valeurs-et-des-couples" class="md-nav__link">
     Liste des clés, des valeurs et des couples
   </a>
@@ -3046,7 +3053,7 @@
 La seule limite imposée dans les types des objets <code>clé</code> et <code>valeurs</code> est que la <code>clé</code> doit être d'un <em>type non-mutable</em> (un entier, une chaîne de caractères, un tuple, ... mais par contre pas une liste !).</p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">exmple</p>
+<p class="admonition-title">exemple</p>
 <p>On considère le code suivant :</p>
 <div class="highlight"><pre><span></span><code><span class="n">cris</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Vache&quot;</span> <span class="p">:</span> <span class="s2">&quot;Meuh&quot;</span><span class="p">,</span>
            <span class="s2">&quot;Chien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Wouf&quot;</span><span class="p">,</span>
@@ -3066,8 +3073,8 @@ La seule limite imposée dans les types des objets <code>clé</code> et <code>va
 </details>
 <p>Par exemple dans le dictionnaire <code>cris</code>, on trouve la paire <code>"Chat" : "Miaou"</code> où :</p>
 <ul>
-<li><code>"Chat"</code> est la clé (de type chaine de caractères) ;</li>
-<li><code>"Miaou"</code> est la valeur (aussi de type chaine de caractères).</li>
+<li><code>"Chat"</code> est la clé (de type chaine de caractères <code>str</code>) ;</li>
+<li><code>"Miaou"</code> est la valeur (aussi de type chaine de caractères <code>str</code>).</li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -3094,7 +3101,7 @@ La seule limite imposée dans les types des objets <code>clé</code> et <code>va
 </code></pre></div>
 </li>
 <li>
-<p>Par contre, si on utilise <mark class="critic"><strong>une clé qui n'existe pas</strong></mark>, on obtient l'erreur suivante :</p>
+<p>Par contre, si on utilise <mark class="critic"><strong>une clé qui n'existe pas</strong></mark>, on obtient l'erreur de type <code>KeyError</code> suivante :</p>
 <p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="p">[</span><span class="s1">&#39;Perroquet&#39;</span><span class="p">]</span>
 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -3155,36 +3162,42 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <summary>Terminal de test</summary>
 <p><div onclick='start_term("id12")' id="fake_id12" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id12" class="hide"></div></p>
 </details>
-<h4 id="liste-des-cles-des-valeurs-et-des-couples">Liste des clés, des valeurs et des couples</h4>
-<p>Le <mark class="critic"><strong>type dictionnaire</strong></mark> possède plusieurs <mark class="critic"><strong>méthodes</strong></mark>, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :</p>
-<ul>
-<li>
-<p>Pour obtenir la liste des <strong>clés</strong>, on utilise la <em>méthode</em> <code>keys()</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
- <span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;Vache&#39;</span><span class="p">,</span> <span class="s1">&#39;Chien&#39;</span><span class="p">,</span> <span class="s1">&#39;Chat&#39;</span><span class="p">,</span> <span class="s1">&#39;Poule&#39;</span><span class="p">,</span> <span class="s1">&#39;Ane&#39;</span><span class="p">,</span> <span class="s1">&#39;Cochon&#39;</span><span class="p">,</span> <span class="s1">&#39;Paon&#39;</span><span class="p">])</span>
-</code></pre></div>
-L'objet obtenu est du type <code>dict_keys</code>, qui se comporte comme un <strong>itérable</strong> classique (c'est-à-dire qu'on peut l'utiliser dans une boucle <code>for</code> pour un parcours par élément) :</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">bestiole</span> <span class="ow">in</span> <span class="n">cris</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">bestiole</span><span class="p">)</span> 
+<h4 id="parcourir-un-dictionnaire">Parcourir un dictionnaire</h4>
+<p>Pour parcourir un dictionnaire, on utilise une boucle <code>for</code> comme pour un parcours par élément d'une liste :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">cris</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
 </code></pre></div>
 <details class="note">
 <summary>Terminal de test</summary>
 <p><div onclick='start_term("id13")' id="fake_id13" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id13" class="hide"></div></p>
 </details>
-</li>
-<li>
-<p>Pour obtenir la liste des <strong>valeurs</strong>, on utilise la <em>méthode</em> <code>values()</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-<span class="n">dict_values</span><span class="p">([</span><span class="s1">&#39;Meuh&#39;</span><span class="p">,</span> <span class="s1">&#39;Wouf&#39;</span><span class="p">,</span> <span class="s1">&#39;Miaou&#39;</span><span class="p">,</span> <span class="s1">&#39;Cot-cot&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi-Han&#39;</span><span class="p">,</span> <span class="s1">&#39;Gruik&#39;</span><span class="p">,</span> <span class="s1">&#39;Leon&#39;</span><span class="p">])</span>
-</code></pre></div>
-De la même manière que pour les clés, l'objet obtenu est un <strong>itérable</strong> et donc utilisable dans une boucle <code>for</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">cri</span> <span class="ow">in</span> <span class="n">cris</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">cri</span><span class="p">)</span>
+<p>On peut remarquer que la variable <code>animal</code> fait alors référence à une <mark class="critic"><strong>clé</strong></mark>.</p>
+<p>Pour obtenir la valeur associée on peut faire comme ci-dessous :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">cris</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="p">,</span> <span class="s2">&quot; =&gt; &quot;</span><span class="p">,</span> <span class="n">cris</span><span class="p">[</span><span class="n">animal</span><span class="p">])</span>
 </code></pre></div>
 <details class="note">
 <summary>Terminal de test</summary>
 <p><div onclick='start_term("id14")' id="fake_id14" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id14" class="hide"></div></p>
 </details>
+<div class="admonition warning">
+<p class="admonition-title">Ordre d'un dictionnaire</p>
+<p>Attention ! Selon les versions de Python, l'ordre obtenu par un parcours du dictionnaire ne respecte pas forcément l'ordre d'introduction ou de création des éléments dans le dictionnaire. Dans les versions supérieures à 3.6, l'implémentation des dictionnaires permet de conserver l'ordre d'introduction des éléments.</p>
+</div>
+<h4 id="liste-des-cles-des-valeurs-et-des-couples">Liste des clés, des valeurs et des couples</h4>
+<p>Le <mark class="critic"><strong>type dictionnaire</strong></mark> possède plusieurs <mark class="critic"><strong>méthodes</strong></mark>, permettant d'obtenir les clés, les valeurs et les paires clés/valeurs :</p>
+<ul>
+<li>
+<p>Pour obtenir la liste des <strong>clés</strong>, on utilise la <em>méthode</em> <code>keys()</code>, qui renvoie un objet de type <code>dict_keys</code>, assimilable à une liste.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;Vache&#39;</span><span class="p">,</span> <span class="s1">&#39;Chien&#39;</span><span class="p">,</span> <span class="s1">&#39;Chat&#39;</span><span class="p">,</span> <span class="s1">&#39;Poule&#39;</span><span class="p">,</span> <span class="s1">&#39;Ane&#39;</span><span class="p">,</span> <span class="s1">&#39;Cochon&#39;</span><span class="p">,</span> <span class="s1">&#39;Paon&#39;</span><span class="p">])</span>
+</code></pre></div>
+</li>
+<li>
+<p>Pour obtenir la liste des <strong>valeurs</strong>, on utilise la <em>méthode</em> <code>values()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="n">dict_values</span><span class="p">([</span><span class="s1">&#39;Meuh&#39;</span><span class="p">,</span> <span class="s1">&#39;Wouf&#39;</span><span class="p">,</span> <span class="s1">&#39;Miaou&#39;</span><span class="p">,</span> <span class="s1">&#39;Cot-cot&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi-Han&#39;</span><span class="p">,</span> <span class="s1">&#39;Gruik&#39;</span><span class="p">,</span> <span class="s1">&#39;Leon&#39;</span><span class="p">])</span>
+</code></pre></div>
 </li>
 <li>
 <p>On peut aussi obtenir le couple <em>clé/valeurs</em>  sous la forme d'un <em>tuple</em> par l'intermédiaire de la méthode <code>items()</code> :</p>
@@ -3205,7 +3218,7 @@ Et on peut encore itérer sur cet objet :
 </div>
 <div class="admonition info">
 <p class="admonition-title">Tuple unpacking</p>
-<p>On peut aussi utiliser la technique du <strong>tuple unpacking</strong> pour extraire chaque élément clé et valeur grâce à la méthode <code>items</code>, en utilisant la technique suivante :
+<p>On peut aussi utiliser la technique du <strong>tuple unpacking</strong> pour extraire chaque élément clé et valeur grâce à la méthode <code>items</code>, en utilisant la technique suivante (mais elle est encore une fois moins rapide...):
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">animal</span><span class="p">,</span> <span class="n">cri</span> <span class="ow">in</span> <span class="n">cris</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;L&#39;animal </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2"> fait </span><span class="si">{</span><span class="n">cri</span><span class="si">}</span><span class="s2"> !&quot;</span><span class="p">)</span>
 </code></pre></div></p>
@@ -3232,7 +3245,7 @@ Et on peut encore itérer sur cet objet :
 </div>
 </div>
 <h3 id="et-avec-plus-de-donnees_1">Et avec plus de données ?</h3>
-<p>Recréons à partir du même fichier Parcoursup un dictionnaire contenant les établissements et leurs coordonnées GPS :</p>
+<p>Recréons à partir du même fichier Parcoursup <code>Long_Dico.csv</code> un dictionnaire contenant les établissements et leurs coordonnées GPS :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBigDict</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span> <span class="nn">csv</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Long_Dico.csv&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
@@ -3265,7 +3278,7 @@ Et on peut encore itérer sur cet objet :
 </div>
 </div>
 <h2 id="les-dictionnaires-des-tables-de-hachage">Les dictionnaires : des tables de hachage</h2>
-<p><em>Cette partie est hors-programme. Mais elle n'en demeure pas moins intéressante !</em></p>
+<p><em>Cette partie est hors programme. Mais elle n'en demeure pas moins intéressante !</em></p>
 <p>Si la structure de dictionnaire est plus rapide que celle d'un tableau simple, c'est parce qu'elle est construite sur le principe d'une <mark class="critic"><strong>table de hachage</strong></mark>, à l'aide d'une <mark class="critic"><strong>fonction de hachage</strong></mark>.</p>
 <p>Une <strong>fonction de hachage</strong> est une fonction qui va renvoyer une valeur qui dépendra de l'objet qui lui est passé en argument.</p>
 <p>A la création d'un dictionnaire, un tableau vide est créé. Ce tableau est un tableau classique, indexé par des entiers. Lors de l'ajout d'un élément dans un dictionnaire, la fonction de hachage calcule l'image de la clé, donc un nombre, et range dans la case correspondante du tableau nommée <strong>alvéole</strong> (ou <strong>bucket</strong> ou <strong>slot</strong>) la paire clé/valeur.</p>
@@ -3277,11 +3290,11 @@ Et on peut encore itérer sur cet objet :
 <li><span class="arithmatex">\(f('Chat') = 4\)</span>, donc le couple <code>("Chat", "Miaou")</code> est rangé dans la case d'indice 4 du tableau.</li>
 </ul>
 <p><img alt="Hash_Table.png" src="../Hash_Table.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Table de Hachage" /></p>
-<p>Cette méthode de construction apporte un net avantage dans le temps d'accès aux éléments. En effet, comme dans un tableau normal, <mark class="critic"><strong>accéder à un  élément avec son indice est une opération en <span class="arithmatex">\(\mathcal{O}(1)\)</span></strong></mark>. Et pour tester si une clé est bien dans le dictionnaire, il suffit de calculer son <strong>hash</strong> et de regarder dans le tableau si la case contient quelque chose.</p>
-<p>Cependant elle implique un certain nombre de règles et de contraintes pouvant être assez gênantes :</p>
+<p>Cette méthode de construction apporte un net avantage dans le temps d'accès aux éléments. En effet, comme dans un tableau normal, <mark class="critic"><strong>accéder à un  élément avec son indice est une opération en temps constant ( en <span class="arithmatex">\(\mathcal{O}(1)\)</span></strong></mark>). Et pour tester si une clé est bien dans le dictionnaire, il suffit de calculer son <strong>hash</strong> et de regarder dans le tableau si la case contient quelque chose.</p>
+<p>Cependant, elle implique un certain nombre de règles et de contraintes pouvant être assez gênantes :</p>
 <ol>
 <li>
-<p><strong>La clé d'un objet doit être non mutable</strong>. En effet, si la clé change, la valeur de <strong>hash</strong> renvoyée par la fonction ne sera plus la même et l'objet serait perdu. Ainsi Python impose d'utiliser des objets <strong>non-mutables</strong> comme clé, comme des entiers, des chaines de caractères, ou même des tuples :
+<p><mark class="critic"><strong>La clé d'un objet doit être non mutable</strong></mark>. En effet, si la clé change, la valeur de <strong>hash</strong> renvoyée par la fonction ne sera plus la même et l'objet serait perdu. Ainsi Python impose d'utiliser des objets <strong>non mutables</strong> comme clé, comme des entiers, des chaines de caractères, ou même des tuples :
     <div class="highlight"><pre><span></span><code><span class="n">newDic</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span> <span class="mi">3</span> <span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span><span class="mi">4</span><span class="p">}</span>
 </code></pre></div></p>
 <p>Remarquez que les clés peuvent être de types différents - tant que la fonction de hachage est capable de calculer, il n'y a pas de problèmes.</p>
@@ -3294,7 +3307,7 @@ Et on peut encore itérer sur cet objet :
 </details>
 </li>
 <li>
-<p><strong>Comme tous les tableaux</strong>, une taille de base est fixée au départ. Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau <strong>2 fois plus grand</strong> est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie <strong>peut être couteuse en temps et en mémoire</strong>.</p>
+<p><mark class="critic"><strong>Comme pour tous les tableaux, une taille de base est fixée au départ.</strong></mark> Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau <strong>2 fois plus grand</strong> est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie <strong>peut être couteuse en temps et en mémoire</strong>.</p>
 </li>
 <li>
 <p>Avec certaines fonctions de hachage, <strong>plusieurs clés peuvent avoir la même image</strong>. Par exemple avec la fonction utilisant la longueur des chaines :</p>
@@ -3497,10 +3510,10 @@ Et on peut encore itérer sur cet objet :
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "header.autohide", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a877e258.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
