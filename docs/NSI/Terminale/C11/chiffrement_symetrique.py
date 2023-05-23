@@ -88,15 +88,21 @@ def all_possible(length : int) :
             poss.append(chr(uni)+d)
     return poss
                      
-def cryptanalyse_XOR(chiffre : list, start : str, taille_cle : int) :
+def cryptanalyse_XOR(chiffre : list, contain : str, taille_cle : int) :
     poss_keys = []
     for k in all_possible(taille_cle) :
         decode = get_string(chiffre_XOR(chiffre, get_unicode(k)))
-        if decode.startswith(start) :
+        if contain in decode :
             poss_keys.append(k)
     return poss_keys
         
-                      
+def cryptanalyse_XOR_sans_cle(chiffre : list, contain : str) :
+    poss_key = []
+    for i in range(1,5) :
+        poss_key += cryptanalyse_XOR(chiffre, contain, i)
+    return poss_key
+
+
             
  
 
@@ -235,3 +241,8 @@ habitudes les plus pacifiques.
         nm = f.read()
         with open('Grand_Mystere.txt', 'w') as f2 :
             f2.write(code_Cesar(formate_texte(nm), 17))
+            
+    txt = "Bulletin météo du jour : il fera beau et chaud sur la ville de Guingamp"
+    clé = "BOBI"
+    code = chiffre_XOR(get_unicode(txt), get_unicode(clé))
+    print(cryptanalyse_XOR_sans_cle(code, "météo"))

@@ -220,9 +220,152 @@ Le tout devant bien entendu se faire dans le cadre d'une communication en utilis
 
 Les caractéristiques de l'opérateur `XOR`, et le fait qu'il puisse être implémenté directement dans le processeur, font qu'il est souvent utilisé dans les algorithmes de chiffrement modernes, comme [AES](https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard){taget="_blank"} ou [ChaCha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant){target="_blank"}. Bien sûr ces algorithmes sont nettement plus complexes que la méthode naïve que nous avons utilisée, mais leurs principes reposent sur des fonctionnements similaires.
 
+En plus d'être relativement sûrs (voir ci-dessous), ces algorithmes sont très efficaces et permettent de chiffrer très rapidement. On peut ainsi chiffrer en direct des communications audio ou vidéo en temps réel.
+
 !!! warning "Cryptanalyse : attention à la longueur de la clé !"
 
-    Une clé trop courte peut compromettre la sécurité des données : dans le c    
+    Une clé trop courte peut compromettre la sécurité des données : dans le cas où un mot du message peut-être envisagé, et où la clé est de taille raisonnable (en pratique dans le code suivant, de taille maximale de 4), il est tout à fait possible de faire une attaque par force brute :
+
+    ```python
+    def all_possible(length : int) :
+        """ crée une liste de toutes les clés possible de longueur donnée"""
+        if length ==0 :
+            return ['']
+        poss = []
+        disp = all_possible(length-1)
+        for uni in range(65, 65+26) :
+            for d in disp :
+                poss.append(chr(uni)+d)
+        return poss
+                        
+    def cryptanalyse_XOR(chiffre : list, contain : str, taille_cle : int) :
+        """ renvoie les clés possibles qui trouvent la chaine contain dans le code chiffre, en testant toutes les clés possibles de taille taille_cle"""
+        poss_keys = []
+        for k in all_possible(taille_cle) :
+            decode = get_string(chiffre_XOR(chiffre, get_unicode(k)))
+            if contain in decode :
+                poss_keys.append(k)
+        return poss_keys
+    ```
+!!! warning "Un point sur les mots de passe : entropie de Shannon"
+
+    En informatique, la robustesse d'un mot de passe *aléatoire* est exprimée en terme d'entropie de Shannon, mesurée en bits. 
+
+    D'après [wikipedia](https://fr.wikipedia.org/wiki/Robustesse_d%27un_mot_de_passe){target="_blank"}, « au lieu de mesurer la robustesse par le nombre de combinaisons de caractères qu'il faut tester pour trouver le mot de passe avec certitude, on utilise le logarithme en base 2 de ce nombre. Cette mesure est appelée l'entropie du mot de passe. Un mot de passe avec une entropie de 42 bits calculée de la sorte serait aussi robuste qu'une chaine de 42 bits choisie au hasard.
+
+    En d'autres termes, un mot de passe de 42 bits de robustesse ne serait brisé de façon certaine qu'après 242 (4 398 046 511 104) tentatives lors d'une attaque par force brute. L'ajout d'un bit d'entropie à un mot de passe double le nombre de tentatives requises, ce qui rend la tâche de l'attaquant deux fois plus difficile.»
+
+    L'entropie d'un mot de passe de taille $L$ utilisant des caractères parmi $N$ possibilités aura une entropie $H$ calculée de la manière suivante :
+
+    $$ H = L.\log_2(N) = L. \cfrac{\ln(N)}{\ln(2)}$$
+
+    Ce qui donne les résultats suivants :
+
+    | Nombre de symboles | A-Z (26) | a-zA-Z(52) | a-zA-Z0-9 (62) | a-zA-Z0-9,;:!... (95) |
+    | :---: | ---: | ---: | ---: | ---: |
+    | 6 caractères | 28 | 34 | 35 | 39 |
+    | 10 caractères | 47 | 57 | 59 | 66 |
+    | 12 caractères | 56 | 68 | 71 | 79 |
+    | 20 caractères | 94 | 114 | 119 | 131 |
+
+    On constate donc qu'un mot de passe de 10 caractères latin majuscules est plus «résistant» qu'un mot de passe de 6 caractères utilisant n'importe quel symbole du clavier français... Cela signifie que le nombre de caractère est nettement plus important que la diversité de ceux-ci. On peut le voir grâce au tableau suivant :
+
+    ![https://patrowl.io/wp-content/uploads/2022/03/image.png](https://patrowl.io/wp-content/uploads/2022/03/image.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    Vous pouvez calculer l'entropie de vos mots de passe sur le [site suivant](https://timcutting.co.uk/tools/password-entropy){target="_blank"}.
+
+    Gardez toutefois en tête que la sécurité est maximale lorsque vous utilisez des mots de passe aléatoires de longueur suffisante, utilisant le maximum de caractères, et différents pour chaque site. Pour aider à retenir tous ces mots de passe, l'utilisation d'un gestionnaire de mots de passe, tel que [Cozy Pass](https://cozy.io/fr/features/#pass){target="_blank"} est nécessaire. celui-ci peut-être protégé grâce à une Pass-Phrase, c'est à dire une phrase composée de mots (aléatoires de préférence), garantissant une grande difficulté de décryptage.
+
+    Et le mot de la fin sera pour [xkcd](https://xkcd.com/){: target="_blank"}
+
+    ![xkcd security](https://imgs.xkcd.com/comics/security.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+
+## Cryptographie asymétrique
+
+Le gros problème des cryptographies symétriques est le suivant : {==**les deux protagonistes de l'échange doivent connaitre la clé, et donc se l'échanger**==}. Or ils n'ont pas de moyens de communications sécurisés pour l'instant. Il leur reste donc deux solutions :
+
+* soit ils échangent la clé par un moyen de communication non sécurisé, comme des mails ou du courrier, mais un attaquant pourrait alors s'emparer de la clé et compromettre la sûreté des communications futures ;
+* soit ils échangent la clé par un moyen plus sûr, mais moins pratique (sur un pont isolé par une nuit sans lune dans une mallette menottée au poignet, comme dans les films noirs des années 1950).
+
+Pour résoudre ce problème, les scientifiques américains et britanniques dans les années 1970, puis la recherche académique publique, se sont tournés vers la {==**cryptographie asymétrique**==}. Il s'agit de méthodes utilisant des techniques de mathématiques avancées, dont on ne présentera pas ici les véritables tenants et aboutissants. On peut cependant présenter quelques méthodes et en expliquer sommairement le fonctionnement.
+
+### Les puzzles de Merkle
+
+La méthode du puzzle de Merkle, créé en 1974 et pour la première fois publiée en 1978, est la première méthode de chiffrement asymétrique (**non top secrète**) à clé publique.
+
+
+!!! tips "Déroulé d'un échange"
+    Voici les étapes de la méthode des puzzles de Merkle, qui permette à Alice et Bob d'échanger des messages sans qu'Eve (diminutif de *eavesdropper*, ou oreille indiscrète, espion) puisse décrypter les messages :
+
+    === "Etape 1"
+
+        Alice génère un fichier de très grande taille, par exemple 100 000 lignes, où chaque ligne consiste en un **identifiant unique** et une clé de longueur suffisante :
+
+        ```
+        ...
+        Id : 345768 Key : p(;;9a"ZMBz53P<6C5Q3
+        Id : 768453 Key : 8uQw(;e3SRHaN=]QsFp%
+        Id : 108943 Key : >ye5JH@%,%%J6<FsGWE,
+        ...
+        ```
+
+        Elle crypte ce fichier avec un chiffre `XOR`, mais en respectant les consignes suivantes :
+
+        * chaque ligne est chiffrée avec une clé différente ;
+        * les clés utilisées sont de petites tailles.
+
+        Elle transmet ensuite le fichier à Bob.
+
+        **Le fichier est probablement intercepté par Eve.**
+
+    === "Etape 2"
+
+        Bob reçoit le message chiffré d'Alice. Il choisit au hasard une des lignes, et l'**attaque par force brute**. Comme la clé utilisée est de petite taille, l'attaque est possible en un temps raisonnable, disons 10 minutes.
+
+        Bob récupère donc une ligne avec un identifiant et une clé.
+
+        ```
+        Id : 768453 Key : 8uQw(;e3SRHaN=]QsFp%
+        ```
+        Bob transmet alors **en clair** l'identifiant `768453` à Alice.
+
+        **Eve intercepte probalement cet identifiant**.
+
+    === "Etape 3"
+
+        Alice regarde dans son fichier non crypté la clé correspondant à l'identifiant transmis : `8uQw(;e3SRHaN=]QsFp%`. Avec cette clé, la communication s'engage entre Alice et Bob en **utilisant un chiffrement symétrique**.
+
+        A aucun moment la clé n'a été transmise en clair entre les deux protagonistes, qui n'ont pas eu besoin de se rencontrer non plus pour entamer une communication sécurisée.
+
+    === "Et Eve ?"
+
+        Eve a donc en sa possession un fichier crypté de 100 000 lignes, et un identifiant en clair. Mais pour faire correspondre cet identifiant à une clé, il faut qu'elle décrypte par force brute chacune des lignes du fichier jusqu'à trouver le bon identifiant. Pour décrypter la totalité du fichier, il lui faudra donc 100 000 fois 10 minutes, soit près de 12 jours. Donc, en moyenne, Alice et Bob peuvent communiquer sereinement pendant 6 jours avec la même clé.
+
+
+### Méthode de Diffie-Hellman
+
+La méthode des puzzle de Merkle, bien que novatrice pour son époque, n'est plus jugée suffisante de nos jours pour garantir une véritable sécurité. Cependant elle a posé les bases d'autres méthodes, comme la méthode de Diffie-Helman, proposée en 1974 par les cryptologues américains Bailey W. Diffie et Martin Hellman.
+
+Cette méthode repose sur l'utilisation d'une fonction mathématique à deux variables. Cette fonction, souvent nommée $M$ (pour «mélange»), doit respecter les propriétés suivantes :
+
+1. $M$ est connue, ce qui signifie qu'on connait l'algorithme ou la formule qui permet de calculer des images (toutes les fonctions ne sont pas calculables, voir [théorie de la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9#Existence_de_fonctions_non_calculables){target="_blank"}).
+2. Si on connait $M(x;y)$ et $x$, il doit être **très difficile** de retrouver $y$. Par difficile, on entend le fait que pour trouver le $y$ donnant à $M(x;y)$ une valeur donnée, il faudra essayer sur tous les entiers $y$ possibles.
+3. Pour tous entiers $x, y$ et $z$, on a $M(M(x;y);z) = M(M(x;z);y)$, autrement dit $y$ et $z$ sont commutables.
+
+Une analogie couramment utilisée pour expliquer le fonctionnement de  cette fonction $M$ est celle des pots de peinture :
+
+!!! tips "Pots de Peintures"
+
+    Les images suivantes sont tirées de <a href="https://commons.wikimedia.org/wiki/File:Diffie-Hellman_Key_Exchange_(fr).svg">Idée originale : A.J. Han VinckVersion vectorielle : FlugaalTraduction : Dereckson</a>, Public domain, via Wikimedia Commons
+
+    === "Mise en place"
+
+        On dispose d'un très grand nombre de pots de peinture de couleurs différentes
+### Cryptage RSA
+
+## Authentification des participants
+
+
 
 ## Sources
 
