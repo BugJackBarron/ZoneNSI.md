@@ -450,22 +450,93 @@ Un autre des avantages de RSA est qu'il est possible de l'utiliser comme {==**sy
 
 En France, l’État délivre aux citoyens une carte d'identité. Lorsque une personne se présente au bureau de poste pour retirer un colis, son identité est vérifiée par la personne au guichet par l'intermédiaire de cette carte d'identité. A priori, un bout de carton plastifié à lui seul ne permet pas de garantir réellement une authentification. Le système fonctionne parce que le bureau de poste **fait confiance** à l’État, qui a fait les vérifications nécessaires pour s'assurer de l'identité de la personne, et qui a mis en place une carte difficile à falsifier. L'État joue ici le rôle d'un {==**tiers de confiance**==}.
 
-On retrouve le même système dans les communications sur Internet, où certains acteurs jouent le rôle de tiers de confiance. Ils fournissent des {==**certificats**==} numériques, créés à partir des clés RSA publiques des participants
+On retrouve le même système dans les communications sur Internet, où certains acteurs jouent le rôle de tiers de confiance. Ils fournissent des {==**certificats**==} numériques, créés à partir des clés RSA publiques des participants.
 
-Imaginons que Bob veuille s'assurer que c'est bien Alice avec qui il va entrer en communication, via son site web.
+!!! exemple "Exemple d'authentification"
 
-1. Alice fait appel à Thierry, un tiers de confiance. Thierry vérifie qu'ALice est bien la propriétaire du site, en constant qu'elle peut administrer le site, ou bien par l'intermédiaire de factures montrant qu'elle possède le nom de domaine ainsi que le serveur qui héberge le site. Une fois ces vérifications effectuées, Thierry crée un certificat avec sa clé privée et la clé publique d'Alice :
+    Imaginons que Bob veuille s'assurer que c'est bien Alice avec qui il va entrer en communication, via son site web.
 
-    $$ c = K_T^{pri}(K_A^{pub})$$
+    1. Alice fait appel à Thierry, un tiers de confiance. Thierry vérifie qu'ALice est bien la propriétaire du site, en constant qu'elle peut administrer le site, ou bien par l'intermédiaire de factures montrant qu'elle possède le nom de domaine ainsi que le serveur qui héberge le site. Une fois ces vérifications effectuées, Thierry crée un certificat avec sa clé privée et la clé publique d'Alice :
 
-2. Quand Bob se connecte au site d'Alice, celui-ci envoie le certificat $c$ et la clé publique d'Alice $K_A^{pub}$.
-3. Bob se sert alors de la clé publique de Thierry sur le certificat :
+        $$ c = K_T^{pri}(K_A^{pub})$$
 
-    $$K_T^{pub}(c) = K_T^{pub}\left(K_T^{pri}(K_A^{pub})\right) = K_A^{pub}$$ 
+    2. Quand Bob se connecte au site d'Alice, celui-ci envoie le certificat $c$ et la clé publique d'Alice $K_A^{pub}$.
+    3. Bob se sert alors de la clé publique de Thierry sur le certificat :
 
-    Il compare le résultat avec la clé que lui a fourni le site d'Alice. Si il y a correspondance, il est assuré d'être en communication avec Alice.
+        $$K_T^{pub}(c) = K_T^{pub}\left(K_T^{pri}(K_A^{pub})\right) = K_A^{pub}$$ 
+
+        Il compare le résultat avec la clé que lui a fourni le site d'Alice. Si il y a correspondance, il est assuré d'être en communication avec Alice. Il peut alors démarrer un échange de clé soit en utilisant RSA, soit Diffie-Hellman.
+
 
 ## Le protocole HTTPS
+
+### Autorités de certifications
+
+Une {==**autorité de certification**==} (ou AC), est une entité habilitée à délivrer des certificats. Il s'agit de tiers de confiance, que l'on peut classer en trois catégories :
+
+* les entreprises spécialisées ;
+* les associations (comme *Let's Encrypt*, que nous croiserons plus tard);
+* les entités étatiques.
+
+Leur rôle est d'attester par l'intermédiaire de certificat qu'une entité est bien ce qu'elle prétend être. Elles sont soumises à des audits réguliers et pointilleux, dont les résultats sont publics, et il existe une hiérarchie des AC. En effet, une AC doit être elle-même certifiée par une autre AC, ce qui crée un arbre de certification jusqu'à des AC appellées **AC racines**. La fondation Mozilla reconnait à ce jour (24 Mai 2023) [142 AC racines](https://ccadb.my.salesforce-sites.com/mozilla/CACertificatesInFirefoxReport){target="_blank"}. 
+
+Le club des AC est donc très fermé, les OS et navigateurs ayant chacun les clés publiques des AC qu'ils reconnaissent (au passage, Google, Microsoft et Apple ne reconnaissent pas exactement les mêmes AC que Mozilla).
+
+### Normes de certifications X.509
+
+Les AC suivent généralement le format standard de certficat qui est à l'heure actuelle le format `X.509`. Il s'agit d'un format de fichier binaire contenant entre autre :
+
+* l'identifiant de l'AC qui **signe**(chiffre) le certificat ;
+* les dates de validité du certificat (dates de départ et dates de fin);
+* l'identité de l'entité certifiée ;
+* la clé publique de l'entité certifiée ;
+* l'algorithme utilisé pour la signature du certificat ;
+* la signature du certificat par l'AS.
+
+On retrouve la construction présentée précédemment, mais avec quelques points techniques supplémentaires : plutôt que de vérifier la signature de chaque ligne du fichier, on utilise une {==**fonction de hachage**==} qui génère une {==**somme de contrôle**==} du fichier. Cette somme de contrôle est alors chiffrée avec la clé privée de l'AC.
+
+!!! exemple "Zonensi.fr"
+    Voici un extrait du certificat de [zonensi.fr]() :
+
+    ```
+    Certificate:
+        Data:
+            Version: 3 (0x2)
+            [...]
+            Issuer: C = US, O = Let's Encrypt, CN = R3
+            Validity
+                Not Before: May 15 22:38:03 2023 GMT
+                Not After : Aug 13 22:38:02 2023 GMT
+            Subject: CN = zonensi.fr
+            Subject Public Key Info:
+                Public Key Algorithm: rsaEncryption
+                    Public-Key: (2048 bit)
+                    Modulus:
+                        00:ae:43:ac:a5:ae:80:f4:38:4c:52:32:f7:...
+                    Exponent: 65537 (0x10001)
+            [...]
+        Signature Algorithm: sha256WithRSAEncryption
+        Signature Value:
+            59:17:d1:ff:e2:2f:1f:a1:e5:2f:71:b6:e3:4a:4d:e4:...
+    ```
+    On constate donc que :
+
+    * l'AC qui a signé le certificat est [Let's Encrypt](https://letsencrypt.org/fr/){target="_blank"} ;
+    * celui-ci est valide du 15 mai 2023 au 13 Aout 2023 ;
+    * il certifie le domaine `zonensi.fr` ;
+    * la clé publique est une clé RSA, sur 2048 bits, et calculée à partir des informations `Modulus`et `Exponent`.
+    * l'algorithme utilisé pour créer la somme de contrôle du fichier est `sha256WithRSAEncryption` ;
+
+    Quand vous vous connectez à `zonensi.fr` en `https`, votre navigateur :
+
+    * récupère le certificat ;
+    * la signature est le résultat du chiffrage de la somme de contrôle par la clé privée de l'AC.
+    * retire les deux dernières lignes et utilise l'algorithme `sha256WithRSAEncryption`pour calculer la somme de contrôle du certificat ;
+    * utilise la clé publique de *Let's Encrypt* sur la signature du certificat, et compare le résultat à la somme de contrôle calculée ;
+    * en cas d'égalité, l'identité est vérifiée et on peut commencer une transaction asymétrique.
+
+### HTTP+ SSL/TLS = HTTPS
+
 
 
 ## Sources
