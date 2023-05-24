@@ -356,15 +356,116 @@ Une analogie couramment utilisée pour expliquer le fonctionnement de  cette fon
 
 !!! tips "Pots de Peintures"
 
-    Les images suivantes sont tirées de <a href="https://commons.wikimedia.org/wiki/File:Diffie-Hellman_Key_Exchange_(fr).svg">Idée originale : A.J. Han VinckVersion vectorielle : FlugaalTraduction : Dereckson</a>, Public domain, via Wikimedia Commons
+    Les images suivantes ont été extraites et modifiées depuis <a href="https://commons.wikimedia.org/wiki/File:Diffie-Hellman_Key_Exchange_(fr).svg">Idée originale : A.J. Han VinckVersion vectorielle : Flugaal Traduction : Dereckson</a>, Public domain, via Wikimedia Commons
 
-    === "Mise en place"
+    === "Etape 1"
 
-        On dispose d'un très grand nombre de pots de peinture de couleurs différentes
+        On dispose d'un très grand nombre de pots de peinture de couleurs différentes. Alice et Bob se mettent d'accord pour choisir une couleur commune $x$, qui sera «publique», puisqu'elle peut être interceptée.
+
+        ![Etape 1](DH_01.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    === "Etape 2"
+
+        Alice et Bob choisissent alors chacun une couleur, respectivement $y$ et $z$, qui resteront privées et secrètes et ne seront jamais échangées.
+
+        ![Etape 2](DH_02.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    === "Etape 3"
+
+        Alice et Bob élaborent alors leurs mélanges, en utilisant la couleur commune et leur propre couleur privée. 
+
+        ![Etape 3](DH_03.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    === "Etape 4"
+
+        Alice et Bob échangent *en clair* leurs mélanges respectifs, qui peuvent donc être interceptés.
+
+        ![Etape 4](DH_04.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    === "Etape 5"
+
+        Alice et Bob ajoutent alors au mélange qu'ils ont reçu leur couleur secrète. La fonction de mélange est construite afin que les mix obtenus par Alice et Bob soient identiques. Ils ont ainsi une «couleur» commune secrète, qui peut alors leur permettre d'effectuer des échanges via un cryptage symétrique.
+
+        ![Etape 5](DH_05.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    === "Et Eve ?"
+
+        Eve peut connaitre trois choses : la couleur commune, et chacun des mix ayant circulé en clair. Pour autant, la fonction de mélange est faite de telle manière qu'il soit extrêmement long et difficile d'extraire les couleurs secrètes même si la couleur commune est connue. 
+
+        Par ailleurs, même en mélangeant les deux mix obtenus, on n'obtiendra pas la même couleur que celle obtenue par ALice et Bob, puisque la couleur commune sera deux fois plus présente.
+
+        ![Etape 6](DH_06.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
+Le protocole d'échange de clé de Diffie-Hellman propose donc une manière élégante de régler le problème d'échange de clé posé par le chiffrement symétrique. Cependant, un problème reste à régler, il s'agit du {==**problème de l'authentification**==} : la sureté des communications dépend essentiellement sur le fait qu'Alice et Bob soient certains de communiquer avec la bonne personne.
+
+!!! warning "Attaque de l'homme du milieu"
+
+    Imaginons qu'Eve ne se contente pas d'intercepter la couleur commune, mais qu'elle se fasse passer pour Bob auprès d'Alice, et d'Alice auprès de Bob. Eve peut alors choisir une couleur commune avec Alice, et une autre avec Bob. Le protocole d'échange se poursuit normalement, mais Eve intercepte et décode chaque message transmis, avant de le retransmettre à son tour, modifié ou non :
+
+    ![MITM](MITM.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    Une telle technique s'appelle une {==**attaque de l'homme du milieu**==}, ou **man in the middle attack**, souvent abrégée en MITM.
+
 ### Cryptage RSA
 
-## Authentification des participants
+!!! abstract "Système RSA"
 
+    Le système RSA est un système de chiffrement asymétrique basé sur des paires de clés publiques et privées, pour la première fois publié en 1978. Son nom provient des initiales de ses trois inventeurs : [Ron Rivest, Adi Shamir et Len Adelman](https://fr.wikipedia.org/wiki/Chiffrement_RSA){target="_blank"}. 
+
+    Les mathématiques derrière le système RSA utilisent entre autres les congruences sur les entiers et le petit théorème de Fermat. Tous les calculs se font modulo un nombre entier $n$ qui est le produit de deux nombres premiers, en général très grands, car les messages clairs et chiffrés sont des entiers inférieurs à l'entier $n$. Les opérations de chiffrement et de déchiffrement consistent à élever le message à une certaine puissance modulo $n$, ce qui donne des calculs très couteux.
+
+Globalement, le système consiste en la mise en place d'une {==**paire de clés publiques et privées**==} pour chaque participant :
+
+* Alice possède une clé $K_A^{pub}$ et une clé privée $K_A^{pri}$.
+* Bob possède une clé $K_B^{pub}$ et une clé privée $K_B^{pri}$.
+
+On notera $K_P^x(m)$ le fait de chiffrer un message avec la clé $x$ de la personne $P$.
+
+La manière exacte de créer ces clés est complexe, mais l'essentiel est de comprendre que l'utilisation des deux clés d'une personne permet de déchiffrer un message. Par exemple pour Alice :
+
+$$K_A^{pub}\left(K_A^{pri}(m)\right) = K_A^{pri}\left(K_A^{pub}(m)\right) = m$$
+
+Ce qui signifie qu'un message chiffré avec la clé publique d'Alice peut être déchiffrer avec sa clé privée, et réciproquement.
+
+D'autre part, les propriétés des clés font que :
+
+* il est impossible en connaissant $K_A^{pub}$ de deviner $K_A^{pri}$ ;
+* il est impossible en connaissant $K_A^{pub}(m)$ ou $K_A^{pri}(m)$ de deviner $m$.
+
+!!! tips "Fonctionnement d'une communication"
+
+    Si Bob veut envoyer un message secret à Alice, les deux procèdent comme suit :
+
+    1. Alice met à disposition sa clé publique $K_A^{pub}$, en la mettant par exemple sur son site web ou en l'envoyant par mail.
+    2. Bob chiffre son message $m$ avec la clé publique d'Alice et envoie le résultat $K_A^{pub}(m)$ à Alice.
+    3. Alice applique sa clé privée sur le message reçu $K_A^{pri}\left(K_A^{pub}(m)\right) = m$, et déchiffre ainsi le message de Bob.
+
+L'inconvénient majeur de RSA est que les {==**chiffrements et déchiffrements sont très couteux en temps de calcul**==}, et ne permettent pas des échanges sur des gros volumes de données, ou sur des flux de communications audio ou vidéo.
+
+Cependant, il est possible d'utiliser RSA à la manière de Diffie-Hellman, afin d'échanger une clé pour un algorithme de chiffrement symétrique, qui est en général un fichier de quelques milliers de bits.
+
+Un autre des avantages de RSA est qu'il est possible de l'utiliser comme {==**système d'authentification**==}.
+
+### Certificats et tiers de confiance
+
+En France, l’État délivre aux citoyens une carte d'identité. Lorsque une personne se présente au bureau de poste pour retirer un colis, son identité est vérifiée par la personne au guichet par l'intermédiaire de cette carte d'identité. A priori, un bout de carton plastifié à lui seul ne permet pas de garantir réellement une authentification. Le système fonctionne parce que le bureau de poste **fait confiance** à l’État, qui a fait les vérifications nécessaires pour s'assurer de l'identité de la personne, et qui a mis en place une carte difficile à falsifier. L'État joue ici le rôle d'un {==**tiers de confiance**==}.
+
+On retrouve le même système dans les communications sur Internet, où certains acteurs jouent le rôle de tiers de confiance. Ils fournissent des {==**certificats**==} numériques, créés à partir des clés RSA publiques des participants
+
+Imaginons que Bob veuille s'assurer que c'est bien Alice avec qui il va entrer en communication, via son site web.
+
+1. Alice fait appel à Thierry, un tiers de confiance. Thierry vérifie qu'ALice est bien la propriétaire du site, en constant qu'elle peut administrer le site, ou bien par l'intermédiaire de factures montrant qu'elle possède le nom de domaine ainsi que le serveur qui héberge le site. Une fois ces vérifications effectuées, Thierry crée un certificat avec sa clé privée et la clé publique d'Alice :
+
+    $$ c = K_T^{pri}(K_A^{pub})$$
+
+2. Quand Bob se connecte au site d'Alice, celui-ci envoie le certificat $c$ et la clé publique d'Alice $K_A^{pub}$.
+3. Bob se sert alors de la clé publique de Thierry sur le certificat :
+
+    $$K_T^{pub}(c) = K_T^{pub}\left(K_T^{pri}(K_A^{pub})\right) = K_A^{pub}$$ 
+
+    Il compare le résultat avec la clé que lui a fourni le site d'Alice. Si il y a correspondance, il est assuré d'être en communication avec Alice.
+
+## Le protocole HTTPS
 
 
 ## Sources
