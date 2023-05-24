@@ -253,7 +253,7 @@ En plus d'être relativement sûrs (voir ci-dessous), ces algorithmes sont très
 
     D'après [wikipedia](https://fr.wikipedia.org/wiki/Robustesse_d%27un_mot_de_passe){target="_blank"}, « au lieu de mesurer la robustesse par le nombre de combinaisons de caractères qu'il faut tester pour trouver le mot de passe avec certitude, on utilise le logarithme en base 2 de ce nombre. Cette mesure est appelée l'entropie du mot de passe. Un mot de passe avec une entropie de 42 bits calculée de la sorte serait aussi robuste qu'une chaine de 42 bits choisie au hasard.
 
-    En d'autres termes, un mot de passe de 42 bits de robustesse ne serait brisé de façon certaine qu'après 242 (4 398 046 511 104) tentatives lors d'une attaque par force brute. L'ajout d'un bit d'entropie à un mot de passe double le nombre de tentatives requises, ce qui rend la tâche de l'attaquant deux fois plus difficile.»
+    En d'autres termes, un mot de passe de 42 bits de robustesse ne serait brisé de façon certaine qu'après $2^{42} = 4 398 046 511 104$ tentatives lors d'une attaque par force brute. L'ajout d'un bit d'entropie à un mot de passe double le nombre de tentatives requises, ce qui rend la tâche de l'attaquant deux fois plus difficile.»
 
     L'entropie d'un mot de passe de taille $L$ utilisant des caractères parmi $N$ possibilités aura une entropie $H$ calculée de la manière suivante :
 
