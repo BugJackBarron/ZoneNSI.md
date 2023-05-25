@@ -3153,7 +3153,7 @@ Chaque caractère du message est associé à une valeur numérique entière (par
 <p class="admonition-title">Un point sur les mots de passe : entropie de Shannon</p>
 <p>En informatique, la robustesse d'un mot de passe <em>aléatoire</em> est exprimée en terme d'entropie de Shannon, mesurée en bits. </p>
 <p>D'après <a href="https://fr.wikipedia.org/wiki/Robustesse_d%27un_mot_de_passe" target="_blank">wikipedia</a>, « au lieu de mesurer la robustesse par le nombre de combinaisons de caractères qu'il faut tester pour trouver le mot de passe avec certitude, on utilise le logarithme en base 2 de ce nombre. Cette mesure est appelée l'entropie du mot de passe. Un mot de passe avec une entropie de 42 bits calculée de la sorte serait aussi robuste qu'une chaine de 42 bits choisie au hasard.</p>
-<p>En d'autres termes, un mot de passe de 42 bits de robustesse ne serait brisé de façon certaine qu'après 242 (4 398 046 511 104) tentatives lors d'une attaque par force brute. L'ajout d'un bit d'entropie à un mot de passe double le nombre de tentatives requises, ce qui rend la tâche de l'attaquant deux fois plus difficile.»</p>
+<p>En d'autres termes, un mot de passe de 42 bits de robustesse ne serait brisé de façon certaine qu'après <span class="arithmatex">\(2^{42} = 4 398 046 511 104\)</span> tentatives lors d'une attaque par force brute. L'ajout d'un bit d'entropie à un mot de passe double le nombre de tentatives requises, ce qui rend la tâche de l'attaquant deux fois plus difficile.»</p>
 <p>L'entropie d'un mot de passe de taille <span class="arithmatex">\(L\)</span> utilisant des caractères parmi <span class="arithmatex">\(N\)</span> possibilités aura une entropie <span class="arithmatex">\(H\)</span> calculée de la manière suivante :</p>
 <div class="arithmatex">\[ H = L.\log_2(N) = L. \cfrac{\ln(N)}{\ln(2)}\]</div>
 <p>Ce qui donne les résultats suivants :</p>
@@ -3416,10 +3416,52 @@ On constate donc que :</p>
 <li>en cas d'égalité, l'identité est vérifiée et on peut commencer une transaction asymétrique.</li>
 </ul>
 </div>
+<p>Les certificats des AC sont régulièrement mis à jour, aussi bien au niveau du système d'exploitation que du navigateur : ici on voit une mise à jour des certificats d'AC sur une distribution LinuxMint :</p>
+<p><img alt="Maj CA" src="../MAJ_CA.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
 <h3 id="http-ssltls-https">HTTP+ SSL/TLS = HTTPS</h3>
+<div class="admonition abstract">
+<p class="admonition-title">SSL/TLS</p>
+<p>La <mark class="critic"><strong>Transport Layer Security (TLS)</strong></mark> (et son prédecesseur <strong>Secure Sockets Layer (SSL)</strong>) est un protocole de sécurisation des échanges développé par l'<em><em>Internet Engineering Task Force (IETF)</em> (à la suite de la société </em>Netscape Communication Corporation*, qui a développé SSL pour son navigateur).</p>
+<p>On parle parfois de <code>SSL/TLS</code> pour désigner indifféremment <code>SSL</code> ou <code>TLS</code>.</p>
+<p>Actuellement les versions les plus utilisées de <code>TLS</code> sont <code>TLS 1.2</code> (publiée en 2008) et <code>TLS 1.3</code> (publiée en 2018).</p>
+<p><code>TLS</code> est un protocole se rajoutant entre la couche <code>TCP</code> et la couche applicative (<code>HTML</code> par exemple). Ses rôles sont :</p>
+<ul>
+<li>de garantir l'authentification du serveur ;</li>
+<li>la confidentialité des données ;</li>
+<li>l'intégrité des données ;</li>
+<li>et de manière optionnelle, l'authentification du client.</li>
+</ul>
+</div>
+<p>Le protocole <code>HTTPS</code> est donc la mise en place d'une communication <code>HTTP</code> sécurisée par <code>TLS</code>, pour laquelle le port de communication est le port 443 à la place du port 80.</p>
+<p>Une communication sécurisée par <code>TLS</code> est indiquée dans un navigateur par un cadenas dans la barre de navigation. Un clique sur le cadenas vous donneras les informations sur le la sécurisation de la connexion. Par exemple pour <code>https://www.zonensi.fr</code> :</p>
+<p><img alt="certificat" src="../certificat.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
+<div class="admonition abstract">
+<p class="admonition-title">Fonctionnement d'un échange HTTPS</p>
+<p><img alt="SSLTTLS" src="../SSLTLS.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" /></p>
+<p>On peut décrire sommairemment la brique <code>SSL/TLS</code> de la manière suivante :</p>
+<ol>
+<li>Le client envoie un message <code>HELLO</code>, qui contient quelqus options (versions de TLS supportée, algorithmes supportés).</li>
+<li>Le serveur envoie un message <code>HELLO</code>, avec ses options, ainsi que son certificat au client.</li>
+<li>Le client tente de vérifier la signature numérique du certificat, à l'aide des clés publiques des AC. Plusieurs solutions peuvent alors se produire</li>
+<li>Si l'une d'entre elle fonctionne, le navigateur vérifie quelques autres points (entre autres les dates de validité), puis génère une clé de chiffrement symétrique, appelée <strong>clé de session</strong>, qu'il chiffre avec la clé publique du serveur. Une fois la clé reçue par le serveur, un échange <code>HTTP</code> chiffré est donc possible.</li>
+<li>Si aucune des clés des AC ne fonctionne, le navigateur tente alors de vérifier la signature numérique du certificat avec la clé publique du serveur. En cas de réussite, cela signifie que <strong>le serveur a généré lui-même son certificat</strong>. Un message d'avertissement s'affiche alors sur le navigateur, prévenant que l'identité du serveur n'a pas pu être vérifiée, et qu'il peut s'agir potentiellement d'un site frauduleux (mais il s'agit parfois simplement d'un dépassement de validité du certificat, le propriétaire du site ayant oublié de renouveler son certificat auprès d'une AC).</li>
+</ol>
+</div>
 <h2 id="sources">Sources</h2>
+<ul>
+<li>
 <p><a href="http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php">http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php</a></p>
+</li>
+<li>
 <p><a href="https://fr.wikipedia.org/wiki/Three-way_handshake">https://fr.wikipedia.org/wiki/Three-way_handshake</a></p>
+</li>
+<li>
+<p>Numérique et Sciences Informatique Tle : 24 leçons avec exercices corrigés, Balabonski, Conchon, Filliâtre, Nguyen, éditions Ellipses</p>
+</li>
+<li>
+<p><a href="www.wikipedia.org" target="_blank">Wikipedia</a>, pour une très grande partie des informations ci-dessus.</p>
+</li>
+</ul>
 
               
     <script src="../../../../js/ide.js"></script> 

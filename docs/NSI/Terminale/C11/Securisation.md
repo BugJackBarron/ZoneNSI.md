@@ -535,12 +535,63 @@ On retrouve la construction présentée précédemment, mais avec quelques point
     * utilise la clé publique de *Let's Encrypt* sur la signature du certificat, et compare le résultat à la somme de contrôle calculée ;
     * en cas d'égalité, l'identité est vérifiée et on peut commencer une transaction asymétrique.
 
+Les certificats des AC sont régulièrement mis à jour, aussi bien au niveau du système d'exploitation que du navigateur : ici on voit une mise à jour des certificats d'AC sur une distribution LinuxMint :
+
+![Maj CA](MAJ_CA.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+
+
+
+
 ### HTTP+ SSL/TLS = HTTPS
+
+!!! abstract "SSL/TLS"
+
+    La {==**Transport Layer Security (TLS)**==} (et son prédecesseur **Secure Sockets Layer (SSL)**) est un protocole de sécurisation des échanges développé par l'**Internet Engineering Task Force (IETF)* (à la suite de la société *Netscape Communication Corporation*, qui a développé SSL pour son navigateur).
+
+    On parle parfois de `SSL/TLS` pour désigner indifféremment `SSL` ou `TLS`.
+
+    Actuellement les versions les plus utilisées de `TLS` sont `TLS 1.2` (publiée en 2008) et `TLS 1.3` (publiée en 2018).
+
+    `TLS` est un protocole se rajoutant entre la couche `TCP` et la couche applicative (`HTML` par exemple). Ses rôles sont :
+
+    * de garantir l'authentification du serveur ;
+    * la confidentialité des données ;
+    * l'intégrité des données ;
+    * et de manière optionnelle, l'authentification du client.
+
+
+Le protocole `HTTPS` est donc la mise en place d'une communication `HTTP` sécurisée par `TLS`, pour laquelle le port de communication est le port 443 à la place du port 80.
+
+Une communication sécurisée par `TLS` est indiquée dans un navigateur par un cadenas dans la barre de navigation. Un clique sur le cadenas vous donneras les informations sur le la sécurisation de la connexion. Par exemple pour `https://www.zonensi.fr` :
+
+![certificat](certificat.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+
+
+!!! abstract "Fonctionnement d'un échange HTTPS" 
+
+    ![SSLTTLS](SSLTLS.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    On peut décrire sommairemment la brique `SSL/TLS` de la manière suivante :
+
+    1. Le client envoie un message `HELLO`, qui contient quelqus options (versions de TLS supportée, algorithmes supportés).
+    2. Le serveur envoie un message `HELLO`, avec ses options, ainsi que son certificat au client.
+    3. Le client tente de vérifier la signature numérique du certificat, à l'aide des clés publiques des AC. Plusieurs solutions peuvent alors se produire
+    4. Si l'une d'entre elle fonctionne, le navigateur vérifie quelques autres points (entre autres les dates de validité), puis génère une clé de chiffrement symétrique, appelée **clé de session**, qu'il chiffre avec la clé publique du serveur. Une fois la clé reçue par le serveur, un échange `HTTP` chiffré est donc possible.
+    5. Si aucune des clés des AC ne fonctionne, le navigateur tente alors de vérifier la signature numérique du certificat avec la clé publique du serveur. En cas de réussite, cela signifie que **le serveur a généré lui-même son certificat**. Un message d'avertissement s'affiche alors sur le navigateur, prévenant que l'identité du serveur n'a pas pu être vérifiée, et qu'il peut s'agir potentiellement d'un site frauduleux (mais il s'agit parfois simplement d'un dépassement de validité du certificat, le propriétaire du site ayant oublié de renouveler son certificat auprès d'une AC).
+
+    
+
+
+
 
 
 
 ## Sources
 
-[http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php](http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php)
+* [http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php](http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php)
 
-[https://fr.wikipedia.org/wiki/Three-way_handshake](https://fr.wikipedia.org/wiki/Three-way_handshake)
+* [https://fr.wikipedia.org/wiki/Three-way_handshake](https://fr.wikipedia.org/wiki/Three-way_handshake)
+
+* Numérique et Sciences Informatique Tle : 24 leçons avec exercices corrigés, Balabonski, Conchon, Filliâtre, Nguyen, éditions Ellipses
+
+* [Wikipedia](www.wikipedia.org){target="_blank"}, pour une très grande partie des informations ci-dessus.
