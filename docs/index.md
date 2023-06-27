@@ -1,11 +1,13 @@
-# Maths/SNT/NSI dans un petit Breton
+# Maths/SNT/NSI dans un petit Lycée Breton
 
 
-
+<div id="parent_canvas">
 <canvas id = "canvas" width = "500" height = "300">
+
 </canvas>
 <script src ="canvas.js">
 </script>
+</div>
 
 | Langages | Logiciels | Tutoriels |  |
 | --- | --- | --- | --- |
