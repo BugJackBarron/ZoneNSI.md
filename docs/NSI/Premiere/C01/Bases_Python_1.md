@@ -1,4 +1,4 @@
-# Débuter avec  ![logo Python](https://www.python.org/static/img/python-logo.png)
+# Débuter avec ![logo Python](https://www.python.org/static/img/python-logo.png)
 
 
 ## Types de base 
@@ -48,16 +48,16 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 		
 	{{ terminal() }}
 
-Par exemple, dans le code suivant:
+Par exemple, dans le code suivant :
 
 
 {{ IDE('Code1') }}
 
 Lorsqu'on **exécute** ce code, on crée 4 objets différents, présents dans ce qu'on appelle l'==**espace des objets**==. 
 
-Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans tous les langages de programmation, appelé **garbage collector** ( soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement ( plusieurs centaines de fois par seconde) cette mémoire afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `5`, `"Toto"`, `True` et `4.5`.
+Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans presque tous les langages de programmation, appelé **garbage collector** (soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement (plusieurs centaines de fois par seconde), afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `5`, `"Toto"`, `True` et `4.5`.
 
-Regardons plus précisément ces objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets crées.
+Regardons plus précisément ces objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets créés.
 
 !!! question "Les types d'objets"
 	
