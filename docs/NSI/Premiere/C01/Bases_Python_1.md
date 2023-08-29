@@ -44,7 +44,7 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 		
 	=== "Une astuce"
 	
-		Dans un terminal, la seule ligne active est celle du **prompt**, c'est-à-dire celle marquée par les chevrons `>>>`. On ne peut pas ré-exécuter une ligne déjà tapée. Cependant, il est possible de récupérer une ligne déjà tapée, en utilisant l'historique de commande, en utilisant les flèches de direction ++arrow-up++ et ++arrow-down++
+		Dans un terminal, la seule ligne active est celle du **prompt**, c'est-à-dire la dernière marquée par les chevrons `>>>`. *On ne peut pas ré-exécuter une ligne déjà tapée*. Cependant, il est possible de récupérer une telle ligne, grâce à l'**historique de commande** obtenu en utilisant les flèches de direction ++arrow-up++ et ++arrow-down++
 		
 	{{ terminal() }}
 
