@@ -3745,16 +3745,16 @@
 
 <div><h1 id="modules-interfaces-et-encapsulation">Modules, Interfaces et Encapsulation</h1>
 <h2 id="retour-sur-les-modules">Retour sur les modules</h2>
-<p>Un module python est un fichier python contenant des fonctions, des constantes (et des constructeurs d'<strong>objets</strong>, mais nous verrons ça un peu plus tard), regroupées dans ce fichier car elles traitent de la même <strong>structure de données</strong>.</p>
+<p>Un module python est un fichier python contenant des fonctions, des constantes (et des constructeurs d'<strong>objets</strong>, mais nous verrons ça un peu plus tard) regroupées dans ce fichier, car elles traitent de la même <strong>structure de données</strong>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Un exemple</p>
-<p>Par exemple, dans un jeu vidéo tel que <em>Space Invaders</em>, on aura :</p>
+<p>Par exemple, dans un logiciel de géométrie dynamique tel que GeoGebra, on pourrait avoir :</p>
 <ul>
-<li>un module qui traitera du vaisseau du joueur ;</li>
-<li>un module pour construire et gérer les vaisseaux ennemis ;</li>
-<li>un ou des modules pour construire et actualiser l'interface graphique ;</li>
-<li>un module contenant des constantes (points de vie de départ du joueur, nombre d'ennemis, etc) ;</li>
-<li>et le programme principal qui <strong>importera</strong> les modules précédents et gérera les événements liant tous les objets du jeu. On dira que ce programme <strong>dépend</strong> des autres modules.</li>
+<li>un module qui s'occupera exclusivement de la partie graphique, c'est-à-dire du tracé des formes ;</li>
+<li>un module qui s'occupera des interactions avec l'utilisateurs - ce qu'on appelle la <mark class="critic"><strong>GUI</strong></mark> (<em>Graphic User Interface</em>) ;</li>
+<li>un ou des modules pour calculer les intersections entre des formes géométriques ;</li>
+<li>bien d'autres possibilités...</li>
+<li>et le programme principal qui lui <strong>importera</strong> les modules précédents et gèrera les évènements liant tous les objets mathématiques et les évènements de l'utilisateurs. On dira que ce programme <mark class="critic"><strong>dépend</strong></mark> des autres modules.</li>
 </ul>
 </div>
 <div class="admonition example">
@@ -3772,7 +3772,7 @@
 <span class="n">toto</span><span class="o">.</span><span class="n">bidule</span><span class="p">()</span>
 <span class="n">toto</span><span class="o">.</span><span class="n">truc</span><span class="p">()</span>
 </code></pre></div>
-Toutes les fonctions du module <code>toto</code> sont importées, et elles le sont dans un <strong>namespace</strong> (=<strong>espace de nommage") spécifique. Les fonctions sont alors appelées en les </strong>préfixant** par le nom du module ( <code>toto.</code>).
+Toutes les fonctions du module <code>toto</code> sont importées, et elles le sont dans un <strong>namespace</strong> (<strong>espace de nommage</strong>) spécifique. Les fonctions sont alors appelées en les <strong>préfixant</strong> par le nom du module (<code>toto.</code>).
 </div>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">toto</span> <span class="k">as</span> <span class="nn">to</span>
@@ -3780,14 +3780,14 @@ Toutes les fonctions du module <code>toto</code> sont importées, et elles le so
 <span class="n">to</span><span class="o">.</span><span class="n">bidule</span><span class="p">()</span>
 <span class="n">to</span><span class="o">.</span><span class="n">truc</span><span class="p">()</span>
 </code></pre></div>
-Comme pour l'import complet, toutes les fonctions du module <code>toto</code> sont importées, et elles le sont dans un <strong>namespace</strong> (=<strong>espace de nommage") spécifique. Les fonctions sont alors appelées en les </strong>préfixant<strong> par </strong>l'alias** du module ( <code>to1.</code>).
+Comme pour l'import complet, toutes les fonctions du module <code>toto</code> sont importées, et elles le sont dans un <strong>namespace</strong> (<strong>espace de nommage</strong>) spécifique. Les fonctions sont alors appelées en les <strong>préfixant</strong> par <strong>l'alias</strong> du module ( <code>to1.</code>).
 </div>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">toto</span> <span class="kn">import</span> <span class="n">bidule</span>
 
 <span class="n">bidule</span><span class="p">()</span>
 </code></pre></div>
-Ici, seul la fonction <code>bidule()</code> est importée, mais elle l'est <strong>directement dans le namespace principal</strong> (=<strong>main</strong>) du fichier effectuant l'import.
+Ici, seul la fonction <code>bidule()</code> est importée, mais elle l'est <strong>directement dans le namespace principal</strong> (autrement dit <strong>main</strong>) du fichier effectuant l'import.
 La fonction <code>truc()</code> n'est pas appelable (elle n'existe pas pour l'interpréteur).
 </div>
 <div class="tabbed-block">
@@ -3796,8 +3796,8 @@ La fonction <code>truc()</code> n'est pas appelable (elle n'existe pas pour l'in
 <span class="n">bidule</span><span class="p">()</span>
 <span class="n">truc</span><span class="p">()</span>
 </code></pre></div>
-Toutes les fonctions sont appelées <strong>directement dans l'espace de nom principal</strong> (=<strong>namespace de main</strong>) du fichier effectuant l'import. 
-<p>⚠️ C'est une pratique périlleuse ! Si une fonction du module porte le même nom qu'une fonction du fichier appelant, celle importée écrasera celle du fichiert courant, et ça peut-être facheux... Voir l'exemple ci-dessous...</p>
+Toutes les fonctions sont appelées <strong>directement dans l'espace de nom principal</strong> (soit le <strong>namespace de main</strong>) du fichier effectuant l'import. 
+<p>⚠️ C'est une pratique périlleuse ! Si une fonction du module porte le même nom qu'une fonction du fichier appelant, celle importée écrasera celle du fichier courant. C'est parfois utile lorsqu'on veut modifier le comportement d'une fonction(voir l'exemple ci-dessous), mais attention on peut alors rencontrer des erreurs majeures !</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Fichier principal</label><label for="__tabbed_2_2">Fichier mon_module.py</label><label for="__tabbed_2_3">Sortie attendue</label><label for="__tabbed_2_4">Sortie réelle</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3831,18 +3831,18 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.
 <p>Il est toutefois possible d'importer un fichier présent dans un autre dossier :</p>
 <ul>
 <li>soit en utilisant une adresse absolue <code>import 'C:\Mes_Programmes\Python\toto.py'</code> ;</li>
-<li>soit en utilisant une adresse relatice <code>import '..\toto.py'</code> ( si <code>toto.py</code> est situé dans le dossier parent du fichier qui importe).</li>
+<li>soit en utilisant une adresse relative <code>import '..\toto.py'</code> ( si <code>toto.py</code> est situé dans le dossier parent du fichier qui importe).</li>
 </ul>
 </div>
 <h2 id="interfaces">Interfaces</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Conception logicielle</p>
-<p>Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel),  il est important de pouvoir séparer les différents éléments du programme en <mark><strong>sous-ensembles cohérents et ayant le minimum d'interactions entre eux</strong></mark>. En particuliers ils se doivent d'être le plus <em>étanches</em> possibles quant à leur fonctionnement. On retrouve ici que la notion d'<mark class="critic"><strong>interface</strong></mark> est essentielle.</p>
+<p>Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel), il est important de pouvoir séparer les différents éléments du programme en <mark><strong>sous-ensembles cohérents et ayant le minimum d'interactions entre eux</strong></mark>. En particulier, ils se doivent d'être le plus <strong>étanches</strong> possibles quant à leur fonctionnement - c'est-à-dire les plus indépendants possible. On retrouve ici que la notion d'<mark class="critic"><strong>interface</strong></mark> est essentielle.</p>
 </div>
 <p>Pour chaque module, on peut donc distinguer :</p>
 <ul>
 <li>une <mark class="critic"><strong>interface</strong></mark>, c'est-à-dire la description des différentes fonctions du module et de leurs arguments (obligatoires ou facultatifs). Il s'agit donc d'une <em>documentation</em> la plus claire possible sur la manière d'<em>utiliser</em> le module.</li>
-<li>une <mark class="critic"><strong>implémentation</strong></mark>, c'est-à-dire la manière dont sont codées ces fonctions (choix de structures, nom des variables intermédiaires, etc...).</li>
+<li>une <mark class="critic"><strong>implémentation</strong></mark>, c'est-à-dire la manière dont sont codées ces fonctions (choix de structures, nom des variables intermédiaires, etc).</li>
 </ul>
 <div class="admonition abstract">
 <p class="admonition-title">Un exemple d'interface</p>
@@ -3873,7 +3873,7 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice : réalisation de modules</p>
-<p>Dans chacun des cas suivant, construire un module réalisant l'interface ci-dessus, et le tester en l'important dans le fichier <code>rechercheDates.py</code> où vous aurez modifier la fonction <code>contient_doublon(t)</code> par la version factorisée de celle-ci.</p>
+<p>Dans chacun des cas suivants, construire un module réalisant l'interface ci-dessus, et le tester en l'important dans le fichier <code>rechercheDates.py</code> où vous aurez modifié la fonction <code>contient_doublon(t)</code> par la version factorisée de celle-ci.</p>
 <ol>
 <li>un module <code>dateTab</code>, dont la structure est implémentée sous la forme d'un tableau.</li>
 <li>un module <code>dateBool</code>, dont la structure est implémentée sous la forme d'un tableau de booléen.</li>
@@ -3884,22 +3884,14 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.
 <h2 id="notions-dencapsulation">Notions d'encapsulation</h2>
 <div class="admonition tip">
 <p class="admonition-title">Notion d'encapsulation</p>
-<p>Le contrat qu'une <strong>interface</strong> établit entre l'utilisateur·trice et l'auteur·trice d'un module
- ne porte pas sur les moyens, mais <strong>sur les résultats</strong> : l'auteur·trice s'engage
- à ce que les résultats produits par l'utilisation de ses fonctions 
- soient bien ceux décrits dans l'interface, mais il ou elle est libre de s'y prendre comme 
- il ou elle le souhaite.</p>
-<p>En particulier il ou elle est libre d'introduire des fonctions, variables, constantes, ..., 
- qui <strong>ne sont pas incluses dans l'interface</strong>. On parle alors de fonctions, variables, constantes
- <mark class="critic"><strong>encapsulées</strong></mark> dans le module.</p>
-<p>Le contrat explicite est que l'utilisateur·trice <mark class="critic"><strong> ne doit en aucun cas</strong></mark> utiliser
- ces données encapsulées. Dans le cas contraire, si l'auteur·trice du module
- change son approche et modifie ces données internes, le programme du ou de la  client·e risque
- de devenir non fonctionnel.</p>
+<p>Le contrat qu'une <strong>interface</strong> établit entre l'utilisateur·trice et l'auteur·trice d'un module ne porte pas sur les moyens, mais <strong>sur les résultats</strong> : l'auteur·trice s'engage à ce que les résultats produits par l'utilisation de ses fonctions soient bien ceux décrits dans l'interface, mais il ou elle est libre de s'y prendre comme il ou elle le souhaite.</p>
+<p>En particulier il ou elle est libre d'introduire des fonctions, variables, constantes, ..., qui <strong>ne sont pas incluses dans l'interface</strong>. On parle alors de fonctions, variables, constantes
+<mark class="critic"><strong>encapsulées</strong></mark> dans le module.</p>
+<p>Le contrat explicite est que l'utilisateur·trice <mark class="critic"><strong> ne doit en aucun cas</strong></mark> utiliser ces données encapsulées. Dans le cas contraire, si l'auteur·trice du module change son approche et modifie ces données internes, le programme du ou de la  client·e risque de devenir non fonctionnel.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Norme en Python</p>
-<p>En Python, l'auteur·trice d'un module peut indiquer que certains éléments sont <mark class="critic"><strong>privés</strong></mark> (c'est-à-dire encapsulés) en faisant commencer leur nom par un caractère <em>underscore</em> <code>_</code>.</p>
+<p>En Python, l'auteur·trice d'un module peut indiquer que certains éléments sont <mark class="critic"><strong>privés</strong></mark> (c'est-à-dire encapsulées) en faisant commencer leur nom par un caractère <em>underscore</em> <code>_</code>.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -3941,8 +3933,10 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.
     <span class="k">return</span> <span class="n">t</span>
 
 <span class="k">def</span> <span class="nf">_discriminant</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="k">if</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span> <span class="nf">_nombreRacines</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
     <span class="o">...</span>
@@ -3966,12 +3960,8 @@ La véritable fonction appelée est celle du module <code>mon_module.py</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<p>Créer un module <code>secondDegre.py</code> contenant a minima la totalité des fonctions précédentes, et implémenter toutes ces fonctions.</p>
+<p>Créer un module <code>secondDegre.py</code> contenant a minima la totalité des fonctions précédentes et implémenter toutes ces fonctions.</p>
 </div>
-<details class="done">
-<summary>Une solution possible</summary>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb" class="comment">###</span><div class="interior_wrapper"><div id="editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb"></div></div><div id="term_editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb","secondDegre_v1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb" class="hide">from math import sqrtbksl-nl    bksl-nldef polynome(t) :bksl-nl    a,b,c = tbksl-nl    if a == 0 :bksl-nl        return Nonebksl-nl    return tbksl-nl    bksl-nldef py-unddiscriminant(p) :bksl-nl    a,b,c = polynome(p)bksl-nl    return bpy-strpy-str2 - 4py-strapy-strcbksl-nl        bksl-nldef py-undnombreRacines(p) :bksl-nl    delta = py-unddiscriminant(p)bksl-nl    if delta&lt;0 :bksl-nl        return 0bksl-nl    elif delta == 0 :bksl-nl        return 1bksl-nl    else :bksl-nl        return 2bksl-nl    bksl-nldef valeursracines(p) :bksl-nl    a,b,c = polynome(p)bksl-nl    n = py-undnombreRacines(p)bksl-nl    if n == 0 :bksl-nl        return Nonebksl-nl    elif n == 1 :bksl-nl        return -b/(2py-stra)bksl-nl    else :bksl-nl        delta = py-unddiscriminant(p)bksl-nl        return ((-b-sqrt(delta)/(2py-stra)), (-b+sqrt(delta)/(2py-stra)))bksl-nlbksl-nl    bksl-nldef convexite(p) :bksl-nl    a,b,c = polynome(p)bksl-nl    if a &gt;0 :bksl-nl        return 'convexe'bksl-nl    return 'concave'bksl-nl    bksl-nldef py-undcalcule(p,x) :bksl-nl    a,b,c = polynome(p)bksl-nl    return apy-strxpy-strpy-str2 + bpy-strx + cbksl-nlbksl-nldef py-undnombreDerive(p, x0) :bksl-nl    a,b,c = polynome(p)bksl-nl    return 2py-strapy-strx0+bbksl-nl    bksl-nldef tangente(p, x0) :bksl-nl    a,b,c = polynome(p)bksl-nl    return f'y = {py-undnombreDerive(p,x0)}(x - {x0}) + {py-undcalcule(p, x0)}'bksl-nlbksl-nl</span><span id="corr_content_editor_24d647c2b0cbfc3bf7838b2d6a3ad5a95bca3dbb" class="hide" data-strudel=""></span>
-</details>
 <div class="admonition note">
 <p class="admonition-title">Encapsulation dans d'autres langages</p>
 <p>Il faut noter que la notion de fonction ou variable privée en <code>Python</code> n'est qu'une convention. <strong>Rien n'empêche réellement l'utilisateur·trice du module d'utiliser ces fonctions privées</strong>.</p>

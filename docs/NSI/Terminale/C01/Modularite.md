@@ -12,7 +12,7 @@ Un module python est un fichier python contenant des fonctions, des constantes (
 	* un module qui s'occupera des interactions avec l'utilisateurs - ce qu'on appelle la {==**GUI**==} (*Graphic User Interface*) ;
 	* un ou des modules pour calculer les intersections entre des formes géométriques ;
 	* bien d'autres possibilités...
-	* et le programme principal qui lui **importera** les modules précédents et gèrera les évènements liant tous les objets du jeu. On dira que ce programme {==**dépend**==} des autres modules.
+	* et le programme principal qui lui **importera** les modules précédents et gèrera les évènements liant tous les objets mathématiques et les évènements de l'utilisateurs. On dira que ce programme {==**dépend**==} des autres modules.
 
 !!! example "Importer un module"
 	Il existe plusieurs possibilités pour importer un module. Dans la suite des exemples, le module `toto`, contenant les fonctions `bidule()` et `truc()` est situé :
@@ -91,7 +91,7 @@ Un module python est un fichier python contenant des fonctions, des constantes (
 ## Interfaces
 
 !!! abstract "Conception logicielle"
-	Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel), il est important de pouvoir séparer les différents éléments du programme en ==**sous-ensembles cohérents et ayant le minimum d'interactions entre eux**==. En particulier, ils se doivent d'être le plus **étanches** possibles quant à leur fonctionnement. On retrouve ici que la notion d'{==**interface**==} est essentielle.
+	Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel), il est important de pouvoir séparer les différents éléments du programme en ==**sous-ensembles cohérents et ayant le minimum d'interactions entre eux**==. En particulier, ils se doivent d'être le plus **étanches** possibles quant à leur fonctionnement - c'est-à-dire les plus indépendants possible. On retrouve ici que la notion d'{==**interface**==} est essentielle.
 	
 Pour chaque module, on peut donc distinguer :
 
@@ -112,7 +112,7 @@ Pour chaque module, on peut donc distinguer :
 	
 
 !!! question "Exercice : réalisation de modules"
-	Dans chacun des cas suivant, construire un module réalisant l'interface ci-dessus, et le tester en l'important dans le fichier `rechercheDates.py` où vous aurez modifier la fonction `contient_doublon(t)` par la version factorisée de celle-ci.
+	Dans chacun des cas suivants, construire un module réalisant l'interface ci-dessus, et le tester en l'important dans le fichier `rechercheDates.py` où vous aurez modifié la fonction `contient_doublon(t)` par la version factorisée de celle-ci.
 	
 	1. un module `dateTab`, dont la structure est implémentée sous la forme d'un tableau.
 	2. un module `dateBool`, dont la structure est implémentée sous la forme d'un tableau de booléen.
@@ -123,14 +123,13 @@ Pour chaque module, on peut donc distinguer :
 ## Notions d'encapsulation
 	
 !!! tip "Notion d'encapsulation"
-	Le contrat qu'une **interface** établit entre l'utilisateur·trice et l'auteur·trice d'un module
-	 ne porte pas sur les moyens, mais **sur les résultats** : l'auteur·trice s'engage à ce que les résultats produits par l'utilisation de ses fonctions soient bien ceux décrits dans l'interface, mais il ou elle est libre de s'y prendre comme 
-	 il ou elle le souhaite.
-	 
-	 En particulier il ou elle est libre d'introduire des fonctions, variables, constantes, ..., qui **ne sont pas incluses dans l'interface**. On parle alors de fonctions, variables, constantes
-	 {==**encapsulées**==} dans le module.
-	 
-	 Le contrat explicite est que l'utilisateur·trice {==** ne doit en aucun cas**==} utiliser ces données encapsulées. Dans le cas contraire, si l'auteur·trice du module change son approche et modifie ces données internes, le programme du ou de la  client·e risque de devenir non fonctionnel.
+	Le contrat qu'une **interface** établit entre l'utilisateur·trice et l'auteur·trice d'un module ne porte pas sur les moyens, mais **sur les résultats** : l'auteur·trice s'engage à ce que les résultats produits par l'utilisation de ses fonctions soient bien ceux décrits dans l'interface, mais il ou elle est libre de s'y prendre comme il ou elle le souhaite.
+	
+	En particulier il ou elle est libre d'introduire des fonctions, variables, constantes, ..., qui **ne sont pas incluses dans l'interface**. On parle alors de fonctions, variables, constantes
+	{==**encapsulées**==} dans le module.
+
+
+	Le contrat explicite est que l'utilisateur·trice {==** ne doit en aucun cas**==} utiliser ces données encapsulées. Dans le cas contraire, si l'auteur·trice du module change son approche et modifie ces données internes, le programme du ou de la  client·e risque de devenir non fonctionnel.
 	 
 !!! tip "Norme en Python"
 	En Python, l'auteur·trice d'un module peut indiquer que certains éléments sont {==**privés**==} (c'est-à-dire encapsulées) en faisant commencer leur nom par un caractère *underscore* `_`.
@@ -140,8 +139,8 @@ Pour chaque module, on peut donc distinguer :
 	
 	| fonction | Description |
 	| :--- | :--- |
-	| `polynome(t:tuple)-> tuple|None` | Vérifie que le tuple `t`  sous la forme `(a,b,c)` représente bien un polynôme de degré 2, et renvoie `t` dans ce cas, et `None` sinon |
-	| `valeursRacines(p:tuple) -> tuple|None` | Renvoie les valeurs des racines, et `None` si il n'existe pas de racines réelles |
+	| `polynome(t)` | Vérifie que le tuple `t`  sous la forme `(a,b,c)` représente bien un polynôme de degré 2, et renvoie `t` dans ce cas, et `None` sinon |
+	| `valeursRacines(p)` | Renvoie les valeurs des racines, et `None` si il n'existe pas de racines réelles |
 	| `convexite(p)` | Renvoie la convexité de la courbe représentative du polynôme sous la forme d'une chaîne de caractère en minuscule|
 	| `tangente(p,x0)` | Renvoie l'équation de la tangente à la courbe du polynôme `p` en `x0` |
 
@@ -161,8 +160,10 @@ Pour chaque module, on peut donc distinguer :
 		return t
 		
 	def _discriminant(p) :
-		a,b,c = polynome(p)
-		return b**2 - 4*a*c
+		if polynome(p) is not None :
+			a,b,c = polynome(p)
+			return b**2 - 4*a*c
+		return None
 			
 	def _nombreRacines(p) :
 		...
@@ -188,15 +189,11 @@ Pour chaque module, on peut donc distinguer :
 	Dans ce module, les fonctions préfixées par `_` sont considérées comme privées, et ne faisant pas partie de l'interface.
 
 !!! question "Exercice"
-	Créer un module `secondDegre.py` contenant a minima la totalité des fonctions précédentes, et implémenter toutes ces fonctions.
+	Créer un module `secondDegre.py` contenant a minima la totalité des fonctions précédentes et implémenter toutes ces fonctions.
 	
-??? done "Une solution possible"
-
-	{{ IDEv('secondDegre_v1') }}
 	
 !!! note "Encapsulation dans d'autres langages"
 	Il faut noter que la notion de fonction ou variable privée en `Python` n'est qu'une convention. **Rien n'empêche réellement l'utilisateur·trice du module d'utiliser ces fonctions privées**.
 	
 	C'est loin d'être le cas dans d'autres langages (comme `C++` ou `Java`), qui introduisent un contrôle strict de l'encapsulation en rendant l'accès aux éléments privés impossible.
-	
 	
