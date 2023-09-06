@@ -71,7 +71,16 @@ Il est souvent nécessaire de vérifier que plusieurs conditions soient vérifi�
 
 Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique booléenne et les opérateurs `NON`, `ET` et `OU`:
 
-* `NON` opérateur qui renvoie Vrai si la condition passée est fausse, et réciproquement
+* `NON` opérateur qui renvoie ``Vrai`` si la condition passée est `Faux`, et réciproquement. En python on utilise l'opérateur `not` :
+
+    ```` python
+    >>> 2*5 < 50
+    True
+    >>> not(2*5 < 50)
+    False
+    ````
+
+
 
 * `ET` qui renverra `Vrai` si les deux conditions sont simultanément `Vrai`, comme présenté dans la ==**table de vérité**== ci-dessous :
 
@@ -110,7 +119,7 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique bo
 
 !!! question "Conditions sur les nombres entiers"
 
-    === "Enoncé"
+    === "Énoncé"
         On considère un objet de type `int` dont le nom est `nb`. Que faut-il écrire pour :
 
         1. Savoir si le nombre ``nb`` est un nombre pair et strictement supérieur à 50 ?
@@ -118,12 +127,12 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique bo
         3. Savoir si le nombre `nb` appartient à l'intervalle $[-13 ; 25]$  ?
         4. Savoir si le nombre `nb` n'appartient pas à l'intervalle $[-13 ; 25]$  ?
 
-    === "SOlution"
+    === "Solution"
 
         1. `nb%2 == 0 and nb > 50`
         2. `nb%2 == 0 or nb%3 == 0`
-        3. `nb >= -13 and nb <= 25`
-        4. `nb<-13 or nb >25`
+        3. `nb >= -13 and nb <= 25` (et en python, on a aussi ``13<= nb <= 25``)
+        4. `nb<13 or nb >25` ou `not(nb >= -13 and nb <= 25)` ou en python  `not(13<= nb <= 25)`
 
         Vous pouvez tester les conditions ci-dessus en exécutant le code suivant, qui crée un objet `int` aléatoire entre -20 et 70, puis en vérifiant en affichant la valeur de `nb`
 
