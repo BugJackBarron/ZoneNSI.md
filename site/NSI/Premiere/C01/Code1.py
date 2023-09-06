@@ -1,4 +1,4 @@
-5
-"Toto"
-True
-4.5 # Attention, il s'agit de la notation americaine, donc pas de virgule mais un point...
+7+5
+4.2+4.6
+453*12
+12-5

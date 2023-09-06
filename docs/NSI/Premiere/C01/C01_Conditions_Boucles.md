@@ -67,9 +67,11 @@ Ces opérateurs renvoient une valeur de type **booléen** ( donc `True` ou `Fals
 
 ### Opérations logiques
 
-Il est souvent nécesaire de vérifier que plusieurs conditions soient vérifiées en même temps, ou bien qu'au moins une condition parmis plusieurs soit vérifiée. On utilisera aussi sovent la négation d'une condition.
+Il est souvent nécessaire de vérifier que plusieurs conditions soient vérifiées en même temps, ou bien qu'au moins une condition parmi plusieurs soit vérifiée. On utilisera aussi souvent la négation d'une condition.
 
-Pour combiner ainsi pluseiurs conditions ensembles, on va utiliser la logique booléenne et les opérateurs `ET`, `OU`:
+Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique booléenne et les opérateurs `NON`, `ET` et `OU`:
+
+* `NON` opérateur qui renvoie Vrai si la condition passée est fausse, et réciproquement
 
 * `ET` qui renverra `Vrai` si les deux conditions sont simultanément `Vrai`, comme présenté dans la ==**table de vérité**== ci-dessous :
 
@@ -77,11 +79,33 @@ Pour combiner ainsi pluseiurs conditions ensembles, on va utiliser la logique bo
 
     En python on utilisera l'opérateur `and`.
 
+    ``` python
+    >>> 5<2 and 5<7
+    False
+    >>> 2<5 and 2<7
+    True
+    >>> 2<5 and 2>7
+    False
+    >>> 2>5 and 2>7
+    False
+    ```
+
 * `OU` qui renverra `Vrai` si au moins une des deux conditions est `Vrai`, comme présenté dans la ==**table de vérité**== ci-dessous :
 
     ![table Verite OU](Table_verite_OU.png){: style="width:10%; margin:auto;display:block;background-color: #d2dce0;"}
 
     En python on utilisera l'opérateur `or`.
+
+    ``` python
+    >>> 5<2 or 5<7
+    True
+    >>> 2<5 or 2<7
+    True
+    >>> 2<5 or 2>7
+    True
+    >>> 2>5 or 2>7
+    False
+    ```
 
 
 !!! question "Conditions sur les nombres entiers"

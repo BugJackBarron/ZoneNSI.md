@@ -1,11 +1,12 @@
-# Débuter avec ![logo Python](https://www.python.org/static/img/python-logo.png)
+# Objets, variables et affectation
 
+*Ce cours est accompagné d'un [notebook Capytale](https://capytale2.ac-paris.fr/web/c/ff91-1780296){: target="_blank" } disponible aux élèves disposant d'un compte Toutatice.*
 
 ## Types de base 
 
 ### Objets et types de base
 
-Le principe d'un programme est de manipuler des **données** pour en produire de nouvelles.
+Le principe d'un programme est de manipuler des **données** avec des **instructions** afin de produire de nouvelles données.
 
 En Python, des données sont appelées des **==objets==**, et tout ce qui est manipulable est un objet.
 
@@ -55,7 +56,7 @@ Par exemple, dans le code suivant :
 
 Lorsqu'on **exécute** ce code, on crée 4 objets différents, présents dans ce qu'on appelle l'==**espace des objets**==. 
 
-Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans presque tous les langages de programmation, appelé **garbage collector** (soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement (plusieurs centaines de fois par seconde), afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `5`, `"Toto"`, `True` et `4.5`.
+Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans presque tous les langages de programmation, appelé **garbage collector** (soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement (plusieurs centaines de fois par seconde), afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `12`, `8.8`, `5436` et `7`.
 
 Regardons plus précisément ces objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets créés.
 
@@ -65,7 +66,7 @@ Regardons plus précisément ces objets, en demandant à Python grâce à l'inst
 	
 	=== "Test 1"
 		```` python
-		type("Toto")
+		type("Abracadabra")
 		````
 	=== "Test 2"
 		```` python
@@ -172,9 +173,21 @@ Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par
 		c = a+b
 		a*c
 		a = a*3
+		b = 42
 		````
 		
-		Quel est l'état de la mémoire après exécution du code ci-dessus ?
+		Compléter le tableau d'état des variables suivants en exécutant le programme à la main, puis vérifier dans la console :
+
+		$$
+		\begin{array}{|c|c|c|}
+		\hline
+		a & b & c\\\hline
+		\phantom{BBB} & \phantom{BBB} & \phantom{BBB}\\\hline
+		\phantom{BBB} & \phantom{BBB} & \phantom{BBB}\\\hline
+		\phantom{BBB} & \phantom{BBB} & \phantom{BBB}\\\hline
+		\phantom{BBB} & \phantom{BBB} & \phantom{BBB}\\\hline
+		\end{array}
+		$$
 		
 	=== "Solution"
 	
@@ -210,7 +223,7 @@ Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par
 
 
 
-## Exercices
+### Exercices d'affectation
 
 1. Écrire un code qui affecte l'objet `15` de type `int`  à une variable nommé ``valeur``, puis exécuter l'instruction ``valeur*4``.
 
@@ -227,6 +240,8 @@ Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par
 4. Écrivez un code qui **permute** les objets des variables `a`, `b` et `c` ( l'objet de `a` est affecté à `b`, l'objet de `b` est affecté à `c` et l'objet de `c` est affecté à `a`) **sans utiliser de valeurs numériques**.
 
 	{{ IDEv('P1_Exo4') }}
+
+
 
 ## Opérations sur les objets
 
@@ -257,7 +272,7 @@ Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qu
 
 !!! warning "Attention avec les flottants"
 
-	Testez dans la console ci-dessous l'instruction suivante `0.1 + 0.2 == 0.3`. Qu'obtient-on ?
+	Testez dans la console ci-dessous l'instruction suivante `0.1 + 0.2 `. Qu'obtient-on ?
 
 	{{ terminal() }}
 
@@ -282,7 +297,7 @@ Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qu
 0.3333333333333333
 ```
 
-Attention ! Au résultat ci-dessus, le type obtenu est `float`, même si le dividende et le diviseur sont entiers et que le résultat &laquo; tombe juste &raquo;... 
+Attention ! Au résultat ci-dessous, le type obtenu est `float`, même si le dividende et le diviseur sont entiers et que le résultat &laquo; tombe juste &raquo;... 
 
 ``` python
 >>> 4/2
@@ -337,11 +352,11 @@ Vous pouvez tester ces éléments dans le terminal ci-dessous :
 	
 {{ terminal() }}
 
-### Types `str` (chaînes de caractères) et opérations
+### Types `str` (chaines de caractères) et opérations
 
 #### Déclarations
 
-Une chaîne de caractère doit être décalrée :
+Une chaîne de caractère doit être déclarée :
 
 * soit entre une paire de guillemets simples (*simple quote*) : `'Toto'` ;
 * soit entre une paire de guillemets doubles (*double quote*) : `"Toto"`.
@@ -532,7 +547,7 @@ On utilise ici la ==**méthode**== `replace` sur la chaîne de caractère `"abra
 	>>> texte
 	````
 	
-	Le contenu de la variable `texte` n'a pas été remplacé. Un **nouvel objet de type `str`** a été créé, mais il a été immédiatemment ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
+	Le contenu de la variable `texte` n'a pas été remplacé. Un **nouvel objet de type `str`** a été créé, mais il a été immédiatement ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
 	
 	* la chaîne originale et la chaîne modifiée, il faut donner un nouveau nom et affecter de la manière suivante :
 	
@@ -547,7 +562,7 @@ On utilise ici la ==**méthode**== `replace` sur la chaîne de caractère `"abra
     
 #### Changement de casse
 
-Il existe les méthodes `.lower()` , `.upper()` et `.capitalize()` qui mettent respectivement la chaïne originale en minuscule, en majuscule, et la première lettre en majuscule puis le reste en minuscule.
+Il existe les méthodes `.lower()` , `.upper()` et `.capitalize()` qui mettent respectivement la chaine originale en minuscule, en majuscule, et la première lettre en majuscule puis le reste en minuscule.
 
 ```python
 >>> "Toto".lower() #mise en minuscule, appel encore une fois à une méthode de classe.
@@ -579,6 +594,70 @@ Sépare  une chaîne de caractère en, fonction d'une chaîne passée en argumen
 >>> "12:34:45:78".split(":")
 ['12', '34', '45', '78']
 ```
+### Les objets de type séquence
+
+Il existe dans Python de nombreux autres types d'objets, et plus particulièrement les types `list` et `tuple`, que nous étudierons en détail plus tard dans l'année. Ces objets permettent de regrouper en une seule séquence ordonnée différents objets, et peuvent être alors utilisés simplement avec les possibilités suivantes (non exhaustives):
+
+#### Construction d'une liste ou d'un tuple
+
+Une liste se crée à l'aide des crochets `[` et `]`, avec deux possibilités :
+
+* soit une liste vide :
+	````python
+	>>> ma_liste = []
+
+	````
+* soit une liste contenant déjà des objets :
+	```` python
+	>>> ma_liste = [5, 4.2, True, "Toto"]
+	````
+
+Une liste en python est un objet qu'on peut modifier. On peut y ajouter un élément, en retirer un, en modifier un en particulier, etc.
+
+Un tuple ne peut se crée à l'aide des parenthèses `(` et `)`, mais il doit déjà être rempli, car **il ne peut pas être modifié**(ni ajout, ni suppression, ni modification d'éléments) :
+
+```` python
+>>> mon_tuple = (12, 45, -13, "Bob")
+````
+#### Accès à un élément
+
+Dans une liste ou un tuple, on peut accéder à un objet grâce à son **indice**, tout comme pour les chaines de caractères :
+
+```` python
+>>> ma_liste[3]
+'Toto'
+>>> mon_tuple[2]
+-13
+````
+
+#### Ajouter un élément à une liste à la dernière position
+
+``` python
+>>> ma_liste = [5, 4.2, True, "Toto"]
+>>> ma_liste.append(7)
+>>> ma_liste
+[5, 4.2, True, "Toto", 7]
+
+```
+#### Supprimer le dernier élément
+
+``` python
+>>> ma_liste = [5, 4.2, True, "Toto"]
+>>> ma_liste.pop()
+"Toto" # l'élément est renvoyé dans l'espace des objets courants
+>>> ma_liste
+[5, 4.2, True]
+
+```
+
+#### Modifier un élément d'indice donné :
+``` python
+>>> ma_liste = [5, 4.2, True, "Toto"]
+>>> ma_liste[1] = "Abracadabra"
+>>> ma_liste
+[5, "Abracadabra", True, "Toto"]
+
+```
 
 
 ## Interactions avec l'utilisateur, transtypage des données, notions de formatage des chaînes de caractères
@@ -587,7 +666,13 @@ Sépare  une chaîne de caractère en, fonction d'une chaîne passée en argumen
 
 Jusqu'à présent, les seules choses que nous avons obtenu dans le terminal étaient des affichages simples des objets attachés à un nom connu. Il est possible de personnaliser, de différer, et de multiplier les affichages grâce à la fonction *built_in* `print()'.
 
-Exécutez le code ci-dessous :
+Par exemple, essayez le code suivant :
+
+{{ IDEv('Code4Bis') }}
+
+La fonction `print` prend entre parenthèse un objet, et l'écrit sous la forme d'une chaine de caractères dans la console. Cependant on voit vite qu'en cas de multiples appels à la fonction `print`, on risque vite de se perdre dans les affichages. Il faut améliorer la sortie pour qu'elle soit compréhensible par un être humain.
+
+Exécutez alors le code ci-dessous :
 
 {{ IDEv('Code5') }}
 
@@ -597,7 +682,7 @@ D'une part la fonction `print()` écrit les chaînes de caractères dans la cons
 ```` python
 f"La variable a contient {a}."
 ````
-on a le remplacement du **nom de variable** situé entre accolades par sa valeur.  On appelle cela le formatage des chaînes de caractères, la [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécesaires. 
+on a une chaine de caractère crée en remplacement le **nom** de la variable situé entre accolades par sa **valeur**.  On appelle cela le {==**formatage des chaînes de caractères**==}, la [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécessaires. La sortie écrite par le programme dans la console est devenu bien plus compréhensible.
 
 !!! tips "Les accolades"
 
@@ -617,7 +702,7 @@ Il faut cependant être attentif à ce qui est réalisé par la  fonction `input
 {{ IDEv('Code7') }}
 
 
-Pour lever cette ambiguïté, nous sommes parfois obligés d'effectuer un ==**transtypage des données**==, c'est-à-dire une modification du **type**,  avec l'aide des fonctions **built-in** suivantes :
+Pour lever cette ambigüité, nous sommes parfois obligés d'effectuer un ==**transtypage des données**==, c'est-à-dire une modification du **type**,  avec l'aide des fonctions **built-in** suivantes :
 
 * `str()`
 * `int()`
@@ -638,6 +723,6 @@ Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice
 	Écrire dans l'éditeur ci dessous un code python qui :
 
 	* demande deux nombres entiers `a` et `b` à l'utilisateur·trice ;
-	* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaîne de caractères du type `3x4 = 12. Le résultat est de type int'.                                                                                                                    
+	* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaîne de caractères du type `3x4 = 12` (si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b`).                                                                                                                    
 
 	{{ IDEv() }}
