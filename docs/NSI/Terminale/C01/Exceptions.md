@@ -50,12 +50,12 @@
 		def polynome(t) :
 			if len(t)>3 :
 				raise ValueError("length of tuple argument greater than 3")
-    		a, b, c = t
+    			a, b, c = t
 			if not(isinstance(a,(int, float))
 			) or not(isinstance(b,(int, float))
 			) or not(isinstance(c,(int, float))) :
         			raise TypeError("argument Error : argument must be a tuple integers or float")
-    		if a == 0 :
+    			if a == 0 :
         		raise ValueError("First element of tuple must not be 0")
     		return t
 	```
