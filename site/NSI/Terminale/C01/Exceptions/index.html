@@ -1288,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Premiere/C01/C01_Conditions_Boucles/" class="md-nav__link">
+      <a href="../../../Premiere/C01/Conditions_Boucles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2332,6 +2332,13 @@
         <li class="md-nav__item">
   <a href="#intercepter-des-exceptions" class="md-nav__link">
     Intercepter des exceptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-assertions" class="md-nav__link">
+    Les assertions
   </a>
   
 </li>
@@ -3755,25 +3762,22 @@
 <h2 id="un-exemple-derreur-a-ne-pas-commettre">Un exemple d'erreur à ne pas commettre</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Utilisation malheureuse d'un module</p>
-<p>Reprenons le module <code>secondDegre.py</code>, mais en temps qu'utilisateur·trice. Nous
-connaissons l'interface qui nous a été fournie par l'auteur·trice. Pour tester le module
-nous lançons le script suivant, nommé <code>testModule.py</code>, et situé dans le même dossier que <code>secondDegre.py</code> :</p>
+<p>Reprenons le module <code>secondDegre.py</code> de la partie précédente, mais cette fois ci en temps qu'utilisateur·trice. Nous
+connaissons l'interface qui nous a été fournie par l'auteur·trice. Pour tester le module nous lançons le script suivant, nommé <code>testModule.py</code>, et situé dans le même dossier que <code>secondDegre.py</code> :</p>
 <div class="highlight"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">secondDegre</span> <span class="k">as</span> <span class="nn">sD</span>
 
     <span class="n">p</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Donnez les coefficients du polynome séparés par des virgules :"</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)))</span>
 
     <span class="n">p</span> <span class="o">=</span> <span class="n">sD</span><span class="o">.</span><span class="n">polynome</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sD</span><span class="o">.</span><span class="n">tangente</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9" class="comment">###</span><div class="interior_wrapper"><div id="editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9"></div></div><div id="term_editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9","testModule")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("5fe2c04f7256c4631072bec8b723c55aa386bcf9")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("5fe2c04f7256c4631072bec8b723c55aa386bcf9")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9" class="hide">import secondDegrepy-undv1 as sDbksl-nlbksl-nlp = input("Donnez les coefficients du polynome sÃ©parÃ©s par des virgules :")bksl-nlbksl-nlp = tuple(map(float, p.split(",")))bksl-nlbksl-nlp = sD.polynome(p)bksl-nlbksl-nlprint(sD.tangente(p,3))bksl-nlbksl-nl</span><span id="corr_content_editor_5fe2c04f7256c4631072bec8b723c55aa386bcf9" class="hide" data-strudel=""></span>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Un problème ?</p>
 <p>Copiez-collez le code ci-dessus dans un fichier <code>testModule.py</code>, puis exécutez-le en saisissant :</p>
 <ol>
 <li><code>3,4,5</code> ;</li>
-<li><code>"trois",4,5</code></li>
 <li><code>3,4,5,6</code> </li>
 <li><code>0,3,4</code></li>
 </ol>
@@ -3781,7 +3785,7 @@ nous lançons le script suivant, nommé <code>testModule.py</code>, et situé da
 </div>
 <details class="done">
 <summary>Solution</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1"><code>3,4,5</code></label><label for="__tabbed_1_2"><code>"trois",4,5</code></label><label for="__tabbed_1_3"><code>3,4,5,6</code></label><label for="__tabbed_1_4"><code>0,3,4</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1"><code>3,4,5</code></label><label for="__tabbed_1_2"><code>3,4,5,6</code></label><label for="__tabbed_1_3"><code>0,3,4</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>La sortie est :</p>
@@ -3790,39 +3794,34 @@ nous lançons le script suivant, nommé <code>testModule.py</code>, et situé da
 <p>qui est correcte.</p>
 </div>
 <div class="tabbed-block">
-<p>La sortie renvoie une erreur de type <code>ValueError</code>, mais c'est celle levée dans le premier <code>if</code>, car un élément du tuple n'est pas du bon type.</p>
+<p>La sortie renvoie une erreur de type <code>ValueError</code>, qui d'après la pile d'erreur est relevée dans la fonction <code>polynome</code>, et qui est assez explicite : <code>ValueError: too many values to unpack (expected 3)</code>. On constate que le programme attend 3 valeurs en entrée, et qu'il en a reçu trop.</p>
 </div>
 <div class="tabbed-block">
-<p>La sortie renvoie une erreur de type <code>ValueError</code>, mais c'est celle levée dans le premier <code>if</code>, car le tuple donné n'est pas de la bonne taille.</p>
-</div>
-<div class="tabbed-block">
-<p>La sortie renvoie une erreur de type <code>ValueError</code>, mais c'est celle levée dans le deuxième <code>if</code>, car le tuple donné ne correspond pas à un polynôme de degré 2.</p>
+<p>La sortie renvoie une erreur de type <code>TypeError</code>, causée dans la fonction <code>polynome</code>, mais qui là est plus sibylline : <code>TypeError: cannot unpack non-iterable NoneType object</code>. Nous allons devoir passer un certain temps à debugger, afin de comprendre ce qui s'est passé...</p>
 </div>
 </div>
 </div>
 </details>
 <div class="admonition tips">
 <p class="admonition-title">Lever les bonnes erreurs</p>
-<p>Dans l'exemple précédent, les trois erreurs, pourtant très différentes, <strong>sont signalées
- par le même message. L'utilisateur·trice, qui lui ne connaît pas l'implémentation,
-  </strong>ne peut donc pas savoir d'où provient son erreur** (ce qui peut donner des séances de débuggage particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur·trice, pour qu'il ou elle n'ait pas à ses préoccuper des détails d'implémentation.</p>
-<p>Il est par exemple possible de <mark class="critic"><strong>rajouter un message</strong></mark> lorsque l'erreur est levée, 
-en la passant en paramètre directement dans l'instruction <code>ValueError()</code> :
+<p>Dans l'exemple précédent, les deux erreurs, très différentes, <strong>sont signalées par leur type</strong>, accompagné d'un message plus ou moins clair. L'utilisateur·trice, qui ne connait pas l'implémentation,
+  <strong>ne peut parfois pas savoir d'où provient son erreur</strong> (ce qui peut donner des séances de débuggage particulièrement frustrantes). Il est donc nécessaire de préciser mieux les erreurs commises par l'utilisateur·trice, pour qu'il ou elle n'ait pas à ses préoccuper des détails d'implémentation.</p>
+<p>Il est par exemple possible de <mark class="critic"><strong>rajouter un message</strong></mark> lorsque l'erreur est levée, en la passant en paramètre directement dans l'instruction <code>ValueError()</code> ou <code>TypeError()</code>. On peut en outre améliorer le code en s'assurant que les éléments du tuple <code>t</code> sont bien <code>int</code> ou <code>float</code> :
 </p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">polynome</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
-            <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3</span> <span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"length of tuple argument greater than 3"</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
         <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
         <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-        <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"argment Error : argument must be a tuple integers or float"</span><span class="p">)</span>
+        <span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"argument Error : argument must be a tuple integers or float"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"First element of tuple must not be 0"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">t</span>
 </code></pre></div>
 </div>
 <h2 id="tyes-dexceptions">Tyes d'exceptions</h2>
-<p>Voici quelques exceptions courantes, et leurs utilisations</p>
+<p>Voici quelques exceptions courantes ainsi que leurs utilisations</p>
 <table>
 <thead>
 <tr>
@@ -3849,7 +3848,7 @@ en la passant en paramètre directement dans l'instruction <code>ValueError()</c
 </tr>
 <tr>
 <td style="text-align: center;"><code>TypeError</code></td>
-<td style="text-align: left;">opération appliquées à un ou des objets incompatibles</td>
+<td style="text-align: left;">opération appliquée à un ou des objets incompatibles</td>
 </tr>
 </tbody>
 </table>
@@ -3870,20 +3869,18 @@ en la passant en paramètre directement dans l'instruction <code>ValueError()</c
 <div class="tabbed-block">
 <p>Que se passe-t-il lorsqu'on utilise la fonction <code>polynome</code> avec un tuple de 1 ou 2 éléments ?</p>
 <p>Dans le cas d'un seul élément, l'erreur ressortie est :</p>
-<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
 <span class="ne">TypeError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">unpack</span> <span class="n">non</span><span class="o">-</span><span class="n">iterable</span> <span class="nb">int</span> <span class="nb">object</span>
 </code></pre></div>
 <p>Dans le cas de deux éléments, l'erreur levée est  :</p>
-<div class="highlight"><pre><span></span><code><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span> <span class="p">:</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="nb">isinstance</span> <span class="n">expected</span> <span class="mi">2</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">t</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="ow">not</span> <span class="n">enough</span> <span class="n">values</span> <span class="n">to</span> <span class="n">unpack</span> <span class="p">(</span><span class="n">expected</span> <span class="mi">3</span><span class="p">,</span> <span class="n">got</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
-<p>Dans les deux cas, on voit apparaître les détails d'implémentation du code de la fonction, 
-qui sont peu clairs en particulier pour le cas n°2.</p>
+<p>Dans les deux cas, on voit apparaitre les détails d'implémentation du code de la fonction, qui sont peu clairs en particulier pour le cas n°2.</p>
 </div>
 <div class="tabbed-block">
 <p>Une erreur possible, et que vous avez probablement commise, est celle
-de passer non pas un seul argument sous la forme d'un <em>tuple</em> (ou d'une liste)
-mais de multiples paramètres.</p>
+de passer non pas un seul argument sous la forme d'un <em>tuple</em> (ou d'une liste) mais de multiples paramètres.</p>
 <p>Cette erreur déclenche alors l'exception <code>TypeError</code> car les trois arguments passés ne sont pas du bon type.</p>
 </div>
 <div class="tabbed-block">
@@ -3893,7 +3890,7 @@ mais de multiples paramètres.</p>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span><span class="c1"># si on passe un tuple ou un tableau (1,2,3),</span>
             <span class="c1"># *t le convertit en [(1,2,3)]</span>
             <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># d'où cette ligne</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span>  <span class="o">=</span> <span class="n">t</span> <span class="c1">#Puis on unpack, c étant une liste éventuellement vide</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span>  <span class="o">=</span> <span class="n">t</span> <span class="c1">#Puis on unpack, c étant un tuple éventuellement vide</span>
     <span class="k">except</span> <span class="ne">TypeError</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Must pass three argument or a tuple of 3 element."</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">!=</span><span class="mi">1</span> <span class="p">:</span> <span class="c1"># si c est vide ou contient au moins 2 éléments</span>
@@ -3919,20 +3916,20 @@ mais de multiples paramètres.</p>
 <span class="k">except</span> <span class="ne">TypeError</span> <span class="p">:</span>
     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Must pass three argument or a tuple of 3 element."</span><span class="p">)</span>
 </code></pre></div>
-On a ici l'utilisation d'une structure spéciale : l'interception d'ereurs.
+On a ici l'utilisation d'une structure spéciale : <mark class="critic"><strong>l'interception d'erreurs</strong></mark>.
 <div class="admonition tips">
 <p class="admonition-title">Interception des exceptions</p>
-<p>Il arrive souvent en programmation que l'on doive utiliser une instructions oui une série d'instruction dont on sait à l'avance qu'elle peuvent générer des erreurs. La structure suivante est là pour ça :
+<p>Il arrive souvent en programmation que l'on doive utiliser une instructions ou une série d'instruction dont on sait à l'avance qu'elle peuvent générer des erreurs. La structure suivante est là pour ça :
 </p><div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">:</span>
     <span class="c1"># Bloc try</span>
 <span class="k">except</span> <span class="n">error</span> <span class="p">:</span>
     <span class="c1"># Bloc except</span>
 </code></pre></div>
-Le code du bloc <code>try</code> va être exécuté, et si une erreur du type fournie en argument de l'instruction <code>except</code> est levée, alors le code  du bloc <code>except</code> est exécuté.
+Le code du bloc <code>try</code> va être exécuté, et si une erreur du type fournie en argument de l'instruction <code>except</code> est levée, alors le code du bloc <code>except</code> est exécuté.
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple :</p>
-<p>En première nous avons vu l'importance de rendre parfois un code <strong>dumbproof</strong>, et que cela génèrais parfois de nombreuses difficultés. Le simple fait de coder une fonction demandant à un utilisateur de saisir un nombre entier entre 1 et 10 inclus pouvaiet rapidement pénible à écrire. Les deux onglets ci-dessous donnent deux versions d'une fonction permettant de réaliser cette fonction, la version utilisée en première, et celle levant des excpetions.</p>
+<p>En première nous avons vu l'importance de rendre parfois un code <strong>dumbproof</strong>, et que cela générais parfois de nombreuses difficultés. Le simple fait de coder une fonction demandant à un utilisateur de saisir un nombre entier entre 1 et 10 inclus pouvait rapidement pénible à écrire. Les deux onglets ci-dessous donnent deux versions d'une fonction permettant de réaliser cette fonction, la version utilisée en première, et celle levant des exceptions.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Version avec des structures conditionnelles</label><label for="__tabbed_3_2">Version avec interception d'erreurs</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3976,9 +3973,9 @@ Le code du bloc <code>try</code> va être exécuté, et si une erreur du type fo
 </div>
 <details class="done">
 <summary>Réponse</summary>
-<p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation,
-qui peut se douter que les <strong>fractions définies dans la table utf8</strong>, ainsi que les caractères en <strong>exposant et en indice</strong>, sont considérés comme des valeurs numériques.</p>
+<p>En fait le problème provient de la <em>méthode</em> <code>isnumeric()</code>, dont on ne contrôle pas vraiment le fonctionnement. On sait que cette méthode permet de vérifier si une chaine de caractères est bien constituée uniquement de caractères numériques. Mais sans lire réellement la documentation, qui peut se douter que les <strong>fractions définies dans la table utf8</strong>, ainsi que les caractères en <strong>exposant et en indice</strong>, sont considérés comme des valeurs numériques.</p>
 <p>L'intérêt du bloc <code>try</code> est qu'il se déclenchera dès qu'il y aura une exception levée. Et cette exception a peu de chance de se produire dans le bloc <code>if / else</code>. La fonction devient <strong>dumbproof</strong> (mais si vous réussissez à déclencher une erreur bloquante, signalez-le moi !!).</p>
+<p>Plus prosaïquement, une erreur levée et correctement traitée avec une structure <code>try/except</code> permet au programme de ne pas s'arrêter lors d'un cas particulier.</p>
 </details>
 <div class="admonition info">
 <p class="admonition-title">Enchainer les interceptions</p>
@@ -3996,6 +3993,24 @@ qui peut se douter que les <strong>fractions définies dans la table utf8</stron
 <p class="admonition-title">Etendre la gestion des exceptions</p>
 <p>Il existe de nombreuses autres possibilités utilisant la levée d'exceptions, mais elles dépassent largement le programme de Terminale.</p>
 <p>Les plus curieux parmi vous pourront toujours aller lire la <a href="https://docs.python.org/3/tutorial/errors.html">doc Python</a>", qui reste la référence absolue...</p>
+</div>
+<h2 id="les-assertions">Les assertions</h2>
+<p>Une autre méthode pour interrompre explicitement un programme est d'utiliser des <strong>assertions</strong> créées avec l'instruction <code>assert</code>, sous la forme suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">expression</span> <span class="n">booléenne</span><span class="p">,</span> <span class="n">chaine</span> <span class="n">de</span> <span class="n">caractère</span> <span class="n">avec</span> <span class="n">message</span> <span class="n">d</span><span class="s1">'erreur</span>
+</code></pre></div>
+<p>Cette instruction lèvera alors une <code>AssertionError</code>, avec le message passé entre parenthèse. Mais attention, le programme sera alors interrompu !</p>
+<p>Les assertions sont souvent utilisées pour s'assurer que les <mark class="critic"><strong>préconditions</strong></mark> d'une fonction sont bien remplies, c'est-à-dire que les arguments fournis correspondent bien aux exigences du programme.</p>
+<div class="admonition exemple">
+<p class="admonition-title">Exemple</p>
+<p>Dans le cadre d'une application graphique, on veut pouvoir déplacer un point <span class="arithmatex">\(M(x;y)\)</span> avec un vecteur <span class="arithmatex">\(\vec{u} (a,b)\)</span> avec <span class="arithmatex">\(x,y,a,b\)</span> entiers.
+On veut créer une fonction <code>translation(p : tuple,v :tuple) -&gt; tuple</code> qui prend en argument deux tuples de dimension 2, et qui renvoie le tuple obtenu en additionnant les éléments de même indice. Cependant, pour que la fonction soit utilisable, il faut impérativement que l'utilisateur ait bien fourni deux tuples de dimension 2 et d'entiers.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">translation</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">tuple</span> <span class="p">,</span> <span class="n">v</span> <span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span> <span class="p">:</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"bad t argument, is not a tuple of length 2"</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"bad v argument, is not a tuple of length 2"</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"tuple t must only contains integers"</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"tuple v must only contains integers"</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
 </div></div>
 
 
