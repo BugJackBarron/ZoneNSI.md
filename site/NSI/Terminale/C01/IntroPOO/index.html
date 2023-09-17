@@ -3934,7 +3934,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 d'une <code>méthode</code> de la classe, la méthode <code>__init__()</code>, appelée <mark class="critic"><strong>méthode constructeur de la classe</strong></mark>.</p>
 <p>Cette méthode prend plusieurs paramètres :</p>
 <ol>
-<li>le paramètre <code>self</code>, <strong>obligatoire</strong>, qui représente <em>'l'instance</em> de l'objet créé (c'est une notion importante), qu'il est pour l'instant difficile d'expliquer).</li>
+<li>le paramètre <code>self</code>, <strong>obligatoire</strong>, qui représente <em>'l'instance</em> de l'objet créé (c'est une notion importante, qui est pour l'instant difficile d'expliquer).</li>
 <li>une série de paramètres qui correspondent aux paramètres définis dans l'interface
 de l'objet <code>Personnage</code>.</li>
 </ol>
@@ -4026,8 +4026,7 @@ mémoire et le type de l'objet que nous venons de lui passer.</p>
 <p>Nous allons donc devoir améliorer cet affichage, en construisant notre propre <mark class="critic"><strong>méthode</strong></mark>, que nous nommerons <code>affiche</code>. Cette méthode devra avoir le comportement suivant :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">firstPlayer</span><span class="o">.</span><span class="n">affiche</span><span class="p">()</span>
 
-    <span class="s2">"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30</span>
-    <span class="n">en</span> <span class="n">intelligence</span><span class="o">.</span> <span class="n">J</span><span class="s1">'ai 35 Points de Vie"</span>
+    <span class="s2">"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 35 Points de Vie"</span>
 </code></pre></div>
 <div class="admonition tips">
 <p class="admonition-title">Méthodes et attributs</p>
@@ -4270,7 +4269,7 @@ changer la méthode <code>affiche(self)</code> qui renverra la chaîne de caract
 <ol>
 <li>Chaque personnage tire son <em>initiative</em> en ajoutant un nombre aléatoire entre 1 et 20 à sa
 valeur de rapidite.</li>
-<li>Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le joeur d'attaque sera celui qui possède la rapidité la plus élevée. En cas d'égalité de rapidité, le premier joueur sera déterminé aléatoirement.</li>
+<li>Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le tour se termine. Si un joueur attaque, on compare le jet d'attaque (JA) du personnage attaquant avec le jet de défense (JD) du personnage défenseur. Si <span class="arithmatex">\(JA&gt; JD\)</span>, alors le défenseur perd un nombre de points de vie égal à <span class="arithmatex">\(JA-JD\)</span>.</li>
 <li>Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque, et le premier se défend.</li>
 <li>Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.</li>
 <li>

@@ -249,19 +249,25 @@ La règle de bonne conduite est d'utiliser 4 espaces par indentation (qu'il est 
 {{ IDEv('P2_Code2') }}
 
 
-On peut aussi noter que les mots clés `elif` et `else` sont optionnels.
+On peut aussi noter qu'il est possible dans certaines situations de se passer des instructions `elif` et `else`, mais cela peut conduire à certains **effets de bords** qui peuvent être parfois dommageables. Testez par exemple le code suivant :
 
 
 ```python
+nb = int(input("Entrez un nombre entre 1 et 100 :"))
 if nb<1 :
-    print("Votre nombre est trop petit !")
+    print("Votre nombre est trop petit")
 if nb>100 :
-    print("Votre nombre est trop grand !")
-if 1<nb<100 :
-    print("Merci !")
-```
+    print("Votre nombre est trop grand")
+if nb < 50 :
+    nb = nb + 50
+    print(f"Le nombre final est {nb}")
+if nb>= 50 :
+    nb = nb - 50
+    print(f"Le nombre final est {nb}")
+print("FIN")
 
-    Votre nombre est trop petit !
+```
+    
 
 
 Les structures conditionnelles peuvent aussi être imbriquées, en indentant à plusieurs reprises :
@@ -314,64 +320,89 @@ Le bloc de code situé sous l'instruction `while` sera exécuté {==**tant que l
 
 Dans de nombreux langages de programmation, une boucle `for` (`Pour` en pseudo-code) fonctionne en :
 
-* créant un **compteur** ( ou **itérateur**), nommé traditionnellement `i` ;
-* en initialisant ce compteur à une valeur de départ ;
+* Créant un **compteur** ( ou **itérateur**), nommé traditionnellement `i` ;
+* en **initialisant** ce compteur à une valeur de départ ;
 * en augmentant à chaque tour de boucle le compteur d'une certaine valeur appelée le **pas** (**step** en anglais);
-* en continuant tant qu'une certaine valeur n'est pas dépassée (ou qu'une condition est respectée).
+* en continuant tant qu'une certaine valeur **limite** n'est pas atteinte (ou qu'une condition est respectée).
 
 En Python, on utilisera la structure suivante :
 
 ```python
-for i in range(12, 24, 3) :
+for i in range(depart, limite, pas) :
     # Bloc de code
 ```
 où :
 
 * `i` est le compteur. C'est une variable donc on peut choisir son nom selon les règles de nommages habituelles ;
-* `12` est la valeur de départ à laquelle est initialisée `i`, ce qui est équivalent à `i = 12` ;
-* `24` est la valeur telle que si `i` est supérieur {==** ou égal**==} à cette valeur, la boucle s'arrête.
-* `3` est le pas, la varioable `i` augmente de `3` à chaque tour de boucle, ce qui est équivalent à `i = i + 3`.
+* `depart` est la valeur de départ à laquelle est initialisée `i` ;
+* `limite` est la valeur telle que si `i` est {==**supérieure ou égale**==} à cette valeur, la boucle s'arrête.
+* `pas` est le pas, c'est-à-dire la valeur d'augmentation de `i` à chaque tour.
 
-Même si il s'agit d'une simplification abusive de ma part, vous pouvez considérer que la fonction `range()` construit l'ensemble des valeurs que opeut prendre le compteur `i`, et fait passer `i` d'une valeur à l'autre à chque tour de boucle.
+Même s'il s'agit d'une simplification abusive de ma part, vous pouvez considérer que la fonction `range()` construit l'ensemble des valeurs que peut prendre le compteur `i`, et fait passer `i` d'une valeur à l'autre à chaque tour de boucle.
 
-Cette boucle `for` est donc exactement équivalente au code suivant :
+!!! example "Exemple de boucle for"
 
-```` python
-i = 12
-while i < 24 :
-    # Bloc de code
-    i = i + 3
-````
+    Prenons comme exemple la boucle suivante :
+
+    ``` python
+    for i in range (12,24,3) :
+        print(i, end=" ")
+    ```
+    La valeur d'initialisation de `i` est `12`, la valeur limite est `24`, et le pas est `3`.
+
+    L'exécution du programme donnera donc en sortie :
+    ``` python
+    12 15 18 21 
+    ```
+
+    Cette boucle `for` est donc exactement équivalente au code suivant :
+
+    ```` python
+    i = 12
+    while i < 24 :
+        print(i)
+        i = i + 3
+    ````
 
 !!! question "Exercice"
 
     === "Enoncé"
+        On considère le code suivant :
+
+        ``` python
+        for toto in range(15,30,5) :
+            # Bloc de code
+            ...
+        ```
+
 
         Combien y aura-t-il de répétitions du bloc de code dans cette boucle `for`  ?
 
     === "Solution"
 
-        Il y aura une exécution du bloc de code pour chacune des valeurs suivante de i : $12$, $15$, $18$, $21$. Lorsque `i` prend la valeur `24`, la boucle est arrêtée et le bloc n'est pas exécuté.
-
-Il existe des facilités de programmation qui permettent de simplifier l'écriture de la fonction `range` :
-
-* Si le pas est de `1`, on peut l'omettre : `range(12, 17)` est équivalent à `range(12, 17, 1)`, et crée la liste `12, 13, 14, 15, 16` ;
-* Si la valeur de départ est `0`, et le pas de `1`, on peut les omettre : `range(5)` est équivalent à `range(0, 5, 1)` et crée la liste `0, 1, 2, 3, 4` (ce qui permet d'avoir exactement 5 tours de boucle) ;
-
-Attention, il n'est pas possible de donner le pas sans donner la valeur de départ ! `range(0, 45, 3)` ne peut pas être raccourci !
+        Il y aura une exécution du bloc de code pour chacune des valeurs suivante de ``toto`` : $15$, $20$ et $25$. Lorsque `toto` prend la valeur `30`, la boucle est arrêtée et le bloc n'est pas exécuté.
 
 
-#### la boucle `for` en Python
+!!! tips "Raccourcis d'écriture"
+    Il existe des facilités de programmation qui permettent de simplifier l'écriture de la fonction `range` :
+
+    * Si le pas est de `1`, on peut l'omettre : `range(12, 17)` est équivalent à `range(12, 17, 1)`, et crée la liste `12, 13, 14, 15, 16` ;
+    * Si la valeur de départ est `0`, et le pas de `1`, on peut les omettre : `range(5)` est équivalent à `range(0, 5, 1)` et crée la liste `0, 1, 2, 3, 4` (ce qui permet d'avoir exactement 5 tours de boucle) ;
+
+    Attention, il n'est pas possible de donner le pas sans donner la valeur de départ ! `range(0, 45, 3)` ne peut pas être raccourci !
+
+
+#### La boucle `for` en Python
 
 En python, la boucle `for` peut aussi être utilisée comme une boucle `foreach` (`Pour chaque` en pseudo-code) :
 
-Testez par exemple le code suivant  :
+Testez par exemple le code suivant :
 
 {{ IDEv('P2_Code4') }} 
 
 Le compteur `lettre` prendra successivement **chaque** (**each**) caractère de la chaîne `texte`, soit `U`, `n`, ` `(1 espace), `t`, ..., jusqu'à ce que le parcours de la chaîne soit terminé. 
 
-Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ensemble donné. Nous verrons plus tard dans l'année qu'on peut parcourir ainsi des listes, des tuples, etc...
+Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ensemble donné. Nous verrons plus tard dans l'année qu'on peut parcourir ainsi des listes, des tuples, etc.
 
 
 !!! question "Exercice"
@@ -382,10 +413,10 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
 
 !!! question "Conditions, saisies et affichages"
 
-    === "Enoncé"
+    === "Énoncé"
 
-        1. Ecrire un programme qui demande un nombre à l'utilisateur, puis affiche le carré de ce nombre.
-        2. Ecrire un programme qui demande l'heure qu'il est (un nombre pour les heures, un nombre pour les minutes et un pour les secondes). Cet algorithme indiquera en outre si l'heure donnée est valide, c'est-à-dire que les nombres sont bien des entiers, et qu'ils sont compris entre 0 et 23 ou 0 et 59. On pourra utiliser la fonction `isinstance(objet, type)` utilisable de la manière suivante :
+        1. Écrire un programme qui demande un nombre à l'utilisateur, puis affiche le carré de ce nombre.
+        2. Écrire un programme qui demande l'heure qu'il est (un nombre pour les heures, un nombre pour les minutes et un pour les secondes). Cet algorithme indiquera en outre si l'heure donnée est valide, c'est-à-dire que les nombres sont bien des entiers, et qu'ils sont compris entre 0 et 23 ou 0 et 59. On pourra utiliser la fonction `isinstance(objet, type)` utilisable de la manière suivante :
 
             ```` python
             >>> isinstance(4, int)
@@ -396,8 +427,8 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
 
         3. Compléter le programme précédent afin que l'algorithme donne l'heure qu'il sera 10 minutes après l'heure saisie.
         4. Une année est dite bissextile si cette année est divisible par 4, sauf si elle est divisible par 100 et pas par 400. Construire un programme qui dit si une année saisie par un utilisateur·trice est bissextile ou non.
-        4. Ecrire un programme qui demande les coefficients $a$ et $b$ d'une fonction affine, et qui donne son nombre de racines et leurs valeurs éventuelles. Attention aux cas particuliers !
-        5. Etendre le programme précédent pour la résolution d'équations du type $ax+b = cx+d$, où $a,b,c,d$ sont des entiers saisis par l'utilisateur·trice.
+        4. Écrire un programme qui demande les coefficients $a$ et $b$ d'une fonction affine, et qui donne son nombre de racines et leurs valeurs éventuelles. Attention aux cas particuliers !
+        5. Étendre le programme précédent pour la résolution d'équations du type $ax+b = cx+d$, où $a,b,c,d$ sont des entiers saisis par l'utilisateur·trice.
         6. *Pour les élèves ayant encore des maths,* reprendre le problème n°5 pour un trinôme du second degré.
 
     === "Solutions"
@@ -406,9 +437,9 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
 
 !!! question "Exercices sur les boucles `for` et `while`"
 
-    === "Enoncé"
+    === "Énoncé"
 
-        1. Ecrire un programme qui affiche les 20 premiers nombres de la table de multiplication d'un entier choisi par l'utilisateur·trice, sous la forme (avec choix de `7` par l'utilisateur) :
+        1. Écrire un programme qui affiche les 20 premiers nombres de la table de multiplication d'un entier choisi par l'utilisateur·trice, sous la forme (avec choix de `7` par l'utilisateur) :
             
             ```` python
             7 x 0 = 0
@@ -418,18 +449,23 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
             ````
             
 
-        2. Ecrire un programme qui affiche les restes des divisions euclidiennes des $200$ premiers entiers par  $7$.
-        3. Ecrire un programme qui affiche les restes des divisions euclidiennes des $300$ premières puissances de $2$ par $9$. Que constate-t-on ?
-        4. Ecrire un programme qui affiche une suite de 12 nombres dont chaque terme soit égal au triple du nombre précédent, le nombre de départ étant choisi par l'utilisateur·trice.
+        2. Écrire un programme qui affiche les restes des divisions euclidiennes des $200$ premiers entiers par  $7$.
+        3. Écrire un programme qui affiche les restes des divisions euclidiennes des $300$ premières puissances de $2$ par $9$. Que constate-t-on ?
+        4. Écrire un programme qui affiche une suite de 12 nombres dont chaque terme soit égal au triple du nombre précédent, le nombre de départ étant choisi par l'utilisateur·trice.
         5. La suite de Syracuse est définie ainsi :
 
             * on part d'un nombre entier choisis par l'utilisateur.trice ;
             * si le nombre est pair, on le divise par 2, et on recommence avec le résultat ;
             * sinon on le multiplie par 3 et on ajoute 1, et on recommence avec le résultat.
 
-            Construire un programme qui afiche les 30 premiers nombres de la suite de Syracuse à partir d'un nombre entier choisis par un·e utilisateur·trice.
-        5. Ecrire un programme qui demande un nombre entier entre 1 et 10 à l'utilisateur·trice, et qui poursuit cette demande tant que l'utilisateur·trice n'a pas exactement fait ce qui lui était demandé ( on appelle ce type de programme **dumbproof**). 
+            Construire un programme qui affiche les 30 premiers nombres de la suite de Syracuse à partir d'un nombre entier choisis par un·e utilisateur·trice.
+        5. Écrire un programme qui demande un nombre entier entre 1 et 10 à l'utilisateur·trice, et qui poursuit cette demande tant que l'utilisateur·trice n'a pas exactement fait ce qui lui était demandé ( on appelle ce type de programme **dumbproof**). 
 
     === "Solutions"
 
         A venir !
+
+
+!!! question "TP Turtle"
+
+    Faire le TP suivant sur [Capytale](https://capytale2.ac-paris.fr/web/code/7b41-1846263){:target="_blank"}

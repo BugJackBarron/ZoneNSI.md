@@ -150,7 +150,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 	 
 	Cette méthode prend plusieurs paramètres :
 	 
-	1. le paramètre `self`, **obligatoire**, qui représente *'l'instance* de l'objet créé (c'est une notion importante), qu'il est pour l'instant difficile d'expliquer).
+	1. le paramètre `self`, **obligatoire**, qui représente *'l'instance* de l'objet créé (c'est une notion importante, qui est pour l'instant difficile d'expliquer).
 	2. une série de paramètres qui correspondent aux paramètres définis dans l'interface
 	de l'objet `Personnage`.
 	
@@ -273,8 +273,7 @@ Nous allons donc devoir améliorer cet affichage, en construisant notre propre {
 ```` python
 >>> firstPlayer.affiche()
 
-	"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30
-	en intelligence. J'ai 35 Points de Vie"
+	"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 35 Points de Vie"
 ````
 		
 !!! tips "Méthodes et attributs"
@@ -523,7 +522,7 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	
 	1. Chaque personnage tire son *initiative* en ajoutant un nombre aléatoire entre 1 et 20 à sa
 	valeur de rapidite.
-	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le joeur d'attaque sera celui qui possède la rapidité la plus élevée. En cas d'égalité de rapidité, le premier joueur sera déterminé aléatoirement.
+	2. Le joueur ayant l'initiative la plus élevée effectue son attaque en premier, et le second se défend. En cas d'égalité d'initiative, le tour se termine. Si un joueur attaque, on compare le jet d'attaque (JA) du personnage attaquant avec le jet de défense (JD) du personnage défenseur. Si $JA> JD$, alors le défenseur perd un nombre de points de vie égal à $JA-JD$.
 	3. Si le deuxième joueur est toujours vivant (ses points de vie sont supérieurs à 0), il effectue son attaque, et le premier se défend.
 	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.
 	5. Le vainqueur récolte un nombre de points d'expérience égal à :
