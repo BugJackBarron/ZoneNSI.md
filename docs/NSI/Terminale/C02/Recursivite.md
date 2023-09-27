@@ -131,7 +131,12 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 
 	**"HELP ! Mais ça s'arrête quand !"** me direz-vous !
 	
-	Et bien jamais, en théorie.
+	Et bien jamais, en théorie, car nous n'avons pas {==**précisé de condition d'arrêt**==}.
+
+
+	<p align ="center">
+	![Gru Recursion](Gru_Recursion.jpg)
+	</p>
 
 	Mais en réalité cette instruction s'arrêtera quand python aura levé une erreur de type `RecursionError`, 
 	qui signifie qu'une limite aura été atteinte (nous en parlerons plus tard pour lever toute ambiguité).

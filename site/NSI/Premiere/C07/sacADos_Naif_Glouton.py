@@ -80,12 +80,12 @@ def compare(maxIteration) :
         FACTEUR_TAILLE = 15
         for i in range(TAILLE) :
             objets[i] = {'masse': randint(1,30), 'valeur' : randint(1,15)*100}
-        start = time.time()
-        what = sacADosNaif(objets, TAILLE*FACTEUR_TAILLE)
-        duration = time.time() - start
-        naifTime.append(duration)
-        valeurNaif = what[-1]
-        print(f"**ALGO NAIF ** {what} : {duration}")
+#        start = time.time()
+#        what = sacADosNaif(objets, TAILLE*FACTEUR_TAILLE)
+#        duration = time.time() - start
+#        naifTime.append(duration)
+#        valeurNaif = what[-1]
+#        print(f"**ALGO NAIF ** {what} : {duration}")
         start = time.time()
         what = sacADosGlouton(objets, TAILLE*FACTEUR_TAILLE)
         duration = time.time() - start
@@ -105,8 +105,8 @@ if __name__ == "__main__" :
         "C" : {'masse' : 8, 'valeur' : 300},
         "D" : {'masse' : 10, 'valeur' : 300},
                 }
-    print(sacADosNaif(objets,30))
-    NREP = 15
+#    print(sacADosNaif(objets,30))
+    NREP = 2000
     ntT = [0]*NREP
     gtT = [0]*NREP
     vnT = [ [] for _ in range(NREP) ]
@@ -121,6 +121,6 @@ if __name__ == "__main__" :
             gtT[i] += gt[i]
     gt = [t/LISSAGE for t in gtT]
     nt = [t/LISSAGE for t in ntT]
-    with open('compareGreedyNatural.dat','wb') as file :
-        pickle.dump((nt,gt, vnT, vgT), file)
+#    with open('compareGreedyNatural.dat','wb') as file :
+#        pickle.dump((nt,gt, vnT, vgT), file)
     
