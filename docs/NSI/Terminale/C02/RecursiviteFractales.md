@@ -115,32 +115,32 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 		En partant d'un fichier `sandbox_turtle.py` contenant les lignes suivantes :
 		
 		```` python
-import turtle
+		import turtle
 
-def triangleEquilateral(c) :
-    ...
-    
-def pentagramme(c, color="red") :
-    ...
-    
-def hexagone(c, diag = False) :
-    ...
-    
-    
-    
-if __name__ == "__main__" :
-    screen = turtle.Screen()
-    screen.bgcolor('lightgray')
-    donatello = turtle.Turtle()
+		def triangleEquilateral(c) :
+		...
+
+		def pentagramme(c, color="red") :
+		...
+
+		def hexagone(c, diag = False) :
+		...
+
+
+
+		if __name__ == "__main__" :
+			screen = turtle.Screen()
+			screen.bgcolor('lightgray')
+			donatello = turtle.Turtle()
 
 		
 		````
 		
-		1. Créer une fonction `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
+		1. Créer une procédure (fonction sans `return` explicite) `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
 		la position courante.
-		2. Créer une fonction `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
+		2. Créer une procédure `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
 		avec la couleur passée en argument.
-		3. Créer une fonction `hexagone(c, diag = False)` qui trace un hexagone de côté $c$ et qui trace en outre ses diagonales
+		3. Créer une procédure `hexagone(c, diag = False)` qui trace un hexagone de côté $c$ et qui trace en outre ses diagonales
 		si le paramètre optionnel `diag` est passé à `True`.
 
 	=== "Solutions"

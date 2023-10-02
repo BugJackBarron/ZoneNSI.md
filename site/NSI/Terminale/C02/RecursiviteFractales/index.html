@@ -3872,75 +3872,78 @@ Avec ces lignes :
 </div>
 <div class="admonition question">
 <p class="admonition-title">Prise en main de <code>turtle</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solutions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>En partant d'un fichier <code>sandbox_turtle.py</code> contenant les lignes suivantes :</p>
-<p>```` python</p>
-</div>
-</div>
-</div>
-</div>
-<p>import turtle</p>
-<p>def triangleEquilateral© :
-    ...</p>
-<p>def pentagramme(c, color="red") :
-    ...</p>
-<p>def hexagone(c, diag = False) :
-    ...</p>
-<p>if <strong>name</strong> == "<strong>main</strong>" :
-    screen = turtle.Screen()
-    screen.bgcolor('lightgray')
-    donatello = turtle.Turtle()</p>
-<div class="highlight"><pre><span></span><code>    ````
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">turtle</span>
 
-    1. Créer une fonction `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
-    la position courante.
-    2. Créer une fonction `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
-    avec la couleur passée en argument.
-    3. Créer une fonction `hexagone(c, diag = False)` qui trace un hexagone de côté $c$ et qui trace en outre ses diagonales
-    si le paramètre optionnel `diag` est passé à `True`.
+<span class="k">def</span> <span class="nf">triangleEquilateral</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span>
+<span class="o">...</span>
 
-=== "Solutions"
-    Toutes les solutions suivantes supposent qu'un écran et qu'une tortue nommée `t` existent dans l'espace de nom général.
+<span class="k">def</span> <span class="nf">pentagramme</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span> <span class="p">:</span>
+<span class="o">...</span>
 
-    === "`triangleEquilateral(c)`"
+<span class="k">def</span> <span class="nf">hexagone</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">diag</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="p">:</span>
+<span class="o">...</span>
 
-        ``` python
-        def triangleEquilateral(c) :
-            for _ in range(3):
-                t.forward(c)
-                t.left(120)
-        ```
 
-    === "`pentagramme(c, color="red")`"
 
-        ``` python
-        def pentagramme(t, c, color="red") :
-            t.fillcolor(color)
-            t.begin_fill()
-            for _ in range(5):
-                t.forward(c)
-                t.right(144)
-            t.end_fill()
-        ```
-
-    === "`hexagone(c, diag = False)`"
-
-        ``` python
-        def hexagone(t, c, diag = False) :
-            for _ in range(6):
-                t.forward(c)
-                t.right(60)
-            if diag :
-                for _ in range(3) :
-                    t.right(60)
-                    t.forward(2*c)
-                    t.right(120)
-                    t.forward(c)
-                    t.right(60)
-        ```
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span> <span class="p">:</span>
+    <span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+    <span class="n">screen</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s1">'lightgray'</span><span class="p">)</span>
+    <span class="n">donatello</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </code></pre></div>
+<ol>
+<li>Créer une procédure (fonction sans <code>return</code> explicite) <code>triangleEquilateral(c)</code> qui trace un triangle équilatéral de longueur <span class="arithmatex">\(c\)</span> à partir de 
+la position courante.</li>
+<li>Créer une procédure <code>pentagramme(c, color="red")</code> qui trace un pentagramme (une étoile à 5 branches) et le remplit 
+avec la couleur passée en argument.</li>
+<li>Créer une procédure <code>hexagone(c, diag = False)</code> qui trace un hexagone de côté <span class="arithmatex">\(c\)</span> et qui trace en outre ses diagonales
+si le paramètre optionnel <code>diag</code> est passé à <code>True</code>.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Toutes les solutions suivantes supposent qu'un écran et qu'une tortue nommée <code>t</code> existent dans l'espace de nom général.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1"><code>triangleEquilateral(c)</code></label><label for="__tabbed_2_2"><code>pentagramme(c, color="red")</code></label><label for="__tabbed_2_3"><code>hexagone(c, diag = False)</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">triangleEquilateral</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pentagramme</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">144</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hexagone</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">diag</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diag</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <h2 id="flocon-de-von-koch">Flocon de Von Koch</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Le Flocon de Von Koch</p>
@@ -3966,7 +3969,7 @@ courbes fractales décrites, avant même l'invention du terme <a href="https://f
 <ol>
 <li>
 <p>Avant de passer à une définition récursive de la construction, essayons de faire une étape de cette construction.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>a. Créer une fonction <code>segment(long)</code> qui trace une itération de la construction du segment de Von Koch (c'est-à-dire  traçant l'étape 3 de l'image ci-dessus.).</p>
@@ -3988,7 +3991,7 @@ courbes fractales décrites, avant même l'invention du terme <a href="https://f
 </li>
 <li>
 <p>Passons à la construction récursive d'un segment :</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>En se basant sur la fonction précédente, implémenter une fonction <code>segmentR(long, n)</code> qui tracera
