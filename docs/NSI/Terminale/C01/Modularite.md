@@ -154,7 +154,7 @@ Pour chaque module, on peut donc distinguer :
 	from math import sqrt
 	
 	def polynome(t) :
-		a,b, c = t
+		a, b, c = t
 		if a == 0 :
 			return None
 		return t

@@ -11,5 +11,3 @@
 {{ IDEv('concatenate', MAX=3) }}
 
 L'ancien site peut-être trouvé [ici](https://old.zonensi.fr).
-
-
