@@ -22,7 +22,8 @@
 
     7.  Quelle est l'URL de la page ?
 
-    8.  Dans le dossier `Documents en consultation/SNT/Web`, récupérez les fichiers images `BBC_Microbit.jpg` et `Maqueen.png`, et copiez-les dans le même répertoire que votre fichier `Micro_Maqueen.html`. Rechargez la page web.\
+    8.  Dans le dossier `Documents en consultation/SNT/Web`, récupérez les fichiers images `BBC_Microbit.jpg` et `Maqueen.png`, et copiez-les dans le même répertoire que votre fichier `Micro_Maqueen.html`. Rechargez la page web.
+
         Quels sont les changements apportés ?
 
     9.  Réduisez sans fermer votre navigateur, puis cliquez-droit sur le fichier `Micro_Maqueen.html`, et sélectionnez `Edit with Notepad++`. Que retrouvez-vous ?
@@ -33,12 +34,13 @@
 
 
 !!! info "HTML et notion de balises"
-    Ce qu'est une page Web Une page web, c'est un fichier contenant du texte, ce texte étant enrichi par un système de {==**balises**==} *ouvrantes* - par exemple `<p>` et *fermantes* - par exemple `</p>`, permettant de **donner un sens particulier au texte encadré par ces balises**.
+    Une page web, c'est un fichier contenant du texte, ce texte étant enrichi par un système de {==**balises**==} *ouvrantes* - par exemple `<p>` et *fermantes* - par exemple `</p>`, permettant de **donner un sens particulier au texte encadré par ces balises**.
 
     Ces balises sont interprétées par le navigateur web et donnent une **sémantique** particulière au texte (titre, paragraphe, élément de liste, etc), ou bien introduisent des comportement particuliers à certains éléments ( transforment en lien hypertextuels, insèrent des images, etc).
 
-    Le langage utilisé qui contient le texte et les balises s'appelle {==**HTML**==} ( d'où le nom de l'extension `.html` ) , qui est un acronyme pour {==**Hyper Text Markup Language**==}, soit *langage de balisage hypertexte*. Il est à noter que `HTML` **n'est pas un langage de programmation**, mais simplement un langage de mise en valeur du texte, privilégiant la mise en avant du sens avant la forme.\
-    Il existe de nombreux langages de balisages, permettant de donner une forme particulière à du texte ou à des chaines de caractères. Par exemple, `HTML` pour le Web, `LaTeX` pour les documents scientifiques et les formules mathématiques, `XML` pour organiser des données, ou même `Mardown`, un langage ultra simplifié utilisé apr exemple dans des Notebooks Jupyter ( que nous utiliserons plus tard dans l'année ), mais aussi sur des plateforme de réseaux sociaux telles que `Discord`.
+    Le langage utilisé qui contient le texte et les balises s'appelle {==**HTML**==} ( d'où le nom de l'extension `.html` ) , qui est un acronyme pour {==**Hyper Text Markup Language**==}, soit *langage de balisage hypertexte*. Il est à noter que `HTML` **n'est pas un langage de programmation**, mais simplement un langage de mise en valeur du texte, privilégiant la mise en avant du sens avant la forme.
+
+    Il existe de nombreux langages de balisages, permettant de donner une forme particulière à du texte ou à des chaines de caractères. Par exemple, `HTML` pour le Web, `LaTeX` pour les documents scientifiques et les formules mathématiques, `XML` pour organiser des données, ou même `Mardown`, un langage ultra simplifié utilisé par exemple dans des Notebooks Jupyter ( que nous utiliserons plus tard dans l'année ), mais aussi sur des plateforme de réseaux sociaux telles que `Discord`.
 
 L'objectif des questions suivantes est de vous faire comprendre le rôle
 des balises HTML. Vous devez donc comparer les deux visions du fichier
