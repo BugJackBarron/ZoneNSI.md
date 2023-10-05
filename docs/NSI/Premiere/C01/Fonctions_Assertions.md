@@ -15,7 +15,7 @@ Dans la partie précédente, nous avons terminé par un petit programme qu deman
         Essayez de saisir différentes valeurs **de différents types**. Quel est le problème rencontré ?
 
     === "Solution"
-        Si 'utilisateur·trice saisi quelque chose qui ne peut pas être **transtypé** en `int`, il y a une erreur levée et le programme est totalement interrompu. Ce peut-être parfois complètement bloquant pour le fonctionnement réel d'une application.
+        Si 'utilisateur·trice saisi un nombre négatif, même entier, celui-ci n'est pas reconnu comme un entier. Ce peut-être parfois complètement bloquant pour le fonctionnement réel d'une application.
 
         La version ci-dessous est un peu plus *dumbproof*, mais je ne vous demande pas encore de comprendre les blocs `try/except/else`.
 
@@ -98,9 +98,9 @@ Pour notre exemple :
 
 {{ IDEv('askIntFctV1') }}
 
-La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet *callable* ( "appelable"). Le bloc de code est ensuite défini grâce à une indentation en dessous du nom, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
+La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet *callable* ("appelable"). Le bloc de code est ensuite défini grâce à **une indentation en dessous du nom**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
 
-On fait appel  à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
+On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
 
 !!! warning "Oubli des parenthèses"
 
