@@ -92,13 +92,21 @@ Dans la partie précédente, nous avons terminé par un petit programme qu deman
 On va donc améliorer non seulement la lisibilité de notre code, mais aussi son efficacité et sa simplicité, en utilisant une **fonction**.
 
 !!! abstract "Définition : fonction"
-    Une {==**fonction**==} est un bloc de code nommé (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable). L'appel par l'interpréteur du nom de la fonction {==**suivi d'une paire de parenthèses**==} exécutera alors l'intégralité du code et renverra une **valeur de retour**.
+    Une {==**fonction**==} est un bloc de code nommé (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable). L'appel par l'interpréteur du nom de la fonction {==**suivi d'une paire de parenthèses**==} exécutera alors l'intégralité du code et renverra une {==**valeur de retour**==}, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.
 
 Pour notre exemple :
 
 {{ IDEv('askIntFctV1') }}
 
-La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet *callable* ("appelable"). Le bloc de code est ensuite défini grâce à **une indentation en dessous du nom**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
+
+En regardant la première ligne :
+``` python
+def ask_user_int() -> int:
+```
+
+* La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet {==**callable**==} ("appelable").
+* la notation `-> int` est un {==**type hint**==}, autreùment dit un *indice de type*, qui indique que la valeur renvoyée par la fonction sera de type `int`. Les **type hints** sont *facultatifs en Python*, mais strictement nécessaires dans d'autres langages (`Java`, `C`, `C++`, etc).
+* Les deux points définissent un bloc de code qui est repéré par **une indentation**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
 
 On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
 
@@ -123,13 +131,23 @@ On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déc
 
 #### Utilisation de la valeur de retour
 
-Comme tout objet, la valeur de retour d'une fonction doit elle même être stockée dans une variableafin de ne pas être ramassée par le *garbage collector* :
+Comme tout objet, la valeur de retour d'une fonction doit elle-même être stockée dans une variable afin de ne pas être ramassée par le *garbage collector*.
 
-```python
->>> entier=ask_user_int()
->>> print(f'La racine carrée du nombre {entier} est {entier**(1/2)}')
-```
+!!! example "Exemple"
 
+    ```python
+    >>> entier = ask_user_int()
+    >>> print(f'La racine carrée du nombre {entier} est {entier**(1/2)}')
+    ```
+
+    L'interpréteur Python évalue la ligne `entier = ask_user_int()` :
+
+    * Il commence par appeler le code correspondant à La fonction `ask_user_int()`.
+    * Le code de la fonction demande une saisie à l'utilisateur, et une fois l'instruction `return` atteinte, l'instruction `ask_user_int()` est remplacée à l'endroit de l'appel par la valeur saisie par l'utilisateur, converti en objet de type int.
+    * L'objet est ensuite stocké dans une variable nommée `entier`, et peut alors être utilisé en dehors de la fonction.
+    
+
+    
 
 #### Factorisation du code de Pythagore
 
@@ -157,65 +175,95 @@ Ce qui a l'avantage d'être vraiment vraiment plus clair.
     === "Solution"
 
         ``` python
-        def table7() :
+        def table7() -> str:
             table = ''
-            for i in range(11) :
+            for i in range(11) : 
                 table += f'7x{i} = {7*i} \n'
             return table
         ```
 
 ### Augmenter la capacité des fonctions : les arguments obligatoires 
 
-L'exemple de la fonction `ask_user_int` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables.
+L'exemple de la fonction `ask_user_int` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables, par exemple entre 1 et 100 ou bien entre -10 et 10.
 
-Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**arguments**==} qui seront des variables **initialisées à certaines valeurs lors de l'appel à la fonction** :
+Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**arguments**==} qui seront des objets transmis et nommés **initialisés à certaines valeurs lors de l'appel à la fonction** :
 
-{{ IDEv('askUserIntV3') }}
 
-Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :
+!!! example "Exemple :"
 
-```python
->>> ask_user_int(1,100)
->>> ask_user_int(-10,10)
-```
+    {{ IDEv('askUserIntV3') }}
 
-!!! warning "Des erreurs classiques" 
-    On a aussi un certain nombre d'erreurs qui sont déclenchées. Testez les lignes suivantes :
+    La fonction `ask_user_int` utilise maintenant deux arguments `borne_min` et `borne_max`, qui sont deux entiers, et renverra toujours un entier
 
-    === "1"
+    Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :
 
-        ```python
-        ask_user_int()
-        ```
+    ```python
+    >>> ask_user_int(1,100)
+    >>> ask_user_int(-10,10)
+    ```
 
-    === "2"
+!!! warning "Erreurs d'appels et notion de précondition" 
+    Avec le code actuel de la fonction `ask_user_int`, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console
 
-        ```python
-        ask_user_int(45)
-        ```
+    === "Test 1"
 
-    === "3"
+        === "Code"
+            ```python
+            ask_user_int()
+            ```
+        === "Problème"
+            L'erreur signalée est de type `TypeError`, et le message d'erreur nous dit qu'il manque 2 arguments lors de l'appel, et que ces arguments sont `borne_min` et `borne_max`.
 
-        ```python
-        ask_user_int(0.5,2.5)
-        ```
+    === "Test 2"
 
-    === "4"
+        === "Code"
+            ```python
+            ask_user_int(45)
+            ```
 
-        ```python
-        ask_user_int(30,10)
-        ```
+        === "Problème"
+            L'erreur signalée est de type `TypeError`, et le message d'erreur nous dit qu'il manque 1 argument lors de l'appel, et que cet argument est `borne_max`. Cela signifie aussi que le nom `borne_min` a bien reçu la valeur `45`.
+
+    === "Test 3"
+
+        === "Code"
+
+            ```python
+            ask_user_int(0.5,2.5)
+            ```
+
+        === "Problème"
+
+            Aucun véritable erreur n'est levée par Python, bien que les *type hints* demandent des arguments de type `int`. Comme dit précédemment, ces indications sont facultatives (à destination des programmeur·euse·s), et ici les transgresser ne pose pas vraiment de problème.
+
+    === "Test 4"
+
+        === "Code"
+            ```python
+            ask_user_int(30,10)
+            ```
+
+        === "Problème"
+            Ici, la fonction tourne en boucle et il est impossible de saisir une réponse qui amènera à l'instruction `return`. En effet, lors de l'appel à la fonction, on a :
+
+            * `borne_inf` initialisé à `30`;
+            * `borne_sup` initialisé à `10`;
+            * pour atteindre l'instruction `return`, il faudrait que l'utilisateur·trice ait saisi·e un nombre `nb` à la fois supérieur à `30` et inférieur à `10`, ce qui est impossible.
+
+            On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des {==**préconditions**==}, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que `borne_inf` est bien inférieur ou égal à `borne_sup`. Ces tests seront vu dans la partie concernant les {==**assertions**==}.
+
+
 
 !!! question "Application 3"
 
 
     === "Enoncé"
-        Créer une fonction `table_multi` qui prend un argument entier, le multiplicande, et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
+        Créer une fonction `table_multi(m : int)-> str` qui prend un argument entier `m` et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
 
     === "Solution"
 
         ```` python
-        def table_multi(nb) :
+        def table_multi(m : int ) -> str :
             table = ''
             for i in range(11) :
                 table += f'{nb}}x{i} = {nb*i} \n'
@@ -226,7 +274,7 @@ Une fois la fonction définie, on peut l'appeler en précisant les valeurs des d
 !!! question "Application 4 : motif dans une chaine"
 
     === "Enoncé"
-        Créer une fonction `trouve_chaine`qui prend deux arguments, un `motif` ( une chaine de caractères )  et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
+        Créer une fonction `trouve_chaine(motif : str, texte : str) -> bool`qui prend deux arguments, un `motif` ( une chaine de caractères )  et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
 
         ```python
         assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
@@ -239,8 +287,8 @@ Une fois la fonction définie, on peut l'appeler en précisant les valeurs des d
     === "Solution"
 
         ```` python
-        def trouve_chaine(motif,texte) :
-            return motif.lower() in texte;lower()
+        def trouve_chaine(motif : str, texte: str) -> bool:
+            return motif.lower() in texte.lower()
         ````
 
 
@@ -253,32 +301,32 @@ C'est tout à fait possible en Python, grâce aux **arguments optionnels**. Il s
 
 {{ IDEv('askUserIntV4') }}
 
-Ainsi, la fonction ci-dessus posssède trois arguments :
+Ainsi, la fonction ci-dessus possède trois arguments :
 
-* deux arguments **obligatoires**, `borne_min` et `borne_max` ;
-* un argument **optionnel**, `prenom`.
+* deux arguments **obligatoires**, `borne_min` et `borne_max`, de type `int` ;
+* un argument **optionnel**, `prenom`, de type `str`, dont la **valeur par défaut est la chaine `Inconnu`.
 
 
 Il est à noter qu'impérativement les **arguments obligatoires doivent être placés avant les arguments optionnels**.
 
-On peut alors appeller la fonction des différentes manières suivantes (à tester) :
+On peut alors appeler la fonction des différentes manières suivantes (à tester) :
 
 === "1"
 
     ```python
-    ask_user_int(0,10)
+    ask_user_int(0, 10)
     ```
 
 === "2"
 
     ```python
-    ask_user_int(0,10,prenom='Toto')
+    ask_user_int(0, 10, prenom='Toto')
     ```
 
 === "3"
 
     ```python
-    ask_user_int(0,10,prenom='foo')
+    ask_user_int(0, prenom='foo', 10)
     ```
 {{ terminal() }}
 
@@ -290,7 +338,7 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
     === "Solution"
 
         ``` python
-        def table_multi(nb, depart = 0, fin =10) :
+        def table_multi(nb : int, depart : int = 0, fin : int =10) -> str :
             table = ''
             for i in range(depart, fin+1) :
                 table += f'{nb}}x{i} = {nb*i} \n'
@@ -323,7 +371,7 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
     === "Solution"
 
         ```python
-        def trouve_chaine(motif,texte,verifCasse=False) :
+        def trouve_chaine(motif : str,texte : str, verifCasse : bool=False) -> bool :
             if verifCasse==True :
                 return motif in texte
             else :
@@ -342,18 +390,18 @@ On peut alors appeller la fonction des différentes manières suivantes (à test
     Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... 
 
 
-Les concepteur·trice·s de Python ont crée une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction `help`.
+Les concepteur·trice·s de Python ont créé une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction `help`.
 
 Testez par exemple la commande `help(print)` dans la console suivante, puis essayez avec d'autres objets de Python.
 
 {{ terminal() }}
 
-La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring**==}, littéralement *chaine de documentation*, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une **docstring** est construite comme une chaîne de caractères *non nommée* présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :
+La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring**==}, littéralement *chaine de documentation*, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une **docstring** est construite comme une chaine de caractères *non nommée* présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :
 
 {{ IDEv('docstring1') }}
 
 
-La fonction `somme` contient donc une **docstring** - introduite par trois guillemets ( pour permettre les sauts de lignes ). Celle-ci décrit l'effet de la fonction, de manière exacte.
+La fonction `somme` contient donc une **docstring** - introduite par trois guillemets (pour permettre les sauts de lignes). Celle-ci décrit l'effet de la fonction, de manière exacte.
 
 On peut alors accéder à la **docstring** d'une fonction en utilisant la fonction *built-in* `help` :
 
@@ -363,24 +411,7 @@ Testez par exemple `help(somme)`.
 !!! tips "Les docstrings"
     {==**Une docstring est essentielle pour comprendre l'utilité d'une fonction ! Vous devrez en utiliser le plus souvent possible !**==}
 
-
-!!! tips "Typage des arguments"
-
-    Une possibilité offerte depuis la version 3.7 de Python est de présenter dans la fonction le type des arguments attendus, ainsi que le type du retour. On appelle ceci les {==**type hints**==} (*indices de types) Ces indications sont précieuses pour l'utilisateur·trice de cette fonction.
-
-    La fonction `trouve_chaine` peut être iomplémentée ainsi :
-
-    ```python
-        def trouve_chaine(motif : str, texte : str, verifCasse : bool=False) -> bool:
-            if verifCasse==True :
-                return motif in texte
-            else :
-                return  motif.lower() in texte.lower() :
-    ```
-
-
-
-## Portée des variables  
+## Notion de portée des variables  
 
 Au sein d'un même programme, les variables définies n'ont pas systématiquement la même **portée**. La **portée d'une variable**, c'est l'espace des objets/noms (on parle aussi de *monde*) dans lequel est défini cette variable.
 
@@ -396,7 +427,7 @@ Dans l'exemple ci-dessus, la variable `gvar` est définie dans {==**l'espace de 
 
 <iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20gvar2%20%3D%208%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des noms associé à la fonction `f`, et qui est crée {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminé (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `gvar2` puisqu'elle a disparue. `gvar2` est une {==**variable locale**==} à la fonction `f`.
+Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des noms associé à la fonction `f`, et qui est créé {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminé (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `gvar2` puisqu'elle a disparue. `gvar2` est une {==**variable locale**==} à la fonction `f`.
 
 !!! warning "Changer la valeur d'une variable globale"
 
@@ -433,12 +464,48 @@ Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des nom
 
 ## Tests, assertions et module Doctest
 
+### Préconditions
+
+Comme nous l'avons vu pour la fonction `ask_user_int`, il est souvent nécessaire de tester des {==**préconditions**==} sur les arguments d'une fonction, pour s'assurer que celle-ci fonctionnera bien selon le schéma voulu.
+
+Une méthode pour tester les préconditions est d'utiliser des {==**assertions**==}. 
+
+L'instruction `assert` de Python fonctionne de la manière suivante :
+
+
+```` python
+ assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+````
+
+L'instruction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à la plage')==True`. Il peut alors se produire deux cas :
+
+* soit le booléen est `True`, auquel cas l'interpréteur passe à la ligne suivante (il ne se passe rien de visible) ;
+* soit le booléen est `False`, auquel cas l'interpréteur {==**arrête le code**==} en levant une erreur de type `AssertionError` et affiche la chaine de caractère passée en second argument, ici `'Meme casse pas trouvée'`.
+
+!!! example "Correction de la fonction `ask_user_int`"
+
+    ``` python
+    def ask_user_int(borne_min : int, borne_max : int, prenom : str ='Inconnu' ) -> int :
+        """ Fonction demandant un entier compris entre borne_nf et borne_sup.
+        personnalisation du message avec l'argument optionnel prenom.
+        renvoir un objet de type entier.
+        """
+        assert type(borne_inf) == int and type(borne_sup) == int, "Erreur de type sur borne_inf et borne_sup"
+        assert type(prenom) == str, "Erreur de type sur prenom"
+        assert borne_inf <= borne_sup , "borne_inf n'est pas inférieure à borne_sup"
+    
+        while True :
+            ...# Le code ici n'est pas changé        
+    ```
+
+    Testez maintenant cette fonction avec de mauvaises valeurs pour les arguments.
+
 ### Réfléchir avant d'agir : écrire les tests avant la fonction
 
-Lorqsu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les *cas extrêmes* ou *cas spécifiques*.
+Lorsqu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les *cas extrêmes* ou *cas spécifiques*.
 
 Par exemple, on pourrait considérer une fonction `coefficient_directeur` qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points $A$ et $B$.
-Je rappelle que le calcul du coefficient directeur de la droite $(AB)$ se fait par l'intermédiare de la formule :
+Je rappelle que le calcul du coefficient directeur de la droite $(AB)$ se fait par l'intermédiaire de la formule :
 
 $$m = \frac{y_B-y_A}{x_B-x_A}$$
 
@@ -466,11 +533,11 @@ Par exemple, nous aimerions que la fonction vérifie le test suivant :
 
 
 
-!!! question "Ecrire des tests"
+!!! question "Écrire des tests"
 
     === "Enoncé"
 
-        1. Ecrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les tyypes fournis en argument soient bien des entiers.
+        1. Ecrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les types fournis en argument soient bien des entiers.
         2. Compléter la fonction `coefficient_directeur` afin qu'elle remplisse le rôle qui lui est demandé.
 
     === "Solution"
@@ -479,21 +546,6 @@ Par exemple, nous aimerions que la fonction vérifie le test suivant :
 
 
 
-#### Tester avec des assertions
-
-Vous avez vu plus haut dans ce document des {==**assertions**==} sous la forme :
-
-```` python
- assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
-````
-
-La fonction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à la plage')==True`.  Il peut alors se produire deux cas :
-
-* soit le booléen est `True`, auquel cas l'interpréteur passe à la ligne suivante ;
-* soit le booléen est `False`, auquel cas l'interpréteur arrête le code et affiche la chaine de caractère passée en second argument, ici `'Meme casse pas trouvée'`.
-
-
-J'utiliserai souvent les assertions dans les TP notés sur la plateforme Capytale, certaines vous seront fournies, d'autres seront cachées.
 
 #### Tester avec le module doctest
 
@@ -589,7 +641,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         
     ```
 
-2. Ecrire une fonction qui renvoie le minimum de deux nombres `int` donnés :
+2. Écrire une fonction qui renvoie le minimum de deux nombres `int` donnés :
 
 
     ```python
@@ -606,7 +658,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         
     ```
 
-3. Ecrire une fonction qui renvoie le maximum de trois nombres `int` donnés :
+3. Écrire une fonction qui renvoie le maximum de trois nombres `int` donnés :
 
     ```python
     def maxi3(a : int, b : int, c : int) -> int :
@@ -623,7 +675,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         """
     ```
 
-4. Ecrire une fonction qui renvoie le nombre intermédiaire dans trois nombres `int` donnés
+4. Écrire une fonction qui renvoie le nombre intermédiaire dans trois nombres `int` donnés
 
     ```python
     def intermediaire(a : int, b : int, c : int) -> int :
@@ -690,4 +742,4 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
 9. Ecrire une fonction - et le jeu de test qui va avec,  qui renvoie l'équation réduite de la droite $(AB)$, en prenant en argument les coordonnées des points $A$ et $B$ comme dans les fonctions précédentes.
 
 
-10. Ecrire une fonction qui donne le discriminant d'un trinome du second degré $ax^2 +bx+c $, en fournissant un jeu d'exemples complets.
+10. Ecrire une fonction qui donne le discriminant d'un trinôme du second degré $ax^2 +bx+c $, en fournissant un jeu d'exemples complets.
