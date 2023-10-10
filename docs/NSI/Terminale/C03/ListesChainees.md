@@ -2,7 +2,7 @@
 
 ## Le problème de la structure tableau
 
-La structure de type **tableau** permet de stocker des séquences d'éléments dans des zones contigües de la mémoire, mais n'est pas forcément adaptée à toutes les opérations  possibles sur ces séquences.
+La structure de type **tableau** permet de stocker des séquences d'éléments dans des zones contigües de la mémoire, mais n'est pas forcément adaptée à toutes les opérations possibles sur ces séquences.
 
 Par exemple, la structure de tableau de Python permet grâce aux méthodes `append` et `pop` d'ajouter et de supprimer relativement efficacement un élément en **dernière position** dans un tableau déjà existant (ce n'est pas le cas dans d'autres langages, *où de telles méthodes n'existent pas forcément*). 
  
@@ -38,13 +38,12 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		On constate une utilisation mémoire très important pour juste un élément supplémentaire ajouté...
 	
 
-## Les listes chaînées
+## Les listes chainées
 
-### Construction d'une liste chaînées
+### Construction d'une liste chainée
 
-!!! abstract "Liste chaînée"
-	Une {==**liste chaînée**==} est une structure permettant d'implémenter une liste, c'est-à-dire une séquence finie de valeurs (de même type ou non). Les éléments sont dits **chaînés**
-	car à chaque élément est associé l'adresse mémoire de l'élément suivant de la liste.
+!!! abstract "Liste chainée"
+	Une {==**liste chainée**==} est une structure permettant d'implémenter une liste, c'est-à-dire une séquence finie de valeurs (de même type ou non). Les éléments sont dits **chainés** car {==**à chaque élément est associé l'adresse mémoire de l'élément suivant**==} de la liste.
 	
 !!! example "Exemple"
 	
@@ -52,15 +51,15 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	![LC1](ListeChainee1.png){: style="width : 30%;"}
 	</p>
 	
-	On a représenté ici une liste chaînée de trois éléments :
+	On a représenté ici une liste chainée de trois éléments :
 	
 	* Le premier est $21$, et il pointe vers l'adresse mémoire du second ;
 	* Le deuxième élément est $15$ et il pointe vers l'adresse mémoire du troisième ;
 	* Le troisième élément est $45$. Il ne pointe vers rien (l'adresse du suivant est `None`). On a atteint la fin de la liste.
 	
-!!! tips "Implémentation d'une liste chaînée en Python"
+!!! tips "Implémentation d'une liste chainée en Python"
 
-	La méthode classique pour implémenter une liste chaînée est de construire une **classe d'objets** possédant deux attributs : un pour la {==**valeur**==} et un pour l'{==**adresse**==} du chainon suivant :
+	La méthode classique pour implémenter une liste chainée est de construire une **classe d'objets** possédant deux attributs : un pour la {==**valeur**==} et un pour l'{==**adresse**==} du chainon suivant :
 	
 	``` python linenums="1"
 	
@@ -74,13 +73,13 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 	Une fois cette classe définie, la construction de la liste s'effectue de la manière suivante :
 
-	* pour une liste chaînée contenant un unique chainon :
+	* pour une liste chainée contenant un unique chainon :
 
 		``` python
 		chaine = Chainon(35, None)
 		```
 
-	* pour une liste chaînée contenant plusieurs chainons :
+	* pour une liste chainée contenant plusieurs chainons :
 	
 		``` python
 		chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
@@ -95,10 +94,13 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 !!! info "Remarque"
 
-	Cette construction est une construction récursive basée sur des objets. Il aurait été possioble d'utiliser des tuples ou des listes python, mais l'utilisation serait moins pratique :
+	Cette construction est une construction récursive basée sur des objets. Il aurait été possible d'utiliser des tuples ou des listes python, mais l'utilisation serait moins pratique :
+
 	``` python
 	(21,(15, (45, (None))))
 	```
+	En particulier avec des tuples, il aurait été impossible de modifier la liste une fois celle-ci créée.
+
 !!! tips "Affichage d'un objet `Chainon`" 
 	
 	Afin de représenter à l'écran notre objet `Chainon`, on implémente la méthode `__str__` ainsi :
@@ -118,16 +120,16 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 	Ainsi l'instruction `print(chaine)` affichera `21 -> 15 -> 45 -> None`.
 	
-### Opérations sur les listes chaînées.
+### Opérations sur les listes chainées.
 
-!!! exemple "Longueur d'une liste chaînée"
+!!! exemple "Longueur d'une liste chainée"
 
-	Nous allons créer maintenant une fonction `longueur` qui calcule la longueur d'une liste chaînée telle que nous l'avons implémentée.
+	Nous allons créer maintenant une fonction `longueur` qui calcule la longueur d'une liste chainée telle que nous l'avons implémentée.
 	
 	Cette fonction devra :
 	
 	* renvoyer 0 si la liste est vide ;
-	* renvoyer le nombre d'éléments de la chaîne sinon.
+	* renvoyer le nombre d'éléments de la chaine sinon.
 	
 	
 	Le plus simple est d'utiliser la récursivité :
@@ -164,7 +166,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `n_ieme_element(chaine, n)` qui renvoie la valeur du $n$-ième élément de la liste chaînée passée en argument.
+		Créer une fonction `n_ieme_element(chaine, n)` qui renvoie la valeur du $n$-ième élément de la liste chainée passée en argument.
 		
 	=== "Solution récursive"
 	
@@ -185,7 +187,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $n$, car le calcul de la longueur parcoure déjà toute la liste.
 		Faire ce calcul en appel récursif générerait donc une complexité **quadratique**. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
 		de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.
-		* Pire, dans le cas où l'indice passé est négatif, la liste chaînée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger celà par la ligne :
+		* Pire, dans le cas où l'indice passé est négatif, la liste chainée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger celà par la ligne :
 		
 		``` python
 		if chaine == None or i<0 :
@@ -216,7 +218,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 	=== "Enoncé" 
 		
-		Créer une fonction `concatener(c1, c2)` qui renvoie une liste chaînée obtenue par concaténation de `c1` et `c2`.
+		Créer une fonction `concatener(c1, c2)` qui renvoie une liste chainée obtenue par concaténation de `c1` et `c2`.
 		
 	=== "Solution récursive"
 	
@@ -230,7 +232,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 		La complexité dépend fortement de la longueur de la liste `c1`. par contre elle ne dépend pas de celle de `c2`.
 		Dans cette version, les chaines `c1` et `c2` ne sont pas modifiée ! `concatener` renvoie 
-		une nouvelle liste chaînée qui a copié les valeurs de `c1` avant de les lier à celles de `c2`.
+		une nouvelle liste chainée qui a copié les valeurs de `c1` avant de les lier à celles de `c2`.
 		
 		<p align="center">
 		![LC1](ListeChaineeConcatener1.png){: style="width : 60%;"}
@@ -256,23 +258,21 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 		Imaginons qu'on exécute deux fois la concaténation `concatenerI(c1, c2)`, puis qu'on demande un affichage de `c1`.
 		
-		La première concaténation va donner le schéma ci-dessus, la châine `c1` ayant pour dernier chaînon le dernier chaînon de `c2`.
-		A l'exécution de la deuxième concaténation, il n'y aura pas de création de nouvelle chaîne, mais simplement la modification du dernier
-		chaînon de l'actuel `c1` vers le premier élément de `c2`, soit... une boucle menant du dernier élément de `c2` vers le premier de `c2` :
+		La première concaténation va donner le schéma ci-dessus, la chaine `c1` ayant pour dernier chainon le dernier chainon de `c2`.
+		A l'exécution de la deuxième concaténation, il n'y aura pas de création de nouvelle chaine, mais simplement la modification du dernier
+		chainon de l'actuel `c1` vers le premier élément de `c2`, soit... une boucle menant du dernier élément de `c2` vers le premier de `c2` :
 		
 		<p align="center">
 		![LC2](ListeChaineeConcatener3.png){: style="width : 60%;"}
 		</p>
 		
-		La chaîne obtenue ne possède plus de fin (jamais elle ne pointe vers `None`). La méthode `__str__` effectuant un appel récursif dont le cas de base correspond au fait de pointer vers `None`, on aura alors une erreur de type `RecursionError: maximum recursion depth exceeded`, puisqu'il est devenu impossible de passer par le cas de base.
+		La chaine obtenue ne possède plus de fin (jamais elle ne pointe vers `None`). La méthode `__str__` effectuant un appel récursif dont le cas de base correspond au fait de pointer vers `None`, on aura alors une erreur de type `RecursionError: maximum recursion depth exceeded`, puisqu'il est devenu impossible de passer par le cas de base.
 		
 		
 		
 ??? bug "Un cas limite : renverser la liste"
 	
-	Comment faire pour renverser une liste chaînée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes,
-	nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélectionnant le premier chaînon et en le concaténant
-	à la liste renversée de la suite de la chaîne, Le cas de base étant celui d'une liste vide, auquel cas on renvoie cette liste :
+	Comment faire pour renverser une liste chainée ? Sachant que nous avons vu des procédés récursif pour les questions précédentes, nous sommes tenter d'en utiliser un aussi pour ce cas, par exemple en sélectionnant le premier chainon et en le concaténant à la liste renversée de la suite de la chaine, le cas de base étant celui d'une liste vide, auquel cas on renvoie cette liste :
 	
 	``` python
 	def renverser(chaine) :
@@ -284,9 +284,9 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 	Cependant cette solution n'est pas efficace ! En effet, à chaque appel de `renverser`, on fait aussi appel à la fonction `concatener` qui parcoure la totalité de la chaine, à part un élément. La complexité devient alors {==**quadratique**==} ! 
 	
-	{==**La récursivité n'est pas toujours la meilleure solution !**==} (mais parfois elle l'est quand même !)
+	{==**La récursivité n'est pas toujours la meilleure solution !**==} *Mais parfois elle l'est quand même !*
 	
-	On va don passer en itératif, surtourt qu'il est facile d'attacher un chainon en tête d'une chaine déjà consrtituée :
+	On va don passer en itératif, surtout qu'il est facile d'attacher un chainon en tête d'une chaine déjà constituée :
 	
 	``` python
 	def renverser(chaine) :
@@ -298,32 +298,29 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		return reverse
 	```
 	
-	La complexité est celle du parcours d'une chaîne complète, donc en $\mathbb{O}(n)$.
-	
-	
-	
+	La complexité est celle du parcours d'une chaine complète, donc en $\mathbb{O}(n)$.
 	
 		
-### Modification de listes chaînées
+### Modification de listes chainées
 
 !!! warning "Pourquoi se casser la tête ?"
-	Eliminons tout de suite une possibilité : bien entendu, **en Python**, il est possible de modifier *directement* un attribut, donc la modification d'une valeur d'une liste chaînée est assez évidente.
-	Par exemple, les lignes suivantes  :
+	Éliminons tout de suite une possibilité : bien entendu, **en Python**, il est possible de modifier *directement* un attribut, donc la modification d'une valeur d'une liste chainée est assez évidente.
+	Par exemple, les lignes suivantes :
 	``` python
 	chaine = Chainon(21, Chainon(15, Chainon( 45, None)))
 	chaine.suivant.valeur = 33
 	```
 	modifient la valeur du deuxième élément de la chaine, qui devient `21 -> 33 -> 45 -> None`.
 	
-	Cependant, **cette possibilité n'est pas toujours possible dans tous les langages**, et de toutes façons cette manière de modifier ne correspond pas à la logique de construction d'une liste chaînée.
+	Cependant, **cette possibilité n'est pas toujours possible dans tous les langages**, et de toutes façons cette manière de modifier ne correspond pas à la logique de construction d'une liste chainée.
 	
-	On va donc préférer passer à des modifications directe des chaînons.
+	On va donc préférer passer à des modifications directe des chainons.
 	
 	
 		
-!!! question "Exercice 3 :  Insertion d'un chainon"
+!!! question "Exercice 3 : Insertion d'un chainon"
 
-	=== "Enoncé" 
+	=== "Énoncé" 
 		
 		Créer une fonction `inserer(v, n, chaine)` qui renvoie la liste chainée dans laquelle on a inséré insère l'élément `v` à la position `n` dans la liste `chaine` passée en argument.
 		
@@ -337,7 +334,9 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		``` python
 		def inserer(v, n, chaine) :
-			
+			""" Insere un chainon de valeur v en position n dans 
+			la liste chainée chaine.
+			"""
 			if n<0 :
 				raise IndexError("Invalid index")
 			if n == 0 or chaine == None:
@@ -346,9 +345,9 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 				return Chainon(chaine.valeur, inserer(v, n-1, chaine.suivant))
 		```
 	
-!!! question "Exercice 4 :  Suppression d'un chainon"
+!!! question "Exercice 4 : Suppression d'un chainon"
 
-	=== "Enoncé" 
+	=== "Énoncé" 
 		
 		Créer une fonction `supprime(n, chaine)` qui supprime l'élément à la position `n` dans la liste passée en argument.
 		
@@ -362,6 +361,8 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	
 		``` python
 		def supprimer(n, chaine) :
+			""" Supprime le chainon en position n de la liste
+			chainée chaine."""
 			if chaine == None or n<0:
 				raise IndexError("Invalid index")
 			if n == 0  :
@@ -372,19 +373,19 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 ## Quelques exercices supplémentaires 
 
-Nous voici avec une structure correcte, permettant de travailler correctement sur des listes chainées. Nous allons maintenant augmenter notre potentiel d'action avec les listes chaînées :
+Nous voici avec une structure correcte, permettant de travailler sur des listes chainées. Nous allons maintenant augmenter notre potentiel d'action avec de telles listes :
 
-!!! question "Exercice 5 :  Création à partir d'une liste Python"
+!!! question "Exercice 5 : Création à partir d'une liste Python"
 
-	=== "Enoncé" 
+	=== "Énoncé" 
 		
-		Créer une fonction `creer_depuis_tab(tab)` qui crée une liste chaînée depuis un tableau donné en argument.
+		Créer une fonction `creer_depuis_tab(tab)` qui crée une liste chainée depuis un tableau donné en argument.
 		
 		Par exemple :
 		
-		* `creer_depuis_tab([12, 15, 17])` crée la liste chaînée `12 -> 15 -> 17 -> None` ;
+		* `creer_depuis_tab([12, 15, 17])` crée la liste chainée `12 -> 15 -> 17 -> None` ;
 		* `creer_depuis_tab([])` crée un objet `None` ;
-		* `creer_depuis_tab([42])` crée une liste chaînée `42 -> None`.
+		* `creer_depuis_tab([42])` crée une liste chainée `42 -> None`.
 		
 	=== "Solutions"
 	
@@ -421,44 +422,44 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 					return Chainon(tab[0], creer_depuis_tabV3(tab[1:]))
 			```
 			
-!!! question "Exercice 6 :  Chercher le nombre d'occurences"
+!!! question "Exercice 6 :  Chercher le nombre d'occurrences"
 
-	=== "Enoncé" 
+	=== "Énoncé" 
 		
-		Créer une fonction `occurences(valeur, chaine)` qui renvoie le nombre d'occurence de `valeur` dans la liste chaînée `chaine`.
+		Créer une fonction `occurrences(valeur, chaine)` qui renvoie le nombre d’occurrence de `valeur` dans la liste chainée `chaine`.
 		
 		Par exemple :
 		
-		* `occurences(12, chaine)` devra renvoyer 3 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
-		* `occurences(27,chaine)` devra renvoyer 0 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
-		* `occurences(42,chaine)` devra renvoyer 1 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
+		* `occurrences(12, chaine)` devra renvoyer 3 si la chaine est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `occurrences(27,chaine)` devra renvoyer 0 si la chaine est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `occurrences(42,chaine)` devra renvoyer 1 si la chaine est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
 		
 	=== "Solution"
 	
 		A venir !
 
 
-!!! question "Exercice 7 :  Trouver la première occurence"
+!!! question "Exercice 7 : Trouver la première occurrence"
 
-	=== "Enoncé" 
+	=== "Énoncé" 
 		
-		Créer une fonction `premiere_occurence(valeur, chaine)` qui renvoie *l'indice de la première occurence* de `valeur` dans la liste chaînée `chaine`. Si `valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
+		Créer une fonction `premiere_occurrence(valeur, chaine)` qui renvoie *l'indice de la première occurrence* de `valeur` dans la liste chainée `chaine`. Si `valeur`n'est pas dans `chaine`, la fonction devra renvoyer `-1`. 
 		
 		Par exemple :
 		
-		* `premiere_occurences(12, chaine)` devra renvoyer 0 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
-		* `premiere_occurences(27,chaine)` devra renvoyer -1 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
-		* `premiere_occurences(42,chaine)` devra renvoyer 3 si la chaîne est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
+		* `premiere_occurrence(12, chaine)` devra renvoyer 0 si la chaine est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `premiere_occurrence(27,chaine)` devra renvoyer -1 si la chaine est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`;
+		* `premiere_occurrence(42,chaine)` devra renvoyer 3 si la chaine est `12 -> 35 -> 12 ->42 -> 12 ->35 -> None`.
 		
 	=== "Solution"
 	
 		A venir !
 		
-!!! question "Exercice 8 :  chaînes identiques"
+!!! question "Exercice 8 : chaines identiques"
 
 	=== "Enoncé" 
 		
-		Créer une fonction `identique(c1, c2)` qui renvoie `True` si les deux chaînes contiennent les mêmes valeurs dans le même ordre, et `False` sinon.
+		Créer une fonction `identique(c1, c2)` qui renvoie `True` si les deux chaines contiennent les mêmes valeurs dans le même ordre, et `False` sinon.
 				
 		
 	=== "Solution"
@@ -467,18 +468,18 @@ Nous voici avec une structure correcte, permettant de travailler correctement su
 
 ## Encapsulation
 
-On va désormais **encapsuler** l'implémentation précédente dans une autre classe, nommée `ListeC` dont l'interface est la suivante  :
+On va désormais **encapsuler** l'implémentation précédente dans une autre classe, nommée `ListeC` dont l'interface est la suivante :
 
-1. la construction d'un objet `ListeC` vide  correspondre à un objet `None`;
-2. une méthode `is_empty` doit renvoyer un booléen correspondnat au statut vide ou non vide de la liste ;
+1. la construction d'un objet `ListeC` vide correspondre à un objet `None`;
+2. une méthode `is_empty` doit renvoyer un booléen correspondant au statut vide ou non vide de la liste ;
 3. une méthode `push` permet d'ajouter une valeur en tête de la liste ;
-4. la méthode `__str__` doit renvoyer une chaîne correcte (telle que celle de la classe `Chainon`) ;
+4. la méthode `__str__` doit renvoyer une chaine correcte (telle que celle de la classe `Chainon`) ;
 5. l'appel à la fonction `len` doit renvoyer la longueur de la liste ;
 6. on doit pouvoir atteindre le i-ème élément d'un objet `lc`par l'intermédiaire de `lc[i]` ;
 7. l'opérateur `+` utilisé entre deux objets de type `ListeC` doit renvoyer un nouvel objet crée par concaténation.
 
 
-Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différences d'implémenations présentées dans la partie précédente :
+Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différences d'implémentations présentées dans la partie précédente :
 
 !!! question "Méthode constructeur `__init__` :"
 	=== "Analyse"
@@ -535,7 +536,7 @@ Ainsi, un utilisateur du module crée n'aura pas à se préoccuper des différen
 !!! question "Méthode `__str__` :"
 
 	=== "Analyse"
-		Rien de particulier, il suffit de renvoyer la chaîne de caractères correspondant à la tête.
+		Rien de particulier, il suffit de renvoyer la chaine de caractères correspondant à la tête.
 		
 	=== "Code"
 		``` python linenums="1"
@@ -685,7 +686,7 @@ False
 
 ??? question "Prolonger le travail"
 	
-	=== "Enoncé"
+	=== "Énoncé"
 		Ajouter à la classe `ListeC` les méthodes suivantes
 
 		* `pop` : qui supprime soit la tête de la liste si aucun argument n'est passé (`l1.pop()`, soit l'élément d'indice donné si un indice est passé en argument (`l1.pop(2)`) ;
