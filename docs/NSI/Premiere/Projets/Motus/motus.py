@@ -9,7 +9,7 @@ def choix_mot(adresse_fichier) :
     et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
 """
     with open(adresse_fichier,'r', encoding='utf8') as file :
-        mot = choice([m for m in file.readlines()]).replace('\n', '').strip()
+        mot = [m.replace('\n', '').strip() for m in file.readlines()]
         mot = [m.upper() for m in mot if len(m) == 6]
     return mot
 
