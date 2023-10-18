@@ -8,14 +8,16 @@ import doctest
 def choix_mots(adresse_fichier, longueur_mot = 6) :
     """ fonction ouvrant un fichier texte dont l'adresse absolue ou relative
     est passée en argument sous la forme d'une chaine de caractère
-    et renvoyant une liste de mots non accentués et sans autres signes
+    et renvoyant une liste de mots non accentués et sans autres signes diacritiques,
+    mis en majuscule et de longueur fournie en argument (par défaut 6).
 """
     with open(adresse_fichier,'r', encoding='utf8') as file :
         mot = [m.replace('\n', '').strip() for m in file.readlines()]
-        mot = [m.upper() for m in mot if len(m) == longueur_mot]
+        mot = [m.upper() for m in mot if len(m) == longueur_mot and m.isalpha()]
     return mot
 
-LISTE_MOTS = choix_mots('liste_francais_modifiee.txt', 6)
+## CONSTANTE contenant une liste de mots de longueur 6
+LISTE_MOTS = choix_mots('liste_francais_modifiee.txt', 6) 
 
 
 ####
@@ -28,7 +30,10 @@ def demande_mot(first_letter : str, length :int = 6) -> str:
         mot = input(f"Entrez un mot commençant par {first_letter} de {length} lettres : ").upper().strip()
         if  len(mot)== length and mot.upper() in LISTE_MOTS:
             return mot
-        print("Mot incompatible, veuillez recommencer")
+        elif mot.upper not in LISTE_MOTS :
+            print("Mot inconnu")
+        else :
+            print("Mot incompatible, veuillez recommencer")
         
 def teste_mot (mot : str, cible : str) -> str :
     sortie = ""
@@ -70,4 +75,4 @@ if __name__ == "__main__" :
     
     
     
-    ure
+    
