@@ -1,4 +1,6 @@
 import pyxel
+from random import randint
+
 
 
 
@@ -13,7 +15,13 @@ snake = [[3,3],[2,3],[1,3]]
 
 direction = [1,0]
 score = 0
+food = [8,3]
 
+def newfood() :
+    while True :
+        food = [randint(0,9), randint(0,8)]
+        if food not in snake :
+            return food
 
 def draw() :
     global snake
@@ -24,16 +32,21 @@ def draw() :
     x_head, y_head = snake[0]
     pyxel.rect(x_head*CASE, y_head*CASE, CASE, CASE, 9)
     pyxel.text(4,4,f"Score : {score}", 7)
-    
+    x_food, y_food = food
+    pyxel.rect(x_food*CASE, y_food*CASE, CASE, CASE, 8)
     
 def update() :
     global snake
     global direction
+    global food
     head = snake[0]    
     if pyxel.frame_count % FRAME_REFRESH == 0 :
         head = [snake[0][0]+direction[0], snake[0][1]+direction[1]]
         snake.insert(0, head)
-        snake.pop(-1)
+        if head == food :
+            food = newfood()
+        else :
+            snake.pop(-1)
     
     if pyxel.btn(pyxel.KEY_ESCAPE) :
         exit()
@@ -48,6 +61,9 @@ def update() :
         
     if head in snake[1:] or head[0] < 0 or head[0] >WIDTH/CASE -1 or head[1]<0 or head[1]> HEIGHT/CASE -1 :
         exit()
+        
+    
+        
     
         
 
