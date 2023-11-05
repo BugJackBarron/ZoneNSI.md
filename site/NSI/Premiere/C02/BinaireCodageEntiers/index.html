@@ -1495,6 +1495,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#compter-en-binaire" class="md-nav__link">
+    Compter en binaire
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#grouper-les-bits" class="md-nav__link">
     Grouper les bits
   </a>
@@ -3849,6 +3856,58 @@
 <p>Un bit est l'unité élémentaire d'information pouvant prendre deux valeurs distinctes, notées 0 et 1 (binaire). Le mot « <mark class="critic"><strong>bit</strong></mark> » vient de l'anglais « <strong>Bi</strong>nary Digi<strong>t</strong> », soit littéralement <em>chiffre binaire</em>.</p>
 <p>La notation internationale pour le bit est <span class="arithmatex">\(b\)</span>. On parlera alors de <span class="arithmatex">\(kb\)</span>, <span class="arithmatex">\(Mb\)</span>, <span class="arithmatex">\(Gb\)</span>.</p>
 </div>
+<h3 id="compter-en-binaire">Compter en binaire</h3>
+<p>Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajoute 1 jusqu'à épuiser les chiffres disponibles, et quand on a terminé, on ajoute un chiffre supplémentaire au nombre. En, binaire, cela donne :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Nombre en binaire</th>
+<th style="text-align: right;">Nombre en décimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+</tr>
+</tbody>
+</table>
 <h3 id="grouper-les-bits">Grouper les bits</h3>
 <p>Une information binaire est donc une suite de <span class="arithmatex">\(0\)</span> et de <span class="arithmatex">\(1\)</span>. Cette information peut-être de différente nature, tout dépend de la <mark class="critic"><strong>norme d'encodage</strong></mark> utilisée. En soit, la même suite binaire peut signifier des choses totalement différentes comme :</p>
 <ul>
@@ -3880,19 +3939,87 @@
 <div class="tabbed-block">
 <details class="done">
 <summary>Done</summary>
-<p>On peux représenter <span class="arithmatex">\(2 \times 2 = 2^2 = 4\)</span> informations différentes.</p>
+<p>On peux représenter <span class="arithmatex">\(2 \times 2 = 2^2 = 4\)</span> informations différentes. Par exemple, avec des caractères :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mot</th>
+<th style="text-align: center;">Caractère</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">00</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr>
+<td style="text-align: center;">01</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">C</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">D</td>
+</tr>
+</tbody>
+</table>
 </details>
 </div>
 <div class="tabbed-block">
 <details class="done">
 <summary>Done</summary>
-<p>On peux représenter <span class="arithmatex">\(2 \times 2 \times 2= 2^3 = 8\)</span> informations différentes.</p>
+<p>On peux représenter <span class="arithmatex">\(2 \times 2 \times 2= 2^3 = 8\)</span> informations différentes. Par exemple, avec des caractères :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mot</th>
+<th style="text-align: center;">Caractère</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr>
+<td style="text-align: center;">001</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;">C</td>
+</tr>
+<tr>
+<td style="text-align: center;">011</td>
+<td style="text-align: center;">D</td>
+</tr>
+<tr>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">E</td>
+</tr>
+<tr>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">G</td>
+</tr>
+<tr>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;">H</td>
+</tr>
+</tbody>
+</table>
 </details>
 </div>
 <div class="tabbed-block">
 <details class="done">
 <summary>Done</summary>
-<p>On peux représenter <span class="arithmatex">\(2 \times 2 \times 2 \times 2= 2^4 = 16\)</span> informations différentes.</p>
+<p>On peux représenter <span class="arithmatex">\(2 \times 2 \times 2 \times 2= 2^4 = 16\)</span> informations différentes. Par exemple, avec des caractères, on pourra représenter jusqu'à <code>P</code>, qui sera représenté par le mot binaire <code>1111</code></p>
 </details>
 </div>
 </div>
@@ -3902,13 +4029,13 @@
 <h3 id="octets">Octets</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Octets</p>
-<p>Pour quantifier les informations binaires, on utilise souvent le mot <mark class="critic"><strong>octet</strong></mark> ( abusivement appelé aussi <a href="https://fr.wikipedia.org/wiki/Byte"><em>byte</em></a> dans le monde anglo-saxon).</p>
+<p>Pour quantifier les informations binaires, on utilise souvent le mot <mark class="critic"><strong>octet</strong></mark> (abusivement appelé aussi <a href="https://fr.wikipedia.org/wiki/Byte" target="target"><em>byte</em></a> dans le monde anglo-saxon).</p>
 <p>Un octet est un groupement de <span class="arithmatex">\(8\)</span> bits. Il permet de représenter <span class="arithmatex">\(2^8 = 256\)</span> informations différentes.</p>
 <p>La notation internationale pour l'octet est <span class="arithmatex">\(o\)</span>. On parlera alors de <span class="arithmatex">\(ko\)</span> ( <span class="arithmatex">\(1~ko = 1000 o\)</span> ), <span class="arithmatex">\(Mo\)</span> ( <span class="arithmatex">\(1~Mo = 10^3~ko = 10^6~o\)</span> ), <span class="arithmatex">\(Go\)</span> ( <span class="arithmatex">\(1~Go = 10^3~Mo = 10^9~o\)</span> ), etc, mais aussi de <span class="arithmatex">\(ko/s\)</span>, <span class="arithmatex">\(Mo/s\)</span>, etc...</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Remarque</p>
-<p>Les préfixes <em>kilo</em>, <em>Mega</em>, <em>Giga</em> ..., sont bien ceux du système international, c'est-à-dire ceux pour <span class="arithmatex">\(10^3\)</span>, <span class="arithmatex">\(10^6\)</span>, <span class="arithmatex">\(10^9\)</span>... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( <em>kibi</em>, <em>Mibi</em>, <em>Gibi</em>...)</p>
+<p>Les préfixes <em>kilo</em>, <em>Mega</em>, <em>Giga</em> ..., sont bien ceux du système international, c'est-à-dire ceux pour <span class="arithmatex">\(10^3\)</span>, <span class="arithmatex">\(10^6\)</span>, <span class="arithmatex">\(10^9\)</span>... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( <em>kibi</em>, <em>Mibi</em>, <em>Gibi</em>...), pour lesquels le facteur de changement d'unité n'est pas <span class="arithmatex">\(10^3\)</span> mais <span class="arithmatex">\(2^10 = 1024\)</span>. Ainsi <span class="arithmatex">\(1 Mibi = 1024 kibi\)</span>.</p>
 </div>
 <h2 id="ecritures-en-dautres-bases">Ecritures en d'autres bases</h2>
 <h3 id="les-entiers-en-base-decimale">Les entiers en base décimale</h3>
@@ -4026,15 +4153,25 @@
 <div class="highlight"><pre><span></span><code>fonction dec2bin(n) :
     base2 &lt;- chaine de caractère vide
     Tant que n!=0 :
-        base2 &lt;- base2+caractere(n%2)
+        base2 &lt;- caractere(n%2)+base2
         n &lt;- n//2
-    Renvoyer base2 inversée
+    Renvoyer base2 
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p></p><p align="center">
-<img alt="Dec2Bin" src="../Algogramme_Dec2Bin.png">
-</p>
+<pre class="mermaid"><code>
+flowchart TB
+A(Nombre n positif en décimal) --&gt; B(base2 chaine de caractère vide)
+B --&gt; C{n != 0}
+C --&gt; |Non| F(base2 est la représentation de n en binaire)
+subgraph Z["Boucle principale"]
+    direction LR
+    C --&gt;|oui| D[Ajouter n%2 au début de base2];
+    D --&gt; E[n prend la valeur n//2]
+    E --&gt; C 
+end
+
+</code></pre>
 </div>
 </div>
 </div>
@@ -4118,9 +4255,15 @@
 <p>Outre que la lecture des nombres en écriture binaire par un humain est très compliquée, il faut remarquer que,
  de par la construction de ces nombres, la quantité de symboles utilisés en base <span class="arithmatex">\(2\)</span> est largement supérieur à
  celui utilisé en base <span class="arithmatex">\(10\)</span> - <strong><span class="arithmatex">\(3,2\)</span> fois plus grand</strong> en moyenne sur les <span class="arithmatex">\(100~000\)</span> premiers entiers.</p>
-<p>Il peut donc être utile de trouver un compromis entre la base <span class="arithmatex">\(2\)</span>, utile pour l'ordinateur, et la base <span class="arithmatex">\(10\)</span>
-, plus compréhensible par un être humain.</p>
+<p>Il peut donc être utile de trouver un compromis entre la base <span class="arithmatex">\(2\)</span>, utile pour l'ordinateur, et la base <span class="arithmatex">\(10\)</span>, plus compréhensible par un être humain.</p>
 <p>Ce compromis peut-être trouvé avec le système <mark class="critic"><strong>hexadécimal</strong></mark>, c'est-à-dire un système de <strong>base 16</strong>.</p>
+<div class="admonition tips">
+<p class="admonition-title">Clé WIFI</p>
+<p>Typiquement, une clé de sécurité WIFI est un nombre binaire à 128 bits (ou 256 bits). Lorsque vous vous connectez à un nouveau réseau WIFI, vous devez taper la clé sur votre ordinateur/smartphone (on élimine ici la possibilité d'un FlashCode), mais celle ci est présentée souvent sous la forme <code>38326f53685c2c256164712838</code>, déjà particulièrement pénible à taper, et les erreurs de recopiages sont faciles à  faire et difficiles à retrouver.</p>
+<p>Ce nombre, sous sa forme binaire est celui-ci : </p>
+<p><code>111000001100100110111101010011011010000101110000101100001001010110000101100100011100010010100000111000</code></p>
+<p>De quoi faire encore plus d'erreurs en le recopiant...</p>
+</div>
 <div class="admonition abstract">
 <p class="admonition-title">Base hexadécimale</p>
 <p>Un nombre entier écrit dans une base hexadécimale ( base <span class="arithmatex">\(16\)</span> ) vérifie les conditions suivantes :</p>

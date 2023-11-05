@@ -18,7 +18,25 @@ L'histoire de l'informatique est intrinsèquement dépendante de l'histoire de l
 	Un bit est l'unité élémentaire d'information pouvant prendre deux valeurs distinctes, notées 0 et 1 (binaire). Le mot &#171; {==**bit**==} &#187; vient de l'anglais &#171; **Bi**nary Digi**t** &#187;, soit littéralement *chiffre binaire*.
 	
 	La notation internationale pour le bit est $b$. On parlera alors de $kb$, $Mb$, $Gb$.
-	
+
+### Compter en binaire
+
+Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajoute 1 jusqu'à épuiser les chiffres disponibles, et quand on a terminé, on ajoute un chiffre supplémentaire au nombre. En, binaire, cela donne :
+
+
+| Nombre en binaire | Nombre en décimal |
+| ---: | ---: |
+| 0 | 0 |
+| 1 | 1 |
+| 10 | 2 |
+| 11 | 3 |
+| 100 | 4 |
+| 101 | 5 | 
+| 110 | 6 | 
+| 111 | 7 |
+| 1000 | 8 |
+| ... | ... | 
+
 ### Grouper les bits
 
 Une information binaire est donc une suite de $0$ et de $1$. Cette information peut-être de différente nature, tout dépend de la {==**norme d'encodage**==} utilisée. En soit, la même suite binaire peut signifier des choses totalement différentes comme :
@@ -28,6 +46,9 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 * un caractère ;
 * une note de musique ;
 * ...
+
+
+
 
 !!! example "Exemple"
 	L'écriture binaire $101010$ signifie :
@@ -49,13 +70,35 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 	
 	=== "Avec $2$ bits :"
 		??? done 
-			On peux représenter $2 \times 2 = 2^2 = 4$ informations différentes.
+			On peux représenter $2 \times 2 = 2^2 = 4$ informations différentes. Par exemple, avec des caractères :
+
+			| Mot | Caractère |
+			| :--: | :--: | 
+			| 00 | A |
+			| 01 | B |
+			| 10 | C |
+			| 11 | D |
+
+
+
 	=== "Avec $3$ bits :"
 		??? done 
-			On peux représenter $2 \times 2 \times 2= 2^3 = 8$ informations différentes.
+			On peux représenter $2 \times 2 \times 2= 2^3 = 8$ informations différentes. Par exemple, avec des caractères :
+			
+			| Mot | Caractère |
+			| :--: | :--: | 
+			| 000 | A |
+			| 001 | B |
+			| 010 | C |
+			| 011 | D |
+			| 100 | E |
+			| 101 | F |
+			| 110 | G |
+			| 111 | H |
+
 	=== "Avec $4$ bits :"
 		??? done 
-			On peux représenter $2 \times 2 \times 2 \times 2= 2^4 = 16$ informations différentes.
+			On peux représenter $2 \times 2 \times 2 \times 2= 2^4 = 16$ informations différentes. Par exemple, avec des caractères, on pourra représenter jusqu'à `P`, qui sera représenté par le mot binaire `1111`
 	
 	
 	 Avec un système à $n$ bits, on peut représenter $2^n$ informations différentes.
@@ -64,7 +107,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 
 !!! abstract "Octets"
-	Pour quantifier les informations binaires, on utilise souvent le mot {==**octet**==} ( abusivement appelé aussi [*byte*](https://fr.wikipedia.org/wiki/Byte) dans le monde anglo-saxon).
+	Pour quantifier les informations binaires, on utilise souvent le mot {==**octet**==} (abusivement appelé aussi [*byte*](https://fr.wikipedia.org/wiki/Byte){:target = "_blank"} dans le monde anglo-saxon).
 	
 	Un octet est un groupement de $8$ bits. Il permet de représenter $2^8 = 256$ informations différentes.
 	
@@ -72,7 +115,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 	
 !!! info "Remarque"
   
-	Les préfixes *kilo*, *Mega*, *Giga* ..., sont bien ceux du système international, c'est-à-dire ceux pour $10^3$, $10^6$, $10^9$... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( *kibi*, *Mibi*, *Gibi*...)
+	Les préfixes *kilo*, *Mega*, *Giga* ..., sont bien ceux du système international, c'est-à-dire ceux pour $10^3$, $10^6$, $10^9$... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( *kibi*, *Mibi*, *Gibi*...), pour lesquels le facteur de changement d'unité n'est pas $10^3$ mais $2^10 = 1024$. Ainsi $1 Mibi = 1024 kibi$.
   
  
 
@@ -117,6 +160,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 !!! question "Exercice"
 	=== "Enoncé"
+
 		Considérons le nombre $(101010)_2$. Convertissez ce nombre binaire en décimal :
 		
 	=== "Solution"
@@ -175,16 +219,28 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 		fonction dec2bin(n) :
 			base2 <- chaine de caractère vide
 			Tant que n!=0 :
-				base2 <- base2+caractere(n%2)
+				base2 <- caractere(n%2)+base2
 				n <- n//2
-			Renvoyer base2 inversée
+			Renvoyer base2 
 		```
 	
 	=== "Sous forme de diagramme"
 		
-		<p align="center">
-		![Dec2Bin](Algogramme_Dec2Bin.png)
-		</p>
+		``` mermaid
+		
+		flowchart TB
+		A(Nombre n positif en décimal) --> B(base2 chaine de caractère vide)
+		B --> C{n != 0}
+		C --> |Non| F(base2 est la représentation de n en binaire)
+		subgraph Z["Boucle principale"]
+			direction LR
+			C -->|oui| D[Ajouter n%2 au début de base2];
+			D --> E[n prend la valeur n//2]
+			E --> C 
+		end
+		
+		
+		```
 	
 !!! example "Exemple : Conversion de $(135)_{10}$ en base $2$"
 	
@@ -256,10 +312,19 @@ Outre que la lecture des nombres en écriture binaire par un humain est très co
  de par la construction de ces nombres, la quantité de symboles utilisés en base $2$ est largement supérieur à
  celui utilisé en base $10$ - **$3,2$ fois plus grand** en moyenne sur les $100~000$ premiers entiers.
 
-Il peut donc être utile de trouver un compromis entre la base $2$, utile pour l'ordinateur, et la base $10$
-, plus compréhensible par un être humain.
+Il peut donc être utile de trouver un compromis entre la base $2$, utile pour l'ordinateur, et la base $10$, plus compréhensible par un être humain.
 
 Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-à-dire un système de **base 16**.
+
+
+!!! tips "Clé WIFI"
+ 	Typiquement, une clé de sécurité WIFI est un nombre binaire à 128 bits (ou 256 bits). Lorsque vous vous connectez à un nouveau réseau WIFI, vous devez taper la clé sur votre ordinateur/smartphone (on élimine ici la possibilité d'un FlashCode), mais celle ci est présentée souvent sous la forme `38326f53685c2c256164712838`, déjà particulièrement pénible à taper, et les erreurs de recopiages sont faciles à  faire et difficiles à retrouver.
+	
+	Ce nombre, sous sa forme binaire est celui-ci : 
+	
+	`111000001100100110111101010011011010000101110000101100001001010110000101100100011100010010100000111000`
+	
+	 De quoi faire encore plus d'erreurs en le recopiant...
 
 !!! abstract "Base hexadécimale"
 	Un nombre entier écrit dans une base hexadécimale ( base $16$ ) vérifie les conditions suivantes :
