@@ -14,7 +14,7 @@
 	![gif insertion](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif){: style ="width:30%;"}
 	</p>
 	
-	La complexité du tri par insertion est $\mathbb{O}(n^2)$ dans le pire cas et en moyenne, et linéaire dans le meilleur cas (tableau presque trié). C'est donc un tri
+	La complexité du tri par insertion est quadratique (en $\mathbb{O}(n^2)$) dans le pire cas et en moyenne, et linéaire (en $$\mathbb{O}(n)$)dans le meilleur cas (tableau presque trié). C'est donc un tri
 	dont la vitesse d'exécution dépendra fortement de la situation initiale. 
 	
 
