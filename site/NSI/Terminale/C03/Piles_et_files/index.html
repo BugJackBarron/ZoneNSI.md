@@ -2576,14 +2576,14 @@
         
           <li class="md-nav__item">
   <a href="#a-partir-dune-liste-python" class="md-nav__link">
-    A partir d'une liste python
+    À partir d'une liste python
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#a-partir-dune-liste-chainee" class="md-nav__link">
-    A partir d'une liste chaînée
+    À partir d'une liste chainée
   </a>
   
 </li>
@@ -2603,7 +2603,7 @@
         
           <li class="md-nav__item">
   <a href="#implementation-par-une-liste-chainee-mutable" class="md-nav__link">
-    Implémentation par une liste chaînée mutable
+    Implémentation par une liste chainée mutable
   </a>
   
 </li>
@@ -3823,7 +3823,7 @@
 <h3 id="piles">Piles</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Définition</p>
-<p>Une <mark class="critic"><strong>pile</strong></mark> (<em>stack</em> en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :</p>
+<p>Une <mark class="critic"><strong>pile</strong></mark> (<em>stack</em> en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'<mark class="critic"><strong>insertion</strong></mark> et de <mark class="critic"><strong>délétion</strong></mark> :</p>
 <ul>
 <li>un objet est ajouté toujours en haut de la pile (<strong>empiler</strong>);</li>
 <li>quand on supprime un objet, il s'agit toujours du <strong>dernier objet ajouté</strong> (<strong>dépiler</strong>).</li>
@@ -3857,7 +3857,7 @@
 </tr>
 <tr>
 <td style="text-align: center;"><code>est_vide(p : Pile[T]) -&gt; bool</code></td>
-<td style="text-align: left;">renvoie <code>True si l'objet</code>p<code>de</code>type <code>Pile[T]</code> est vide, <code>False</code> sinon.</td>
+<td style="text-align: left;">renvoie <code>True</code> si l'objet <code>p</code> de type <code>Pile[T]</code> est vide, <code>False</code> sinon.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code>empiler(e : T, p : Pile[T]) -&gt; None</code></td>
@@ -3900,14 +3900,14 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <p class="admonition-title">Définition</p>
 <p>Une <mark class="critic"><strong>file</strong></mark> (<em>queue</em> en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :</p>
 <ul>
-<li>un objet est ajouté toujours au début de la file (<strong>enfiler</strong>);</li>
-<li>quand on supprime un objet, il s'agit toujours du <strong>dernier objet de la file</strong> (<strong>défiler</strong>).</li>
+<li>un objet est ajouté toujours à la fin de la file (<strong>enfiler</strong>);</li>
+<li>quand on supprime un objet, il s'agit toujours du <strong>premier objet de la file</strong> (<strong>défiler</strong>).</li>
 </ul>
 <p>On associe à cette structure l'image d'une <em>file de personnes faisant la queue</em> :   </p>
 <p></p><p align="center">
 <img alt="file 1" src="../files1.png" style="width : 70%;">
 </p>
-<p>Une filer est particulièrement adaptée aux <em>traitements séquentiels</em>.</p>
+<p>Une file est particulièrement adaptée aux {<strong>traitements séquentiels</strong>}.</p>
 <p>Un tel type de structure est souvent appelé :</p>
 <ul>
 <li><em>Premier entré, premier sorti</em> (<em>PEPS</em>) en français ;</li>
@@ -3918,7 +3918,7 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <p class="admonition-title">Interface</p>
 <p>Pour définir l'interface d'un objet de type <strong>file</strong>, nous supposerons d'abord que les éléments de la file sont tous du même type (la file est <strong>homogène</strong>).</p>
 <p>Pour parler d'une file d'éléments de type <code>T</code>, on utilisera la notation <code>File[T]</code>.</p>
-<p>L'interface sera simple puisque seulement 4 fonctions sont nécessaires : création d'une file vide, enfiler (<em>enqueue</em> en anglais), défiler (<em>dequeue</em> nen aglais), et tester la <em>vacuité</em> d'une file.</p>
+<p>L'interface sera simple puisque seulement 4 fonctions sont nécessaires : création d'une file vide, enfiler (<em>enqueue</em> en anglais), défiler (<em>dequeue</em> en anglais), et tester la <em>vacuité</em> d'une file.</p>
 <table>
 <thead>
 <tr>
@@ -3933,7 +3933,7 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </tr>
 <tr>
 <td style="text-align: center;"><code>est_vide(f : File[T]) -&gt; bool</code></td>
-<td style="text-align: left;">renvoie <code>True si l'objet</code>f<code>de</code>type <code>File[T]</code> est vide, <code>False</code> sinon.</td>
+<td style="text-align: left;">renvoie <code>True</code> si l'objet <code>f</code> de type <code>File[T]</code> est vide, <code>False</code> sinon.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code>enfiler(e : T, f : File[T]) -&gt; None</code></td>
@@ -3947,17 +3947,17 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </table>
 </div>
 <div class="admonition example">
-<p class="admonition-title">Situations utilisants une file</p>
+<p class="admonition-title">Situations utilisant une file</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Jeu de Bataille</label><label for="__tabbed_2_2">Serveurs d'impressions</label><label for="__tabbed_2_3">Mémoire tampon (<em>buffers</em>)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Dans un jeu de bataille, chaque joueur possède une file de carte. On <em>défile</em> chaque paquet, compare les cartes, et le vainqueur <em>enfile</em> les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.</p>
+<p>Dans un jeu de bataille, chaque joueur possède une file de carte. On <strong>défile</strong> chaque paquet, compare les cartes, et le vainqueur <strong>enfile</strong> les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.</p>
 </div>
 <div class="tabbed-block">
-<p>Les serveurs d'impression traitent les requêtes dans l'ordre dans lequel elles arrivent, et les insèrent dans une file d'attente (dite aussi queue ou spool), lorsque d'autres travaux sont en exécution.</p>
+<p>Les serveurs d'impression traitent les requêtes dans l'ordre dans lequel elles arrivent, et les insèrent dans une file d'attente (dite aussi <em>queue</em> ou <em>spool</em>), lorsque d'autres travaux sont en exécution.</p>
 </div>
 <div class="tabbed-block">
-<p>Une <strong>mémoire tampon</strong>, ou <strong>buffer</strong>, est une zone de mémoire vive qui va être utilisée pour stocker des données circulant entre deux périphériques ne fonctionnant pâs à la même vitesse, par exemple entre la connexion internet et le flux vidéo :</p>
+<p>Une <strong>mémoire tampon</strong>, ou <strong>buffer</strong>, est une zone de mémoire vive qui va être utilisée pour stocker des données circulant entre deux périphériques ne fonctionnant pas à la même vitesse, par exemple entre la connexion internet et le flux vidéo :</p>
 <ul>
 <li>si la vitesse de connexion est supérieure au débit vidéo, le buffer va se remplir des données vidéo, et le lecteur vidéo les lira dans leur ordre d'arrivée (PEPS) ;</li>
 <li>si le lecteur vidéo constate une chute du débit - il n'a plus de données à lire, il va attendre que la file du buffer atteigne une certaine taille afin de relancer une lecture vidéo plus fluide - c'est le <em>buffering</em>.</li>
@@ -3967,10 +3967,10 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </div>
 </div>
 <h2 id="implementations-dune-pile">Implémentations d'une Pile</h2>
-<h3 id="a-partir-dune-liste-python">A partir d'une liste python</h3>
+<h3 id="a-partir-dune-liste-python">À partir d'une liste python</h3>
 <div class="admonition question">
 <p class="admonition-title">Implémentation à partir du type <code>list</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Une solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Une solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles, en utilisant le type <code>list</code> de python:</p>
@@ -4008,20 +4008,17 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Un code simple et efficace ?</p>
-<p>Certes le codage effectué est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type  <code>list</code> en python sont cachés, comme par exemple l'<strong>allocation dynamique de mémoire</strong>. Cette allocation se fait à la création, puis quand la lite dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... <a href="https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/">voir ici</a>), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.</p>
+<p>Certes la construction de code effectuée est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type <code>list</code> en python sont cachés, comme par exemple l'<strong>allocation dynamique de mémoire</strong>. Cette allocation se fait à la création, puis quand la lite dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... <a href="https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/" target="target">voir ici</a>), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.</p>
 </div>
-<h3 id="a-partir-dune-liste-chainee">A partir d'une liste chaînée</h3>
-<p>Une des possibilités les plus simple pour implémenter une pile est d'utiliser les liste chaînée. En effet, dans une liste chaînée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type <code>list</code> de python.</p>
+<h3 id="a-partir-dune-liste-chainee">À partir d'une liste chainée</h3>
+<p>Une des possibilités les plus simples pour implémenter une pile est d'utiliser les liste chainée. En effet, dans une liste chainée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type <code>list</code> de python.</p>
 <div class="admonition question">
-<p class="admonition-title">Implémentation par les listes chaînées</p>
+<p class="admonition-title">Implémentation par les listes chainées</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Une solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Chainon</span> <span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
+<p>Compléter le code suivant (avec le nom de module utilisant la classe <code>ListeC</code> du cours précédent) afin qu'il corresponde à l'interface définie pour les piles :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mon_fichier</span> <span class="kn">import</span> <span class="n">ListeC</span>
 
 <span class="k">class</span> <span class="nc">Pile</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""interface de pile"""</span>
@@ -4045,9 +4042,9 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </div>
 </div>
 <h2 id="implementations-dune-file">Implémentations d'une File</h2>
-<h3 id="implementation-par-une-liste-chainee-mutable">Implémentation par une liste chaînée mutable</h3>
+<h3 id="implementation-par-une-liste-chainee-mutable">Implémentation par une liste chainée mutable</h3>
 <div class="admonition question">
-<p class="admonition-title">Implémentation par liste chaînée mutable</p>
+<p class="admonition-title">Implémentation par liste chainée mutable</p>
 <p>Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une <a href="../ListeChaineeConcatener3.png">mauvaise idée</a>, il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. </p>
 <p>Pour cela il faudra utiliser deux attributs <code>tete</code> et <code>queue</code>, qui représenteront respectivement le chainon de début et le chainon de fin de la file.</p>
 <p></p><p align="center">
@@ -4104,7 +4101,7 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </ul>
 <p></p><p align="center">
 <div class="video-container"><iframe src="../QueueWith2Stacks.mp4" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Enoncé</label><label for="__tabbed_6_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Énoncé</label><label for="__tabbed_6_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons défini plus haut :</p>
@@ -4132,12 +4129,12 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 <h2 id="exercices">Exercices</h2>
 <div class="admonition question">
 <p class="admonition-title">Ajouter des méthodes</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Enoncé</label><label for="__tabbed_7_2">Solutions</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Solutions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter le code de la classe <code>Pile</code> construite à partir d'une liste chaînée avec les méthodes suivantes :</p>
+<p>Compléter le code de la classe <code>Pile</code> construite à partir d'une liste chainée avec les méthodes suivantes :</p>
 <ol>
-<li>Une méthode <code>consulter</code> permettant de connaître l'élément au sommet de la pile <strong>sans le dépiler</strong>.</li>
+<li>Une méthode <code>consulter</code> permettant de connaitre l'élément au sommet de la pile <strong>sans le dépiler</strong>.</li>
 <li>Une méthode <code>vider</code> permettant de vider la pile de ses éléments</li>
 <li>Une méthode <code>taille</code> renvoyant la taille de la pile. Quelle est la complexité utilisée ?</li>
 </ol>
@@ -4150,7 +4147,7 @@ et donc de rétablir le texte à la situation précédente sauvegardée dans la 
 </div>
 <div class="admonition question">
 <p class="admonition-title">Améliorer le calcul de la taille</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Enoncé</label><label for="__tabbed_8_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Énoncé</label><label for="__tabbed_8_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe <code>Pile</code> .
@@ -4165,11 +4162,11 @@ Nous allons ajouter un <em>attribut</em> <code>_taille</code> à la classe, qui 
 </div>
 <div class="admonition question">
 <p class="admonition-title">Calculatrice à notation polonaise inversée</p>
-<p>La <a href="https://fr.wikipedia.org/wiki/Notation_polonaise_inverse">notation polonaie inversée</a> (NPI ou <em>RPN</em> en anglais) permet d'écrire
-de façon non ambiguë les formules arithmétiques <em>sans utiliser de parenthèses</em>.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Notation_polonaise_inverse">notation polonaise inversée</a> (NPI ou <em>RPN</em> en anglais) permet d'écrire
+de façon non ambigüe les formules arithmétiques <em>sans utiliser de parenthèses</em>.</p>
 <p>Par exemple, le calcul <span class="arithmatex">\(((1 + 2) \times 4) + 3\)</span> est noté en NPI :</p>
 <div class="arithmatex">\[
-1~2~+~4~\times~3~+ 
+1~~2~~+~~4~~\times~~3~~+ 
 \]</div>
 <p>Le calcul <span class="arithmatex">\(((1 + 2) \times 4) + 3\)</span> peut se lire intuitivement :</p>
 <ul>
@@ -4179,25 +4176,27 @@ de façon non ambiguë les formules arithmétiques <em>sans utiliser de parenth�
 <li>j'ajoute 3. (<span class="arithmatex">\(3 +\)</span>).</li>
 </ul>
 <p>Ce qui donne la notation précédente.</p>
-<p>On peut tester ce calcul et cette notation sur le simulateur <a href="https://getomega.dev/simulator">omega</a> de la calculatrice <em>Numworks</em>.</p>
-<p>La NPI  est dites <em><em>inversée car elle dérive de la </em>notation polonaise</em> présentée en 1924 par le mathématicien polonais <em>Jan Łukasiewicz,</em> 
+<p>On peut tester ce calcul et cette notation sur le simulateur <a href="https://getomega.dev/simulator" target="target">omega</a> de la calculatrice <em>Numworks</em>.</p>
+<p>La <code>NPI</code> est dites <em><em>inversée car elle dérive de la </em>notation polonaise</em> présentée en 1924 par le mathématicien polonais <em>Jan Łukasiewicz,</em> 
 et elle s’en différencie par l’ordre des termes, les opérandes y étant présentés avant les opérateurs.</p>
 <p>La structure de calcul en NPI est utilise une <strong>pile</strong> de la manière suivante :</p>
 <ul>
-<li>quand on rencontre un nombre, on l'enpile ;</li>
+<li>quand on rencontre un nombre, on l'empile ;</li>
 <li>quand on rencontre un opérateur (<span class="arithmatex">\(+,~\times~,-~,...\)</span>) on dépile les <strong>deux nombres au sommet de la pile</strong> et on effectue l'opération, 
 le résultat étant de nouveau empilé.</li>
 </ul>
 <p>Si le calcul est correctement écrit, il y a toujours au moins deux nombres dans la pile quand on rencontre un opérateur, et il reste un seul
-et unique nombre dans cette pile quand l'expresion  a été entièrement lue.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Enoncé</label><label for="__tabbed_9_2">Solution</label></div>
+et unique nombre dans cette pile quand l'expression  a été entièrement lue.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>NPI</code> prenant en argument un calcul en NPI représenté sous la forme d'une chaîne de caractères dont les élements (opérandes et opérateurs) sont séparés d'un espace,
+<p>Créer une fonction <code>NPI</code> prenant en argument un calcul en NPI représenté sous la forme d'une chaine de caractères dont les éléments (opérandes et opérateurs) sont séparés d'un espace,
 et qui renvoie le résultat du calcul.</p>
-</div>
-<div class="tabbed-block">
-<p>A venir !</p>
+<p>Par exemple :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">NPI</span><span class="p">(</span><span class="s2">"7 3 * 11 + 8 /"</span><span class="p">)</span>
+<span class="mi">4</span>
+</code></pre></div>
+<p><strong>Remarque</strong> : on se limitera aux opérateurs classiques <code>+, -, *, /</code>, mais rien n'empêche les plus courageux d'essayer de programmer les opérateurs <code>sqrt</code> et <code>**</code>.</p>
 </div>
 </div>
 </div>
