@@ -11,7 +11,7 @@ Il consiste à déplacer des disques de différents diamètres d'une « tour de 
 
 ![Tour_Hanoi_1.png](Tour_Hanoi_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
-On souhaite écrire un programme python non-récursif qui utilise la classe `Pile` définie dans le cours précédent (avec les listes chainées), et qui devra :
+On souhaite écrire un programme python non-récursif qui utilise une classe `Pile` telle que définie dans le cours précédent (avec les listes chainées), et qui devra :
 
 1. Permettre de saisir un nombre `n` de disques.
 2. Afficher à l'écran les différentes étapes pour résoudre le problème avec `n` disques, en précisant à chaque fois le nombre d'étapes nécessaires.
@@ -80,3 +80,74 @@ Tant qu'il reste un disque sur la tour de départ ou sur la tour intermédiaire 
         ![Etape_7.png](Etape_7.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
         On déplace le petit disque sur la tour finale (`D->F`). L'algorithme s'arrête.
+
+## Codage de Python
+
+Vous créerez un fichier python vide nommé `tour_de_hanoi.py`, dans lequel vous effectuerez toutes les étapes suivantes :
+
+### Création de la classe Chainon
+
+Créer une classe `Chainon` représentant un chainon de liste chainée.
+Cette classe devra :
+
+* avoir comme attributs `valeur`, représentant la valeur stockée dans le chainon, et `suivant`, représentant l'objet auquel le chainon est attaché, objet qui est soit de type `Chainon`, soit `None`.
+* avoir comme méthode le DUNDERS `__str__`, renvoyant une chaine de caractère définie de la manière suivante, en considérant la liste chainée suivante :
+
+    ![affiche_liste_1.png](affiche_liste_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    * pour le chainon `1` de la liste, l'affichage devra être :
+
+        ```
+        1 <- 2 <- 3
+        ```
+
+    * pour le chainon `3` de la liste, l'affichage devra être simplement :
+
+        ```
+        3
+        ```
+
+### Classe Pile
+
+Vous devrez créer une classe `Pile`, qui implémente une pile selon l'interface suivante :
+
+| Méthode | Arguments | Valeur de retour | Explication |
+| :--- | :---: | :---: | :--- |
+| `__init__` | aucun | aucune | Initialise une Pile vide (la tête est `None`) |
+| `est_vide` | aucun | un `bool` | renvoie `True si la pile est vide, `False`sinon |
+| `empiler` | un `int` | aucune | ajoute l'élément à la pile |
+| `depiler` | aucun | un `int` | enlève l'élément du haut de la pile et le renvoie |
+| `consulter` | aucun | un `int` | renvoie la valeur de l'élément en haut de la pile, **sans le dépiler**. Si la pile est vide renvoie `float(inf)`. |
+| `__str__` | aucun | un `str` | Utilise la méthode de la classe `Chainon`. Si la pile est vide renvoie une chaine vide. |
+
+On ajoutera par ailleurs un attribut privé `_taille`, qui devra contenir le nombre d'éléments actuels de la pile, et être modifié en conséquence lors des insertions et délétions d'éléments.
+
+### Classe HanoiGame
+
+Cette classe est la classe principale du fichier. Elle devra posséder les attributs suivants :
+
+* `n` : le nombre de disques total
+* `piles` : une liste contenant 3 piles :
+    * celle d'indice `0` représente la tour de départ ;
+    * celle d'indice `1` représente la tour intermédiaire ;
+    * celle d'indice `2` représente la tour finale.
+* `petit_a_bouge` : un booléen qui changera d'état si le plus petit disque a bougé au mouvement précédent
+* `position_petit` : qui contient l'indice correspondant à la tour où se trouve le plus petit des disques.
+
+Les différents disques seront représentés par des entiers entre `0` et `n-1`, où `n` est le nombre total de disques, avec la convention suivante :
+
+* `0` est le plus petit disque
+* `n-1` est le plus grand disque.
+
+L'interface de la classe `HanoiGame` et la suivante :
+
+| Méthode | Arguments | Valeur de retour | Explication |
+| :--- | :---: | :---: | :--- |
+| `__init__` | un `int` `n` strictement positif | aucune | Initialise le jeu en plaçant les `n` disques sur la tour de départ |
+| `show` | aucun | aucun | voir le descriptif précis ci-dessous |
+| `next_move` | aucun | aucun | Effectue le mouvement suivant selon l'état des disques sur les tours (et la valeur de `petit_a_bouge`) |
+| `solve` | un `bool` `verbose` | un `int` | Voir le descriptif précis ci-dessous |
+
+* méthode `show` : 
+
+* méthode `solve` :
