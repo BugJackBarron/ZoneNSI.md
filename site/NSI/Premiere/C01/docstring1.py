@@ -1,4 +1,4 @@
-def somme(a,b) :
+def somme(a, b) :
     """ fonction qui renvoie la somme des arguments a et b, 
     en vérifiant si a et b sont bien du même type, 
     et qui renvoie None sinon.
