@@ -13,25 +13,20 @@ class Pile :
     """interface de pile"""
     def __init__(self) :
         self.tete = None
-        self._taille = 0
+        
 
     def est_vide(self) :
         return self.tete == None
 
     def empiler(self, v) :
         self.tete = ChainonPile(v, self.tete)
-        self._taille += 1
+        
 
     def depiler(self) :
         v = self.tete.valeur
         self.tete = self.tete.suivant
-        self._taille -= 1
         return v
     
-    def vider(self) :
-        self.tete = None
-        self._taille = 0
-        
     def consulter(self):
         if self.est_vide() :
             return float("inf")
