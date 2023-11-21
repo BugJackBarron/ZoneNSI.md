@@ -2664,8 +2664,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#principes-vocabulaires-et-definitons" class="md-nav__link">
-    Principes, vocabulaires et définitons
+  <a href="#principes-vocabulaires-et-definitions" class="md-nav__link">
+    Principes, vocabulaires et définitions
   </a>
   
 </li>
@@ -3838,7 +3838,7 @@
 <p class="admonition-title">Définition générale</p>
 <p>Un ensemble organisé d'informations avec un objectif commun.</p>
 </div>
-<p>La définition est vague, mais dès lors que des informations sont <mark class="critic"><strong>rassemblées</strong></mark> et <mark class="critic"><strong>stockées</strong></mark> d'une manière <mark class="critic"><strong>organisée</strong></mark>, on peut parler de <em>bases de données</em>, quel que soit le support utilisé (tablettes d'argile, papiers, fichiers, etc...)</p>
+<p>La définition est vague, mais dès lors que des informations sont <mark class="critic"><strong>rassemblées</strong></mark> et <mark class="critic"><strong>stockées</strong></mark> d'une manière <mark class="critic"><strong>organisée</strong></mark>, on peut parler de <em>bases de données</em>, quel que soit le support utilisé (tablettes d'argile, papiers, fichiers, etc)</p>
 <p>Bien entendu l'informatique, c'est-à-dire la science du traitement automatique de l'information, permet le traitement de grandes quantités d'informations, et surtout leur exploitation (ajout, suppression, mise à jour, recherches, ...). Dans le cadre informatique, <em>Laurent Audibert</em><sup id="fnref2:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup> propose :</p>
 <div class="admonition abstract">
 <p class="admonition-title">Base de données informatisées</p>
@@ -3846,8 +3846,8 @@
 </div>
 <p>Nous verrons que cette définition impose un certain nombre de contraintes à la mise en place des BDD informatisées. La première est la question de la <mark class="critic"><strong>cohérence des données</strong></mark>.</p>
 <div class="admonition example">
-<p class="admonition-title">Exemple : Bases de données musicales<sup id="fnref4:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup></p>
-<p>Prenons l'exemple d'une base de données contenant des albums musicaux, et qui mémorise pour chaque album son genre, son titre, et le nom du groupe ainsi que le nom du chanteur principal. L'idée de base est de présenter les données sous la forme d'une table, comme dans l'extrait ci-dessous :</p>
+<p class="admonition-title">Exemple : Bases de données musicale<sup id="fnref4:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup></p>
+<p>Prenons l'exemple d'une base de données contenant des albums musicaux, et qui mémorise pour chaque album son genre, son titre, le nom du groupe ainsi que le nom du chanteur principal. L'idée de base est de présenter les données sous la forme d'une table, comme dans l'extrait ci-dessous :</p>
 <table>
 <thead>
 <tr>
@@ -3910,51 +3910,51 @@
 </table>
 <p>La condition <em>sine qua none</em> pour garantir la faisabilité et la pertinence d'une recherche de données est la <mark class="critic"><strong>cohérence de ces données</strong></mark>. Ici on constate plusieurs problèmes de cohérence :</p>
 <ul>
-<li>Le nom du groupe <em>Gojira</em> est orthographié de deux manières différentes. Une recherche utilisant la chaîne de caractères  <code>Gojira</code> ne donnera que deux résultats, alors que trois peuvent être attendus.</li>
-<li>Le genre <em>Metal</em> est aussi orthographié de deux manières différentes. On notera qu'une recherche stricte avec la chaîne <code>Metal</code>, c'est-à-dire basée sur l'égalité,  ne donnera que deux résultats, alors qu'une recherche étendue, c'est-à-dire basée sur l'appartenance de la sous-chaîne <code>Metal</code> à la chaîne donnant le genre, renverra elle trois résultats.</li>
+<li>Le nom du groupe <em>Gojira</em> est orthographié de deux manières différentes. Une recherche utilisant la chaine de caractères  <code>Gojira</code> ne donnera que deux résultats, alors que trois peuvent être attendus.</li>
+<li>Le genre <em>Metal</em> est aussi orthographié de deux manières différentes. On notera qu'une recherche stricte avec la chaine <code>Metal</code>, c'est-à-dire basée sur l'égalité, ne donnera que deux résultats, alors qu'une recherche étendue, c'est-à-dire basée sur l'appartenance de la sous-chaine <code>Metal</code> à la chaine donnant le genre, renverra elle trois résultats.</li>
 <li>Le nom du chanteur de <em>Gojira</em> est écrit de trois manières différentes.</li>
-<li>On peut aussi noter que le nom du chanteur de Metallica n'est pas renseigné, ce qui eput peut-être poser un problème de cohérence.</li>
+<li>On peut aussi noter que le nom du chanteur de Metallica n'est pas renseigné, ce qui peut peut-être poser un problème de cohérence.</li>
 </ul>
-<p>Ces problèmes de cohérence sont liés (en partie), à un problème de <mark class="critic"><strong>redondance</strong></mark> des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaînes telles que <code>Metal</code> et <code>Gojira</code>, alors qu'elles ne représentent bien qu'une seule <em>entité</em> chacune. </p>
+<p>Ces problèmes de cohérence sont liés (en partie), à un problème de <mark class="critic"><strong>redondance</strong></mark> des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaines telles que <code>Metal</code> et <code>Gojira</code>, alors qu'elles ne représentent bien qu'une seule <em>entité</em> chacune. </p>
 <p>Pour régler la question de la <strong>cohérence des données</strong>, il faudra en premier lieu trouver un moyen d'éviter la <strong>redondance</strong> de certaines données.</p>
 </div>
 <h3 id="historique-et-problematiques-des-differents-modeles">Historique et problématiques des différents modèles</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Modèles de données et structures de données</p>
 <p>Ces deux concepts se placent à différents niveaux d'abstraction. Les <mark class="critic"><strong>modèles de données</strong></mark> indique quelles caractéristiques d'une entité réelle on souhaite manipuler dans un programme, ainsi que les relations qui lient ces entités entre elles. Par exemple un groupe de musique va produire plusieurs albums, et un chanteur peut chanter dans plusieurs groupes. </p>
-<p>Une <mark class="critic"><strong>structure de donnée</strong></mark> indique la manière dont on va organiser les données <strong>en machine</strong>. Ainsi pour un même modèle il existe plusieurs structures pouvant représenter ce modèle (tableau, listes chaînées, objets...)</p>
+<p>Une <mark class="critic"><strong>structure de donnée</strong></mark> indique la manière dont on va organiser les données <strong>en machine</strong>. Ainsi pour un même modèle il existe plusieurs structures pouvant représenter ce modèle (tableau, listes chainées, objets...)</p>
 </div>
 <p>Le premier modèle ayant souhaité s'attaquer au problème de la redondance des données est le <strong>modèle hiérarchique</strong>, développé par IBM dans les années 1960, dans le cadre du programme Apollo de la NASA. Ce modèle, très dépendant de la manière dont fonctionnait les ordinateurs de cette époque, enregistre les données à la manière de l'organisation d'un système de fichier, sous la forme d'un arbre (<em>structure arborescente</em>), de façon à ce qu'un enregistrement n'ait qu'un seul possesseur. On peut en donner un exemple ci-dessous :</p>
 <p><img alt="ModeleHierarchique1" src="../modeleHierarchique1.png" style="width:100%;"></p>
-<p>ce type de modèle peut être pratique, mais <em>il ne répond pas à toutes les problématiques</em>. En effet, ici nous n'avons pas introduit dans la hiérarchie les leads vocaux. Voici ce que donne le schéma lorsqu'on les introduits :</p>
+<p>Ce type de modèle peut être pratique, mais <em>il ne répond pas à toutes les problématiques</em>. En effet, ici nous n'avons pas introduit dans la hiérarchie les leads vocaux. Voici ce que donne le schéma lorsqu'on les introduit :</p>
 <p><img alt="ModeleHierarchique2" src="../modeleHierarchique2.png" style="width:100%;"></p>
 <p>On constate ici que le choix d'organisation de l'arbre ne permet pas de régler la redondance des données, puisque non seulement un même chanteur peut être lead vocal sur plusieurs albums, mais il peut l'être aussi sur <strong>plusieurs groupes</strong> (comme Josh Homme par exemple). La structure hiérarchique n'est ici pas adaptée. </p>
 <p>Une des solutions proposée pour ce problème a été <strong>le modèle réseau</strong>, proposé par <a href="https://fr.wikipedia.org/wiki/Charles_Bachman">Charles William Bachman</a> à la fin des années 1960<sup id="fnref3:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup>. C.W. Bachman reçu le Prix Turing en 1973 pour ses contributions sur les technologies des bases de données. On lui doit aussi le modèle OSI (voir le cours de première...). Une représentation de nos albums dans le modèle réseau est la suivante :</p>
 <p><img alt="Modelereseau" src="../modeleReseau1.png" style="width:100%;"></p>
-<p>Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaître la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs <mark class="critic"><strong>dépendants de la structure de donnée</strong></mark>.</p>
+<p>Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaitre la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs <mark class="critic"><strong>dépendants de la structure de donnée</strong></mark>.</p>
 <h2 id="le-modele-relationnel">Le modèle relationnel</h2>
 <h3 id="historique">Historique</h3>
 <p>Chercheur au centre de recherche d'IBM, <a href="https://en.wikipedia.org/wiki/Edgar_F._Codd" target="_blank">Edgar Frank Codd</a>, insatisfait des modèles existant, chercha un modèle plus simple permettant de gérer un grand nombre de données. Mathématicien de formation, il se basa sur la théorie des ensembles et la logique des prédicats (<a href="https://fr.wikipedia.org/wiki/Calcul_des_pr%C3%A9dicats" target="_blank"><em>logique de premier ordre</em></a>) pour publier en 1970 un article<sup id="fnref:Codd"><a class="footnote-ref" href="#fn:Codd">3</a></sup> où il proposait de stocker des <em>données hétérogènes</em> dans des <em>tables</em>, comme dans le schéma ci-dessous :</p>
 <p><img alt="modeleRelationnel1.png" src="../modeleRelationnel1.png" style="width:100%;background-color:hsla(var(--md-hue),15%,21%,0.07);"></p>
 <p>Ce modèle, qualifié de <mark class="critic"><strong>relationnel</strong></mark> était à l'époque considéré comme une curiosité intellectuelle, car les ordinateurs en ce temps n'étaient pas capables de gérer de manière efficace des tables de données, et il n'était pas évident qu'ils le soient un jour.</p>
-<p>Ce scepticisme n'a pas empêché Codd de poursuivre ses travaux, et de concevoir un premier prototype de <strong>Sytème de Gestion de Bases de Données Relationnelles</strong> (<strong>SGBDR</strong>). Depuis les années 1980 cette technologie a mûri, pour être finalement adoptée par le monde de la recherche et des entreprises. </p>
-<p>En parallèle, Codd mis au point un langage de manipulation des données <em>non-procédural</em>, où l'utilisateur <em>définit le résultat qu'il attend plutôt que la manière de l'obtenir</em>. Ce langage nommé dans un premier temps <code>SEQUEL</code> (<em>Structured English Query Language</em>), rebaptisé par la suite <code>SQL</code> (<em>Structured Query Language</em>), fut adopté comme norme internationale par l'ISO en 1987.</p>
-<h3 id="principes-vocabulaires-et-definitons">Principes, vocabulaires et définitons</h3>
+<p>Ce scepticisme n'a pas empêché Codd de poursuivre ses travaux, et de concevoir un premier prototype de <mark class="critic"><strong>Sytème de Gestion de Bases de Données Relationnelles</strong></mark> (<strong>SGBDR</strong>). Depuis les années 1980 cette technologie a muri, pour être finalement adoptée par le monde de la recherche et des entreprises. </p>
+<p>En parallèle, Codd mis au point un langage de manipulation des données <em>non procédural</em>, où l'utilisateur <em>définit le résultat qu'il attend plutôt que la manière de l'obtenir</em>. Ce langage nommé dans un premier temps <code>SEQUEL</code> (<em>Structured English Query Language</em>), rebaptisé par la suite <code>SQL</code> (<em>Structured Query Language</em>), fut adopté comme norme internationale par l'ISO en 1987.</p>
+<h3 id="principes-vocabulaires-et-definitions">Principes, vocabulaires et définitions</h3>
 <p>Imaginons la situation d'une médiathèque municipale classique, pour lequel nous souhaitons mettre en place un <em>système d'information</em>. Ce système doit pouvoir gérer l'emprunt et le retour de livres par un utilisateur inscrit.</p>
 <p>Ainsi, un utilisateur, Bob, va pouvoir s'inscrire à la médiathèque. On lui demandera :</p>
 <ul>
 <li>son nom ;</li>
 <li>son prénom ; </li>
 <li>son email ;</li>
-<li>son code postal (les tarifs d'abonnement sont différents selon la commune de résidence);</li>
+<li>son code postal (les tarifs d'abonnement sont différents selon la commune de résidence) ;</li>
 <li>son adresse exacte.</li>
 </ul>
 <p>Le système ne retiendra de lui que ces éléments, avec la date d'inscription. Sa taille, couleur des yeux ou cheveux, n'ont aucune importance dans le système. Le système ne retiens qu'une approximation de la réalité.</p>
 <p>Une fois inscrit, Bob se voit remettre une <em>carte</em> contenant un <strong>code-barre</strong>, c'est-à-dire un numéro unique qui est attribué à Bob.</p>
 <p>Bob peut alors emprunter le livre « Apprendre à programmer avec Python 3: Avec 60 pages d'exercices corrigés ! » de Gerard Swinnen, Eyrolles, 2012, ISBN 978-2212134346. Sur le livre est aussi placé un <strong>code-barre</strong>, qui identifie le livre de manière unique. En scannant ce code barre et sa carte de bibliothèque sur une des bornes disponible, le système devra retenir que Bob a emprunté ce livre à la date du jour.</p>
-<p>De la même manière, lorqu'il reviens quelques semaines plus trad, il doit pouvoir rendre ce livre en scannant sa carte et le livre, et le système doit retenir que le livre est à nouveau disponible et que Bob a de nouveau le droit d'emprunter d'autres livres.</p>
-<p>Bien entendu, d'autres utilisateurs doivent pouvoir faire des emprunts et des restitutions au même moment sur d'autres bornes de la médiathèque,  ce qui signifie que les données doivent pouvoire être accessibles depuis un réseau <em>a minima local</em>.</p>
-<p>De plus les documentalistes doivent pouvoir ajouter de nouveaux ouvrages, en supprimer certains trop anciens ou abimés, et mettre à jour l'ensemble des utilisateurs. Ces dernière opérations ne devant pas être accessibles aux usagers, il faudra mettre en place un système de <em>droits d'accès</em>.</p>
+<p>De la même manière, lorsqu'il revient quelques semaines plus tard, il doit pouvoir rendre ce livre en scannant sa carte et le livre, et le système doit retenir que le livre est à nouveau disponible et que Bob a de nouveau le droit d'emprunter d'autres livres.</p>
+<p>Bien entendu, d'autres utilisateurs doivent pouvoir faire des emprunts et des restitutions au même moment sur d'autres bornes de la médiathèque, ce qui signifie que les données doivent pouvoir être accessibles depuis un réseau <em>a minima local</em>.</p>
+<p>De plus les documentalistes doivent pouvoir ajouter de nouveaux ouvrages, en supprimer certains trop anciens ou abimés, et mettre à jour l'ensemble des utilisateurs. Ces dernières opérations ne devant pas être accessibles aux usagers, il faudra mettre en place un système de <em>droits d'accès</em>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Entités</p>
 <p>Dans le modèle relationnel, un objet modélisé est appelé <mark class="critic"><strong>entité</strong></mark>. Il est représenté par un n-uplet de valeurs.</p>
@@ -3964,7 +3964,7 @@
 <p>Le livre emprunté par Bob peut-être représenté par le quintuplet :</p>
 <p></p><div class="highlight"><pre><span></span><code>('Apprendre à programmer avec Python 3: Avec 60 pages d'exercices corrigés !', 'Gerard Swinnen', 'Eyrolles', 2012, '978-2212134346')
 </code></pre></div>
-Dans ce quintuplet, 4 composantes sont des chaînes de caractères, et une seule est sous la forme d'un entier.
+Dans ce quintuplet, 4 composantes sont des chaines de caractères, et une seule est sous la forme d'un entier.
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Relation</p>
@@ -3982,18 +3982,18 @@ Dans ce quintuplet, 4 composantes sont des chaînes de caractères, et une seule
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Schéma relationnel, attributs</p>
-<p>Chaque <em>relation</em> se conforme à un <mark class="critic"><strong>schéma</strong></mark>. Ce dernier est une description,  qui indique pour chaque composante des n-uplets de la relation leur <em>nom</em> et leur <em>domaine</em>, c'est-à-dire le type de valeurs que peuvent prendre les composantes.
+<p>Chaque <em>relation</em> se conforme à un <mark class="critic"><strong>schéma</strong></mark>. Ce dernier est une description, qui indique pour chaque composante des n-uplets de la relation leur <em>nom</em> et leur <em>domaine</em>, c'est-à-dire le type de valeurs que peuvent prendre les composantes.
 Chaque composante s'appelle un <mark class="critic"><strong>attribut</strong></mark>.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p>La relation <code>Livre</code> contient 5 attributs :</p>
 <ul>
-<li><strong>titre</strong> : le titre du livre, qui est une chaîne de caractères ;</li>
-<li><strong>auteur</strong> : le ou les auteurs du livre, sous la forme d'une chaîne de caractères ;</li>
-<li><strong>éditeur</strong> : l'éditeur,  sous la forme d'une chaîne de caractères ;</li>
+<li><strong>titre</strong> : le titre du livre, qui est une chaine de caractères ;</li>
+<li><strong>auteur</strong> : le ou les auteurs du livre, sous la forme d'une chaine de caractères ;</li>
+<li><strong>éditeur</strong> : l'éditeur, sous la forme d'une chaine de caractères ;</li>
 <li><strong>année</strong> : l'année d'édition, sous la forme d'un entier ;</li>
-<li><strong>ISBN</strong> : l'identifiant du livre, sous la forme d'une chaîne de caractères.</li>
+<li><strong>ISBN</strong> : l'identifiant du livre, sous la forme d'une chaine de caractères.</li>
 </ul>
 <p>On peut aussi noter un schéma de relation de la manière suivante:</p>
 <p>Livre( titre <em>String</em>, auteur <em>String</em>, éditeur <em>String</em>, année <em>Int</em>, ISBN <em>String</em>)</p>
@@ -4006,34 +4006,34 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
-<p>Dans notre exemple de médiathèque, on pourra considérér la base de données contenant les relations :</p>
+<p>Dans notre exemple de médiathèque, on pourra considérer la base de données contenant les relations :</p>
 <ul>
-<li>Livre</li>
-<li>Usager</li>
-<li>Emprunt</li>
+<li><code>Livre</code></li>
+<li><code>Usager</code></li>
+<li><code>Emprunt</code></li>
 </ul>
 <p>Nous détaillerons dans la suite les attributs des relations <code>Usager</code> et <code>Emprunt</code>.</p>
 </div>
 <h2 id="modelisation-relationnelle-des-donnees">Modélisation relationnelle des données</h2>
-<p>La  théorie et la pratique des bases de données relationnelles est un domaine de recherche fortement actif et qui s'est largement complexifié depuis ses débuts. Il ne s'agit pas dans ce cours d'étudier cette théorie, qui dépasse largement le niveau de terminale, aussi bien d'un point de vue mathématique que informatique, mais d'en comprendre quelques principes.</p>
+<p>La théorie et la pratique des bases de données relationnelles est un domaine de recherche fortement actif et qui s'est largement complexifié depuis ses débuts. Il ne s'agit pas dans ce cours d'étudier cette théorie, qui dépasse largement le niveau de terminale, aussi bien d'un point de vue mathématique qu'informatique, mais d'en comprendre quelques principes.</p>
 <div class="admonition tips">
 <p class="admonition-title">principes généraux</p>
 <p>La modélisation des données se décompose en plusieurs étapes :</p>
 <ol>
 <li>déterminer les <strong>entités</strong> qu'on souhaite manipuler ;</li>
 <li>modéliser les collections d'entités en <strong>relations</strong>, en donnant leur <strong>schéma relationnel</strong>, et en veillant à choisir le bon <strong>domaine</strong> pour les <strong>attributs</strong>.</li>
-<li>définir les <mark class="critic"><strong>contraintes</strong></mark> de la base de données, c'est-à-dire <em>l'ensemble des propriétés logiques</em> que les données doivent vérifier à tout moment. En particulier on veillera aux <strong>contraintes d'intégrité</strong> décrites ci-dessous qui garantissent la <em>cohérence des données</em>.</li>
+<li>définir les <mark class="critic"><strong>contraintes</strong></mark> de la base de données, c'est-à-dire <strong>l'ensemble des propriétés logiques</strong> que les données doivent vérifier à tout moment. En particulier on veillera aux <strong>contraintes d'intégrité</strong> décrites ci-dessous qui garantissent la <em>cohérence des données</em>.</li>
 </ol>
 </div>
 <h3 id="contraintes-de-domaines">Contraintes de domaines</h3>
 <p>Essayons de préciser davantage la relation <code>Usager</code>. Dans la description que nous en avons donné, nous pouvons définir quelques attributs :</p>
 <ul>
-<li><strong>nom</strong> : le nom de la personne, une chaîne de caractères ;</li>
-<li><strong>prénom</strong> : le prénom de la personne, une chaîne de caractères ;</li>
-<li><strong>email</strong> : l'email de la personne, une chaîne de caractères ;</li>
+<li><strong>nom</strong> : le nom de la personne, une chaine de caractères ;</li>
+<li><strong>prénom</strong> : le prénom de la personne, une chaine de caractères ;</li>
+<li><strong>email</strong> : l'email de la personne, une chaine de caractères ;</li>
 <li><strong>cp</strong> : le code postal de la commune de résidence, <strong>une chaine de caractères</strong>.</li>
 </ul>
-<p>On peut s'étonner de stocker le code postal sous la forme d'une chaîne de caractère, et pas d'un entier. Mais il faut prendre en compte certaines particularités : un code postal est un code de 5 chiffres. Celui de Guingamp est 22 200, et celui de Bourg-en-Bresse est 01 000. Or <strong>les zéros précédants le nombres sont éliminés si on stocke le nombre sous la forme d'un entier!</strong> On est alors obligé d'utiliser une chaîne de caractères de taille 5.</p>
+<p>On peut s'étonner de stocker le code postal sous la forme d'une chaine de caractère, et pas d'un entier. Mais il faut prendre en compte certaines particularités : un code postal est un code de 5 chiffres. Celui de Guingamp est <code>22 200</code>, et celui de Bourg-en-Bresse est <code>01 000</code>. Or <strong>les zéros précédant le nombres sont éliminés si on stocke le nombre sous la forme d'un entier !</strong> On est alors obligé d'utiliser une chaine de caractères de taille 5.</p>
 <div class="admonition tips">
 <p class="admonition-title">Types de données</p>
 <p>Nous verrons dans la partie SQL quelques types de données spécifiques, mais nous pouvons donner quelques types génériques souvent utilisés dans les BDD :</p>
@@ -4047,14 +4047,14 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>String</strong></td>
-<td style="text-align: left;">chaînes de caractères</td>
+<td style="text-align: left;">chaines de caractères</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Int</strong></td>
 <td style="text-align: left;">les entiers signés (d'une taille arbitraire)</td>
 </tr>
 <tr>
-<td style="text-align: center;">** Boolean**</td>
+<td style="text-align: center;"><strong>Boolean</strong></td>
 <td style="text-align: left;">les booléens <code>True</code> et <code>False</code></td>
 </tr>
 <tr>
@@ -4076,17 +4076,17 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <p class="admonition-title">Contraintes de domaines</p>
 <p>Les <mark class="critic"><strong>contraintes de domaines</strong></mark> sont toutes les propriétés que le domaine d'un attribut va permettre de garantir. Elles sont souvent plus précises que le simple choix d'un type de données. Par exemple, une <strong>contrainte de domaine</strong> sur l'âge d'une personne ne peut se contenter d'utiliser le type <code>Int</code>. Il faudra en plus éliminer les valeurs négatives ainsi que les valeurs supérieures à 120 (en étant large...)</p>
 </div>
-<p>On termine la modélisation de la relation <code>Usager</code> en ajoutant  les attrtibuts :</p>
+<p>On termine la modélisation de la relation <code>Usager</code> en ajoutant les attributs :</p>
 <ul>
 <li><code>adresse</code> : l'adresse de l'usager, de format <code>String</code> ;</li>
 <li><code>inscription</code> : la date d'inscription, au format <code>Date</code> ;</li>
-<li><code>code_barre</code> : le code-barre de la carte qui lui a été attribuée, au format <code>String</code> (pour les même raisons que l'attribut <code>cp</code>)</li>
+<li><code>code_barre</code> : le code-barre de la carte qui lui a été attribuée, au format <code>String</code> (pour les mêmes raisons que l'attribut <code>cp</code>)</li>
 </ul>
 <p>On obtient alors le <strong>schéma relationnel</strong> suivant :</p>
 <p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, code_barre <em>String</em>)</p>
 <p>ou bien le tableau : <img alt="relationUsager1.png" src="../relationUsager1.png" style="width:15%;"></p>
 <h3 id="contraintes-de-relations">Contraintes de relations</h3>
-<p>Imaginons que nous n'ayons utilisé dans la relation <code>Usager</code> comme attributs que le nom et le prénom. Si deux personnes nommées <em>Jean Dupont</em> veulent s'inscrire à la médiathèque, il y aura dans la relation deux entités identiques, ce qui risque de causer des problèmes. Ce serait une <em>violation de la contrainte de relation</em>.</p>
+<p>Imaginons que nous n'ayons utilisé dans la relation <code>Usager</code> comme attributs que le nom et le prénom. Si deux personnes nommées <em>Jean Dupont</em> veulent s'inscrire à la médiathèque, il y aura dans la relation deux entités identiques, ce qui risque de causer des problèmes. Ce serait une <mark class="critic"><strong>violation de la contrainte de relation</strong></mark>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Contrainte de relation</p>
 <p>Lors de la modélisation d'une relation, il faut s'assurer que, pour <strong>chaque entité</strong>, un <strong>attribut</strong> ou un <strong>ensemble d'attributs</strong> permet d'identifier cette entité de <strong>manière unique</strong>.</p>
@@ -4096,8 +4096,8 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 <p class="admonition-title">Exemple</p>
 <p>Dans le cas de notre relation <code>Usager</code> :</p>
 <ul>
-<li>les attributs <code>nom</code>, <code>prénom</code>, <code>cp</code>, <code>inscription</code>, <code>adresse</code>, pris seuls, ne peuvebnt en aucun cas assurer le respect de la contrainte de relation. Ils ne peuvent donc pas être choisis comme clé primaire;</li>
-<li>l'attribut <code>email</code> pourrait être pertinent, mais ce choix empècherait un parent de fournir son email pour l'inscription de son enfant.</li>
+<li>les attributs <code>nom</code>, <code>prénom</code>, <code>cp</code>, <code>inscription</code>, <code>adresse</code>, pris seuls, ne peuvent en aucun cas assurer le respect de la contrainte de relation. Ils ne peuvent donc pas être choisis comme clé primaire;</li>
+<li>l'attribut <code>email</code> pourrait être pertinent, mais ce choix empêcherait un parent de fournir son email pour l'inscription de son enfant.</li>
 <li>reste l'attribut <code>code_barre</code>, qui a priori, si le système est correctement configuré, est bien unique pour chaque usager. Il peut donc être choisi comme clé primaire, ce qu_i donne le schéma relationnel suivant :</li>
 </ul>
 <p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <ins>code_barre <em>String</em></ins>)</p>
@@ -4105,22 +4105,22 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 </div>
 <div class="admonition question">
 <p class="admonition-title">Relation <code>Livre</code></p>
-<p>Quel choix raisonnable pouvons nous faire pour la clé primaire de la relation <code>Livre</code> ?</p>
+<p>Quel choix raisonnable pouvons-nous effectuer pour la clé primaire de la relation <code>Livre</code> ?</p>
 </div>
 <details class="done">
 <summary>Un choix</summary>
-<p>Le choix de l'attribut <code>ISBN</code> comme clé primaire semble être une bonne idée, tant que la médiathèque ne commande pas plusieurs ouvrages identiques. Dans ce cas, il faudra rajouter à la relation un code-barre spécifique à la médiathèque. Mais nous considérerons que tel n'est pas le cas, et la relation sera donc :</p>
-<p>Livre( titre <em>String</em>, auteur <em>String</em>, éditeur <em>String</em>, année <em>Int</em>, <ins>ISBN <em>String</em></ins>)</p>
+<p>Le choix de l'attribut <code>ISBN</code> comme clé primaire semble être une bonne idée, tant que la médiathèque ne commande pas plusieurs ouvrages identiques. Dans ce cas, il faudra rajouter à la relation un code-barre spécifique à la médiathèque. Mais nous considèrerons que tel n'est pas le cas. La relation sera donc :</p>
+<p><code>Livre( titre *String*, auteur *String*, éditeur *String*, année *Int*, &lt;ins&gt;ISBN *String*&lt;/ins&gt;)</code></p>
 <p>ou bien : <img alt="relationLivre2.png" src="../relationLivre2.png" style="width:15%;"></p>
 </details>
 <h3 id="contraintes-de-references">Contraintes de références</h3>
-<p>Prnons la relation <code>Emprunt</code>, que nous n'avons pas encore définie. Quel rôle doit-elle jouer ?</p>
+<p>Prenons la relation <code>Emprunt</code>, que nous n'avons pas encore définie. Quel rôle doit-elle jouer ?</p>
 <p>Elle doit servir de lien entre une entité de la relation <code>Usager</code>, une entité de la relation <code>Livre</code>, et fournir une date de retour prévue pour le livre emprunté.</p>
 <p>Une version naïve serait d'utiliser pour une entité de la relation <code>Emprunt</code> un n-uplet de la forme :</p>
 <p><code>('Dupont', 'Jean', 'Apprendre à programmer avec Python 3', 20/12/2021 )</code></p>
-<p>Cependant ce type de n-uplet ne permet pas d'identifier de manière unique l'usager, comme nous l'avons vu dans les <em>contraintes de relations</em>. Il pourrait-y-avoir plusieurs Jean Dupont, alors que la relation <code>Emprunt</code> doit permettre d'identifier de manière unique une entité d'<code>Usager</code> ainsi qu'une de <code>Livre</code>.</p>
-<p>Il serait ainsi largement préférable d'utiliser les <strong>clés primaires</strong> ddes relations <code>Usager</code> et <code>Livre</code> dans la relation <code>Emprunt</code>, de la manière suivante :</p>
-<p>Emprunt(code_barre <em>String</em>, ISBN <em>String</em>, retour <em>Date</em>)</p>
+<p>Cependant, ce type de n-uplet ne permet pas d'identifier de manière unique l'usager, comme nous l'avons vu dans les <em>contraintes de relations</em>. Il pourrait y avoir plusieurs Jean Dupont, alors que la relation <code>Emprunt</code> doit permettre d'identifier de manière unique une entité d'<code>Usager</code> ainsi qu'une de <code>Livre</code>.</p>
+<p>Il serait ainsi largement préférable d'utiliser les <strong>clés primaires</strong> des relations <code>Usager</code> et <code>Livre</code> dans la relation <code>Emprunt</code>, de la manière suivante :</p>
+<p><code>Emprunt(code_barre *String*, ISBN *String*, retour *Date*)</code></p>
 <p><code>code_barre</code> étant la clé primaire de la relation <code>Usager</code>, elle doit par contrainte de relations identifier de manière unique une entité de cette relation. Il en est de même pour <code>ISBN</code>, qui est la clé primaire de <code>Livre</code>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Clé étrangère</p>
@@ -4133,13 +4133,13 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 <ul>
 <li>un emprunteur sera forcément un usager inscrit. Il ne sera pas possible de saisir une valeur fictive pour l'attribut <code>code_barre</code> ;</li>
 <li>de la même manière, on a une <mark class="critic"><strong>contrainte de référence</strong></mark> sur l'attribut <code>ISBN</code>, qui doit forcément être la référence à une entité de la relation <code>Livre</code>.</li>
-<li>de manière encore plus importante, l'utilisation d'une clé étrangère  <mark class="critic"><strong>interdira de supprimer</strong></mark> une entité  <code>Usager</code> si elle est référencée dans la relation <code>Emprunt</code>. On aurait une <em>violation de la contrainte de référence</em>.</li>
+<li>de manière encore plus importante, l'utilisation d'une clé étrangère <mark class="critic"><strong>interdira de supprimer</strong></mark> une entité <code>Usager</code> si elle est référencée dans la relation <code>Emprunt</code>. On aurait une <mark class="critic"><strong>violation de la contrainte de référence</strong></mark>.</li>
 </ul>
-<p>Cependant notre travail n'est pas terminé pour la modélisation de la relation <code>Emprunt</code>. En effet, nous n'avons pas défini de <em>clé primaire</em> de cette relation : </p>
+<p>Cependant, notre travail n'est pas terminé pour la modélisation de la relation <code>Emprunt</code>. En effet, nous n'avons pas défini de <em>clé primaire</em> de cette relation : </p>
 <ul>
 <li>il serait peu judicieux d'utiliser l'attribut <code>code_barre</code> comme clé primaire, puisque celle-ci devant être unique, un usager ne pourrait emprunter qu'un unique livre ;</li>
-<li>plusiurs emprunts pouvant avoir la même date de retour, il est impossible d'utiliser  l'attribut <code>retour</code> ;</li>
-<li>il est par contre possible d'utiliser comme clé primaire l'attribut <code>isbn</code>, celui-ci ne pouvant être qu'unique, il granati le fait qu'un livre ne puisse être emprunté que par un usager à la fois.</li>
+<li>plusieurs emprunts pouvant avoir la même date de retour, il est impossible d'utiliser l'attribut <code>retour</code> ;</li>
+<li>il est par contre possible d'utiliser comme clé primaire l'attribut <code>isbn</code>, celui-ci ne pouvant être qu'unique, il garanti le fait qu'un livre ne puisse être emprunté que par un usager à la fois.</li>
 </ul>
 <p>On obtient ainsi le schéma relationnel suivant :</p>
 <p>Emprunt(<span style="text-decoration:underline;text-decoration-style: dotted;">code_barre</span> <em>String</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;"><span style="text-decoration:underline;text-decoration-style: dotted;">ISBN</span> <em>String</em></span>, retour <em>Date</em>)</p>
@@ -4147,9 +4147,9 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 <div class="admonition question">
 <p class="admonition-title">Une erreur de modélisation ?</p>
 <p>Dans la modélisation actuelle de la relation <code>Livre</code>, nous avons toujours un problème de cohérence et de redondance des données.</p>
-<p>En effet, nous avons écrit la liste des auteurs comme une chaîne de caractères. Si cette modélisation fonctionne, elle ne permet pas d'exprimer certaines contraintes sur les données, par exemple qu'un même auteur n'apparaît pas deux fois dans le même livre. On va donc simplifier la relation <code>Livre</code> de la manière suivante :</p>
+<p>En effet, nous avons écrit la liste des auteurs comme une chaine de caractères. Si cette modélisation fonctionne, elle ne permet pas d'exprimer certaines contraintes sur les données, par exemple qu'un même auteur n’apparait pas deux fois dans le même livre. On va donc simplifier la relation <code>Livre</code> de la manière suivante :</p>
 <p>Livre(titre : String, éditeur : String, année : Int, <span style="border-bottom-width: 1px;border-bottom-style: solid;">ISBN : String</span>)</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -4180,7 +4180,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 <h2 id="exercices">Exercices</h2>
 <div class="admonition question">
 <p class="admonition-title">Exercice 1</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On souhaite modéliser un annuaire téléphonique simple, dans lequel chaque personne (identifiée par son nom et son prénom) est associée à son numéro de téléphone.</p>
@@ -4194,7 +4194,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Donner la modélisation d'un bulletin scolaire. Cette dernière doit permettre de mentionner :</p>
@@ -4212,11 +4212,11 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 3</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Proposer une modélisation pour le réseau de métro et bus de la ville de Rennes (dont le plan est disponible <a href="https://www.lescommunes.com/carte/plandemetro/plandemetrobus_rennes.pdf" target="_blank">ici</a>).</p>
-<p>Cette dernière doit être suffisamment riche pour permettre de générer, pour chaque arrêt de bus, une fiche donnant les horaires de passage de toutes les lignes qui déservent l'arrêt.</p>
+<p>Cette dernière doit être suffisamment riche pour permettre de générer, pour chaque arrêt de bus, une fiche donnant les horaires de passage de toutes les lignes qui desservent l'arrêt.</p>
 <p><em>La modélisation de ce réseau nécessite une réflexion au préalable sur la pertinence des informations à modéliser !</em></p>
 </div>
 <div class="tabbed-block">
@@ -4238,7 +4238,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 <p><a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277" target="_blank">https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277</a> <a class="footnote-backref" href="#fnref:Codd" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:dates">
-<p>les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser JJ/MM/AAAA ou JJ/MM/AA. Pour un Etats-Unien, ce sera MM/JJ/AAAA. Pour d'autres ce sera AAAA/MM/JJ... Un grand nombre de <a href="https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">mèmes</a> de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures... <a class="footnote-backref" href="#fnref:dates" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser <code>JJ/MM/AAAA</code> ou <code>JJ/MM/AA</code>. Pour un États-Unien, ce sera <code>MM/JJ/AAAA</code>. Pour d'autres, ce sera <code>AAAA/MM/JJ</code>... Un grand nombre de <a href="https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">mèmes</a> de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures... <a class="footnote-backref" href="#fnref:dates" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 </ol>
 </div></div>
