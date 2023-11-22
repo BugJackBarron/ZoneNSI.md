@@ -4,10 +4,10 @@
 
 !!! question "Activité avec un traitement de texte"
 	
-	1. Téléchargez puis ouvrez le fichier [`Styles_et_modèles.odt`]() avec *Libre Office*.
+	1. Téléchargez puis ouvrez le fichier [`Styles_et_modèles.odt`](Styles_et_modèles.odt) avec *Libre Office*.
 	2. Allez à la page 7 du document.
-	3. Ouvrez la fenêtre de style  en appuyant sur ++f11++. 
-	4. cherchez le menu `Titre 1`,  puis cliquez-droit et `Modifier`.
+	3. Ouvrez la fenêtre de style en appuyant sur ++f11++. 
+	4. cherchez le menu `Titre 1`, puis cliquez-droit et `Modifier`.
 	6. Passez la couleur de la police en rouge, puis activez un surlignage simple en jaune. Validez puis observez le document. 
 		1. Quelles parties ont été changées ? 
 		2. Y-a-t-il eu des changements sur d'autres pages ?
@@ -60,7 +60,7 @@
 	![Css_regle.png](CSS_Regle.png "https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS"){:style="width:30%;"}
 	</p>
 
-	* le {==*sélécteur*==} `p` signale que les déclarations suivantes s'appliquent à toutes les balises `<p>` et `</p>`. Toutes les déclarations doivent être à l'intérieur d'une paire d'accolades ( ++ctrl+alt+grave++ ou ++alt-graph+grave++ donne ++brace-left++ et ++ctrl+alt+equal++ ou ++alt-graph+equal++ donne ++brace-right++).
+	* le {==**sélecteur**==} `p` signale que les déclarations suivantes s'appliquent à toutes les balises `<p>` et `</p>`. Toutes les déclarations doivent être à l'intérieur d'une paire d'accolades ( ++ctrl+alt+grave++ ou ++alt-graph+grave++ donne ++brace-left++ et ++ctrl+alt+equal++ ou ++alt-graph+equal++ donne ++brace-right++).
 	* la {==*propriété*==} `color` indique que la règle concerne la couleur de police ;
 	* la {==*valeur*==} associée `red` indique que la couleur de police sera rouge ;
 	* la {==**déclaration**==} est terminée par un **point-virgule** (c'est important !), et *propriété* et *valeur* sont séparées par un symbole deux-points.
@@ -91,7 +91,7 @@ Vous pouvez essayer de modifier le CSS dans le [bac-à-sable suivant sur capytal
 	1. Rendez-vous sur la page [https://www.zonensi.fr/SNT/Web/CSS/](https://www.zonensi.fr/SNT/Web/CSS/]).
 	2. Ouvrez **l'inspecteur d'objets**.
 	3. Cliquez sur la petite flèche située à droite de la barre de menu de l'inspecteur, puis sélectionnez ensuite le titre de la page `Mettre en forme : le CSS`.
-	4. Vous devez voir apparâitre toutes les déclarations dont dépend le titre de la page. Ajoutez au sélecteur `.md-typeset h1` la déclaration `background-color : pink`.
+	4. Vous devez voir apparaitre toutes les déclarations dont dépend le titre de la page. Ajoutez au sélecteur `.md-typeset h1` la déclaration `background-color : pink`.
 	5. Enjoy :smile:
 	
 
@@ -191,7 +191,7 @@ Ici on sélectionne toutes les balises `p` qui sont **à l'intérieur** de `<bod
 
 ### Sélecteurs de pseudo-classes
 
-Lors de la construction de l'arbre du DOM, certaines *pseudo-classes* sont ajoutées automatiquement à certains noeuds. Il est possible d'intéragir avec ces pseudo-classes :
+Lors de la construction de l'arbre du DOM, certaines *pseudo-classes* sont ajoutées automatiquement à certains noeuds. Il est possible d'interagir avec ces pseudo-classes :
 
 * `:first-child` : Cible un élément quand il est le premier enfant d'un autre élément.
 ```` CSS
@@ -228,7 +228,7 @@ Il existe bien d'autres pseudo-classes. Comme toujours Mozilla a fait un [travai
 
 !!! abstract "Priorité des sélecteurs"
 
-	Il existe une priorité des sélecteurs, tout comme existe une priorité des opérations arithmétiques. Il s'agit d'une norme, donc par nature elle est à connaître pour éviter les comportement erratiques du CSS :
+	Il existe une priorité des sélecteurs, tout comme existe une priorité des opérations arithmétiques. Il s'agit d'une norme, donc par nature elle est à connaitre pour éviter les comportement erratiques du CSS :
 	
 	1. La mise en forme définie pour le sélecteur le plus précis l'emporte (`id` est plus précis que `class` qui est plus précis que le nom de la balise).
 	2. Le dernier défini est appliqué lorsque le niveau de priorité est égal.
@@ -254,13 +254,13 @@ Chacun de ces blocs prend un certain espace sur la page, de cette façon :
 
 Chaque élément possède par défaut un type de placement :
 
-* élément `block` : un élément `block` occupe par défaut toute la largeur de l'écran. Quand des éléments `block` s'enchainent, ils sont les uns au dessus des autres. Par défaut les éléments `<h1>,<h2>,...,<h6>`,  `<p>` et surtout `<div>` (balise générique de type `block`) sont des éléments de type `block`.
-* élément `inline` : un élément `inline` s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après.Par défaut les éléments `<a>,<img>,<strong>,...` sont des éléments de type `inline`.
+* Élément `block` : un élément `block` occupe par défaut toute la largeur de l'écran. Quand des éléments `block` s'enchainent, ils sont les uns au-dessus des autres. Par défaut les éléments `<h1>,<h2>,...,<h6>`,  `<p>` et surtout `<div>` (balise générique de type `block`) sont des éléments de type `block`.
+* Élément `inline` : un élément `inline` s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après. Par défaut les éléments `<a>,<img>,<strong>,...` sont des éléments de type `inline`.
 
-Il existe bien des subtilités concernant les éléments `inline` et `block`, qui dépassent largement le cadre de ce cours. Ce [document](https://la-cascade.io/la-difference-entre-block-et-inline/) permettra peut-être de répondre à certaines questions que vous poyurriez vous poser. 
+Il existe bien des subtilités concernant les éléments `inline` et `block`, qui dépassent largement le cadre de ce cours. Ce [document](https://la-cascade.io/la-difference-entre-block-et-inline/) permettra peut-être de répondre à certaines questions que vous pourriez vous poser. 
 
 !!! tips "Modifier le type d'un élément : `display`"
-	Il est possible de spécifier explicitement pour un élément son type d'apparition dans le flux de données d'une page html. Pour cela on utilise la propriété `display` et ses différentes valeurs :
+	Il est possible de spécifier explicitement pour un élément son type d'apparition dans le flux de données d'une page `html`. Pour cela on utilise la propriété `display` et ses différentes valeurs :
 	
 	* `none` : retire l'élément des éléments disponibles. Cet élément ainsi que ses descendants ne sont plus accessibles.
 	* `block` : rend l'élément de type `block`;
@@ -274,7 +274,7 @@ Il existe bien des subtilités concernant les éléments `inline` et `block`, qu
 
 ## Les dimensions et unités de mesures les plus utiles 
 
-En CSS, il est souvent impératif de donner des longueurs, ou des bases de dimensions pour les éléments. Les unités sont nombreuses, souvent mystérieuses ou absconses pour nous européens. En voici quelques types :
+En CSS, il est souvent impératif de donner des longueurs ou des bases de dimensions pour les éléments. Les unités sont nombreuses, souvent mystérieuses ou absconses pour nous européens. En voici quelques types :
 
 
 * **valeur en pourcentage :** `font-size : 120\%;` définit une taille de police valant 120% de la valeur de l'élément parent. Il ne faut pas d'espace entre le nombre et le symbole %.
@@ -286,13 +286,13 @@ En CSS, il est souvent impératif de donner des longueurs, ou des bases de dimen
 
 ## Adaptation aux différents écrans/médias de sortie
 
-Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes, et leur capacité à basculer du format portrait au format paysage.
+Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes et leur capacité à basculer du format portrait au format paysage.
 
-Afin d'afficher correctement  un site web, il faut donc prévoir à l'avance, dans le fichier *css*, différentes version du site. Pour cela on utilise des **media-queries** - soit *requêtes de media*. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.
+Afin d'afficher correctement  un site web, il faut donc prévoir à l'avance, dans le fichier *css*, différentes versionq du site. Pour cela on utilise des **media-queries** - soit *requêtes de media*. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.
 
 Il existe de nombreuses requêtes, mais en pratique nous n'utiliserons que les deux requêtes suivantes :
 
-*  `max-width` : applique les règles si la largeur  de l'écran est **inférieure ou égale** à la taille donnée en pixel ;
+*  `max-width` : applique les règles si la largeur de l'écran est **inférieure ou égale** à la taille donnée en pixel ;
 *  `min-width` : applique les règles si la largeur de l'écran est **supérieure ou égale** à la taille donnée en pixel ;
 
 !!! example "Exemple"

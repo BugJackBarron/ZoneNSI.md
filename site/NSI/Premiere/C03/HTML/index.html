@@ -3774,7 +3774,7 @@
 <p>Donner une définition d'<mark class="critic"><strong>Internet</strong></mark> :</p>
 <details class="done">
 <summary>Done</summary>
-<p><a href="https://fr.wikipedia.org/wiki/Internet" target="_blank"><strong>Internet</strong></a> est le réseau mondial d'ordinateurs accessibles au public. Nous verrons un historique rapide de la création d'Internet dans la partie <em>Réseau</em> du programme.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Internet" target="_blank"><strong>Internet</strong></a> est le réseau mondial d'ordinateurs accessibles au public. Nous verrons un historique rapide de la création d'Internet dans la partie <strong>Réseau</strong> du programme.</p>
 </details>
 </li>
 <li>
@@ -3795,29 +3795,29 @@
 <p>Que signifie <code>http</code> et <code>https</code> ?</p>
 <details class="done">
 <summary>Done</summary>
-<p><code>http</code> signifie <em>HyperText Transfer Protocol</em>, soit littéralement * « Protocole de transfert Hypertexte ». C'est un protocole de communication client-serveur développé pour le World Wide Web. Il existe aussi en version <strong>sécurisée</strong> (protocole <code>https</code>).</p>
+<p><code>http</code> signifie <em>HyperText Transfer Protocol</em>, soit littéralement * « Protocole de transfert Hypertexte ». C'est un protocole de communication client-serveur développé pour le World Wide Web. Il existe aussi en version <strong>sécurisée</strong> (protocole <code>https</code>, dont le fonctionnement est expliqué en classe de terminale).</p>
 </details>
 </li>
 <li>
 <p>Expliquez ce qu'est <mark class="critic"><strong>Standard Generalized Markup Language</strong></mark> :</p>
 <details class="done">
 <summary>Done</summary>
-<p><a href="https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language" target="_blank"><strong>Standard Generalized Markup Language</strong></a> (« langage de balisage généralisé normalisé &amp;raquo - <strong>SGML</strong>) est un langage de description à balises, de norme ISO (ISO 8879:1986).</p>
+<p><a href="https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language" target="_blank"><strong>Standard Generalized Markup Language</strong></a> (« langage de balisage généralisé normalisé » - <strong>SGML</strong>) est un langage de description à balises, de norme ISO (ISO 8879:1986).</p>
 <p>Ce langage, publié en 1986 par Charles Goldfarb, mais dont les prémisses remontent à 1969, est un langage qui a eu pour vocation de s'affranchir des capacités techniques spécifiques des imprimantes pour décrire un document texte. Ce standard, vite adopté par la communauté internationale, repose sur la séparation complète entre la <em>structure logique</em> d'un document (titres, chapitres, paragraphes, illustrations,...), qui est identifié par des <mark class="critic"><strong>balises</strong></mark> insérées dans le document lui-même, de sa <em>mise en page</em>, qui dépend du support de présentation (livre, journal, présentation, écran, ...).</p>
 <p><strong>HTML</strong> (<em>HyperText Markup Language</em>) est une application de SGML, crée par Tim Berners-Lee en 1989.</p>
 </details>
 </li>
 </ol>
 <h2 id="un-langage-de-balise-html">Un langage de balise : HTML</h2>
-<p>Une page web, dans sa partie logique,  <strong>c'est un fichier contenant du texte</strong>, ce texte étant enrichi par un système de <mark class="critic"><strong>balises ouvrantes</strong></mark> - par exemple <code>&lt;p&gt;</code> et fermantes - par exemple <code>&lt;/p&gt;</code>, permettant de donner un sens particulier au texte encadré par ces balises ( titres, chapitres, paragraphes, illustrations... ).</p>
+<p>Une page web, dans sa partie logique, <mark class="critic"><strong>c'est un fichier contenant du texte</strong></mark>, ce texte étant enrichi par un système de <mark class="critic"><strong>balises ouvrantes</strong></mark> - par exemple <code>&lt;p&gt;</code> et fermantes - par exemple <code>&lt;/p&gt;</code>, permettant de donner un sens particulier (autrement dit une <em>sémantique</em>) au texte encadré par ces balises (titres, chapitres, paragraphes, illustrations...).</p>
 <p>Le langage utilisé qui contient le texte et les balises s'appelle <code>HTML</code> ( d'où le nom de l'extension de fichier <code>.html</code>), qui est un acronyme pour <em>Hyper Text Markup Language</em>, soit langage de balisage hypertexte. Il est à noter que HTML <em>n'est pas un langage de programmation</em>, mais simplement un langage de description du texte, privilégiant la mise en avant du sens avant la forme.</p>
-<p>Il existe de nombreux langages de balisages, permettant de donner une forme particulière à du texte ou à des chaines de caractères. Par exemple, <code>HTML</code> pour le Web, <span class="arithmatex">\(\LaTeX\)</span> pour les documents scientifiques et les formules mathématiques, <code>XML</code> pour organiser des données, ou même <code>Mardown</code>, utilisé dans les  Notebooks et pour la conception de ce site.</p>
+<p>Il existe de nombreux langages de balisages, permettant de donner une forme particulière à du texte ou à des chaines de caractères. Par exemple, <code>HTML</code> pour le Web, <span class="arithmatex">\(\LaTeX\)</span> pour les documents scientifiques et les formules mathématiques, <code>XML</code> pour organiser des données, ou même <code>Markdown</code>, utilisé dans les Notebooks et pour la conception de ce site.</p>
 <p>Un fichier <code>html</code> se présente donc sous la forme suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"fr"</span><span class="p">&gt;</span> 
     <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Une simple page web <span class="ni">&amp;#129409;</span> <span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 
     <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -3828,14 +3828,17 @@
         <span class="cm">&lt;!-- ceci est un commentairen comme en Python, il n'est pas interprété par le navigateur, et n'est là que pour les codeurs ou les curieux --&gt;</span>
         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span> Pour faire une page web, il faut taper du code <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.
         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span> Afin de faire fonctionner celui-ci, il faut placer des <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>balises<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> qui encadrent des portions du texte :
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> Une balise ouvrante, utilisant les symboles  <span class="ni">&amp;lt;</span> et <span class="ni">&amp;gt;</span> , qui encadrent un mot clé ;<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> Une balise fermante, identique à la balise ouvrante, mais un slash  / précède le mot clé ;<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> éventuellement des <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>attributs<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> viennent compléter le mot clé, afin de préciser un peu plus la balise, par exemple en donnant un identifiant particulier, ou l'url d'un lien.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
         <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span> Les différentes balises<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span> Il existe de nombreuses balises en HTML. On peut trouver des explications sur leur fonctionnement en suivant <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://developer.mozilla.org/fr/docs/Apprendre/HTML/Balises_HTML"</span><span class="p">&gt;</span>ce lien<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span> Une autre possibilité est de télécharger la fiche suivante (une cheat sheet) : <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src </span><span class="o">=</span> <span class="s">"https://media.cheatography.com/storage/thumb/rmathieu13_html.750.jpg"</span> <span class="na">alt </span><span class="o">=</span><span class="s">"Image de cheat sheet HTML"</span> <span class="na">title</span><span class="o">=</span><span class="s">"Cheat Sheet HTML"</span> <span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 
 
@@ -3843,7 +3846,7 @@
 </code></pre></div>
 <div class="admonition tips">
 <p class="admonition-title">Notepad++</p>
-<p>Pour l'édition de fichier de type <code>.html</code>, il ne faut <strong>surtout pas</strong> utiliser un traitement de texte classique, comme Word ou LibreOffice. En effet ceux-ci rajoutent de manière cachée  des informations dans le fichier en édition, ce qui risque de présenter de sérieux problèmes lors de l'affichage de la page web par un navigateur.</p>
+<p>Pour l'édition de fichier de type <code>.html</code>, il ne faut <strong>surtout pas</strong> utiliser un traitement de texte classique, comme Word ou LibreOffice. En effet ceux-ci rajoutent de manière cachée des informations <sup id="fnref:WYSIWYG"><a class="footnote-ref" href="#fn:WYSIWYG">2</a></sup> dans le fichier en édition, ce qui risque de présenter de sérieux problèmes lors de l'affichage de la page web par un navigateur.</p>
 <p>Dans la suite de ce chapitre, nous utiliserons majoritairement le logiciel <code>Notepad++</code>, qui est un éditeur de texte orienté codage, reconnaissant la plupart des langages informatiques. Ce logiciel est libre, disponible sur les ordinateurs du Lycée, et peut-être téléchargé en suivant <a href="https://notepad-plus-plus.org/downloads/" target="_blank">ce lien</a>. Notez qu'il existe aussi en version portable, et que vous pouvez donc l'installer sur une clé USB.</p>
 </div>
 <div class="admonition question">
@@ -3869,9 +3872,9 @@ où :
 <li><code>&lt;/p&gt;</code> est la balise fermante. Entre les deux balises se trouve le corps du paragraphe.</li>
 </ul>
 <div class="admonition tips">
-<p class="admonition-title">Cas particulier : la balise <code>&lt;img /&gt;</code></p>
-<p>La balise <code>&lt;img /&gt;</code> est la balise permettant d'insérer des images dans le document HTML. Elle possède une particularité : elle est <strong>auto-fermante</strong>  (car elle n'encadre aucun élément, elle contient la référence vers l'image).
-Elle possède entre-autres les attributs suivants :</p>
+<p class="admonition-title">Cas particulier : la balise <code>&lt;img &gt;</code></p>
+<p>La balise <code>&lt;img &gt;</code> est la balise permettant d'insérer des images dans le document HTML. Elle possède une particularité : elle est <strong>auto-fermante</strong>  (car elle n'encadre aucun élément, elle contient la référence vers l'image).</p>
+<p>Elle possède entre-autres les attributs suivants :</p>
 <ul>
 <li><code>src</code> : l'adresse de l'image, absolue ou relative, ou sous la forme d'une URL (Attention aux URL google image, qui ne sont que temporaires !) ;</li>
 <li><code>alt</code> : le texte de remplacement si l'image est manquante (voir remarque ci-dessus) ;</li>
@@ -3919,13 +3922,22 @@ Elle possède entre-autres les attributs suivants :</p>
 </ol>
 </div>
 <h2 id="verifier-son-code-le-verificateur-du-w3c">Vérifier son code : le vérificateur du W3C</h2>
-<p>Le  <mark class="critic"><strong>W3C</strong></mark> (<em>World Wide Web Consortium</em>) est l'organisme à buts non lucratifs chargé de standardiser et promouvoir les technologies du web. Sa gestion est assurée conjointement par le MIT aux États-Unis, l'ERCIM en Europe (dont l'INRIA en France), l'université Keio au Japon et l'université Beihang en Chine. À côté d'industriels et d'éditeurs informatiques, en particulier les éditeurs des navigateurs (Mozilla Fondation, Microsoft, Apple, Opera ou Google), ses membres se composent aussi des centres de recherches (Inria, National Research Council Canada, etc.), des opérateurs de réseaux, ainsi que des entreprises investies dans le Web comme Braillenet, la Bibliothèque du Congrès ou la BBC. </p>
+<p>Le <mark class="critic"><strong>W3C</strong></mark> (<em>World Wide Web Consortium</em>) est l'organisme à buts non lucratifs, chargé de standardiser et promouvoir les technologies du web. Sa gestion est assurée conjointement par le MIT aux États-Unis, l'ERCIM en Europe (dont l'INRIA en France), l'université Keio au Japon et l'université Beihang en Chine. À côté d'industriels et d'éditeurs informatiques, en particulier les éditeurs des navigateurs (Mozilla Fondation, Microsoft, Apple, Opera ou Google), ses membres se composent aussi des centres de recherches (Inria, National Research Council Canada, etc.), des opérateurs de réseaux, ainsi que des entreprises investies dans le Web comme Braillenet, la Bibliothèque du Congrès ou la BBC. </p>
 <p>Le W3C offre un service de <strong>validation des pages web</strong>, vérifiant que leur structure est conforme aux normes en vigueur. On le trouve à l'adresse <a href="https://validator.w3.org/" target="_blank">https://validator.w3.org/</a>.</p>
+<p>On peut y tester :</p>
+<ul>
+<li>soit une URl (<em>Validate by URI</em>) ;</li>
+<li>soit un fichier (<em>Validate by File Upload</em>);</li>
+<li>soit en copiant-collant le code HTML (<em>Validate by Direct Input</em>).</li>
+</ul>
 <div class="footnote">
 <hr>
 <ol>
 <li id="fn:URL">
 <p><a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator" target="_blank">https://fr.wikipedia.org/wiki/Uniform_Resource_Locator</a> <a class="footnote-backref" href="#fnref:URL" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:WYSIWYG">
+<p>Les traitements de textes classiques comme LibreOffice, Word, Google Doc, sont appelés des traitements de textes <code>WYSIWIG</code> (<em>What you see is what you get</em>). Ils sont extrêmement puissants, mais parfois difficiles à manipuler. De nombreux utilisateurs ne les utilisent que comme un substitut à la machine à écrire, sans avoir conscience des puissantes capacités d'édition de ces logiciels. Ces logiciels ne fabriquent en réalité pas un simple document texte, mais en réalité une archive (comme un type <code>zip</code>, <code>7z</code> ou <code>rar</code>), qui contient l'ensemble des informations textuelles, de formatage, et hypertextuelles du document. Il faut noter aussi qu'il existe des logiciels de traitements de textes non WYSIWYG, tels que ceux utilisant <span class="arithmatex">\(\LaTeX\)</span>, extrêmement puissants puisqu'ils permettent à un <mark class="critic"><strong>utilisateur averti</strong></mark> de formater des documents exactement comme il le souhaite. Ces traitements de textes sont utilisés dans le domaine de la recherche, et savoir utiliser <span class="arithmatex">\(\LaTeX\)</span> est un véritable atout pour un étudiant en sciences. <a class="footnote-backref" href="#fnref:WYSIWYG" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 </ol>
 </div></div>
