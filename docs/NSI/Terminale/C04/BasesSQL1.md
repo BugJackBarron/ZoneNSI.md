@@ -1,6 +1,6 @@
 # Commandes de base en SQL : créations de tables et types de données
 
-Une utilisation efficace des bases de données relationnelles n'est réalisable qu'avec un SGBDR (Système de Gestion de Bases d Données Relationnelles), c'esst-à-dire un logiciel offrant :
+Une utilisation efficace des bases de données relationnelles n'est réalisable qu'avec un {==**SGBDR**==} (*Système de Gestion de Bases d Données Relationnelles*), c'est-à-dire un logiciel offrant :
 
 * la définition des données sous forme de relations ;
 * la manipulation des données par un langage déclaratif ;
@@ -12,7 +12,6 @@ Dans ce chapitre, nous nous contenterons d'utiliser de manière sommaire des fon
 * soit par le logiciel portable [DB Browser for SQLite](https://sqlitebrowser.org/dl/){target="_blank"} ;
 * soit par l'intermédiaire de modules python.
 
-Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. Pour l'instant nous nous contenterons des fonctionnalités de base du langage SQL
 
 
 ## Du modèle relationnel à la base de donnée : une première approche
@@ -22,7 +21,7 @@ Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. P
 
 SQL (*Structured Query Language*) est directement inspiré du modèle relationnel défini dans la [partie précédente](../ModeleRelationnel/){target="_blank"}. Ce langage est standardisé par la norme `ISO/IEC 9075`, dont la dernière version date de [2016](https://www.iso.org/fr/standard/63555.html){target="_blank"}.
 
-La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.
+La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard. Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments ainsi que quelques requêtes simples sur cette base de donnée.
 
 
 !!! question "Une première approche du SQL"
@@ -46,7 +45,8 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 !!! example "Exemple : Création de la table `usager`"
 	Les lignes de code SQL suivantes permettent la création d'une {==**table**==} `usager`, qui correspond globalement à la **relation** `Usager` telle que définie par le schéma :
 	
-	Usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre *String*</span>)NAVCAM
+	!!! quote ""
+		Usager(nom *String*, prénom *String*, email *String*, cp *String*, adresse *String*, inscription *Date*, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre *String*</span>)
 	
 
 	```` SQL
@@ -59,10 +59,10 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 						 code_barre CHAR(15) PRIMARY KEY);
 	````
 
-	On envoie ici au SGBD un ordre SQL de création de table, par l'intermédiare de  la commande `CREATE TABLE`.
+	On envoie ici au SGBD un ordre SQL de création de table, par l’intermédiaire de la commande `CREATE TABLE`.
 	Le nom de la table sera `usager`. Cette table contiendra des {==**colonnes**==} (ou {==**champs**==}) qui correspondent aux **attributs** de la relation.
 
-	* La première colonne `nom` est définie comme étant du type `VARCHAR`, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.
+	* La première colonne `nom` est définie comme étant du type `VARCHAR`, c'est-à-dire chaine de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.
 	* La colonne `inscription` est définie comme étant du type `DATE`.
 	* La dernière colonne `code_barre` est définie comme étant du type `VARCHAR` de longueur maximale 15, auquel on adjoint la contrainte `PRIMARY KEY`, qui indique simplement qu'il s'agit bien de la **clé primaire** de la relation.
 	
@@ -91,7 +91,8 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 
 	````
 	
-	Chacune des **lignes** est un tuple, chaque composante correspondant à la **colonne** définie dans l'ordre de création de table, **dans l'ordre de définition** (NB : *il existe un moyen d'être plus explicite et de s'affranchir de l'ordre*, que nous verrons plus tard).
+	Chacune des **lignes** est un tuple, chaque composante correspondant à la **colonne** définie dans l'ordre de création de table, **dans l'ordre de définition** (NB : *il existe un moyen d'être plus explicite et de s'affranchir de l'ordre*, que nous verrons plus tard*).
+
 	Vous pouvez constater que dans la troisième ligne, l'email n'est pas correctement écrit. Nous n'avons pour l'instant pas mis de contraintes supplémentaires sur le {==**champ**==} `email`, donc le SGBD acceptera cette entrée comme correcte.
 	
 !!! example "Exemple : Première requête"
@@ -140,7 +141,7 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 	| `REAL` | approché | Flottant sur 32 bits ($-3,40\times 10^{38}$ à $3,40\times 10^{38}$)  |
 	| `DOUBLE PRECISION` | approché | Flottant sur 64 bits ($-1,79\times 10^{308}$ à $1,79\times 10^{308}$)  |
 
-	On peut noter le cas particulier du type `DECIMAL(t,f)`, qui permet du calcul en valeur exacte, par exemple sur des sommes d'argent. Par exemple, l'utilisation du type `DECIMAL(5,2` permettra de travailler avec des sommes de $-999,99$ € à $999,99$ €.
+	On peut noter le cas particulier du type `DECIMAL(t,f)`, qui permet du calcul en valeur exacte, par exemple sur des sommes d'argent. Par exemple, l'utilisation du type `DECIMAL(5,2)` permettra de travailler avec des sommes de $-999,99$ € à $999,99$ €.
 
 
 ### Types textes
@@ -169,7 +170,7 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 ### Types temporels
 
 !!! abstract "Types temporels"
-	Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeur×s...
+	Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeur.euse.s...
 	
 	Nous nous contenterons ici d'aborder de manière très superficielle ces types :
 	
@@ -179,11 +180,11 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 	| `TIME` | Une heure au format `'hh:mm:ss'` |
 	| `TIMESTAMP` | Un instant au format `'AAAA-MM-JJ hh:mm:ss'`  |
 	
-	Une propriété intéressante du type `DATE` est qu'il supporte l'addition correctement. si `d` est du type `DATE`, `d+7` produira une date correspondante à 7 jours après `d`, en changeant jours, mois et années correctement.
+	Une propriété intéressante du type `DATE` est qu'il supporte l'addition correctement. Si `d` est du type `DATE`, `d+7` produira une date correspondante à 7 jours après `d`, en changeant jours, mois et années correctement.
 	
 ### Type `NULL`
 
-Une valeur `NULL` existe en SQL, et correspond à l'absence de donnée. Elle s'utilise comme la valeur `None` en Python. Elle est juste **interdite pour les clés primaires**.
+Une valeur `NULL` existe en SQL et correspond à l'absence de donnée. Elle s'utilise comme la valeur `None` en Python. Elle est juste **interdite pour les clés primaires**.
 
 Il est possible de tester si une valeur est nulle ou non grâce aux commandes `IS NULL` ou `IS NOT NULL`.
 
@@ -213,7 +214,7 @@ Il est possible de tester si une valeur est nulle ou non grâce aux commandes `I
 	Une contrainte qui porterait sur plusieurs attributs (par exemple une définition de clé primaire sur plusieurs attributs) est **reportée en fin de définition**, avant la parenthèse fermante.
 	
 !!! example "Exemple avec clé primaire simple" 
-	La relation `Livre`  suivante ![relationLivre](relationLivre3.png){: style="width:15%;"} peut être crée en SQL par la commande suivante :
+	La relation `Livre` suivante ![relationLivre](relationLivre3.png){: style="width:15%;"} peut être créée en SQL par la commande suivante :
 	
 	```` SQL
 	CREATE TABLE Livre (titre VARCHAR(200),
@@ -228,7 +229,7 @@ Il est possible de tester si une valeur est nulle ou non grâce aux commandes `I
 	Dans le bac à sable SQL, créer la table `Livre`.
 	
 !!! example "Exemple avec clé primaire et clés étrangères"
-	Maintenant que nous avons crée les tables `Usager` et `Livre`, nous pouvons créer la table `Emprunt` telle que définie dans le schéma ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
+	Maintenant que nous avons créé les tables `Usager` et `Livre`, nous pouvons créer la table `Emprunt` telle que définie dans le schéma ![relationEmprunt.png](relationEmprunt.png){: style="width:15%;"}
 	
 	```` SQL
 	CREATE TABLE Emprunt (	code_barre CHAR(15) REFERENCES usager(code_barre),

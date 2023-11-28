@@ -3812,7 +3812,7 @@
 
 
 <div><h1 id="modification-des-bases-de-donnees-et-requetes-complexes">Modification des bases de données et requêtes complexes</h1>
-<p><em>Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763" target="_blank">notebook Capytale</a> (Code <code>C156-162763</code>).</em></p>
+<p><em>Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un <a href="https://capytale2.ac-paris.fr/web/c/c156-162763" target="_blank">notebook Capytale</a> (Code <code>C156-162763</code>).</em></p>
 <h2 id="modification-des-bases-de-donnees">Modification des bases de données</h2>
 <h3 id="suppression-de-lignes">Suppression de lignes</h3>
 <p>Pour supprimer des lignes selon une condition donnée, on utilise l'ordre :</p>
@@ -3850,10 +3850,10 @@ On vérifie ensuite :
 </div>
 <div class="admonition info">
 <p class="admonition-title">Tout ou rien</p>
-<p>Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors <strong>toutes les suppressions effectuées par cet ordre sont annulées</strong> ! On parle d'éxecution de type « tout ou rien ».</p>
+<p>Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors <strong>toutes les suppressions effectuées par cet ordre sont annulées</strong> ! On parle d’exécution de type « tout ou rien ».</p>
 </div>
 <h3 id="mise-a-jour-de-lignes">Mise à jour de lignes</h3>
-<p>Pour mettre à jour des lignes, on utiise un ordre SQL de type :</p>
+<p>Pour mettre à jour des lignes, on utilise un ordre SQL de type :</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">nom_table</span>
 <span class="k">SET</span><span class="w"> </span><span class="n">attribut1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nouvelle_valeur1</span><span class="p">,</span>
 <span class="w">    </span><span class="n">attribut2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nouvelle_valeur2</span><span class="p">,</span>
@@ -3877,8 +3877,8 @@ et une nouvelle requête de recherche renvoie bien comme table :
 </div>
 <h2 id="requetes-complexes">Requêtes complexes</h2>
 <h3 id="jointures">Jointures</h3>
-<p>Jusqu'à présent, les requêtes que nous avons écrites ne nécessitent que l'utilisation d'une seule et unique table. mais bien souvent, nous avons a effectuer de requêtes récupérant des données de plusieurs tables simultanément.
-Pour effectuer une telle requête il faudra utiliser une ou des <mark class="critic"><strong>jointures de tables</strong></mark>.</p>
+<p>Jusqu'à présent, les requêtes que nous avons écrites ne nécessitent que l'utilisation d'une seule et unique table. Mais bien souvent, nous avons à effectuer des requêtes récupérant des données de plusieurs tables simultanément.
+Pour effectuer une telle requête, il faudra utiliser une ou des <mark class="critic"><strong>jointures de tables</strong></mark>.</p>
 <h4 id="jointure-sur-deux-tables">Jointure sur deux tables</h4>
 <div class="admonition abstract">
 <p class="admonition-title">Jointure naturelle de deux tables</p>
@@ -3897,14 +3897,14 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 <p class="admonition-title">Exemples</p>
 <ul>
 <li>
-<p>Pour connaître la liste des livres empruntés, on utilisera l'ordre SQL suivant :</p>
+<p>Pour connaitre la liste des livres empruntés, on utilisera l'ordre SQL suivant :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
 <span class="k">FROM</span>
 <span class="w">    </span><span class="n">emprunt</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">livre</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">emprunt</span><span class="p">.</span><span class="n">isbn</span><span class="o">=</span><span class="n">livre</span><span class="p">.</span><span class="n">isbn</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p>Il est bien sûr possible de projeter le résultat de la requête et d'effectuer une sélection. Par exemple pour connaître la liste des personnes devant rendre au moins un livre avant le 01 février 2020 :</p>
+<p>Il est bien sûr possible de projeter le résultat de la requête et d'effectuer une sélection. Par exemple pour connaitre la liste des personnes devant rendre au moins un livre avant le 01 février 2020 :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">usager</span><span class="p">.</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">usager</span><span class="p">.</span><span class="n">prenom</span><span class="p">,</span><span class="w"> </span><span class="n">emprunt</span><span class="p">.</span><span class="n">retour</span>
 <span class="k">FROM</span><span class="w"> </span>
 <span class="w">    </span><span class="n">usager</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emprunt</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">usager</span><span class="p">.</span><span class="n">code_barre</span><span class="o">=</span><span class="n">emprunt</span><span class="p">.</span><span class="n">code_barre</span>
@@ -3917,7 +3917,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 <h4 id="jointures-sur-plusieurs-tables">Jointures sur plusieurs tables</h4>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
-<p>On souhaite connaître les titre et les auteurs correspondant aux livres actuellement empruntés. Il faut donc faire une jointure sur les 4 tables <code>livre</code>, <code>auteur</code>, <code>auteur_de</code> et <code>emprunt</code>. La requête a écrire va donc être plus longue que celles vues jusqu'alors :</p>
+<p>On souhaite connaitre les titre et les auteurs correspondant aux livres actuellement empruntés. Il faut donc faire une jointure sur les 4 tables <code>livre</code>, <code>auteur</code>, <code>auteur_de</code> et <code>emprunt</code>. La requête a écrire va donc être plus longue que celles vues jusqu'alors :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">livre</span><span class="p">.</span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">auteur</span><span class="p">.</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">auteur</span><span class="p">.</span><span class="n">prenom</span>
 <span class="k">FROM</span>
 <span class="w">    </span><span class="n">emprunt</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">livre</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">emprunt</span><span class="p">.</span><span class="n">isbn</span><span class="o">=</span><span class="n">livre</span><span class="p">.</span><span class="n">isbn</span>
@@ -3925,7 +3925,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 <span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">auteur</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">auteur_de</span><span class="p">.</span><span class="n">a_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">auteur</span><span class="p">.</span><span class="n">a_id</span><span class="p">;</span>
 </code></pre></div>
 </div>
-<div class="admonition tps">
+<div class="admonition tips">
 <p class="admonition-title">Alias des tables</p>
 <p>Certaines requêtes deviennent rapidement pénibles à écrire. Pour simplifier un peu cette écriture, il est possible d'utiliser un alias pour les tables à l'aide du mot-clé <code>AS</code>. Ainsi l'ordre précédent peut-être écrit :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">prenom</span>
@@ -3936,13 +3936,13 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 </code></pre></div>
 </div>
 <h3 id="requetes-imbriquees">Requêtes imbriquées</h3>
-<p>Il est tout à fait possible d'imbriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une <em>table temporaire</em> :</p>
+<p>Il est tout à fait possible d'imbriquer des requêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une <em>table temporaire</em> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">livre</span>
 <span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">annee</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1990</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tmp</span>
-<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">annee</span><span class="o">&lt;=</span><span class="mi">2000</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">annee</span><span class="o">&lt;=</span><span class="mi">2000</span><span class="p">;</span>
 </code></pre></div>
-<p>Ici on crée une table temporaire aliasée par <code>tmp</code>, dans laquelle on stocke toute les lignes dont l'année de publication est supérieure ou égale à 1990, puis on effectue une nouvelle sélection sur cette table temporaire en ne gardant que les lignes dont l'année de publication est inférieure ou égale à 2000.</p>
+<p>Ici on crée une table temporaire d'alias <code>tmp</code>, dans laquelle on stocke toutes les lignes dont l'année de publication est supérieure ou égale à 1990, puis on effectue une nouvelle sélection sur cette table temporaire en ne gardant que les lignes dont l'année de publication est inférieure ou égale à 2000.</p>
 <div class="admonition tips">
 <p class="admonition-title">Analyse par un SGBD</p>
 <p>UN SGBD analysera cette requête exactement de la même manière qu'il analysera la suivante :</p>
@@ -3950,17 +3950,17 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 </code></pre></div>
 <p>Il n'y aura aucune différence entre les deux en terme de vitesse de traitement.</p>
 </div>
-<p>Il est aussi possible d'imbriquer des requêtes <strong>dans la clause  <code>WHERE</code></strong>, en respectant certaines conditions. Par exemple pour connaître la liste des livres dont l'année est la plus ancienne dans la base, on va utiliser :</p>
+<p>Il est aussi possible d'imbriquer des requêtes <strong>dans la clause <code>WHERE</code></strong>, en respectant certaines conditions. Par exemple pour connaitre la liste des livres dont l'année est la plus ancienne dans la base, on va utiliser :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">annee</span><span class="w"> </span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">livre</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">annee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">annee</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">livre</span><span class="p">);</span>
 </code></pre></div>
 <div class="admonition question">
-<p class="admonition-title">Ecrire une requête imbriquée</p>
+<p class="admonition-title">Écrire une requête imbriquée</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Ecrire une requête SQL donnant la liste des livres publiés la même année que le livre dont le titre contient la chaîne de caractère <code>'Jack Barron'</code>.</p>
+<p>Écrire une requête SQL donnant la liste des livres publiés la même année que le livre dont le titre contient la chaine de caractère <code>'Jack Barron'</code>.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">titre</span>
@@ -3972,7 +3972,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des <mark class="cri
 </div>
 </div>
 <h2 id="exercices">Exercices</h2>
-<p>Effectuer les requêtes <strong>avec jointures</strong> du notebokk <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474" target="_blank">jeux olympiques</a>(Code <code>917a-165474</code>) (merci M. Leleu).</p></div>
+<p>Effectuer les requêtes <strong>avec jointures</strong> du notebook <a href="https://capytale2.ac-paris.fr/web/c/917a-165474" target="_blank">jeux olympiques</a>(Code <code>917a-165474</code>) (merci M. Leleu).</p></div>
 
 
 

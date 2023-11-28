@@ -2676,11 +2676,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fonctions-daggregations" class="md-nav__link">
-    Fonctions d'aggrégations
+  <a href="#fonctions-dagregations" class="md-nav__link">
+    Fonctions d'agrégations
   </a>
   
-    <nav class="md-nav" aria-label="Fonctions d'aggrégations">
+    <nav class="md-nav" aria-label="Fonctions d'agrégations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3813,7 +3813,7 @@
 
 
 <div><h1 id="requetes-sql">Requêtes SQL</h1>
-<p><em>Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763" target="_blank">notebook Capytale</a> (Code <code>c156-162763</code>).</em></p>
+<p><em>Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un <a href="https://capytale2.ac-paris.fr/web/c/c156-162763" target="_blank">notebook Capytale</a> (Code <code>c156-162763</code>).</em></p>
 <h2 id="projections">Projections</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Projection</p>
@@ -3892,8 +3892,8 @@ Pour récupérer l'intégralité des colonnes, on peut utiliser l'opérateur <ma
 </ul>
 </div>
 <div class="admonition tips">
-<p class="admonition-title">Requête sur les chaînes de caractères</p>
-<p>Si on veut chercher tous les livres dont le titre contient la chaîne <code>Astérix</code>, il faudra utiliser une clause comme la suivante :</p>
+<p class="admonition-title">Requête sur les chaines de caractères</p>
+<p>Si on veut chercher tous les livres dont le titre contient la chaine <code>Astérix</code>, il faudra utiliser une clause comme la suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
 <span class="w">        </span><span class="n">titre</span>
 <span class="w">    </span><span class="k">FROM</span>
@@ -3901,8 +3901,8 @@ Pour récupérer l'intégralité des colonnes, on peut utiliser l'opérateur <ma
 <span class="w">    </span><span class="k">WHERE</span>
 <span class="w">        </span><span class="n">titre</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%Astérix%'</span><span class="p">;</span>
 </code></pre></div>
-<p>La chaîne de caractères <code>'%Astérix%'</code> s'appelle un <mark class="critic"><strong>motif</strong></mark>. L'opération <code>s LIKE m</code> renverra <code>True</code> si la chaîne de caractères <code>s</code> correspond au motif <code>m</code>.
-Le caractère <code>%</code> est un <mark class="critic"><strong>joker</strong></mark> qui peut-être substitué par <strong>n'importe quelle chaîne</strong>. Il existe aussi l'opérateur <code>_</code> (underscore) qui lui représente <strong>n'importe quel caractère</strong>. Ainsi, pour chercher tous les auteurs dont le nom commence par F, se termine par R et fait 6 caractères de long :  </p>
+<p>La chaine de caractères <code>'%Astérix%'</code> s'appelle un <mark class="critic"><strong>motif</strong></mark>. L'opération <code>s LIKE m</code> renverra <code>True</code> si la chaine de caractères <code>s</code> correspond au motif <code>m</code>.
+Le caractère <code>%</code> est un <mark class="critic"><strong>joker</strong></mark> qui peut-être substitué par <strong>n'importe quelle chaine</strong>. Il existe aussi l'opérateur <code>_</code> (underscore) qui lui représente <strong>n'importe quel caractère</strong>. Ainsi, pour chercher tous les auteurs dont le nom commence par F, se termine par R et fait 6 caractères de long :  </p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">SELECT</span>
 <span class="w">        </span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">prenom</span>
 <span class="w">    </span><span class="k">FROM</span>
@@ -3911,8 +3911,8 @@ Le caractère <code>%</code> est un <mark class="critic"><strong>joker</strong><
 <span class="w">        </span><span class="n">nom</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'F____R'</span><span class="p">;</span>
 </code></pre></div>
 </div>
-<h2 id="fonctions-daggregations">Fonctions d'aggrégations</h2>
-<p>Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent <mark class="critic"><strong>fonctions d'aggrégations</strong></mark>, et renvoie un résultat sous la forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :</p>
+<h2 id="fonctions-dagregations">Fonctions d'agrégations</h2>
+<p>Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent <mark class="critic"><strong>fonctions d'agrégations</strong></mark>, et renvoie un résultat sous la forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :</p>
 <h3 id="fonction-count">Fonction <code>COUNT</code></h3>
 <div class="admonition abstract">
 <p class="admonition-title">Compter des lignes</p>
@@ -3927,14 +3927,14 @@ Le caractère <code>%</code> est un <mark class="critic"><strong>joker</strong><
 <div class="admonition example">
 <p class="admonition-title">Exemples</p>
 <ul>
-<li>COmpter le nombre de lignes dans la table auteur :
+<li>Compter le nombre de lignes dans la table auteur :
     <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
 <span class="k">FROM</span>
 <span class="w">    </span><span class="n">auteur</span><span class="p">;</span>
 </code></pre></div></li>
 <li>Compter le nombre de titres contenant le chaîne <code>Astérix</code>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
 <span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="n">titre</span><span class="p">)</span>
 <span class="k">FROM</span><span class="w"> </span>
 <span class="w">    </span><span class="n">livre</span>
@@ -3962,8 +3962,8 @@ renvoie une table avec une ligne et deux colonnes : <img alt="erreur Count" src=
 </div>
 <div class="admonition tips">
 <p class="admonition-title">Alias de colonne</p>
-<p>Avec la fonction <code>COUNT</code>, les titres des colonnes renvoyés ne sont pas forcémùent parlant. Il est possible de les changer en leur fournisdsant un <strong>alias</strong> par l'intermédiaire de <code>AS</code> :
-</p><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
+<p>Avec la fonction <code>COUNT</code>, les titres des colonnes renvoyés ne sont pas forcément parlant. Il est possible de les changer en leur fournissant un <strong>alias</strong> par l'intermédiaire de <code>AS</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
 <span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="n">titre</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">nombre_asterix</span>
 <span class="k">FROM</span><span class="w"> </span>
 <span class="w">    </span><span class="n">livre</span>
@@ -3973,14 +3973,14 @@ renvoie une table avec une ligne et deux colonnes : <img alt="erreur Count" src=
 <h3 id="fonctions-numeriques">Fonctions numériques</h3>
 <p>Les fonctions suivantes ne peuvent s'appliquer que sur des colonnes dont le type est numérique :</p>
 <ul>
-<li><code>SUM</code> : effectue la <mark class="critic"><strong>somme</strong></mark> de toutes les valeurs de la colonne sélectionnée correspondant au conditions données</li>
-<li><code>AVG</code> (<em>average</em>) :  effectue la <mark class="critic"><strong>moyenne</strong></mark> de toutes les valeurs de la colonne sélectionnée correspondant au conditions données.</li>
+<li><code>SUM</code> : effectue la <mark class="critic"><strong>somme</strong></mark> de toutes les valeurs de la colonne sélectionnée correspondant aux conditions données</li>
+<li><code>AVG</code> (<em>average</em>) :  effectue la <mark class="critic"><strong>moyenne</strong></mark> de toutes les valeurs de la colonne sélectionnée correspondant aux conditions données.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">annee</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">somme</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">livre</span><span class="w"> </span><span class="p">;</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">annee</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">moyenne</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">livre</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 <h3 id="fonctions-min-et-max">Fonctions <code>MIN</code> et <code>MAX</code></h3>
-<p>Ces deux fonctions s'appliquent sur n'importe quel type, l'ordre sur les chaînes de caractères étant l'ordre lexicographique. :</p>
+<p>Ces deux fonctions s'appliquent sur n'importe quel type, l'ordre sur les chaines de caractères étant l'ordre lexicographique. :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">auteur</span><span class="w"> </span><span class="p">;</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">auteur</span><span class="w"> </span><span class="p">;</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">annee</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">livre</span><span class="p">;</span><span class="w"> </span>
@@ -4030,7 +4030,7 @@ En effet la clause <code>DISTINCT</code> élimine les lignes exactement identiqu
 <h2 id="application">Application</h2>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<p>Effectuer la première partie ainsi que les requêtes <strong>sans jointures</strong> du notebokk <a href="https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474" target="_blank">jeux olympiques</a>(Code <code>917a-165474</code>) (merci M. Leleu).</p>
+<p>Effectuer la première partie ainsi que les requêtes <strong>sans jointures</strong> du notebook <a href="https://capytale2.ac-paris.fr/web/c/917a-165474" target="_blank">jeux olympiques</a>(Code <code>917a-165474</code>) (merci M. Leleu).</p>
 </div></div>
 
 

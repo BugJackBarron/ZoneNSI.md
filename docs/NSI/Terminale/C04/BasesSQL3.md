@@ -1,6 +1,6 @@
 # Modification des bases de données et requêtes complexes
 
-*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank} (Code `C156-162763`).*
+*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c/c156-162763){target=_blank} (Code `C156-162763`).*
 
 ##Modification des bases de données
 
@@ -54,11 +54,11 @@ DELETE FROM table WHERE conditions;
 
 !!! info "Tout ou rien"
 
-	Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors **toutes les suppressions effectuées par cet ordre sont annulées** ! On parle d'éxecution de type &laquo; tout ou rien &raquo;.
+	Si un ordre passé devant supprimer plusieurs lignes rencontre à un moment une erreur, alors **toutes les suppressions effectuées par cet ordre sont annulées** ! On parle d’exécution de type &laquo; tout ou rien &raquo;.
 	
 ### Mise à jour de lignes
 
-Pour mettre à jour des lignes, on utiise un ordre SQL de type :
+Pour mettre à jour des lignes, on utilise un ordre SQL de type :
 
 ```` SQL
 UPDATE nom_table
@@ -95,8 +95,8 @@ WHERE conditions;
 
 ### Jointures
 
-Jusqu'à présent, les requêtes que nous avons écrites ne nécessitent que l'utilisation d'une seule et unique table. mais bien souvent, nous avons a effectuer de requêtes récupérant des données de plusieurs tables simultanément.
-Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures de tables**==}.
+Jusqu'à présent, les requêtes que nous avons écrites ne nécessitent que l'utilisation d'une seule et unique table. Mais bien souvent, nous avons à effectuer des requêtes récupérant des données de plusieurs tables simultanément.
+Pour effectuer une telle requête, il faudra utiliser une ou des {==**jointures de tables**==}.
 
 
 #### Jointure sur deux tables
@@ -123,7 +123,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 	
 !!! example "Exemples"
 	
-	* Pour connaître la liste des livres empruntés, on utilisera l'ordre SQL suivant :
+	* Pour connaitre la liste des livres empruntés, on utilisera l'ordre SQL suivant :
 	
 		```` SQL
 		SELECT *
@@ -131,7 +131,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 			emprunt JOIN livre ON emprunt.isbn=livre.isbn;
 		````
 	
-	* Il est bien sûr possible de projeter le résultat de la requête et d'effectuer une sélection. Par exemple pour connaître la liste des personnes devant rendre au moins un livre avant le 01 février 2020 :
+	* Il est bien sûr possible de projeter le résultat de la requête et d'effectuer une sélection. Par exemple pour connaitre la liste des personnes devant rendre au moins un livre avant le 01 février 2020 :
 	
 		```` SQL
 		SELECT DISTINCT usager.nom, usager.prenom, emprunt.retour
@@ -145,7 +145,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 
 !!! example "Exemple"
 
-	On souhaite connaître les titre et les auteurs correspondant aux livres actuellement empruntés. Il faut donc faire une jointure sur les 4 tables `livre`, `auteur`, `auteur_de` et `emprunt`. La requête a écrire va donc être plus longue que celles vues jusqu'alors :
+	On souhaite connaitre les titre et les auteurs correspondant aux livres actuellement empruntés. Il faut donc faire une jointure sur les 4 tables `livre`, `auteur`, `auteur_de` et `emprunt`. La requête a écrire va donc être plus longue que celles vues jusqu'alors :
 	
 	```` SQL
 	SELECT livre.titre, auteur.nom, auteur.prenom
@@ -155,7 +155,7 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 		JOIN auteur ON auteur_de.a_id = auteur.a_id;
 	````
 	
-!!! tps "Alias des tables"
+!!! tips "Alias des tables"
 
 	Certaines requêtes deviennent rapidement pénibles à écrire. Pour simplifier un peu cette écriture, il est possible d'utiliser un alias pour les tables à l'aide du mot-clé `AS`. Ainsi l'ordre précédent peut-être écrit :
 	
@@ -172,16 +172,16 @@ Pour effectuer une telle requête il faudra utiliser une ou des {==**jointures d
 
 ### Requêtes imbriquées
 
-Il est tout à fait possible d'imbriquer des réquêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une *table temporaire* :
+Il est tout à fait possible d'imbriquer des requêtes les unes dans les autres, puisque le résultat d'une requête est lui-même une *table temporaire* :
 
 ```` SQL
 SELECT * FROM (
 	SELECT * FROM livre
 		WHERE annee >= 1990) AS tmp
-	WHERE tmp.annee<=2000;
+WHERE tmp.annee<=2000;
 ````
 
-Ici on crée une table temporaire aliasée par `tmp`, dans laquelle on stocke toute les lignes dont l'année de publication est supérieure ou égale à 1990, puis on effectue une nouvelle sélection sur cette table temporaire en ne gardant que les lignes dont l'année de publication est inférieure ou égale à 2000.
+Ici on crée une table temporaire d'alias `tmp`, dans laquelle on stocke toutes les lignes dont l'année de publication est supérieure ou égale à 1990, puis on effectue une nouvelle sélection sur cette table temporaire en ne gardant que les lignes dont l'année de publication est inférieure ou égale à 2000.
 
 !!! tips "Analyse par un SGBD"
 	UN SGBD analysera cette requête exactement de la même manière qu'il analysera la suivante :
@@ -192,7 +192,7 @@ Ici on crée une table temporaire aliasée par `tmp`, dans laquelle on stocke to
 	
 	Il n'y aura aucune différence entre les deux en terme de vitesse de traitement.
 	
-Il est aussi possible d'imbriquer des requêtes **dans la clause  `WHERE`**, en respectant certaines conditions. Par exemple pour connaître la liste des livres dont l'année est la plus ancienne dans la base, on va utiliser :
+Il est aussi possible d'imbriquer des requêtes **dans la clause `WHERE`**, en respectant certaines conditions. Par exemple pour connaitre la liste des livres dont l'année est la plus ancienne dans la base, on va utiliser :
 
 ```` SQL
 SELECT titre, annee 
@@ -200,10 +200,10 @@ FROM livre
 WHERE annee = (SELECT MIN(annee) FROM livre);
 ````
 
-!!! question "Ecrire une requête imbriquée"
+!!! question "Écrire une requête imbriquée"
 	=== "Enoncé"
 	
-		Ecrire une requête SQL donnant la liste des livres publiés la même année que le livre dont le titre contient la chaîne de caractère `'Jack Barron'`.
+		Écrire une requête SQL donnant la liste des livres publiés la même année que le livre dont le titre contient la chaine de caractère `'Jack Barron'`.
 		
 	=== "Solution"
 		```` SQL
@@ -215,6 +215,6 @@ WHERE annee = (SELECT MIN(annee) FROM livre);
 
 ## Exercices
 
-Effectuer les requêtes **avec jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
+Effectuer les requêtes **avec jointures** du notebook [jeux olympiques](https://capytale2.ac-paris.fr/web/c/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
 
 		

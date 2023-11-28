@@ -3861,7 +3861,7 @@
 
 
 <div><h1 id="commandes-de-base-en-sql-creations-de-tables-et-types-de-donnees">Commandes de base en SQL : créations de tables et types de données</h1>
-<p>Une utilisation efficace des bases de données relationnelles n'est réalisable qu'avec un SGBDR (Système de Gestion de Bases d Données Relationnelles), c'esst-à-dire un logiciel offrant :</p>
+<p>Une utilisation efficace des bases de données relationnelles n'est réalisable qu'avec un <mark class="critic"><strong>SGBDR</strong></mark> (<em>Système de Gestion de Bases d Données Relationnelles</em>), c'est-à-dire un logiciel offrant :</p>
 <ul>
 <li>la définition des données sous forme de relations ;</li>
 <li>la manipulation des données par un langage déclaratif ;</li>
@@ -3873,10 +3873,9 @@
 <li>soit par le logiciel portable <a href="https://sqlitebrowser.org/dl/" target="_blank">DB Browser for SQLite</a> ;</li>
 <li>soit par l'intermédiaire de modules python.</li>
 </ul>
-<p>Nous verrons dans un chapitre post-épreuve les SGBDR un peu  plus en détail. Pour l'instant nous nous contenterons des fonctionnalités de base du langage SQL</p>
 <h2 id="du-modele-relationnel-a-la-base-de-donnee-une-premiere-approche">Du modèle relationnel à la base de donnée : une première approche</h2>
 <p>SQL (<em>Structured Query Language</em>) est directement inspiré du modèle relationnel défini dans la <a href="../ModeleRelationnel/" target="_blank">partie précédente</a>. Ce langage est standardisé par la norme <code>ISO/IEC 9075</code>, dont la dernière version date de <a href="https://www.iso.org/fr/standard/63555.html" target="_blank">2016</a>.</p>
-<p>La syntaxe du SQL est volontairement <em>verbeuse</em> et proche de l'anglais standard.  Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments, et quelques requêtes simples sur cette base de donnée.</p>
+<p>La syntaxe du SQL est volontairement <em>verbeuse</em> et proche de l'anglais standard. Nous allons montrer dans les exemples suivants la création d'une table, l'insertion d'éléments ainsi que quelques requêtes simples sur cette base de donnée.</p>
 <div class="admonition question">
 <p class="admonition-title">Une première approche du SQL</p>
 <p>Rendez-vous dans le <a href="https://capytale2.ac-paris.fr/web/c/4df6-948322" target="_blank">bac-à-sable SQL</a>(Code <code>4df6-948322</code>) sur Capytale.</p>
@@ -3902,7 +3901,9 @@ Que se passe-t-il ? Pourquoi ?</p>
 <div class="admonition example">
 <p class="admonition-title">Exemple : Création de la table <code>usager</code></p>
 <p>Les lignes de code SQL suivantes permettent la création d'une <mark class="critic"><strong>table</strong></mark> <code>usager</code>, qui correspond globalement à la <strong>relation</strong> <code>Usager</code> telle que définie par le schéma :</p>
-<p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre <em>String</em></span>)NAVCAM</p>
+<div class="admonition quote">
+<p>Usager(nom <em>String</em>, prénom <em>String</em>, email <em>String</em>, cp <em>String</em>, adresse <em>String</em>, inscription <em>Date</em>, <span style="border-bottom-width: 1px;border-bottom-style: solid;">code_barre <em>String</em></span>)</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">usager</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
 <span class="w">                     </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
 <span class="w">                     </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span>
@@ -3911,10 +3912,10 @@ Que se passe-t-il ? Pourquoi ?</p>
 <span class="w">                     </span><span class="n">inscription</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
 <span class="w">                     </span><span class="n">code_barre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">);</span>
 </code></pre></div>
-<p>On envoie ici au SGBD un ordre SQL de création de table, par l'intermédiare de  la commande <code>CREATE TABLE</code>.
+<p>On envoie ici au SGBD un ordre SQL de création de table, par l’intermédiaire de la commande <code>CREATE TABLE</code>.
 Le nom de la table sera <code>usager</code>. Cette table contiendra des <mark class="critic"><strong>colonnes</strong></mark> (ou <mark class="critic"><strong>champs</strong></mark>) qui correspondent aux <strong>attributs</strong> de la relation.</p>
 <ul>
-<li>La première colonne <code>nom</code> est définie comme étant du type <code>VARCHAR</code>, c'est-à-dire chaîne de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.</li>
+<li>La première colonne <code>nom</code> est définie comme étant du type <code>VARCHAR</code>, c'est-à-dire chaine de caractère, avec une contrainte de longueur maximale de 90 caractères. Il en est de même pour les 5 premières colonnes, avec différentes contraintes de longueur.</li>
 <li>La colonne <code>inscription</code> est définie comme étant du type <code>DATE</code>.</li>
 <li>La dernière colonne <code>code_barre</code> est définie comme étant du type <code>VARCHAR</code> de longueur maximale 15, auquel on adjoint la contrainte <code>PRIMARY KEY</code>, qui indique simplement qu'il s'agit bien de la <strong>clé primaire</strong> de la relation.</li>
 </ul>
@@ -3940,8 +3941,8 @@ Le nom de la table sera <code>usager</code>. Cette table contiendra des <mark cl
 <span class="p">(</span><span class="s1">'Camus'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Albert'</span><span class="p">,</span><span class="w"> </span><span class="s1">'albert.camus@grace'</span><span class="p">,</span><span class="w"> </span><span class="s1">'22205'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2 Rue de Kerpaour, Grâces'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2021-10-09'</span><span class="p">,</span><span class="w"> </span><span class="s1">'012345678910113'</span><span class="p">)</span>
 <span class="p">;</span>
 </code></pre></div>
-<p>Chacune des <strong>lignes</strong> est un tuple, chaque composante correspondant à la <strong>colonne</strong> définie dans l'ordre de création de table, <strong>dans l'ordre de définition</strong> (NB : <em>il existe un moyen d'être plus explicite et de s'affranchir de l'ordre</em>, que nous verrons plus tard).
-Vous pouvez constater que dans la troisième ligne, l'email n'est pas correctement écrit. Nous n'avons pour l'instant pas mis de contraintes supplémentaires sur le <mark class="critic"><strong>champ</strong></mark> <code>email</code>, donc le SGBD acceptera cette entrée comme correcte.</p>
+<p>Chacune des <strong>lignes</strong> est un tuple, chaque composante correspondant à la <strong>colonne</strong> définie dans l'ordre de création de table, <strong>dans l'ordre de définition</strong> (NB : <em>il existe un moyen d'être plus explicite et de s'affranchir de l'ordre</em>, que nous verrons plus tard*).</p>
+<p>Vous pouvez constater que dans la troisième ligne, l'email n'est pas correctement écrit. Nous n'avons pour l'instant pas mis de contraintes supplémentaires sur le <mark class="critic"><strong>champ</strong></mark> <code>email</code>, donc le SGBD acceptera cette entrée comme correcte.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple : Première requête</p>
@@ -4028,7 +4029,7 @@ Cette requête renvoie le résultat suivant :
 </tr>
 </tbody>
 </table>
-<p>On peut noter le cas particulier du type <code>DECIMAL(t,f)</code>, qui permet du calcul en valeur exacte, par exemple sur des sommes d'argent. Par exemple, l'utilisation du type <code>DECIMAL(5,2</code> permettra de travailler avec des sommes de <span class="arithmatex">\(-999,99\)</span> € à <span class="arithmatex">\(999,99\)</span> €.</p>
+<p>On peut noter le cas particulier du type <code>DECIMAL(t,f)</code>, qui permet du calcul en valeur exacte, par exemple sur des sommes d'argent. Par exemple, l'utilisation du type <code>DECIMAL(5,2)</code> permettra de travailler avec des sommes de <span class="arithmatex">\(-999,99\)</span> € à <span class="arithmatex">\(999,99\)</span> €.</p>
 </div>
 <h3 id="types-textes">Types textes</h3>
 <div class="admonition abstract">
@@ -4071,7 +4072,7 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 <h3 id="types-temporels">Types temporels</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Types temporels</p>
-<p>Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeur×s...</p>
+<p>Comme déjà évoqué dans la partie précédente, les types temporels représentent parfois un cauchemar pour les programmeur.euse.s...</p>
 <p>Nous nous contenterons ici d'aborder de manière très superficielle ces types :</p>
 <table>
 <thead>
@@ -4095,10 +4096,10 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 </tr>
 </tbody>
 </table>
-<p>Une propriété intéressante du type <code>DATE</code> est qu'il supporte l'addition correctement. si <code>d</code> est du type <code>DATE</code>, <code>d+7</code> produira une date correspondante à 7 jours après <code>d</code>, en changeant jours, mois et années correctement.</p>
+<p>Une propriété intéressante du type <code>DATE</code> est qu'il supporte l'addition correctement. Si <code>d</code> est du type <code>DATE</code>, <code>d+7</code> produira une date correspondante à 7 jours après <code>d</code>, en changeant jours, mois et années correctement.</p>
 </div>
 <h3 id="type-null">Type <code>NULL</code></h3>
-<p>Une valeur <code>NULL</code> existe en SQL, et correspond à l'absence de donnée. Elle s'utilise comme la valeur <code>None</code> en Python. Elle est juste <strong>interdite pour les clés primaires</strong>.</p>
+<p>Une valeur <code>NULL</code> existe en SQL et correspond à l'absence de donnée. Elle s'utilise comme la valeur <code>None</code> en Python. Elle est juste <strong>interdite pour les clés primaires</strong>.</p>
 <p>Il est possible de tester si une valeur est nulle ou non grâce aux commandes <code>IS NULL</code> ou <code>IS NOT NULL</code>.</p>
 <h2 id="creations-et-suppressions-de-tables">Créations et suppressions de tables</h2>
 <h3 id="creation-de-tables">Création de tables</h3>
@@ -4123,7 +4124,7 @@ Il est possible  d'insérer un caractère <em>retour chariot</em> dans une chaî
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple avec clé primaire simple</p>
-<p>La relation <code>Livre</code>  suivante <img alt="relationLivre" src="../relationLivre3.png" style="width:15%;"> peut être crée en SQL par la commande suivante :</p>
+<p>La relation <code>Livre</code> suivante <img alt="relationLivre" src="../relationLivre3.png" style="width:15%;"> peut être créée en SQL par la commande suivante :</p>
 <p></p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="p">(</span><span class="n">titre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
 <span class="w">                    </span><span class="n">editeur</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
 <span class="w">                    </span><span class="n">annee</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span>
@@ -4137,7 +4138,7 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple avec clé primaire et clés étrangères</p>
-<p>Maintenant que nous avons crée les tables <code>Usager</code> et <code>Livre</code>, nous pouvons créer la table <code>Emprunt</code> telle que définie dans le schéma <img alt="relationEmprunt.png" src="../relationEmprunt.png" style="width:15%;"></p>
+<p>Maintenant que nous avons créé les tables <code>Usager</code> et <code>Livre</code>, nous pouvons créer la table <code>Emprunt</code> telle que définie dans le schéma <img alt="relationEmprunt.png" src="../relationEmprunt.png" style="width:15%;"></p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">code_barre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">usager</span><span class="p">(</span><span class="n">code_barre</span><span class="p">),</span>
 <span class="w">                        </span><span class="n">ISBN</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Livre</span><span class="p">(</span><span class="n">ISBN</span><span class="p">),</span>
 <span class="w">                        </span><span class="n">retour</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>

@@ -1,6 +1,6 @@
 # Requêtes SQL 
 
-*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c156-162763){target=_blank} (Code `c156-162763`).*
+*Les exemples et exercices donnés ci-dessous sont, sauf mention contraire, disponibles directement dans un [notebook Capytale](https://capytale2.ac-paris.fr/web/c/c156-162763){target=_blank} (Code `c156-162763`).*
 
 
 
@@ -88,8 +88,8 @@
 			editeur='Dargaud';
 		````
 		
-!!! tips "Requête sur les chaînes de caractères"
-	Si on veut chercher tous les livres dont le titre contient la chaîne `Astérix`, il faudra utiliser une clause comme la suivante :
+!!! tips "Requête sur les chaines de caractères"
+	Si on veut chercher tous les livres dont le titre contient la chaine `Astérix`, il faudra utiliser une clause comme la suivante :
 	
 	```` SQL
 		SELECT 
@@ -100,8 +100,8 @@
 			titre LIKE '%Astérix%';
 	````
 	
-	La chaîne de caractères `'%Astérix%'` s'appelle un {==**motif**==}. L'opération `s LIKE m` renverra `True` si la chaîne de caractères `s` correspond au motif `m`.
-	Le caractère `%` est un {==**joker**==} qui peut-être substitué par **n'importe quelle chaîne**. Il existe aussi l'opérateur `_` (underscore) qui lui représente **n'importe quel caractère**. Ainsi, pour chercher tous les auteurs dont le nom commence par F, se termine par R et fait 6 caractères de long :	
+	La chaine de caractères `'%Astérix%'` s'appelle un {==**motif**==}. L'opération `s LIKE m` renverra `True` si la chaine de caractères `s` correspond au motif `m`.
+	Le caractère `%` est un {==**joker**==} qui peut-être substitué par **n'importe quelle chaine**. Il existe aussi l'opérateur `_` (underscore) qui lui représente **n'importe quel caractère**. Ainsi, pour chercher tous les auteurs dont le nom commence par F, se termine par R et fait 6 caractères de long :	
 	
 	````SQL
 		SELECT
@@ -112,9 +112,9 @@
 			nom LIKE 'F____R';
 	````
 	
-## Fonctions d'aggrégations
+## Fonctions d'agrégations
 
-Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent {==**fonctions d'aggrégations**==}, et renvoie un résultat sous la forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :
+Il existe un certain nombre de fonctions permettant d'effectuer des opérations sur des colonnes. Ces fonctions s'appellent {==**fonctions d'agrégations**==}, et renvoie un résultat sous la forme d'une table d'une ligne et d'une colonne. Voici les plus utiles :
 
 ### Fonction `COUNT`
 
@@ -131,7 +131,7 @@ Il existe un certain nombre de fonctions permettant d'effectuer des opérations 
 	
 !!! example "Exemples"
 	
-	* COmpter le nombre de lignes dans la table auteur :
+	* Compter le nombre de lignes dans la table auteur :
 		```` SQL
 		SELECT 
 			COUNT(*)
@@ -139,14 +139,14 @@ Il existe un certain nombre de fonctions permettant d'effectuer des opérations 
 			auteur;
 		````
 	* Compter le nombre de titres contenant le chaîne `Astérix`
-	```` SQL
-	SELECT 
-		count(titre)
-	FROM 
-		livre
-	WHERE titre LIKE '%Astérix%';
-	````
-	
+		```` SQL
+		SELECT 
+			count(titre)
+		FROM 
+			livre
+		WHERE titre LIKE '%Astérix%';
+		````
+
 !!! warning "Un piège"
 	L'ordre SQL suivant 
 	```` SQL
@@ -168,7 +168,8 @@ Il existe un certain nombre de fonctions permettant d'effectuer des opérations 
 	````
 	
 !!! tips "Alias de colonne"
-	Avec la fonction `COUNT`, les titres des colonnes renvoyés ne sont pas forcémùent parlant. Il est possible de les changer en leur fournisdsant un **alias** par l'intermédiaire de `AS` :
+	Avec la fonction `COUNT`, les titres des colonnes renvoyés ne sont pas forcément parlant. Il est possible de les changer en leur fournissant un **alias** par l'intermédiaire de `AS` :
+
 	```` SQL
 	SELECT 
 		count(titre) AS nombre_asterix
@@ -181,8 +182,8 @@ Il existe un certain nombre de fonctions permettant d'effectuer des opérations 
 
 Les fonctions suivantes ne peuvent s'appliquer que sur des colonnes dont le type est numérique :
 
-* `SUM` : effectue la {==**somme**==} de toutes les valeurs de la colonne sélectionnée correspondant au conditions données
-* `AVG` (*average*) :  effectue la {==**moyenne**==} de toutes les valeurs de la colonne sélectionnée correspondant au conditions données.
+* `SUM` : effectue la {==**somme**==} de toutes les valeurs de la colonne sélectionnée correspondant aux conditions données
+* `AVG` (*average*) :  effectue la {==**moyenne**==} de toutes les valeurs de la colonne sélectionnée correspondant aux conditions données.
 
 ```` SQL
 SELECT SUM(annee) as somme FROM livre ;
@@ -191,7 +192,7 @@ SELECT AVG(annee) as moyenne FROM livre ;
 
 ### Fonctions `MIN` et `MAX`
 
-Ces deux fonctions s'appliquent sur n'importe quel type, l'ordre sur les chaînes de caractères étant l'ordre lexicographique. :
+Ces deux fonctions s'appliquent sur n'importe quel type, l'ordre sur les chaines de caractères étant l'ordre lexicographique. :
 
 ```` SQL
 SELECT MIN(nom) FROM auteur ;
@@ -199,6 +200,7 @@ SELECT MAX(nom) FROM auteur ;
 SELECT MIN(annee) FROM livre; 
 SELECT MAX(annee) FROM livre; 
 ````
+
 ## Tri et suppression des doublons
 
 ### Tri des colonnes 
@@ -253,7 +255,7 @@ On récupère alors en résultat la table suivante : ![sans doublons](sansDoublo
 ## Application
 
 !!! question "Exercice"
-	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebokk [jeux olympiques](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
+	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebook [jeux olympiques](https://capytale2.ac-paris.fr/web/c/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
 
 
 
