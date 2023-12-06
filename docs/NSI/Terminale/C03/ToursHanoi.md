@@ -247,7 +247,7 @@ def solve_rec(self) :
         return solve_r(self.n, 0, 1, 2, 0)
 ```
 
-On a ici une **fonction auxilliaire récursive** `solve` qui prend en argument :
+On a ici une **fonction auxiliaire récursive** `solve` qui prend en argument :
 
 * `n` le nombre de disques à déplacer ;
 * `d` l'indice de la tour de départ du déplacement ;

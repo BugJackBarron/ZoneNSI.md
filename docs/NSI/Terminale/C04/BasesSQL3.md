@@ -201,7 +201,7 @@ WHERE annee = (SELECT MIN(annee) FROM livre);
 ````
 
 !!! question "Écrire une requête imbriquée"
-	=== "Enoncé"
+	=== "Énonce"
 	
 		Écrire une requête SQL donnant la liste des livres publiés la même année que le livre dont le titre contient la chaine de caractère `'Jack Barron'`.
 		
