@@ -6,12 +6,67 @@
         <meta charset="utf8">
     </head>
     <body>
-        <h1>Welcome to the Dungeon of Death</h1>
-        <div id="canvas">
-            <canvas id="dungeon" width ="480" height="480">
-                <img src="Dungeon.png" width="480" height="480" alt="The dungeon" />
-            </canvas> 
-       </div>
+        <header>
+            <h1>Welcome to the Dungeon of Death</h1>
+        </header>
+        <div id="choix_perso">
+            <p> Bonjour étranger ! Tu te prépares à rentrer dans le donjon de la Mort, dont personne n'est jamais revenu !</p>
+            <p> Qui es-tu ?</p>
+            <form action="">
+                <ul>
+                <li><label name="perso_nom">Nom</label><input type="text" id="perso_nom" name="perso_nom" value="Rincevent" id="perso_nom"></li>
+                <li><label for="Carac">Sélectionnez vos caractéristiques : </label></li>
+                <li><output id = "force_output" for="Carac"></output>
+                <input 
+                    type="range"
+                    name="Carac"
+                    id="Carac"
+                    min="-9"
+                    max="9"
+                    step="1"
+                    value="0" />
+                <output id="pv_output" for="Carac"></output></li>
+            </ul>
+            <button id="submit_perso" type="button" onclick="get_carac()">Entrer</button>
+            
+            </form>
+        </div>
+        <div id ="main">
+            <div id="canvas">
+                <canvas id="dungeon" width ="480" height="480">
+                    <img src="Dungeon.png" width="480" height="480" alt="The dungeon" />
+                </canvas> 
+            </div>
+            <div id="story">
+                <div id ="perso">
+                    <ul id="carac_perso">
+                    <li>Nom :<span id="nom"></span></li>
+                    <li>Force :<span id="force"></span></li>
+                    <li>PV :<span id="pv"></span></li>
+                    </ul>
+                </div>
+                <div id ="text">
+                    
+                </div>
+                <div id="choices">
+
+                </div>
+            </div>
+            
+        </div>
+       
+        <div>
+            <p>Crédits :</p>
+            <ul>
+                <li> <a href="https://fr.freepik.com/vecteurs-libre/banniere-flamme-feu-realiste_10155833.htm">Bannière de macrovector</a> sur Freepik</li>
+                <li> Le son provient de <a href="https://lasonotheque.org/detail-0477-cri-wilhelm.html">la sonothèque</a></li>
+                <li> La carte a été crée avec le logiciel <a href="https://www.mapeditor.org/">Tiled</a>.</li>
+                <li> La feuille de Tuiles est issue d'<a href="https://0x72.itch.io/16x16-dungeon-tileset">ici</a>.</li>
+            </ul>
+        </div>
+        <footer> F. Vergniaud pour NSI Pavie 2023-2024
+
+        </footer>
        <script src ="Dungeon.js"></script>
     </body>
 </html>
