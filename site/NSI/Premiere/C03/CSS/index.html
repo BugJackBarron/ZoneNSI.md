@@ -1739,8 +1739,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#adaptation-aux-differents-ecransmedias-de-sortie" class="md-nav__link">
-    Adaptation aux différents écrans/médias de sortie
+  <a href="#pour-aller-plus-loin-adaptation-aux-differents-ecransmedias-de-sortie" class="md-nav__link">
+    Pour aller plus loin : adaptation aux différents écrans/médias de sortie
   </a>
   
 </li>
@@ -3889,8 +3889,8 @@
 <li>Qu'ont en commun toutes les zones changées ?</li>
 </ol>
 </li>
-<li>Dans la fenêtre de style, modifiez <code>Liste -&gt; Puce 1</code> en ajoutant une lettrine, et en ajoutant au fond un dégradé de type <code>Radial</code>. Observez les modifications du document.</li>
-<li>Allez à la page 11,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en <code>Liste Puce 1</code>, en <code>Liste Puce 2</code>. Le texte at-il été changé ?</li>
+<li>Dans la fenêtre de style, modifiez <code>Corps de texte -&gt; Liste 1</code> en ajoutant une lettrine, et en ajoutant au fond un dégradé de type <code>Radial</code>. Observez les modifications du document.</li>
+<li>Allez à la page 11,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en <code>Liste 1</code>, en <code>Liste 2</code>. Le texte at-il été changé ?</li>
 </ol>
 </div>
 <div class="admonition info">
@@ -3899,7 +3899,7 @@
 <ul>
 <li>sur un écran couleur ;</li>
 <li>par un logiciel de synthèse vocale ;</li>
-<li>sur un écran monochrome ( ou dans la console) ;</li>
+<li>sur un écran monochrome (ou dans la console) ;</li>
 <li>sur un écran de smartphone ;</li>
 <li>par une impression sur un papier A4, ou A3, ou autres formats ;</li>
 <li>...</li>
@@ -4075,15 +4075,15 @@ Pour atteindre en CSS un noeud du DOM, ou pour interagir avec lui, il faut utili
 <p>Vous verrez rapidement qu'avec les CSS, tout tourne autour de boîtes : définir leurs tailles, leurs couleurs, leurs positions, etc. Les éléments HTML d'une page peuvent, pour la plupart, être vus comme des boîtes placées les unes sur les autres.</p>
 <p>Chacun de ces blocs prend un certain espace sur la page, de cette façon :</p>
 <ul>
-<li><code>padding</code> : l'espace autour, proche du contenu (par exemple, l'espace autour du texte d'un paragraphe) (en français, on pourrait traduire cela par du « remplissage » mais le terme padding étant communément utilisé lorsqu'on parle de CSS, on continuera à utiliser ce terme)</li>
-<li><code>border</code> : la ligne qui est juste autour du padding (en français cela correspond à la bordure).</li>
+<li><code>padding</code> : l'espace autour, proche du contenu (par exemple, l'espace autour du texte d'un paragraphe) (en français, on pourrait traduire cela par du « remplissage » mais le terme <code>padding</code> étant communément utilisé lorsqu'on parle de CSS, on continuera à utiliser ce terme)</li>
+<li><code>border</code> : la ligne qui est juste autour du <code>padding</code> (en français cela correspond à la bordure).</li>
 <li><code>margin</code> : l'espace extérieur, autour de l'élément (en français cela correspond à la marge).</li>
 </ul>
 <p><img alt="box-model.png" src="../box-model.png" style="width:50%;"></p>
 <h3 id="des-boites">Des boites !</h3>
 <p>Chaque élément possède par défaut un type de placement :</p>
 <ul>
-<li>Élément <code>block</code> : un élément <code>block</code> occupe par défaut toute la largeur de l'écran. Quand des éléments <code>block</code> s'enchainent, ils sont les uns au-dessus des autres. Par défaut les éléments <code>&lt;h1&gt;,&lt;h2&gt;,...,&lt;h6&gt;</code>,  <code>&lt;p&gt;</code> et surtout <code>&lt;div&gt;</code> (balise générique de type <code>block</code>) sont des éléments de type <code>block</code>.</li>
+<li>Élément <code>block</code> : un élément <code>block</code> occupe par défaut toute la largeur de l'écran. Quand des éléments <code>block</code> s'enchainent, ils sont les uns au-dessus des autres. Par défaut les éléments <code>&lt;h1&gt;,&lt;h2&gt;,...,&lt;h6&gt;</code>, <code>&lt;p&gt;</code> et surtout <code>&lt;div&gt;</code> (balise générique de type <code>block</code>) sont des éléments de type <code>block</code>.</li>
 <li>Élément <code>inline</code> : un élément <code>inline</code> s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après. Par défaut les éléments <code>&lt;a&gt;,&lt;img&gt;,&lt;strong&gt;,...</code> sont des éléments de type <code>inline</code>.</li>
 </ul>
 <p>Il existe bien des subtilités concernant les éléments <code>inline</code> et <code>block</code>, qui dépassent largement le cadre de ce cours. Ce <a href="https://la-cascade.io/la-difference-entre-block-et-inline/">document</a> permettra peut-être de répondre à certaines questions que vous pourriez vous poser. </p>
@@ -4102,14 +4102,14 @@ Pour atteindre en CSS un noeud du DOM, ou pour interagir avec lui, il faut utili
 <p>En CSS, il est souvent impératif de donner des longueurs ou des bases de dimensions pour les éléments. Les unités sont nombreuses, souvent mystérieuses ou absconses pour nous européens. En voici quelques types :</p>
 <ul>
 <li><strong>valeur en pourcentage :</strong> <code>font-size : 120\%;</code> définit une taille de police valant 120% de la valeur de l'élément parent. Il ne faut pas d'espace entre le nombre et le symbole %.</li>
-<li><strong>hauteur <code>em</code> :</strong> cadratin, ou hauteur de la fonte dans une police donnée égal à la largeur du caractère <code>M</code>. <code>font-size : 1.5em;</code> écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de <code>1em</code>.</li>
-<li><strong>valeur en pixels :</strong> il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple <code>width : 50px;</code> mettra la largeur de l'élément à 500 pixels. A proscrire sauf cas particuliers.</li>
+<li><strong>hauteur <code>em</code> :</strong> cadratin ou hauteur de la fonte dans une police donnée égal à la largeur du caractère <code>M</code>. <code>font-size : 1.5em;</code> écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de <code>1em</code>.</li>
+<li><strong>valeur en pixels :</strong> il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple <code>width : 50px;</code> mettra la largeur de l'élément à 500 pixels. À proscrire sauf cas particuliers.</li>
 <li><strong>valeur en unité relative à la largeur de la fenêtre :</strong> <code>margin-left : 50vw;</code> permettra de créer une marge à gauche de la boite valant 50% de la largeur de la fenêtre.</li>
 <li><strong>valeur en unité relative à la largeur de la fenêtre :</strong> <code>margin-left : 50vh;</code> permettra de créer une marge en haut de la boite valant 50\% de la hauteur de la fenêtre.</li>
 </ul>
-<h2 id="adaptation-aux-differents-ecransmedias-de-sortie">Adaptation aux différents écrans/médias de sortie</h2>
+<h2 id="pour-aller-plus-loin-adaptation-aux-differents-ecransmedias-de-sortie">Pour aller plus loin : adaptation aux différents écrans/médias de sortie</h2>
 <p>Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes et leur capacité à basculer du format portrait au format paysage.</p>
-<p>Afin d'afficher correctement  un site web, il faut donc prévoir à l'avance, dans le fichier <em>css</em>, différentes versionq du site. Pour cela on utilise des <strong>media-queries</strong> - soit <em>requêtes de media</em>. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.</p>
+<p>Afin d'afficher correctement un site web, il faut donc prévoir à l'avance, dans le fichier <em>css</em>, différentes versions du site. Pour cela on utilise des <strong>media-queries</strong> - soit <em>requêtes de media</em>. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.</p>
 <p>Il existe de nombreuses requêtes, mais en pratique nous n'utiliserons que les deux requêtes suivantes :</p>
 <ul>
 <li><code>max-width</code> : applique les règles si la largeur de l'écran est <strong>inférieure ou égale</strong> à la taille donnée en pixel ;</li>

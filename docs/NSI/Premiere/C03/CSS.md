@@ -12,8 +12,8 @@
 		1. Quelles parties ont été changées ? 
 		2. Y-a-t-il eu des changements sur d'autres pages ?
 		3. Qu'ont en commun toutes les zones changées ?
-	7. Dans la fenêtre de style, modifiez `Liste -> Puce 1` en ajoutant une lettrine, et en ajoutant au fond un dégradé de type `Radial`. Observez les modifications du document.
-	8. Allez à la page 11,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en `Liste Puce 1`, en `Liste Puce 2`. Le texte at-il été changé ?
+	7. Dans la fenêtre de style, modifiez `Corps de texte -> Liste 1` en ajoutant une lettrine, et en ajoutant au fond un dégradé de type `Radial`. Observez les modifications du document.
+	8. Allez à la page 11,  sélectionnez les éléments de la liste à puce, et changez le style de celle-ci, qui est actuellement en `Liste 1`, en `Liste 2`. Le texte at-il été changé ?
 
 
 
@@ -23,7 +23,7 @@
 
 	* sur un écran couleur ;
 	* par un logiciel de synthèse vocale ;
-	* sur un écran monochrome ( ou dans la console) ;
+	* sur un écran monochrome (ou dans la console) ;
 	* sur un écran de smartphone ;
 	* par une impression sur un papier A4, ou A3, ou autres formats ;
 	* ...
@@ -243,8 +243,8 @@ Vous verrez rapidement qu'avec les CSS, tout tourne autour de boîtes : définir
 
 Chacun de ces blocs prend un certain espace sur la page, de cette façon :
 
-* `padding` : l'espace autour, proche du contenu (par exemple, l'espace autour du texte d'un paragraphe) (en français, on pourrait traduire cela par du « remplissage » mais le terme padding étant communément utilisé lorsqu'on parle de CSS, on continuera à utiliser ce terme)
-* `border` : la ligne qui est juste autour du padding (en français cela correspond à la bordure).
+* `padding` : l'espace autour, proche du contenu (par exemple, l'espace autour du texte d'un paragraphe) (en français, on pourrait traduire cela par du « remplissage » mais le terme `padding` étant communément utilisé lorsqu'on parle de CSS, on continuera à utiliser ce terme)
+* `border` : la ligne qui est juste autour du `padding` (en français cela correspond à la bordure).
 * `margin` : l'espace extérieur, autour de l'élément (en français cela correspond à la marge).
 
 
@@ -254,7 +254,7 @@ Chacun de ces blocs prend un certain espace sur la page, de cette façon :
 
 Chaque élément possède par défaut un type de placement :
 
-* Élément `block` : un élément `block` occupe par défaut toute la largeur de l'écran. Quand des éléments `block` s'enchainent, ils sont les uns au-dessus des autres. Par défaut les éléments `<h1>,<h2>,...,<h6>`,  `<p>` et surtout `<div>` (balise générique de type `block`) sont des éléments de type `block`.
+* Élément `block` : un élément `block` occupe par défaut toute la largeur de l'écran. Quand des éléments `block` s'enchainent, ils sont les uns au-dessus des autres. Par défaut les éléments `<h1>,<h2>,...,<h6>`, `<p>` et surtout `<div>` (balise générique de type `block`) sont des éléments de type `block`.
 * Élément `inline` : un élément `inline` s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après. Par défaut les éléments `<a>,<img>,<strong>,...` sont des éléments de type `inline`.
 
 Il existe bien des subtilités concernant les éléments `inline` et `block`, qui dépassent largement le cadre de ce cours. Ce [document](https://la-cascade.io/la-difference-entre-block-et-inline/) permettra peut-être de répondre à certaines questions que vous pourriez vous poser. 
@@ -278,17 +278,17 @@ En CSS, il est souvent impératif de donner des longueurs ou des bases de dimens
 
 
 * **valeur en pourcentage :** `font-size : 120\%;` définit une taille de police valant 120% de la valeur de l'élément parent. Il ne faut pas d'espace entre le nombre et le symbole %.
-*  **hauteur `em` :** cadratin, ou hauteur de la fonte dans une police donnée égal à la largeur du caractère `M`. `font-size : 1.5em;` écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de `1em`.
-*  **valeur en pixels :** il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple `width : 50px;` mettra la largeur de l'élément à 500 pixels. A proscrire sauf cas particuliers.
+*  **hauteur `em` :** cadratin ou hauteur de la fonte dans une police donnée égal à la largeur du caractère `M`. `font-size : 1.5em;` écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de `1em`.
+*  **valeur en pixels :** il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple `width : 50px;` mettra la largeur de l'élément à 500 pixels. À proscrire sauf cas particuliers.
 *  **valeur en unité relative à la largeur de la fenêtre :** `margin-left : 50vw;` permettra de créer une marge à gauche de la boite valant 50% de la largeur de la fenêtre.
 *  **valeur en unité relative à la largeur de la fenêtre :** `margin-left : 50vh;` permettra de créer une marge en haut de la boite valant 50\% de la hauteur de la fenêtre.
 
 
-## Adaptation aux différents écrans/médias de sortie
+## Pour aller plus loin : adaptation aux différents écrans/médias de sortie
 
 Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes et leur capacité à basculer du format portrait au format paysage.
 
-Afin d'afficher correctement  un site web, il faut donc prévoir à l'avance, dans le fichier *css*, différentes versionq du site. Pour cela on utilise des **media-queries** - soit *requêtes de media*. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.
+Afin d'afficher correctement un site web, il faut donc prévoir à l'avance, dans le fichier *css*, différentes versions du site. Pour cela on utilise des **media-queries** - soit *requêtes de media*. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.
 
 Il existe de nombreuses requêtes, mais en pratique nous n'utiliserons que les deux requêtes suivantes :
 

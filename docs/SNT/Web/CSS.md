@@ -4,7 +4,7 @@
 
 !!! question "Activité avec un traitement de texte"
 	
-	1. Téléchargez puis ouvrez le fichier [`StylesModeles.odt`](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=v4gFYAKTm62A) avec *Libre Office*.
+	1. Téléchargez puis ouvrez le fichier [`Styles_et_modèles.odt`](Styles_et_modèles.odt) avec *Libre Office*.
 	2. Allez à la page 5 du document.
 	3. Ouvrez la fenêtre de style  en appuyant sur ++f11++. 
 	4. Déployez le menu `Style par défaut` en appuyant sur ++plus++.
