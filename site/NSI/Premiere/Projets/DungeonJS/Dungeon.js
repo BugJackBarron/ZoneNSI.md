@@ -31,10 +31,12 @@ const YTILE = 10;
 /* Calculs des constantes nécessaires pour l'utilisation du contexte */
 const canvas = document.getElementById("dungeon");
 const ctx = canvas.getContext("2d");
+
 const CTX_WIDTH = canvas.width;
 const CTX_HEIGHT = canvas.height;
 const SCALEX = CTX_WIDTH/XTILE;
 const SCALEY = CTX_HEIGHT/YTILE;
+
 ctx.fillStyle = "black";
 ctx.fillRect(0,0, CTX_WIDTH, CTX_HEIGHT);
 
@@ -48,9 +50,11 @@ const loadImage = (url) => new Promise((resolve, reject) => {
 
 /* fonction traçant la carte et le personnage dans le canvas, avec le brouillard */
 function draw(cx, cy){
-ctx.reset();    
+ctx.reset();
+
 ctx.fillStyle = "black";
 ctx.fillRect(0,0, CTX_WIDTH, CTX_HEIGHT);
+
 loadImage("Dungeon.png").then(
 img1 => {
     loadImage("npc_mage.png").then(
@@ -337,7 +341,7 @@ function do_things(todo){
                 break;
             case 'reset' :
                 
-                reset();
+                reset_game();
                 break;
         }
         
@@ -360,7 +364,7 @@ function final_boss(){
     }
 }
 
-function reset(){
+function reset_game(){
     document.getElementById("choix_perso").style.display = 'block';
     document.getElementById("main").style.display = 'none';
 
