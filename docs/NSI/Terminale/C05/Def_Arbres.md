@@ -1,17 +1,17 @@
 # Arbres Binaires : définitions et propriétés
 
-Les listes, piles et files que nous avons croisé jusqu'ici sont utilisées pour représenter de structures pouvant être énumérées séquentiellement. Elle sont particulièrement efficcaces lorsqu'il s'agit d'accéder au premier élément (ou au dernier selon l'implémentation). Elles ne le sont pas contre pas quand il s'agit **d'accéder à une élément à une position arbitraire** dans la structure, car il faut parcourir toute la liste/pile/file jusqu'à la position recherchée, ce qui donne un temps d'accès proportionnel à la taille de la structure (donc en $\mathbb{O}(n)$).
+Les listes, piles et files que nous avons croisées jusqu'ici sont utilisées pour représenter de structures pouvant être énumérées séquentiellement. Elles sont particulièrement efficaces lorsqu'il s'agit d'accéder au premier élément (ou au dernier selon l'implémentation). Elles ne le sont pas contre pas quand il s'agit **d'accéder à un élément à une position arbitraire** dans la structure, car il faut parcourir toute la liste/pile/file jusqu'à la position recherchée, ce qui donne un temps d'accès proportionnel à la taille de la structure (donc en $\mathbb{O}(n)$).
 
 ## Structures arborescentes
 
-Les {==**structures arborescentes**==}, c'est-à-dire sous forme d'arbre, sont une autre forme de **structures chaînées** dans laquel l'accès à un élément se fait potentiellement bien plus rapidement qu'avec les listes chaînées.
+Les {==**structures arborescentes**==}, c'est-à-dire sous forme d'arbre, sont une autre forme de **structures chainées** dans laquelle l'accès à un élément se fait potentiellement bien plus rapidement qu'avec les listes chainées.
 
 Ces types de structures arborescentes sont omniprésentes en informatiques, ne serait-ce que par l'organisation du système de fichier :
 
 ![Arbre Système de Fichier](CM1_Arbre.png){: style="width:50%;"}
 
-!!! abstract "Structure arorescente"
-	Une {==**structure arborescente**==} est une structure chaînéee construite à partir d'un point de départ qui se scinde en plusieurs branches à chaque étapes.
+!!! abstract "Structure arborescente"
+	Une {==**structure arborescente**==} est une structure chaînée construite à partir d'un point de départ qui se scinde en plusieurs branches à chaque étape.
 
 
 ## Arbres Binaires
@@ -19,14 +19,14 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 ### Définitions et vocabulaire
 
 !!! abstract "définition : Arbre Binaire"
-	Un {==**arbre binaire**==} est un cas particulier de structure arborescente où chaque position ouvre sur exaactement deux branches.
+	Un {==**arbre binaire**==} est un cas particulier de structure arborescente où chaque position ouvre sur exactement deux branches.
 	
-	Plus précisemment, un {==**arbre binaire**==} est un ensemble fini de {==**noeuds**==} correspondant à l'un des deux cas suivants :
+	Plus précisément, un {==**arbre binaire**==} est un ensemble fini de {==**noeuds**==} correspondant à l'un des deux cas suivants :
 	
 	* Soit l'arbre est vide, c'est-à-dire qu'il ne contient aucun **noeud**.
 	* Soit l'arbre n'est pas vide, et ses **noeuds** sont structurés de la façon suivante :
 		* un noeud est appelé {==**la racine**==} de l'arbre ;
-		* les noeuds restants sont séparés en deux sous-ensembles qui forment récursivement {==**deux sous-arbres binaires**==} appelés respectivemment **sous-arbre gauche** et **sous-arbre droit** ;
+		* les noeuds restants sont séparés en deux sous-ensembles qui forment récursivement {==**deux sous-arbres binaires**==} appelés respectivement **sous-arbre gauche** et **sous-arbre droit** ;
 		* la racine est reliée à chacune des racines de ces sous-arbres gauches et droits (à conditions qu'ils ne soient pas vides).
 		
 	
@@ -70,7 +70,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 !!! question "Exercice"
 	Pour chacun des arbres binaires ci-dessous, préciser sa taille, sa racine ainsi que les noeuds feuilles :
 	
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		<div class="container">
 		<div class="column2">
@@ -101,7 +101,7 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		
 !!! question "Exercice"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		
 		Dessiner tous les arbres  binaires ayant respectivement 3 et 4 noeuds.
 		
@@ -113,9 +113,9 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 		
 !!! question "Exercice"
 	
-	=== "Enoncé"
+	=== "Énoncé"
 		
-		Sachant qu'il y a 1 arbre binaire vide, 1 arbre binaire contenant 1 noeud, 2 arbres binaires contenant 2 noeuds, 5 arbres binaires contenant 3 noeuds, et 14 arbres binaires contenant 4 noeuds, caclculer le nombre d'arbres binaires contenant 5 noeuds, sans chercher à les construire tous.
+		Sachant qu'il y a 1 arbre binaire vide, 1 arbre binaire contenant 1 noeud, 2 arbres binaires contenant 2 noeuds, 5 arbres binaires contenant 3 noeuds, et 14 arbres binaires contenant 4 noeuds, calculer le nombre d'arbres binaires contenant 5 noeuds, sans chercher à les construire tous.
 		
 	=== "Solution"
 	
@@ -221,7 +221,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	
 !!! question "Exercice"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		
 		Donner le code de représentation de chacun des arbres ci-dessous en Python :
 		
@@ -279,7 +279,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		
 !!! question "Exercice : Fonction `hauteur`"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Coder une fonction `hauteur(t)` calculant la hauteur d'un arbre `t` qui lui est passé en argument (*indice : récursivité*).
 		
@@ -297,7 +297,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		
 !!! question "Exercice : Fonction `taille`"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Coder une fonction `taille(t)` calculant la taille d'un arbre `t` qui lui est passé en argument (*indice : récursivité*).
 		
@@ -313,7 +313,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 		
 !!! question "Exercice : Fonction `estVide(tree)`"
 	
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Coder une fonction `estVide(tree)` renvoyant `True` si l'arbre est vide, et `False` sinon.
 		
@@ -324,8 +324,8 @@ un sous-arbre vide étant représenté par la valeur `None`.
 			return t is None
 		````
 		
-!!! tips "Arbres doublement chaînés"
-	Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre **doublement chaînés**. L'implémentation en POO de la classe `Node` est alors quasiment identique, en rajoutant seulement l'attribut `parent` :
+!!! tips "Arbres doublement chainés"
+	Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre **doublement chainé**. L'implémentation en POO de la classe `Node` est alors quasiment identique, en rajoutant seulement l'attribut `parent` :
 	
 	```` python
 	class Node() :
@@ -339,8 +339,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 
 ## Parcours d'arbres
 
-Pour utiliser un arbre, il faut le **parcourir**. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt
-différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veux **afficher les différents noeuds** :
+Pour utiliser un arbre, il faut le **parcourir**. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veut **afficher les différents noeuds** :
 
 
 ![Arbre exemple parcours](P1_Arbre6.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
@@ -349,7 +348,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 
 ### Parcours en profondeur ( DFS ou Depth-First Search)
  
-Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de manière récursives, en partant de la racine. Il en existe trois type principaux :
+Les {==**parcours en profondeur**==} sont des parcours qui seront traités de manière récursive, en partant de la racine. Il en existe trois types principaux :
 
 !!! abstract "Parcours Préfixe"
 
@@ -452,7 +451,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités  de m
 
 !!! tips "Codage des arbres"
 
-	Les deux arbres précédents peucvent être codés en Python de la manière suivante :
+	Les deux arbres précédents peuvent être codés en Python de la manière suivante :
 	
 	```` python
 	arbre1 = Node('A',
@@ -547,7 +546,7 @@ Le {==**parcours en largeur**==} d'un arbre consiste à parcourir **chaque nivea
 Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 
 
 !!! question "Exercice : application directe"
-	=== "Enoncé"
+	=== "Énonce"
 		Donner le résultat d'un parcours en largeur des deux arbres des exercices précédents.
 		
 	=== "Solution"
@@ -556,7 +555,7 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 
 !!! abstract "Algorithme de parcours en largeur"
 
-	Le parcours en largeur **n'est pas effectué récursivemment**. Il fonctionne avec le principe **d'une file** :
+	Le parcours en largeur **n'est pas effectué récursivement**. Il fonctionne avec le principe **d'une file** :
 	
 	````
 	ParcoursLargeur(Arbre A) {
@@ -574,7 +573,7 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 	````
 !!! question "Exercice"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		Implémenter une fonction `visiteLargeur(tree)`, utilisant une structure de file basée sur les listes python, et utilisant :
 		
 		* `list.insert(0, e)` pour enfiler l'élément `e` à la position 0 ;

@@ -3806,26 +3806,26 @@
 
 
 <div><h1 id="arbres-binaires-definitions-et-proprietes">Arbres Binaires : définitions et propriétés</h1>
-<p>Les listes, piles et files que nous avons croisé jusqu'ici sont utilisées pour représenter de structures pouvant être énumérées séquentiellement. Elle sont particulièrement efficcaces lorsqu'il s'agit d'accéder au premier élément (ou au dernier selon l'implémentation). Elles ne le sont pas contre pas quand il s'agit <strong>d'accéder à une élément à une position arbitraire</strong> dans la structure, car il faut parcourir toute la liste/pile/file jusqu'à la position recherchée, ce qui donne un temps d'accès proportionnel à la taille de la structure (donc en <span class="arithmatex">\(\mathbb{O}(n)\)</span>).</p>
+<p>Les listes, piles et files que nous avons croisées jusqu'ici sont utilisées pour représenter de structures pouvant être énumérées séquentiellement. Elles sont particulièrement efficaces lorsqu'il s'agit d'accéder au premier élément (ou au dernier selon l'implémentation). Elles ne le sont pas contre pas quand il s'agit <strong>d'accéder à un élément à une position arbitraire</strong> dans la structure, car il faut parcourir toute la liste/pile/file jusqu'à la position recherchée, ce qui donne un temps d'accès proportionnel à la taille de la structure (donc en <span class="arithmatex">\(\mathbb{O}(n)\)</span>).</p>
 <h2 id="structures-arborescentes">Structures arborescentes</h2>
-<p>Les <mark class="critic"><strong>structures arborescentes</strong></mark>, c'est-à-dire sous forme d'arbre, sont une autre forme de <strong>structures chaînées</strong> dans laquel l'accès à un élément se fait potentiellement bien plus rapidement qu'avec les listes chaînées.</p>
+<p>Les <mark class="critic"><strong>structures arborescentes</strong></mark>, c'est-à-dire sous forme d'arbre, sont une autre forme de <strong>structures chainées</strong> dans laquelle l'accès à un élément se fait potentiellement bien plus rapidement qu'avec les listes chainées.</p>
 <p>Ces types de structures arborescentes sont omniprésentes en informatiques, ne serait-ce que par l'organisation du système de fichier :</p>
 <p><img alt="Arbre Système de Fichier" src="../CM1_Arbre.png" style="width:50%;"></p>
 <div class="admonition abstract">
-<p class="admonition-title">Structure arorescente</p>
-<p>Une <mark class="critic"><strong>structure arborescente</strong></mark> est une structure chaînéee construite à partir d'un point de départ qui se scinde en plusieurs branches à chaque étapes.</p>
+<p class="admonition-title">Structure arborescente</p>
+<p>Une <mark class="critic"><strong>structure arborescente</strong></mark> est une structure chaînée construite à partir d'un point de départ qui se scinde en plusieurs branches à chaque étape.</p>
 </div>
 <h2 id="arbres-binaires">Arbres Binaires</h2>
 <h3 id="definitions-et-vocabulaire">Définitions et vocabulaire</h3>
 <div class="admonition abstract">
 <p class="admonition-title">définition : Arbre Binaire</p>
-<p>Un <mark class="critic"><strong>arbre binaire</strong></mark> est un cas particulier de structure arborescente où chaque position ouvre sur exaactement deux branches.</p>
-<p>Plus précisemment, un <mark class="critic"><strong>arbre binaire</strong></mark> est un ensemble fini de <mark class="critic"><strong>noeuds</strong></mark> correspondant à l'un des deux cas suivants :</p>
+<p>Un <mark class="critic"><strong>arbre binaire</strong></mark> est un cas particulier de structure arborescente où chaque position ouvre sur exactement deux branches.</p>
+<p>Plus précisément, un <mark class="critic"><strong>arbre binaire</strong></mark> est un ensemble fini de <mark class="critic"><strong>noeuds</strong></mark> correspondant à l'un des deux cas suivants :</p>
 <ul>
 <li>Soit l'arbre est vide, c'est-à-dire qu'il ne contient aucun <strong>noeud</strong>.</li>
 <li>Soit l'arbre n'est pas vide, et ses <strong>noeuds</strong> sont structurés de la façon suivante :<ul>
 <li>un noeud est appelé <mark class="critic"><strong>la racine</strong></mark> de l'arbre ;</li>
-<li>les noeuds restants sont séparés en deux sous-ensembles qui forment récursivement <mark class="critic"><strong>deux sous-arbres binaires</strong></mark> appelés respectivemment <strong>sous-arbre gauche</strong> et <strong>sous-arbre droit</strong> ;</li>
+<li>les noeuds restants sont séparés en deux sous-ensembles qui forment récursivement <mark class="critic"><strong>deux sous-arbres binaires</strong></mark> appelés respectivement <strong>sous-arbre gauche</strong> et <strong>sous-arbre droit</strong> ;</li>
 <li>la racine est reliée à chacune des racines de ces sous-arbres gauches et droits (à conditions qu'ils ne soient pas vides).</li>
 </ul>
 </li>
@@ -3866,7 +3866,7 @@
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
 <p>Pour chacun des arbres binaires ci-dessous, préciser sa taille, sa racine ainsi que les noeuds feuilles :</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p></p><div class="container">
@@ -3901,7 +3901,7 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Dessiner tous les arbres  binaires ayant respectivement 3 et 4 noeuds.</p>
@@ -3915,10 +3915,10 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Sachant qu'il y a 1 arbre binaire vide, 1 arbre binaire contenant 1 noeud, 2 arbres binaires contenant 2 noeuds, 5 arbres binaires contenant 3 noeuds, et 14 arbres binaires contenant 4 noeuds, caclculer le nombre d'arbres binaires contenant 5 noeuds, sans chercher à les construire tous.</p>
+<p>Sachant qu'il y a 1 arbre binaire vide, 1 arbre binaire contenant 1 noeud, 2 arbres binaires contenant 2 noeuds, 5 arbres binaires contenant 3 noeuds, et 14 arbres binaires contenant 4 noeuds, calculer le nombre d'arbres binaires contenant 5 noeuds, sans chercher à les construire tous.</p>
 </div>
 <div class="tabbed-block">
 <p>Un arbre de taille 5 dispose d'un noeud racine et de 4 noeuds, pouvant être répartis de la manière suivante :</p>
@@ -4013,7 +4013,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label><label for="__tabbed_5_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Énoncé</label><label for="__tabbed_5_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Donner le code de représentation de chacun des arbres ci-dessous en Python :</p>
@@ -4067,7 +4067,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice : Fonction <code>hauteur</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Enoncé</label><label for="__tabbed_6_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Énoncé</label><label for="__tabbed_6_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Coder une fonction <code>hauteur(t)</code> calculant la hauteur d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
@@ -4085,7 +4085,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice : Fonction <code>taille</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Enoncé</label><label for="__tabbed_7_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Coder une fonction <code>taille(t)</code> calculant la taille d'un arbre <code>t</code> qui lui est passé en argument (<em>indice : récursivité</em>).</p>
@@ -4103,7 +4103,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice : Fonction <code>estVide(tree)</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Enoncé</label><label for="__tabbed_8_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Énoncé</label><label for="__tabbed_8_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Coder une fonction <code>estVide(tree)</code> renvoyant <code>True</code> si l'arbre est vide, et <code>False</code> sinon.</p>
@@ -4117,8 +4117,8 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 </div>
 <div class="admonition tips">
-<p class="admonition-title">Arbres doublement chaînés</p>
-<p>Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre <strong>doublement chaînés</strong>. L'implémentation en POO de la classe <code>Node</code> est alors quasiment identique, en rajoutant seulement l'attribut <code>parent</code> :</p>
+<p class="admonition-title">Arbres doublement chainés</p>
+<p>Il est parfois - mais pas toujours- nécessaire de mémoriser le noeud parent de chaque noeud. On parle alors d'arbre <strong>doublement chainé</strong>. L'implémentation en POO de la classe <code>Node</code> est alors quasiment identique, en rajoutant seulement l'attribut <code>parent</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">()</span> <span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="o">=</span><span class="n">valeur</span>
@@ -4128,11 +4128,10 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </code></pre></div>
 </div>
 <h2 id="parcours-darbres">Parcours d'arbres</h2>
-<p>Pour utiliser un arbre, il faut le <strong>parcourir</strong>. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt
-différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veux <strong>afficher les différents noeuds</strong> :</p>
+<p>Pour utiliser un arbre, il faut le <strong>parcourir</strong>. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veut <strong>afficher les différents noeuds</strong> :</p>
 <p><img alt="Arbre exemple parcours" src="../P1_Arbre6.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <h3 id="parcours-en-profondeur-dfs-ou-depth-first-search">Parcours en profondeur ( DFS ou Depth-First Search)</h3>
-<p>Les <mark class="critic"><strong>parcours en profondeur</strong></mark> sont des parcours qui seront traités  de manière récursives, en partant de la racine. Il en existe trois type principaux :</p>
+<p>Les <mark class="critic"><strong>parcours en profondeur</strong></mark> sont des parcours qui seront traités de manière récursive, en partant de la racine. Il en existe trois types principaux :</p>
 <div class="admonition abstract">
 <p class="admonition-title">Parcours Préfixe</p>
 <p>On appelle <mark class="critic"><strong>parcours préfixe</strong></mark> un parcours où les noeuds seront affichés dans l'ordre suivant</p>
@@ -4225,7 +4224,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <h3 id="algorithmes-et-codage-des-parcours-en-profondeur">Algorithmes et codage des parcours en profondeur</h3>
 <div class="admonition tips">
 <p class="admonition-title">Codage des arbres</p>
-<p>Les deux arbres précédents peucvent être codés en Python de la manière suivante :</p>
+<p>Les deux arbres précédents peuvent être codés en Python de la manière suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="n">arbre1</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span>
             <span class="n">Node</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
             <span class="n">Node</span><span class="p">(</span><span class="s1">'C'</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -4314,7 +4313,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 <p>Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 </p>
 <div class="admonition question">
 <p class="admonition-title">Exercice : application directe</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">Enoncé</label><label for="__tabbed_12_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">Énonce</label><label for="__tabbed_12_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Donner le résultat d'un parcours en largeur des deux arbres des exercices précédents.</p>
@@ -4330,7 +4329,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Algorithme de parcours en largeur</p>
-<p>Le parcours en largeur <strong>n'est pas effectué récursivemment</strong>. Il fonctionne avec le principe <strong>d'une file</strong> :</p>
+<p>Le parcours en largeur <strong>n'est pas effectué récursivement</strong>. Il fonctionne avec le principe <strong>d'une file</strong> :</p>
 <div class="highlight"><pre><span></span><code>ParcoursLargeur(Arbre A) {
    f = FileVide
    enfiler(Racine(A), f)
@@ -4347,7 +4346,7 @@ différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exempl
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Enoncé</label><label for="__tabbed_13_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Énoncé</label><label for="__tabbed_13_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Implémenter une fonction <code>visiteLargeur(tree)</code>, utilisant une structure de file basée sur les listes python, et utilisant :</p>
