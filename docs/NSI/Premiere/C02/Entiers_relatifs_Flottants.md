@@ -8,29 +8,29 @@ Nous avons vu précédemment comment écrire les nombres entiers naturels en bin
 Nous avons vu aussi que les nombres entiers étaient codés au niveau machine sur un nombre d'octets bien défini :
 
 * sur 1 octet, on code $2^8 = 256$ nombres, soit les nombres de $0$ à $255$ ;
-* sur 2 octets, on code $2^{16} = 65~536$ nombres, soit les nombres de $0$ à $65~535$ (en C, c'est le type `int`);
-* sur 4 octets, on code $2^{32} \simeq  4,3 \times 10^9$ nombres (en C, c'est-le type `long`);
-* sur 8 octets, on code $2^{64} \simeq  1,8 \times 10^{19}$ nombres (en C, c'est-le type `long long`).
+* sur 2 octets, on code $2^{16} = 65~536$ nombres, soit les nombres de $0$ à $65~535$ (en C, c'est le type `int`) ;
+* sur 4 octets, on code $2^{32} \simeq  4,3 \times 10^9$ nombres (en C, c'est le type `long`) ;
+* sur 8 octets, on code $2^{64} \simeq  1,8 \times 10^{19}$ nombres (en C, c'est le type `long long`).
 
 Enfin nous avons constaté que les opérations arithmétiques basiques ( addition, soustraction, multiplication,...) étaient compatibles avec cette notation.
 
-Il nous faut maintenant nous intéresser aux autres possibilités de nombres : les nombres signés (relatifs) et les flottants.
+Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {==**les nombres signés**==} (relatifs) et les {==**nombres flottants**==}(décimaux).
 
 ## Les Entiers Relatifs (entiers signés)
 
 ### Une version naïve
 !!! abstract "Bit de signe"
-	Sur un octet, le {==**bit de poids fort**==} - c'est-à-dire le bit le plus à gauche du nombre, représente le signe ($0$ pour positif et $1$ pour négatif) et les 7 autres représentent la valeur absolue du nombre.
+	Sur un octet, le {==**bit de poids fort**==} - c'est-à-dire le bit le plus à gauche du nombre, représente le signe ($0$ pour positif et $1$ pour négatif) et les $7$ autres représentent la valeur absolue du nombre.
 
 !!! question "Exercice"
 
-	=== "Enoncé"
-		1. Quelle est la représentation de $3$ ? 
-		2. Quelle est la représentation de $-4$ ? 
+	=== "Énoncé"
+		1. Quelle est la représentation de $3$ dans ce système ? 
+		2. Quelle est la représentation de $-4$ dans ce système ? 
 		3. Quel est le plus grand nombre représentable sur un octet ?
 		4. Quel est le plus petit nombre représentable sur un octet ?
-		5. Combien de nombre sont alors représentés ?
-		6. Quel est le premier problème ?
+		5. Combien de nombres sont alors représentés ?
+		6. Quel problème pouvez-vous déjà constater ?
 		7. Effectuer l'addition binaire des nombres $3$ et $-4$. Le résultat est-il logique ?
 		
 	=== "Solution"
@@ -39,24 +39,57 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 
 ### Complément à 2
 
-!!! abstract "Complément à 2"
+!!! abstract "Notation en complément à 2"
 	Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en {==**complément à deux**==}. Dans cette notation, sur un octet :
 
 	* Les nombres positifs sont représentés comme pour les nombres entiers naturels.
 	* Pour les nombres négatifs, par contre :
-		* On inverse les bits de l'écriture binaire de la valeur absolue, ce qu'on appelle le **complément à 1**. Cela correspond à une opération logique `NON` sur chaque bit.
-		* On ajoute $1$ au résultat, les dépassements (`overflow`) étant ignorés - ce qui signifie qu'on reste bien sur $8$ bits.
+		* On détermine l'écriture binaire de la **valeur absolue du nombre**, généralement sur un octet.
+		* On **inverse les bits** de l'écriture binaire , ce qu'on appelle le **complément à 1** (cela correspond à une opération logique `NON` sur chaque bit, donc $1$ devient $0$ et $0$ devient $1$) ;
+		* On ajoute $1$ au résultat, les dépassements (`overflow`, voir plus bas) étant ignorés - ce qui signifie qu'on reste bien sur le nombre de bits définis dans l'étape 1.
 		
 !!! example "Exemple"
 
 	* Le nombre $13$ est représenté par $(00001101)_2$.
-	* Pour le nombre $-4$, on cherche d'abord la représentation de sa valeur absolue : $(0000 0100)_2$. En suite on inverse chaque bit : $(1111 1011)_2$ puis on ajoute $1$ au résultat : $(1111 1100)_2$
+	* Pour le nombre $-4$ :
+		* on cherche d'abord la représentation de sa valeur absolue : $(0000 0100)_2$ ;
+		* ensuite on inverse chaque bit : $(1111 1011)_2$
+		* puis on ajoute $1$ au résultat : $(1111 1100)_2$
+	
+	Le nombre $-4$ a pour représentation en complément à 2 sur un octet la suite 
+
+??? exemple "Pour les curieux : « Overflow »"
+
+	Ce qu'on appelle un « OVERFLOW » consiste en un dépassement de capacité lors d'une opération. Par exemple
+	pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible qu'une opération dépasse les possibilités de stockage sur 1 octet.
+
+	Prenons pour exemple l'opération $130 + 132$ :
+
+	* en décimal, pas de soucis, $130 + 132 = 262$ ;
+	* en binaire sur 1 octet :
+		* $130 = 128 + 2 = 2^7 + 2^1 = (1000~0010)_2$
+		* $132 = 128 + 4 = 2^7 + 2^2 = (1000~0100)_2$
+		* Lorsqu'on effectue la somme en binaire sur 1 octet, le résultat {==**reste sur 1 octet**==}, d'où :
+
+		$$
+		\begin{array}{*{9}{c}}
+		&1&0&0&0&0&0&1&0\\
+		+&1&0&0&0&0&1&0&0\\\hline
+		&0&0&0&0&0&1&1&0\\
+		\end{array}
+		$$
+
+		Le résultat donné par une machine effectuant des additions sur 1 octet est donc $130+132 = 5$... Il y a eu « integer overflow », donc dépassement des capacités de la machine à traiter les nombres entiers.
+
+	Obtenir un « overflow » est une preuve de mauvaise prise en compte des capacités limites de la machine. C'est un bug redouté et redoutable, en particulier lorsqu'on utilise des structures de « Piles » (au programme de terminale) lors d'opération « récursives » (aussi au programme de terminale). On obtient alors une erreur qui est appelée « Stack Overflow ». Cette erreur est tellement fréquente et tellement célèbre qu'elle a donné son nom au plus grand forum dédié à la programmation, [Stack Overflow](https://stackoverflow.com/){: target="_blank" }.
+
+	Pour votre culture numérique, le plus célèbre des « integer overflow » a été un bug qui a coûté 500 millions de dollars lors du premier [lancement de la fussée Ariane 5](https://fr.wikipedia.org/wiki/Ariane_5#Premier_vol_(vol_88_/_501)){: target = "_blank" }.
 
 
 !!! question "Exercice"	
 
 	=== "Enoncé"
-		1. Compléter le tableau suivant - un calcul par élève :
+		1. Compléter le tableau suivant (un calcul par élève) :
 		
 		$$
 		\begin{array}{|c|p|p|p|p|}
@@ -80,7 +113,7 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 		4. Quel est le plus grand nombre représentable sur un octet ?
 		5. Quel est le plus petit nombre représentable sur un octet ?
 		6. Combien de nombre sont alors représentés ?
-		7. Effectuer l'addition binaire de $-45$ et $13$. Est-elle correcte ?
+		7. Effectuer l'addition binaire de $-45$ et $13$. Est-elle compatible avec l'opération décimale ?
 		
 	=== "Solution"
 		A venir !
@@ -91,12 +124,19 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 	Le nombre entier relatif $x$ négatif possède le même codage sur $n$ bits que le nombre entier naturel $2^n-|x|$.
 
 !!! info "Remarque"
-	Un algorithme simple pour trouver un complément à 2 de tête est de garder tous les chiffres de la valeur absolue depuis la droite jusqu'au premier $1$, puis d'inverser tous les suivants. Par exemple :
+	Un algorithme simple pour trouver un complément à 2 de tête est de garder tous les chiffres de la valeur absolue depuis le bit de poids faible jusqu'au premier $1$, puis d'inverser tous les suivants. Par exemple :
 
-	* Le nombre $40$ s'écrit $(0010 1000)_2$
-	* On garde la partie à droite $(0010\mathbf{1000})_2$
-	* On inverse la partie à gauche après le premier $1$  $(\mathbf{1101}1000)_2$
-	* On a ainsi obtenu le codage du nombre $-40$ sur 1 octet.
+	* Pour obtenir le {==code de $-40$==} sur 1 octet :
+		* Le nombre $40$ s'écrit $(0010~1000)_2$
+		* On garde la partie à droite $(0010~\mathbf{1000})_2$
+		* On inverse la partie à gauche après le premier $1$  $(\mathbf{1101}1000)_2$
+		* On a ainsi obtenu le codage du nombre $-40$ sur 1 octet.
+	* Pour obtenir le {==code de $-65$==} sur 1 octet :
+		* Le nombre $65$ s'écrit $(0100~0001)_2$
+		* On garde uniquement le bit de poids faible $(0100~000\mathbf{1})_2$
+		* On inverse tous les autres bits $(\mathbf{1011~111}1)_2$
+		* On a ainsi obtenu le codage du nombre $-65$ sur 1 octet.
+		
 	
 
 ## Les Flottants
@@ -164,7 +204,7 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 	* $0,003~45 = 3,45 \times 10^{-3}$
 
 !!! abstract "Écriture scientifique en binaire"
-	Pour écrire un nombre binaire en &laquo; écriture scientifique &raquo; , 
+	Pour écrire un nombre binaire en &laquo; écriture scientifique &raquo;, 
 	on l'écrira sous la forme $a \times 2^n$, où :
 
 
@@ -186,7 +226,7 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 !!! abstract "Norme `IEEE 754`"
 	La norme `IEEE 754` est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.
 
-	Nous allons étudier deux formats associés à cette norme : le format dit &laquo; simple précision&raquo; et le format dit &laquo; double précision&raquo;. Le format &laquo; simple précision&raquo; utilise $32$ bits pour écrire un nombre flottant alors que le format &laquo; double précision&raquo; utilise $64$ bits. Dans la suite nous travaillerons principalement sur le format $32$ bits.
+	Nous allons étudier deux formats associés à cette norme : le format dit {==**« simple précision »**==} et le format dit {==**« double précision »**==}. Le format « simple précision » utilise $32$ bits pour écrire un nombre flottant alors que le format « double » utilise $64$ bits. Dans la suite nous travaillerons principalement sur le format $32$ bits.
 
 	Que cela soit en simple précision ou en double précision, la norme `IEEE 754` utilise :
 
@@ -257,4 +297,3 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : l
 		A venir !
 
 
-gith

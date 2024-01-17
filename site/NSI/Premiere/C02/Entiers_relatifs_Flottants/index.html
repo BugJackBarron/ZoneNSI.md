@@ -3800,30 +3800,30 @@
 <p>Nous avons vu aussi que les nombres entiers étaient codés au niveau machine sur un nombre d'octets bien défini :</p>
 <ul>
 <li>sur 1 octet, on code <span class="arithmatex">\(2^8 = 256\)</span> nombres, soit les nombres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(255\)</span> ;</li>
-<li>sur 2 octets, on code <span class="arithmatex">\(2^{16} = 65~536\)</span> nombres, soit les nombres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(65~535\)</span> (en C, c'est le type <code>int</code>);</li>
-<li>sur 4 octets, on code <span class="arithmatex">\(2^{32} \simeq  4,3 \times 10^9\)</span> nombres (en C, c'est-le type <code>long</code>);</li>
-<li>sur 8 octets, on code <span class="arithmatex">\(2^{64} \simeq  1,8 \times 10^{19}\)</span> nombres (en C, c'est-le type <code>long long</code>).</li>
+<li>sur 2 octets, on code <span class="arithmatex">\(2^{16} = 65~536\)</span> nombres, soit les nombres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(65~535\)</span> (en C, c'est le type <code>int</code>) ;</li>
+<li>sur 4 octets, on code <span class="arithmatex">\(2^{32} \simeq  4,3 \times 10^9\)</span> nombres (en C, c'est le type <code>long</code>) ;</li>
+<li>sur 8 octets, on code <span class="arithmatex">\(2^{64} \simeq  1,8 \times 10^{19}\)</span> nombres (en C, c'est le type <code>long long</code>).</li>
 </ul>
 <p>Enfin nous avons constaté que les opérations arithmétiques basiques ( addition, soustraction, multiplication,...) étaient compatibles avec cette notation.</p>
-<p>Il nous faut maintenant nous intéresser aux autres possibilités de nombres : les nombres signés (relatifs) et les flottants.</p>
+<p>Il nous faut maintenant nous intéresser aux autres possibilités de nombres : <mark class="critic"><strong>les nombres signés</strong></mark> (relatifs) et les <mark class="critic"><strong>nombres flottants</strong></mark>(décimaux).</p>
 <h2 id="les-entiers-relatifs-entiers-signes">Les Entiers Relatifs (entiers signés)</h2>
 <h3 id="une-version-naive">Une version naïve</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Bit de signe</p>
-<p>Sur un octet, le <mark class="critic"><strong>bit de poids fort</strong></mark> - c'est-à-dire le bit le plus à gauche du nombre, représente le signe (<span class="arithmatex">\(0\)</span> pour positif et <span class="arithmatex">\(1\)</span> pour négatif) et les 7 autres représentent la valeur absolue du nombre.</p>
+<p>Sur un octet, le <mark class="critic"><strong>bit de poids fort</strong></mark> - c'est-à-dire le bit le plus à gauche du nombre, représente le signe (<span class="arithmatex">\(0\)</span> pour positif et <span class="arithmatex">\(1\)</span> pour négatif) et les <span class="arithmatex">\(7\)</span> autres représentent la valeur absolue du nombre.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Quelle est la représentation de <span class="arithmatex">\(3\)</span> ? </li>
-<li>Quelle est la représentation de <span class="arithmatex">\(-4\)</span> ? </li>
+<li>Quelle est la représentation de <span class="arithmatex">\(3\)</span> dans ce système ? </li>
+<li>Quelle est la représentation de <span class="arithmatex">\(-4\)</span> dans ce système ? </li>
 <li>Quel est le plus grand nombre représentable sur un octet ?</li>
 <li>Quel est le plus petit nombre représentable sur un octet ?</li>
-<li>Combien de nombre sont alors représentés ?</li>
-<li>Quel est le premier problème ?</li>
+<li>Combien de nombres sont alors représentés ?</li>
+<li>Quel problème pouvez-vous déjà constater ?</li>
 <li>Effectuer l'addition binaire des nombres <span class="arithmatex">\(3\)</span> et <span class="arithmatex">\(-4\)</span>. Le résultat est-il logique ?</li>
 </ol>
 </div>
@@ -3835,13 +3835,14 @@
 </div>
 <h3 id="complement-a-2">Complément à 2</h3>
 <div class="admonition abstract">
-<p class="admonition-title">Complément à 2</p>
+<p class="admonition-title">Notation en complément à 2</p>
 <p>Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en <mark class="critic"><strong>complément à deux</strong></mark>. Dans cette notation, sur un octet :</p>
 <ul>
 <li>Les nombres positifs sont représentés comme pour les nombres entiers naturels.</li>
 <li>Pour les nombres négatifs, par contre :<ul>
-<li>On inverse les bits de l'écriture binaire de la valeur absolue, ce qu'on appelle le <strong>complément à 1</strong>. Cela correspond à une opération logique <code>NON</code> sur chaque bit.</li>
-<li>On ajoute <span class="arithmatex">\(1\)</span> au résultat, les dépassements (<code>overflow</code>) étant ignorés - ce qui signifie qu'on reste bien sur <span class="arithmatex">\(8\)</span> bits.</li>
+<li>On détermine l'écriture binaire de la <strong>valeur absolue du nombre</strong>, généralement sur un octet.</li>
+<li>On <strong>inverse les bits</strong> de l'écriture binaire , ce qu'on appelle le <strong>complément à 1</strong> (cela correspond à une opération logique <code>NON</code> sur chaque bit, donc <span class="arithmatex">\(1\)</span> devient <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(0\)</span> devient <span class="arithmatex">\(1\)</span>) ;</li>
+<li>On ajoute <span class="arithmatex">\(1\)</span> au résultat, les dépassements (<code>overflow</code>, voir plus bas) étant ignorés - ce qui signifie qu'on reste bien sur le nombre de bits définis dans l'étape 1.</li>
 </ul>
 </li>
 </ul>
@@ -3850,16 +3851,49 @@
 <p class="admonition-title">Exemple</p>
 <ul>
 <li>Le nombre <span class="arithmatex">\(13\)</span> est représenté par <span class="arithmatex">\((00001101)_2\)</span>.</li>
-<li>Pour le nombre <span class="arithmatex">\(-4\)</span>, on cherche d'abord la représentation de sa valeur absolue : <span class="arithmatex">\((0000 0100)_2\)</span>. En suite on inverse chaque bit : <span class="arithmatex">\((1111 1011)_2\)</span> puis on ajoute <span class="arithmatex">\(1\)</span> au résultat : <span class="arithmatex">\((1111 1100)_2\)</span></li>
+<li>Pour le nombre <span class="arithmatex">\(-4\)</span> :<ul>
+<li>on cherche d'abord la représentation de sa valeur absolue : <span class="arithmatex">\((0000 0100)_2\)</span> ;</li>
+<li>ensuite on inverse chaque bit : <span class="arithmatex">\((1111 1011)_2\)</span></li>
+<li>puis on ajoute <span class="arithmatex">\(1\)</span> au résultat : <span class="arithmatex">\((1111 1100)_2\)</span></li>
 </ul>
+</li>
+</ul>
+<p>Le nombre <span class="arithmatex">\(-4\)</span> a pour représentation en complément à 2 sur un octet la suite </p>
 </div>
+<details class="exemple">
+<summary>Pour les curieux : « Overflow »</summary>
+<p>Ce qu'on appelle un « OVERFLOW » consiste en un dépassement de capacité lors d'une opération. Par exemple
+pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible qu'une opération dépasse les possibilités de stockage sur 1 octet.</p>
+<p>Prenons pour exemple l'opération <span class="arithmatex">\(130 + 132\)</span> :</p>
+<ul>
+<li>en décimal, pas de soucis, <span class="arithmatex">\(130 + 132 = 262\)</span> ;</li>
+<li>
+<ul>
+<li><span class="arithmatex">\(130 = 128 + 2 = 2^7 + 2^1 = (1000~0010)_2\)</span></li>
+<li><span class="arithmatex">\(132 = 128 + 4 = 2^7 + 2^2 = (1000~0100)_2\)</span></li>
+<li>Lorsqu'on effectue la somme en binaire sur 1 octet, le résultat <mark class="critic"><strong>reste sur 1 octet</strong></mark>, d'où :</li>
+</ul>
+<p>en binaire sur 1 octet :</p>
+<div class="arithmatex">\[
+\begin{array}{*{9}{c}}
+&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0\\
++&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0\\\hline
+&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\
+\end{array}
+\]</div>
+<p>Le résultat donné par une machine effectuant des additions sur 1 octet est donc <span class="arithmatex">\(130+132 = 5\)</span>... Il y a eu « integer overflow », donc dépassement des capacités de la machine à traiter les nombres entiers.</p>
+</li>
+</ul>
+<p>Obtenir un « overflow » est une preuve de mauvaise prise en compte des capacités limites de la machine. C'est un bug redouté et redoutable, en particulier lorsqu'on utilise des structures de « Piles » (au programme de terminale) lors d'opération « récursives » (aussi au programme de terminale). On obtient alors une erreur qui est appelée « Stack Overflow ». Cette erreur est tellement fréquente et tellement célèbre qu'elle a donné son nom au plus grand forum dédié à la programmation, <a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>.</p>
+<p>Pour votre culture numérique, le plus célèbre des « integer overflow » a été un bug qui a coûté 500 millions de dollars lors du premier <a href="https://fr.wikipedia.org/wiki/Ariane_5#Premier_vol_(vol_88_/_501)" target="target">lancement de la fussée Ariane 5</a>.</p>
+</details>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Compléter le tableau suivant - un calcul par élève :</li>
+<li>Compléter le tableau suivant (un calcul par élève) :</li>
 </ol>
 <div class="arithmatex">\[
 \begin{array}{|c|p|p|p|p|}
@@ -3883,7 +3917,7 @@
 <li>Quel est le plus grand nombre représentable sur un octet ?</li>
 <li>Quel est le plus petit nombre représentable sur un octet ?</li>
 <li>Combien de nombre sont alors représentés ?</li>
-<li>Effectuer l'addition binaire de <span class="arithmatex">\(-45\)</span> et <span class="arithmatex">\(13\)</span>. Est-elle correcte ?</li>
+<li>Effectuer l'addition binaire de <span class="arithmatex">\(-45\)</span> et <span class="arithmatex">\(13\)</span>. Est-elle compatible avec l'opération décimale ?</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -3898,12 +3932,22 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">Remarque</p>
-<p>Un algorithme simple pour trouver un complément à 2 de tête est de garder tous les chiffres de la valeur absolue depuis la droite jusqu'au premier <span class="arithmatex">\(1\)</span>, puis d'inverser tous les suivants. Par exemple :</p>
+<p>Un algorithme simple pour trouver un complément à 2 de tête est de garder tous les chiffres de la valeur absolue depuis le bit de poids faible jusqu'au premier <span class="arithmatex">\(1\)</span>, puis d'inverser tous les suivants. Par exemple :</p>
 <ul>
-<li>Le nombre <span class="arithmatex">\(40\)</span> s'écrit <span class="arithmatex">\((0010 1000)_2\)</span></li>
-<li>On garde la partie à droite <span class="arithmatex">\((0010\mathbf{1000})_2\)</span></li>
+<li>Pour obtenir le <mark class="critic">code de <span class="arithmatex">\(-40\)</span></mark> sur 1 octet :<ul>
+<li>Le nombre <span class="arithmatex">\(40\)</span> s'écrit <span class="arithmatex">\((0010~1000)_2\)</span></li>
+<li>On garde la partie à droite <span class="arithmatex">\((0010~\mathbf{1000})_2\)</span></li>
 <li>On inverse la partie à gauche après le premier <span class="arithmatex">\(1\)</span>  <span class="arithmatex">\((\mathbf{1101}1000)_2\)</span></li>
 <li>On a ainsi obtenu le codage du nombre <span class="arithmatex">\(-40\)</span> sur 1 octet.</li>
+</ul>
+</li>
+<li>Pour obtenir le <mark class="critic">code de <span class="arithmatex">\(-65\)</span></mark> sur 1 octet :<ul>
+<li>Le nombre <span class="arithmatex">\(65\)</span> s'écrit <span class="arithmatex">\((0100~0001)_2\)</span></li>
+<li>On garde uniquement le bit de poids faible <span class="arithmatex">\((0100~000\mathbf{1})_2\)</span></li>
+<li>On inverse tous les autres bits <span class="arithmatex">\((\mathbf{1011~111}1)_2\)</span></li>
+<li>On a ainsi obtenu le codage du nombre <span class="arithmatex">\(-65\)</span> sur 1 octet.</li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="les-flottants">Les Flottants</h2>
@@ -3977,7 +4021,7 @@ On commence par convertir la partie entière <span class="arithmatex">\(13 = (11
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Écriture scientifique en binaire</p>
-<p>Pour écrire un nombre binaire en « écriture scientifique » , 
+<p>Pour écrire un nombre binaire en « écriture scientifique », 
 on l'écrira sous la forme <span class="arithmatex">\(a \times 2^n\)</span>, où :</p>
 <ul>
 <li><span class="arithmatex">\(a\)</span> est un nombre binaire, avec partie « après la virgule » et dont la partie entière est <span class="arithmatex">\(1\)</span> ;</li>
@@ -3998,7 +4042,7 @@ on l'écrira sous la forme <span class="arithmatex">\(a \times 2^n\)</span>, où
 <div class="admonition abstract">
 <p class="admonition-title">Norme <code>IEEE 754</code></p>
 <p>La norme <code>IEEE 754</code> est la norme la plus employée pour la représentation des nombres à virgule flottante dans le domaine informatique. La première version de cette norme date de 1985.</p>
-<p>Nous allons étudier deux formats associés à cette norme : le format dit « simple précision» et le format dit « double précision». Le format « simple précision» utilise <span class="arithmatex">\(32\)</span> bits pour écrire un nombre flottant alors que le format « double précision» utilise <span class="arithmatex">\(64\)</span> bits. Dans la suite nous travaillerons principalement sur le format <span class="arithmatex">\(32\)</span> bits.</p>
+<p>Nous allons étudier deux formats associés à cette norme : le format dit <mark class="critic"><strong>« simple précision »</strong></mark> et le format dit <mark class="critic"><strong>« double précision »</strong></mark>. Le format « simple précision » utilise <span class="arithmatex">\(32\)</span> bits pour écrire un nombre flottant alors que le format « double » utilise <span class="arithmatex">\(64\)</span> bits. Dans la suite nous travaillerons principalement sur le format <span class="arithmatex">\(32\)</span> bits.</p>
 <p>Que cela soit en simple précision ou en double précision, la norme <code>IEEE 754</code> utilise :</p>
 <ul>
 <li>1 bit de signe (1 si le nombre est négatif et 0 si le nombre est positif);</li>
@@ -4065,8 +4109,7 @@ L'exposant est donc <span class="arithmatex">\(4 =(100)_2\)</span>, et pour le r
 </div>
 </div>
 </div>
-</div>
-<p>gith</p></div>
+</div></div>
 
 
 
