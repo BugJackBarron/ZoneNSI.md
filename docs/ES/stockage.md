@@ -52,6 +52,18 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
     1. Combien d'informations différentes peuvent être représentées par 2 bits ? 4 bits ? 8 bits ? 10 bits ?
     2. Quel est le nombre minimal de bits nécessaire pour représenter l'alphabet latin en majuscule, sans accents et autres signes diacritiques ?
     3. Combien de bits sont nécessaires pour représenter tous les caractères de l'alphabet français, en y incluant les signes de ponctuations et les chiffres ?
+    4. De manière générale, un nombre entier naturel $N$ nécessitera $n$ bits, où $n$ est l'entier naturel tel que $2^{n-1}\leqslant N < 2^n$. 
+        1. Combien de bits sont nécessaire pour représenter en binaire le nombre $500$ ?
+        2. Combien de bits sont nécessaires pour représenter en binaire le nombre $10~000$ ?
+        3. Quel est le plus grand nombre représentable avec $24$ bits ?
+    5. Il est possible d'utiliser la fonction $ln$ (*logarithme népérien*) pour obtenir le nombre $n$ de bits nécessaires pour représenter un nombre entier naturel donné $N$, par la formule 
+    
+    $$
+    n = E\left(\dfrac{\ln(N)}{\ln(2)}\right) +1
+    $$
+    où $E$ est la fonction renvoyant la partie entière d'un nombre donné.
+        1. Combien de bits sont nécessaires pour représenter $10^6$ ?
+        2. Combien de bits sont nécessaires pour représenter $10^9$ ?
 
 
 !!! abstract "Octets"
