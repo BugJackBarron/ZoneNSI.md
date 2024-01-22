@@ -93,12 +93,28 @@ Un des premiers systèmes de stockage de masse utilisé est la carte perforée. 
 
 Une carte perforée est un support d'informations exprimées sous la forme binaire : une grille de «cases» est représentée, cases qui peuvent être perforées (1) ou non (0).
 
-Par exemple la carte ci-dessous possède 80 colonnes
+Par exemple la carte ci-dessous, modèle standard d'IBM breveté en 1928, possède 80 colonnes et 12 lignes (les lignes numérotées de 0 à 9, plus deux lignes supérieures non numérotées) permettant techniquement d'encoder un mot de 12 bits (mais en pratique seulement 9 bits étaient utilisés, les lignes numérotées 0 à 8, la ligne 9 servant de «bit de contrôle», et les deux lignes supérieures indiquant des opérations spéciales).
+
+![carte IBM](Fortran.jpg){: style="width:95%; margin:auto;display:block;background-color: #d2dce0;"}[^IBM]
+
+[^IBM]: Image Wikipedia, crédit :«Par Arnold Reinhold — I took this picture of an artifact in my possession. The card was created in the late 1960s or early 1970s and has no copyright notice., CC BY-SA 2.5, [https://commons.wikimedia.org/w/index.php?curid=775153](https://commons.wikimedia.org/w/index.php?curid=775153){:target="_blank"}»
 
 
-Le modèle le plus courant de cartes perforées, breveté par IBM en 1928, était la carte dite à 80 colonnes. Il s'agit d'une feuille de bristol mince de forme rectangulaire, dont un coin était tronqué, où les caractères alphanumériques (BCD, EBCDIC ou ASCII) étaient traduits par des perforations rectangulaires (au nombre de 1, 2 ou 3 par caractère) disposées en colonnes parallèles à la largeur (80 colonnes) et sur douze lignes parallèles à la longueur. Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boîte tombait par terre. Ce fut une étape notable dans la définition du codage des caractères (BCD, EBCDIC ou ASCII). 
+Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boîte tombait par terre.
 
-Par Arnold Reinhold — I took this picture of an artifact in my possession. The card was created in the late 1960s or early 1970s and has no copyright notice., CC BY-SA 2.5, https://commons.wikimedia.org/w/index.php?curid=775153
+!!! question "Questions III"
+
+    La carte perforée ci-dessus encode l'expression `Z(1) = Y + W(1)`, dans le langage *Fortran*.
+
+    1. Quel est le code utilisé pour la lettre `Z` ?
+    2. Quel est le code utilisé pour la lettre `Y` ?
+    3. Quel est le code utilisé pour la lettre `W` ?
+    4. Quel pourrait alors être le code pour `T`?
+    4. Comment sont encodés les espaces ?
+    5. Comment sont encodés les parenthèses ouvrantes et fermantes ?
+
+ar la s
+
 
 
 
