@@ -37,7 +37,7 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
     Ici nous avons utilisé le système binaire pour représenter des **entiers naturels**, mais nous n'aborderons pas la représentation des entiers relatifs et des nombres réels.
 
 
-### Bits et octets
+### Bits
 
 !!! abstract "Bit"
 
@@ -79,12 +79,27 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
     | pétaoctet | Po | $10^{15}$ |
     | exaoctet | Eo | $10^{18}$ |
 
+    
+
 
 
 ## Stockage d'informations
 
-Comme nous l'avons vu dans la partie précédente, 
+Comme nous l'avons vu dans la partie précédente, les informations numériques peuvent être représentées sous la forme binaire, mais elles ne sont pas les seules. Si une {==**convention**==} est adoptée, il est tout à fait possible de représenter d'autres informations, comme du texte, des images ou autres données.
 
-### Les cartes perforées
+### Les cartes perforées (*punch cards*)
+
+Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, Herman Hollerith dépose un brevet pour une machine électromécanique utilisant des cartes perforées, et permettant d'accélérer le recensement des états du gouvernement américain. Il lance par la suite une société qui deviendra IBM.
+
+Une carte perforée est un support d'informations exprimées sous la forme binaire : une grille de «cases» est représentée, cases qui peuvent être perforées (1) ou non (0).
+
+Par exemple la carte ci-dessous possède 80 colonnes
+
+
+Le modèle le plus courant de cartes perforées, breveté par IBM en 1928, était la carte dite à 80 colonnes. Il s'agit d'une feuille de bristol mince de forme rectangulaire, dont un coin était tronqué, où les caractères alphanumériques (BCD, EBCDIC ou ASCII) étaient traduits par des perforations rectangulaires (au nombre de 1, 2 ou 3 par caractère) disposées en colonnes parallèles à la largeur (80 colonnes) et sur douze lignes parallèles à la longueur. Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boîte tombait par terre. Ce fut une étape notable dans la définition du codage des caractères (BCD, EBCDIC ou ASCII). 
+
+Par Arnold Reinhold — I took this picture of an artifact in my possession. The card was created in the late 1960s or early 1970s and has no copyright notice., CC BY-SA 2.5, https://commons.wikimedia.org/w/index.php?curid=775153
+
+
 
 ### 
