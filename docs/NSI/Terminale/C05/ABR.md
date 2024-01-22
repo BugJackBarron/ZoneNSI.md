@@ -28,12 +28,12 @@ Une représentation de cette bibliothèque peut être donnée sous la forme d'un
 	=== "Réponses"	
 		A venir !
 		
-Cette répartition, *pour peu qu'elle soit correctement faite* (c'est-à-dire que le choix des lettres soit pertinent), peut être incroyablement efficace. Dans **le meilleur des cas**, il ne faudra traverser qu'au maximum 15 salles pour trouver n'importe quel livre. En effet, si la bibliothèque est correctement organisée, quasiment chaque noeud aura 2 sorties, d'où un arbre (presque) parfaitement équilibré, qui vérifiera quasiment la règle $N = 2^h-1$ (voir le cours précédent). La hauteur sera donc d'environ $log_2(17 576)$ soit environ $15$. 
+Cette répartition, *pour peu qu'elle soit correctement faite* (c'est-à-dire que le choix des lettres soit pertinent), peut être incroyablement efficace. Dans **le meilleur des cas**, il ne faudra traverser qu'au maximum 15 salles pour trouver n'importe quel livre. En effet, si la bibliothèque est correctement organisée, quasiment chaque nœud aura 2 sorties, d'où un arbre (presque) parfaitement équilibré, qui vérifiera quasiment la règle $N = 2^h-1$ (voir le cours précédent). La hauteur sera donc d'environ $log_2(17 576)$ soit environ $15$. 
 
 Cette structure sera particulièrement utile pour effectuer des recherches : on l'appelle ainsi un {==**arbre binaire de recherche**==} (ou **BST**, *Binary Search Tree* en anglais).
 
 !!! warning "Une mauvaise répartition"
-	L'importance de l'organisation des salles est ici primordial, toutes les solutions ne se valant pas. Ci-dessous une répartition qui est dans le pire des cas : les sous-arbres gauche sont toujours vide (on appelle un tel type d'arbre un {==**peigne**==}).
+	L'importance de l'organisation des salles est ici primordial, toutes les solutions ne se valant pas. Ci-dessous une répartition qui est dans le pire des cas : les sous-arbres gauches sont toujours vide (on appelle un tel type d'arbre un {==**peigne**==}).
 	
 	![P2_ABR_2.png](P2_ABR_2.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 	
@@ -45,9 +45,9 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 
 !!! abstract "Arbre Binaire de Recherche (ABR)"
 
-	Un {==**ABR**==} ou {==**Arbre Binaire de Recerche**==} est un arbre binaire vérifiant les propriétés suivantes :
+	Un {==**ABR**==} ou {==**Arbre Binaire de Recherche**==} est un arbre binaire vérifiant les propriétés suivantes :
 	
-	* les noeuds contiennent des valeurs appelées {==**clés**==} pouvant être comparées entre elles (nombres, chaînes de caractères, ...) ;
+	* les noeuds contiennent des valeurs appelées {==**clés**==} pouvant être comparées entre elles (nombres, chaines de caractères, ...) ;
 	* toutes les clés situées dans le **sous-arbre gauche** (resp. droit) d'un noeud sont **inférieures** (resp. supérieures) à la clé du noeud.
 	
 	
@@ -79,7 +79,7 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 		
 !!! question "Exercice"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		Appliquer à la main les parcours préfixe, infixe et suffixe pour chacun des exemples d'ABR précédents. Que remarque-t-on ?
 		
 	=== "Réponse"
@@ -89,8 +89,8 @@ Cette structure sera particulièrement utile pour effectuer des recherches : on 
 
 Il n'y a aucune différence entre un ABR et un arbre binaire en terme d'implémentation, on pourra donc conserver :
 
-* les objets `Node`, avec ou sans référence au noeud parent ;
-* les fonctions `hauteur`, `taille` et  `est_vide` ;
+* les objets `Node`, avec ou sans référence au nœud parent ;
+* les fonctions `hauteur`, `taille` et `est_vide` ;
 * les fonctions `visitePrefixe`, `visiteInfixe` et ``visiteSuffixe`, mais on utilisera surtout les parcours infixes au vu de la remarque de l'exercice précédent.
 
 
@@ -98,7 +98,7 @@ Il n'y a aucune différence entre un ABR et un arbre binaire en terme d'impléme
 
 #### Recherche d'une clé
 
-Un ABR est spécialement conçu pour la recherche, particulièrement pour la recherche récursive. La méthdoe est la suivante :
+Un ABR est spécialement conçu pour la recherche, particulièrement pour la recherche récursive. La méthode est la suivante :
 
 
 !!! abstract "Algorithme de recherche"
@@ -127,7 +127,11 @@ Un ABR est spécialement conçu pour la recherche, particulièrement pour la rec
 			return appartient(x, tree.droit)
 	````
 	
-En terme de complexité, dans le pire des cas (arbre peigne), la complexité dépend de la taille de l'arbre. On est donc dans une complexité linéaire (en $\mathscr{O}(n)$), ce qui n'est pas meilleur que la recherche dans une liste chaînée. Mais si l'arbre est {==**équilibré**==}, la recherche devient en $\mathscr{O}(log(n))$, ce qui est considérablement plus rapide.
+En termes de complexité, dans le pire des cas (arbre peigne), la complexité dépend de la taille de l'arbre. On est donc dans une complexité linéaire (en $\mathscr{O}(n)$), ce qui n'est pas meilleur que la recherche dans une liste chainée. Mais si l'arbre est {==**équilibré**==}, la recherche devient en $\mathscr{O}(log_2(n))$, ce qui est considérablement plus rapide.
+
+Pour comprendre cette différence de rapidité regardez le tableau suivant donnant les valeurs de $log_2(n)$ :
+
+| $n$ | $log_2(n)$ |
 
 
 #### Recherches de clés particulières 
