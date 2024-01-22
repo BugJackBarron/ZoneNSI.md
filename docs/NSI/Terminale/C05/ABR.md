@@ -4,7 +4,7 @@
 
 {==D'après *Numérique et Sciences Informatiques, 24 leçons avec exercices corrigés*, Balabonski, Conchon, Filliâtre, Nguyen, Editions Ellipses==}
 
-Imaginez une bibliothèque contenant un très très grand nombre de livres. Cette bibliothèque est organisée de la manière suivante :
+Imaginez une bibliothèque contenant un extrêmement grand nombre de livres. Cette bibliothèque est organisée de la manière suivante :
 
 * Il y a 17 576 pièces différentes.
 * Chaque pièce est repérée par une suite de trois lettres, et dans cette pièce sont rangés tous les livres dont les titres commencent par ces trois lettres.
@@ -12,23 +12,23 @@ Imaginez une bibliothèque contenant un très très grand nombre de livres. Cett
 * La sortie de gauche mène **toujours** soit à une salle dont les trois lettres sont situées avant dans l'ordre alphabétique, soit nulle part.
 * La sortie de droite mène **toujours** soit à une salle dont les trois lettres sont situées après dans l'ordre alphabétique, soit nulle part.
 
-Une représentation de cette bibliothèque peut être donnée sous la forme d'un rabre binaire tel que le suivant :
+Une représentation de cette bibliothèque peut être donnée sous la forme d'un arbre binaire tel que le suivant :
 
-![P2_ABR_1.png](P2_ABR_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
+![P2_ABR_1.png](P2_ABR_1.png){: style="Witt:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 !!! question 
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Dans cet arbre, préciser où sont situés les livres dont le titre commence par :
 			1. `KNU`
 			2. `UDP`
 			3. `JET`
-		2. Pourquoi y-a-t-il 17 576 pièces différentes ?
+		2. Pourquoi y a-t-il 17 576 pièces différentes ?
 	
 	=== "Réponses"	
 		A venir !
 		
-Cette répartion, *pour peu qu'elle soit correctement faite* (c'est-à-dire que le choix des lettres soit pertinent), peut être incroyablement efficace. Dans **le meilleur des cas**, il ne faudra traverser qu'au maximum 15 salles pour trouver n'importe quel livre (si la bibliothèque est correctement organisée, quasiment chaque noeud aura 2 sorties, d'où une hauteur d'environ $log_2(17 576)$ soit environ $15$). 
+Cette répartition, *pour peu qu'elle soit correctement faite* (c'est-à-dire que le choix des lettres soit pertinent), peut être incroyablement efficace. Dans **le meilleur des cas**, il ne faudra traverser qu'au maximum 15 salles pour trouver n'importe quel livre. En effet, si la bibliothèque est correctement organisée, quasiment chaque noeud aura 2 sorties, d'où un arbre (presque) parfaitement équilibré, qui vérifiera quasiment la règle $N = 2^h-1$ (voir le cours précédent). La hauteur sera donc d'environ $log_2(17 576)$ soit environ $15$. 
 
 Cette structure sera particulièrement utile pour effectuer des recherches : on l'appelle ainsi un {==**arbre binaire de recherche**==} (ou **BST**, *Binary Search Tree* en anglais).
 
