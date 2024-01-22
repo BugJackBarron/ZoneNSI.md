@@ -104,7 +104,7 @@ Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait 
 
 !!! question "Questions III"
 
-    La carte perforée ci-dessus encode l'expression `Z(1) = Y + W(1)`, dans le langage *Fortran*.
+    La carte perforée ci-dessus encode l'expression `Z(1) = Y + W(1)`, dans le langage *Fortran*. Il est inutile de comprendre le sens de cette expression pour répondre aux questions suivantes :
 
     1. Quel est le code utilisé pour la lettre `Z` ?
     2. Quel est le code utilisé pour la lettre `Y` ?
