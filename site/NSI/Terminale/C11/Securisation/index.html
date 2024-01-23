@@ -1,0 +1,4570 @@
+    
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="F. Vergniaud">
+      
+      
+        <link rel="canonical" href="https://www.zonensi.fr/NSI/Terminale/C11/Securisation/">
+      
+      
+        <link rel="prev" href="../../C10/BoyerMoore/">
+      
+      
+        <link rel="next" href="../../../../ES/stockage/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.5">
+    
+    
+      
+        <title>Sécurisation des communications - ZoneNSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+        
+      
+    
+        <!-- favicons -->
+        <!--
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon_32x32.png" sizes="32x32">
+        <link rel="icon" href="../assets/images/favicon_96x96.png" sizes="96x96">
+        <link rel="icon" href="../assets/images/favicon_144x144.png" sizes="144x144">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css">
+        -->
+        <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-md5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+      <link rel="stylesheet" href="../../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    
+    
+    <input id="ace_palette" autocomplete="off" class="md-toggle" data-ace-dark-mode="tomorrow_night_bright" data-ace-light-mode="crimson_editor" type="checkbox"></input>
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#securisation-des-communications" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ZoneNSI" class="md-header__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZoneNSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sécurisation des communications
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ZoneNSI" class="md-nav__button md-logo" aria-label="ZoneNSI" data-md-component="logo">
+      
+  <img src="../../../../assets/icons/house-fill.svg" alt="logo">
+
+    </a>
+    ZoneNSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mathématiques
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mathématiques
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Seconde
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Seconde
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ensembles de nombres et intervalles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Ensembles de nombres et intervalles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_01_Ensembles_Nombres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ensembles de nombres 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/C01/C01_02_Intervalles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intervalles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notion de fonctions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Notion de fonctions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vocabulaire et rappels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Algorithmique et bases de Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithmique et bases de Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/AffectationTypes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithmes, affectations et types de variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/ProgrammationPythonThonny/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programmation en Python et utilisation de Thonny
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/Structures_conditionnelles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stuctures conditionnelles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Seconde/AlgoBases/Arithmetique/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arithmétique
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Premiere/home.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Première
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Maths/Terminale/home.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terminale
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SNT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            SNT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/College/PixelArt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session Collège
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Le Web
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Le Web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Web/Bases_HTML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Web/CSS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Données Structurées
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Données Structurées
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Donnees/Arborescence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arborescence des fichiers et dossiers 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reseaux Informatiques
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reseaux Informatiques
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/TCP_IP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adresses IP et TCP/IP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/Creation_reseaux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Création de réseaux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Reseaux/DHCP_DNS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pour aller plus loin, DHCP et DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Images Numériques
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Images Numériques
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Images/NB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noir, Blanc, Gris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Images/RGB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    La couleur et le RGB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Géolocalisation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Géolocalisation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Geolocalisation/geolocalisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coordonnées et GPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SNT/Geolocalisation/Dijkstra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recherche du chemin le plus court
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NSI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            NSI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Première
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Première
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Bases de Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Bases de Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C01/Bases_Python_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Variables et affectations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C01/Conditions_Boucles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boucles et conditions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C01/Fonctions_Assertions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fonctions, assertions et tests unitaires
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/Projets/PFC/PFC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet : Pierre-Feuille-Ciseaux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/Projets/BanditManchot/Projet_Bandit_Manchot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet : Bandit-Manchot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/Projets/Pendu/ProjetPendu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet : Jeu du Pendu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Le codage des données
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Le codage des données
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C02/BinaireCodageEntiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Binaire et codage des entiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C02/Entiers_relatifs_Flottants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entiers relatifs et flottants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C02/CodageCaractere/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Codage des caractères
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+        
+          <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Le web
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Le web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/HTML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML strict
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/CSS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/JS01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction à Javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C03/JS02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Javascript, le DOM et les formulaires
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/Projets/DungeonJS/Dungeon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet Jeu Textuel en JS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+        
+          <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Les séquences
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Les séquences
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/Tuples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tuples et algorithmes de parcours
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/Listes_Comprehension/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Listes et compréhensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/Algorithmes_Tri/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Premiers algorithmes de tris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/Tableaux2D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tableaux à 2 dimensions : Matrices 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C04/ImagesBMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les images Matricielles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/Projets/demineurP5/projet_demineur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet : Démineur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" >
+        
+          <label class="md-nav__link" for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture matérielle
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture matérielle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C05/Historique/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historique
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C05/Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_6" >
+        
+          <label class="md-nav__link" for="__nav_4_1_6" id="__nav_4_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Traitement des données en tables
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Traitement des données en tables
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C06/Dictionnaires/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les dictionnaires
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C06/CSV/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les fichiers CSV
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_7" >
+        
+          <label class="md-nav__link" for="__nav_4_1_7" id="__nav_4_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Les algorithmes gloutons
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Les algorithmes gloutons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C07/Algorithmes_Gloutons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithmes Gloutons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_8" >
+        
+          <label class="md-nav__link" for="__nav_4_1_8" id="__nav_4_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Réseaux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Réseaux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C08/Histoire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internet : historique
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C08/Trames/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Réseaux, Trames, Paquets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Premiere/C08/Client_Serveur/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transmission Client-Serveur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Terminale
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Terminale
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modularité et POO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Modularité et POO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Modularite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules, interfaces, encapsulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/Exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C01/IntroPOO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction à la POO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/ClickersWars/CW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet : ClickerWars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Récursivité
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Récursivité
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/Recursivite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notion de récursivité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/RecursiviteFractales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Applications : Fractales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C02/RecursiviteTris/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Applications : Tris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Listes, Piles, Files
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Listes, Piles, Files
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/ListesChainees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Listes chainées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/Piles_et_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Piles et files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C03/ToursHanoi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TP : Tours de Hanoï
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5" >
+        
+          <label class="md-nav__link" for="__nav_4_2_5" id="__nav_4_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Bases de Données et SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bases de Données et SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/ModeleRelationnel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modèle relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/BasesSQL1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bases de SQL 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/BasesSQL2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bases de SQL 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/BasesSQL3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bases de SQL 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C04/Projet_Pokemon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projet Pokemon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_6" >
+        
+          <label class="md-nav__link" for="__nav_4_2_6" id="__nav_4_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Arbres Binaires
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Arbres Binaires
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/Def_Arbres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Définition et propriétés des arbres binaires
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/ABR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arbres Binaires de Recherche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/ABR_Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implémentation des ABR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C05/AVL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Equilibrage des ABR : les AVL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_7" >
+        
+          <label class="md-nav__link" for="__nav_4_2_7" id="__nav_4_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Processeurs et Ordonnancement
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Processeurs et Ordonnancement
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C06/Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Système d'exploitation Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C06/Processus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Processus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C06/Ordonnancement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ordonnancement des processus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C06/Interblocage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interblocage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_8" >
+        
+          <label class="md-nav__link" for="__nav_4_2_8" id="__nav_4_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Réseaux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Réseaux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C07/Routage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notion de routage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C07/RIP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocoles RIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C07/OSPF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocole OSPF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_9" >
+        
+          <label class="md-nav__link" for="__nav_4_2_9" id="__nav_4_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programmation dynamique
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Programmation dynamique
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/ProgDyn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principes et exemples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C08/alignSeq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alignements de séquences
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_10" >
+        
+          <label class="md-nav__link" for="__nav_4_2_10" id="__nav_4_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Graphes et parcours
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Graphes et parcours
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C09/graphe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notion de Graphe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C09/graphe_python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les graphes en Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C09/parcours/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parcours de Graphes 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C10/BoyerMoore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recherche textuelles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Sécurisation des communications
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Sécurisation des communications
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rappels-communication-sur-internet" class="md-nav__link">
+    Rappels : communication sur internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quelques-definitions-necessaires" class="md-nav__link">
+    Quelques définitions nécessaires
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cryptographie-symetrique" class="md-nav__link">
+    Cryptographie symétrique
+  </a>
+  
+    <nav class="md-nav" aria-label="Cryptographie symétrique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-de-cesar" class="md-nav__link">
+    Code de César
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chiffrement-xor" class="md-nav__link">
+    Chiffrement XOR
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cryptographie-asymetrique" class="md-nav__link">
+    Cryptographie asymétrique
+  </a>
+  
+    <nav class="md-nav" aria-label="Cryptographie asymétrique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-puzzles-de-merkle" class="md-nav__link">
+    Les puzzles de Merkle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methode-de-diffie-hellman" class="md-nav__link">
+    Méthode de Diffie-Hellman
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cryptage-rsa" class="md-nav__link">
+    Cryptage RSA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificats-et-tiers-de-confiance" class="md-nav__link">
+    Certificats et tiers de confiance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-protocole-https" class="md-nav__link">
+    Le protocole HTTPS
+  </a>
+  
+    <nav class="md-nav" aria-label="Le protocole HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autorites-de-certifications" class="md-nav__link">
+    Autorités de certifications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normes-de-certifications-x509" class="md-nav__link">
+    Normes de certifications X.509
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-ssltls-https" class="md-nav__link">
+    HTTP+ SSL/TLS = HTTPS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Enseignement Scientifique
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Enseignement Scientifique
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Données et IA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Données et IA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ES/stockage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stockage des données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Miscellanées
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Miscellanées
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1_1" id="__nav_6_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Le langage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Le langage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Bases_Python/Fichiers_Textes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manipulation des fichiers textes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../WorkInProgress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/mkdocs_cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Manim/BasesManim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_5" >
+        
+          <label class="md-nav__link" for="__nav_6_1_5" id="__nav_6_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pygame
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Pygame
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/InstallationPygame/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Pygame/Base_pygame/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bases de Pygame
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_6" >
+        
+          <label class="md-nav__link" for="__nav_6_1_6" id="__nav_6_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    P5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            P5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/p5_Thonny/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    P5 et Thonny
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/utilisationP5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bases de P5 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/regex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REGEX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/Challenge_Ada_Lovelace/BDD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BDD, SQL et PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="Securisation.pdf" title="PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.5h1v3h-1v-3m-5 1h1v-1H7v1M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2M9.5 10.5A1.5 1.5 0 0 0 8 9H5.5v6H7v-2h1a1.5 1.5 0 0 0 1.5-1.5v-1m5 0A1.5 1.5 0 0 0 13 9h-2.5v6H13a1.5 1.5 0 0 0 1.5-1.5v-3m4-1.5h-3v6H17v-2h1.5v-1.5H17v-1h1.5V9z"></path></svg></a>
+                
+    
+                  
+
+
+<div><h1 id="securisation-des-communications">Sécurisation des communications</h1>
+<h2 id="rappels-communication-sur-internet">Rappels : communication sur internet</h2>
+<p>Que se passe-t-il lorsque nous tapons dans la barre d'adresse de Firefox une URL, telle que <code>http://www.zonensi.fr/</code> ? Entre le cours de SNT de seconde, et celui de NSI, nous pouvons décrire l'enchainement des communications ainsi :</p>
+<ol>
+<li>L'URL est décodée par le navigateur, qui isole :<ul>
+<li>le protocole utilisé : <code>HTTP</code></li>
+<li>le nom de domaine : <code>www.zonensi.fr</code></li>
+<li>le chemin vers la ressource : <code>/</code>, la racine du site.</li>
+</ul>
+</li>
+<li>Le navigateur effectue une résolution de nom, soit en se connectant à un serveur <code>DNS</code>, soit dans son propre cache <code>DNS</code>, ce qui lui donne l'adresse <code>IP</code> de la ressource cherchée.</li>
+<li>
+<p>Le navigateur peut établir une connexion <code>TCP</code> vers l'adresse <code>IP</code>, via un <a href="https://fr.wikipedia.org/wiki/Three-way_handshake#Fonctionnement" target="_blank">handshaking en trois temps</a>, comme montré sur l'image ci-dessous :</p>
+<p><img alt="TCP Handshake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tcp_normal_2.png/800px-Tcp_normal_2.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</li>
+<li>
+<p>Une fois la connexion établie, client et serveur échangent des données en utilisant le protocole <code>HTTP</code>, tout en découpant les données en paquets <code>TCP</code>, eux-mêmes encapsulés dans des paquets <code>IP</code> (on pourra se rappeler du modèle <code>OSI</code>).</p>
+<p><img alt="Encapsulation" src="http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/img/arse3_couche_internet.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</li>
+<li>
+<p>Les paquets sont transmis de routeurs en routeurs, en étant à chaque fois désencapsulés pour inscrire l'adresse <code>IP</code> du prochain routeur.</p>
+<p><img alt="Routage" src="http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/img/arse3_chemin_transmission_fin.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Des limites</p>
+<p>Ce système, en place depuis l'invention de <code>TCP/IP</code> dans les années 1970, a vu l'intégration de chaque nouveau protocole (<code>FTP</code>, <code>SMTP</code>, etc) au sein de la couche application. Mais avec la démocratisation d'Internet, des problèmes sont rapidement apparus : si on utilise tel quel le modèle écrit ci-dessus pour effectuer des opérations bancaires ou échanger des données confidentielles, on se rend compte qu'un grand nombre d'intermédiaires (en particulier les routeurs) sont en possibilité de lire les données transmises.</p>
+</div>
+<p>On souhaite donc sécuriser les connexions afin que seul l'émetteur et le destinataire puissent avoir connaissance du contenu. D'où un questionnement sur trois aspects :</p>
+<ul>
+<li>Comment chiffrer le contenu des communications afin qu'elles ne soient lisibles que par la source et la destination (garantie de <mark class="critic"><strong>confidentialité</strong></mark>) ?</li>
+<li>Comment garantir que le serveur auquel on se connecte est bien celui auquel on pense se connecter (garantie d'<mark class="critic"><strong>authenticité</strong></mark>) ?</li>
+<li>Comment s'assurer que le message transmis n'a pas été modifié par un tiers (garantie d'<mark class="critic"><strong>intégrité</strong></mark>) ?</li>
+</ul>
+<p>Le tout devant bien entendu se faire dans le cadre d'une communication en utilisant l'infrastructure d'Internet, à savoir les communications <code>TCP/IP</code> ?</p>
+<h2 id="quelques-definitions-necessaires">Quelques définitions nécessaires</h2>
+<div class="admonition infos">
+<p class="admonition-title">Coder/Décoder</p>
+<p><mark class="critic"><strong> Coder</strong></mark>, c'est représenter l'information par un ensemble de signes prédéfinis. <mark class="critic"><strong>Décoder</strong></mark>, c'est interpréter un ensemble de signes pour en extraire l'information qu'ils représentent. </p>
+<p>Coder et décoder s'emploient lorsqu'il n'y a pas de secret. Par exemple on peut coder/décoder des entiers relatifs par une suite de bits par un «codage en complément à deux».</p>
+</div>
+<div class="admonition infos">
+<p class="admonition-title">Cryptographie</p>
+<p>La <mark class="critic"><strong>cryptographie</strong></mark> est une discipline veillant à protéger des messages (pour en assurer la confidentialité, l'authenticité et l'intégrité), par l'intermédiaire de <mark class="critic"><strong>clés de chiffrements</strong></mark>.</p>
+<p>La cryptographie est utilisée depuis au moins l'antiquité.</p>
+<p>Son pendant est la <mark class="critic"><strong>cryptanalyse</strong></mark>, qui est la technique qui consiste à déduire un texte en clair d’un texte chiffré <strong>sans posséder la clé de chiffrement</strong>. Le processus par lequel on tente de comprendre un message en particulier est appelé <mark class="critic"><strong>une attaque</strong></mark>.</p>
+<p><mark class="critic"><strong>Chiffrer</strong></mark> un message, c'est rendre une suite de symboles incompréhensible au moyen d'une <strong>clé de chiffrement</strong>.</p>
+<p><mark class="critic"><strong>Déchiffrer</strong></mark> ou <mark class="critic"><strong>décrypter</strong></mark>, c'est retrouver la suite de symboles originale à partir du message chiffré. On utilise <strong>déchiffrer</strong> quand on utilise la clé de chiffrement pour récupérer le texte original, et <strong>décrypter</strong> lorsqu'on arrive à retrouver le message original sans connaitre la clé de chiffrement.</p>
+</div>
+<h2 id="cryptographie-symetrique">Cryptographie symétrique</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Cryptographie symétrique</p>
+<p>On parle de <mark class="critic"><strong>cryptographie symétrique</strong></mark> lorsque la même clé est utilisée pour chiffrer et déchiffrer un message.</p>
+</div>
+<h3 id="code-de-cesar">Code de César</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Le code (ou chiffre) de César : chiffrement par décalage</p>
+<p>Le chiffre de César est une méthode de chiffrement très simple utilisée par Jules César dans ses correspondances secrètes (ce qui explique le nom « chiffre de César »). </p>
+<p>Le texte chiffré est obtenu en remplaçant chaque lettre du texte original par une lettre obtenue par un décalage à distance fixe, toujours du même côté, dans l'ordre de l'alphabet. </p>
+<p><img alt="Chiffre Cesar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Caesar3.svg/1280px-Caesar3.svg.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p>On a ainsi, pour un chiffre de César avec un clé de 3, les correspondances suivantes :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">alphabet_clair</span> <span class="o">=</span> <span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">alphabet_chiff</span> <span class="o">=</span> <span class="s2">"DEFGHIJKLMNOPQRSTUVWXYZABC"</span>
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercice</p>
+<p>Afin de pouvoir chiffrer un message avec le code de César, il faut avoir un texte ne comportant que des lettres majuscules de l'alphabet latin, donc nettoyer le texte de tous les accents, espaces, signes de ponctuation, etc. </p>
+<ol>
+<li>Créer une fonction <code>formate_texte(texte : str) -&gt; str</code> qui prend en argument un texte non formaté, et renvoie le texte sans accents, sans signes de ponctuations ni espaces, et en majuscule</li>
+<li>Créer alors une fonction <code>code_Cesar(texte :str, cle : int) -&gt; texte</code> qui renvoie le chiffre de César d'un texte qui lui est passé en argument, avec une clé sous la forme d'un entier entre 1 et 26 qui représente le décalage devant être obtenu. On rappelle les éléments suivants :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+<span class="mi">65</span>
+<span class="o">&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">66</span><span class="p">)</span>
+<span class="s1">'B'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(((</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'Z'</span><span class="p">)</span><span class="o">-</span><span class="mi">65</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">%</span><span class="mi">26</span><span class="o">+</span><span class="mi">65</span><span class="p">)</span>
+<span class="s1">'C'</span>
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Cryptanalyse d'un chiffre de César</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Attaque par force brute</label><label for="__tabbed_1_3">Attaque par analyse de fréquences</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Proposer un texte long chiffré au professeur. Combien de temps va-t-il mettre pour décrypter celui-ci ?</p>
+</div>
+<div class="tabbed-block">
+<p>Une attaque par force brute consiste à attaquer en testant toutes les possibilités. Avec le chiffre de César, il n'existe que 26 clés différentes, la méthode par force brute est donc particulièrement adaptée, même dans le cas d'un texte long.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">brute_force_Cesar</span><span class="p">(</span><span class="n">texte</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
+    <span class="n">decrypte</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">26</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">decrypte</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code_Cesar</span><span class="p">(</span><span class="n">texte</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">decrypte</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Une étude des textes écrits en français montre que la lettre la plus fréquemment utilisée est «E» (minuscule ou majuscule). Si on sait que le texte est écrit en français, il est probable que la lettre la plus fréquente dans le code de César soit celle qui remplace le «E». Il est alors possible de tester en premier la clé correspondant à ce décalage.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_freq_texte</span><span class="p">(</span><span class="n">texte</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="p">:</span>
+    <span class="n">dico</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">texte</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">dico</span> <span class="p">:</span>
+            <span class="n">dico</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">dico</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dico</span>
+
+<span class="k">def</span> <span class="nf">attaque_Cesar_analyse_frequence</span><span class="p">(</span><span class="n">texte</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">dico</span> <span class="o">=</span> <span class="n">get_freq_texte</span><span class="p">(</span><span class="n">texte</span><span class="p">)</span>
+    <span class="n">max_dico</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">maxi</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">dico</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">dico</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">maxi</span> <span class="p">:</span>
+            <span class="n">max_dico</span><span class="o">=</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span>
+            <span class="n">maxi</span> <span class="o">=</span> <span class="n">dico</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">dico</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">==</span> <span class="n">maxi</span> <span class="p">:</span>
+            <span class="n">max_dico</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+    <span class="n">possible_keys</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'E'</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">max_dico</span><span class="p">]</span>
+    <span class="n">possible_texts</span> <span class="o">=</span> <span class="p">[</span> <span class="sa">f</span><span class="s2">"Clé </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> :</span><span class="se">\n\n</span><span class="s2">"</span><span class="o">+</span><span class="n">code_Cesar</span><span class="p">(</span><span class="n">crypto</span><span class="p">,</span> <span class="mi">26</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">possible_keys</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">possible_texts</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<details class="infos">
+<summary>Chiffre de Vigenère</summary>
+<p>Le chiffre de César est donc très facilement déchiffrable, comme tout chiffrement monoalphabétique (où une lettre est toujours remplacée par le même symbole). Il existe d'autres méthodes de chiffrement par substitution, dits polyalphabétiques, pour lesquels la même lettre n'est pas forcément toujours remplacée par le même symbole, tels que le <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re" target="_blank">chiffre de Vigenère</a>. Cependant de telles méthodes ne résiste pas forcément à des <a href="https://ensip.gitlab.io/programmation_e2/PDF/C_P2A_50_crypto_anafreq.pdf" target="_blank">attaques par analyse de fréquences</a>.</p>
+</details>
+<h3 id="chiffrement-xor">Chiffrement XOR</h3>
+<div class="admonition abstract">
+<p class="admonition-title">XOR ( OU exclusif)</p>
+<p>L'opérateur binaire <code>XOR</code>, où <em>OU Exclusif</em>, noté <span class="arithmatex">\(\oplus\)</span>, est un opérateur dont la table de vérité est :</p>
+<div class="arithmatex">\[\begin{array}{|c|c|c|}
+\hline
+\oplus &amp; 0 &amp; 1\\\hline
+0 &amp; 0 &amp; 1 \\\hline
+1 &amp; 1 &amp; 0 \\\hline
+\end{array}
+\]</div>
+<p>L'opérateur XOR, en plus d'être <em>commutatitf</em> (<span class="arithmatex">\(A\oplus B = B \oplus A\)</span>) possède la propriété de <mark class="critic"><strong>réversibilité</strong></mark>, ce qui signifie que si <span class="arithmatex">\(A \oplus B = C\)</span>, alors on a les égalités suivantes :</p>
+<ul>
+<li><span class="arithmatex">\(A \oplus C = B\)</span></li>
+<li><span class="arithmatex">\(B \oplus C = A\)</span></li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Chiffrement XOR</p>
+<p>Étant donné un message, par exemple «UN MESSAGE TRÈS SECRET», et une clé de chiffrement, par exemple «NSI», on recopie plusieurs fois la clé sous le message :</p>
+<p></p><div class="highlight"><pre><span></span><code>UN MESSAGE TRÈS SECRET
+NSINSINSINSINSINSINSIN
+</code></pre></div>
+Chaque caractère du message est associé à une valeur numérique entière (par exemple son Unicode) :
+<div class="highlight"><pre><span></span><code>85 78 32 77 69 83 83 65 71 69 32 84 82 200 83 32 83 69 67 82 69 84
+78 83 73 78 83 73 78 83 73 78 83 73 78  83 73 78 83 73 78 83 73 78
+</code></pre></div>
+<p>On effectue ensuite l'opération <span class="arithmatex">\(\oplus\)</span> entre chaque nombre du message et de la clé. par exemple pour le premier caractère :</p>
+<div class="arithmatex">\[
+\begin{array}{cccccccccr}
+  &amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;&amp;85\\
+\oplus&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;&amp;78\\\hline
+&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;&amp;27
+\end{array}
+\]</div>
+<p>Le code obtenu dans notre exemple est donc :</p>
+<div class="highlight"><pre><span></span><code>27 29 105 3 22 26 29 18 14 11 115 29 28 155 26 110 0 12 13 1 12 26
+</code></pre></div>
+<p>L'opérateur <span class="arithmatex">\(\oplus\)</span> étant réversible, la réitération de l'opération sur le message chiffré rendra le message original.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Chiffré/déchiffré</p>
+<ol>
+<li>Créer une fonction <code>get_unicode(chaine : str) -&gt; list</code> qui prend en argument une chaine de caractère et renvoie la liste des codes unicode correspondant aux caractères.</li>
+<li>Créer une fonction <code>get_string(liste : list) -&gt; str</code> qui fait l'opération inverse de la fonction <code>get_unicode</code>.</li>
+<li>
+<p>Créer une fonction <code>chiffre_XOR(texte : list, cle : list) -&gt; list</code> qui renvoie une liste de valeurs entières correspondant à l'application d'un <code>XOR</code> sur chacun des valeurs des deux listes <code>texte</code> et <code>cle</code>.</p>
+<p><em>Indications :</em></p>
+<ul>
+<li>
+<p>l'opérateur <span class="arithmatex">\(\oplus\)</span> en python s'écrit de la manière suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;</span> <span class="mi">85</span> <span class="o">^</span> <span class="mi">78</span>
+<span class="mi">27</span>
+</code></pre></div>
+</li>
+<li>
+<p>Il n'est pas nécessaire de créer une liste de la même longueur que le texte avec la clé. Une utilisation judicieuse de l'opération modulo doit vous permettre de vous en sortir.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Vérifiez que la fonction <code>chiffre_XOR</code> permet bien de chiffrer/déchiffrer un texte avec une clé donnée.</p>
+</li>
+</ol>
+</div>
+<p>Les caractéristiques de l'opérateur <code>XOR</code>, et le fait qu'il puisse être implémenté directement dans le processeur, font qu'il est souvent utilisé dans les algorithmes de chiffrement modernes, comme <a href="https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard" taget="_blank">AES</a> ou <a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant" target="_blank">ChaCha20</a>. Bien sûr ces algorithmes sont nettement plus complexes que la méthode naïve que nous avons utilisée, mais leurs principes reposent sur des fonctionnements similaires.</p>
+<p>En plus d'être relativement sûrs (voir ci-dessous), ces algorithmes sont très efficaces et permettent de chiffrer très rapidement. On peut ainsi chiffrer en direct des communications audio ou vidéo en temps réel.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cryptanalyse : attention à la longueur de la clé !</p>
+<p>Une clé trop courte peut compromettre la sécurité des données : dans le cas où un mot du message peut-être envisagé, et où la clé est de taille raisonnable (en pratique dans le code suivant, de taille maximale de 4), il est tout à fait possible de faire une attaque par force brute :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">all_possible</span><span class="p">(</span><span class="n">length</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">""" crée une liste de toutes les clés possible de longueur donnée"""</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span>
+    <span class="n">poss</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">all_possible</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">uni</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">65</span><span class="o">+</span><span class="mi">26</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">disp</span> <span class="p">:</span>
+            <span class="n">poss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">uni</span><span class="p">)</span><span class="o">+</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">poss</span>
+
+<span class="k">def</span> <span class="nf">cryptanalyse_XOR</span><span class="p">(</span><span class="n">chiffre</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">contain</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">taille_cle</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">""" renvoie les clés possibles qui trouvent la chaine contain dans le code chiffre, en testant toutes les clés possibles de taille taille_cle"""</span>
+    <span class="n">poss_keys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">all_possible</span><span class="p">(</span><span class="n">taille_cle</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">decode</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="n">chiffre_XOR</span><span class="p">(</span><span class="n">chiffre</span><span class="p">,</span> <span class="n">get_unicode</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">contain</span> <span class="ow">in</span> <span class="n">decode</span> <span class="p">:</span>
+            <span class="n">poss_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">poss_keys</span>
+</code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Un point sur les mots de passe : entropie de Shannon</p>
+<p>En informatique, la robustesse d'un mot de passe <em>aléatoire</em> est exprimée en terme d'entropie de Shannon, mesurée en bits. </p>
+<p>D'après <a href="https://fr.wikipedia.org/wiki/Robustesse_d%27un_mot_de_passe" target="_blank">wikipedia</a>, « au lieu de mesurer la robustesse par le nombre de combinaisons de caractères qu'il faut tester pour trouver le mot de passe avec certitude, on utilise le logarithme en base 2 de ce nombre. Cette mesure est appelée l'entropie du mot de passe. Un mot de passe avec une entropie de 42 bits calculée de la sorte serait aussi robuste qu'une chaine de 42 bits choisie au hasard.</p>
+<p>En d'autres termes, un mot de passe de 42 bits de robustesse ne serait brisé de façon certaine qu'après <span class="arithmatex">\(2^{42} = 4 398 046 511 104\)</span> tentatives lors d'une attaque par force brute. L'ajout d'un bit d'entropie à un mot de passe double le nombre de tentatives requises, ce qui rend la tâche de l'attaquant deux fois plus difficile.»</p>
+<p>L'entropie d'un mot de passe de taille <span class="arithmatex">\(L\)</span> utilisant des caractères parmi <span class="arithmatex">\(N\)</span> possibilités aura une entropie <span class="arithmatex">\(H\)</span> calculée de la manière suivante :</p>
+<div class="arithmatex">\[ H = L.\log_2(N) = L. \cfrac{\ln(N)}{\ln(2)}\]</div>
+<p>Ce qui donne les résultats suivants :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Nombre de symboles</th>
+<th style="text-align: right;">A-Z (26)</th>
+<th style="text-align: right;">a-zA-Z(52)</th>
+<th style="text-align: right;">a-zA-Z0-9 (62)</th>
+<th style="text-align: right;">a-zA-Z0-9,;:!... (95)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">6 caractères</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr>
+<td style="text-align: center;">10 caractères</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">66</td>
+</tr>
+<tr>
+<td style="text-align: center;">12 caractères</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">79</td>
+</tr>
+<tr>
+<td style="text-align: center;">20 caractères</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">131</td>
+</tr>
+</tbody>
+</table>
+<p>On constate donc qu'un mot de passe de 10 caractères latin majuscules est plus «résistant» qu'un mot de passe de 6 caractères utilisant n'importe quel symbole du clavier français... Cela signifie que le nombre de caractère est nettement plus important que la diversité de ceux-ci. On peut le voir grâce au tableau suivant :</p>
+<p><img alt="https://patrowl.io/wp-content/uploads/2022/03/image.png" src="https://patrowl.io/wp-content/uploads/2022/03/image.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p>Vous pouvez calculer l'entropie de vos mots de passe sur le <a href="https://timcutting.co.uk/tools/password-entropy" target="_blank">site suivant</a>.</p>
+<p>Gardez toutefois en tête que la sécurité est maximale lorsque vous utilisez des mots de passe aléatoires de longueur suffisante, utilisant le maximum de caractères, et différents pour chaque site. Pour aider à retenir tous ces mots de passe, l'utilisation d'un gestionnaire de mots de passe, tel que <a href="https://cozy.io/fr/features/#pass" target="_blank">Cozy Pass</a> est nécessaire. celui-ci peut-être protégé grâce à une Pass-Phrase, c'est à dire une phrase composée de mots (aléatoires de préférence), garantissant une grande difficulté de décryptage.</p>
+<p>Et le mot de la fin sera pour <a href="https://xkcd.com/" target="_blank">xkcd</a></p>
+<p><img alt="xkcd security" src="https://imgs.xkcd.com/comics/security.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<h2 id="cryptographie-asymetrique">Cryptographie asymétrique</h2>
+<p>Le gros problème des cryptographies symétriques est le suivant : <mark class="critic"><strong>les deux protagonistes de l'échange doivent connaitre la clé, et donc se l'échanger</strong></mark>. Or ils n'ont pas de moyens de communications sécurisés pour l'instant. Il leur reste donc deux solutions :</p>
+<ul>
+<li>soit ils échangent la clé par un moyen de communication non sécurisé, comme des mails ou du courrier, mais un attaquant pourrait alors s'emparer de la clé et compromettre la sûreté des communications futures ;</li>
+<li>soit ils échangent la clé par un moyen plus sûr, mais moins pratique (sur un pont isolé par une nuit sans lune dans une mallette menottée au poignet, comme dans les films noirs des années 1950).</li>
+</ul>
+<p>Pour résoudre ce problème, les scientifiques américains et britanniques dans les années 1970, puis la recherche académique publique, se sont tournés vers la <mark class="critic"><strong>cryptographie asymétrique</strong></mark>. Il s'agit de méthodes utilisant des techniques de mathématiques avancées, dont on ne présentera pas ici les véritables tenants et aboutissants. On peut cependant présenter quelques méthodes et en expliquer sommairement le fonctionnement.</p>
+<h3 id="les-puzzles-de-merkle">Les puzzles de Merkle</h3>
+<p>La méthode du puzzle de Merkle, créé en 1974 et pour la première fois publiée en 1978, est la première méthode de chiffrement asymétrique (<strong>non top secrète</strong>) à clé publique.</p>
+<div class="admonition tips">
+<p class="admonition-title">Déroulé d'un échange</p>
+<p>Voici les étapes de la méthode des puzzles de Merkle, qui permette à Alice et Bob d'échanger des messages sans qu'Eve (diminutif de <em>eavesdropper</em>, ou oreille indiscrète, espion) puisse décrypter les messages :</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Etape 1</label><label for="__tabbed_2_2">Etape 2</label><label for="__tabbed_2_3">Etape 3</label><label for="__tabbed_2_4">Et Eve ?</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Alice génère un fichier de très grande taille, par exemple 100 000 lignes, où chaque ligne consiste en un <strong>identifiant unique</strong> et une clé de longueur suffisante :</p>
+<div class="highlight"><pre><span></span><code>...
+Id : 345768 Key : p(;;9a"ZMBz53P&lt;6C5Q3
+Id : 768453 Key : 8uQw(;e3SRHaN=]QsFp%
+Id : 108943 Key : &gt;ye5JH@%,%%J6&lt;FsGWE,
+...
+</code></pre></div>
+<p>Elle crypte ce fichier avec un chiffre <code>XOR</code>, mais en respectant les consignes suivantes :</p>
+<ul>
+<li>chaque ligne est chiffrée avec une clé différente ;</li>
+<li>les clés utilisées sont de petites tailles.</li>
+</ul>
+<p>Elle transmet ensuite le fichier à Bob.</p>
+<p><strong>Le fichier est probablement intercepté par Eve.</strong></p>
+</div>
+<div class="tabbed-block">
+<p>Bob reçoit le message chiffré d'Alice. Il choisit au hasard une des lignes, et l'<strong>attaque par force brute</strong>. Comme la clé utilisée est de petite taille, l'attaque est possible en un temps raisonnable, disons 10 minutes.</p>
+<p>Bob récupère donc une ligne avec un identifiant et une clé.</p>
+<p></p><div class="highlight"><pre><span></span><code>Id : 768453 Key : 8uQw(;e3SRHaN=]QsFp%
+</code></pre></div>
+Bob transmet alors <strong>en clair</strong> l'identifiant <code>768453</code> à Alice.
+<p><strong>Eve intercepte probalement cet identifiant</strong>.</p>
+</div>
+<div class="tabbed-block">
+<p>Alice regarde dans son fichier non crypté la clé correspondant à l'identifiant transmis : <code>8uQw(;e3SRHaN=]QsFp%</code>. Avec cette clé, la communication s'engage entre Alice et Bob en <strong>utilisant un chiffrement symétrique</strong>.</p>
+<p>A aucun moment la clé n'a été transmise en clair entre les deux protagonistes, qui n'ont pas eu besoin de se rencontrer non plus pour entamer une communication sécurisée.</p>
+</div>
+<div class="tabbed-block">
+<p>Eve a donc en sa possession un fichier crypté de 100 000 lignes, et un identifiant en clair. Mais pour faire correspondre cet identifiant à une clé, il faut qu'elle décrypte par force brute chacune des lignes du fichier jusqu'à trouver le bon identifiant. Pour décrypter la totalité du fichier, il lui faudra donc 100 000 fois 10 minutes, soit près de 12 jours. Donc, en moyenne, Alice et Bob peuvent communiquer sereinement pendant 6 jours avec la même clé.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="methode-de-diffie-hellman">Méthode de Diffie-Hellman</h3>
+<p>La méthode des puzzle de Merkle, bien que novatrice pour son époque, n'est plus jugée suffisante de nos jours pour garantir une véritable sécurité. Cependant elle a posé les bases d'autres méthodes, comme la méthode de Diffie-Helman, proposée en 1974 par les cryptologues américains Bailey W. Diffie et Martin Hellman.</p>
+<p>Cette méthode repose sur l'utilisation d'une fonction mathématique à deux variables. Cette fonction, souvent nommée <span class="arithmatex">\(M\)</span> (pour «mélange»), doit respecter les propriétés suivantes :</p>
+<ol>
+<li><span class="arithmatex">\(M\)</span> est connue, ce qui signifie qu'on connait l'algorithme ou la formule qui permet de calculer des images (toutes les fonctions ne sont pas calculables, voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9#Existence_de_fonctions_non_calculables" target="_blank">théorie de la calculabilité</a>).</li>
+<li>Si on connait <span class="arithmatex">\(M(x;y)\)</span> et <span class="arithmatex">\(x\)</span>, il doit être <strong>très difficile</strong> de retrouver <span class="arithmatex">\(y\)</span>. Par difficile, on entend le fait que pour trouver le <span class="arithmatex">\(y\)</span> donnant à <span class="arithmatex">\(M(x;y)\)</span> une valeur donnée, il faudra essayer sur tous les entiers <span class="arithmatex">\(y\)</span> possibles.</li>
+<li>Pour tous entiers <span class="arithmatex">\(x, y\)</span> et <span class="arithmatex">\(z\)</span>, on a <span class="arithmatex">\(M(M(x;y);z) = M(M(x;z);y)\)</span>, autrement dit <span class="arithmatex">\(y\)</span> et <span class="arithmatex">\(z\)</span> sont commutables.</li>
+</ol>
+<p>Une analogie couramment utilisée pour expliquer le fonctionnement de  cette fonction <span class="arithmatex">\(M\)</span> est celle des pots de peinture :</p>
+<div class="admonition tips">
+<p class="admonition-title">Pots de Peintures</p>
+<p>Les images suivantes ont été extraites et modifiées depuis <a href="https://commons.wikimedia.org/wiki/File:Diffie-Hellman_Key_Exchange_(fr).svg">Idée originale : A.J. Han VinckVersion vectorielle : Flugaal Traduction : Dereckson</a>, Public domain, via Wikimedia Commons</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><input id="__tabbed_3_4" name="__tabbed_3" type="radio"><input id="__tabbed_3_5" name="__tabbed_3" type="radio"><input id="__tabbed_3_6" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Etape 1</label><label for="__tabbed_3_2">Etape 2</label><label for="__tabbed_3_3">Etape 3</label><label for="__tabbed_3_4">Etape 4</label><label for="__tabbed_3_5">Etape 5</label><label for="__tabbed_3_6">Et Eve ?</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>On dispose d'un très grand nombre de pots de peinture de couleurs différentes. Alice et Bob se mettent d'accord pour choisir une couleur commune <span class="arithmatex">\(x\)</span>, qui sera «publique», puisqu'elle peut être interceptée.</p>
+<p><img alt="Etape 1" src="../DH_01.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Alice et Bob choisissent alors chacun une couleur, respectivement <span class="arithmatex">\(y\)</span> et <span class="arithmatex">\(z\)</span>, qui resteront privées et secrètes et ne seront jamais échangées.</p>
+<p><img alt="Etape 2" src="../DH_02.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Alice et Bob élaborent alors leurs mélanges, en utilisant la couleur commune et leur propre couleur privée. </p>
+<p><img alt="Etape 3" src="../DH_03.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Alice et Bob échangent <em>en clair</em> leurs mélanges respectifs, qui peuvent donc être interceptés.</p>
+<p><img alt="Etape 4" src="../DH_04.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Alice et Bob ajoutent alors au mélange qu'ils ont reçu leur couleur secrète. La fonction de mélange est construite afin que les mix obtenus par Alice et Bob soient identiques. Ils ont ainsi une «couleur» commune secrète, qui peut alors leur permettre d'effectuer des échanges via un cryptage symétrique.</p>
+<p><img alt="Etape 5" src="../DH_05.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Eve peut connaitre trois choses : la couleur commune, et chacun des mix ayant circulé en clair. Pour autant, la fonction de mélange est faite de telle manière qu'il soit extrêmement long et difficile d'extraire les couleurs secrètes même si la couleur commune est connue. </p>
+<p>Par ailleurs, même en mélangeant les deux mix obtenus, on n'obtiendra pas la même couleur que celle obtenue par ALice et Bob, puisque la couleur commune sera deux fois plus présente.</p>
+<p><img alt="Etape 6" src="../DH_06.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Le protocole d'échange de clé de Diffie-Hellman propose donc une manière élégante de régler le problème d'échange de clé posé par le chiffrement symétrique. Cependant, un problème reste à régler, il s'agit du <mark class="critic"><strong>problème de l'authentification</strong></mark> : la sureté des communications dépend essentiellement sur le fait qu'Alice et Bob soient certains de communiquer avec la bonne personne.</p>
+<div class="admonition warning">
+<p class="admonition-title">Attaque de l'homme du milieu</p>
+<p>Imaginons qu'Eve ne se contente pas d'intercepter la couleur commune, mais qu'elle se fasse passer pour Bob auprès d'Alice, et d'Alice auprès de Bob. Eve peut alors choisir une couleur commune avec Alice, et une autre avec Bob. Le protocole d'échange se poursuit normalement, mais Eve intercepte et décode chaque message transmis, avant de le retransmettre à son tour, modifié ou non :</p>
+<p><img alt="MITM" src="../MITM.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p>Une telle technique s'appelle une <mark class="critic"><strong>attaque de l'homme du milieu</strong></mark>, ou <strong>man in the middle attack</strong>, souvent abrégée en MITM.</p>
+</div>
+<h3 id="cryptage-rsa">Cryptage RSA</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Système RSA</p>
+<p>Le système RSA est un système de chiffrement asymétrique basé sur des paires de clés publiques et privées, pour la première fois publié en 1978. Son nom provient des initiales de ses trois inventeurs : <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA" target="_blank">Ron Rivest, Adi Shamir et Len Adelman</a>. </p>
+<p>Les mathématiques derrière le système RSA utilisent entre autres les congruences sur les entiers et le petit théorème de Fermat. Tous les calculs se font modulo un nombre entier <span class="arithmatex">\(n\)</span> qui est le produit de deux nombres premiers, en général très grands, car les messages clairs et chiffrés sont des entiers inférieurs à l'entier <span class="arithmatex">\(n\)</span>. Les opérations de chiffrement et de déchiffrement consistent à élever le message à une certaine puissance modulo <span class="arithmatex">\(n\)</span>, ce qui donne des calculs très couteux.</p>
+</div>
+<p>Globalement, le système consiste en la mise en place d'une <mark class="critic"><strong>paire de clés publiques et privées</strong></mark> pour chaque participant :</p>
+<ul>
+<li>Alice possède une clé <span class="arithmatex">\(K_A^{pub}\)</span> et une clé privée <span class="arithmatex">\(K_A^{pri}\)</span>.</li>
+<li>Bob possède une clé <span class="arithmatex">\(K_B^{pub}\)</span> et une clé privée <span class="arithmatex">\(K_B^{pri}\)</span>.</li>
+</ul>
+<p>On notera <span class="arithmatex">\(K_P^x(m)\)</span> le fait de chiffrer un message avec la clé <span class="arithmatex">\(x\)</span> de la personne <span class="arithmatex">\(P\)</span>.</p>
+<p>La manière exacte de créer ces clés est complexe, mais l'essentiel est de comprendre que l'utilisation des deux clés d'une personne permet de déchiffrer un message. Par exemple pour Alice :</p>
+<div class="arithmatex">\[K_A^{pub}\left(K_A^{pri}(m)\right) = K_A^{pri}\left(K_A^{pub}(m)\right) = m\]</div>
+<p>Ce qui signifie qu'un message chiffré avec la clé publique d'Alice peut être déchiffrer avec sa clé privée, et réciproquement.</p>
+<p>D'autre part, les propriétés des clés font que :</p>
+<ul>
+<li>il est impossible en connaissant <span class="arithmatex">\(K_A^{pub}\)</span> de deviner <span class="arithmatex">\(K_A^{pri}\)</span> ;</li>
+<li>il est impossible en connaissant <span class="arithmatex">\(K_A^{pub}(m)\)</span> ou <span class="arithmatex">\(K_A^{pri}(m)\)</span> de deviner <span class="arithmatex">\(m\)</span>.</li>
+</ul>
+<div class="admonition tips">
+<p class="admonition-title">Fonctionnement d'une communication</p>
+<p>Si Bob veut envoyer un message secret à Alice, les deux procèdent comme suit :</p>
+<ol>
+<li>Alice met à disposition sa clé publique <span class="arithmatex">\(K_A^{pub}\)</span>, en la mettant par exemple sur son site web ou en l'envoyant par mail.</li>
+<li>Bob chiffre son message <span class="arithmatex">\(m\)</span> avec la clé publique d'Alice et envoie le résultat <span class="arithmatex">\(K_A^{pub}(m)\)</span> à Alice.</li>
+<li>Alice applique sa clé privée sur le message reçu <span class="arithmatex">\(K_A^{pri}\left(K_A^{pub}(m)\right) = m\)</span>, et déchiffre ainsi le message de Bob.</li>
+</ol>
+</div>
+<p>L'inconvénient majeur de RSA est que les <mark class="critic"><strong>chiffrements et déchiffrements sont très couteux en temps de calcul</strong></mark>, et ne permettent pas des échanges sur des gros volumes de données, ou sur des flux de communications audio ou vidéo.</p>
+<p>Cependant, il est possible d'utiliser RSA à la manière de Diffie-Hellman, afin d'échanger une clé pour un algorithme de chiffrement symétrique, qui est en général un fichier de quelques milliers de bits.</p>
+<p>Un autre des avantages de RSA est qu'il est possible de l'utiliser comme <mark class="critic"><strong>système d'authentification</strong></mark>.</p>
+<h3 id="certificats-et-tiers-de-confiance">Certificats et tiers de confiance</h3>
+<p>En France, l’État délivre aux citoyens une carte d'identité. Lorsque une personne se présente au bureau de poste pour retirer un colis, son identité est vérifiée par la personne au guichet par l'intermédiaire de cette carte d'identité. A priori, un bout de carton plastifié à lui seul ne permet pas de garantir réellement une authentification. Le système fonctionne parce que le bureau de poste <strong>fait confiance</strong> à l’État, qui a fait les vérifications nécessaires pour s'assurer de l'identité de la personne, et qui a mis en place une carte difficile à falsifier. L'État joue ici le rôle d'un <mark class="critic"><strong>tiers de confiance</strong></mark>.</p>
+<p>On retrouve le même système dans les communications sur Internet, où certains acteurs jouent le rôle de tiers de confiance. Ils fournissent des <mark class="critic"><strong>certificats</strong></mark> numériques, créés à partir des clés RSA publiques des participants.</p>
+<div class="admonition exemple">
+<p class="admonition-title">Exemple d'authentification</p>
+<p>Imaginons que Bob veuille s'assurer que c'est bien Alice avec qui il va entrer en communication, via son site web.</p>
+<ol>
+<li>
+<p>Alice fait appel à Thierry, un tiers de confiance. Thierry vérifie qu'ALice est bien la propriétaire du site, en constant qu'elle peut administrer le site, ou bien par l'intermédiaire de factures montrant qu'elle possède le nom de domaine ainsi que le serveur qui héberge le site. Une fois ces vérifications effectuées, Thierry crée un certificat avec sa clé privée et la clé publique d'Alice :</p>
+<div class="arithmatex">\[ c = K_T^{pri}(K_A^{pub})\]</div>
+</li>
+<li>
+<p>Quand Bob se connecte au site d'Alice, celui-ci envoie le certificat <span class="arithmatex">\(c\)</span> et la clé publique d'Alice <span class="arithmatex">\(K_A^{pub}\)</span>.</p>
+</li>
+<li>
+<p>Bob se sert alors de la clé publique de Thierry sur le certificat :</p>
+<div class="arithmatex">\[K_T^{pub}(c) = K_T^{pub}\left(K_T^{pri}(K_A^{pub})\right) = K_A^{pub}\]</div>
+<p>Il compare le résultat avec la clé que lui a fourni le site d'Alice. Si il y a correspondance, il est assuré d'être en communication avec Alice. Il peut alors démarrer un échange de clé soit en utilisant RSA, soit Diffie-Hellman.</p>
+</li>
+</ol>
+</div>
+<h2 id="le-protocole-https">Le protocole HTTPS</h2>
+<h3 id="autorites-de-certifications">Autorités de certifications</h3>
+<p>Une <mark class="critic"><strong>autorité de certification</strong></mark> (ou AC), est une entité habilitée à délivrer des certificats. Il s'agit de tiers de confiance, que l'on peut classer en trois catégories :</p>
+<ul>
+<li>les entreprises spécialisées ;</li>
+<li>les associations (comme <em>Let's Encrypt</em>, que nous croiserons plus tard);</li>
+<li>les entités étatiques.</li>
+</ul>
+<p>Leur rôle est d'attester par l'intermédiaire de certificat qu'une entité est bien ce qu'elle prétend être. Elles sont soumises à des audits réguliers et pointilleux, dont les résultats sont publics, et il existe une hiérarchie des AC. En effet, une AC doit être elle-même certifiée par une autre AC, ce qui crée un arbre de certification jusqu'à des AC appellées <strong>AC racines</strong>. La fondation Mozilla reconnait à ce jour (24 Mai 2023) <a href="https://ccadb.my.salesforce-sites.com/mozilla/CACertificatesInFirefoxReport" target="_blank">142 AC racines</a>. </p>
+<p>Le club des AC est donc très fermé, les OS et navigateurs ayant chacun les clés publiques des AC qu'ils reconnaissent (au passage, Google, Microsoft et Apple ne reconnaissent pas exactement les mêmes AC que Mozilla).</p>
+<h3 id="normes-de-certifications-x509">Normes de certifications X.509</h3>
+<p>Les AC suivent généralement le format standard de certficat qui est à l'heure actuelle le format <code>X.509</code>. Il s'agit d'un format de fichier binaire contenant entre autre :</p>
+<ul>
+<li>l'identifiant de l'AC qui <strong>signe</strong>(chiffre) le certificat ;</li>
+<li>les dates de validité du certificat (dates de départ et dates de fin);</li>
+<li>l'identité de l'entité certifiée ;</li>
+<li>la clé publique de l'entité certifiée ;</li>
+<li>l'algorithme utilisé pour la signature du certificat ;</li>
+<li>la signature du certificat par l'AS.</li>
+</ul>
+<p>On retrouve la construction présentée précédemment, mais avec quelques points techniques supplémentaires : plutôt que de vérifier la signature de chaque ligne du fichier, on utilise une <mark class="critic"><strong>fonction de hachage</strong></mark> qui génère une <mark class="critic"><strong>somme de contrôle</strong></mark> du fichier. Cette somme de contrôle est alors chiffrée avec la clé privée de l'AC.</p>
+<div class="admonition exemple">
+<p class="admonition-title">Zonensi.fr</p>
+<p>Voici un extrait du certificat de <a href="">zonensi.fr</a> :</p>
+<p></p><div class="highlight"><pre><span></span><code>Certificate:
+    Data:
+        Version: 3 (0x2)
+        [...]
+        Issuer: C = US, O = Let's Encrypt, CN = R3
+        Validity
+            Not Before: May 15 22:38:03 2023 GMT
+            Not After : Aug 13 22:38:02 2023 GMT
+        Subject: CN = zonensi.fr
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:ae:43:ac:a5:ae:80:f4:38:4c:52:32:f7:...
+                Exponent: 65537 (0x10001)
+        [...]
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        59:17:d1:ff:e2:2f:1f:a1:e5:2f:71:b6:e3:4a:4d:e4:...
+</code></pre></div>
+On constate donc que :
+<ul>
+<li>l'AC qui a signé le certificat est <a href="https://letsencrypt.org/fr/" target="_blank">Let's Encrypt</a> ;</li>
+<li>celui-ci est valide du 15 mai 2023 au 13 Aout 2023 ;</li>
+<li>il certifie le domaine <code>zonensi.fr</code> ;</li>
+<li>la clé publique est une clé RSA, sur 2048 bits, et calculée à partir des informations <code>Modulus</code>et <code>Exponent</code>.</li>
+<li>l'algorithme utilisé pour créer la somme de contrôle du fichier est <code>sha256WithRSAEncryption</code> ;</li>
+</ul>
+<p>Quand vous vous connectez à <code>zonensi.fr</code> en <code>https</code>, votre navigateur :</p>
+<ul>
+<li>récupère le certificat ;</li>
+<li>la signature est le résultat du chiffrage de la somme de contrôle par la clé privée de l'AC.</li>
+<li>retire les deux dernières lignes et utilise l'algorithme <code>sha256WithRSAEncryption</code>pour calculer la somme de contrôle du certificat ;</li>
+<li>utilise la clé publique de <em>Let's Encrypt</em> sur la signature du certificat, et compare le résultat à la somme de contrôle calculée ;</li>
+<li>en cas d'égalité, l'identité est vérifiée et on peut commencer une transaction asymétrique.</li>
+</ul>
+</div>
+<p>Les certificats des AC sont régulièrement mis à jour, aussi bien au niveau du système d'exploitation que du navigateur : ici on voit une mise à jour des certificats d'AC sur une distribution LinuxMint :</p>
+<p><img alt="Maj CA" src="../MAJ_CA.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<h3 id="http-ssltls-https">HTTP+ SSL/TLS = HTTPS</h3>
+<div class="admonition abstract">
+<p class="admonition-title">SSL/TLS</p>
+<p>La <mark class="critic"><strong>Transport Layer Security (TLS)</strong></mark> (et son prédecesseur <strong>Secure Sockets Layer (SSL)</strong>) est un protocole de sécurisation des échanges développé par l'<em><em>Internet Engineering Task Force (IETF)</em> (à la suite de la société </em>Netscape Communication Corporation*, qui a développé SSL pour son navigateur).</p>
+<p>On parle parfois de <code>SSL/TLS</code> pour désigner indifféremment <code>SSL</code> ou <code>TLS</code>.</p>
+<p>Actuellement les versions les plus utilisées de <code>TLS</code> sont <code>TLS 1.2</code> (publiée en 2008) et <code>TLS 1.3</code> (publiée en 2018).</p>
+<p><code>TLS</code> est un protocole se rajoutant entre la couche <code>TCP</code> et la couche applicative (<code>HTML</code> par exemple). Ses rôles sont :</p>
+<ul>
+<li>de garantir l'authentification du serveur ;</li>
+<li>la confidentialité des données ;</li>
+<li>l'intégrité des données ;</li>
+<li>et de manière optionnelle, l'authentification du client.</li>
+</ul>
+</div>
+<p>Le protocole <code>HTTPS</code> est donc la mise en place d'une communication <code>HTTP</code> sécurisée par <code>TLS</code>, pour laquelle le port de communication est le port 443 à la place du port 80.</p>
+<p>Une communication sécurisée par <code>TLS</code> est indiquée dans un navigateur par un cadenas dans la barre de navigation. Un clique sur le cadenas vous donneras les informations sur le la sécurisation de la connexion. Par exemple pour <code>https://www.zonensi.fr</code> :</p>
+<p><img alt="certificat" src="../certificat.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<div class="admonition abstract">
+<p class="admonition-title">Fonctionnement d'un échange HTTPS</p>
+<p><img alt="SSLTTLS" src="../SSLTLS.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p>On peut décrire sommairemment la brique <code>SSL/TLS</code> de la manière suivante :</p>
+<ol>
+<li>Le client envoie un message <code>HELLO</code>, qui contient quelqus options (versions de TLS supportée, algorithmes supportés).</li>
+<li>Le serveur envoie un message <code>HELLO</code>, avec ses options, ainsi que son certificat au client.</li>
+<li>Le client tente de vérifier la signature numérique du certificat, à l'aide des clés publiques des AC. Plusieurs solutions peuvent alors se produire</li>
+<li>Si l'une d'entre elle fonctionne, le navigateur vérifie quelques autres points (entre autres les dates de validité), puis génère une clé de chiffrement symétrique, appelée <strong>clé de session</strong>, qu'il chiffre avec la clé publique du serveur. Une fois la clé reçue par le serveur, un échange <code>HTTP</code> chiffré est donc possible.</li>
+<li>Si aucune des clés des AC ne fonctionne, le navigateur tente alors de vérifier la signature numérique du certificat avec la clé publique du serveur. En cas de réussite, cela signifie que <strong>le serveur a généré lui-même son certificat</strong>. Un message d'avertissement s'affiche alors sur le navigateur, prévenant que l'identité du serveur n'a pas pu être vérifiée, et qu'il peut s'agir potentiellement d'un site frauduleux (mais il s'agit parfois simplement d'un dépassement de validité du certificat, le propriétaire du site ayant oublié de renouveler son certificat auprès d'une AC).</li>
+</ol>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>
+<p><a href="http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php">http://www.monlyceenumerique.fr/nsi_premiere/archios_arse/a3_encapsulation_tcp_ip.php</a></p>
+</li>
+<li>
+<p><a href="https://fr.wikipedia.org/wiki/Three-way_handshake">https://fr.wikipedia.org/wiki/Three-way_handshake</a></p>
+</li>
+<li>
+<p>Numérique et Sciences Informatique Tle : 24 leçons avec exercices corrigés, Balabonski, Conchon, Filliâtre, Nguyen, éditions Ellipses</p>
+</li>
+<li>
+<p><a href="www.wikipedia.org" target="_blank">Wikipedia</a>, pour une très grande partie des informations ci-dessus.</p>
+</li>
+</ul></div>
+
+
+
+
+
+                
+    <script src="../../../../js/ide.js"></script> 
+    
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2023 - F.Vergniaud
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:admin@zonensi.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="../../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js"></script>
+      
+        <script src="../../../../xtra/javascripts/interpreter.js"></script>
+      
+    
+  </body>
+</html>
