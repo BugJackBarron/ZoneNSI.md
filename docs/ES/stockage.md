@@ -43,7 +43,7 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
 
     Le {==**bit**==} est l'unité d'information la plus simple dans un système de numération, ne pouvant prendre que deux valeurs, représentées par les chiffres 0 et 1. Un bit peut aussi bien représenter une alternative logique (*Vrai* et *Faux*), qu'un chiffre binaire, ou qu'une autre information ne pouvant prendre que deux états (par ex. *Ouvert* ou *fermé*).
     
-    En théorie de l'information de ![Shannon](https://fr.wikipedia.org/wiki/Claude_Shannon){: target="_blank"}, le bit est la quantité minimale d'information pouvant être transmise par un message, et constitue à ce titre l'unité de mesure de base de l'information en informatique.
+    En théorie de l'information de [Shannon](https://fr.wikipedia.org/wiki/Claude_Shannon){: target="_blank"}, le bit est la quantité minimale d'information pouvant être transmise par un message, et constitue à ce titre l'unité de mesure de base de l'information en informatique.
 
     Un {==**ensemble ordonné de bits**==} permet donc de représenter des informations.
 
@@ -61,6 +61,7 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
     $$
     n = E\left(\dfrac{\ln(N)}{\ln(2)}\right) +1
     $$
+    
     où $E$ est la fonction renvoyant la partie entière d'un nombre donné.
         1. Combien de bits sont nécessaires pour représenter $10^6$ ?
         2. Combien de bits sont nécessaires pour représenter $10^9$ ?
