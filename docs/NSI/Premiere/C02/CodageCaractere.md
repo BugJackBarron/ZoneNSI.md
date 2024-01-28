@@ -7,13 +7,15 @@ Nous avons vu que les nombres entiers et flottants sont codés en binaires, ains
 
 À partir des années 1960, les ordinateurs commencent à être équipés d'un clavier et d'un rouleau pour imprimer les sorties. Il fut donc nécessaire de décider comment manipuler les caractères alphanumériques.
 
-La décision fut prise de représenter *les caractères de l'alphabet anglais* sur un octet de la manière suivante :
+La décision fut prise de représenter *les caractères de l'alphabet anglais* sur un octet[^sept] de la manière suivante :
+
+[^sept]: En fait la première table créée était exactement sur 7 bits, le bit de parité ne fut utilisé que lorsque le standard 8 bits fut généralisé.
 
 * les 7 octets de poids faible (les plus à droite) serviront à associer une valeur numérique à chaque caractère ;
 * l'octet de poids fort (celui le plus à gauche) sera le **bit de parité** - une clé de contrôle.
 
 !!! info "Bit de parité"
-	Les ordinateurs de cette époque étant peu fiables au niveau des transmissions et traitement des bits, il arrivait des erreurs lors du traitement des signaux et un octet `1101 1011` pouvait vite se transformer en `1001 1011` : les données étaient alors corrompues et le mauvais caractère serait affiché. Le {==**bit de parité**==} est un bit qui prenait la valeur 0 ou 1 selon la parité du nombre de 1 dans les 7 bits représentant le caractère. 
+	Les ordinateurs de cette époque étant peu fiables au niveau des transmissions et traitement des bits, il arrivait des erreurs lors du traitement des signaux et un octet `1101 1011` pouvait vite se transformer en `1001 1011` : les données étaient alors corrompues et le mauvais caractère affiché. Le {==**bit de parité**==} est un bit qui prenait la valeur 0 ou 1 selon la parité du nombre de 1 dans les 7 bits représentant le caractère. 
 	
 	Ainsi, si les 7 bits sont `101 1001`, le bit de parité est à `0`, et l'octet complet devient `0101 1001`. Si celui reçu est `0101 0001`, un simple calcul avec le bit de parité permet de constater que le traitement du signal est défectueux. 
 
@@ -76,7 +78,7 @@ Il faut différencier la notion de {==**jeu de caractère**==} (*Character set* 
 	=== "Enoncé"
 		Quelles sont les  limites de la norme ASCII ?
 		
-	=== "Réponse"
+	
 
 
 ## La norme ISO-8859
@@ -172,7 +174,10 @@ Pour savoir combien d’octets on va utiliser les bits de poids fort du premier 
 
 Cette norme permet donc d’être rapide pour les alphabets courants. Elle présente le défaut de ne pas pouvoir aller directement chercher le $10^e$ caractère d’une phrase puisque le nombre d’octets par lettre est variable. L’`UTF-16`, lui, est codé sur 4 octets ou 2 octets en fonction du code du caractère. La norme `UTF-32` utilise, elle, 32 bits en permanence. Cela consomme bien plus de mémoire, mais permet de trouver très rapidement le x-ième caractère d’une, chaine de caractères.
 
-L'`UTF-8` est utilisé par $82,2\%$ des sites web en décembre 2014, puis $87.6\%$ en 2016 et enfin $95,2\%$ en octobre 2020.
+«L'`UTF-8` est utilisé par $82,2\%$ des sites web en décembre 2014, puis $87.6\%$ en 2016 et enfin $95,2\%$ en octobre 2020»[^UTF8].
+
+
+[^utf8]: source [wikipedia](https://fr.wikipedia.org/wiki/UTF-8){: target="_blank"}
 
 Par sa nature, `UTF-8` est d'un usage de plus en plus courant sur Internet, et dans les systèmes devant échanger de l'information.
 
@@ -192,7 +197,7 @@ Concrètement, **UTF-8 est utilisé par quasi tous les serveurs Web**. Aujourd'h
 !!! question "Jouer avec les encodages"
 
 	=== "Énoncé"
-		1. On considère la liste Python suivante : ``[233, 112, 97, 116, 97, 110, 116, 32, 33]``. Quel est le message caché ?
+		1. On considère la liste Python suivante : `[233, 112, 97, 116, 97, 110, 116, 32, 33]`. Quel est le message caché ?
 		2. En HTML :
 			1. Créez une page vide en HTML avec la code  suivant dans Notepad++, en vérifiant que l'encodage est bien UTF-8 :
 				```` html
@@ -208,11 +213,8 @@ Concrètement, **UTF-8 est utilisé par quasi tous les serveurs Web**. Aujourd'h
 				</html>
 				````
 			2. Insérez la phrase suivante dans le corps du document : 
-				````
-				Portez ce vieux whisky au juge blond qui fume sur son île intérieure, à côté de l'alcôve ovoïde,
-				où les bûches se consument dans l'âtre, ce qui lui permet de penser à la cænogénèse de l'être 
-				dont il est question dans la cause ambiguë entendue à Moÿ, dans un capharnaüm qui, pense-t-il, 
-				diminue çà et là la qualité de son œuvre. 
+				```` 
+				Portez ce vieux whisky au juge blond qui fume sur son île intérieure, à côté de l'alcôve ovoïde, où les bûches se consument dans l'âtre, ce qui lui permet de penser à la cænogénèse de l'être dont il est question dans la cause ambiguë entendue à Moÿ, dans un capharnaüm qui, pense-t-il, diminue çà et là la qualité de son œuvre. 
 				````
 			3. Ouvrez ensuite le fichier dans un navigateur. L'affichage est-il correct ?
 			4. Remplacez maintenant la ligne ``<meta charset="utf-8">`` par la ligne ``<meta charset="iso-8859-1">``.
