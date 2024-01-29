@@ -3,7 +3,7 @@
 ## La révolution des images numériques
 
 !!! tip "La photographie argentique"
-	La photographie a été inventée par le français [Nicéphore Niépce](https://fr.wikipedia.org/wiki/Nic%C3%A9phore_Ni%C3%A9pce){: target="_blank"} vers 1824. D'abord sur des plaques d'argent recouvertes de bitumes, et qui nécessitaient plusieurs jours d'exposition aux rayons du soleil. le procédé fut amélioré par [Louis Daguerre](https://fr.wikipedia.org/wiki/Louis_Daguerre){: taget="_blank"}, qui recouvrit la plaque d'argent par une fine couche de iodure d'argent, cette plaque étant ensuite exposée dans une chambre obscure puis soumise à des vapeurs de mercure qui provoquaient l'apparition de l'image. Le procédé s'améliora au fur et à mesure, par l'utilisation de papier argentiques réalisant un négatif de l'image souhaitée, la photographie se révélant après un bain dans différentes substances chimiques au sein d'une chambre noire.
+	La photographie a été inventée par le français [Nicéphore Niépce](https://fr.wikipedia.org/wiki/Nic%C3%A9phore_Ni%C3%A9pce){: target="_blank"} vers 1824. D'abord sur des plaques d'argent recouvertes de bitumes, et qui nécessitaient plusieurs jours d'exposition aux rayons du soleil. le procédé fut amélioré par [Louis Daguerre](https://fr.wikipedia.org/wiki/Louis_Daguerre){: taget="_blank"}, qui recouvrit la plaque d'argent par une fine couche d'iodure d'argent, cette plaque étant ensuite exposée dans une chambre obscure puis soumise à des vapeurs de mercure qui provoquaient l'apparition de l'image. Le procédé s'améliora au fur et à mesure, par l'utilisation de papier argentiques réalisant un négatif de l'image souhaitée, la photographie se révélant après un bain dans différentes substances chimiques au sein d'une chambre noire.
 	
 	Les procédés de photographie couleur ne sont apparus qu'au milieu des année 1930.
 
@@ -15,9 +15,9 @@
 	* [A quoi sert l'obturateur d'un appareil photo ?](https://www.youtube.com/watch?v=aaHrtSMDXdk){:  target="_blank"}
 	* [Comment développe-t'on une photo ?](https://www.youtube.com/watch?v=UgmUemnIlGI&t=12s){:  target="_blank"}
 
-!!! question 
+!!! question "Question"
 	
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Quels sont les avantages et les défauts de la photographie argentique par rapport à la photographie numérique ?
 		
@@ -33,13 +33,13 @@
 		* deep-fake et manipulation de l'information
 		* etc...
 
-Dans cet thème, nous étudierons à la fois le côté numérique et technologique - comment est constituée une image numérique, sous quelle forme elle est stockée dans l'ordinateur - mais aussi sur les aspects sociétaux liés à l'utilisation des images numériques.
+Dans ce thème, nous étudierons à la fois le côté numérique et technologique - comment est constituée une image numérique, sous quelle forme elle est stockée dans l'ordinateur - mais aussi sur les aspects sociétaux liés à l'utilisation des images numériques.
 
 ## Quelques considérations optiques
 
 ### Les trames Benday
 
-Lors des années 1950 -1970, les comics américains ainsi qu'un certain nombre d'éditeurs de bandes dessinées européens utilisaient pour leurs couleurs une impression quadrichromique basée sur  la méthode des [**Benday dots**](https://fr.wikipedia.org/wiki/Points_Benday){: target="_blank"}. Cette méthode consiste à appliquer de la couleur par une juxtaposition de points de couleurs primaires (par couches cyan, magenta, jaune et noire ), comme par exemple dans les images suivantes :
+Lors des années 1950 -1970, les comics américains ainsi qu'un certain nombre d'éditeurs de bandes dessinées européens utilisaient pour leurs couleurs une impression quadrichromique basée sur  la méthode des [**Benday dots**](https://fr.wikipedia.org/wiki/Points_Benday){: target="_blank"}. Cette méthode consiste à appliquer de la couleur par une juxtaposition de points de couleurs primaires (par couches cyan, magenta, jaune et noire - ça ne vous rappelle rien ?) comme dans les images suivantes :
 
 !!! info "BD et Benday Dots"
 	<div style="display:flex;">
@@ -60,10 +60,10 @@ Lors des années 1950 -1970, les comics américains ainsi qu'un certain nombre d
 
 ### Le pouvoir de résolution de l'oeil
 
-Si la méthode des {==**Benday Dots**==} fonctionne et nous donne l'impression de nuances de couleurs, c'est parce qu'à une distance suffisant, nous sommes dans l'impossibilité de distinguer ces points. Ceci est du au [pouvoir de résolution de l'oeil](https://fr.wikipedia.org/wiki/Pouvoir_de_résolution){: target="_blank"}
+Si la méthode des {==**Benday Dots**==} fonctionne et nous donne l'impression de nuances de couleurs, c'est parce qu'à une distance suffisante, nous sommes dans l'impossibilité de distinguer ces points. Ceci est dû au [pouvoir de résolution de l'oeil](https://fr.wikipedia.org/wiki/Pouvoir_de_résolution){: target="_blank"}
 
 
-Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil est d'environ une minute d'arc ($1' = 1/60° = 0,017°$), soit environ 100 km sur la surface de la Lune vue de la Terre, ou plus proche de nous, un détail d'environ 1 mm pour un objet ou une image situé à 3 m de distance.
+Pour la vision humaine, selon wikipédia, «le pouvoir de résolution de l'œil est d'environ une minute d'arc ($1' = 1/60° = 0,017°$), soit environ 100 km sur la surface de la Lune vue de la Terre, ou plus proche de nous, un détail d'environ 1 mm pour un objet ou une image situé à 3 m de distance.»
 
 !!! example "Exemple"
 	A titre d'exemple, on peut considérer cette image sous trois résolutions différentes :
@@ -98,7 +98,7 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 
 	=== "Enoncé"
 	
-		1. Téléchargez et en,registrez dans le répertoire `ImagesNumeriques` le fichier [champiNB.bmp](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=tUGUEeL5t6pX){: target="_blank"}
+		1. Téléchargez et enregistrez dans le répertoire `ImagesNumeriques` le fichier [champiNB.bmp](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=tUGUEeL5t6pX){: target="_blank"}
 		2. Ouvrez le fichier `champiNB.bmp` dans un visionneur d'images.
 		3. Quelle est la largeur en pixel de l'image ?
 		4. Quelle est la hauteur en pixel de l'image ?
@@ -110,10 +110,10 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 !!! info "Représenter une image en noir et blanc"
 	En simplifiant beaucoup, l'image obtenue dans la partie précédente est une image numérique en noir et blanc. Le fichier `reallyNumbers.txt` est une version lisible du fichier `champiNB.bmp`. Chaque {==**pixel**==} de l'image est représenté par deux valeurs : $255$ pour du blanc et $0$ pour du noir - soit un octet plein (`1111 1111`) pour du blanc et un octet vide (`0000 0000`) pour du noir.
 	
-	Le nombre d'octets dans l'image BMP correpond donc à peu près au nombre de pixels de l'image. La différence provient d'un petit nombre d'informations situées dans l'entête du fichier pour préciser le réel format de l'image - ici le format `BMP` ( *BitmaP*, ou *windows BitMap*).
+	Le nombre d'octets dans l'image BMP correpond donc à peu près au nombre de pixels de l'image. La différence provient d'un petit nombre d'informations - les métadonnées - situées dans l'entête du fichier pour préciser le réel format de l'image - ici le format `BMP` ( *BitmaP*, ou *windows BitMap*).
 
 !!! tips "Ecrans monochromes"
-	Au début de l'informatique - des années 1960 aux années 1980, il était très fréquent d'utiliser des écrans **monochromes**. Ces écrans étaient constitués de luminophores - une substance qui emet de la lumière si elle subit une exitation. Ces luminophores donnaient à l'écran, en fonction de leurs caractéristiques, soit une couleur blanche, soit une couleur orange, mais le plus souvent une couleur verte ! D'où les images bien connues du film `Matrix`, ou les couleurs des affichages des ordinateurs de bord dans la première trilogie de `Star Wars`.
+	Au début de l'informatique - des années 1960 aux années 1980, il était très fréquent d'utiliser des écrans **monochromes**. Ces écrans étaient constitués de luminophores - une substance qui émet de la lumière si elle subit une excitation. Ces luminophores donnaient à l'écran, en fonction de leurs caractéristiques, soit une couleur blanche, soit une couleur orange, mais le plus souvent une couleur verte ! D'où les images bien connues du film `Matrix`, ou les couleurs des affichages des ordinateurs de bord dans la première trilogie de `Star Wars`.
 	
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
@@ -170,6 +170,7 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 			</div>
 			</div>
 			
+		9. Modifiez la matrice pour créer vos deux images.
 		9. Combien de valeurs sont nécessaires pour une image de $16 \times 16$ pixels ? de $32 \times 32$ pixels ? de $64 \times 64$ pixels ?
 		
 
@@ -177,7 +178,7 @@ Pour la vision humaine, selon wikipédia, le pouvoir de résolution de l'œil es
 
 Téléchargez et sauvegardez les fichiers [champisGris.txt](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=mJRnpOWGEy2i){: target="_blank"} et [champisGris.bmp](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=cpvc17jWT1Rg){: target = "_blank"}.
 
-Le fichier `champiGris.txt` contient l'extraction des pixels du fichier `champiGris.bmp`. Quelle est la principale différence par rapport au fichier  `champiNB.txt` ?
+Le fichier `champiGris.txt` contient l'extraction des pixels du fichier `champiGris.bmp`. Quelle est la principale différence par rapport au fichier `champiNB.txt` ?
 
 !!! info "Nuances de gris"
 	Contrairement aux écrans monochromes, qui ne pouvaient pour chaque luminophore prendre que deux valeurs (allumés et éteints), les écrans de télévision à tubes cathodiques dits &laquo; en noir et blanc &raquo; étaient en fait capable de prendre toute une nuance de couleur entre le noir et le blanc, ce qu'on appelle des {==**niveaux de gris**==}.
@@ -195,7 +196,7 @@ Le fichier `champiGris.txt` contient l'extraction des pixels du fichier `champiG
 		1. Téléchargez et enregistrez le fichier [vador.jpeg](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=M3OuM7GNgzIm){: target="_blank"} dans votre dossier `SNT/ImagesNumériques`.
 		2. Téléchargez et enregistrez [traitementGris.py](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=IFOmGxePA8fb){: target="_blank"}  puis ouvrez-le dans `Thonny`.
 		3. Exécuter le fichier `traitementGris.py`.
-		4. Commebnt s'appelle la transformation effectuée entre les deux images ?
+		4. Comment s'appelle la transformation effectuée entre les deux images ?
 		
 			!!! tips "La carte des pixels (*Pixel Map*)"
 			
@@ -218,8 +219,16 @@ Le fichier `champiGris.txt` contient l'extraction des pixels du fichier `champiG
 				# On place dans la nouvelle image le symétrique du pixel travaillé
 				pixels[width-1-x,y] = (gs, alpha)
 				````
+				Détaillons le code :
+
+				* `gs, alpha = file.getpixel((x,y))` : on crée deux variables `gs` et `alpha`, qui contiennent les valeurs `gs` et `alpha` du pixel de coordonnées $(x;y)$ de l'image d'origine (`file`). A titre d'information :
+					* `gs` (pour *greyscale*) contient le niveau de gris ;
+					* `alpha` contient le niveau de transparence (canal alpha) du pixel (inutile dans ce TP).
+				* `pixels[width-1-x,y] = (gs, alpha)` : on place dans la nouvelle image `pixels` aux coordonnées symétriques$(width-1-x;y)$ les valeurs `gs` et `alpha` récupérées.
+				
+
  		
-		5. Comment transformer le code pour obhtenir une symétrie d'axe horizontal ?
+		5. Comment transformer le code pour obtenir une symétrie d'axe horizontal ?
 		6. Comment transformer le code pour obtenir une rotation à 180° de l'image originale ?
 		7. Pour obtenir un négatif de l'image originelle, il faut changer la valeur de chaque pixel de la manière suivante :
 		
