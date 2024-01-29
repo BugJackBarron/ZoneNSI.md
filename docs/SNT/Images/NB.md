@@ -9,10 +9,11 @@
 
 	Au temps de la photographie argentique, obtenir une photographie nécessitait l'exposition puis le développement d'une pellicule sur du papier traité spécialement. Il fallait donc du temps, et chaque photo prise devait être développée - et donc coutait une certaine somme - quel que soit le résultat de la photo.
 	
-	Pour mieux comprendre, rien de tel qu'une vidéo de *C'est pas sorcier* :
+	Pour mieux comprendre, rien de tel qu'une série de vidéo de *C'est pas sorcier* :
 	
-	
-	![type:video](https://www.youtube.com/embed/ejYSy3eLXeY)
+	* [Comment fonctionne la photographie argentique ?](https://www.youtube.com/watch?v=f53wbt7rfwA){:  target="_blank"}
+	* [A quoi sert l'obturateur d'un appareil photo ?](https://www.youtube.com/watch?v=aaHrtSMDXdk){:  target="_blank"}
+	* [Comment développe-t'on une photo ?](https://www.youtube.com/watch?v=UgmUemnIlGI&t=12s){:  target="_blank"}
 
 !!! question 
 	
