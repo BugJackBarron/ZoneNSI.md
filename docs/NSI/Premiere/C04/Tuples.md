@@ -9,7 +9,7 @@
  
 !!! example "Exemples"
 	* La liste des mois de l'année est une séquence, chaque mois étant repéré par son indice (le numéro du mois), qui commence à $1$.
-	* Les chaînes de cracatères en Python sont aussi des séquences, chaque caractère étant repéré par son *indice* commençant à $0$.
+	* Les chaînes de caractères en Python sont aussi des séquences, chaque caractère étant repéré par son *indice* commençant à $0$.
 	
  
 
@@ -42,7 +42,7 @@ Le dernier indice est donc $2$, mais la **longueur** de `mon_autre_tuple` est bi
 	Le dernier indice d'un tuple `t` est donc `len(t)-1` !
 
 !!! abstract "Accéder aux éléments d'un tuple"
-	Pour accéder aux élements d'un tuple, on utilise la même notation que pour accéder aux caratères d'une chaines de caractères : la notation **entre crochets**.
+	Pour accéder aux éléments d'un tuple, on utilise la même notation que pour accéder aux caractères d'une chaine de caractères : la notation **entre crochets**.
 
 	=== "Le code"
 		```` python

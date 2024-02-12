@@ -3,7 +3,7 @@
 
 ## Les tableaux
 !!! abstract "Tableaux"
-	En informatique, un tableau est une structure de données représentant une séquence finie d'éléments auxquels on peut accéder efficacement par leur position, ou indice, dans la séquence. C'est un type de conteneur que l'on retrouve dans un grand nombre de langages de programmation. On parle aussi de tableau indexé.
+	En informatique, un {==**tableau**==} est une structure de données représentant une séquence finie d'éléments auxquels on peut accéder efficacement par leur position (ou indice), dans la séquence. C'est un type de conteneur que l'on retrouve dans un grand nombre de langages de programmation. On parle aussi de tableau indexé.
 
 	Dans les langages à **typage statique** (comme C, Java et OCaml), tous les éléments d'un tableau doivent être du même type. Certains langages à **typage dynamique**, tels que Python, permettent des tableaux hétérogènes (donc avec des données de natures différentes).
 
@@ -17,7 +17,9 @@
 		>>> type(mon_tab)
 		<class 'list'>
 		````
-	* un objet de type `list` est {==**mutable**==}, ce qui n'est pas le cas d'un `tuple` :
+	* un objet de type `list` est {==**mutable**==}, ce qui signifie qu'on peut changer sa valeur *après sa création*[^mut], ce qui n'est pas le cas d'un `tuple` :
+
+	[^mut]: [Voir ici](https://bouquinpython.readthedocs.io/fr/latest/mutabilite.html){target="_blank"}
 
 		=== "Code"
 			```` python
@@ -47,6 +49,8 @@
 
 		* l'indice de *la première occurrence* de `elem` si `elem` est présent dans le tableau `monTab` ;
 		* la longueur du tableau si l'élément `elem` n'est pas présent dans le tableau `monTab`.
+
+		Répondre aux questions suivantes :
 		
 		1. Décrire en pseudo-code un algorithme définissant cette fonction.
 		2. Proposer une implémentation de ce pseudo-code en Python.
@@ -56,7 +60,7 @@
 		
 		A venir !
 
-!!! info "Méthode *built-in* `index` en Python"
+??? info "Méthode *built-in* `index` en Python"
 	La fonction précédente est déjà implémentée en Python, avec une différence : elle renvoie une erreur si l'élément cherché n'est pas dans le tableau.
 	
 	```` python
@@ -71,7 +75,7 @@
 	
 ## Spécificité des listes en Python
 
-!!! abstract "Méthodes et pratiques des listes"
+!!! abstract "Méthodes et utilisations des listes"
 
 	1. **Construire une liste vide :**
 	
@@ -159,7 +163,7 @@
 			````
 			
 		3. Écrire une fonction `genereListe(n)` qui renvoie un tableau de $n$ nombres aléatoires compris entre $1$ et $n^2$. ( On pourra importer une fois le module `random` et utiliser la fonction`random.randint(a,b)` qui renvoie un nombre aléatoire entre $a$ et $b$ inclus).
-		4. Ecrire une fonction `insere(monTab, val, i)` qui renvoie une liste dans laquelle est inseré l'élément `val` à l'indice `i` au sein des éléments de `monTab`, en supposant que $i<len(monTab)$.
+		4. Ecrire une fonction `insere(monTab, val, i)` qui renvoie une liste dans laquelle est inseré l'élément `val` à l'indice `i` au sein des éléments de `monTab`, en supposant que `i<len(monTab)`.
 		
 			```` python
 			>>> insere([1, 2, 3, 4],5,2)

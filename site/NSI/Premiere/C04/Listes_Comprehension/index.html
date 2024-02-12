@@ -3880,7 +3880,7 @@
 <h2 id="les-tableaux">Les tableaux</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Tableaux</p>
-<p>En informatique, un tableau est une structure de données représentant une séquence finie d'éléments auxquels on peut accéder efficacement par leur position, ou indice, dans la séquence. C'est un type de conteneur que l'on retrouve dans un grand nombre de langages de programmation. On parle aussi de tableau indexé.</p>
+<p>En informatique, un <mark class="critic"><strong>tableau</strong></mark> est une structure de données représentant une séquence finie d'éléments auxquels on peut accéder efficacement par leur position (ou indice), dans la séquence. C'est un type de conteneur que l'on retrouve dans un grand nombre de langages de programmation. On parle aussi de tableau indexé.</p>
 <p>Dans les langages à <strong>typage statique</strong> (comme C, Java et OCaml), tous les éléments d'un tableau doivent être du même type. Certains langages à <strong>typage dynamique</strong>, tels que Python, permettent des tableaux hétérogènes (donc avec des données de natures différentes).</p>
 </div>
 <div class="admonition abstract">
@@ -3895,7 +3895,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>un objet de type <code>list</code> est <mark class="critic"><strong>mutable</strong></mark>, ce qui n'est pas le cas d'un <code>tuple</code> :</p>
+<p>un objet de type <code>list</code> est <mark class="critic"><strong>mutable</strong></mark>, ce qui signifie qu'on peut changer sa valeur <em>après sa création</em><sup id="fnref:mut"><a class="footnote-ref" href="#fn:mut">1</a></sup>, ce qui n'est pas le cas d'un <code>tuple</code> :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Code</label><label for="__tabbed_1_2">Python Tutor</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3928,15 +3928,14 @@
 <p>On veut construire une fonction <code>chercheElement(elem, monTab)</code> qui renvoie :</p>
 <ul>
 <li>l'indice de <em>la première occurrence</em> de <code>elem</code> si <code>elem</code> est présent dans le tableau <code>monTab</code> ;</li>
-<li>
-<p>la longueur du tableau si l'élément <code>elem</code> n'est pas présent dans le tableau <code>monTab</code>.</p>
-</li>
-<li>
-<p>Décrire en pseudo-code un algorithme définissant cette fonction.</p>
-</li>
+<li>la longueur du tableau si l'élément <code>elem</code> n'est pas présent dans le tableau <code>monTab</code>.</li>
+</ul>
+<p>Répondre aux questions suivantes :</p>
+<ol>
+<li>Décrire en pseudo-code un algorithme définissant cette fonction.</li>
 <li>Proposer une implémentation de ce pseudo-code en Python.</li>
 <li>Quel est le <mark class="critic"><strong>coût en temps</strong></mark> de cet algorithme ? (<em>à faire avec le professeur.</em>)</li>
-</ul>
+</ol>
 </div>
 <div class="tabbed-block">
 <p>A venir !</p>
@@ -3944,8 +3943,8 @@
 </div>
 </div>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Méthode <em>built-in</em> <code>index</code> en Python</p>
+<details class="info">
+<summary>Méthode <em>built-in</em> <code>index</code> en Python</summary>
 <p>La fonction précédente est déjà implémentée en Python, avec une différence : elle renvoie une erreur si l'élément cherché n'est pas dans le tableau.</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">mon_tab</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">mon_tab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
@@ -3955,10 +3954,10 @@
 <span class="n">File</span> <span class="s2">"&lt;pyshell&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">ValueError</span><span class="p">:</span> <span class="mi">36</span> <span class="ow">is</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span>
 </code></pre></div>
-</div>
+</details>
 <h2 id="specificite-des-listes-en-python">Spécificité des listes en Python</h2>
 <div class="admonition abstract">
-<p class="admonition-title">Méthodes et pratiques des listes</p>
+<p class="admonition-title">Méthodes et utilisations des listes</p>
 <ol>
 <li>
 <p><strong>Construire une liste vide :</strong></p>
@@ -4043,7 +4042,7 @@
 <p>Écrire une fonction <code>genereListe(n)</code> qui renvoie un tableau de <span class="arithmatex">\(n\)</span> nombres aléatoires compris entre <span class="arithmatex">\(1\)</span> et <span class="arithmatex">\(n^2\)</span>. ( On pourra importer une fois le module <code>random</code> et utiliser la fonction<code>random.randint(a,b)</code> qui renvoie un nombre aléatoire entre <span class="arithmatex">\(a\)</span> et <span class="arithmatex">\(b\)</span> inclus).</p>
 </li>
 <li>
-<p>Ecrire une fonction <code>insere(monTab, val, i)</code> qui renvoie une liste dans laquelle est inseré l'élément <code>val</code> à l'indice <code>i</code> au sein des éléments de <code>monTab</code>, en supposant que <span class="arithmatex">\(i&lt;len(monTab)\)</span>.</p>
+<p>Ecrire une fonction <code>insere(monTab, val, i)</code> qui renvoie une liste dans laquelle est inseré l'élément <code>val</code> à l'indice <code>i</code> au sein des éléments de <code>monTab</code>, en supposant que <code>i&lt;len(monTab)</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">insere</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </code></pre></div>
@@ -4156,6 +4155,14 @@ Utilisez les compréhensions pour réduire leur taille.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:mut">
+<p><a href="https://bouquinpython.readthedocs.io/fr/latest/mutabilite.html" target="_blank">Voir ici</a> <a class="footnote-backref" href="#fnref:mut" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+</ol>
 </div></div>
 
 
