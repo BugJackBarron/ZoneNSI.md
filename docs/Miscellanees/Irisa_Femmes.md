@@ -28,3 +28,9 @@ INSA => 23,9%
     * 14,7% en NSI
 
 * Marion Créhange => première personne à soutenir une thèse en info en France
+
+## Atelier 1 => Informaticien.ne ou geek
+
+### Stéréotype 1 : C'est quoi l'informatique
+
+

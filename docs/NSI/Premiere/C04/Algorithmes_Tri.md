@@ -164,3 +164,51 @@ L'algorithme de {==**tri à bulles**==} consiste à trier la liste en n'autorisa
 	=== "Solution"
 		A venir ! 
 		
+
+## Algorithme de recherche dichotomique
+
+### Présentation de l'algorithme 
+
+Dans le cas d'une {==**séquence ordonnée triée**==} de valeurs (c'est-à-dire une liste, un tuple, un tableau), un des algorithmes de recherche les plus connus est celui de {==**la recherche dichotomique**==}. On peut le décrire ainsi :
+
+!!! abstract "Recherche dichotomique"
+
+	Si `T` est une liste triée par ordre croissant, et qu'on cherche l'élément `el` :
+
+	1. trouver l'indice de la position la plus centrale du tableau, on note `ct` l'élément à cette position ;
+	2. comparer `el` avec `ct` :
+		* si ils sont égaux, alors retourner l'indice de `ct`;
+		* si `el` est strictement inférieur à `ct`, on recommence l'étape 1 dans le sous-tableau gauche (les valeurs inférieures à `ct`) ;
+		* si `el` est strictement supérieur à `ct`, on recommence l'étape 1 dans le sous-tableau droit (les valeurs supérieures à `ct`)
+	3. si à un moment on cherche dans un sous-tableau vide, c'est que `el` n'est pas dans `T`.
+
+### Exemple débranché
+
+On cherche dans le tableau ci-dessous la valeur `12` :
+
+=== "Etape 0"
+
+	On part d'un tableau trié donné
+
+	![Etape 0](Dichotomie/Etape_00.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 1"
+
+	Entre les indices `0` et `8`, on calcule `ct` qui vaut `4`.
+
+	![Etape 1](Dichotomie/Etape_01.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 2"
+
+	Le nombre cherché `12`, étant inférieur à `15`, on va chercher dans le sous-tableau gauche.
+
+	![Etape 2](Dichotomie/Etape_02.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 3"
+
+	Le sous-tableau commence à l'indice `0` et va jusqu'à l'indice `3`.
+
+	![Etape 3](Dichotomie/Etape_03.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+
+Nous avons vu que le parcours d'un tableau pour trouver une valeur donnée est dans le pire des cas en $\mathscr{0}(n)$ (**complexité linéaire**). 
