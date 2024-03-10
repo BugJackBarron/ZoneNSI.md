@@ -210,5 +210,63 @@ On cherche dans le tableau ci-dessous la valeur `12` :
 
 	![Etape 3](Dichotomie/Etape_03.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
+=== "Etape 4"
 
-Nous avons vu que le parcours d'un tableau pour trouver une valeur donnée est dans le pire des cas en $\mathscr{0}(n)$ (**complexité linéaire**). 
+	Entre les indices `0` et `3`, on calcule `ct` qui vaut `1`.
+
+	![Etape 4](Dichotomie/Etape_04.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 5"
+
+	Le nombre cherché `12`, étant supérieur à `7`, on va chercher dans le sous-tableau droit.
+
+	![Etape 5](Dichotomie/Etape_05.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 6"
+
+	Le sous-tableau commence à l'indice `2` et va jusqu'à l'indice `3`.
+
+	![Etape 6](Dichotomie/Etape_06.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 7"
+
+	Entre les indices `2` et `3`, on calcule `ct` qui vaut `2`. Le nombre cherché `12`, étant supérieur à `9`, on va chercher dans le sous-tableau droit.
+
+	![Etape 8](Dichotomie/Etape_08.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 8"
+
+	Le sous-tableau commence et fini à l'indice ``3``.
+
+	![Etape 8](Dichotomie/Etape_08.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 9"
+
+	Donc `ct` vaut `3`.
+
+	![Etape 9](Dichotomie/Etape_09.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 10"
+
+	On compare `12` avec `12`. Le nombre est trouvé.
+
+	![Etape 10](Dichotomie/Etape_10.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+=== "Etape 11"
+
+	On renvoie `ct`, soit `3`, c'est-à-dire l'indice de `12` dans le tableau.
+
+	![Etape 11](Dichotomie/Etape_11.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+
+
+### Complexité de l'algorithme de dichotomie
+
+
+Nous avons vu que le parcours naïf d'un tableau pour trouver une valeur donnée est dans le pire des cas en $\mathscr{0}(n)$ (**complexité linéaire**). Cela signifie que si le tableau est de taille $n$, il faudra faire un nombre d'opérations proportionnel à $n$ pour déterminer **qu'un nombre n'appartient pas au tableau**.
+
+La recherche dichotomique est-elle meilleure ? {==**Oui**==}, si on prend en compte le critère du {==**nombre de comparaisons effectuées**==}.
+
+Dans notre exemple, le tableau est de taille 9. Avec un algorithme naïf, il aurait nécessité 9 comparaisons pour prouver qu'un nombre **n'appartient pas** au tableau.
+
+Avec l'algorithme de recherche dichotomique, il n'y aurait eu besoin que de 4 comparaisons. En effet, à chaque itération de l'algorithme, on travaille sur un tableau 2 fois plus petit (`9->4->2->1`). Il y a besoin de $4$ comparaisons, car 9 est compris entre $2^3$ et $2^4$.
+
