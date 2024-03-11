@@ -1831,6 +1831,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#algorithme-de-recherche-dichotomique" class="md-nav__link">
+    Algorithme de recherche dichotomique
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithme de recherche dichotomique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#presentation-de-lalgorithme" class="md-nav__link">
+    Présentation de l'algorithme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-debranche" class="md-nav__link">
+    Exemple débranché
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexite-de-lalgorithme-de-dichotomie" class="md-nav__link">
+    Complexité de l'algorithme de dichotomie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#un-exemple-dimplementation-en-python" class="md-nav__link">
+    Un exemple d'implémentation en Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4103,7 +4144,158 @@
 </div>
 </div>
 </div>
-</div></div>
+</div>
+<h2 id="algorithme-de-recherche-dichotomique">Algorithme de recherche dichotomique</h2>
+<h3 id="presentation-de-lalgorithme">Présentation de l'algorithme</h3>
+<p>Dans le cas d'une <mark class="critic"><strong>séquence ordonnée triée</strong></mark> de valeurs (c'est-à-dire une liste, un tuple, un tableau), un des algorithmes de recherche les plus connus est celui de <mark class="critic"><strong>la recherche dichotomique</strong></mark>. On peut le décrire ainsi :</p>
+<div class="admonition abstract">
+<p class="admonition-title">Recherche dichotomique</p>
+<p>Si <code>T</code> est une liste triée par ordre croissant, et qu'on cherche l'élément <code>el</code> :</p>
+<ol>
+<li>trouver l'indice de la position la plus centrale du tableau, on note <code>ct</code> l'élément à cette position ;</li>
+<li>comparer <code>el</code> avec <code>ct</code> :<ul>
+<li>si ils sont égaux, alors retourner l'indice de <code>ct</code>;</li>
+<li>si <code>el</code> est strictement inférieur à <code>ct</code>, on recommence l'étape 1 dans le sous-tableau gauche (les valeurs inférieures à <code>ct</code>) ;</li>
+<li>si <code>el</code> est strictement supérieur à <code>ct</code>, on recommence l'étape 1 dans le sous-tableau droit (les valeurs supérieures à <code>ct</code>)</li>
+</ul>
+</li>
+<li>si à un moment on cherche dans un sous-tableau vide, c'est que <code>el</code> n'est pas dans <code>T</code>.</li>
+</ol>
+</div>
+<h3 id="exemple-debranche">Exemple débranché</h3>
+<p>On cherche dans le tableau ci-dessous la valeur <code>12</code> :</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:12"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><input id="__tabbed_8_3" name="__tabbed_8" type="radio"><input id="__tabbed_8_4" name="__tabbed_8" type="radio"><input id="__tabbed_8_5" name="__tabbed_8" type="radio"><input id="__tabbed_8_6" name="__tabbed_8" type="radio"><input id="__tabbed_8_7" name="__tabbed_8" type="radio"><input id="__tabbed_8_8" name="__tabbed_8" type="radio"><input id="__tabbed_8_9" name="__tabbed_8" type="radio"><input id="__tabbed_8_10" name="__tabbed_8" type="radio"><input id="__tabbed_8_11" name="__tabbed_8" type="radio"><input id="__tabbed_8_12" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Etape 0</label><label for="__tabbed_8_2">Etape 1</label><label for="__tabbed_8_3">Etape 2</label><label for="__tabbed_8_4">Etape 3</label><label for="__tabbed_8_5">Etape 4</label><label for="__tabbed_8_6">Etape 5</label><label for="__tabbed_8_7">Etape 6</label><label for="__tabbed_8_8">Etape 7</label><label for="__tabbed_8_9">Etape 8</label><label for="__tabbed_8_10">Etape 9</label><label for="__tabbed_8_11">Etape 10</label><label for="__tabbed_8_12">Etape 11</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>On part d'un tableau trié donné</p>
+<p><img alt="Etape 0" src="../Dichotomie/Etape_00.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Entre les indices <code>0</code> et <code>8</code>, on calcule <code>ct</code> qui vaut <code>4</code>.</p>
+<p><img alt="Etape 1" src="../Dichotomie/Etape_01.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Le nombre cherché <code>12</code>, étant inférieur à <code>15</code>, on va chercher dans le sous-tableau gauche.</p>
+<p><img alt="Etape 2" src="../Dichotomie/Etape_02.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Le sous-tableau commence à l'indice <code>0</code> et va jusqu'à l'indice <code>3</code>.</p>
+<p><img alt="Etape 3" src="../Dichotomie/Etape_03.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Entre les indices <code>0</code> et <code>3</code>, on calcule <code>ct</code> qui vaut <code>1</code>.</p>
+<p><img alt="Etape 4" src="../Dichotomie/Etape_04.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Le nombre cherché <code>12</code>, étant supérieur à <code>7</code>, on va chercher dans le sous-tableau droit.</p>
+<p><img alt="Etape 5" src="../Dichotomie/Etape_05.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Le sous-tableau commence à l'indice <code>2</code> et va jusqu'à l'indice <code>3</code>.</p>
+<p><img alt="Etape 6" src="../Dichotomie/Etape_06.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Entre les indices <code>2</code> et <code>3</code>, on calcule <code>ct</code> qui vaut <code>2</code>. Le nombre cherché <code>12</code>, étant supérieur à <code>9</code>, on va chercher dans le sous-tableau droit.</p>
+<p><img alt="Etape 8" src="../Dichotomie/Etape_08.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Le sous-tableau commence et fini à l'indice <code>3</code>.</p>
+<p><img alt="Etape 8" src="../Dichotomie/Etape_08.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>Donc <code>ct</code> vaut <code>3</code>.</p>
+<p><img alt="Etape 9" src="../Dichotomie/Etape_09.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>On compare <code>12</code> avec <code>12</code>. Le nombre est trouvé.</p>
+<p><img alt="Etape 10" src="../Dichotomie/Etape_10.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+<div class="tabbed-block">
+<p>On renvoie <code>ct</code>, soit <code>3</code>, c'est-à-dire l'indice de <code>12</code> dans le tableau.</p>
+<p><img alt="Etape 11" src="../Dichotomie/Etape_11.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
+</div>
+</div>
+</div>
+<h3 id="complexite-de-lalgorithme-de-dichotomie">Complexité de l'algorithme de dichotomie</h3>
+<p>Nous avons vu que le parcours naïf d'un tableau pour trouver une valeur donnée est dans le pire des cas en <span class="arithmatex">\(\mathscr{0}(n)\)</span> (<strong>complexité linéaire</strong>). Cela signifie que si le tableau est de taille <span class="arithmatex">\(n\)</span>, il faudra faire un nombre d'opérations proportionnel à <span class="arithmatex">\(n\)</span> pour déterminer <strong>qu'un nombre n'appartient pas au tableau</strong>.</p>
+<p>La recherche dichotomique est-elle meilleure ? <mark class="critic"><strong>Oui</strong></mark>, si on prend en compte le critère du <mark class="critic"><strong>nombre de comparaisons effectuées</strong></mark>.</p>
+<p>Dans notre exemple, le tableau est de taille <span class="arithmatex">\(9\)</span>. Avec un algorithme naïf, il faut <span class="arithmatex">\(9\)</span> comparaisons pour prouver qu'un nombre <strong>n'appartient pas</strong> au tableau.</p>
+<p>Avec l'algorithme de recherche dichotomique, à chaque itération de l'algorithme, on travaille sur un tableau 2 fois plus petit que le précédent, ici <code>9-&gt;4-&gt;2-&gt;1</code>, et on compare une fois par sous-tableau étudié. Il n'y a donc besoin que de <span class="arithmatex">\(4\)</span> comparaisons. On remarque que 9 est compris entre <span class="arithmatex">\(2^3\)</span> et <span class="arithmatex">\(2^4\)</span>.</p>
+<p>Sur un tableau plus grand, de taille <span class="arithmatex">\(100\)</span>, l'algorithme naïf nécessite <span class="arithmatex">\(100\)</span> comparaisons. Avec l'algorithme de recherche dichotomique,on utilisera des tableaux de tailles <code>100 -&gt; 50 -&gt; 25 -&gt; 12 -&gt; 6 -&gt; 3 -&gt; 1</code>, soit <span class="arithmatex">\(7\)</span> comparaisons. On remarque que <span class="arithmatex">\(2^6 \leqslant 100 &lt;2^7\)</span>.</p>
+<div class="admonition exercice">
+<p class="admonition-title">Fonction</p>
+<p>Compléter le code suivant, en respectant les tests demandés :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">nb_comparaisons</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">""" renvoie le nombre de comparaisons nécessaires lors de l'exécution</span>
+<span class="sd">    de l'algorithme de recherche dichotomique sur un tableau trié de taille n,</span>
+<span class="sd">    avec n entier naturel non nul.</span>
+<span class="sd">    &gt;&gt;&gt; nb_comparaisons(9)</span>
+<span class="sd">    4</span>
+<span class="sd">    &gt;&gt;&gt; nb_comparaisons(100)</span>
+<span class="sd">    7</span>
+<span class="sd">    &gt;&gt;&gt; nb_comparaisons(1)</span>
+<span class="sd">    1</span>
+<span class="sd">    """</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="s2">"n doit être entier"</span>
+    <span class="k">assert</span> <span class="o">...</span><span class="p">,</span> <span class="o">...</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="mi">2</span><span class="o">**...</span> <span class="o">&lt;=</span> <span class="o">...</span> <span class="p">:</span>
+        <span class="n">nb</span> <span class="o">+=</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="n">nb</span>
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Fonction <span class="arithmatex">\(\log_2\)</span></p>
+<p>La fonction <strong>logarithme binaire</strong> est la fonction définie de <span class="arithmatex">\(\mathbb{R}^+\)</span> vers <span class="arithmatex">\(\mathbb{R}\)</span> par <span class="arithmatex">\(\log_2 : x \mapsto y\)</span>, avec <span class="arithmatex">\(y\)</span> tel que <span class="arithmatex">\(2^y = x\)</span>.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Complexité en temps de l'algorithme de recherche dichotomique</p>
+<p>L'algorithme de recherche dichotomique est en complexité en <span class="arithmatex">\(\mathscr{O}(\log_2(n))\)</span>, c'est-à-dire en complexité logarithmique, donc beaucoup plus efficace que l'algorithme naïf.</p>
+<p>Voici un tableau récapitulant le nombre d'opérations de comparaisons effectuées dans les deux algorithmes :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Taille du tableau</th>
+<th style="text-align: center;">Algorithme naïf</th>
+<th style="text-align: center;">Algorithme dichotomie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1~000\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1~000~000\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1~000~000~000\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="un-exemple-dimplementation-en-python">Un exemple d'implémentation en Python</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">recherche_dichotomique</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">tab</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">""" fontion renvoyant l'indice de l'élément x dans le tableau tab si celui-ci est présent</span>
+<span class="sd">    et -1 dans le cas où x n'est pas présent"""</span>
+    <span class="n">deb</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="k">while</span> <span class="n">deb</span> <span class="o">&lt;=</span> <span class="n">fin</span> <span class="p">:</span>
+        <span class="n">ct</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">tab</span><span class="p">[</span><span class="n">ct</span><span class="p">]</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="o">...</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">ct</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">fin</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="o">...</span>
+    <span class="k">return</span> <span class="o">...</span>
+</code></pre></div>
+<p>Le programme présenté ci-dessus n'est cependant pas optimisé, car il effectue en réalité deux comparaisons par tour de boucle. Pour voir un article plus complet sur la recherche dichotomique, notamment les preuves de correction et de terminaison de l'algorithme, voir <a href="https://professeurb.github.io/articles/dichoto/" target="_blank">ici</a>.</p></div>
 
 
 

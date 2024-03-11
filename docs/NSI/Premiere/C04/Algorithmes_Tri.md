@@ -266,7 +266,71 @@ Nous avons vu que le parcours naïf d'un tableau pour trouver une valeur donnée
 
 La recherche dichotomique est-elle meilleure ? {==**Oui**==}, si on prend en compte le critère du {==**nombre de comparaisons effectuées**==}.
 
-Dans notre exemple, le tableau est de taille 9. Avec un algorithme naïf, il aurait nécessité 9 comparaisons pour prouver qu'un nombre **n'appartient pas** au tableau.
+Dans notre exemple, le tableau est de taille $9$. Avec un algorithme naïf, il faut $9$ comparaisons pour prouver qu'un nombre **n'appartient pas** au tableau.
 
-Avec l'algorithme de recherche dichotomique, il n'y aurait eu besoin que de 4 comparaisons. En effet, à chaque itération de l'algorithme, on travaille sur un tableau 2 fois plus petit (`9->4->2->1`). Il y a besoin de $4$ comparaisons, car 9 est compris entre $2^3$ et $2^4$.
+Avec l'algorithme de recherche dichotomique, à chaque itération de l'algorithme, on travaille sur un tableau 2 fois plus petit que le précédent, ici `9->4->2->1`, et on compare une fois par sous-tableau étudié. Il n'y a donc besoin que de $4$ comparaisons. On remarque que 9 est compris entre $2^3$ et $2^4$.
 
+Sur un tableau plus grand, de taille $100$, l'algorithme naïf nécessite $100$ comparaisons. Avec l'algorithme de recherche dichotomique,on utilisera des tableaux de tailles `100 -> 50 -> 25 -> 12 -> 6 -> 3 -> 1`, soit $7$ comparaisons. On remarque que $2^6 \leqslant 100 <2^7$.
+
+!!! exercice "Fonction"
+
+	Compléter le code suivant, en respectant les tests demandés :
+
+	``` python
+
+	def nb_comparaisons(n : int) -> int :
+		""" renvoie le nombre de comparaisons nécessaires lors de l'exécution
+		de l'algorithme de recherche dichotomique sur un tableau trié de taille n,
+		avec n entier naturel non nul.
+		>>> nb_comparaisons(9)
+		4
+		>>> nb_comparaisons(100)
+		7
+		>>> nb_comparaisons(1)
+		1
+		"""
+		assert isinstance( n, int), "n doit être entier"
+		assert ..., ...
+		nb = 0
+		while 2**... <= ... :
+			nb += ...
+		return nb
+
+	```
+
+!!! info "Fonction $\log_2$"
+
+	La fonction **logarithme binaire** est la fonction définie de $\mathbb{R}^+$ vers $\mathbb{R}$ par $\log_2 : x \mapsto y$, avec $y$ tel que $2^y = x$.
+
+!!! abstract "Complexité en temps de l'algorithme de recherche dichotomique"
+
+	L'algorithme de recherche dichotomique est en complexité en $\mathscr{O}(\log_2(n))$, c'est-à-dire en complexité logarithmique, donc beaucoup plus efficace que l'algorithme naïf.
+
+	Voici un tableau récapitulant le nombre d'opérations de comparaisons effectuées dans les deux algorithmes :
+
+	| Taille du tableau| Algorithme naïf | Algorithme dichotomie |
+	| :---: | :---: | :---: |
+	| $1~000$ | | |
+	| $1~000~000$ | | |
+	| $1~000~000~000$ | | |
+
+### Un exemple d'implémentation en Python
+
+``` python
+def recherche_dichotomique(x : int, tab : list) -> int :
+	""" fontion renvoyant l'indice de l'élément x dans le tableau tab si celui-ci est présent
+	et -1 dans le cas où x n'est pas présent"""
+	deb = 0
+	fin = ...
+	while deb <= fin :
+		ct = ...
+		if x == tab[ct] :
+			return ...
+		elif x < tab[ct] :
+			fin = ...
+		else :
+			...
+	return ...
+```
+
+Le programme présenté ci-dessus n'est cependant pas optimisé, car il effectue en réalité deux comparaisons par tour de boucle. Pour voir un article plus complet sur la recherche dichotomique, notamment les preuves de correction et de terminaison de l'algorithme, voir [ici](https://professeurb.github.io/articles/dichoto/){: target="_blank"}.
