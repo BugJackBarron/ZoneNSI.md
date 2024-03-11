@@ -11,6 +11,8 @@ def hauteur(t) :
         return 0
     else :
         return 1 + max(hauteur(t.gauche), hauteur(t.droit))
+    
+
 
 class ABR :
     def __init__ (self, racine = None) :
@@ -250,7 +252,12 @@ class Node :
         hauteur_gauche = hauteur(self.gauche)
         hauteur_droit = hauteur(self.droit)
         return 1 + max(hauteur_gauche, hauteur_droit)
-        
+
+def from_list(liste : list) -> ABR :
+    abr = ABR()
+    while liste != [] :
+        abr.insert(liste.pop())
+    return abr
     
 if __name__ == "__main__" :
     n1 = Node(1)
@@ -271,7 +278,7 @@ if __name__ == "__main__" :
     n2.droit = n8
     n8.parent = n2
     
-    print(tree)
+    
     
     tree = ABR()
 #     for elem in suffle
