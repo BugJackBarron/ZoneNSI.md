@@ -57,7 +57,7 @@ Le principe du {==**tri par insertion**==} est le suivant :
 	
 !!! info "Quelques remarques"
 
-	* Le tri par insertion est un {==**tri en place**==}, car il trie un tableau sans avoir besoin de tableau auxilliaire.
+	* Le tri par insertion est un {==**tri en place**==}, car il trie un tableau sans avoir besoin de tableau auxiliaire.
 	* La complexité du tri par insertion est {==**quadratique**==}, c'est-à-dire en $\mathscr{O}(n^2)$ dans le pire des cas, quand le tableau est à l'envers. C'est aussi le cas moyen - ce qui n'est pas très bon en terme de complexité en temps.
 	* Cependant, pour un tableau trié ou presque trié, la complexité tombe en $\mathscr{O}(n)$, ce qui est une complexité linéaire, très efficace.
 
@@ -65,12 +65,12 @@ Le principe du {==**tri par insertion**==} est le suivant :
 
 	=== "Exercice"
 	
-		Construire une *procédure* (c'est-à-dire une fonction sans valeur de retour) Python `triInsertion(tab)` qui trie le tableau `tab` par un tri par insertion.
+		Construire une *procédure* (c'est-à-dire une fonction sans valeur de retour) Python `tri_insertion(tab)` qui trie le tableau `tab` par un tri par insertion.
 		
 	=== "Solution"
 		```` python
-		def triInsertion(tab): 
-			# Parcour de 1 à la taille du tab
+		def tri_insertion(tab): 
+			# Parcours de 1 à la taille du tab
 			for i in range(1, len(tab)): 
 				k = tab[i] 
 				j = i-1
@@ -87,7 +87,7 @@ Le principe du {==**tri par sélection**==} est le suivant :
 
 * On cherche le plus petit élément du tableau, et on échange sa place avec l'élément d'indice 0.
 * On recherche ensuite le plus petit élément dans le sous-tableau commençant à l'indice 1, et on échange sa place avec l'élément d'indice 1.
-* On recommence ainsi en allant jusqu'à l'avant dernier élément.
+* On recommence ainsi en allant jusqu'à l'avant-dernier élément.
 
 !!! example "Exemple"
 
@@ -109,8 +109,8 @@ Le principe du {==**tri par sélection**==} est le suivant :
 	
 !!! info "Quelques remarques"
 
-	* Le tri par sélection est un {==**tri en place**==}, car il trie un tableau sans avoir besoin de tableau auxilliaire.
-	* La complexité du tri par sélection est {==**quadratique**==}, c'est-à-dire en $\mathscr{O}(n^2)$ ddans tous les cas, puisqu'il faut parcourir chques sous-tableau afin de trouver son minimum, et ce pour chaque élément du tableau.
+	* Le tri par sélection est un {==**tri en place**==}, car il trie un tableau sans avoir besoin de tableau auxiliaire.
+	* La complexité du tri par sélection est {==**quadratique**==}, c'est-à-dire en $\mathscr{O}(n^2)$ dans tous les cas, puisqu'il faut parcourir chaque sous-tableau afin de trouver son minimum, et ce pour chaque élément du tableau.
 
 !!! question "Application : Python"
 
