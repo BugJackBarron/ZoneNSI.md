@@ -4021,7 +4021,7 @@
 <div class="admonition info">
 <p class="admonition-title">Quelques remarques</p>
 <ul>
-<li>Le tri par insertion est un <mark class="critic"><strong>tri en place</strong></mark>, car il trie un tableau sans avoir besoin de tableau auxilliaire.</li>
+<li>Le tri par insertion est un <mark class="critic"><strong>tri en place</strong></mark>, car il trie un tableau sans avoir besoin de tableau auxiliaire.</li>
 <li>La complexité du tri par insertion est <mark class="critic"><strong>quadratique</strong></mark>, c'est-à-dire en <span class="arithmatex">\(\mathscr{O}(n^2)\)</span> dans le pire des cas, quand le tableau est à l'envers. C'est aussi le cas moyen - ce qui n'est pas très bon en terme de complexité en temps.</li>
 <li>Cependant, pour un tableau trié ou presque trié, la complexité tombe en <span class="arithmatex">\(\mathscr{O}(n)\)</span>, ce qui est une complexité linéaire, très efficace.</li>
 </ul>
@@ -4031,11 +4031,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Exercice</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Construire une <em>procédure</em> (c'est-à-dire une fonction sans valeur de retour) Python <code>triInsertion(tab)</code> qui trie le tableau <code>tab</code> par un tri par insertion.</p>
+<p>Construire une <em>procédure</em> (c'est-à-dire une fonction sans valeur de retour) Python <code>tri_insertion(tab)</code> qui trie le tableau <code>tab</code> par un tri par insertion.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">triInsertion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span> 
-    <span class="c1"># Parcour de 1 à la taille du tab</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span> 
+    <span class="c1"># Parcours de 1 à la taille du tab</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span> 
         <span class="n">k</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
         <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
@@ -4054,7 +4054,7 @@
 <ul>
 <li>On cherche le plus petit élément du tableau, et on échange sa place avec l'élément d'indice 0.</li>
 <li>On recherche ensuite le plus petit élément dans le sous-tableau commençant à l'indice 1, et on échange sa place avec l'élément d'indice 1.</li>
-<li>On recommence ainsi en allant jusqu'à l'avant dernier élément.</li>
+<li>On recommence ainsi en allant jusqu'à l'avant-dernier élément.</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -4078,8 +4078,8 @@
 <div class="admonition info">
 <p class="admonition-title">Quelques remarques</p>
 <ul>
-<li>Le tri par sélection est un <mark class="critic"><strong>tri en place</strong></mark>, car il trie un tableau sans avoir besoin de tableau auxilliaire.</li>
-<li>La complexité du tri par sélection est <mark class="critic"><strong>quadratique</strong></mark>, c'est-à-dire en <span class="arithmatex">\(\mathscr{O}(n^2)\)</span> ddans tous les cas, puisqu'il faut parcourir chques sous-tableau afin de trouver son minimum, et ce pour chaque élément du tableau.</li>
+<li>Le tri par sélection est un <mark class="critic"><strong>tri en place</strong></mark>, car il trie un tableau sans avoir besoin de tableau auxiliaire.</li>
+<li>La complexité du tri par sélection est <mark class="critic"><strong>quadratique</strong></mark>, c'est-à-dire en <span class="arithmatex">\(\mathscr{O}(n^2)\)</span> dans tous les cas, puisqu'il faut parcourir chaque sous-tableau afin de trouver son minimum, et ce pour chaque élément du tableau.</li>
 </ul>
 </div>
 <div class="admonition question">
