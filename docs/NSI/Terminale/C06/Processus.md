@@ -12,13 +12,13 @@
 
 	
 	
-L'objectif de cette partie est de comprendre comment une machine peut exécuter plusieurs tâcches de manière simultanées : si l'on prend l'exemple du smartphone,  alors que nous regardons une vidéo, il va suivre les antennes relais et se synchroniser avec, écouter s'il y a un appel téléphonique ou des SMS qui arrive, vérifier les nouveaux courriers électroniques, mettre à jour les notifications des différents réseaux sociaux,etc.
+L'objectif de cette partie est de comprendre comment une machine peut exécuter plusieurs tâches de manière simultanées : si l'on prend l'exemple du smartphone, alors que nous regardons une vidéo, il va suivre les antennes relais et se synchroniser avec, écouter s'il y a un appel téléphonique ou des SMS qui arrive, vérifier les nouveaux courriers électroniques, mettre à jour les notifications des différents réseaux sociaux, etc.
 
 Pour comprendre, il nous faudra nous poser les questions suivantes :
 
 1. Comment sont donc exécutés les programmes par le système d'exploitation ?
 2. Comment plusieurs programmes peuvent-ils être exécutés simultanément ?
-3. Quels sont les risques et preoblèmes soulevés par ces exécutions simultanées ?
+3. Quels sont les risques et problèmes soulevés par ces exécutions simultanées ?
 
 
 ## Du programme au processus
@@ -27,33 +27,24 @@ Pour comprendre, il nous faudra nous poser les questions suivantes :
 	Un {==**processus**==} est un programme en cours d'exécution sur un ordinateur. Il est caractérisé par
 
     * un **ensemble d'instructions** à exécuter - souvent stockées dans un fichier sur lequel on clique pour lancer un programme (par exemple `firefox.exe`)
-    * un **espace mémoire** dédié à ce processus pour lui permettre de travailler sur des **données** qui lui sont propres : si vous lancez deux instances de firefox, chacune travaillera indépendament de l'autre avec ses propres données.
+    * un **espace mémoire** dédié à ce processus pour lui permettre de travailler sur des **données** qui lui sont propres : si vous lancez deux instances de Firefox, chacune travaillera indépendamment de l'autre avec ses propres données.
     * des **ressources matérielles** : processeur, entrées-sorties (accès à internet en utilisant la connexion Wifi).
 
-	Il ne faut donc pas confondre le fichier contenant un **programme** (portent souvent l'extension `.exe` sous windows) et le ou les processus qu'ils engendrent quand ils sont exécutés : un programme est juste un fichier contenant une suite d'instructions (`firefox.exe` par exemple) alors que les processus sont des instances de ce programme ainsi que les ressources nécessaires à leur exécution (plusieurs fenêtres de firefox ouvertes en même temps).
+	Il ne faut donc pas confondre le fichier contenant un **programme** (portent souvent l'extension `.exe` sous windows) et le ou les processus qu'ils engendrent quand ils sont exécutés : un programme est juste un fichier contenant une suite d'instructions (`firefox.exe` par exemple) alors que les processus sont des instances de ce programme ainsi que les ressources nécessaires à leur exécution (plusieurs fenêtres de Firefox ouvertes en même temps).
 	
 Il est possible de visualiser et gérer les processus actifs d'une machine par l'intermédiaire d'un **gestionnaire de processus**, qui est un programme spécifique au système d'exploitation :
 
 * sur windows, en utilisant ++ctrl+alt+delete++, mais pas au Lycée... La gestion des processus étant critique, seuls les administrateurs de la machine peuvent y accéder...
 * sur linux simplement par l'utilisation d'un *terminal* (la ligne de commande)
 
-??? warning "En cas de problème avec les Raspberry Pi, ou pour vous entrainer chez vous"
-
-	*JupyterHub* est un serveur de Notebook que j'avais installé il y a fort longtemps, avant l'appartition de *Capytale*. Il est obsolète pour l'utilisation des notebooks, mais nous pouvons toujours en avoir une utilité : un terminal **Linux** est toujours disponible !
-	
-	1. Connectez vous sur [jupyterHub](https://zonensi.fr:8443){: target="_blank"} (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, vous le choisissez à la pemière connexion)
-	2. Ouvrir un terminal :
-	
-		![P2_img1.png](P2_img1.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
-		
 
 !!! question "Manipulations"
-	1. Sous linux, les programmes sont par convention situées dans les dossiers `bin` (pour binaries en anglais):
+	1. Sous linux, les programmes sont par convention situés dans les dossiers `bin` (pour *binaries* en anglais):
 		* `/bin/`: commandes de base nécessaires au démarrage et à l'utilisation d'un système minimaliste.
 		* `/sbin/`: Exécutables pour les administrateurs (abréviation de *system binaries*, soit binaires système en français).
 		* `/usr/bin/`: Binaires exécutables qui ne sont pas déjà présents dans `/bin` et donc pas indispensables à un système minimaliste.
 		
-		Utiliser la commande `ls` pour **lister les programmes** présents dans `/bin/`.
+		Utiliser la commande `ls` pour **lister les programmes** présents dans `/usr/bin/`.
 	2. Utilisez la commande `cat /bin/ls` pour afficher le contenu du programme `ls`. On constate que le fichier est un fichier  compilé (utilisez ++ctrl+c++ pour revenir au *prompt*).
 	3. Pour lancer un programme, il suffit d'écrire son **nom** (sans préciser le chemin si le dossier a été ajouté aux variables d'environnement). Par exemple vous pouvez lancer un interpréteur python par la commande `python3` (tapez `exit()` pour sortir de l'interpréteur). 
 	4. Vous pouvez visualiser les {==**processus en exécution**==} par l'intermédiaire de la commande `ps` :
@@ -81,7 +72,21 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
     * le processus qui est ainsi créé par clonage est le processus fils ;
     * après le clonage, un processus peut remplacer son programme par un autre programme grâce à l'appel système exec().
 	
-	Lorsqu'un processus engendre un fils, l'OS génère un nouveau PID pour le fils, et le fils connait aussi le numéro de son père : le {==**PPID**==} (*Parent Process Identifier)
+	Lorsqu'un processus engendre un fils, l'OS génère un nouveau PID pour le fils, et le fils connait aussi le numéro de son père : le {==**PPID**==} (*Parent Process Identifier*)
+
+!!! example "Lecture d'une commande `ps -ef`"
+	Voici une capture d'écran du début d'une commande `ps -ef` :
+
+	![ps_ef_1.png](ps_ef_1.png){: style="width:70%; margin:auto;display:block;background-color: #d2dce0;"}
+
+	Les différentes colonnes affichées sont :
+
+	* `UID` : l'identifiant du propriétaire du processus ;
+	* `PID` : tel que défini ci-dessus ;
+	* `PPID` : le `PID` du parent ;
+	* `STIME` : l'heure de démarrage du processus ;
+	* `TIME` : le temps d'exécution du processus ;
+	* `CMD` : le programme exécuté par le processus.
 	
 	
 !!! info "Le premier processus ?"
@@ -94,27 +99,24 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 	
 	L'instruction `pstree` permet de visualiser l'arbre de processus :
 	
-	![P2_img2.png](P2_img2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
+	![pstree.png](pstree.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 !!! question "Chercher les PID"
 
 	=== "Enoncé"
 	
-		A l'aide de la commande `ps -ef | more`, chercher les PID et PPID des processus :
+		1. A l'aide de la commande `ps -ef | more`, chercher les `PID` et `PPID` des processus :
+			1. `systemd`
+			2. `cron`
+		2. Ouvrez un deuxième terminal Linux puis :
+			1. Dans le 1er, ouvrez l'interpréteur Python grâce à la commande `python3` 
+			2. Dans le 2ème, cherchez le `PID` et le `PPID` des processus `python3`
 		
-		1. `systemd`
-		2. `apache2`
-		3. `cron`
-		4. `python3` (situé dans le dossier `/opt/`)
-		5. Commencez par exécuter Thonny, puis cherchez le PID et PPID du processus qui lui correspond.
-		
-	=== "Réponses"
-		A venir !
 		
 !!! tips "Commande `top`"
 
 	Une des commandes les plus utiles sous Linux est la commande `top`. Cette commandes affiche les processus actifs **en temps réel**.
-	L'application est plus riche qu'il n'y paraît. Il faut passer un peu de temps à explorer toutes les options. Celles-ci s'activent par des raccourcis clavier. En voici quelques uns :
+	L'application est plus riche qu'il n'y parait. Il faut passer un peu de temps à explorer toutes les options. Celles-ci s'activent par des raccourcis clavier. En voici quelques uns :
 
     * ++h++ : affiche l'aide
     * ++m++ : trie la liste par ordre décroissant d'occupation mémoire. Pratique pour repérer les processus trop gourmands
@@ -125,7 +127,9 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
     * ++q++ : permet de quitter top
 	
 
-## Etats d'un processus
+
+
+## États d'un processus
 
 Un processus n'a pas seulement besoin d'accéder au processeur, mais il a souvent besoin d'accéder à des ressources autres comme :
 
@@ -170,8 +174,8 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 	
 !!! question 
 
-	1. Dans JupyterHub, ouvrir un des notebooks de première.
-	2. Repérer le `PID` correspondant à cette instance de notebook ( processus de type `ipython`)
+	1. Lancez l'interpréteur python3 dans un terminal.
+	2. Depuis un autre terminal, repérer le `PID` correspondant à cette instance de python3 ( processus de type `ipython`)
 	3. Terminer le processus.
 	
 
@@ -186,7 +190,7 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 
 	Nous allons créer un processus à partir de Python. Pour cela :
 	
-	1. Dans Thonny, créer un fichier texte vide, puis y insérer le code suivant :
+	1. Téléchargez dans un terminal le fichier [long_time.py](longtime.py){:target="_blank"}, contenant les lignes suivantes :
 	
 		```` python
 		import time
@@ -197,54 +201,56 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 			time.sleep(0.01)
 		print("terminé")
 		````
-	2. Sauvegardez ce fichier sous le nom `test_{votrenom}.py`, puis si nécessaire importez-le dans `JupyterHub`.
-	3. Ouvrez **DEUX** terminaux .
-	4. Dans le premier, utilisez la commande `python3 test.py`. 
-	5. Dans le second, lancez la commande `ps -aux`, et cherchez le processus correspondant à l'exécution du script `test_{votrenom}.py`.
-	6. Tuez le processus avec la commande `kill`, et observez ce qui se passe dans les deux terminaux.
-	7. Recommencez la procédure à partir de 4 en tuant le processus avec la commande `kill -9`, et observez les deux terminaux.
+	2. Ouvrez un deuxième terminal .
+	3. Dans le premier, utilisez la commande `python3 long_time.py`. 
+	4. Dans le second, lancez la commande `ps `, et cherchez le processus correspondant à l'exécution du script `long_time.py`.
+	5. Tuez le processus avec la commande `kill`, et observez ce qui se passe dans les deux terminaux.
+	6. Recommencez la procédure à partir de 4 en tuant le processus avec la commande `kill -9`, et observez les deux terminaux.
 		
 		
 !!! question "Utilisation de `fork()`"
 
-	1. Dans Thonny, créez un fichier nommé `testFork_{votrenom}.py` dans lequel vous copierez les lignes suivantes :
+	1. Téléchargez le fichier [`testFork.py`](test_fork.py){:target='_blank'}, dans votre dossier personnel sous Ubuntu, à l'aide de la commande `wget` suivie du lien du fichier.
+
+		Ce fichier contient les lignes suivantes :
 	
 		```` python
 		# Python program to explain os.fork() method 
-  
+
 		# importing os module 
 		import os, time
-		  
-		  
+
+
 		# Create a child process
 		# using os.fork() method 
 		pid = os.fork()
-		  
+
 		# pid greater than 0 represents
 		# the parent process 
 		if pid > 0 :
 			print("I am parent process:")
 			print("Process ID:", os.getpid())
 			print("Child's process ID:", pid)
-		  
+
 		# pid equal to 0 represents
 		# the created child process
 		else :
 			print("\nI am child process:")
 			print("Process ID:", os.getpid())
 			print("Parent's process ID:", os.getppid())
-			
+
 		a = 0
 		for i in range(10000):
 			a += a**3
 			time.sleep(0.001)
-		print("Finished")
-			 
-		  
-		  
+		print(f"Finished {os.getpid()}")
+
+
+
 		# If any error occurred while
 		# using os.fork() method
 		# OSError will be raised
+
 		````
 	2. Exécutez ce fichier par la commande `python3 testFork.py`. Observez dans ce terminal l'effet du script.
 	3. Dans un autre terminal, avec la commande `ps -ef`, observez les processus créés, ainsi que leurs `PID` et `PPID`.
@@ -254,7 +260,4 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 !!! tips "Processus Zombies"
 
 	Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de {==**processus zombies**==}. Ceux-ci occupent une partie de la mémoire, tout en étant devenus inutiles...
-	
-
-
 

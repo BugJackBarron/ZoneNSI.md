@@ -3363,6 +3363,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C12/calculabilite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Calculabilité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3970,7 +3990,7 @@
 <p>Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevauchements, il faudra ordonner les différents processus afin qu'ils soient tous exécutés.</p>
 <h3 id="systemes-non-preemptifs">Systèmes non-préemptifs :</h3>
 <div class="admonition example">
-<p class="admonition-title">Méthode PÄPS</p>
+<p class="admonition-title">Méthode PAPS</p>
 <p>Si le système d'exploitation <strong>n'est pas préemptif</strong>, on pourrait penser au principe d'une file de type « Premier Arrivé, Premier Servi » (<em>FIFO</em>).</p>
 <p><img alt="P3_img2.png" src="../P3_img2.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Avec ce système, chaque processus sera exécuté du début à la fin, sans interruptions. Il faudra 14 cycles d'horloge pour terminer les 4 processus. C'est le principe de la file d'attente pour les imprimantes : peu importe le nombre de pages à imprimer, les documents seront imprimés en entier et dans leur ordre d'arrivée.</p>
@@ -4015,8 +4035,8 @@
 <li><code>C</code> a pour temps de séjour 4 et pour temps d'exécution 2 : <span class="arithmatex">\(t'_C = 4-2 = 2\)</span></li>
 <li><code>D</code> a pour temps de séjour 9 et pour temps d'exécution 4 : <span class="arithmatex">\(t'_B = 9-4 = 5\)</span></li>
 </ul>
-</div>
 <p>Le temps d'attente moyen avec cette méthode est donc <span class="arithmatex">\(\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25\)</span>.</p>
+</div>
 <h3 id="systemes-preemptifs">Systèmes préemptifs</h3>
 <p>Dans un schéma <mark class="critic"><strong>d’ordonnanceur préemptif</strong></mark>, pour s’assurer qu’aucun processus ne s’exécute pendant trop de temps, l'horloge électronique génère périodiquement une interruption. <mark class="critic"><strong>À chaque interruption d’horloge, le système d’exploitation reprend la main et décide si le processus courant doit poursuivre son exécution ou s’il doit être suspendu pour laisser place à un autre</strong></mark>.</p>
 <p>S’il décide de suspendre son exécution au profit d’un autre, il doit d’abord sauvegarder l’état des registres du processeur avant de charger dans les registres les données du processus à lancer. C’est qu’on appelle la <mark class="critic"><strong>commutation de contexte</strong></mark>(ou changement de contexte, <em>context switch</em> en anglais). Cette sauvegarde est nécessaire pour pouvoir poursuivre ultérieurement l’exécution du processus suspendu.</p>

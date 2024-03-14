@@ -2941,7 +2941,7 @@
       
         <li class="md-nav__item">
   <a href="#etats-dun-processus" class="md-nav__link">
-    Etats d'un processus
+    États d'un processus
   </a>
   
 </li>
@@ -3327,6 +3327,26 @@
   
   <span class="md-ellipsis">
     Sécurisation des communications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C12/calculabilite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Calculabilité
   </span>
   
 
@@ -3891,12 +3911,12 @@
 <li><a href="http://lycee.educinfo.org/index.php?page=creation_thread&amp;activite=processus">http://lycee.educinfo.org/index.php?page=creation_thread&amp;activite=processus</a></li>
 </ul>
 <p><em>et bien entendu de l'habituel</em> Numérique et Sciences Informatique, 24 leçons avec exercices corrigés <em>aux editions</em> Ellipses.</p>
-<p>L'objectif de cette partie est de comprendre comment une machine peut exécuter plusieurs tâcches de manière simultanées : si l'on prend l'exemple du smartphone,  alors que nous regardons une vidéo, il va suivre les antennes relais et se synchroniser avec, écouter s'il y a un appel téléphonique ou des SMS qui arrive, vérifier les nouveaux courriers électroniques, mettre à jour les notifications des différents réseaux sociaux,etc.</p>
+<p>L'objectif de cette partie est de comprendre comment une machine peut exécuter plusieurs tâches de manière simultanées : si l'on prend l'exemple du smartphone, alors que nous regardons une vidéo, il va suivre les antennes relais et se synchroniser avec, écouter s'il y a un appel téléphonique ou des SMS qui arrive, vérifier les nouveaux courriers électroniques, mettre à jour les notifications des différents réseaux sociaux, etc.</p>
 <p>Pour comprendre, il nous faudra nous poser les questions suivantes :</p>
 <ol>
 <li>Comment sont donc exécutés les programmes par le système d'exploitation ?</li>
 <li>Comment plusieurs programmes peuvent-ils être exécutés simultanément ?</li>
-<li>Quels sont les risques et preoblèmes soulevés par ces exécutions simultanées ?</li>
+<li>Quels sont les risques et problèmes soulevés par ces exécutions simultanées ?</li>
 </ol>
 <h2 id="du-programme-au-processus">Du programme au processus</h2>
 <div class="admonition abstract">
@@ -3904,27 +3924,16 @@
 <p>Un <mark class="critic"><strong>processus</strong></mark> est un programme en cours d'exécution sur un ordinateur. Il est caractérisé par</p>
 <ul>
 <li>un <strong>ensemble d'instructions</strong> à exécuter - souvent stockées dans un fichier sur lequel on clique pour lancer un programme (par exemple <code>firefox.exe</code>)</li>
-<li>un <strong>espace mémoire</strong> dédié à ce processus pour lui permettre de travailler sur des <strong>données</strong> qui lui sont propres : si vous lancez deux instances de firefox, chacune travaillera indépendament de l'autre avec ses propres données.</li>
+<li>un <strong>espace mémoire</strong> dédié à ce processus pour lui permettre de travailler sur des <strong>données</strong> qui lui sont propres : si vous lancez deux instances de Firefox, chacune travaillera indépendamment de l'autre avec ses propres données.</li>
 <li>des <strong>ressources matérielles</strong> : processeur, entrées-sorties (accès à internet en utilisant la connexion Wifi).</li>
 </ul>
-<p>Il ne faut donc pas confondre le fichier contenant un <strong>programme</strong> (portent souvent l'extension <code>.exe</code> sous windows) et le ou les processus qu'ils engendrent quand ils sont exécutés : un programme est juste un fichier contenant une suite d'instructions (<code>firefox.exe</code> par exemple) alors que les processus sont des instances de ce programme ainsi que les ressources nécessaires à leur exécution (plusieurs fenêtres de firefox ouvertes en même temps).</p>
+<p>Il ne faut donc pas confondre le fichier contenant un <strong>programme</strong> (portent souvent l'extension <code>.exe</code> sous windows) et le ou les processus qu'ils engendrent quand ils sont exécutés : un programme est juste un fichier contenant une suite d'instructions (<code>firefox.exe</code> par exemple) alors que les processus sont des instances de ce programme ainsi que les ressources nécessaires à leur exécution (plusieurs fenêtres de Firefox ouvertes en même temps).</p>
 </div>
 <p>Il est possible de visualiser et gérer les processus actifs d'une machine par l'intermédiaire d'un <strong>gestionnaire de processus</strong>, qui est un programme spécifique au système d'exploitation :</p>
 <ul>
 <li>sur windows, en utilisant <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span>, mais pas au Lycée... La gestion des processus étant critique, seuls les administrateurs de la machine peuvent y accéder...</li>
 <li>sur linux simplement par l'utilisation d'un <em>terminal</em> (la ligne de commande)</li>
 </ul>
-<details class="warning">
-<summary>En cas de problème avec les Raspberry Pi, ou pour vous entrainer chez vous</summary>
-<p><em>JupyterHub</em> est un serveur de Notebook que j'avais installé il y a fort longtemps, avant l'appartition de <em>Capytale</em>. Il est obsolète pour l'utilisation des notebooks, mais nous pouvons toujours en avoir une utilité : un terminal <strong>Linux</strong> est toujours disponible !</p>
-<ol>
-<li>Connectez vous sur <a href="https://zonensi.fr:8443" target="_blank">jupyterHub</a> (Votre identifiant est votre nom de famille immédiatement suivi de la première lettre de votre prénom. Pour le mot de passe, vous le choisissez à la pemière connexion)</li>
-<li>
-<p>Ouvrir un terminal :</p>
-<p><img alt="P2_img1.png" src="../P2_img1.png" style="width:20%; margin:auto;display:block;background-color: #d2dce0;"></p>
-</li>
-</ol>
-</details>
 <div class="admonition question">
 <p class="admonition-title">Manipulations</p>
 <ol>
@@ -3934,8 +3943,8 @@
 <li><code>/sbin/</code>: Exécutables pour les administrateurs (abréviation de <em>system binaries</em>, soit binaires système en français).</li>
 <li><code>/usr/bin/</code>: Binaires exécutables qui ne sont pas déjà présents dans <code>/bin</code> et donc pas indispensables à un système minimaliste.</li>
 </ul>
-<p>Sous linux, les programmes sont par convention situées dans les dossiers <code>bin</code> (pour binaries en anglais):</p>
-<p>Utiliser la commande <code>ls</code> pour <strong>lister les programmes</strong> présents dans <code>/bin/</code>.</p>
+<p>Sous linux, les programmes sont par convention situés dans les dossiers <code>bin</code> (pour <em>binaries</em> en anglais):</p>
+<p>Utiliser la commande <code>ls</code> pour <strong>lister les programmes</strong> présents dans <code>/usr/bin/</code>.</p>
 </li>
 <li>
 <p>Utilisez la commande <code>cat /bin/ls</code> pour afficher le contenu du programme <code>ls</code>. On constate que le fichier est un fichier  compilé (utilisez <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> pour revenir au <em>prompt</em>).</p>
@@ -3967,7 +3976,21 @@
 <li>le processus qui est ainsi créé par clonage est le processus fils ;</li>
 <li>après le clonage, un processus peut remplacer son programme par un autre programme grâce à l'appel système exec().</li>
 </ul>
-<p>Lorsqu'un processus engendre un fils, l'OS génère un nouveau PID pour le fils, et le fils connait aussi le numéro de son père : le <mark class="critic"><strong>PPID</strong></mark> (*Parent Process Identifier)</p>
+<p>Lorsqu'un processus engendre un fils, l'OS génère un nouveau PID pour le fils, et le fils connait aussi le numéro de son père : le <mark class="critic"><strong>PPID</strong></mark> (<em>Parent Process Identifier</em>)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Lecture d'une commande <code>ps -ef</code></p>
+<p>Voici une capture d'écran du début d'une commande <code>ps -ef</code> :</p>
+<p><img alt="ps_ef_1.png" src="../ps_ef_1.png" style="width:70%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p>Les différentes colonnes affichées sont :</p>
+<ul>
+<li><code>UID</code> : l'identifiant du propriétaire du processus ;</li>
+<li><code>PID</code> : tel que défini ci-dessus ;</li>
+<li><code>PPID</code> : le <code>PID</code> du parent ;</li>
+<li><code>STIME</code> : l'heure de démarrage du processus ;</li>
+<li><code>TIME</code> : le temps d'exécution du processus ;</li>
+<li><code>CMD</code> : le programme exécuté par le processus.</li>
+</ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Le premier processus ?</p>
@@ -3975,24 +3998,25 @@
 <p>À partir de ce premier processus, les processus nécessaires au bon fonctionnement du système d’exploitation Linux sont créés (par exemple les processus <code>crond</code>, <code>inetd</code>, <code>getty</code>,...). Puis d'autres processus sont créés à partir des fils de <code>init</code>... </p>
 <p>Ce système de création un peu particulier (désigné souvent par <code>fork/exec</code>) conduit à l'émergence d'une arborescence de processus : un processus père engendre un ou plusieurs fils qui à leur tour engendrent des fils etc... </p>
 <p>L'instruction <code>pstree</code> permet de visualiser l'arbre de processus :</p>
-<p><img alt="P2_img2.png" src="../P2_img2.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p><img alt="pstree.png" src="../pstree.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Chercher les PID</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>A l'aide de la commande <code>ps -ef | more</code>, chercher les PID et PPID des processus :</p>
 <ol>
+<li>A l'aide de la commande <code>ps -ef | more</code>, chercher les <code>PID</code> et <code>PPID</code> des processus :<ol>
 <li><code>systemd</code></li>
-<li><code>apache2</code></li>
 <li><code>cron</code></li>
-<li><code>python3</code> (situé dans le dossier <code>/opt/</code>)</li>
-<li>Commencez par exécuter Thonny, puis cherchez le PID et PPID du processus qui lui correspond.</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<p>A venir !</p>
+</li>
+<li>Ouvrez un deuxième terminal Linux puis :<ol>
+<li>Dans le 1er, ouvrez l'interpréteur Python grâce à la commande <code>python3</code> </li>
+<li>Dans le 2ème, cherchez le <code>PID</code> et le <code>PPID</code> des processus <code>python3</code></li>
+</ol>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -4000,7 +4024,7 @@
 <div class="admonition tips">
 <p class="admonition-title">Commande <code>top</code></p>
 <p>Une des commandes les plus utiles sous Linux est la commande <code>top</code>. Cette commandes affiche les processus actifs <strong>en temps réel</strong>.
-L'application est plus riche qu'il n'y paraît. Il faut passer un peu de temps à explorer toutes les options. Celles-ci s'activent par des raccourcis clavier. En voici quelques uns :</p>
+L'application est plus riche qu'il n'y parait. Il faut passer un peu de temps à explorer toutes les options. Celles-ci s'activent par des raccourcis clavier. En voici quelques uns :</p>
 <ul>
 <li><span class="keys"><kbd class="key-h">H</kbd></span> : affiche l'aide</li>
 <li><span class="keys"><kbd class="key-m">M</kbd></span> : trie la liste par ordre décroissant d'occupation mémoire. Pratique pour repérer les processus trop gourmands</li>
@@ -4011,7 +4035,7 @@ L'application est plus riche qu'il n'y paraît. Il faut passer un peu de temps �
 <li><span class="keys"><kbd class="key-q">Q</kbd></span> : permet de quitter top</li>
 </ul>
 </div>
-<h2 id="etats-dun-processus">Etats d'un processus</h2>
+<h2 id="etats-dun-processus">États d'un processus</h2>
 <p>Un processus n'a pas seulement besoin d'accéder au processeur, mais il a souvent besoin d'accéder à des ressources autres comme :</p>
 <ul>
 <li>la <mark class="critic"><strong>mémoire vive</strong></mark> : RAM,</li>
@@ -4045,8 +4069,8 @@ Lorsqu'on exécute ce programme, un processus est crée, et passe en état <code
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <ol>
-<li>Dans JupyterHub, ouvrir un des notebooks de première.</li>
-<li>Repérer le <code>PID</code> correspondant à cette instance de notebook ( processus de type <code>ipython</code>)</li>
+<li>Lancez l'interpréteur python3 dans un terminal.</li>
+<li>Depuis un autre terminal, repérer le <code>PID</code> correspondant à cette instance de python3 ( processus de type <code>ipython</code>)</li>
 <li>Terminer le processus.</li>
 </ol>
 </div>
@@ -4060,7 +4084,7 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <p>Nous allons créer un processus à partir de Python. Pour cela :</p>
 <ol>
 <li>
-<p>Dans Thonny, créer un fichier texte vide, puis y insérer le code suivant :</p>
+<p>Téléchargez dans un terminal le fichier <a href="longtime.py" target="_blank">long_time.py</a>, contenant les lignes suivantes :</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
@@ -4071,11 +4095,10 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 </code></pre></div>
 </li>
 <li>
-<p>Sauvegardez ce fichier sous le nom <code>test_{votrenom}.py</code>, puis si nécessaire importez-le dans <code>JupyterHub</code>.</p>
+<p>Ouvrez un deuxième terminal .</p>
 </li>
-<li>Ouvrez <strong>DEUX</strong> terminaux .</li>
-<li>Dans le premier, utilisez la commande <code>python3 test.py</code>. </li>
-<li>Dans le second, lancez la commande <code>ps -aux</code>, et cherchez le processus correspondant à l'exécution du script <code>test_{votrenom}.py</code>.</li>
+<li>Dans le premier, utilisez la commande <code>python3 long_time.py</code>. </li>
+<li>Dans le second, lancez la commande <code>ps</code>, et cherchez le processus correspondant à l'exécution du script <code>long_time.py</code>.</li>
 <li>Tuez le processus avec la commande <code>kill</code>, et observez ce qui se passe dans les deux terminaux.</li>
 <li>Recommencez la procédure à partir de 4 en tuant le processus avec la commande <code>kill -9</code>, et observez les deux terminaux.</li>
 </ol>
@@ -4084,7 +4107,8 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <p class="admonition-title">Utilisation de <code>fork()</code></p>
 <ol>
 <li>
-<p>Dans Thonny, créez un fichier nommé <code>testFork_{votrenom}.py</code> dans lequel vous copierez les lignes suivantes :</p>
+<p>Téléchargez le fichier <a href="../test_fork.py" target="_blank"><code>testFork.py</code></a>, dans votre dossier personnel sous Ubuntu, à l'aide de la commande <code>wget</code> suivie du lien du fichier.</p>
+<p>Ce fichier contient les lignes suivantes :</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Python program to explain os.fork() method </span>
 
 <span class="c1"># importing os module </span>
@@ -4113,7 +4137,7 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">+=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Finished"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finished </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 

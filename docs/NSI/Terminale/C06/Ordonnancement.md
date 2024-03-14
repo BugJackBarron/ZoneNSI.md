@@ -72,7 +72,7 @@ Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevau
 
 ### Systèmes non-préemptifs : 
 
-!!! example "Méthode PÄPS"
+!!! example "Méthode PAPS"
 	
 	Si le système d'exploitation **n'est pas préemptif**, on pourrait penser au principe d'une file de type &laquo; Premier Arrivé, Premier Servi &raquo; (*FIFO*).
 
@@ -122,7 +122,8 @@ Le processeur ne pouvant traiter qu'une information à la fois, au vu des chevau
 	* `B` a pour temps de séjour 9 et pour temps d'exécution 3 : $t'_B = 9-3 = 6$
 	* `C` a pour temps de séjour 4 et pour temps d'exécution 2 : $t'_C = 4-2 = 2$
 	* `D` a pour temps de séjour 9 et pour temps d'exécution 4 : $t'_B = 9-4 = 5$
-Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25$.
+
+	Le temps d'attente moyen avec cette méthode est donc $\dfrac{0+6+2+5}{4} = \dfrac{13}{4} = 3,25$.
 
 
 ### Systèmes préemptifs 
