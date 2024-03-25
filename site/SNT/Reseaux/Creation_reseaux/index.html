@@ -3900,11 +3900,11 @@
 <p class="admonition-title">Adresses MAC</p>
 <p>En fait, au sein d'un même réseau, les adresses IP ne sont pas essentielles. Ce sont en fait les adresses MAC - théoriquement uniques - qui sont échangées entre les machines. Mais pour des raisons de simplifications nous resterons sur les adresses IP.</p>
 </div>
-<p>Créer un  réseau est donc une chose relativement aisée. Mais comment relier deux réseaux existants entre eux ? Comment interconnecter plusieurs de ces réseaux, pour obtenir le réseau des réseaux, communément appelé <strong>Internet</strong> ?</p>
+<p>Créer un réseau est donc une chose relativement aisée. Mais comment relier deux réseaux existants entre eux ? Comment interconnecter plusieurs de ces réseaux, pour obtenir le réseau des réseaux, communément appelé <strong>Internet</strong> ?</p>
 <h2 id="adresses-ip-et-masques-de-sous-reseau">Adresses IP et masques de sous-réseau</h2>
 <div class="admonition info">
 <p class="admonition-title">Masque de sous-réseau</p>
-<p>Dans le protocole TCP/IP, l'adresse IP n'est pas seulement l'adresse de la machine. <strong>Il s'agit aussi de l 'adresse du réseau</strong>. Plus spécifiquement, une adresse IP est toujours accompagnée de ce qu'on appelle un <strong>masque réseau</strong>.
+<p>Dans le protocole <code>TCP/IP</code>, l'adresse IP n'est pas seulement l'adresse de la machine. <strong>Il s'agit aussi de l 'adresse du réseau</strong>. Plus spécifiquement, une adresse IP est toujours accompagnée de ce qu'on appelle un <strong>masque réseau</strong>.
 Il s'agit d'un nombre binaire sur 4 octets ( comme les adresses IP ), qui peut être représenté sous la même forme qu'une adresse IP.</p>
 <p>Généralement, les masques sont de la forme :</p>
 <ul>
@@ -3914,7 +3914,7 @@ Il s'agit d'un nombre binaire sur 4 octets ( comme les adresses IP ), qui peut �
 </ul>
 <details class="info">
 <summary>Pour les curieux</summary>
-<p>Un masque réseau IPV4 est une série de 32 bits ( 8x4 donc 32 bits), telle que les bits de gauche soient tous des 1 et ceux de droite tous des zéros. Par exemple <code>11111111.11111111.00000000.00000000</code> est un masque, <code>11111111.11111111.11110000.00000000</code> est aussi un masque, mais <code>11111111.11111111.00001111.00000000</code> n'en est pas un.</p>
+<p>Un masque réseau IPV4 est une série de 32 bits (8x4 donc 32 bits), telle que les bits de gauche soient tous des 1 et ceux de droite tous des zéros. Par exemple <code>11111111.11111111.00000000.00000000</code> est un masque, <code>11111111.11111111.11110000.00000000</code> est aussi un masque, mais <code>11111111.11111111.00001111.00000000</code> n'en est pas un.</p>
 <p>La question n'est pas ici de rentrer dans une technique de calculs binaires assez complexe, mais de vous faire comprendre comment fonctionne globalement un masque. Il faut juste retenir que le nombre <span class="arithmatex">\(255\)</span> en base 10 s'écrit en binaire <code>11111111</code>, et que le nombre <span class="arithmatex">\(0\)</span> s'écrit <code>00000000</code>
 Donc nous allons supposer que seul les 3 premiers octets peuvent être pleins de 1,c'est à dire :</p>
 <ul>
@@ -3941,8 +3941,8 @@ Donc nous allons supposer que seul les 3 premiers octets peuvent être pleins de
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Masque de réseau et IP</p>
-<p>Le masque de réseau permet de définir quelle partie de l'adresse IP est celle du réseau, et quelle partie est celle de la machine. Ainsi la machine dont l'IP est <code>172.16.180.1</code> avec la masque <code>255.255.0.0</code> a pour adresse de réseau <code>172.16.X.X</code> et pour adresse de machine <code>X.X.180.1</code>
-Une machine ne pourra communiquer par principe qu'avec les machines possédant le même numéro de réseau.</p>
+<p>Le masque de réseau permet de déterminer quelle partie de l'adresse IP est celle du réseau, et quelle partie est celle de la machine. Ainsi la machine dont l'IP est <code>172.16.180.1</code> avec la masque <code>255.255.0.0</code> a pour adresse de réseau <code>172.16.0.0</code> et pour adresse de machine <code>172.16.180.1</code>
+Une machine ne pourra communiquer par principe qu'avec les machines possédant la même  adresse de réseau.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -3952,7 +3952,7 @@ Une machine ne pourra communiquer par principe qu'avec les machines possédant l
 <h2 id="le-routeur-un-appareil-pour-relier-les-reseaux">Le routeur : un appareil pour relier les réseaux</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Routeur</p>
-<p>Un <strong>routeur</strong> est une machine possédant plusieurs cartes réseaux, et étant capable de faire des liens (<mark class="critic"><strong>des routes</strong></mark>) entre différents réseaux.
+<p>Un <strong>routeur</strong> est une machine possédant plusieurs cartes réseaux et étant capable de faire des liens (<mark class="critic"><strong>des routes</strong></mark>) entre différents réseaux.
 Un routeur possède une adresse IP pour <strong>chacun des réseaux duquel il fait partie</strong>, et est considéré comme faisant partie de chacun des réseaux auquel il est relié.</p>
 </div>
 <div class="admonition question">
@@ -3965,11 +3965,11 @@ Un routeur possède une adresse IP pour <strong>chacun des réseaux duquel il fa
 <p>Répondez à chacune des questions suivantes :</p>
 <ol>
 <li>Quel est le numéro de réseau du premier réseau ? Du second réseau ?</li>
-<li>Créez dans <code>Filius</code> ces deux réseaux, le réseau <code>192.168.0.X</code>. étant situé à gauche de l'acran, et le réseau <code>172.180.X.X</code> étant à doite.</li>
+<li>Créez dans <code>Filius</code> ces deux réseaux, le réseau <code>192.168.0.X</code>. étant situé à gauche de l'écran, et le réseau <code>172.180.X.X</code> étant à droite.</li>
 <li>Installez la ligne de commande sur une des machines de chacun des réseaux, et vérifiez si vous pouvez utiliser correctement la commande <code>ping</code>.</li>
 <li>Placez un routeur au milieu, avec deux interfaces, et joignez le par un câble à chaque switch.</li>
 <li>
-<p>Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP <code>192.168.0.254</code> pour le premier, et <code>172.180.100.254</code> pour le second.
+<p>Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP <code>192.168.0.254</code> pour le premier, et <code>172.180.100.254</code> pour le second .
     Testez la commande <code>ping</code> entre deux postes des deux réseaux. Que se passe-t-il ?</p>
 <div class="admonition abstract">
 <p class="admonition-title">Passerelle</p>
