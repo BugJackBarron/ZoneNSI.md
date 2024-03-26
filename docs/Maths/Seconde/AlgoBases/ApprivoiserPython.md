@@ -117,8 +117,7 @@ Dans cette troisième situation, le montant de la facture se verra attribuer une
 
 Compléter le code de la fonction suivante, et tester dans la console pour remplir le tableau suivant.
 
-<div style="display:flex;">
-<div style="display : inline; width : 50%;">
+
 
 ``` python
 
@@ -131,9 +130,6 @@ def mystere (x : int) -> None :
         print(...)
 ```
 
-</div>
-<div style="display : inline; width : 50%;">
-
 
 | Saisie dans la console | Affichage obtenu |
 | :---: | :--- |
@@ -142,29 +138,34 @@ def mystere (x : int) -> None :
 | `mystere(15)` | ... |
 
 
-</div>
-</div>
-
 ### Application 2
 
-1. Compléter le code de la fonction suivante.
+1. **Première partie :**
+    1. Compléter le code de la fonction suivante.
 
+        ``` python
 
+        def test (a : int, b : int) -> None :
+            if a == b :
+                print( "Alice et Bob ont le même âge")
+            if a >= 18 and b >= 18:
+                print("Alice et Bob sont tous les deux adultes."")
+            if ... :
+                print("Alice est plus jeune que Bob")
+            if ... : 
+                print("Alice est au moins deux fois plus âgée que Bob")
+            if ... :
+                print("Alice a au moins 10 ans de moins que Bob.")
+            if ... :
+                print("Alice et Bob ont à eux deux plus de 30 ans")
+        ```
 
-``` python
+    2. Qu'est-il affiché dans la console avec `test(25, 40)` ?
+    3. Qu'est-il affiché dans la console avec `test(24, 6)` ?
+    4. Qu'est-il affiché dans la console avec `test(15, 15)` ?
+    5. Qu'est-il affiché dans la console avec `test(40, 20)` ?
+    6. Qu'est-il affiché dans la console avec `test(10, 21)` ?
 
-def test (a : int, b : int) -> None :
-    if a == b :
-        print( "Alice et Bob ont le même âge")
-    if a >= 18 and b >= 18:
-        print("Alice et Bob sont tous les deux adultes."")
-    if ... :
-        print("Alice est plus jeune que Bob")
-    if ... : 
-        print("Alice est deux fois plus âgée que Bob")
-    if ... :
-        print("Alice a 10 ans de moins que Bob.")
-    if ... :
-        print("Alice et Bob ont à eux deux 30 ans")
-```
-2. Qu'est-il affiché dans la console avec `test(25, 40)`.
+2. **Deuxième partie :**
+    1. Copier-coller le code de la fonction `test` pour créer une fonction `test_2`, en remplaçant tous les `if` par des `elif`, {==**sauf le premier**==}.
+    2. Effectuez les mêmes tests que dans la question précédente, mais avec la fonction `test_2`. Obtenez-vous les mêmes résultats dans la console ? Pourquoi ?
