@@ -8,14 +8,14 @@ Nous avons vu dans la partie précédente l'importance du **protocole TCP/IP** d
 !!! info "Adresses MAC"
 	En fait, au sein d'un même réseau, les adresses IP ne sont pas essentielles. Ce sont en fait les adresses MAC - théoriquement uniques - qui sont échangées entre les machines. Mais pour des raisons de simplifications nous resterons sur les adresses IP.
 
-Créer un  réseau est donc une chose relativement aisée. Mais comment relier deux réseaux existants entre eux ? Comment interconnecter plusieurs de ces réseaux, pour obtenir le réseau des réseaux, communément appelé **Internet** ?
+Créer un réseau est donc une chose relativement aisée. Mais comment relier deux réseaux existants entre eux ? Comment interconnecter plusieurs de ces réseaux, pour obtenir le réseau des réseaux, communément appelé **Internet** ?
 
 
 ## Adresses IP et masques de sous-réseau
 
 !!! info "Masque de sous-réseau"
 
-	Dans le protocole TCP/IP, l'adresse IP n'est pas seulement l'adresse de la machine. **Il s'agit aussi de l 'adresse du réseau**. Plus spécifiquement, une adresse IP est toujours accompagnée de ce qu'on appelle un **masque réseau**.
+	Dans le protocole `TCP/IP`, l'adresse IP n'est pas seulement l'adresse de la machine. **Il s'agit aussi de l 'adresse du réseau**. Plus spécifiquement, une adresse IP est toujours accompagnée de ce qu'on appelle un **masque réseau**.
 	Il s'agit d'un nombre binaire sur 4 octets ( comme les adresses IP ), qui peut être représenté sous la même forme qu'une adresse IP.
 	
 	Généralement, les masques sont de la forme :
@@ -26,7 +26,7 @@ Créer un  réseau est donc une chose relativement aisée. Mais comment relier d
 
 
 	??? info "Pour les curieux"
-		Un masque réseau IPV4 est une série de 32 bits ( 8x4 donc 32 bits), telle que les bits de gauche soient tous des 1 et ceux de droite tous des zéros. Par exemple `11111111.11111111.00000000.00000000` est un masque, `11111111.11111111.11110000.00000000` est aussi un masque, mais `11111111.11111111.00001111.00000000` n'en est pas un.
+		Un masque réseau IPV4 est une série de 32 bits (8x4 donc 32 bits), telle que les bits de gauche soient tous des 1 et ceux de droite tous des zéros. Par exemple `11111111.11111111.00000000.00000000` est un masque, `11111111.11111111.11110000.00000000` est aussi un masque, mais `11111111.11111111.00001111.00000000` n'en est pas un.
 				
 		La question n'est pas ici de rentrer dans une technique de calculs binaires assez complexe, mais de vous faire comprendre comment fonctionne globalement un masque. Il faut juste retenir que le nombre $255$ en base 10 s'écrit en binaire `11111111`, et que le nombre $0$ s'écrit `00000000`
 		Donc nous allons supposer que seul les 3 premiers octets peuvent être pleins de 1,c'est à dire :
@@ -49,8 +49,8 @@ Créer un  réseau est donc une chose relativement aisée. Mais comment relier d
 	5. Sur la machine `192.168.1.10`, essayez de joindre avec la commande `ping` la machine `192.168.0.10`. Que se passe-t-il ?
 	
 !!! abstract "Masque de réseau et IP"
-	Le masque de réseau permet de définir quelle partie de l'adresse IP est celle du réseau, et quelle partie est celle de la machine. Ainsi la machine dont l'IP est `172.16.180.1` avec la masque `255.255.0.0` a pour adresse de réseau `172.16.X.X` et pour adresse de machine `X.X.180.1`
-	Une machine ne pourra communiquer par principe qu'avec les machines possédant le même numéro de réseau.
+	Le masque de réseau permet de déterminer quelle partie de l'adresse IP est celle du réseau, et quelle partie est celle de la machine. Ainsi la machine dont l'IP est `172.16.180.1` avec la masque `255.255.0.0` a pour adresse de réseau `172.16.0.0` et pour adresse de machine `172.16.180.1`
+	Une machine ne pourra communiquer par principe qu'avec les machines possédant la même  adresse de réseau.
 
 !!! example "Exemple"
 
@@ -62,7 +62,7 @@ Créer un  réseau est donc une chose relativement aisée. Mais comment relier d
 ## Le routeur : un appareil pour relier les réseaux
 
 !!! abstract "Routeur"
-	Un **routeur** est une machine possédant plusieurs cartes réseaux, et étant capable de faire des liens ({==**des routes**==}) entre différents réseaux.
+	Un **routeur** est une machine possédant plusieurs cartes réseaux et étant capable de faire des liens ({==**des routes**==}) entre différents réseaux.
 	Un routeur possède une adresse IP pour **chacun des réseaux duquel il fait partie**, et est considéré comme faisant partie de chacun des réseaux auquel il est relié.
 
 !!! question "Exercice"
@@ -74,10 +74,10 @@ Créer un  réseau est donc une chose relativement aisée. Mais comment relier d
 	Répondez à chacune des questions suivantes :
 
 	1. Quel est le numéro de réseau du premier réseau ? Du second réseau ?
-	2. Créez dans `Filius` ces deux réseaux, le réseau `192.168.0.X`. étant situé à gauche de l'acran, et le réseau `172.180.X.X` étant à doite.
+	2. Créez dans `Filius` ces deux réseaux, le réseau `192.168.0.X`. étant situé à gauche de l'écran, et le réseau `172.180.X.X` étant à droite.
 	3. Installez la ligne de commande sur une des machines de chacun des réseaux, et vérifiez si vous pouvez utiliser correctement la commande `ping`.
 	4. Placez un routeur au milieu, avec deux interfaces, et joignez le par un câble à chaque switch.
-	5. Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP `192.168.0.254` pour le premier, et `172.180.100.254` pour le second.
+	5. Le routeur étant une machine du réseau, il faut lui adresser une IP compatible pour chacun de ces réseaux. Vous lui donnerez comme IP `192.168.0.254` pour le premier, et `172.180.100.254` pour le second .
 		Testez la commande `ping` entre deux postes des deux réseaux. Que se passe-t-il ?
 		
 		!!! abstract "Passerelle"

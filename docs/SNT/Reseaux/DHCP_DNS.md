@@ -32,13 +32,13 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 !!! info "Construction d'un réseau"
 	Ainsi, avec un serveur DHCP, il est inutile de configurer une machine classique à la main. C'est ce qui se passe chez vous, votre Box internet donnant automatiquement une configuration, donc une adresse IP. Cette configuration n'est cependant pas absolue, l'adresse IP d'une machine peut varier au sein d'un réseau. En effet, le DHCP distribue sa configuration pour un temps donné, appelé **bail** (pluriel : baux). Au terme du bail, une machine peut donc se voir attribuer une adresse IP différente, et ce de manière transparente.
  
-	Cependant, il est parfois nécessaire sur un réseau d'avoir une machine possdéant une adresse IP fixe, comme par exemple pour un serveur web, où une passerelle. Dans ce cas on règle l'IP à la main *en dehors de la plage d'adresse du DHCP*.
+	Cependant, il est parfois nécessaire sur un réseau d'avoir une machine possédant une adresse IP fixe, comme par exemple pour un serveur web, où une passerelle. Dans ce cas on règle l'IP à la main *en dehors de la plage d'adresse du DHCP*.
 
 
 ## Lier noms de domaine et adresses IP : DNS
 
 !!! info "Serveur DNS"
-	Dans notre utilisation quotidienne du web, nous tapons des adresses constituées de noms de domaines, comme par exemple `www.toutatice.fr`. Or nous avons vu qu'un site web n'est qu'un ensemble de fichiers situés sur une machine, et que pour repérer cette machine on utilise son adresse IP.
+	Dans notre utilisation quotidienne du web, nous tapons des adresses constituées de noms de domaines, par exemple `www.toutatice.fr`. Or nous avons vu qu'un site web n'est qu'un ensemble de fichiers situés sur une machine, et que pour repérer cette machine on utilise son adresse IP.
 	
 	Il existe donc des machines très importantes sur le réseau, appelées {==**serveurs DNS**==} (acronyme de *Domain Name Server*), qui permettent de faire le lien entre un nom de domaine et une adresse IP.
 	
@@ -51,7 +51,7 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 	*  3 PC portables avec adressage automatique ;
 	*  D'un routeur avec 2 interfaces, dont celle reliée au réseau portant l'IP `172.16.180.254`.
 
-2. Relier les deux routeurs entre eux par un cable.
+2. Relier les deux routeurs entre eux par un câble.
 3. Pour le routeur du réseau `192.168.0.X` :
 	* Donner sur l'interface de liaison entre routeurs l'IP `1.0.0.1`, avec un masque `255.0.0.0` ;
 	* Dans l'onglet `General`, cocher la case `Routage Automatique` ;
@@ -72,7 +72,7 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 8. Sur les deux serveurs DHCP, configurez la ligne `Serveur DNS` avec `10.0.0.100`.
 9. Lancez la simulation. Testez sur plusieurs machines si les données circulent grâce à la commande `ping`.
 10. Sur le serveur DHCP du réseau `192.168.0.X`, installez aussi un serveur web, et démarrez-le.
-11. Testez sur au moins un porable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse `192.168.0.1`.
+11. Testez sur au moins un portable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse `192.168.0.1`.
 	**Si tout fonctionne correctement, nous allons pouvoir changer la manière d'atteindre le serveur web.**
 12. Sur le serveur DNS, installez le logiciel `Serveur DNS`, démarrez-le.
 13. Ajoutez comme nom de domaine &laquo; supersite.fr &raquo; pour l'adresse IP `192.168.0.1`.

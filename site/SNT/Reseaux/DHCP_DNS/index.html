@@ -3935,12 +3935,12 @@
 <div class="admonition info">
 <p class="admonition-title">Construction d'un réseau</p>
 <p>Ainsi, avec un serveur DHCP, il est inutile de configurer une machine classique à la main. C'est ce qui se passe chez vous, votre Box internet donnant automatiquement une configuration, donc une adresse IP. Cette configuration n'est cependant pas absolue, l'adresse IP d'une machine peut varier au sein d'un réseau. En effet, le DHCP distribue sa configuration pour un temps donné, appelé <strong>bail</strong> (pluriel : baux). Au terme du bail, une machine peut donc se voir attribuer une adresse IP différente, et ce de manière transparente.</p>
-<p>Cependant, il est parfois nécessaire sur un réseau d'avoir une machine possdéant une adresse IP fixe, comme par exemple pour un serveur web, où une passerelle. Dans ce cas on règle l'IP à la main <em>en dehors de la plage d'adresse du DHCP</em>.</p>
+<p>Cependant, il est parfois nécessaire sur un réseau d'avoir une machine possédant une adresse IP fixe, comme par exemple pour un serveur web, où une passerelle. Dans ce cas on règle l'IP à la main <em>en dehors de la plage d'adresse du DHCP</em>.</p>
 </div>
 <h2 id="lier-noms-de-domaine-et-adresses-ip-dns">Lier noms de domaine et adresses IP : DNS</h2>
 <div class="admonition info">
 <p class="admonition-title">Serveur DNS</p>
-<p>Dans notre utilisation quotidienne du web, nous tapons des adresses constituées de noms de domaines, comme par exemple <code>www.toutatice.fr</code>. Or nous avons vu qu'un site web n'est qu'un ensemble de fichiers situés sur une machine, et que pour repérer cette machine on utilise son adresse IP.</p>
+<p>Dans notre utilisation quotidienne du web, nous tapons des adresses constituées de noms de domaines, par exemple <code>www.toutatice.fr</code>. Or nous avons vu qu'un site web n'est qu'un ensemble de fichiers situés sur une machine, et que pour repérer cette machine on utilise son adresse IP.</p>
 <p>Il existe donc des machines très importantes sur le réseau, appelées <mark class="critic"><strong>serveurs DNS</strong></mark> (acronyme de <em>Domain Name Server</em>), qui permettent de faire le lien entre un nom de domaine et une adresse IP.</p>
 <p>Ceci impose aux serveurs web d'avoir une IP fixe et non attribuée dynamiquement par un serveur DHCP.</p>
 </div>
@@ -3955,7 +3955,7 @@
 </ul>
 </li>
 <li>
-<p>Relier les deux routeurs entre eux par un cable.</p>
+<p>Relier les deux routeurs entre eux par un câble.</p>
 </li>
 <li>
 <p>Pour le routeur du réseau <code>192.168.0.X</code> :</p>
@@ -3987,7 +3987,7 @@
 <li>Sur les deux serveurs DHCP, configurez la ligne <code>Serveur DNS</code> avec <code>10.0.0.100</code>.</li>
 <li>Lancez la simulation. Testez sur plusieurs machines si les données circulent grâce à la commande <code>ping</code>.</li>
 <li>Sur le serveur DHCP du réseau <code>192.168.0.X</code>, installez aussi un serveur web, et démarrez-le.</li>
-<li>Testez sur au moins un porable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse <code>192.168.0.1</code>.
+<li>Testez sur au moins un portable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse <code>192.168.0.1</code>.
     <strong>Si tout fonctionne correctement, nous allons pouvoir changer la manière d'atteindre le serveur web.</strong></li>
 <li>Sur le serveur DNS, installez le logiciel <code>Serveur DNS</code>, démarrez-le.</li>
 <li>Ajoutez comme nom de domaine « supersite.fr » pour l'adresse IP <code>192.168.0.1</code>.</li>
