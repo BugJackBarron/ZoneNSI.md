@@ -28,9 +28,10 @@ def facture_1(croissants : int, pains : int) -> float :
 
 1. Créer une arborescence `Maths/Python/boulangerie` dans votre dossier personnel.
 2. Ouvrir Thonny.
-3. Recopier et sauvegarder le programme ci-dessus dans un fichier un nouveau fichier vide nommé `boulangerie.py` dans le dossier `boulangerie`.
+3. Recopier et sauvegarder le programme ci-dessus dans un fichier un nouveau fichier vide nommé `boulangerie.py` dans le dossier `boulangerie`. **Puis exécutez le programme grâce à la flèche verte ou bien grâce à la touche ++F5++**.
 4. Dans la console, exécuter la ligne `facture_1(3,4)` et interpréter le résultat.
-5. Compléter alors le tableau ci-dessous :
+5. Quel est le prix d'un croissant ? d'un pain au chocolat ?
+6. Compléter alors le tableau ci-dessous :
 
     $$
     \begin{array}{|l|c|c|c|c|c|}
@@ -45,7 +46,7 @@ def facture_1(croissants : int, pains : int) -> float :
 
 Si la nombre total de croissant est supérieur ou égal à 10, chaque croissant est facturé 0,50 €.
 
-1. Copier la fonction ci-dessous et la compléter dans le fichier `boulangerie.py` (n'oubliez pas de sauvegarder puis relancer) :
+1. Copier la fonction ci-dessous et **la compléter** dans le fichier `boulangerie.py` (n'oubliez pas de sauvegarder puis relancer) :
 
     ``` python
     def facture_2(croissants : int, pains : int) -> float :
@@ -115,7 +116,7 @@ Dans cette troisième situation, le montant de la facture se verra attribuer une
 
 ### Application 1
 
-Compléter le code de la fonction suivante, et tester dans la console pour remplir le tableau suivant.
+Compléter le code de la fonction suivante et tester dans la console pour remplir le tableau suivant.
 
 
 
