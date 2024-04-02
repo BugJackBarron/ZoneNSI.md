@@ -3181,6 +3181,26 @@
     Résolution par une méthode récursive
   </a>
   
+    <nav class="md-nav" aria-label="Résolution par une méthode récursive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principes" class="md-nav__link">
+    Principes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-python" class="md-nav__link">
+    Code Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3941,7 +3961,7 @@
 <p>On dispose de deux chaînes de caractères : <span class="arithmatex">\(A\)</span>, qui vaut <code>INFORMATIQUE</code>, et <span class="arithmatex">\(B\)</span>, qui vaut <code>NUMERIQUE</code>. On aimerait mettre ces deux chaines de caractères en correspondance de la manière suivante :</p>
 <ul>
 <li>On place les 2 chaines l'une en dessous de l'autre ;</li>
-<li>Si les derniers caractères des deux chaines coïncident, alors on passe aux caractères suivants ;</li>
+<li>Si les premiers caractères des deux chaines coïncident, alors on passe aux caractères suivants ;</li>
 <li>Sinon, on va ajouter un trou dans une des deux chaines, symbolisé par un - et on passe aux caractères suivants.</li>
 </ul>
 <p>Voici un exemple d'alignement optimal :</p>
@@ -3950,6 +3970,7 @@
 <p>L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de <code>-</code> possible). Ce n'est pas un problème simple, surtout quand les chaines sont longues, comme pour les séquences d'ADN par exemple :</p>
 <p><img alt="sequenceADN.png" src="../sequenceADN.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <h2 id="resolution-par-une-methode-recursive">Résolution par une méthode récursive</h2>
+<h3 id="principes">Principes</h3>
 <p>Le principe est présenté dans la vidéo suivante :</p>
 <iframe src="//video.toutatice.fr/video/28583-alignement-de-sequences-methode-recursive-et-programmation-dynamique/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen></iframe>
 
@@ -3957,6 +3978,61 @@
 <p><img alt="ArbreGrasGers.png" src="../ArbreGrasGers.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Après application d'une méthode dynamique (<mark class="critic"><strong>Top Down</strong></mark>) (c'est-à-dire récursive avec mémoïsation), on obtient le graphe suivant :</p>
 <p><img alt="GrapheGrasGers.png" src="../GrapheGrasGers.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<h3 id="code-python">Code Python</h3>
+<div class="admonition question">
+<p class="admonition-title">Code sans memoïzation</p>
+<p>Compléter le code de la fonction suivante :</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">align_seq_rec</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">""" renvoie un alignement optimal pour les chaines a t b</span>
+<span class="sd">        sous la forme d'un tuple dont :</span>
+<span class="sd">        -le premier terme correspond à la chaine a avec les tirets insérés au bon endroit ;</span>
+<span class="sd">        -le second terme correspond à la chaine b avec les tirets insérés au bon endroit ;</span>
+<span class="sd">        - le troisième terme correspond au nombre total de tirets insérés.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+            <span class="k">return</span> <span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="s2">""</span><span class="o">...</span><span class="s2">""</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="n">align_seq_rec</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">S1</span> <span class="o">=</span> <span class="n">align_seq_rec</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">S2</span> <span class="o">=</span> <span class="n">align_seq_rec</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">S1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">S2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="n">S1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"-"</span><span class="o">+</span><span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Code avec memoïzation</p>
+<p>A partir de la fonction précédente, créer une fonction <code>align_seq_rec_memo</code> qui utilisera une sous-fonction récursive <code>compute</code> prenant trois arguments <code>a</code>, <code>b</code> et <code>memo</code>, où <code>memo</code> est un dictionnaire dont les clés sont les couples <code>(a, b)</code> et les valeurs les tuples <code>(c,d,n)</code>, où :</p>
+<ul>
+<li><code>c</code> représente la chaine <code>a</code> avec les tirets nécessaires à l'alignement avec <code>b</code> ;</li>
+<li><code>d</code> représente la chaine <code>b</code> avec les tirets nécessaires à l'alignement avec <code>a</code> ;</li>
+<li><code>n</code>représente le nombre total de tirets.</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Comparaison en temps des deux fonction</p>
+<p>Exécuter le code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="s2">"TTCACCAGAAAAGAACACGGTAGTTACGAGTCCAATATTGTTAAACCG"</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="s2">"TTCACGAAAAAGTAACGGGCCGATCTCCAATAAGTGCGACCGAG"</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span> <span class="p">:</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">align_seq_rec</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:</span><span class="n">i</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"----&gt; Sans mémoization : </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> 
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">align_seq_rec_memo</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:</span><span class="n">i</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"----&gt; Avec mémoization : </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> 
+</code></pre></div>
+</div>
 <h2 id="resolution-par-une-methode-iterative">Résolution par une méthode itérative</h2>
 <h3 id="activite-debranchee">Activité débranchée</h3>
 <p>Considérons les deux chaines de caractères <code>GENOME</code> et <code>ENORME</code>. Afin de chercher le nombre minimal d'insertion à effectuer, nous allons compléter le tableau suivant, avec la convention suivante : à l'intersection de la colonne <code>N</code> et de la première ligne <code>E</code> se trouve le nombre minimal d'insertion nécessaire pour aligner les chaines <code>EN</code> et <code>GE</code>, c'est-à-dire 2 tirets. Par convention la première ligne et la première colonne correspondent à une chaine vide.</p>
