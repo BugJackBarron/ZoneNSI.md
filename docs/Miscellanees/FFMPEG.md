@@ -16,5 +16,4 @@ Si les vidéos sont dans le même format :
 
     ```` bash
     ffmpeg -f concat -safe 0 -i input.txt -c copy output.flv
-
     ````

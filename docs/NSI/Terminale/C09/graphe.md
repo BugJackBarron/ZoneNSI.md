@@ -17,19 +17,20 @@
 
 ## Graphes orientés et non-orientés
 
-!!! abstract "Graphe non oriernté et vocabulaire"
+!!! abstract "Graphe non orienté et vocabulaire"
 
-	Un Graphe $G$ est la donnée de d'un ensemble fini de {==**noeuds**==}(*nodes* en anglais) ou {==**sommets**==} (*vertices* en anglais) reliés entre eux par des liens (*edges* en anglais).
+	Un Graphe $G$ est la donnée de d'un ensemble fini de {==**nœuds**==}(*nodes* en anglais) ou {==**sommets**==} (*vertices* en anglais) reliés entre eux par des liens (*edges* en anglais).
 	
 	Si les liens sont :
 	
-	* {==**bidirectionnels**==} (on peut les emprunter dans les deux sens), le graphe sera alors appelé {==**non-orienté**==}. On parlera alors de **noeuds** et les liens seront appelés {==**arêtes**==}, et représentés par des **segments** ;
-	* {==**unidirectionnels**==} (on peut les emprunter dans un seul sens), le graphe sera alors appelé {==**orienté**==}. On parlera alors de **sommets** et les liens seront appelés {==**arcs**==}, et représentés par des **flèches**.
+	* {==**bidirectionnels**==} (on peut les emprunter dans les deux sens), le graphe sera alors appelé {==**non-orienté**==}. On parlera alors de {==**nœuds**==} et les liens seront appelés {==**arêtes**==}, et représentés par des **segments** ;
+
+	* {==**unidirectionnels**==} (on peut les emprunter dans un seul sens), le graphe sera alors appelé {==**orienté**==}. On parlera alors de {==**sommets**==} et les liens seront appelés {==**arcs**==}, et représentés par des **flèches**.
 
 
 !!! example "Graphe du problème des ponts de Königsberg"
 
-	Le graphe suivant est un représentatnt du problème des ponts de Königsberg :	
+	Le graphe suivant est un représentant du problème des ponts de Königsberg :	
 	
 	![Konigsberg.svg](Konigsberg.svg){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;" title="Graphe Konigsberg"}
 
@@ -58,15 +59,15 @@
 	</div>
 	
 	
-!!! example "Graphe d'état d'un procesus"
+!!! example "Graphe d'état d'un processus"
 
 	Dans le cours sur les processus, nous avons vu le schéma suivant :
 	
-	![Etat processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Etat processus, image wikipedia"}
+	![Etat processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="État processus, image wikipedia"}
 	
 	* Le graphe est **orienté**
 	* Les différentes états sont les sommets `départ`, `Prêt`, `Elu`, `Bloqué` et `terminé`.
-	* les différentes transitions sont les arcs `Réveil`, `Election`, `Blocage`, `Déblocage` et `Fin`.
+	* les différentes transitions sont les arcs `Réveil`, `Élection`, `Blocage`, `Déblocage` et `Fin`.
 	
 	
 !!! abstract "Voisinage"
@@ -110,7 +111,7 @@
 
 !!! question "Aventuriers du rail"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		&laquo; Les aventuriers du Rail &raquo; est un jeu de plateau qui a pour but de relier les gares de différentes villes sur une carte préexistante, pour ainsi créer son réseau ferroviaire au détriment des autres joueurs. Il existe différentes versions du jeu, la carte ci-dessous étant la carte de la version Europe.
 
 		![Carte rail](Rail.JPG){: style="width:60%;margin:auto;display:block;background-color: #d2dce0;" title="Les aventuriers du rail version Europe, Days of Wonder"}
@@ -148,11 +149,11 @@
 	
 			![Echiquier.png](Echiquier.png){: style="width:20%;margin:auto;display:block;background-color: #d2dce0;" title="Echiquier"}
 
-			1. Représenter par un graphe cet échiquier, les sommets étant les cases de l'échiquier, et les arêtes représentant les déplacementspossibles du cavalier.
+			1. Représenter par un graphe cet échiquier, les sommets étant les cases de l'échiquier, et les arêtes représentant les déplacements possibles du cavalier.
 			1. Quel est l'ordre de ce graphe ?
 			1. Ce graphe est-il complet ?
 			1. Que peut-on dire du sommet $b2$ ?
-			1. Compléter le tableau des dégrés des sommets du graphe.
+			1. Compléter le tableau des degrés des sommets du graphe.
 			1. Calculer la somme des degrés des sommets ainsi que le nombre d'arêtes.
 		2. Pour chacun des graphes suivants, calculer la somme des degrés des sommets ainsi que le nombre d'arêtes, puis émettre une conjecture :
 
@@ -170,7 +171,7 @@
 
 !!! question "Les poignées de main"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		 Les vingt-quatre maires des vingt-quatre communes de l’île de la Réunion se sont donné rendez-vous lors de l’assemblée générale de l’Association des Maires du Département de la Réunion (AMDR). À cette occasion, chaque maire serre la main de tous les autres maires. Quel est le nombre de poignées de mains échangées ?
 		 
 	=== "Solution"
@@ -219,7 +220,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 !!! abstract "Chemins et cycles"
 	Dans un graphe donné, une {==**chaîne**==} (graphe non-orienté) ou un {==**chemin**==} (graphe orienté) reliant un sommet $u$ à un sommet $v$ est une séquence finie de sommets reliés deux à deux par des arcs/arêtes et menant de $u$ à $v$.
 	
-	Un chemin est dit **simple** s'il n'emprunte pas deux fois le même arc/arête, et **élémentaire** si il ne passe pas deux fois par le même sommet.
+	Un chemin est dit {==**simple**==} s'il n'emprunte pas deux fois le même arc/arête, et {==**élémentaire**==} si il ne passe pas deux fois par le même sommet.
 	
 	Un chemin *simple* reliant  un sommet à lui même et contenant au moins un arc est appelé un {==**cycle**==}(graphe non-orienté) ou un {==**circuit**==}(graphe orienté).
 	
@@ -236,6 +237,8 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 	* et tous les chemins empruntant plusieurs fois le cycle `b -> c -> d -> b`
 
 	Il n'existe par contre pas de chemins menant de `d` à `a`.
+
+	Le chemin `b -> c -> d -> b` est un circuit.
 	
 !!! abstract "Longueur d'un chemin et distance entre deux sommets"
 		
@@ -258,7 +261,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 
 	Un graphe *non-orienté* est dit {==**connexe**==} si il existe un chemin entre deux sommets quelconque du graphe (autrement dit il est en un seul morceau).
 	
-	Lorsqu'un graphe non-roienté est composé de plusieurs morceaux, on chaque morceau  est appelé une {==**composante connexe**==} du graphe.
+	Lorsqu'un graphe non-orienté est composé de plusieurs morceaux, on chaque morceau  est appelé une {==**composante connexe**==} du graphe.
 	
 !!! example "Exemple"
 	
@@ -281,7 +284,7 @@ Les valeurs de pondérations sont données directement à côté des arcs/arête
 	
 !!! question "Trouver des Chemins Eulériens"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		Pour chacun des graphes suivants, trouver lorsque c'est possible une chaîne eulérienne / un parcours eulérien ( ce qui revient à tracer le graphe sans lever le stylo, en ne passant qu'une et une seule fois par chaque arête) : 
 		
 		<div style="display:flex;">
