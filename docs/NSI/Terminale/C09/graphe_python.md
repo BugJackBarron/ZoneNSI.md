@@ -107,9 +107,9 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 				
 			def add_vertice(self) :
 				self.n +=1
-				for l in self.adj :
-					l.append(0)
-				self.adj.append([0]*(self.n))
+				for l in self.adj : # ajout d'un zéro à
+					l.append(0) # chaque ligne existante
+				self.adj.append([0]*(self.n)) # ajout d'une ligne complète
 				
 			def add_edge(self, s, e, p=1) :
 				self.adj[s][e] = p			
@@ -117,11 +117,13 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 		````
 		
 		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :
-			`````python
+
+			```` python
 			>>> e = 15
 			>>> f"BOB{e: >3}"
 			BOB 15
 			````
+
 			où l'expression `e: >3` signifie d'écrire e sous la forme d'une chaîne de caractères alignée à droite d'au moins 3 caractères, des espaces étant insérés si nécessaire.
 		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
@@ -132,11 +134,14 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
 			* `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
 			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
-			* un tuple `(s,e)` donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.
+			* un tuple `(s,e)` donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
 		
 	=== "Réponses"
-	
+
+		A venir
+
+<!-- 	
 		```` python
 		class Graph :
 			def __init__(self, n=0) :
@@ -213,13 +218,13 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 		
 		````
 		
-
+-->
 !!! warning "Limites du modèle"		
 	
-	Si l'utilisation d'une matrice d'adjacence sous la forme présentée est très utile d'un point de vue mathématique (voir par exemple la propriété de l'itérée sur la page [wikipedia](https://fr.wikipedia.org/wiki/Matrice_d%27adjacence){: target="_blank"}), et très facile à mettre en oeuvre, elle possède néanmoins ceryaines limites :
+	Si l'utilisation d'une matrice d'adjacence sous la forme présentée est très utile d'un point de vue mathématique (voir par exemple la propriété de l'itérée sur la page [wikipedia](https://fr.wikipedia.org/wiki/Matrice_d%27adjacence){: target="_blank"}), et très facile à mettre en oeuvre, elle possède néanmoins certaines limites :
 	
 	* Elle utilise une place en mémoire proportionnelle à $n^2$. Pour un graphe de 1000 sommets, il faudra plus d'un million d'entiers pour stocker cette matrice d'adjacence, ce qui commence à être considérable;
-	* Pour connaître les voisins d'un sommet, il faut parcourir la totalité de la lign,e correspondant à ce sommet, ce qui peut rapidement être trop long	.
+	* Pour connaître les voisins d'un sommet, il faut parcourir la totalité de la ligne correspondant à ce sommet, ce qui peut rapidement être trop long	.
 	* Les sommets sont limités à des entiers, ou à un ordre défini, et il est difficile d'intégrer de nouveau sommets qui ne respecteraient pas la convention fixée.
 
 ## Implémentation par un dictionnaire
@@ -243,7 +248,7 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 				
 			def add_vertice(self,s) :
 				if s not in self.vertice :
-					self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+					self.vertice[s] = set() # crée un objet set vide, et garanti l'unicité de chaque élément
 				
 			def add_edge(self, s, e) :
 				self.add_vertice(s)
@@ -262,11 +267,15 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
 			* `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
 			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
-			* un tuple `(s,e)` donnant les sommlets de départ et d'arrivée d'un éventuel chemin eulérien.
+			* un tuple `(s,e)` donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
 		
 		
 	=== "Solution"
+
+		A venir
+
+<!--
 	
 		```` python linenums="1"
 		class Graph :
@@ -328,7 +337,7 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 					for t in self.vertice[s] :
 						rep += f"   ->{t}\n"
 				return rep
-		````
+-->````
 
 ### Graphes pondérés 
 
@@ -340,7 +349,7 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 
 !!! question "Implémentation en Python avec un tuple"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :
 		
@@ -364,7 +373,7 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 		
 !!! question "Implémentation en Python avec un dictionnaire d'arcs"
 
-	=== "Enoncé"
+	=== "Énoncé"
 	
 		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :
 		
@@ -404,7 +413,7 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 	</div>
 	<div style="display : inline; width : 50%;">
 	
-	Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisémment, pour créer un graphe non orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :
+	Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisément, pour créer un graphe non orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :
 
 	```` python
 	G = Graph()
