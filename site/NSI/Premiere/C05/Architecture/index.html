@@ -1926,6 +1926,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#la-machine-de-turing" class="md-nav__link">
+    La machine de Turing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#le-modele-de-von-neumann" class="md-nav__link">
     Le modèle de von Neumann
   </a>
@@ -4005,6 +4012,42 @@
 
 
 <div><h1 id="architecture-materielle">Architecture matérielle</h1>
+<h2 id="la-machine-de-turing">La machine de Turing</h2>
+<p>En 1936, Alan Turing présente ce qu'on appellera plus tard la <strong>machine de Turing</strong> : c'est un objet <em>mathématique</em> permettant de donner un sens précis à la notion de «calcul».</p>
+<p><img alt="Machine de Turing" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Turing_Machine_Model_Davey_2012.jpg/800px-Turing_Machine_Model_Davey_2012.jpg?20130131224806" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Turing Machine"></p>
+<p>Alan Turing n'a jamais construit cette machine. Mais le prototype ci-dessus a été réalisé à partir de la description qu'il en fait dans son article : <em>On Computable Numbers, with an Application to the Entscheidungsproblem (problème de la décision)</em> en 1936. Grâce à cet article, et au travail en parallèle du mathématicien Alonzo Church, la notion de <mark class="critic"><strong>calculabilité</strong></mark> est développée. Church montre que tout calcul basé sur un algorithme peut être exécuté par une machine de Turing.</p>
+<p><img alt="Alonzo Church" src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="AlonzoChurch, Wikipedia"></p>
+<div class="admonition info">
+<p class="admonition-title">Machine de Turing</p>
+<p>Une Machine de Turing est composée des éléments suivants :</p>
+<ul>
+<li>un ruban <strong>infini</strong>(au moins d'un côté)  comportant des cases qui peuvent contenir des symboles ;</li>
+<li>un <strong>ensemble de symboles</strong> possibles à écrire, qu'on appelle <strong>l'alphabet</strong>. <em>Nous nous limiterons ici à l'alphabet <code>{None, 0, 1}</code>, où <code>None</code> représente une case blanche</em>.</li>
+<li>une tête de lecture et d'écriture qui peut se déplacer sur ce ruban. Plus précisément, la tête peut :<ul>
+<li><strong>lire</strong> le symbole déjà écrit sur la case courante ;</li>
+<li><strong>écrire</strong> une valeur sur la case courante (ou effacer le contenu en écrivant <code>None</code> ) ;</li>
+<li><strong>se déplacer</strong> d’une case vers la gauche ou d’une case vers la droite. Nous utiliserons la notation <code>-1</code> pour aller vers la gauche, et <code>1</code> pour aller vers la droite.</li>
+</ul>
+</li>
+</ul>
+<p>Les actions à exécuter (lecture, écriture, déplacement et changement d’état) sont inscrites dans ce qu’on appelle les <strong>états</strong>, et l'ensemble des états possibles est regroupé dans la <strong>table des transitions</strong>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Un exemple</p>
+<p>On considère la machine de Turing suivante :</p>
+<p><img alt="Machine de Turing" src="../Turing_P5_1.png"></p>
+<p>Elle est actuellement en état <code>e2</code>, en mode lecture, et elle lit un <code>0</code>. D'après la table de transition, elle va donc :</p>
+<ul>
+<li>écrire <code>1</code> dans la case courante ;</li>
+<li>se déplacer d'une case vers la gauche (<code>-1</code>) ;</li>
+<li>passer dans l'état <code>3</code>.</li>
+</ul>
+<p>Quel sera l'état du ruban après le cycle suivant de lecture, écriture, déplacement et changement d'état ?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Travailler avec la machine de Turing</p>
+<p>Voir le notebook <a href="https://capytale2.ac-paris.fr/web/c/77c0-3421362" target="_blank">Capytale Machine de Turing</a>.</p>
+</div>
 <h2 id="le-modele-de-von-neumann">Le modèle de von Neumann</h2>
 <h3 id="le-principe">Le principe</h3>
 <p><mark class="critic"><strong>John Von Neumann</strong></mark> (1903-1957) est un ingénieur, mathématicien et physicien  américano-hongrois.Il a participé au projet Manhattan (première bombe atomique) et à l'ENIAC. Son nom reste attaché à un modèle qu'il propose en 1944,  modèle d'architecture novateur qui sert toujours de base à nos architectures actuelles.</p>
@@ -4027,7 +4070,7 @@
 <p>L'augmentation de la fréquence d'horloge a longtemps été un attendu des progrès de l'informatique, et elle a été longtemps corrélée à l'<strong>augmentation du nombre de transistors</strong> dans les processeurs. Gordon E. Moore énonça en <span class="arithmatex">\(1965\)</span> une loi empirique prédisant un doublement du nombre de processeurs tous les deux ans.</p>
 <p><img alt="Loi de Moore" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Loi_de_Moore.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Loi de Moore, image Wikipedia"></p>
 <p>Mais cette augmentation génère une chaleur très importante au niveau processeur, la dissipation de cette chaleur étant rapidement devenue un problème. Depuis <span class="arithmatex">\(2005\)</span> environ, les fabricants se sont plutôt tourné vers une <strong>augmentation du nombre de cœurs</strong> dans leurs processeurs, en comptant sur le <mark class="critic"><strong>parallélisme</strong></mark>(le fait de pouvoir gérer des instructions en simultané sur plusieurs cœurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de <span class="arithmatex">\(3,8\)</span> GHz.</p>
-<p><img alt="Frequence.png" src="../Frequence.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Frequence des processeurs"></p>
+<p><img alt="Frequence.png" src="../Frequence.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Fréquence des processeurs"></p>
 <h3 id="cycles-dinstructions-et-parallelisme">Cycles d'instructions et parallélisme</h3>
 <p>Dans un processeur, 5 étapes sont nécessaires pour traiter une instruction. Chacune de ces 5 étapes est exécutée :</p>
 <ul>

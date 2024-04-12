@@ -7,20 +7,20 @@
 
 	En 1966, l'Académie française consacre l'usage officiel du mot pour désigner la &laquo; **science du traitement de l'information** &raquo;. La presse, l'industrie et le milieu universitaire l'adoptent dès cette époque. 
 
-	D'après Wikipedia, article *Informatique*
+	*D'après Wikipedia, article «Informatique»*
 
 L'informatique est donc, étymologiquement, bien antérieure aux ordinateurs. Il s'agit de savoir **comment les informations sont stockées**, sur **quels supports**, et comment elles sont **traitées**.
 
 ## Pré-histoire de l'informatique
 
-Les premières traces laissées délibérément et nous étant parvenues par les êtres humains sont les peintures rupestres. Elles gardent de nombreux mystères, mais sont réellement des chefs-d'œuvre de civilisations passées.   Les archéo-anthropologues s'accordent actuellement sur le fait que des [proto-écritures](https://fr.wikipedia.org/wiki/Grotte_de_Lascaux#Interpr%C3%A9tations){: target="_blank"} ont été utilisées, mais nous ne disposons actuellement pas de *[pierres de Rosette](https://fr.wikipedia.org/wiki/Pierre_de_Rosette){: target="_blank"}* permettant de les décrypter.
+Les premières traces laissées délibérément et nous étant parvenues par les êtres humains sont les peintures rupestres. Elles gardent de nombreux mystères, mais sont réellement des chefs-d'œuvre de civilisations passées. Les archéo-anthropologues s'accordent actuellement sur le fait que des [proto-écritures](https://fr.wikipedia.org/wiki/Grotte_de_Lascaux#Interpr%C3%A9tations){: target="_blank"} ont été utilisées, mais nous ne disposons actuellement pas de *[pierres de Rosette](https://fr.wikipedia.org/wiki/Pierre_de_Rosette){: target="_blank"}* permettant de les décrypter.
  On trouve ensuite les gravures sur rochers, puis rapidement les tablettes d'argiles, etc.
 
-![Cuneiforme.png](Cuneiforme.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Ecriture cunéiforme"}
+![Cuneiforme.png](Cuneiforme.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Écriture cunéiforme"}
 
 Ces supports sont particulièrement résistants, mais difficiles à stocker et ne peuvent contenir que peu d'informations. 
 
-Les systèmes de comptages sont encore très primitifs et peu optimisés, du *calculi* (petits cailloux en latin), aux systèmes de comptages cunéiformes *sexagésimaux* (en base $60$), dont nous avons hérité pour notre décompte des heures et des angles en degré. On trouve rapidement cependant le système des bouliers, découvert de manières indépendantes par de multiples civilisations tout autour du globe.
+Les systèmes de comptages sont limités, du *calculi* (petits cailloux en latin), aux systèmes de comptages cunéiformes *sexagésimaux* (en base $60$), dont nous avons hérité pour notre décompte des heures et des angles en degré. On trouve rapidement cependant le système des bouliers (ou abaques), découvert de manières indépendantes par de multiples civilisations tout autour du globe.
 
 ![Boulier.png](Boulier.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Boulier"}
 
@@ -32,7 +32,7 @@ La [machine d'Anticythère](https://fr.wikipedia.org/wiki/Machine_d%27Anticyth%C
 
 ![Anticythere.png](Anticythere.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Mécanisme d'Anticythere"}
 
-Jusqu'à la fin de l'époque médiévale, la possibilité la plus répandue pour obtenir un *manuscrit* était de le recopier à la main - d'où la grande importance des moines-copistes et des monastères qui s'y consacraient dans la sphère d'influence occidentale. Cependant, le procédé de *xylographie* (principe du tampon encreur avec une matrice en bois), ainsi que des procédés simplifiés de fabrication du papier transitent avec la grande horde mongole par l'intermédiaire de la route de la soie. Vers 1430, **Johannes Gutenberg** invente le principe de la presse à imprimer à caractères mobiles, et facilite grandement la copie d'œuvres écrites. Une nouvelle ère de développement de la science et des idées se répand sur l'Europe.
+Jusqu'à la fin de l'époque médiévale, la possibilité la plus répandue pour obtenir un *manuscrit* était de le recopier à la main - d'où la grande importance des moines-copistes et des monastères qui s'y consacraient dans la sphère d'influence occidentale. Cependant, le procédé de *xylographie* (principe du tampon encreur avec une matrice en bois), ainsi que des procédés simplifiés de fabrication du papier transitent avec la grande horde mongole par l'intermédiaire de la route de la soie. Vers 1430, **Johannes Gutenberg** invente le principe de la presse à imprimer à caractères mobiles et facilite grandement la copie d'œuvres écrites. Une nouvelle ère de développement de la science et des idées se répand sur l'Europe.
 
 ![Gutemberg.png](Gutemberg.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Gutemberg"}
 
@@ -49,7 +49,7 @@ En 1725, Basile Bouchon, un Lyonnais, met au point le premier système de progra
 
 Ces cartes perforées sont les premiers exemples de supports de stockages permettant de stocker d'autres informations que l'écrit ou l'image. En effet, ces cartes sont utilisées dans les orgues de barbarie pour représenter de la musique, et sur les métiers Jacquard afin d'y représenter des motifs de tissage.
  
-Les métiers à tisser Jacquard sont la pointe de la technologie. Ils utilisent les cartes perforées pour réaliser des motifs complexes, et sont donc \&laquo; programmables &raquo; par l'introduction de nouvelles cartes.
+Les métiers à tisser Jacquard sont la pointe de la technologie. Ils utilisent les cartes perforées pour réaliser des motifs complexes et sont donc \&laquo; programmables &raquo; par l'introduction de nouvelles cartes.
 
 ![Metier_jacquard.jpg](Metier_jacquard.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Métier Jacquard"}
 
@@ -74,10 +74,10 @@ L'apparition de l'électricité comme source d'énergie va rapidement permettre 
 
 ![Turing.jpg](Turing.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Alan Turing"}
 
-Mathématicien et cryptologue britannique (1912-1954), Alan Turing a d'abord travaillé sur l'idée de calculabilité. Il montre que ce qui est calculable peut se décomposer en un nombre fini d'étapes et peut de ce fait être réalisé par une machine. Il imagine à la fin des années 1930 un calculateur, mais celui-ci ne sera construit que 20 ans plus tard. Il imagine le moyen pour une machine de reproduire certaines actions humaines : &laquo; Je crois que dans une cinquantaine d’années, il sera possible de programmer des ordinateurs, avec une capacité de mémoire d’à peu près $10^9$, pour les faire si bien jouer au jeu de l’imitation qu’un interrogateur moyen n’aura pas plus de 70 pour cent de chances de procéder à l’identification exacte après cinq minutes d’interrogation. &raquo;
+Mathématicien et cryptologue britannique (1912-1954), Alan Turing a d'abord travaillé sur l'idée de calculabilité. Il montre que ce qui est calculable peut se décomposer en un nombre fini d'étapes et peut de ce fait être réalisé par une machine. Il imagine à la fin des années 1930 un calculateur (appelé **«Machine de Turing»**, voir plus loin), mais celui-ci ne sera construit que 20 ans plus tard. Il imagine le moyen pour une machine de reproduire certaines actions humaines , et développe par une expérience de pensée un procédé appelé aujourd'hui **« Test de Turing»** permettant de savoir si une intelligence artificielle est capable de convaincre un humain qu'elle est humaine.
  
  
-Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du décodage de la machine Enigma utilisée par les Nazis. Il construit une machine, le Colossus Mark II, surnommée \&laquo; La bombe &raquo;, qui permet le déchiffrement rapide des messages allemands. Cette machine peut être considérée comme le premier ordinateur électronique, mais elle était difficilement reprogrammable, car il fallait re-câbler pour changer de programme.
+Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du décodage de la machine Enigma utilisée par les Nazis. Il construit une machine, surnommée \&laquo; La bombe &raquo;, qui permet le déchiffrement rapide des messages allemands. Cette machine peut être considérée comme le premier ordinateur électronique, mais elle était difficilement reprogrammable, car il fallait re-câbler pour changer de programme.
 
 
 ![Enigma_Bombe.png](Enigma_Bombe.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Enigma"}

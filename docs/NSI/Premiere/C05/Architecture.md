@@ -1,5 +1,47 @@
 # Architecture matérielle
 
+## La machine de Turing
+
+En 1936, Alan Turing présente ce qu'on appellera plus tard la **machine de Turing** : c'est un objet *mathématique* permettant de donner un sens précis à la notion de «calcul».
+
+![Machine de Turing](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Turing_Machine_Model_Davey_2012.jpg/800px-Turing_Machine_Model_Davey_2012.jpg?20130131224806 "  Turing Machine, reconstructed by Mike Davey as seen at Go Ask ALICE at Harvard University,21 October 2012, 23:22:39, Rocky Acosta, Wikipedia"){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Turing Machine"}
+
+
+Alan Turing n'a jamais construit cette machine. Mais le prototype ci-dessus a été réalisé à partir de la description qu'il en fait dans son article : *On Computable Numbers, with an Application to the Entscheidungsproblem (problème de la décision)* en 1936. Grâce à cet article, et au travail en parallèle du mathématicien Alonzo Church, la notion de {==**calculabilité**==} est développée. Church montre que tout calcul basé sur un algorithme peut être exécuté par une machine de Turing.
+
+![Alonzo Church](https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="AlonzoChurch, Wikipedia"}
+
+!!! info "Machine de Turing"
+	Une Machine de Turing est composée des éléments suivants :
+
+	* un ruban **infini**(au moins d'un côté)  comportant des cases qui peuvent contenir des symboles ;
+	* un **ensemble de symboles** possibles à écrire, qu'on appelle **l'alphabet**. *Nous nous limiterons ici à l'alphabet `{None, 0, 1}`, où `None` représente une case blanche*.
+	* une tête de lecture et d'écriture qui peut se déplacer sur ce ruban. Plus précisément, la tête peut :
+		* **lire** le symbole déjà écrit sur la case courante ;
+		* **écrire** une valeur sur la case courante (ou effacer le contenu en écrivant `None` ) ;
+		* **se déplacer** d’une case vers la gauche ou d’une case vers la droite. Nous utiliserons la notation `-1` pour aller vers la gauche, et `1` pour aller vers la droite.
+		
+	Les actions à exécuter (lecture, écriture, déplacement et changement d’état) sont inscrites dans ce qu’on appelle les **états**, et l'ensemble des états possibles est regroupé dans la **table des transitions**.
+
+!!! example "Un exemple"
+
+	On considère la machine de Turing suivante :
+
+	![Machine de Turing](Turing_P5_1.png)
+	
+	Elle est actuellement en état `e2`, en mode lecture, et elle lit un `0`. D'après la table de transition, elle va donc :
+
+	* écrire `1` dans la case courante ;
+	* se déplacer d'une case vers la gauche (`-1`) ;
+	* passer dans l'état `3`.
+
+	Quel sera l'état du ruban après le cycle suivant de lecture, écriture, déplacement et changement d'état ?
+
+
+!!! question "Travailler avec la machine de Turing"
+
+	Voir le notebook [Capytale Machine de Turing](https://capytale2.ac-paris.fr/web/c/77c0-3421362){:target="_blank"}.
+
 ## Le modèle de von Neumann
 
 ### Le principe
@@ -34,7 +76,7 @@ L'augmentation de la fréquence d'horloge a longtemps été un attendu des progr
 
 Mais cette augmentation génère une chaleur très importante au niveau processeur, la dissipation de cette chaleur étant rapidement devenue un problème. Depuis $2005$ environ, les fabricants se sont plutôt tourné vers une **augmentation du nombre de cœurs** dans leurs processeurs, en comptant sur le {==**parallélisme**==}(le fait de pouvoir gérer des instructions en simultané sur plusieurs cœurs) pour augmenter le nombre d'instructions traitées par seconde, plutôt qu'une augmentation pure du nombre d'opérations par seconde, qui actuellement plafonne aux environs de $3,8$ GHz.
 
-![Frequence.png](Frequence.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Frequence des processeurs"}
+![Frequence.png](Frequence.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title="Fréquence des processeurs"}
 
 
 ### Cycles d'instructions et parallélisme
