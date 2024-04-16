@@ -148,7 +148,7 @@ Les premiers ordinateurs exécutaient déjà du code binaire et les premiers pro
 En $1954$, IBM développe le premier langage {==**assembleur**==}. Il sert d'intermédiaire entre l'algorithme (`pour i allant de ...`) et le langage machine (`001011001...`). C'est un langage de *très bas niveau* (proche de la machine, encore très complexe à comprendre par un humain).
 
 
-!!! example "Exemple de programmation en assembleur: calcul du PGCD de 56 et 42"
+!!! example "Exemple de programmation en assembleur : calcul du PGCD de 56 et 42"
 
 	=== "Programme en assembleur"
 
