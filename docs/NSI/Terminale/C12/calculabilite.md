@@ -1,13 +1,3 @@
 # Calculabilité
 
-## Un problème impossible à résoudre ?
-
-## Calculabilité
-
-### Le lambda calcul
-
-### Les machines de Turing
-
-## Limites de la calculabilité
-### Le problème de l'arrêt
-### Des fonctions non-calculables ?
+L'ensemble du chapitre est traité sous la forme d'un notebook Capytale, disponible [ici](https://capytale2.ac-paris.fr/web/c/f55a-3343724){: target="_blank"}
