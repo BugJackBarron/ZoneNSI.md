@@ -4110,9 +4110,11 @@
 <p>Copiez-collez ensuite la ligne suivante dans votre code, <strong>après la fonction précédente</strong> :</p>
 <div class="highlight"><pre><span></span><code><span class="n">etablissements</span><span class="p">,</span> <span class="n">GPS</span> <span class="o">=</span> <span class="n">makeBigArray</span><span class="p">()</span>
 </code></pre></div>
-<p>Le code ci-dessous crée deux listes : 
-    * la première contient tous les différents établissements présents sur <strong>ParcourSup</strong>,
-    * la deuxième contient les <strong>coordonnées GPS</strong> de chacun de ces établissements.</p>
+<p>Le code ci-dessous crée deux listes : </p>
+<ul>
+<li>la première contient tous les différents établissements présents sur <strong>ParcourSup</strong>,</li>
+<li>la deuxième contient les <strong>coordonnées GPS</strong> de chacun de ces établissements.</li>
+</ul>
 </li>
 <li>
 <p>Vérifiez que les listes <code>etablissements</code> et <code>GPS</code> sont bien de la même dimension.</p>
@@ -4174,8 +4176,8 @@ La seule limite imposée dans les types des objets <code>clé</code> et <code>va
 </details>
 <p>Par exemple dans le dictionnaire <code>cris</code>, on trouve la paire <code>"Chat" : "Miaou"</code> où :</p>
 <ul>
-<li><code>"Chat"</code> est la clé (de type chaine de caractères <code>str</code>) ;</li>
-<li><code>"Miaou"</code> est la valeur (aussi de type chaine de caractères <code>str</code>).</li>
+<li><code>"Chat"</code> est la <mark class="critic">clé</mark> (de type chaine de caractères <code>str</code>) ;</li>
+<li><code>"Miaou"</code> est la <mark class="critic">valeur</mark> (aussi de type chaine de caractères <code>str</code>).</li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -4224,7 +4226,7 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <span class="o">&gt;&gt;&gt;</span> <span class="n">dico2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 </code></pre></div>
 <h4 id="ajout-dun-element">Ajout d'un élément</h4>
-<p>Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple :</p>
+<p>Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il suffit d'écrire :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="p">[</span><span class="s1">'Girafe'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Tic-Tic'</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span>
 <span class="p">{</span><span class="s1">'Vache'</span><span class="p">:</span> <span class="s1">'Meuh'</span><span class="p">,</span> <span class="s1">'Chien'</span><span class="p">:</span> <span class="s1">'Wouf'</span><span class="p">,</span> <span class="s1">'Chat'</span><span class="p">:</span> <span class="s1">'Miaou'</span><span class="p">,</span> <span class="s1">'Poule'</span><span class="p">:</span> <span class="s1">'Cot-cot'</span><span class="p">,</span> <span class="s1">'Ane'</span><span class="p">:</span> <span class="s1">'Hi-Han'</span><span class="p">,</span> <span class="s1">'Cochon'</span><span class="p">:</span> <span class="s1">'Gruik'</span><span class="p">,</span> <span class="s1">'Paon'</span><span class="p">:</span> <span class="s1">'Leon'</span><span class="p">,</span> <span class="s1">'Girafe'</span><span class="p">:</span> <span class="s1">'Tic-Tic'</span><span class="p">}</span>
@@ -4252,7 +4254,7 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <p>Il est possible de tester l'existence d'une clé dans le dictionnaire grâce à l'<em>opérateur</em> <code>ìn</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">'Vache'</span> <span class="ow">in</span> <span class="n">cris</span>
 <span class="kc">True</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="err">`</span><span class="n">vache</span><span class="err">`</span> <span class="ow">in</span> <span class="n">cris</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'vache'</span> <span class="ow">in</span> <span class="n">cris</span>
 <span class="kc">False</span>
 </code></pre></div>
 <p>Par contre, cet opérateur <strong>ne permet pas de tester l'existence d'une valeur</strong> :</p>
@@ -4264,7 +4266,7 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <p></p><div onclick='start_term("id12")' id="fake_id12" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id12" class="hide"></div>
 </details>
 <h4 id="parcourir-un-dictionnaire">Parcourir un dictionnaire</h4>
-<p>Pour parcourir un dictionnaire, on utilise une boucle <code>for</code> comme pour un parcours par élément d'une liste :</p>
+<p>Pour parcourir un dictionnaire, on utilise une boucle <code>for</code> pour effectuer un <mark class="critic"><strong>parcours par éléments</strong></mark> d'une liste :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">cris</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
 </code></pre></div>
@@ -4441,8 +4443,11 @@ Et on peut encore itérer sur cet objet :
 <div class="tabbed-block">
 <ol>
 <li>Écrire un dictionnaire <code>mois</code> dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).</li>
-<li>Créer une fonction <code>quelMois</code> donnant les mois dont le nombre de jours est passé en argument.    </li>
+<li>Écrire un dictionnaire <code>quelMois</code> dont les clés sont des entiers, et les valeurs sont la liste des mois correspondant au nombre de jours en clé. Par exemple :</li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">quelMois</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'Février'</span><span class="p">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>A venir !</p>

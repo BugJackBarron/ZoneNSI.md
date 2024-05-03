@@ -102,8 +102,9 @@ Que se passe-t-il si les tableaux sont plus long ?
 			````
 
 			Le code ci-dessous crée deux listes : 
-				* la première contient tous les différents établissements présents sur **ParcourSup**,
-				* la deuxième contient les **coordonnées GPS** de chacun de ces établissements.
+
+			* la première contient tous les différents établissements présents sur **ParcourSup**,
+			* la deuxième contient les **coordonnées GPS** de chacun de ces établissements.
 			
 		4. Vérifiez que les listes `etablissements` et `GPS` sont bien de la même dimension.
 
@@ -171,8 +172,8 @@ Que se passe-t-il si les tableaux sont plus long ?
 
 	Par exemple dans le dictionnaire `cris`, on trouve la paire `"Chat" : "Miaou"` où :
 
-	* `"Chat"` est la clé (de type chaine de caractères `str`) ;
-	* `"Miaou"` est la valeur (aussi de type chaine de caractères `str`).
+	* `"Chat"` est la {==clé==} (de type chaine de caractères `str`) ;
+	* `"Miaou"` est la {==valeur==} (aussi de type chaine de caractères `str`).
 
 
 !!! abstract "Accès à un élément"
@@ -232,7 +233,7 @@ Il existe deux possibilités pour créer un dictionnaire vide :
 
 #### Ajout d'un élément
 
-Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple :
+Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il suffit d'écrire :
 
 ```` python
 >>> cris['Girafe'] = 'Tic-Tic'
@@ -273,7 +274,7 @@ Il est possible de tester l'existence d'une clé dans le dictionnaire grâce à 
 ```` python 
 >>> 'Vache' in cris
 True
->>> `vache` in cris
+>>> 'vache' in cris
 False
 
 ````
@@ -291,7 +292,7 @@ False
 	
 #### Parcourir un dictionnaire
 
-Pour parcourir un dictionnaire, on utilise une boucle `for` comme pour un parcours par élément d'une liste :
+Pour parcourir un dictionnaire, on utilise une boucle `for` pour effectuer un {==**parcours par éléments**==} d'une liste :
 
 ```` python
 >>> for animal in cris :
@@ -500,7 +501,12 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 
 	=== "Énoncé"
 		1. Écrire un dictionnaire `mois` dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).
-		2. Créer une fonction `quelMois` donnant les mois dont le nombre de jours est passé en argument.    
+		2. Écrire un dictionnaire `quelMois` dont les clés sont des entiers, et les valeurs sont la liste des mois correspondant au nombre de jours en clé. Par exemple :
+
+		``` python
+		>>> quelMois[28]
+		['Février']
+		```    
 	=== "Réponses"
 		A venir !
 
