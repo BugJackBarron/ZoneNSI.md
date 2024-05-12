@@ -4051,7 +4051,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>soit la chaine <code>"Je ne connais pas le cri de Vache"</code> dans le cas où l'animal n'est pas dans la liste <code>animaux</code>.</p>
+<p>soit <code>None</code> dans le cas où l'animal n'est pas dans la liste <code>animaux</code>.</p>
 </li>
 </ul>
 </div>
@@ -4061,7 +4061,7 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">animaux</span><span class="p">))</span> <span class="p">:</span>
         <span class="k">if</span> <span class="n">animaux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">animal</span> <span class="p">:</span>
             <span class="k">return</span> <span class="n">cris</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"Je ne connais pas le cri de </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2">"</span>      
+    <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
 </div>
 </div>
@@ -4117,7 +4117,11 @@
 </ul>
 </li>
 <li>
-<p>Vérifiez que les listes <code>etablissements</code> et <code>GPS</code> sont bien de la même dimension.</p>
+<p>Vérifiez que :</p>
+<ol>
+<li>les variables <code>etablissements</code> et <code>GPS</code> sont bien du type <code>list</code>.</li>
+<li>elles sont de la même taille.</li>
+</ol>
 </li>
 <li>
 <p>A partir de la fonction <code>affiche_cri</code>, créez une fonction <code>affiche_GPS</code> afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</p>
@@ -4144,7 +4148,7 @@
 <p>Les listes sont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :</p>
 <ul>
 <li>si la liste n'est pas triée, la recherche se fait en <span class="arithmatex">\(\mathbb{O}(n)\)</span>, ce qui signifie que la recherche prend <mark class="critic"><strong>un temps proportionnel à la longueur de la liste</strong></mark> ;</li>
-<li>si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la <strong>recherche dichotomique</strong> (au programme de terminale), qui permettent de rechercher en un temps plus court, en <span class="arithmatex">\(\mathbb{O}(log(n))\)</span>.</li>
+<li>si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la <mark class="critic"><strong>recherche dichotomique</strong></mark> (au programme de terminale), qui permettent de rechercher en un temps plus court, en <span class="arithmatex">\(\mathbb{O}(log(n))\)</span>.</li>
 </ul>
 <p>Quoi qu'il en soit, <strong>ce temps est très long</strong> comparativement au <mark class="critic"><strong>temps d'accès</strong></mark> à un élément, quand on connait son indice ! En effet, <strong>peu importe la taille de la liste</strong>, le temps d'accès à un élément reste constant, il est en <span class="arithmatex">\(\mathbb{O}(1)\)</span>.</p>
 </div>
@@ -4442,8 +4446,12 @@ Et on peut encore itérer sur cet objet :
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Écrire un dictionnaire <code>mois</code> dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).</li>
-<li>Écrire un dictionnaire <code>quelMois</code> dont les clés sont des entiers, et les valeurs sont la liste des mois correspondant au nombre de jours en clé. Par exemple :</li>
+<li>
+<p>Écrire un dictionnaire <code>mois</code> dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).</p>
+</li>
+<li>
+<p>Écrire un dictionnaire <code>quel_mois</code> dont les clés sont des entiers, et les valeurs sont la liste des mois correspondant au nombre de jours en clé. Par exemple :</p>
+</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">quelMois</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span>
 <span class="p">[</span><span class="s1">'Février'</span><span class="p">]</span>
@@ -4480,7 +4488,7 @@ Et on peut encore itérer sur cet objet :
 </code></pre></div>
 </li>
 <li>
-<p>Écrire une fonction <code>occurrenceMot(chaine :str)</code> qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .</p>
+<p>Écrire une fonction <code>occurrence_mot(chaine :str)</code> qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">occurence_mot</span><span class="p">(</span><span class="n">chaine</span> <span class="p">:</span><span class="nb">str</span> <span class="p">)</span> <span class="o">-&gt;</span><span class="nb">dict</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Prend en argument une chaine de caractère quelconque mais non vide,</span>
@@ -4490,7 +4498,7 @@ Et on peut encore itérer sur cet objet :
 <span class="sd">    Par exemple :</span>
 <span class="sd">    &gt;&gt;&gt; occurence_mot("Le petit chien")</span>
 <span class="sd">    {'le': 1, 'petit': 1, 'chien': 1}</span>
-<span class="sd">    &gt;&gt;&gt; occurence("Le petit chien joue avec le petit chat")</span>
+<span class="sd">    &gt;&gt;&gt; occurence_mot("Le petit chien joue avec le petit chat")</span>
 <span class="sd">    {'le': 2, 'petit': 2, 'chien': 1, "joue" : 1, "avec" : 1, "chat" : 1 }</span>
 <span class="sd">        """</span>
     <span class="o">...</span>    
