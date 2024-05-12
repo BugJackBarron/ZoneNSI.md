@@ -19,16 +19,16 @@
 		````
 
 		=== "Énoncé"
-			Écrire une fonction `afficheCri`  qui prend comme argument le nom d'un animal, et renvoie : 
+			Écrire une fonction `affiche_cri`  qui prend comme argument le nom d'un animal, et renvoie : 
 
 			*	soit une chaine de caractère telle que  dans l'exemple ci-dessous :
 
 				```` python   
-				>>> afficheCri("Vache")
+				>>> affiche_cri("Vache")
 				"Le cri de l'animal Vache est Meuh !" 
 				````
 
-			* soit la chaine `"Je ne connais pas le cri de Vache"` dans le cas où l'animal n'est pas dans la liste `animaux`.
+			* soit `None` dans le cas où l'animal n'est pas dans la liste `animaux`.
 
 			
 				
@@ -38,12 +38,11 @@
 				
 			```` python 
   
-			def afficheCri(animal) :
+			def affiche_cri(animal) :
 				for i in range(len(animaux)) :
 					if animaux[i] == animal :
 						return cris[i]
-				return f"Je ne connais pas le cri de {animal}"		
-   
+				return None
 			````
 			
 Si cette méthode est fonctionnelle, il faut quand même se poser la question de son {==**efficacité**==}, et plus particulièrement de son {==**efficacité en temps**==}.			
@@ -60,14 +59,14 @@ Si cette méthode est fonctionnelle, il faut quand même se poser la question de
 	Une fois importé, nous allons utiliser la fonction `timeit` du module pour calculer le temps d'exécution d'une instruction par la commande suivante :
 
 	```` python 
-    timeit.timeit(lambda : afficheCri('Vache'), number = 1000)
+    timeit.timeit(lambda : affiche_cri('Vache'), number = 1000)
  	````			
 	
-	L'instruction `afficheCri('Vache')` sera alors exécutée 1000 fois, et le temps moyen d'exécution sera affiché (mais sans le résultat d'exécution de la fonction...).
+	L'instruction `affiche_cri('Vache')` sera alors exécutée 1000 fois, et le temps moyen d'exécution sera affiché (mais sans le résultat d'exécution de la fonction...).
 
 !!! question "Mesurer le temps"
 	
-	Quel est le temps d'exécution de la fonction `afficheCri` ? Testez sur plusieurs animaux.
+	Quel est le temps d'exécution de la fonction `affiche_cri` ? Testez sur plusieurs animaux.
 	
 
 ###  Et avec plus de données ?
@@ -79,11 +78,11 @@ Que se passe-t-il si les tableaux sont plus long ?
 	=== "Enoncé"
 	
 		1. Téléchargez le fichier [suivant](Long_Dico.csv){: target = "_blank"}, et sauvegardez le dans le même dossier que votre code Python actuel.
-		2. Copiez-collez la fonction `makebigArray` suivante.
+		2. Copiez-collez la fonction `make_big_lists` suivante.
 		
 			```` python 
 			  
-			def makeBigArray() :
+			def make_big_lists() :
 				import csv
 				with open("Long_Dico.csv","r",encoding = "utf8") as file :
 					dicReader = csv.DictReader(file, delimiter=';')
@@ -98,21 +97,24 @@ Que se passe-t-il si les tableaux sont plus long ?
 		3. Copiez-collez ensuite la ligne suivante dans votre code, **après la fonction précédente** :
 			
 			```` python
-			etablissements, GPS = makeBigArray()
+			etablissements, GPS = make_big_lists()
 			````
 
 			Le code ci-dessous crée deux listes : 
-				* la première contient tous les différents établissements présents sur **ParcourSup**,
-				* la deuxième contient les **coordonnées GPS** de chacun de ces établissements.
-			
-		4. Vérifiez que les listes `etablissements` et `GPS` sont bien de la même dimension.
+
+			* la première contient tous les différents établissements présents sur **ParcourSup**,
+			* la deuxième contient les **coordonnées GPS** de chacun de ces établissements.
+		
+		4. Vérifiez que :
+			1. les variables `etablissements` et `GPS` sont bien du type `list`.
+			2. elles sont de la même taille.
 
 
-		5. A partir de la fonction `afficheCri`, créez une fonction `afficheGPS` afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
+		5. A partir de la fonction `affiche_cri`, créez une fonction `affiche_GPS` afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
 		6. Testez ensuite la ligne suivante :
 		
 			```` python
-			timeit.timeit(lambda : afficheGPS('Lycée Auguste Pavie (Guingamp - 22)'), number = 1000)
+			timeit.timeit(lambda : affiche_GPS('Lycée Auguste Pavie (Guingamp - 22)'), number = 1000)
 			````
 			
 			Quel est le temps d'exécution ?
@@ -120,7 +122,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 		7. Testez ensuite la ligne suivante : 
 
 			```` python
-			 timeit.timeit(lambda : afficheGPS('Pavie'), number = 1000)
+			 timeit.timeit(lambda : affiche_GPS('Pavie'), number = 1000)
 			````
 			
 			Quel est le temps d'exécution ? Pourquoi est-il plus long que précédemment ?
@@ -131,7 +133,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 	Les listes sont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :
 	
 	* si la liste n'est pas triée, la recherche se fait en $\mathbb{O}(n)$, ce qui signifie que la recherche prend {==**un temps proportionnel à la longueur de la liste**==} ;
-	* si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la **recherche dichotomique** (au programme de terminale), qui permettent de rechercher en un temps plus court, en $\mathbb{O}(log(n))$.
+	* si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la {==**recherche dichotomique**==} (au programme de terminale), qui permettent de rechercher en un temps plus court, en $\mathbb{O}(log(n))$.
 	
 	Quoi qu'il en soit, **ce temps est très long** comparativement au {==**temps d'accès**==} à un élément, quand on connait son indice ! En effet, **peu importe la taille de la liste**, le temps d'accès à un élément reste constant, il est en $\mathbb{O}(1)$.
 	
@@ -368,7 +370,7 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 !!! question "Améliorer avec les dictionnaires"
 
 	=== "Énoncé"
-		Reconstruisez une nouvelle fonction `afficheCri2` sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.
+		Reconstruisez une nouvelle fonction `affiche_cri_2` sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.
 		
 	=== "Réponses"
 	
@@ -376,7 +378,7 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 		
 		```` python
 		
-		def afficheCri2(animal) :
+		def affiche_cri_2(animal) :
 			if animal in cris :
 				return cris[animal]
 			return f"Je ne connais pas le cri de {animal}"	
@@ -390,7 +392,7 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 Recréons à partir du même fichier Parcoursup ``Long_Dico.csv`` un dictionnaire contenant les établissements et leurs coordonnées GPS :
 
 ```` python   
-def makeBigDict() :
+def make_big_dict() :
     import csv
     with open("Long_Dico.csv","r",encoding = "utf8") as file :
         dicReader = csv.DictReader(file, delimiter=';')
@@ -399,14 +401,14 @@ def makeBigDict() :
             etablissements[line['Nom']] = line['GPS'] # on crée une nouvelle paire clé/valeur dans le dictionnaire
     return etablissements
 
-dicEtablissements = makeBigDict()
+dic_etablissements = make_big_dict()
  
 ````
 
 Et vérifions que sa taille st bien cohérente :
 
 ```` python 
->>> len(dicEtablissements)
+>>> len(dic_etablissements)
 6183 
 ````
 
@@ -414,8 +416,8 @@ Et vérifions que sa taille st bien cohérente :
 !!! question "Un gain de vitesse ?"
 
 	=== "Enoncé"
-		1. Adaptez de nouveau la fonction `afficheCri2` en une fonction `afficheGPS2`afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
-		2. Comparez le temps d'exécution avec la fonction `afficheGPS`.
+		1. Adaptez de nouveau la fonction `affiche_cri_2` en une fonction `affiche_GPS_2`afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie `None` si l'établissement n'est pas présent.
+		2. Comparez le temps d'exécution avec la fonction `affiche_GPS`.
 		
 	=== "Réponses"
 		A venir !
@@ -500,7 +502,7 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 
 	=== "Énoncé"
 		1. Écrire un dictionnaire `mois` dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).
-		2. Créer une fonction `quelMois` donnant les mois dont le nombre de jours est passé en argument.    
+		2. Créer une fonction `quel_mois` donnant les mois dont le nombre de jours est passé en argument.    
 	=== "Réponses"
 		A venir !
 
@@ -531,16 +533,16 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 
 			```` python 
 			  
-			def occurenceMot(chaine :str ) ->dict :
+			def occurence_mot(chaine :str ) ->dict :
 				"""
 				Prend en argument une chaine de caractère quelconque mais non vide,
 				 et renvoie un dictionnaire du nombre d'occurrence de chaque mot
 				 de la chaine, en minuscule. On ne passera en argument que des 
 				 chaines sans caractères de ponctuation.
 				Par exemple :
-				>>> occurenceMot("Le petit chien")
+				>>> occurence_mot("Le petit chien")
 				{'le': 1, 'petit': 1, 'chien': 1}
-				>>> occurence("Le petit chien joue avec le petit chat")
+				>>> occurence_mot("Le petit chien joue avec le petit chat")
 				{'le': 2, 'petit': 2, 'chien': 1, "joue" : 1, "avec" : 1, "chat" : 1 }
 					"""
 				...    

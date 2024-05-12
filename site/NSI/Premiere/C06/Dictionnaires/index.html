@@ -4042,11 +4042,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Réponse</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Écrire une fonction <code>afficheCri</code>  qui prend comme argument le nom d'un animal, et renvoie : </p>
+<p>Écrire une fonction <code>affiche_cri</code>  qui prend comme argument le nom d'un animal, et renvoie : </p>
 <ul>
 <li>
 <p>soit une chaine de caractère telle que  dans l'exemple ci-dessous :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">afficheCri</span><span class="p">(</span><span class="s2">"Vache"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">affiche_cri</span><span class="p">(</span><span class="s2">"Vache"</span><span class="p">)</span>
 <span class="s2">"Le cri de l'animal Vache est Meuh !"</span> 
 </code></pre></div>
 </li>
@@ -4057,7 +4057,7 @@
 </div>
 <div class="tabbed-block">
 <p>Le principe est de parcourir par indice la liste <code>animaux</code> , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes <code>animaux</code> et <code>cris</code>, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">afficheCri</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">affiche_cri</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">animaux</span><span class="p">))</span> <span class="p">:</span>
         <span class="k">if</span> <span class="n">animaux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">animal</span> <span class="p">:</span>
             <span class="k">return</span> <span class="n">cris</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -4075,13 +4075,13 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">timeit</span>
 </code></pre></div>
 <p>Une fois importé, nous allons utiliser la fonction <code>timeit</code> du module pour calculer le temps d'exécution d'une instruction par la commande suivante :</p>
-<div class="highlight"><pre><span></span><code><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">afficheCri</span><span class="p">(</span><span class="s1">'Vache'</span><span class="p">),</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">affiche_cri</span><span class="p">(</span><span class="s1">'Vache'</span><span class="p">),</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
-<p>L'instruction <code>afficheCri('Vache')</code> sera alors exécutée 1000 fois, et le temps moyen d'exécution sera affiché (mais sans le résultat d'exécution de la fonction...).</p>
+<p>L'instruction <code>affiche_cri('Vache')</code> sera alors exécutée 1000 fois, et le temps moyen d'exécution sera affiché (mais sans le résultat d'exécution de la fonction...).</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Mesurer le temps</p>
-<p>Quel est le temps d'exécution de la fonction <code>afficheCri</code> ? Testez sur plusieurs animaux.</p>
+<p>Quel est le temps d'exécution de la fonction <code>affiche_cri</code> ? Testez sur plusieurs animaux.</p>
 </div>
 <h3 id="et-avec-plus-de-donnees">Et avec plus de données ?</h3>
 <p>Que se passe-t-il si les tableaux sont plus long ? </p>
@@ -4093,8 +4093,8 @@
 <ol>
 <li>Téléchargez le fichier <a href="../Long_Dico.csv" target="target">suivant</a>, et sauvegardez le dans le même dossier que votre code Python actuel.</li>
 <li>
-<p>Copiez-collez la fonction <code>makebigArray</code> suivante.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBigArray</span><span class="p">()</span> <span class="p">:</span>
+<p>Copiez-collez la fonction <code>make_big_lists</code> suivante.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_big_lists</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span> <span class="nn">csv</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Long_Dico.csv"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
         <span class="n">dicReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">';'</span><span class="p">)</span>
@@ -4108,7 +4108,7 @@
 </li>
 <li>
 <p>Copiez-collez ensuite la ligne suivante dans votre code, <strong>après la fonction précédente</strong> :</p>
-<div class="highlight"><pre><span></span><code><span class="n">etablissements</span><span class="p">,</span> <span class="n">GPS</span> <span class="o">=</span> <span class="n">makeBigArray</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">etablissements</span><span class="p">,</span> <span class="n">GPS</span> <span class="o">=</span> <span class="n">make_big_lists</span><span class="p">()</span>
 </code></pre></div>
 <p>Le code ci-dessous crée deux listes : 
     * la première contient tous les différents établissements présents sur <strong>ParcourSup</strong>,
@@ -4118,17 +4118,17 @@
 <p>Vérifiez que les listes <code>etablissements</code> et <code>GPS</code> sont bien de la même dimension.</p>
 </li>
 <li>
-<p>A partir de la fonction <code>afficheCri</code>, créez une fonction <code>afficheGPS</code> afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</p>
+<p>A partir de la fonction <code>affiche_cri</code>, créez une fonction <code>affiche_GPS</code> afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</p>
 </li>
 <li>
 <p>Testez ensuite la ligne suivante :</p>
-<div class="highlight"><pre><span></span><code><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">afficheGPS</span><span class="p">(</span><span class="s1">'Lycée Auguste Pavie (Guingamp - 22)'</span><span class="p">),</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">affiche_GPS</span><span class="p">(</span><span class="s1">'Lycée Auguste Pavie (Guingamp - 22)'</span><span class="p">),</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
 <p>Quel est le temps d'exécution ?</p>
 </li>
 <li>
 <p>Testez ensuite la ligne suivante : </p>
-<div class="highlight"><pre><span></span><code> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">afficheGPS</span><span class="p">(</span><span class="s1">'Pavie'</span><span class="p">),</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">affiche_GPS</span><span class="p">(</span><span class="s1">'Pavie'</span><span class="p">),</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
 <p>Quel est le temps d'exécution ? Pourquoi est-il plus long que précédemment ?</p>
 </li>
@@ -4331,11 +4331,11 @@ Et on peut encore itérer sur cet objet :
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Reconstruisez une nouvelle fonction <code>afficheCri2</code> sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.</p>
+<p>Reconstruisez une nouvelle fonction <code>affiche_cri_2</code> sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.</p>
 </div>
 <div class="tabbed-block">
 <p>Le code :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">afficheCri2</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">affiche_cri_2</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">if</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">cris</span> <span class="p">:</span>
         <span class="k">return</span> <span class="n">cris</span><span class="p">[</span><span class="n">animal</span><span class="p">]</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"Je ne connais pas le cri de </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2">"</span>  
@@ -4347,7 +4347,7 @@ Et on peut encore itérer sur cet objet :
 </div>
 <h3 id="et-avec-plus-de-donnees_1">Et avec plus de données ?</h3>
 <p>Recréons à partir du même fichier Parcoursup <code>Long_Dico.csv</code> un dictionnaire contenant les établissements et leurs coordonnées GPS :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBigDict</span><span class="p">()</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_big_dict</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span> <span class="nn">csv</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Long_Dico.csv"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
         <span class="n">dicReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">';'</span><span class="p">)</span>
@@ -4356,10 +4356,10 @@ Et on peut encore itérer sur cet objet :
             <span class="n">etablissements</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="s1">'Nom'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="s1">'GPS'</span><span class="p">]</span> <span class="c1"># on crée une nouvelle paire clé/valeur dans le dictionnaire</span>
     <span class="k">return</span> <span class="n">etablissements</span>
 
-<span class="n">dicEtablissements</span> <span class="o">=</span> <span class="n">makeBigDict</span><span class="p">()</span>
+<span class="n">dic_etablissements</span> <span class="o">=</span> <span class="n">make_big_dict</span><span class="p">()</span>
 </code></pre></div>
 <p>Et vérifions que sa taille st bien cohérente :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dicEtablissements</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dic_etablissements</span><span class="p">)</span>
 <span class="mi">6183</span> 
 </code></pre></div>
 <div class="admonition question">
@@ -4368,8 +4368,8 @@ Et on peut encore itérer sur cet objet :
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Adaptez de nouveau la fonction <code>afficheCri2</code> en une fonction <code>afficheGPS2</code>afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</li>
-<li>Comparez le temps d'exécution avec la fonction <code>afficheGPS</code>.</li>
+<li>Adaptez de nouveau la fonction <code>affiche_cri_2</code> en une fonction <code>affiche_GPS_2</code>afin qu'elle permette de récupérer les coordonnées GPS  d'un établissement dont on a saisi le nom, et qu'elle renvoie <code>None</code> si l'établissement n'est pas présent.</li>
+<li>Comparez le temps d'exécution avec la fonction <code>affiche_GPS</code>.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -4476,14 +4476,14 @@ Et on peut encore itérer sur cet objet :
 </li>
 <li>
 <p>Écrire une fonction <code>occurrenceMot(chaine :str)</code> qui prend en argument une chaine de caractère, et renvoie un dictionnaire contenant le nombre d'occurrence de chaque mot de la chaine .</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">occurenceMot</span><span class="p">(</span><span class="n">chaine</span> <span class="p">:</span><span class="nb">str</span> <span class="p">)</span> <span class="o">-&gt;</span><span class="nb">dict</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">occurence_mot</span><span class="p">(</span><span class="n">chaine</span> <span class="p">:</span><span class="nb">str</span> <span class="p">)</span> <span class="o">-&gt;</span><span class="nb">dict</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Prend en argument une chaine de caractère quelconque mais non vide,</span>
 <span class="sd">     et renvoie un dictionnaire du nombre d'occurrence de chaque mot</span>
 <span class="sd">     de la chaine, en minuscule. On ne passera en argument que des </span>
 <span class="sd">     chaines sans caractères de ponctuation.</span>
 <span class="sd">    Par exemple :</span>
-<span class="sd">    &gt;&gt;&gt; occurenceMot("Le petit chien")</span>
+<span class="sd">    &gt;&gt;&gt; occurence_mot("Le petit chien")</span>
 <span class="sd">    {'le': 1, 'petit': 1, 'chien': 1}</span>
 <span class="sd">    &gt;&gt;&gt; occurence("Le petit chien joue avec le petit chat")</span>
 <span class="sd">    {'le': 2, 'petit': 2, 'chien': 1, "joue" : 1, "avec" : 1, "chat" : 1 }</span>

@@ -5,14 +5,14 @@ animaux = ['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Dindon']
 cri = ['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon']
 
 
-def afficheCri(animal) :   
+def affiche_cri(animal) :   
     for i in range(len(animaux)) :
         if animaux[i] == animal :
             return cri[i]
     return f"Je ne connais pas le cri de {animal}"
 
 
-def makeBigArray() :
+def make_big_lists() :
     import csv
     with open("Long_Dico.csv","r",encoding = "utf8") as file :
         dicReader = csv.DictReader(file, delimiter=';')
@@ -23,10 +23,10 @@ def makeBigArray() :
             GPS.append(line['GPS'])
     return etablissements, GPS
 
-etablissements, GPS = makeBigArray()
+etablissements, GPS = make_big_lists()
 
 
-def afficheGPS(etab) :   
+def affiche_GPS(etab) :   
     for i in range(len(etablissements)) :
         if etablissements[i] == etab :
             return GPS[i]
@@ -42,13 +42,13 @@ cris = {"Vache" : "Meuh",
            "Dindon" : "Leon"
            }
 
-def afficheCri2(animal) :
+def affiche_cri_2(animal) :
     if animal in cris :
         return cris[animal]
     return f"Je ne connais pas le cri de {animal}"
 
 
-def makeBigDict() :
+def make_big_dict() :
     import csv
     with open("Long_Dico.csv","r",encoding = "utf8") as file :
         dicReader = csv.DictReader(file, delimiter=';')
@@ -57,4 +57,4 @@ def makeBigDict() :
             etablissements[line['Nom']] = line['GPS']
     return etablissements
 
-dicEtablissements = makeBigDict()
+dic_etablissements = make_big_dict()
