@@ -3925,21 +3925,21 @@
 <li>Dans Filius, placer un ordinateur, un switch et un routeur ( avec plus de 3 interfaces).</li>
 <li>Relier le switch aux deux autres éléments.</li>
 <li>Configurer le routeur côté switch avec :<ul>
-<li>IP : <code>192.168.0.254</code></li>
+<li>IP : <code>192.168.1.254</code></li>
 <li>Masque : <code>255.255.255.0</code></li>
 </ul>
 </li>
 <li>Configurer l'ordinateur :<ul>
 <li>Nom : Serveur DHCP</li>
-<li>IP : <code>192.168.0.1</code></li>
+<li>IP : <code>192.168.1.1</code></li>
 <li>Masque : <code>255.255.255.0</code></li>
-<li>Passerelle : <code>192.168.0.254</code></li>
+<li>Passerelle : <code>192.168.1.254</code></li>
 </ul>
 </li>
 <li>Toujours sur cette machine, dans l'onglet de configuration, cliquer sur <code>Configuration du service DHCP</code>.</li>
 <li>Configurer :<ul>
-<li>Début de plage : <code>192.168.0.100</code></li>
-<li>Fin de plage : <code>192.168.0.200</code></li>
+<li>Début de plage : <code>192.168.1.100</code></li>
+<li>Fin de plage : <code>192.168.1.200</code></li>
 <li>Vérifier que la passerelle et le masque sont conformes au réseau créé.</li>
 <li>Cocher la case « Activer le service DHCP ».</li>
 </ul>
@@ -3978,7 +3978,7 @@
 <p>Relier les deux routeurs entre eux par un câble.</p>
 </li>
 <li>
-<p>Pour le routeur du réseau <code>192.168.0.X</code> :</p>
+<p>Pour le routeur du réseau <code>192.168.1.X</code> :</p>
 <ul>
 <li>Donner sur l'interface de liaison entre routeurs l'IP <code>1.0.0.1</code>, avec un masque <code>255.0.0.0</code> ;</li>
 <li>Dans l'onglet <code>General</code>, cocher la case <code>Routage Automatique</code> ;</li>
@@ -3992,7 +3992,7 @@
 </ul>
 </li>
 <li>
-<p>Placer un ordinateur que vous relierez par un câble au routeur directement lié au réseau <code>192.168.0.X</code>.</p>
+<p>Placer un ordinateur que vous relierez par un câble au routeur directement lié au réseau <code>192.168.1.X</code>.</p>
 </li>
 <li>Configurez cet ordinateur de la manière suivante :<ul>
 <li>Nom : Serveur DNS</li>
@@ -4006,11 +4006,11 @@
 <li>Masque : <code>255.255.255.0</code></li>
 <li>Sur les deux serveurs DHCP, configurez la ligne <code>Serveur DNS</code> avec <code>10.0.0.100</code>.</li>
 <li>Lancez la simulation. Testez sur plusieurs machines si les données circulent grâce à la commande <code>ping</code>.</li>
-<li>Sur le serveur DHCP du réseau <code>192.168.0.X</code>, installez aussi un serveur web, et démarrez-le.</li>
-<li>Testez sur au moins un portable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse <code>192.168.0.1</code>.
+<li>Sur le serveur DHCP du réseau <code>192.168.1.X</code>, installez aussi un serveur web, et démarrez-le.</li>
+<li>Testez sur au moins un portable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse <code>192.168.1.1</code>.
     <strong>Si tout fonctionne correctement, nous allons pouvoir changer la manière d'atteindre le serveur web.</strong></li>
 <li>Sur le serveur DNS, installez le logiciel <code>Serveur DNS</code>, démarrez-le.</li>
-<li>Ajoutez comme nom de domaine « supersite.fr » pour l'adresse IP <code>192.168.0.1</code>.</li>
+<li>Ajoutez comme nom de domaine « supersite.fr » pour l'adresse IP <code>192.168.1.1</code>.</li>
 <li>Testez alors depuis le navigateur d'un portable, avec l'url <code>supersite.fr</code>.</li>
 </ol>
 <h2 id="pour-les-plus-courageux">Pour les plus courageux</h2>
