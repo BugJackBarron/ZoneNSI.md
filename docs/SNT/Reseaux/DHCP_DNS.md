@@ -10,17 +10,17 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 1. Dans Filius, placer un ordinateur, un switch et un routeur ( avec plus de 3 interfaces).
 2. Relier le switch aux deux autres éléments.
 3. Configurer le routeur côté switch avec :
-	* IP : `192.168.0.254`
+	* IP : `192.168.1.254`
 	* Masque : `255.255.255.0`
 4. Configurer l'ordinateur :
 	* Nom : Serveur DHCP
-	* IP : `192.168.0.1`
+	* IP : `192.168.1.1`
 	* Masque : `255.255.255.0`
-	* Passerelle : `192.168.0.254`
+	* Passerelle : `192.168.1.254`
 5. Toujours sur cette machine, dans l'onglet de configuration, cliquer sur `Configuration du service DHCP`.
 6. Configurer :
-	* Début de plage : `192.168.0.100`
-	* Fin de plage : `192.168.0.200`
+	* Début de plage : `192.168.1.100`
+	* Fin de plage : `192.168.1.200`
 	* Vérifier que la passerelle et le masque sont conformes au réseau créé.
 	* Cocher la case &laquo; Activer le service DHCP &raquo;.
 7. Placer maintenant 5 ordinateurs portables, à relier au switch.
@@ -52,7 +52,7 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 	*  D'un routeur avec 2 interfaces, dont celle reliée au réseau portant l'IP `172.16.180.254`.
 
 2. Relier les deux routeurs entre eux par un câble.
-3. Pour le routeur du réseau `192.168.0.X` :
+3. Pour le routeur du réseau `192.168.1.X` :
 	* Donner sur l'interface de liaison entre routeurs l'IP `1.0.0.1`, avec un masque `255.0.0.0` ;
 	* Dans l'onglet `General`, cocher la case `Routage Automatique` ;
 	
@@ -60,7 +60,7 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
 	* Donner sur l'interface de liaison entre routeurs l'IP `1.0.0.2`, avec un masque `255.0.0.0` ;
 	* Dans l'onglet `General`, cocher la case `Routage Automatique` ;
 	
-5. Placer un ordinateur que vous relierez par un câble au routeur directement lié au réseau `192.168.0.X`.
+5. Placer un ordinateur que vous relierez par un câble au routeur directement lié au réseau `192.168.1.X`.
 6. Configurez cet ordinateur de la manière suivante :
 	* Nom : Serveur DNS
 	* IP : `10.0.0.100`
@@ -71,11 +71,11 @@ Dans notre quotidien, nous ne nous préoccupons jamais de savoir quelle est l'ad
  * Masque : `255.255.255.0`
 8. Sur les deux serveurs DHCP, configurez la ligne `Serveur DNS` avec `10.0.0.100`.
 9. Lancez la simulation. Testez sur plusieurs machines si les données circulent grâce à la commande `ping`.
-10. Sur le serveur DHCP du réseau `192.168.0.X`, installez aussi un serveur web, et démarrez-le.
-11. Testez sur au moins un portable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse `192.168.0.1`.
+10. Sur le serveur DHCP du réseau `192.168.1.X`, installez aussi un serveur web, et démarrez-le.
+11. Testez sur au moins un portable de chaque réseau si le serveur web répond, en installant un navigateur web et en demandant dans la barre d'adresse `192.168.1.1`.
 	**Si tout fonctionne correctement, nous allons pouvoir changer la manière d'atteindre le serveur web.**
 12. Sur le serveur DNS, installez le logiciel `Serveur DNS`, démarrez-le.
-13. Ajoutez comme nom de domaine &laquo; supersite.fr &raquo; pour l'adresse IP `192.168.0.1`.
+13. Ajoutez comme nom de domaine &laquo; supersite.fr &raquo; pour l'adresse IP `192.168.1.1`.
 14. Testez alors depuis le navigateur d'un portable, avec l'url `supersite.fr`.
 
 ## Pour les plus courageux
