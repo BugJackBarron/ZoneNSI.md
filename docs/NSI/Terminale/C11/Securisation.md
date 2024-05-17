@@ -145,7 +145,7 @@ Le tout devant bien entendu se faire dans le cadre d'une communication en utilis
 
 ??? infos "Chiffre de Vigenère"
 
-    Le chiffre de César est donc très facilement déchiffrable, comme tout chiffrement monoalphabétique (où une lettre est toujours remplacée par le même symbole). Il existe d'autres méthodes de chiffrement par substitution, dits polyalphabétiques, pour lesquels la même lettre n'est pas forcément toujours remplacée par le même symbole, tels que le [chiffre de Vigenère](https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re){target="_blank"}. Cependant de telles méthodes ne résiste pas forcément à des [attaques par analyse de fréquences](https://ensip.gitlab.io/programmation_e2/PDF/C_P2A_50_crypto_anafreq.pdf){target="_blank"}.
+    Le chiffre de César est donc très facilement déchiffrable, comme tout chiffrement mono-alphabétique (où une lettre est toujours remplacée par le même symbole). Il existe d'autres méthodes de chiffrement par substitution, dits poly-alphabétiques, pour lesquels la même lettre n'est pas forcément toujours remplacée par le même symbole, tels que le [chiffre de Vigenère](https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re){target="_blank"}. Cependant de telles méthodes ne résiste pas forcément à des [attaques par analyse de fréquences](https://ensip.gitlab.io/programmation_e2/PDF/C_P2A_50_crypto_anafreq.pdf){target="_blank"}.
 
 ### Chiffrement XOR 
 
@@ -160,7 +160,7 @@ Le tout devant bien entendu se faire dans le cadre d'une communication en utilis
     \end{array}
     $$
 
-    L'opérateur XOR, en plus d'être *commutatitf* ($A\oplus B = B \oplus A$) possède la propriété de {==**réversibilité**==}, ce qui signifie que si $A \oplus B = C$, alors on a les égalités suivantes :
+    L'opérateur XOR, en plus d'être *commutatif* ($A\oplus B = B \oplus A$) possède la propriété de {==**réversibilité**==}, ce qui signifie que si $A \oplus B = C$, alors on a les égalités suivantes :
 
     * $A \oplus C = B$
     * $B \oplus C = A$
@@ -218,7 +218,7 @@ Le tout devant bien entendu se faire dans le cadre d'une communication en utilis
     
     4. Vérifiez que la fonction `chiffre_XOR` permet bien de chiffrer/déchiffrer un texte avec une clé donnée.
 
-Les caractéristiques de l'opérateur `XOR`, et le fait qu'il puisse être implémenté directement dans le processeur, font qu'il est souvent utilisé dans les algorithmes de chiffrement modernes, comme [AES](https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard){taget="_blank"} ou [ChaCha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant){target="_blank"}. Bien sûr ces algorithmes sont nettement plus complexes que la méthode naïve que nous avons utilisée, mais leurs principes reposent sur des fonctionnements similaires.
+Les caractéristiques de l'opérateur `XOR`, et le fait qu'il puisse être implémenté directement dans le processeur, font qu'il est souvent utilisé dans les algorithmes de chiffrement modernes, comme [AES](https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard){taget="_blank"} ou [ChaCha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant){target="_blank"}. Bien sûr, ces algorithmes sont nettement plus complexes que la méthode naïve que nous avons utilisée, mais leurs principes reposent sur des fonctionnements similaires.
 
 En plus d'être relativement sûrs (voir ci-dessous), ces algorithmes sont très efficaces et permettent de chiffrer très rapidement. On peut ainsi chiffrer en direct des communications audio ou vidéo en temps réel.
 
@@ -270,11 +270,11 @@ En plus d'être relativement sûrs (voir ci-dessous), ces algorithmes sont très
 
     On constate donc qu'un mot de passe de 10 caractères latin majuscules est plus «résistant» qu'un mot de passe de 6 caractères utilisant n'importe quel symbole du clavier français... Cela signifie que le nombre de caractère est nettement plus important que la diversité de ceux-ci. On peut le voir grâce au tableau suivant :
 
-    ![https://patrowl.io/wp-content/uploads/2022/03/image.png](https://patrowl.io/wp-content/uploads/2022/03/image.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
+    ![https://www.francenum.gouv.fr/files/styles/ds_1_1/public/2023-05/etude-hive-systems-mots-de-passe.jpg?itok=miLuavPJ](https://www.francenum.gouv.fr/files/styles/ds_1_1/public/2023-05/etude-hive-systems-mots-de-passe.jpg){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
     Vous pouvez calculer l'entropie de vos mots de passe sur le [site suivant](https://timcutting.co.uk/tools/password-entropy){target="_blank"}.
 
-    Gardez toutefois en tête que la sécurité est maximale lorsque vous utilisez des mots de passe aléatoires de longueur suffisante, utilisant le maximum de caractères, et différents pour chaque site. Pour aider à retenir tous ces mots de passe, l'utilisation d'un gestionnaire de mots de passe, tel que [Cozy Pass](https://cozy.io/fr/features/#pass){target="_blank"} est nécessaire. celui-ci peut-être protégé grâce à une Pass-Phrase, c'est à dire une phrase composée de mots (aléatoires de préférence), garantissant une grande difficulté de décryptage.
+    Gardez toutefois en tête que la sécurité est maximale lorsque vous utilisez des mots de passe aléatoires de longueur suffisante, utilisant le maximum de caractères, et différents pour chaque site. Pour aider à retenir tous ces mots de passe, l'utilisation d'un gestionnaire de mots de passe, tel que [KeyPass](https://keepass.info/download.html){target="_blank"} est nécessaire. celui-ci peut-être protégé grâce à une **Pass-Phrase**, c'est à dire une phrase composée de mots (aléatoires de préférence), garantissant une grande difficulté de décryptage.
 
     Et le mot de la fin sera pour [xkcd](https://xkcd.com/){: target="_blank"}
 
@@ -284,7 +284,7 @@ En plus d'être relativement sûrs (voir ci-dessous), ces algorithmes sont très
 
 Le gros problème des cryptographies symétriques est le suivant : {==**les deux protagonistes de l'échange doivent connaitre la clé, et donc se l'échanger**==}. Or ils n'ont pas de moyens de communications sécurisés pour l'instant. Il leur reste donc deux solutions :
 
-* soit ils échangent la clé par un moyen de communication non sécurisé, comme des mails ou du courrier, mais un attaquant pourrait alors s'emparer de la clé et compromettre la sûreté des communications futures ;
+* soit ils échangent la clé par un moyen de communication non sécurisé, comme des mails ou du courrier, mais un attaquant pourrait alors s'emparer de la clé et compromettre la sureté des communications futures ;
 * soit ils échangent la clé par un moyen plus sûr, mais moins pratique (sur un pont isolé par une nuit sans lune dans une mallette menottée au poignet, comme dans les films noirs des années 1950).
 
 Pour résoudre ce problème, les scientifiques américains et britanniques dans les années 1970, puis la recherche académique publique, se sont tournés vers la {==**cryptographie asymétrique**==}. Il s'agit de méthodes utilisant des techniques de mathématiques avancées, dont on ne présentera pas ici les véritables tenants et aboutissants. On peut cependant présenter quelques méthodes et en expliquer sommairement le fonctionnement.
@@ -329,7 +329,7 @@ La méthode du puzzle de Merkle, créé en 1974 et pour la première fois publi�
         ```
         Bob transmet alors **en clair** l'identifiant `768453` à Alice.
 
-        **Eve intercepte probalement cet identifiant**.
+        **Eve intercepte probablement cet identifiant**.
 
     === "Etape 3"
 
@@ -344,11 +344,11 @@ La méthode du puzzle de Merkle, créé en 1974 et pour la première fois publi�
 
 ### Méthode de Diffie-Hellman
 
-La méthode des puzzle de Merkle, bien que novatrice pour son époque, n'est plus jugée suffisante de nos jours pour garantir une véritable sécurité. Cependant elle a posé les bases d'autres méthodes, comme la méthode de Diffie-Helman, proposée en 1974 par les cryptologues américains Bailey W. Diffie et Martin Hellman.
+La méthode des puzzles de Merkle, bien que novatrice pour son époque, n'est plus jugée suffisante de nos jours pour garantir une véritable sécurité. Cependant, elle a posé les bases d'autres méthodes, comme la méthode de Diffie-Helman, proposée en 1974 par les cryptologues américains Bailey W. Diffie et Martin Hellman.
 
 Cette méthode repose sur l'utilisation d'une fonction mathématique à deux variables. Cette fonction, souvent nommée $M$ (pour «mélange»), doit respecter les propriétés suivantes :
 
-1. $M$ est connue, ce qui signifie qu'on connait l'algorithme ou la formule qui permet de calculer des images (toutes les fonctions ne sont pas calculables, voir [théorie de la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9#Existence_de_fonctions_non_calculables){target="_blank"}).
+1. $M$ est connue, ce qui signifie qu'on connait l'algorithme ou la formule qui permet de calculer des images (toutes les fonctions ne sont pas calculables, voir [théorie de la calculabilité](../C12/calculabilite.md){target="_blank"}).
 2. Si on connait $M(x;y)$ et $x$, il doit être **très difficile** de retrouver $y$. Par difficile, on entend le fait que pour trouver le $y$ donnant à $M(x;y)$ une valeur donnée, il faudra essayer sur tous les entiers $y$ possibles.
 3. Pour tous entiers $x, y$ et $z$, on a $M(M(x;y);z) = M(M(x;z);y)$, autrement dit $y$ et $z$ sont commutables.
 
@@ -478,13 +478,13 @@ Une {==**autorité de certification**==} (ou AC), est une entité habilitée à 
 * les associations (comme *Let's Encrypt*, que nous croiserons plus tard);
 * les entités étatiques.
 
-Leur rôle est d'attester par l'intermédiaire de certificat qu'une entité est bien ce qu'elle prétend être. Elles sont soumises à des audits réguliers et pointilleux, dont les résultats sont publics, et il existe une hiérarchie des AC. En effet, une AC doit être elle-même certifiée par une autre AC, ce qui crée un arbre de certification jusqu'à des AC appellées **AC racines**. La fondation Mozilla reconnait à ce jour (24 Mai 2023) [142 AC racines](https://ccadb.my.salesforce-sites.com/mozilla/CACertificatesInFirefoxReport){target="_blank"}. 
+Leur rôle est d'attester par l'intermédiaire de certificat qu'une entité est bien ce qu'elle prétend être. Elles sont soumises à des audits réguliers et pointilleux, dont les résultats sont publics, et il existe une hiérarchie des AC. En effet, une AC doit être elle-même certifiée par une autre AC, ce qui crée un arbre de certification jusqu'à des AC appelées **AC racines**. La fondation Mozilla reconnait à ce jour (17 Mai 2024) [142 AC racines](https://ccadb.my.salesforce-sites.com/mozilla/CACertificatesInFirefoxReport){target="_blank"}. 
 
 Le club des AC est donc très fermé, les OS et navigateurs ayant chacun les clés publiques des AC qu'ils reconnaissent (au passage, Google, Microsoft et Apple ne reconnaissent pas exactement les mêmes AC que Mozilla).
 
 ### Normes de certifications X.509
 
-Les AC suivent généralement le format standard de certficat qui est à l'heure actuelle le format `X.509`. Il s'agit d'un format de fichier binaire contenant entre autre :
+Les AC suivent généralement le format standard de certificat qui est à l'heure actuelle le format `X.509`. Il s'agit d'un format de fichier binaire contenant entre autre :
 
 * l'identifiant de l'AC qui **signe**(chiffre) le certificat ;
 * les dates de validité du certificat (dates de départ et dates de fin);
@@ -546,7 +546,7 @@ Les certificats des AC sont régulièrement mis à jour, aussi bien au niveau du
 
 !!! abstract "SSL/TLS"
 
-    La {==**Transport Layer Security (TLS)**==} (et son prédecesseur **Secure Sockets Layer (SSL)**) est un protocole de sécurisation des échanges développé par l'**Internet Engineering Task Force (IETF)* (à la suite de la société *Netscape Communication Corporation*, qui a développé SSL pour son navigateur).
+    La {==**Transport Layer Security (TLS)**==} (et son prédécesseur **Secure Sockets Layer (SSL)**) est un protocole de sécurisation des échanges développé par l'**Internet Engineering Task Force (IETF)* (à la suite de la société *Netscape Communication Corporation*, qui a développé SSL pour son navigateur).
 
     On parle parfois de `SSL/TLS` pour désigner indifféremment `SSL` ou `TLS`.
 
@@ -562,7 +562,7 @@ Les certificats des AC sont régulièrement mis à jour, aussi bien au niveau du
 
 Le protocole `HTTPS` est donc la mise en place d'une communication `HTTP` sécurisée par `TLS`, pour laquelle le port de communication est le port 443 à la place du port 80.
 
-Une communication sécurisée par `TLS` est indiquée dans un navigateur par un cadenas dans la barre de navigation. Un clique sur le cadenas vous donneras les informations sur le la sécurisation de la connexion. Par exemple pour `https://www.zonensi.fr` :
+Une communication sécurisée par `TLS` est indiquée dans un navigateur par un cadenas dans la barre de navigation. Un clic sur le cadenas vous donneras les informations sur le la sécurisation de la connexion. Par exemple pour `https://www.zonensi.fr` :
 
 ![certificat](certificat.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -571,9 +571,9 @@ Une communication sécurisée par `TLS` est indiquée dans un navigateur par un 
 
     ![SSLTTLS](SSLTLS.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 
-    On peut décrire sommairemment la brique `SSL/TLS` de la manière suivante :
+    On peut décrire sommairement la brique `SSL/TLS` de la manière suivante :
 
-    1. Le client envoie un message `HELLO`, qui contient quelqus options (versions de TLS supportée, algorithmes supportés).
+    1. Le client envoie un message `HELLO`, qui contient quelques options (versions de TLS supportée, algorithmes supportés).
     2. Le serveur envoie un message `HELLO`, avec ses options, ainsi que son certificat au client.
     3. Le client tente de vérifier la signature numérique du certificat, à l'aide des clés publiques des AC. Plusieurs solutions peuvent alors se produire
     4. Si l'une d'entre elle fonctionne, le navigateur vérifie quelques autres points (entre autres les dates de validité), puis génère une clé de chiffrement symétrique, appelée **clé de session**, qu'il chiffre avec la clé publique du serveur. Une fois la clé reçue par le serveur, un échange `HTTP` chiffré est donc possible.
