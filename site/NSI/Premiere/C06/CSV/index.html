@@ -4851,21 +4851,19 @@ On peut alors récupérer les <strong>descripteurs</strong> :
     <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">descripteurs</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">";"</span><span class="p">)</span>
 
     <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span><span class="c1">##Ecrit les descripteurs en première ligne</span>
-    <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="p">:</span>
-        <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="p">:</span>
-            <span class="k">if</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]</span> <span class="o">==</span> <span class="n">ci</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">]</span> <span class="p">:</span>
-                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">'Pays'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span>
-                                 <span class="s1">'Population_pays'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">],</span>
-                                 <span class="s1">'Superficie'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">],</span>
-                                 <span class="s1">'Densite'</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">]),</span>
-                                 <span class="s1">'Capitale'</span> <span class="p">:</span> <span class="n">ci</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span>
-                                 <span class="s1">'Population_capitale'</span> <span class="p">:</span> <span class="n">ci</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span>
-
-                                <span class="p">}</span>
-                <span class="p">)</span>
+    <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="p">:</span>        
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">'Pays'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span>
+                        <span class="s1">'Population_pays'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">],</span>
+                        <span class="s1">'Superficie'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">],</span>
+                        <span class="s1">'Densite'</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">]),</span>
+                        <span class="s1">'Capitale'</span> <span class="p">:</span> <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Name'</span><span class="p">],</span>
+                        <span class="s1">'Population_Capitale'</span> <span class="p">:</span> <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Population'</span><span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
 </code></pre></div>
+<p>Ainsi, on a obtenu un nouveau fichier <code>capitale.csv</code>, contenant les informations demandées.</p>
 <h2 id="tp-explorer-imdb">TP : Explorer IMDB</h2>
-<p>Le TP se fait sur Capytale par <a href="https://capytale2.ac-paris.fr/web/c/91b6-547954" target="target">ce lien</a>.</p></div>
+<p>Le TP pour l'année 2023-2024 se fait sur Capytale par <a href="https://capytale2.ac-paris.fr/web/c/4630-3627353" target="target">ce lien</a>.</p></div>
 
 
 

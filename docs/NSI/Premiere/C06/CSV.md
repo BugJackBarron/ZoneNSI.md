@@ -818,19 +818,18 @@ with open("capitales.csv", "w", encoding="utf8",newline="") as file :
     writer = csv.DictWriter(file, fieldnames=descripteurs,delimiter=";")
 
     writer.writeheader()##Ecrit les descripteurs en première ligne
-    for co in countries :
-        for ci in cities :
-            if co['Capital_Id'] == ci['Id'] :
-                writer.writerow({'Pays' : co['Name'],
-                                 'Population_pays' : co['Population'],
-                                 'Superficie' : co['Area'],
-                                 'Densite' : float(co['Population'])/float(co['Area']),
-                                 'Capitale' : ci['Name'],
-                                 'Population_capitale' : ci['Population']
-                                                 
-                                }
-                )
+    for co in countries :        
+		writer.writerow({'Pays' : co['Name'],
+						'Population_pays' : co['Population'],
+						'Superficie' : co['Area'],
+						'Densite' : float(co['Population'])/float(co['Area']),
+						'Capitale' : dicCities[co['Capital_Id']]['Name'],
+						'Population_Capitale' : dicCities[co['Capital_Id']]['Population']
+						}
+					)
 ```
+
+Ainsi, on a obtenu un nouveau fichier `capitale.csv`, contenant les informations demandées.
 ## TP : Explorer IMDB
 
-Le TP se fait sur Capytale par [ce lien](https://capytale2.ac-paris.fr/web/c/91b6-547954){: target = "_blank"}.
+Le TP pour l'année 2023-2024 se fait sur Capytale par [ce lien](https://capytale2.ac-paris.fr/web/c/4630-3627353){: target = "_blank"}.
