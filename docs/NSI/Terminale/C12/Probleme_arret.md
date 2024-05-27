@@ -156,4 +156,60 @@ On pourrait continuer ainsi en remontant au système d'exploitation, puis au boo
 
 Si dans cet exemple il était facile de voir les conditions d'arrêt de ce programme, **est-il possible d'automatiser cette analyse, en créant un programme qui prédira l'arrêt ou non d'un autre programme qui lui sera passé en paramètre ?**
 
-### 
+### Une fonction qui calcule l'arrêt
+
+Imaginons que nous ayons une fonction `HALT` prenant en paramètre :
+
+* `prog` le code source d'un programme ;
+* `x` un paramètre (ou une liste de paramètres) pour le programme `prog`
+
+Cette fonction renverrait :
+
+* `True`si `prog(x)` s'arrête ;
+* `False` si `prog(x)` ne s'arrête pas.
+
+!!! example "Exemples"
+
+* `HALT(countdown, 10)` renvoie `True` :
+    
+    ![machine terminal](machine_4.png){: style="width:30%; margin:auto;display:block;"}
+
+* `HALT(countdown, 2.5)` renvoie `False` :
+
+    ![machine terminal](machine_5.png){: style="width:30%; margin:auto;display:block;"}
+
+
+### Une nouvelle construction
+
+Considérons maintenant la fonction suivante :
+
+``` python
+
+def sym(prog) :
+    if HALT(prog, prog) :
+        while True :
+            print("To infinity and beyond !")
+    else :
+        return 1
+
+```
+
+On constate que ce programme teste si `prog(prog)` s'arrête. On rappelle qu'un code source est une donnée et peut donc parfaitement être passée comme argument d'une fonction. Le programme à alors deux possibilités :
+
+* si `HALT(prog, prog)` est `True`, ce qui signifie que `prog(prog)` s'arrête, alors `sym(prog)` rentre dans une boucle infinie ;
+* si `HALT(prog, prog)` est `false`, ce qui signifie que `prog(prog)` ne s'arrête pas, alors `sym(prog)` renvoie `1`.
+
+### Des contradictions
+
+Que se passe-t-il si on applique le code source de `sym` à elle-même, c'est-à-dire qu'on appelle `sym(sym)` :
+
+* Si `HALT(sym, sym)` est `True`, alors l'appel `sym(sym)` rentre dans la boucle infinie. Pourtant, pour obtenir ce comportement, il faut que `sym(sym)` s'arrête. Ce qui donne une contradiction.
+* Si `HALT(sym, sym)` est `false`, alors l'appel `sym(sym)` renvoie `1`. Pourtant, pour obtenir ce comportement, il faut que `sym(sym)` ne s'arrête pas. Ce qui donne une contradiction.
+
+
+!!! warning "Conclusion"
+
+    Le programme `HALT`, sensé prédire si un programme `prog` appliqué à une donnée `x` ne peut donc pas exister. Le **problème de l'arrêt est donc indécidable**.
+
+
+    Cette question, appelée «problème de la décision», ou *Entscheidungsproblem* en allemand, est définitivement tranchée par le problème de l'arrêt : un tel théorème ne peut pas exister, puisque par exemple, aucun algorithme ne peut répondre «oui» ou «non» à la question «ce programme va-t-il s'arrêter ?».

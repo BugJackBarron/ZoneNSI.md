@@ -3423,8 +3423,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#une-fonction-qui-calcule-larret" class="md-nav__link">
+    Une fonction qui calcule l'arrêt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#une-nouvelle-construction" class="md-nav__link">
+    Une nouvelle construction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#des-contradictions" class="md-nav__link">
+    Des contradictions
   </a>
   
 </li>
@@ -4126,7 +4140,55 @@ Le problème est que le programme boucle en ligne 5, en repartant en ligne 1, do
 </div>
 </div>
 <p>Si dans cet exemple il était facile de voir les conditions d'arrêt de ce programme, <strong>est-il possible d'automatiser cette analyse, en créant un programme qui prédira l'arrêt ou non d'un autre programme qui lui sera passé en paramètre ?</strong></p>
-<h3 id="_1"></h3></div>
+<h3 id="une-fonction-qui-calcule-larret">Une fonction qui calcule l'arrêt</h3>
+<p>Imaginons que nous ayons une fonction <code>HALT</code> prenant en paramètre :</p>
+<ul>
+<li><code>prog</code> le code source d'un programme ;</li>
+<li><code>x</code> un paramètre (ou une liste de paramètres) pour le programme <code>prog</code></li>
+</ul>
+<p>Cette fonction renverrait :</p>
+<ul>
+<li><code>True</code>si <code>prog(x)</code> s'arrête ;</li>
+<li><code>False</code> si <code>prog(x)</code> ne s'arrête pas.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Exemples</p>
+</div>
+<ul>
+<li>
+<p><code>HALT(countdown, 10)</code> renvoie <code>True</code> :</p>
+<p><img alt="machine terminal" src="../machine_4.png" style="width:30%; margin:auto;display:block;"></p>
+</li>
+<li>
+<p><code>HALT(countdown, 2.5)</code> renvoie <code>False</code> :</p>
+<p><img alt="machine terminal" src="../machine_5.png" style="width:30%; margin:auto;display:block;"></p>
+</li>
+</ul>
+<h3 id="une-nouvelle-construction">Une nouvelle construction</h3>
+<p>Considérons maintenant la fonction suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="n">prog</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">HALT</span><span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="n">prog</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"To infinity and beyond !"</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+</code></pre></div>
+<p>On constate que ce programme teste si <code>prog(prog)</code> s'arrête. On rappelle qu'un code source est une donnée et peut donc parfaitement être passée comme argument d'une fonction. Le programme à alors deux possibilités :</p>
+<ul>
+<li>si <code>HALT(prog, prog)</code> est <code>True</code>, ce qui signifie que <code>prog(prog)</code> s'arrête, alors <code>sym(prog)</code> rentre dans une boucle infinie ;</li>
+<li>si <code>HALT(prog, prog)</code> est <code>false</code>, ce qui signifie que <code>prog(prog)</code> ne s'arrête pas, alors <code>sym(prog)</code> renvoie <code>1</code>.</li>
+</ul>
+<h3 id="des-contradictions">Des contradictions</h3>
+<p>Que se passe-t-il si on applique le code source de <code>sym</code> à elle-même, c'est-à-dire qu'on appelle <code>sym(sym)</code> :</p>
+<ul>
+<li>Si <code>HALT(sym, sym)</code> est <code>True</code>, alors l'appel <code>sym(sym)</code> rentre dans la boucle infinie. Pourtant, pour obtenir ce comportement, il faut que <code>sym(sym)</code> s'arrête. Ce qui donne une contradiction.</li>
+<li>Si <code>HALT(sym, sym)</code> est <code>false</code>, alors l'appel <code>sym(sym)</code> renvoie <code>1</code>. Pourtant, pour obtenir ce comportement, il faut que <code>sym(sym)</code> ne s'arrête pas. Ce qui donne une contradiction.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Conclusion</p>
+<p>Le programme <code>HALT</code>, sensé prédire si un programme <code>prog</code> appliqué à une donnée <code>x</code> ne peut donc pas exister. Le <strong>problème de l'arrêt est donc indécidable</strong>.</p>
+<p>Cette question, appelée «problème de la décision», ou <em>Entscheidungsproblem</em> en allemand, est définitivement tranchée par le problème de l'arrêt : un tel théorème ne peut pas exister, puisque par exemple, aucun algorithme ne peut répondre «oui» ou «non» à la question «ce programme va-t-il s'arrêter ?».</p>
+</div></div>
 
 
 
