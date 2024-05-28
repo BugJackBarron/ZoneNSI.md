@@ -170,13 +170,13 @@ Cette fonction renverrait :
 
 !!! example "Exemples"
 
-* `HALT(countdown, 10)` renvoie `True` :
-    
-    ![machine terminal](machine_4.png){: style="width:30%; margin:auto;display:block;"}
+    * `HALT(countdown, 10)` renvoie `True` :
+        
+        ![machine terminal](machine_4.png){: style="width:30%; margin:auto;display:block;"}
 
-* `HALT(countdown, 2.5)` renvoie `False` :
+    * `HALT(countdown, 2.5)` renvoie `False` :
 
-    ![machine terminal](machine_5.png){: style="width:30%; margin:auto;display:block;"}
+        ![machine terminal](machine_5.png){: style="width:30%; margin:auto;display:block;"}
 
 
 ### Une nouvelle construction
