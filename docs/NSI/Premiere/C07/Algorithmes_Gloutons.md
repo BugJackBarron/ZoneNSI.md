@@ -26,8 +26,67 @@
 	Ce genre de problème est un grand classique en informatique, on parle de {==**problèmes d'optimisation**==}. Il existe souvent plusieurs solutions possibles à un problème d'optimisation, mais toutes ne sont pas équivalentes. En effet on cherche une **solution dite optimale** (dans notre exemple on cherche le plus grand gain possible). Souvent, dans les problèmes d'optimisation, il n'existe pas une solution optimale, mais plusieurs solutions optimales, et  résoudre un problème d'optimisation c'est donc trouver une des solutions optimales. 
 
 !!! abstract "Solution naïve"
-	En apparence, la solution la plus simple dans le cas du sac à dos serait d'écrire un algorithme qui teste toutes les combinaisons d'objets possibles et qui retient les solutions qui offrent un gain maximum.
 
+	=== "Coder la solution naïve"
+		
+		Comment faire pour tester toutes les solutions possibles, sachant que la liste des objets est donnée sous la forme d'un dictionnaire (ou d'une liste de dictionnaire), où chaque objet est représenté par deux clés `masse` et `valeur` ?
+		
+		La solution est de créer une liste de tous les sous-ensembles possibles à partir d'une donnée d'objets, puis de calculer pour chacun de ces sous-ensemble la masse et la valeur totale... 
+		
+		Une idée est, pour une liste d'objets donnée de taille $n$, de comprendre que tous les nombres entiers entre $0$ et $2^n-1$ sont associés à un unique sous-ensemble de cette liste.
+
+		Par exemple, considérons la liste `[A, B, C]`. 
+		
+		* pour le sous-ensemble `[A, C]`, on va considérer le nombre binaire `101`, où le premier `1` (celui de poids faible, donc à droite) représente la présence de `A` dans cet ensemble, le `0` représente l'absence de `B`, et le dernier `1` représente la présence de `C`.
+		* de même pour le sous-ensemble `[A, B]`, on associe le nombre binaire `O11` ;
+		* de même pour le sous-ensemble `[C]`, on associe le nombre binaire `100` ;
+		* et pour `[A,B,C]` on associe le nombre binaire `111`, qui est donc le plus grand nombre binaire pouvant représenter un sous-ensemble de `[A, B, C]`. Or $(111)_2 = 7 = 2^3 -1$.
+
+		Donc, pour essayer toutes les possibilités (algorithme en **force brute**), on doit :
+
+		* Faire une boucle pour `i` allant de $0$ à $2^n -1$ ;
+		* pour chaque valeur de `i`, déterminer le nombre binaire correspondant et utiliser cette décomposition pour trouver quels objets font partie de ce sous-ensemble ;
+		* déterminer ensuite la masse totale de ce sous-ensemble ;
+		* si cette masse est inférieure au seuil de masse fixé, on calcule la valeur totale des objets de ce sous-ensemble;
+		* si cette valeur totale est supérieure à la valeur maximale jusqu'alors traitée, ce sous-ensemble devient la meilleure solution pour l'instant.
+
+		Une fois la boucle terminée, on est assuré d'avoir la solution optimale au problème du sac à dos.
+
+		
+		
+	=== "Une solution hors programme"
+	
+		```` python
+		def make_obj_sub_list_from_list_and_int(obj_list : list, nb : int) :
+			""" return a sublist created with a number between
+				0 and 2**n where n is len(obj_list)"""
+			i = 0
+			return_list = []
+			while nb != 0 :
+				if nb%2 == 1 :
+					return_list.append(obj_list[i])
+				i += 1
+				nb = nb//2
+			return return_list
+						
+		def sacADosNaif(listeObj : dict, masseMax : int) -> list :
+			""" Calcule la solution optimale pour le problème du sac à dos"""
+			optimale = []
+			valeurOptimale = 0
+			n = len(listeObj)
+			for nb in range(2**n) :
+				se = make_obj_sub_list_from_list_and_int(list(listeObj.keys()), nb)
+				masseLocale = sum([listeObj[nom]['masse'] for nom in se])
+				valeurLocale = sum([listeObj[nom]['valeur'] for nom in se])
+				if valeurLocale >valeurOptimale  and masseLocale<=masseMax :
+					valeurOptimale = valeurLocale
+					optimale = se
+			return optimale, valeurOptimale
+
+		````
+	
+
+	
 	Dans notre cas précis, avec seulement 4 objets, cette solution pourrait être envisagée, mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, deviendrait trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en $\mathrm{O}(a^n)$ avec $a$ une constante et $n$ le nombre d'objets.
 
 	On parle dans ce cas d'une {==**complexité exponentielle**==} (en temps), ce qu'on peut voir dans le graphique suivant (exécuté sur mon ordinateur personnel).
@@ -36,50 +95,8 @@
 
 	Les algorithmes à complexité exponentielle ne sont pas efficaces pour résoudre des problèmes, le temps de calcul devient beaucoup trop important quand $n$ devient très grand. 
 
-??? question "Pour les cracks"
 
-	=== "Coder la solution naïve"
-		Cette question est vraiment difficile !
-		
-		Comment faire pour tester toutes les solutions possibles, sachant que la liste des objets est donnée sous la forme d'un dictionnaire (ou d'une liste de dictionnaire), où chaque objet est représenté par deux clés `masse` et `valeur` ?
-		
-		La solution est de créer une liste de tous les sous-ensembles possibles à partir d'une donnée d'objets, puis de calculer pour chacun de ces sous-ensemble la masse et la valeur totale...mais c'est complexe surtout sans maîtrise pas la récursivité (au programme de Terminale).
-		
-		Vous pouvez toujours chercher, une solution étant proposée dans l'onglet suivant.
-		
-	=== "Une solution hors programme"
-	
-		```` python
-		def makeTree(T : list)  ->list :
-			"""fonction récursive renvoyant l'ensemble des sous-ensembles non vides d'un ensemble
-		de départ donné sous la forme d'une liste. L'ensemble de départ doit être non vide"""
-			#Cas de base : la liste ne contient qu'un seul élément
-			if len(T) == 1 :
-				return [T]
-			else :
-				comp = [] # Sinon création de la liste des sous-ensembles
-				nT = T[:] #on créé une copie locale de la liste de départ
-				for e in T : # Pour chaque élément de la liste de départ
-					comp.append([e]) # On ajoute le singleton correspondant
-					nT.remove(e) #On le supprime de la liste locale
-					for ne in makeTree(nT) : # On exécute récursivemment la fonction makeTree
-						#et pour chaque sous-ensemble obtenu, on rajoute l'élément e
-						comp.append([e]+ne)
-				return comp
-					
-		def sacADosNaif(listeObj : dict, masseMax : int) -> list :
-			""" Calcule la solution optimale pour le problème du sac à dos"""
-			optimale = []
-			valeurOptimale = 0
-			for se in makeTree([ name for name in listeObj.keys()]) :
-				masseLocale = sum([listeObj[nom]['masse'] for nom in se])
-				valeurLocale = sum([listeObj[nom]['valeur'] for nom in se])
-				if valeurLocale >valeurOptimale  and masseLocale<=masseMax :
-					valeurOptimale = valeurLocale
-					optimale = se
-			return optimale, valeurOptimale
-		````
-	
+
 		
 
 ### Une solution gloutonne
@@ -131,7 +148,7 @@
 !!! question "Code en Python"
 
 	=== "Enoncé"
-		La liste des objets et leur poids est donné par un dictionnaire nom : (masse; valeur).
+		La liste des objets et leur masse est donné par un dictionnaire nom : (masse; valeur).
 		```` python
 		objets = {
         "A" : {'masse' : 13, 'valeur' : 700},
