@@ -58,7 +58,7 @@ def sacADosGlouton(L, masseMaxi ) :
     return dansLeSac
 
 ### FONCTION DE COMPARAISON ENTRE LES DEUX METHODES
-def compare(maxIteration) :
+def compare(maxIteration, naif = True, glouton = True) :
     naifTime = [0]
     gloutonTime = [0]
     for i in range(1,maxIteration) :
@@ -68,47 +68,58 @@ def compare(maxIteration) :
         FACTEUR_TAILLE = 15
         for i in range(TAILLE) :
             objets[i] = {'masse': randint(1,30), 'valeur' : randint(1,15)*100}
-        start = time.time()
-        what = sacADosNaif(objets, TAILLE*FACTEUR_TAILLE)
-        duration = time.time() - start
-        naifTime.append(duration)
-        valeurNaif = what[-1]
-        print(f"**ALGO NAIF ** {what} : {duration}")
-        start = time.time()
-        what = sacADosGlouton(objets, TAILLE*FACTEUR_TAILLE)
-        duration = time.time() - start
-        valeurGlouton = sum([objets[e]['valeur'] for e in what])
-        gloutonTime.append(duration)
-        print(f"**ALGO GLOUTON** {what}, {valeurGlouton}  : {duration} ")
+        if naif :
+            start = time.time()
+            what, value = sacADosNaif(objets, TAILLE*FACTEUR_TAILLE)
+            duration = time.time() - start
+            naifTime.append(duration)
+            
+            print(f"**ALGO NAIF ** {sorted(what)}, {value} : {duration}")
+        if glouton :
+            start = time.time()
+            what = sacADosGlouton(objets, TAILLE*FACTEUR_TAILLE)
+            duration = time.time() - start
+            valeurGlouton = sum([objets[e]['valeur'] for e in what])
+            gloutonTime.append(duration)
+            print(f"**ALGO GLOUTON** {sorted(what)}, {valeurGlouton}  : {duration} ")
         print()
-    return naifTime, gloutonTime, valeurNaif, valeurGlouton
-
+    if naif and glouton :
+        return naifTime, gloutonTime, valeurNaif, valeurGlouton
+    elif naif :
+        return naifTime, [], valeurNaif, []
+    elif glouton :
+        return [], gloutonTime, [], valeurGlouton
+    else :
+        return [], [],[], []
+    
+def start(NREP) :    
+    ntT = [0]*NREP
+    gtT = [0]*NREP
+    vnT = [ [] for _ in range(NREP) ]
+    vgT = [ [] for _ in range(NREP) ]
+    LISSAGE  = 3
+    for i in range(LISSAGE) :
+        nt,gt, vn, vg = compare(NREP)
+        for i in range(NREP) :
+            vnT[i].append(vn)
+            vgT[i].append(vg)
+            ntT[i]+=nt[i]
+            gtT[i] += gt[i]
+    gt = [t/LISSAGE for t in gtT]
+    nt = [t/LISSAGE for t in ntT]
+    with open('compareGreedyNatural.dat','wb') as file :
+        pickle.dump((nt,gt, vnT, vgT), file) 
+    
 
     
 
 if __name__ == "__main__" :
-    objets = {
-        "A" : {'masse' : 13, 'valeur' : 700},
-        "B" : {'masse' : 7, 'valeur' : 400},
-        "C" : {'masse' : 8, 'valeur' : 300},
-        "D" : {'masse' : 10, 'valeur' : 300},
-                }
-    print(sacADosNaif(objets,30))
-#     NREP = 20
-#     ntT = [0]*NREP
-#     gtT = [0]*NREP
-#     vnT = [ [] for _ in range(NREP) ]
-#     vgT = [ [] for _ in range(NREP) ]
-#     LISSAGE  = 3
-#     for i in range(LISSAGE) :
-#         nt,gt, vn, vg = compare(NREP)
-#         for i in range(NREP) :
-#             vnT[i].append(vn)
-#             vgT[i].append(vg)
-#             ntT[i]+=nt[i]
-#             gtT[i] += gt[i]
-#     gt = [t/LISSAGE for t in gtT]
-#     nt = [t/LISSAGE for t in ntT]
-#     with open('compareGreedyNatural.dat','wb') as file :
-#         pickle.dump((nt,gt, vnT, vgT), file) 
+#     objets = {
+#         "A" : {'masse' : 13, 'valeur' : 700},
+#         "B" : {'masse' : 7, 'valeur' : 400},
+#         "C" : {'masse' : 8, 'valeur' : 300},
+#         "D" : {'masse' : 10, 'valeur' : 300},
+#                 }
+#     print(sacADosNaif(objets,30))
+    NREP = 23
     
