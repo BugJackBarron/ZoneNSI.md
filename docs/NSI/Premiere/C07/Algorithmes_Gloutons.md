@@ -23,7 +23,7 @@
 	
 
 !!! abstract "Optimisation"
-	Ce genre de problème est un grand classique en informatique, on parle de {==**problèmes d'optimisation**==}. Il existe souvent plusieurs solutions possibles à un problème d'optimisation, mais toutes ne sont pas équivalentes. En effet on cherche une **solution dite optimale** (dans notre exemple on cherche le plus grand gain possible). Souvent, dans les problèmes d'optimisation, il n'existe pas une solution optimale, mais plusieurs solutions optimales, et  résoudre un problème d'optimisation c'est donc trouver une des solutions optimales. 
+	Ce genre de problème est un grand classique en informatique, on parle de {==**problèmes d'optimisation**==}.En effet on cherche une **solution dite optimale** (dans notre exemple on cherche le plus grand gain possible). Souvent, dans les problèmes d'optimisation, il n'existe pas une solution optimale, mais plusieurs solutions optimales, et  résoudre un problème d'optimisation c'est donc trouver une de ces solutions. 
 
 !!! abstract "Solution naïve"
 
@@ -88,13 +88,13 @@
 
 !!! warning "Temps de calcul"
 
-	Dans notre cas précis, avec seulement 4 objets, cette solution pourrait être envisagée, mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, deviendrait trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en $\mathrm{O}(a^n)$ avec $a$ une constante et $n$ le nombre d'objets ($a$ vaut au moins $2$, car il faut explorer les $2^n$ sous-ensembles).
+	Dans notre cas précis, avec seulement 4 objets, il est tout à fait possible de tester toutes les solutions pour trouver celle optimale.Mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, deviend très rapidement trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en $\mathrm{O}(a^n)$ avec $a$ une constante et $n$ le nombre d'objets ($a$ vaut au moins $2$, car il faut explorer les $2^n$ sous-ensembles).
 
 	On parle dans ce cas d'une {==**complexité exponentielle**==} (en temps), ce qu'on peut voir dans le graphique suivant (exécuté sur mon ordinateur personnel).
 	
 	![KP_Naif.png](KP_Naif.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution selon le nombre d'objets, algorithme KP Naif"}
 
-	Les algorithmes à complexité exponentielle ne sont pas efficaces pour résoudre des problèmes, le temps de calcul devient beaucoup trop important quand $n$ devient très grand. 
+	Les algorithmes à complexité exponentielle ne sont pas efficaces pour résoudre des problèmes, le temps de calcul devenant beaucoup trop important quand $n$ devient grand. 
 
 
 
@@ -103,7 +103,7 @@
 !!! tips "Solution &laquo; Gloutonne &raquo;"
 	La résolution d'un problème d'optimisation se fait généralement par étapes : à chaque étape on doit **faire un choix**. Par exemple, dans le problème du sac à dos, nous ajoutons les objets un par un, chaque ajout d'un objet constitue une étape : à chaque étape on doit **choisir** un objet à mettre dans le sac.
 
-	Le principe de la méthode {==**gloutonne**==}(*greedy* en anglais) est de, à chaque étape de la résolution du problème, faire le choix qui semble *le plus pertinent* sur le moment, avec l'espoir qu'au bout du compte, cela nous conduira vers une solution optimale du problème à résoudre. Autrement dit, on fait des {==**choix localement optimaux**==}, ce qui signifie de faire le choix qui semble le plus pertinent à chaque étape, dans l'espoir que ces choix mèneront à une solution globalement optimale. 
+	Le principe de la méthode {==**gloutonne**==}(*greedy* en anglais) est, à chaque étape de la résolution du problème, de faire le choix qui semble **le plus pertinent** sur le moment, avec l'espoir qu'au bout du compte, cela nous conduira vers une solution optimale du problème à résoudre. Autrement dit, on fait des {==**choix localement optimaux**==}, ce qui signifie faire le choix qui semble le plus pertinent ponctuellement. Par contre, **rien ne garantit que la solution obtenue soit optimale**, elle sera simplement  «*assez bonne*». 
 
 !!! question "Méthode gloutonne"
 
@@ -117,12 +117,10 @@
 			| Valeur Massique (en €/Kg)|  |  |  | 
 			
 		2. Trier le tableau par valeur décroissante de la valeur massique.
-		3. Enfin, on remplit le sac en prenant les objets dans l'ordre et en s'arrêtant dès que la masse limite est atteinte.\\
-		4. Quelle est la composition du sac ?
-		5. Est-elle optimale ?
+		3. Enfin, on remplit le sac en prenant les objets dans l'ordre et en s'arrêtant dès que la masse limite est atteinte.
+			1. Quelle est la composition du sac ?
+			2. Est-elle optimale ?
 		
-	=== "Solutions"
-		A venir
 		
 !!! tips "Comparaison des temps d'exécution entre algorithme naïf et algorithme glouton"
 
@@ -158,7 +156,7 @@
 		````
 		
 
-		1. Ecrire une fonction Python qui renvoie un taleau de tuples `(nom ; valeur_massique)` à partir du dictionnaire passé en argument.
+		1. Ecrire une fonction Python qui renvoie un tableau de tuples `(nom ; valeur_massique)` à partir du dictionnaire passé en argument.
 		1. Trier ce tableau par ordre décroissant des valeurs massiques.
 		1. Ecrire une fonction Python qui finalise l'algorithme glouton.
 
@@ -209,7 +207,7 @@
 
 	Pour ceux intéressés, voici les fichiers permettant de visualiser la comparaison entre les méthodes :
 	
-	* [sacADos_Naif_Glouton.py](sacADos_Naif_Glouton.py){: target="_blank"} :
+	* [sac_a_dos_naif_glouton.py](sac_a_dos_naif_glouton.py){: target="_blank"} :
 	
 		* `NREP` correspond au nombre maximum d'objets testés ;
 		* `LISSAGE` correspond au nombre de répétitions effectuées pour lisser les résultats
