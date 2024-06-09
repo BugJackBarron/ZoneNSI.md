@@ -4064,7 +4064,7 @@
 <a href="http://lesmathsduyeti.fr/fr/lycee/nsi-premiere/interactions-client-serveur-flask" target="_blank">http://lesmathsduyeti.fr/fr/lycee/nsi-premiere/interactions-client-serveur-flask</a></em></p>
 <div class="admonition info">
 <p class="admonition-title">Modèle client-serveur</p>
-<p>Pour simplifier, le modèle <strong>client-serveur</strong> désigne un mode de communication entre logiciels : l'un qualifié de <strong>client</strong> envoie des requêtes; l'autre, le <strong>serveur</strong>, y répond.</p>
+<p>Pour simplifier, le modèle <strong>client-serveur</strong> désigne un mode de communication entre logiciels : l'un qualifié de <strong>client</strong> envoie des requêtes ; l'autre, le <strong>serveur</strong>, y répond.</p>
 <p>Dans le cas du web, le logiciel client est <strong>le navigateur</strong> et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme <code>Apache</code> ou <code>NGinx</code>. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme <strong>PHP</strong> ou <strong>Python</strong>.</p>
 <p><img alt="ClientServeur.png" src="../ClientServeur.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""></p>
 </div>
@@ -4390,7 +4390,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
         <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Salutations !<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bonjour, en fait vous vous nommez {{prenom}} {{nom}} !<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bonjour, en fait vous vous nommez {{ prenom }} {{ nom }} !<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -4418,7 +4418,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <p class="admonition-title">Méthodologie</p>
 <ol>
 <li>
-<p>Modifiez la méthode d'envoi du formulaire  par :</p>
+<p>Modifiez la méthode d'envoi du formulaire par :</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"http://127.0.0.1:5000/resultat"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Actualisez, remplissez le formulaire et cliquez sur envoyer.</p>
@@ -4456,6 +4456,15 @@ Par contre vous devez observer que <strong>les données ont bien disparu de l'UR
 <li>des données de taille importante,</li>
 <li>et elle est recommandée pour modifier les données sur le serveur, et pour les données sensible comme expliqué par le W3C.</li>
 </ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Rendre son application accessible depuis le réseau du Lycée</p>
+<p>Il est possible de rendre votre application lisible depuis n'importe quelle machine du Lycée. Pour cela :</p>
+<ul>
+<li>vous lancez l'application Flask avec l'IP d'hôte <code>0.0.0.0</code> : <code>flask run --host=0.0. 0.0</code> ;</li>
+<li>vous communiquez à vos voisins votre adresse IP obtenue dans le terminal windows (en exécutant la commande <code>CMD.exe</code> puis en exécutant dans le terminal la commande <code>ipconfig</code>).</li>
+</ul>
+<p>Ils pourront alors accéder à votre application via votre adresse IP.</p>
 </div>
 <h2 id="une-application-chiffre-de-cesar">Une application : chiffre de César</h2>
 <p>Vous devez créer une application web qui pourra coder ou décoder un texte codé avec la méthode de César. La méthode de César est expliquée <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_d%5C%C3%5C%A9calage" target="_blank">ici</a>.</p>

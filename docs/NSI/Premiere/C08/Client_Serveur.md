@@ -6,7 +6,7 @@
 
 !!! info "Modèle client-serveur"
 
-	Pour simplifier, le modèle **client-serveur** désigne un mode de communication entre logiciels : l'un qualifié de **client** envoie des requêtes; l'autre, le **serveur**, y répond.
+	Pour simplifier, le modèle **client-serveur** désigne un mode de communication entre logiciels : l'un qualifié de **client** envoie des requêtes ; l'autre, le **serveur**, y répond.
 
 	Dans le cas du web, le logiciel client est **le navigateur** et le protocole utilisé pour communiquer avec le logiciel serveur est HTTP (ou HTTPS). Le logiciel serveur est un logiciel spécialisé dans le traitement des requêtes HTTP, comme `Apache` ou `NGinx`. Ces logiciels sont épaulés par des programmes qui peuvent être écrits dans différents langages, comme **PHP** ou **Python**.
 
@@ -361,7 +361,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
    
 	1. Créer un fichier `resultat.html` dans le dossier `templates`, contenant le code HTML suivant :
 		
-		{% raw %}
+		
 		```` html
 		<!doctype html>
 		<html lang="fr">
@@ -374,11 +374,11 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 			</body>
 		</html>
 		````
-		{% endraw %}
+		
 		
 	1. Modifiez le fichier `Tuto_Flask.py`  comme ceci :
 	
-		{% raw %}
+		
 		```` python
 		@app.route('/resultat',methods = ['GET','POST'])
 		def salutation():
@@ -390,14 +390,14 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 			elif request.method == 'POST':
 				return "post"
 		````		
-		{% endraw %}
+		
 		
 	1. Testez à nouveau. Vous devriez avoir un affichage correct.
 	 
 ### Utilisation d'un formulaire avec la méthode POST
 
 !!! tips "Méthodologie"
-	1. Modifiez la méthode d'envoi du formulaire  par :
+	1. Modifiez la méthode d'envoi du formulaire par :
 	
 		```` html
 		<form action="http://127.0.0.1:5000/resultat" method="post">
@@ -439,6 +439,16 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 	* des codes non ASCII,
 	* des données de taille importante,
 	* et elle est recommandée pour modifier les données sur le serveur, et pour les données sensible comme expliqué par le W3C.
+
+!!! info "Rendre son application accessible depuis le réseau du Lycée"
+
+	Il est possible de rendre votre application lisible depuis n'importe quelle machine du Lycée. Pour cela :
+
+	* vous lancez l'application Flask avec l'IP d'hôte `0.0.0.0` : ``flask run --host=0.0. 0.0`` ;
+	* vous communiquez à vos voisins votre adresse IP obtenue dans le terminal windows (en exécutant la commande `CMD.exe` puis en exécutant dans le terminal la commande `ipconfig`).
+	
+	Ils pourront alors accéder à votre application via votre adresse IP.
+
 
 ## Une application : chiffre de César
 
