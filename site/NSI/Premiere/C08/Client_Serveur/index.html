@@ -4078,7 +4078,7 @@
 <div class="admonition tips">
 <p class="admonition-title">Méthodologie</p>
 <ol>
-<li>Installer <code>Flask</code> par l'intermédiaire du gestionnaire de modules de <code>Thonny</code> <code>Tools &gt; Manage packages</code>. La dernière version est la <code>2.1.2</code> (au 06 juin 2022).</li>
+<li>Installer <code>Flask</code> par l'intermédiaire du gestionnaire de modules de <code>Thonny</code> <code>Tools &gt; Manage packages</code>. </li>
 <li>
 <p>Créer un fichier <code>Tuto_Flask.py</code> dans <code>Thonny</code>, puis taper les lignes suivantes et sauvegardez le fichier.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
@@ -4090,38 +4090,28 @@
     <span class="k">return</span> <span class="s2">"Hello World !"</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span> <span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">5555</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
-<p><em>Pour une raison qui m'est pour l'instant inconnue, Thonny arrête prématurément l'exécution du programme, si on le lance par l'intermédiaire de la commande <code>run</code>. Il est donc nécessaire de le lancer par la ligne de commande</em>.</p>
-<ol>
-<li>Ouvrir la ligne de commande de <code>Thonny</code> : <code>Tools &gt; Open system shell...</code></li>
-<li>
-<p>Exécuter la commande 
-    </p><div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">Tuto_Flask</span><span class="o">.</span><span class="n">py</span>
-</code></pre></div>
-    Patientez jusqu'à avoir la dernière ligne du code ci-dessous :
+<p>Exécutez alors le fichier. Patientez jusqu'à avoir la dernière ligne du code ci-dessous :</p>
 <p><img alt="ShellFlask.png" src="../ShellFlask.png" target="_blank"></p>
-<p><strong>NE FERMEZ SURTOUT PAS LA CONSOLE !</strong></p>
 <div class="admonition info">
 <p class="admonition-title">Bravo !</p>
 <p>Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de <code>localhost</code> ( ou <code>hôte local</code>), qui est le nom DNS correspondant à l'adresse IP <code>127.0.0.1</code>. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5000.</p>
 </div>
 </li>
-</ol>
-</li>
 <li>
-<p>Dans <code>Firefox</code>, tapez l'adresse <code>127.0.0.1:5000</code>.</p>
+<p>Dans <code>Firefox</code>, tapez l'adresse <code>127.0.0.1:5555</code>.</p>
 <p>On obtient donc... une page web, certes sommaire, mais elle a bien été renvoyée par le serveur. On peut le voir dans la console par la ligne :</p>
-<div class="highlight"><pre><span></span><code><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">06</span>/Jun/2022<span class="w"> </span><span class="m">21</span>:26:21<span class="o">]</span><span class="w"> </span><span class="s2">"GET / HTTP/1.1"</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+<div class="highlight"><pre><span></span><code><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">06</span>/Jun/2024<span class="w"> </span><span class="m">21</span>:26:21<span class="o">]</span><span class="w"> </span><span class="s2">"GET / HTTP/1.1"</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
 </code></pre></div>
 <p>Nous voyons ainsi l'adresse du client (ici <code>127.0.0.1</code>) qui effectue une requête <code>HTTP</code> ( version 1.1)  de type GET. Le code 200 signifie le succès de la requête .</p>
 </li>
 <li>
-<p>Dans <code>Firefox</code>, tapez l'adresse <code>127.0.0.1:5000/Accueil</code>.</p>
+<p>Dans <code>Firefox</code>, tapez l'adresse <code>127.0.0.1:5555/Accueil</code>.</p>
 <p>On obtient donc... une page web <code>Not Found</code> </p>
-<div class="highlight"><pre><span></span><code><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">06</span>/Jun/2022<span class="w"> </span><span class="m">21</span>:27:11<span class="o">]</span><span class="w"> </span><span class="s2">"GET /Accueil HTTP/1.1"</span><span class="w"> </span><span class="m">404</span><span class="w"> </span>-
+<div class="highlight"><pre><span></span><code><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">06</span>/Jun/2024<span class="w"> </span><span class="m">21</span>:27:11<span class="o">]</span><span class="w"> </span><span class="s2">"GET /Accueil HTTP/1.1"</span><span class="w"> </span><span class="m">404</span><span class="w"> </span>-
 </code></pre></div>
 <p>C'est donc que le chemin vers la page <code>Accueil</code> n'a pas été trouvé. Le serveur renvoie donc la classique erreur 404.</p>
 </li>
@@ -4130,9 +4120,9 @@
 <h3 id="analyse-du-code-flask">Analyse du code Flask</h3>
 <p>Comment comprendre le code que vous avez utilisé ? Rassurez-vous, vous devez le comprendre, mais pas savoir le produire en partant de rien !</p>
 <p>Allons-y étape par étape :</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 </code></pre></div>
-Cette ligne permet d'importer, parmi les méthodes et fonctions du module <code>flask</code>, l'objet <code>Flask</code> qui permet de créer une application web.
+<p>Cette ligne permet d'importer, parmi les méthodes et fonctions du module <code>flask</code>, l'objet <code>Flask</code> qui permet de créer une application web.</p>
 <p></p><div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </code></pre></div>
 Créer une instance d'objet <code>app</code> à l'aide du constructeur <code>Flask</code>.
@@ -4144,9 +4134,9 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 </code></pre></div>
 <p>C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse <code>localhost:5000/</code>. Elle renvoie toujours le même contenu, on parlera de contenu <strong>statique</strong>. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">5555</span><span class="p">)</span>
 </code></pre></div>
-<p>Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, en mode <code>debug</code>. C'est un très bon moyen de visualiser les requêtes vers le serveur. </p>
+<p>Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, accessible sur le port <code>5555</code> (le port par défaut ne semble pas fonctionner au Lycée). C'est un très bon moyen de visualiser les requêtes vers le serveur. </p>
 <h3 id="ajouter-une-page">Ajouter une page</h3>
 <p>L'objectif est de créer une nouvelle page <code>contact</code>, qui sera donc accessible par l'URL <code>localhost:5000/contact</code>.</p>
 <div class="admonition tips">
@@ -4168,7 +4158,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <p>Le code renvoyé par une fonction décorée par une route <em>peut donc être du code HTML</em>. Il peut être chargé depuis un fichier extérieur, comme nous avons déjà vu avec la fonction <code>open()</code> par exemple... Mais les créatrices et créateurs de Flask ont prévu <strong>bien plus simple</strong> !</p>
 </li>
 <li>
-<p>Créer une page accessible depuis l'adresse <code>127.0.0.1:5000/loisirs</code> présentant en quelques mots sur vos loisirs.</p>
+<p>Créer une page accessible depuis l'adresse <code>127.0.0.1:5555/loisirs</code> présentant en quelques mots sur vos loisirs.</p>
 </li>
 </ol>
 </div>
@@ -4183,7 +4173,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <div class="admonition abstract">
 <p class="admonition-title">MVC</p>
 <p>Nous parlons souvent de l'<strong>architecture MVC </strong>(ce n'est pas uniquement lié à Flask). Il s'agit d'un modèle distinguant plusieurs rôles précis d'une application, qui doivent être accomplis. Comme son nom l'indique, l'architecture <mark class="critic">Modèle-Vue-Contrôleur</mark> est composée de trois entités distinctes, chacune ayant son propre rôle à remplir. Voici un schéma qui résume cela :</p>
-<p><img alt="ShellFlask.png" src="../ShellFlask.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""></p>
+<p><img alt="MVC.png" src="../MVC.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""></p>
 <p>Le modèle MVC permet de <strong>bien organiser son code source</strong>. Il va vous aider à savoir quels fichiers créer, mais surtout à définir leur rôle. Le but de MVC est justement de séparer la logique du code en trois parties que l'on retrouve dans des fichiers distincts :</p>
 <ul>
 <li>
@@ -4215,7 +4205,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
       <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Un site qui déchire.<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Bonjour cher visiteur !<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Vous voici sur mon site à moi.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://127.0.0.1:5000/contact"</span><span class="p">&gt;</span>Lien vers les contacts.<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://127.0.0.1:5555/contact"</span><span class="p">&gt;</span>Lien vers les contacts.<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -4344,7 +4334,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <p>C'est tout-à-fait normal ! En effet le code  :</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"./resultat"</span> <span class="na">method</span><span class="o">=</span><span class="s">"get"</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>signifie que l'envoi du formulaire se fait avec la méthode <code>GET</code> et que la page affichée ensuite sera celle de l'adresse <code>127.0.0.1/resultat</code>. Or il n'y a pas de route associée à cette adresse, et encore moins de template.</p>
+<p>signifie que l'envoi du formulaire se fait avec la méthode <code>GET</code> et que la page affichée ensuite sera celle de l'adresse <code>127.0.0.1:5555/resultat</code>. Or il n'y a pas de route associée à cette adresse, et encore moins de template.</p>
 <p>Cependant vous pouvez observer que l'adresse obtenue dans la barre d'adresse est du type </p>
 <div class="highlight"><pre><span></span><code>http://localhost:5000/resultat?nom<span class="o">=</span>HATAKE<span class="p">&amp;</span><span class="nv">prenom</span><span class="o">=</span>Kakashi
 </code></pre></div>
@@ -4419,7 +4409,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 <ol>
 <li>
 <p>Modifiez la méthode d'envoi du formulaire par :</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"http://127.0.0.1:5000/resultat"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"http://127.0.0.1:5555/resultat"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Actualisez, remplissez le formulaire et cliquez sur envoyer.</p>
 <p>C'est tout-à-fait normal de voir juste écrit « post» sur la page finale, car nous n'avons pas modifié la fonction <code>salutation</code>.

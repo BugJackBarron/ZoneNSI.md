@@ -25,7 +25,7 @@
 
 !!! tips "Méthodologie"
 
-	1. Installer `Flask` par l'intermédiaire du gestionnaire de modules de `Thonny` `Tools > Manage packages`. La dernière version est la `2.1.2` (au 06 juin 2022).
+	1. Installer `Flask` par l'intermédiaire du gestionnaire de modules de `Thonny` `Tools > Manage packages`. 
 	2. Créer un fichier `Tuto_Flask.py` dans `Thonny`, puis taper les lignes suivantes et sauvegardez le fichier.
 
 		````python
@@ -38,39 +38,31 @@
 			return "Hello World !"
 
 		if __name__ == "__main__" :
-			app.run(debug=True)
+			app.run(port=5555)
 		````
-	1. *Pour une raison qui m'est pour l'instant inconnue, Thonny arrête prématurément l'exécution du programme, si on le lance par l'intermédiaire de la commande `run`. Il est donc nécessaire de le lancer par la ligne de commande*.
+	1. Exécutez alors le fichier. Patientez jusqu'à avoir la dernière ligne du code ci-dessous :
 		
-		1. Ouvrir la ligne de commande de `Thonny` : `Tools > Open system shell...`
-		2. Exécuter la commande 
-			```` python
-			python Tuto_Flask.py
-			````
-			Patientez jusqu'à avoir la dernière ligne du code ci-dessous :
+		![ShellFlask.png](ShellFlask.png){: target="_blank"}
 		
-			![ShellFlask.png](ShellFlask.png){: target="_blank"}
-		
-			**NE FERMEZ SURTOUT PAS LA CONSOLE !**
-			!!! info "Bravo !"
-				Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de `localhost` ( ou `hôte local`), qui est le nom DNS correspondant à l'adresse IP `127.0.0.1`. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5000.
+		!!! info "Bravo !"
+			Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de `localhost` ( ou `hôte local`), qui est le nom DNS correspondant à l'adresse IP `127.0.0.1`. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5000.
 				
-	1. Dans `Firefox`, tapez l'adresse `127.0.0.1:5000`.
+	1. Dans `Firefox`, tapez l'adresse `127.0.0.1:5555`.
 
 		On obtient donc... une page web, certes sommaire, mais elle a bien été renvoyée par le serveur. On peut le voir dans la console par la ligne :
 		
 		```` bash
-		127.0.0.1 - - [06/Jun/2022 21:26:21] "GET / HTTP/1.1" 200 -
+		127.0.0.1 - - [06/Jun/2024 21:26:21] "GET / HTTP/1.1" 200 -
 		````
 		
 		Nous voyons ainsi l'adresse du client (ici `127.0.0.1`) qui effectue une requête `HTTP` ( version 1.1)  de type GET. Le code 200 signifie le succès de la requête .
 
-	1. Dans `Firefox`, tapez l'adresse `127.0.0.1:5000/Accueil`.
+	1. Dans `Firefox`, tapez l'adresse `127.0.0.1:5555/Accueil`.
 
 		On obtient donc... une page web `Not Found` 
 
 		```` bash
-		127.0.0.1 - - [06/Jun/2022 21:27:11] "GET /Accueil HTTP/1.1" 404 -
+		127.0.0.1 - - [06/Jun/2024 21:27:11] "GET /Accueil HTTP/1.1" 404 -
 		````
 
 		C'est donc que le chemin vers la page `Accueil` n'a pas été trouvé. Le serveur renvoie donc la classique erreur 404.
@@ -85,6 +77,7 @@ Allons-y étape par étape :
 ```` python 
 from flask import Flask
 ````
+
 Cette ligne permet d'importer, parmi les méthodes et fonctions du module `flask`, l'objet `Flask` qui permet de créer une application web.
 
 ```` python  
@@ -106,10 +99,10 @@ C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse `localh
 
 ```` python  
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5555)
 ````
 
- Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, en mode `debug`. C'est un très bon moyen de visualiser les requêtes vers le serveur. 
+ Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, accessible sur le port `5555` (le port par défaut ne semble pas fonctionner au Lycée). C'est un très bon moyen de visualiser les requêtes vers le serveur. 
  
 ### Ajouter une page
 
@@ -133,7 +126,7 @@ L'objectif est de créer une nouvelle page `contact`, qui sera donc accessible p
 	
 		Le code renvoyé par une fonction décorée par une route *peut donc être du code HTML*. Il peut être chargé depuis un fichier extérieur, comme nous avons déjà vu avec la fonction `open()` par exemple... Mais les créatrices et créateurs de Flask ont prévu **bien plus simple** !
 
-	1. Créer une page accessible depuis l'adresse `127.0.0.1:5000/loisirs` présentant en quelques mots sur vos loisirs.
+	1. Créer une page accessible depuis l'adresse `127.0.0.1:5555/loisirs` présentant en quelques mots sur vos loisirs.
 
 ## Le modèle MVC
 
@@ -150,7 +143,7 @@ Pour cette dernière remarque, nous allons parler des {==**templates**==} (ou *g
 !!! abstract "MVC"
 	Nous parlons souvent de l'**architecture MVC **(ce n'est pas uniquement lié à Flask). Il s'agit d'un modèle distinguant plusieurs rôles précis d'une application, qui doivent être accomplis. Comme son nom l'indique, l'architecture {==Modèle-Vue-Contrôleur==} est composée de trois entités distinctes, chacune ayant son propre rôle à remplir. Voici un schéma qui résume cela :
 
-	![ShellFlask.png](ShellFlask.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""}
+	![MVC.png](MVC.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;" title=""}
 
 	Le modèle MVC permet de **bien organiser son code source**. Il va vous aider à savoir quels fichiers créer, mais surtout à définir leur rôle. Le but de MVC est justement de séparer la logique du code en trois parties que l'on retrouve dans des fichiers distincts :
 	
@@ -180,7 +173,7 @@ Notre objectif est de créer une page d'accueil plus sympathique. Nous allons do
 			  <h1>Un site qui déchire.</h1>
 			  <h2>Bonjour cher visiteur !</h2>
 			  <p>Vous voici sur mon site à moi.</p>
-			  <a href="http://127.0.0.1:5000/contact">Lien vers les contacts.</a>
+			  <a href="http://127.0.0.1:5555/contact">Lien vers les contacts.</a>
 			</body>
 		</html>
 		````
@@ -314,7 +307,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 		<form action="./resultat" method="get">
 		````
 		
-		signifie que l'envoi du formulaire se fait avec la méthode `GET` et que la page affichée ensuite sera celle de l'adresse `127.0.0.1/resultat`. Or il n'y a pas de route associée à cette adresse, et encore moins de template.
+		signifie que l'envoi du formulaire se fait avec la méthode `GET` et que la page affichée ensuite sera celle de l'adresse `127.0.0.1:5555/resultat`. Or il n'y a pas de route associée à cette adresse, et encore moins de template.
 		
 		Cependant vous pouvez observer que l'adresse obtenue dans la barre d'adresse est du type 
 			
@@ -400,7 +393,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 	1. Modifiez la méthode d'envoi du formulaire par :
 	
 		```` html
-		<form action="http://127.0.0.1:5000/resultat" method="post">
+		<form action="http://127.0.0.1:5555/resultat" method="post">
 		````
 	
 		Actualisez, remplissez le formulaire et cliquez sur envoyer.
