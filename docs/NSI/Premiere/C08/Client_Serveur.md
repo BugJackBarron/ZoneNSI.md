@@ -45,7 +45,7 @@
 		![ShellFlask.png](ShellFlask.png){: target="_blank"}
 		
 		!!! info "Bravo !"
-			Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de `localhost` ( ou `hôte local`), qui est le nom DNS correspondant à l'adresse IP `127.0.0.1`. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5000.
+			Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de `localhost` ( ou `hôte local`), qui est le nom DNS correspondant à l'adresse IP `127.0.0.1`. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5555.
 				
 	1. Dans `Firefox`, tapez l'adresse `127.0.0.1:5555`.
 
@@ -88,14 +88,14 @@ Créer une instance d'objet `app` à l'aide du constructeur `Flask`.
 ```` python  
 @app.route('/')
 ````
-Nous utilisons ici un décorateur grâce à la commande @ (cette notion de décorateur ne sera pas traitée en NSI). Vous devez juste comprendre la fonction qui suit ce décorateur (c'est-à-dire la fonction `index`), sera exécutée dans le cas où le serveur web recevra une requête HTTP avec une URL correspondant à la racine du site (`/`), c'est-à-dire, dans notre exemple, le cas où on saisie dans la barre d'adresse `127.0.0.1:5000/` ou `localhost:5000/` ou même simplement `localhost:5000`.
+Nous utilisons ici un décorateur grâce à la commande @ (cette notion de décorateur ne sera pas traitée en NSI). Vous devez juste comprendre la fonction qui suit ce décorateur (c'est-à-dire la fonction `index`), sera exécutée dans le cas où le serveur web recevra une requête HTTP avec une URL correspondant à la racine du site (`/`), c'est-à-dire, dans notre exemple, le cas où on saisie dans la barre d'adresse `127.0.0.1:5555/` ou `localhost:5555/` ou même simplement `localhost:5555`.
 
 ```` python  
 def index():
     return "Hello World !"
 ````
 
-C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse `localhost:5000/`. Elle renvoie toujours le même contenu, on parlera de contenu **statique**. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.
+C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse `localhost:5555/`. Elle renvoie toujours le même contenu, on parlera de contenu **statique**. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.
 
 ```` python  
 if __name__ == '__main__':
@@ -106,7 +106,7 @@ if __name__ == '__main__':
  
 ### Ajouter une page
 
-L'objectif est de créer une nouvelle page `contact`, qui sera donc accessible par l'URL `localhost:5000/contact`.
+L'objectif est de créer une nouvelle page `contact`, qui sera donc accessible par l'URL `localhost:5555/contact`.
 
 
 !!! tips "Méthodologie"
@@ -312,7 +312,7 @@ Commençons par améliorer l'affichage de notre page d'accueil en personnalisant
 		Cependant vous pouvez observer que l'adresse obtenue dans la barre d'adresse est du type 
 			
 		```` bash
-		http://localhost:5000/resultat?nom=HATAKE&prenom=Kakashi
+		http://localhost:5555/resultat?nom=HATAKE&prenom=Kakashi
 		````
 		
 		Les données envoyées **apparaissent dans l'URL**. C'est la méthode `GET` - qui est une méthode générale de HTTP, qui veut cela.
