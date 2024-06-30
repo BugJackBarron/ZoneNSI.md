@@ -26,3 +26,4 @@ Les sujets et corrigés de l'épreuve écrite 2022 peuvent être trouvés [ici](
 
 Pour l'instant, **aucune date officielle n'est tombée** concernant l'épreuve pratique de NSI pour la session de Bac 2023. Nous pouvons cependant- supposer qu'elle aura lieu en **Mai**.
 La base de donnée des sujets d'Epreuve Pratique NSI est disponible [ici](https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi){:target="_blank"}.
+
