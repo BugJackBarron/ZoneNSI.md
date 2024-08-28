@@ -1,27 +1,27 @@
 # Objets, variables et affectation
 
-*Ce cours est accompagné d'un [notebook Capytale](https://capytale2.ac-paris.fr/web/c/ff91-1780296){: target="_blank" } disponible aux élèves disposant d'un compte Toutatice.*
+*Ce cours est accompagné de **notebooks Capytale** disponibles aux personnes disposant d'un compte (par Toutatice dans l'académie de rennes).*
 
 ## Types de base 
 
 ### Objets et types de base
 
-Le principe d'un programme est de manipuler des **données** avec des **instructions** afin de produire de nouvelles données.
+Le principe d'un programme est de manipuler des **données** avec des {==**instructions**==} afin de produire de nouvelles données.
 
-En Python, des données sont appelées des **==objets==**, et tout ce qui est manipulable est un objet.
+En Python, des données sont appelées des **==objets==**, et tout ce qui est manipulable est un objet. On manipule des objets en écrivant des {==**expressions**==} :
 
 !!! question "Tester les objets"
 	
 	=== "Test1"
 		
-		Exécuter la commande suivante dans le terminal ci-dessous :
+		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
 		
 		```` python
 		5 / 3
 		````
 	=== "Test2"	
 	
-		Exécuter la commande suivante dans le terminal ci-dessous :
+		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
 		
 		```` python
 		"abra"+"cadabra"
@@ -29,7 +29,7 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 	
 	=== "Test3"
 	
-		Exécuter la commande suivante dans le terminal ci-dessous :
+		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
 		
 		```` python
 		5<9
@@ -37,7 +37,7 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 	
 	=== "Test4"
 	
-		Exécuter la commande suivante dans le terminal ci-dessous :
+		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
 		
 		```` python
 		4.5 + "3.2"
@@ -54,15 +54,15 @@ Par exemple, dans le code suivant :
 
 {{ IDE('Code1') }}
 
-Lorsqu'on **exécute** ce code, on crée 4 objets différents, présents dans ce qu'on appelle l'==**espace des objets**==. 
+Lorsqu'on **exécute** ce code, des objets différents sont créés, présents dans ce qu'on appelle l'==**espace des objets**==. 
 
-Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans presque tous les langages de programmation, appelé **garbage collector** (soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement (plusieurs centaines de fois par seconde), afin de garantir le bon fonctionnement de la machine. Le garbage collector a donc supprimé les objets `12`, `8.8`, `5436` et `7`.
+Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans presque tous les langages de programmation, appelé **garbage collector** (soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement (plusieurs centaines de fois par seconde), afin de garantir le bon fonctionnement de la machine. Le *garbage collector* a donc supprimé tous les objets, y compris les objets `12`, `8.8`, `5436` et `7` obtenus par les **évaluations des quatre expressions données**.
 
-Regardons plus précisément ces objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets créés.
+Regardons plus précisément les objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets créés.
 
 !!! question "Les types d'objets"
 	
-	Dans la console ci-dessous, testez une par une les commandes suivantes :
+	Dans la console ci-dessous, testez une par une les expressions suivantes :
 	
 	=== "Test 1"
 		```` python
@@ -95,35 +95,36 @@ Regardons plus précisément ces objets, en demandant à Python grâce à l'inst
 	IndentationError: unexpected indent
 	````
 	Il s'agit d'une ==**erreur d'indentation**==, ce qui signifie que le code `type(4.5)` est décalé par rapport au départ de ligne. Ici, il y a 4 espaces devant, ce qui est obtenu en général en appuyant sur la touche ++tab++ dans les consoles Python ainsi que dans les principaux éditeurs.
-	Il s'agit d'une ==**erreur d'indentation**==, ce qui signifie que le code `type(4.5)` est décalé par rapport au départ de ligne. Ici, il y a 4 espaces devant, ce qui est obtenu en général en appuyant sur la touche ++tab++ dans les consoles Python ainsi que dans les principaux éditeurs.
+	
 	
 !!! abstract "Types de bases et objets spécifiques"
 	Les types basiques de Python sont donc les suivants :
 
-	* le type `int` : qui permet de manipuler des nombres entiers relatifs, de $-2.10^{9}$ à $+2.10^9$ (mais la plage pouvant être étendue, en pratique on ne s'intéresse pairs en python aux limites des entiers) ;
+	* le type `int` : qui permet de manipuler des nombres entiers relatifs, de $-2.10^{9}$ à $+2.10^9$ (mais la plage pouvant être étendue, en pratique on ne s'intéresse pas en python aux limites des entiers) ;
 	* le type `float` : qui permet de manipuler des nombres décimaux à $32$ bits (s'écrivant avec 32 chiffres binaires) entre $-10^{302}$ et $+10^{302}$ (*avec quelques subtilités, que nous verrons dans le chapitre correspondant au codage des nombres flottants*);
-	* le type `str` : qui permet de manipuler des chaînes de caractères ;
+	* le type `str` : qui permet de manipuler des chaines de caractères ;
 	* le type `bool` : qui permet de manipuler des valeurs **booléennes**, c'est à dire vraies ou fausses, utilisées par défaut dans les instructions nécessitant une condition (`if` ou `while` par exemple).
 
 	Chacun de ces types possède des opérations qui lui sont propres. Elles sont nombreuses, et largement documentées dans la doc Python 3 officielle, en suivant le lien ci contre : [Doc Python 3 en français](https://docs.python.org/fr/3/).
 
-	Il existe aussi des *constantes* spécifiques, c'est-à-dire des objets spéciaux, comme par exemple `None`, qui est un objet sans type, signifiant une absence de valeur.
+!!! warning "Objets spéciaux"
+	Il existe aussi des *constantes* spécifiques, c'est-à-dire des objets spéciaux comme, par exemple `None`, qui est un objet de type `NoneType`, signifiant une absence de valeur.
 
 ### Nommage des objets et affectations
 
 Bien entendu, de manière quasi obligatoire, il est nécessaire de conserver des objets et d'éviter que ceux-ci disparaissent avec le **garbage collector**.
 
-Pour cela, on va associer à chaque objet un **nom** dans l'**espace de nom**, grâce à l'opération d'**affectation** `=`, comme par exemple `un_inconnu = "Toto"`. Ici le nom de variable `un_inconnu` est associé à l'objet de type chaîne de caractère `"Toto"`. 
+Pour cela, on va associer à chaque objet un **nom** dans l'**espace de nom**, grâce à l'opération d'**affectation** `=`, comme par exemple `un_inconnu = "Toto"`. Ici le nom de variable `un_inconnu` est associé à l'objet de type chaine de caractère `"Toto"`. 
 
 Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par le *garbage collector*, et peut être rappelé plus tard dans le code en utilisant son nom.
 
 !!! example "Exemple"
 
-	Exécutez le code suivant, puis testez dans la console à droite le type des objets suivants, en utilisant leur nom.
+	Exécutez le code suivant (avec la flèche), puis testez dans la console à droite le type des objets suivants, en utilisant leur nom.
 
 	{{ IDEv('Code2') }}
 	
-	Testez ensuite chacune des propositions ci-dessous. Pour chacune d'entre elles, expliquez ce qui se passe.
+	Testez ensuite chacune des expressions ci-dessous. Pour chacune d'entre elles, expliquez ce qui se passe.
 
 	=== "1"
 				
@@ -225,29 +226,13 @@ Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par
 
 ### Exercices d'affectation
 
-1. Écrire un code qui affecte l'objet `15` de type `int`  à une variable nommé ``valeur``, puis exécuter l'instruction ``valeur*4``.
-
-	{{ IDEv('P1_Exo1') }}
-
-2. Écrire un code qui affecte l'objet `"15"` de type `str`  à une variable nommé ``texte``, puis exécuter l'instruction ``texte*4``.
-
-	{{ IDEv('P1_Exo2') }}
-
-3. Compléter le code suivant afin que les objets des variables `a` et `b` soient inversés, **SANS UTILISER D'AFFECTATIONS DE NOMBRES, et sans toucher la valeur de `c`.**
-
-	{{ IDEv('P1_Exo3') }}
-
-4. Écrivez un code qui **permute** les objets des variables `a`, `b` et `c` ( l'objet de `a` est affecté à `b`, l'objet de `b` est affecté à `c` et l'objet de `c` est affecté à `a`) **sans utiliser de valeurs numériques**.
-
-	{{ IDEv('P1_Exo4') }}
-
-
+Les exercices sont disponibles sur le notebook Capytale [22ab-3807776](https://capytale2.ac-paris.fr/web/c/22ab-3807776){target="_blank"}.
 
 ## Opérations sur les objets
 
 ### Types numériques et opérations
 
-Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qui n'est pas vu en maths avant la terminale ), on trouve toutes les opérations classiques. 
+Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qui n'est pas vu en maths avant la terminale), on trouve toutes les opérations classiques. 
 
 #### Addition entière
 
@@ -311,7 +296,7 @@ Attention ! Au résultat ci-dessous, le type obtenu est `float`, même si le div
 14
 ```
 
-Ici par contre le résultat est bien de type `int` (A tester aussi...)
+Ici par contre le résultat est bien de type `int` (à tester aussi...)
 
 #### Reste de la Division Euclidienne
 
@@ -352,20 +337,24 @@ Vous pouvez tester ces éléments dans le terminal ci-dessous :
 	
 {{ terminal() }}
 
+### Exercices sur les types numériques
+
+
+
 ### Types `str` (chaines de caractères) et opérations
 
 #### Déclarations
 
-Une chaîne de caractère doit être déclarée :
+Une chaine de caractère doit être déclarée :
 
 * soit entre une paire de guillemets simples (*simple quote*) : `'Toto'` ;
 * soit entre une paire de guillemets doubles (*double quote*) : `"Toto"`.
 
-L'utilisation de l'un ou de l'autre n'a pas d'importance, mais on peut rapidement se tromper selon le contenu de la chaîne :
+L'utilisation de l'un ou de l'autre n'a pas d'importance, mais on peut rapidement se tromper selon le contenu de la chaine :
 
-!!! question "Tester les chaînes de caractères"
+!!! question "Tester les chaines de caractères"
 
-	Tester les chaînes suivantes dans le terminal ci-dessous:
+	Tester les affectations suivantes dans le terminal ci-dessous, et expliquez les éventuels problèmes :
 	
 	=== "1"
 	
@@ -401,7 +390,7 @@ L'utilisation de l'un ou de l'autre n'a pas d'importance, mais on peut rapidemen
 	
 	{{ terminal() }}
 
-Normalement, une chaîne de caractère, quelle que soit sa longueur, n'est considérée être que sur une seule et unique ligne. Il est cependant possible d'avoir des chaînes de caractères multi-lignes, à condition de les déclarer entre **trois paires** de guillemets identiques :
+Normalement, une chaine de caractère, quelle que soit sa longueur, n'est considérée être que sur une seule et unique ligne. Il est cependant possible d'avoir des chaines de caractères multi-lignes, à condition de les déclarer entre **trois paires** de guillemets identiques :
 
 ```` python
 >>> zen = """
@@ -430,13 +419,13 @@ Les espaces de nommage ! Sacrée bonne idée ! Faisons plus de trucs comme ça.
 
 #### Indice d'un caractère
 
-Chaque caractère d'une chaîne est repéré par son ==**indice**==, c'est-à-dire par un **numéro donnant sa position**. Attention toutefois,en informatique, les indices commencent à 0 dans quasiment tous les langages !
+Chaque caractère d'une chaine est repéré par son ==**indice**==, c'est-à-dire par un **numéro donnant sa position**. Attention toutefois, en informatique, les indices commencent à `0` dans quasiment tous les langages !
 
 Ainsi :
 
 ![image stanford](https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1204/handouts/python-str-index.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="D'après https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1204/handouts/python-str-index.png"}
     
-Dans la chaîne précédente, ``"P"`` à pour indice 0, ``"y"`` a pour indice 1 et ``"n"`` a pour indice 5.
+Dans la chaine précédente, ``"P"`` à pour indice 0, ``"y"`` a pour indice `1` et ``"n"`` a pour indice `5`.
 
 
 
@@ -451,7 +440,7 @@ Dans la chaîne précédente, ``"P"`` à pour indice 0, ``"y"`` a pour indice 1 
 	* `[` s'obtient par ++alt-graph+open-bracket++ ;
 	* `]` s'obtient par ++alt-graph+close-bracket++ ;
 
-On utilise l'indice entre crochets, juste après la chaîne de caractère.
+On utilise l'indice entre crochets, juste après la chaine de caractère.
 
 
 ```` python
@@ -459,7 +448,7 @@ On utilise l'indice entre crochets, juste après la chaîne de caractère.
 'h'
 ````
 
-Si la chaîne est associée à un nom :
+Si la chaine est associée à un nom :
 
 ```` python
 >>> texte = "DarkVador"
@@ -476,7 +465,7 @@ IndexError: string index out of range
 
 ```
 
-Cependant il est aussi possible de parcourir une chaîne à l'envers :
+Cependant, il est aussi possible de parcourir une chaine à l'envers :
 
 ```` python
 >>> "Python"[-1]
@@ -485,16 +474,16 @@ Cependant il est aussi possible de parcourir une chaîne à l'envers :
 'h'
 ````
 
-#### Longueur d'une chaîne
+#### Longueur d'une chaine
 
-La longueur de la chaîne ``"Python"``, c'est-à-dire **le nombre de caractères qui la composent**,  est par contre bien de 6, et on peut y accéder grâce à la fonction **built-in** ``len()``.
+La longueur de la chaine ``"Python"``, c'est-à-dire **le nombre de caractères qui la composent**,  est par contre bien de 6, et on peut y accéder grâce à la fonction **built-in** ``len()``.
 
 ```` python
 >>> len("Python")
 6
 ````
 
-La longueur d'une chaîne vide est 0 :
+La longueur d'une chaine vide est 0 :
 
 ```` python
 >>> len("")
@@ -507,14 +496,14 @@ La longueur d'une chaîne vide est 0 :
 
 #### Concaténation
 
-La ==**concaténation**== est l'opération consistant à accoler deux chaînes de caractères :
+La ==**concaténation**== est l'opération consistant à accoler deux chaines de caractères :
 
 ```python
 >>> "Toto"+"Tata" 
 'TotoTata'
 ```
 
-On peut aussi concaténer une chaîne avec elle-même à plusieurs reprises :
+On peut aussi concaténer une chaine avec elle-même à plusieurs reprises :
 
 ```python
 >>> "Toto"*5
@@ -523,19 +512,19 @@ On peut aussi concaténer une chaîne avec elle-même à plusieurs reprises :
 
 
 
-### Méthodes des chaînes de caractères
+### Méthodes des chaines de caractères
 
 
-Le type `str` possède lui aussi ses propres fonctionnalités ( ou ==**méthodes**==) qui permettent de transformer ou modifier une chaîne de caractère. Parmi celles-ci, en voici quelques une utiles :
+Le type `str` possède lui aussi ses propres fonctionnalités (ou ==**méthodes**==) qui permettent de transformer ou modifier une chaine de caractère. Parmi celles-ci, en voici quelques-unes utiles :
 
-#### Substitution d'une sous-chaîne par une autre
+#### Substitution d'une sous-chaine par une autre
 
 ```python
 >>> "abracadabra".replace("bra","BRUHHH") 
 "'aBRUHHHcadaBRUHHH'"
 ```
 
-On utilise ici la ==**méthode**== `replace` sur la chaîne de caractère `"abracadabra"`, et on va récupérer la nouvelle chaîne `'aBRUHHHcadaBRUHHH'`
+On utilise ici la ==**méthode**== `replace` sur la chaine de caractère `"abracadabra"`, et on va récupérer la nouvelle chaine `'aBRUHHHcadaBRUHHH'`
 
 !!! question "Modifications en place ou non ?"
 
@@ -547,13 +536,13 @@ On utilise ici la ==**méthode**== `replace` sur la chaîne de caractère `"abra
 	>>> texte
 	````
 	
-	Le contenu de la variable `texte` n'a pas été remplacé. Un **nouvel objet de type `str`** a été créé, mais il a été immédiatement ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
+	**Le contenu de la variable `texte` n'a pas été remplacé**. En effet, un **nouvel objet de type `str`** (`UbrUcUdUbrU`) a bien été créé, mais il a été immédiatement ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
 	
-	* la chaîne originale et la chaîne modifiée, il faut donner un nouveau nom et affecter de la manière suivante :
+	* la chaine originale et la chaine modifiée, il faut donner un nouveau nom et affecter de la manière suivante :
 	
 		{{ IDEv('Code3') }}
 		
-	* uniquement la chaîne modifiée, il suffit de réaffecter la modification au nom `texte` :
+	* uniquement la chaine modifiée, il suffit de {==**réaffecter**==} la modification au nom `texte` :
 	
 		{{ IDEv('Code4') }}
 		
@@ -562,7 +551,7 @@ On utilise ici la ==**méthode**== `replace` sur la chaîne de caractère `"abra
     
 #### Changement de casse
 
-Il existe les méthodes `.lower()` , `.upper()` et `.capitalize()` qui mettent respectivement la chaine originale en minuscule, en majuscule, et la première lettre en majuscule puis le reste en minuscule.
+Il existe les méthodes `.lower()`, `.upper()` et `.capitalize()` qui mettent respectivement la chaine originale en minuscule, en majuscule, et la première lettre en majuscule puis le reste en minuscule.
 
 ```python
 >>> "Toto".lower() #mise en minuscule, appel encore une fois à une méthode de classe.
@@ -570,13 +559,13 @@ Il existe les méthodes `.lower()` , `.upper()` et `.capitalize()` qui mettent r
 >>> "Toto".upper() #mise en majuscule, idem
 'TOTO'
 >>> "une phrase SANS QUEUE ni tÊte.".capitalize()
-#Met en majuscule le premier caractère de la chaîne, et en minuscule les autres, idem
+#Met en majuscule le premier caractère de la chaine, et en minuscule les autres, idem
 'Une phrase sans queue ni tête.'
 ```
 
-#### Suppression des espaces inutiles avant et après une chaîne
+#### Suppression des espaces inutiles avant et après une chaine
 
-Supprime les espaces inutiles devant et après une chaîne de caractères
+Supprime les espaces inutiles devant et après une chaine de caractères
 
 ```python
 >>> "              Des Blancs            ".strip()
@@ -584,9 +573,9 @@ Supprime les espaces inutiles devant et après une chaîne de caractères
 'Des Blancs'
 ```
 
-#### Séparation d'une chaîne selon un motif donné
+#### Séparation d'une chaine selon un motif donné
 
-Sépare  une chaîne de caractère en, fonction d'une chaîne passée en argument, et renvoie une liste (que nous étudierons plus tard)
+Sépare  une chaine de caractère en, fonction d'une chaine passée en argument, et renvoie une liste (que nous étudierons plus tard)
 
 ```python
 >>> "Une phrase est faite avec des mots".split("est")
@@ -594,9 +583,13 @@ Sépare  une chaîne de caractère en, fonction d'une chaîne passée en argumen
 >>> "12:34:45:78".split(":")
 ['12', '34', '45', '78']
 ```
+
+### Exercices sur les chaines de caractères
+
+
 ### Les objets de type séquence
 
-Il existe dans Python de nombreux autres types d'objets, et plus particulièrement les types `list` et `tuple`, que nous étudierons en détail plus tard dans l'année. Ces objets permettent de regrouper en une seule séquence ordonnée différents objets, et peuvent être alors utilisés simplement avec les possibilités suivantes (non exhaustives):
+Il existe dans Python de nombreux autres types d'objets, et plus particulièrement les types `list` et `tuple`, que nous étudierons en détail plus tard dans l'année. Ces objets permettent de regrouper en une seule séquence ordonnée différents objets, et peuvent être alors utilisés simplement avec les possibilités suivantes (non exhaustives) :
 
 #### Construction d'une liste ou d'un tuple
 
@@ -660,7 +653,7 @@ Dans une liste ou un tuple, on peut accéder à un objet grâce à son **indice*
 ```
 
 
-## Interactions avec l'utilisateur, transtypage des données, notions de formatage des chaînes de caractères
+## Interactions avec l'utilisateur, transtypage des données, notions de formatage des chaines de caractères
 
 ### Afficher à l'écran
 
@@ -677,12 +670,12 @@ Exécutez alors le code ci-dessous :
 {{ IDEv('Code5') }}
 
 
-D'une part la fonction `print()` écrit les chaînes de caractères dans la console, mais en plus, grâce au `f` situé devant les chaînes comme :
+D'une part la fonction `print()` écrit les chaines de caractères dans la console, mais en plus, grâce au `f` situé devant les chaines comme :
 
 ```` python
 f"La variable a contient {a}."
 ````
-on a une chaine de caractère crée en remplacement le **nom** de la variable situé entre accolades par sa **valeur**.  On appelle cela le {==**formatage des chaînes de caractères**==}, la [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécessaires. La sortie écrite par le programme dans la console est devenu bien plus compréhensible.
+on a une chaine de caractère crée en remplacement le **nom** de la variable situé entre accolades par sa **valeur**.  On appelle cela le {==**formatage des chaines de caractères**==}, la [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécessaires. La sortie écrite par le programme dans la console est devenu bien plus compréhensible.
 
 !!! tips "Les accolades"
 
@@ -693,11 +686,11 @@ on a une chaine de caractère crée en remplacement le **nom** de la variable si
 
 ### Demander à l'utilisateur de saisir quelque chose au clavier
 
-Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument**  une chaîne de caractères. Celle-ci interrompt le programme et attend une saisie clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaîne de caractère dès que la touche ++return++ est pressée.
+Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument**  une chaine de caractères. Celle-ci interrompt le programme et attend une saisie clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaine de caractère dès que la touche ++return++ est pressée.
 
 {{ IDEv('Code6') }}
 
-Il faut cependant être attentif à ce qui est réalisé par la  fonction `input()`. En effet, le **retour** effectué par cette fonction est renvoyé sous la forme de chaîne de caractères, ce qui peut poser un problème, comme par exemple dans la situation ci-dessous :
+Il faut cependant être attentif à ce qui est réalisé par la  fonction `input()`. En effet, le **retour** effectué par cette fonction est renvoyé sous la forme de chaine de caractères, ce qui peut poser un problème, comme par exemple dans la situation ci-dessous :
 
 {{ IDEv('Code7') }}
 
@@ -716,13 +709,13 @@ Par exemple :
 
 On a forcé ici dans la première ligne Python à transformer (si il le peut) le contenu de la variable `nb` comme étant un nombre entier.
 
-Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice saisit une chaîne de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
+Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice saisit une chaine de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
 
 !!! question "Exercice"
 
 	Écrire dans l'éditeur ci dessous un code python qui :
 
 	* demande deux nombres entiers `a` et `b` à l'utilisateur·trice ;
-	* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaîne de caractères du type `3x4 = 12` (si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b`).                                                                                                                    
+	* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaine de caractères du type `3x4 = 12` (si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b`).                                                                                                                    
 
 	{{ IDEv() }}

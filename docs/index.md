@@ -13,4 +13,4 @@
 L'ancien site peut-être trouvé [ici](https://old.zonensi.fr).
 
 
-Un petit doc temporaire [programme SD](programme_dimanche_AP_2024.pdf_)
+Un petit doc temporaire [programme SD](programme_dimanche_AP_2024.pdf)
