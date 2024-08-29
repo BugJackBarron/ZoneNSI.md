@@ -339,7 +339,7 @@ Vous pouvez tester ces éléments dans le terminal ci-dessous :
 
 ### Exercices sur les types numériques
 
-
+Les exercices sont disponibles sur le notebook Capytale [1138-3808462](https://capytale2.ac-paris.fr/web/c/1138-3808462){target="_blank"}.
 
 ### Types `str` (chaines de caractères) et opérations
 
@@ -419,7 +419,7 @@ Les espaces de nommage ! Sacrée bonne idée ! Faisons plus de trucs comme ça.
 
 #### Indice d'un caractère
 
-Chaque caractère d'une chaine est repéré par son ==**indice**==, c'est-à-dire par un **numéro donnant sa position**. Attention toutefois, en informatique, les indices commencent à `0` dans quasiment tous les langages !
+Chaque caractère d'une chaine est repéré par son {==**indice**==}, c'est-à-dire par un {==**numéro donnant sa position**==}. Attention toutefois, en informatique, {==les indices commencent à `0`==} dans quasiment tous les langages !
 
 Ainsi :
 
