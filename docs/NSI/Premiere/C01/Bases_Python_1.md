@@ -1,6 +1,6 @@
 # Objets, variables et affectation
 
-*Ce cours est accompagné de **notebooks Capytale** disponibles aux personnes disposant d'un compte (par Toutatice dans l'académie de rennes).*
+*Ce cours est accompagné de **notebooks Capytale** disponibles aux personnes disposant d'un compte (par Toutatice dans l'académie de Rennes).*
 
 ## Types de base 
 
@@ -419,7 +419,7 @@ Les espaces de nommage ! Sacrée bonne idée ! Faisons plus de trucs comme ça.
 
 #### Indice d'un caractère
 
-Chaque caractère d'une chaine est repéré par son {==**indice**==}, c'est-à-dire par un {==**numéro donnant sa position**==}. Attention toutefois, en informatique, {==les indices commencent à `0`==} dans quasiment tous les langages !
+Chaque caractère d'une chaine est repéré par son {==**indice**==}, c'est-à-dire par un {==**numéro donnant sa position**==}. Attention toutefois, en informatique, {==les indices commencent à `0`==} (dans quasiment tous les langages) !
 
 Ainsi :
 
@@ -536,7 +536,7 @@ On utilise ici la ==**méthode**== `replace` sur la chaine de caractère `"abrac
 	>>> texte
 	````
 	
-	**Le contenu de la variable `texte` n'a pas été remplacé**. En effet, un **nouvel objet de type `str`** (`UbrUcUdUbrU`) a bien été créé, mais il a été immédiatement ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
+	**Le contenu de la variable `texte` n'a pas été remplacé**. En effet, un **nouvel objet de type `str`** (`"UbrUcUdUbrU"`) a bien été créé, mais il a été immédiatement ramassé par le *garbage collector*, et a donc disparu. Il n'y a aucune modification de l'objet original qui est conservé (la modification **n'est pas en place**).Si on veux conserver :
 	
 	* la chaine originale et la chaine modifiée, il faut donner un nouveau nom et affecter de la manière suivante :
 	
@@ -584,7 +584,6 @@ Sépare  une chaine de caractère en, fonction d'une chaine passée en argument,
 ['12', '34', '45', '78']
 ```
 
-### Exercices sur les chaines de caractères
 
 
 ### Les objets de type séquence
