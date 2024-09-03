@@ -666,19 +666,36 @@ Par exemple, essayez le code suivant :
 
 {{ IDEv('Code4Bis') }}
 
-La fonction `print` prend entre parenthèse un objet, et l'écrit sous la forme d'une chaine de caractères dans la console. Cependant on voit vite qu'en cas de multiples appels à la fonction `print`, on risque vite de se perdre dans les affichages. Il faut améliorer la sortie pour qu'elle soit compréhensible par un être humain.
+La fonction `print` prend entre parenthèse un objet et l'écrit **sous la forme d'une chaine de caractères** dans la console. Cela signifie que la fonction `print` **ne créé pas de nouvel objet !**
 
-Exécutez alors le code ci-dessous :
+Il est possible d'afficher plusieurs objets, en les séparant par une virgule. Testez par exemple le code suivant :
 
-{{ IDEv('Code5') }}
+{{ IDEv('Cod4Ter') }}
+
+!!! tip "Formatage des chaines de caractères"
+ 	On voit qu'il est possible de mêler affichage de variables (par définition pouvant changer) et de textes fixes, en utilisant les virgules. 
+
+	Mais cette pratique est parfois source de nombreuses erreurs de syntaxe (oubli de virgules, ou bien virgules placées entre guillemets, etc.).
+
+	Il est possible, et **même recommandé**, d'utiliser le {==**formatage des chaines de caractères**==} de Python !
+
+	Exécutez alors le code ci-dessous :
+
+	{{ IDEv('Code5') }}
 
 
-D'une part la fonction `print()` écrit les chaines de caractères dans la console, mais en plus, grâce au `f` situé devant les chaines comme :
+	Une chaine de caractères est formatée automatiquement par Python à condition que :
 
-```` python
-f"La variable a contient {a}."
-````
-on a une chaine de caractère crée en remplacement le **nom** de la variable situé entre accolades par sa **valeur**.  On appelle cela le {==**formatage des chaines de caractères**==}, la [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécessaires. La sortie écrite par le programme dans la console est devenu bien plus compréhensible.
+	* la chaine soit préfixée par `f` ;
+	* les variables à remplacer soient situées entre {==**accolades**==}.
+
+	```` python
+	f"La variable a contient {a}."
+	````
+	
+	On a ici une chaine de caractère créée en remplaçant le **nom** de la variable situé entre accolades par **l'objet auquel elle est reliée**.La [documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html){: target="_blank"} vous donnera toutes les subtilités nécessaires. 
+	
+	AInsi, La sortie écrite par le programme dans la console est devenu bien plus compréhensible.
 
 !!! tips "Les accolades"
 
@@ -689,16 +706,16 @@ on a une chaine de caractère crée en remplacement le **nom** de la variable si
 
 ### Demander à l'utilisateur de saisir quelque chose au clavier
 
-Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument**  une chaine de caractères. Celle-ci interrompt le programme et attend une saisie clavier de l'utilisateur, et retourne cette saisie sous la forme d'une chaine de caractère dès que la touche ++return++ est pressée.
+Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument** une chaine de caractères. Cette fonction `input` **interrompt le programme** et **attend une saisie clavier** de l'utilisateu·trice, et retourne cette saisie sous la forme d'une chaine de caractère dès que la touche ++return++ est pressée.
 
 {{ IDEv('Code6') }}
 
-Il faut cependant être attentif à ce qui est réalisé par la  fonction `input()`. En effet, le **retour** effectué par cette fonction est renvoyé sous la forme de chaine de caractères, ce qui peut poser un problème, comme par exemple dans la situation ci-dessous :
+Il faut cependant être attentif·ve à ce qui est réalisé par la fonction `input()`. En effet, le **retour** effectué par cette fonction est renvoyé sous la forme de chaine de caractères, ce qui peut poser un problème comme, par exemple, dans la situation ci-dessous :
 
 {{ IDEv('Code7') }}
 
 
-Pour lever cette ambigüité, nous sommes parfois obligés d'effectuer un ==**transtypage des données**==, c'est-à-dire une modification du **type**,  avec l'aide des fonctions **built-in** suivantes :
+Pour lever cette ambigüité, nous sommes parfois obligés d'effectuer un {==**transtypage des données**==}, c'est-à-dire une modification du **type** de la valeur de retour,  avec l'aide des fonctions **built-in** suivantes :
 
 * `str()`
 * `int()`
@@ -710,7 +727,7 @@ Par exemple :
 
 {{ IDEv('Code8') }}
 
-On a forcé ici dans la première ligne Python à transformer (si il le peut) le contenu de la variable `nb` comme étant un nombre entier.
+On a forcé ici dans la première ligne Python à transformer (s'il le peut) le contenu de la variable `nb` comme étant un nombre entier.
 
 Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice saisit une chaine de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
 
@@ -718,7 +735,7 @@ Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice
 
 	Écrire dans l'éditeur ci dessous un code python qui :
 
-	* demande deux nombres entiers `a` et `b` à l'utilisateur·trice ;
-	* donne le produit des deux nombres, ainsi que le type du résultat, sous la forme d'une chaine de caractères du type `3x4 = 12` (si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b`).                                                                                                                    
+	* demande deux nombres entiers à l'utilisateur·trice et les stocke dans des variables `a`et `b` ;
+	* donne le produit des deux nombres saisis, ainsi que le type du résultat, sous la forme d'une chaine de caractères du type `"3x4 = 12 résultat de type <class'int'>"` (si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b`)
 
 	{{ IDEv() }}
