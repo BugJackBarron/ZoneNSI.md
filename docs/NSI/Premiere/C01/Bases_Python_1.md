@@ -651,6 +651,10 @@ Dans une liste ou un tuple, on peut accéder à un objet grâce à son **indice*
 
 ```
 
+### Exercices sur les chaines de caractères et les séquences
+
+Les exercices sont disponibles sur le notebook Capytale [23b2-3809144](https://capytale2.ac-paris.fr/web/c/23b2-3809144){target="_blank"}.
+
 
 ## Interactions avec l'utilisateur, transtypage des données, notions de formatage des chaines de caractères
 
