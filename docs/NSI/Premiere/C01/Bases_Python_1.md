@@ -660,7 +660,7 @@ Les exercices sont disponibles sur le notebook Capytale [23b2-3809144](https://c
 
 ### Afficher à l'écran
 
-Jusqu'à présent, les seules choses que nous avons obtenu dans le terminal étaient des affichages simples des objets attachés à un nom connu. Il est possible de personnaliser, de différer, et de multiplier les affichages grâce à la fonction *built_in* `print()'.
+Jusqu'à présent, les seules choses que nous avons obtenues dans le terminal étaient des affichages simples des objets attachés à un nom connu. Il est possible de personnaliser, de différer, et de multiplier les affichages grâce à la fonction *built_in* `print()'.
 
 Par exemple, essayez le code suivant :
 
