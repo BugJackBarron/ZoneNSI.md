@@ -3512,6 +3512,110 @@
 
               
             
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_14" >
+        
+          <label class="md-nav__link" for="__nav_4_2_14" id="__nav_4_2_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sujets de baccalauréat
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            Sujets de baccalauréat
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_14_1" >
+        
+          <label class="md-nav__link" for="__nav_4_2_14_1" id="__nav_4_2_14_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Épreuves Écrites
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_14_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_14_1">
+            <span class="md-nav__icon md-icon"></span>
+            Épreuves Écrites
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Terminale/Sujets/2024/Metropole/J1/corrige/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024 Métropole J1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4098,7 +4202,7 @@
 <p><img alt="ShellFlask.png" src="../ShellFlask.png" target="_blank"></p>
 <div class="admonition info">
 <p class="admonition-title">Bravo !</p>
-<p>Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de <code>localhost</code> ( ou <code>hôte local</code>), qui est le nom DNS correspondant à l'adresse IP <code>127.0.0.1</code>. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5000.</p>
+<p>Bravo, vous avez maintenant un serveur web local qui fonctionne sur votre ordinateur ! Celui-ci écoute toutes les entrées à destination de <code>localhost</code> ( ou <code>hôte local</code>), qui est le nom DNS correspondant à l'adresse IP <code>127.0.0.1</code>. ce serveur acceptera les requêtes qui lui sont envoyées sur le port TCP 5555.</p>
 </div>
 </li>
 <li>
@@ -4128,17 +4232,17 @@
 Créer une instance d'objet <code>app</code> à l'aide du constructeur <code>Flask</code>.
 <p></p><div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
 </code></pre></div>
-Nous utilisons ici un décorateur grâce à la commande @ (cette notion de décorateur ne sera pas traitée en NSI). Vous devez juste comprendre la fonction qui suit ce décorateur (c'est-à-dire la fonction <code>index</code>), sera exécutée dans le cas où le serveur web recevra une requête HTTP avec une URL correspondant à la racine du site (<code>/</code>), c'est-à-dire, dans notre exemple, le cas où on saisie dans la barre d'adresse <code>127.0.0.1:5000/</code> ou <code>localhost:5000/</code> ou même simplement <code>localhost:5000</code>.
+Nous utilisons ici un décorateur grâce à la commande @ (cette notion de décorateur ne sera pas traitée en NSI). Vous devez juste comprendre la fonction qui suit ce décorateur (c'est-à-dire la fonction <code>index</code>), sera exécutée dans le cas où le serveur web recevra une requête HTTP avec une URL correspondant à la racine du site (<code>/</code>), c'est-à-dire, dans notre exemple, le cas où on saisie dans la barre d'adresse <code>127.0.0.1:5555/</code> ou <code>localhost:5555/</code> ou même simplement <code>localhost:5555</code>.
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">"Hello World !"</span>
 </code></pre></div>
-<p>C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse <code>localhost:5000/</code>. Elle renvoie toujours le même contenu, on parlera de contenu <strong>statique</strong>. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.</p>
+<p>C'est la fonction qui sera appelée lorsqu'un client demandera l'adresse <code>localhost:5555/</code>. Elle renvoie toujours le même contenu, on parlera de contenu <strong>statique</strong>. Plus tard nous verrons comment faire évoluer ce contenu en fonction de paramètres.</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">5555</span><span class="p">)</span>
 </code></pre></div>
 <p>Ces 2 lignes permettent de démarrer le serveur et l'instance de l'application web, accessible sur le port <code>5555</code> (le port par défaut ne semble pas fonctionner au Lycée). C'est un très bon moyen de visualiser les requêtes vers le serveur. </p>
 <h3 id="ajouter-une-page">Ajouter une page</h3>
-<p>L'objectif est de créer une nouvelle page <code>contact</code>, qui sera donc accessible par l'URL <code>localhost:5000/contact</code>.</p>
+<p>L'objectif est de créer une nouvelle page <code>contact</code>, qui sera donc accessible par l'URL <code>localhost:5555/contact</code>.</p>
 <div class="admonition tips">
 <p class="admonition-title">Méthodologie</p>
 <ol>
@@ -4336,7 +4440,7 @@ Nous utilisons ici un décorateur grâce à la commande @ (cette notion de déco
 </code></pre></div>
 <p>signifie que l'envoi du formulaire se fait avec la méthode <code>GET</code> et que la page affichée ensuite sera celle de l'adresse <code>127.0.0.1:5555/resultat</code>. Or il n'y a pas de route associée à cette adresse, et encore moins de template.</p>
 <p>Cependant vous pouvez observer que l'adresse obtenue dans la barre d'adresse est du type </p>
-<div class="highlight"><pre><span></span><code>http://localhost:5000/resultat?nom<span class="o">=</span>HATAKE<span class="p">&amp;</span><span class="nv">prenom</span><span class="o">=</span>Kakashi
+<div class="highlight"><pre><span></span><code>http://localhost:5555/resultat?nom<span class="o">=</span>HATAKE<span class="p">&amp;</span><span class="nv">prenom</span><span class="o">=</span>Kakashi
 </code></pre></div>
 <p>Les données envoyées <strong>apparaissent dans l'URL</strong>. C'est la méthode <code>GET</code> - qui est une méthode générale de HTTP, qui veut cela.</p>
 <p>Avec cette méthode, <strong>les données du formulaire seront encodées dans une URL</strong>. Celle-ci est composée du nom de la page ou du script à charger avec les données de formulaire empaquetée dans une chaine. Les données sont séparées de l'adresse de la page par le code <code>?</code> et entre elles par le code <code>&amp;</code>.</p>
