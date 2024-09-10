@@ -1,6 +1,5 @@
 # Conditions et boucles en  ![logo Python](https://www.python.org/static/img/python-logo.png)
 
-
 ## Structures conditionnelles
 
 ### Comparateurs et appartenance
@@ -12,7 +11,8 @@ En Python, comme dans de nombreux langages, on utilise les comparateurs et opér
 * `<`, `<=`, `>`, `>=` : comparateurs d'ordre ;
 * `in`, `notin` : opérateurs d'inclusion.
 
-Ces opérateurs renvoient une valeur de type **booléen** ( donc `True` ou `False`). 
+!!! warning "Evaluation des opérateurs de comparaisons et d'inclusion"
+    Les expressions contenant ces opérateurs sont évaluées par l'interpréteur Python comme des valeurs de type **booléen** ( donc `True` ou `False`). 
 
 
 !!! example "Exemples"
@@ -39,7 +39,7 @@ Ces opérateurs renvoient une valeur de type **booléen** ( donc `True` ou `Fals
         True 
         ```
 
-        Les relations d'ordre ne sont pas limitées aux nombres, puisqu'on peut comparer des chaînes de caractères grâce à {==**l'ordre lexicographique**==} (grosso modo en Python l'ordre alphabétique, les majuscules étant situées avant les minuscules) :
+        Les relations d'ordre ne sont pas limitées aux nombres, puisqu'on peut comparer des chaines de caractères grâce à {==**l'ordre lexicographique**==} (grosso modo en Python l'ordre alphabétique, les majuscules étant situées avant les minuscules) :
 
         ```` python
         >>> 'ABC' < 'DEFGH'
@@ -48,7 +48,13 @@ Ces opérateurs renvoient une valeur de type **booléen** ( donc `True` ou `Fals
         True
         >>> 'toto' < 'Toto'
         False
+        >>> 'électricité' > 'electricite'
+        True
         ````
+
+        L'ordre des caractères dépend de leur position dans la table `UTF-8`, que nous étudierons plus tard dans l'année mais dont voici un extrait :
+
+        ![ASCII TABLE](https://www.galloway.me.uk/media/images/2012-07-25-character-encoding-for-ios-developers-utf8/ASCII_code_chart.png)
 
 
     * Appartenance :
@@ -69,11 +75,17 @@ Ces opérateurs renvoient une valeur de type **booléen** ( donc `True` ou `Fals
 
 Il est souvent nécessaire de vérifier que plusieurs conditions soient vérifiées en même temps, ou bien qu'au moins une condition parmi plusieurs soit vérifiée. On utilisera aussi souvent la négation d'une condition.
 
-Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique booléenne et les opérateurs `NON`, `ET` et `OU`:
+Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la {==**logique booléenne**==} et les opérateurs `NON`, `ET` et `OU`:
 
 * `NON` opérateur qui renvoie ``Vrai`` si la condition passée est `Faux`, et réciproquement. En python on utilise l'opérateur `not` :
 
     ```` python
+    >>> not(True)
+    False
+    >>> not ('a' in 'abc')
+    False
+    >>> not ('A' in 'abc')
+    True
     >>> 2*5 < 50
     True
     >>> not(2*5 < 50)
@@ -147,27 +159,9 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique bo
     ````
     {== C'est une erreur courante chez les débutants en programmation, mais qu'il faut éviter à tout prix ! ==}
 
-    En effet, testons les lignes suivantes dans le terminal ci-dessous :
+    En effet, testons plusieurs fois les lignes suivantes dans le terminal ci-dessous, en utilisant les valeurs suivantes pour `a` : `0`, `1` et `5`.
 
-    <div style="display:flex;">
-	<div style="display : inline; width : 30%;">
-    ```` python
-    0 == 0 or 1
-    ````
-    </div>
-    <div style="display : inline; width : 30%;">
-    ```` python
-    1 == 0 or 1
-    ````
-    </div>
-    <div style="display : inline; width : 30%;">
-    ```` python
-    12 == 0 or 1
-    ````
-    </div>
-    </div>
-
-    {{ terminal() }}
+    {{ IDEv('Bad_Or') }}
 
     Les trois expression ne renvoient pas `True`, `True` et `False` comme on pourrait s'y attendre, mais `1`, `1` et `1` (Ce qui est équivalent à trois `True`).
 
