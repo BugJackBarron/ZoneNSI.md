@@ -1389,6 +1389,26 @@
     Structures conditionnelles
   </a>
   
+    <nav class="md-nav" aria-label="Structures conditionnelles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe-des-structures-conditionnelles" class="md-nav__link">
+    Syntaxe des structures conditionnelles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-sur-les-structures-conditionnelles" class="md-nav__link">
+    Exercice sur les structures conditionnelles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4159,7 +4179,10 @@
 <li><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> : comparateurs d'ordre ;</li>
 <li><code>in</code>, <code>notin</code> : opérateurs d'inclusion.</li>
 </ul>
-<p>Ces opérateurs renvoient une valeur de type <strong>booléen</strong> ( donc <code>True</code> ou <code>False</code>). </p>
+<div class="admonition warning">
+<p class="admonition-title">Evaluation des opérateurs de comparaisons et d'inclusion</p>
+<p>Les expressions contenant ces opérateurs sont évaluées par l'interpréteur Python comme des valeurs de type <strong>booléen</strong> ( donc <code>True</code> ou <code>False</code>). </p>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Exemples</p>
 <ul>
@@ -4182,14 +4205,18 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="mi">7</span> <span class="o">&gt;=</span> <span class="mi">7</span>
 <span class="kc">True</span> 
 </code></pre></div>
-<p>Les relations d'ordre ne sont pas limitées aux nombres, puisqu'on peut comparer des chaînes de caractères grâce à <mark class="critic"><strong>l'ordre lexicographique</strong></mark> (grosso modo en Python l'ordre alphabétique, les majuscules étant situées avant les minuscules) :</p>
+<p>Les relations d'ordre ne sont pas limitées aux nombres, puisqu'on peut comparer des chaines de caractères grâce à <mark class="critic"><strong>l'ordre lexicographique</strong></mark> (grosso modo en Python l'ordre alphabétique, les majuscules étant situées avant les minuscules) :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">'ABC'</span> <span class="o">&lt;</span> <span class="s1">'DEFGH'</span>
 <span class="kc">True</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="s1">'JKLMN'</span> <span class="o">&lt;</span> <span class="s1">'OPQ'</span>
 <span class="kc">True</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="s1">'toto'</span> <span class="o">&lt;</span> <span class="s1">'Toto'</span>
 <span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'électricité'</span> <span class="o">&gt;</span> <span class="s1">'electricite'</span>
+<span class="kc">True</span>
 </code></pre></div>
+<p>L'ordre des caractères dépend de leur position dans la table <code>UTF-8</code>, que nous étudierons plus tard dans l'année mais dont voici un extrait :</p>
+<p><img alt="ASCII TABLE" src="https://www.galloway.me.uk/media/images/2012-07-25-character-encoding-for-ios-developers-utf8/ASCII_code_chart.png"></p>
 </li>
 <li>
 <p>Appartenance :</p>
@@ -4205,11 +4232,17 @@
 </div>
 <h3 id="operations-logiques">Opérations logiques</h3>
 <p>Il est souvent nécessaire de vérifier que plusieurs conditions soient vérifiées en même temps, ou bien qu'au moins une condition parmi plusieurs soit vérifiée. On utilisera aussi souvent la négation d'une condition.</p>
-<p>Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la logique booléenne et les opérateurs <code>NON</code>, <code>ET</code> et <code>OU</code>:</p>
+<p>Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la <mark class="critic"><strong>logique booléenne</strong></mark> et les opérateurs <code>NON</code>, <code>ET</code> et <code>OU</code>:</p>
 <ul>
 <li>
 <p><code>NON</code> opérateur qui renvoie <code>Vrai</code> si la condition passée est <code>Faux</code>, et réciproquement. En python on utilise l'opérateur <code>not</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">50</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">'a'</span> <span class="ow">in</span> <span class="s1">'abc'</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">'A'</span> <span class="ow">in</span> <span class="s1">'abc'</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">50</span>
 <span class="kc">True</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
 <span class="kc">False</span>
@@ -4244,6 +4277,37 @@
 </code></pre></div>
 </li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Une erreur courante</p>
+<p>Supposons qu'on ait besoin de savoir si le nombre <code>a</code> est égal à <code>0</code> ou à <code>1</code>. Il serait assez naturel d'écrire :</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span>
+</code></pre></div>
+<mark class="critic"> C'est une erreur courante chez les débutants en programmation, mais qu'il faut éviter à tout prix ! </mark>
+<p>En effet, testons plusieurs fois les lignes suivantes dans le terminal ci-dessous, en utilisant les valeurs suivantes pour <code>a</code> : <code>0</code>, <code>1</code> et <code>5</code>.</p>
+<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_a7d4324915b29438a30a02538e978ef2ee71275d" class="comment">###</span><div class="interior_wrapper"><div id="editor_a7d4324915b29438a30a02538e978ef2ee71275d"></div></div><div id="term_editor_a7d4324915b29438a30a02538e978ef2ee71275d" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_a7d4324915b29438a30a02538e978ef2ee71275d","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_a7d4324915b29438a30a02538e978ef2ee71275d","Bad_Or")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_a7d4324915b29438a30a02538e978ef2ee71275d').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_a7d4324915b29438a30a02538e978ef2ee71275d" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("a7d4324915b29438a30a02538e978ef2ee71275d")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("a7d4324915b29438a30a02538e978ef2ee71275d")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_a7d4324915b29438a30a02538e978ef2ee71275d" class="hide">a = int(input("Entrez une valeur entière pour a :"))bksl-nlprint(a == 0 or 1)bksl-nl</span><span id="corr_content_editor_a7d4324915b29438a30a02538e978ef2ee71275d" class="hide" data-strudel=""></span>
+<p>Les trois expression ne renvoient pas <code>True</code>, <code>True</code> et <code>False</code> comme on pourrait s'y attendre, mais <code>1</code>, <code>1</code> et <code>1</code> (Ce qui est équivalent à trois <code>True</code>).</p>
+<p>En effet les expressions utilisant l'opérateur <code>or</code> ou l'opérateur <code>and</code> sont évaluées en utilisant deux booléens :</p>
+<p><code>bool1 OR bool2</code></p>
+<p>Quand l'interpréteur Python évalue <code>a == 0 or 1</code>, il évalue :</p>
+<ul>
+<li><code>a == 0</code> comme booléen ;</li>
+<li>puis <code>1</code> comme booléen. Or en Python <code>1</code> est évalué comme <code>True</code>. </li>
+</ul>
+<p>Donc quelle que soit la valeur de <code>a</code>, le deuxième <em>opérande</em> de l'opérateur <code>or</code> sera <code>True</code>. D'après la table de vérité, le résultat sera donc toujours <code>True</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Une bonne pratique</p>
+<p>Concernant l'écriture d'expressions contenant <code>or</code> ou <code>and</code>, une bonne pratique est de toujours reformuler notre première idée. Avec l'exemple précédent :</p>
+<ul>
+<li><strong>Première idée</strong> : <code>a</code> doit être égal à <code>0</code> ou <code>1</code> ;</li>
+<li><strong>Reformulation</strong> : <code>a</code>doit être égal à <code>0</code> ou <code>a</code>doit être égal à <code>1</code> ;</li>
+<li>
+<p><strong>Code Python correct :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div>
+</li>
+</ul>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Conditions sur les nombres entiers</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solution</label></div>
@@ -4251,6 +4315,8 @@
 <div class="tabbed-block">
 <p>On considère un objet de type <code>int</code> dont le nom est <code>nb</code>. Que faut-il écrire pour :</p>
 <ol>
+<li>Le nombre <code>nb</code> est égal à <code>5</code> ou <code>7</code> ?</li>
+<li>Le nombre <code>nb</code> est supérieur ou égal à <code>5</code> et strictement inférieur à <code>7</code> ?</li>
 <li>Savoir si le nombre <code>nb</code> est un nombre pair et strictement supérieur à 50 ?</li>
 <li>Savoir si le nombre <code>nb</code> est un nombre pair ou un multiple de 3 ?</li>
 <li>Savoir si le nombre <code>nb</code> appartient à l'intervalle <span class="arithmatex">\([-13 ; 25]\)</span>  ?</li>
@@ -4259,9 +4325,11 @@
 </div>
 <div class="tabbed-block">
 <ol>
+<li><code>nb == 5 or nb ==7</code></li>
+<li><code>nb&gt;= 5 and nb &lt;7</code></li>
 <li><code>nb%2 == 0 and nb &gt; 50</code></li>
 <li><code>nb%2 == 0 or nb%3 == 0</code></li>
-<li><code>nb &gt;= -13 and nb &lt;= 25</code> (et en python, on a aussi <code>13&lt;= nb &lt;= 25</code>)</li>
+<li><code>nb &gt;= -13 and nb &lt;= 25</code> (et en python, on a aussi la possibilité d'écrire <code>13&lt;= nb &lt;= 25</code>)</li>
 <li><code>nb&lt;13 or nb &gt;25</code> ou <code>not(nb &gt;= -13 and nb &lt;= 25)</code> ou en python  <code>not(13&lt;= nb &lt;= 25)</code></li>
 </ol>
 <p>Vous pouvez tester les conditions ci-dessus en exécutant le code suivant, qui crée un objet <code>int</code> aléatoire entre -20 et 70, puis en vérifiant en affichant la valeur de <code>nb</code></p>
@@ -4269,36 +4337,6 @@
 </div>
 </div>
 </div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Une erreur courante</p>
-<p>Supposons qu'on ait besoin de savoir si le nombre <code>nb</code> est égal à <code>0</code> ou à <code>1</code>. Il serait assez naturel d'écrire :</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span>
-</code></pre></div>
-<mark class="critic"> C'est une erreur courante chez les débutants en programmation, mais qu'il faut éviter à tout prix ! </mark>
-<p>En effet, testons les lignes suivantes dans le terminal ci-dessous :</p>
-<p></p><div style="display:flex;">
-<div style="display : inline; width : 30%;">
-<div class="highlight"><pre><span></span><code><span class="mi">0</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span>
-</code></pre></div>
-</div>
-<div style="display : inline; width : 30%;">
-<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span>
-</code></pre></div>
-</div>
-<div style="display : inline; width : 30%;">
-<div class="highlight"><pre><span></span><code><span class="mi">12</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span>
-</code></pre></div>
-</div>
-</div>
-<p></p><div onclick='start_term("id5")' id="fake_id5" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div><div id="id5" class="hide"></div>
-<p>Les trois expression ne renvoient pas <code>True</code>, <code>True</code> et <code>False</code> comme on pourrait s'y attendre, mais <code>1</code>, <code>1</code> et <code>1</code> (Ce qui est équivalent à trois <code>True</code>).</p>
-<p>En effet l'opérateur <code>or</code>, tout comme l'opérateur <code>and</code> ne correspond uniquement qu'à la table de vérité donnée ci-dessus, donc effectue une opération <strong>entre deux booléens</strong>.</p>
-<p>Dans le troisième exemple, il prend comme premier booléen <code>12 == 0</code>, soit <code>False</code>, et comme second opérateur, il n'utilise que l'objet <code>1</code>, qu'il essaye de transtyper en booléen, et qui donne <code>True</code> (les règles de transtypage en booléen en python sont données <a href="https://perso.limsi.fr/pointal/python:booleens" target="blank">ici</a>, mais ne sont pas à connaître). Au final on a donc <code>False or True</code>, ce qui donne <code>True</code>. </p>
-<p>L'expression saisie est donc fausse.</p>
-<p>Il faut la corriger en utilisant</p>
-<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span>
-</code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
@@ -4329,6 +4367,7 @@
 <p>Les deux derniers exemples montrent l'importance de l'ordre dans les opérations booléennes, certains ordre permettant de gagner du temps de calcul.</p>
 </details>
 <h2 id="structures-conditionnelles_1">Structures conditionnelles</h2>
+<h3 id="syntaxe-des-structures-conditionnelles">Syntaxe des structures conditionnelles</h3>
 <p>En Python, on utilise pour les structures conditionnelles la syntaxe suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condition1</span> <span class="p">:</span><span class="c1">#Le : est important !</span>
     <span class="c1">#bloc de une ou</span>
@@ -4348,11 +4387,10 @@
 <span class="k">else</span> <span class="p">:</span>
     <span class="c1">#et enfin un dernier bloc si aucune des conditions précédentes n'a été réalisée.    </span>
 </code></pre></div>
-<p>Les différents blocs d'instructions doivent être <mark class="critic"><strong>correctement indentés</strong></mark> ( c'est-à-dire correctement décalé
-s vers la droite).</p>
-<p>La règle de bonne conduite est d'utiliser 4 espaces par indentation (qu'il est souvent possible d'obtenir grâce à la touche tabulation <span class="keys"><kbd class="key-tab">Tab</kbd></span> ). Il est  réellement fondamental de respecter au maximum les indentations, celles-ci étant pour l'interpréteur Python le signal de déclenchement d'un bloc de code indépendant. Par exemple, le code ci-dessous renverra une erreur :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_aaf03bf5498427bdfa64a4051ede76acce6127d9" class="comment">###</span><div class="interior_wrapper"><div id="editor_aaf03bf5498427bdfa64a4051ede76acce6127d9"></div></div><div id="term_editor_aaf03bf5498427bdfa64a4051ede76acce6127d9" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_aaf03bf5498427bdfa64a4051ede76acce6127d9","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_aaf03bf5498427bdfa64a4051ede76acce6127d9","P2_Code2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_aaf03bf5498427bdfa64a4051ede76acce6127d9').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_aaf03bf5498427bdfa64a4051ede76acce6127d9" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("aaf03bf5498427bdfa64a4051ede76acce6127d9")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("aaf03bf5498427bdfa64a4051ede76acce6127d9")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_aaf03bf5498427bdfa64a4051ede76acce6127d9" class="hide">nb = int(input("Entrez un nombre entre 1 et 100 :"))bksl-nlif nb&lt;1 :bksl-nl    print("Votre nombre est trop petit")bksl-nlelif nb&gt;100 :bksl-nl    print("Votre nombre est trop grand")bksl-nlelif nb &lt; 50 :bksl-nl    nb = nb + 50bksl-nl    print(f"Le nombre final est {nb}")bksl-nlelse :bksl-nl    nb = nb - 50bksl-nl    print(f"Le nombre final est {nb}")bksl-nlprint("FIN")bksl-nl</span><span id="corr_content_editor_aaf03bf5498427bdfa64a4051ede76acce6127d9" class="hide" data-strudel=""></span></p>
+<p>Les différents blocs d'instructions doivent être <mark class="critic"><strong>correctement indentés</strong></mark> (c'est-à-dire correctement décalés vers la droite).</p>
+<p>La règle de bonne conduite est d'utiliser 4 espaces par indentation (qu'il est souvent possible d'obtenir grâce à la touche tabulation <span class="keys"><kbd class="key-tab">Tab</kbd></span> ). Il est <mark class="critic"><strong>réellement fondamental de respecter les indentations</strong></mark>, celles-ci étant pour l'interpréteur Python le signal de déclenchement d'un bloc de code indépendant. Par exemple, le code ci-dessous renverra une erreur :</p>
+<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_a38c21e8117239b966793236e5619ecbb7c5ce9f" class="comment">###</span><div class="interior_wrapper"><div id="editor_a38c21e8117239b966793236e5619ecbb7c5ce9f"></div></div><div id="term_editor_a38c21e8117239b966793236e5619ecbb7c5ce9f" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_a38c21e8117239b966793236e5619ecbb7c5ce9f","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_a38c21e8117239b966793236e5619ecbb7c5ce9f","P2_Code2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_a38c21e8117239b966793236e5619ecbb7c5ce9f').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_a38c21e8117239b966793236e5619ecbb7c5ce9f" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("a38c21e8117239b966793236e5619ecbb7c5ce9f")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("a38c21e8117239b966793236e5619ecbb7c5ce9f")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_a38c21e8117239b966793236e5619ecbb7c5ce9f" class="hide">nb = int(input("Entrez un nombre entre 1 et 100 :"))bksl-nlif nb&lt;1 :bksl-nl    print("Votre nombre est trop petit")bksl-nlelif nb&gt;100 :bksl-nl    print("Votre nombre est trop grand")bksl-nlelif nb &lt; 50 :bksl-nl        nb = nb + 50bksl-nl    print(f"Le nombre final est {nb}")bksl-nlelse :bksl-nl    nb = nb - 50bksl-nl    print(f"Le nombre final est {nb}")bksl-nlprint("FIN")bksl-nl</span><span id="corr_content_editor_a38c21e8117239b966793236e5619ecbb7c5ce9f" class="hide" data-strudel=""></span></p>
 <p>On peut aussi noter qu'il est possible dans certaines situations de se passer des instructions <code>elif</code> et <code>else</code>, mais cela peut conduire à certains <strong>effets de bords</strong> qui peuvent être parfois dommageables. Testez par exemple le code suivant :</p>
 <div class="highlight"><pre><span></span><code><span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 100 :"</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">nb</span><span class="o">&lt;</span><span class="mi">1</span> <span class="p">:</span>
@@ -4382,20 +4420,50 @@ s vers la droite).</p>
 Votre nombre est positif !
 Et ce n'est pas un multiple de 2 !
 </code></pre></div>
+<h3 id="exercice-sur-les-structures-conditionnelles">Exercice sur les structures conditionnelles</h3>
+<div class="admonition question">
+<p class="admonition-title">Un début de Pierre-Feuille-Ciseaux</p>
+<p>On veut écrire un programme qui permettra de jouer plus tard à Pierre-Feuille-Ciseaux contre l'ordinateur.</p>
+<p>Pour l'instant on considère que l'ordinateur ne joue qu'une seule chose : Pierre.</p>
+<p>Écrire un code Python dans la zone de script de Thonny (que vous sauvegarderez sous le nom <code>PFC.py</code>) qui :</p>
+<ol>
+<li>Demande à un utilisateur×trice de saisir <code>p</code> (pour Pierre), <code>f</code> (pour Feuille) ou <code>c</code> (pour Ciseaux).</li>
+<li>Donne le résultat du jeu contre l'ordinateur ayant joué Pierre.</li>
+</ol>
+<p>Attention ! Il faut aussi signaler à l'utilisateur×trice qu'il/elle a fait une erreur s'il/elle n'a saisi aucune des trois possibilités.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Premières étapes de Devine Nombre</p>
+<p>On veut réaliser un jeu de «Devine Nombre», dans lequel l'ordinateur tirera un nombre au hasard entre 1 et 100, et dans lequel le joueur/la joueuse proposera plusieurs possibilités, et aura un feedback du type «Trop grand» ou «Trop petit». L'objectif est de deviner le plus rapidement possible le nombre sélectionné par l'ordinateur.</p>
+<p>Pour l'instant, nous allons nous concentrer sur une seule étape : le joueur/la joueuse donne un nombre, et l'ordinateur lui répond.</p>
+<p>Vous aurez besoin de tirer au hasard un nombre entre 1 et 100. Pour ce faire, vous devrez, dans le code insérer les deux lignes suivantes :</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">nb</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+Vous aurez alors un nombre sélectionné au hasard affecté à la variable <code>nb</code>.
+<p>Vous sauvegarderez votre script sous le nom <code>devineNombre.py</code>.</p>
+</div>
 <h2 id="boucles">Boucles</h2>
 <h3 id="boucle-non-bornee-while">Boucle non bornée <code>while</code></h3>
 <div class="admonition abstract">
 <p class="admonition-title">Boucle bornée</p>
 <p>On utilise une boucle bornée lorsqu'on veut ré-exécuter un bloc de code <strong>tant qu'une condition est vérifiée</strong>.</p>
 </div>
-<p>La boucle <code>while</code> ( ou boucle <code>Tant que</code> en pseudo-code), possède la structure suivante en Python :</p>
+<p>La boucle <code>while</code> (appelée <code>Tant que</code> en pseudo-code), possède la structure suivante en Python :</p>
 <div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">condition</span> <span class="p">:</span><span class="c1">#Encore une fois, ne pas oublier le signe :</span>
     <span class="c1">#bloc de code</span>
     <span class="c1">#indenté</span>
 </code></pre></div>
 <p>Le bloc de code situé sous l'instruction <code>while</code> sera exécuté <mark class="critic"><strong>tant que la condition donnée sera vraie</strong></mark>, comme dans l'exemple donné ci-dessous :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a" class="comment">###</span><div class="interior_wrapper"><div id="editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a"></div></div><div id="term_editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a","P2_Code3")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a" class="hide">nb= int(input("Donnez un nombre entier positif:"))bksl-nlpuissance = 0bksl-nlwhile nb//2 &gt;=1  :bksl-nl    puissance = puissance +1bksl-nl    nb=nb//2bksl-nlprint("Votre nombre est supérieur ou égal à 2 puissance {p} et inférieur à 2 puissance {q}".format(bksl-nl    p=puissance,q=puissance+1))#A noter qu'ici le texte étant trop long, on a pu "sauter" à la lignebksl-nl                            #le saut de ligne étant compris entre les parenthèses de la méthode formatbksl-nl</span><span id="corr_content_editor_b6e3c02c06053eb30acd3bcd4cc473eb0aa3391a" class="hide" data-strudel=""></span></p>
+<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_7e70b1da874de78ebb095e561b095bd1e8fa960b" class="comment">###</span><div class="interior_wrapper"><div id="editor_7e70b1da874de78ebb095e561b095bd1e8fa960b"></div></div><div id="term_editor_7e70b1da874de78ebb095e561b095bd1e8fa960b" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_7e70b1da874de78ebb095e561b095bd1e8fa960b","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_7e70b1da874de78ebb095e561b095bd1e8fa960b","P2_Code3")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_7e70b1da874de78ebb095e561b095bd1e8fa960b').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_7e70b1da874de78ebb095e561b095bd1e8fa960b" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("7e70b1da874de78ebb095e561b095bd1e8fa960b")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("7e70b1da874de78ebb095e561b095bd1e8fa960b")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_7e70b1da874de78ebb095e561b095bd1e8fa960b" class="hide">nb= int(input("Donnez un nombre entier positif:"))bksl-nlpuissance = 0bksl-nlwhile nb//2 &gt;=1  :bksl-nl    puissance = puissance +1bksl-nl    nb=nb//2bksl-nlprint(f"Votre nombre est supérieur ou égal à 2 puissance {puissance} et\bksl-nl    inférieur à 2 puissance {puissance+1}")bksl-nl# Notez l'utilisation de  pour éviter d'avoir une ligne trop longue.bksl-nl</span><span id="corr_content_editor_7e70b1da874de78ebb095e561b095bd1e8fa960b" class="hide" data-strudel=""></span></p>
+<div class="admonition question">
+<p class="admonition-title">Rebond d'une balle</p>
+<p>On considère une balle de rayon <span class="arithmatex">\(5\)</span> cm lancée d'une hauteur <span class="arithmatex">\(h\)</span>. La balle rebondit à <span class="arithmatex">\(\dfrac{1}{3}\)</span> de la hauteur précédente à chaque rebond. On considère que la balle arrête de rebondir lorsque le rebond est inférieur à <span class="arithmatex">\(5\)</span> cm.</p>
+<p><img alt="rebond" src="../Rebond.png" style="width:20%; margin:auto;display:block;background-color: #d2dce0;"></p>
+<p>Écrire un script Python qui demande à l'utilisateur×trice une hauteur de départ (en cm) puis donne le nombre de rebonds de la balle.</p>
+</div>
 <h3 id="boucle-bornee-for">Boucle bornée : <code>for</code></h3>
 <div class="admonition abstract">
 <p class="admonition-title">Boucle bornée</p>
@@ -4415,7 +4483,7 @@ Et ce n'est pas un multiple de 2 !
 </code></pre></div>
 où :
 <ul>
-<li><code>i</code> est le compteur. C'est une variable donc on peut choisir son nom selon les règles de nommages habituelles ;</li>
+<li><code>i</code> est le <mark class="critic"><strong>compteur</strong></mark> (ou <mark>itérateur</mark>). C'est une variable donc on peut choisir son nom selon les règles de nommages habituelles ;</li>
 <li><code>depart</code> est la valeur de départ à laquelle est initialisée <code>i</code> ;</li>
 <li><code>limite</code> est la valeur telle que si <code>i</code> est <mark class="critic"><strong>supérieure ou égale</strong></mark> à cette valeur, la boucle s'arrête.</li>
 <li><code>pas</code> est le pas, c'est-à-dire la valeur d'augmentation de <code>i</code> à chaque tour.</li>
@@ -4539,7 +4607,7 @@ La valeur d'initialisation de <code>i</code> est <code>12</code>, la valeur limi
 </div>
 <div class="admonition question">
 <p class="admonition-title">TP Turtle</p>
-<p>Faire le TP suivant sur <a href="https://capytale2.ac-paris.fr/web/code/7b41-1846263" target="_blank">Capytale</a></p>
+<p>Faire le TP suivant sur <a href="https://capytale2.ac-paris.fr/web/c/7b41-1846263" target="_blank">Capytale</a></p>
 </div></div>
 
 

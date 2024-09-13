@@ -1,8 +1,11 @@
 # Application : POO et KNN
 
-## Algorithme des K Plus Proches Voisins
+## Algorithme des $K$ Plus Proches Voisins
 
+!!! info "Algorithme KNN"
 
+    L'algorithme dit des {==**$k$ plus proches voisins**==} (*$k$ nearest neighbours*), abrégé en algorithme `KNN`, est un algorithme utilisé en intelligence artificielle, plus particulièrement en apprentissage supervisé.
+    
 
 ## Application : Classifications de Patients
 

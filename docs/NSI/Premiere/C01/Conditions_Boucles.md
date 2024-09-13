@@ -128,31 +128,9 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la {==**logiq
     False
     ```
 
-
-!!! question "Conditions sur les nombres entiers"
-
-    === "Énoncé"
-        On considère un objet de type `int` dont le nom est `nb`. Que faut-il écrire pour :
-
-        1. Savoir si le nombre ``nb`` est un nombre pair et strictement supérieur à 50 ?
-        2. Savoir si le nombre ``nb`` est un nombre pair ou un multiple de 3 ?
-        3. Savoir si le nombre `nb` appartient à l'intervalle $[-13 ; 25]$  ?
-        4. Savoir si le nombre `nb` n'appartient pas à l'intervalle $[-13 ; 25]$  ?
-
-    === "Solution"
-
-        1. `nb%2 == 0 and nb > 50`
-        2. `nb%2 == 0 or nb%3 == 0`
-        3. `nb >= -13 and nb <= 25` (et en python, on a aussi ``13<= nb <= 25``)
-        4. `nb<13 or nb >25` ou `not(nb >= -13 and nb <= 25)` ou en python  `not(13<= nb <= 25)`
-
-        Vous pouvez tester les conditions ci-dessus en exécutant le code suivant, qui crée un objet `int` aléatoire entre -20 et 70, puis en vérifiant en affichant la valeur de `nb`
-
-        {{ IDEv('P2_Code1') }}
-
 !!! warning "Une erreur courante"
 
-    Supposons qu'on ait besoin de savoir si le nombre `nb` est égal à `0` ou à `1`. Il serait assez naturel d'écrire :
+    Supposons qu'on ait besoin de savoir si le nombre `a` est égal à `0` ou à `1`. Il serait assez naturel d'écrire :
 
     ```` python
     a == 0 or 1
@@ -165,17 +143,55 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la {==**logiq
 
     Les trois expression ne renvoient pas `True`, `True` et `False` comme on pourrait s'y attendre, mais `1`, `1` et `1` (Ce qui est équivalent à trois `True`).
 
-    En effet l'opérateur `or`, tout comme l'opérateur `and` ne correspond uniquement qu'à la table de vérité donnée ci-dessus, donc effectue une opération **entre deux booléens**.
+    En effet les expressions utilisant l'opérateur `or` ou l'opérateur `and` sont évaluées en utilisant deux booléens :
 
-    Dans le troisième exemple, il prend comme premier booléen `12 == 0`, soit `False`, et comme second opérateur, il n'utilise que l'objet `1`, qu'il essaye de transtyper en booléen, et qui donne `True` (les règles de transtypage en booléen en python sont données [ici](https://perso.limsi.fr/pointal/python:booleens){: target="blank"}, mais ne sont pas à connaître). Au final on a donc `False or True`, ce qui donne `True`. 
+    `bool1 OR bool2`
 
-    L'expression saisie est donc fausse.
+    Quand l'interpréteur Python évalue `a == 0 or 1`, il évalue :
 
-    Il faut la corriger en utilisant
+    * `a == 0` comme booléen ;
+    * puis `1` comme booléen. Or en Python `1` est évalué comme `True`. 
+    
+    Donc quelle que soit la valeur de `a`, le deuxième *opérande* de l'opérateur `or` sera `True`. D'après la table de vérité, le résultat sera donc toujours `True`.
+    
+!!! warning "Une bonne pratique"
 
-    ```` python
-    a == 0 or a == 1
-    ````
+    Concernant l'écriture d'expressions contenant `or` ou `and`, une bonne pratique est de toujours reformuler notre première idée. Avec l'exemple précédent :
+
+    * **Première idée** : `a` doit être égal à `0` ou `1` ;
+    * **Reformulation** : `a`doit être égal à `0` ou `a`doit être égal à `1` ;
+    * **Code Python correct :**
+
+        ```` python
+        a == 0 or a == 1
+        ````
+
+!!! question "Conditions sur les nombres entiers"
+
+    === "Énoncé"
+        On considère un objet de type `int` dont le nom est `nb`. Que faut-il écrire pour :
+
+        1. Le nombre ``nb`` est égal à `5` ou `7` ?
+        1. Le nombre ``nb`` est supérieur ou égal à `5` et strictement inférieur à `7` ?
+        1. Savoir si le nombre ``nb`` est un nombre pair et strictement supérieur à 50 ?
+        2. Savoir si le nombre ``nb`` est un nombre pair ou un multiple de 3 ?
+        3. Savoir si le nombre `nb` appartient à l'intervalle $[-13 ; 25]$  ?
+        4. Savoir si le nombre `nb` n'appartient pas à l'intervalle $[-13 ; 25]$  ?
+
+    === "Solution"
+
+        1. `nb == 5 or nb ==7`
+        1. `nb>= 5 and nb <7`
+        1. `nb%2 == 0 and nb > 50`
+        2. `nb%2 == 0 or nb%3 == 0`
+        3. `nb >= -13 and nb <= 25` (et en python, on a aussi la possibilité d'écrire ``13<= nb <= 25``)
+        4. `nb<13 or nb >25` ou `not(nb >= -13 and nb <= 25)` ou en python  `not(13<= nb <= 25)`
+
+        Vous pouvez tester les conditions ci-dessus en exécutant le code suivant, qui crée un objet `int` aléatoire entre -20 et 70, puis en vérifiant en affichant la valeur de `nb`
+
+        {{ IDEv('P2_Code1') }}
+
+
 
 
 
@@ -211,6 +227,8 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la {==**logiq
 
 ## Structures conditionnelles 
 
+### Syntaxe des structures conditionnelles
+
 En Python, on utilise pour les structures conditionnelles la syntaxe suivante :
 
 
@@ -234,10 +252,9 @@ else :
     #et enfin un dernier bloc si aucune des conditions précédentes n'a été réalisée.    
 ```
 
-Les différents blocs d'instructions doivent être {==**correctement indentés**==} ( c'est-à-dire correctement décalé
-s vers la droite).
+Les différents blocs d'instructions doivent être {==**correctement indentés**==} (c'est-à-dire correctement décalés vers la droite).
 
-La règle de bonne conduite est d'utiliser 4 espaces par indentation (qu'il est souvent possible d'obtenir grâce à la touche tabulation ++tab++ ). Il est  réellement fondamental de respecter au maximum les indentations, celles-ci étant pour l'interpréteur Python le signal de déclenchement d'un bloc de code indépendant. Par exemple, le code ci-dessous renverra une erreur :
+La règle de bonne conduite est d'utiliser 4 espaces par indentation (qu'il est souvent possible d'obtenir grâce à la touche tabulation ++tab++ ). Il est {==**réellement fondamental de respecter les indentations**==}, celles-ci étant pour l'interpréteur Python le signal de déclenchement d'un bloc de code indépendant. Par exemple, le code ci-dessous renverra une erreur :
 
 
 {{ IDEv('P2_Code2') }}
@@ -283,6 +300,37 @@ else :
     Votre nombre est positif !
     Et ce n'est pas un multiple de 2 !
 
+### Exercice sur les structures conditionnelles
+
+!!! question "Un début de Pierre-Feuille-Ciseaux"
+
+    On veut écrire un programme qui permettra de jouer plus tard à Pierre-Feuille-Ciseaux contre l'ordinateur.
+
+    Pour l'instant on considère que l'ordinateur ne joue qu'une seule chose : Pierre.
+
+    Écrire un code Python dans la zone de script de Thonny (que vous sauvegarderez sous le nom `PFC.py`) qui :
+
+    1. Demande à un utilisateur×trice de saisir `p` (pour Pierre), `f` (pour Feuille) ou `c` (pour Ciseaux).
+    2. Donne le résultat du jeu contre l'ordinateur ayant joué Pierre.
+
+    Attention ! Il faut aussi signaler à l'utilisateur×trice qu'il/elle a fait une erreur s'il/elle n'a saisi aucune des trois possibilités.
+
+!!! question "Premières étapes de Devine Nombre"
+
+    On veut réaliser un jeu de «Devine Nombre», dans lequel l'ordinateur tirera un nombre au hasard entre 1 et 100, et dans lequel le joueur/la joueuse proposera plusieurs possibilités, et aura un feedback du type «Trop grand» ou «Trop petit». L'objectif est de deviner le plus rapidement possible le nombre sélectionné par l'ordinateur.
+
+    Pour l'instant, nous allons nous concentrer sur une seule étape : le joueur/la joueuse donne un nombre, et l'ordinateur lui répond.
+
+    Vous aurez besoin de tirer au hasard un nombre entre 1 et 100. Pour ce faire, vous devrez, dans le code insérer les deux lignes suivantes :
+
+    ```python
+    import random
+
+    nb = random.randint(1, 100)
+    ```
+    Vous aurez alors un nombre sélectionné au hasard affecté à la variable `nb`.
+
+    Vous sauvegarderez votre script sous le nom `devineNombre.py`.
 
 ## Boucles
 
@@ -291,7 +339,7 @@ else :
 !!! abstract "Boucle bornée"
     On utilise une boucle bornée lorsqu'on veut ré-exécuter un bloc de code **tant qu'une condition est vérifiée**.
 
-La boucle `while` ( ou boucle `Tant que` en pseudo-code), possède la structure suivante en Python :
+La boucle `while` (appelée `Tant que` en pseudo-code), possède la structure suivante en Python :
 
 
 ```python
@@ -304,6 +352,15 @@ Le bloc de code situé sous l'instruction `while` sera exécuté {==**tant que l
 
 
 {{ IDEv('P2_Code3') }}
+
+
+!!! question "Rebond d'une balle"
+
+    On considère une balle de rayon $5$ cm lancée d'une hauteur $h$. La balle rebondit à $\dfrac{1}{3}$ de la hauteur précédente à chaque rebond. On considère que la balle arrête de rebondir lorsque le rebond est inférieur à $5$ cm.
+
+    ![rebond](Rebond.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
+
+    Écrire un script Python qui demande à l'utilisateur×trice une hauteur de départ (en cm) puis donne le nombre de rebonds de la balle.
 
 ### Boucle bornée : `for`
 
@@ -327,7 +384,7 @@ for i in range(depart, limite, pas) :
 ```
 où :
 
-* `i` est le compteur. C'est une variable donc on peut choisir son nom selon les règles de nommages habituelles ;
+* `i` est le {==**compteur**==} (ou ==itérateur==). C'est une variable donc on peut choisir son nom selon les règles de nommages habituelles ;
 * `depart` est la valeur de départ à laquelle est initialisée `i` ;
 * `limite` est la valeur telle que si `i` est {==**supérieure ou égale**==} à cette valeur, la boucle s'arrête.
 * `pas` est le pas, c'est-à-dire la valeur d'augmentation de `i` à chaque tour.
@@ -454,4 +511,4 @@ Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ense
 
 !!! question "TP Turtle"
 
-    Faire le TP suivant sur [Capytale](https://capytale2.ac-paris.fr/web/code/7b41-1846263){:target="_blank"}
+    Faire le TP suivant sur [Capytale](https://capytale2.ac-paris.fr/web/c/7b41-1846263){:target="_blank"}
