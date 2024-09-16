@@ -77,8 +77,8 @@ On dispose des informations suivantes, qui constitueront les données d'apprenti
 
 !!! question "Modélisation des patients"
 
-    1. Créer une classe `Patient` permettant de modéliser les éléments présents dans le tableau ci-dessus, et utilisant 7 attributs : `prenom`, `age`, `pression`, `cholesterol`, `fumeur`, `diagnostic`, tous fournis dans cette ordre à la méthode constructeur, sachant que par défaut `diagnostic` doit être passé à `None`.
-    2. Ajouter une méthode `affiche` à la classe `Patient` permettant d'afficher les attributs d'une instance.
+    1. Créer une classe `Patient` permettant de modéliser les éléments présents dans le tableau ci-dessus, et utilisant 7 attributs : `prenom`, `sexe`, `age`, `pression`, `cholesterol`, `fumeur`, `diagnostic`, tous fournis dans cette ordre à la méthode constructeur, sachant que par défaut `diagnostic` doit être passé à `None`.
+    2. Ajouter une méthode `__repr___` à la classe `Patient` permettant d'afficher les attributs d'une instance.
     
 Dans la suite, vous pourrez utiliser la variable `patients_connus` suivante :
 
@@ -127,9 +127,14 @@ patients_connus = [
 
     Dans cette formule, nous introduisons des facteurs de pondération qui réduisent la contribution de l'âge pour les jeunes et du sexe pour les femmes, en utilisant des coefficients inverses ou adaptatifs.
         
-        $$
-        d2=w_P⋅(P_1−P_2)^2+w_C⋅(C_1−C_2)2+w_A⋅(\dfrac{A_1−A_2}{max⁡(A1,A2)})^2 + w_S(S_1-S_2)^2
-        $$
+    $$
+    d_2=w_P⋅(\dfrac{P_1−P_2}{max(P1,P2)})^2+w_C⋅(\dfrac{C_1−C_2}{max(C_1, C2)})^2+w_A⋅(\dfrac{A_1−A_2}{max⁡(A1,A2)})^2 + w_S(S_1-S_2)^2
+    $$
+
+    où $P_i$ et $C_i$ sont définis à l'identique de la 1ère formule, et :
+
+    * $A_i$ est l'age du patient $i$ ;
+    * $S_i$ est $1$ si le sexe biologique est « homme », 0 si le sexe biologique est « femme ».
 
     Des valeurs possibles pour les coefficients seront les suivantes :
 
@@ -138,22 +143,27 @@ patients_connus = [
     * $w_A​=0.5$ pour l'âge (l'âge est pris en compte mais avec une réduction pour les jeunes),
     * $w_S​=0.3$ pour le sexe (les femmes sont favorisées car la distance entre femmes est réduite).
 
-    Créer une méthode `distance_2` permettant d'utiliser cette formule, et qui prend en paramètre les coefficients `wP`, `wC`, `wA`, `wS`, ayant pour valeur par défaut celles données ci-dessus. Tester ensuite avec les même données que l'exercice précédent.
+    Créer une méthode `distance_2` permettant d'utiliser cette formule, et qui prend en paramètre les coefficients `wP`, `wC`, `wA`, `wS`, ayant pour valeur par défaut celles données ci-dessus. Tester ensuite avec les même données que l'exercice précédent, en variant aussi la valeur de $k$.
 
 
-!!! question "prise en compte du facteur fumeur"
+!!! question "Prise en compte du facteur fumeur"
+
+    Le fait pour une femme de fumer enlève les avantages en terme de risque d'AVC. On va donc encore modifier notre méthode `distance` pour prendre en compte le « facteur fumeur ». On utilisera alors la fonction suivante :
 
 
     $$
-    d_2 = w_P \cdot (P_1 - P_2)^2 + w_C \cdot (C_1 - C_2)^2 + w_A \cdot \left(\frac{A_1 - A_2}{\max(A_1, A_2)}\right)^2 + w_S \cdot (S_1 - S_2)^2 \cdot \text{facteur\_fumeur}(S_1, F_1)
+    d_3 = w_P⋅(\dfrac{P_1−P_2}{max(P1,P2)})^2+w_C⋅(\dfrac{C_1−C_2}{max(C_1, C2)})^2+w_A⋅(\dfrac{A_1−A_2}{max⁡(A1,A2)})^2 + w_S \cdot (S_1 - S_2)^2 \cdot \text{facteur_fumeur}(S_1, F_1)
     $$
 
+    où `facteur_fumeur` est défini par :
+
     $$
-    \text{facteur\_fumeur}(S_1, F_1) = 
-\begin{cases} 
-1 & \text{si } S_1 = 1 \text{ (homme)} \\
-1 & \text{si } S_1 = 0 \text{ et } F_1 = 0 \text{ (femme non-fumeuse)} \\
-2 & \text{si } S_1 = 0 \text{ et } F_1 = 1 \text{ (femme fumeuse)} \\
-\end{cases}
+    \text{facteur_fumeur}(S_1, F_1) = 
+    \begin{cases} 
+    1 & \text{si } S_1 = 1 \text{ (homme)} \\
+    1 & \text{si } S_1 = 0 \text{ et } F_1 = False \text{ (femme non-fumeuse)} \\
+    2 & \text{si } S_1 = 0 \text{ et } F_1 = True \text{ (femme fumeuse)} \\
+    \end{cases}
     $$
 
+    Recommencer les tests avec cette fonction de distance et commenter.
