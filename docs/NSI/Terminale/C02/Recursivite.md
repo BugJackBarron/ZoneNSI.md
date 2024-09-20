@@ -41,7 +41,7 @@
 		```
 		C'est évidemment la solution la plus simple. Dans ce cas, tout comme pour les *suites  géométrique*, il est inutile de compliquer le code, nous obtenons directement la solution par un simple calcul algébrique.
 		
-!!! abstract "Encore des maths :  les suites arithmético-géométriques"
+!!! abstract "Encore des maths : les suites arithmético-géométriques"
 	
 	Une suite $(u_n)$, de premier terme $u_0$ est dite {==**arithmético-géométrique**==} si et seulement si
 	
@@ -85,8 +85,8 @@
 
 		``` python
 		def maSuiteAG(n) :
-			if not(isinstance(n, int)) or n<0 : 
-				raise ValueError("n must be a non negativ integer")
+			if type(n)!= int or n<0 : 
+				raise ValueError("n must be a non negative integer")
 			u = 7 
 			for i in range(1,n+1) : # j'utilise ce range plutôt que range(n) car le i utilisé correspond au terme du rang calculé.
 				u = -2*u + 5
@@ -102,7 +102,7 @@ C'est vraiment dommage, dans le premier exercice, on utilise simplement {==**la 
 def maSuiteAGR(n) :
 	return -2*maSuiteAGR(n-1) + 5
 ```
-Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
+ET si on tentait le coup de tester, en prenant $n=3$ par exemple...
 
 ??? bug "Késako ?"
 	Quand on teste la fonction `maSuiteAGR(3)`, python ... calcule... puis nous renvoie une erreur :
@@ -138,18 +138,17 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	![Gru Recursion](Gru_Recursion.jpg)
 	</p>
 
-	Mais en réalité cette instruction s'arrêtera quand python aura levé une erreur de type `RecursionError`, 
-	qui signifie qu'une limite aura été atteinte (nous en parlerons plus tard pour lever toute ambiguité).
+	Mais en réalité cette instruction s'arrêtera quand python aura levé une erreur de type `RecursionError`, qui signifie qu'une limite aura été atteinte (nous en parlerons plus tard pour lever toute ambiguité).
 	
-!!! done "Supprimer le problème : le cas d'arrêt"
+!!! done "Supprimer le problème : le cas d'arrêt ou cas de base"
 	
-	Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale toujours la valeur du premier terme (qui peut être $u_0$, ou $u_1$, ou même $u_{42}$ selon le problème et la définition de l'indice). Or dans notre fonction `maSuiteAGR`, jamais nous ne précisons ce cas, c'est-à-dire que quand $n=0$, alors la suite vaut $7$. Rajoutons-donc cette condition dans la fonction :
+	Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale **toujours** la valeur du premier terme (qui peut être $u_0$, ou $u_1$, ou même $u_{42}$ selon le problème et la définition de l'indice). Or dans notre fonction `maSuiteAGR`, jamais nous ne précisons ce cas, c'est-à-dire que quand $n=0$, alors la suite vaut $7$. Rajoutons-donc cette condition dans la fonction :
 	
 	``` python
 	def maSuiteAGR(n) :
-		if n== 0 :
+		if n== 0 : # Cas de base
 			return 7
-		else :
+		else : # Cas récursif
 			return -2* maSuiteAGR(n-1) + 5
 	```
 	
@@ -194,9 +193,9 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	
 	``` python
 	def sommeR(n) :
-		if n== 0 :
+		if n== 0 : # Cas de base
 			return 0
-		else :
+		else : # Cas récursif
 			return sommeR(n-1) + n
 	```
 ## Applications directes
@@ -215,26 +214,25 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		\end{array}\right.
 		$$
 		
-		1. Ecrire une fonction **itérative** `factorielle(n)` qui renvoie la factorielle d'un entier naturel $n$ donné, et lève une `ValueError` si $n$ n'est pas entier ou est négatif.
-		2. Ecrire une fonction **récursive** `factorielleR(n)` qui renvoie la factorielle d'un entier naturel $n$ donné, et lève une `ValueError` si $n$ n'est pas entier ou est négatif.
+		1. Écrire une fonction **itérative** `factorielle(n)` qui renvoie la factorielle d'un entier naturel $n$ donné, et lève une `ValueError` si $n$ n'est pas entier ou est négatif.
+		2. Écrire une fonction **récursive** `factorielleR(n)` qui renvoie la factorielle d'un entier naturel $n$ donné, et lève une `ValueError` si $n$ n'est pas entier ou est négatif.
 		
 	=== "Solution Itérative"
 		``` python linenums="1"
 		def factorielle(n) :
-			if not(isinstance(n, int)) or n<0 :
-				raise valueError("n must be a positiv integer")
+			if type(n) != int or n<0 :
+				raise valueError("n must be a positive integer")
 			produit = 1
-			for i in range(1,n+1) :# On peut effectivemment partir de 2, et gagner un tour de boucle.
+			for i in range(1,n+1) :# On peut effectivement partir de 2, et gagner un tour de boucle.
 				produit =produit*i
-			return produit
-				
+			return produit				
 		```
 		
 	=== "Solution récursive"
 		``` python linenums="1"
 		def factorielleR(n) :
-			if not(isinstance(n, int)) or n<0 :
-				raise valueError("n must be a positiv integer")
+			if type(n) != int or n<0 :
+				raise valueError("n must be a positive integer")
 			if n==0 or n==1 :
 				return 1
 			else :
@@ -245,7 +243,9 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	
 	=== "Enoncé"
 		
-		1. Implémenter une fonction **itérative** `etoile(n)` qui écrit dans le Shell Python un triangle formé de caractères `*` tels que dans l'exemple suivant :
+		1. Implémenter une procédure[^proced] **itérative** `etoile(n)` qui écrit dans le Shell Python un triangle formé de caractères `*` tels que dans l'exemple suivant :
+
+		[^proced]: une procédure est une fonction sans valeur de retour, c'est-à-dire une fonction renvoyant toujours `None`.
 		
 		``` python
 		>>> etoileR(5)
@@ -255,12 +255,12 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		****
 		*****
 		```
-		2. Implémenter une fonction **récursive** `etoileR(n)` qui effectue le même travail.
+		2. Implémenter une procédure **récursive** `etoileR(n)` qui effectue le même travail.
 		
 	=== "Solution Itérative"
 		``` python linenums="1"
 		def etoile(n) :
-			if not(isinstance(n, int)) or n<=0 :
+			if type(n)!= int or n<=0 :
 				raise valueError("n must be a positiv integer")
 			for i in range(1, n+1) :
 				print("*"*i)				
@@ -269,7 +269,7 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	=== "Solution récursive"
 		``` python linenums="1"
 		def etoileR(n) :
-			if not(isinstance(n, int)) or n<=0 :
+			if type(n)!= int or n<=0 :
 				raise valueError("n must be a non null positiv integer")
 			if n == 1 :
 				print("*")
@@ -296,15 +296,17 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 	2. Complétez deux lignes supplémentaires du tableau suivant, nommé [{==**Triangle de Pascal**==}](https://fr.wikipedia.org/wiki/Triangle_de_Pascal):
 	
 		$$
-		\begin{array}{|l|c|c|c|c|c|c|}
+		\begin{array}{|l|c|c|c|c|c|c|c|c|}
 		\hline
-		p=>&0&1&2&3&4&5\\\hline
-		n=0&1&&&&&\\\hline
-		n=1&1&1&&&&\\\hline
-		n=2&1&2&1&&&\\\hline
-		n=3&1&3&3&1&&\\\hline
-		n=4&1&4&6&4&1&\\\hline
-		n=5&1&5&10&10&5&1\\\hline
+		p=>&0&1&2&3&4&5&6&7\\\hline
+		n=0&1&&&&&&&\\\hline
+		n=1&1&1&&&&&&\\\hline
+		n=2&1&2&1&&&&&\\\hline
+		n=3&1&3&3&1&&&&\\\hline
+		n=4&1&4&6&4&1&&&\\\hline
+		n=5&1&5&10&10&5&1&&\\\hline
+		n=6&&&&&&&&\\\hline
+		n=7&\phantom{XX}&\phantom{XX}&\phantom{XX}&\phantom{XX}&\phantom{XX}&\phantom{XX}&\phantom{XX}&\phantom{XX}\\\hline
 		\end{array}
 		$$
 		
@@ -350,3 +352,21 @@ Ca vaudrait peut-être le coup de tester, en prenant $n=3$ par exemple...
 		??? done "Solution"
 			A venir
 		
+
+!!! example "Exemple de code utilisant la récursivité"
+
+	Lorsqu'on veut lister tous les fichiers situés dans un répertoire et dans tous les sous-répertoires de celui-ci, on peut utiliser une méthode récursive telle que présentée dans le code suivant :
+
+	``` python
+	import os
+
+	def explorer_repertoire(repertoire):
+		for item in os.listdir(repertoire):
+			chemin = os.path.join(repertoire, item)
+			if os.path.isdir(chemin):
+				explorer_repertoire(chemin)
+			else:
+				print(chemin)
+
+	explorer_repertoire("/mon_repertoire")
+	```

@@ -4376,7 +4376,7 @@ C'est évidemment la solution la plus simple. Dans ce cas, tout comme pour les <
 </div>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Encore des maths :  les suites arithmético-géométriques</p>
+<p class="admonition-title">Encore des maths : les suites arithmético-géométriques</p>
 <p>Une suite <span class="arithmatex">\((u_n)\)</span>, de premier terme <span class="arithmatex">\(u_0\)</span> est dite <mark class="critic"><strong>arithmético-géométrique</strong></mark> si et seulement si</p>
 <div class="arithmatex">\[
 u_{n+1} = a\times u_n +b
@@ -4412,8 +4412,8 @@ Deux remarques :
 </ul>
 <p>Une version plus correcte serait donc celle-ci :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maSuiteAG</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span> 
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"n must be a non negativ integer"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">!=</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span> 
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"n must be a non negative integer"</span><span class="p">)</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mi">7</span> 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="c1"># j'utilise ce range plutôt que range(n) car le i utilisé correspond au terme du rang calculé.</span>
         <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="mi">5</span>
@@ -4428,7 +4428,7 @@ Deux remarques :
 <p></p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
 </code></pre></div>
-Ca vaudrait peut-être le coup de tester, en prenant <span class="arithmatex">\(n=3\)</span> par exemple...
+ET si on tentait le coup de tester, en prenant <span class="arithmatex">\(n=3\)</span> par exemple...
 <details class="bug">
 <summary>Késako ?</summary>
 <p>Quand on teste la fonction <code>maSuiteAGR(3)</code>, python ... calcule... puis nous renvoie une erreur :</p>
@@ -4466,16 +4466,15 @@ Ca vaudrait peut-être le coup de tester, en prenant <span class="arithmatex">\(
 <p></p><p align="center">
 <img alt="Gru Recursion" src="../Gru_Recursion.jpg">
 </p>
-<p>Mais en réalité cette instruction s'arrêtera quand python aura levé une erreur de type <code>RecursionError</code>, 
-qui signifie qu'une limite aura été atteinte (nous en parlerons plus tard pour lever toute ambiguité).</p>
+<p>Mais en réalité cette instruction s'arrêtera quand python aura levé une erreur de type <code>RecursionError</code>, qui signifie qu'une limite aura été atteinte (nous en parlerons plus tard pour lever toute ambiguité).</p>
 </div>
 <div class="admonition done">
-<p class="admonition-title">Supprimer le problème : le cas d'arrêt</p>
-<p>Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale toujours la valeur du premier terme (qui peut être <span class="arithmatex">\(u_0\)</span>, ou <span class="arithmatex">\(u_1\)</span>, ou même <span class="arithmatex">\(u_{42}\)</span> selon le problème et la définition de l'indice). Or dans notre fonction <code>maSuiteAGR</code>, jamais nous ne précisons ce cas, c'est-à-dire que quand <span class="arithmatex">\(n=0\)</span>, alors la suite vaut <span class="arithmatex">\(7\)</span>. Rajoutons-donc cette condition dans la fonction :</p>
+<p class="admonition-title">Supprimer le problème : le cas d'arrêt ou cas de base</p>
+<p>Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale <strong>toujours</strong> la valeur du premier terme (qui peut être <span class="arithmatex">\(u_0\)</span>, ou <span class="arithmatex">\(u_1\)</span>, ou même <span class="arithmatex">\(u_{42}\)</span> selon le problème et la définition de l'indice). Or dans notre fonction <code>maSuiteAGR</code>, jamais nous ne précisons ce cas, c'est-à-dire que quand <span class="arithmatex">\(n=0\)</span>, alors la suite vaut <span class="arithmatex">\(7\)</span>. Rajoutons-donc cette condition dans la fonction :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> <span class="c1"># Cas de base</span>
         <span class="k">return</span> <span class="mi">7</span>
-    <span class="k">else</span> <span class="p">:</span>
+    <span class="k">else</span> <span class="p">:</span> <span class="c1"># Cas récursif</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span> <span class="n">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
 </code></pre></div>
 <p>Et testons de nouveau <code>maSuiteAGR(3)</code> :</p>
@@ -4524,9 +4523,9 @@ qui signifie qu'une limite aura été atteinte (nous en parlerons plus tard pour
 </ul>
 <p>Une implémentation récursive possible est alors :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sommeR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> <span class="c1"># Cas de base</span>
         <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">else</span> <span class="p">:</span>
+    <span class="k">else</span> <span class="p">:</span> <span class="c1"># Cas récursif</span>
         <span class="k">return</span> <span class="n">sommeR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">n</span>
 </code></pre></div>
 </div>
@@ -4545,8 +4544,8 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 \end{array}\right.
 \]</div>
 <ol>
-<li>Ecrire une fonction <strong>itérative</strong> <code>factorielle(n)</code> qui renvoie la factorielle d'un entier naturel <span class="arithmatex">\(n\)</span> donné, et lève une <code>ValueError</code> si <span class="arithmatex">\(n\)</span> n'est pas entier ou est négatif.</li>
-<li>Ecrire une fonction <strong>récursive</strong> <code>factorielleR(n)</code> qui renvoie la factorielle d'un entier naturel <span class="arithmatex">\(n\)</span> donné, et lève une <code>ValueError</code> si <span class="arithmatex">\(n\)</span> n'est pas entier ou est négatif.</li>
+<li>Écrire une fonction <strong>itérative</strong> <code>factorielle(n)</code> qui renvoie la factorielle d'un entier naturel <span class="arithmatex">\(n\)</span> donné, et lève une <code>ValueError</code> si <span class="arithmatex">\(n\)</span> n'est pas entier ou est négatif.</li>
+<li>Écrire une fonction <strong>récursive</strong> <code>factorielleR(n)</code> qui renvoie la factorielle d'un entier naturel <span class="arithmatex">\(n\)</span> donné, et lève une <code>ValueError</code> si <span class="arithmatex">\(n\)</span> n'est pas entier ou est négatif.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -4557,12 +4556,12 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
-        <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">"n must be a positiv integer"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">"n must be a positive integer"</span><span class="p">)</span>
     <span class="n">produit</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span><span class="c1"># On peut effectivemment partir de 2, et gagner un tour de boucle.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span><span class="c1"># On peut effectivement partir de 2, et gagner un tour de boucle.</span>
         <span class="n">produit</span> <span class="o">=</span><span class="n">produit</span><span class="o">*</span><span class="n">i</span>
-    <span class="k">return</span> <span class="n">produit</span>
+    <span class="k">return</span> <span class="n">produit</span>              
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -4573,8 +4572,8 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorielleR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
-        <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">"n must be a positiv integer"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">"n must be a positive integer"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span> <span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span> <span class="p">:</span>
@@ -4590,7 +4589,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Implémenter une fonction <strong>itérative</strong> <code>etoile(n)</code> qui écrit dans le Shell Python un triangle formé de caractères <code>*</code> tels que dans l'exemple suivant :</li>
+<li>Implémenter une procédure<sup id="fnref:proced"><a class="footnote-ref" href="#fn:proced">1</a></sup> <strong>itérative</strong> <code>etoile(n)</code> qui écrit dans le Shell Python un triangle formé de caractères <code>*</code> tels que dans l'exemple suivant :</li>
 </ol>
 <p></p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">etoileR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="o">*</span>
@@ -4599,7 +4598,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <span class="o">****</span>
 <span class="o">*****</span>
 </code></pre></div>
-2. Implémenter une fonction <strong>récursive</strong> <code>etoileR(n)</code> qui effectue le même travail.
+2. Implémenter une procédure <strong>récursive</strong> <code>etoileR(n)</code> qui effectue le même travail.
 </div>
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -4607,7 +4606,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">etoile</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">!=</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">"n must be a positiv integer"</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"*"</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>                
@@ -4622,7 +4621,7 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">etoileR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">!=</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="p">:</span>
         <span class="k">raise</span> <span class="n">valueError</span><span class="p">(</span><span class="s2">"n must be a non null positiv integer"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span>
@@ -4655,15 +4654,17 @@ n! &amp;=&amp; n \times (n-1) \times ... \times 3 \times 2 \times 1\\
 <li>
 <p>Complétez deux lignes supplémentaires du tableau suivant, nommé <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal"><mark class="critic"><strong>Triangle de Pascal</strong></mark></a>:</p>
 <div class="arithmatex">\[
-\begin{array}{|l|c|c|c|c|c|c|}
+\begin{array}{|l|c|c|c|c|c|c|c|c|}
 \hline
-p=&gt;&amp;0&amp;1&amp;2&amp;3&amp;4&amp;5\\\hline
-n=0&amp;1&amp;&amp;&amp;&amp;&amp;\\\hline
-n=1&amp;1&amp;1&amp;&amp;&amp;&amp;\\\hline
-n=2&amp;1&amp;2&amp;1&amp;&amp;&amp;\\\hline
-n=3&amp;1&amp;3&amp;3&amp;1&amp;&amp;\\\hline
-n=4&amp;1&amp;4&amp;6&amp;4&amp;1&amp;\\\hline
-n=5&amp;1&amp;5&amp;10&amp;10&amp;5&amp;1\\\hline
+p=&gt;&amp;0&amp;1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7\\\hline
+n=0&amp;1&amp;&amp;&amp;&amp;&amp;&amp;&amp;\\\hline
+n=1&amp;1&amp;1&amp;&amp;&amp;&amp;&amp;&amp;\\\hline
+n=2&amp;1&amp;2&amp;1&amp;&amp;&amp;&amp;&amp;\\\hline
+n=3&amp;1&amp;3&amp;3&amp;1&amp;&amp;&amp;&amp;\\\hline
+n=4&amp;1&amp;4&amp;6&amp;4&amp;1&amp;&amp;&amp;\\\hline
+n=5&amp;1&amp;5&amp;10&amp;10&amp;5&amp;1&amp;&amp;\\\hline
+n=6&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\\\hline
+n=7&amp;\phantom{XX}&amp;\phantom{XX}&amp;\phantom{XX}&amp;\phantom{XX}&amp;\phantom{XX}&amp;\phantom{XX}&amp;\phantom{XX}&amp;\phantom{XX}\\\hline
 \end{array}
 \]</div>
 <details class="done">
@@ -4714,6 +4715,30 @@ p\\
 <summary>Solution</summary>
 <p>A venir</p>
 </details>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exemple de code utilisant la récursivité</p>
+<p>Lorsqu'on veut lister tous les fichiers situés dans un répertoire et dans tous les sous-répertoires de celui-ci, on peut utiliser une méthode récursive telle que présentée dans le code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">explorer_repertoire</span><span class="p">(</span><span class="n">repertoire</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">repertoire</span><span class="p">):</span>
+        <span class="n">chemin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repertoire</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">chemin</span><span class="p">):</span>
+            <span class="n">explorer_repertoire</span><span class="p">(</span><span class="n">chemin</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">chemin</span><span class="p">)</span>
+
+<span class="n">explorer_repertoire</span><span class="p">(</span><span class="s2">"/mon_repertoire"</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:proced">
+<p>une procédure est une fonction sans valeur de retour, c'est-à-dire une fonction renvoyant toujours <code>None</code>. <a class="footnote-backref" href="#fnref:proced" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 </ol>
 </div></div>
