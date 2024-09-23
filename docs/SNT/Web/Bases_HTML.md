@@ -1,10 +1,12 @@
 # Construire une page Web : Bases de HTML
 
-## Une page web ?
+## Qu'est-ce qu'une page web
+
+### Première approche
 
 !!! question "Découvrir HTML"
 
-    1. Dans le lecteur réseau de votre classe, dossier `Documents en consultation/SNT/Web`, récupérez le fichier `Micro_Maqueen` et copiez-le dans votre répertoire `SNT` dans lequel vous aurez au préalable créé un dossier `web`.
+    1. Téléchargez le fichier [Micro_Maqueen](Micro_Maqueen.txt){target="_blank"} (avec un clic droit puis «Enregistrer la cible du lien sous...») et copiez-le dans votre répertoire `SNT` dans lequel vous aurez au préalable créé un dossier `web`.
 
     2. Double-cliquez sur ce fichier. Quel logiciel l'ouvre ?
 
@@ -16,13 +18,13 @@
 
         2.  Sélectionnez le fichier puis appuyez sur `F2` pour renommer, puis changez l'extension `.txt` en `.html`. Que se passe-t-il pour l'icône de fichier ?
 
-    5.  Double-cliquez sur le fichier. Quel logiciel l'ouvre ?
+    5. Double-cliquez sur le fichier. Quel logiciel l'ouvre ?
 
-    6.  Quelle est la nature du contenu du fichier ?
+    6. Quelle est la nature du contenu du fichier ?
 
-    7.  Quelle est l'URL de la page ?
+    7. Quelle est l'URL de la page ?
 
-    8.  Dans le dossier `Documents en consultation/SNT/Web`, récupérez les fichiers images `BBC_Microbit.jpg` et `Maqueen.png`, et copiez-les dans le même répertoire que votre fichier `Micro_Maqueen.html`. Rechargez la page web.
+    8. Téléchargez les fichiers [Microbit.jpg](Microbit.jpg){target="_blank"} et [Maqueen.png](Maqueen.png){target="_blank"} (avec un clic droit puis «Enregistrer la cible du lien sous...»), et copiez-les dans le même répertoire que votre fichier `Micro_Maqueen.html`. Rechargez la page web.
 
         Quels sont les changements apportés ?
 
@@ -30,25 +32,50 @@
 
     10. Quelles différences constatez-vous entre le fichier ouvert dans un navigateur, et le fichier ouvert par `Notepad++`?
 
+### Deuxième approche : via les blocs dans Capytale, lien entre HTML et CSS
+
+!!! question "Utilisation de blocs"
+
+    1. Ouvrir dans un nouvel onglet de `Firefox` le lien suivant : [web capytale](https://capytale2.ac-paris.fr/web/c/c568-4008908){target = "_blank"}, puis accédez à l'activité *Capytale*.
+    2. Cliquez sur le bouton ``Visualiser``. Normalement, vous voyez une partie de la page avec des blocs, et le rendu des blocs sous la forme d'une page web.
+    3. Répondez dans un premier temps aux questions suivantes.
+        1. Il y a une erreur dans les années. Remplacez celles-ci par `2024-2025`, puis actualisez l'aperçu avec le bouton de rafraichissement.
+        2. Effectuez un ++ctrl+left-button++ sur le lien proposé dans la page. Est-ce fonctionnel ?
+        3. En observant les blocs, répondez aux questions suivantes :
+            1. Combien de sous-blocs enfants directs possède le bloc `<html> ... </html>` ? Comment s'appellent-ils ?
+            2. Détacher le bloc `<style> ... </style>`, puis actualiser la page. Que s'est-il passé ? Rattacher le bloc `<style> ... </style>`.
+            3. Dans le bloc `<body> ... </body>`, transformer le bloc `<h2> ... </h2>` en bloc `<h1> ... </h1>`, puis actualisez l'aperçu. Que s'est-il passé ? Replacer ce bloc en `<h2> ... </h2>`.
+            4. Changer le style de la bordure du bloc `<h1> ... </h1>` en `groove`, et choisissez une nouvelle couleur pour celui-ci.
+            5. Qu'ont en commun tous les éléments écrits en gras et en bleu dans la page web ?
+            6. Ajouter un style au bloc `<h2> ... </h2>` en lui appliquant un fond de couleur jaune.
+    4. Basculer l'affichage en mode hybride en cliquant sur le bouton central surligné ici ![Mode_hybride.png](Mode_Hybride.png){:style="height : 3em;"}, puis désactiver l'aperçu. Qu'observe-t-on ?
+    5. Passez en affichage avec uniquement le code (bouton à droite du mode hybride). Réactivez l'aperçu, puis amusez-vous à changer quelques éléments dans le code et observez les effets de vos changements.
+
 ## Le fond : du texte et de l'hypertexte - HTML
 
+*Dans un premier temps, on ne s'intéressera qu'au code HTML à proprement parlé, ce qui signifie qu'on ne traitera pas des couleurs, alignements de textes, centrages, etc...*
 
 !!! info "HTML et notion de balises"
-    Une page web, c'est un fichier contenant du texte, ce texte étant enrichi par un système de {==**balises**==} *ouvrantes* - par exemple `<p>` et *fermantes* - par exemple `</p>`, permettant de **donner un sens particulier au texte encadré par ces balises**.
+    Une page web, c'est **un fichier contenant du texte**, ce texte étant enrichi par un système de {==**balises**==} ouvrantes et fermantes permettant de donner un sens particulier au texte encadré par ces balises. Par exemple le couple de balises `<p>` et `</p>` :
+    
+    * est composé de la balise ouvrante `<p>` ;
+    * et de la balise fermante `</p>` (observez la différence avec la balise ouvrante) ;
+    * et le couple sert à délimiter un paragraphe.
 
-    Ces balises sont interprétées par le navigateur web et donnent une **sémantique** particulière au texte (titre, paragraphe, élément de liste, etc), ou bien introduisent des comportement particuliers à certains éléments ( transforment en lien hypertextuels, insèrent des images, etc).
+    Ces balises sont interprétées par le navigateur web et donnent une **sémantique** particulière au texte (titre, paragraphe, élément de liste, etc), ou bien introduisent des comportement particuliers à certains éléments (transforment en lien hypertextuels, insèrent des images, etc).
 
-    Le langage utilisé qui contient le texte et les balises s'appelle {==**HTML**==} ( d'où le nom de l'extension `.html` ) , qui est un acronyme pour {==**Hyper Text Markup Language**==}, soit *langage de balisage hypertexte*. Il est à noter que `HTML` **n'est pas un langage de programmation**, mais simplement un langage de mise en valeur du texte, privilégiant la mise en avant du sens avant la forme.
+    Le langage utilisé qui contient le texte et les balises s'appelle {==**HTML**==} ( d'où le nom de l'extension `.html` ) , qui est un acronyme pour {==**Hyper Text Markup Language**==}, soit *langage de balisage hypertexte*. Il est à noter que `HTML` **n'est pas un langage de programmation**, mais simplement un langage de description hypertextuel, privilégiant la **mise en avant du sens avant la forme**.
 
     Il existe de nombreux langages de balisages, permettant de donner une forme particulière à du texte ou à des chaines de caractères. Par exemple, `HTML` pour le Web, `LaTeX` pour les documents scientifiques et les formules mathématiques, `XML` pour organiser des données, ou même `Mardown`, un langage ultra simplifié utilisé par exemple dans des Notebooks Jupyter ( que nous utiliserons plus tard dans l'année ), mais aussi sur des plateforme de réseaux sociaux telles que `Discord`.
 
-L'objectif des questions suivantes est de vous faire comprendre le rôle
-des balises HTML. Vous devez donc comparer les deux visions du fichier
-HTML, celle vue par le navigateur et celle vue par l'éditeur de texte.
+L'objectif des questions suivantes est de vous faire comprendre le rôle des balises `HTML`. Vous devez donc comparer les deux visions du fichier `HTML`, celle vue par le navigateur et celle vue par l'éditeur de texte. Pour ce faire, nous allons utiliser l'activité *Capytale* suivante : [f780-4006303](https://capytale2.ac-paris.fr/web/c/f780-4006303){target="_blank"}.
 
-!!! question "Ex1 : Comprendre HTML : une balise - vocabulaire"
+!!! question "Ex1 : Comprendre `HTML` : une balise - vocabulaire"
 
-    Prenons la deuxième ligne du fichier, vue dans `Notepad++`. Celle ci contient une {==**balise ouvrante**==} de **nom** `html`, et d'**attribut** `lang`, encadrés par des **chevrons** `<` et `>`.
+    Prenons la deuxième ligne du fichier, vue dans `Notepad++`. Celle ci contient une {==**balise ouvrante**==} :
+    
+    * de **nom** `html`
+    * d'**attribut** `lang`.
 
     1.  L'attribut `lang` possède une valeur. Quelle est-elle ?
 
@@ -58,25 +85,25 @@ HTML, celle vue par le navigateur et celle vue par l'éditeur de texte.
 
     Pour chacun des cas ci-dessous, trouver le couple de balise qui correspond :
 
-    1.  Texte affiché dans l'onglet :
+    1. Texte affiché dans l'onglet :
 
-    2.  Titre principal :
+    2. Titre principal :
 
-    3.  Sous-titre :
+    3. Sous-titre :
 
-    4.  Sous-sous-titre :
+    4. Sous-sous-titre :
 
-    5.  Paragraphe :
+    5. Paragraphe :
 
-    6.  Mise en gras dans un paragraphe :
+    6. Mise en gras dans un paragraphe :
 
-    7.  Hyperlien :
+    7. Hyperlien :
 
-    8.  Élément d'une liste :
+    8. Élément d'une liste :
 
-    9.  Liste numérotée :
+    9. Liste numérotée :
 
-    10.  Liste à puces :
+    10. Liste à puces :
 
     11. En-tête de la page :
 
@@ -102,9 +129,9 @@ HTML, celle vue par le navigateur et celle vue par l'éditeur de texte.
 
                 Pour éviter de perdre ainsi l'image, il est toujours préférable d'aller directement sur le site où se situe l'image et de copier le lien correspondant.
 
-        2.  Faites survoler ces deux images par votre pointeur de souris dans votre navigateur. Vous devez constater une différence de traitement entre les deux. Comment l'expliquer ?
+        2. Faites survoler ces deux images par votre pointeur de souris dans votre navigateur. Vous devez constater une différence de traitement entre les deux. Comment l'expliquer ?
 
-        3.  Mais, au départ, avant de copier les fichiers images dans le même répertoire que le fichier `N3_Micro_Maqueen.html`, les images n'étaient pas affichées. Par quoi étaient elles remplacées ?
+        3. Au début de l'activité avec `Notepad++`, avant de copier les fichiers images dans le même répertoire que le fichier `Micro_Maqueen.html`, les images n'étaient pas affichées. Par quoi étaient elles remplacées ?
 
     5.  Le pied de page est particulier, car il a un caractère spécial. Comment ce caractère est-il représenté en HTML ?
 
@@ -124,7 +151,7 @@ HTML, celle vue par le navigateur et celle vue par l'éditeur de texte.
 
 ## À vous de jouer
 
-Vous devez créer une page web sur le {==**sujet de votre choix**==}, contenant :
+Vous devez créer une page web sur le {==**thème de votre choix**==}, contenant :
 
 * un titre principal ;
 * deux sous-parties ;
@@ -133,18 +160,15 @@ Vous devez créer une page web sur le {==**sujet de votre choix**==}, contenant 
 * au moins deux images ;
 * une vidéo (ou un lien vers une vidéo).
 
-On respectera aussi les recommandations suivantes :
+Pour cela vous utiliserez *Capytale* avec l'activité suivante [55a8-4017712](https://capytale2.ac-paris.fr/web/c/55a8-4017712){target="_blank"}.
 
-* Un soin particulier sera apporté à l'orthographe.
-* Le copié-collé depuis un autre site doit impérativement mentionner l'origine du texte. Sans ces sources citées, vous pourriez être accusé de plagiat.
-* De même l'origine des images ou des vidéos doit être explicitement donné dans le site, soit sous la forme d'infobulles, soit sous la forme d'un commentaire d'image (balises `<figure>` et `<figcaption>`, voir [ici](https://developer.mozilla.org/fr/docs/Web/HTML/Element/figcaption){: target="_blank"}).
-* Attention aux informations que vous trouvez sur le web. Certaines sont fortement datées et utilisent des balises qui sont **obsolètes** (comme les balises `<center>`, `<S>`, `<U>`, `<B>`). De manière générale, {==**n'essayez pas de faire de la mise en page !**==} `HTML` n'est pas fait pour ça, nous utiliserons un autre langage pour améliorer notre page.
-* La méthode la plus sûre si vous cherchez de nouvelles balises, ou bien des attributs spécifiques, est d'aller sur le site consacré au `HTML` de la [fondation Mozilla](https://developer.mozilla.org/fr/docs/Web/HTML){: target = "_blank"}.
 
-!!! question "Transmettre le/les fichiers"
-    Le fichier `.html` de votre site devra être déposé sur pronote à la date indiquée par le professeur.
+!!! danger "Pour avoir une bonne note !"
+    On respectera aussi les recommandations suivantes :
 
-    Si votre site utilise plusieurs fichiers `HTML` ou des images téléchargées, vous devrez alors créer un fichier compressé (`.zip`) contenant à la fois votre/vos fichier(s) `HTML` et vos images en suivant la méthode ci-dessous :
+    * Un soin particulier sera apporté à l'orthographe. Si vous n'êtes pas certains de votre orthographe ou de votre syntaxe, vous devez passer votre texte dans un correcteur orthographique en ligne tel que [Scribens](https://www.scribens.fr/){target = "_blank"}.
+    * Le copié-collé depuis un autre site doit impérativement mentionner l'origine du texte. Sans ces sources citées, vous pourriez être accusé de plagiat.
+    * De même l'origine des images ou des vidéos doit être explicitement donné dans le site, soit sous la forme d'infobulles, soit sous la forme d'un commentaire d'image (balises `<figure>` et `<figcaption>`, voir [ici](https://developer.mozilla.org/fr/docs/Web/HTML/Element/figcaption){: target="_blank"}).
+    * Attention aux informations que vous trouvez sur le web. Certaines sont fortement datées et utilisent des balises qui sont **obsolètes** (comme les balises `<center>`, `<S>`, `<U>`, `<B>`). De manière générale, {==**n'essayez pas de faire de la mise en page !**==} `HTML` n'est pas fait pour ça, nous utiliserons `CSS` pour améliorer votre site dans un autre TP.
+    * La méthode la plus sûre si vous cherchez de nouvelles balises, ou bien des attributs spécifiques, est d'aller sur le site consacré au `HTML` de la [fondation Mozilla](https://developer.mozilla.org/fr/docs/Web/HTML){: target = "_blank"}.
 
-    * Sélectionnez votre/vos fichier(s) `HTML` ainsi que les fichiers images nécessaires (à l'aide de la touche ++CTRL++ pour faire une sélection multiple).
-    * Cliquez droit sur un des fichiers sélectionné puis dans le menu contextuel `7zip`, sélectionnez `Ajouter à XXXX.zip`, où `XXXX` est le nom du dossier dans lequel vous avez vos fichiers. Vous obtiendrez alors un {==**fichier archive**==} qui sera celui que vous transmettrez au professeur.
