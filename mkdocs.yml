@@ -9,16 +9,12 @@ nav:
             - 'Ensembles de nombres et intervalles' : 
                 - 'Ensembles de nombres ' : 'Maths/Seconde/C01/C01_01_Ensembles_Nombres.md'
                 - 'Intervalles' : 'Maths/Seconde/C01/C01_02_Intervalles.md'
-            - 'Notion de fonctions' : 
-                - 'Vocabulaire et rappels' : ''
             - 'Algorithmique et bases de Python' :
                 - 'Algorithmes, affectations et types de variables' : 'Maths/Seconde/AlgoBases/AffectationTypes.md'
                 - 'Programmation en Python et utilisation de Thonny' : 'Maths/Seconde/AlgoBases/ProgrammationPythonThonny.md'
                 - 'Apprivoiser Python' : 'Maths/Seconde/AlgoBases/ApprivoiserPython.md'
                 - 'Stuctures conditionnelles' : 'Maths/Seconde/AlgoBases/Structures_conditionnelles.md'
                 - 'Arithmétique'  : 'Maths/Seconde/AlgoBases/Arithmetique.md'
-        - 'Première' : 'Maths/Premiere/home.md'
-        - 'Terminale' : 'Maths/Terminale/home.md'
     - 'SNT' : 
         - 'Session Collège' : 'SNT/College/PixelArt.md'
         - 'Le Web' :
@@ -97,7 +93,7 @@ nav:
                 - 'Listes chainées' :  'NSI/Terminale/C03/ListesChainees.md'
                 - 'Piles et files' : 'NSI/Terminale/C03/Piles_et_files.md'
                 - 'TP : Tours de Hanoï' : 'NSI/Terminale/C03/ToursHanoi.md'
-                
+
             - 'Bases de Données et SQL' :
                 - 'Modèle relationnel' : 'NSI/Terminale/C04/ModeleRelationnel.md'
                 - 'Bases de SQL 1' : 'NSI/Terminale/C04/BasesSQL1.md'
@@ -151,7 +147,10 @@ nav:
             - 'Le langage' : 
                 - 'Manipulation des fichiers textes' : 'Miscellanees/Bases_Python/Fichiers_Textes.md'
             - 'Flask' : 'WorkInProgress.md'
-            - 'MkDocs' : 'Miscellanees/mkdocs_cmd.md'
+            - 'MkDocs' :
+                - 'Commandes de base' : 'Miscellanees/mkdocs_cmd.md'
+                - 'Pyodide' : 'Miscellanees/Pyodide-mkdocs/Pyodide-mkdocs.md'
+
             - 'Manim' : 'Miscellanees/Manim/BasesManim.md'
             - 'Pygame' : 
                 - 'Installation' : 'Miscellanees/Pygame/InstallationPygame.md'
@@ -161,6 +160,9 @@ nav:
                 - 'Bases de P5 ' : 'Miscellanees/utilisationP5.md'
         - 'REGEX' : 'Miscellanees/regex.md'
         - 'BDD, SQL et PHP' : 'Miscellanees/Challenge_Ada_Lovelace/BDD.md'
+        - 'FFMPEG' : 'Miscellanees/FFMPEG.md'
+        - 'Sciences Cogntives' :
+            - 'Mémorisation' : 'Miscellanees/Memorisation/Memorisation.md'
         
         
 plugins : 
@@ -180,7 +182,7 @@ plugins :
 theme:
     name: material
     custom_dir: my_theme_customizations/
-    locale: fr
+    locale: fr_FR
     logo  : assets/icons/house-fill.svg
     features:
         #- navigation.instant
@@ -268,8 +270,8 @@ markdown_extensions:
   - abbr
   - footnotes
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       options:
         custom_icons:
           - assets/.icons/
