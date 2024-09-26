@@ -4455,12 +4455,12 @@ dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà t
 
 <div class="admonition abstract">
 <p class="admonition-title">Principe du Tri Fusion (Merge Sort)</p>
-<p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark>, est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivemment (ou itérativemment 
+<p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark>, est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivement (ou itérativement 
 mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
 <p>Une fois les sous-tableaux triés, il faudra <mark class="critic"><strong>fusionner</strong></mark> ces deux sous-tableaux en une seule identité.</p>
 <p>Cet algorithme est  du type <mark class="critic"><strong>diviser pour régner</strong></mark> (<em>Divide and Conquer</em>) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux). Il a été inventé par <mark class="critic"><strong>John Von Neumann en 1945</strong></mark>.</p>
 <p></p><p align="center">
-<img _=";" alt="Merge Sort" src="https://i.redd.it/rno9aidb3bm01.png" style="width : 50%">
+<img _=";" alt="Merge Sort" src="../Ikea_Merge_Sort.png" style="width : 50%">
 </p>
 </div>
 <div class="admonition question">
@@ -4554,7 +4554,7 @@ avec les valeurs restantes du premier tableau.</li>
 </div>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Complexié en temps</p>
+<p class="admonition-title">Complexité en temps</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Exercice</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4583,9 +4583,22 @@ de la fonction qu'on veut décorer. Par exemple :
     <span class="o">...</span>
 </code></pre></div>
 Chaque fois que la fonction <code>tri_insertion</code> sera appelée, le décorateur sera appliqué
-et exécuterala fonction <code>timed</code>, qui calcule le temps d'exécution de la fonction décorée.
-<p>Il faudra être attentif à son utilisation <strong>dans le cas des fonctions récursives !</strong> (Je vous laisse
-constater par vous même le problème rencontré.)</p>
+et exécutera la fonction <code>timed</code>, qui calcule le temps d'exécution de la fonction décorée.
+<p>Il faudra être attentif à son utilisation <strong>dans le cas des fonctions récursives !</strong> (Je vous laisse constater par vous même le problème rencontré)</p>
+<div class="admonition tips">
+<p class="admonition-title">Fonction englobante</p>
+<p>Parfois il est nécessaire d'englober la fonction que l'on souhaite étudier au sein d'une autre fonction. Par exemple, pour éviter un appel à <code>timeit</code> à chaque appel récursif, il faut placer le décorateur sur une fonction qui englobera la fonction récursive. Par habitude de programmation, on appelera la fonction englobante du nom de la fonction récursive originale, et on renommera la fonction originale en <code>compute</code> :</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="nd">@timeit</span>
+<span class="k">def</span> <span class="nf">tri_fusion</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">t</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">fusion</span><span class="p">(</span><span class="n">compute</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]),</span> <span class="n">compute</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">:]))</span>
+    <span class="k">return</span> <span class="n">compute</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+Ainsi, le décorateur <code>timeit ne s'applique pas à chaque appel récursif, puisque la fonction</code>tri_fusion` n'est appelée qu'une seule fois.
+</div>
 </div>
 </li>
 <li>
@@ -4616,7 +4629,7 @@ La complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n log(n))\)
 <div class="admonition abstract">
 <p class="admonition-title">Principe du QuickSort</p>
 <p></p><p align="center">
-<img _=";" alt="Kwik Sort" src="https://i.redd.it/mqdl2t9fyi961.png" style="width : 50%">
+<img _=";" alt="Kwik Sort" src="../Ikea_Quick_Sort.png" style="width : 50%">
 </p>
 </div></div>
 

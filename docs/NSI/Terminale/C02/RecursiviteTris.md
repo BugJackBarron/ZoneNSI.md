@@ -77,7 +77,7 @@
 
 !!! abstract "Principe du Tri Fusion (Merge Sort)"
 	
-	Le principe du {==**tri fusion**==}, est de séparer un tableau à trier en **deux sous-tableaux** qu'on triera récursivemment (ou itérativemment 
+	Le principe du {==**tri fusion**==}, est de séparer un tableau à trier en **deux sous-tableaux** qu'on triera récursivement (ou itérativement 
 	mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.
 	
 	Une fois les sous-tableaux triés, il faudra {==**fusionner**==} ces deux sous-tableaux en une seule identité.
@@ -85,7 +85,7 @@
 	Cet algorithme est  du type {==**diviser pour régner**==} (*Divide and Conquer*) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux). Il a été inventé par {==**John Von Neumann en 1945**==}.
 		
 	<p align="center">
-	![Merge Sort](https://i.redd.it/rno9aidb3bm01.png){: style="width : 50%";}
+	![Merge Sort](Ikea_Merge_Sort.png){: style="width : 50%";}
 	</p>
 
 
@@ -166,7 +166,7 @@
 	=== "Solution"
 		A venir !
 		
-!!! question "Complexié en temps"
+!!! question "Complexité en temps"
 	
 	=== "Exercice"
 		
@@ -195,10 +195,26 @@
 					...
 				```
 				Chaque fois que la fonction `tri_insertion` sera appelée, le décorateur sera appliqué
-				et exécuterala fonction `timed`, qui calcule le temps d'exécution de la fonction décorée.
+				et exécutera la fonction `timed`, qui calcule le temps d'exécution de la fonction décorée.
 				
-				Il faudra être attentif à son utilisation **dans le cas des fonctions récursives !** (Je vous laisse
-				constater par vous même le problème rencontré.)
+				Il faudra être attentif à son utilisation **dans le cas des fonctions récursives !** (Je vous laisse constater par vous même le problème rencontré)
+
+				!!! tips "Fonction englobante"
+
+					Parfois il est nécessaire d'englober la fonction que l'on souhaite étudier au sein d'une autre fonction. Par exemple, pour éviter un appel à `timeit` à chaque appel récursif, il faut placer le décorateur sur une fonction qui englobera la fonction récursive. Par habitude de programmation, on appelera la fonction englobante du nom de la fonction récursive originale, et on renommera la fonction originale en `compute` :
+
+					``` python
+					@timeit
+					def tri_fusion(t : list) -> list :
+						def compute(t : list) -> list :
+							if len(t) == 0 or len(t) == 1:
+								return t
+							else :
+								return fusion(compute(t[:len(t)//2]), compute(t[len(t)//2:]))
+						return compute(t)
+					```
+					Ainsi, le décorateur `timeit ne s'applique pas à chaque appel récursif, puisque la fonction `tri_fusion` n'est appelée qu'une seule fois.
+
 		
 		2. Créer une fonction `genereTab(n)` qui crée un tableau de taille $n$ d'entiers aléatoires compris entre $0$ et $n^2$.
 		3. Créer à l'aide de toutes les fonctions précédentes une fonction `testeTemps(n)` qui compare les temps d'exécution des différents tris pour $n$ valant $100$, $1~000$, $10~000$. 
@@ -221,5 +237,5 @@
 !!! abstract "Principe du QuickSort"
 	
 	<p align="center">
-	![Kwik Sort](https://i.redd.it/mqdl2t9fyi961.png){: style="width : 50%";}
+	![Kwik Sort](Ikea_Quick_Sort.png){: style="width : 50%";}
 	</p>
