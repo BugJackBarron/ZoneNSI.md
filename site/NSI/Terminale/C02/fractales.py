@@ -51,14 +51,41 @@ def traceSierpinski(long,n, speed=5) :
     screen.reset()
     rafaello.hideturtle()
     
-
-
-if __name__ == "__main__" :
-    while True :
+def longueurR(t, d : int, n : int) :
+    if n == 0 :
+        t.forward(d)
+    else :
+        longueurR(t, d//3, n-1)
+        t.left(60)
+        longueurR(t, d//3, n-1)
+        t.right(120)
+        longueurR(t, d//3, n-1)
+        t.left(60)
+        longueurR(t, d//3, n-1)
         
-        traceSierpinski(200,0,speed = 0)
-        traceSierpinski(200,1, speed= 0)
-        traceSierpinski(200,2, speed = 0)
-        traceSierpinski(200,3, speed = 0)
-        traceSierpinski(200,4, speed = 0)
-        traceSierpinski(200,7, speed = 0)
+def vonKoch(d, n) :
+    
+    screen = turtle.Screen()
+    screen.bgcolor('lightgray')
+    t = turtle.Turtle()
+    t.penup()
+    t.goto(-d//2, -d//2)
+    t.pendown()
+    t.speed(0)
+    for _ in range(3) :
+        longueurR(t, d,n)
+        t.left(120)
+    screen.exitonclick()
+    
+    
+
+vonKoch(300,3)
+# if __name__ == "__main__" :
+#     while True :
+        
+#         traceSierpinski(200,0,speed = 0)
+#         traceSierpinski(200,1, speed= 0)
+#         traceSierpinski(200,2, speed = 0)
+#         traceSierpinski(200,3, speed = 0)
+#         traceSierpinski(200,4, speed = 0)
+#         traceSierpinski(200,7, speed = 0)

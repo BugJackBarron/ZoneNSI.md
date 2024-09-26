@@ -109,79 +109,37 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	
 !!! question "Prise en main de `turtle`"
 
+	En partant d'un fichier `sandbox_turtle.py` contenant les lignes suivantes :
 	
-	=== "Énoncé"
+	```` python
+	import turtle
+
+	def triangleEquilateral(c) :
+	...
+
+	def pentagramme(c, color="red") :
+	...
+
+	def hexagone(c, diag = False) :
+	...
+
+
+
+	if __name__ == "__main__" :
+		screen = turtle.Screen()
+		screen.bgcolor('lightgray')
+		donatello = turtle.Turtle()
+
 	
-		En partant d'un fichier `sandbox_turtle.py` contenant les lignes suivantes :
-		
-		```` python
-		import turtle
+	````
+	
+	1. Créer une procédure (fonction sans `return` explicite) `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
+	la position courante.
+	2. Créer une procédure `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
+	avec la couleur passée en argument.
+	3. Créer une procédure `hexagone(c, diag = False)` qui trace un hexagone de côté $c$ et qui trace en outre ses diagonales
+	si le paramètre optionnel `diag` est passé à `True`.
 
-		def triangleEquilateral(c) :
-		...
-
-		def pentagramme(c, color="red") :
-		...
-
-		def hexagone(c, diag = False) :
-		...
-
-
-
-		if __name__ == "__main__" :
-			screen = turtle.Screen()
-			screen.bgcolor('lightgray')
-			donatello = turtle.Turtle()
-
-		
-		````
-		
-		1. Créer une procédure (fonction sans `return` explicite) `triangleEquilateral(c)` qui trace un triangle équilatéral de longueur $c$ à partir de 
-		la position courante.
-		2. Créer une procédure `pentagramme(c, color="red")` qui trace un pentagramme (une étoile à 5 branches) et le remplit 
-		avec la couleur passée en argument.
-		3. Créer une procédure `hexagone(c, diag = False)` qui trace un hexagone de côté $c$ et qui trace en outre ses diagonales
-		si le paramètre optionnel `diag` est passé à `True`.
-
-	=== "Solutions"
-		Toutes les solutions suivantes supposent qu'un écran et qu'une tortue nommée `t` existent dans l'espace de nom général.
-		
-		=== "`triangleEquilateral(c)`"
-		
-			``` python
-			def triangleEquilateral(c) :
-				for _ in range(3):
-					t.forward(c)
-					t.left(120)
-			```
-			
-		=== "`pentagramme(c, color="red")`"
-		
-			``` python
-			def pentagramme(t, c, color="red") :
-				t.fillcolor(color)
-				t.begin_fill()
-				for _ in range(5):
-					t.forward(c)
-					t.right(144)
-				t.end_fill()
-			```
-			
-		=== "`hexagone(c, diag = False)`"
-		
-			``` python
-			def hexagone(t, c, diag = False) :
-				for _ in range(6):
-					t.forward(c)
-					t.right(60)
-				if diag :
-					for _ in range(3) :
-						t.right(60)
-						t.forward(2*c)
-						t.right(120)
-						t.forward(c)
-						t.right(60)
-			```
 
 ## Flocon de Von Koch
 
@@ -217,19 +175,6 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 			
 			b. Tester cette fonction en plaçant la tortue dans différentes positions de départ.
 			
-		=== "Solution"
-			
-			``` python
-			def segment(long) :
-				t.forward(long//3)
-				t.left(60)
-				t.forward(long//3)
-				t.right(120)
-				t.forward(long//3)
-				t.left(60)
-				t.forward(long//3)
-		
-			```
 		
 	2. Passons à la construction récursive d'un segment :
 	
@@ -251,21 +196,7 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 			![VonKoch 2](VonKoch2.png){: style="width:25%;"}
 			</p>
 			
-		=== "Solution"
-			
-			``` python
-			def segmentR( long, n) :
-				if n == 0 :
-					t.forward(long)
-				else :
-					segmentR(long/3, n-1)
-					t.left(60)
-					segmentR(long/3, n-1)
-					t.right(120)
-					segmentR(long/3, n-1)
-					t.left(60)
-					segmentR(long/3, n-1)
-			```
+		
 		
 	3. Terminer la construction en traçant le flocon sur une base de triangle équilatéral.
 	
@@ -287,6 +218,10 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
               "blue","navy","yellow","gold","tan","brown",
               "sienna","wheat","cyan","pink","salmon","violet","purple"]
 			```
+	4. Il est aussi possible de tracer un flocon inversé tel que celui-ci, en modifiant légèrement le code :
+
+		![VonKoch 0](Von_Koch_INverse.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
 	
 ## Le triangle de Sierpinski
 
@@ -311,4 +246,11 @@ Commençons par créer un fichier `fractales.py` qui nous servira pour la totali
 	
 !!! tips "Remarque" 
 
-	Le triangle de Sierpinski correspond à une propriété particulière du triangle de Pascal. En effet, le triangle de Sierpinski apparaît dans le triangle de Pascal lorsque'on supprime tous les coefficients pairs. Vous pouvez en voir plus [ici](https://blogdemaths.wordpress.com/2013/07/16/sierpinski-et-pascal-sont-dans-un-triangle/)
+	Le triangle de Sierpinski correspond à une propriété particulière du triangle de Pascal. En effet, le triangle de Sierpinski apparait dans le triangle de Pascal lorsque'on supprime tous les coefficients pairs. Vous pouvez en voir plus [ici](https://blogdemaths.wordpress.com/2013/07/16/sierpinski-et-pascal-sont-dans-un-triangle/)
+
+
+## Arbre fractal
+
+Pour les plus courageux, il est aussi possible de tracer de manière récursive un arbre tel que celui-ci :
+
+![arbre](Arbre_fractal.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
