@@ -4436,15 +4436,14 @@ dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà t
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">tri_selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
           <span class="c1"># Trouver le min</span>
-           <span class="nb">min</span> <span class="o">=</span> <span class="n">i</span>
+           <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span>
            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-               <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-                   <span class="nb">min</span> <span class="o">=</span> <span class="n">j</span>
+               <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                   <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span>
 
            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-           <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span>
-           <span class="n">tab</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
-       <span class="k">return</span> <span class="n">tab</span>
+           <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span>
+           <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
 </code></pre></div>
 </details>
 </div>
@@ -4510,30 +4509,14 @@ d'utiliser une boucle <code>Tant que</code>, puisque l'algorithme se poursuit ta
 sa position finale.</li>
 <li>Quand <span class="arithmatex">\(j\)</span> atteint la position 3 (soit la longueur du deuxième tableau), il ne reste plus qu'à compléter
 avec les valeurs restantes du premier tableau.</li>
-<li>Différentes versions :</li>
 </ol>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Version <code>Pour</code> sans initialisation du tableau final</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>fonction fusion(t1, t2)
-    tf &lt;- tableau vide
-    i &lt;- 0
-    j &lt;- 0
-    n1 &lt;- longueur de t1
-    n2 &lt;- longueur de t2
-    Pour k allant de 0 à n1+n2-1
-        Si i&lt;n1 et j&lt;n2
-</code></pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Tri Fusion Récursif</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Exercice</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Exercice</label><label for="__tabbed_2_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Une fois la fonction <code>fusion</code> codée, l'algorithme de tri par fusion est simple :</p>
@@ -4555,7 +4538,7 @@ avec les valeurs restantes du premier tableau.</li>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Complexité en temps</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Exercice</label><label for="__tabbed_4_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Exercice</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>

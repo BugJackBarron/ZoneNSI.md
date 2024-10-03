@@ -55,15 +55,14 @@
 			def tri_selection(tab):
 				for i in range(len(tab)):
 				  # Trouver le min
-				   min = i
+				   indice_min = i
 				   for j in range(i+1, len(tab)):
-					   if tab[min] > tab[j]:
-						   min = j
+					   if tab[indice_min] > tab[j]:
+						   indice_min = j
 							
 				   tmp = tab[i]
-				   tab[i] = tab[min]
-				   tab[min] = tmp
-			   return tab
+				   tab[i] = tab[indice_min]
+				   tab[indice_min] = tmp
 		```
 		
 	
@@ -135,21 +134,7 @@
 		sa position finale.
 		4. Quand $j$ atteint la position 3 (soit la longueur du deuxième tableau), il ne reste plus qu'à compléter
 		avec les valeurs restantes du premier tableau.
-		5.  Différentes versions :
-		=== "Version `Pour` sans initialisation du tableau final"
-			```
-			fonction fusion(t1, t2)
-				tf <- tableau vide
-				i <- 0
-				j <- 0
-				n1 <- longueur de t1
-				n2 <- longueur de t2
-				Pour k allant de 0 à n1+n2-1
-					Si i<n1 et j<n2
-						
-			
 		
-			```
 		
 !!! question "Tri Fusion Récursif"
 	=== "Exercice"

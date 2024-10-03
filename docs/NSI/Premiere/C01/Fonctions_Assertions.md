@@ -5,21 +5,54 @@
 
 ### Pourquoi des fonctions ?
 
-Dans la partie précédente, nous avons terminé par un petit programme qui demande à un·e utilisateur·trice de donner un nombre entier entre 1 et 10, et qui vérifie la saisie jusqu'à ce que l'utilisateur·trice ait effectué une saisie correcte. Voici un exemple simple d'implémentation de ce programme :
+Dans la partie précédente, nous avons terminé par un petit programme qui demande à un·e utilisateur·trice de donner un nombre entier entre 1 et 10, et qui vérifie la saisie jusqu'à ce que l'utilisateur·trice ait effectué une saisie correcte. Voici un exemple simple d'implémentation de ce programme, tel que celui que vous avez proposé :
 
 {{ IDEv('askIntV1') }}
 
 !!! question "Un blocage ?"
 
     === "Enoncé"
-        Essayez de saisir différentes valeurs **de différents types**. Quel est le problème rencontré ?
+        Quels sont les problèmes pouvant être posé par ce programme ?
 
     === "Solution"
-        Si 'utilisateur·trice saisi un nombre négatif, même entier, celui-ci n'est pas reconnu comme un entier. Ce peut-être parfois complètement bloquant pour le fonctionnement réel d'une application.
+        * En premier lieu, les lignes 1 et 3 sont des répétitions (des copiés-collés). Or en informatique, on essaye le plus possible de respecter le principe {==**DRY**==} :  *Don't Repeat Yourself*. Une méthode pour corriger ce point pourrait être la suivante :
 
-        La version ci-dessous est un peu plus *dumbproof*, mais je ne vous demande pas encore de comprendre les blocs `try/except/else`.
+            ``` python 
+            repeter = True
+            while repeter :
+                saisie = input("Entrez un nombre entre 1 et 10 : ")
+                if saisie in [ "1", "2", "3","4", "5", "6", "7", "8", "9", "10" ] :
+                    nb = int(saisie)
+                    repeter = False
+            print(f"Vous avez saisi {nb}")
+            ```
+        * Dans un second temps, le code fonctionne dans ce cas précis, mais n'est pas adaptable à d'autres situations. En effet, on doit saisir dans la liste **toutes les possibilités pouvant être saisies**, ce qui rend le code peu adaptable à une situation du style « Saisir un nombre entier entre -1000 et 1000 ». Il faut donc modifier complètement la logique de ce programme. Entre autres, il faut découper le code en plusieurs morceaux :
+            1. On commencera d'abord à tester si quelque chose a bien été saisi, sinon il faut reposer la question.
+            2. Il faut ensuite tester si la suite de caractères saisie correspond bien aux caractères des entiers, et rien qu'à ceux-ci. On pourrait aussi tester si le premier caractère est un signe « - », pour prendre en compte les entiers négatifs.
+            3. Enfin, une fois certain que la saisie est bien un entier, on la *trans-type*, puis on regarde si la condition d'encadrement est correcte.
 
-        {{ IDEv('askIntV2') }}
+            Le code suivant donne toutes ces étapes :
+
+            ``` python 
+            repeter = True # Booléen servant à exécuter la boucle
+            while repeter : # Tant que repeter est vrai
+                saisie = input("Entrez un nombre entre 1 et 10 : ")
+                if saisie != "" : # On ne travaille que si la saisie est une chaine non vide
+                    ######## ON TESTE SI LA SAISIE EST CELLE D'UN ENTIER #######
+                    est_un_entier = True # On suppose que c'est un entier
+                    indice_depart = 0 # et que le premier caractère est un chiffre                    
+                    if saisie[0] == "-" :# si le premier caractère est un signe "-",
+                        indice_depart = 1# On regardera chaque caractère à partir de l'indice 1
+                    for caractere in saisie[indice_depart : len(saisie)] : # Pour chaque caractère
+                        if caractere not in "0123456789" : # Si ce n'est pas un chiffre
+                            est_un_entier = False # Alors la saisie n'est pas un entier
+                    ###### ON TESTE SI IL EST ENTRE 1 et 10 #######
+                    if est_un_entier : #
+                        nb = int(saisie)# Trans-typage
+                        if 1<= nb <= 10 : # Si les conditions sont remplies
+                            repeter = False # On arrête la boucle
+            print(f"Vous avez saisi {nb}") # Juste là pour montrer la saisie
+            ```
 
 
 !!! question "Application 1 : Multiplier les codes"
@@ -27,63 +60,73 @@ Dans la partie précédente, nous avons terminé par un petit programme qui dema
 
     === "Enoncé"
 
-        Imaginons maintenant un programme qui demande **trois fois** à l'utilisateur d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore.
+        Imaginons maintenant un programme qui demande **trois fois** à l'utilisateur·trice d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore (c'est-à-dire $a^2 + b^2 = c^2$).
 
-        Vous devez vous inspirer du programme précédent pour compléter le programme ci-dessous afin d'obtenir trois nombres entiers `nb1`, `nb2` et `nb3` saisis par l'utilisateur :
+        Vous devez vous inspirer du programme précédent pour compléter le programme ci-dessous afin d'obtenir trois nombres entiers `nb1`, `nb2` et `nb3` saisis par l'utilisateur·trice :
 
-    === "Solution"
+    === "Une solution possible"
 
-        Un code pouvant être inséré (avec notre niveau actuel en Python et sans utiliser de structures de listes) est le suivant :
+        Un programme avec notre niveau actuel en Python pourrait être le suivant :
 
         ```` python
-        while True :
-            nb1 = input("Entrez un nombre entier entre 1 et 10 : ")
-            try :
-                nb1 = int(nb1)
-            except ValueError :
-                print("Vous n'avez pas saisi un entier. Veuillez recommencer !")
+            repeter = True
+            while repeter :
+                saisie1 = input("Entrez un nombre entre 1 et 10 : ")
+                if saisie1 != "" :
+                    est_un_entier = True
+                    indice_depart = 0
+                    if saisie1[0] == "-" :
+                        indice_depart = 1
+                    for caractere in saisie1[indice_depart : len(saisie1)] :
+                        if caractere not in "0123456789" :
+                            est_un_entier = False
+                    if est_un_entier :
+                        nb1 = int(saisie1)
+                        if 1<= nb1 <= 10 :
+                            repeter = False
+            repeter = True
+            while repeter :
+                saisie2 = input("Entrez un nombre entre 1 et 10 : ")
+                if saisie2 != "" :
+                    est_un_entier = True
+                    indice_depart = 0
+                    if saisie2[0] == "-" :
+                        indice_depart = 1
+                    for caractere in saisie2[indice_depart : len(saisie2)] :
+                        if caractere not in "0123456789" :
+                            est_un_entier = False
+                    if est_un_entier :
+                        nb2 = int(saisie2)
+                        if 1<= nb2 <= 10 :
+                            repeter = False
+            repeter = True
+            while repeter :
+                saisie3 = input("Entrez un nombre entre 1 et 10 : ")
+                if saisie3 != "" :
+                    est_un_entier = True
+                    indice_depart = 0
+                    if saisie3[0] == "-" :
+                        indice_depart = 1
+                    for caractere in saisie3[indice_depart : len(saisie3)] :
+                        if caractere not in "0123456789" :
+                            est_un_entier = False
+                    if est_un_entier :
+                        nb3 = int(saisie3)
+                        if 1<= nb3 <= 10 :
+                            repeter = False
+
+            if nb1**2 + nb2**2 == nb3**2 or nb2**2 + nb3**2 == nb1**2 or nb3**2 + nb1**2 == nb2**2 :
+                print(f"({nb1}, {nb2}, {nb3}) est un triplet de Pythagore")
             else :
-                if 1<= nb1= 10 :
-                    break
-                else :
-                    print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")
-        while True :
-            nb2 = input("Entrez un nombre entier entre 1 et 10 : ")
-            try :
-                nb2 = int(nb2)
-            except ValueError :
-                print("Vous n'avez pas saisi un entier. Veuillez recommencer !")
-            else :
-                if 1<= nb2 <= 10 :
-                    break
-                else :
-                    print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")
-        while True :
-            nb3 = input("Entrez un nombre entier entre 1 et 10 : ")
-            try :
-                nb3 = int(nb3)
-            except ValueError :
-                print("Vous n'avez pas saisi un entier. Veuillez recommencer !")
-            else :
-                if 1<= nb3 <= 10 :
-                    break
-                else :
-                    print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")
+                print(f"({nb1}, {nb2}, {nb3}) n'est pas un triplet de Pythagore)
+        
         ````
-
-
-    {{ IDEv('ask3Int') }}
-
-
-
-
 
 !!! warning "Mauvaise pratique"
     Si ce code fait le travail demandé, il n'en est pas moins de *mauvaise qualité* pour plusieurs raisons :
 
-    * Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur.
-    * Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification doit être **réécrite à chaque fois** que le morceau de code est appelé. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.
-    * Le code n'est plus lisible. Dans le cas d'un travail en équipe, il est impératif d'avoir un code clairement écrit, avec des fonctionnalités clairement définies.
+    * Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur. Et surtout, {==**plus un code est long, moins il est lisible !**==}
+    * Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification dans la structure du code doit être **réécrite à chaque fois** que le morceau de code est copié. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.
 
 ### Première fonction
 
@@ -92,23 +135,26 @@ Dans la partie précédente, nous avons terminé par un petit programme qui dema
 On va donc améliorer non seulement la lisibilité de notre code, mais aussi son efficacité et sa simplicité, en utilisant une **fonction**.
 
 !!! abstract "Définition : fonction"
-    Une {==**fonction**==} est un bloc de code nommé (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable). L'appel par l'interpréteur du nom de la fonction {==**suivi d'une paire de parenthèses**==} exécutera alors l'intégralité du code et renverra une {==**valeur de retour**==}, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.
+    Une {==**fonction**==} est un {==**bloc de code nommé**==} (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable) et qui :
+    
+    * **n'est pas exécuté** au moment de sa définition ;
+    * mais peut être **appelé** plusieurs fois dans le code par l'intermédiaire de son nom, {==**suivi d'une paire de parenthèses**==}. Ces appels (*call* en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverra une {==**valeur de retour**==}, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.
 
-Pour notre exemple :
+!!! example "Pour notre exemple : " 
 
-{{ IDEv('askIntFctV1') }}
+    {{ IDEv('askIntFctV1') }}
 
 
-En regardant la première ligne :
-``` python
-def ask_user_int() -> int:
-```
+    En regardant la première ligne, qu'on appelle la {==**signature de la fonction**==} :
+    ``` python
+    def ask_user_int() -> int:
+    ```
 
-* La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet {==**callable**==} ("appelable").
-* la notation `-> int` est un {==**type hint**==}, autreùment dit un *indice de type*, qui indique que la valeur renvoyée par la fonction sera de type `int`. Les **type hints** sont *facultatifs en Python*, mais strictement nécessaires dans d'autres langages (`Java`, `C`, `C++`, etc).
-* Les deux points définissent un bloc de code qui est repéré par **une indentation**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
+    * La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet {==**appelable**==} (*callable* en anglais).
+    * la notation `-> int` est un {==**type hint**==}, autrement dit un *indice de type*, qui indique que la valeur renvoyée par la fonction sera de type `int`. Les **type hints** sont *facultatifs en Python*, mais strictement nécessaires dans d'autres langages (`Java`, `C`, `C++`, etc).
+    * Les deux points définissent un bloc de code qui est repéré par **une indentation**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
 
-On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
+    On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
 
 !!! warning "Oubli des parenthèses"
 
@@ -119,8 +165,9 @@ On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déc
     <function ask_user_int at 0xe8c1a0>
     ````
 
-    Qui signifie simplement que le nom `ask_user_int` fait référence à une fonction dont l'adresse mémoire est donnée sous forme hexadécimale.
+    Qui signifie simplement que le nom `ask_user_int` fait référence à une fonction dont l'adresse dans la mémoire de l'ordinateur est donnée sous forme *hexadécimale*.
 
+??? warning "Pour les cracks"
     Notez que `ask_user_int` est juste un nom, l'objet correspondant est stocké dans l'espace des objets. On peut donc écrire les choses suivantes :
 
     ```python
@@ -147,16 +194,16 @@ Comme tout objet, la valeur de retour d'une fonction doit elle-même être stock
     * L'objet est ensuite stocké dans une variable nommée `entier`, et peut alors être utilisé en dehors de la fonction.
     
 
-    
-
 #### Factorisation du code de Pythagore
 
-Le code du programme de vérification de Pythagore peut alors être {==**factorisé**==}, et devient alors :
+Le code du programme de vérification de Pythagore peut alors être {==**factorisé**==} (ce qui signifie globalement qu'on réduit sa taille en évitant les répétitions), afin de respecter le principe DRY :
 
 
 {{ IDEv('askIntFctV2') }}
 
-Ce qui a l'avantage d'être vraiment vraiment plus clair.
+Ce qui a l'avantage d'être vraiment plus clair.
+
+
 
 ### Exercices
 
@@ -182,20 +229,22 @@ Ce qui a l'avantage d'être vraiment vraiment plus clair.
             return table
         ```
 
-### Augmenter la capacité des fonctions : les arguments obligatoires 
+### Augmenter la capacité des fonctions : les paramètres obligatoires 
+
+#### Premiers
 
 L'exemple de la fonction `ask_user_int` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables, par exemple entre 1 et 100 ou bien entre -10 et 10.
 
-Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**arguments**==} qui seront des objets transmis et nommés **initialisés à certaines valeurs lors de l'appel à la fonction** :
+Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**paramètres**==} qui seront des objets transmis et nommés **initialisés à certaines valeurs lors de l'appel à la fonction** :
 
 
 !!! example "Exemple :"
 
     {{ IDEv('askUserIntV3') }}
 
-    La fonction `ask_user_int` utilise maintenant deux arguments `borne_min` et `borne_max`, qui sont deux entiers, et renverra toujours un entier
+    La fonction `ask_user_int` utilise maintenant deux paramètres `borne_min` et `borne_max`, dont les **type hints** indiquent que ce doit être deux entiers.
 
-    Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :
+    Une fois la fonction définie, on peut l'appeler en lui passant des {==**arguments==}, c'est-à-dire des valeurs qui seront affectées aux paramètres :
 
     ```python
     >>> ask_user_int(1,100)
@@ -250,8 +299,35 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**a
             * `borne_sup` initialisé à `10`;
             * pour atteindre l'instruction `return`, il faudrait que l'utilisateur·trice ait saisi·e un nombre `nb` à la fois supérieur à `30` et inférieur à `10`, ce qui est impossible.
 
-            On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des {==**préconditions**==}, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que `borne_inf` est bien inférieur ou égal à `borne_sup`. Ces tests seront vu dans la partie concernant les {==**assertions**==}.
+    === "Solution ?"
+        On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des {==**préconditions**==}, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que `borne_inf` est bien inférieur ou égal à `borne_sup`. Ces tests seront vu dans la partie concernant les {==**assertions**==}.
 
+
+#### Factoriser le code, 2ème saison
+
+On a vu que **factoriser** le code, c'est réduire la taille d'un code en évitant les répétitions (principe DRY). Mais en fait, c'est aussi séparer le code en **fonctions autonomes respectant une certaine logique interne**. Par exemple, dans le code de notre fonction `ask_user_int`, il y a deux parties bien distinctes :
+
+* la première est de vérifier que la saisie est bien celle d'un entier ;
+* la seconde est de vérifier les conditions d'encadrement du nombre saisi.
+
+On pourrait alors souhaiter séparer le code en deux fonctions :
+
+* créer une fonction `is_integer`, dont la signature serait :
+
+    ```python
+    def is_integer(word : str) -> bool :
+    ```
+    qui utilise comme paramètre `word`, une chaine de caractère, et qui renvoie un booléen `True` si `word` est transtypable en entier, et `False` sinon.
+
+* puis conserver la fonction `ask_user_int` telle qu'elle est définie actuellement.
+
+On obtiendrait alors le code suivant :
+
+ {{ IDEv('askUserIntV3bis') }}
+
+ Vous noterez que la fonction `is_integer` est utilisée au sein de la fonction `ask_user_int`.
+
+#### Applications
 
 
 !!! question "Application 3"
@@ -259,17 +335,6 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**a
 
     === "Enoncé"
         Créer une fonction `table_multi(m : int)-> str` qui prend un argument entier `m` et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
-
-    === "Solution"
-
-        ```` python
-        def table_multi(m : int ) -> str :
-            table = ''
-            for i in range(11) :
-                table += f'{nb}}x{i} = {nb*i} \n'
-            return table
-
-        ````
 
 !!! question "Application 4 : motif dans une chaine"
 
@@ -284,30 +349,23 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**a
         assert trouve_chaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
         ```
 
-    === "Solution"
-
-        ```` python
-        def trouve_chaine(motif : str, texte: str) -> bool:
-            return motif.lower() in texte.lower()
-        ````
-
 
 
 ### Augmenter la capacité des fonctions : les arguments optionnels 
 
 Notre fonction `ask_user_int` commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
-C'est tout à fait possible en Python, grâce aux **arguments optionnels**. Il s'agit d'arguments dont le nom est donné dans la fonction, mais avec **une valeur par défaut**. Ainsi :
+C'est tout à fait possible en Python, grâce aux **paramètres optionnels**. Il s'agit de paramètres dont le nom est donné dans la **signature**, mais avec **une valeur par défaut**. Ainsi :
 
 
 {{ IDEv('askUserIntV4') }}
 
-Ainsi, la fonction ci-dessus possède trois arguments :
+Ainsi, la fonction ci-dessus possède trois paramètres :
 
-* deux arguments **obligatoires**, `borne_min` et `borne_max`, de type `int` ;
-* un argument **optionnel**, `prenom`, de type `str`, dont la **valeur par défaut est la chaine `Inconnu`.
+* deux paramètres **obligatoires**, `borne_min` et `borne_max`, de type `int` ;
+* un paramètre **optionnel**, `prenom`, de type `str`, dont la **valeur par défaut est la chaine `Inconnu`.
 
 
-Il est à noter qu'impérativement les **arguments obligatoires doivent être placés avant les arguments optionnels**.
+Il est à noter qu'impérativement les **paramètres obligatoires doivent être placés avant les paramètres optionnels**.
 
 On peut alors appeler la fonction des différentes manières suivantes (à tester) :
 
@@ -320,20 +378,20 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
 === "2"
 
     ```python
-    ask_user_int(0, 10, prenom='Toto')
+    ask_user_int(0, 10, nom='Toto')
     ```
 
 === "3"
 
     ```python
-    ask_user_int(0, prenom='foo', 10)
+    ask_user_int(25, 40, nom='foo')
     ```
 {{ terminal() }}
 
-!!! question "Application 5 : arguments optionnels"
+!!! question "Application 5 : paramètres optionnels"
 
     === "Enoncé"
-        Compléter la fonction `table_multi` afin qu'elle utilise deux arguments optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.
+        Compléter la fonction `table_multi` afin qu'elle utilise deux paramètres optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.
 
     === "Solution"
 
@@ -345,11 +403,11 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
             return table
         ```
 
-!!! question "Application 6 : arguments optionnels"
+!!! question "Application 6 : paramètres optionnels"
 
     === "Enoncé"
 
-        Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *argument booléen optionnel* `verifCasse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut l'argument sera `False`. Vous pouvez utiliser les tests ci-dessous :
+        Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *paramètre booléen optionnel* `verif_casse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut le paramètre sera `False`. Vous pouvez utiliser les tests ci-dessous :
 
         ```python
         ### Cette cellule est une cellule vous permettant de tester votre fonction
@@ -360,19 +418,19 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
         assert trouve_chaine('toto', 'TOTO va à la plage')==True, 'Problème de minuscules dans le motif'
         assert trouve_chaine('ToTo', 'OtOtO va à la plage')==True, 'Que dire ?'
         # Mais on rajoute celles-ci :
-        assert trouve_chaine('Toto', 'Toto va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
-        assert trouve_chaine('TOTO', 'TOTO va à la plage',verifCasse = True )==True, 'Meme casse pas trouvée'
-        assert trouve_chaine('Totos', 'Toto va à la plage',verifCasse = True)==False, 'Chaine non présente trouvée'
-        assert trouve_chaine('TOTO', 'Toto va à la plage',verifCasse = True)==False, 'Problème de majuscules dans le motif'
-        assert trouve_chaine('toto', 'TOTO va à la plage',verifCasse = True)==False, 'Problème de minuscules dans le motif'
-        assert trouve_chaine('ToTo', 'OtOtO va à la plage',verifCasse = True)==False, 'Que dire ?'
+        assert trouve_chaine('Toto', 'Toto va à la plage',verif_casse = True )==True, 'Meme casse pas trouvée'
+        assert trouve_chaine('TOTO', 'TOTO va à la plage',verif_casse = True )==True, 'Meme casse pas trouvée'
+        assert trouve_chaine('Totos', 'Toto va à la plage',verif_casse = True)==False, 'Chaine non présente trouvée'
+        assert trouve_chaine('TOTO', 'Toto va à la plage',verif_casse = True)==False, 'Problème de majuscules dans le motif'
+        assert trouve_chaine('toto', 'TOTO va à la plage',verif_casse = True)==False, 'Problème de minuscules dans le motif'
+        assert trouve_chaine('ToTo', 'OtOtO va à la plage',verif_casse = True)==False, 'Que dire ?'
         ```
 
     === "Solution"
 
         ```python
-        def trouve_chaine(motif : str,texte : str, verifCasse : bool=False) -> bool :
-            if verifCasse==True :
+        def trouve_chaine(motif : str,texte : str, verif_casse : bool =False) -> bool :
+            if verif_casse==True :
                 return motif in texte
             else :
                 return  motif.lower() in texte.lower() :
@@ -403,9 +461,7 @@ La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring
 
 La fonction `somme` contient donc une **docstring** - introduite par trois guillemets (pour permettre les sauts de lignes). Celle-ci décrit l'effet de la fonction, de manière exacte.
 
-On peut alors accéder à la **docstring** d'une fonction en utilisant la fonction *built-in* `help` :
-
-Testez par exemple `help(somme)`.
+On peut alors accéder à la **docstring** d'une fonction en utilisant la fonction *built-in* `help` : testez par exemple `help(somme)`.
   
 
 !!! tips "Les docstrings"
@@ -485,16 +541,17 @@ L'instruction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à
 !!! example "Correction de la fonction `ask_user_int`"
 
     ``` python
-    def ask_user_int(borne_min : int, borne_max : int, prenom : str ='Inconnu' ) -> int :
+    def ask_user_int(borne_min : int, borne_max : int, nom : str ='Inconnu' ) -> int :
         """ Fonction demandant un entier compris entre borne_nf et borne_sup.
-        personnalisation du message avec l'argument optionnel prenom.
-        renvoir un objet de type entier.
+        personnalisation du message avec le paramètre optionnel nom.
+        renvoi un objet de type entier.
         """
         assert type(borne_inf) == int and type(borne_sup) == int, "Erreur de type sur borne_inf et borne_sup"
-        assert type(prenom) == str, "Erreur de type sur prenom"
+        assert type(nom) == str, "Erreur de type sur nom"
         assert borne_inf <= borne_sup , "borne_inf n'est pas inférieure à borne_sup"
-    
-        while True :
+
+        repeter = True
+        while repeter :
             ...# Le code ici n'est pas changé        
     ```
 
@@ -537,7 +594,7 @@ Par exemple, nous aimerions que la fonction vérifie le test suivant :
 
     === "Enoncé"
 
-        1. Ecrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les types fournis en argument soient bien des entiers.
+        1. Écrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les types fournis en argument soient bien des entiers.
         2. Compléter la fonction `coefficient_directeur` afin qu'elle remplisse le rôle qui lui est demandé.
 
     === "Solution"
@@ -547,7 +604,7 @@ Par exemple, nous aimerions que la fonction vérifie le test suivant :
 
 
 
-#### Tester avec le module doctest
+### Tester avec le module doctest
 
 Pyhton étant *user friendly*, il permet au programmeur de tester automatiquement, grâce au module `doctest`.
 
@@ -574,6 +631,8 @@ Le module *doctest*, lui, permet d'intégrer à la **docstring un ensemble de te
 Par exemple, copiez-collez le code suivant dans un fichier :
 
 ```python
+
+# Zone d'import des modules
 import doctest # On charge en mémoire le module doctest
 
 # Zone de déclaration des fonctions
@@ -615,7 +674,7 @@ L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents 
 
 ## Exercices  
 
-*Dans tous les exercices suivants, on supposera que l'utilisateur·trice de la fonction fournit des arguments du bon type*
+*Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.*
 
 **Pour tester vos fonctions avec les jeux fournis, n'oubliez pas :**
 
@@ -694,7 +753,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         """
     ```
 
-5. Erire une fonction qui supprime tous les caractères qui ne sont pas des lettres ( majuscules ou minuscules, sans accents ) d'une chaine de caractères donnée.
+5. Écrire une fonction qui supprime tous les caractères qui ne sont pas des lettres (majuscules ou minuscules, sans accents) d'une chaine de caractères donnée.
 
     ```python
     def rienQueDesLettres(chaine) :
@@ -708,7 +767,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         """
     ```
 
-7. Ecrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous 
+7. Écrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous 
 
 
     ```python
@@ -737,9 +796,8 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     ###VOTRE CODE ICI
     ```
 
-8. Ecrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite $(AB)$, en prenant en argument les coordonnées des points $A$ et $B$ comme la fonction précédente, et qui renvoie None si c'est impossible.
+8. Écrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite $(AB)$, en prenant en paramètres les coordonnées des points $A$ et $B$ comme la fonction précédente, et qui renvoie None si c'est impossible.
 
-9. Ecrire une fonction - et le jeu de test qui va avec,  qui renvoie l'équation réduite de la droite $(AB)$, en prenant en argument les coordonnées des points $A$ et $B$ comme dans les fonctions précédentes.
+9. Écrire une fonction - et le jeu de test qui va avec, qui renvoie l'équation réduite de la droite $(AB)$, en prenant en paramètres les coordonnées des points $A$ et $B$ comme dans les fonctions précédentes.
 
-
-10. Ecrire une fonction qui donne le discriminant d'un trinôme du second degré $ax^2 +bx+c $, en fournissant un jeu d'exemples complets.
+10. Écrire une fonction - et le jeu de test qui va avec, qui teste si une chaine de caractère en paramètre est trans-typable en un nombre flottant, puis une fonction `ask_user_float` qui demande à un·e utilisateur·trice de saisir un nombre flottant compris entre deux bornes minimum et maximum flottantes, et ce de manière *dumbproof*.

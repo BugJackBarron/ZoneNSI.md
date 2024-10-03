@@ -1,4 +1,6 @@
+#Import des modules
 import doctest
+
 
 # Déclaration des fonctions 
 
@@ -14,6 +16,6 @@ def times3(n) :
 """
     return 3*n
 
-
+# Code réellement exécuté
 
 doctest.testmod() # tests de toutes les fonctions déclarées

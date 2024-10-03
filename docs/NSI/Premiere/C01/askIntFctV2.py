@@ -1,18 +1,22 @@
 #### Zone des fonctions
 
-def ask_user_int() -> int :
-    while True :
-        nb = input("Entrez un nombre entier entre 1 et 10 : ")
-        try :
-            nb=int(nb)
-        except ValueError :
-            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")
-        else :
-            if 1<= nb<= 10 :
-                return nb #Renvoie l'objet associé à nb
-            else :
-                print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")
-
+def ask_user_int() -> int:
+    repeter = True
+    while repeter :
+        saisie = input("Entrez un nombre entre 1 et 10 : ")
+        if saisie != "" :
+            est_un_entier = True
+            indice_depart = 0
+            if saisie[0] == "-" :
+                indice_depart = 1
+            for caractere in saisie[indice_depart : len(saisie)] :
+                if caractere not in "0123456789" :
+                    est_un_entier = False
+            if est_un_entier :
+                nb = int(saisie)
+                if 1<= nb <= 10 :
+                    repeter = False
+    return nb
 ### Code principal
 
 nb1 = ask_user_int()

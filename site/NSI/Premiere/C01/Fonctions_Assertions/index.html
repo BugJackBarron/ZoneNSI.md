@@ -1411,11 +1411,44 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#augmenter-la-capacite-des-fonctions-les-arguments-obligatoires" class="md-nav__link">
+  <a href="#augmenter-la-capacite-des-fonctions-les-parametres-obligatoires" class="md-nav__link">
     <span class="md-ellipsis">
-      Augmenter la capacité des fonctions : les arguments obligatoires
+      Augmenter la capacité des fonctions : les paramètres obligatoires
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Augmenter la capacité des fonctions : les paramètres obligatoires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factoriser-le-code-2eme-saison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factoriser le code, 2ème saison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1501,8 +1534,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Réfléchir avant d'agir : écrire les tests avant la fonction">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#tester-avec-le-module-doctest" class="md-nav__link">
@@ -1510,11 +1542,6 @@
       Tester avec le module doctest
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -4551,80 +4578,133 @@
 <div><h1 id="fonctions-assertions-et-docstring-en">Fonctions, assertions et docstring en  <img alt="logo Python" src="python-logo.png"></h1>
 <h2 id="premiers-pas-avec-les-fonctions">Premiers pas avec les fonctions</h2>
 <h3 id="pourquoi-des-fonctions">Pourquoi des fonctions ?</h3>
-<p>Dans la partie précédente, nous avons terminé par un petit programme qu demande à un·e utilisateur·trice de donner un nombre entier entre 1 et 10, et qui vérifie la saisie jusqu'à ce que l'utilisateur·trice ait effectuer une saisie correcte. Voici un exemple simple d'implémentation de ce programme :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_c1f5929ba6035efa50bd763506fbb0098ee98b80" class="comment">###</span><div class="interior_wrapper"><div id="editor_c1f5929ba6035efa50bd763506fbb0098ee98b80"></div></div><div id="term_editor_c1f5929ba6035efa50bd763506fbb0098ee98b80" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_c1f5929ba6035efa50bd763506fbb0098ee98b80","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_c1f5929ba6035efa50bd763506fbb0098ee98b80","askIntV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_c1f5929ba6035efa50bd763506fbb0098ee98b80').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_c1f5929ba6035efa50bd763506fbb0098ee98b80" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("c1f5929ba6035efa50bd763506fbb0098ee98b80")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("c1f5929ba6035efa50bd763506fbb0098ee98b80")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_c1f5929ba6035efa50bd763506fbb0098ee98b80" class="hide">while True :bksl-nl    n = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl    if n.isdigit() : # regarde si la chaine ne contient que des chiffresbksl-nl        n = int(n)bksl-nl        if n&gt;=1 and n&lt;= 10 :bksl-nl            print("Le nombre est correct")bksl-nl            break # L'instruction break sort de la boucle immédiatementbksl-nl        else :bksl-nl            print("Votre nombre est entier mais pas entre 1 et 10.")bksl-nl    else :bksl-nl        print("Vous n'avez pas saisi un entier")bksl-nlprint(f"Vous avez saisi {n}")bksl-nl    bksl-nl    bksl-nlbksl-nl</span><span id="corr_content_editor_c1f5929ba6035efa50bd763506fbb0098ee98b80" class="hide" data-strudel=""></span></p>
+<p>Dans la partie précédente, nous avons terminé par un petit programme qui demande à un·e utilisateur·trice de donner un nombre entier entre 1 et 10, et qui vérifie la saisie jusqu'à ce que l'utilisateur·trice ait effectué une saisie correcte. Voici un exemple simple d'implémentation de ce programme, tel que celui que vous avez proposé :</p>
+<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_a74f3a3f9c0271480491e4cbb8d772af89d74523" class="comment">###</span><div class="interior_wrapper"><div id="editor_a74f3a3f9c0271480491e4cbb8d772af89d74523"></div></div><div id="term_editor_a74f3a3f9c0271480491e4cbb8d772af89d74523" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_a74f3a3f9c0271480491e4cbb8d772af89d74523","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_a74f3a3f9c0271480491e4cbb8d772af89d74523","askIntV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_a74f3a3f9c0271480491e4cbb8d772af89d74523').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_a74f3a3f9c0271480491e4cbb8d772af89d74523" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("a74f3a3f9c0271480491e4cbb8d772af89d74523")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("a74f3a3f9c0271480491e4cbb8d772af89d74523")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_a74f3a3f9c0271480491e4cbb8d772af89d74523" class="hide">saisie = input("Entrez un nombre entre 1 et 10 :")bksl-nlwhile not(saisie in [ "1", "2", "3","4", "5", "6", "7", "8", "9", "10" ])     :bksl-nl    saisie = input("Entrez un nombre entre 1 et 10 :")bksl-nlnb = int(saisie)bksl-nlprint(f"Vous avez saisi {nb}")bksl-nl</span><span id="corr_content_editor_a74f3a3f9c0271480491e4cbb8d772af89d74523" class="hide" data-strudel=""></span></p>
 <div class="admonition question">
 <p class="admonition-title">Un blocage ?</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Essayez de saisir différentes valeurs <strong>de différents types</strong>. Quel est le problème rencontré ?</p>
+<p>Quels sont les problèmes pouvant être posé par ce programme ?</p>
 </div>
 <div class="tabbed-block">
-<p>Si 'utilisateur·trice saisi un nombre négatif, même entier, celui-ci n'est pas reconnu comme un entier. Ce peut-être parfois complètement bloquant pour le fonctionnement réel d'une application.</p>
-<p>La version ci-dessous est un peu plus <em>dumbproof</em>, mais je ne vous demande pas encore de comprendre les blocs <code>try/except/else</code>.</p>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb" class="comment">###</span><div class="interior_wrapper"><div id="editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb"></div></div><div id="term_editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb","askIntV2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("5b349855f4a6b4bb1cabf55e7fc863706965fceb")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("5b349855f4a6b4bb1cabf55e7fc863706965fceb")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb" class="hide">bksl-nlwhile True :bksl-nl    nb = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl    #  Ici nb est du type 'str'bksl-nl    # Il faut donc d'abord le convertir en entier, mais si l'utilisateur a saisi une chaine qu'il est impossiblebksl-nl    # de convertir, l'interpréteur lèvera par défaut une erreur et arrêtera le programme.bksl-nl    # Or nous ne voulons pas d'interruption , nous signifions donc explicitement au programme ce que nous souhaitonsbksl-nl    # qu'il fasse avec le bloc 'try : ...' 'except : ...' <code>else : ...</code>bksl-nl    try :bksl-nl        nb=int(nb)bksl-nl        # si l'interpréteur n'arrive pas à exécuter l'instruction ci-dessus, il déclenche une erreur et passebksl-nl        # directement au bloc 'except'. Sinon il passe au bloc 'else'.bksl-nl    except ValueError :bksl-nl        print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl    else :bksl-nl        if 1&lt;= nb&lt;= 10 :bksl-nl            breakbksl-nl        else :bksl-nl            print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nl    bksl-nlbksl-nlprint(f'Le carré de {nb} est {nbpy-strpy-str2}')bksl-nl</span><span id="corr_content_editor_5b349855f4a6b4bb1cabf55e7fc863706965fceb" class="hide" data-strudel=""></span>
+<ul>
+<li>
+<p>En premier lieu, les lignes 1 et 3 sont des répétitions (des copiés-collés). Or en informatique, on essaye le plus possible de respecter le principe <mark class="critic"><strong>DRY</strong></mark> :  <em>Don't Repeat Yourself</em>. Une méthode pour corriger ce point pourrait être la suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+    <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">saisie</span> <span class="ow">in</span> <span class="p">[</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span><span class="s2">"4"</span><span class="p">,</span> <span class="s2">"5"</span><span class="p">,</span> <span class="s2">"6"</span><span class="p">,</span> <span class="s2">"7"</span><span class="p">,</span> <span class="s2">"8"</span><span class="p">,</span> <span class="s2">"9"</span><span class="p">,</span> <span class="s2">"10"</span> <span class="p">]</span> <span class="p">:</span>
+        <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span>
+        <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Vous avez saisi </span><span class="si">{</span><span class="n">nb</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Dans un second temps, le code fonctionne dans ce cas précis, mais n'est pas adaptable à d'autres situations. En effet, on doit saisir dans la liste <strong>toutes les possibilités pouvant être saisies</strong>, ce qui rend le code peu adaptable à une situation du style « Saisir un nombre entier entre -1000 et 1000 ». Il faut donc modifier complètement la logique de ce programme. Entre autres, il faut découper le code en plusieurs morceaux :</p>
+<ol>
+<li>On commencera d'abord à tester si quelque chose a bien été saisi, sinon il faut reposer la question.</li>
+<li>Il faut ensuite tester si la suite de caractères saisie correspond bien aux caractères des entiers, et rien qu'à ceux-ci. On pourrait aussi tester si le premier caractère est un signe « - », pour prendre en compte les entiers négatifs.</li>
+<li>Enfin, une fois certain que la saisie est bien un entier, on la <em>trans-type</em>, puis on regarde si la condition d'encadrement est correcte.</li>
+</ol>
+<p>Le code suivant donne toutes ces étapes :</p>
+<div class="highlight"><pre><span></span><code><span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># Booléen servant à exécuter la boucle</span>
+<span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span> <span class="c1"># Tant que repeter est vrai</span>
+    <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">saisie</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span> <span class="c1"># On ne travaille que si la saisie est une chaine non vide</span>
+        <span class="c1">######## ON TESTE SI LA SAISIE EST CELLE D'UN ENTIER #######</span>
+        <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># On suppose que c'est un entier</span>
+        <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># et que le premier caractère est un chiffre                    </span>
+        <span class="k">if</span> <span class="n">saisie</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span><span class="c1"># si le premier caractère est un signe "-",</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span><span class="c1"># On regardera chaque caractère à partir de l'indice 1</span>
+        <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie</span><span class="p">)]</span> <span class="p">:</span> <span class="c1"># Pour chaque caractère</span>
+            <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span> <span class="c1"># Si ce n'est pas un chiffre</span>
+                <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Alors la saisie n'est pas un entier</span>
+        <span class="c1">###### ON TESTE SI IL EST ENTRE 1 et 10 #######</span>
+        <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span> <span class="c1">#</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span><span class="c1"># Trans-typage</span>
+            <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span> <span class="c1"># Si les conditions sont remplies</span>
+                <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># On arrête la boucle</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Vous avez saisi </span><span class="si">{</span><span class="n">nb</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="c1"># Juste là pour montrer la saisie</span>
+</code></pre></div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 1 : Multiplier les codes</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Une solution possible</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Imaginons maintenant un programme qui demande <strong>trois fois</strong> à l'utilisateur d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore.</p>
-<p>Vous devez vous inspirer du programme précédent pour compléter le programme ci-dessous afin d'obtenir trois nombres entiers <code>nb1</code>, <code>nb2</code> et <code>nb3</code> saisis par l'utilisateur :</p>
+<p>Imaginons maintenant un programme qui demande <strong>trois fois</strong> à l'utilisateur·trice d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore (c'est-à-dire <span class="arithmatex">\(a^2 + b^2 = c^2\)</span>).</p>
+<p>Vous devez vous inspirer du programme précédent pour compléter le programme ci-dessous afin d'obtenir trois nombres entiers <code>nb1</code>, <code>nb2</code> et <code>nb3</code> saisis par l'utilisateur·trice :</p>
 </div>
 <div class="tabbed-block">
-<p>Un code pouvant être inséré (avec notre niveau actuel en Python et sans utiliser de structures de listes) est le suivant :</p>
-<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
-    <span class="n">nb1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entier entre 1 et 10 : "</span><span class="p">)</span>
-    <span class="k">try</span> <span class="p">:</span>
-        <span class="n">nb1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb1</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Vous n'avez pas saisi un entier. Veuillez recommencer !"</span><span class="p">)</span>
+<p>Un programme avec notre niveau actuel en Python pourrait être le suivant :</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie1</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">saisie1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie1</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie1</span><span class="p">)]</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+                <span class="n">nb1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb1</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie2</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">saisie2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie2</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie2</span><span class="p">)]</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+                <span class="n">nb2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie2</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb2</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie3</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie3</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">saisie3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie3</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie3</span><span class="p">)]</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+                <span class="n">nb3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie3</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb3</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">nb1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb2</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb3</span><span class="si">}</span><span class="s2">) est un triplet de Pythagore"</span><span class="p">)</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb1</span><span class="o">=</span> <span class="mi">10</span> <span class="p">:</span>
-            <span class="k">break</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !"</span><span class="p">)</span>
-<span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
-    <span class="n">nb2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entier entre 1 et 10 : "</span><span class="p">)</span>
-    <span class="k">try</span> <span class="p">:</span>
-        <span class="n">nb2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb2</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Vous n'avez pas saisi un entier. Veuillez recommencer !"</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb2</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
-            <span class="k">break</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !"</span><span class="p">)</span>
-<span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
-    <span class="n">nb3</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entier entre 1 et 10 : "</span><span class="p">)</span>
-    <span class="k">try</span> <span class="p">:</span>
-        <span class="n">nb3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb3</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Vous n'avez pas saisi un entier. Veuillez recommencer !"</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb3</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
-            <span class="k">break</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">nb1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb2</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb3</span><span class="si">}</span><span class="s2">) n'est pas un triplet de Pythagore)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="comment">###</span><div class="interior_wrapper"><div id="editor_c9c68c06266257e18f69ae9a07b397c5414287e3"></div></div><div id="term_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_c9c68c06266257e18f69ae9a07b397c5414287e3","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_c9c68c06266257e18f69ae9a07b397c5414287e3","ask3Int")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_c9c68c06266257e18f69ae9a07b397c5414287e3').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("c9c68c06266257e18f69ae9a07b397c5414287e3")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("c9c68c06266257e18f69ae9a07b397c5414287e3")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="hide">#### TAPEZ VOTRE CODE ENTRE LES DEUX COMMENTAIRESbksl-nlbksl-nlbksl-nl#### NE TOUCHEZ PAS AU CODE CI-DESSOUSbksl-nlbksl-nlif (nb1py-strpy-str2 == nb2py-strpy-str2 + nb3py-strpy-str2) or (nb2py-strpy-str2 == nb1py-strpy-str2 + nb3py-strpy-str2) or (nb3py-strpy-str2 == nb2py-strpy-str2 + nb1py-strpy-str2) :bksl-nl    print("C'est une configuration de Pythagore !")bksl-nlelse :bksl-nl    print("Ce n'est pas une configuration de Pythagore !")bksl-nl</span><span id="corr_content_editor_c9c68c06266257e18f69ae9a07b397c5414287e3" class="hide" data-strudel=""></span>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Mauvaise pratique</p>
 <p>Si ce code fait le travail demandé, il n'en est pas moins de <em>mauvaise qualité</em> pour plusieurs raisons :</p>
 <ul>
-<li>Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur.</li>
-<li>Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification doit être <strong>réécrite à chaque fois</strong> que le morceau de code est appelé. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.</li>
-<li>Le code n'est plus lisible. Dans le cas d'un travail en équipe, il est impératif d'avoir un code clairement écrit, avec des fonctionnalités clairement définies.</li>
+<li>Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur. Et surtout, <mark class="critic"><strong>plus un code est long, moins il est lisible !</strong></mark></li>
+<li>Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification dans la structure du code doit être <strong>réécrite à chaque fois</strong> que le morceau de code est copié. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.</li>
 </ul>
 </div>
 <h3 id="premiere-fonction">Première fonction</h3>
@@ -4632,32 +4712,40 @@
 <p>On va donc améliorer non seulement la lisibilité de notre code, mais aussi son efficacité et sa simplicité, en utilisant une <strong>fonction</strong>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Définition : fonction</p>
-<p>Une <mark class="critic"><strong>fonction</strong></mark> est un bloc de code nommé (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable). L'appel par l'interpréteur du nom de la fonction <mark class="critic"><strong>suivi d'une paire de parenthèses</strong></mark> exécutera alors l'intégralité du code et renverra une <mark class="critic"><strong>valeur de retour</strong></mark>, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.</p>
+<p>Une <mark class="critic"><strong>fonction</strong></mark> est un <mark class="critic"><strong>bloc de code nommé</strong></mark> (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable) et qui :</p>
+<ul>
+<li><strong>n'est pas exécuté</strong> au moment de sa définition ;</li>
+<li>mais peut être <strong>appelé</strong> plusieurs fois dans le code par l'intermédiaire de son nom, <mark class="critic"><strong>suivi d'une paire de parenthèses</strong></mark>. Ces appels (<em>call</em> en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverra une <mark class="critic"><strong>valeur de retour</strong></mark>, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.</li>
+</ul>
 </div>
-<p>Pour notre exemple :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_def8e68d70e16bd0569e70ff9ffec228d8a18491" class="comment">###</span><div class="interior_wrapper"><div id="editor_def8e68d70e16bd0569e70ff9ffec228d8a18491"></div></div><div id="term_editor_def8e68d70e16bd0569e70ff9ffec228d8a18491" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_def8e68d70e16bd0569e70ff9ffec228d8a18491","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_def8e68d70e16bd0569e70ff9ffec228d8a18491","askIntFctV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_def8e68d70e16bd0569e70ff9ffec228d8a18491').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_def8e68d70e16bd0569e70ff9ffec228d8a18491" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("def8e68d70e16bd0569e70ff9ffec228d8a18491")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("def8e68d70e16bd0569e70ff9ffec228d8a18491")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_def8e68d70e16bd0569e70ff9ffec228d8a18491" class="hide">def askpy-unduserpy-undint() -&gt; int:bksl-nl    while True :bksl-nl        nb = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl        try :bksl-nl            nb=int(nb)bksl-nl        except ValueError :bksl-nl            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl        else :bksl-nl            if 1&lt;= nb&lt;= 10 :bksl-nl                return nbbksl-nl            else :bksl-nl                print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nl    bksl-nl</span><span id="corr_content_editor_def8e68d70e16bd0569e70ff9ffec228d8a18491" class="hide" data-strudel=""></span></p>
-<p>En regardant la première ligne :
+<div class="admonition example">
+<p class="admonition-title">Pour notre exemple : </p>
+<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="comment">###</span><div class="interior_wrapper"><div id="editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a"></div></div><div id="term_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","askIntFctV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide">def askpy-unduserpy-undint() -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input("Entrez un nombre entre 1 et 10 : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if 1&lt;= nb &lt;= 10 :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide" data-strudel=""></span>
+<p>En regardant la première ligne, qu'on appelle la <mark class="critic"><strong>signature de la fonction</strong></mark> :
 </p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ask_user_int</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </code></pre></div>
 <ul>
-<li>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>, ce qui rend l'objet <mark class="critic"><strong>callable</strong></mark> ("appelable").</li>
-<li>la notation <code>-&gt; int</code> est un <mark class="critic"><strong>type hint</strong></mark>, autreùment dit un <em>indice de type</em>, qui indique que la valeur renvoyée par la fonction sera de type <code>int</code>. Les <strong>type hints</strong> sont <em>facultatifs en Python</em>, mais strictement nécessaires dans d'autres langages (<code>Java</code>, <code>C</code>, <code>C++</code>, etc).</li>
+<li>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>, ce qui rend l'objet <mark class="critic"><strong>appelable</strong></mark> (<em>callable</em> en anglais).</li>
+<li>la notation <code>-&gt; int</code> est un <mark class="critic"><strong>type hint</strong></mark>, autrement dit un <em>indice de type</em>, qui indique que la valeur renvoyée par la fonction sera de type <code>int</code>. Les <strong>type hints</strong> sont <em>facultatifs en Python</em>, mais strictement nécessaires dans d'autres langages (<code>Java</code>, <code>C</code>, <code>C++</code>, etc).</li>
 <li>Les deux points définissent un bloc de code qui est repéré par <strong>une indentation</strong>, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.</li>
 </ul>
 <p>On fait appel à cette fonction en appelant le nom <code>ask_user_int()</code>, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Oubli des parenthèses</p>
 <p>Dans le cas d'un oubli des parenthèses lorsqu'on appelle une fonction, on obtient dans le terminal le message suivant :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span>
 <span class="o">&lt;</span><span class="n">function</span> <span class="n">ask_user_int</span> <span class="n">at</span> <span class="mh">0xe8c1a0</span><span class="o">&gt;</span>
 </code></pre></div>
-<p>Qui signifie simplement que le nom <code>ask_user_int</code> fait référence à une fonction dont l'adresse mémoire est donnée sous forme hexadécimale.</p>
+<p>Qui signifie simplement que le nom <code>ask_user_int</code> fait référence à une fonction dont l'adresse dans la mémoire de l'ordinateur est donnée sous forme <em>hexadécimale</em>.</p>
+</div>
+<details class="warning">
+<summary>Pour les cracks</summary>
 <p>Notez que <code>ask_user_int</code> est juste un nom, l'objet correspondant est stocké dans l'espace des objets. On peut donc écrire les choses suivantes :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">demande_entier</span><span class="o">=</span><span class="n">ask_user_int</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">demande_entier</span><span class="p">()</span>
 </code></pre></div>
-</div>
+</details>
 <h4 id="utilisation-de-la-valeur-de-retour">Utilisation de la valeur de retour</h4>
 <p>Comme tout objet, la valeur de retour d'une fonction doit elle-même être stockée dans une variable afin de ne pas être ramassée par le <em>garbage collector</em>.</p>
 <div class="admonition example">
@@ -4673,10 +4761,10 @@
 </ul>
 </div>
 <h4 id="factorisation-du-code-de-pythagore">Factorisation du code de Pythagore</h4>
-<p>Le code du programme de vérification de Pythagore peut alors être <mark class="critic"><strong>factorisé</strong></mark>, et devient alors :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45" class="comment">###</span><div class="interior_wrapper"><div id="editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45"></div></div><div id="term_editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45","askIntFctV2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("2ffcbe40eb31a28a54faa57e2650e4091d3d4b45")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("2ffcbe40eb31a28a54faa57e2650e4091d3d4b45")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45" class="hide">#### Zone des fonctionsbksl-nlbksl-nldef askpy-unduserpy-undint() -&gt; int :bksl-nl    while True :bksl-nl        nb = input("Entrez un nombre entier entre 1 et 10 : ")bksl-nl        try :bksl-nl            nb=int(nb)bksl-nl        except ValueError :bksl-nl            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl        else :bksl-nl            if 1&lt;= nb&lt;= 10 :bksl-nl                return nb #Renvoie l'objet associé à nbbksl-nl            else :bksl-nl                print("Votre nombre n'est pas compris entre 1 et 10. Veuillez recommencer !")bksl-nlbksl-nl### Code principalbksl-nlbksl-nlnb1 = askpy-unduserpy-undint()bksl-nlnb2 = askpy-unduserpy-undint()bksl-nlnb3 = askpy-unduserpy-undint()bksl-nlif (nb1py-strpy-str2 == nb2py-strpy-str2 + nb3py-strpy-str2) or (nb2py-strpy-str2 == nb1py-strpy-str2 + nb3py-strpy-str2) or (nb3py-strpy-str2 == nb2py-strpy-str2 + nb1py-strpy-str2) :bksl-nl    print("C'est une configuration de Pythagore !")bksl-nlelse :bksl-nl    print("Ce n'est pas une configuration de Pythagore !")bksl-nl</span><span id="corr_content_editor_2ffcbe40eb31a28a54faa57e2650e4091d3d4b45" class="hide" data-strudel=""></span></p>
-<p>Ce qui a l'avantage d'être vraiment vraiment plus clair.</p>
+<p>Le code du programme de vérification de Pythagore peut alors être <mark class="critic"><strong>factorisé</strong></mark> (ce qui signifie globalement qu'on réduit sa taille en évitant les répétitions), afin de respecter le principe DRY :</p>
+<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="comment">###</span><div class="interior_wrapper"><div id="editor_87289a0f88cdf7732b5090e73f74725df7940eb0"></div></div><div id="term_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_87289a0f88cdf7732b5090e73f74725df7940eb0","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_87289a0f88cdf7732b5090e73f74725df7940eb0","askIntFctV2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_87289a0f88cdf7732b5090e73f74725df7940eb0').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("87289a0f88cdf7732b5090e73f74725df7940eb0")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("87289a0f88cdf7732b5090e73f74725df7940eb0")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="hide">#### Zone des fonctionsbksl-nlbksl-nldef askpy-unduserpy-undint() -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input("Entrez un nombre entre 1 et 10 : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if 1&lt;= nb &lt;= 10 :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl### Code principalbksl-nlbksl-nlnb1 = askpy-unduserpy-undint()bksl-nlnb2 = askpy-unduserpy-undint()bksl-nlnb3 = askpy-unduserpy-undint()bksl-nlif (nb1py-strpy-str2 == nb2py-strpy-str2 + nb3py-strpy-str2) or (nb2py-strpy-str2 == nb1py-strpy-str2 + nb3py-strpy-str2) or (nb3py-strpy-str2 == nb2py-strpy-str2 + nb1py-strpy-str2) :bksl-nl    print("C'est une configuration de Pythagore !")bksl-nlelse :bksl-nl    print("Ce n'est pas une configuration de Pythagore !")bksl-nl</span><span id="corr_content_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="hide" data-strudel=""></span></p>
+<p>Ce qui a l'avantage d'être vraiment plus clair.</p>
 <h3 id="exercices">Exercices</h3>
 <div class="admonition question">
 <p class="admonition-title">Application 2</p>
@@ -4699,14 +4787,15 @@
 </div>
 </div>
 </div>
-<h3 id="augmenter-la-capacite-des-fonctions-les-arguments-obligatoires">Augmenter la capacité des fonctions : les arguments obligatoires</h3>
+<h3 id="augmenter-la-capacite-des-fonctions-les-parametres-obligatoires">Augmenter la capacité des fonctions : les paramètres obligatoires</h3>
+<h4 id="premiers">Premiers</h4>
 <p>L'exemple de la fonction <code>ask_user_int</code> est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables, par exemple entre 1 et 100 ou bien entre -10 et 10.</p>
-<p>Pour ce faire, il faut, dans la définition de la fonction, préciser des <mark class="critic"><strong>arguments</strong></mark> qui seront des objets transmis et nommés <strong>initialisés à certaines valeurs lors de l'appel à la fonction</strong> :</p>
+<p>Pour ce faire, il faut, dans la définition de la fonction, préciser des <mark class="critic"><strong>paramètres</strong></mark> qui seront des objets transmis et nommés <strong>initialisés à certaines valeurs lors de l'appel à la fonction</strong> :</p>
 <div class="admonition example">
 <p class="admonition-title">Exemple :</p>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_35ab65700b32191c482d3628ed48fafe8c1d3465" class="comment">###</span><div class="interior_wrapper"><div id="editor_35ab65700b32191c482d3628ed48fafe8c1d3465"></div></div><div id="term_editor_35ab65700b32191c482d3628ed48fafe8c1d3465" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_35ab65700b32191c482d3628ed48fafe8c1d3465","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_35ab65700b32191c482d3628ed48fafe8c1d3465","askUserIntV3")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_35ab65700b32191c482d3628ed48fafe8c1d3465').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_35ab65700b32191c482d3628ed48fafe8c1d3465" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("35ab65700b32191c482d3628ed48fafe8c1d3465")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("35ab65700b32191c482d3628ed48fafe8c1d3465")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_35ab65700b32191c482d3628ed48fafe8c1d3465" class="hide">def askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax: int) -&gt; int :bksl-nl    while True :bksl-nl        nb = input(f"Entrez un nombre entier entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        try :bksl-nl            nb=int(nb)bksl-nl        except ValueError :bksl-nl            print("Vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl        else :bksl-nl            if bornepy-undmin&lt;= nb&lt;= bornepy-undmax :bksl-nl                breakbksl-nl            else :bksl-nl                print(f"Votre nombre n'est pas compris entre {bornepy-undmin} et {bornepy-undmax}. Veuillez recommencer !")bksl-nl    return nb    bksl-nl</span><span id="corr_content_editor_35ab65700b32191c482d3628ed48fafe8c1d3465" class="hide" data-strudel=""></span>
-<p>La fonction <code>ask_user_int</code> utilise maintenant deux arguments <code>borne_min</code> et <code>borne_max</code>, qui sont deux entiers, et renverra toujours un entier</p>
-<p>Une fois la fonction définie, on peut l'appeler en précisant les valeurs des deux arguments :</p>
+<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="comment">###</span><div class="interior_wrapper"><div id="editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906"></div></div><div id="term_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906","askUserIntV3")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("a8aaee2efd70192b07cac104ebd3dc729ccc7906")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("a8aaee2efd70192b07cac104ebd3dc729ccc7906")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="hide">def askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int) -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input(f"Entrez un nombre entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if bornepy-undmin&lt;= nb &lt;= bornepy-undmax :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="hide" data-strudel=""></span>
+<p>La fonction <code>ask_user_int</code> utilise maintenant deux paramètres <code>borne_min</code> et <code>borne_max</code>, dont les <strong>type hints</strong> indiquent que ce doit être deux entiers.</p>
+<p>Une fois la fonction définie, on peut l'appeler en lui passant des <mark class="critic">**arguments</mark>, c'est-à-dire des valeurs qui seront affectées aux paramètres :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
@@ -4714,7 +4803,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Erreurs d'appels et notion de précondition</p>
 <p>Avec le code actuel de la fonction <code>ask_user_int</code>, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><input id="__tabbed_4_3" name="__tabbed_4" type="radio"><input id="__tabbed_4_4" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Test 1</label><label for="__tabbed_4_2">Test 2</label><label for="__tabbed_4_3">Test 3</label><label for="__tabbed_4_4">Test 4</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><input id="__tabbed_4_3" name="__tabbed_4" type="radio"><input id="__tabbed_4_4" name="__tabbed_4" type="radio"><input id="__tabbed_4_5" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Test 1</label><label for="__tabbed_4_2">Test 2</label><label for="__tabbed_4_3">Test 3</label><label for="__tabbed_4_4">Test 4</label><label for="__tabbed_4_5">Solution ?</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Code</label><label for="__tabbed_5_2">Problème</label></div>
@@ -4769,35 +4858,52 @@
 <li><code>borne_sup</code> initialisé à <code>10</code>;</li>
 <li>pour atteindre l'instruction <code>return</code>, il faudrait que l'utilisateur·trice ait saisi·e un nombre <code>nb</code> à la fois supérieur à <code>30</code> et inférieur à <code>10</code>, ce qui est impossible.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
 <p>On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des <mark class="critic"><strong>préconditions</strong></mark>, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que <code>borne_inf</code> est bien inférieur ou égal à <code>borne_sup</code>. Ces tests seront vu dans la partie concernant les <mark class="critic"><strong>assertions</strong></mark>.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+<h4 id="factoriser-le-code-2eme-saison">Factoriser le code, 2ème saison</h4>
+<p>On a vu que <strong>factoriser</strong> le code, c'est réduire la taille d'un code en évitant les répétitions (principe DRY). Mais en fait, c'est aussi séparer le code en <strong>fonctions autonomes respectant une certaine logique interne</strong>. Par exemple, dans le code de notre fonction <code>ask_user_int</code>, il y a deux parties bien distinctes :</p>
+<ul>
+<li>la première est de vérifier que la saisie est bien celle d'un entier ;</li>
+<li>la seconde est de vérifier les conditions d'encadrement du nombre saisi.</li>
+</ul>
+<p>On pourrait alors souhaiter séparer le code en deux fonctions :</p>
+<ul>
+<li>
+<p>créer une fonction <code>is_integer</code>, dont la signature serait :</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_integer</span><span class="p">(</span><span class="n">word</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
+</code></pre></div>
+qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui renvoie un booléen <code>True</code> si <code>word</code> est transtypable en entier, et <code>False</code> sinon.
+</li>
+<li>
+<p>puis conserver la fonction <code>ask_user_int</code> telle qu'elle est définie actuellement.</p>
+</li>
+</ul>
+<p>On obtiendrait alors le code suivant :</p>
+<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="comment">###</span><div class="interior_wrapper"><div id="editor_60daefe045cc56eeb812a0da45699294e2d557c9"></div></div><div id="term_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_60daefe045cc56eeb812a0da45699294e2d557c9","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_60daefe045cc56eeb812a0da45699294e2d557c9","askUserIntV3bis")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_60daefe045cc56eeb812a0da45699294e2d557c9').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_60daefe045cc56eeb812a0da45699294e2d557c9" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("60daefe045cc56eeb812a0da45699294e2d557c9")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("60daefe045cc56eeb812a0da45699294e2d557c9")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="hide">def ispy-undinteger(word : str) -&gt; bool :bksl-nl    estpy-undunpy-undentier = Truebksl-nl    indicepy-unddepart = 0bksl-nl    if word[0] == "-" :bksl-nl        indicepy-unddepart = 1bksl-nl    for caractere in word[indicepy-unddepart : len(word)] :bksl-nl        if caractere not in "0123456789" :bksl-nl            estpy-undunpy-undentier = Falsebksl-nl    return estpy-undunpy-undentierbksl-nlbksl-nlbksl-nldef askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int) -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input(f"Entrez un nombre entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = ispy-undinteger(saisie)bksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if bornepy-undmin&lt;= nb &lt;= bornepy-undmax :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="hide" data-strudel=""></span></p>
+<p>Vous noterez que la fonction <code>is_integer</code> est utilisée au sein de la fonction <code>ask_user_int</code>.</p>
+<h4 id="applications">Applications</h4>
 <div class="admonition question">
 <p class="admonition-title">Application 3</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Enoncé</label><label for="__tabbed_9_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction <code>table_multi(m : int)-&gt; str</code> qui prend un argument entier <code>m</code> et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.</p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">table_multi</span><span class="p">(</span><span class="n">m</span> <span class="p">:</span> <span class="nb">int</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
-    <span class="n">table</span> <span class="o">=</span> <span class="s1">''</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nb</span><span class="si">}}</span><span class="s1">x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">nb</span><span class="o">*</span><span class="n">i</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">'</span>
-    <span class="k">return</span> <span class="n">table</span>
-</code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 4 : motif dans une chaine</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><input id="__tabbed_10_2" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Enoncé</label><label for="__tabbed_10_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction <code>trouve_chaine(motif : str, texte : str) -&gt; bool</code>qui prend deux arguments, un <code>motif</code> ( une chaine de caractères )  et un <code>texte</code> ( une autre chaine de caractères )  et qui renvoie <code>True</code> si le <code>motif</code> est présent dans la <code>chaine</code>, quel que soit la casse du motif ou celle de la chaine, et <code>False</code> sinon.  Vous pouvez tester avec les lignes suivantes :</p>
@@ -4808,25 +4914,20 @@
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'ToTo'</span><span class="p">,</span> <span class="s1">'OtOtO va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Que dire ?'</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">trouve_chaine</span><span class="p">(</span><span class="n">motif</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">texte</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 </div>
 <h3 id="augmenter-la-capacite-des-fonctions-les-arguments-optionnels">Augmenter la capacité des fonctions : les arguments optionnels</h3>
 <p>Notre fonction <code>ask_user_int</code> commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
-C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</strong>. Il s'agit d'arguments dont le nom est donné dans la fonction, mais avec <strong>une valeur par défaut</strong>. Ainsi :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33" class="comment">###</span><div class="interior_wrapper"><div id="editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33"></div></div><div id="term_editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33","askUserIntV4")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("93e439f6c2a8c1048eb0ca271a135cd329fe0c33")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("93e439f6c2a8c1048eb0ca271a135cd329fe0c33")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33" class="hide">def askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int, prenom : str ='Inconnu' ) -&gt; int :bksl-nl    while True :bksl-nl        nb = input(f"{prenom}, entrez un nombre entier entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        try :bksl-nl            nb=int(nb)bksl-nl        except ValueError :bksl-nl            print(f"{Inconnu}, vous n'avez pas saisi un entier. Veuillez recommencer !")bksl-nl        else :bksl-nl            if bornepy-undmin&lt;= nb&lt;= bornepy-undmax :bksl-nl                breakbksl-nl            else :bksl-nl                print(f"{Inconnu}, votre nombre n'est pas compris entre {bornepy-undmin} et {bornepy-undmax}. Veuillez recommencer !")bksl-nl    return nbbksl-nl</span><span id="corr_content_editor_93e439f6c2a8c1048eb0ca271a135cd329fe0c33" class="hide" data-strudel=""></span></p>
-<p>Ainsi, la fonction ci-dessus possède trois arguments :</p>
+C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels</strong>. Il s'agit de paramètres dont le nom est donné dans la <strong>signature</strong>, mais avec <strong>une valeur par défaut</strong>. Ainsi :</p>
+<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="comment">###</span><div class="interior_wrapper"><div id="editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525"></div></div><div id="term_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525","askUserIntV4")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("cef9b3728ae344ab4d8e4355e166dc7c3491f525")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("cef9b3728ae344ab4d8e4355e166dc7c3491f525")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
+<p><span id="content_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="hide">def ispy-undinteger(word : str) -&gt; bool :bksl-nl    estpy-undunpy-undentier = Truebksl-nl    indicepy-unddepart = 0bksl-nl    if word[0] == "-" :bksl-nl        indicepy-unddepart = 1bksl-nl    for caractere in word[indicepy-unddepart : len(word)] :bksl-nl        if caractere not in "0123456789" :bksl-nl            estpy-undunpy-undentier = Falsebksl-nl    return estpy-undunpy-undentierbksl-nlbksl-nlbksl-nldef askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int, nom :str = "Inconnu") -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input(f"{nom}, entrez un nombre entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = ispy-undinteger(saisie)bksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if bornepy-undmin&lt;= nb &lt;= bornepy-undmax :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="hide" data-strudel=""></span></p>
+<p>Ainsi, la fonction ci-dessus possède trois paramètres :</p>
 <ul>
-<li>deux arguments <strong>obligatoires</strong>, <code>borne_min</code> et <code>borne_max</code>, de type <code>int</code> ;</li>
-<li>un argument <strong>optionnel</strong>, <code>prenom</code>, de type <code>str</code>, dont la **valeur par défaut est la chaine <code>Inconnu</code>.</li>
+<li>deux paramètres <strong>obligatoires</strong>, <code>borne_min</code> et <code>borne_max</code>, de type <code>int</code> ;</li>
+<li>un paramètre <strong>optionnel</strong>, <code>prenom</code>, de type <code>str</code>, dont la **valeur par défaut est la chaine <code>Inconnu</code>.</li>
 </ul>
-<p>Il est à noter qu'impérativement les <strong>arguments obligatoires doivent être placés avant les arguments optionnels</strong>.</p>
+<p>Il est à noter qu'impérativement les <strong>paramètres obligatoires doivent être placés avant les paramètres optionnels</strong>.</p>
 <p>On peut alors appeler la fonction des différentes manières suivantes (à tester) :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked id="__tabbed_11_1" name="__tabbed_11" type="radio"><input id="__tabbed_11_2" name="__tabbed_11" type="radio"><input id="__tabbed_11_3" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">1</label><label for="__tabbed_11_2">2</label><label for="__tabbed_11_3">3</label></div>
 <div class="tabbed-content">
@@ -4835,11 +4936,11 @@ C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">prenom</span><span class="o">=</span><span class="s1">'Toto'</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">nom</span><span class="o">=</span><span class="s1">'Toto'</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">prenom</span><span class="o">=</span><span class="s1">'foo'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">nom</span><span class="o">=</span><span class="s1">'foo'</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
@@ -4848,11 +4949,11 @@ C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</
 <div id="id5" class="hide"></div>
 
 <div class="admonition question">
-<p class="admonition-title">Application 5 : arguments optionnels</p>
+<p class="admonition-title">Application 5 : paramètres optionnels</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">Enoncé</label><label for="__tabbed_12_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter la fonction <code>table_multi</code> afin qu'elle utilise deux arguments optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.</p>
+<p>Compléter la fonction <code>table_multi</code> afin qu'elle utilise deux paramètres optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">table_multi</span><span class="p">(</span><span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">depart</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fin</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
@@ -4866,11 +4967,11 @@ C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</
 </div>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Application 6 : arguments optionnels</p>
+<p class="admonition-title">Application 6 : paramètres optionnels</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Enoncé</label><label for="__tabbed_13_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Réécrire la fonction <code>trouve_chaine</code> afin qu'elle utilise un <em>argument booléen optionnel</em> <code>verifCasse</code>, afin de déterminer si le <code>motif</code> est présent dans le <code>texte</code> en vérifiant la casse ou non. Par défaut l'argument sera <code>False</code>. Vous pouvez utiliser les tests ci-dessous :</p>
+<p>Réécrire la fonction <code>trouve_chaine</code> afin qu'elle utilise un <em>paramètre booléen optionnel</em> <code>verif_casse</code>, afin de déterminer si le <code>motif</code> est présent dans le <code>texte</code> en vérifiant la casse ou non. Par défaut le paramètre sera <code>False</code>. Vous pouvez utiliser les tests ci-dessous :</p>
 <div class="highlight"><pre><span></span><code><span class="c1">### Cette cellule est une cellule vous permettant de tester votre fonction</span>
 <span class="c1">##les assertions suivantes sont les même que précédemment</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
@@ -4879,17 +4980,17 @@ C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'toto'</span><span class="p">,</span> <span class="s1">'TOTO va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Problème de minuscules dans le motif'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'ToTo'</span><span class="p">,</span> <span class="s1">'OtOtO va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Que dire ?'</span>
 <span class="c1"># Mais on rajoute celles-ci :</span>
-<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
-<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'TOTO va à la plage'</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
-<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Totos'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Chaine non présente trouvée'</span>
-<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Problème de majuscules dans le motif'</span>
-<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'toto'</span><span class="p">,</span> <span class="s1">'TOTO va à la plage'</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Problème de minuscules dans le motif'</span>
-<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'ToTo'</span><span class="p">,</span> <span class="s1">'OtOtO va à la plage'</span><span class="p">,</span><span class="n">verifCasse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Que dire ?'</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">,</span><span class="n">verif_casse</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'TOTO va à la plage'</span><span class="p">,</span><span class="n">verif_casse</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Totos'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">,</span><span class="n">verif_casse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Chaine non présente trouvée'</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">,</span><span class="n">verif_casse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Problème de majuscules dans le motif'</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'toto'</span><span class="p">,</span> <span class="s1">'TOTO va à la plage'</span><span class="p">,</span><span class="n">verif_casse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Problème de minuscules dans le motif'</span>
+<span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'ToTo'</span><span class="p">,</span> <span class="s1">'OtOtO va à la plage'</span><span class="p">,</span><span class="n">verif_casse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Que dire ?'</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">trouve_chaine</span><span class="p">(</span><span class="n">motif</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">texte</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verifCasse</span> <span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="n">verifCasse</span><span class="o">==</span><span class="kc">True</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">trouve_chaine</span><span class="p">(</span><span class="n">motif</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">texte</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verif_casse</span> <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">verif_casse</span><span class="o">==</span><span class="kc">True</span> <span class="p">:</span>
         <span class="k">return</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">texte</span>
     <span class="k">else</span> <span class="p">:</span>
         <span class="k">return</span>  <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span>
@@ -4914,8 +5015,7 @@ C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</
 <div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="comment">###</span><div class="interior_wrapper"><div id="editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d"></div></div><div id="term_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d","docstring1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("dbfe29a40dcf4b31edd6811057d0765cf7abcd6d")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("dbfe29a40dcf4b31edd6811057d0765cf7abcd6d")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
 <p><span id="content_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="hide">def somme(a, b) :bksl-nl    """ fonction qui renvoie la somme des arguments a et b, bksl-nl    en vérifiant si a et b sont bien du même type, bksl-nl    et qui renvoie None sinon.bksl-nl    Par exemple :bksl-nlbksl-nl    somme(4, 3) renvoie 7bksl-nlbksl-nl    somme(4, "3") renvoie Nonebksl-nl   bksl-nl    """bksl-nl    if type(a) == type(b) :bksl-nl        return a+bbksl-nl    else :bksl-nl        return Nonebksl-nl</span><span id="corr_content_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="hide" data-strudel=""></span></p>
 <p>La fonction <code>somme</code> contient donc une <strong>docstring</strong> - introduite par trois guillemets (pour permettre les sauts de lignes). Celle-ci décrit l'effet de la fonction, de manière exacte.</p>
-<p>On peut alors accéder à la <strong>docstring</strong> d'une fonction en utilisant la fonction <em>built-in</em> <code>help</code> :</p>
-<p>Testez par exemple <code>help(somme)</code>.</p>
+<p>On peut alors accéder à la <strong>docstring</strong> d'une fonction en utilisant la fonction <em>built-in</em> <code>help</code> : testez par exemple <code>help(somme)</code>.</p>
 <div class="admonition tips">
 <p class="admonition-title">Les docstrings</p>
 <p><mark class="critic"><strong>Une docstring est essentielle pour comprendre l'utilité d'une fonction ! Vous devrez en utiliser le plus souvent possible !</strong></mark></p>
@@ -4973,16 +5073,17 @@ C'est tout à fait possible en Python, grâce aux <strong>arguments optionnels</
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Correction de la fonction <code>ask_user_int</code></p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">prenom</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">'Inconnu'</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nom</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">'Inconnu'</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">""" Fonction demandant un entier compris entre borne_nf et borne_sup.</span>
-<span class="sd">    personnalisation du message avec l'argument optionnel prenom.</span>
-<span class="sd">    renvoir un objet de type entier.</span>
+<span class="sd">    personnalisation du message avec le paramètre optionnel nom.</span>
+<span class="sd">    renvoi un objet de type entier.</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">borne_inf</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">borne_sup</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"Erreur de type sur borne_inf et borne_sup"</span>
-    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">prenom</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Erreur de type sur prenom"</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Erreur de type sur nom"</span>
     <span class="k">assert</span> <span class="n">borne_inf</span> <span class="o">&lt;=</span> <span class="n">borne_sup</span> <span class="p">,</span> <span class="s2">"borne_inf n'est pas inférieure à borne_sup"</span>
 
-    <span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
         <span class="o">...</span><span class="c1"># Le code ici n'est pas changé        </span>
 </code></pre></div>
 <p>Testez maintenant cette fonction avec de mauvaises valeurs pour les arguments.</p>
@@ -5011,7 +5112,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Ecrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les types fournis en argument soient bien des entiers.</li>
+<li>Écrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les types fournis en argument soient bien des entiers.</li>
 <li>Compléter la fonction <code>coefficient_directeur</code> afin qu'elle remplisse le rôle qui lui est demandé.</li>
 </ol>
 </div>
@@ -5021,7 +5122,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </div>
 </div>
 </div>
-<h4 id="tester-avec-le-module-doctest">Tester avec le module doctest</h4>
+<h3 id="tester-avec-le-module-doctest">Tester avec le module doctest</h3>
 <p>Pyhton étant <em>user friendly</em>, il permet au programmeur de tester automatiquement, grâce au module <code>doctest</code>.</p>
 <p>Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalité de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :</p>
 <ul>
@@ -5041,7 +5142,8 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </details>
 <p>Le module <em>doctest</em>, lui, permet d'intégrer à la <strong>docstring un ensemble de tests</strong> qui sont vérifiés par l'appel de la fonction <strong>testmod</strong> du module <em>doctest</em>.</p>
 <p>Par exemple, copiez-collez le code suivant dans un fichier :</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">doctest</span> <span class="c1"># On charge en mémoire le module doctest</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Zone d'import des modules</span>
+<span class="kn">import</span> <span class="nn">doctest</span> <span class="c1"># On charge en mémoire le module doctest</span>
 
 <span class="c1"># Zone de déclaration des fonctions</span>
 
@@ -5079,7 +5181,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </div>
 <p><strong>Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.</strong></p>
 <h2 id="exercices_1">Exercices</h2>
-<p><em>Dans tous les exercices suivants, on supposera que l'utilisateur·trice de la fonction fournit des arguments du bon type</em></p>
+<p><em>Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.</em></p>
 <p><strong>Pour tester vos fonctions avec les jeux fournis, n'oubliez pas :</strong></p>
 <ul>
 <li>d'importer le module avec <code>import doctest</code> ;</li>
@@ -5150,7 +5252,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </code></pre></div>
 </li>
 <li>
-<p>Erire une fonction qui supprime tous les caractères qui ne sont pas des lettres ( majuscules ou minuscules, sans accents ) d'une chaine de caractères donnée.</p>
+<p>Écrire une fonction qui supprime tous les caractères qui ne sont pas des lettres (majuscules ou minuscules, sans accents) d'une chaine de caractères donnée.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rienQueDesLettres</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">&gt;&gt;&gt; rienQueDesLettres('  toto  ')</span>
@@ -5163,7 +5265,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </code></pre></div>
 </li>
 <li>
-<p>Ecrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous </p>
+<p>Écrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous </p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span><span class="p">,</span><span class="n">yA</span><span class="p">,</span><span class="n">xB</span><span class="p">,</span><span class="n">yB</span><span class="p">)</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Fonction renvoyant le coefficient directeur de la droite (AB)</span>
 <span class="sd">en connaissant les coordonnées des points A et B, ou None si c'est impossible</span>
@@ -5190,13 +5292,13 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </code></pre></div>
 </li>
 <li>
-<p>Ecrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite <span class="arithmatex">\((AB)\)</span>, en prenant en argument les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme la fonction précédente, et qui renvoie None si c'est impossible.</p>
+<p>Écrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite <span class="arithmatex">\((AB)\)</span>, en prenant en paramètres les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme la fonction précédente, et qui renvoie None si c'est impossible.</p>
 </li>
 <li>
-<p>Ecrire une fonction - et le jeu de test qui va avec,  qui renvoie l'équation réduite de la droite <span class="arithmatex">\((AB)\)</span>, en prenant en argument les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme dans les fonctions précédentes.</p>
+<p>Écrire une fonction - et le jeu de test qui va avec, qui renvoie l'équation réduite de la droite <span class="arithmatex">\((AB)\)</span>, en prenant en paramètres les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme dans les fonctions précédentes.</p>
 </li>
 <li>
-<p>Ecrire une fonction qui donne le discriminant d'un trinôme du second degré $ax^2 +bx+c $, en fournissant un jeu d'exemples complets.</p>
+<p>Écrire une fonction - et le jeu de test qui va avec, qui teste si une chaine de caractère en paramètre est trans-typable en un nombre flottant, puis une fonction <code>ask_user_float</code> qui demande à un·e utilisateur·trice de saisir un nombre flottant compris entre deux bornes minimum et maximum flottantes, et ce de manière <em>dumbproof</em>.</p>
 </li>
 </ol></div>
 
