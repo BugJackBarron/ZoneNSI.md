@@ -1,4 +1,4 @@
-# Fonctions, assertions et docstring en  ![logo Python](python-logo.png)
+# Fonctions, assertions et docstring en Python
 
 
 ## Premiers pas avec les fonctions
