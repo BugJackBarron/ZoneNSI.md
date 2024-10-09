@@ -37,7 +37,7 @@ Mais souvent les algorithmes sont répétitifs, longs à faire à la main, et n�
 			* Recommencer l'étape 3
 		4. Si le quotient de $x$ par $2$ est inférieur à $1$, on arrête l'algorithme.
 
-		Appliquer cet algorithme sur les nombres $15$, $57$ puis 312$. Quelles sont les valeurs finales obtenus par $p$ à chaque fois ?
+		Appliquer cet algorithme sur les nombres $15$, $57$ puis $312$. Quelles sont les valeurs finales obtenus par $p$ à chaque fois ?
 
 	=== "Solution pour $15$"
 
