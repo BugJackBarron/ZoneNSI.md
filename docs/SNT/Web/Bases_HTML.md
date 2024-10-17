@@ -166,6 +166,7 @@ Pour cela vous utiliserez *Capytale* avec l'activité suivante [55a8-4017712](ht
 !!! danger "Pour avoir une bonne note !"
     On respectera aussi les recommandations suivantes :
 
+    * Le code HTML devra être vérifié et ne comporter aucune erreur. Pour le vérifier, vous pouvez le copier-coller sur le site [W3C Validator](https://validator.w3.org/#validate_by_input){ target="_blank"}. Si vous ne comprenez pas certaines erreurs, n'hésitez pas à me demander !
     * Un soin particulier sera apporté à l'orthographe. Si vous n'êtes pas certains de votre orthographe ou de votre syntaxe, vous devez passer votre texte dans un correcteur orthographique en ligne tel que [Scribens](https://www.scribens.fr/){target = "_blank"}.
     * Le copié-collé depuis un autre site doit impérativement mentionner l'origine du texte. Sans ces sources citées, vous pourriez être accusé de plagiat.
     * De même l'origine des images ou des vidéos doit être explicitement donné dans le site, soit sous la forme d'infobulles, soit sous la forme d'un commentaire d'image (balises `<figure>` et `<figcaption>`, voir [ici](https://developer.mozilla.org/fr/docs/Web/HTML/Element/figcaption){: target="_blank"}).
