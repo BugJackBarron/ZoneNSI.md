@@ -244,7 +244,7 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**p
 
     La fonction `ask_user_int` utilise maintenant deux paramètres `borne_min` et `borne_max`, dont les **type hints** indiquent que ce doit être deux entiers.
 
-    Une fois la fonction définie, on peut l'appeler en lui passant des {==**arguments==}, c'est-à-dire des valeurs qui seront affectées aux paramètres :
+    Une fois la fonction définie, on peut l'appeler en lui passant des {==**arguments**==}, c'est-à-dire des valeurs qui seront affectées aux paramètres :
 
     ```python
     >>> ask_user_int(1,100)
