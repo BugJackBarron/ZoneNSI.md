@@ -10,7 +10,7 @@ Avant de traiter des informations, encore faut-il les organiser et les stocker d
 
 ### La notation binaire pour les entiers
 
-Historiquement, on trouve des utilisations de symboles binaires depuis les antiquités chinoises et indiennes : on trouve des utilisations dans les hexagrammes du *Yi Jing* en Chine (-750), et le mathématicien indien Pingala présente une table représentant les nombres 0 à 7 en binaire (troisième ou deuxième siècle av J.C.). Mais c'est à Leibniz au XVIIIème s., qui montre la compatibilité du système binaire avec les quatre opérations, et surtout au mathématicien George Boole, qui publie en 1847 une algèbre binaire dite depuis {==**booléenne**==}, qu'on doit la théorie liée à l'utilisation de la notation binaire avec uniquement des `0` et des `1`.
+Historiquement, on trouve des utilisations de symboles binaires depuis les antiquités chinoises et indiennes : on trouve des utilisations dans les hexagrammes du *Yi Jing* en Chine (-750), et le mathématicien indien Pingala présente une table représentant les nombres 0 à 7 en binaire (troisième ou deuxième siècle av J.C.). Mais c'est à **Leibniz** au XVIIIème s., qui montre la compatibilité du système binaire avec les quatre opérations, et surtout au mathématicien George Boole, qui publie en 1847 une algèbre binaire dite depuis {==**booléenne**==}, qu'on doit la théorie liée à l'utilisation de la notation binaire avec uniquement des `0` et des `1`.
 
 !!! abstract "Les chiffres binaires (*binary digits*)"
 
@@ -53,7 +53,7 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
     2. Quel est le nombre minimal de bits nécessaire pour représenter l'alphabet latin en majuscule, sans accents et autres signes diacritiques ?
     3. Combien de bits sont nécessaires pour représenter tous les caractères de l'alphabet français, en y incluant les signes de ponctuations et les chiffres ?
     4. De manière générale, un nombre entier naturel $N$ nécessitera $n$ bits, où $n$ est l'entier naturel tel que $2^{n-1}\leqslant N < 2^n$. 
-        1. Combien de bits sont nécessaire pour représenter en binaire le nombre $500$ ?
+        1. Combien de bits sont nécessaires pour représenter en binaire le nombre $500$ ?
         2. Combien de bits sont nécessaires pour représenter en binaire le nombre $10~000$ ?
         3. Quel est le plus grand nombre représentable avec $24$ bits ?
     5. Il est possible d'utiliser la fonction $ln$ (*logarithme népérien*) pour obtenir le nombre $n$ de bits nécessaires pour représenter un nombre entier naturel donné $N$, par la formule 
@@ -82,15 +82,13 @@ Historiquement, on trouve des utilisations de symboles binaires depuis les antiq
 
     
 
-
-
 ## Premiers stockages : les cartes perforées (*punch cards*)
 
 Comme nous l'avons vu dans la partie précédente, les informations numériques peuvent être représentées sous la forme binaire, mais elles ne sont pas les seules. Si une {==**convention**==} est adoptée, il est tout à fait possible de représenter d'autres informations, comme du texte, des images ou autres données.
 
-Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, Herman Hollerith dépose un brevet pour une machine électromécanique utilisant des cartes perforées, permettant d'accélérer le recensement des états du gouvernement américain. Il lance par la suite une société qui deviendra IBM.
+Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, **Herman Hollerith** dépose un brevet pour une machine électromécanique utilisant des cartes perforées permettant d'accélérer le recensement des états du gouvernement américain. Il lance par la suite une société qui deviendra IBM.
 
-Une carte perforée est un support d'informations exprimées sous la forme binaire : une grille de « cases » est représentée, cases qui peuvent être perforées (1) ou non (0).
+Une {==**carte perforée**==} est un support d'informations exprimées sous la forme binaire : une grille de « cases » est représentée, cases qui peuvent être perforées (1) ou non (0).
 
 Par exemple la carte ci-dessous, modèle standard d'IBM breveté en 1928, possède 80 colonnes et 12 lignes (les lignes numérotées de 0 à 9, plus deux lignes supérieures non numérotées) permettant techniquement d'encoder un mot de 12 bits (mais en pratique seulement 9 bits étaient utilisés, les lignes numérotées 0 à 8, la ligne 9 servant de « bit de contrôle », et les deux lignes supérieures indiquant des opérations spéciales).
 
@@ -99,7 +97,7 @@ Par exemple la carte ci-dessous, modèle standard d'IBM breveté en 1928, possè
 [^IBM]: Image Wikipedia, crédit :« Par Arnold Reinhold — I took this picture of an artifact in my possession. The card was created in the late 1960s or early 1970s and has no copyright notice., CC BY-SA 2.5, [https://commons.wikimedia.org/w/index.php?curid=775153](https://commons.wikimedia.org/w/index.php?curid=775153){:target="_blank"} »
 
 
-Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boîte tombait par terre.
+Ces cartes étaient stockées par boites de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boite tombait par terre.
 
 !!! question "Questions III"
 
@@ -146,7 +144,7 @@ Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait 
 
 !!! abstract "L'Unicode"
 
-    Avec la démocratisation d'internet, de nombreux standard différents sont apparus pour gérer toutes les langues et tous les alphabets. Le problème : la même séquence de bits représentait différents caractères selon les alphabets, les langues, etc.
+    Avec la démocratisation d'internet, de nombreux standards différents sont apparus pour gérer toutes les langues et tous les alphabets. Le problème : la même séquence de bits représentait différents caractères selon les alphabets, les langues, etc.
 
     La norme Unicode a été développée pour répondre à ce problème, et englober l'intégralité des signes possibles.
 
