@@ -4436,12 +4436,12 @@
 <p></p><p align="center">
 <img alt="Manim gif" src="../addFirstElement_ManimCE_v0.11.0.gif" style="width:50%;">
 </p>
-<p>Au total, nous avons réalisé un nombre d'opérations qui est <strong>proportionnel à la taille du tableau !</strong>Sur un petit, tel que celui-ci, il n'y a pas trop de problèmes, 
+<p>Au total, nous avons réalisé un nombre d'opérations qui est <strong>proportionnel à la taille du tableau !</strong> Sur un petit tableau, tel que celui-ci, il n'y a pas trop de problèmes, 
 mais sur un tableau contenant <em>plusieurs millions</em> d'entrées, le nombre d'opérations devient bien trop important.</p>
 <p>Heureusement, il existe d'autres manières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.    </p>
 <details class="warning">
 <summary>La face cachée de Python</summary>
-<p>Lorsqu'un objet de type <code>list</code> est crée en Python, l'interpréteur réserve une taille en mémoire proportionnelle à une puissances de 2 nécessaire pour stocker le tableau. Cela signifie qu'un tableau de taille 3 occuper une taille mémoire égale à celle d'un tableau de taille 4, mais dont la dernière cellule n'est pas utilisée. De même un tableau de taille 5 est en fait stocké comme un tableau de taille 8 dont les trois dernières cellules ne sont pas utilisées. Un tableau de taille 16 sera stocké dans une structure dont toutes les cases sont occupées.</p>
+<p>Lorsqu'un objet de type <code>list</code> est crée en Python, l'interpréteur réserve une taille en mémoire selon un schéma défini à l'avance (0, 4, 8, 16, 25, 35, 46, 58, 72, 88,...) pour stocker le tableau. Cela signifie qu'un tableau de taille 3 occupera une taille mémoire égale à celle d'un tableau de taille 4, mais dont la dernière cellule n'est pas utilisée. De même un tableau de taille 5 est en fait stocké comme un tableau de taille 8 dont les trois dernières cellules ne sont pas utilisées. Un tableau de taille 16 sera stocké dans une structure dont toutes les cases sont occupées.</p>
 <p>La méthode <code>append</code> va donc fonctionner de deux manières différentes selon la situation envisagée :</p>
 <ul>
 <li>
@@ -4449,7 +4449,7 @@ mais sur un tableau contenant <em>plusieurs millions</em> d'entrées, le nombre 
 <p><img alt="list python 1" src="../list_taille_python_1.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 <li>
-<p>si la <strong>réservation mémoire est pleine</strong>, il faudra alors <strong>créer une nouvelle réservation mémoire d'une taille 2 fois supérieure à la précédente</strong>, copier chaque élément de l'ancienne liste dans la nouvelle, puis enfin la valeur ajoutée par <code>append</code> sera simplement stockée dans la première case libre :</p>
+<p>si la <strong>réservation mémoire est pleine</strong>, il faudra alors <strong>créer une nouvelle réservation mémoire d'une taille immédiatement supérieure à la précédente</strong>, selon le schéma présenté auparavant, puis copier chaque élément de l'ancienne liste dans la nouvelle, et enfin ajouter la valeur supplémentaire dans la première case libre :</p>
 <p><img alt="list python 2" src="../list_taille_python_2.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 </ul>
@@ -4465,7 +4465,7 @@ mais sur un tableau contenant <em>plusieurs millions</em> d'entrées, le nombre 
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p></p><p align="center">
-<img alt="LC1" src="../ListeChainee1.png" style="width : 30%;">
+<img alt="LC1" src="../ListeChainee1.png" style="width : 30%;;background-color: #d2dce0;">
 </p>
 <p>On a représenté ici une liste chainée de trois éléments :</p>
 <ul>
@@ -4500,7 +4500,7 @@ mais sur un tableau contenant <em>plusieurs millions</em> d'entrées, le nombre 
 </code></pre></div>
 <p>Ici, on a créé une liste nommée <code>chaine</code> à partir de trois objets de classe <code>Chainon</code> qu'on peut visualiser ainsi :</p>
 <p></p><p align="center">
-<img alt="LC2" src="../ListeChainee2.png" style="width : 70%;">
+<img alt="LC2" src="../ListeChainee2.png" style="width : 70%;background-color: #d2dce0;">
 </p>
 </li>
 </ul>
@@ -4593,12 +4593,11 @@ la fonction effectuera :</p>
 </code></pre></div>
 <p>La question de la complexité est un peu plus subtile :</p>
 <ul>
-<li>dans un cas correct (l'indice <code>n</code> fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à <code>n</code> ;</li>
+<li>dans un cas correct (l'indice <code>n</code> fourni correspond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à <code>n</code> ;</li>
 <li>dans le cas où <code>n</code> est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
 Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à <span class="arithmatex">\(n\)</span>, car le calcul de la longueur parcoure déjà toute la liste.
-Faire ce calcul en appel récursif générerait donc une complexité <strong>quadratique</strong>. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
-de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
-<li>Pire, dans le cas où l'indice passé est négatif, la liste chainée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger celà par la ligne :</li>
+Faire ce calcul en appel récursif génèrerait donc une complexité <strong>quadratique</strong>. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
+<li>Pire, dans le cas où l'indice passé est négatif, la liste chainée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger cela par la ligne :</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">chaine</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span>
 <span class="o">...</span>
@@ -4625,7 +4624,7 @@ de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 2 :  Concaténation de deux listes</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution récursive</label><label for="__tabbed_2_3">Solution Itérative</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Solution récursive</label><label for="__tabbed_2_3">Solution Itérative</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction <code>concatener(c1, c2)</code> qui renvoie une liste chainée obtenue par concaténation de <code>c1</code> et <code>c2</code>.</p>
@@ -4641,7 +4640,7 @@ de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.</li>
 Dans cette version, les chaines <code>c1</code> et <code>c2</code> ne sont pas modifiée ! <code>concatener</code> renvoie 
 une nouvelle liste chainée qui a copié les valeurs de <code>c1</code> avant de les lier à celles de <code>c2</code>.</p>
 <p></p><p align="center">
-<img alt="LC1" src="../ListeChaineeConcatener1.png" style="width : 60%;">
+<img alt="LC1" src="../ListeChaineeConcatener1.png" style="width : 60%;background-color: #d2dce0;">
 </p>
 </div>
 <div class="tabbed-block">
@@ -4654,15 +4653,15 @@ une nouvelle liste chainée qui a copié les valeurs de <code>c1</code> avant de
 </code></pre></div>
 Attention ! Dans cette solution, <code>c1</code> est modifiée ! 
 <p align="center">
-<img alt="LC2" src="../ListeChaineeConcatener2.png" style="width : 60%;">
+<img alt="LC2" src="../ListeChaineeConcatener2.png" style="width : 60%;background-color: #d2dce0;">
 </p>
-<p><mark class="critic"><strong>ET C'EST UNE TRES MAUVAISE IDEE</strong></mark></p>
+<p><mark class="critic"><strong>ET C'EST UNE TRES MAUVAISE IDÉE</strong></mark></p>
 <p>Imaginons qu'on exécute deux fois la concaténation <code>concatenerI(c1, c2)</code>, puis qu'on demande un affichage de <code>c1</code>.</p>
 <p>La première concaténation va donner le schéma ci-dessus, la chaine <code>c1</code> ayant pour dernier chainon le dernier chainon de <code>c2</code>.
 A l'exécution de la deuxième concaténation, il n'y aura pas de création de nouvelle chaine, mais simplement la modification du dernier
 chainon de l'actuel <code>c1</code> vers le premier élément de <code>c2</code>, soit... une boucle menant du dernier élément de <code>c2</code> vers le premier de <code>c2</code> :</p>
 <p></p><p align="center">
-<img alt="LC2" src="../ListeChaineeConcatener3.png" style="width : 60%;">
+<img alt="LC2" src="../ListeChaineeConcatener3.png" style="width : 60%;background-color: #d2dce0;">
 </p>
 <p>La chaine obtenue ne possède plus de fin (jamais elle ne pointe vers <code>None</code>). La méthode <code>__str__</code> effectuant un appel récursif dont le cas de base correspond au fait de pointer vers <code>None</code>, on aura alors une erreur de type <code>RecursionError: maximum recursion depth exceeded</code>, puisqu'il est devenu impossible de passer par le cas de base.</p>
 </div>
@@ -4711,7 +4710,7 @@ modifient la valeur du deuxième élément de la chaine, qui devient <code>21 -&
 <p>Créer une fonction <code>inserer(v, n, chaine)</code> qui renvoie la liste chainée dans laquelle on a inséré insère l'élément <code>v</code> à la position <code>n</code> dans la liste <code>chaine</code> passée en argument.</p>
 <p>Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :</p>
 <p></p><p align="center">
-<img alt="LC Insertion" src="../Insertion.png" style="width : 50%;">
+<img alt="LC Insertion" src="../Insertion.png" style="width : 50%;background-color: #d2dce0;">
 </p>
 </div>
 <div class="tabbed-block">
@@ -4738,7 +4737,7 @@ modifient la valeur du deuxième élément de la chaine, qui devient <code>21 -&
 <p>Créer une fonction <code>supprime(n, chaine)</code> qui supprime l'élément à la position <code>n</code> dans la liste passée en argument.</p>
 <p>Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :</p>
 <p></p><p align="center">
-<img alt="LC Suppression" src="../Suppression.png" style="width : 50%;">
+<img alt="LC Suppression" src="../Suppression.png" style="width : 50%;background-color: #d2dce0;">
 </p>
 </div>
 <div class="tabbed-block">

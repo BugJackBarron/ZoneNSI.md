@@ -16,14 +16,14 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 	![Manim gif](addFirstElement_ManimCE_v0.11.0.gif){: style="width:50%;"}
 	</p>
 	
-	Au total, nous avons réalisé un nombre d'opérations qui est **proportionnel à la taille du tableau !**Sur un petit, tel que celui-ci, il n'y a pas trop de problèmes, 
+	Au total, nous avons réalisé un nombre d'opérations qui est **proportionnel à la taille du tableau !** Sur un petit tableau, tel que celui-ci, il n'y a pas trop de problèmes, 
 	mais sur un tableau contenant *plusieurs millions* d'entrées, le nombre d'opérations devient bien trop important.
 	
 	Heureusement, il existe d'autres manières de stocker des informations, qui permettent une modification bien plus rapide des différents éléments.	
 
 	??? warning "La face cachée de Python"
 
-		Lorsqu'un objet de type `list` est crée en Python, l'interpréteur réserve une taille en mémoire proportionnelle à une puissances de 2 nécessaire pour stocker le tableau. Cela signifie qu'un tableau de taille 3 occuper une taille mémoire égale à celle d'un tableau de taille 4, mais dont la dernière cellule n'est pas utilisée. De même un tableau de taille 5 est en fait stocké comme un tableau de taille 8 dont les trois dernières cellules ne sont pas utilisées. Un tableau de taille 16 sera stocké dans une structure dont toutes les cases sont occupées.
+		Lorsqu'un objet de type `list` est crée en Python, l'interpréteur réserve une taille en mémoire selon un schéma défini à l'avance (0, 4, 8, 16, 25, 35, 46, 58, 72, 88,...) pour stocker le tableau. Cela signifie qu'un tableau de taille 3 occupera une taille mémoire égale à celle d'un tableau de taille 4, mais dont la dernière cellule n'est pas utilisée. De même un tableau de taille 5 est en fait stocké comme un tableau de taille 8 dont les trois dernières cellules ne sont pas utilisées. Un tableau de taille 16 sera stocké dans une structure dont toutes les cases sont occupées.
 
 		La méthode `append` va donc fonctionner de deux manières différentes selon la situation envisagée :
 
@@ -31,7 +31,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 
 			![list python 1](list_taille_python_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" }
 
-		* si la **réservation mémoire est pleine**, il faudra alors **créer une nouvelle réservation mémoire d'une taille 2 fois supérieure à la précédente**, copier chaque élément de l'ancienne liste dans la nouvelle, puis enfin la valeur ajoutée par `append` sera simplement stockée dans la première case libre :
+		* si la **réservation mémoire est pleine**, il faudra alors **créer une nouvelle réservation mémoire d'une taille immédiatement supérieure à la précédente**, selon le schéma présenté auparavant, puis copier chaque élément de l'ancienne liste dans la nouvelle, et enfin ajouter la valeur supplémentaire dans la première case libre :
 
 			![list python 2](list_taille_python_2.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;" }
 
@@ -48,7 +48,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 !!! example "Exemple"
 	
 	<p align="center">
-	![LC1](ListeChainee1.png){: style="width : 30%;"}
+	![LC1](ListeChainee1.png){: style="width : 30%;;background-color: #d2dce0;"}
 	</p>
 	
 	On a représenté ici une liste chainée de trois éléments :
@@ -89,7 +89,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		Ici, on a créé une liste nommée `chaine` à partir de trois objets de classe `Chainon` qu'on peut visualiser ainsi :
 		
 		<p align="center">
-		![LC2](ListeChainee2.png){: style="width : 70%;"}
+		![LC2](ListeChainee2.png){: style="width : 70%;background-color: #d2dce0;"}
 		</p>
 
 !!! info "Remarque"
@@ -182,12 +182,11 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 		La question de la complexité est un peu plus subtile :
 		
-		* dans un cas correct (l'indice `n` fourni corresond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `n` ;
+		* dans un cas correct (l'indice `n` fourni correspond bien à un élément de la liste), le nombre d'opérations est bien proportionnel à `n` ;
 		* dans le cas où `n` est supérieur à la longueur de la liste, par contre, on va parcourir la totalité de la liste avant de pouvoir signaler une erreur.
 		Ce serait cependant une très mauvaise idée de calculer la longueur de la liste pour le comparer à $n$, car le calcul de la longueur parcoure déjà toute la liste.
-		Faire ce calcul en appel récursif générerait donc une complexité **quadratique**. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait
-		de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.
-		* Pire, dans le cas où l'indice passé est négatif, la liste chainée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger celà par la ligne :
+		Faire ce calcul en appel récursif génèrerait donc une complexité **quadratique**. On pourrait cependant encapsuler la fonction récursive dans une fonction dont l'objectif serait de vérifier la valeur de l'indice avant d'effectuer les appels récursifs.
+		* Pire, dans le cas où l'indice passé est négatif, la liste chainée sera elle aussi parcourue intégralement avant de renvoyer une erreur d'indice. On peut cependant corriger cela par la ligne :
 		
 		``` python
 		if chaine == None or i<0 :
@@ -216,7 +215,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		
 !!! question "Exercice 2 :  Concaténation de deux listes"
 
-	=== "Enoncé" 
+	=== "Énoncé" 
 		
 		Créer une fonction `concatener(c1, c2)` qui renvoie une liste chainée obtenue par concaténation de `c1` et `c2`.
 		
@@ -235,7 +234,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		une nouvelle liste chainée qui a copié les valeurs de `c1` avant de les lier à celles de `c2`.
 		
 		<p align="center">
-		![LC1](ListeChaineeConcatener1.png){: style="width : 60%;"}
+		![LC1](ListeChaineeConcatener1.png){: style="width : 60%;background-color: #d2dce0;"}
 		</p>
 		
 	=== "Solution Itérative"
@@ -251,10 +250,10 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		```
 		Attention ! Dans cette solution, `c1` est modifiée ! 
 		<p align="center">
-		![LC2](ListeChaineeConcatener2.png){: style="width : 60%;"}
+		![LC2](ListeChaineeConcatener2.png){: style="width : 60%;background-color: #d2dce0;"}
 		</p>
 		
-		{==**ET C'EST UNE TRES MAUVAISE IDEE**==}
+		{==**ET C'EST UNE TRES MAUVAISE IDÉE**==}
 		
 		Imaginons qu'on exécute deux fois la concaténation `concatenerI(c1, c2)`, puis qu'on demande un affichage de `c1`.
 		
@@ -263,7 +262,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		chainon de l'actuel `c1` vers le premier élément de `c2`, soit... une boucle menant du dernier élément de `c2` vers le premier de `c2` :
 		
 		<p align="center">
-		![LC2](ListeChaineeConcatener3.png){: style="width : 60%;"}
+		![LC2](ListeChaineeConcatener3.png){: style="width : 60%;background-color: #d2dce0;"}
 		</p>
 		
 		La chaine obtenue ne possède plus de fin (jamais elle ne pointe vers `None`). La méthode `__str__` effectuant un appel récursif dont le cas de base correspond au fait de pointer vers `None`, on aura alors une erreur de type `RecursionError: maximum recursion depth exceeded`, puisqu'il est devenu impossible de passer par le cas de base.
@@ -327,7 +326,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :
 		
 		<p align="center">
-		![LC Insertion](Insertion.png){: style="width : 50%;"}
+		![LC Insertion](Insertion.png){: style="width : 50%;background-color: #d2dce0;"}
 		</p>
 		
 	=== "Solution"
@@ -354,7 +353,7 @@ Lorsqu'on veut insérer un élément à une autre position on peut, toujours en 
 		Le schéma suivant doit pouvoir vous aider çà construire l'algorithme de cette fonction :
 		
 		<p align="center">
-		![LC Suppression](Suppression.png){: style="width : 50%;"}
+		![LC Suppression](Suppression.png){: style="width : 50%;background-color: #d2dce0;"}
 		</p>
 		
 	=== "Solution"
