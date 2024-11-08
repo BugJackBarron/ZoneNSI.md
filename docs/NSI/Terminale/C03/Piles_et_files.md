@@ -63,8 +63,7 @@
 	
 	=== "Fonction « Annuler la frappe » d'un traitement de texte"
 	
-		De la même manière que pour le bouton retour d'une page web, les modifications apportées dans un traitement de texte sont stockées dans une pile. L'appui sur ++ctrl++ + Z a pour effet de dépiler, 
-		et donc de rétablir le texte à la situation précédente sauvegardée dans la pile.
+		De la même manière que pour le bouton retour d'une page web, les modifications apportées dans un traitement de texte sont stockées dans une pile. L'appui sur ++ctrl++ + Z a pour effet de dépiler, et donc de rétablir le texte à la situation précédente sauvegardée dans la pile.
 		
 ### Files
 
@@ -212,7 +211,7 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 	
 	Bien que nous ayons vu qu'utiliser des listes mutables puisse être parfois une [mauvaise idée](ListeChaineeConcatener3.png), il est cependant possible de les utiliser, du moins dans une version adaptée, afin de construire un objet correspondant à l'interface définie pour les files. 
 	
-	Pour cela il faudra utiliser deux attributs `tete` et `queue`, qui représenteront respectivement le chainon de début et le chainon de fin de la file.
+	Pour cela, la classe `File` utilisera deux attributs `tete` et `queue`, représentant respectivement le chainon de début et le chainon de fin de la file.
 	
 	<p align="center">
 	![file](File_LC1.png){: style="width : 30%;"}
