@@ -3,13 +3,15 @@
 ## Séparer le fond et la forme : un exemple avec un traitement de texte
 
 !!! question "Activité avec un traitement de texte"
+
+	*Les intitulés exacts des menus dépendent de la version de LibreOffice utilisée. Il faudra donc vous adapter en essayant de trouver le bon menu pour chaque situation.*
 	
-	1. Téléchargez puis ouvrez le fichier [`Styles_et_modèles.odt`](Styles_et_modèles.odt) avec *Libre Office*.
+	1. Téléchargez puis ouvrez le fichier [`Styles_et_modèles.odt`](Styles_et_modèles.odt){: target="_blank"} avec *Libre Office*.
 	2. Allez à la page 7 du document.
 	3. Ouvrez la fenêtre de style  en appuyant sur ++f11++. 
-	4. Déployez le menu `Style par défaut` en appuyant sur ++plus++.
-	5. Déployez de même le menu `Titre`, puis cliquez droit sur `Titre 1`, puis `modifier`.
-	6. Passez la couleur de la police en rouge, puis activez un surlignage simple en jaune. Validez puis observez le document. 
+	4. Dans la page, cliquez sur le titre « Qu'est-ce qu'un modèle ?».
+	5. Dans la fenêtre de style, cliquez droit sur `Titre 1`, puis `modifier`.
+	6. Passez la couleur de la police en rouge, puis activez un surlignage simple en jaune. Validez puis observez le document, en regardant les pages suivantes. 
 		1. Quelles parties ont été changées ? 
 		2. Y-a-t-il eu des changements sur d'autres pages ?
 		3. Qu'ont en commun toutes les zones changées ?
@@ -40,10 +42,10 @@
 !!! asbtract "CSS"
 	CSS est l'acronyme de {==**Cascading Style Sheets**==}, soit *Feuilles de Styles en cascades* en français. Un fichier `CSS` est appelé  par une ou plusieurs pages `HTML` (entre autre), et associe à certaines {==**balises**==} et/ou {==**attributs**==} `html` certaines caractéristiques graphiques, à l'aide d'un {==**sélecteur**==} de balises.
 	
-	Pour utiliser une feuille de style nommée `toto.css` dans une page `html`, il faut inclure entre les balises `<head>` et `</head>` la ligne suivante :
+	Pour utiliser une feuille de style nommée `toto.css` dans une page `html`, il faut inclure dans les méta-données de la page, c'est-à-dire entre les balises `<head>` et `</head>` la ligne suivante :
 
 	```` html
-		<link href="toto.css" rel="stylesheet" type="text/css"/>
+		<link href="toto.css" rel="stylesheet" type="text/css">
 	````
 
 !!! example "Exemple"
@@ -51,6 +53,17 @@
 	<p align="center">
 	 ![CSS_Fichiers.png](CSS_Fichiers.png){:style="width:50%;"}
 	</p>
+
+!!! question "Sur Capytale 1"
+	1. Ouvrez l'activité [919c-4668644](https://capytale2.ac-paris.fr/web/c/919c-4668644){: target = "_blank" } sur Capytale.
+	2. Quels sont les fichiers présents dans l'activité ?
+	3. Insérez entre les balises `<head>` et `</head>` la ligne suivante :
+
+		``` html
+		<link href="mon_style.css" rel="stylesheet" type="text/css">
+		```
+
+		Observez les changements apportés à la page.
 
 ### Déclaration d'une règle CSS : vocabulaire associé et premiers exemples
 
@@ -78,9 +91,23 @@ h1 {
 }
 ````
 
-Il existe des **dizaines de propriétés** et des **centaines de déclarations possibles**. Pour les trouver je vous conseille fortement le site [MDN webdocs](https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS) et surtourt (mais en anglais) [W3Schools](https://www.w3schools.com/css/).
+!!! question "Sur Capytale 2"
 
-Vous pouvez essayer de modifier le CSS dans le [bac-à-sable suivant sur capytale](https://capytale2.ac-paris.fr/web/c-auth/list?returnto=/web/code/c50c-144590).
+	On reste sur la même activité : [919c-4668644](https://capytale2.ac-paris.fr/web/c/919c-4668644){: target = "_blank" }
+
+	1. Quel est l'impact des lignes suivantes sur la page « Microbit » ?
+
+		``` CSS
+			body{
+  		background-color : lightcyan;
+		}
+		```
+	2. Quelles sont les modifications apportées aux balises `<strong>` ?
+	3. Effectuer une recherche sur les différentes valeurs de la propriété `border-style`. Tester plusieurs valeurs.
+
+Il existe des **dizaines de propriétés** et des **centaines de déclarations possibles**. Pour les trouver je vous conseille fortement le site [MDN webdocs](https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS) et surtout (mais en anglais) [W3Schools](https://www.w3schools.com/css/).
+
+
 
 !!! info "L'inspecteur d'objet"
 	Il est possible dans `Firefox`, comme dans de nombreux navigateurs actuels, d'afficher les informations d'une page web, y compris bien sûr les styles CSS attachés à cette page. Dans `Firefox`, vous obtiendrez cet inspecteur de style par l'intermédiaire des touches ++ctrl+shift+i++, ou bien par `Menu > Outils supplémentaires > Outils de développement web`.
@@ -92,7 +119,7 @@ Vous pouvez essayer de modifier le CSS dans le [bac-à-sable suivant sur capytal
 	1. Rendez-vous sur la page [https://www.zonensi.fr/SNT/Web/CSS/](https://www.zonensi.fr/SNT/Web/CSS/]).
 	2. Ouvrez **l'inspecteur d'objets**.
 	3. Cliquez sur la petite flèche située à droite de la barre de menu de l'inspecteur, puis sélectionnez ensuite le titre de la page `Mettre en forme : le CSS`.
-	4. Vous devez voir apparâitre toutes les déclarations dont dépend le titre de la page. Ajoutez au sélecteur `.md-typeset h1` la déclaration `background-color : pink`.
+	4. Vous devez voir apparaitre toutes les déclarations dont dépend le titre de la page. Ajoutez au sélecteur `.md-typeset h1` la déclaration `background-color : pink`.
 	5. Enjoy :smile:
 	
 
@@ -112,7 +139,7 @@ p {
 	color : green;
 }
 ````
-## Sélecteur de classe :
+### Sélecteur de classe :
 
 Il est possible de regrouper des balises, même différentes, en leur donnant un attribut `class`. Toutes les balises possédant le même attribut `class` peuvent être alors ciblées en ajoutant un point `.` précédant le nom de la classe. Par exemples :
 
@@ -146,7 +173,7 @@ Il est aussi possible de spécifier une balise spécifique en lui attribuant un 
 }
 ````
 
-## Ordre d'application des sélecteurs
+### Ordre d'application des sélecteurs
 
 !!! abstract "Priorité des sélecteurs"
 
@@ -155,13 +182,24 @@ Il est aussi possible de spécifier une balise spécifique en lui attribuant un 
 	1. La mise en forme définie pour le sélecteur le plus précis l'emporte (`id` est plus précis que `class` qui est plus précis que le nom de la balise).
 	2. Le dernier défini est appliqué lorsque le niveau de priorité est égal.
 
+
+!!! question "Sur Capytale 3"
+	On reste sur la même activité : [919c-4668644](https://capytale2.ac-paris.fr/web/c/919c-4668644){: target = "_blank" }
+
+	1. Dans le fichier `index.html`, repérer les balises ciblées par la classe `python`.
+		1. Quelles sont les balises qui utilisent cette classe ?
+		2. Quel est le comportement des éléments de cette classe ?
+		3. Comment est écrit le sélecteur dans le fichier `mon_style.css` ?
+	2. Dans le fichier `index.html`, repérer la balise ciblées par l'identifiant `microbit`. Quel sont les règles CSS qui lui sont associées ?
+	3. Dans le fichier `index.html`, repérer la balise ciblées par l'identifiant `maqueen`. Quel sont les règles CSS qui lui sont associées ?
+
 ## Les boîtes CSS...
 
 *Cette partie est quasiment copié-collée depuis [MDN Mozilla](https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS).*
 
-### Une boîte...
+### Une boite...
 
-Vous verrez rapidement qu'avec les CSS, tout tourne autour de boîtes : définir leurs tailles, leurs couleurs, leurs positions, etc. Les éléments HTML d'une page peuvent, pour la plupart, être vus comme des boîtes placées les unes sur les autres.
+Vous verrez rapidement qu'avec les CSS, tout tourne autour de boites : définir leurs tailles, leurs couleurs, leurs positions, etc. Les éléments HTML d'une page peuvent, pour la plupart, être vus comme des boites placées les unes sur les autres.
 
 Chacun de ces blocs prend un certain espace sur la page, de cette façon :
 
@@ -176,10 +214,10 @@ Chacun de ces blocs prend un certain espace sur la page, de cette façon :
 
 Chaque élément possède par défaut un type de placement :
 
-* élément `block` : un élément `block` occupe par défaut toute la largeur de l'écran. Quand des éléments `block` s'enchainent, ils sont les uns au dessus des autres. Par défaut les éléments `<h1>,<h2>,...,<h6>`,  `<p>` et surtout `<div>` (balise générique de type `block`) sont des éléments de type `block`.
-* élément `inline` : un élément `inline` s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après.Par défaut les éléments `<a>,<img>,<strong>,...` sont des éléments de type `inline`.
+* élément `block` : un élément `block` occupe par défaut toute la largeur de l'écran. Quand des éléments `block` s'enchainent, ils sont les uns au-dessus des autres. Par défaut les éléments `<h1>,<h2>,...,<h6>`,  `<p>` et surtout `<div>` (balise générique de type `block`) sont des éléments de type `block`.
+* élément `inline` : un élément `inline` s'insère dans la ligne de texte, sans générer de saut de ligne avant ou après. Par défaut les éléments `<a>,<img>,<strong>,...` sont des éléments de type `inline`.
 
-Il existe bien des subtilités concernant les éléments `inline` et `block`, qui dépassent largement le cadre de ce cours. Ce [document](https://la-cascade.io/la-difference-entre-block-et-inline/) permettra peut-être de répondre à certaines questions que vous poyurriez vous poser. 
+Il existe bien des subtilités concernant les éléments `inline` et `block`, qui dépassent largement le cadre de ce cours. Ce [document](https://la-cascade.io/la-difference-entre-block-et-inline/) permettra peut-être de répondre à certaines questions que vous pourriez vous poser. 
 
 !!! tips "Modifier le type d'un élément : `display`"
 	Il est possible de spécifier explicitement pour un élément son type d'apparition dans le flux de données d'une page html. Pour cela on utilise la propriété `display` et ses différentes valeurs :
@@ -196,25 +234,50 @@ Il existe bien des subtilités concernant les éléments `inline` et `block`, qu
 
 ## Les dimensions et unités de mesures les plus utiles 
 
-En CSS, il est souvent impératif de donner des longueurs, ou des bases de dimensions pour les éléments. Les unités sont nombreuses, souvent mystérieuses ou absconses pour nous européens. En voici quelques types :
+En CSS, il est souvent impératif de donner des longueurs ou des bases de dimensions pour les éléments. Les unités sont nombreuses, souvent mystérieuses ou absconses pour nous européens. En voici quelques types :
 
 
 * **valeur en pourcentage :** `font-size : 120\%;` définit une taille de police valant 120% de la valeur de l'élément parent. Il ne faut pas d'espace entre le nombre et le symbole %.
-*  **hauteur `em` :** cadratin, ou hauteur de la fonte dans une police donnée égal à la largeur du caractère `M`. `font-size : 1.5em;` écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de `1em`.
-*  **valeur en pixels :** il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple `width : 50px;` mettra la largeur de l'élément à 500 pixels. A proscrire sauf cas particuliers.
+*  **hauteur `em` :** cadratin c'est-à-dire hauteur de la fonte dans une police donnée égale à la largeur du caractère `M`. `font-size : 1.5em;` écrira le texte 50% plus gros que la taille de base utilisée, qui est par définition de `1em`.
+*  **valeur en pixels :** il est toujours possible de calculer une taille en pixels, mais l'application exacte dépend du navigateur utilisé. Par exemple `width : 50px;` mettra la largeur de l'élément à 500 pixels. À proscrire sauf cas particuliers.
 *  **valeur en unité relative à la largeur de la fenêtre :** `margin-left : 50vw;` permettra de créer une marge à gauche de la boite valant 50% de la largeur de la fenêtre.
 *  **valeur en unité relative à la largeur de la fenêtre :** `margin-left : 50vh;` permettra de créer une marge en haut de la boite valant 50\% de la hauteur de la fenêtre.
 
 
+!!! question "Sur Capytale 4 : Centrer une image"
+
+	Un des problème souvent rencontré lorsqu'on construit des pages web est celui de centrer un élément, en particulier une image. Voici une méthode, que nous allons appliquer à la page [919c-4668644](https://capytale2.ac-paris.fr/web/c/919c-4668644){: target = "_blank" } sur Capytale.
+
+	1. Dans le fichier `index.html`, encadrer de chaque balise `img` la balise `<div>` de la manière suivante :
+
+		``` html
+		<div class="image_centree">
+			<img ...> % Cette ligne est celle de la balise image que vous voulez centrer
+		</div>
+		```
+	2. Dans le fichier `mon_style.css`, rajouter la règle suivante :
+
+		``` css
+		.image_centree{
+			text-align : center;
+		}
+		```
+
+	En effectuant ces deux étapes, nous avons :
+
+	* créé une boite de la largeur de l'écran autour de l'image, grâce à la balise `<div>` ;
+	* centré le contenu `inline` à l'intérieur de la balise `<div>` grâce à la règle `text-align : center ;`. Une balise `<img>` étant de statut `inline`, elle est donc immédiatement centrée dans sa boite englobante.
+
+
 ## Adaptation aux différents écrans/médias de sortie
 
-Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes, et leur capacité à basculer du format portrait au format paysage.
+Jusqu'aux années 2010, les sites web étaient souvent conçus pour n'être lus que sur des écrans d'ordinateurs. Depuis, les smartphones sont arrivés, avec leurs nombreuses tailles d'écrans différentes et leur capacité à basculer du format portrait au format paysage.
 
-Afin d'afficher correctement  un site web, il faut donc prévoir à l'avance, dans le fichier *css*, différentes version du site. Pour cela on utilise des **media-queries** - soit *requêtes de media*. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.
+Afin d'afficher correctement un site web, il faut donc prévoir à l'avance, dans le fichier *css*, différentes versions du site. Pour cela on utilise des **media-queries** - soit *requêtes de media*. Il s'agit d'un type particulier de commande qui évalue certaines caractéristiques du média utilisé pour lire le site.
 
 Il existe de nombreuses requêtes, mais en pratique nous n'utiliserons que les deux requêtes suivantes :
 
-*  `max-width` : applique les règles si la largeur  de l'écran est **inférieure ou égale** à la taille donnée en pixel ;
+*  `max-width` : applique les règles si la largeur de l'écran est **inférieure ou égale** à la taille donnée en pixel ;
 *  `min-width` : applique les règles si la largeur de l'écran est **supérieure ou égale** à la taille donnée en pixel ;
 
 !!! example "Exemple"
@@ -238,6 +301,8 @@ Il existe de nombreuses requêtes, mais en pratique nous n'utiliserons que les d
 	````
 	
 	
-!!! question "A faire"
+!!! question "À faire"
 
 	Maintenant que vous connaissez quelques secrets du CSS, vous allez pouvoir l'utiliser pour effectuer une mise en page plus agréable de votre page html !
+
+	Vous pouvez travailler dans Capytale, ou bien travailler directement dans le logiciel `Notepad++` et visualiser votre page dans `Firefox`. Dans tous les cas, le fichier CSS que vous aurez créé devra être rendu dans Capytale dans l'activité « Ma page web ».
