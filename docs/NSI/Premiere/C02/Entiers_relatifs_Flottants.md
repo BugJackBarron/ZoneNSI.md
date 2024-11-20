@@ -19,8 +19,8 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {
 ## Les Entiers Relatifs (entiers signés)
 
 ### Une version naïve
-!!! abstract "Bit de signe"
-	Sur un octet, le {==**bit de poids fort**==} - c'est-à-dire le bit le plus à gauche du nombre, représente le signe ($0$ pour positif et $1$ pour négatif) et les $7$ autres représentent la valeur absolue du nombre.
+!!! abstract "Proposition : le bit de signe"
+	Sur un octet, le {==**bit de poids fort**==} - c'est-à-dire le bit le plus à gauche du nombre - représente le signe ($0$ pour positif et $1$ pour négatif) et les $7$ autres représentent la valeur absolue du nombre.
 
 !!! question "Exercice"
 
@@ -36,11 +36,18 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {
 	=== "Solution"
 		A venir !
 	
+!!! bug "Les problèmes de la méthode naïve"
+	On constate donc que cette méthode *naïve* n'est pas du tout efficace pour représenter des entiers relatifs :
 
-### Complément à 2
+	* premièrement il existe deux représentations pour zéro : $+0$ et $-0$, mais ce n'est pas un réel problème mathématiquement. Tout au plus une perte de place en utilisant deux représentations différentes pour le même objet.
+	* deuxièmement, **et c'est beaucoup plus embêtant**, l'incompatibilité de cette représentation avec les opérations usuelles.
 
-!!! abstract "Notation en complément à 2"
-	Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en {==**complément à deux**==}. Dans cette notation, sur un octet :
+	Il faut donc trouver une méthode qui permettra d'être compatible avec les opérations.
+
+### Représentation en complément à 2
+
+!!! abstract "Représentation en complément à 2"
+	Pour remédier aux problèmes soulevés par la version naïve, on utilisera la représentation en {==**complément à deux**==}. Dans cette notation, sur un octet :
 
 	* Les nombres positifs sont représentés comme pour les nombres entiers naturels.
 	* Pour les nombres négatifs, par contre :
@@ -50,18 +57,17 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {
 		
 !!! example "Exemple"
 
-	* Le nombre $13$ est représenté par $(00001101)_2$.
+	* Le nombre $13$ est représenté par $(0000~1101)_2$.
 	* Pour le nombre $-4$ :
-		* on cherche d'abord la représentation de sa valeur absolue : $(0000 0100)_2$ ;
-		* ensuite on inverse chaque bit : $(1111 1011)_2$
-		* puis on ajoute $1$ au résultat : $(1111 1100)_2$
+		* on cherche d'abord la représentation de sa valeur absolue : $(0000~0100)_2$ ;
+		* ensuite on inverse chaque bit : $(1111~1011)_2$
+		* puis on ajoute $1$ au résultat : $(1111~1100)_2$
 	
-	Le nombre $-4$ a pour représentation en complément à 2 sur un octet la suite 
+	Le nombre $-4$ a pour représentation en complément à 2 sur un octet la suite $(1111~1100)_2$
 
 ??? exemple "Pour les curieux : « Overflow »"
 
-	Ce qu'on appelle un « OVERFLOW » consiste en un dépassement de capacité lors d'une opération. Par exemple
-	pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible qu'une opération dépasse les possibilités de stockage sur 1 octet.
+	Ce qu'on appelle un « OVERFLOW » consiste en un dépassement de capacité lors d'une opération. Par exemple pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible qu'une opération dépasse les possibilités de stockage sur 1 octet.
 
 	Prenons pour exemple l'opération $130 + 132$ :
 
@@ -83,12 +89,12 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {
 
 	Obtenir un « overflow » est une preuve de mauvaise prise en compte des capacités limites de la machine. C'est un bug redouté et redoutable, en particulier lorsqu'on utilise des structures de « Piles » (au programme de terminale) lors d'opération « récursives » (aussi au programme de terminale). On obtient alors une erreur qui est appelée « Stack Overflow ». Cette erreur est tellement fréquente et tellement célèbre qu'elle a donné son nom au plus grand forum dédié à la programmation, [Stack Overflow](https://stackoverflow.com/){: target="_blank" }.
 
-	Pour votre culture numérique, le plus célèbre des « integer overflow » a été un bug qui a coûté 500 millions de dollars lors du premier [lancement de la fussée Ariane 5](https://fr.wikipedia.org/wiki/Ariane_5#Premier_vol_(vol_88_/_501)){: target = "_blank" }.
+	Pour votre culture numérique, le plus célèbre des « integer overflow » a été un bug qui a couté 500 millions de dollars lors du premier [lancement de la fusée Ariane 5](https://fr.wikipedia.org/wiki/Ariane_5#Premier_vol_(vol_88_/_501)){: target = "_blank" }.
 
 
 !!! question "Exercice"	
 
-	=== "Enoncé"
+	=== "Énoncé"
 		1. Compléter le tableau suivant (un calcul par élève) :
 		
 		$$
@@ -129,7 +135,7 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {
 	* Pour obtenir le {==code de $-40$==} sur 1 octet :
 		* Le nombre $40$ s'écrit $(0010~1000)_2$
 		* On garde la partie à droite $(0010~\mathbf{1000})_2$
-		* On inverse la partie à gauche après le premier $1$  $(\mathbf{1101}1000)_2$
+		* On inverse la partie à gauche après le premier $1$  $(\mathbf{1101}~1000)_2$
 		* On a ainsi obtenu le codage du nombre $-40$ sur 1 octet.
 	* Pour obtenir le {==code de $-65$==} sur 1 octet :
 		* Le nombre $65$ s'écrit $(0100~0001)_2$
@@ -296,5 +302,3 @@ Il nous faut maintenant nous intéresser aux autres possibilités de nombres : {
 	
 		A venir !
 
-
-œ
