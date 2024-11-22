@@ -45,12 +45,12 @@ Nous verrons que cette définition impose un certain nombre de contraintes à la
 	
 	La condition *sine qua none* pour garantir la faisabilité et la pertinence d'une recherche de données est la {==**cohérence de ces données**==}. Ici on constate plusieurs problèmes de cohérence :
 	
-	* Le nom du groupe *Gojira* est orthographié de deux manières différentes. Une recherche utilisant la chaine de caractères  `Gojira` ne donnera que deux résultats, alors que trois peuvent être attendus.
+	* Le nom du groupe *Gojira* est orthographié de deux manières différentes. Une recherche utilisant la chaine de caractères `Gojira` ne donnera que deux résultats, alors que trois peuvent être attendus.
 	* Le genre *Metal* est aussi orthographié de deux manières différentes. On notera qu'une recherche stricte avec la chaine `Metal`, c'est-à-dire basée sur l'égalité, ne donnera que deux résultats, alors qu'une recherche étendue, c'est-à-dire basée sur l'appartenance de la sous-chaine `Metal` à la chaine donnant le genre, renverra elle trois résultats.
 	* Le nom du chanteur de *Gojira* est écrit de trois manières différentes.
-	* On peut aussi noter que le nom du chanteur de Metallica n'est pas renseigné, ce qui peut peut-être poser un problème de cohérence.
+	* On peut aussi noter que le nom du chanteur de *Metallica* n'est pas renseigné, ce qui peut peut-être poser un problème de cohérence.
 	
-	Ces problèmes de cohérence sont liés (en partie), à un problème de {==**redondance**==} des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaines telles que `Metal` et `Gojira`, alors qu'elles ne représentent bien qu'une seule *entité* chacune. 
+	Ces problèmes de cohérence sont liés (en partie), à un problème de {==**redondance**==} des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaines telles que `Metal` et `Gojira`, alors qu'elles ne représentent bien qu'une seule {==**entité**==} chacune. 
 	
 	Pour régler la question de la **cohérence des données**, il faudra en premier lieu trouver un moyen d'éviter la **redondance** de certaines données.
 
@@ -65,18 +65,18 @@ Nous verrons que cette définition impose un certain nombre de contraintes à la
 
 Le premier modèle ayant souhaité s'attaquer au problème de la redondance des données est le **modèle hiérarchique**, développé par IBM dans les années 1960, dans le cadre du programme Apollo de la NASA. Ce modèle, très dépendant de la manière dont fonctionnait les ordinateurs de cette époque, enregistre les données à la manière de l'organisation d'un système de fichier, sous la forme d'un arbre (*structure arborescente*), de façon à ce qu'un enregistrement n'ait qu'un seul possesseur. On peut en donner un exemple ci-dessous :
 
-![ModeleHierarchique1](modeleHierarchique1.png){:style="width:100%;"}
+![ModeleHierarchique1](modeleHierarchique1.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Ce type de modèle peut être pratique, mais *il ne répond pas à toutes les problématiques*. En effet, ici nous n'avons pas introduit dans la hiérarchie les leads vocaux. Voici ce que donne le schéma lorsqu'on les introduit :
 
-![ModeleHierarchique2](modeleHierarchique2.png){:style="width:100%;"}
+![ModeleHierarchique2](modeleHierarchique2.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 On constate ici que le choix d'organisation de l'arbre ne permet pas de régler la redondance des données, puisque non seulement un même chanteur peut être lead vocal sur plusieurs albums, mais il peut l'être aussi sur **plusieurs groupes** (comme Josh Homme par exemple). La structure hiérarchique n'est ici pas adaptée. 
 
 Une des solutions proposée pour ce problème a été **le modèle réseau**, proposé par [Charles William Bachman](https://fr.wikipedia.org/wiki/Charles_Bachman) à la fin des années 1960[^LA]. C.W. Bachman reçu le Prix Turing en 1973 pour ses contributions sur les technologies des bases de données. On lui doit aussi le modèle OSI (voir le cours de première...). Une représentation de nos albums dans le modèle réseau est la suivante :
 
 
-![Modelereseau](modeleReseau1.png){:style="width:100%;"}
+![Modelereseau](modeleReseau1.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaitre la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs {==**dépendants de la structure de donnée**==}.
 
@@ -88,7 +88,7 @@ Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle
 
 Chercheur au centre de recherche d'IBM, [Edgar Frank Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd){target=_blank}, insatisfait des modèles existant, chercha un modèle plus simple permettant de gérer un grand nombre de données. Mathématicien de formation, il se basa sur la théorie des ensembles et la logique des prédicats ([*logique de premier ordre*](https://fr.wikipedia.org/wiki/Calcul_des_pr%C3%A9dicats){target=_blank}) pour publier en 1970 un article[^Codd] où il proposait de stocker des *données hétérogènes* dans des *tables*, comme dans le schéma ci-dessous :
 
-![modeleRelationnel1.png](modeleRelationnel1.png){: style="width:100%;background-color:hsla(var(--md-hue),15%,21%,0.07);"}
+![modeleRelationnel1.png](modeleRelationnel1.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Ce modèle, qualifié de {==**relationnel**==} était à l'époque considéré comme une curiosité intellectuelle, car les ordinateurs en ce temps n'étaient pas capables de gérer de manière efficace des tables de données, et il n'était pas évident qu'ils le soient un jour.
 
