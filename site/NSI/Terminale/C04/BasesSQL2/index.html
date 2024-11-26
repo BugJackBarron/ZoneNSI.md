@@ -4444,12 +4444,13 @@
 <p class="admonition-title">Projection</p>
 <p>L'opération de <mark class="critic"><strong>projection</strong></mark> consiste à ne récupérer que certains <strong>champs</strong> (c'est-à-dire les <strong>colonnes</strong>) d'une table donnée.</p>
 <p><img alt="Projection" src="../Projection.png" style="width:10%; margin:auto;display:block;background-color: #d2dce0;"></p>
-<p>En SQL, on l'obtient par l'instruction :</p>
+<p>En <code>SQL</code>, on l'obtient par l'instruction :</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">colonne1</span><span class="p">,</span><span class="w"> </span><span class="n">colonne2</span><span class="p">,...</span>
 <span class="k">FROM</span>
 <span class="w">    </span><span class="n">nom_table</span><span class="p">;</span>
 </code></pre></div>
+<p><code>SQL</code> renvoie alors <em>une table temporaire</em> contenant les données demandées.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple 1 : Projection</p>
@@ -4534,6 +4535,14 @@ Le caractère <code>%</code> est un <mark class="critic"><strong>joker</strong><
 <span class="w">        </span><span class="n">auteur</span>
 <span class="w">    </span><span class="k">WHERE</span>
 <span class="w">        </span><span class="n">nom</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'F____R'</span><span class="p">;</span>
+</code></pre></div>
+<p>Bien entendu, si on cherche une correspondance exacte, il n'est pas nécessaire d'utiliser la clause <code>LIKE</code>. Une simple requête d'égalité sera suffisante :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">titre</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">        </span><span class="n">livre</span>
+<span class="w">    </span><span class="k">WHERE</span>
+<span class="w">        </span><span class="n">editeur</span><span class="o">=</span><span class="w"> </span><span class="ss">"Dargaud"</span><span class="p">;</span>
 </code></pre></div>
 </div>
 <h2 id="fonctions-dagregations">Fonctions d'agrégations</h2>
