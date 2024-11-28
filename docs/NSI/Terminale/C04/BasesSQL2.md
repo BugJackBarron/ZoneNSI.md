@@ -268,7 +268,7 @@ On récupère alors en résultat la table suivante : ![sans doublons](sansDoublo
 ## Application
 
 !!! question "Exercice"
-	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebook [jeux olympiques](https://capytale2.ac-paris.fr/web/c/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
+	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebook [jeux olympiques](https://capytale2.ac-paris.fr/web/c/062e-4748066){target="_blank"}(Code `062e-4748066`) (merci M. Leleu).
 
 
 
