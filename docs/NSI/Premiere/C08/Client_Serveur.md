@@ -88,7 +88,7 @@ Créer une instance d'objet `app` à l'aide du constructeur `Flask`.
 ```` python  
 @app.route('/')
 ````
-Nous utilisons ici un décorateur grâce à la commande @ (cette notion de décorateur ne sera pas traitée en NSI). Vous devez juste comprendre la fonction qui suit ce décorateur (c'est-à-dire la fonction `index`), sera exécutée dans le cas où le serveur web recevra une requête HTTP avec une URL correspondant à la racine du site (`/`), c'est-à-dire, dans notre exemple, le cas où on saisie dans la barre d'adresse `127.0.0.1:5555/` ou `localhost:5555/` ou même simplement `localhost:5555`.
+Nous utilisons ici un décorateur grâce à la commande `@` (cette notion de décorateur ne sera pas traitée en NSI). Vous devez juste comprendre la fonction qui suit ce décorateur (c'est-à-dire la fonction `index`), sera exécutée dans le cas où le serveur web recevra une requête HTTP avec une URL correspondant à la racine du site (`/`), c'est-à-dire, dans notre exemple, le cas où on saisie dans la barre d'adresse `127.0.0.1:5555/` ou `localhost:5555/` ou même simplement `localhost:5555`.
 
 ```` python  
 def index():

@@ -42,7 +42,7 @@
 	Pour utiliser une feuille de style nommée `toto.css` dans une page `html`, il faut inclure entre les balises `<head>` et `</head>` la ligne suivante :
 
 	```` html
-		<link href="toto.css" rel="stylesheet" type="text/css"/>
+		<link href="toto.css" rel="stylesheet" type="text/css">
 	````
 
 !!! example "Exemple"
@@ -88,8 +88,7 @@ Vous pouvez essayer de modifier le CSS dans le [bac-à-sable suivant sur capytal
 
 !!! question "Exercice : Modifier une page web existante"
 
-	1. Rendez-vous sur la page [https://www.zonensi.fr/SNT/Web/CSS/](https://www.zonensi.fr/SNT/Web/CSS/]).
-	2. Ouvrez **l'inspecteur d'objets**.
+	1. Ouvrez **l'inspecteur d'objets**.
 	3. Cliquez sur la petite flèche située à droite de la barre de menu de l'inspecteur, puis sélectionnez ensuite le titre de la page `Mettre en forme : le CSS`.
 	4. Vous devez voir apparaitre toutes les déclarations dont dépend le titre de la page. Ajoutez au sélecteur `.md-typeset h1` la déclaration `background-color : pink`.
 	5. Enjoy :smile:
@@ -237,9 +236,9 @@ Il existe bien d'autres pseudo-classes. Comme toujours Mozilla a fait un [travai
 
 *Cette partie est quasiment copié-collée depuis [MDN Mozilla](https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS).*
 
-### Une boîte...
+### Une boite...
 
-Vous verrez rapidement qu'avec les CSS, tout tourne autour de boîtes : définir leurs tailles, leurs couleurs, leurs positions, etc. Les éléments HTML d'une page peuvent, pour la plupart, être vus comme des boîtes placées les unes sur les autres.
+Vous verrez rapidement qu'avec les CSS, tout tourne autour de boites : définir leurs tailles, leurs couleurs, leurs positions, etc. Les éléments HTML d'une page peuvent, pour la plupart, être vus comme des boites placées les unes sur les autres.
 
 Chacun de ces blocs prend un certain espace sur la page, de cette façon :
 
