@@ -320,7 +320,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	=== "Solution"
 	
 		```` python
-		def estVide(t) :
+		def est_vide(t) :
 			return t is None
 		````
 		
@@ -488,54 +488,37 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités de ma
 	
 	```` 
 	visiterPréfixe(Arbre A) :
-		Afficher (A)
-		Si nonVide (gauche(A))
-			  visiterPréfixe(gauche(A))
-		Si nonVide (droite(A))
-			  visiterPréfixe(droite(A))
+		Si A n'est pas Vide
+			Afficher la valeur de A
+			visiterPréfixe(gauche(A))
+			visiterPréfixe(droite(A))
 	````
 	
 	Sa traduction en Python est la suivante :
 	
 	```` python
-	def visitePrefixe(tree) :
-		print(tree.valeur, end=" ")
-		if not(estVide(tree.gauche)) :
-			visitePrefixe(tree.gauche)
-		if not(estVide(tree.droit)) :
-			visitePrefixe(tree.droit)
+	def visite_prefixe(tree) :
+		if not(est_vide(tree))
+        		print(tree.valeur, end=" - ")        
+        		visite_prefixe(tree.gauche)
+        		visite_prefixe(tree.droit)
 	````
 
 !!! question "Exercice : Parcours infixe"
 	
 	=== "Enoncé" 
-		Créer une fonction `visiteInfixe` permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.
+		Créer une fonction `visite_infixe` permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.
 		
 	=== "Solution"
-	```` python
-	def visiteInfixe(tree) :
-		
-		if not(estVide(tree.gauche)) :
-			visiteInfixe(tree.gauche)
-		print(tree.valeur, end=" ")
-		if not(estVide(tree.droit)) :
-			visiteInfixe(tree.droit)
-	````
+	 	A voir en cours
 		
 !!! question "Exercice : Parcours suffixe"
 	
 	=== "Enoncé" 
-		Créer une fonction `visiteSuffixe` permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.
+		Créer une fonction `visite_suffixe` permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.
 		
 	=== "Solution"
-		```` python
-		def visiteSuffixe(tree) :
-			if not(estVide(tree.gauche)) :
-				visiteSuffixe(tree.gauche)
-			if not(estVide(tree.droit)) :
-				visiteSuffixe(tree.droit)
-			print(tree.valeur, end=" ")
-		````
+		A voir en cours
 
 ### Parcours en largeur
 
