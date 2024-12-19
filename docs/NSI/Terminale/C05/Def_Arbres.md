@@ -557,24 +557,13 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 !!! question "Exercice"
 
 	=== "Énoncé"
-		Implémenter une fonction `visiteLargeur(tree)`, utilisant une structure de file basée sur les listes python, et utilisant :
+		Implémenter une fonction `visiteLargeur(tree)`, utilisant une structure de file basée sur les listes python, et utilisant les objets `Queue` du module `queue`, qui possèdent les méthodes suivantes :
+
+  	* `put(item)` : enfile ``item`` dans la file ;
+   	* ``get()`` : defile et renvoie l'élément en première position  ;
+    	* ``empty()```: renvoie ```True`` si la file n'est pas vide, ``False`` sinon.
 		
-		* `list.insert(0, e)` pour enfiler l'élément `e` à la position 0 ;
-		* `list.pop()` pour défiler le dernier élément de la file.
 		
 	=== "Solution"
-	
-		```` python
-		def visiteLargeur(tree) :
-			f = []
-			f.insert(0, tree)
-			while f!= [] :
-				noeud = f.pop()
-				print(noeud.valeur, end=" ")
-				if noeud.gauche :
-					f.insert(0, noeud.gauche)
-				if noeud.droit :
-					f.insert(0, noeud.droit)
-		````
-
+		A voir en classe
 	
