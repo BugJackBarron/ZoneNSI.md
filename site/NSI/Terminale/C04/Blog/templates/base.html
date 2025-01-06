@@ -9,7 +9,7 @@
     <header>
         
             
-        <h1><a href="{{ url_for('index') }}">Bienvenue sur Le Chat !</a></h1>
+        <h1><a href="{{ url_for('index') }}">Bienvenu sur Le Chat !</a></h1>
         {% if session['pseudo'] %}
             <span> Bonjour {{ session['pseudo'] }} !</span>    
             <a href="{{ url_for('disconnect') }}">Se déconnecter</a>    

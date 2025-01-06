@@ -14,7 +14,7 @@ Imaginez une bibliothèque contenant un extrêmement grand nombre de livres. Cet
 
 Une représentation de cette bibliothèque peut être donnée sous la forme d'un arbre binaire tel que le suivant :
 
-![P2_ABR_1.png](P2_ABR_1.png){: style="Witt:50%; margin:auto;display:block;background-color: #d2dce0;"}
+![P2_ABR_1.png](P2_ABR_1.png){: style="Width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 
 !!! question 

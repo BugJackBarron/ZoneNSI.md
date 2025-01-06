@@ -4732,7 +4732,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 <p>Coder une fonction <code>estVide(tree)</code> renvoyant <code>True</code> si l'arbre est vide, et <code>False</code> sinon.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">estVide</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">return</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span>
 </code></pre></div>
 </div>
@@ -4877,19 +4877,17 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 <p class="admonition-title">Exemple : algorithme de parcours préfixe</p>
 <p>Un algorithme en langage naturel permettant d'afficher les noeuds d'un arbre par un parcours préfixe peut-être écrit comme suit :</p>
 <div class="highlight"><pre><span></span><code>visiterPréfixe(Arbre A) :
-    Afficher (A)
-    Si nonVide (gauche(A))
-          visiterPréfixe(gauche(A))
-    Si nonVide (droite(A))
-          visiterPréfixe(droite(A))
+    Si A n'est pas Vide
+        Afficher la valeur de A
+        visiterPréfixe(gauche(A))
+        visiterPréfixe(droite(A))
 </code></pre></div>
 <p>Sa traduction en Python est la suivante :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visitePrefixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">))</span> <span class="p">:</span>
-        <span class="n">visitePrefixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span> <span class="p">:</span>
-        <span class="n">visitePrefixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visite_prefixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">est_vide</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" - "</span><span class="p">)</span>        
+            <span class="n">visite_prefixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
+            <span class="n">visite_prefixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="admonition question">
@@ -4897,35 +4895,23 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><input id="__tabbed_10_2" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Enoncé</label><label for="__tabbed_10_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>visiteInfixe</code> permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
+<p>Créer une fonction <code>visite_infixe</code> permettant d'afficher les noeuds d'un arbre par un parcours infixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
 </div>
-<div class="tabbed-block"></div>
+<div class="tabbed-block">
+<p>A voir en cours</p>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visiteInfixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
-
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">))</span> <span class="p">:</span>
-        <span class="n">visiteInfixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span> <span class="p">:</span>
-        <span class="n">visiteInfixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
-</code></pre></div>
+</div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice : Parcours suffixe</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked id="__tabbed_11_1" name="__tabbed_11" type="radio"><input id="__tabbed_11_2" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">Enoncé</label><label for="__tabbed_11_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>visiteSuffixe</code> permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
+<p>Créer une fonction <code>visite_suffixe</code> permettant d'afficher les noeuds d'un arbre par un parcours suffixe. La fonction sera testée sur les deux arbres donnés plus haut.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visiteSuffixe</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">))</span> <span class="p">:</span>
-        <span class="n">visiteSuffixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">estVide</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">))</span> <span class="p">:</span>
-        <span class="n">visiteSuffixe</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
-</code></pre></div>
+<p>A voir en cours</p>
 </div>
 </div>
 </div>
@@ -4969,27 +4955,24 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Énoncé</label><label for="__tabbed_13_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Implémenter une fonction <code>visiteLargeur(tree)</code>, utilisant une structure de file basée sur les listes python, et utilisant :</p>
-<ul>
-<li><code>list.insert(0, e)</code> pour enfiler l'élément <code>e</code> à la position 0 ;</li>
-<li><code>list.pop()</code> pour défiler le dernier élément de la file.</li>
-</ul>
+<p>Implémenter une fonction <code>visiteLargeur(tree)</code>, utilisant une structure de file basée sur les listes python, et utilisant les objets <code>Queue</code> du module <code>queue</code>, qui possèdent les méthodes suivantes :</p>
 </div>
+</div>
+</div>
+<ul>
+<li><code>put(item)</code> : enfile <code>item</code> dans la file ;</li>
+<li><code>get()</code> : defile et renvoie l'élément en première position  ;<ul>
+<li><code>empty()```: renvoie ```True</code> si la file n'est pas vide, <code>False</code> sinon.</li>
+</ul>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Solution</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">visiteLargeur</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
-    <span class="k">while</span> <span class="n">f</span><span class="o">!=</span> <span class="p">[]</span> <span class="p">:</span>
-        <span class="n">noeud</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">noeud</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">noeud</span><span class="o">.</span><span class="n">gauche</span> <span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noeud</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">noeud</span><span class="o">.</span><span class="n">droit</span> <span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noeud</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
-</code></pre></div>
+<p>A voir en classe</p>
 </div>
 </div>
 </div>

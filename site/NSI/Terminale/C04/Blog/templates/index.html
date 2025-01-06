@@ -5,7 +5,7 @@
 {% if session['pseudo'] %}
 <form action="{{ url_for('add_post') }}" method="post">
     <label for="message">Votre message :</label><br>
-    <input type="text" id="message" name="message" ><br><br>    
+    <input type="text" id="message" name="message" required><br><br>    
     <input type="submit" value="envoyer">
 </form>
 {% endif %}
