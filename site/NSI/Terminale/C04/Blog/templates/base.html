@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', filename='blog.css') }}" rel="stylesheet" type="text/css">
+    <title>{% block title%}Chat App{% endblock %}</title>
+</head>
+<body>
+    <header>
+        
+            
+        <h1><a href="{{ url_for('index') }}">Bienvenue sur Le Chat !</a></h1>
+        {% if session['pseudo'] %}
+            <span> Bonjour {{ session['pseudo'] }} !</span>    
+            <a href="{{ url_for('disconnect') }}">Se déconnecter</a>    
+            {% if session['autorisation'] == 0 %}
+                <a href="{{ url_for('moderation') }}">Modérer</a>    
+                <a href="{{ url_for('utilisateur') }}">Utilisateurs</a>    
+            {% endif %}
+        {% else %}
+            <a href="{{ url_for('inscription') }}">S'enregistrer</a>
+            <a href="{{ url_for('connexion') }}">Se connecter</a>
+        {% endif %}
+    </header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block contenu %}
+    {% endblock %}
+    <footer>
+        Lycée A.P. 2024-2025
+    </footer>
+</body>
+</html>
