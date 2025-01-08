@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4370,7 +4370,7 @@
 
 
 <div><h1 id="adresses-ip-et-protocole-tcpip">Adresses IP et protocole TCP/IP</h1>
-<p>Lorsque vous tapez dans votre navigateur une URL, par exemple « <a href="https:\www.toutatice.fr" target="_blank">www.toutatice.fr</a> », et que vous appuyez sur entrée, votre ordinateur ou téléphone se met en communication avec une autre machine, probablement à Rennes, et cette machine vous renvoie la page HTML correspondante.</p>
+<p>Lorsque vous tapez dans votre navigateur une URL, par exemple « <a href="https:%5Cwww.toutatice.fr" target="_blank">www.toutatice.fr</a> », et que vous appuyez sur entrée, votre ordinateur ou téléphone se met en communication avec une autre machine, probablement à Rennes, et cette machine vous renvoie la page HTML correspondante.</p>
 <p>Cet acte que nous pratiquons quotidiennement soulève de nombreuses questions quand on réfléchit à son fonctionnement :</p>
 <ul>
 <li>Comment les ordinateurs se reconnaissent-ils entre eux ?</li>
@@ -4401,7 +4401,7 @@
 <div class="admonition info">
 <p class="admonition-title">Adresses IP - premier aperçu</p>
 <p>Afin de pouvoir s'identifier, tout ordinateur possède une adresse sur un réseau, appelée <mark class="critic"><strong>adresse IP</strong></mark> ( pour <strong>Internet Protocol</strong>).</p>
-<p>Une adresse IP est de la forme <code>195.221.67.112</code> (cette adresse IP correspond au serveur <code>epwebc1.toutatice.fr</code>, correspondant à l'URL <a href="https:\www.toutatice.fr" target="_blank">www.toutatice.fr</a> .</p>
+<p>Une adresse IP est de la forme <code>195.221.67.112</code> (cette adresse IP correspond au serveur <code>epwebc1.toutatice.fr</code>, correspondant à l'URL <a href="https:%5Cwww.toutatice.fr" target="_blank">www.toutatice.fr</a> .</p>
 <p>Les adresses IP, en version 4, sont de la forme : <code>a.b.c.d</code>, avec <span class="arithmatex">\(a, b, c\)</span> et <span class="arithmatex">\(d\)</span> qui sont des entiers compris entre <code>0</code> et <code>255</code>. Il existe une version 6 des adresses IP, utilisant 6 valeurs, mais nous nous contenterons d'étudier l'IP V4 .</p>
 </div>
 <p>Modifiez l'adresse IP d'un des ordinateurs en la remplaçant par <code>192.168.0.11</code>. Vous laisserez le deuxième ordinateur avec l'adresse <code>192.168.0.10</code>. Vous devez aussi, pour <em>chacun des ordinateurs</em>, cocher l'option à droite « <code>Utiliser l'adresse IP comme nom</code> ».</p>
@@ -4414,8 +4414,8 @@
 <p>Cliquez-droit sur l'ordinateur portant l'IP <code>192.168.0.10</code> (en n'oubliant pas de régler de manière à avoir son IP comme nom), et cliquez sur <code>Afficher les échanges de données</code>. Déplacez la fenêtre sur la droite de l'écran afin de pouvoir voir à la fois cette fenêtre et les deux ordinateurs.</p>
 <div class="admonition tips">
 <p class="admonition-title">Arrêter la simulation</p>
-</div>
 <p>En cas de besoin, vous pouvez toujours arrêter la simulation en cliquant sur l'icône <img alt="Filius Arreter" src="../N1_icone_arreter.png" style="width:3em;">, et ainsi pouvoir déplacer les ordinateurs dans le plan de travail.</p>
+</div>
 </li>
 <li>
 <p>Cliquez droit toujours sur le même ordinateur et sélectionnez <code>Afficher le bureau</code>.</p>
@@ -4426,24 +4426,15 @@
 </li>
 <li>
 <p>Dans l'invite de commande, tapez la ligne suivante :</p>
-<div class="highlight"><pre><span></span><code>    ping 192.168.0.11
+<div class="highlight"><pre><span></span><code><span class="w">    </span>ping<span class="w"> </span><span class="m">192</span>.168.0.11
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-</div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Réponse</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <p>Que s'est-il passé ?</p>
-</div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
 </div>
 </li>
 <li>
-<p>On s'intéresse dans les échanges de données à la première ligne utilisant le protocole <code>ICMP</code> (<strong>Internet Control Message Protocol</strong>), qui doit être en toute logique la ligne n°3. Cette ligne, appelée <mark class="critic"><strong>trame</strong></mark>, représente un échange de données entre les deux machines. Cliquez sur la ligne pour obtenir les informations Dans cette trame :</p>
+<p>On s'intéresse dans les échanges de données à la première ligne utilisant le protocole <code>ICMP</code> (<strong>Internet Control Message Protocol</strong>), qui doit être la ligne n°3 si vous avez scrupuleusement suivi ce TP. Cette ligne, appelée <mark class="critic"><strong>trame</strong></mark>, représente un échange de données entre les deux machines. Cliquez sur la ligne pour obtenir les informations Dans cette trame :</p>
 <ol>
 <li>
 <p>Quelle est l'IP de la source ?</p>
@@ -4474,7 +4465,7 @@
 <div class="admonition info">
 <p class="admonition-title">Commande <code>ping</code></p>
 <p>La commande <code>ping</code> est une commande très souvent utilisée pour effectuer des tests réseau, en cas de dysfonctionnement. Elle s'utilise en donnant soit l'adresse IP de l'ordinateur cible, soit en donnant le <mark class="critic"><strong>nom de domaine</strong></mark> de l'ordinateur cible, par exemple :</p>
-<div class="highlight"><pre><span></span><code>ping www.google.fr
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>www.google.fr
 </code></pre></div>
 <p>Cette commande est disponible sur tous les systèmes d'exploitation, vous pouvez vous amuser chez vous à tenter quelques pings, depuis la ligne de commande.</p>
 </div>
@@ -4621,7 +4612,7 @@ Un des autres protocoles utilisé est <code>UDP</code> (<em>User Datagram Protoc
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
         <script src="../../../javascripts/config.js"></script>
       
