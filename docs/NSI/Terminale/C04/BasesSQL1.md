@@ -32,14 +32,14 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 	2. Exécutez la cinquième. Quel est le résultat fournit par cette requête ?
 	3. Exécutez la sixième. Quel est le résultat fournit par cette requête ?
 	4. Ajoutez à la base de données l'entité suivante :	
-	`('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2021-10-11', '012345678910113')`
+	`('Brochen', 'Charles', 'charles.brochen@pontrieux.fr', '22260', '13 Rue de Pen Fantan, Pontrieux', '2024-10-11', '012345678910113')`
 	Que se passe-t-il ? Pourquoi ?
 	
 	5. Ajoutez à la base de données l'entité suivante :	
-	`('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910110')`	
+	`('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2024-11-09', '012345678910110')`	
 	Que se passe-t-il ? Pourquoi ?
 	
-	6. Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2021.
+	6. Exécutez maintenant une requête afin de récupérer une table contenant les emails et code postaux des usagers dont la date d'inscription est le 10 Novembre 2024.
 
 
 !!! example "Exemple : Création de la table `usager`"
@@ -84,9 +84,9 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 	
 	```` SQL
 	INSERT INTO usager VALUES
-	('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2021-11-09', '012345678910111'),
-	('Prevert', 'Jacques', 'jacques.prevert@ggp.fr', '22200', '58 Rue de la Trinité, Guingamp', '2021-11-10', '012345678910112'),
-	('Camus', 'Albert', 'albert.camus@grace', '22205', '2 Rue de Kerpaour, Grâces', '2021-10-09', '012345678910113')
+	('Pavie', 'Auguste', 'auguste.pavie@ggp.fr', '22200', '13 rue Anatole Le Braz, Guingamp', '2024-11-09', '012345678910111'),
+	('Prevert', 'Jacques', 'jacques.prevert@ggp.fr', '22200', '58 Rue de la Trinité, Guingamp', '2024-11-10', '012345678910112'),
+	('Camus', 'Albert', 'albert.camus@grace', '22205', '2 Rue de Kerpaour, Grâces', '2024-10-09', '012345678910113')
 	;
 
 	````
@@ -124,7 +124,7 @@ La syntaxe du SQL est volontairement *verbeuse* et proche de l'anglais standard.
 	
 ## Types de données en SQL
 
-Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standards édictés par l'ISO. On peut néanmoins dégager des constantes  dans les différents types utilisés 
+Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standards édictés par l'ISO. On peut néanmoins dégager des constantes dans les différents types utilisés 
 
 ### Types numériques
 
@@ -148,18 +148,18 @@ Selon le SGBD utilisé, certaines libertés sont prises par rapport aux standard
 	
 !!! abstract "Types textes"
 	
-	En SQL, les chaînes de caractères sont délimitées par des guillemets simples `'`. Il est possible d'*échapper* un guillemet simple en le doublant, comme par exemple dans `'n''oubliez pas d''échapper'`.
-	Il est possible  d'insérer un caractère *retour chariot* dans une chaîne pour avoir des chaînes multilignes.
+	En SQL, les chaines de caractères sont délimitées par des guillemets simples `'`. Il est possible d'*échapper* un guillemet simple en le doublant, comme par exemple dans `'n''oubliez pas d''échapper'`.
+	Il est possible d'insérer un caractère *retour chariot* dans une chaine pour avoir des chaines multi-lignes.
 
 	| nom du type | description |
 	| :---: | :--- |
-	| `CHAR(n)` | Chaîne d'exactement $n$ caractères |
-	| `VARCHAR(n)` | Chaîne d'au plus $n$ caractères |
-	| `TEXT` | Chaîne de taille quelconque |
+	| `CHAR(n)` | Chaine d'exactement $n$ caractères |
+	| `VARCHAR(n)` | Chaine d'au plus $n$ caractères |
+	| `TEXT` | Chaine de taille quelconque |
 	
 	
 	* La taille maximale dépend du SGBD, mais tous supportent au moins $8~000$ caractères. La valeur minimale pour $n$ est 1.
-	* Pour le type `CHAR(n)`, si la chaîne stockée est de longueur inférieure à $n$, on complète la chaîne **à droite** par le nombre d'espaces nécesaires.
+	* Pour le type `CHAR(n)`, si la chaine stockée est de longueur inférieure à $n$, on complète la chaine **à droite** par le nombre d'espaces nécessaires.
 	* Le type `TEXT` est en fait un type `VARCHAR` de la dimension maximale supportée par le SGBD.
 	
 ### Types booléens
@@ -289,12 +289,12 @@ CREATE TABLE usager (nom VARCHAR(90) NOT NULL,
 					 code_barre CHAR(15) PRIMARY KEY);
 ````
 
-Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec le email de leur parent).
+Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec l'email de leur parent).
 
 #### Clé primaire et auto-incrémentation
 
 
-Pour les {==**clé primaires numériques**==} et correspondantes au type `INTEGER`[^intouinteger], il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**)  dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table `Auteur` :
+Pour les {==**clés primaires numériques**==} et correspondantes au type `INTEGER`[^intouinteger], il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une **entité**) dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table `Auteur` :
 
 ```` SQL
 CREATE TABLE Auteur (nom VARCHAR(90) NOT NULL,
@@ -370,7 +370,7 @@ On notera que cette contrainte s'écrit **directement après la dernière défin
 	* En insérant les valeurs sans préciser le nom des colonnes :
 	
 		````SQL
-		INSERT INTO nom_table VALUES (valeur1, valeur2, ..., valeurn);
+		INSERT INTO nom_table VALUES (valeur_1, valeur_2, ..., valeur_n);
 		````
 		les valeurs seront insérées dans l'ordre défini lors de la création de la table.
 	
@@ -410,21 +410,21 @@ On notera que cette contrainte s'écrit **directement après la dernière défin
 
 !!! question "Exercice 1"
 	=== "Enoncé"
-		Reprendre l'énooncé de l'exercice 1 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer la table correspondante.
+		Reprendre l'énoncé de l'exercice 1 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer la table correspondante.
 		
 	=== "Solution"
 		A venir !
 		
 !!! question "Exercice 2"
 	=== "Enoncé"
-		Reprendre l'énooncé de l'exercice 2 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer les tables correspondantes.
+		Reprendre l'énoncé de l'exercice 2 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer les tables correspondantes.
 		
 	=== "Solution"
 		A venir !
 
 !!! question "Exercice 2"
 	=== "Enoncé"
-		Reprendre l'énooncé de l'exercice 3 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer les tables correspondantes.
+		Reprendre l'énoncé de l'exercice 3 de la fiche [modèle relationnel](../ModeleRelationnel/#exercices){target="_blank"} et donner l'instruction SQL permettant de créer les tables correspondantes.
 		
 	=== "Solution"
 		A venir !

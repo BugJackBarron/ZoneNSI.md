@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h2>Voici les derniers messages :</h2>
+{% if session['pseudo'] %}
+<form action="{{ url_for('add_post') }}" method="post">
+    <label for="message">Votre message :</label><br>
+    <input type="text" id="message" name="message" required><br><br>    
+    <input type="submit" value="envoyer">
+</form>
+{% endif %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message[0] }} ({{ message[1] }}) : {{ message[2] }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

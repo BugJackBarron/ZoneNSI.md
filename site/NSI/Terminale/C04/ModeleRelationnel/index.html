@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1296,27 +1296,6 @@
   
   <span class="md-ellipsis">
     Fonctions, assertions et tests unitaires
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Premiere/Projets/PFC/PFC/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Projet : Pierre-Feuille-Ciseaux
   </span>
   
 
@@ -2895,11 +2874,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../Projet_Pokemon/" class="md-nav__link">
+      <a href="../projet_Web_BDD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Projet Pokemon
+    Projet Flask
   </span>
   
 
@@ -4558,12 +4537,12 @@
 </table>
 <p>La condition <em>sine qua none</em> pour garantir la faisabilité et la pertinence d'une recherche de données est la <mark class="critic"><strong>cohérence de ces données</strong></mark>. Ici on constate plusieurs problèmes de cohérence :</p>
 <ul>
-<li>Le nom du groupe <em>Gojira</em> est orthographié de deux manières différentes. Une recherche utilisant la chaine de caractères  <code>Gojira</code> ne donnera que deux résultats, alors que trois peuvent être attendus.</li>
+<li>Le nom du groupe <em>Gojira</em> est orthographié de deux manières différentes. Une recherche utilisant la chaine de caractères <code>Gojira</code> ne donnera que deux résultats, alors que trois peuvent être attendus.</li>
 <li>Le genre <em>Metal</em> est aussi orthographié de deux manières différentes. On notera qu'une recherche stricte avec la chaine <code>Metal</code>, c'est-à-dire basée sur l'égalité, ne donnera que deux résultats, alors qu'une recherche étendue, c'est-à-dire basée sur l'appartenance de la sous-chaine <code>Metal</code> à la chaine donnant le genre, renverra elle trois résultats.</li>
 <li>Le nom du chanteur de <em>Gojira</em> est écrit de trois manières différentes.</li>
-<li>On peut aussi noter que le nom du chanteur de Metallica n'est pas renseigné, ce qui peut peut-être poser un problème de cohérence.</li>
+<li>On peut aussi noter que le nom du chanteur de <em>Metallica</em> n'est pas renseigné, ce qui peut peut-être poser un problème de cohérence.</li>
 </ul>
-<p>Ces problèmes de cohérence sont liés (en partie), à un problème de <mark class="critic"><strong>redondance</strong></mark> des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaines telles que <code>Metal</code> et <code>Gojira</code>, alors qu'elles ne représentent bien qu'une seule <em>entité</em> chacune. </p>
+<p>Ces problèmes de cohérence sont liés (en partie), à un problème de <mark class="critic"><strong>redondance</strong></mark> des données :  en effet dans la table telle qu'elle est présentée, on va devoir saisir plusieurs fois les chaines telles que <code>Metal</code> et <code>Gojira</code>, alors qu'elles ne représentent bien qu'une seule <mark class="critic"><strong>entité</strong></mark> chacune. </p>
 <p>Pour régler la question de la <strong>cohérence des données</strong>, il faudra en premier lieu trouver un moyen d'éviter la <strong>redondance</strong> de certaines données.</p>
 </div>
 <h3 id="historique-et-problematiques-des-differents-modeles">Historique et problématiques des différents modèles</h3>
@@ -4573,17 +4552,17 @@
 <p>Une <mark class="critic"><strong>structure de donnée</strong></mark> indique la manière dont on va organiser les données <strong>en machine</strong>. Ainsi pour un même modèle il existe plusieurs structures pouvant représenter ce modèle (tableau, listes chainées, objets...)</p>
 </div>
 <p>Le premier modèle ayant souhaité s'attaquer au problème de la redondance des données est le <strong>modèle hiérarchique</strong>, développé par IBM dans les années 1960, dans le cadre du programme Apollo de la NASA. Ce modèle, très dépendant de la manière dont fonctionnait les ordinateurs de cette époque, enregistre les données à la manière de l'organisation d'un système de fichier, sous la forme d'un arbre (<em>structure arborescente</em>), de façon à ce qu'un enregistrement n'ait qu'un seul possesseur. On peut en donner un exemple ci-dessous :</p>
-<p><img alt="ModeleHierarchique1" src="../modeleHierarchique1.png" style="width:100%;"></p>
+<p><img alt="ModeleHierarchique1" src="../modeleHierarchique1.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Ce type de modèle peut être pratique, mais <em>il ne répond pas à toutes les problématiques</em>. En effet, ici nous n'avons pas introduit dans la hiérarchie les leads vocaux. Voici ce que donne le schéma lorsqu'on les introduit :</p>
-<p><img alt="ModeleHierarchique2" src="../modeleHierarchique2.png" style="width:100%;"></p>
+<p><img alt="ModeleHierarchique2" src="../modeleHierarchique2.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>On constate ici que le choix d'organisation de l'arbre ne permet pas de régler la redondance des données, puisque non seulement un même chanteur peut être lead vocal sur plusieurs albums, mais il peut l'être aussi sur <strong>plusieurs groupes</strong> (comme Josh Homme par exemple). La structure hiérarchique n'est ici pas adaptée. </p>
 <p>Une des solutions proposée pour ce problème a été <strong>le modèle réseau</strong>, proposé par <a href="https://fr.wikipedia.org/wiki/Charles_Bachman">Charles William Bachman</a> à la fin des années 1960<sup id="fnref3:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup>. C.W. Bachman reçu le Prix Turing en 1973 pour ses contributions sur les technologies des bases de données. On lui doit aussi le modèle OSI (voir le cours de première...). Une représentation de nos albums dans le modèle réseau est la suivante :</p>
-<p><img alt="Modelereseau" src="../modeleReseau1.png" style="width:100%;"></p>
+<p><img alt="Modelereseau" src="../modeleReseau1.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaitre la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs <mark class="critic"><strong>dépendants de la structure de donnée</strong></mark>.</p>
 <h2 id="le-modele-relationnel">Le modèle relationnel</h2>
 <h3 id="historique">Historique</h3>
 <p>Chercheur au centre de recherche d'IBM, <a href="https://en.wikipedia.org/wiki/Edgar_F._Codd" target="_blank">Edgar Frank Codd</a>, insatisfait des modèles existant, chercha un modèle plus simple permettant de gérer un grand nombre de données. Mathématicien de formation, il se basa sur la théorie des ensembles et la logique des prédicats (<a href="https://fr.wikipedia.org/wiki/Calcul_des_pr%C3%A9dicats" target="_blank"><em>logique de premier ordre</em></a>) pour publier en 1970 un article<sup id="fnref:Codd"><a class="footnote-ref" href="#fn:Codd">3</a></sup> où il proposait de stocker des <em>données hétérogènes</em> dans des <em>tables</em>, comme dans le schéma ci-dessous :</p>
-<p><img alt="modeleRelationnel1.png" src="../modeleRelationnel1.png" style="width:100%;background-color:hsla(var(--md-hue),15%,21%,0.07);"></p>
+<p><img alt="modeleRelationnel1.png" src="../modeleRelationnel1.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Ce modèle, qualifié de <mark class="critic"><strong>relationnel</strong></mark> était à l'époque considéré comme une curiosité intellectuelle, car les ordinateurs en ce temps n'étaient pas capables de gérer de manière efficace des tables de données, et il n'était pas évident qu'ils le soient un jour.</p>
 <p>Ce scepticisme n'a pas empêché Codd de poursuivre ses travaux, et de concevoir un premier prototype de <mark class="critic"><strong>Sytème de Gestion de Bases de Données Relationnelles</strong></mark> (<strong>SGBDR</strong>). Depuis les années 1980 cette technologie a muri, pour être finalement adoptée par le monde de la recherche et des entreprises. </p>
 <p>En parallèle, Codd mis au point un langage de manipulation des données <em>non procédural</em>, où l'utilisateur <em>définit le résultat qu'il attend plutôt que la manière de l'obtenir</em>. Ce langage nommé dans un premier temps <code>SEQUEL</code> (<em>Structured English Query Language</em>), rebaptisé par la suite <code>SQL</code> (<em>Structured Query Language</em>), fut adopté comme norme internationale par l'ISO en 1987.</p>
@@ -4963,7 +4942,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

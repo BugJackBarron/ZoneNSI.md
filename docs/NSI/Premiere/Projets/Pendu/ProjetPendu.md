@@ -3,7 +3,7 @@
 !!! warning "principe du projet"
 
 	* Vous travaillerez par binomes sur ce projet (ou exceptionnellement par trinome).
-	* Vous rendrez le code complet + votre dossier personnel pour le 09 novembre 2022 au plus tard.
+	* Vous rendrez le code complet + votre dossier personnel pour le 12 décembre 2024 au plus tard.
 	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
 	
 	

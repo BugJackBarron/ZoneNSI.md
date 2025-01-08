@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1314,27 +1314,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Projets/PFC/PFC/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Projet : Pierre-Feuille-Ciseaux
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../Projets/BanditManchot/Projet_Bandit_Manchot/" class="md-nav__link">
         
   
@@ -1510,9 +1489,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#complement-a-2" class="md-nav__link">
+  <a href="#representation-en-complement-a-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Complément à 2
+      Représentation en complément à 2
     </span>
   </a>
   
@@ -2853,11 +2832,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Terminale/C04/Projet_Pokemon/" class="md-nav__link">
+      <a href="../../../Terminale/C04/projet_Web_BDD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Projet Pokemon
+    Projet Flask
   </span>
   
 
@@ -4449,8 +4428,8 @@
 <h2 id="les-entiers-relatifs-entiers-signes">Les Entiers Relatifs (entiers signés)</h2>
 <h3 id="une-version-naive">Une version naïve</h3>
 <div class="admonition abstract">
-<p class="admonition-title">Bit de signe</p>
-<p>Sur un octet, le <mark class="critic"><strong>bit de poids fort</strong></mark> - c'est-à-dire le bit le plus à gauche du nombre, représente le signe (<span class="arithmatex">\(0\)</span> pour positif et <span class="arithmatex">\(1\)</span> pour négatif) et les <span class="arithmatex">\(7\)</span> autres représentent la valeur absolue du nombre.</p>
+<p class="admonition-title">Proposition : le bit de signe</p>
+<p>Sur un octet, le <mark class="critic"><strong>bit de poids fort</strong></mark> - c'est-à-dire le bit le plus à gauche du nombre - représente le signe (<span class="arithmatex">\(0\)</span> pour positif et <span class="arithmatex">\(1\)</span> pour négatif) et les <span class="arithmatex">\(7\)</span> autres représentent la valeur absolue du nombre.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
@@ -4473,10 +4452,19 @@
 </div>
 </div>
 </div>
-<h3 id="complement-a-2">Complément à 2</h3>
+<div class="admonition bug">
+<p class="admonition-title">Les problèmes de la méthode naïve</p>
+<p>On constate donc que cette méthode <em>naïve</em> n'est pas du tout efficace pour représenter des entiers relatifs :</p>
+<ul>
+<li>premièrement il existe deux représentations pour zéro : <span class="arithmatex">\(+0\)</span> et <span class="arithmatex">\(-0\)</span>, mais ce n'est pas un réel problème mathématiquement. Tout au plus une perte de place en utilisant deux représentations différentes pour le même objet.</li>
+<li>deuxièmement, <strong>et c'est beaucoup plus embêtant</strong>, l'incompatibilité de cette représentation avec les opérations usuelles.</li>
+</ul>
+<p>Il faut donc trouver une méthode qui permettra d'être compatible avec les opérations.</p>
+</div>
+<h3 id="representation-en-complement-a-2">Représentation en complément à 2</h3>
 <div class="admonition abstract">
-<p class="admonition-title">Notation en complément à 2</p>
-<p>Pour remédier aux problèmes soulevés par la version naïve, on utilisera la notation en <mark class="critic"><strong>complément à deux</strong></mark>. Dans cette notation, sur un octet :</p>
+<p class="admonition-title">Représentation en complément à 2</p>
+<p>Pour remédier aux problèmes soulevés par la version naïve, on utilisera la représentation en <mark class="critic"><strong>complément à deux</strong></mark>. Dans cette notation, sur un octet :</p>
 <ul>
 <li>Les nombres positifs sont représentés comme pour les nombres entiers naturels.</li>
 <li>Pour les nombres négatifs, par contre :<ul>
@@ -4490,20 +4478,19 @@
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <ul>
-<li>Le nombre <span class="arithmatex">\(13\)</span> est représenté par <span class="arithmatex">\((00001101)_2\)</span>.</li>
+<li>Le nombre <span class="arithmatex">\(13\)</span> est représenté par <span class="arithmatex">\((0000~1101)_2\)</span>.</li>
 <li>Pour le nombre <span class="arithmatex">\(-4\)</span> :<ul>
-<li>on cherche d'abord la représentation de sa valeur absolue : <span class="arithmatex">\((0000 0100)_2\)</span> ;</li>
-<li>ensuite on inverse chaque bit : <span class="arithmatex">\((1111 1011)_2\)</span></li>
-<li>puis on ajoute <span class="arithmatex">\(1\)</span> au résultat : <span class="arithmatex">\((1111 1100)_2\)</span></li>
+<li>on cherche d'abord la représentation de sa valeur absolue : <span class="arithmatex">\((0000~0100)_2\)</span> ;</li>
+<li>ensuite on inverse chaque bit : <span class="arithmatex">\((1111~1011)_2\)</span></li>
+<li>puis on ajoute <span class="arithmatex">\(1\)</span> au résultat : <span class="arithmatex">\((1111~1100)_2\)</span></li>
 </ul>
 </li>
 </ul>
-<p>Le nombre <span class="arithmatex">\(-4\)</span> a pour représentation en complément à 2 sur un octet la suite </p>
+<p>Le nombre <span class="arithmatex">\(-4\)</span> a pour représentation en complément à 2 sur un octet la suite <span class="arithmatex">\((1111~1100)_2\)</span></p>
 </div>
 <details class="exemple">
 <summary>Pour les curieux : « Overflow »</summary>
-<p>Ce qu'on appelle un « OVERFLOW » consiste en un dépassement de capacité lors d'une opération. Par exemple
-pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible qu'une opération dépasse les possibilités de stockage sur 1 octet.</p>
+<p>Ce qu'on appelle un « OVERFLOW » consiste en un dépassement de capacité lors d'une opération. Par exemple pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible qu'une opération dépasse les possibilités de stockage sur 1 octet.</p>
 <p>Prenons pour exemple l'opération <span class="arithmatex">\(130 + 132\)</span> :</p>
 <ul>
 <li>en décimal, pas de soucis, <span class="arithmatex">\(130 + 132 = 262\)</span> ;</li>
@@ -4525,11 +4512,11 @@ pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible
 </li>
 </ul>
 <p>Obtenir un « overflow » est une preuve de mauvaise prise en compte des capacités limites de la machine. C'est un bug redouté et redoutable, en particulier lorsqu'on utilise des structures de « Piles » (au programme de terminale) lors d'opération « récursives » (aussi au programme de terminale). On obtient alors une erreur qui est appelée « Stack Overflow ». Cette erreur est tellement fréquente et tellement célèbre qu'elle a donné son nom au plus grand forum dédié à la programmation, <a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>.</p>
-<p>Pour votre culture numérique, le plus célèbre des « integer overflow » a été un bug qui a coûté 500 millions de dollars lors du premier <a href="https://fr.wikipedia.org/wiki/Ariane_5#Premier_vol_(vol_88_/_501)" target="target">lancement de la fussée Ariane 5</a>.</p>
+<p>Pour votre culture numérique, le plus célèbre des « integer overflow » a été un bug qui a couté 500 millions de dollars lors du premier <a href="https://fr.wikipedia.org/wiki/Ariane_5#Premier_vol_(vol_88_/_501)" target="target">lancement de la fusée Ariane 5</a>.</p>
 </details>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -4577,7 +4564,7 @@ pour des nombres entiers écrits en binaire sur 1 octet, il est parfois possible
 <li>Pour obtenir le <mark class="critic">code de <span class="arithmatex">\(-40\)</span></mark> sur 1 octet :<ul>
 <li>Le nombre <span class="arithmatex">\(40\)</span> s'écrit <span class="arithmatex">\((0010~1000)_2\)</span></li>
 <li>On garde la partie à droite <span class="arithmatex">\((0010~\mathbf{1000})_2\)</span></li>
-<li>On inverse la partie à gauche après le premier <span class="arithmatex">\(1\)</span>  <span class="arithmatex">\((\mathbf{1101}1000)_2\)</span></li>
+<li>On inverse la partie à gauche après le premier <span class="arithmatex">\(1\)</span>  <span class="arithmatex">\((\mathbf{1101}~1000)_2\)</span></li>
 <li>On a ainsi obtenu le codage du nombre <span class="arithmatex">\(-40\)</span> sur 1 octet.</li>
 </ul>
 </li>
@@ -4749,8 +4736,7 @@ L'exposant est donc <span class="arithmatex">\(4 =(100)_2\)</span>, et pour le r
 </div>
 </div>
 </div>
-</div>
-<p>œ</p></div>
+</div></div>
 
 
 
@@ -4824,7 +4810,7 @@ L'exposant est donc <span class="arithmatex">\(4 =(100)_2\)</span>, et pour le r
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

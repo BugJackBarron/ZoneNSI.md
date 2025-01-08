@@ -11,7 +11,7 @@
 
 	![Projection](Projection.png){: style="width:10%; margin:auto;display:block;background-color: #d2dce0;"}
 
-	En SQL, on l'obtient par l'instruction :
+	En `SQL`, on l'obtient par l'instruction :
 	
 	```` SQL
 	SELECT
@@ -19,6 +19,8 @@
 	FROM
 		nom_table;
 	````
+
+	`SQL` renvoie alors *une table temporaire* contenant les données demandées.
 	
 !!!example "Exemple 1 : Projection"
 	Pour récupérer les colonnes `titre` et `isbn` de la table `livre` :
@@ -110,6 +112,17 @@
 			auteur
 		WHERE
 			nom LIKE 'F____R';
+	````
+
+	Bien entendu, si on cherche une correspondance exacte, il n'est pas nécessaire d'utiliser la clause `LIKE`. Une simple requête d'égalité sera suffisante :
+
+	````SQL
+		SELECT
+			titre
+		FROM
+			livre
+		WHERE
+			editeur= "Dargaud";
 	````
 	
 ## Fonctions d'agrégations
@@ -255,7 +268,7 @@ On récupère alors en résultat la table suivante : ![sans doublons](sansDoublo
 ## Application
 
 !!! question "Exercice"
-	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebook [jeux olympiques](https://capytale2.ac-paris.fr/web/c/917a-165474){target="_blank"}(Code `917a-165474`) (merci M. Leleu).
+	Effectuer la première partie ainsi que les requêtes **sans jointures** du notebook [jeux olympiques](https://capytale2.ac-paris.fr/web/c/062e-4748066){target="_blank"}(Code `062e-4748066`) (merci M. Leleu).
 
 
 

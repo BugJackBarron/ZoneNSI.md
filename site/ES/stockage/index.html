@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1294,27 +1294,6 @@
   
   <span class="md-ellipsis">
     Fonctions, assertions et tests unitaires
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../NSI/Premiere/Projets/PFC/PFC/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Projet : Pierre-Feuille-Ciseaux
   </span>
   
 
@@ -2732,11 +2711,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../NSI/Terminale/C04/Projet_Pokemon/" class="md-nav__link">
+      <a href="../../NSI/Terminale/C04/projet_Web_BDD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Projet Pokemon
+    Projet Flask
   </span>
   
 
@@ -4446,7 +4425,7 @@
 <p>Avant de traiter des informations, encore faut-il les organiser et les stocker de manière efficace. Nous verrons dans ce TP comment sont structurées et stockées des données de tous types.</p>
 <h2 id="unites-dinformations">Unités d'informations</h2>
 <h3 id="la-notation-binaire-pour-les-entiers">La notation binaire pour les entiers</h3>
-<p>Historiquement, on trouve des utilisations de symboles binaires depuis les antiquités chinoises et indiennes : on trouve des utilisations dans les hexagrammes du <em>Yi Jing</em> en Chine (-750), et le mathématicien indien Pingala présente une table représentant les nombres 0 à 7 en binaire (troisième ou deuxième siècle av J.C.). Mais c'est à Leibniz au XVIIIème s., qui montre la compatibilité du système binaire avec les quatre opérations, et surtout au mathématicien George Boole, qui publie en 1847 une algèbre binaire dite depuis <mark class="critic"><strong>booléenne</strong></mark>, qu'on doit la théorie liée à l'utilisation de la notation binaire avec uniquement des <code>0</code> et des <code>1</code>.</p>
+<p>Historiquement, on trouve des utilisations de symboles binaires depuis les antiquités chinoises et indiennes : on trouve des utilisations dans les hexagrammes du <em>Yi Jing</em> en Chine (-750), et le mathématicien indien Pingala présente une table représentant les nombres 0 à 7 en binaire (troisième ou deuxième siècle av J.C.). Mais c'est à <strong>Leibniz</strong> au XVIIIème s., qui montre la compatibilité du système binaire avec les quatre opérations, et surtout au mathématicien George Boole, qui publie en 1847 une algèbre binaire dite depuis <mark class="critic"><strong>booléenne</strong></mark>, qu'on doit la théorie liée à l'utilisation de la notation binaire avec uniquement des <code>0</code> et des <code>1</code>.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Les chiffres binaires (<em>binary digits</em>)</p>
 <p>Un nombre écrit en binaire est écrit comme une suite de <code>0</code> et de <code>1</code>, chaque chiffre binaire (en anglais <em>binary digit</em>, ou <mark class="critic"><strong>bit</strong></mark>), ayant la valeur d'une puissance de 2 selon sa position dans le nombre, tout comme on décompose un nombre selon les puissances de 10 en notation décimale :</p>
@@ -4486,7 +4465,7 @@
 <li>Quel est le nombre minimal de bits nécessaire pour représenter l'alphabet latin en majuscule, sans accents et autres signes diacritiques ?</li>
 <li>Combien de bits sont nécessaires pour représenter tous les caractères de l'alphabet français, en y incluant les signes de ponctuations et les chiffres ?</li>
 <li>De manière générale, un nombre entier naturel <span class="arithmatex">\(N\)</span> nécessitera <span class="arithmatex">\(n\)</span> bits, où <span class="arithmatex">\(n\)</span> est l'entier naturel tel que <span class="arithmatex">\(2^{n-1}\leqslant N &lt; 2^n\)</span>. <ol>
-<li>Combien de bits sont nécessaire pour représenter en binaire le nombre <span class="arithmatex">\(500\)</span> ?</li>
+<li>Combien de bits sont nécessaires pour représenter en binaire le nombre <span class="arithmatex">\(500\)</span> ?</li>
 <li>Combien de bits sont nécessaires pour représenter en binaire le nombre <span class="arithmatex">\(10~000\)</span> ?</li>
 <li>Quel est le plus grand nombre représentable avec <span class="arithmatex">\(24\)</span> bits ?</li>
 </ol>
@@ -4547,11 +4526,11 @@ n = E\left(\dfrac{\ln(N)}{\ln(2)}\right) +1
 </div>
 <h2 id="premiers-stockages-les-cartes-perforees-punch-cards">Premiers stockages : les cartes perforées (<em>punch cards</em>)</h2>
 <p>Comme nous l'avons vu dans la partie précédente, les informations numériques peuvent être représentées sous la forme binaire, mais elles ne sont pas les seules. Si une <mark class="critic"><strong>convention</strong></mark> est adoptée, il est tout à fait possible de représenter d'autres informations, comme du texte, des images ou autres données.</p>
-<p>Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, Herman Hollerith dépose un brevet pour une machine électromécanique utilisant des cartes perforées, permettant d'accélérer le recensement des états du gouvernement américain. Il lance par la suite une société qui deviendra IBM.</p>
-<p>Une carte perforée est un support d'informations exprimées sous la forme binaire : une grille de « cases » est représentée, cases qui peuvent être perforées (1) ou non (0).</p>
+<p>Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, <strong>Herman Hollerith</strong> dépose un brevet pour une machine électromécanique utilisant des cartes perforées permettant d'accélérer le recensement des états du gouvernement américain. Il lance par la suite une société qui deviendra IBM.</p>
+<p>Une <mark class="critic"><strong>carte perforée</strong></mark> est un support d'informations exprimées sous la forme binaire : une grille de « cases » est représentée, cases qui peuvent être perforées (1) ou non (0).</p>
 <p>Par exemple la carte ci-dessous, modèle standard d'IBM breveté en 1928, possède 80 colonnes et 12 lignes (les lignes numérotées de 0 à 9, plus deux lignes supérieures non numérotées) permettant techniquement d'encoder un mot de 12 bits (mais en pratique seulement 9 bits étaient utilisés, les lignes numérotées 0 à 8, la ligne 9 servant de « bit de contrôle », et les deux lignes supérieures indiquant des opérations spéciales).</p>
 <p><img alt="carte IBM" src="../Fortran.jpg" style="width:95%; margin:auto;display:block;background-color: #d2dce0;"><sup id="fnref:IBM"><a class="footnote-ref" href="#fn:IBM">1</a></sup></p>
-<p>Ces cartes étaient stockées par boîtes de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boîte tombait par terre.</p>
+<p>Ces cartes étaient stockées par boites de 2 000, et le coin tronqué servait de repère pour les insérer dans le bon sens dans un chargeur de cartes ou pour les remettre à l'endroit quand la boite tombait par terre.</p>
 <div class="admonition question">
 <p class="admonition-title">Questions III</p>
 <p>La carte perforée ci-dessus encode l'expression <code>Z(1) = Y + W(1)</code>, dans le langage <em>Fortran</em>. Il est inutile de comprendre le sens de cette expression pour répondre aux questions suivantes :</p>
@@ -4594,7 +4573,7 @@ n = E\left(\dfrac{\ln(N)}{\ln(2)}\right) +1
 <h3 id="le-texte">Le texte</h3>
 <div class="admonition abstract">
 <p class="admonition-title">L'Unicode</p>
-<p>Avec la démocratisation d'internet, de nombreux standard différents sont apparus pour gérer toutes les langues et tous les alphabets. Le problème : la même séquence de bits représentait différents caractères selon les alphabets, les langues, etc.</p>
+<p>Avec la démocratisation d'internet, de nombreux standards différents sont apparus pour gérer toutes les langues et tous les alphabets. Le problème : la même séquence de bits représentait différents caractères selon les alphabets, les langues, etc.</p>
 <p>La norme Unicode a été développée pour répondre à ce problème, et englober l'intégralité des signes possibles.</p>
 <p>Le code <code>UTF-8</code> est l'implémentation de la norme Unicode aujourd'hui la plus utilisée. En unicode, un caractère est codé sur 1, 2, 3 ou 4 octets. «La principale caractéristique d'<code>UTF-8</code> est qu'elle est rétro-compatible avec le standard <code>ASCII</code>, c'est-à-dire que tout caractère <code>ASCII</code> se code en <code>UTF-8</code> sous forme d'un unique octet, identique au code <code>ASCII</code>. Par exemple « A » (A majuscule) a pour code <code>ASCII</code> 65 (0x41) et se code en <code>UTF-8</code> par l'octet 65. Chaque caractère dont le point de code est supérieur à 127 (0x7F) (caractère non <code>ASCII</code>) se code sur 2 à 4 octets. Le caractère « € » (euro) se code par exemple sur 3 octets : 226, 130, et 172 (0xE2, 0x82 et 0xAC).»<sup id="fnref:utf8"><a class="footnote-ref" href="#fn:utf8">2</a></sup></p>
 </div>
@@ -4741,7 +4720,7 @@ n = E\left(\dfrac{\ln(N)}{\ln(2)}\right) +1
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../javascripts/config.js"></script>
       

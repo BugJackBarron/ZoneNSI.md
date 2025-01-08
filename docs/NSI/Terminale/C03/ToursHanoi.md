@@ -11,12 +11,15 @@ Il consiste à déplacer des disques de différents diamètres d'une « tour de 
 
 ![Tour_Hanoi_1.png](Tour_Hanoi_1.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
+Voici un site vous permettant de tester le jeu : [Tour de Hanoi](http://championmath.free.fr/tourhanoi.htm){: target="_blank"}
+
+## Algorithme de résolution non-récursif
+
+
 On souhaite écrire un programme python non-récursif qui utilise une classe `Pile` telle que définie dans le cours précédent (avec les listes chainées), et qui devra :
 
 1. Permettre de saisir un nombre `n` de disques.
 2. Afficher à l'écran les différentes étapes pour résoudre le problème avec `n` disques, en précisant à chaque fois le nombre d'étapes nécessaires.
-
-## Algorithme de résolution non-récursif
 
 Si on observe de près le jeu pour un nombre de disques supérieur à 1, on s'aperçoit qu'il n'y a que 1 ou 2 déplacements possibles :
 
