@@ -47,7 +47,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 6. Cliquez-droit sur l'ordinateur portant l'IP `192.168.0.10` (en n'oubliant pas de régler de manière à avoir son IP comme nom), et cliquez sur `Afficher les échanges de données`. Déplacez la fenêtre sur la droite de l'écran afin de pouvoir voir à la fois cette fenêtre et les deux ordinateurs.
 
 	!!! tips "Arrêter la simulation"
-	En cas de besoin, vous pouvez toujours arrêter la simulation en cliquant sur l'icône ![Filius Arreter](N1_icone_arreter.png){: style="width:3em;"}, et ainsi pouvoir déplacer les ordinateurs dans le plan de travail.
+		En cas de besoin, vous pouvez toujours arrêter la simulation en cliquant sur l'icône ![Filius Arreter](N1_icone_arreter.png){: style="width:3em;"}, et ainsi pouvoir déplacer les ordinateurs dans le plan de travail.
 	
 7. Cliquez droit toujours sur le même ordinateur et sélectionnez `Afficher le bureau`.
 8. Dans ce bureau, cliquez sur l'installateur de logiciels et installez `Ligne de commande`. Une fois l'installation effectuée (c'est immédiat !), ouvrez le logiciel `Ligne de commande` par un click gauche. Vous devriez avoir une situation telle que celle-ci :
@@ -56,18 +56,16 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 	
 9. Dans l'invite de commande, tapez la ligne suivante :
 
-	````
+	```` bash
 		ping 192.168.0.11
 	````
 	!!! question
 	
-	=== "Question"
 		Que s'est-il passé ?
+			
 		
-	=== "Réponse"
-		A venir !
 		
-10. On s'intéresse dans les échanges de données à la première ligne utilisant le protocole `ICMP` (**Internet Control Message Protocol**), qui doit être en toute logique la ligne n°3. Cette ligne, appelée {==**trame**==}, représente un échange de données entre les deux machines. Cliquez sur la ligne pour obtenir les informations Dans cette trame :
+10. On s'intéresse dans les échanges de données à la première ligne utilisant le protocole `ICMP` (**Internet Control Message Protocol**), qui doit être la ligne n°3 si vous avez scrupuleusement suivi ce TP. Cette ligne, appelée {==**trame**==}, représente un échange de données entre les deux machines. Cliquez sur la ligne pour obtenir les informations Dans cette trame :
 	1. Quelle est l'IP de la source ?
 			
 	2. Quelle est l'IP de la destination ?
@@ -85,7 +83,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 !!! info "Commande `ping`"
 	La commande `ping` est une commande très souvent utilisée pour effectuer des tests réseau, en cas de dysfonctionnement. Elle s'utilise en donnant soit l'adresse IP de l'ordinateur cible, soit en donnant le {==**nom de domaine**==} de l'ordinateur cible, par exemple :
 	
-	````
+	```` bash
 	ping www.google.fr
 	````
 	
