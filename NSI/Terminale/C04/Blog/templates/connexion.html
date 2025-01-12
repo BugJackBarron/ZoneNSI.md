@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block titre %}
+Login
+{% endblock %}
+
+{% block contenu %}
+
+<h2>Connexion</h2>
+<form action="{{ url_for('check_login') }}" method="post">
+    <label for="pseudo">Pseudo:</label><br>
+    <input type="text" id="pseudo" name="pseudo" required><br><br>
+    <label for="password">Mot de passe:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="Se connecter">
+</form>
+{% endblock %}

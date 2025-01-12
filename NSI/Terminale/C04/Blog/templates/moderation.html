@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h2>Liste des messages par ordre anté-chronologique : </h2>
+{% if messages %}
+<form action="{{ url_for('moderation') }}" method="post">
+    <input type="submit" value="envoyer" >
+    {% for message in messages %}
+    <div>
+        
+        <input type="checkbox" id="coche_{{ message[0] }}" name="suppression" value="{{ message[0] }}"  />
+        <label for="{{ message[0] }}">{{ message[1] }} ({{ message[2] }}) : {{ message[3] }}</label>
+    </div>
+    {% endfor %}
+    <input type="submit" value="envoyer">
+</form>
+{% endif %}
+{% endblock %}

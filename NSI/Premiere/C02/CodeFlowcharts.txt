@@ -1,0 +1,10 @@
+st=>start: Nombre n
+fe => operation : Inverse base2
+e=>end: Nombre binaire 
+op1=>operation: base2 est une chaine vide
+cond=>condition: n≠0
+op2=>operation: Ajouter n%2 en première position à base2
+op3=>operation: n prend la valeur n//2
+st->op1->cond
+cond(yes, right)->op2(right)->op3(right)->cond
+cond(no)->fe->e
