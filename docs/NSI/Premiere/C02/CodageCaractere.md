@@ -11,8 +11,8 @@ La décision fut prise de représenter *les caractères de l'alphabet anglais* s
 
 [^sept]: En fait la première table créée était exactement sur 7 bits, le bit de parité ne fut utilisé que lorsque le standard 8 bits fut généralisé.
 
-* les 7 octets de poids faible (les plus à droite) serviront à associer une valeur numérique à chaque caractère ;
-* l'octet de poids fort (celui le plus à gauche) sera le **bit de parité** - une clé de contrôle.
+* les 7 bits de poids faible (les plus à droite) serviront à associer une valeur numérique à chaque caractère ;
+* le bit de poids fort (celui le plus à gauche) sera le **bit de parité** - une clé de contrôle.
 
 !!! info "Bit de parité"
 	Les ordinateurs de cette époque étant peu fiables au niveau des transmissions et traitement des bits, il arrivait des erreurs lors du traitement des signaux et un octet `1101 1011` pouvait vite se transformer en `1001 1011` : les données étaient alors corrompues et le mauvais caractère affiché. Le {==**bit de parité**==} est un bit qui prenait la valeur 0 ou 1 selon la parité du nombre de 1 dans les 7 bits représentant le caractère. 
