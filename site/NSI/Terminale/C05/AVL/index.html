@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2929,9 +2929,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#techniques-desuilibrages" class="md-nav__link">
+  <a href="#techniques-dequilibrages" class="md-nav__link">
     <span class="md-ellipsis">
-      Techniques d'ésuilibrages :
+      Techniques d'équilibrages :
     </span>
   </a>
   
@@ -4384,6 +4384,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Miscellanees/TLAplus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLA+
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4428,12 +4449,12 @@
 </li>
 <li>Afficher les 4 arbres obtenus.</li>
 <li>
-<p>En considérant que le temps de recherche dans un ABR est directement proportionnel à la hauteur du noeud recherché, le temps moyen pour trouver dans <code>tree1</code> :</p>
+<p>En considérant que le temps de recherche dans un ABR est directement proportionnel à la hauteur du nœud recherché, le temps moyen pour trouver dans <code>tree1</code> :</p>
 <ul>
-<li>le noeud 5 est de 1 ;</li>
-<li>les noeuds 2 et 11 de 2 ;</li>
-<li>les noeuds 3, 7 et 13 de 3 ;</li>
-<li>le noeud 9 de 4.</li>
+<li>le nœud 5 est de 1 ;</li>
+<li>les nœuds 2 et 11 de 2 ;</li>
+<li>les nœuds 3, 7 et 13 de 3 ;</li>
+<li>le nœud 9 de 4.</li>
 </ul>
 <p>le temps moyen de recherche sur cet arbre est donc <span class="arithmatex">\(\dfrac{1+2\times 2 + 3\times 3 + 4}{7} = \dfrac{18}{7}\)</span>.</p>
 <p>Calculer de même le temps moyen pour les ABR <code>tree2</code>, <code>tree3</code> et <code>tree4</code>.
@@ -4454,7 +4475,7 @@ Que peut-on en conclure ?</p>
 des résultats plus mauvais que toute autre représentation. La notion formelle <mark class="critic"><strong>d’arbre équilibré</strong></mark> (<em>balanced tree</em> chez <a href="https://fr.wikipedia.org/wiki/Donald_Knuth" target="_blank">Donald Knuth</a>) n’est pas au programme, mais elle peut être abordée intuitivement.</p>
 <p>Sur un ABR équilibré, la recherche d’un élément est en moyenne en <span class="arithmatex">\(log_2(n)\)</span>, comme avec une recherche par dichotomie dans une liste. On peut alors se poser la question de l’intérêt d’utiliser un ABR. La réponse tient dans le temps mis à ajouter / supprimer un élément : dans une liste, on est en <span class="arithmatex">\(\mathscr{O}(n)\)</span> (complexité linéaire), alors qu’on est en <span class="arithmatex">\(\mathscr{O}(log_2(n))\)</span> dans un ABR (complexité logarithmique).</p>
 <p>Aussi, lorsqu’on doit stocker une collection d’éléments ordonnés, une liste Python peut être utilisée si la collection évolue peu ou bien si les éléments sont stockés dans l’ordre du tri. Mais si la collection doit être régulièrement modifiée et que les recherches par rapport au critère de tri sont fréquentes, on privilégie les ABR.</p>
-<p>Il est donc particulièrement important que notre ABR soit équilibré, et surtout que les insertions/délétions conservent la propriété d'équilibrage de ces ABR. Il existe plusieurs techniques pertmettant d'obtenir des ABR équilibrés :</p>
+<p>Il est donc particulièrement important que notre ABR soit équilibré, et surtout que les insertions/délétions conservent la propriété d'équilibrage de ces ABR. Il existe plusieurs techniques permettant d'obtenir des <em>ABR</em> équilibrés :</p>
 <ul>
 <li>les arbres AVL ;</li>
 <li>les arbres rouge-noir ;</li>
@@ -4466,16 +4487,16 @@ des résultats plus mauvais que toute autre représentation. La notion formelle 
 <h3 id="presentation-des-avl">Présentation des AVL</h3>
 <p>En informatique théorique, les arbres AVL ont été historiquement les premiers arbres binaires de recherche <strong>automatiquement équilibrés</strong>.</p>
 <p>La dénomination « arbre AVL » provient des noms respectifs de ses deux inventeurs, respectivement Georgii Adelson-Velsky et Evguenii Landis, qui l'ont publié en 1962 sous le titre <em>An Algorithm for the Organization of Information</em>. </p>
-<p>Dans un arbre AVL, les hauteurs des deux sous-arbres d'un même nœud diffèrent au plus de un, et cette propriété est conservée dynamiquement au moment de l'insertion ou de la déletion d'un nouveau noeud. La recherche, l'insertion et la suppression sont toutes en <span class="arithmatex">\(\mathscr{O}(log _{2}(n))\)</span> dans le pire des cas. </p>
-<p>Cependant les mécanismes d'insertion et de déletions sont modifiés par rapport à ceux déjà travaillés : ils nécessitent des <mark class="critic"><strong>rotations droites et gauches</strong></mark>.</p>
+<p>Dans un arbre AVL, les hauteurs des deux sous-arbres d'un même nœud diffèrent au plus de un, et cette propriété est conservée dynamiquement au moment de l'insertion ou de la délétion d'un nouveau nœud. La recherche, l'insertion et la suppression sont toutes en <span class="arithmatex">\(\mathscr{O}(log _{2}(n))\)</span> dans le pire des cas. </p>
+<p>Cependant les mécanismes d'insertion et de délétions sont modifiés par rapport à ceux déjà travaillés : ils nécessitent des <mark class="critic"><strong>rotations droites et gauches</strong></mark>.</p>
 <h3 id="rotations-droites-et-gauches">Rotations droites et gauches</h3>
-<p>Le mécanisme de rotation gauche consiste à remplacer un noeud <mark class="critic"><strong>racine</strong></mark> par son noeud droit (appelé <mark class="critic"><strong>pivot</strong></mark>).</p>
+<p>Le mécanisme de rotation gauche consiste à remplacer un nœud <mark class="critic"><strong>racine</strong></mark> par son nœud droit (appelé <mark class="critic"><strong>pivot</strong></mark>).</p>
 <p><img alt="P4_RotGauche.png" src="../P4_RotGauche.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Après l'opération :</p>
 <ul>
-<li>les noeuds du sous-arbre <code>S1</code> demeurent bien inférieurs au noeud <code>Racine</code> ;</li>
-<li>les noeuds du sous-arbre <code>S2</code>, qui étaient tous supérieurs à <code>Racine</code> tout en étant inférieurs à <code>Pivot</code>, le demeurent toujours ; </li>
-<li>les noeuds du sous-arbre <code>S2</code> demeurent bien supérieurs au noeud <code>Pivot</code>.</li>
+<li>les nœuds du sous-arbre <code>S1</code> demeurent bien inférieurs au nœud <code>Racine</code> ;</li>
+<li>les nœuds du sous-arbre <code>S2</code>, qui étaient tous supérieurs à <code>Racine</code> tout en étant inférieurs à <code>Pivot</code>, le demeurent toujours ; </li>
+<li>les nœuds du sous-arbre <code>S2</code> demeurent bien supérieurs au nœud <code>Pivot</code>.</li>
 </ul>
 <p>Ainsi par une rotation gauche, le nouvel arbre obtenu est aussi un ABR.</p>
 <p>Une version algorithmique de cette implémentation est :</p>
@@ -4490,9 +4511,9 @@ Racine &lt;- Pivot
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Créer une méthode <code>rotationGauche</code> pour la classe <code>Node</code>. Attention ! Pour pouvoir implémenter correctement cette méthode, <strong>il ne faudra pas oublier de mettre à jour les parents de chaque noeud !</strong></li>
+<li>Créer une méthode <code>rotation_gauche</code> pour la classe <code>Node</code>. Attention ! Pour pouvoir implémenter correctement cette méthode, <strong>il ne faudra pas oublier de mettre à jour les parents de chaque nœud !</strong></li>
 <li>
-<p>Créer de mémé une méthode <code>rotationDroite</code> pour la classe <code>Node</code>, en s'aidant du schéma suivant :</p>
+<p>Créer de mémé une méthode <code>rotation_droite</code> pour la classe <code>Node</code>, en s'aidant du schéma suivant :</p>
 <p><img alt="P4_RotDroite.png" src="../P4_RotDroite.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 </ol>
@@ -4503,7 +4524,7 @@ Racine &lt;- Pivot
 </div>
 </div>
 </div>
-<h3 id="techniques-desuilibrages">Techniques d'ésuilibrages :</h3>
+<h3 id="techniques-dequilibrages">Techniques d'équilibrages :</h3>
 <div class="admonition question">
 <p class="admonition-title">Application manuelle</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
@@ -4519,7 +4540,7 @@ Racine &lt;- Pivot
 <p><img alt="P4_AVL2.png" src="../P4_AVL2.png" style="width:20%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 <li>
-<p>Appliquer une rotation droite sur le noeud 3 de l'arbre précédent, puis une rotation gauche sur la racine de l'arbre obtenu. Que peut-on en conclure ?</p>
+<p>Appliquer une rotation droite sur le nœud 3 de l'arbre précédent, puis une rotation gauche sur la racine de l'arbre obtenu. Que peut-on en conclure ?</p>
 </li>
 </ol>
 </div>
@@ -4529,7 +4550,7 @@ Racine &lt;- Pivot
 </div>
 </div>
 </div>
-<p>En pratique on équilibrera un arbre à chaque insertion et à chaque délétion. Pour ce faire, une fois le noeud inséré, on regardera la hauteur de chaque sous-arbre gauche et droit, et si ces hauteurs diffèrent de plus de 1, on effectuera les rotations nécessaires.</p>
+<p>En pratique on équilibrera un arbre à chaque insertion et à chaque délétion. Pour ce faire, une fois le nœud inséré, on regardera la hauteur de chaque sous-arbre gauche et droit, et si ces hauteurs diffèrent de plus de 1, on effectuera les rotations nécessaires.</p>
 <div class="admonition question">
 <p class="admonition-title">Application manuelle 2</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
@@ -4537,7 +4558,7 @@ Racine &lt;- Pivot
 <div class="tabbed-block">
 <ol>
 <li>
-<p>On considère l'abre suivant :</p>
+<p>On considère l'arbre suivant :</p>
 <p><img alt="P4_AVL3.png" src="../P4_AVL3.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Est-il équilibré au sens donné ?</p>
 </li>
@@ -4545,7 +4566,7 @@ Racine &lt;- Pivot
 <p>On insère maintenant la valeur 4. L'arbre est-il équilibré ?</p>
 </li>
 <li>Appliquer une rotation gauche sur la racine. Cela suffit-il pour que le résultat soit équilibré ?</li>
-<li>En repartant de l'arbre de la question 2, quelle roitation faudrait-il faire avant d'appliquer une rotation gauche sur la racine afin d'obtenir un arbre équilibré ?</li>
+<li>En repartant de l'arbre de la question 2, quelle rotation faudrait-il faire avant d'appliquer une rotation gauche sur la racine afin d'obtenir un arbre équilibré ?</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -4554,7 +4575,7 @@ Racine &lt;- Pivot
 </div>
 </div>
 </div>
-<p>L'algorithme réel d'équilbrage étant un peu trop complexe pour notre niveau, voici les codes à insérer dans les différentes classes pour obtenir un AVL :</p>
+<p>L'algorithme réel d'équilibrage étant un peu trop complexe pour notre niveau, voici les codes à insérer dans les différentes classes pour obtenir un AVL :</p>
 <ul>
 <li>
 <p>dans la classe <code>ABR</code> :</p>
@@ -4592,18 +4613,18 @@ Racine &lt;- Pivot
         <span class="n">hauteur_gauche_gauche</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
         <span class="n">hauteur_gauche_droit</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">hauteur_gauche_gauche</span> <span class="o">&gt;</span> <span class="n">hauteur_gauche_droit</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationDroite</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation_droite</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">rotationGauche</span><span class="p">()</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationDroite</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span><span class="o">.</span><span class="n">rotation_gauche</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation_droite</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">hauteur_gauche</span> <span class="o">-</span> <span class="n">hauteur_droit</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
         <span class="n">hauteur_droit_droit</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">droit</span><span class="p">)</span>
         <span class="n">hauteur_droit_gauche</span> <span class="o">=</span> <span class="n">hauteur</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">gauche</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">hauteur_droit_droit</span> <span class="o">&gt;</span> <span class="n">hauteur_droit_gauche</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationGauche</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation_gauche</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">rotationDroite</span><span class="p">()</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotationGauche</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">droit</span><span class="o">.</span><span class="n">rotation_droite</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation_gauche</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span>
 
@@ -4614,7 +4635,7 @@ Racine &lt;- Pivot
 </code></pre></div>
 </li>
 </ul>
-<p>Désormais, en créantun ABR et en utilisant la méthode <code>insertionAVL</code>, l'arbre obtenu doit être automatiquement équilibré.</p></div>
+<p>Désormais, en créant un ABR et en utilisant la méthode <code>insertionAVL</code>, l'arbre obtenu doit être automatiquement équilibré.</p></div>
 
 
 
@@ -4688,7 +4709,7 @@ Racine &lt;- Pivot
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

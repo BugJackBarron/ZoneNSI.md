@@ -16,12 +16,12 @@
 			````
 		2. Que peut-on dire des quatre listes précédentes.
 		3. Afficher les 4 arbres obtenus.
-		4. En considérant que le temps de recherche dans un ABR est directement proportionnel à la hauteur du noeud recherché, le temps moyen pour trouver dans `tree1` :
+		4. En considérant que le temps de recherche dans un ABR est directement proportionnel à la hauteur du nœud recherché, le temps moyen pour trouver dans `tree1` :
 			
-			* le noeud 5 est de 1 ;
-			* les noeuds 2 et 11 de 2 ;
-			* les noeuds 3, 7 et 13 de 3 ;
-			* le noeud 9 de 4.
+			* le nœud 5 est de 1 ;
+			* les nœuds 2 et 11 de 2 ;
+			* les nœuds 3, 7 et 13 de 3 ;
+			* le nœud 9 de 4.
 			
 			le temps moyen de recherche sur cet arbre est donc $\dfrac{1+2\times 2 + 3\times 3 + 4}{7} = \dfrac{18}{7}$.
 			
@@ -43,7 +43,7 @@ Sur un ABR équilibré, la recherche d’un élément est en moyenne en $log_2(n
 
 Aussi, lorsqu’on doit stocker une collection d’éléments ordonnés, une liste Python peut être utilisée si la collection évolue peu ou bien si les éléments sont stockés dans l’ordre du tri. Mais si la collection doit être régulièrement modifiée et que les recherches par rapport au critère de tri sont fréquentes, on privilégie les ABR.
 
-Il est donc particulièrement important que notre ABR soit équilibré, et surtout que les insertions/délétions conservent la propriété d'équilibrage de ces ABR. Il existe plusieurs techniques pertmettant d'obtenir des ABR équilibrés :
+Il est donc particulièrement important que notre ABR soit équilibré, et surtout que les insertions/délétions conservent la propriété d'équilibrage de ces ABR. Il existe plusieurs techniques permettant d'obtenir des *ABR* équilibrés :
 
 * les arbres AVL ;
 * les arbres rouge-noir ;
@@ -58,21 +58,21 @@ En informatique théorique, les arbres AVL ont été historiquement les premiers
 
 La dénomination &laquo; arbre AVL &raquo; provient des noms respectifs de ses deux inventeurs, respectivement Georgii Adelson-Velsky et Evguenii Landis, qui l'ont publié en 1962 sous le titre *An Algorithm for the Organization of Information*. 
 
-Dans un arbre AVL, les hauteurs des deux sous-arbres d'un même nœud diffèrent au plus de un, et cette propriété est conservée dynamiquement au moment de l'insertion ou de la déletion d'un nouveau noeud. La recherche, l'insertion et la suppression sont toutes en $\mathscr{O}(log _{2}(n))$ dans le pire des cas. 
+Dans un arbre AVL, les hauteurs des deux sous-arbres d'un même nœud diffèrent au plus de un, et cette propriété est conservée dynamiquement au moment de l'insertion ou de la délétion d'un nouveau nœud. La recherche, l'insertion et la suppression sont toutes en $\mathscr{O}(log _{2}(n))$ dans le pire des cas. 
 
-Cependant les mécanismes d'insertion et de déletions sont modifiés par rapport à ceux déjà travaillés : ils nécessitent des {==**rotations droites et gauches**==}.
+Cependant les mécanismes d'insertion et de délétions sont modifiés par rapport à ceux déjà travaillés : ils nécessitent des {==**rotations droites et gauches**==}.
 
 ### Rotations droites et gauches
 
-Le mécanisme de rotation gauche consiste à remplacer un noeud {==**racine**==} par son noeud droit (appelé {==**pivot**==}).
+Le mécanisme de rotation gauche consiste à remplacer un nœud {==**racine**==} par son nœud droit (appelé {==**pivot**==}).
 
 ![P4_RotGauche.png](P4_RotGauche.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 
 Après l'opération :
 
-* les noeuds du sous-arbre `S1` demeurent bien inférieurs au noeud `Racine` ;
-* les noeuds du sous-arbre `S2`, qui étaient tous supérieurs à `Racine` tout en étant inférieurs à `Pivot`, le demeurent toujours ; 
-* les noeuds du sous-arbre `S2` demeurent bien supérieurs au noeud `Pivot`.
+* les nœuds du sous-arbre `S1` demeurent bien inférieurs au nœud `Racine` ;
+* les nœuds du sous-arbre `S2`, qui étaient tous supérieurs à `Racine` tout en étant inférieurs à `Pivot`, le demeurent toujours ; 
+* les nœuds du sous-arbre `S2` demeurent bien supérieurs au nœud `Pivot`.
 
 Ainsi par une rotation gauche, le nouvel arbre obtenu est aussi un ABR.
 
@@ -89,8 +89,8 @@ Racine <- Pivot
 
 	=== "Enoncé"
 	
-		1. Créer une méthode `rotationGauche` pour la classe `Node`. Attention ! Pour pouvoir implémenter correctement cette méthode, **il ne faudra pas oublier de mettre à jour les parents de chaque noeud !**
-		2. Créer de mémé une méthode `rotationDroite` pour la classe `Node`, en s'aidant du schéma suivant :
+		1. Créer une méthode `rotation_gauche` pour la classe `Node`. Attention ! Pour pouvoir implémenter correctement cette méthode, **il ne faudra pas oublier de mettre à jour les parents de chaque nœud !**
+		2. Créer de mémé une méthode `rotation_droite` pour la classe `Node`, en s'aidant du schéma suivant :
 			
 			![P4_RotDroite.png](P4_RotDroite.png){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 			
@@ -98,7 +98,7 @@ Racine <- Pivot
 	
 		A venir !
 		
-### Techniques d'ésuilibrages :
+### Techniques d'équilibrages :
 
 
 !!! question "Application manuelle"
@@ -113,7 +113,7 @@ Racine <- Pivot
 		
 			![P4_AVL2.png](P4_AVL2.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
 			
-		3. Appliquer une rotation droite sur le noeud 3 de l'arbre précédent, puis une rotation gauche sur la racine de l'arbre obtenu. Que peut-on en conclure ?
+		3. Appliquer une rotation droite sur le nœud 3 de l'arbre précédent, puis une rotation gauche sur la racine de l'arbre obtenu. Que peut-on en conclure ?
 		
 	=== "Solution"
 	
@@ -121,13 +121,13 @@ Racine <- Pivot
 		
 
 
-En pratique on équilibrera un arbre à chaque insertion et à chaque délétion. Pour ce faire, une fois le noeud inséré, on regardera la hauteur de chaque sous-arbre gauche et droit, et si ces hauteurs diffèrent de plus de 1, on effectuera les rotations nécessaires.
+En pratique on équilibrera un arbre à chaque insertion et à chaque délétion. Pour ce faire, une fois le nœud inséré, on regardera la hauteur de chaque sous-arbre gauche et droit, et si ces hauteurs diffèrent de plus de 1, on effectuera les rotations nécessaires.
 
 !!! question "Application manuelle 2"	
 
 	=== "Enoncé"
 	
-		1. On considère l'abre suivant :
+		1. On considère l'arbre suivant :
 		
 			![P4_AVL3.png](P4_AVL3.png){: style="width:50%; margin:auto;display:block;background-color: #d2dce0;"}
 			
@@ -135,13 +135,13 @@ En pratique on équilibrera un arbre à chaque insertion et à chaque délétion
 		
 		2. On insère maintenant la valeur 4. L'arbre est-il équilibré ?
 		3. Appliquer une rotation gauche sur la racine. Cela suffit-il pour que le résultat soit équilibré ?
-		4. En repartant de l'arbre de la question 2, quelle roitation faudrait-il faire avant d'appliquer une rotation gauche sur la racine afin d'obtenir un arbre équilibré ?
+		4. En repartant de l'arbre de la question 2, quelle rotation faudrait-il faire avant d'appliquer une rotation gauche sur la racine afin d'obtenir un arbre équilibré ?
 		
 	=== "Solution"
 	
 		A venir !
 		
-L'algorithme réel d'équilbrage étant un peu trop complexe pour notre niveau, voici les codes à insérer dans les différentes classes pour obtenir un AVL :
+L'algorithme réel d'équilibrage étant un peu trop complexe pour notre niveau, voici les codes à insérer dans les différentes classes pour obtenir un AVL :
 
 * dans la classe `ABR` :
 
@@ -150,14 +150,14 @@ L'algorithme réel d'équilbrage étant un peu trop complexe pour notre niveau, 
 		if self.estVide():
 			self.racine = Node(valeur)
 		else:
-			self.racine = self.racine.inserer_AVL(valeur)
+			self.racine = self.racine.insererAVL(valeur)
 	````
 	
 * dans la classe `Node` :
 
 	```` python
 	
-	def inserer_AVL(self, valeur):
+	def insererAVL(self, valeur):
 		if valeur < self.valeur:
 			if self.gauche is None:
 				self.gauche = Node(valeur, parent=self)
@@ -182,18 +182,18 @@ L'algorithme réel d'équilbrage étant un peu trop complexe pour notre niveau, 
 			hauteur_gauche_gauche = hauteur(self.gauche.gauche)
 			hauteur_gauche_droit = hauteur(self.gauche.droit)
 			if hauteur_gauche_gauche > hauteur_gauche_droit:
-				return self.rotationDroite()
+				return self.rotation_droite()
 			else:
-				self.gauche = self.gauche.rotationGauche()
-				return self.rotationDroite()
+				self.gauche = self.gauche.rotation_gauche()
+				return self.rotation_droite()
 		elif hauteur_gauche - hauteur_droit == -2:
 			hauteur_droit_droit = hauteur(self.droit.droit)
 			hauteur_droit_gauche = hauteur(self.droit.gauche)
 			if hauteur_droit_droit > hauteur_droit_gauche:
-				return self.rotationGauche()
+				return self.rotation_gauche()
 			else:
-				self.droit = self.droit.rotationDroite()
-				return self.rotationGauche()
+				self.droit = self.droit.rotation_droite()
+				return self.rotation_gauche()
 		else:
 			return self
 			
@@ -203,4 +203,4 @@ L'algorithme réel d'équilbrage étant un peu trop complexe pour notre niveau, 
 		return 1 + max(hauteur_gauche, hauteur_droit)
 	````
 	
-Désormais, en créantun ABR et en utilisant la méthode `insertionAVL`, l'arbre obtenu doit être automatiquement équilibré.
+Désormais, en créant un ABR et en utilisant la méthode `insertionAVL`, l'arbre obtenu doit être automatiquement équilibré.
