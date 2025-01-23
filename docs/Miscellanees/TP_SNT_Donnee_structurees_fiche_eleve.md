@@ -24,7 +24,7 @@ Donnez une note de 1 à 10 pour qualifier le prestige de chacun des métiers sui
 3. On appelle **descripteurs** les entêtes des colonnes. Donner les intitulés des descripteurs des colonnes A, B, C, G et H.
 4. Dans le menu `Données`, cliquer sur `Auto-Filtre` (dans LibreOffice) ou `Filtrer` (dans Excel). Observez ce qu'il se passe. Quelles sont les modifications apportées au fichier ?
 
-** Point prof : faire une pause pour montrer les possibilités des filtres aux élèves** 
+**Point prof : faire une pause pour montrer les possibilités des filtres aux élèves** 
 
 5. Chercher les métiers associés au code agrégé `V2Z`.
 
