@@ -4583,12 +4583,12 @@ Racine &lt;- Pivot
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estVide</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">racine</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">racine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">racine</span><span class="o">.</span><span class="n">inserer_AVL</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">racine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">racine</span><span class="o">.</span><span class="n">insererAVL</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
 <p>dans la classe <code>Node</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inserer_AVL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">insererAVL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">valeur</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>

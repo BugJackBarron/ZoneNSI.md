@@ -1,6 +1,6 @@
 # Leslie Lamport is God 
 
-Wellk, he's a god, and there are several others.
+Well, he's a god, and there are several others.
 
 Cette page est uniquement pour moi, j'essaye de comprendre les systèmes distribués. Donc ca va être le bordel.
 

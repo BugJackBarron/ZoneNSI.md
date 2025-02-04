@@ -4492,9 +4492,11 @@ La valeur initiale est au maximum de 255. Habituellement, les implémentations o
 <details class="tips">
 <summary>Fixer le TTL</summary>
 <p>L'option <code>-t</code> pour la commande <code>ping</code>, sous Linux, permet de fixer un nombre maximum de <strong>hops</strong> possibles. Si la destination est plus lointaine que ce nombre, on aura alors l'erreur <code>Time to live exceeded</code>.
-Cette possibilité existe aussi sous windows mais :
-* l'option <code>-t</code> désactive poar défaut la limite de 4 paquets <code>ICMP</code>, et envoie donc en continu (comme la commande de base sous Linux) ;
-* l'option <code>-c</code> fixe le nombre maximal de <strong>hops</strong>, mais nécessite d'être dans une console en mode administrateur pour être utilisée.</p>
+Cette possibilité existe aussi sous windows mais :</p>
+<ul>
+<li>l'option <code>-t</code> désactive poar défaut la limite de 4 paquets <code>ICMP</code>, et envoie donc en continu (comme la commande de base sous Linux) ;</li>
+<li>l'option <code>-c</code> fixe le nombre maximal de <strong>hops</strong>, mais nécessite d'être dans une console en mode administrateur pour être utilisée.</li>
+</ul>
 </details>
 <h3 id="la-commande-tracert-ou-traceroute-sous-linux">La commande <code>tracert</code> (ou <code>traceroute</code> sous linux)</h3>
 <p>Il est possible de globalement connaître les différents routeurs par lesquels passe un paquet IP, en utilisant le principe précédent :</p>
@@ -4609,15 +4611,21 @@ Cette possibilité existe aussi sous windows mais :
 <li>Quels sont les champs de cette table ?</li>
 <li>Chercher sur le web la signification informatique de <mark class="critic"><strong>loopback</strong></mark> (ou <strong>rebouclage</strong>).</li>
 <li>Que signifie alors la troisième ligne ? La quatrième ligne ?</li>
-<li>Nous allons devoir indiquer au routeur R1 quelle direction devra prendre un paquet à destination du réseau <code>192.168.1.0/24</code> :<ol>
+<li>
+<ol>
 <li>Ajoutez une ligne à la table de routage de R1.</li>
-<li>Dans celle ci, complétez les champs :<ul>
+<li>
+<p>Dans celle ci, complétez les champs :</p>
+<ul>
 <li><em>IP de destination</em> : <code>192.168.1.0/24</code></li>
 <li><em>Masque</em> : <code>255.255.255.0</code></li>
 <li><em>Paserelle suivante</em> : <code>1.0.0.2</code></li>
 <li><em>Via l'interface</em> : <code>1.0.0.1</code></li>
 </ul>
 </li>
+</ol>
+<p>Nous allons devoir indiquer au routeur R1 quelle direction devra prendre un paquet à destination du réseau <code>192.168.1.0/24</code> :</p>
+<ol>
 <li>Testez à partir de P1 et la commande <code>ping 192.168.1.0</code>. Le paquet est-il transmis à P2 ? <em>Vous pouvez oouvrir les fenêtres d'échanges de données nécesaires</em>.</li>
 <li>Complétez les tables de routages de R2 et et R3 pour que la commande <code>ping</code> fonctionne correctement.</li>
 </ol>

@@ -45,6 +45,7 @@ Dans notre exemple, on peut supposer qu'avec un TTL de 119, on est passé par 8 
 ??? tips "Fixer le TTL"
 	L'option `-t` pour la commande `ping`, sous Linux, permet de fixer un nombre maximum de **hops** possibles. Si la destination est plus lointaine que ce nombre, on aura alors l'erreur `Time to live exceeded`.
 	Cette possibilité existe aussi sous windows mais :
+
 	* l'option `-t` désactive poar défaut la limite de 4 paquets `ICMP`, et envoie donc en continu (comme la commande de base sous Linux) ;
 	* l'option `-c` fixe le nombre maximal de **hops**, mais nécessite d'être dans une console en mode administrateur pour être utilisée.
 	
@@ -160,10 +161,12 @@ L'objectif est de comprendre comment les routeurs font pour transmettre des paqu
 		4. Nous allons devoir indiquer au routeur R1 quelle direction devra prendre un paquet à destination du réseau `192.168.1.0/24` :
 			1. Ajoutez une ligne à la table de routage de R1.
 			2. Dans celle ci, complétez les champs :
+
 				* *IP de destination* : `192.168.1.0/24`
 				* *Masque* : `255.255.255.0`
 				* *Paserelle suivante* : `1.0.0.2`
 				* *Via l'interface* : `1.0.0.1`
+				
 			3. Testez à partir de P1 et la commande `ping 192.168.1.0`. Le paquet est-il transmis à P2 ? *Vous pouvez oouvrir les fenêtres d'échanges de données nécesaires*.
 			4. Complétez les tables de routages de R2 et et R3 pour que la commande `ping` fonctionne correctement.
 		5. Nous allons modifier la {==**topologie**==} du réseau, en ajoutant un  routeur R4 et un portable P3 de la manière suivante (le portable P1 et le routeur R1 sont inchangés) :
