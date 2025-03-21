@@ -182,9 +182,9 @@
 		6. Écrire une fonction `compterIndices(monTab,val)` permettant de renvoyer un tableau des indices des  occurrences de `val` dans `monTab`.
 			
 			```` python
-			>>> compter([4, 6, 8, 6, 7, 6, 9], 6)
+			>>> compterIndices([4, 6, 8, 6, 7, 6, 9], 6)
 			[1, 3, 5]
-			>>> compter([2, 4, 6],3)
+			>>> compterIndices([2, 4, 6],3)
 			[]
 			````
 			
