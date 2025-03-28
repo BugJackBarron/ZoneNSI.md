@@ -63,7 +63,7 @@ La commande permettant d'appliquer cette méthode est `tracert` sous windows (`t
 On constate ici qu'on a bien un passage par 8 machines (7 routeurs plus mon propre PC) :
 
 * le premier routeur d'ip `192.168.1.254` (adresse classique des passerelles chez Free, c'est-à-dire de ma box);
-* le second `194.149.164.68`, qui correspond à un routeur Free  (on peut le vérifier avec l'outil [who is](https://www.crawl-tools.com/fr/whois-client/){target = '_blank'};
+* le second `194.149.164.68`, qui correspond à un routeur Free  (on peut le vérifier avec l'outil [who is](https://www.crawl-tools.com/fr/whois-client/){target = '_blank'});
 * etc... jusqu'à atteindre le DNS Google d'IP `8.8.8.8`
 
 !!! question "Tester la commande"

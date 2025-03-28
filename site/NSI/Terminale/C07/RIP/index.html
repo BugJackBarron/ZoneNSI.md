@@ -3187,7 +3187,7 @@
           <li class="md-nav__item">
   <a href="#etape-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Etape 1
+      Étape 1
     </span>
   </a>
   
@@ -3196,7 +3196,7 @@
           <li class="md-nav__item">
   <a href="#etape-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Etape 2
+      Étape 2
     </span>
   </a>
   
@@ -3205,7 +3205,7 @@
           <li class="md-nav__item">
   <a href="#etape-3" class="md-nav__link">
     <span class="md-ellipsis">
-      Etape 3
+      Étape 3
     </span>
   </a>
   
@@ -4507,56 +4507,44 @@
 <h2 id="le-routage-a-vecteur-de-distance-le-protocole-rip">Le routage à vecteur de distance : le protocole RIP</h2>
 <p><em>D'après <a href="https://www.lecluse.fr/nsi/NSI_T/archi/routage/RIP/">https://www.lecluse.fr/nsi/NSI_T/archi/routage/RIP/</a>.</em></p>
 <h3 id="le-principe">Le principe</h3>
-<p>Le protocole RIP (<em>Routing Information Protocol</em>) rentre dans la catégorie des protocoles à <mark class="critic"><strong>vecteur de distance</strong></mark>. Un vecteur de distance est un couple <code>(adresse, distance)</code>, et ce protocole cherche à minimiser le nombre de routeurs (c'est-àdire la distance) à traverser pour atteindre la destination (on cherche ici à minimiser le nombre de sauts).</p>
+<p>Le protocole RIP (<em>Routing Information Protocol</em>) rentre dans la catégorie des protocoles à <mark class="critic"><strong>vecteur de distance</strong></mark>. Un vecteur de distance est un couple <code>(adresse, distance)</code>, et ce protocole cherche à minimiser le nombre de routeurs (c'est-à-dire la distance) à traverser pour atteindre la destination (on cherche ici à minimiser le nombre de sauts).</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kzablGaqUXM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>Chaque routeur reçoit en permanence (toutes les 30 secondes environ) de ses voisins les informations de routage qu'ils possèdent. Il va alors exploiter ces informations pour construire lui-même sa table de routage en ne retenant que les informations les plus pertinentes : une simple comparaison permet de ne garder que le chemin le plus avantageux. Il transmettra à son tour ces informations à ses voisins et ainsi de suite. C'est l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford" target="_blank">Bellman-Ford</a>, un des algorithmes de recherche de plus court chemin dans un graphe, que nous étudierons plus en détail dans le chapitre sur les graphes.</p>
-<p>A l'issue de quelques étapes, les tables de tous les routeurs se stabilisent et le routage est pleinement opérationnel. Le temps nécessaire à la stabilisation des tables est proportionnel au diamètre du réseau, c'est-à-dire à la plus grande route possible entre deux routeurs - c'est ce qui est appelé <strong>vitesse de convergence</strong> dans la vidéo de l'<a href="https://www.imt.fr/admissibles/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=terminales_22&amp;gclid=CjwKCAiAsNKQBhAPEiwAB-I5zTNjtBIyeW7Vbmmm29O3Vlap964Uk3PZ7QykzymnIFS2IOB0196U8hoCBDMQAvD_BwE" target="_blank">Institut Mines-Télécom</a>.</p>
+<p>Chaque routeur reçoit en permanence (toutes les 30 secondes environ) de ses voisins les informations de routage qu'ils possèdent. Il va alors exploiter ces informations pour construire lui-même sa table de routage en ne retenant que les informations les plus pertinentes : une simple comparaison permet de ne garder que le chemin le plus avantageux. Il transmettra à son tour ces informations à ses voisins et ainsi de suite. C'est l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford" target="_blank">Bellman-Ford</a>, un des algorithmes de recherche de plus court chemin dans un graphe, que nous étudierons plus en détail dans le chapitre à venir sur les graphes.</p>
+<p>À l'issue de quelques étapes, les tables de tous les routeurs se stabilisent et le routage est pleinement opérationnel. Le temps nécessaire à la stabilisation des tables est proportionnel au diamètre du réseau, c'est-à-dire à la plus grande route possible entre deux routeurs - c'est ce qui est appelé <strong>vitesse de convergence</strong> dans la vidéo de l'<a href="https://www.imt.fr/admissibles/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=terminales_22&amp;gclid=CjwKCAiAsNKQBhAPEiwAB-I5zTNjtBIyeW7Vbmmm29O3Vlap964Uk3PZ7QykzymnIFS2IOB0196U8hoCBDMQAvD_BwE" target="_blank">Institut Mines-Télécom</a>.</p>
 <h3 id="debranche-tout">Débranche tout !</h3>
-<p>Chacun d'entre-vous se verra remmetre un numéro de routeur, ainsi que la connaissance de ses vcoisins proches. Nous allons simuler l'exécution de l'algorithme de Bellman-Ford, en construisant petit-à-petit vos tables de routages.</p>
+<p>Chacun d'entre vous se verra remettre un numéro de routeur, ainsi que la connaissance de ses voisins proches. Nous allons simuler l'exécution de l'algorithme de Bellman-Ford, en construisant petit-à-petit vos tables de routages. Le fichier LibreOffice utilisé est téléchargeable <a href="../Activite_debranchee.odt" target="_blank">ici</a>.</p>
 <h3 id="un-exemple-dapplication">Un exemple d'application</h3>
 <p>Considérons le réseau suivant, pour lequel on admettra la norme suivante :</p>
 <ul>
-<li>le poste client et le poste serveur se voient attribués respectivement la première adresse de la plage de leur réseau ( soit respectivement <code>192.168.0.1</code> et <code>172.16.180.1</code>) ;</li>
-<li>les routeurs d'accès R1 et R6 ont sur leur interface réseau les dernières adresses IP de la plage de leur réseau (soit respectivemment <code>192.168.0.254</code> et <code>172.16.180.251</code>) ;</li>
-<li>Entre deux interfaces internes, le routeur de plus bas indice possède la première adresse et le routeur de dernier indice la seconde adresse : par exemple entre R2 et R5, les interfaces sont connectées par le réseau <code>10.1.4.0/30</code>, donc l'interface de R2 est <code>10.1.4.1</code> et celle de R5 est <code>10.1.4.2</code> ;</li>
-<li>tous les routeurs suivent le protocole RIP.</li>
+<li>Le poste client et le poste serveur se voient attribués respectivement la première adresse de la plage de leur réseau (soit respectivement <code>192.168.0.1</code> et <code>172.16.180.1</code>).</li>
+<li>Les routeurs d'accès <code>R1</code> et <code>R6</code> ont sur leurs interfaces réseaux les dernières adresses IP de la plage de leurs réseaux (soit respectivement <code>192.168.0.254</code> et <code>172.16.180.254</code>).</li>
+<li>Entre deux interfaces internes, le routeur <strong>de plus bas indice</strong> possède la première adresse et le routeur de dernier indice la seconde adresse : par exemple entre <code>R2</code> et <code>R5</code>, les interfaces sont connectées par le réseau <code>10.1.4.0/30</code>, donc l'interface de <code>R2</code> est <code>10.1.4.1</code> et celle de <code>R5</code> est <code>10.1.4.2</code> (car l'indice 2 de <code>R2</code>est plus petit que l'indice 5 de <code>R5</code>).</li>
+<li>Tous les routeurs suivent le protocole RIP.</li>
 </ul>
 <p><img alt="RoutageManuel6R.png" src="../RoutageManuel6R.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <h4 id="initialisation">Initialisation</h4>
-<p>Au démarrage, les routeurs ne connaissent que leur voisin imédiat. Les tables de routages pour les routeurs R1, R2 et R3 sont donc :</p>
+<p>Au démarrage, les routeurs ne connaissent que leur voisin immédiat. Les tables de routages pour les routeurs <code>R1</code>, <code>R2</code> et <code>R3</code> sont donc :</p>
 <p><img alt="RIP1.png" src="../RIP1.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <div class="admonition info">
 <p class="admonition-title">Principe de l'algorithme</p>
 <p>Lorsqu'un routeur reçoit une nouvelle route de la part d'un voisin, 4 cas sont envisageables :</p>
 <ul>
-<li>Il découvre une route vers un nouveau <strong>réseau inconnu</strong><ul>
-<li>Il l'ajoute à sa table.</li>
+<li>Il découvre une route vers un nouveau <strong>réseau inconnu</strong> : il l'ajoute à sa table.</li>
+<li>Il découvre une route vers un réseau <strong>connu</strong>, <strong>plus courte</strong> que celle qu'il possède dans sa table : il actualise sa table.</li>
+<li>Il découvre une route vers un réseau <strong>connu</strong>, <strong>plus longue</strong> que celle qu'il possède dans sa table : il ignore cette route.</li>
+<li>Il reçoit une route vers un réseau <strong>connu</strong> en provenance d'un routeur <strong>déjà existant dans sa table</strong> : il met à jour sa table car la topologie du réseau a été modifiée.</li>
 </ul>
-</li>
-<li>Il découvre une route vers un réseau <strong>connu</strong>, <strong>plus courte</strong> que celle qu'il possède dans sa table<ul>
-<li>Il actualise sa table.</li>
-</ul>
-</li>
-<li>Il découvre une route vers un réseau <strong>connu</strong>, <strong>plus longue</strong> que celle qu'il possède dans sa table<ul>
-<li>Il ignore cette route.</li>
-</ul>
-</li>
-<li>Il reçoit une route vers un réseau <strong>connu</strong> en provenance d'un routeur <strong>déjà existant dans sa table</strong><ul>
-<li>Il met à jour sa table car la topologie du réseau a été modifiée.</li>
-</ul>
-</li>
-</ul>
-<p>Quand il mets à jour les distances reçues, il <mark class="critic"><strong>ajoute 1</strong></mark> à celles-ci, pour prendre en compte le <em>hop</em> (saut) supplémentaire effectué.</p>
+<p>Quand il mets à jour les distances reçues, il <mark class="critic"><strong>ajoute 1</strong></mark> à celles-ci, pour prendre en compte le <em>hop</em> (saut) supplémentaire effectué pour l'atteindre.</p>
 </div>
-<h4 id="etape-1">Etape 1</h4>
+<h4 id="etape-1">Étape 1</h4>
 <ul>
 <li>
 <p>R1 reçoit les routes de R2. Sa table de routage devient :</p>
 <p><img alt="RIP2.png" src="../RIP2.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 <li>
-<p>R3 reçoit les routes de R2, et celles de R5. On peut constater qu'on peut atteindre de deux manière différentes les routeurs R2 et R5, car R3 ne réalise pas que les interfaces <code>10.1.2.1</code> et <code>10.1.4.1</code> sont toutes les deux deux interfaces de R2. De même il sait rejoindre de deux manière ayant la même métrique le réseau <code>10.1.4.0/30</code>, donc il garde la première arrivée (ici on suppose d'il a reçu les informations de R2 avant celles de R5)</p>
+<p>R3 reçoit les routes de R2, et celles de R5. On peut constater qu'il est possible d'atteindre de deux manières différentes les routeurs R2 et R5, car R3 ne réalise pas que les interfaces <code>10.1.2.1</code> et <code>10.1.4.1</code> sont toutes deux des interfaces de R2. De même il sait rejoindre de deux manières ayant la même métrique le réseau <code>10.1.4.0/30</code>, donc il garde la première arrivée (ici on suppose d'il a reçu les informations de R2 avant celles de R5)</p>
 <p><img alt="RIP3.png" src="../RIP3.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 <li>
@@ -4564,7 +4552,7 @@
 <p><img alt="RIP4.png" src="../RIP4.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 </ul>
-<h4 id="etape-2">Etape 2</h4>
+<h4 id="etape-2">Étape 2</h4>
 <ul>
 <li>
 <p>R1 reçoit les nouvelles routes de R2 :</p>
@@ -4579,13 +4567,13 @@
 <p><img alt="RIP7.png" src="../RIP7.png" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </li>
 </ul>
-<h4 id="etape-3">Etape 3</h4>
-<p>Cette dernière table de R2 sera transmise à l'étape suivante à R1, et une liaison sera alors possible dès l'étape 3 entre le Client et le Serveur. Dans ce mini-réseau, les tables sont alors toutes stabilisées dès la troisième étape, et le réseau est totalement opérationnel.</p>
+<h4 id="etape-3">Étape 3</h4>
+<p>Cette dernière table de R2 sera transmise à l'étape suivante à R1, et une liaison sera alors possible dès l'étape 3 entre le Client et le Serveur. Dans ce mini-réseau, les tables sont alors toutes stabilisées dès la troisième étape et le réseau est totalement opérationnel.</p>
 <h2 id="quelques-points-importants">Quelques points importants</h2>
-<p>Un des inconvénients du protocole RIP est qu'il génère un traffic important entre voisins, chacun envoyant sa table de routage à tous ses voisins à intervalles réguliers.  </p>
+<p>Un des inconvénients du protocole RIP est qu'il génère un trafic important entre voisins, chacun envoyant sa table de routage à tous ses voisins à intervalles réguliers.   </p>
 <p>En conséquences, le protocole RIP est configuré pour se limiter à un <mark class="critic"><strong>nombre maximum de 15 sauts</strong></mark>, ce qui le réserve à des réseaux de petites taille.</p>
-<p>L'avantage de cette limite est qu'elle permet  d'éviter les <mark class="critic"><strong>éventuelles boucles de routage</strong></mark> (comme R2 =&gt; R3 =&gt; R5 =&gt; R2), en utilisant le TTL qui ne doit pas dépasser 15, afin qu'un paquet qui tourne en rond soit détruit.</p>
-<p>De même, si un routeur ne reçoit pas d'informations d'un de ses voisins directs au bout d'un ordre de temps de trois minutes, il considère que ce routeur est hors-service et lui affecte une distance de 16, qui est alors considérée dans ce protocole comme une distance infinie. En conséquence tous ses voisins recalculeront leurs vecteurs en évitant le lien qui est tombé.</p></div>
+<p>L'avantage de cette limite est qu'elle permet d'éviter les <mark class="critic"><strong>éventuelles boucles de routage</strong></mark> (comme R2 =&gt; R3 =&gt; R5 =&gt; R2), en utilisant le TTL qui ne doit pas dépasser 15, afin qu'un paquet qui tourne en rond soit détruit.</p>
+<p>De même, si un routeur ne reçoit pas d'informations d'un de ses voisins directs au bout d'un ordre de temps de trois minutes, il considère que ce routeur est hors service et lui affecte une distance de 16, qui est alors considérée dans ce protocole comme une distance infinie. En conséquence, tous ses voisins recalculeront leurs vecteurs en évitant le lien qui est tombé.</p></div>
 
 
 
