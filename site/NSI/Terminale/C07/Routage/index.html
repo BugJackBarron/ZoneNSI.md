@@ -4474,7 +4474,7 @@
 <div class="admonition abstract">
 <p class="admonition-title">TTL</p>
 <p>La durée de vie <code>TTL</code> correspond à la durée pendant laquelle un paquet de données est valide. 
-La valeur initiale est au maximum de 255. Habituellement, les implémentations ont une TTL initiale de 31, 63 ou 127. Pour chaque noeud de réseau que passe le paquet de données, le TTL est décrémenté de 1. On parle dans ce cas de <mark class="critic"><strong>hops</strong></mark>. Si la TTL baisse jusque 0, le paquet de données est rejeté.</p>
+La valeur initiale est au maximum de 255. Habituellement, les implémentations ont une TTL initiale de 31, 63 ou 127. Pour chaque noeud de réseau (en gros un <em>routeur</em>) par lequel passe le paquet de données, le TTL est décrémenté de 1. On parle dans ce cas de <mark class="critic"><strong>hops</strong></mark>. Si la TTL baisse jusque 0, le paquet de données est rejeté.</p>
 <p>En pratique, le TTL qui vous est communiqué correspond généralement à la <strong>valeur initiale</strong> de l’ordinateur distant, dont on aura <strong>déduit le nombre de passages par un routeur</strong>.</p>
 <p>Si vous avez par exemple un TTL de 58, vous pouvez en déduire que le paquet de réponse avait été émis avec une valeur initiale de 63, et que sur le chemin du retour, il est passé par 5 machines.</p>
 <div class="admonition warning">
@@ -4485,9 +4485,6 @@ La valeur initiale est au maximum de 255. Habituellement, les implémentations o
 <p>Dans notre exemple, on peut supposer qu'avec un TTL de 119, on est passé par 8 machines pour aller de chez moi jusqu'au DNS de Google.</p>
 <div class="admonition question">
 <p class="admonition-title">Tester <code>ping</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Réponses</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ol>
 <li>Depuis l'invite de commande de windows  :<ol>
 <li>Tester la commande <code>ping 8.8.8.8</code>. Quel est le TTL, que peut-on supposer ?</li>
@@ -4495,7 +4492,7 @@ La valeur initiale est au maximum de 255. Habituellement, les implémentations o
 <li>Tester la commande <code>ping -6 www.zonensi.fr</code>. Que se passe-t-il ?</li>
 </ol>
 </li>
-<li>Depuis l'invite de commande Linux de <a href="https://zonensi.fr:8443" target="_blank">JupyterHub</a> :<ol>
+<li>Depuis l'invite de commande Linux :<ol>
 <li>Tester la commande <code>ping 8.8.8.8</code>. Quelle différence y-a-t'il avec la commande windows ?</li>
 <li>Tester la commande <code>ping -c 5 8.8.8.8</code>. Que se passe-t-il ?</li>
 <li>Tester la commande <code>ping -t 5 8.8.8.8</code>. Que se passe-t-il ?</li>
@@ -4504,26 +4501,20 @@ La valeur initiale est au maximum de 255. Habituellement, les implémentations o
 </li>
 </ol>
 </div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
-</div>
-</div>
 <details class="tips">
 <summary>Fixer le TTL</summary>
 <p>L'option <code>-t</code> pour la commande <code>ping</code>, sous Linux, permet de fixer un nombre maximum de <strong>hops</strong> possibles. Si la destination est plus lointaine que ce nombre, on aura alors l'erreur <code>Time to live exceeded</code>.
-Cette possibilité existe aussi sous windows mais :</p>
+Cette possibilité existe aussi sous Windows mais :</p>
 <ul>
-<li>l'option <code>-t</code> désactive poar défaut la limite de 4 paquets <code>ICMP</code>, et envoie donc en continu (comme la commande de base sous Linux) ;</li>
-<li>l'option <code>-c</code> fixe le nombre maximal de <strong>hops</strong>, mais nécessite d'être dans une console en mode administrateur pour être utilisée.</li>
+<li>l'option <code>-t</code> désactive par défaut la limite de 4 paquets <code>ICMP</code>, et envoie donc en continu (comme la commande de base sous Linux) ;</li>
+<li>l'option <code>-c</code> fixe le nombre maximal de <strong>hops</strong>, mais nécessite d'être dans une console en mode administrateur pour être utilisée (ce qui n'est pas possible au Lycée).</li>
 </ul>
 </details>
 <h3 id="la-commande-tracert-ou-traceroute-sous-linux">La commande <code>tracert</code> (ou <code>traceroute</code> sous linux)</h3>
-<p>Il est possible de globalement connaître les différents routeurs par lesquels passe un paquet IP, en utilisant le principe précédent :</p>
+<p>Il est possible de globalement connaitre les différents routeurs par lesquels passe un paquet IP, en utilisant le principe précédent :</p>
 <ul>
-<li>on envoie un paquet avec un <code>TTL</code> de 1, le premier routeur atteint va décrémenter et atteindre 0, il va donc envoyer un message signalant qu'il a détruit le paquet en question, et dans ce message il y aura bien entendu son adresse IP.</li>
-<li>On fait de même avec un <code>TTL</code> de 2, le premier routeur décrémente le <code>TTL</code>, le second le décrémente encore une fois, et comme il atteint 0, il détruit le paquet et renvoie un message d'erreur, avec bien entendu son adresse IP.</li>
+<li>On envoie un paquet avec un <code>TTL</code> de 1, le premier routeur atteint va décrémenter et atteindre 0, il va donc envoyer un message signalant qu'il a détruit le paquet en question. Dans ce message, il y aura bien entendu son adresse <code>IP</code>.</li>
+<li>On fait de même avec un <code>TTL</code> de 2, le premier routeur décrémente le <code>TTL</code>, le second le décrémente encore une fois, et comme il atteint 0, il détruit le paquet et renvoie un message d'erreur, avec bien entendu son adresse <code>IP</code>.</li>
 <li>On continue ainsi en augmentant le <code>TTL</code>.</li>
 </ul>
 <p>La commande permettant d'appliquer cette méthode est <code>tracert</code> sous windows (<code>traceroute</code>sous Linux) :</p>
@@ -4532,13 +4523,10 @@ Cette possibilité existe aussi sous windows mais :</p>
 <ul>
 <li>le premier routeur d'ip <code>192.168.1.254</code> (adresse classique des passerelles chez Free, c'est-à-dire de ma box);</li>
 <li>le second <code>194.149.164.68</code>, qui correspond à un routeur Free  (on peut le vérifier avec l'outil <a href="https://www.crawl-tools.com/fr/whois-client/" target="target">who is</a>;</li>
-<li>etc... jusqu'à atteindre le DNS Google d'ip <code>8.8.8.8</code></li>
+<li>etc... jusqu'à atteindre le DNS Google d'IP <code>8.8.8.8</code></li>
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Tester la commande</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Réponses</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ol>
 <li>Depuis l'invite de commande windows (non-testé depuis le lycée... On pourrait avoir des surprises...) :<ol>
 <li>Tester la commande <code>tracert 8.8.8.8</code>.</li>
@@ -4546,19 +4534,13 @@ Cette possibilité existe aussi sous windows mais :</p>
 <li>Tester la commande <code>tracert www.toutatice.fr</code>. Que se passe-t-il ?</li>
 </ol>
 </li>
-<li>Depuis l'invite de commande Linux de <a href="https://zonensi.fr:8443" target="_blank">JupyterHub</a> :<ol>
+<li>Depuis l'invite de commande Linux :<ol>
 <li>Tester la commande <code>traceroute 8.8.8.8</code>.</li>
 <li>Tester la commande <code>traceroute 95.142.174.138</code></li>
 <li>Tester la commande <code>traceroute www.toutatice.fr</code>. Que se passe-t-il ?</li>
 </ol>
 </li>
 </ol>
-</div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
-</div>
 </div>
 <h2 id="routage-des-paquets-dans-un-reseau">Routage des paquets dans un réseau</h2>
 <h3 id="un-point-sur-les-adresses-ip">Un point sur les adresses IP</h3>
@@ -4571,7 +4553,7 @@ Cette possibilité existe aussi sous windows mais :</p>
 <p>Soit une adresse réseau <code>128.128.4.0</code>.</p>
 </div>
 <p>Historiquement, le masque de sous-réseau pouvait être une suite quelconque de 0 et de 1, comme dans l'exemple précédent. Mais ceci n'est absolument pas pratique !</p>
-<p>Il a donc été décidé que la norme serait qu'un masque de sous-réseau serait constitué <mark class="critic"><strong>d'une suite contiguë de 1 suivis de 0</strong></mark>, comme par exemple <code>11111111.11111111.11100000.00000000</code>. Ceci permet entre-autres de simplifier l'écriture des masques en donnant l'IP suivie d'un nombre représentant le nombre de bits de poids fort ayant pour valeur 1.</p>
+<p>Il a donc été décidé que la norme serait qu'un masque de sous-réseau serait constitué <mark class="critic"><strong>d'une suite contiguë de 1 suivis de 0</strong></mark> comme, par exemple, <code>11111111.11111111.11100000.00000000</code>. Ceci permet entre-autres de simplifier l'écriture des masques en donnant l'IP suivie d'un nombre représentant le nombre de bits de poids fort ayant pour valeur 1.</p>
 <p>Ainsi au lieu d'écrire :</p>
 <ul>
 <li>IP : <code>192.168.20.4</code></li>
@@ -4584,21 +4566,12 @@ Cette possibilité existe aussi sous windows mais :</p>
 <p>ce qui signifie que les 19 bits de poids forts du masque ont pour valeur 1, et que les 13 suivants sont à 0.</p>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Réponses</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ol>
 <li>On considère une machine dont l'IP est <code>192.168.20.4/19</code>. Quel est l'adresse du réseau de cette machine ?</li>
 <li>On considère une machine dont l'IP est <code>192.168.20.4/8</code>. Quel est l'adresse du réseau de cette machine ?</li>
 <li>On considère une machine dont l'IP est <code>192.168.20.4/16</code>. Quel est l'adresse du réseau de cette machine ?</li>
 <li>On considère une machine dont l'IP est <code>192.168.20.4/24</code>. Quel est l'adresse du réseau de cette machine ?</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
-</div>
 </div>
 <details class="tips">
 <summary>Simplification d'écriture</summary>
@@ -4610,7 +4583,7 @@ Cette possibilité existe aussi sous windows mais :</p>
 </ul>
 </details>
 <h3 id="un-exemple-avec-routage-manuel-sur-3-routeurs">Un exemple avec routage manuel sur 3 routeurs</h3>
-<p>On considère les réseaux suivants dans le logiciel <code>Filius</code>, pour lesquels les routeurs R1, R2 et R3 <strong>ne sont pas en routage automatique</strong>.</p>
+<p>On considère les réseaux suivants (téléchargeable <a href="../Exo_Routage_1.fls" target="_blank">ici</a>) dans le logiciel <code>Filius</code>, pour lesquels les routeurs R1, R2 et R3 <strong>ne sont pas en routage automatique</strong>.</p>
 <p><img alt="RoutageManuel3R.png" src="../RoutageManuel3R.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <ul>
 <li>Les routeurs R1 et R3 sont appelés <mark class="critic"><strong>routeurs d'accès</strong></mark>, car ils sont en bordure de réseaux.</li>
@@ -4623,9 +4596,6 @@ Cette possibilité existe aussi sous windows mais :</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Comprendre une table de routage</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Réponses</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <p>Voici la table de routage actuelle du routeur R1 :</p>
 <p><img alt="TR_R1.png" src="../TR_R1.png" style="width:60%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <ol>
@@ -4633,6 +4603,7 @@ Cette possibilité existe aussi sous windows mais :</p>
 <li>Chercher sur le web la signification informatique de <mark class="critic"><strong>loopback</strong></mark> (ou <strong>rebouclage</strong>).</li>
 <li>Que signifie alors la troisième ligne ? La quatrième ligne ?</li>
 <li>
+<p>Nous allons devoir indiquer au routeur R1 quelle direction devra prendre un paquet à destination du réseau <code>192.168.1.0/24</code> :</p>
 <ol>
 <li>Ajoutez une ligne à la table de routage de R1.</li>
 <li>
@@ -4644,10 +4615,9 @@ Cette possibilité existe aussi sous windows mais :</p>
 <li><em>Via l'interface</em> : <code>1.0.0.1</code></li>
 </ul>
 </li>
-</ol>
-<p>Nous allons devoir indiquer au routeur R1 quelle direction devra prendre un paquet à destination du réseau <code>192.168.1.0/24</code> :</p>
-<ol>
-<li>Testez à partir de P1 et la commande <code>ping 192.168.1.0</code>. Le paquet est-il transmis à P2 ? <em>Vous pouvez oouvrir les fenêtres d'échanges de données nécesaires</em>.</li>
+<li>
+<p>Testez à partir de P1 et la commande <code>ping 192.168.1.0</code>. Le paquet est-il transmis à P2 ? <em>Vous pouvez ouvrir les fenêtres d'échanges de données nécessaires</em>.</p>
+</li>
 <li>Complétez les tables de routages de R2 et et R3 pour que la commande <code>ping</code> fonctionne correctement.</li>
 </ol>
 </li>
@@ -4662,23 +4632,18 @@ Cette possibilité existe aussi sous windows mais :</p>
 </li>
 </ol>
 </div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
-</div>
-</div>
-<div class="admonition info">
+<div class="admonition warning">
 <p class="admonition-title">Routage manuel</p>
 <p>Même pour des réseaux de petites taille, il est difficile de maintenir des tables de routages manuellement. Dès que le nombre de routeurs internes augmente, arrivent d'autres questions :</p>
 <p><img alt="RoutageManuel6R.png" src="../RoutageManuel6R.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;"></p>
-<p>Dans une situation comme celle-ci, quelle route est à privilégier pour relier le client au serveur ?</p>
+<p>Dans une situation comme celle-ci, plusieurs routes permettent à un paquet de transiter du routeur <code>R1</code> au routeur <code>R6</code>.</p>
 <ul>
 <li><code>R1 -&gt; R2 -&gt; R3 -&gt; R5 -&gt; R6</code></li>
 <li><code>R1 -&gt; R2 -&gt; R4 -&gt; R5 -&gt; R6</code> </li>
 <li><code>R1 -&gt; R2 -&gt; R5 -&gt; R6</code></li>
 </ul>
-<p>Nous aurions tendance à penser naturellement qu'il faut prendre la troisième solution, pour laquelle un <em>hop</em> de moins est nécessaire, mais est-ce judicieux si les liaisons <code>R2-&gt;R3-&gt;R5</code> sont fibrées alors que la liaison <code>R2 -&gt; R5</code> est une liaison cuivre classique ?</p>
+<p>La question est : quelle route devra être privilégiée ? Nous aurions tendance à penser naturellement qu'il faut prendre la troisième solution, pour laquelle un <em>hop</em> de moins est nécessaire, mais est-ce judicieux si les liaisons <code>R2-&gt;R3-&gt;R5</code> sont fibrées alors que la liaison <code>R2 -&gt; R5</code> est une liaison cuivre classique ? </p>
+<p>Nous répondrons à ces questions dans les deux parties suivantes du cours, en étudiant deux algorithmes de routage : les protocoles <code>RIP</code> et <code>OSPF</code>.</p>
 </div></div>
 
 
