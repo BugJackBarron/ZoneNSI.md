@@ -3213,7 +3213,7 @@
           <li class="md-nav__item">
   <a href="#quelques-exercices-pour-maitriser-dijkstra" class="md-nav__link">
     <span class="md-ellipsis">
-      Quelques exercices pour maîtriser Dijkstra
+      Quelques exercices pour maitriser Dijkstra
     </span>
   </a>
   
@@ -4498,8 +4498,7 @@
 
 <h3 id="le-principe">Le principe</h3>
 <p>Les algorithmes à état de lien sont basés sur la technique du plus court chemin, nommée <mark class="critic"><strong>SPF</strong></mark> (<em>Shortest Path First</em>). </p>
-<p>Pour pouvoir calculer le plus court chemin, les routeurs doivent disposer de  <strong>la carte complète du réseau</strong>. Ainsi, un routeur <em>SPF</em> teste l’état des liens qui le connectent aux routeurs voisins puis diffuse périodiquement l’état de ses liens (actif ou inactif) à <strong>tous les routeurs du réseau</strong>. Les informations échangées sont uniquement l’état des liens entre deux routeurs, c'est-à-dire la qualité du lien, souvent exprimée par sa vitesse en <strong>bits par secondes</strong>( <em>bps</em>, déclinés en <em>Mbps</em>, <em>Gbps</em>, etc...). Dès qu’un routeur reçoit une information, si elle est différente de celle
-stockée dans sa table de lien, il la met à jour.</p>
+<p>Pour pouvoir calculer le plus court chemin, les routeurs doivent disposer de  <strong>la carte complète du réseau</strong>. Ainsi, un routeur <em>SPF</em> teste l’état des liens qui le connectent aux routeurs voisins puis diffuse périodiquement l’état de ses liens (actif ou inactif) à <strong>tous les routeurs du réseau</strong>. Les informations échangées sont uniquement l’état des liens entre deux routeurs, c'est-à-dire la qualité du lien, souvent exprimée par sa vitesse en <strong>bits par secondes</strong>( <em>bps</em>, déclinés en <em>Mbps</em>, <em>Gbps</em>, etc...). Dès qu’un routeur reçoit une information, si elle est différente de celle stockée dans sa table de lien, il la met à jour.</p>
 <p>Au bout d'un certain temps, quand tous les routeurs ont échangé les informations, <strong>ils disposent tous de la même table de routage</strong>.</p>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -4524,7 +4523,7 @@ stockée dans sa table de lien, il la met à jour.</p>
 <p>Il consiste à partir d'un sommet, et de construire progressivement un sous-graphe dans lequel sont classés les différents sommets par ordre croissant de leur distance minimale au sommet de départ, cette distance correspondant à la somme des <em>poids</em> des <em>arcs</em> empruntés.</p>
 <p>On décrit l'algorithme ainsi :</p>
 <ol>
-<li>Au départ, on considère que les distances de chaque sommet au sommet de départ sont <strong>infinies</strong>, sauf pour le sommet de départ pour lequel la <strong>distance est nulle</strong>. Le sous-graphe des sommets visités contient uniquement le sommet de départ. </li>
+<li>Au départ, on considère que les distances de chaque sommet au sommet de départ sont <strong>infinies</strong>, sauf pour le sommet de départ pour lequel la <strong>distance est nulle</strong>. Le sous-graphe des sommets visités contient uniquement le sommet de départ.</li>
 <li>
 <p>On choisit en dehors du sous-graphe des sommets visités un sommet de distance minimale et on l'ajoute au sous-graphe. Ensuite, on met à jour les distances des sommets voisins de celui ajouté, selon les conditions suivantes pour chaque sommet voisin :</p>
 <ul>
@@ -4539,12 +4538,18 @@ stockée dans sa table de lien, il la met à jour.</p>
 <h3 id="exemple-commente-dapplication-sur-une-carte">Exemple commenté d'application sur une carte</h3>
 <p>On considère le graphe suivant représentant un ensemble de villes et les distances les séparant :</p>
 <p><img alt="Dijkstra1.webp" src="../Dijkstra1.webp" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
-<p>On va exécuter l'algorithme de Dijkstra en partant de la ville <code>A</code>, en complétant le tableau suiivant :</p>
+<p>On va exécuter l'algorithme de Dijkstra en partant de la ville <code>A</code>, en complétant le tableau suivant :</p>
 <p><img alt="Dijkstra2.png" src="../Dijkstra2.png" style="width:100%; margin:auto;display:block;background-color: #d2dce0;"></p>
-<h3 id="quelques-exercices-pour-maitriser-dijkstra">Quelques exercices pour maîtriser Dijkstra</h3>
+<div class="admonition info">
+<p class="admonition-title">Utilisation de l'algorithme de Dijkstra</p>
+<p>L'algorithme de Dijkstra n'est pas limité à une utilisation dans le protocole OSPF. Il peut en réalité être utilisé dans toute situation modélisable par un graphe orienté et pour laquelle on cherche à minimiser une « distance » (c'est-à-dire une valeur calculée à partir du poids affecté aux arêtes du graphe).</p>
+<p>L'algorithme de Dijkstra est donc adapté pour les situations de déplacement sur une carte (comme dans Waze, Google Map ou encore mieux : <a href="https://www.openstreetmap.org/#map=16/51.99753/-0.74533" target="_blank">Open Street Map</a>).
+Pour ces logiciels/applications, on utilisera une version optimisée de l'algorithme de Dijkstra, appelée algorithme <a href="https://fr.wikipedia.org/wiki/Algorithme_A*" target="_blank"><code>A*</code> (<em>A star</em>)</a>.)</p>
+</div>
+<h3 id="quelques-exercices-pour-maitriser-dijkstra">Quelques exercices pour maitriser Dijkstra</h3>
 <div class="admonition question">
 <p class="admonition-title">Exercice n°1</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solutions</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solutions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Un journaliste britannique d’une revue consacrée à l’automobile doit tester les autoroutes françaises. Pour remplir sa mission, il décide de louer une voiture et de circuler entre six grandes villes françaises : Bordeaux (B), Lyon (L),Marseille (M), Nantes (N), Paris (P) et Toulouse(T).</p>
@@ -4559,7 +4564,7 @@ stockée dans sa table de lien, il la met à jour.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice n°2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Solutions</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Solutions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Un parcours sportif est composé d’un banc pour abdominaux, de haies et d’anneaux. Le graphe orienté ci-contre indique les différents parcours conseillés partant de D et terminant à F. Les sommets sont : D (départ), B (banc pour abdominaux), H (haies), A (anneaux) et F (fin du parcours). Les arêtes représentent les différents sentiers reliant les sommets.
@@ -4573,7 +4578,7 @@ Assia a relevé ses temps de course en minute entre les différents sommets. Ces
 </div>
 </div>
 <h2 id="le-protocole-ospf">Le protocole OSPF</h2>
-<p>Le protocole <mark class="critic"><strong>OSPF</strong></mark> pour <em>Open Shortest Path First</em> est un protocole à état de lien, normalisé en 1990, décrit dans la RFC 2328. Il est pris en charge par le protocole IP. C’est le protocole de routage interne dominant et il est supporté par la plupart des routeurs. Ce  protocole attribue un coût à chaque lien entre les routeurs du réseau. Le <em>O</em> du sigle <em>OSPF</em> signifie que sa spécification doit appartenir au domaine public et que toute solution propriétaire est exclue.</p>
+<p>Le protocole <mark class="critic"><strong>OSPF</strong></mark> pour <em>Open Shortest Path First</em> est un protocole à état de lien, normalisé en 1990, décrit dans la RFC 2328. Il est pris en charge par le protocole <code>IP</code>. C’est le protocole de routage interne dominant et il est supporté par la plupart des routeurs. Ce  protocole attribue un coût à chaque lien entre les routeurs du réseau. Le <em>O</em> du sigle <em>OSPF</em> signifie que sa spécification doit appartenir au domaine public et que toute solution propriétaire est exclue.</p>
 <p>L’algorithme pour trouver la meilleure route est celui de Dijkstra qui fournit dans ce cas <strong>le coût cumulé le plus faible des liens de la route</strong> vers une destination d’une zone donnée. Le coût utilisé pour chaque lien doit être <strong>inversement proportionnel à la bande passante du lien</strong> en question. Ce coût peut être défini manuellement ou calculé avec la formule suivante :</p>
 <div class="arithmatex">\[
 Coût = \cfrac{Cst}{bande~~passante}
@@ -4597,7 +4602,11 @@ Coût = \cfrac{Cst}{bande~~passante}
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Exercice n°5 du sujet <a href="https://www.sujetdebac.fr/annales/spe-numerique-informatique-2021-metropole-1" target="target">suivant</a></p>
+<ol>
+<li>Exercice n°5 du sujet <a href="https://www.sujetdebac.fr/annales/spe-numerique-informatique-2021-metropole-1" target="target">Métropole J1 2021</a></li>
+<li>Exercice n°2 du sujet <a href="https://pixees.fr/informatiquelycee/term/suj_bac/2023/sujet_07.pdf" target="_blank">Métropole J1 2023</a></li>
+<li>Exercice n°2 su sujet <a href="https://pixees.fr/informatiquelycee/term/suj_bac/2023/sujet_07.pdf" target="_blank">Métropole J1 2024</a></li>
+</ol>
 </div>
 <div class="tabbed-block">
 <p>A venir !</p>
