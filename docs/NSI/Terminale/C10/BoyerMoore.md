@@ -14,9 +14,38 @@ Une méthode évidente pour trouver une sous-chaîne dans une chaîne de caract�
 * puis si le caractère considéré correspond au premier caractère du mot, nous comparerons les caractères suivants à ceux du mot. 
 * Si la recherche s'avère fructueuse on renvoie `True`, et sinon `False`
 
+!!! warning "Timeit"
+
+	Nous allons comparer nos algorithmes avec les fonctions natives de Python. Pour cela nous aurons besoin de la fonction ``timeit`` suivante, que nous allons utiliser en tant que **decorateur** de nos fonctions :
+
+	```` python 
+	import time
+
+	def timeit(fonction):
+		def wrapper(*args, **kwargs):
+			debut = time.time()
+			resultat = fonction(*args, **kwargs)
+			fin = time.time()
+			print(f"Temps d'exécution de {fonction.__name__}: {fin - debut:.4f} secondes")
+			return resultat
+		return wrapper
+
+			
+	# Exemple d'utilisation
+	@timeit
+	def exemple(a, b):
+		time.sleep(2)  # Simule une tâche longue
+		return a + b
+
+	# Appel de la fonction
+	resultat = exemple(5, 7)
+	print(f"Résultat: {resultat}")
+	````
+
 !!! question "Codage en Python"
 
 	=== "Enoncé"
+		
 		1. Coder une fonction `recherche(mot : str, chaine : str) -> bool` qui renvoie `True` si mot appartient à `chaine`, **sans utiliser le mot clé `in` de python**.
 		
 			On pourra tester avec :
@@ -25,7 +54,7 @@ Une méthode évidente pour trouver une sous-chaîne dans une chaîne de caract�
 			* `recherche('dab', 'abracadabra')`
 			* `recherche('bad', 'abracadabra')`
 			
-		2. Télécharger le fichier [suivant](RTP.txt){: target="_blank"}, et utiliser la fonction suivante pour lire ce fichier et stocker son contenu dans la variable `texte` :
+		2. Télécharger le fichier [suivant](RTP.txt){: target="_blank"}, et utiliser la fonction suivante pour lire ce fichier et stocker son contenu dans une variable `texte` :
 		
 			```` python
 			def lit_texte(fichier) :
@@ -71,7 +100,7 @@ Une méthode évidente pour trouver une sous-chaîne dans une chaîne de caract�
 
 L'algorithme de Boyer-Moore est un algorithme de recherche de sous-chaîne particulièrement efficace. Il a été développé par Robert S. Boyer et J Strother Moore en 1977.
 
-Il existe une verion simplifiée, développée par Nigel Horspool en 1980, que nous allons présenter ici.
+Il existe une version simplifiée, développée par Nigel Horspool en 1980, que nous allons présenter ici.
 
 !!! abstract "Principes de l'algorithme"
 
@@ -86,7 +115,7 @@ Il existe une verion simplifiée, développée par Nigel Horspool en 1980, que n
 	On veut chercher le motif `DAB` dans la chaîne `ABRACADABRA`. On utilisera deux compteurs :
 	
 	* `i` qui représente la position du premier caractère du motif par rapport à la chaîne. 
-	* `j` qui représente l'indice du cracatère du motif étudié.
+	* `j` qui représente l'indice du caractère du motif étudié.
 	
 	=== "1"
 		

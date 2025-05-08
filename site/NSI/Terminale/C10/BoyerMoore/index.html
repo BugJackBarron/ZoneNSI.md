@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4451,6 +4451,32 @@
 <li>puis si le caractère considéré correspond au premier caractère du mot, nous comparerons les caractères suivants à ceux du mot. </li>
 <li>Si la recherche s'avère fructueuse on renvoie <code>True</code>, et sinon <code>False</code></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Timeit</p>
+<p>Nous allons comparer nos algorithmes avec les fonctions natives de Python. Pour cela nous aurons besoin de la fonction <code>timeit</code> suivante, que nous allons utiliser en tant que <strong>decorateur</strong> de nos fonctions :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">timeit</span><span class="p">(</span><span class="n">fonction</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">debut</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">resultat</span> <span class="o">=</span> <span class="n">fonction</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temps d'exécution de </span><span class="si">{</span><span class="n">fonction</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">debut</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> secondes"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resultat</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="c1"># Exemple d'utilisation</span>
+<span class="nd">@timeit</span>
+<span class="k">def</span> <span class="nf">exemple</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Simule une tâche longue</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># Appel de la fonction</span>
+<span class="n">resultat</span> <span class="o">=</span> <span class="n">exemple</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Résultat: </span><span class="si">{</span><span class="n">resultat</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Codage en Python</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
@@ -4466,7 +4492,7 @@
 </ul>
 </li>
 <li>
-<p>Télécharger le fichier <a href="../RTP.txt" target="_blank">suivant</a>, et utiliser la fonction suivante pour lire ce fichier et stocker son contenu dans la variable <code>texte</code> :</p>
+<p>Télécharger le fichier <a href="../RTP.txt" target="_blank">suivant</a>, et utiliser la fonction suivante pour lire ce fichier et stocker son contenu dans une variable <code>texte</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lit_texte</span><span class="p">(</span><span class="n">fichier</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fichier</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span> <span class="p">:</span>
         <span class="n">contenu</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -4508,7 +4534,7 @@
 <h2 id="algorithme-de-boyer-moore-horspool">Algorithme de Boyer-Moore-Horspool</h2>
 <h3 id="presentation-et-exemples">Présentation et exemples</h3>
 <p>L'algorithme de Boyer-Moore est un algorithme de recherche de sous-chaîne particulièrement efficace. Il a été développé par Robert S. Boyer et J Strother Moore en 1977.</p>
-<p>Il existe une verion simplifiée, développée par Nigel Horspool en 1980, que nous allons présenter ici.</p>
+<p>Il existe une version simplifiée, développée par Nigel Horspool en 1980, que nous allons présenter ici.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Principes de l'algorithme</p>
 <ol>
@@ -4526,7 +4552,7 @@
 <p>On veut chercher le motif <code>DAB</code> dans la chaîne <code>ABRACADABRA</code>. On utilisera deux compteurs :</p>
 <ul>
 <li><code>i</code> qui représente la position du premier caractère du motif par rapport à la chaîne. </li>
-<li><code>j</code> qui représente l'indice du cracatère du motif étudié.</li>
+<li><code>j</code> qui représente l'indice du caractère du motif étudié.</li>
 </ul>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><input id="__tabbed_2_5" name="__tabbed_2" type="radio"><input id="__tabbed_2_6" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">1</label><label for="__tabbed_2_2">2</label><label for="__tabbed_2_3">3</label><label for="__tabbed_2_4">4</label><label for="__tabbed_2_5">5</label><label for="__tabbed_2_6">6</label></div>
 <div class="tabbed-content">
@@ -4586,7 +4612,7 @@
 <div class="admonition question">
 <p class="admonition-title">Recherche Boyer-Moore-Horspool</p>
 <p>Compléter la fonction suivante (on se servira des assertions comme tests) :</p>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_d8a3629ae254def6f9941171375322fb1171983d" class="comment">###</span><div class="interior_wrapper"><div id="editor_d8a3629ae254def6f9941171375322fb1171983d"></div></div><div id="term_editor_d8a3629ae254def6f9941171375322fb1171983d" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_d8a3629ae254def6f9941171375322fb1171983d","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span id="test_term_editor_d8a3629ae254def6f9941171375322fb1171983d" class="hide">assert recherchepy-undBMH('abracadabra', 'dab')bksl-nlassert recherchepy-undBMH('abracadabra', 'abra')bksl-nlassert recherchepy-undBMH('abracadabra', 'obra') is Falsebksl-nlassert recherchepy-undBMH('abracadabra', 'bara') is Falsebksl-nlassert recherchepy-undBMH('maman est là', 'maman')bksl-nlassert recherchepy-undBMH('bonjour maman', 'maman')bksl-nlassert recherchepy-undBMH('bonjour maman', 'papa') is Falsebksl-nlbksl-nl</span>                <button class="tooltip" onclick='executeTest("d8a3629ae254def6f9941171375322fb1171983d","v")'>                <img src="/../../..//images/buttons/icons8-check-64.png">                <span class="tooltiptext">Valider</span></button><span class="compteur">                5/5                </span><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_d8a3629ae254def6f9941171375322fb1171983d","Exo_BMH")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_d8a3629ae254def6f9941171375322fb1171983d').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_d8a3629ae254def6f9941171375322fb1171983d" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("d8a3629ae254def6f9941171375322fb1171983d")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("d8a3629ae254def6f9941171375322fb1171983d")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_d8a3629ae254def6f9941171375322fb1171983d" class="hide">def recherchepy-undBMH(mot : str, chaine : str) -&gt; bool :bksl-nl    N = len(chaine)bksl-nl    n = len(mot)bksl-nl    i = 0bksl-nl    j = ...bksl-nl    while i&lt;... and j&gt;... :bksl-nl        ...        bksl-nl    return Falsebksl-nlbksl-nl</span><span id="corr_content_editor_d8a3629ae254def6f9941171375322fb1171983d" class="hide" data-strudel="">def recherchepy-undBMH(mot : str, chaine : str) -&gt; bool :bksl-nl    N = len(chaine)bksl-nl    n = len(mot)bksl-nl    i = 0bksl-nl    j = ...bksl-nl    while i&lt;... and j&gt;... :bksl-nl        ...bksl-nl        bksl-nl    return Falsebksl-nlbksl-nl</span>
+<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_d8a3629ae254def6f9941171375322fb1171983d" class="comment">###</span><div class="interior_wrapper"><div id="editor_d8a3629ae254def6f9941171375322fb1171983d"></div></div><div id="term_editor_d8a3629ae254def6f9941171375322fb1171983d" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_d8a3629ae254def6f9941171375322fb1171983d","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span id="test_term_editor_d8a3629ae254def6f9941171375322fb1171983d" class="hide">assert recherchepy-undBMH('abracadabra', 'dab')bksl-nlassert recherchepy-undBMH('abracadabra', 'abra')bksl-nlassert recherchepy-undBMH('abracadabra', 'obra') is Falsebksl-nlassert recherchepy-undBMH('abracadabra', 'bara') is Falsebksl-nlassert recherchepy-undBMH('maman est lÃ ', 'maman')bksl-nlassert recherchepy-undBMH('bonjour maman', 'maman')bksl-nlassert recherchepy-undBMH('bonjour maman', 'papa') is Falsebksl-nlbksl-nl</span>                <button class="tooltip" onclick='executeTest("d8a3629ae254def6f9941171375322fb1171983d","v")'>                <img src="/../../..//images/buttons/icons8-check-64.png">                <span class="tooltiptext">Valider</span></button><span class="compteur">                5/5                </span><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_d8a3629ae254def6f9941171375322fb1171983d","Exo_BMH")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_d8a3629ae254def6f9941171375322fb1171983d').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_d8a3629ae254def6f9941171375322fb1171983d" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("d8a3629ae254def6f9941171375322fb1171983d")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("d8a3629ae254def6f9941171375322fb1171983d")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_d8a3629ae254def6f9941171375322fb1171983d" class="hide">def recherchepy-undBMH(mot : str, chaine : str) -&gt; bool :bksl-nl    N = len(chaine)bksl-nl    n = len(mot)bksl-nl    i = 0bksl-nl    j = ...bksl-nl    while i&lt;... and j&gt;... :bksl-nl        ...        bksl-nl    return Falsebksl-nlbksl-nl</span><span id="corr_content_editor_d8a3629ae254def6f9941171375322fb1171983d" class="hide" data-strudel="">def recherchepy-undBMH(mot : str, chaine : str) -&gt; bool :bksl-nl    N = len(chaine)bksl-nl    n = len(mot)bksl-nl    i = 0bksl-nl    j = ...bksl-nl    while i&lt;... and j&gt;... :bksl-nl        ...bksl-nl        bksl-nl    return Falsebksl-nlbksl-nl</span>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">recherche_BMH</span><span class="p">(</span><span class="n">mot</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">chaine</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span>
@@ -4679,7 +4705,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

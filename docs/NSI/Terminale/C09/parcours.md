@@ -148,7 +148,7 @@ fonction parcours_largeur(G) :
 
 	=== "Enoncé"
 		
-		1. Créer une fonction `explore_width(G,s)` qui effectue un parcours en largeur à partir du sommet `s` du graphe `G` et renvoie les sommets dans l'ordre de visite. Pour éviter d'avoir à réimplémenter nous-même une classe `File`, nous pouvons utiliser le module `queue` de Python et les commanes suivantes :
+		1. Créer une fonction `explore_width(G,s)` qui effectue un parcours en largeur à partir du sommet `s` du graphe `G` et renvoie les sommets dans l'ordre de visite. Pour éviter d'avoir à réimplémenter nous-même une classe `File`, nous pouvons utiliser le module `queue` de Python et les commandes suivantes :
 		
 			* `F = queue.Queue()`, pour créer une file vide ;
 			* `F.put(item)` : enfile `item` dans la file `F` ;
@@ -239,7 +239,7 @@ La différence entre les deux situations est que dans le premier cas, *la visite
 		couleur[s] = ...
 		return False
 		
-	def cycle(graphe) :
+	def cycle(graphe: Graph	) -> boolean :
 		couleur = {}	
 		for s in ... :
 			couleur[s] = BLANC
