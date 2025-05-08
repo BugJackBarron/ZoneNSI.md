@@ -4607,7 +4607,7 @@
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Créer une fonction <code>explore_width(G,s)</code> qui effectue un parcours en largeur à partir du sommet <code>s</code> du graphe <code>G</code> et renvoie les sommets dans l'ordre de visite. Pour éviter d'avoir à réimplémenter nous-même une classe <code>File</code>, nous pouvons utiliser le module <code>queue</code> de Python et les commanes suivantes :</p>
+<p>Créer une fonction <code>explore_width(G,s)</code> qui effectue un parcours en largeur à partir du sommet <code>s</code> du graphe <code>G</code> et renvoie les sommets dans l'ordre de visite. Pour éviter d'avoir à réimplémenter nous-même une classe <code>File</code>, nous pouvons utiliser le module <code>queue</code> de Python et les commandes suivantes :</p>
 <ul>
 <li><code>F = queue.Queue()</code>, pour créer une file vide ;</li>
 <li><code>F.put(item)</code> : enfile <code>item</code> dans la file <code>F</code> ;</li>
@@ -4722,7 +4722,7 @@
     <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">cycle</span><span class="p">(</span><span class="n">graphe</span><span class="p">)</span> <span class="p">:</span>
+<span class="k">def</span> <span class="nf">cycle</span><span class="p">(</span><span class="n">graphe</span><span class="p">:</span> <span class="n">Graph</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">boolean</span> <span class="p">:</span>
     <span class="n">couleur</span> <span class="o">=</span> <span class="p">{}</span>    
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="o">...</span> <span class="p">:</span>
         <span class="n">couleur</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLANC</span>
