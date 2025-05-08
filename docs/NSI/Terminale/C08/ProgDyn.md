@@ -21,7 +21,7 @@
 		
 ## La suite de Fibonacci
 
-La {==**suite de [Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci){: target="_blank"}**==} est une suite définie par une récurence d'ordre 2 de la manière suivante, :
+La {==**suite de [Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci){: target="_blank"}**==} est une suite définie par une récurrence d'ordre 2 de la manière suivante, :
 
 $$
 \left\lbrace\begin{array}{rcl}
@@ -124,7 +124,7 @@ La question que nous devons nous poser est : est-ce un choix judicieux ?
 	
 	Le nombre d'appels augmente exponentiellement en fonction de `n`. Par exemple le calcul récursif de `fibo(20)` nécessite $4~181$ appels au calcul `fibo(2)`, celui de `fibo(30)` le nécessite $514~229$ fois, celui de `fibo(40)` le nécessite $63~245~986$ fois....
 	
-	Si la limite de récursion (qui est de 1000 par défaut pour Python) n'est pas atteinte pour `fibo(40)`, le temps de calcul, lui,  croît aussi exponentiellement...
+	Si la limite de récursion (qui est de 1000 par défaut pour Python) n'est pas atteinte pour `fibo(40)`, le temps de calcul, lui, croît aussi exponentiellement...
 	
 
 ## Programmation dynamique
@@ -159,7 +159,7 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 			memo = [0, 1]+[None]*(n-1)
 			
 			def compute(n, memo) :
-				if memo[n] is  None :
+				if memo[n] is None :
 					memo[n] = compute(n-1, memo) + compute(n-2, memo)
 				return memo[n]
 				
@@ -168,6 +168,42 @@ En considérant l'algorithme précédant, on comprend bien qu'il est particuliè
 		````
 		
 		L'explication la plus simple du fonctionnement est visible dans Thonny, en utilisant le debugger, ou bien [ici](https://pythontutor.com/visualize.html#code=def%20fiboDesc%28n%29%20%3A%0A%0A%20%20%20%20memo%20%3D%20%5B0,%201%5D%2B%5BNone%5D*%28n-1%29%0A%20%20%20%20%0A%20%20%20%20def%20compute%28n,%20memo%29%20%3A%0A%20%20%20%20%20%20%20%20if%20memo%5Bn%5D%20is%20%20None%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20memo%5Bn%5D%20%3D%20compute%28n-1,%20memo%29%20%2B%20compute%28n-2,%20memo%29%0A%20%20%20%20%20%20%20%20return%20memo%5Bn%5D%0A%20%20%20%20return%20compute%28n,%20memo%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%0AfiboDesc%286%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){: target="_blank"}, pour un exemple sur `fiboDesc(6)`.
+	
+	=== "Quelques considérations hors programme"
+
+		On peut se demander pourquoi utiliser une fonction auxiliaire `compute` dans l'approche descendante, et pourquoi ne pas utiliser une fonction récursive utilisant un dictionnaire vide comme paramètre par défaut telle que la suivante :
+
+		``` python
+		def bad_fibo(n, memo = dict()) :
+    		if n in memo :
+        		return memo[n]
+    		elif n <= 1 :
+        		memo[n] = 1
+        		return memo[n]
+    		else :
+        		memo[n] = bad_fibo(n-1, memo)+bad_fibo(n-2, memo)
+        		return memo[n]
+				
+		``` 
+		En testant la fonction ci-dessus, on obtient bien le résultat escompté, et dans un temps raisonnable. 
+
+		{==**Oui, mais c'est une mauvaise pratique !**==}.
+
+		Utilisons l'éditeur ci-dessous :
+
+		{{ IDEv('badFibo') }}
+		
+		* Lors de l'appel de la fonction `bad_fibo` en ligne 16, on constate que la récursivité s'enclenche **et la mémoisation**, puisque la fonction n'est en réalité qu'appelée 5 fois.
+		* Lors de l'appel suivant de la fonction `bad_fibo` en ligne 18, la récursivité s'enclenche, mais les messages nous indiquent que la mémoïsation a déjà été effectuée pour les valeurs `5` et `4`. {==**Ce n'est pas le comportement normalement attendu !**==}
+
+
+		La raison : l'utilisation d'un paramètre par défaut mutable. En observant l'affichage de l'`id`, on constate que dans les deux appels de la ligne 16 et de la ligne 18, cet identifiant est le même. cela signifie que l'objet associé au paramètre `memo` {==**n'est pas local à la fonction `bad_fibo`.**==}. En effet, quand l'interpréteur passe pour la première fois sur la ligne de définition `def bad_fibo(n, memo = dict()) :`, il crée en mémoire un objet de type `dict`, mais qui n'est pas explicitement nommé. Cet objet restera référencé dans la mémoire sans être ramassé par le *garbage collector*, le temps de l'exécution du programme.
+
+		*Oui mais c'est pratique, me direz-vous !*
+
+		{==**C'est surtout risqué**==} : certes des valeurs sont mémorisées pour une utilisation future, mais nous n'avons aucun contrôle réel sur l'objet en mémoire. On appelle ceci une **fuite mémoire** ({==**memory leak**==}), qui peut être un problème sérieux pour des programmes devant tourner sur de longues périodes (comme un serveur web par exemple). Avec une telle pratique, il est possible de se retrouver avec des objets non utilisés mais occupant une place importante dans la mémoire vive.
+		
+		Dans tous les cas, *explicit is better than implicit*, donc si vous souhaitez conserver ces valeurs dans la mémoire vive de l'ordinateur, il faut explicitement les nommer, et les supprimer effectivement lorsque ces variables deviennent inutiles (en `C` c'est impératif).
 		
 ### Principes de la programmation dynamique
 
@@ -275,14 +311,3 @@ On va donc utiliser la *programmation dynamique* pour accélérer la vitesse de 
 		Nos codes précédents ne nous permettent que de connaitre le nombre minimal de pièces nécessaire pour un rendu de monnaie donné. Nous ne connaissons par contre pas quelles pièces sont nécessaires.
 		
 		Transformez une des fonction précédente afin qu'elle renvoie les pièces nécessaires au rendu de monnaie.
-		
-
-
-	
-
-		
-
-
-
-		
-

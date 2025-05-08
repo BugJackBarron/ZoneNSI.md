@@ -4,7 +4,7 @@
 ## Présentation du sujet 
 
 
-On dispose de deux chaînes de caractères : $A$, qui vaut `INFORMATIQUE`, et $B$, qui vaut `NUMERIQUE`. On aimerait mettre ces deux chaines de caractères en correspondance de la manière suivante :
+On dispose de deux chaines de caractères : $A$, qui vaut `INFORMATIQUE`, et $B$, qui vaut `NUMERIQUE`. On aimerait mettre ces deux chaines de caractères en correspondance de la manière suivante :
 
 * On place les 2 chaines l'une en dessous de l'autre ;
 * Si les premiers caractères des deux chaines coïncident, alors on passe aux caractères suivants ;
@@ -14,9 +14,9 @@ Voici un exemple d'alignement optimal :
 
 ![exempleAlignement.gif](exempleAlignement.gif){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
-Dans cette situation on a besoin de 9 tirets, pas moins.
+Dans cette situation on a besoin de 9 tirets pour obtenir l'alignement optimal, c'est-à-dire utilisant le moins de tirets.
 
-L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de `-` possible). Ce n'est pas un problème simple, surtout quand les chaines sont longues, comme pour les séquences d'ADN par exemple :
+L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de tirets possible). Ce n'est pas un problème simple, surtout quand les chaines sont longues, comme pour les séquences d'ADN par exemple :
 
 ![sequenceADN.png](sequenceADN.png){: style="width:80%; margin:auto;display:block;background-color: #d2dce0;"}
 
