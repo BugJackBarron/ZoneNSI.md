@@ -1,0 +1,18 @@
+graph { graph[bgcolor=slategray3]
+  A
+  B
+  C
+  D
+  A -- B [label ="a"]
+  A -- B [label ="b"]
+  A -- C [label ="c"]
+  A -- C [label ="d"]
+  A -- D [label= "e"]
+  D -- C [label= "g"]
+  D -- B [label= "f"]
+  {rank=min;C}
+  {rank=same;A;D}
+  {rank=max;B}
+  
+  
+} 

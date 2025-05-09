@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop sur un Graphique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .graph-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            margin: 20px auto;
+        }
+        .label {
+            position: absolute;
+            width: 150px;
+            height: 60px;
+            background-color: #f0f0f0;
+            color : #000000;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 30px;
+            cursor: move;
+            user-select: none;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="graph-container">
+        <canvas id="graph" width="800" height="400"></canvas>
+        <div class="label" id="label1" style="top: 450px; left: 20px;">Agriculteurs indépendants </div>
+        <div class="label" id="label2" style="top: 450px; left: 180px;">Aide à domicile et aides ménagères</div>
+        <div class="label" id="label3" style="top: 450px; left: 340px;">Infirmiers, et sages-femmes</div>
+        <div class="label" id="label4" style="top: 450px; left: 520px;">Ingénieurs de l'informatique</div>
+        <div class="label" id="label5" style="top: 450px; left: 700px;">Juristes</div>
+    </div>
+    <div class="button-container">
+        <button class="button" id="salaireButton">Activer/Désactiver salaire</button>
+        <button class="button" id="tempsButton">Activer/Désactiver temps partiel</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('graph');
+        const ctx = canvas.getContext('2d');
+        const salaire = new Map()
+        salaire.set("label1", 94);
+        salaire.set("label2", 100);
+        salaire.set("label3", 49);
+        salaire.set("label4", 6);
+        salaire.set("label5", 0);
+
+        const tps_partiel = new Map();
+        tps_partiel.set("label1", 12);
+        tps_partiel.set("label2", 72);
+        tps_partiel.set("label3", 25);
+        tps_partiel.set("label4", 5);
+        tps_partiel.set("label5", 10);
+        
+		
+        const labels = document.querySelectorAll('.label');
+        const salaireButton = document.getElementById('salaireButton');
+        const tempsButton = document.getElementById('tempsButton');
+        let salaireEnabled = false;
+        let tpsEnabled = false;
+
+        // Draw the graph axes and labels
+        function drawGraph() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillText("Prestige", canvas.width/2+10, 20);
+
+            // Draw x-axis
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.stroke();
+
+            // Draw y-axis
+            ctx.beginPath();
+            ctx.moveTo(canvas.width/2, 0);
+            ctx.lineTo(canvas.width/2, canvas.height);
+            ctx.stroke();
+
+            // Draw x-axis labels
+            for (let i = 0; i <= 100; i += 10) {
+                const x = (i / 100) * canvas.width;
+                ctx.fillText(`${i}%`, x, canvas.height - 10);
+                ctx.beginPath();
+                ctx.moveTo(x, canvas.height);
+                ctx.lineTo(x, canvas.height - 5);
+                ctx.stroke();
+            }
+
+            // Draw y-axis labels
+            for (let i = 1; i <= 10; i++) {
+                const y = canvas.height - (i / 10) * canvas.height;
+                ctx.fillText(i, canvas.width/2-20, y + 5);
+                ctx.beginPath();
+                ctx.moveTo(canvas.width/2-5, y);
+                ctx.lineTo(canvas.width/2, y);
+                ctx.stroke();
+            }
+            ctx.fillText('Taux d\'emploi des femmes', canvas.width-150, canvas.height -40);
+        }
+
+        // Initialize the graph
+        drawGraph();
+
+        // Make labels draggable
+        labels.forEach(label => {
+            label.addEventListener('mousedown', startDrag);
+        });
+
+        function startDrag(e) {
+            const label = e.target;
+            const shiftX = e.clientX - label.getBoundingClientRect().left;
+            const shiftY = e.clientY - label.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                label.style.left = pageX - shiftX - canvas.getBoundingClientRect().left + 'px';
+                label.style.top = pageY - shiftY - canvas.getBoundingClientRect().top + 'px';
+                if (salaireEnabled) {
+                    updateLabelColor(label, salaire);
+                } else if (tpsEnabled) {
+                    updateLabelColor(label, tps_partiel);
+
+                                }                }
+
+            function onMouseMove(e) {
+                moveAt(e.pageX, e.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            label.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', onMouseMove);
+                label.onmouseup = null;
+            }, { once: true });
+        }
+
+        // Function to update label color based on x-axis position
+        function updateLabelColor(label, dico) {
+            console.log(label.id);
+            console.log(dico.get(label.id));
+            const color = getColorFromPercentage(dico.get(label.id));
+            
+            label.style.backgroundColor = color;
+            label.style.color = '#ffffff';
+        }
+
+        // Function to get color from percentage (0% to 100%)
+        function getColorFromPercentage(percentage) {
+            const blue = [0,255,0];
+            const pink = [255,0,0];
+            const ratio = percentage / 100;
+            const r = Math.round(blue[0] + ratio * (pink[0] - blue[0]));
+            const g = Math.round(blue[1] + ratio * (pink[1] - blue[1]));
+            const b = Math.round(blue[2] + ratio * (pink[2] - blue[2]));
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        
+        
+
+        // Toggle color button functionality
+        salaireButton.addEventListener('click', () => {
+            salaireEnabled = !salaireEnabled;
+            labels.forEach(label => {
+                if (salaireEnabled) {
+                    updateLabelColor(label, salaire);
+                    
+                    
+                } else {
+                    label.style.backgroundColor = '#f0f0f0';
+                    label.style.color = '#000000';
+                    
+                    
+                }
+            });
+        });
+        tempsButton.addEventListener('click', () => {
+            tpsEnabled = !tpsEnabled;
+            labels.forEach(label => {
+                if (tpsEnabled) {
+                    updateLabelColor(label, tps_partiel);
+                    
+                    
+                } else {
+                    label.style.backgroundColor = '#f0f0f0';
+                    label.style.color = '#000000';
+                    
+                    
+                }
+            });
+        });
+    </script>
+</body>
+</html>

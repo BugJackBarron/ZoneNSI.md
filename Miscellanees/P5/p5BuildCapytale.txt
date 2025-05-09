@@ -1,0 +1,535 @@
+Help on built-in module p5:
+
+NAME
+    p5 - A p5.js wrapper running on top of Pyodide for Basthon.
+
+DESCRIPTION
+    Basic usage:
+    
+    from p5 import *
+    
+    x, y = 100, 50
+    
+    def setup():
+        createCanvas(400, 200)
+    
+    def draw();
+        background(0)
+        fill(255)
+        rect(x, y, 50, 50)
+    
+    run(setup, draw)  # equivalent to show(setup, draw)
+    # or even better
+    run()  # equivalent to show()
+    # you can stop drawing
+-- more --
+    stop()
+    
+    Be careful when using import *. We assume:
+     + no new variable declaration with same name as p5.js one
+       between import and first call to run
+     + setup and draw are declared in the global namespace
+     + only one import statement
+    
+    otherwise, behavior is undefined.
+
+PACKAGE CONTENTS
+    _core
+    _global
+    _nsmanager
+    instance
+
+FUNCTIONS
+    filter = _custom_filter(*args)
+        # custom wrappers
+    
+    load_library(url)
+        Dynamically load a (p5) js library.
+    
+    map = _custom_map(*args)
+-- more --
+    
+    run(setup=None, draw=None, preload=None)
+        Run a new sketch using run(setup, draw) where setup and draw
+        are standard p5.js functions.
+        If a function is omited, we try to recover it from global namespace.
+    
+    set = _custom_set(*args)
+    
+    show = run(setup=None, draw=None, preload=None)
+        Run a new sketch using run(setup, draw) where setup and draw
+        are standard p5.js functions.
+        If a function is omited, we try to recover it from global namespace.
+    
+    stop()
+        Stopping global p5 instance.
+    
+    update_variables()
+        Force p5 variable update. E.g. this can be usefull after createCanvas
+        to get width and height updated values.
+
+DATA
+    ADD = 'lighter'
+    ALT = 18
+    ARROW = 'default'
+-- more --
+    AUDIO = 'audio'
+    AUTO = 'auto'
+    AXES = 'axes'
+    BACKSPACE = 8
+    BASELINE = 'alphabetic'
+    BEVEL = 'bevel'
+    BEZIER = 'bezier'
+    BLEND = 'source-over'
+    BLUR = 'blur'
+    BOLD = 'bold'
+    BOLDITALIC = 'bold italic'
+    BOTTOM = 'bottom'
+    BURN = 'color-burn'
+    CENTER = 'center'
+    CHORD = 'chord'
+    CLAMP = 'clamp'
+    CLOSE = 'close'
+    CONTROL = 17
+    CORNER = 'corner'
+    CORNERS = 'corners'
+    CROSS = 'crosshair'
+    CURVE = 'curve'
+    DARKEST = 'darken'
+    DEGREES = 'degrees'
+-- more --
+    DEG_TO_RAD = 0.017453292519943295
+    DELETE = 46
+    DIFFERENCE = 'difference'
+    DILATE = 'dilate'
+    DODGE = 'color-dodge'
+    DOWN_ARROW = 40
+    ENTER = 13
+    ERODE = 'erode'
+    ESCAPE = 27
+    EXCLUSION = 'exclusion'
+    FILL = 'fill'
+    GRAY = 'gray'
+    GRID = 'grid'
+    HALF_PI = 1.5707963267948966
+    HAND = 'pointer'
+    HARD_LIGHT = 'hard-light'
+    HSB = 'hsb'
+    HSL = 'hsl'
+    IMAGE = 'image'
+    IMMEDIATE = 'immediate'
+    INVERT = 'invert'
+    ITALIC = 'italic'
+    LANDSCAPE = 'landscape'
+    LEFT = 'left'
+-- more --
+    LEFT_ARROW = 37
+    LIGHTEST = 'lighten'
+    LINEAR = 'linear'
+    LINES = 1
+    LINE_LOOP = 2
+    LINE_STRIP = 3
+    MIRROR = 'mirror'
+    MITER = 'miter'
+    MOVE = 'move'
+    MULTIPLY = 'multiply'
+    NEAREST = 'nearest'
+    NORMAL = 'normal'
+    OPAQUE = 'opaque'
+    OPEN = 'open'
+    OPTION = 18
+    OVERLAY = 'overlay'
+    P2D = 'p2d'
+    PI = 3.141592653589793
+    PIE = 'pie'
+    POINTS = 0
+    PORTRAIT = 'portrait'
+    POSTERIZE = 'posterize'
+    PROJECT = 'square'
+    QUADRATIC = 'quadratic'
+-- more --
+    QUADS = 'quads'
+    QUAD_STRIP = 'quad_strip'
+    QUARTER_PI = 0.7853981633974483
+    RADIANS = 'radians'
+    RADIUS = 'radius'
+    RAD_TO_DEG = 57.29577951308232
+    REMOVE = 'destination-out'
+    REPEAT = 'repeat'
+    REPLACE = 'copy'
+    RETURN = 13
+    RGB = 'rgb'
+    RIGHT = 'right'
+    RIGHT_ARROW = 39
+    ROUND = 'round'
+    SCREEN = 'screen'
+    SHIFT = 16
+    SOFT_LIGHT = 'soft-light'
+    SQUARE = 'butt'
+    STROKE = 'stroke'
+    SUBTRACT = 'subtract'
+    TAB = 9
+    TAU = 6.283185307179586
+    TESS = 'tess'
+    TEXT = 'text'
+-- more --
+    TEXTURE = 'texture'
+    THRESHOLD = 'threshold'
+    TOP = 'top'
+    TRIANGLES = 4
+    TRIANGLE_FAN = 6
+    TRIANGLE_STRIP = 5
+    TWO_PI = 6.283185307179586
+    UP_ARROW = 38
+    VIDEO = 'video'
+    WAIT = 'wait'
+    WEBGL = 'webgl'
+    accelerationX = 0
+    accelerationY = 0
+    accelerationZ = 0
+    acos = <p5._global.FunctionWrapper object>
+    alpha = <p5._global.FunctionWrapper object>
+    ambientLight = <p5._global.FunctionWrapper object>
+    ambientMaterial = <p5._global.FunctionWrapper object>
+    angleMode = <p5._global.FunctionWrapper object>
+    append = <p5._global.FunctionWrapper object>
+    applyMatrix = <p5._global.FunctionWrapper object>
+    arc = <p5._global.FunctionWrapper object>
+    arrayCopy = <p5._global.FunctionWrapper object>
+    asin = <p5._global.FunctionWrapper object>
+-- more --
+    atan = <p5._global.FunctionWrapper object>
+    atan2 = <p5._global.FunctionWrapper object>
+    background = <p5._global.FunctionWrapper object>
+    beginContour = <p5._global.FunctionWrapper object>
+    beginShape = <p5._global.FunctionWrapper object>
+    bezier = <p5._global.FunctionWrapper object>
+    bezierDetail = <p5._global.FunctionWrapper object>
+    bezierPoint = <p5._global.FunctionWrapper object>
+    bezierTangent = <p5._global.FunctionWrapper object>
+    bezierVertex = <p5._global.FunctionWrapper object>
+    blend = <p5._global.FunctionWrapper object>
+    blendMode = <p5._global.FunctionWrapper object>
+    blue = <p5._global.FunctionWrapper object>
+    boolean = <p5._global.FunctionWrapper object>
+    box = <p5._global.FunctionWrapper object>
+    brightness = <p5._global.FunctionWrapper object>
+    byte = <p5._global.FunctionWrapper object>
+    camera = <p5._global.FunctionWrapper object>
+    ceil = <p5._global.FunctionWrapper object>
+    char = <p5._global.FunctionWrapper object>
+    circle = <p5._global.FunctionWrapper object>
+    clear = <p5._global.FunctionWrapper object>
+    clearStorage = <p5._global.FunctionWrapper object>
+    color = <p5._global.FunctionWrapper object>
+-- more --
+    colorMode = <p5._global.FunctionWrapper object>
+    concat = <p5._global.FunctionWrapper object>
+    cone = <p5._global.FunctionWrapper object>
+    constrain = <p5._global.FunctionWrapper object>
+    constructor = <p5._global.FunctionWrapper object>
+    copy = <p5._global.FunctionWrapper object>
+    cos = <p5._global.FunctionWrapper object>
+    createA = <p5._global.FunctionWrapper object>
+    createAudio = <p5._global.FunctionWrapper object>
+    createButton = <p5._global.FunctionWrapper object>
+    createCamera = <p5._global.FunctionWrapper object>
+    createCanvas = <p5._global.FunctionWrapper object>
+    createCapture = <p5._global.FunctionWrapper object>
+    createCheckbox = <p5._global.FunctionWrapper object>
+    createColorPicker = <p5._global.FunctionWrapper object>
+    createDiv = <p5._global.FunctionWrapper object>
+    createElement = <p5._global.FunctionWrapper object>
+    createFileInput = <p5._global.FunctionWrapper object>
+    createGraphics = <p5._global.FunctionWrapper object>
+    createImage = <p5._global.FunctionWrapper object>
+    createImg = <p5._global.FunctionWrapper object>
+    createInput = <p5._global.FunctionWrapper object>
+    createNumberDict = <p5._global.FunctionWrapper object>
+    createP = <p5._global.FunctionWrapper object>
+-- more --
+    createRadio = <p5._global.FunctionWrapper object>
+    createSelect = <p5._global.FunctionWrapper object>
+    createShader = <p5._global.FunctionWrapper object>
+    createSlider = <p5._global.FunctionWrapper object>
+    createSpan = <p5._global.FunctionWrapper object>
+    createStringDict = <p5._global.FunctionWrapper object>
+    createVector = <p5._global.FunctionWrapper object>
+    createVideo = <p5._global.FunctionWrapper object>
+    createWriter = <p5._global.FunctionWrapper object>
+    cursor = <p5._global.FunctionWrapper object>
+    curve = <p5._global.FunctionWrapper object>
+    curveDetail = <p5._global.FunctionWrapper object>
+    curvePoint = <p5._global.FunctionWrapper object>
+    curveTangent = <p5._global.FunctionWrapper object>
+    curveTightness = <p5._global.FunctionWrapper object>
+    curveVertex = <p5._global.FunctionWrapper object>
+    cylinder = <p5._global.FunctionWrapper object>
+    day = <p5._global.FunctionWrapper object>
+    debugMode = <p5._global.FunctionWrapper object>
+    degrees = <p5._global.FunctionWrapper object>
+    deltaTime = 0
+    deviceOrientation = 'landscape'
+    directionalLight = <p5._global.FunctionWrapper object>
+    displayDensity = <p5._global.FunctionWrapper object>
+
+-- more --
+    displayHeight = 800
+    displayWidth = 1280
+    dist = <p5._global.FunctionWrapper object>
+    downloadFile = <p5._global.FunctionWrapper object>
+    ellipse = <p5._global.FunctionWrapper object>
+    ellipseMode = <p5._global.FunctionWrapper object>
+    ellipsoid = <p5._global.FunctionWrapper object>
+    emissiveMaterial = <p5._global.FunctionWrapper object>
+    endContour = <p5._global.FunctionWrapper object>
+    endShape = <p5._global.FunctionWrapper object>
+    erase = <p5._global.FunctionWrapper object>
+    exitPointerLock = <p5._global.FunctionWrapper object>
+    exp = <p5._global.FunctionWrapper object>
+    fill = <p5._global.FunctionWrapper object>
+    floor = <p5._global.FunctionWrapper object>
+    focused = True
+    fract = <p5._global.FunctionWrapper object>
+    frameCount = 1
+    frameRate = <p5._global.FunctionWrapper object>
+    frustum = <p5._global.FunctionWrapper object>
+    fullscreen = <p5._global.FunctionWrapper object>
+    get = <p5._global.FunctionWrapper object>
+    getFrameRate = <p5._global.FunctionWrapper object>
+    getItem = <p5._global.FunctionWrapper object>
+-- more --
+    getURL = <p5._global.FunctionWrapper object>
+    getURLParams = <p5._global.FunctionWrapper object>
+    getURLPath = <p5._global.FunctionWrapper object>
+    green = <p5._global.FunctionWrapper object>
+    hasOwnProperty = <p5._global.FunctionWrapper object>
+    height = 300
+    hour = <p5._global.FunctionWrapper object>
+    httpDo = <p5._global.FunctionWrapper object>
+    httpGet = <p5._global.FunctionWrapper object>
+    httpPost = <p5._global.FunctionWrapper object>
+    hue = <p5._global.FunctionWrapper object>
+    image = <p5._global.FunctionWrapper object>
+    imageMode = <p5._global.FunctionWrapper object>
+    isKeyPressed = True
+    isLooping = <p5._global.FunctionWrapper object>
+    isPrototypeOf = <p5._global.FunctionWrapper object>
+    join = <p5._global.FunctionWrapper object>
+    key = 'Enter'
+    keyCode = 13
+    keyIsDown = <p5._global.FunctionWrapper object>
+    keyIsPressed = True
+    lerp = <p5._global.FunctionWrapper object>
+    lerpColor = <p5._global.FunctionWrapper object>
+    lightFalloff = <p5._global.FunctionWrapper object>
+-- more --
+    lightness = <p5._global.FunctionWrapper object>
+    lights = <p5._global.FunctionWrapper object>
+    line = <p5._global.FunctionWrapper object>
+    loadBytes = <p5._global.FunctionWrapper object>
+    loadFont = <p5._global.FunctionWrapper object>
+    loadImage = <p5._global.FunctionWrapper object>
+    loadJSON = <p5._global.FunctionWrapper object>
+    loadModel = <p5._global.FunctionWrapper object>
+    loadPixels = <p5._global.FunctionWrapper object>
+    loadShader = <p5._global.FunctionWrapper object>
+    loadStrings = <p5._global.FunctionWrapper object>
+    loadTable = <p5._global.FunctionWrapper object>
+    loadXML = <p5._global.FunctionWrapper object>
+    log = <p5._global.FunctionWrapper object>
+    loop = <p5._global.FunctionWrapper object>
+    mag = <p5._global.FunctionWrapper object>
+    match = <p5._global.FunctionWrapper object>
+    matchAll = <p5._global.FunctionWrapper object>
+    millis = <p5._global.FunctionWrapper object>
+    minute = <p5._global.FunctionWrapper object>
+    model = <p5._global.FunctionWrapper object>
+    month = <p5._global.FunctionWrapper object>
+    mouseButton = 'left'
+    mouseIsPressed = False
+-- more --
+    mouseX = -165.5
+    mouseY = -414.73333740234375
+    movedX = 0
+    movedY = 1
+    nf = <p5._global.FunctionWrapper object>
+    nfc = <p5._global.FunctionWrapper object>
+    nfp = <p5._global.FunctionWrapper object>
+    nfs = <p5._global.FunctionWrapper object>
+    noCanvas = <p5._global.FunctionWrapper object>
+    noCursor = <p5._global.FunctionWrapper object>
+    noDebugMode = <p5._global.FunctionWrapper object>
+    noErase = <p5._global.FunctionWrapper object>
+    noFill = <p5._global.FunctionWrapper object>
+    noLights = <p5._global.FunctionWrapper object>
+    noLoop = <p5._global.FunctionWrapper object>
+    noSmooth = <p5._global.FunctionWrapper object>
+    noStroke = <p5._global.FunctionWrapper object>
+    noTint = <p5._global.FunctionWrapper object>
+    noise = <p5._global.FunctionWrapper object>
+    noiseDetail = <p5._global.FunctionWrapper object>
+    noiseSeed = <p5._global.FunctionWrapper object>
+    norm = <p5._global.FunctionWrapper object>
+    normalMaterial = <p5._global.FunctionWrapper object>
+    orbitControl = <p5._global.FunctionWrapper object>
+-- more --
+    ortho = <p5._global.FunctionWrapper object>
+    pAccelerationX = 0
+    pAccelerationY = 0
+    pAccelerationZ = 0
+    pRotateDirectionX = None
+    pRotateDirectionY = None
+    pRotateDirectionZ = None
+    pRotationX = 0
+    pRotationY = 0
+    pRotationZ = 0
+    perspective = <p5._global.FunctionWrapper object>
+    pixelDensity = <p5._global.FunctionWrapper object>
+    plane = <p5._global.FunctionWrapper object>
+    pmouseX = 306.5
+    pmouseY = -38.5333251953125
+    point = <p5._global.FunctionWrapper object>
+    pointLight = <p5._global.FunctionWrapper object>
+    pop = <p5._global.FunctionWrapper object>
+    popMatrix = <p5._global.FunctionWrapper object>
+    popStyle = <p5._global.FunctionWrapper object>
+    propertyIsEnumerable = <p5._global.FunctionWrapper object>
+    push = <p5._global.FunctionWrapper object>
+    pushMatrix = <p5._global.FunctionWrapper object>
+    pushStyle = <p5._global.FunctionWrapper object>
+-- more --
+    pwinMouseX = 849
+    pwinMouseY = 523
+    quad = <p5._global.FunctionWrapper object>
+    quadraticVertex = <p5._global.FunctionWrapper object>
+    radians = <p5._global.FunctionWrapper object>
+    random = <p5._global.FunctionWrapper object>
+    randomGaussian = <p5._global.FunctionWrapper object>
+    randomSeed = <p5._global.FunctionWrapper object>
+    rect = <p5._global.FunctionWrapper object>
+    rectMode = <p5._global.FunctionWrapper object>
+    red = <p5._global.FunctionWrapper object>
+    redraw = <p5._global.FunctionWrapper object>
+    registerMethod = <p5._global.FunctionWrapper object>
+    registerPreloadMethod = <p5._global.FunctionWrapper object>
+    registerPromisePreload = <p5._global.FunctionWrapper object>
+    remove = <p5._global.FunctionWrapper object>
+    removeElements = <p5._global.FunctionWrapper object>
+    removeItem = <p5._global.FunctionWrapper object>
+    requestPointerLock = <p5._global.FunctionWrapper object>
+    resetMatrix = <p5._global.FunctionWrapper object>
+    resetShader = <p5._global.FunctionWrapper object>
+    resizeCanvas = <p5._global.FunctionWrapper object>
+    reverse = <p5._global.FunctionWrapper object>
+    rotate = <p5._global.FunctionWrapper object>
+-- more --
+    rotateX = <p5._global.FunctionWrapper object>
+    rotateY = <p5._global.FunctionWrapper object>
+    rotateZ = <p5._global.FunctionWrapper object>
+    rotationX = 0
+    rotationY = 0
+    rotationZ = 0
+    saturation = <p5._global.FunctionWrapper object>
+    save = <p5._global.FunctionWrapper object>
+    saveCanvas = <p5._global.FunctionWrapper object>
+    saveFrames = <p5._global.FunctionWrapper object>
+    saveGif = <p5._global.FunctionWrapper object>
+    saveJSON = <p5._global.FunctionWrapper object>
+    saveJSONArray = <p5._global.FunctionWrapper object>
+    saveJSONObject = <p5._global.FunctionWrapper object>
+    saveStrings = <p5._global.FunctionWrapper object>
+    saveTable = <p5._global.FunctionWrapper object>
+    scale = <p5._global.FunctionWrapper object>
+    second = <p5._global.FunctionWrapper object>
+    select = <p5._global.FunctionWrapper object>
+    selectAll = <p5._global.FunctionWrapper object>
+    setAttributes = <p5._global.FunctionWrapper object>
+    setCamera = <p5._global.FunctionWrapper object>
+    setFrameRate = <p5._global.FunctionWrapper object>
+    setMoveThreshold = <p5._global.FunctionWrapper object>
+-- more --
+    setShakeThreshold = <p5._global.FunctionWrapper object>
+    shader = <p5._global.FunctionWrapper object>
+    shearX = <p5._global.FunctionWrapper object>
+    shearY = <p5._global.FunctionWrapper object>
+    shininess = <p5._global.FunctionWrapper object>
+    shorten = <p5._global.FunctionWrapper object>
+    shuffle = <p5._global.FunctionWrapper object>
+    sin = <p5._global.FunctionWrapper object>
+    smooth = <p5._global.FunctionWrapper object>
+    sort = <p5._global.FunctionWrapper object>
+    specularColor = <p5._global.FunctionWrapper object>
+    specularMaterial = <p5._global.FunctionWrapper object>
+    sphere = <p5._global.FunctionWrapper object>
+    splice = <p5._global.FunctionWrapper object>
+    split = <p5._global.FunctionWrapper object>
+    splitTokens = <p5._global.FunctionWrapper object>
+    spotLight = <p5._global.FunctionWrapper object>
+    sq = <p5._global.FunctionWrapper object>
+    sqrt = <p5._global.FunctionWrapper object>
+    square = <p5._global.FunctionWrapper object>
+    storeItem = <p5._global.FunctionWrapper object>
+    stroke = <p5._global.FunctionWrapper object>
+    strokeCap = <p5._global.FunctionWrapper object>
+    strokeJoin = <p5._global.FunctionWrapper object>
+
+-- more --
+    strokeWeight = <p5._global.FunctionWrapper object>
+    subset = <p5._global.FunctionWrapper object>
+    tan = <p5._global.FunctionWrapper object>
+    text = <p5._global.FunctionWrapper object>
+    textAlign = <p5._global.FunctionWrapper object>
+    textAscent = <p5._global.FunctionWrapper object>
+    textDescent = <p5._global.FunctionWrapper object>
+    textFont = <p5._global.FunctionWrapper object>
+    textLeading = <p5._global.FunctionWrapper object>
+    textSize = <p5._global.FunctionWrapper object>
+    textStyle = <p5._global.FunctionWrapper object>
+    textWidth = <p5._global.FunctionWrapper object>
+    texture = <p5._global.FunctionWrapper object>
+    textureMode = <p5._global.FunctionWrapper object>
+    textureWrap = <p5._global.FunctionWrapper object>
+    tint = <p5._global.FunctionWrapper object>
+    toLocaleString = <p5._global.FunctionWrapper object>
+    toString = <p5._global.FunctionWrapper object>
+    torus = <p5._global.FunctionWrapper object>
+    translate = <p5._global.FunctionWrapper object>
+    triangle = <p5._global.FunctionWrapper object>
+    trim = <p5._global.FunctionWrapper object>
+    turnAxis = None
+    unchar = <p5._global.FunctionWrapper object>
+-- more --
+    unhex = <p5._global.FunctionWrapper object>
+    updatePixels = <p5._global.FunctionWrapper object>
+    valueOf = <p5._global.FunctionWrapper object>
+    vertex = <p5._global.FunctionWrapper object>
+    width = 300
+    winMouseX = 377
+    winMouseY = 463
+    windowHeight = 674
+    windowWidth = 1277
+    writeFile = <p5._global.FunctionWrapper object>
+    year = <p5._global.FunctionWrapper object>
+
+AUTHOR
+    Romain Casati
+
+FILE
+    /lib/python3.8/site-packages/p5/__init__.py
+
+
+
+​
+
+def draw():
+
+    frameRate(12)
+
+    stroke(255)
+
+    fill(255)
+
+    ellipse(pmouseX,pmouseY, 16, 32)
+
+    stroke(0)
