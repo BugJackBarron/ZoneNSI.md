@@ -257,7 +257,7 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 					
 		````
 		
-		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`).
+		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant au graphe (et donc directement utilisable par l'instruction `print(G)`).
 		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
@@ -265,7 +265,7 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 		1. Ajouter une méthode `get_vertices` à la classe `Graph` qui renvoie la liste des sommets.
 		1. Ajouter une méthode `is_directed` à la classe `Graph` pour qu'elle renvoie `True` si le graphe est orienté et `False` sinon.
 		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
-			* `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
+			* `False` si le graphe est orienté ou qu'il n'existe pas de parcours eulérien du graphe
 			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
 			* un tuple `(s,e)` donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.
 		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
@@ -337,7 +337,8 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 					for t in self.vertice[s] :
 						rep += f"   ->{t}\n"
 				return rep
--->````
+	````
+-->
 
 ### Graphes pondérés 
 
