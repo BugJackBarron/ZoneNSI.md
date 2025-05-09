@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2029,7 +2029,7 @@
           <li class="md-nav__item">
   <a href="#creation-dun-dictionnaire-vide" class="md-nav__link">
     <span class="md-ellipsis">
-      Création d'un  dictionnaire vide
+      Création d'un dictionnaire vide
     </span>
   </a>
   
@@ -4570,38 +4570,41 @@
 <h2 id="avant-de-commencer-tableaux-simultanes">Avant de commencer : tableaux simultanés</h2>
 <h3 id="des-listes-avec-le-meme-index">Des listes avec le même index</h3>
 <div class="admonition question">
-<p class="admonition-title">Premier exemple</p><p>On considère les deux listes suivantes :</p>
-<div class="highlight"><pre><span></span><code><span class="n">animaux</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Vache'</span><span class="p">,</span> <span class="s1">'Chien'</span><span class="p">,</span> <span class="s1">'Chat'</span><span class="p">,</span> <span class="s1">'Poule'</span><span class="p">,</span> <span class="s1">'Ane'</span><span class="p">,</span> <span class="s1">'Cochon'</span><span class="p">,</span> <span class="s1">'Paon'</span><span class="p">]</span>
-<span class="n">cris</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Meuh'</span><span class="p">,</span> <span class="s1">'Wouf'</span><span class="p">,</span> <span class="s1">'Miaou'</span><span class="p">,</span> <span class="s1">'Cot-cot'</span><span class="p">,</span> <span class="s1">'Hi-Han'</span><span class="p">,</span> <span class="s1">'Gruik'</span><span class="p">,</span> <span class="s1">'Leon'</span><span class="p">]</span>
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Réponse</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Écrire une fonction <code>affiche_cri</code>  qui prend comme argument le nom d'un animal, et renvoie : </p>
-<ul>
-<li>
-<p>soit une chaine de caractère telle que  dans l'exemple ci-dessous :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">affiche_cri</span><span class="p">(</span><span class="s2">"Vache"</span><span class="p">)</span>
-<span class="s2">"Le cri de l'animal Vache est Meuh !"</span> 
-</code></pre></div>
-</li>
-<li>
-<p>soit <code>None</code> dans le cas où l'animal n'est pas dans la liste <code>animaux</code>.</p>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<p>Le principe est de parcourir par indice la liste <code>animaux</code> , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes <code>animaux</code> et <code>cris</code>, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">affiche_cri</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">animaux</span><span class="p">))</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">animaux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">animal</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="n">cris</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">return</span> <span class="kc">None</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+<p class="admonition-title">Premier exemple</p>
+<div class="highlight"><pre><span></span><code>On considère les deux listes suivantes :
 
+```` python 
+
+animaux = ['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon']
+cris = ['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon']
+
+````
+
+=== "Énoncé"
+    Écrire une fonction `affiche_cri`  qui prend comme argument le nom d'un animal, et renvoie :
+
+    *   soit une chaine de caractère telle que  dans l'exemple ci-dessous :
+
+        ```` python   
+        &gt;&gt;&gt; affiche_cri("Vache")
+        "Le cri de l'animal Vache est Meuh !" 
+        ````
+
+    * soit `None` dans le cas où l'animal n'est pas dans la liste `animaux`.
+
+=== "Réponse"
+
+    Le principe est de parcourir par indice la liste `animaux` , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes `animaux` et `cris`, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :
+
+    ```` python 
+
+    def affiche_cri(animal) :
+        for i in range(len(animaux)) :
+            if animaux[i] == animal :
+                return cris[i]
+        return None
+    ````
+</code></pre></div>
 </div>
 <p>Si cette méthode est fonctionnelle, il faut quand même se poser la question de son <mark class="critic"><strong>efficacité</strong></mark>, et plus particulièrement de son <mark class="critic"><strong>efficacité en temps</strong></mark>.         </p>
 <div class="admonition tips">
@@ -4622,7 +4625,7 @@
 <p>Que se passe-t-il si les tableaux sont plus long ? </p>
 <div class="admonition question">
 <p class="admonition-title">Deuxième exemple</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -4869,7 +4872,7 @@ Et on peut encore itérer sur cet objet :
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Améliorer avec les dictionnaires</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Reconstruisez une nouvelle fonction <code>affiche_cri_2</code> sur le même modèle que la première, mais en utilisant la structure de dictionnaire, puis testez la vitesse d'exécution de cette nouvelle fonction.</p>
@@ -4905,7 +4908,7 @@ Et on peut encore itérer sur cet objet :
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Un gain de vitesse ?</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -4977,7 +4980,7 @@ Et on peut encore itérer sur cet objet :
 <h3 id="exercices-sur-les-dictionnaires">Exercices sur les dictionnaires</h3>
 <div class="admonition question">
 <p class="admonition-title">Exercice 1</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Énoncé</label><label for="__tabbed_5_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -5000,7 +5003,7 @@ Et on peut encore itérer sur cet objet :
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice 2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Énonce</label><label for="__tabbed_6_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Énonce</label><label for="__tabbed_5_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -5054,7 +5057,7 @@ Et on peut encore itérer sur cet objet :
 <div class="admonition question">
 <p class="admonition-title">Exercice 3</p>
 <p><em>(D'après Romain Tavenard, Université de Rennes 2)</em></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Énoncé</label><label for="__tabbed_6_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On dispose d'un dictionnaire associant à des noms de commerciaux d'une société le nombre de ventes qu'ils ont réalisées. Par exemple :</p>
@@ -5144,7 +5147,7 @@ Et on peut encore itérer sur cet objet :
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
