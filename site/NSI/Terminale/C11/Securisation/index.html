@@ -4928,27 +4928,44 @@ Bob transmet alors <strong>en clair</strong> l'identifiant <code>768453</code> �
 <p>Le système RSA est un système de chiffrement asymétrique basé sur des paires de clés publiques et privées, pour la première fois publié en 1978. Son nom provient des initiales de ses trois inventeurs : <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA" target="_blank">Ron Rivest, Adi Shamir et Len Adelman</a>. </p>
 <p>Les mathématiques derrière le système RSA utilisent entre autres les congruences sur les entiers et le petit théorème de Fermat. Tous les calculs se font modulo un nombre entier <span class="arithmatex">\(n\)</span> qui est le produit de deux nombres premiers, en général très grands, car les messages clairs et chiffrés sont des entiers inférieurs à l'entier <span class="arithmatex">\(n\)</span>. Les opérations de chiffrement et de déchiffrement consistent à élever le message à une certaine puissance modulo <span class="arithmatex">\(n\)</span>, ce qui donne des calculs très couteux.</p>
 </div>
+<details class="warning">
+<summary>Pour les experts</summary>
+<p>Le principe mathématique de RSA est le suivant. Alice choisit deux très grands nombres premiers <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span>, et elle crée les nombres suivants :</p>
+<ul>
+<li><span class="arithmatex">\(n = p\times q\)</span></li>
+<li><span class="arithmatex">\(e\)</span> un nombre premier avec <span class="arithmatex">\((p-1)(q-1)\)</span></li>
+<li>*<span class="arithmatex">\(d\)</span> un nombre tel que <span class="arithmatex">\(ed \equiv 1 \pmod {(p-1)(q-1)}\)</span> (qui peut être déterminé à l'aide de l'algorithme d'Euclide étendu)</li>
+</ul>
+<p>Une fois ces nombres créés, Alice possède :</p>
+<ul>
+<li>une clé privée <span class="arithmatex">\((n, d)\)</span> ;</li>
+<li>une clé publique <span class="arithmatex">\((n, e)\)</span>.</li>
+</ul>
+<p>Bob possède la clé publique d'Alice, et découpe son message sous la forme d'entiers  <span class="arithmatex">\(m\)</span> inférieurs à <span class="arithmatex">\(n\)</span>, puis applique le calcul suivant <span class="arithmatex">\(C = m^e \pmod n\)</span>. Il transmet à Alice son code <span class="arithmatex">\(C\)</span>.</p>
+<p>Alice utilise sa clé privée pour effectuer le calcul <span class="arithmatex">\(D = C^d \pmod n\)</span>. D'après le théorème d'Euler, <span class="arithmatex">\(D = C^d \pmod n = (m^)e^d \pmod n = m \pmod n\)</span>. Le message est donc déchiffré.</p>
+<p>La sécurité du chiffrement RSA réside dans la difficulté de déterminer <span class="arithmatex">\(d\)</span> en ne connaissant que <span class="arithmatex">\(n\)</span> et <span class="arithmatex">\(e\)</span>. En effet pour déterminer <span class="arithmatex">\(d\)</span>, la seule méthode connue pour l'instant est de décomposer <span class="arithmatex">\(n\)</span> en produit <span class="arithmatex">\(p.q\)</span>, ce qui est particulièrement lent dès que <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span> ont été choisis suffisamment grands. Voir <a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/rsa" target="_blank">ici</a> pour plus de détails.</p>
+</details>
 <p>Globalement, le système consiste en la mise en place d'une <mark class="critic"><strong>paire de clés publiques et privées</strong></mark> pour chaque participant :</p>
 <ul>
-<li>Alice possède une clé <span class="arithmatex">\(K_A^{pub}\)</span> et une clé privée <span class="arithmatex">\(K_A^{pri}\)</span>.</li>
-<li>Bob possède une clé <span class="arithmatex">\(K_B^{pub}\)</span> et une clé privée <span class="arithmatex">\(K_B^{pri}\)</span>.</li>
+<li>Alice possède une clé <span class="arithmatex">\(A^{pub}\)</span> et une clé privée <span class="arithmatex">\(A^{pri}\)</span>.</li>
+<li>Bob possède une clé <span class="arithmatex">\(B^{pub}\)</span> et une clé privée <span class="arithmatex">\(B^{pri}\)</span>.</li>
 </ul>
-<p>On notera <span class="arithmatex">\(K_P^x(m)\)</span> le fait de chiffrer un message avec la clé <span class="arithmatex">\(x\)</span> de la personne <span class="arithmatex">\(P\)</span>.</p>
+<p>On notera <span class="arithmatex">\(P^x(m)\)</span> le fait de chiffrer un message avec la clé <span class="arithmatex">\(x\)</span> de la personne <span class="arithmatex">\(P\)</span>.</p>
 <p>La manière exacte de créer ces clés est complexe, mais l'essentiel est de comprendre que l'utilisation des deux clés d'une personne permet de déchiffrer un message. Par exemple pour Alice :</p>
-<div class="arithmatex">\[K_A^{pub}\left(K_A^{pri}(m)\right) = K_A^{pri}\left(K_A^{pub}(m)\right) = m\]</div>
+<div class="arithmatex">\[A^{pub}\left(A^{pri}(m)\right) = A^{pri}\left(A^{pub}(m)\right) = m\]</div>
 <p>Ce qui signifie qu'un message chiffré avec la clé publique d'Alice peut être déchiffrer avec sa clé privée, et réciproquement.</p>
 <p>D'autre part, les propriétés des clés font que :</p>
 <ul>
-<li>il est impossible en connaissant <span class="arithmatex">\(K_A^{pub}\)</span> de deviner <span class="arithmatex">\(K_A^{pri}\)</span> ;</li>
-<li>il est impossible en connaissant <span class="arithmatex">\(K_A^{pub}(m)\)</span> ou <span class="arithmatex">\(K_A^{pri}(m)\)</span> de deviner <span class="arithmatex">\(m\)</span>.</li>
+<li>il est impossible en connaissant <span class="arithmatex">\(A^{pub}\)</span> de deviner <span class="arithmatex">\(A^{pri}\)</span> ;</li>
+<li>il est impossible en connaissant <span class="arithmatex">\(A^{pub}(m)\)</span> ou <span class="arithmatex">\(A^{pri}(m)\)</span> de deviner <span class="arithmatex">\(m\)</span>.</li>
 </ul>
 <div class="admonition tips">
 <p class="admonition-title">Fonctionnement d'une communication</p>
 <p>Si Bob veut envoyer un message secret à Alice, les deux procèdent comme suit :</p>
 <ol>
-<li>Alice met à disposition sa clé publique <span class="arithmatex">\(K_A^{pub}\)</span>, en la mettant par exemple sur son site web ou en l'envoyant par mail.</li>
-<li>Bob chiffre son message <span class="arithmatex">\(m\)</span> avec la clé publique d'Alice et envoie le résultat <span class="arithmatex">\(K_A^{pub}(m)\)</span> à Alice.</li>
-<li>Alice applique sa clé privée sur le message reçu <span class="arithmatex">\(K_A^{pri}\left(K_A^{pub}(m)\right) = m\)</span>, et déchiffre ainsi le message de Bob.</li>
+<li>Alice met à disposition sa clé publique <span class="arithmatex">\(A^{pub}\)</span>, en la mettant par exemple sur son site web ou en l'envoyant par mail.</li>
+<li>Bob chiffre son message <span class="arithmatex">\(m\)</span> avec la clé publique d'Alice et envoie le résultat <span class="arithmatex">\(A^{pub}(m)\)</span> à Alice.</li>
+<li>Alice applique sa clé privée sur le message reçu <span class="arithmatex">\(A^{pri}\left(A^{pub}(m)\right) = m\)</span>, et déchiffre ainsi le message de Bob.</li>
 </ol>
 </div>
 <p>L'inconvénient majeur de RSA est que les <mark class="critic"><strong>chiffrements et déchiffrements sont très couteux en temps de calcul</strong></mark>, et ne permettent pas des échanges sur des gros volumes de données, ou sur des flux de communications audio ou vidéo.</p>

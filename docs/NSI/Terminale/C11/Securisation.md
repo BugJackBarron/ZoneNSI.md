@@ -414,31 +414,49 @@ Le protocole d'échange de clé de Diffie-Hellman propose donc une manière él�
 
     Les mathématiques derrière le système RSA utilisent entre autres les congruences sur les entiers et le petit théorème de Fermat. Tous les calculs se font modulo un nombre entier $n$ qui est le produit de deux nombres premiers, en général très grands, car les messages clairs et chiffrés sont des entiers inférieurs à l'entier $n$. Les opérations de chiffrement et de déchiffrement consistent à élever le message à une certaine puissance modulo $n$, ce qui donne des calculs très couteux.
 
+??? warning "Pour les experts"
+    Le principe mathématique de RSA est le suivant. Alice choisit deux très grands nombres premiers $p$ et $q$, et elle crée les nombres suivants :
+
+    * $n = p\times q$
+    * $e$ un nombre premier avec $(p-1)(q-1)$
+    * *$d$ un nombre tel que $ed \equiv 1 \pmod {(p-1)(q-1)}$ (qui peut être déterminé à l'aide de l'algorithme d'Euclide étendu)
+
+    Une fois ces nombres créés, Alice possède :
+
+    * une clé privée $(n, d)$ ;
+    * une clé publique $(n, e)$.
+    
+    Bob possède la clé publique d'Alice, et découpe son message sous la forme d'entiers  $m$ inférieurs à $n$, puis applique le calcul suivant $C = m^e \pmod n$. Il transmet à Alice son code $C$.
+
+    Alice utilise sa clé privée pour effectuer le calcul $D = C^d \pmod n$. D'après le théorème d'Euler, $D = C^d \pmod n = (m^)e^d \pmod n = m \pmod n$. Le message est donc déchiffré.
+
+    La sécurité du chiffrement RSA réside dans la difficulté de déterminer $d$ en ne connaissant que $n$ et $e$. En effet pour déterminer $d$, la seule méthode connue pour l'instant est de décomposer $n$ en produit $p.q$, ce qui est particulièrement lent dès que $p$ et $q$ ont été choisis suffisamment grands. Voir [ici](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/rsa){target="_blank"} pour plus de détails. 
+
 Globalement, le système consiste en la mise en place d'une {==**paire de clés publiques et privées**==} pour chaque participant :
 
-* Alice possède une clé $K_A^{pub}$ et une clé privée $K_A^{pri}$.
-* Bob possède une clé $K_B^{pub}$ et une clé privée $K_B^{pri}$.
+* Alice possède une clé $A^{pub}$ et une clé privée $A^{pri}$.
+* Bob possède une clé $B^{pub}$ et une clé privée $B^{pri}$.
 
-On notera $K_P^x(m)$ le fait de chiffrer un message avec la clé $x$ de la personne $P$.
+On notera $P^x(m)$ le fait de chiffrer un message avec la clé $x$ de la personne $P$.
 
 La manière exacte de créer ces clés est complexe, mais l'essentiel est de comprendre que l'utilisation des deux clés d'une personne permet de déchiffrer un message. Par exemple pour Alice :
 
-$$K_A^{pub}\left(K_A^{pri}(m)\right) = K_A^{pri}\left(K_A^{pub}(m)\right) = m$$
+$$A^{pub}\left(A^{pri}(m)\right) = A^{pri}\left(A^{pub}(m)\right) = m$$
 
 Ce qui signifie qu'un message chiffré avec la clé publique d'Alice peut être déchiffrer avec sa clé privée, et réciproquement.
 
 D'autre part, les propriétés des clés font que :
 
-* il est impossible en connaissant $K_A^{pub}$ de deviner $K_A^{pri}$ ;
-* il est impossible en connaissant $K_A^{pub}(m)$ ou $K_A^{pri}(m)$ de deviner $m$.
+* il est impossible en connaissant $A^{pub}$ de deviner $A^{pri}$ ;
+* il est impossible en connaissant $A^{pub}(m)$ ou $A^{pri}(m)$ de deviner $m$.
 
 !!! tips "Fonctionnement d'une communication"
 
     Si Bob veut envoyer un message secret à Alice, les deux procèdent comme suit :
 
-    1. Alice met à disposition sa clé publique $K_A^{pub}$, en la mettant par exemple sur son site web ou en l'envoyant par mail.
-    2. Bob chiffre son message $m$ avec la clé publique d'Alice et envoie le résultat $K_A^{pub}(m)$ à Alice.
-    3. Alice applique sa clé privée sur le message reçu $K_A^{pri}\left(K_A^{pub}(m)\right) = m$, et déchiffre ainsi le message de Bob.
+    1. Alice met à disposition sa clé publique $A^{pub}$, en la mettant par exemple sur son site web ou en l'envoyant par mail.
+    2. Bob chiffre son message $m$ avec la clé publique d'Alice et envoie le résultat $A^{pub}(m)$ à Alice.
+    3. Alice applique sa clé privée sur le message reçu $A^{pri}\left(A^{pub}(m)\right) = m$, et déchiffre ainsi le message de Bob.
 
 L'inconvénient majeur de RSA est que les {==**chiffrements et déchiffrements sont très couteux en temps de calcul**==}, et ne permettent pas des échanges sur des gros volumes de données, ou sur des flux de communications audio ou vidéo.
 
