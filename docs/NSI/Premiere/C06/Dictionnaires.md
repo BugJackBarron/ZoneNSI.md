@@ -9,42 +9,42 @@
 
 !!! question "Premier exemple"
 
-		On considère les deux listes suivantes :
+	On considère les deux listes suivantes :
 
-		```` python 
-		  
-		animaux = ['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon']
-		cris = ['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon']
-		 
-		````
+	```` python 
+		
+	animaux = ['Vache', 'Chien', 'Chat', 'Poule', 'Ane', 'Cochon', 'Paon']
+	cris = ['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon']
+		
+	````
 
-		=== "Énoncé"
-			Écrire une fonction `affiche_cri`  qui prend comme argument le nom d'un animal, et renvoie : 
+	=== "Énoncé"
+		Écrire une fonction `affiche_cri(nom : str) -> str|None`  qui prend comme argument le nom d'un animal, et renvoie : 
 
-			*	soit une chaine de caractère telle que  dans l'exemple ci-dessous :
+		*	soit une chaine de caractère telle que  dans l'exemple ci-dessous :
 
-				```` python   
-				>>> affiche_cri("Vache")
-				"Le cri de l'animal Vache est Meuh !" 
-				````
-
-			* soit `None` dans le cas où l'animal n'est pas dans la liste `animaux`.
-
-			
-				
-		=== "Réponse"
-
-			Le principe est de parcourir par indice la liste `animaux` , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes `animaux` et `cris`, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :
-				
-			```` python 
-  
-			def affiche_cri(animal) :
-				for i in range(len(animaux)) :
-					if animaux[i] == animal :
-						return cris[i]
-				return None
+			```` python   
+			>>> affiche_cri("Vache")
+			"Le cri de l'animal Vache est Meuh !" 
 			````
+
+		* soit `None` dans le cas où l'animal n'est pas dans la liste `animaux`.
+
+		
 			
+	=== "Réponse"
+
+		Le principe est de parcourir par indice la liste `animaux` , et de comparer avec l'animal cherché. Comme les indices correspondent entre les listes `animaux` et `cris`, il suffira alors de renvoyer le cri correspondant à l'indice trouvé. Si la boucle se termine, c'est que l'animal ne se retrouve pas dans cette liste, et qu'on renvoie alors la phrase correspondante :
+			
+		```` python 
+
+		def affiche_cri(animal) :
+			for i in range(len(animaux)) :
+				if animaux[i] == animal :
+					return cris[i]
+			return None
+		````
+		
 Si cette méthode est fonctionnelle, il faut quand même se poser la question de son {==**efficacité**==}, et plus particulièrement de son {==**efficacité en temps**==}.			
 			
 			
@@ -167,9 +167,6 @@ Que se passe-t-il si les tableaux sont plus long ?
 	```` python   
 	type(cris)
 	````
-	??? note "Terminal de test"
-		{{ terminal() }}
-
 	Par exemple dans le dictionnaire `cris`, on trouve la paire `"Chat" : "Miaou"` où :
 
 	* `"Chat"` est la {==clé==} (de type chaine de caractères `str`) ;
@@ -213,13 +210,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 		````
 		ce qui signifie que `"Perroquet"` n'est pas une clé valide du dictionnaire.
 	
-	??? note "Terminal de test"
-		{{ terminal() }}
-
-
-
-
-
+	
 ### Manipulation des dictionnaires
 
 #### Création d'un  dictionnaire vide
@@ -241,10 +232,6 @@ Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il s
 {'Vache': 'Meuh', 'Chien': 'Wouf', 'Chat': 'Miaou', 'Poule': 'Cot-cot', 'Ane': 'Hi-Han', 'Cochon': 'Gruik', 'Paon': 'Leon', 'Girafe': 'Tic-Tic'}
 ````
 
-??? note "Terminal de test"
-	{{ terminal() }}
-
-
 #### Supprimer un élément
 
 On supprime le couple `clé/valeur` d'un dictionnaire grâce au mot-clé `del` :
@@ -257,16 +244,12 @@ On supprime le couple `clé/valeur` d'un dictionnaire grâce au mot-clé `del` :
 
 #### Longueur d'un dictionnaire
 
-Un dictionnaire possède une {==**longueur**==} : le nombre de clés disponibles. Cette longueur est accessible avec la fonction *built-in* `len()` :
+Un dictionnaire possède une {==**longueur**==} : le nombre de clés disponibles. Cette longueur est accessible avec la fonction *native* `len()` :
 
 ```` python   
 >>> len(cris) 
 7
 ````
-??? note "Terminal de test"
-	{{ terminal() }}
-
-
 #### Test de présence de clés
 
 Il est possible de tester l'existence d'une clé dans le dictionnaire grâce à l'*opérateur* `ìn` :
@@ -286,9 +269,7 @@ Par contre, cet opérateur **ne permet pas de tester l'existence d'une valeur** 
 >>> 'Meuh' in cris
 False
 ````
-
-??? note "Terminal de test"
-	{{ terminal() }}
+Ici, l'évaluation renvoie `False` car la chaine `Meuh` ne fait pas partie des clés.
 	
 #### Parcourir un dictionnaire
 
@@ -298,19 +279,15 @@ Pour parcourir un dictionnaire, on utilise une boucle `for` pour effectuer un {=
 >>> for animal in cris :
 	print(animal)
 ````
-??? note "Terminal de test"
-	{{ terminal() }}
-
 On peut remarquer que la variable ``animal`` fait alors référence à une {==**clé**==}.
 
 Pour obtenir la valeur associée on peut faire comme ci-dessous :
 
 ```` python
 >>> for animal in cris :
-	print(animal, " => ", cris[animal])
+		print(animal, " => ", cris[animal])
 ````
-??? note "Terminal de test"
-	{{ terminal() }}
+
 
 !!! warning "Ordre d'un dictionnaire"
 	Attention ! Selon les versions de Python, l'ordre obtenu par un parcours du dictionnaire ne respecte pas forcément l'ordre d'introduction ou de création des éléments dans le dictionnaire. Dans les versions supérieures à 3.6, l'implémentation des dictionnaires permet de conserver l'ordre d'introduction des éléments.
@@ -336,7 +313,7 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 	dict_values(['Meuh', 'Wouf', 'Miaou', 'Cot-cot', 'Hi-Han', 'Gruik', 'Leon'])
 	````
 
-* On peut aussi obtenir le couple *clé/valeurs*  sous la forme d'un *tuple* par l'intermédiaire de la méthode `items()` :
+* On peut aussi obtenir le couple *clé/valeurs* sous la forme d'un *tuple* par l'intermédiaire de la méthode `items()` :
 
 	```` python 
 	>>> cris.items()
@@ -348,24 +325,11 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 		print(f"{item[1]} est le cri de {item[0]}") 
 	````
 
-	??? note "Terminal de test"
-		{{ terminal() }}
-
 	!!! warning "Attention à l'utilisation de la méthode `items` "
 
 		Comme nous le verrons plus loin, l'objectif de l'utilisation des dictionnaires est entre autre d'accélérer certaines opérations par rapport à l'utilisation de listes ou de tuples. La méthode `items` renvoyant une liste de tuples à partir du dictionnaire, il est parfois peu judicieux de l'utiliser (voir la partie sur les tables de hachages ci-dessous). 
 
 	
-	!!! info  "Tuple unpacking"
- 	 
-		On peut aussi utiliser la technique du **tuple unpacking** pour extraire chaque élément clé et valeur grâce à la méthode `items`, en utilisant la technique suivante (mais elle est encore une fois moins rapide...):
-		```` python   
-		for animal, cri in cris.items() :
-			print(f"L'animal {animal} fait {cri} !")
-		````
-
-
-
 !!! question "Améliorer avec les dictionnaires"
 
 	=== "Énoncé"
@@ -458,8 +422,6 @@ Cependant, elle implique un certain nombre de règles et de contraintes pouvant 
 	>>> newDic[[1,0]] = 0
  
 	````
-	??? note "Terminal de test"
-		{{ terminal() }}
 
 
 2. {==**Comme pour tous les tableaux, une taille de base est fixée au départ.**==} Si jamais l'ajout d'un nouveau couple clé/valeur amène à dépasser la taille du tableau initial, un nouveau tableau **2 fois plus grand** est créé et l'ensemble de l'ancien tableau est copié dans ce nouveau qui devient le nouvel objet de référence. Cette copie **peut être couteuse en temps et en mémoire**.
