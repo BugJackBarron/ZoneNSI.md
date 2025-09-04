@@ -8,7 +8,7 @@
 
 Le principe d'un programme est de manipuler des **données** avec des {==**instructions**==} afin de produire de nouvelles données.
 
-En Python, des données sont appelées des **==objets==**, et tout ce qui est manipulable est un objet. On manipule des objets en écrivant des {==**expressions**==} :
+En Python, des données sont appelées des **==objets==**, et tout ce qui est manipulable est un objet. On manipule des objets en écrivant des {==**expressions**==}, qui sont {==**évaluées**==} par l'interpréteur Python (c'est-à-dire transformé en quelque chose de compréhensible par l'ordinateur) :
 
 !!! question "Tester les objets"
 	

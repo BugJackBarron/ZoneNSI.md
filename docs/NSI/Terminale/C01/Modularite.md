@@ -66,9 +66,15 @@ Un module python est un fichier python contenant des fonctions, des constantes (
 			```
 		=== "Fichier mon_module.py"
 			``` python
-			
+			try:
+    			import __builtin__
+			except ImportError:
+    			# Python 3
+    			import builtins as __builtin__
+    
+    
 			def print(truc) :
-				print(truc*3+"Tarte Tatin"*2)
+    			__builtin__.print(truc*3+"Tarte tatin "*2)
 			```
 		=== "Sortie attendue"
 			Probablement, ce qui est attendu par la sortie du fichier principal est juste la chaîne de caractères `"Pain "`. Mais la fonction **built-in** `print()` a été écrasée par celle du module `mon_module.py`.
@@ -91,7 +97,8 @@ Un module python est un fichier python contenant des fonctions, des constantes (
 ## Interfaces
 
 !!! abstract "Conception logicielle"
-	Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle il est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel), il est important de pouvoir séparer les différents éléments du programme en ==**sous-ensembles cohérents et ayant le minimum d'interactions entre eux**==. En particulier, ils se doivent d'être le plus **étanches** possibles quant à leur fonctionnement - c'est-à-dire les plus indépendants possible. On retrouve ici que la notion d'{==**interface**==} est essentielle.
+	Dans la conception de logiciels à grande échelle, ou à plusieurs programmeur·euse·s (et à l'heure actuelle id
+	l est fréquent d'avoir plusieurs milliers de programmeur·euse·s concevant un logiciel), il est important de pouvoir séparer les différents éléments du programme en ==**sous-ensembles cohérents et ayant le minimum d'interactions entre eux**==. En particulier, ils se doivent d'être le plus **étanches** possibles quant à leur fonctionnement - c'est-à-dire les plus indépendants possible. On retrouve ici que la notion d'{==**interface**==} est essentielle.
 	
 Pour chaque module, on peut donc distinguer :
 
