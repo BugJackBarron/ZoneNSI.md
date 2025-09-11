@@ -106,7 +106,7 @@ Chacun de ces types précédents possède ses propres **attributs** et ses propr
 	
 
 Pour construire un tel personnage, on va devoir renseigner son nom, 
-et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calculés.
+et ses 4 caractéristiques. Ses PV, Pex (points d'expérience) et son niveau sont automatiquement calculés.
  Tous sont cependant des {==**attributs**==} du personnage.
  
 !!! abstract
@@ -118,13 +118,9 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 
 ### Création de la classe et des attributs
 
-!!! info  inline end
-	Nous détaillerons beaucoup plus dans un chapitre spécifique le fonctionnement de la POO.
-	 Pour l'instant vous devrez vous contenter des explications ci-dessus.
-
 
 !!! tips "Décrire une classe en Python"
-	Le code suivant permet de définir une nouvelle classe d'objets de type  `Personnage` :
+	Le code suivant permet de définir une nouvelle classe d'objets de type `Personnage` :
 	
 	``` python
 	class Personnage :
@@ -150,7 +146,7 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 	 
 	Cette méthode prend plusieurs paramètres :
 	 
-	1. le paramètre `self`, **obligatoire**, qui représente *'l'instance* de l'objet créé (c'est une notion importante, qui est pour l'instant difficile d'expliquer).
+	1. le paramètre `self`, **obligatoire**, qui représente {==**l'instance**==} de l'objet créé (c'est une notion importante, qui est pour l'instant difficile d'expliquer).
 	2. une série de paramètres qui correspondent aux paramètres définis dans l'interface
 	de l'objet `Personnage`.
 	
@@ -166,10 +162,10 @@ et ses 4 caractéristiques. Ses PV, Pex et son niveau sont automatiquement calcu
 	
 ### Instanciation d'objets
 
-Pour créer des personnages, il suffit maintenant d'utiliser une expression de la forme :`Personnage( nom, f, e, r, i)`.
+Pour créer des {==**instances**==} de la classe personnages, il suffit maintenant d'utiliser une expression de la forme :`Personnage( nom, f, e, r, i)`.
  Vous noterez que l'argument `self` n'est pas renseigné ! On appelle cet argument un {==argument implicite==}.
  
- Ainsi pour créer un objet de type `Personnage` nommé Bob, et ayant les attributs
+ Ainsi pour créer un objet de classe `Personnage` nommé Bob, et ayant les attributs
  20 en force, 25 en endurance, 10 en rapidité et 30 en intelligence, on utilise l'instruction suivante :
 
 ```` python
@@ -177,11 +173,10 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
 <__main__.Personnage object at 0x7fb674844e48>
 ```` 
 	
- On constate donc bien qu'un objet de type `Personnage` est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé
-  par le *garbage collector*. On crée donc une variable `firstPlayer` comme référence à l'objet :
+ On constate donc bien qu'un objet de type `Personnage` est crée. Bien sûr, l'objet n'étant pas affecté à un nom, il est immédiatement nettoyé par le *garbage collector*. On crée donc une variable `first_player` comme référence à l'objet :
   
 ```` python
->>> firstPlayer = Personnage("Bob", 20, 25, 10, 30)
+>>> first_player = Personnage("Bob", 20, 25, 10, 30)
 ````
 
 !!! abstract	
@@ -195,7 +190,7 @@ Pour créer des personnages, il suffit maintenant d'utiliser une expression de l
 L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthode constructeur**, qui va permettre de créer un nouvel objet de type `Personnage`. On peut le vérifier avec la ligne suivante :
 
 ```` python
->>> type(firstPlayer)
+>>> type(first_player)
 <class '__main__.Personnage'>
 ````
 	
@@ -204,27 +199,27 @@ L'appel au nom de la classe `Personnage` fait en réalité appel à la **méthod
 Pour accéder à l'attribut `pv` de l'objet `firstPayer`, il suffit d'utiliser la notation
 
 ```` python
->>> firstPlayer.pv
+>>> first_player.pv
 35
 ```` 
 	
 Il devient dès lors possible de modifier la valeur d'un attribut comme lors de toute modification classique des variables :
 
 ```` python
->>> firstPlayer.force = 18
->>> firstPlayer.force
+>>> first_player.force = 18
+>>> first_player.force
 18
->>> firstPlayer.rapidite = firstPlayer.rapidite + 2
->>> firstPlayer.rapidite
+>>> first_player.rapidite = first_player.rapidite + 2
+>>> first_player.rapidite
 12
 ```` 
 	
 ### Deux objets 
 
-Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
+Nous souhaitons maintenant créer un deuxième personnage du nom de Bill. Pour cela, nous allons créer une deuxième **instance** de la classe `Personnage` :
 
 ```` python 
->>> secondPlayer = Personnage('Bill', 34, 10, 20, 12)
+>>> second_player = Personnage('Bill', 34, 10, 20, 12)
 ```` 
 
 !!! abstract 
@@ -241,19 +236,19 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 	Ici même si les deux objets de type `Personnage` ont le même nom d'attribut `force`, ils ne 
 	représentent pas le même objet.
 
-	C'est exactement la signification de `self`, qui signifie bien que chacun des objets `Personnage` aura bien son propre attribut `force`, son propre attribut `intelligence`, etc...
+	C'est exactement la signification de `self` (soi-même), qui signifie bien que chacun des objets `Personnage` aura bien son propre attribut `force`, son propre attribut `intelligence`, etc...
 	
 
 ### Définitions de méthodes
 
 !!!abstract "Afficher les personnage"
-	Essayons maintenant d'afficher une chaîne de caractères nous donne toutes les caractéristiques d'un personnage.
+	Essayons maintenant d'afficher une chaîne de caractères qui nous donne toutes les caractéristiques d'un personnage.
 	
 	=== "Test de `print`"
 		Essayons d'abord avec la fonction *built-in* `print()` :
 		
 		```` python
-		>>> print(firstPlayer)
+		>>> print(first_player)
 		````
 
 	=== "Sortie et commentaires" 
@@ -264,23 +259,20 @@ Nous souhaitons maintenant créer un deuxième personnage du nom de Bill :
 		<__main__.Personnage object at 0x7fb6748590f0>
 		````
 			
-		C'est peu parlant !  La fonction `print` ne renvoie que l'adresse
-		mémoire et le type de l'objet que nous venons de lui passer.
+		C'est peu parlant !  La fonction `print` ne renvoie que l'adresse mémoire et le type de l'objet que nous venons de lui passer.
 		
 
-Nous allons donc devoir améliorer cet affichage, en construisant notre propre {==**méthode**==}, que nous nommerons `affiche`. Cette méthode devra avoir le comportement suivant :
+Nous allons donc devoir améliorer cet affichage, en construisant notre propre  {==**méthode**==}, que nous nommerons `affiche`. Cette méthode devra avoir le comportement suivant :
 
 ```` python
->>> firstPlayer.affiche()
+>>> first_player.affiche()
 
 	"Bonjour, je suis Bob, de niveau 1. J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 35 Points de Vie"
 ````
 		
 !!! tips "Méthodes et attributs"
 
-	Si les {==**attributs** ==} d'une classe sont comme des **variables** spécifiques à une classe, les {==**méthodes**==}
-	sont des **fonctions** : elles peuvent prendre ou non des arguments, et ont des valeurs de retour (qui peuvent être
-	parfois implicites : la méthode `__init__` renvoie le nouvel objet créé.)
+	Si les {==**attributs** ==} d'une classe sont comme des **variables** spécifiques à une classe, les {==**méthodes**==} sont des **fonctions** : elles peuvent prendre ou non des arguments, et ont des valeurs de retour (qui peuvent être parfois implicites : la méthode `__init__` renvoie le nouvel objet créé.)
 
 
 Pour créer cette méthode, nous allons compléter la classe `Personnage` de la manière suivante :
@@ -303,18 +295,33 @@ class Personnage :
 
 Vous constatez que :
 
-1. Dans la construction de la méthode `affiche`, apparaît l'{==**argument implicite**==} `self`, qu'il
-est impératif d'utiliser pour avoir accès aux **attributs** de l'objet.
+1. Dans la construction de la méthode `affiche`, apparaît l'{==**argument implicite**==} `self`, qu'il est impératif d'utiliser pour avoir accès aux **attributs** de l'objet.
 2. Dans l'appel de la méthode {==**aucun argument n'est passé**==}.
 
-En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firstPlayer`, on obtient alors les affichages suivants :
+En rechargeant le module, puis en recréant les objets `second_player` puis `first_player`, on obtient alors les affichages suivants :
 
 ```` python
->>> firstPlayer.affiche()
+>>> first_player.affiche()
 "Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12 en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
->>> secondPlayer.affiche()
+>>> second_player.affiche()
 "Bonjour, je suis Bill, de niveau 1.J'ai 34 en force, 10 en endurance, 20 en rapidité et 12 en intelligence. J'ai 27 Points de Vie"
 ````
+
+??? danger "Pour les cracks"
+	En réalité, la méthode `affiche` peut être utilisée avec deux syntaxes différentes, mais strictement équivalentes en termes de résultats :
+
+	``` python
+	>>> first_player.affiche()
+	```
+	C'est la syntaxe vue jusqu'à présent.
+
+	``` python
+	>>> Personnage.affiche(first_player)
+	```
+	
+	Dans cette syntaxe, on passe **explicitement** l'instance `first_player` à la méthode `affiche` de la classe `Personnage`.
+
+	Cette deuxième syntaxe est plus longue à écrire que la première, mais permet de comprendre ce qui se passe réellement, et le rôle de l'argument implicite `self`.
 
 !!! question "Implémenter la méthode `attaque`"
 
@@ -348,11 +355,11 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	
 
 	``` python
-	>>> firstPlayer.attaque()
+	>>> first_player.attaque()
 	22
-	>>> firstPlayer.attaque()
+	>>> first_player.attaque()
 	27
-	>>> secondPlayer.attaque()
+	>>> second_player.attaque()
 	38
 	```
 
@@ -393,9 +400,9 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	cette méthode peut alors être utilisée ainsi :
 	
 	``` python
-	>>> secondPlayer.defense(firstPlayer.attaque())
+	>>> second_player.defense(first_player.attaque())
 	False
-	>>> secondPlayer.pv
+	>>> second_player.pv
 	18
 	```
 	
@@ -474,9 +481,9 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	On a alors la possibilité d'utiliser les commandes suivantes :
 	
 	``` python
-	>>> str(firstPlayer)
+	>>> str(first_player)
 	"Bonjour, je suis Bob, de niveau 1.\n         J'ai 18 en force, 25 en endurance, 12\n           en rapidité et 30 en intelligence. J'ai 34 Points de Vie"
-	>>> firstPlayer.affiche()
+	>>> first_player.affiche()
 	Bonjour, je suis Bob, de niveau 1.J'ai 18 en force, 25 en endurance, 12en rapidité et 30 en intelligence. J'ai 34 Points de Vie
 	```
 
@@ -510,9 +517,9 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	On a alors l'utilisation :
 	
 	``` python
-	>>> firstPlayer == secondPlayer
+	>>> first_player == second_player
 	False
-	>>> firstPlayer == Personnage('Marty', 18, 25, 12, 30)
+	>>> first_player == Personnage('Marty', 18, 25, 12, 30)
 	True
 	```
 
@@ -547,13 +554,13 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	Le vainqueur est ..., il lui reste ... points de vie. Il gagne ... points d'expériences.
 	```
 	
-	Pour réaliser ce programme, vopus devrez :
+	Pour réaliser ce programme, vous devrez :
 	
 	1. Compléter le fichier `personnage.py` contenant la classe `Personnage` de la manière suivante :
 	
-		1. La méthode constructeur `__init__()` devra lever des exceptions de type `TypeError` explicites, si `nom` n'est pas de type `str`, ou bien si les 4 autres attributs de construction ne sont pas de type `int`. ** L'erreur devra interrompre l'exécution du programme qui la déclenche !**
-		2. La méthode constructeur `__init__()` devra lever des exceptions de type `ValueError` explicites si les valeurs fournies pour les 4 attributs numériques ne sont pas entre 1 et 40. ** L'erreur devra interrompre l'exécution du programme qui la déclenche !**
-		3. La méthode constructeur `__init__()` devra lever des exceptions de type `ValueError` explicites si la chaîne de caractère `nom` est vide. ** L'erreur devra interrompre l'exécution du programme qui la déclenche !**
+		1. La méthode constructeur `__init__()` devra lever des exceptions de type `TypeError` explicites, si `nom` n'est pas de type `str`, ou bien si les 4 autres attributs de construction ne sont pas de type `int`. **L'erreur devra interrompre l'exécution du programme qui la déclenche !**
+		2. La méthode constructeur `__init__()` devra lever des exceptions de type `ValueError` explicites si les valeurs fournies pour les 4 attributs numériques ne sont pas entre 1 et 40. **L'erreur devra interrompre l'exécution du programme qui la déclenche !**
+		3. La méthode constructeur `__init__()` devra lever des exceptions de type `ValueError` explicites si la chaîne de caractère `nom` est vide. **L'erreur devra interrompre l'exécution du programme qui la déclenche !**
 		
 	2. Vous devrez pour réussir construire une méthode supplémentaire pour la classe `Personnage` : la méthode `initiative(self)` qui renvoie un entier représentant le score d'initiative du personnage.
 	3. Le programme permettant le combat devra être dans un fichier `combat.py` séparé de celui contenant la classe `Personnage` (la classe `Personnage` étant importée depuis le module `personnage.py` par la commande suivante :
@@ -564,3 +571,8 @@ En rechargeant le module, puis en recréant les objets `secondPlayer` puis `firs
 	
 	4. Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant  la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
 	
+!!! danger "Quelques conseils de base"
+
+	* On évite les fonctions de plus de 20 lignes.
+	* Pour respecter l'élément ci-dessus, avant de se lancer dans le code, il faut prendre un papier puis faire une schéma représentant un combat, avec toutes les situations possibles
+	* Les classes en Python sont mutables. Donc attention aux modifications impromptues ! Une bonne pratique est de passer des instances en arguments de vos fonctions, et de renvoyer ces argument une fois le travail de la fonction terminé.

@@ -47,17 +47,17 @@
 	
 	Il est par exemple possible de {==**rajouter un message**==} lorsque l'erreur est levée, en la passant en paramètre directement dans l'instruction `ValueError()` ou `TypeError()`. On peut en outre améliorer le code en s'assurant que les éléments du tuple `t` sont bien `int` ou `float` :
 	``` python
-		def polynome(t) :
-			if len(t)>3 :
-				raise ValueError("length of tuple argument greater than 3")
-    			a, b, c = t
-			if not(isinstance(a,(int, float))
-			) or not(isinstance(b,(int, float))
-			) or not(isinstance(c,(int, float))) :
-        			raise TypeError("argument Error : argument must be a tuple integers or float")
-    			if a == 0 :
-        		raise ValueError("First element of tuple must not be 0")
-    		return t
+	def polynome(t) :
+		if len(t)>3 :
+			raise ValueError("length of tuple argument must be 3")
+		a, b, c = t
+		if not(isinstance(a,(int, float))
+		) or not(isinstance(b,(int, float))
+		) or not(isinstance(c,(int, float))) :
+				raise TypeError("argument Error : argument must be a tuple integers or float")
+		if a == 0 :
+			raise ValueError("First element of tuple must not be 0")
+		return t
 	```
 	
 ## Tyes d'exceptions
@@ -130,7 +130,7 @@ Voici quelques exceptions courantes ainsi que leurs utilisations
 			if not(isinstance(a,(int, float))
 			) or not(isinstance(b,(int, float))
 			) or not(isinstance(*c,(int, float))) :
-					raise TypeError("argment Error : argument must be a tuple of integers or floats.")
+					raise TypeError("argument Error : argument must be a tuple of integers or floats.")
 			if a == 0 :
 				raise ValueError("First element of tuple must not be 0.")
 			return t
