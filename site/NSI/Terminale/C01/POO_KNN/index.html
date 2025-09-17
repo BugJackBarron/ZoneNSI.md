@@ -4851,7 +4851,7 @@ les personnages sont représentés par deux caractéristiques : la force et l'in
 <td style="text-align: center;">130</td>
 <td style="text-align: center;">210</td>
 <td style="text-align: center;">Oui</td>
-<td style="text-align: left;">À risque</td>
+<td style="text-align: left;">Sain</td>
 </tr>
 <tr>
 <td style="text-align: left;">Jean</td>
@@ -4860,7 +4860,7 @@ les personnages sont représentés par deux caractéristiques : la force et l'in
 <td style="text-align: center;">145</td>
 <td style="text-align: center;">240</td>
 <td style="text-align: center;">Non</td>
-<td style="text-align: left;">Sain</td>
+<td style="text-align: left;">A risque</td>
 </tr>
 <tr>
 <td style="text-align: left;">Robert</td>
@@ -4941,13 +4941,13 @@ les personnages sont représentés par deux caractéristiques : la force et l'in
 <p class="admonition-title">Modélisation des patients</p>
 <ol>
 <li>Créer une classe <code>Patient</code> permettant de modéliser les éléments présents dans le tableau ci-dessus, et utilisant 7 attributs : <code>prenom</code>, <code>sexe</code>, <code>age</code>, <code>pression</code>, <code>cholesterol</code>, <code>fumeur</code>, <code>diagnostic</code>, tous fournis dans cette ordre à la méthode constructeur, sachant que par défaut <code>diagnostic</code> doit être passé à <code>None</code>.</li>
-<li>Ajouter une méthode <code>__repr___</code> à la classe <code>Patient</code> permettant d'afficher les attributs d'une instance.</li>
+<li>Ajouter une méthode <code>__repr__</code> à la classe <code>Patient</code> permettant d'afficher les attributs d'une instance.</li>
 </ol>
 </div>
 <p>Dans la suite, vous pourrez utiliser la variable <code>patients_connus</code> suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="n">patients_connus</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">Patient</span><span class="p">(</span><span class="s2">"Paul"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"À risque"</span><span class="p">),</span>
-    <span class="n">Patient</span><span class="p">(</span><span class="s2">"Jean"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"Sain"</span><span class="p">),</span>
+    <span class="n">Patient</span><span class="p">(</span><span class="s2">"Paul"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"Sain"</span><span class="p">),</span>
+    <span class="n">Patient</span><span class="p">(</span><span class="s2">"Jean"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"À risque"</span><span class="p">),</span>
     <span class="n">Patient</span><span class="p">(</span><span class="s2">"Robert"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"À risque"</span><span class="p">),</span>
     <span class="n">Patient</span><span class="p">(</span><span class="s2">"David"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"Sain"</span><span class="p">),</span>
     <span class="n">Patient</span><span class="p">(</span><span class="s2">"Marc"</span><span class="p">,</span> <span class="s2">"Homme"</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"À risque"</span><span class="p">),</span>

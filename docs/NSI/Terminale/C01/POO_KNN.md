@@ -61,8 +61,8 @@ On dispose des informations suivantes, qui constitueront les données d'apprenti
 
 | Prénom     | Sexe | Âge  | Pression systolique (mmHg) | Cholestérol total (mg/dL) | Fumeur | Diagnostic  |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| Paul    | Homme | 45   | 130                        | 210                        | Oui    | À risque      |
-| Jean    | Homme | 50   | 145                        | 240                        | Non    | Sain          |
+| Paul    | Homme | 45   | 130                        | 210                        | Oui    | Sain      |
+| Jean    | Homme | 50   | 145                        | 240                        | Non    | A risque          |
 | Robert  | Homme | 55   | 160                        | 260                        | Oui    | À risque      |
 | David   | Homme | 35   | 120                        | 180                        | Non    | Sain          |
 | Marc    | Homme | 60   | 170                        | 280                        | Oui    | À risque      |
@@ -78,15 +78,15 @@ On dispose des informations suivantes, qui constitueront les données d'apprenti
 !!! question "Modélisation des patients"
 
     1. Créer une classe `Patient` permettant de modéliser les éléments présents dans le tableau ci-dessus, et utilisant 7 attributs : `prenom`, `sexe`, `age`, `pression`, `cholesterol`, `fumeur`, `diagnostic`, tous fournis dans cette ordre à la méthode constructeur, sachant que par défaut `diagnostic` doit être passé à `None`.
-    2. Ajouter une méthode `__repr___` à la classe `Patient` permettant d'afficher les attributs d'une instance.
+    2. Ajouter une méthode `__repr__` à la classe `Patient` permettant d'afficher les attributs d'une instance.
     
 Dans la suite, vous pourrez utiliser la variable `patients_connus` suivante :
 
 ``` python
 
 patients_connus = [
-    Patient("Paul", "Homme", 45, 130, 210, True, "À risque"),
-    Patient("Jean", "Homme", 50, 145, 240, False, "Sain"),
+    Patient("Paul", "Homme", 45, 130, 210, True, "Sain"),
+    Patient("Jean", "Homme", 50, 145, 240, False, "À risque"),
     Patient("Robert", "Homme", 55, 160, 260, True, "À risque"),
     Patient("David", "Homme", 35, 120, 180, False, "Sain"),
     Patient("Marc", "Homme", 60, 170, 280, True, "À risque"),
