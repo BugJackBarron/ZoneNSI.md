@@ -488,7 +488,7 @@ En observant bien, on constate que d'un point de vue de la logique formelle :
         components: {
           in0: {type: 'in', pos: [55, 40], id: 0},
           in1: {type: 'in', pos: [55, 100], id: 1},
-          out1: {type: 'out', pos: [555, -20], orient: 'n', id: [6, 7], bits: 2},
+          out1: {type: 'out', pos: [555, 70], orient: 'n', id: [6, 7], bits: 2},
           and0: {type: 'and', pos: [255, 35], in: [8, 9], out: 10},
           xor0: {type: 'xor', pos: [255, 100], in: [11, 12], out: 13},
         },
