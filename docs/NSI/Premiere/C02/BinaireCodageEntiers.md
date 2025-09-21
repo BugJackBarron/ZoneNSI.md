@@ -455,7 +455,50 @@ Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-�
 
 
 ## Opérations élémentaires sur les nombres binaires
-###Sommes de nombres binaires
+### Somme de deux bits
+
+La somme de deux bits est définie par la règle suivante :
+
+* $0+0 = 0$
+* $0+1 = 1$
+* $1+0 = 0$
+* $1+1 = 10$
+
+
+Ecrit sous la forme d'une *table de vérité*, avec `A` et `B` les deux entrées, `S` la somme et `C` la retenue (*cary* en anglais), on obtient le résultat suivant :
+
+| A | B | C | S |
+| :---: | :---: | :---: | :---: |
+| 0 | 0 | 0 | 0 |
+| 0 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 0 |
+
+En observant bien, on constate que d'un point de vue de la logique formelle : 
+
+* la colonne `C` est obtenue grâce à une opération `ET` entre `A` et `B` ;
+* la colonne `S` est obtenue par une opération `XOR` (autrement appelée en français **ou exclusif**), qui renvoie `1` si et seulement si exactement une des deux entrées est à `1` (contrairement à l'opération logique `OU`, on exclut ici le cas pour lequel les deux entrées `A` et `B` sont à `1`).
+
+<div style="width: 100%; height: 120px">
+  <logic-editor id="yCIo2K" mode="tryout">
+    <script type="application/json5">
+      { // JSON5
+        v: 6,
+        opts: {showGateTypes: true, animateWires: true},
+        components: {
+          in0: {type: 'in', pos: [55, 40], id: 0},
+          in1: {type: 'in', pos: [55, 100], id: 1},
+          out1: {type: 'out', pos: [555, -20], orient: 'n', id: [6, 7], bits: 2},
+          and0: {type: 'and', pos: [255, 35], in: [8, 9], out: 10},
+          xor0: {type: 'xor', pos: [255, 100], in: [11, 12], out: 13},
+        },
+        wires: [[10, 6, {via: [[545, 35]]}], [0, 8], [1, 9], [0, 11], [1, 12], [13, 7, {via: [[565, 100]]}]]
+      }
+    </script>
+  </logic-editor>
+</div>
+
+### Sommes de nombres binaires
 !!! tips "Méthode : Additionner deux nombres entiers en base 2"
 
 	La technique d'addition de deux nombres binaire est la même que pour des nombres en écriture décimale :
