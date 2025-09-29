@@ -35,6 +35,15 @@ class Grid :
                     neighbors.append(self.cells[ny][nx])
         return neighbors
     
+    def is_clicked(self, mouse_x, mouse_y) :
+        x = mouse_x // self.cell_size
+        y = mouse_y // self.cell_size
+        if self.cells[x][x].state == "dead" :
+            self.cells[x][x].state = "alive"
+        else :
+            self.cells[x][x].state = "dead" 
+
+    
     def update(self):
         new_states = [[cell.state for cell in row] for row in self.cells]
         for y, row in enumerate(self.cells):
@@ -98,6 +107,9 @@ def main():
                     grid.update()                    
                     grid.draw(screen)
                     pg.display.flip()
+            if event.type == MOUSEBUTTONDOWN :
+                mouse_x, mouse_y = event.pos
+                grid.is_clicked(mouse_x, mouse_y)
         if updating: 
             screen.fill((0, 0, 0))
             grid.draw(screen)
