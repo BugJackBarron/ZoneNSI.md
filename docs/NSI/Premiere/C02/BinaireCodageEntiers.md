@@ -498,6 +498,8 @@ En observant bien, on constate que d'un point de vue de la logique formelle :
   </logic-editor>
 </div>
 
+Un tel circuit est appelé un {==**demi-additionneur binaire**==} (*Half Adder* en anglais, abrégé en HA).
+
 ### Sommes de nombres binaires
 !!! tips "Méthode : Additionner deux nombres entiers en base 2"
 
@@ -522,7 +524,63 @@ En observant bien, on constate que d'un point de vue de la logique formelle :
 		&&&&&&&&\\
 		\end{array}
 		$$
-	
+
+On constate que dans de nombreuses additions élémentaires, il faut aussi prendre en compte une retenue venant d'une opération précédente. Pour prendre en compte cette nécessité, on va devoir ajouter une entrée supplémentaire, et connecter deux demi-additionneurs avec une porte `OU`, pour obtenir un additionneur complet (*Full Adder* en anglais) :
+
+<div style="width: 100%; height: 450px">
+  <logic-editor id="IqztvN" mode="tryout">
+    <script type="application/json5">
+      { // JSON5
+        v: 6,
+        opts: {animateWires: true, zoom: 120},
+        components: {
+          rect1: {type: 'rect', pos: [460, 250], w: 100, h: 100, color: 'yellow', strokeWidth: 2, caption: 'HA'},
+          HA: {type: 'rect', pos: [280, 210], w: 100, h: 100, color: 'yellow', strokeWidth: 2, caption: 'HA'},
+          pass0: {type: 'pass', pos: [410, 245], anchor: 'rect1', in: [44, 45], out: [46, 47], bits: 2},
+          pass3: {type: 'pass', pos: [510, 245], anchor: 'rect1', in: [56, 57], out: [58, 59], bits: 2},
+          and2: {type: 'and', pos: [465, 220], anchor: 'rect1', in: [63, 64], out: 65},
+          xor2: {type: 'xor', pos: [465, 280], anchor: 'rect1', in: [66, 67], out: 68},
+          pass1: {type: 'pass', pos: [230, 205], anchor: 'HA', in: [70, 71], out: [72, 73], bits: 2},
+          pass2: {type: 'pass', pos: [330, 205], anchor: 'HA', in: [74, 75], out: [76, 77], bits: 2},
+          and1: {type: 'and', pos: [285, 180], anchor: 'HA', in: [78, 79], out: 80},
+          xor1: {type: 'xor', pos: [285, 240], anchor: 'HA', in: [81, 82], out: 83},
+          in2: {type: 'in', pos: [160, 125], id: 84},
+          in3: {type: 'in', pos: [155, 185], id: 85},
+          in4: {type: 'in', pos: [155, 215], id: 86},
+          or0: {type: 'or', pos: [550, 170], in: [87, 88], out: 89},
+          out2: {type: 'out', pos: [710, 145], id: 90},
+          out3: {type: 'out', pos: [710, 180], id: 91},
+        },
+        wires: [[46, 63], [47, 64], [65, 56], [46, 66], [47, 67], [68, 57], [80, 74], [83, 75], [72, 78], [73, 79], [72, 81], [73, 82], [85, 70], [86, 71], [77, 45], [84, 44, {via: [[365, 125]]}], [76, 87], [58, 88], [59, 91], [89, 90]]
+      }
+    </script>
+  </logic-editor>
+</div>
+
+Un tel circuit est représenté en électronique par le schéma suivant, dans lequel on ne détaille pas toutes les portes :
+
+<div style="width: 100%; height: 300px">
+  <logic-editor id="IqztvN" mode="tryout">
+    <script type="application/json5">
+      { // JSON5
+        v: 6,
+        opts: {animateWires: true, zoom: 120},
+        components: {
+          adder0: {type: 'adder', pos: [445, 100], in: '0-2', out: [3, 4]},
+          in1: {type: 'in', pos: [425, 30], orient: 's', id: 5, val: 1},
+          in2: {type: 'in', pos: [465, 30], orient: 's', id: 6, val: 1},
+          in0: {type: 'in', pos: [560, 100], orient: 'w', id: 7, val: 1},
+          out1: {type: 'out', pos: [385, 200], orient: 's', id: [13, 14], bits: 2},
+        },
+        wires: [[5, 0], [6, 1], [7, 2], [3, 13], [4, 14]]
+      }
+    </script>
+  </logic-editor>
+</div>
+
+!!! question "Réalisation d'un additionneur complet sur 4 bits"
+	Rendez-vous sur Capytale pour créer un additionneur 4 bits à partir du fichier [suivant](https://capytale2.ac-paris.fr/web/c/9575-7214900){:target = "_blank"}
+
 ### Produits de nombres binaires
 
 !!! tips "Méthode : Multiplier deux nombres entiers en base 2"
