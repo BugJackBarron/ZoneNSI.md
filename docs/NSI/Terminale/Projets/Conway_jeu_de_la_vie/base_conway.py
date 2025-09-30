@@ -38,10 +38,10 @@ class Grid :
     def is_clicked(self, mouse_x, mouse_y) :
         x = mouse_x // self.cell_size
         y = mouse_y // self.cell_size
-        if self.cells[x][x].state == "dead" :
-            self.cells[x][x].state = "alive"
+        if self.cells[y][x].state == "dead" or self.cells[y][x].state == "unborn" :
+            self.cells[y][x].state = "alive"
         else :
-            self.cells[x][x].state = "dead" 
+            self.cells[y][x].state = "unborn" 
 
     
     def update(self):
@@ -66,7 +66,7 @@ class Grid :
     
 def main():
     pg.init()
-    cell_size = 20
+    cell_size = 15
     grid_width, grid_height = 60, 40
     screen = pg.display.set_mode((grid_width * cell_size, grid_height * cell_size))
     clock = pg.time.Clock()
@@ -110,6 +110,9 @@ def main():
             if event.type == MOUSEBUTTONDOWN :
                 mouse_x, mouse_y = event.pos
                 grid.is_clicked(mouse_x, mouse_y)
+                screen.fill((0, 0, 0))
+                grid.draw(screen)
+                pg.display.flip()
         if updating: 
             screen.fill((0, 0, 0))
             grid.draw(screen)
