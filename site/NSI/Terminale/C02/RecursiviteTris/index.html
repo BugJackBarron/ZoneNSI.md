@@ -4769,14 +4769,12 @@
 <h2 id="rappels-sur-les-algorithmes-de-tris-vus-en-classe-de-premiere">Rappels sur les algorithmes de tris vus en classe de première</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du tri par insertion</p>
-<p>Le principe du tri par insertion est le suivant : au moment où on considère un élément du tableau à trier,
-les éléments qui le précèdent sont déjà triés, tandis que les éléments qui le suivent ne sont pas encore triés. </p>
+<p>Le principe du tri par insertion est le suivant : au moment où on considère un élément du tableau à trier, les éléments qui le précèdent sont déjà triés, tandis que les éléments qui le suivent ne sont pas encore triés. Il faut donc prendre le premier élément de la partie non triée et de l'insérer à la bonne place dans le tableau trié.</p>
 <p>On peut voir sur l'animation suivante extraite de wikipedia :</p>
 <p></p><p align="center">
 <img alt="gif insertion" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" style="style">
 </p>
-<p>La complexité du tri par insertion est quadratique (en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>) dans le pire cas et en moyenne, et linéaire (en $<span class="arithmatex">\(\mathbb{O}(n)\)</span>)dans le meilleur cas (tableau presque trié). C'est donc un tri
-dont la vitesse d'exécution dépendra fortement de la situation initiale. </p>
+<p>La complexité du tri par insertion est quadratique (en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>) dans le pire des cas et en moyenne, et linéaire (en <span class="arithmatex">\(\mathbb{O}(n)\)</span>)dans le meilleur des cas (tableau presque trié). C'est donc un tri dont la vitesse d'exécution dépendra fortement de la situation initiale.</p>
 <details class="quote">
 <summary>Le code en Python</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -4801,33 +4799,33 @@ dont la vitesse d'exécution dépendra fortement de la situation initiale. </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du tri par sélection</p>
-<p>Sur un tableau de n éléments, le principe du tri par sélection est le suivant :</p>
-<ul>
-<li>rechercher le plus petit élément du tableau, et l'échanger avec l'élément d'indice 0 ;</li>
-<li>rechercher le second plus petit élément du tableau, et l'échanger avec l'élément d'indice 1 ;</li>
-<li>continuer de cette façon jusqu'à ce que le tableau soit entièrement trié.</li>
-</ul>
+<p>Sur un tableau de <span class="arithmatex">\(n\)</span> éléments, le principe du tri par sélection est le suivant : à chaque étape, on <strong>sélectionne</strong> le plus petit élément du tableau, et on le place à la première position du tableau. A l'étape suivante, on ne s'intéresse plus qu'au sous-tableau qui commence après le dernier élément sélectionné.</p>
 <p>On peut voir sur l'animation suivante extraite de <a href="https://fr.wikipedia.org/wiki/Tri_par_s%C3%A9lection">wikipedia</a> :</p>
 <p></p><p align="center">
 <img alt="gif insertion" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" style="style">
 </p>
-<p>Cet algorithme de tri, simple à comprendre, est considéré comme mauvais car sa complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>, que ce soit
-dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà trié il faudra faire toutes les comparaisons).</p>
+<p>Cet algorithme de tri, simple à comprendre, est considéré comme mauvais car sa complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>, que ce soit dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà trié il faudra faire toutes les comparaisons).</p>
 <details class="quote">
 <summary>Le code en Python</summary>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">tri_selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-          <span class="c1"># Trouver le min</span>
-           <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span>
-           <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-               <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-                   <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span>
-
-           <span class="n">tmp</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-           <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span>
-           <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+            <span class="c1"># Trouver le min du sous-tableau commençant à</span>
+            <span class="c1"># l'indice i</span>
+            <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span>
+            <span class="c1"># échange de place entre l'élément minimal</span>
+            <span class="c1"># et l'élément d'indice i</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span>
+            <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
 </code></pre></div>
 </details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Tri en place</p>
+<p>Dans les deux algorithmes, le tri est dit <mark class="critic"><strong>en place</strong></mark>, car c'est le tableau original qui est trié. Il n'est pas nécessaire de créer de tableau supplémentaire, ce qui explique l'absence de <code>return</code> dans les deux fonctions Python.</p>
 </div>
 <h2 id="le-tri-fusion">Le tri fusion</h2>
 <p align="center">
@@ -4838,69 +4836,40 @@ dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà t
 <p class="admonition-title">Principe du Tri Fusion (Merge Sort)</p>
 <p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark>, est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivement (ou itérativement 
 mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
-<p>Une fois les sous-tableaux triés, il faudra <mark class="critic"><strong>fusionner</strong></mark> ces deux sous-tableaux en une seule identité.</p>
-<p>Cet algorithme est  du type <mark class="critic"><strong>diviser pour régner</strong></mark> (<em>Divide and Conquer</em>) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux). Il a été inventé par <mark class="critic"><strong>John Von Neumann en 1945</strong></mark>.</p>
+<p>Une fois les sous-tableaux triés, il faudra <mark class="critic"><strong>fusionner</strong></mark> ces deux sous-tableaux en une seule entité.</p>
+<p>Cet algorithme est du type <mark class="critic"><strong>diviser pour régner</strong></mark> (<em>Divide and Conquer</em>) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux). Il a été inventé par <mark class="critic"><strong>John Von Neumann en 1945</strong></mark>.</p>
 <p></p><p align="center">
 <img _=";" alt="Merge Sort" src="../Ikea_Merge_Sort.png" style="width : 50%">
 </p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Fonction de fusion</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Exercice</label><label for="__tabbed_1_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <p>La principale difficulté dans cet algorithme est de créer une fonction fusionnant les deux tableaux triés. </p>
 <ol>
 <li>Avant commencer, regardez la vidéo suivante :
 <p align="center">
 <iframe src="//video.toutatice.fr/video/24064-fusion-de-deux-tableaux-tries/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen></iframe>
 </p></li>
-<li>De combien de variables compteurs avons nous besoins ?</li>
+<li>Quels sont les liens entre <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(j\)</span> et <span class="arithmatex">\(k\)</span> ? Quelles conditions ces variables compteur doivent-elles respecter ?</li>
 <li>Quel type de boucle allons nous utiliser ?</li>
 <li>Que se passe-t-il dans la vidéo quand <span class="arithmatex">\(j\)</span> atteint la valeur <span class="arithmatex">\(3\)</span> ?</li>
-<li>Rédiger en langage naturel l'algorithme fusionnant deux tableaux triés.</li>
-<li>Implémenter une fonction <code>fusion(t1, t2)</code> qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux <code>t1</code> et <code>t2</code>.
+<li>Implémenter une fonction <code>fusion(t1 : list, t2 : list)-&gt; list</code> qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux <code>t1</code> et <code>t2</code>.
 On pourra utiliser les tests suivants pour vérifier que la fonction est correcte :</li>
 </ol>
 <details class="quote">
 <summary>Les tests</summary>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">45</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">63</span><span class="p">])</span>
-<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">63</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span> <span class="p">[</span><span class="mi">57</span><span class="p">])</span>
-<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span><span class="mi">57</span><span class="p">])</span>
-<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span> <span class="p">[])</span>
-<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
-<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">42</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">75</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
-<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">fusion</span><span class="p">([],</span> <span class="p">[])</span>
-<span class="p">[]</span>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">45</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">63</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">63</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span> <span class="p">[</span><span class="mi">57</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span><span class="mi">57</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fusion</span><span class="p">([],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">42</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">75</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fusion</span><span class="p">([],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[]</span>
 </code></pre></div>
 </details>
 </div>
-<div class="tabbed-block">
-<ol>
-<li>C'est beau, c'est fait avec <a href="https://www.manim.community/">manim</a>.</li>
-<li>En réalité il n'y a que deux compteurs : <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(j\)</span>. En effet <span class="arithmatex">\(k\)</span> est en permanence égal à <span class="arithmatex">\(i+j\)</span>.</li>
-<li>On peut utiliser une boucle <code>Pour</code>, vu que le nombre d'itérations est connu au départ :
-il s'agit de la somme des longueurs des deux tableaux. Mais il est aussi tout à fait possible
-d'utiliser une boucle <code>Tant que</code>, puisque l'algorithme se poursuit tant qu'un des deux compteurs n'a pas atteint 
-sa position finale.</li>
-<li>Quand <span class="arithmatex">\(j\)</span> atteint la position 3 (soit la longueur du deuxième tableau), il ne reste plus qu'à compléter
-avec les valeurs restantes du premier tableau.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
 <div class="admonition question">
 <p class="admonition-title">Tri Fusion Récursif</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Exercice</label><label for="__tabbed_2_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <p>Une fois la fonction <code>fusion</code> codée, l'algorithme de tri par fusion est simple :</p>
 <ol>
 <li>Regardez la vidéo suivante :
@@ -4912,17 +4881,8 @@ avec les valeurs restantes du premier tableau.</li>
 <li>Implémenter une fonction <code>triFusion(t)</code> qui prend en argument un tableau et renvoie une copie triée de ce tableau.</li>
 </ol>
 </div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
-</div>
-</div>
 <div class="admonition question">
 <p class="admonition-title">Complexité en temps</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Exercice</label><label for="__tabbed_3_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ol>
 <li>
 <p>Copiez-collez le code ci-dessous permettant d'utiliser le décorateur <code>@timeit</code> :
@@ -4944,7 +4904,7 @@ avec les valeurs restantes du premier tableau.</li>
 <p>pour utiliser le décorateur, on le place dans la ligne précédant la définition
 de la fonction qu'on veut décorer. Par exemple :
 </p><div class="highlight"><pre><span></span><code><span class="nd">@timeit</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
 Chaque fois que la fonction <code>tri_insertion</code> sera appelée, le décorateur sera appliqué
@@ -4967,30 +4927,26 @@ Ainsi, le décorateur <code>timeit ne s'applique pas à chaque appel récursif, 
 </div>
 </li>
 <li>
-<p>Créer une fonction <code>genereTab(n)</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</p>
+<p>Créer une fonction <code>genere_list_alea(n : int) -&gt; list[int]</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</p>
 </li>
-<li>
-<p>Créer à l'aide de toutes les fonctions précédentes une fonction <code>testeTemps(n)</code> qui compare les temps d'exécution des différents tris pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
-<strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau, et donc créer des copies du tableau original avant de le trier (on peut utiliser la fonction 
-<code>deepcopy</code> du module <code>copy</code>)</p>
-</li>
-<li>
-<p>Que peut-on en conclure quand à la complexité en temps du tri fusion ?</p>
-</li>
+<li>Créer à l'aide de toutes les fonctions précédentes une fonction <code>teste_temps(n : int)</code> qui compare les temps d'exécution des différents tris. Tester cette fonction pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
+<strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau, et donc </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Un risque</p>
+<p>Attention, il faut créer des copies du tableau original pour chaque tri avant de lutiliser (on peut utiliser la fonction <code>deepcopy</code> du module <code>copy</code>).</p>
 </div>
-<div class="tabbed-block">
-<p>A venir !</p>
-</div>
-</div>
-</div>
+<ol>
+<li>Que peut-on en conclure quand à la complexité en temps du tri fusion ?</li>
+</ol>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Complexités du tri fusion</p>
 <p>La version la plus simple du tri fusion sur les tableaux a une efficacité comparable au tri rapide, mais elle n'opère pas en place : une zone temporaire de données supplémentaire de taille égale à celle de l'entrée est nécessaire (des versions plus complexes peuvent être effectuées sur place mais sont moins rapides).
-La complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n log(n))\)</span> dans tous les cas, et la complexité en espace est en général en <span class="arithmatex">\(\mathbb{O}(n)\)</span>.</p>
+La complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n log(n))\)</span> dans tous les cas et la complexité en espace est en général en <span class="arithmatex">\(\mathbb{O}(n)\)</span>.</p>
 </div>
 <h2 id="plus-vite-quicksort-hors-programme">Plus vite ! QuickSort ! (Hors programme)</h2>
+<p>Un algorithme plus rapide, mais hors programme, est le QuickSort, dont le détail est présenté ci-dessous. C'est celui utilisé (plus ou moins), par la fonction native <code>sorted</code> ou la méthode <code>sort</code> des listes en Python.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du QuickSort</p>
 <p></p><p align="center">
