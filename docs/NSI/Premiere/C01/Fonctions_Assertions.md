@@ -410,7 +410,7 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
         Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *paramètre booléen optionnel* `verif_casse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut le paramètre sera `False`. Vous pouvez utiliser les tests ci-dessous :
 
         ```python
-        ### Cette cellule est une cellule vous permettant de tester votre fonction
+        
         ##les assertions suivantes sont les même que précédemment
         assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
         assert trouve_chaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
@@ -518,7 +518,7 @@ Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des nom
         * `a = f(a)` La valeur renvoyée par l'appel `f(a)` est affecté au nom de variable `a`. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée sur la variable globale `a`.
 
 
-## Tests, assertions et module Doctest
+## Tests et assertions
 
 ### Préconditions
 
@@ -562,11 +562,12 @@ L'instruction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à
 Lorsqu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les *cas extrêmes* ou *cas spécifiques*.
 
 Par exemple, on pourrait considérer une fonction `coefficient_directeur` qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points $A$ et $B$.
+
 Je rappelle que le calcul du coefficient directeur de la droite $(AB)$ se fait par l'intermédiaire de la formule :
 
 $$m = \frac{y_B-y_A}{x_B-x_A}$$
 
-Ainsi nous aimerions que la fonction travaille avec 4 arguments de type entiers  `xA, yA, xB, yB`, qu'elle renvoie le coefficient directeur de $(AB)$ sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie `None` quand il n'existe pas. On, définit ici ce qu'on appelle une {==**interface**==} de la fonction :
+Ainsi nous aimerions que la fonction travaille avec 4 paramètres de type entiers  `xA, yA, xB, yB`, qu'elle renvoie le coefficient directeur de $(AB)$ sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie `None` quand il n'existe pas. On, définit ici ce qu'on appelle une {==**interface**==} de la fonction :
 
 ```python
 def coefficient_directeur(xA : int, yA : int, xB : int, yB : int) -> float :
@@ -604,7 +605,7 @@ Par exemple, nous aimerions que la fonction vérifie le test suivant :
 
 
 
-### Tester avec le module doctest
+## Tester avec le module doctest (Non traité en classe)
 
 Pyhton étant *user friendly*, il permet au programmeur de tester automatiquement, grâce au module `doctest`.
 
@@ -676,10 +677,8 @@ L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents 
 
 *Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.*
 
-**Pour tester vos fonctions avec les jeux fournis, n'oubliez pas :**
+**Vous devrez tester les fonctions avec les jeux de tests fournis dans les docstring.**
 
-* d'importer le module avec `import doctest` ;
-* de lancer les tests avec `doctest.testmod()` ;
 
 Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.
 
@@ -727,10 +726,15 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     12
     >>> maxi3(-5,-7,2)
     2
+    >>> maxi3(5,1,2)
+    5
     >>> maxi3(6,6,6)
     6
     >>> maxi3(5,7,7)
     7
+    >>> maxi3(-2, -2, -3)
+    -2
+    
         """
     ```
 
@@ -767,37 +771,3 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
         """
     ```
 
-7. Écrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous 
-
-
-    ```python
-    def coefficient_directeur(xA,yA,xB,yB) :
-        """Fonction renvoyant le coefficient directeur de la droite (AB)
-    en connaissant les coordonnées des points A et B, ou None si c'est impossible
-    >>> coefficient_directeur(0,0,1,5)
-    5
-    >>> coefficient_directeur(0,0,2,10)
-    5
-    >>> coefficient_directeur(3,4,4,6)
-    2
-    >>> coefficient_directeur(3,4,4,6)
-    2
-    >>> coefficient_directeur(3,4,4,4)
-    0
-    >>> coefficient_directeur(3,4,4,3)
-    -1
-    >>> coefficient_directeur(3,4,3,7)==None
-    True
-    >>> coefficient_directeur(3,4,3,4)==None
-    True
-    >>> coefficient_directeur(4,4,3,4)==None
-    False
-        """
-    ###VOTRE CODE ICI
-    ```
-
-8. Écrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite $(AB)$, en prenant en paramètres les coordonnées des points $A$ et $B$ comme la fonction précédente, et qui renvoie None si c'est impossible.
-
-9. Écrire une fonction - et le jeu de test qui va avec, qui renvoie l'équation réduite de la droite $(AB)$, en prenant en paramètres les coordonnées des points $A$ et $B$ comme dans les fonctions précédentes.
-
-10. Écrire une fonction - et le jeu de test qui va avec, qui teste si une chaine de caractère en paramètre est trans-typable en un nombre flottant, puis une fonction `ask_user_float` qui demande à un·e utilisateur·trice de saisir un nombre flottant compris entre deux bornes minimum et maximum flottantes, et ce de manière *dumbproof*.

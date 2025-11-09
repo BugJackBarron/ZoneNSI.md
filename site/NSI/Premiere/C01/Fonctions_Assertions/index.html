@@ -1599,13 +1599,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tests-assertions-et-module-doctest" class="md-nav__link">
+  <a href="#tests-et-assertions" class="md-nav__link">
     <span class="md-ellipsis">
-      Tests, assertions et module Doctest
+      Tests et assertions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tests, assertions et module Doctest">
+    <nav class="md-nav" aria-label="Tests et assertions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1626,17 +1626,17 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#tester-avec-le-module-doctest" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tester avec le module doctest
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tester-avec-le-module-doctest-non-traite-en-classe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tester avec le module doctest (Non traité en classe)
+    </span>
+  </a>
   
 </li>
       
@@ -5354,8 +5354,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Réécrire la fonction <code>trouve_chaine</code> afin qu'elle utilise un <em>paramètre booléen optionnel</em> <code>verif_casse</code>, afin de déterminer si le <code>motif</code> est présent dans le <code>texte</code> en vérifiant la casse ou non. Par défaut le paramètre sera <code>False</code>. Vous pouvez utiliser les tests ci-dessous :</p>
-<div class="highlight"><pre><span></span><code><span class="c1">### Cette cellule est une cellule vous permettant de tester votre fonction</span>
-<span class="c1">##les assertions suivantes sont les même que précédemment</span>
+<div class="highlight"><pre><span></span><code><span class="c1">##les assertions suivantes sont les même que précédemment</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Totos'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Chaine non présente trouvée'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Problème de majuscules dans le motif'</span>
@@ -5441,7 +5440,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 </div>
 </div>
-<h2 id="tests-assertions-et-module-doctest">Tests, assertions et module Doctest</h2>
+<h2 id="tests-et-assertions">Tests et assertions</h2>
 <h3 id="preconditions">Préconditions</h3>
 <p>Comme nous l'avons vu pour la fonction <code>ask_user_int</code>, il est souvent nécessaire de tester des <mark class="critic"><strong>préconditions</strong></mark> sur les arguments d'une fonction, pour s'assurer que celle-ci fonctionnera bien selon le schéma voulu.</p>
 <p>Une méthode pour tester les préconditions est d'utiliser des <mark class="critic"><strong>assertions</strong></mark>. </p>
@@ -5472,10 +5471,10 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 <h3 id="reflechir-avant-dagir-ecrire-les-tests-avant-la-fonction">Réfléchir avant d'agir : écrire les tests avant la fonction</h3>
 <p>Lorsqu'on écrit une fonction, il est très important d'avoir une idée précise de ce que la fonction doit renvoyer, y compris dans les <em>cas extrêmes</em> ou <em>cas spécifiques</em>.</p>
-<p>Par exemple, on pourrait considérer une fonction <code>coefficient_directeur</code> qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span>.
-Je rappelle que le calcul du coefficient directeur de la droite <span class="arithmatex">\((AB)\)</span> se fait par l'intermédiaire de la formule :</p>
+<p>Par exemple, on pourrait considérer une fonction <code>coefficient_directeur</code> qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span>.</p>
+<p>Je rappelle que le calcul du coefficient directeur de la droite <span class="arithmatex">\((AB)\)</span> se fait par l'intermédiaire de la formule :</p>
 <div class="arithmatex">\[m = \frac{y_B-y_A}{x_B-x_A}\]</div>
-<p>Ainsi nous aimerions que la fonction travaille avec 4 arguments de type entiers  <code>xA, yA, xB, yB</code>, qu'elle renvoie le coefficient directeur de <span class="arithmatex">\((AB)\)</span> sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie <code>None</code> quand il n'existe pas. On, définit ici ce qu'on appelle une <mark class="critic"><strong>interface</strong></mark> de la fonction :</p>
+<p>Ainsi nous aimerions que la fonction travaille avec 4 paramètres de type entiers  <code>xA, yA, xB, yB</code>, qu'elle renvoie le coefficient directeur de <span class="arithmatex">\((AB)\)</span> sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie <code>None</code> quand il n'existe pas. On, définit ici ce qu'on appelle une <mark class="critic"><strong>interface</strong></mark> de la fonction :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">xB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">""" Renvoie le coefficient directeur de la droite (AB) telle que :</span>
 <span class="sd">        A (xA ; yA) et B(xB ; yB), et les coordonnées de A ety B sont entières.</span>
@@ -5504,7 +5503,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 </div>
 </div>
 </div>
-<h3 id="tester-avec-le-module-doctest">Tester avec le module doctest</h3>
+<h2 id="tester-avec-le-module-doctest-non-traite-en-classe">Tester avec le module doctest (Non traité en classe)</h2>
 <p>Pyhton étant <em>user friendly</em>, il permet au programmeur de tester automatiquement, grâce au module <code>doctest</code>.</p>
 <p>Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalité de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :</p>
 <ul>
@@ -5564,11 +5563,7 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 <p><strong>Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.</strong></p>
 <h2 id="exercices_1">Exercices</h2>
 <p><em>Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.</em></p>
-<p><strong>Pour tester vos fonctions avec les jeux fournis, n'oubliez pas :</strong></p>
-<ul>
-<li>d'importer le module avec <code>import doctest</code> ;</li>
-<li>de lancer les tests avec <code>doctest.testmod()</code> ;</li>
-</ul>
+<p><strong>Vous devrez tester les fonctions avec les jeux de tests fournis dans les docstring.</strong></p>
 <p>Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.</p>
 <ol>
 <li>
@@ -5608,10 +5603,15 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 <span class="sd">12</span>
 <span class="sd">&gt;&gt;&gt; maxi3(-5,-7,2)</span>
 <span class="sd">2</span>
+<span class="sd">&gt;&gt;&gt; maxi3(5,1,2)</span>
+<span class="sd">5</span>
 <span class="sd">&gt;&gt;&gt; maxi3(6,6,6)</span>
 <span class="sd">6</span>
 <span class="sd">&gt;&gt;&gt; maxi3(5,7,7)</span>
 <span class="sd">7</span>
+<span class="sd">&gt;&gt;&gt; maxi3(-2, -2, -3)</span>
+<span class="sd">-2</span>
+
 <span class="sd">    """</span>
 </code></pre></div>
 </li>
@@ -5645,42 +5645,6 @@ Je rappelle que le calcul du coefficient directeur de la droite <span class="ari
 <span class="sd">'EtCestToto'</span>
 <span class="sd">    """</span>
 </code></pre></div>
-</li>
-<li>
-<p>Écrire la fonction coefficient_directeur qui vérifie les conditions ci-dessous </p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span><span class="p">,</span><span class="n">yA</span><span class="p">,</span><span class="n">xB</span><span class="p">,</span><span class="n">yB</span><span class="p">)</span> <span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Fonction renvoyant le coefficient directeur de la droite (AB)</span>
-<span class="sd">en connaissant les coordonnées des points A et B, ou None si c'est impossible</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(0,0,1,5)</span>
-<span class="sd">5</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(0,0,2,10)</span>
-<span class="sd">5</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,6)</span>
-<span class="sd">2</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,6)</span>
-<span class="sd">2</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,4)</span>
-<span class="sd">0</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,4,3)</span>
-<span class="sd">-1</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,3,7)==None</span>
-<span class="sd">True</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(3,4,3,4)==None</span>
-<span class="sd">True</span>
-<span class="sd">&gt;&gt;&gt; coefficient_directeur(4,4,3,4)==None</span>
-<span class="sd">False</span>
-<span class="sd">    """</span>
-<span class="c1">###VOTRE CODE ICI</span>
-</code></pre></div>
-</li>
-<li>
-<p>Écrire une fonction - et le jeu de test correspondant, qui calcule l'ordonnée à l'origine d'une droite <span class="arithmatex">\((AB)\)</span>, en prenant en paramètres les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme la fonction précédente, et qui renvoie None si c'est impossible.</p>
-</li>
-<li>
-<p>Écrire une fonction - et le jeu de test qui va avec, qui renvoie l'équation réduite de la droite <span class="arithmatex">\((AB)\)</span>, en prenant en paramètres les coordonnées des points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> comme dans les fonctions précédentes.</p>
-</li>
-<li>
-<p>Écrire une fonction - et le jeu de test qui va avec, qui teste si une chaine de caractère en paramètre est trans-typable en un nombre flottant, puis une fonction <code>ask_user_float</code> qui demande à un·e utilisateur·trice de saisir un nombre flottant compris entre deux bornes minimum et maximum flottantes, et ce de manière <em>dumbproof</em>.</p>
 </li>
 </ol></div>
 
