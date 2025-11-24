@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Ma page d'accueil</title>
+    </head>
+    <body>
+      <h1>Un site qui déchire.</h1>
+      <h2>Bonjour {{prenom|capitalize}} {{nom|upper}} !
+</h2>
+      <p>Vous voici sur mon site à moi.</p>
+	  <p> Il est {{heure}} h {{minute}} m {{seconde}} s (heure du serveur !)</p>
+      <a href="./contact">Lien vers les contacts.</a>
+	  
+	  <form action="./resultat" method="get">
+    <label>Nom</label> : <input type="text" name="nom" />
+    <label>Prénom</label> : <input type="text" name="prenom" />
+    <input type="submit" value="Envoyer" />
+</form>
+    </body>
+</html>

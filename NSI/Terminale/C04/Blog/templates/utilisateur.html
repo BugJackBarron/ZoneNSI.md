@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h2>Mise à jour de l'utilisateur {{ user[1] }}</h2>
+<form action="{{ url_for('utilisateur' )}}" method = 'POST'>
+    <label for="pseudo"> Pseudo : </label>
+    <input type="text" size="32" placeholder="{{ user[1] }}" value="{{ user[1] }}"name="pseudo" ><br>
+    <label for="email"> Email : </label>
+    <input type="text" size="32" placeholder="{{ user[2] }}" value="{{ user[2] }}" name="email" ><br>
+    <label for="password"> Password : </label>
+    <input type="text" size="32" minlength="10" placeholder="{{ user[3] }}" value="{{ user[3] }}" name="password" ><br>
+    <label for="droits"> Droits : </label>
+    <select name="droits" id="droits">
+        <option value="0" {% if user[4]==0 %} selected {% endif %} >Administration</option>
+        <option value="1" {% if user[4]==1 %} selected {% endif %}>Edition</option>
+    </select>
+    <input type="hidden" name="id" value="{{ user[0] }}">
+    <input type="submit" value="Modifier">
+</form>
+{% endblock %}
