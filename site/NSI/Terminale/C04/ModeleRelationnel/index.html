@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4886,20 +4886,20 @@
 </ul>
 <h2 id="introduction-aux-bases-de-donnees-types-de-modeles">Introduction aux bases de données, types de modèles</h2>
 <h3 id="les-bases-de-donnees">Les bases de données</h3>
-<p>Il est difficile de proposer une définition exacte des bases de données. <em>Laurent Audibert</em><sup id="fnref:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup> propose :</p>
+<p>Il est difficile de proposer une définition exacte des bases de données. <em>Laurent Audibert</em><sup id="fnref:LA"><a class="footnote-ref" href="#fn:LA">1</a></sup> propose :</p>
 <div class="admonition abstract">
 <p class="admonition-title">Définition générale</p>
 <p>Un ensemble organisé d'informations avec un objectif commun.</p>
 </div>
 <p>La définition est vague, mais dès lors que des informations sont <mark class="critic"><strong>rassemblées</strong></mark> et <mark class="critic"><strong>stockées</strong></mark> d'une manière <mark class="critic"><strong>organisée</strong></mark>, on peut parler de <em>bases de données</em>, quel que soit le support utilisé (tablettes d'argile, papiers, fichiers, etc)</p>
-<p>Bien entendu l'informatique, c'est-à-dire la science du traitement automatique de l'information, permet le traitement de grandes quantités d'informations, et surtout leur exploitation (ajout, suppression, mise à jour, recherches, ...). Dans le cadre informatique, <em>Laurent Audibert</em><sup id="fnref2:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup> propose :</p>
+<p>Bien entendu l'informatique, c'est-à-dire la science du traitement automatique de l'information, permet le traitement de grandes quantités d'informations, et surtout leur exploitation (ajout, suppression, mise à jour, recherches, ...). Dans le cadre informatique, <em>Laurent Audibert</em><sup id="fnref2:LA"><a class="footnote-ref" href="#fn:LA">1</a></sup> propose :</p>
 <div class="admonition abstract">
 <p class="admonition-title">Base de données informatisées</p>
 <p>Une base de données (<strong>BDD</strong>, en anglais <em>DataBase</em> soit <strong>DB</strong>) informatisée est un ensemble structuré de données enregistrées sur des supports accessibles par l'ordinateur, représentant des informations du monde réel et pouvant être interrogées et mise à jour par une communauté d'utilisateurs.</p>
 </div>
 <p>Nous verrons que cette définition impose un certain nombre de contraintes à la mise en place des BDD informatisées. La première est la question de la <mark class="critic"><strong>cohérence des données</strong></mark>.</p>
 <div class="admonition example">
-<p class="admonition-title">Exemple : Bases de données musicale<sup id="fnref4:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup></p>
+<p class="admonition-title">Exemple : Bases de données musicale<sup id="fnref4:LA"><a class="footnote-ref" href="#fn:LA">1</a></sup></p>
 <p>Prenons l'exemple d'une base de données contenant des albums musicaux, et qui mémorise pour chaque album son genre, son titre, le nom du groupe ainsi que le nom du chanteur principal. L'idée de base est de présenter les données sous la forme d'une table, comme dans l'extrait ci-dessous :</p>
 <table>
 <thead>
@@ -4982,12 +4982,12 @@
 <p>Ce type de modèle peut être pratique, mais <em>il ne répond pas à toutes les problématiques</em>. En effet, ici nous n'avons pas introduit dans la hiérarchie les leads vocaux. Voici ce que donne le schéma lorsqu'on les introduit :</p>
 <p><img alt="ModeleHierarchique2" src="../modeleHierarchique2.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>On constate ici que le choix d'organisation de l'arbre ne permet pas de régler la redondance des données, puisque non seulement un même chanteur peut être lead vocal sur plusieurs albums, mais il peut l'être aussi sur <strong>plusieurs groupes</strong> (comme Josh Homme par exemple). La structure hiérarchique n'est ici pas adaptée. </p>
-<p>Une des solutions proposée pour ce problème a été <strong>le modèle réseau</strong>, proposé par <a href="https://fr.wikipedia.org/wiki/Charles_Bachman">Charles William Bachman</a> à la fin des années 1960<sup id="fnref3:LA"><a class="footnote-ref" href="#fn:LA">2</a></sup>. C.W. Bachman reçu le Prix Turing en 1973 pour ses contributions sur les technologies des bases de données. On lui doit aussi le modèle OSI (voir le cours de première...). Une représentation de nos albums dans le modèle réseau est la suivante :</p>
+<p>Une des solutions proposée pour ce problème a été <strong>le modèle réseau</strong>, proposé par <a href="https://fr.wikipedia.org/wiki/Charles_Bachman">Charles William Bachman</a> à la fin des années 1960<sup id="fnref3:LA"><a class="footnote-ref" href="#fn:LA">1</a></sup>. C.W. Bachman reçu le Prix Turing en 1973 pour ses contributions sur les technologies des bases de données. On lui doit aussi le modèle OSI (voir le cours de première...). Une représentation de nos albums dans le modèle réseau est la suivante :</p>
 <p><img alt="Modelereseau" src="../modeleReseau1.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Ainsi, la redondance des données n'est plus un problème. Cependant, le modèle réseau n'est pas un modèle toujours efficace, puisque pour retrouver une donnée (un chanteur par exemple), il faut connaitre la structure de ce réseau, c'est-à-dire les liaisons existantes, ce qui rend les programmeurs <mark class="critic"><strong>dépendants de la structure de donnée</strong></mark>.</p>
 <h2 id="le-modele-relationnel">Le modèle relationnel</h2>
 <h3 id="historique">Historique</h3>
-<p>Chercheur au centre de recherche d'IBM, <a href="https://en.wikipedia.org/wiki/Edgar_F._Codd" target="_blank">Edgar Frank Codd</a>, insatisfait des modèles existant, chercha un modèle plus simple permettant de gérer un grand nombre de données. Mathématicien de formation, il se basa sur la théorie des ensembles et la logique des prédicats (<a href="https://fr.wikipedia.org/wiki/Calcul_des_pr%C3%A9dicats" target="_blank"><em>logique de premier ordre</em></a>) pour publier en 1970 un article<sup id="fnref:Codd"><a class="footnote-ref" href="#fn:Codd">3</a></sup> où il proposait de stocker des <em>données hétérogènes</em> dans des <em>tables</em>, comme dans le schéma ci-dessous :</p>
+<p>Chercheur au centre de recherche d'IBM, <a href="https://en.wikipedia.org/wiki/Edgar_F._Codd" target="_blank">Edgar Frank Codd</a>, insatisfait des modèles existant, chercha un modèle plus simple permettant de gérer un grand nombre de données. Mathématicien de formation, il se basa sur la théorie des ensembles et la logique des prédicats (<a href="https://fr.wikipedia.org/wiki/Calcul_des_pr%C3%A9dicats" target="_blank"><em>logique de premier ordre</em></a>) pour publier en 1970 un article<sup id="fnref:Codd"><a class="footnote-ref" href="#fn:Codd">2</a></sup> où il proposait de stocker des <em>données hétérogènes</em> dans des <em>tables</em>, comme dans le schéma ci-dessous :</p>
 <p><img alt="modeleRelationnel1.png" src="../modeleRelationnel1.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Ce modèle, qualifié de <mark class="critic"><strong>relationnel</strong></mark> était à l'époque considéré comme une curiosité intellectuelle, car les ordinateurs en ce temps n'étaient pas capables de gérer de manière efficace des tables de données, et il n'était pas évident qu'ils le soient un jour.</p>
 <p>Ce scepticisme n'a pas empêché Codd de poursuivre ses travaux, et de concevoir un premier prototype de <mark class="critic"><strong>Sytème de Gestion de Bases de Données Relationnelles</strong></mark> (<strong>SGBDR</strong>). Depuis les années 1980 cette technologie a muri, pour être finalement adoptée par le monde de la recherche et des entreprises. </p>
@@ -5116,7 +5116,7 @@ Par extension, le <strong>schéma</strong> d'une base de donnée est l'ensemble 
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Date</strong></td>
-<td style="text-align: left;">les dates (sous le format <code>JJ/MM/AAAA</code>)<sup id="fnref:dates"><a class="footnote-ref" href="#fn:dates">4</a></sup></td>
+<td style="text-align: left;">les dates (sous le format <code>JJ/MM/AAAA</code>)<sup id="fnref:dates"><a class="footnote-ref" href="#fn:dates">3</a></sup></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Time</strong></td>
@@ -5281,17 +5281,17 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:BCFN">
-<p><em>Numérique et Sciences Informatique Tle : 24 leçons avec exercices corrigés</em>, Balabonski, Conchon, Filliâtre, Nguyen, éditions Ellipses <a class="footnote-backref" href="#fnref:BCFN" title="Jump back to footnote 1 in the text">↩</a></p>
-</li>
 <li id="fn:LA">
-<p><em>Bases de données, de la modélisation au SQL</em>, Laurent Audibert, éditions Ellipses <a class="footnote-backref" href="#fnref:LA" title="Jump back to footnote 2 in the text">↩</a><a class="footnote-backref" href="#fnref2:LA" title="Jump back to footnote 2 in the text">↩</a><a class="footnote-backref" href="#fnref3:LA" title="Jump back to footnote 2 in the text">↩</a><a class="footnote-backref" href="#fnref4:LA" title="Jump back to footnote 2 in the text">↩</a></p>
+<p><em>Bases de données, de la modélisation au SQL</em>, Laurent Audibert, éditions Ellipses <a class="footnote-backref" href="#fnref:LA" title="Jump back to footnote 1 in the text">↩</a><a class="footnote-backref" href="#fnref2:LA" title="Jump back to footnote 1 in the text">↩</a><a class="footnote-backref" href="#fnref3:LA" title="Jump back to footnote 1 in the text">↩</a><a class="footnote-backref" href="#fnref4:LA" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 <li id="fn:Codd">
-<p><a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277" target="_blank">https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277</a> <a class="footnote-backref" href="#fnref:Codd" title="Jump back to footnote 3 in the text">↩</a></p>
+<p><a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277" target="_blank">https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277</a> <a class="footnote-backref" href="#fnref:Codd" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:dates">
-<p>les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser <code>JJ/MM/AAAA</code> ou <code>JJ/MM/AA</code>. Pour un États-Unien, ce sera <code>MM/JJ/AAAA</code>. Pour d'autres, ce sera <code>AAAA/MM/JJ</code>... Un grand nombre de <a href="https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">mèmes</a> de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures... <a class="footnote-backref" href="#fnref:dates" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>les formats choisis pour les dates dans les bases de données sont des sujets épineux. Pour nous français, il est évident d'utiliser <code>JJ/MM/AAAA</code> ou <code>JJ/MM/AA</code>. Pour un États-Unien, ce sera <code>MM/JJ/AAAA</code>. Pour d'autres, ce sera <code>AAAA/MM/JJ</code>... Un grand nombre de <a href="https://www.reddit.com/r/ProgrammerHumor/comments/6v3zkt/about_date_formats/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">mèmes</a> de la communauté des programmeurs jouent sur la problématique des formats de dates et d'heures... <a class="footnote-backref" href="#fnref:dates" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:BCFN">
+<p><em>Numérique et Sciences Informatique Tle : 24 leçons avec exercices corrigés</em>, Balabonski, Conchon, Filliâtre, Nguyen, éditions Ellipses <a class="footnote-backref" href="#fnref:BCFN" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 </ol>
 </div></div>
@@ -5332,7 +5332,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2024 - F.Vergniaud
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2026 - F. Vergniaud
     </div>
   
   
@@ -5351,7 +5351,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
     
     
     <a href="mailto:fabien.vergniaud arobase/at ac-rennes.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
     </a>
   
 </div>
@@ -5371,7 +5371,7 @@ Une clé étrangère est signalée dans un schéma relationnel par un <mark clas
       <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

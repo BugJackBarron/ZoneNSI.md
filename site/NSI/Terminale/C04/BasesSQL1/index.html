@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4990,7 +4990,7 @@ Le nom de la table sera <code>usager</code>. Cette table contiendra des <mark cl
 <p>De fait certaines règles de bonnes pratiques sont à suivre :</p>
 <ul>
 <li>les mots réservés de SQL sont écrits en  <strong>majuscules</strong> ;</li>
-<li>les attributs sont écrits en <strong>minuscules</strong>, ainsi que les noms de tables<sup id="fnref:nomTables"><a class="footnote-ref" href="#fn:nomTables">1</a></sup> ;</li>
+<li>les attributs sont écrits en <strong>minuscules</strong>, ainsi que les noms de tables<sup id="fnref:nomTables"><a class="footnote-ref" href="#fn:nomTables">3</a></sup> ;</li>
 <li>les noms d'attributs et de tables ne pouvant contenir d'espaces, ceux-ci sont remplacés par le caractère <code>_</code> (<em>underscore</em>).</li>
 <li>les noms de table sont écrits au singulier.</li>
 </ul>
@@ -5246,7 +5246,7 @@ On remarque l'utilisation de 14 caractères exactement pour l'ISBN.
 </code></pre></div>
 <p>Ainsi redéfinie, tous les attributs sauf l'adresse doivent être renseignés (la clé primaire ne devant pas être vide par nature). De plus l'email ne peut être qu'unique (ce qui risque de poser des problèmes pour certains couples ou pour des inscriptions d'enfants avec l'email de leur parent).</p>
 <h4 id="cle-primaire-et-auto-incrementation">Clé primaire et auto-incrémentation</h4>
-<p>Pour les <mark class="critic"><strong>clés primaires numériques</strong></mark> et correspondantes au type <code>INTEGER</code><sup id="fnref:intouinteger"><a class="footnote-ref" href="#fn:intouinteger">2</a></sup>, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>) dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
+<p>Pour les <mark class="critic"><strong>clés primaires numériques</strong></mark> et correspondantes au type <code>INTEGER</code><sup id="fnref:intouinteger"><a class="footnote-ref" href="#fn:intouinteger">1</a></sup>, il est possible de ne pas avoir à saisir à la main cette valeur. Ainsi, à chaque ajout d'une ligne (donc d'une <strong>entité</strong>) dans la table, une nouvelle valeur de clé parmi celles disponibles sera automatiquement fournie. Par exemple pour la table <code>Auteur</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="w">                    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="w">                    </span><span class="n">idA</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">);</span>
@@ -5322,7 +5322,7 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
 <p>Il est à noter que les contraintes d'intégrités sont vérifiées lors de l'insertion. Une instruction du type :</p>
 <div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Auteur</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">prenom</span><span class="p">,</span><span class="w"> </span><span class="n">naissance</span><span class="p">,</span><span class="w"> </span><span class="n">deces</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">"ADAMS"</span><span class="p">,</span><span class="w"> </span><span class="ss">"Douglas"</span><span class="p">,</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"> </span><span class="mi">1952</span><span class="p">);</span>
 </code></pre></div>
-<p>donnera une erreur par violation d'intégrité<sup id="fnref:Baleine"><a class="footnote-ref" href="#fn:Baleine">3</a></sup>, la date de naissance étant supérieure à la date de décès.</p>
+<p>donnera une erreur par violation d'intégrité<sup id="fnref:Baleine"><a class="footnote-ref" href="#fn:Baleine">2</a></sup>, la date de naissance étant supérieure à la date de décès.</p>
 </div>
 <h2 id="exercices">Exercices</h2>
 <div class="admonition question">
@@ -5367,14 +5367,14 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:nomTables">
-<p>tout le monde n'est pas forcément d'accord sur ce point. Certains mettent une majuscule à la première lettre du nom de la table... <a class="footnote-backref" href="#fnref:nomTables" title="Jump back to footnote 1 in the text">↩</a></p>
-</li>
 <li id="fn:intouinteger">
-<p>du moins sur les versions <code>SQLite</code>, seul le type <code>INTEGER</code> permet une auto-incrémentation d'une clé primaire. Le type <code>INT</code> ne semble pas supporté (voir <a href="https://www.sqlite.org/datatype3.html" target="_blank">ici</a> et <a href="https://stackoverflow.com/questions/7337882/what-is-the-difference-between-sqlite-integer-data-types-like-int-integer-bigi" target="_blank">là</a>). <a class="footnote-backref" href="#fnref:intouinteger" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>du moins sur les versions <code>SQLite</code>, seul le type <code>INTEGER</code> permet une auto-incrémentation d'une clé primaire. Le type <code>INT</code> ne semble pas supporté (voir <a href="https://www.sqlite.org/datatype3.html" target="_blank">ici</a> et <a href="https://stackoverflow.com/questions/7337882/what-is-the-difference-between-sqlite-integer-data-types-like-int-integer-bigi" target="_blank">là</a>). <a class="footnote-backref" href="#fnref:intouinteger" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 <li id="fn:Baleine">
-<p>Pauvre <a href="https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)" target="_blank">Marvin</a>... <a class="footnote-backref" href="#fnref:Baleine" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>Pauvre <a href="https://fr.wikipedia.org/wiki/Marvin_(Le_Guide_du_voyageur_galactique)" target="_blank">Marvin</a>... <a class="footnote-backref" href="#fnref:Baleine" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:nomTables">
+<p>tout le monde n'est pas forcément d'accord sur ce point. Certains mettent une majuscule à la première lettre du nom de la table... <a class="footnote-backref" href="#fnref:nomTables" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 </ol>
 </div></div>
@@ -5415,7 +5415,7 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2024 - F.Vergniaud
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2026 - F. Vergniaud
     </div>
   
   
@@ -5434,7 +5434,7 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
     
     
     <a href="mailto:fabien.vergniaud arobase/at ac-rennes.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
     </a>
   
 </div>
@@ -5454,7 +5454,7 @@ les valeurs seront insérées dans l'ordre défini lors de la création de la ta
       <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       

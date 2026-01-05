@@ -53,10 +53,10 @@ Ces types de structures arborescentes sont omniprésentes en informatiques, ne s
 	* La {==**taille de l'arbre**==} est $4$, c'est le nombre de noeuds qui le compose.
 	* Le noeud {==**racine**==} est le noeud $1$.
 	* Le sous-arbre gauche à partir de $1$ contient deux noeuds ($2$ et $3$), le sous-arbre droit un seul ($4$).
-	* le noeud $1$ possède deux {==**fils**==} : son {==**fils gauche**==} est $2$ et son {==**fils droit**==} est $4$.
-	* Le sous-arbre gauche à partir de $2$ n'est pas vide (il contient le noeud $3$), le sous-arbre droit lui l'est.
+	* le noeud $1$ possède deux {==**fils**==} : son {==**fils gauche**==} est le sous-arbre de noeud racine $2$ et son {==**fils droit**==} est le sous arbre de noeud racine $4$.
+	* Le sous-arbre gauche du noeud $2$ n'est pas vide (il contient le noeud $3$), le sous-arbre droit lui l'est.
 	* Le noeud {==**parent**==} du noeud $3$ est le noeud $2$.
-	* Les deux sous-arbres à partir de $3$ sont vides, touts comme ceux de $4$. On dira que les noeuds $3$ et $4$ sont des {==**feuilles**==} de l'arbre.
+	* Les deux sous-arbres à partir de $3$ sont vides, tout comme ceux de $4$. On dira que les noeuds $3$ et $4$ sont des {==**feuilles**==} de l'arbre.
 	
 !!! tips "Remarques"
 
@@ -194,7 +194,7 @@ Il existe bien entendu différentes façons d'implémenter une structure d'arbre
 ```` python
 class Node() :
 	def __init__(self, valeur, gauche, droit) :
-		self.valeur=valeur
+		self.valeur = valeur
 		self.gauche = gauche
 		self.droit = droit
 		
@@ -213,11 +213,22 @@ un sous-arbre vide étant représenté par la valeur `None`.
 	Une représentation en Python de cet arbre est alors :
 	```` python
 	tree = Node(1,
-			Node(2,
-				Node(3, None, None),
-				None),
-			Node(4, None, None))
+				Node(2,
+					Node(3, None, None),
+					None
+					),
+				Node(4, None, None)
+				)
 	````
+	!!! danger
+		Notez la difficulté de lecture de l'arbre ainsi représenté, et l'importance de bien indenter pour pouvoir s'y 	retrouver.
+
+!!! question "Comprendre le code"
+	A partir du code de la classe `Node` ci dessus, et de la variable `tree` instance d la classe `Node`, quelle instruction permet d'obtenir :
+
+	1. la valeur de la racine ?
+	2. la valeur du fils droit de la racine ?
+	3. la valeur du fils gauche du fils gauche de la racine ?
 	
 !!! question "Exercice"
 
@@ -339,7 +350,7 @@ un sous-arbre vide étant représenté par la valeur `None`.
 
 ## Parcours d'arbres
 
-Pour utiliser un arbre, il faut le **parcourir**. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veut **afficher les différents noeuds** :
+Pour utiliser un arbre, il faut le {==**parcourir**==}. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veut **afficher les différents noeuds** :
 
 
 ![Arbre exemple parcours](P1_Arbre6.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
@@ -348,7 +359,7 @@ Pour utiliser un arbre, il faut le **parcourir**. Or il existe plusieurs ordres 
 
 ### Parcours en profondeur ( DFS ou Depth-First Search)
  
-Les {==**parcours en profondeur**==} sont des parcours qui seront traités de manière récursive, en partant de la racine. Il en existe trois types principaux :
+Les {==**parcours en profondeur**==} sont des parcours qui seront traités de manière récursive, en partant de la racine et en descendant le plus possible dans l'arbre avant de remonter (d'où le nom). Il en existe trois types principaux :
 
 !!! abstract "Parcours Préfixe"
 
@@ -358,7 +369,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités de ma
 	* ensuite on affiche récursivement le sous-arbre gauche ;
 	* enfin on affiche récursivement le sous-arbre droit.
 
-	Le parcours est dans l'ordre {==**noeud - gauche - droit**==}
+	Le parcours est dans l'ordre {==**noeud - gauche - droit**==}.
 
 ??? example "Exemple"
 
@@ -378,7 +389,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités de ma
 	* ensuite on affiche la racine ;
 	* enfin on affiche récursivement le sous-arbre droit.
 
-	Le parcours est donc dans l'ordre {==**gauche - noeud -droit**==}.
+	Le parcours est donc dans l'ordre {==**gauche - noeud - droit**==}.
 
 ??? example "Exemple"
 
@@ -522,7 +533,7 @@ Les {==**parcours en profondeur**==} sont des parcours qui seront traités de ma
 
 ### Parcours en largeur
 
-Le {==**parcours en largeur**==} d'un arbre consiste à parcourir **chaque niveau** de l'arbre de gauche à droite, en partant de la racine.
+Le {==**parcours en largeur**==} d'un arbre consiste à parcourir l'arbre selon l'ordre donné par une file : pour chaque noeud visité en partant de la racine, on ajoute à la fin de la file ses fils gauche puis droit si ils existent. Cela donne un parcours « de gauche à droite » selon les niveaux de l'arbre, d'où le nom.
 
 ![Arbre exemple parcours](P1_Arbre6_largeur.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
@@ -538,7 +549,7 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 
 !!! abstract "Algorithme de parcours en largeur"
 
-	Le parcours en largeur **n'est pas effectué récursivement**. Il fonctionne avec le principe **d'une file** :
+	Le parcours en largeur {==**n'est pas effectué récursivement**==}. Il fonctionne avec le principe **d'une file** :
 	
 	````
 	ParcoursLargeur(Arbre A) {
@@ -559,11 +570,10 @@ Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant 
 	=== "Énoncé"
 		Implémenter une fonction `visiteLargeur(tree)`, utilisant une structure de file basée sur les listes python, et utilisant les objets `Queue` du module `queue`, qui possèdent les méthodes suivantes :
 
-  	* `put(item)` : enfile ``item`` dans la file ;
-   	* ``get()`` : defile et renvoie l'élément en première position  ;
-    	* ``empty()```: renvoie ```True`` si la file n'est pas vide, ``False`` sinon.
+		* `put(item)` : enfile ``item`` dans la file ;
+		* ``get()`` : defile et renvoie l'élément en première position de la file ;
+		* ``empty()``: renvoie ``True`` si la file n'est pas vide, ``False`` sinon.
 		
 		
-	=== "Solution"
-		A voir en classe
+	
 	

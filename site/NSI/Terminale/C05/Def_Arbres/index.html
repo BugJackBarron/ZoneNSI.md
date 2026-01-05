@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4898,10 +4898,10 @@
 <li>La <mark class="critic"><strong>taille de l'arbre</strong></mark> est <span class="arithmatex">\(4\)</span>, c'est le nombre de noeuds qui le compose.</li>
 <li>Le noeud <mark class="critic"><strong>racine</strong></mark> est le noeud <span class="arithmatex">\(1\)</span>.</li>
 <li>Le sous-arbre gauche à partir de <span class="arithmatex">\(1\)</span> contient deux noeuds (<span class="arithmatex">\(2\)</span> et <span class="arithmatex">\(3\)</span>), le sous-arbre droit un seul (<span class="arithmatex">\(4\)</span>).</li>
-<li>le noeud <span class="arithmatex">\(1\)</span> possède deux <mark class="critic"><strong>fils</strong></mark> : son <mark class="critic"><strong>fils gauche</strong></mark> est <span class="arithmatex">\(2\)</span> et son <mark class="critic"><strong>fils droit</strong></mark> est <span class="arithmatex">\(4\)</span>.</li>
-<li>Le sous-arbre gauche à partir de <span class="arithmatex">\(2\)</span> n'est pas vide (il contient le noeud <span class="arithmatex">\(3\)</span>), le sous-arbre droit lui l'est.</li>
+<li>le noeud <span class="arithmatex">\(1\)</span> possède deux <mark class="critic"><strong>fils</strong></mark> : son <mark class="critic"><strong>fils gauche</strong></mark> est le sous-arbre de noeud racine <span class="arithmatex">\(2\)</span> et son <mark class="critic"><strong>fils droit</strong></mark> est le sous arbre de noeud racine <span class="arithmatex">\(4\)</span>.</li>
+<li>Le sous-arbre gauche du noeud <span class="arithmatex">\(2\)</span> n'est pas vide (il contient le noeud <span class="arithmatex">\(3\)</span>), le sous-arbre droit lui l'est.</li>
 <li>Le noeud <mark class="critic"><strong>parent</strong></mark> du noeud <span class="arithmatex">\(3\)</span> est le noeud <span class="arithmatex">\(2\)</span>.</li>
-<li>Les deux sous-arbres à partir de <span class="arithmatex">\(3\)</span> sont vides, touts comme ceux de <span class="arithmatex">\(4\)</span>. On dira que les noeuds <span class="arithmatex">\(3\)</span> et <span class="arithmatex">\(4\)</span> sont des <mark class="critic"><strong>feuilles</strong></mark> de l'arbre.</li>
+<li>Les deux sous-arbres à partir de <span class="arithmatex">\(3\)</span> sont vides, tout comme ceux de <span class="arithmatex">\(4\)</span>. On dira que les noeuds <span class="arithmatex">\(3\)</span> et <span class="arithmatex">\(4\)</span> sont des <mark class="critic"><strong>feuilles</strong></mark> de l'arbre.</li>
 </ul>
 </div>
 <div class="admonition tips">
@@ -5041,7 +5041,7 @@ h = 1 + max(hauteur(Gauche), hauteur(Droit))
 <p>Il existe bien entendu différentes façons d'implémenter une structure d'arbre binaire en Python. Cependant, la méthode la plus simple est d'utiliser le <em>paradigme Objet</em> afin de représenter des noeuds :</p>
 <p></p><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">()</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="o">=</span><span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">droit</span> <span class="o">=</span> <span class="n">droit</span>
 </code></pre></div>
@@ -5054,11 +5054,26 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </p>
 <p>Une représentation en Python de cet arbre est alors :
 </p><div class="highlight"><pre><span></span><code><span class="n">tree</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>
-            <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-            <span class="kc">None</span><span class="p">),</span>
-        <span class="n">Node</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+            <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="kc">None</span>
+                <span class="p">),</span>
+            <span class="n">Node</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="p">)</span>
 </code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Notez la difficulté de lecture de l'arbre ainsi représenté, et l'importance de bien indenter pour pouvoir s'y   retrouver.</p>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Comprendre le code</p>
+<p>A partir du code de la classe <code>Node</code> ci dessus, et de la variable <code>tree</code> instance d la classe <code>Node</code>, quelle instruction permet d'obtenir :</p>
+<ol>
+<li>la valeur de la racine ?</li>
+<li>la valeur du fils droit de la racine ?</li>
+<li>la valeur du fils gauche du fils gauche de la racine ?</li>
+</ol>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
@@ -5177,10 +5192,10 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </code></pre></div>
 </div>
 <h2 id="parcours-darbres">Parcours d'arbres</h2>
-<p>Pour utiliser un arbre, il faut le <strong>parcourir</strong>. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veut <strong>afficher les différents noeuds</strong> :</p>
+<p>Pour utiliser un arbre, il faut le <mark class="critic"><strong>parcourir</strong></mark>. Or il existe plusieurs ordres de parcours, qui tous ont un intérêt différent. Pour illustrer ces ordres de parcours, nous utiliserons comme exemple le même arbre, dont on veut <strong>afficher les différents noeuds</strong> :</p>
 <p><img alt="Arbre exemple parcours" src="../P1_Arbre6.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <h3 id="parcours-en-profondeur-dfs-ou-depth-first-search">Parcours en profondeur ( DFS ou Depth-First Search)</h3>
-<p>Les <mark class="critic"><strong>parcours en profondeur</strong></mark> sont des parcours qui seront traités de manière récursive, en partant de la racine. Il en existe trois types principaux :</p>
+<p>Les <mark class="critic"><strong>parcours en profondeur</strong></mark> sont des parcours qui seront traités de manière récursive, en partant de la racine et en descendant le plus possible dans l'arbre avant de remonter (d'où le nom). Il en existe trois types principaux :</p>
 <div class="admonition abstract">
 <p class="admonition-title">Parcours Préfixe</p>
 <p>On appelle <mark class="critic"><strong>parcours préfixe</strong></mark> un parcours où les noeuds seront affichés dans l'ordre suivant</p>
@@ -5189,7 +5204,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 <li>ensuite on affiche récursivement le sous-arbre gauche ;</li>
 <li>enfin on affiche récursivement le sous-arbre droit.</li>
 </ul>
-<p>Le parcours est dans l'ordre <mark class="critic"><strong>noeud - gauche - droit</strong></mark></p>
+<p>Le parcours est dans l'ordre <mark class="critic"><strong>noeud - gauche - droit</strong></mark>.</p>
 </div>
 <details class="example">
 <summary>Exemple</summary>
@@ -5205,7 +5220,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 <li>ensuite on affiche la racine ;</li>
 <li>enfin on affiche récursivement le sous-arbre droit.</li>
 </ul>
-<p>Le parcours est donc dans l'ordre <mark class="critic"><strong>gauche - noeud -droit</strong></mark>.</p>
+<p>Le parcours est donc dans l'ordre <mark class="critic"><strong>gauche - noeud - droit</strong></mark>.</p>
 </div>
 <details class="example">
 <summary>Exemple</summary>
@@ -5343,7 +5358,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 </div>
 <h3 id="parcours-en-largeur">Parcours en largeur</h3>
-<p>Le <mark class="critic"><strong>parcours en largeur</strong></mark> d'un arbre consiste à parcourir <strong>chaque niveau</strong> de l'arbre de gauche à droite, en partant de la racine.</p>
+<p>Le <mark class="critic"><strong>parcours en largeur</strong></mark> d'un arbre consiste à parcourir l'arbre selon l'ordre donné par une file : pour chaque noeud visité en partant de la racine, on ajoute à la fin de la file ses fils gauche puis droit si ils existent. Cela donne un parcours « de gauche à droite » selon les niveaux de l'arbre, d'où le nom.</p>
 <p><img alt="Arbre exemple parcours" src="../P1_Arbre6_largeur.png" style="width:40%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p>Sur cet arbre, le parcours en largeur affichera les noeuds dans l'ordre suivant : 1 2 3 4 5 6 7 8 9 10 11 </p>
 <div class="admonition question">
@@ -5364,7 +5379,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Algorithme de parcours en largeur</p>
-<p>Le parcours en largeur <strong>n'est pas effectué récursivement</strong>. Il fonctionne avec le principe <strong>d'une file</strong> :</p>
+<p>Le parcours en largeur <mark class="critic"><strong>n'est pas effectué récursivement</strong></mark>. Il fonctionne avec le principe <strong>d'une file</strong> :</p>
 <div class="highlight"><pre><span></span><code>ParcoursLargeur(Arbre A) {
    f = FileVide
    enfiler(Racine(A), f)
@@ -5385,20 +5400,11 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Implémenter une fonction <code>visiteLargeur(tree)</code>, utilisant une structure de file basée sur les listes python, et utilisant les objets <code>Queue</code> du module <code>queue</code>, qui possèdent les méthodes suivantes :</p>
-</div>
-</div>
-</div>
 <ul>
 <li><code>put(item)</code> : enfile <code>item</code> dans la file ;</li>
-<li><code>get()</code> : defile et renvoie l'élément en première position  ;<ul>
-<li><code>empty()```: renvoie ```True</code> si la file n'est pas vide, <code>False</code> sinon.</li>
+<li><code>get()</code> : defile et renvoie l'élément en première position de la file ;</li>
+<li><code>empty()</code>: renvoie <code>True</code> si la file n'est pas vide, <code>False</code> sinon.</li>
 </ul>
-</li>
-</ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>A voir en classe</p>
 </div>
 </div>
 </div>
@@ -5440,7 +5446,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2024 - F.Vergniaud
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce site est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.<br/> 2021 - 2026 - F. Vergniaud
     </div>
   
   
@@ -5459,7 +5465,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
     
     
     <a href="mailto:fabien.vergniaud arobase/at ac-rennes.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
     </a>
   
 </div>
@@ -5479,7 +5485,7 @@ un sous-arbre vide étant représenté par la valeur <code>None</code>.
       <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "header.autohide", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="../../../../javascripts/config.js"></script>
       
