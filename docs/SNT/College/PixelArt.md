@@ -4,13 +4,14 @@
 ## Se préparer pour l'activité
 
 1. Ouvrez le logiciel `Thonny` depuis le menu `Windows`.
-2. Dans le menu `Tools>Manage packages`, tapez dans la barre de saisie le mot `pillow` puis cliquez sur `Find package from PyPi`.
+2. Si le logiciel n'est pas en français, allez dans le menu `Tools>Options` puis sélectionnez dans le menu déroulant `language` le français. fermez le logiciel puis rouvrez-le.
+2. Dans le menu `Outils>Gérez les paquets`, tapez dans la barre de saisie le mot `pillow` puis appuyez sur la touche sur `Entrer`.
 
 	![Thonny1.png](Thonny1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 	
-	Puis cliquez sur `Install` (si vous voyez à la place les boutons `Upgrade` et `Uninstall `, ce n'est pas nécessaire). Laissez le logiciel installer jusqu'au bout, cela prend quelques secondes.
+	Puis cliquez sur `Installer` (si vous voyez à la place les boutons `Mettre à jour` et `Désinstaller `, ce n'est pas nécessaire). Laissez le logiciel installer jusqu'au bout, cela prend quelques secondes.
 	
-3. Ouvrez l'explorateur de fichier `windows`, puis allez dans le dossier `Images`. Créez un sous-dossier avec votre nom et prénom. Ce dossier sera celui dans lequel vous devrez copier **tous les fichiers de cette activité**.
+3. Ouvrez l'explorateur de fichier `windows`, puis allez dans le dossier `Images`. Créez un sous-dossier avec votre **nom et prénom** sous la forme `Nom_prenom`. Ce dossier sera celui dans lequel vous devrez copier **tous les fichiers de cette activité**.
 4. Rendez-vous sur le site [www.zonensi.fr](https:\\www.zonensi.fr), menu `SNT` et cliquez sur ` > Session Collège`. Enregistrez tous les fichiers suivants dans votre dossier personnel.
 
 	* [PixelArt.py](pixelArt.py){: target="_blank"}
@@ -23,7 +24,7 @@
 	Une image numérique est composée de pixels. Ces pixels sont les plus petites &laquo; lampes &raquo; allumables par l'ordinateur. Pour demander à l'ordinateur d'allumer un pixel, on lui donne une valeur numérique. Une image numérique est donc représentée dans un ordinateur par un tableau de nombres, appelé {==**matrice**==} en français  (*matrix* en anglais).
 
 
-1. Voici une image en noir et blanc de 8 pixels de long, et de 8 pixels de haut, ainsi que sa représentation sous la forme d'une matrice dans le langage Python :
+1. Voici une image en noir et blanc de 8 pixels de long, et de 8 pixels de haut, ainsi que sa représentation sous la forme d'une {==**matrice**==} dans le langage Python :
 
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
@@ -48,20 +49,20 @@
 	</div>
 	A quoi correspondent les valeurs $0$ et $255$ dans la matrice ?
 
-2. Ouvrir le logiciel `Thonny`, et depuis ce logiciel ouvrez le fichier `pixelArt.py`  (avec le menu `File>open`).
+2. Ouvrir le logiciel `Thonny`, et depuis ce logiciel ouvrez le fichier `pixelArt.py`  (avec le menu `Fichier > ouvrir`).
 3. Cliquez sur la petite flèche verte pour exécuter le script Python.
 
 	![Thonny2.png](Thonny2.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
 
 	Qu'obtient-on ?
 
-4. La ligne créant l'image et l'affichent à partir de la matrice est la ligne 35 :
+4. La ligne créant l'image et l'affichant à partir de la matrice est la ligne 35 :
 
 	```` python
 	makeImage(matrix, 8, 8)
 	````
 	
-	Dans cette ligne, la fonction`makeImage` utilise la variable `matrix`, pour créer une image de dimension $8 \times 8$. Remplacer cette ligne par la ligne suivante :
+	Dans cette ligne, la fonction`makeImage` utilise la variable `matrix`, pour créer une image de dimension $8 \times 8$. **Remplacer cette ligne par la ligne suivante** :
 
 	```` python
 	makeBiggerImage(matrix, 8, 8, scale=5)
@@ -71,7 +72,7 @@
 
 5. Sauvegarder cette nouvelle image dans le même dossier que le fichier `pixelArt.py` sous le nom `greatHeart.png`. Combien de pixels composent cette image ?
 6. Comment faire pour obtenir une image de $80\times 80$ pixels ?
-7. A l'aide des grilles suivantes, créez deux nouvelles images de dimension $8\times 8$ (vous pouvez vous inspirer du site [www.pixelart.name](http://www.pixelart.name/pixel-art-8x8/){: target="_blank"}).
+7. A l'aide des grilles suivantes, créez deux nouvelles images de dimension $8\times 8$ (vous pouvez vous inspirer du site [suivant](https://www.cokojeux.com/binary-art-pixel-art-binaire-8x8/play/){: target="_blank"}).
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
 	
@@ -85,7 +86,7 @@
 	</div>
 	</div>
 	
-8. Modifier le programme Python afin d'afficher vous deux images en noir et blanc, en taille $80 \times 80$, et sauvegardez-les.
+8. Modifiez le programme Python afin d'afficher vos deux images en noir et blanc, en taille $80 \times 80$, et sauvegardez-les.
 
 9. Combien de nombres sont nécessaires pour une image de $16 \times 16$ pixels ? de $32 \times 32$ pixels ? de $64 \times 64$ pixels ?
 
