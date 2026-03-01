@@ -2239,10 +2239,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#algorithme-en-pseudo-code-et-complexite" class="md-nav__link">
+  <a href="#algorithme-complexite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithme en pseudo-code et complexité
+        Algorithme complexité
       
     </span>
   </a>
@@ -2278,10 +2278,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#algorithme-en-pseudo-code-et-complexite_1" class="md-nav__link">
+  <a href="#algorithme-et-complexite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithme en pseudo-code et complexité
+        Algorithme et complexité
       
     </span>
   </a>
@@ -5882,7 +5882,7 @@
 </div>
 </div>
 </div>
-<h3 id="algorithme-en-pseudo-code-et-complexite">Algorithme en pseudo-code et complexité</h3>
+<h3 id="algorithme-complexite">Algorithme complexité</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Algorithme</p>
 <p></p><div style="height : 30vh;"></div>
@@ -5903,8 +5903,8 @@
 <p>Construire une <em>procédure</em> (c'est-à-dire une fonction sans valeur de retour) Python <code>tri_insertion(tab)</code> qui trie le tableau <code>tab</code> par un tri par insertion.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span> 
-    <span class="c1"># Parcours de 1 à la taille du tab</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span> 
         <span class="n">k</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
         <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
@@ -5939,7 +5939,7 @@
 </div>
 </div>
 </div>
-<h3 id="algorithme-en-pseudo-code-et-complexite_1">Algorithme en pseudo-code et complexité</h3>
+<h3 id="algorithme-et-complexite">Algorithme et complexité</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Algorithme</p>
 <p></p><div style="height : 30vh;"></div>
@@ -5959,16 +5959,15 @@
 <p>Construire une <em>procédure</em> (c'est-à-dire une fonction sans valeur de retour) Python <code>triSelection(tab)</code> qui trie le tableau <code>tab</code> par un tri par sélection.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">triSelection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">triSelection</span><span class="p">(</span><span class="n">tab</span> <span class="p">:</span> <span class="nb">list</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-      <span class="c1"># Trouver le min</span>
-       <span class="nb">min</span> <span class="o">=</span> <span class="n">i</span>
+       <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span>
        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-           <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-               <span class="nb">min</span> <span class="o">=</span> <span class="n">j</span>                      
+           <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+               <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span>                       
        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-       <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span>
-       <span class="n">tab</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+       <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span>
+       <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
 </code></pre></div>
 </div>
 </div>

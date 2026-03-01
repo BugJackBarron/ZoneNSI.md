@@ -49,7 +49,7 @@ Le principe du {==**tri par insertion**==} est le suivant :
 		![Animation wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif){: style="width:60%; margin:auto;display:block;background-color: #d2dce0;"}
 		
 		
-### Algorithme en pseudo-code et complexité
+### Algorithme complexité
 
 !!! abstract "Algorithme"
 
@@ -68,9 +68,11 @@ Le principe du {==**tri par insertion**==} est le suivant :
 		Construire une *procédure* (c'est-à-dire une fonction sans valeur de retour) Python `tri_insertion(tab)` qui trie le tableau `tab` par un tri par insertion.
 		
 	=== "Solution"
-		```` python
-		def tri_insertion(tab): 
-			# Parcours de 1 à la taille du tab
+
+		``` python
+
+		def tri_insertion(tab : list)-> None: 
+			
 			for i in range(1, len(tab)): 
 				k = tab[i] 
 				j = i-1
@@ -78,7 +80,7 @@ Le principe du {==**tri par insertion**==} est le suivant :
 						tab[j + 1] = tab[j] 
 						j -= 1
 				tab[j + 1] = k
-		````
+		```
 ## Le tri par sélection
 
 ### Principes
@@ -101,7 +103,7 @@ Le principe du {==**tri par sélection**==} est le suivant :
 	
 		A venir
 
-### Algorithme en pseudo-code et complexité
+### Algorithme et complexité
 
 !!! abstract "Algorithme"
 
@@ -119,18 +121,18 @@ Le principe du {==**tri par sélection**==} est le suivant :
 		Construire une *procédure* (c'est-à-dire une fonction sans valeur de retour) Python `triSelection(tab)` qui trie le tableau `tab` par un tri par sélection.
 		
 	=== "Solution"
-		```` python
-		def triSelection(tab):
+
+		``` python
+		def triSelection(tab : list ) -> None:
 			for i in range(len(tab)):
-			  # Trouver le min
-			   min = i
+			   indice_min = i
 			   for j in range(i+1, len(tab)):
-				   if tab[min] > tab[j]:
-					   min = j						
+				   if tab[indice_min] > tab[j]:
+					   indice_min = j						
 			   tmp = tab[i]
-			   tab[i] = tab[min]
-			   tab[min] = tmp
-		````
+			   tab[i] = tab[indice_min]
+			   tab[indice_min] = tmp
+		```
 		
 ## Un autre algorithme de tri : le tri à bulle
 
