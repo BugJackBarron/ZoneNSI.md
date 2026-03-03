@@ -6,7 +6,7 @@
 
 D'après la définition de [Wikipedia](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation){: target="_blank" } :
 
-&laquo; En informatique, un système d'exploitation (souvent appelé *OS* — de l'anglais *operating system*) est un ensemble de programmes qui dirige l'utilisation des ressources d'un ordinateur par des logiciels applicatifs.
+&laquo; En informatique, un {==**système d'exploitation**==} (souvent appelé *OS* — de l'anglais *operating system*) est un ensemble de programmes qui dirige l'utilisation des ressources d'un ordinateur par des logiciels applicatifs.
 
 Il reçoit des demandes d'utilisation des ressources de l'ordinateur — ressources de stockage des mémoires (par exemple des accès à la mémoire vive, aux disques durs), ressources de calcul du processeur central, ressources de communication vers des périphériques [...] ou via le réseau — de la part des logiciels applicatifs. Le système d'exploitation gère les demandes ainsi que les ressources nécessaires évitant les interférences entre les logiciels. &raquo; 
 
@@ -309,12 +309,17 @@ Voici, de manière non-exhaustive, quelques-unes des commandes les plus utiles s
 * `tail` : fonctionne de la même manière que `head`, mais en renvoyant les 10 dernières lignes.
 * `diff` : compare deux fichiers lignes par lignes, et renvoie toutes celles présentant une différence. Pratique !
 
+!!! info "Une Cheat Sheet en français sur les commandes Linux"
+
+    En attendant que je trouve le temps de réaliser ma propre {==**Cheat Sheet**==} (traduction exacte : *feuille de triche* ) des commandes Linux, vous trouverez [ici](https://cheatography.com/bouchnouk/cheat-sheets/commandes-de-base-linux/pdf/?last=1661999818){target="_blank"} une feuille assez complète. Merci à l'auteur !
+
+!!!
 
 
-!!! question "Un petit TP"
+!!! question "Un petit TP sous Linux"
 
     1. Téléchargez le fichier [Arborescence.tar.gz](Arborescence.tar.gz){:target="_blank"}
-    2. Créez dans votre dossier personnel un dossier `TP`
+    2. Créez dans votre dossier personnel `home` un dossier `TP`
     3. Copiez le fichier précédent dans ce dossier, puis décompressez le avec la commande
 
         ``` bash
