@@ -17,3 +17,19 @@ Si les vidéos sont dans le même format :
     ```` bash
     ffmpeg -f concat -safe 0 -i input.txt -c copy output.flv
     ````
+
+# Compressions de vidéo 
+
+
+## Compression légère et rapide
+
+```
+ffmpeg -i input.mp4 -vf scale=1280:-1 -c:v libx264 -preset ultrafast output.mp4
+```
+
+## Meilleure compression mais plus lente
+```
+ ffmpeg -i input.mp4 -vcodec libx265 -crf 32 output.mp4D
+```
+Plus le paramètre ``crf``est élevé, plus la vidéo sera compressée.
+
