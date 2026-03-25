@@ -39,7 +39,7 @@ Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire 
 
 ### Code Python
 
-!!! question "Code sans memoïzation"
+!!! question "Code sans mémoïsation"
 
 	Compléter le code de la fonction suivante :
 
@@ -70,7 +70,7 @@ Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire 
 	```
 
 
-!!! question "Code avec memoïzation"
+!!! question "Code avec mémoïsation"
 
 	A partir de la fonction précédente, créer une fonction `align_seq_rec_memo` qui utilisera une sous-fonction récursive `compute` prenant trois arguments `a`, `b` et `memo`, où `memo` est un dictionnaire dont les clés sont les couples `(a, b)` et les valeurs les tuples `(c,d,n)`, où :
 
@@ -79,7 +79,7 @@ Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire 
 	* `n`représente le nombre total de tirets.
 
 
-!!! question "Comparaison en temps des deux fonction"
+!!! question "Comparaison en temps des deux fonctions"
 
 	Exécuter le code suivant :
 
@@ -92,10 +92,10 @@ Après application d'une méthode dynamique ({==**Top Down**==}) (c'est-à-dire 
         
         start = time.time()
         print(align_seq_rec(X[:i], Y[:i]))
-        print(f"----> Sans mémoization : {time.time() - start}") 
+        print(f"----> Sans mémoïsation : {time.time() - start}") 
         start = time.time()
         print(align_seq_rec_memo(X[:i], Y[:i]))
-        print(f"----> Avec mémoization : {time.time() - start}") 
+        print(f"----> Avec mémoïsation : {time.time() - start}") 
         
 	```
 
