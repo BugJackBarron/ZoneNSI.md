@@ -48,10 +48,10 @@ En 1991, [Linus Torvalds](https://fr.wikipedia.org/wiki/Linus_Torvalds){: target
 
 
 
-Il existe de nombreuses distributions Linux, soit pour des serveurs
+Il existe de nombreuses distributions Linux, soit pour des serveurs, soit pour des PC personnels, ou bien même pour des machines virtuelles, des consoles de jeu, etc...
 ## Premiers Pas
 
-Selon les modalités du Lycée, nous utiliserons soit Raspberry Pi 4, soit WSL.
+Selon les modalités du Lycée, nous utiliserons soit Raspberry Pi 4, soit WSL. Les modalités d'utilisations des PC du Lycée évoluant chaque année, nous ne traiterons pas de toutes les parties ci-dessous.
 
 ### Avec Raspberry Pi 4
 
@@ -78,7 +78,7 @@ Le prompt est de la forme `nom_utilisateur@nom_machine : chemin_dossier_courant 
 
 Normalement, votre répertoire courant est symbolisé par `~`, ce qui est un raccourci pour symboliser le répertoire personnel de l'utilisateur.
 
-### Avec WSL
+### Avec WSL (version 2024 - 2025)
 
 #### Installation sur WSL
 
@@ -104,6 +104,10 @@ Vous accédez alors à un terminal Linux tout ce qui est des plus classique
 Le prompt est de la forme `nom_utilisateur@nom_machine : chemin_dossier_courant $`.
 
 Normalement, votre répertoire courant est symbolisé par `~`, ce qui est un raccourci pour symboliser le répertoire personnel de l'utilisateur.
+
+### Avec WSL (version 2025 - 2026)
+
+Vous disposez sur le bureau d'un raccourci `Debian`, qui lance et installe une distribution Linux `Debian`. Il ne vous reste qu'à saisir un nom d'utilisateur et un mot de passe pour avoir accès à une console Linux parfaitement fonctionnelle.
 
 ## Le Shell Linux
 
@@ -319,8 +323,32 @@ Voici, de manière non-exhaustive, quelques-unes des commandes les plus utiles s
 !!! question "Un petit TP sous Linux"
 
     1. Téléchargez le fichier [Arborescence.tar.gz](Arborescence.tar.gz){:target="_blank"}
-    2. Créez dans votre dossier personnel `home` un dossier `TP`
-    3. Copiez le fichier précédent dans ce dossier, puis décompressez le avec la commande
+    2. Créez dans votre dossier personnel Debian un dossier `TP`. 
+
+        !!! danger "Une manipulation un peu complexe en 2025-2026"
+            Il ne semble pas  possible pour l'instant d'accéder à votre dossier personnel Windows depuis une session Linux Debian. Pour contourner ce problème, et transférer un fichier télécahrgé depuis la session windows, nous allons :
+
+            * télécharger le fichier, qui devrait se situer alors dans un répertoire du type`P:\Downloads`.
+            * copier ce fichier vers un répertoire du disque dur d'adresse `"C:\Users\Identifiant_de_connexion\Mes Documents"` grâce à l'instruction :
+
+                ``` bash
+                copy <adresse_du_fichier_source> <destination>
+                ```
+
+                Par exemple dans notre cas, si votre prompt est dans le dossier `P:\Downloads`
+
+                ``` bash
+                copy Arborescence.tar.gz `"C:\Users\identifiant\Mes Documents"`
+                ```
+
+            * puis, depuis l'invite de commande Linux, on copie le fificher avec la commande `cp` :
+                
+                ``` bash
+                cp /mnt/c/Users/identifiant/"Mes Documents"/Arborescence.tar.gz ~/TP
+                ```
+        
+
+    3. Décompressez le fichier avec la commande
 
         ``` bash
         tar -xzf Arborescence.tar.gz
@@ -333,4 +361,4 @@ Voici, de manière non-exhaustive, quelques-unes des commandes les plus utiles s
         ``` bash
         sudo apt install plocate
         ```
-    5. Pour débuter, cherchez le fichier `commencement.txt`dans l'arborescence, et lisez-le ! Bon courage, vous aurez probablement à chercher en parallèle sur `StackOverflow` des commandes spécifiques avec les options qui vont bien pour parvenir à la fin de ce TP ! (Petit point de détail, si une commande vous semble trop longue, vous pouvez l'interrompre avec le raccourci clavier ++ctrl+C++)
+    5. Pour débuter, cherchez le fichier `commencement.txt`dans l'arborescence, et lisez-le ! Bon courage, vous aurez probablement à chercher en parallèle sur `StackOverflow` des commandes spécifiques avec les options qui vont bien pour parvenir à la fin de ce TP ! (Petit point de détail, si une commande vous semble trop longue, vous pouvez l'interrompre avec le raccourci clavier ++ctrl+c++ )
