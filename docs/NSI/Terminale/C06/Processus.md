@@ -54,6 +54,13 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
 		4. `ps -ef` affichera tous les processus (*every*) avec toutes les informations disponibles (*full*).
 		4. Le manuel d'utilisation de la commande `ps` est obtenu par la commande `man ps` (ou par [wikipedia](https://fr.wikipedia.org/wiki/Ps_(Unix)){: target="_blank"}, comme d'habitude).
 
+!!! info "Et sous windows"
+	Sous OS WIndows, la commande `tasklist`paremt d'obtenir la liste des processus en cours d'exécution dans la ligne de commande . Vous trouverez les informations directement sur le site de [microsoft](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/tasklist){: target="_blank"}.
+
+	Sinon, un simple ++ctrl+alt+delete++ permet de gérer les processus dans une interface graphique plus conviviale.
+
+
+
 ## Création d'un processus
 
 
@@ -64,9 +71,9 @@ Il est possible de visualiser et gérer les processus actifs d'une machine par l
     * par un appel d'un autre processus ;
     * par une action d'un utilisateur (lancement d'application).
 	
-	Quand un processus est crée, le système d'exploitation lui aloue un identifiant unique: le {==**PID**==} (*Process Identifier*).
+	Quand un processus est crée, le système d'exploitation lui alloue un identifiant unique: le {==**PID**==} (*Process Identifier*).
 
-	Sur Linux, la création d'un processus se fait par clonage d'un autre processus au travers d'un appel systeme `fork()`.
+	Sur Linux, la création d'un processus se fait par clonage d'un autre processus au travers d'un appel système `fork()`.
 
     * le processus qui fait appel à `fork()` est appelé processus père ;
     * le processus qui est ainsi créé par clonage est le processus fils ;
@@ -260,4 +267,19 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 !!! tips "Processus Zombies"
 
 	Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de {==**processus zombies**==}. Ceux-ci occupent une partie de la mémoire, tout en étant devenus inutiles...
+
+!!! info "Tuer un processus sous windows"
+	La commande `taskkill` permet sous un OS windows de tuer un processus. Vous trouverez de plus amples informations [ici](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/tasklist){: target="_blank"}.
+
+	Les principales options sont :
+
+	* `/f` : pour forcer un processus à se terminer (le tuer) ;
+	* `/t` : pour terminer un processus et tous ses processus enfants ;
+	* `/pid` : précise le `PID` du processus à terminer ;
+	* `/im`: spécifie le nom de l'image à terminer.
+
+	Par exemple, pour tuer les processus correspondant à `notepad.exe`, on utilise la commande suivante :
+	```
+	taskkill /f /im notepad.exe
+	```
 

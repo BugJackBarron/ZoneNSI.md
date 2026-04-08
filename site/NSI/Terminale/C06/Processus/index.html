@@ -4854,6 +4854,11 @@
 </li>
 </ol>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Et sous windows</p>
+<p>Sous OS WIndows, la commande <code>tasklist</code>paremt d'obtenir la liste des processus en cours d'exécution dans la ligne de commande . Vous trouverez les informations directement sur le site de <a href="https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/tasklist" target="_blank">microsoft</a>.</p>
+<p>Sinon, un simple <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span> permet de gérer les processus dans une interface graphique plus conviviale.</p>
+</div>
 <h2 id="creation-dun-processus">Création d'un processus</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Création des processus</p>
@@ -4863,8 +4868,8 @@
 <li>par un appel d'un autre processus ;</li>
 <li>par une action d'un utilisateur (lancement d'application).</li>
 </ul>
-<p>Quand un processus est crée, le système d'exploitation lui aloue un identifiant unique: le <mark class="critic"><strong>PID</strong></mark> (<em>Process Identifier</em>).</p>
-<p>Sur Linux, la création d'un processus se fait par clonage d'un autre processus au travers d'un appel systeme <code>fork()</code>.</p>
+<p>Quand un processus est crée, le système d'exploitation lui alloue un identifiant unique: le <mark class="critic"><strong>PID</strong></mark> (<em>Process Identifier</em>).</p>
+<p>Sur Linux, la création d'un processus se fait par clonage d'un autre processus au travers d'un appel système <code>fork()</code>.</p>
 <ul>
 <li>le processus qui fait appel à <code>fork()</code> est appelé processus père ;</li>
 <li>le processus qui est ainsi créé par clonage est le processus fils ;</li>
@@ -5051,6 +5056,20 @@ En reprenant l'exemple du traitement de texte, dans ce cas les modifications ne 
 <div class="admonition tips">
 <p class="admonition-title">Processus Zombies</p>
 <p>Parfois un processus père est tué avant que ses processus fils soient terminés. Ceux-ci restent alors dans la table des processus en situation finale, mais ne sont pas supprimés. On parle alors de <mark class="critic"><strong>processus zombies</strong></mark>. Ceux-ci occupent une partie de la mémoire, tout en étant devenus inutiles...</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Tuer un processus sous windows</p>
+<p>La commande <code>taskkill</code> permet sous un OS windows de tuer un processus. Vous trouverez de plus amples informations <a href="https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/tasklist" target="_blank">ici</a>.</p>
+<p>Les principales options sont :</p>
+<ul>
+<li><code>/f</code> : pour forcer un processus à se terminer (le tuer) ;</li>
+<li><code>/t</code> : pour terminer un processus et tous ses processus enfants ;</li>
+<li><code>/pid</code> : précise le <code>PID</code> du processus à terminer ;</li>
+<li><code>/im</code>: spécifie le nom de l'image à terminer.</li>
+</ul>
+<p>Par exemple, pour tuer les processus correspondant à <code>notepad.exe</code>, on utilise la commande suivante :
+</p><div class="highlight"><pre><span></span><code>taskkill /f /im notepad.exe
+</code></pre></div>
 </div></div>
 
 
