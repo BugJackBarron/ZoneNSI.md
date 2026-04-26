@@ -153,7 +153,7 @@ Ainsi, lors de la vie d'un processus, celui-ci peut passer par trois états :
 * `ELU` (*running*) : le processus a obtenu l'accès au processeur : il peut s'exécuter.
 * `BLOQUE`(*sleeping*) : le processus est en cours d'exécution, mais attend une ressource en mémoire par exemple, il quitte le processeur pour libérer les ressources.
 
-![Etats processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" alt="Source : wikipedia"}
+![Etats processus](https://upload.wikimedia.org/wikipedia/commons/6/68/Diagrammedétatdunprocessus_1.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" alt="Source : wikipedia"}
 
 
 !!! example "Exemple"

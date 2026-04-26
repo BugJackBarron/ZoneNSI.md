@@ -63,7 +63,7 @@
 
 	Dans le cours sur les processus, nous avons vu le schéma suivant :
 	
-	![Etat processus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Diagrammed%C3%A9tatdunprocessus_1.png/375px-Diagrammed%C3%A9tatdunprocessus_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="État processus, image wikipedia"}
+	![Etat processus](https://upload.wikimedia.org/wikipedia/commons/6/68/Diagrammedétatdunprocessus_1.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="État processus, image wikipedia"}
 	
 	* Le graphe est **orienté**
 	* Les différentes états sont les sommets `départ`, `Prêt`, `Elu`, `Bloqué` et `terminé`.
