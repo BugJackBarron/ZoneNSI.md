@@ -47,19 +47,19 @@ addImage("https://capytale2.ac-paris.fr/logo.svg","https://capytale2.ac-paris.fr
 //Pygame
 addImage("https://www.pygame.org/docs/_images/pygame_logo.png","https://www.pygame.org/news");
 //HTML5
-addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png?20170517184425","https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics");
+addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/500px-HTML5_logo_and_wordmark.svg.png","https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics");
 //CSS3
-addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/363px-CSS3_logo_and_wordmark.svg.png","https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/CSS_basics");
+addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/960px-CSS3_logo_and_wordmark.svg.png","https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/CSS_basics");
 //Javascript
-addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png?20120221235433","https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/JavaScript_basics");
+addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/960px-JavaScript-logo.png?_=20120221235433","https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/JavaScript_basics");
 //Notepad++
-addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Notepad%2B%2B_Logo.svg/277px-Notepad%2B%2B_Logo.svg.png","https://notepad-plus-plus.org/");
+addImage("https://upload.wikimedia.org/wikipedia/commons/0/0f/Notepad%2B%2B_Logo.png","https://notepad-plus-plus.org/");
 //SQL
-addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sql_data_base_with_logo.png/800px-Sql_data_base_with_logo.png?20210130181641","https://sql.sh/");
+addImage("https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png?_=20210130181641","https://sql.sh/");
 //DBBrowwerLite
 addImage("https://linuxiac.b-cdn.net/wp-content/uploads/2021/08/sqlite-db-browser.png","https://sqlitebrowser.org/");
 //Flask
-addImage("https://flask.palletsprojects.com/en/2.3.x/_images/flask-horizontal.png","https://flask.palletsprojects.com/en/2.3.x/");
+addImage("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/960px-Flask_logo.svg.png","https://flask.palletsprojects.com/en/2.3.x/");
 //Filius
 addImage("https://www.lernsoftware-filius.de/.cm4all/uproc.php/0/.filius128.png/picture-1200?_=17db3de0a08","https://www.lernsoftware-filius.de/Herunterladen");
 

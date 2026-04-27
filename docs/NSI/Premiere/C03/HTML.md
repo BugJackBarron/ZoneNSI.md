@@ -109,7 +109,7 @@ Un fichier `html` se présente donc sous la forme suivante :
 	
 ## Structure d'un document HTML et balises les plus utiles.
 
-Une balise `HTML` classique est de la forme suivante  :
+Une balise `HTML` classique est de la forme suivante :
 
 ```` HTML
 <p class="Toto"> ... </p>
@@ -190,4 +190,4 @@ On peut y tester :
 
 * soit une URl (*Validate by URI*) ;
 * soit un fichier (*Validate by File Upload*);
-* soit en copiant-collant le code HTML (*Validate by Direct Input*).
+* soit en copiant-collant le code HTML (*Validate by Direct Input*). 

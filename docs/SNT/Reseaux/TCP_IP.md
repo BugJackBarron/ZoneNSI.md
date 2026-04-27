@@ -19,7 +19,7 @@ Commençons donc par connecter deux ordinateurs entre eux, et regardons comment 
 
 1. Ouvrez le logiciel `Filius`.
 
-	!!! warning "Attention : choix de la langue"
+	??? warning "Attention : choix de la langue"
 		Attention, la première chose que vous demandera `Filius` sera de choisir votre langue d'utilisation, et **il n'y a pas moyen de changer cette langue** sauf en supprimant le fichier de configuration qui se trouve dans le dossier `C:\Users\"nom d’utilisateur sur le réseau" \AppData\Local\.filius` (sous win7 et win 10).
 		
 		Il est possible de supprimer uniquement le fichier `konfig.xml` :
@@ -121,7 +121,7 @@ Nos deux ordinateurs sont bien connectés, ils se reconnaissent l'un l'autre et 
 Depuis le début de cette activité, j'utilise le mot {==**protocole**==}. Mais que signifie-t-il ?
 
 !!! question "Protocole"
-	Cherchez la définition Wikipédia et donnez la définition de &laquo; protocole &raquo; dans le cas général puis en informatique :
+	Cherchez la définition Wikipédia et donnez la définition de &laquo; protocole &raquo; dans le cas général puis en informatique.
 
 
 
