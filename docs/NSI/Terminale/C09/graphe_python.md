@@ -100,20 +100,47 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec une matrice d'adjacence :
 		
 		```` python
-		class Graph :
-			def __init__(self, n=0) :
-				self.n = n
-				self.adj = [[0]*n for _ in range(n)]
-				
-			def add_vertice(self) :
-				self.n +=1
-				for l in self.adj : # ajout d'un zéro à
-					l.append(0) # chaque ligne existante
-				self.adj.append([0]*(self.n)) # ajout d'une ligne complète
-				
-			def add_edge(self, s, e, p=1) :
-				self.adj[s][e] = p			
-					
+import graphviz
+class Graph :
+	def __init__(self, n=0) :
+		self.n = n
+		self.adj = [[0]*n for _ in range(n)]
+		
+	def add_vertice(self) :
+		self.n +=1
+		for l in self.adj : # ajout d'un zéro à
+			l.append(0) # chaque ligne existante
+		self.adj.append([0]*(self.n)) # ajout d'une ligne complète
+		
+	def add_edge(self, s, e, p=1) :
+		self.adj[s][e] = p			
+
+	def dot(self, output : str, format = 'pdf', directed = True) :
+		"""
+			Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.
+			Le paramètre directed indique si le graphe est orienté ou non.
+		"""
+		if directed :
+			dot = graphviz.Digraph(output, comment=output)
+		else :
+			dot = graphviz.Graph(output, comment=output)
+		dot.format=format
+		for i in range(self.n) :
+			dot.node(str(i))
+		for i in range(self.n) :
+			if not directed :
+				start = i+1
+			else :
+				start  = 0
+			for j in range(start,self.n) :
+				if self.adj[i][j] != 0 :
+					if self.adj[i][j] == 1 :
+						label =""
+					else :
+						label = str(self.adj[i][j])
+					dot.edge(str(i), str(j), label = label)        
+		dot.render(view=True)
+			
 		````
 		
 		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :
@@ -254,6 +281,8 @@ Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'
 				self.add_vertice(s)
 				self.add_vertice(e)
 				self.vertice[s].add(e) # La méthode add des objets de type set fonctionne comme append
+
+				
 					
 		````
 		

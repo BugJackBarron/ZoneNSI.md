@@ -4964,56 +4964,82 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Implémentation en Python</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec une matrice d'adjacence :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span> <span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<p>```` python</p>
+</div>
+</div>
+</div>
+</div>
+<p>import graphviz
+class Graph :
+    def <strong>init</strong>(self, n=0) :
+        self.n = n
+        self.adj = [[0]*n for _ in range(n)]</p>
+<div class="highlight"><pre><span></span><code>def add_vertice(self) :
+    self.n +=1
+    for l in self.adj : # ajout d'un zéro à
+        l.append(0) # chaque ligne existante
+    self.adj.append([0]*(self.n)) # ajout d'une ligne complète
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+=</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="p">:</span> <span class="c1"># ajout d'un zéro à</span>
-            <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># chaque ligne existante</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span> <span class="c1"># ajout d'une ligne complète</span>
+def add_edge(self, s, e, p=1) :
+    self.adj[s][e] = p
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>          
+def dot(self, output : str, format = 'pdf', directed = True) :
+    """
+        Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.
+        Le paramètre directed indique si le graphe est orienté ou non.
+    """
+    if directed :
+        dot = graphviz.Digraph(output, comment=output)
+    else :
+        dot = graphviz.Graph(output, comment=output)
+    dot.format=format
+    for i in range(self.n) :
+        dot.node(str(i))
+    for i in range(self.n) :
+        if not directed :
+            start = i+1
+        else :
+            start  = 0
+        for j in range(start,self.n) :
+            if self.adj[i][j] != 0 :
+                if self.adj[i][j] == 1 :
+                    label =""
+                else :
+                    label = str(self.adj[i][j])
+                dot.edge(str(i), str(j), label = label)        
+    dot.render(view=True)
+
+    ````
+
+    1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :
+
+        ```` python
+        &gt;&gt;&gt; e = 15
+        &gt;&gt;&gt; f"BOB{e: &gt;3}"
+        BOB 15
+        ````
+
+        où l'expression `e: &gt;3` signifie d'écrire e sous la forme d'une chaîne de caractères alignée à droite d'au moins 3 caractères, des espaces étant insérés si nécessaire.
+    1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
+    1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
+    1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
+    1. Ajouter une méthode `get_degree` à la classe `Graph` pour qu'elle renvoie le degré d'un sommet passé en argument.
+    1. Ajouter une méthode `get_vertices` à la classe `Graph` qui renvoie la liste des sommets.
+    1. Ajouter une méthode `is_directed` à la classe `Graph` pour qu'elle renvoie `True` si le graphe est orienté et `False` sinon.
+    1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
+        * `False` si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe
+        * `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
+        * un tuple `(s,e)` donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.
+    1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
+
+=== "Réponses"
+
+    A venir
 </code></pre></div>
-<ol>
-<li>
-<p>Ajouter une méthode DUNDERS <code>__repr__</code> afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction <code>print(G)</code>). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"BOB</span><span class="si">{</span><span class="n">e</span><span class="si">:</span><span class="s2"> &gt;3</span><span class="si">}</span><span class="s2">"</span>
-<span class="n">BOB</span> <span class="mi">15</span>
-</code></pre></div>
-<p>où l'expression <code>e: &gt;3</code> signifie d'écrire e sous la forme d'une chaîne de caractères alignée à droite d'au moins 3 caractères, des espaces étant insérés si nécessaire.</p>
-</li>
-<li>
-<p>Compléter la <em>méthode</em>  <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</p>
-</li>
-<li>Compléter la <em>méthode</em>  <code>get_neighbours</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
-<li>Ajouter une méthode <code>get_order</code> à la classe <code>Graph</code> pour qu'elle renvoie l'ordre du graphe.</li>
-<li>Ajouter une méthode <code>get_degree</code> à la classe <code>Graph</code> pour qu'elle renvoie le degré d'un sommet passé en argument.</li>
-<li>Ajouter une méthode <code>get_vertices</code> à la classe <code>Graph</code> qui renvoie la liste des sommets.</li>
-<li>Ajouter une méthode <code>is_directed</code> à la classe <code>Graph</code> pour qu'elle renvoie <code>True</code> si le graphe est orienté et <code>False</code> sinon.</li>
-<li>Ajouter une méthode <code>is_undirected_and_eulerian</code> qui renvoie :<ul>
-<li><code>False</code> si le graphe est non-orienté et qu'il n'existe pas de parcours eulérien du graphe</li>
-<li><code>True</code> si le graphe est non-orienté et qu'il existe un cycle eulérien.</li>
-<li>un tuple <code>(s,e)</code> donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.</li>
-</ul>
-</li>
-<li>Ajouter une méthode <code>delete_edge</code> à la classe <code>Graph</code> pour qu'elle supprime l'arc situé entre les sommets <code>s</code> et <code>e</code> passés en argument.</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<p>A venir</p>
-</div>
-</div>
-</div>
-</div>
 <!--    
         <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
