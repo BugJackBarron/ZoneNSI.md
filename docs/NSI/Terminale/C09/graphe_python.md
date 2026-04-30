@@ -143,17 +143,9 @@ Pour commencer, nous allons donc définir une classe `Graph`, dont l'interface m
 				
 		````
 		
-		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction `print(G)`). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :
-
-			```` python
-			>>> e = 15
-			>>> f"BOB{e: >3}"
-			BOB 15
-			````
-
-			où l'expression `e: >3` signifie d'écrire e sous la forme d'une chaîne de caractères alignée à droite d'au moins 3 caractères, des espaces étant insérés si nécessaire.
-		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
-		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
+		
+		1. Compléter la *méthode* `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
+		1. Compléter la *méthode* `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
 		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
 		1. Ajouter une méthode `get_degree` à la classe `Graph` pour qu'elle renvoie le degré d'un sommet passé en argument.
 		1. Ajouter une méthode `get_vertices` à la classe `Graph` qui renvoie la liste des sommets.
@@ -260,116 +252,70 @@ Pour réduire la taille prise en mémoire par la matrice d'adjacence, il est pos
 
 Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'implémentation.
 
-### Graphe non pondéré
+### Graphe orienté non pondérés
 
 !!! question "Implémentation en Python"
 
 	=== "Enoncé"
 	
-		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage  :
+		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe orienté non pondéré avec un dictionnaire de voisinage, les voisins étant stockés dans un objet python de type ``set``, qui représente un ensemble de valeurs distinctes (il n'y a pas de doublons) :
 		
 		```` python
-		class Graph :
+		import graphviz
+		class DiGraph :
 			def __init__(self) :
-				self.vertice = {}
+				self.vertices = dict()
 				
 			def add_vertice(self,s) :
-				if s not in self.vertice :
-					self.vertice[s] = set() # crée un objet set vide, et garanti l'unicité de chaque élément
+				if s not in self.vertices :
+					self.vertices[s] = set() # crée un objet set vide, et garanti l'unicité de chaque élément
 				
 			def add_edge(self, s, e) :
 				self.add_vertice(s)
 				self.add_vertice(e)
-				self.vertice[s].add(e) # La méthode add des objets de type set fonctionne comme append
-
+				self.vertices[s].add(e) # La méthode add des objets de type set fonctionne comme append
 				
-					
+			def dot(self, output : str, format = 'pdf') :
+				"""
+					Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.
+					Le paramètre directed indique si le graphe est orienté ou non.
+				"""
+				dot = graphviz.Digraph(output, comment=output)        
+				dot.format=format
+				for s in self.vertices :
+					dot.node(str(s))
+				for s in self.vertices :
+					for e in self.vertices[s] :
+						dot.edge(str(s),str(e))        
+				dot.render(view=True)
+				
+		if __name__ == "__main__" :
+			g = DiGraph()
+			for i in range(5) :
+				g.add_vertice(i)
+			g.add_edge(0,1)
+			g.add_edge(0,3)
+			g.add_edge(0,4)
+			g.add_edge(1,2)
+			g.add_edge(2,0)
+			g.add_edge(2,3)
+			g.add_edge(3,4)					
 		````
 		
-		1. Ajouter une méthode DUNDERS `__repr__` afin qu'elle renvoie la chaîne de caractère correspondant au graphe (et donc directement utilisable par l'instruction `print(G)`).
-		1. Compléter la *méthode*  `exist_edge` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
-		1. Compléter la *méthode*  `get_neighbours` de la classe `Graph` pour qu'elle corresponde aux spécifications de l'interface.
-		1. Ajouter une méthode `get_order` à la classe `Graph` pour qu'elle renvoie l'ordre du graphe.
-		1. Ajouter une méthode `get_degree` à la classe `Graph` pour qu'elle renvoie le degré d'un sommet passé en argument.
-		1. Ajouter une méthode `get_vertices` à la classe `Graph` qui renvoie la liste des sommets.
-		1. Ajouter une méthode `is_directed` à la classe `Graph` pour qu'elle renvoie `True` si le graphe est orienté et `False` sinon.
-		1. Ajouter une méthode `is_undirected_and_eulerian` qui renvoie :
-			* `False` si le graphe est orienté ou qu'il n'existe pas de parcours eulérien du graphe
-			* `True` si le graphe est non-orienté et qu'il existe un cycle eulérien.
-			* un tuple `(s,e)` donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.
-		1. Ajouter une méthode `delete_edge` à la classe `Graph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
+		1. Compléter la *méthode* `exist_edge` de la classe `DiGraph` pour qu'elle corresponde aux spécifications de l'interface.
+		1. Compléter la *méthode* `get_neighbours` de la classe `DiGraph` pour qu'elle corresponde aux spécifications de l'interface.
+		1. Ajouter une méthode `get_order` à la classe `DiGraph` pour qu'elle renvoie l'ordre du graphe.
+		1. Ajouter une méthode `get_degree` à la classe `DiGraph` pour qu'elle renvoie le degré (sortant) d'un sommet passé en argument.
+		1. Ajouter une méthode `get_vertices` à la classe `DiGraph` qui renvoie la liste des sommets.
+		1. Ajouter une méthode `delete_edge` à la classe `DiGraph` pour qu'elle supprime l'arc situé entre les sommets `s` et `e` passés en argument.
 		
 		
 	=== "Solution"
 
 		A venir
 
-<!--
-	
-		```` python linenums="1"
-		class Graph :
-			def __init__(self) :
-				self.vertice = {}
 
-			def add_vertice(self,s) :
-				if s not in self.vertice :
-					self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
-
-			def add_edge(self, s, e) :
-				self.add_vertice(s)
-				self.add_vertice(e)
-				self.vertice[s].add(e) # La méthode add des objets de type set fonctionne comme append
-			
-			def exist_edge(self, s, e) :
-				return  e in self.vertice[s]
-				
-			def get_vertices(self) :
-				return self.vertice.keys()
-			
-			def get_order(self) :
-				return len(self.vertice.keys())
-			
-			def get_degree(self, s) :
-				return len(self.vertice[s])
-			
-			def get_neighbours(self,s) :
-				return list(self.vertice[s])
-			
-			def is_directed(self) :
-				for s in self.get_vertices() :
-					for t in self.get_neighbours(s) :
-						if s not in self.get_neighbours(t) :
-							return True
-				return False
-			
-			def is_undirected_and_eulerian(self) :
-				if self.is_directed() :
-					return False
-				degrees=[]
-				for s in self.get_vertices() :
-					degrees.append(self.get_degree(s)%2)
-				if sum(degrees) == 0 :
-					return True
-				elif sum(degrees) == 2 :
-					return degrees.index(1), self.get_order()-1-degrees[::-1].index(1)
-				return False
-			
-			def delete_edge(self, s, e) :
-				self.vertices[s].remove(e)
-			
-			
-				
-			def __repr__(self) :
-				rep = ""
-				for s in self.get_vertices() :
-					rep += f"{s} :\n"
-					for t in self.vertice[s] :
-						rep += f"   ->{t}\n"
-				return rep
-	````
--->
-
-### Graphes pondérés 
+### Graphes orientés pondérés 
 
 Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque arc :
 
@@ -384,48 +330,110 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :
 		
 		```` python
-		class Graph :
+		import graphviz
+		class DiGraph :
 			def __init__(self) :
-				self.vertice = {}
+				self.vertices = dict()
 				
 			def add_vertice(self,s) :
-				if s not in self.vertice :
-					self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
+				if s not in self.vertices :
+					self.vertices[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
 				
 			def add_edge(self, s, e, p=1) :
 				self.add_vertice(s)
 				self.add_vertice(e)
-				self.vertice[s].add((e,p)) 
-					
+				self.vertices[s].add((e,p))
+				
+			def dot(self, output : str, format = 'pdf') :
+				"""
+					Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.
+				"""
+				dot = graphviz.Digraph(output, comment=output)        
+				dot.format=format
+				for s in self.vertices :
+					dot.node(str(s))
+				for s in self.vertices :
+					for data in self.vertices[s] :
+						e,p = data
+						if p == 1 :
+							label =""
+						else :
+							label=str(p)
+						dot.edge(str(s),str(e), label=label)        
+				dot.render(view=True)
+
+		if __name__ == "__main__" :
+			g = DiGraph()
+			for i in range(4) :
+				g.add_vertice(i)
+			g.add_edge(0,1, 12)
+			g.add_edge(1,0, 12)
+			g.add_edge(1,3, 24)
+			g.add_edge(3,1, 42)
+			g.add_edge(1,2, 5)
+			g.add_edge(2,2, 20)
+			
+			
 		````
 		
-		Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?
+		1. Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?
+		2. Ajouter une méthode `get_weight` qui prend en argument deux sommets `s` et `e` et qui renvoie le poids associé à l'arc allant de `s` à `e`, et `None` si il n'existe pas d'arc entre `s` et `e`
 		
 !!! question "Implémentation en Python avec un dictionnaire d'arcs"
 
 	=== "Énoncé"
 	
-		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :
+		Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et un dictionnaire d'arcs' :
 		
 		```` python
-		class Graph :
+		import graphviz
+		class DiGraph :
 			def __init__(self) :
-				self.vertice = {}
-				self.edges= {}
+				self.vertices = {}
+				self.edges = {}
 				
 			def add_vertice(self,s) :
-				if s not in self.vertice :
-					self.vertice[s] = set() 
+				if s not in self.vertices :
+					self.vertices[s] = set() 
 				
 			def add_edge(self, s, e, p=1) :
 				self.add_vertice(s)
 				self.add_vertice(e)
-				self.vertice[s].add(e) 
+				self.vertices[s].add(e) 
 				self.edges[(s,e)]=p
-					
+				
+			def dot(self, output : str, format = 'pdf') :
+				"""
+					Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.
+				"""
+				dot = graphviz.Digraph(output, comment=output)        
+				dot.format=format
+				for s in self.vertices :
+					dot.node(str(s))
+				for s in self.vertices :
+					for e in self.vertices[s] :
+						p = self.edges[(s,e)]
+						if p == 1 :
+							label =""
+						else :
+							label=str(p)
+						dot.edge(str(s),str(e), label=label)        
+				dot.render(view=True)
+
+		if __name__ == "__main__" :
+			g = DiGraph()
+			for i in range(4) :
+				g.add_vertice(i)
+			g.add_edge(0,1, 12)
+			g.add_edge(1,0, 12)
+			g.add_edge(1,3, 24)
+			g.add_edge(3,1, 42)
+			g.add_edge(1,2, 5)
+			g.add_edge(2,2, 20)
 		````
 		
-		Quels sont les changements à apporter aux autres méthodes par rapport à la situation précédente ?
+		1. Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?
+		2. Ajouter une méthode `get_weight` qui prend en argument deux sommets `s` et `e` et qui renvoie le poids associé à l'arc allant de `s` à `e`, et `None` si il n'existe pas d'arc entre `s` et `e`
 
 	=== "réponses"
 		A venir
@@ -443,10 +451,10 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 	</div>
 	<div style="display : inline; width : 50%;">
 	
-	Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisément, pour créer un graphe non orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :
+	Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisément, pour créer un graphe non-orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :
 
 	```` python
-	G = Graph()
+	G = DiGraph()
 	G.add_edge(0, 1, 20)
 	G.add_edge(1, 0, 20)
 	G.add_edge(0, 2, 128)
@@ -460,7 +468,7 @@ Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque a
 	</div>
 	</div>
 	
-Bien entendu, il est possible de créer de nouveau une nouvelle classe qui implémenterait cette possibilité immédiatement. Mais il exsite aussi en POO une notion fondamentale qui va nous permettre, sans changer le code de notre classe `Graph` actuelle et en effectuant qu'un codage minimal, de créer une nouvelle classe permettant d'implémenter spécifiquement des graphes non orientés.
+Bien entendu, il est possible de créer de nouveau une nouvelle classe qui implémenterait cette possibilité immédiatement. Mais il existe aussi en POO une notion fondamentale qui va nous permettre, sans changer le code de notre classe `DiGraph` actuelle et en effectuant qu'un codage minimal, de créer une nouvelle classe permettant d'implémenter spécifiquement des graphes non orientés.
 
 Il s'agit de le notion d'{==**héritage de classe**==}. Sans rentrer dans les détails(que vous pouvez par exemple trouver [ici](https://devstory.net/11417/python-inheritance-polymorphism){: target ="_blank"}), il s'agira de créer une classe *fille* héritant de toutes les capacités de la classe *mère* - attributs et méthodes, mais dans laquelle on pourra rajouter ou modifier des caractéristiques spécifiques.
 
@@ -469,7 +477,7 @@ Ainsi, en simplifiant, on peut dire qu'un graphe non-orienté est un graphe orie
 Voici le code permettant de créer cette nouvelle classe :
 
 ```` python linenums="1"
-class UndirectedGraph(Graph) :
+class UndirectedGraph(DiGraph) :
     def __init__(self) :
         super().__init__()
         
@@ -479,13 +487,13 @@ class UndirectedGraph(Graph) :
 
 ````
 
-* En ligne 1, on crée une classe `UndirectedGraph`, qui *dérive*, ou *hérite* de la classe `Graph`. 
+* En ligne 1, on crée une classe `UndirectedGraph`, qui *dérive*, ou *hérite* de la classe `DiGraph`. 
 * En ligne 2, on définit la méthode constructeur des objets de classe `UndirectedGraph`.  Celle-ci se compose d'une unique ligne, disant simplement que l'initialisation d'un objet de classe `UndirectedGraph` se fait de la même manière qu'un objet de la classe *mère* `Graph`, par l'intermédiaire du mot-clé `super()`. 
 	On fait ainsi appel à la méthode constructeur de la classe `Graph` pour construire un objet de classe `UndirectedGraph`.
-* En ligne 5, on va redéfinir la méthode `add_edge`. On appelle une telle redéfinition un **surcharge**  de méthode. Il s'agira en fait d'appeler deux fois la méthode `add_edge` de la classe `Graph`, encore une fois en utilisant le mot-clé `super()`.
+* En ligne 5, on va redéfinir la méthode `add_edge`. On appelle une telle redéfinition une **surcharge** de méthode. Il s'agira en fait d'appeler deux fois la méthode `add_edge` de la classe `Graph`, encore une fois en utilisant le mot-clé `super()`.
 
 
-Une fois cette nouvelle classe créé, elle peut être directement utilisée *tout en conservant toutes les méthodes de la classe mère* :
+Une fois cette nouvelle classe créée, elle peut être directement utilisée *tout en conservant toutes les méthodes de la classe mère* :
 
 ```` python linenums="1"
 G = UndirectedGraph()
@@ -494,10 +502,41 @@ G.add_edge(0, 2, 128)
 G.add_edge(2, 1, 42)
 G.get_neighbours(1)
 G.get_order()
-print(G)
+G.dot('graphe_non_orienté)
 ````
 
-Dans le code ci-dessus, même si nous n'avons pas surchargé les méthodes `get_neighbours`, `get_order` et la méthode DUNDERS `__repr__`, elles demeurent accessible à tout objet de classe `UndirectedGraph`, puisque directement héritées de la classe mère `Graph`.
+Dans le code ci-dessus, même si nous n'avons pas surchargé les méthodes `get_neighbours`, `get_order` et `dot`, elles demeurent accessibles à tout objet de classe `UndirectedGraph`, puisque directement héritées de la classe mère `DiGraph`. 
+
+
+!!! danger "Une limite"
+	L'utilisation de la méthode `dot` n'est pas satisfaisante, puisque nous avons l'affichage d'un graphe orienté, chaque arête étant doublée. Il faut donc recoder complètement la méthode `dot` pour qu'elle affiche correctement le graphe. 
+
+	Il s'agit donc d'un problème de conception (d'**architecture logicielle**), qui peut rapidement devenir problématique. En effet, il faut dans notre cas construire une méthode `dot` qui puisse être utilisée **quelle que soit l'implémentation d la classe `DiGraph`**, que ce soit par l'utilisation de tuple ou de dictionnaire d'arcs.
+
+	Voici une proposition d'implémentation  de la méthode `dot` qui respecte les contraintes imposées :
+
+	```python
+	def dot(self, output : str, format = 'pdf') :
+        """
+            Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.    
+        """
+        dot = graphviz.Graph(output, comment=output)        
+        dot.format=format
+        for s in self.get_vertices() :
+            dot.node(str(s))
+        edges = []
+        for s in self.get_vertices() :
+            for e in self.get_neighbours(s) :
+                if (e,s) not in edges :
+                    edges.append((s,e))
+                    p = self.get_weight(s,e)
+                    if p == 1 :
+                        label =""
+                    else :
+                        label=str(p)
+                    dot.edge(str(s),str(e), label=label)        
+        dot.render(view=True)
+	```
 
 
 !!! abstract "Objets en Python"

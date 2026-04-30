@@ -3609,18 +3609,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#graphe-non-pondere" class="md-nav__link">
+  <a href="#graphe-oriente-non-ponderes" class="md-nav__link">
     <span class="md-ellipsis">
-      Graphe non pondéré
+      Graphe orienté non pondérés
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#graphes-ponderes" class="md-nav__link">
+  <a href="#graphes-orientes-ponderes" class="md-nav__link">
     <span class="md-ellipsis">
-      Graphes pondérés
+      Graphes orientés pondérés
     </span>
   </a>
   
@@ -5010,18 +5010,8 @@
             <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <ol>
-<li>
-<p>Ajouter une méthode DUNDERS <code>__repr__</code> afin qu'elle renvoie la chaîne de caractère correspondant à la matrice d'adjacence (et donc directement utilisable par l'instruction <code>print(G)</code>). Pour des raisons de facilités d'écritures, on pourra utiliser le formatage automatique des chaînes de caractères, comme par exemple :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"BOB</span><span class="si">{</span><span class="n">e</span><span class="si">:</span><span class="s2"> &gt;3</span><span class="si">}</span><span class="s2">"</span>
-<span class="n">BOB</span> <span class="mi">15</span>
-</code></pre></div>
-<p>où l'expression <code>e: &gt;3</code> signifie d'écrire e sous la forme d'une chaîne de caractères alignée à droite d'au moins 3 caractères, des espaces étant insérés si nécessaire.</p>
-</li>
-<li>
-<p>Compléter la <em>méthode</em>  <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</p>
-</li>
-<li>Compléter la <em>méthode</em>  <code>get_neighbours</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Compléter la <em>méthode</em> <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Compléter la <em>méthode</em> <code>get_neighbours</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
 <li>Ajouter une méthode <code>get_order</code> à la classe <code>Graph</code> pour qu'elle renvoie l'ordre du graphe.</li>
 <li>Ajouter une méthode <code>get_degree</code> à la classe <code>Graph</code> pour qu'elle renvoie le degré d'un sommet passé en argument.</li>
 <li>Ajouter une méthode <code>get_vertices</code> à la classe <code>Graph</code> qui renvoie la liste des sommets.</li>
@@ -5129,41 +5119,60 @@
 <h2 id="implementation-par-un-dictionnaire">Implémentation par un dictionnaire</h2>
 <p>Pour réduire la taille prise en mémoire par la matrice d'adjacence, il est possible d'utiliser un  <mark class="critic"><strong>dictionnaire</strong></mark> de voisinage. Ce dictionnaire apportera en plus la capacité d'avoir des chaînes des caractères comme identifiant des sommets.</p>
 <p>Selon que le graphe soit pondéré ou non, on aura quelques différences dans l'implémentation.</p>
-<h3 id="graphe-non-pondere">Graphe non pondéré</h3>
+<h3 id="graphe-oriente-non-ponderes">Graphe orienté non pondérés</h3>
 <div class="admonition question">
 <p class="admonition-title">Implémentation en Python</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage  :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span> <span class="p">:</span>
+<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe orienté non pondéré avec un dictionnaire de voisinage, les voisins étant stockés dans un objet python de type <code>set</code>, qui représente un ensemble de valeurs distinctes (il n'y a pas de doublons) :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">graphviz</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiGraph</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span> <span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># crée un objet set vide, et garanti l'unicité de chaque élément</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># crée un objet set vide, et garanti l'unicité de chaque élément</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="c1"># La méthode add des objets de type set fonctionne comme append</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="c1"># La méthode add des objets de type set fonctionne comme append</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s1">'pdf'</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">            Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.</span>
+<span class="sd">            Le paramètre directed indique si le graphe est orienté ou non.</span>
+<span class="sd">        """</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>        
+        <span class="n">dot</span><span class="o">.</span><span class="n">format</span><span class="o">=</span><span class="nb">format</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">dot</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>        
+        <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span> <span class="p">:</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>                 
 </code></pre></div>
 <ol>
-<li>Ajouter une méthode DUNDERS <code>__repr__</code> afin qu'elle renvoie la chaîne de caractère correspondant au graphe (et donc directement utilisable par l'instruction <code>print(G)</code>).</li>
-<li>Compléter la <em>méthode</em>  <code>exist_edge</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
-<li>Compléter la <em>méthode</em>  <code>get_neighbours</code> de la classe <code>Graph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
-<li>Ajouter une méthode <code>get_order</code> à la classe <code>Graph</code> pour qu'elle renvoie l'ordre du graphe.</li>
-<li>Ajouter une méthode <code>get_degree</code> à la classe <code>Graph</code> pour qu'elle renvoie le degré d'un sommet passé en argument.</li>
-<li>Ajouter une méthode <code>get_vertices</code> à la classe <code>Graph</code> qui renvoie la liste des sommets.</li>
-<li>Ajouter une méthode <code>is_directed</code> à la classe <code>Graph</code> pour qu'elle renvoie <code>True</code> si le graphe est orienté et <code>False</code> sinon.</li>
-<li>Ajouter une méthode <code>is_undirected_and_eulerian</code> qui renvoie :<ul>
-<li><code>False</code> si le graphe est orienté ou qu'il n'existe pas de parcours eulérien du graphe</li>
-<li><code>True</code> si le graphe est non-orienté et qu'il existe un cycle eulérien.</li>
-<li>un tuple <code>(s,e)</code> donnant les sommets de départ et d'arrivée d'un éventuel chemin eulérien.</li>
-</ul>
-</li>
-<li>Ajouter une méthode <code>delete_edge</code> à la classe <code>Graph</code> pour qu'elle supprime l'arc situé entre les sommets <code>s</code> et <code>e</code> passés en argument.</li>
+<li>Compléter la <em>méthode</em> <code>exist_edge</code> de la classe <code>DiGraph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Compléter la <em>méthode</em> <code>get_neighbours</code> de la classe <code>DiGraph</code> pour qu'elle corresponde aux spécifications de l'interface.</li>
+<li>Ajouter une méthode <code>get_order</code> à la classe <code>DiGraph</code> pour qu'elle renvoie l'ordre du graphe.</li>
+<li>Ajouter une méthode <code>get_degree</code> à la classe <code>DiGraph</code> pour qu'elle renvoie le degré (sortant) d'un sommet passé en argument.</li>
+<li>Ajouter une méthode <code>get_vertices</code> à la classe <code>DiGraph</code> qui renvoie la liste des sommets.</li>
+<li>Ajouter une méthode <code>delete_edge</code> à la classe <code>DiGraph</code> pour qu'elle supprime l'arc situé entre les sommets <code>s</code> et <code>e</code> passés en argument.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -5172,72 +5181,7 @@
 </div>
 </div>
 </div>
-<!--
-
-        ```` python linenums="1"
-        class Graph :
-            def __init__(self) :
-                self.vertice = {}
-
-            def add_vertice(self,s) :
-                if s not in self.vertice :
-                    self.vertice[s] = set() # crée un objet set vide, et graranti l'unicité de chaque élément
-
-            def add_edge(self, s, e) :
-                self.add_vertice(s)
-                self.add_vertice(e)
-                self.vertice[s].add(e) # La méthode add des objets de type set fonctionne comme append
-
-            def exist_edge(self, s, e) :
-                return  e in self.vertice[s]
-
-            def get_vertices(self) :
-                return self.vertice.keys()
-
-            def get_order(self) :
-                return len(self.vertice.keys())
-
-            def get_degree(self, s) :
-                return len(self.vertice[s])
-
-            def get_neighbours(self,s) :
-                return list(self.vertice[s])
-
-            def is_directed(self) :
-                for s in self.get_vertices() :
-                    for t in self.get_neighbours(s) :
-                        if s not in self.get_neighbours(t) :
-                            return True
-                return False
-
-            def is_undirected_and_eulerian(self) :
-                if self.is_directed() :
-                    return False
-                degrees=[]
-                for s in self.get_vertices() :
-                    degrees.append(self.get_degree(s)%2)
-                if sum(degrees) == 0 :
-                    return True
-                elif sum(degrees) == 2 :
-                    return degrees.index(1), self.get_order()-1-degrees[::-1].index(1)
-                return False
-
-            def delete_edge(self, s, e) :
-                self.vertices[s].remove(e)
-
-
-
-            def __repr__(self) :
-                rep = ""
-                for s in self.get_vertices() :
-                    rep += f"{s} :\n"
-                    for t in self.vertice[s] :
-                        rep += f"   ->{t}\n"
-                return rep
-    ````
--->
-
-<h3 id="graphes-ponderes">Graphes pondérés</h3>
+<h3 id="graphes-orientes-ponderes">Graphes orientés pondérés</h3>
 <p>Il existe plusieurs méthodes permettant d'ajouter une pondération sur chaque arc :</p>
 <ul>
 <li>on peut ajouter dans le dictionnaire de voisinage un tuple contenant à la fois le nom et le poids de l'arc considéré ;</li>
@@ -5249,20 +5193,53 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">graphviz</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiGraph</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span> <span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># crée un objet set vide, et graranti l'unicité de chaque élément</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># crée un objet set vide, et graranti l'unicité de chaque élément</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">e</span><span class="p">,</span><span class="n">p</span><span class="p">))</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">e</span><span class="p">,</span><span class="n">p</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s1">'pdf'</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">            Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.</span>
+<span class="sd">        """</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>        
+        <span class="n">dot</span><span class="o">.</span><span class="n">format</span><span class="o">=</span><span class="nb">format</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">e</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">data</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">label</span> <span class="o">=</span><span class="s2">""</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">dot</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>        
+        <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span> <span class="p">:</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
-<p>Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?</p>
+<ol>
+<li>Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?</li>
+<li>Ajouter une méthode <code>get_weight</code> qui prend en argument deux sommets <code>s</code> et <code>e</code> et qui renvoie le poids associé à l'arc allant de <code>s</code> à <code>e</code>, et <code>None</code> si il n'existe pas d'arc entre <code>s</code> et <code>e</code></li>
+</ol>
 </div>
 </div>
 </div>
@@ -5272,23 +5249,56 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Énoncé</label><label for="__tabbed_5_2">réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et une pondération :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span> <span class="p">:</span>
+<p>Le code suivant permet d'implémenter en partie l'interface voulue d'un graphe avec un dictionnaire de voisinage et un dictionnaire d'arcs' :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">graphviz</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiGraph</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span> <span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> 
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertice</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)]</span><span class="o">=</span><span class="n">p</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s1">'pdf'</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">            Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.</span>
+<span class="sd">        """</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>        
+        <span class="n">dot</span><span class="o">.</span><span class="n">format</span><span class="o">=</span><span class="nb">format</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">label</span> <span class="o">=</span><span class="s2">""</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">dot</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>        
+        <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span> <span class="p">:</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">add_vertice</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
-<p>Quels sont les changements à apporter aux autres méthodes par rapport à la situation précédente ?</p>
+<ol>
+<li>Quels sont les changements à apporter aux autres méthodes par rapport à la situation sans pondération ?</li>
+<li>Ajouter une méthode <code>get_weight</code> qui prend en argument deux sommets <code>s</code> et <code>e</code> et qui renvoie le poids associé à l'arc allant de <code>s</code> à <code>e</code>, et <code>None</code> si il n'existe pas d'arc entre <code>s</code> et <code>e</code></li>
+</ol>
 </div>
 <div class="tabbed-block">
 <p>A venir</p>
@@ -5304,8 +5314,8 @@
 <p><img alt="heritage.svg" src="../heritage.svg" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <p></p></div>
 <div style="display : inline; width : 50%;">
-<p>Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisément, pour créer un graphe non orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :</p>
-<div class="highlight"><pre><span></span><code><span class="n">G</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+<p>Dans toutes les implémentations que nous avons jusqu'ici créées, nous sommes resté sur une notion de graphe orienté. Plus précisément, pour créer un graphe non-orienté tel que celui ci-contre à partir d'une des implémentations précédentes, il faudra utiliser le code suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="n">G</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
@@ -5317,7 +5327,7 @@
 <p></p></div>
 </div>
 </div>
-<p>Bien entendu, il est possible de créer de nouveau une nouvelle classe qui implémenterait cette possibilité immédiatement. Mais il exsite aussi en POO une notion fondamentale qui va nous permettre, sans changer le code de notre classe <code>Graph</code> actuelle et en effectuant qu'un codage minimal, de créer une nouvelle classe permettant d'implémenter spécifiquement des graphes non orientés.</p>
+<p>Bien entendu, il est possible de créer de nouveau une nouvelle classe qui implémenterait cette possibilité immédiatement. Mais il existe aussi en POO une notion fondamentale qui va nous permettre, sans changer le code de notre classe <code>DiGraph</code> actuelle et en effectuant qu'un codage minimal, de créer une nouvelle classe permettant d'implémenter spécifiquement des graphes non orientés.</p>
 <p>Il s'agit de le notion d'<mark class="critic"><strong>héritage de classe</strong></mark>. Sans rentrer dans les détails(que vous pouvez par exemple trouver <a href="https://devstory.net/11417/python-inheritance-polymorphism" target="target">ici</a>), il s'agira de créer une classe <em>fille</em> héritant de toutes les capacités de la classe <em>mère</em> - attributs et méthodes, mais dans laquelle on pourra rajouter ou modifier des caractéristiques spécifiques.</p>
 <p>Ainsi, en simplifiant, on peut dire qu'un graphe non-orienté est un graphe orienté dans lequel les arcs sont doublés. Les graphes non-orientés sont donc une <strong>sous-classe</strong> des graphes orientés, d'un point de vue codage.</p>
 <p>Voici le code permettant de créer cette nouvelle classe :</p>
@@ -5327,7 +5337,7 @@
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UndirectedGraph</span><span class="p">(</span><span class="n">Graph</span><span class="p">)</span> <span class="p">:</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UndirectedGraph</span><span class="p">(</span><span class="n">DiGraph</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
@@ -5336,12 +5346,12 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>En ligne 1, on crée une classe <code>UndirectedGraph</code>, qui <em>dérive</em>, ou <em>hérite</em> de la classe <code>Graph</code>. </li>
+<li>En ligne 1, on crée une classe <code>UndirectedGraph</code>, qui <em>dérive</em>, ou <em>hérite</em> de la classe <code>DiGraph</code>. </li>
 <li>En ligne 2, on définit la méthode constructeur des objets de classe <code>UndirectedGraph</code>.  Celle-ci se compose d'une unique ligne, disant simplement que l'initialisation d'un objet de classe <code>UndirectedGraph</code> se fait de la même manière qu'un objet de la classe <em>mère</em> <code>Graph</code>, par l'intermédiaire du mot-clé <code>super()</code>. 
     On fait ainsi appel à la méthode constructeur de la classe <code>Graph</code> pour construire un objet de classe <code>UndirectedGraph</code>.</li>
-<li>En ligne 5, on va redéfinir la méthode <code>add_edge</code>. On appelle une telle redéfinition un <strong>surcharge</strong>  de méthode. Il s'agira en fait d'appeler deux fois la méthode <code>add_edge</code> de la classe <code>Graph</code>, encore une fois en utilisant le mot-clé <code>super()</code>.</li>
+<li>En ligne 5, on va redéfinir la méthode <code>add_edge</code>. On appelle une telle redéfinition une <strong>surcharge</strong> de méthode. Il s'agira en fait d'appeler deux fois la méthode <code>add_edge</code> de la classe <code>Graph</code>, encore une fois en utilisant le mot-clé <code>super()</code>.</li>
 </ul>
-<p>Une fois cette nouvelle classe créé, elle peut être directement utilisée <em>tout en conservant toutes les méthodes de la classe mère</em> :</p>
+<p>Une fois cette nouvelle classe créée, elle peut être directement utilisée <em>tout en conservant toutes les méthodes de la classe mère</em> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5354,9 +5364,36 @@
 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">get_neighbours</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">get_order</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="s1">'graphe_non_orienté)</span>
 </code></pre></div></td></tr></table></div>
-<p>Dans le code ci-dessus, même si nous n'avons pas surchargé les méthodes <code>get_neighbours</code>, <code>get_order</code> et la méthode DUNDERS <code>__repr__</code>, elles demeurent accessible à tout objet de classe <code>UndirectedGraph</code>, puisque directement héritées de la classe mère <code>Graph</code>.</p>
+<p>Dans le code ci-dessus, même si nous n'avons pas surchargé les méthodes <code>get_neighbours</code>, <code>get_order</code> et <code>dot</code>, elles demeurent accessibles à tout objet de classe <code>UndirectedGraph</code>, puisque directement héritées de la classe mère <code>DiGraph</code>. </p>
+<div class="admonition danger">
+<p class="admonition-title">Une limite</p>
+<p>L'utilisation de la méthode <code>dot</code> n'est pas satisfaisante, puisque nous avons l'affichage d'un graphe orienté, chaque arête étant doublée. Il faut donc recoder complètement la méthode <code>dot</code> pour qu'elle affiche correctement le graphe. </p>
+<p>Il s'agit donc d'un problème de conception (d'<strong>architecture logicielle</strong>), qui peut rapidement devenir problématique. En effet, il faut dans notre cas construire une méthode <code>dot</code> qui puisse être utilisée <strong>quelle que soit l'implémentation d la classe <code>DiGraph</code></strong>, que ce soit par l'utilisation de tuple ou de dictionnaire d'arcs.</p>
+<p>Voici une proposition d'implémentation  de la méthode <code>dot</code> qui respecte les contraintes imposées :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s1">'pdf'</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">        Sauvegarde sous la forme d'un fichier ouput.format le graphe et l'affiche.    </span>
+<span class="sd">    """</span>
+    <span class="n">dot</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>        
+    <span class="n">dot</span><span class="o">.</span><span class="n">format</span><span class="o">=</span><span class="nb">format</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vertices</span><span class="p">()</span> <span class="p">:</span>
+        <span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vertices</span><span class="p">()</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_neighbours</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edges</span> <span class="p">:</span>
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">))</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weight</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">label</span> <span class="o">=</span><span class="s2">""</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">dot</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>        
+    <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
 <div class="admonition abstract">
 <p class="admonition-title">Objets en Python</p>
 <p>En Python, tout est objet. Cette phrase n'est pas qu'une déclaration de principe, puisqu'il existe une classe générique (appelée <strong>classe abstraite</strong>) <code>Object</code>, dont dérivent toutes les autres classes, comme <code>int</code>, <code>float</code>, <code>tuple</code>,...</p>
