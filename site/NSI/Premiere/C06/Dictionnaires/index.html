@@ -4941,10 +4941,10 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Réponse</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Écrire une fonction <code>affiche_cri(nom : str) -&gt; str|None</code>  qui prend comme argument le nom d'un animal, et renvoie : </p>
+<p>Écrire une fonction <code>affiche_cri(nom : str) -&gt; str|None</code>  qui prend comme argument le nom d'un animal, et <strong>renvoie</strong> (<em>attention ! Pas de <code>print</code> !</em>) : </p>
 <ul>
 <li>
-<p>soit une chaine de caractère telle que  dans l'exemple ci-dessous :</p>
+<p>soit une chaine de caractère telle que dans l'exemple ci-dessous :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">affiche_cri</span><span class="p">(</span><span class="s2">"Vache"</span><span class="p">)</span>
 <span class="s2">"Le cri de l'animal Vache est Meuh !"</span> 
 </code></pre></div>
@@ -4989,12 +4989,12 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Téléchargez le fichier <a href="../Long_Dico.csv" target="target">suivant</a>, et sauvegardez le dans le même dossier que votre code Python actuel.</li>
+<li>Téléchargez le fichier <a href="../Etab_Parcoursup.csv" target="target">suivant</a>, et sauvegardez le dans le même dossier que votre code Python actuel.</li>
 <li>
-<p>Copiez-collez la fonction <code>make_big_lists</code> suivante.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_big_lists</span><span class="p">()</span> <span class="p">:</span>
+<p>Copiez-collez la fonction <code>extract_list</code> suivante.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">extract_list</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Long_Dico.csv"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Etab_Parcoursup.csv"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
         <span class="n">dicReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">';'</span><span class="p">)</span>
         <span class="n">etablissements</span> <span class="o">=</span><span class="p">[]</span>
         <span class="n">GPS</span> <span class="o">=</span> <span class="p">[]</span>
@@ -5006,7 +5006,7 @@
 </li>
 <li>
 <p>Copiez-collez ensuite la ligne suivante dans votre code, <strong>après la fonction précédente</strong> :</p>
-<div class="highlight"><pre><span></span><code><span class="n">etablissements</span><span class="p">,</span> <span class="n">GPS</span> <span class="o">=</span> <span class="n">make_big_lists</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">etablissements</span><span class="p">,</span> <span class="n">GPS</span> <span class="o">=</span> <span class="n">extract_list</span><span class="p">()</span>
 </code></pre></div>
 <p>Le code ci-dessous crée deux listes : </p>
 <ul>
@@ -5046,7 +5046,7 @@
 <p>Les listes sont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :</p>
 <ul>
 <li>si la liste n'est pas triée, la recherche se fait en <span class="arithmatex">\(\mathbb{O}(n)\)</span>, ce qui signifie que la recherche prend <mark class="critic"><strong>un temps proportionnel à la longueur de la liste</strong></mark> ;</li>
-<li>si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la <mark class="critic"><strong>recherche dichotomique</strong></mark> (au programme de terminale), qui permettent de rechercher en un temps plus court, en <span class="arithmatex">\(\mathbb{O}(log(n))\)</span>.</li>
+<li>si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la <mark class="critic"><strong>recherche dichotomique</strong></mark>, qui permettent de rechercher en un temps plus court, en <span class="arithmatex">\(\mathbb{O}(log_2(n))\)</span>.</li>
 </ul>
 <p>Quoi qu'il en soit, <strong>ce temps est très long</strong> comparativement au <mark class="critic"><strong>temps d'accès</strong></mark> à un élément, quand on connait son indice ! En effet, <strong>peu importe la taille de la liste</strong>, le temps d'accès à un élément reste constant, il est en <span class="arithmatex">\(\mathbb{O}(1)\)</span>.</p>
 </div>
@@ -5115,12 +5115,12 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 </div>
 <h3 id="manipulation-des-dictionnaires">Manipulation des dictionnaires</h3>
 <h4 id="creation-dun-dictionnaire-vide">Création d'un  dictionnaire vide</h4>
-<p>Il existe deux possibilités pour créer un dictionnaire vide :</p>
+<p>Il existe deux possibilités pour créer un dictionnaire vide, la deuxième ayant pour intérêt d'être explicite. :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">dico1</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">dico2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 </code></pre></div>
 <h4 id="ajout-dun-element">Ajout d'un élément</h4>
-<p>Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il suffit d'écrire :</p>
+<p>Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il suffit d'affecter la valeur à la nouvelle clé grâce à la syntaxe <code>dico[cle] = valeur</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span><span class="p">[</span><span class="s1">'Girafe'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Tic-Tic'</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cris</span>
 <span class="p">{</span><span class="s1">'Vache'</span><span class="p">:</span> <span class="s1">'Meuh'</span><span class="p">,</span> <span class="s1">'Chien'</span><span class="p">:</span> <span class="s1">'Wouf'</span><span class="p">,</span> <span class="s1">'Chat'</span><span class="p">:</span> <span class="s1">'Miaou'</span><span class="p">,</span> <span class="s1">'Poule'</span><span class="p">:</span> <span class="s1">'Cot-cot'</span><span class="p">,</span> <span class="s1">'Ane'</span><span class="p">:</span> <span class="s1">'Hi-Han'</span><span class="p">,</span> <span class="s1">'Cochon'</span><span class="p">:</span> <span class="s1">'Gruik'</span><span class="p">,</span> <span class="s1">'Paon'</span><span class="p">:</span> <span class="s1">'Leon'</span><span class="p">,</span> <span class="s1">'Girafe'</span><span class="p">:</span> <span class="s1">'Tic-Tic'</span><span class="p">}</span>
@@ -5147,7 +5147,7 @@ ce qui signifie que <code>"Perroquet"</code> n'est pas une clé valide du dictio
 <p></p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">'Meuh'</span> <span class="ow">in</span> <span class="n">cris</span>
 <span class="kc">False</span>
 </code></pre></div>
-Ici, l'évaluation renvoie <code>False</code> car la chaine <code>Meuh</code> ne fait pas partie des clés.
+Ici, l'évaluation renvoie <code>False</code>, la chaine <code>Meuh</code> ne faisant pas partie des clés.
 <h4 id="parcourir-un-dictionnaire">Parcourir un dictionnaire</h4>
 <p>Pour parcourir un dictionnaire, on utilise une boucle <code>for</code> pour effectuer un <mark class="critic"><strong>parcours par éléments</strong></mark> d'une liste :</p>
 <p></p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">cris</span> <span class="p">:</span>
@@ -5212,17 +5212,17 @@ Et on peut encore itérer sur cet objet :
 </div>
 </div>
 <h3 id="et-avec-plus-de-donnees_1">Et avec plus de données ?</h3>
-<p>Recréons à partir du même fichier Parcoursup <code>Long_Dico.csv</code> un dictionnaire contenant les établissements et leurs coordonnées GPS :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_big_dict</span><span class="p">()</span> <span class="p">:</span>
+<p>Recréons à partir du même fichier Parcoursup <code>Etab_Parcoursup.csv</code> un dictionnaire contenant les établissements et leurs coordonnées GPS :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">extract_dict</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Long_Dico.csv"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Etab_Parcoursup.csv"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">,</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
         <span class="n">dicReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">';'</span><span class="p">)</span>
         <span class="n">etablissements</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">dicReader</span> <span class="p">:</span> <span class="c1"># pour chaque ligne</span>
             <span class="n">etablissements</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="s1">'Nom'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="s1">'GPS'</span><span class="p">]</span> <span class="c1"># on crée une nouvelle paire clé/valeur dans le dictionnaire</span>
     <span class="k">return</span> <span class="n">etablissements</span>
 
-<span class="n">dic_etablissements</span> <span class="o">=</span> <span class="n">make_big_dict</span><span class="p">()</span>
+<span class="n">dic_etablissements</span> <span class="o">=</span> <span class="n">extract_dict</span><span class="p">()</span>
 </code></pre></div>
 <p>Et vérifions que sa taille st bien cohérente :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dic_etablissements</span><span class="p">)</span>
@@ -5303,14 +5303,46 @@ Et on peut encore itérer sur cet objet :
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Écrire un dictionnaire <code>mois</code> dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).</p>
+<p>On donne le dictionnaire suivant :</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="n">mois</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">'Janvier'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'Février'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">'Mars'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">'Avril'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">'Mai'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">'Juin'</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s1">'Juillet'</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">'Août'</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">'Septembre'</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">'Octobre'</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="s1">'Novembre'</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="s1">'Décembre'</span><span class="p">}</span>
+</code></pre></div>
+Compléter la fonction <code>renvoie_date</code> suivante, en utilisant le dictionnaire <code>mois</code> :
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">renvoie_date</span><span class="p">(</span><span class="n">jour</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mois</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">annee</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">""" Renvoie la date sous la forme d'une chaine de caractère </span>
+<span class="sd">    &gt;&gt;&gt; renvoie_date (4,5,2026)</span>
+<span class="sd">    '4 mai 2026'</span>
+<span class="sd">    On testera les préconditions.</span>
+<span class="sd">    """</span> 
+    <span class="o">...</span>
+</code></pre></div>
 </li>
 <li>
-<p>Écrire un dictionnaire <code>quel_mois</code> dont les clés sont des entiers, et les valeurs sont la liste des mois correspondant au nombre de jours en clé. Par exemple :</p>
+<p>On considère désormais le dictionnaire suivant, dont les valeurs sont elles même des dictionnaires :</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">quelMois</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span>
-<span class="p">[</span><span class="s1">'Février'</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">mois_multilingue</span> <span class="o">=</span> <span class="p">{</span>
+<span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Janvier'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'January'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Enero'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Januar'</span><span class="p">},</span>
+<span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Février'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'February'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Febrero'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Februar'</span><span class="p">},</span>
+<span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Mars'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'March'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Marzo'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'März'</span><span class="p">},</span>
+<span class="mi">4</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Avril'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'April'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Abril'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'April'</span><span class="p">},</span>
+<span class="mi">5</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Mai'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'May'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Mayo'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Mai'</span><span class="p">},</span>
+<span class="mi">6</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Juin'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'June'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Junio'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Juni'</span><span class="p">},</span>
+<span class="mi">7</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Juillet'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'July'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Julio'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Juli'</span><span class="p">},</span>
+<span class="mi">8</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Août'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'August'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Agosto'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'August'</span><span class="p">},</span>
+<span class="mi">9</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Septembre'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'September'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Septiembre'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'September'</span><span class="p">},</span>
+<span class="mi">10</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Octobre'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'October'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Octubre'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Oktober'</span><span class="p">},</span>
+<span class="mi">11</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Novembre'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'November'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Noviembre'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'November'</span><span class="p">},</span>
+<span class="mi">12</span><span class="p">:</span> <span class="p">{</span><span class="s1">'fra'</span><span class="p">:</span> <span class="s1">'Décembre'</span><span class="p">,</span> <span class="s1">'eng'</span><span class="p">:</span> <span class="s1">'December'</span><span class="p">,</span> <span class="s1">'esp'</span><span class="p">:</span> <span class="s1">'Diciembre'</span><span class="p">,</span> <span class="s1">'ger'</span><span class="p">:</span> <span class="s1">'Dezember'</span><span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Compléter la fonction <code>renvoie_date</code>, en ajoutant un paramètre <code>lang</code> dont la valeur par défaut est <code>fra</code>, et qui renvoie la chaine de caractère dans la langue demandée (toujours sous la forme jour - mois - année)</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">renvoie_date</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2026</span><span class="p">,</span><span class="n">lang</span><span class="o">=</span><span class="s1">'esp'</span><span class="p">)</span>
+<span class="s1">'4 Mayo 2026'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">renvoie_date</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2026</span><span class="p">,</span><span class="n">lang</span> <span class="o">=</span> <span class="s1">'ger'</span><span class="p">)</span>
+<span class="s1">'11 Juni 2026'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">renvoie</span> <span class="n">date</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2026</span><span class="p">)</span>
+<span class="s1">'14 Juillet 2026'</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -5383,7 +5415,7 @@ Et on peut encore itérer sur cet objet :
 </code></pre></div>
 <ol>
 <li>Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nombre total de ventes dans la société.</li>
-<li>Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-æquo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.et</li>
+<li>Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-æquo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.</li>
 </ol>
 </div>
 <div class="tabbed-block">

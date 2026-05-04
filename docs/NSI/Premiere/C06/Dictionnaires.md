@@ -19,9 +19,9 @@
 	````
 
 	=== "Énoncé"
-		Écrire une fonction `affiche_cri(nom : str) -> str|None`  qui prend comme argument le nom d'un animal, et renvoie : 
+		Écrire une fonction `affiche_cri(nom : str) -> str|None`  qui prend comme argument le nom d'un animal, et **renvoie** (*attention ! Pas de `print` !*) : 
 
-		*	soit une chaine de caractère telle que  dans l'exemple ci-dessous :
+		*	soit une chaine de caractère telle que dans l'exemple ci-dessous :
 
 			```` python   
 			>>> affiche_cri("Vache")
@@ -77,14 +77,14 @@ Que se passe-t-il si les tableaux sont plus long ?
 
 	=== "Enoncé"
 	
-		1. Téléchargez le fichier [suivant](Long_Dico.csv){: target = "_blank"}, et sauvegardez le dans le même dossier que votre code Python actuel.
-		2. Copiez-collez la fonction `make_big_lists` suivante.
+		1. Téléchargez le fichier [suivant](Etab_Parcoursup.csv){: target = "_blank"}, et sauvegardez le dans le même dossier que votre code Python actuel.
+		2. Copiez-collez la fonction `extract_list` suivante.
 		
 			```` python 
 			  
-			def make_big_lists() :
+			def extract_list() :
 				import csv
-				with open("Long_Dico.csv","r",encoding = "utf8") as file :
+				with open("Etab_Parcoursup.csv","r",encoding = "utf8") as file :
 					dicReader = csv.DictReader(file, delimiter=';')
 					etablissements =[]
 					GPS = []
@@ -97,7 +97,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 		3. Copiez-collez ensuite la ligne suivante dans votre code, **après la fonction précédente** :
 			
 			```` python
-			etablissements, GPS = make_big_lists()
+			etablissements, GPS = extract_list()
 			````
 
 			Le code ci-dessous crée deux listes : 
@@ -132,7 +132,7 @@ Que se passe-t-il si les tableaux sont plus long ?
 	Les listes sont des objets très pratiques, mais possédant des limites, en particulier concernant la recherche d'éléments :
 	
 	* si la liste n'est pas triée, la recherche se fait en $\mathbb{O}(n)$, ce qui signifie que la recherche prend {==**un temps proportionnel à la longueur de la liste**==} ;
-	* si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la {==**recherche dichotomique**==} (au programme de terminale), qui permettent de rechercher en un temps plus court, en $\mathbb{O}(log(n))$.
+	* si la liste est triée, il est possible d'utiliser des algorithmes de recherches rapides, comme la {==**recherche dichotomique**==}, qui permettent de rechercher en un temps plus court, en $\mathbb{O}(log_2(n))$.
 	
 	Quoi qu'il en soit, **ce temps est très long** comparativement au {==**temps d'accès**==} à un élément, quand on connait son indice ! En effet, **peu importe la taille de la liste**, le temps d'accès à un élément reste constant, il est en $\mathbb{O}(1)$.
 	
@@ -215,16 +215,18 @@ Que se passe-t-il si les tableaux sont plus long ?
 
 #### Création d'un  dictionnaire vide
 
-Il existe deux possibilités pour créer un dictionnaire vide :
+Il existe deux possibilités pour créer un dictionnaire vide, la deuxième ayant pour intérêt d'être explicite. :
 
 ```` python
 >>> dico1 = {}
 >>> dico2 = dict()
 ````
 
+
+
 #### Ajout d'un élément
 
-Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il suffit d'écrire :
+Pour ajouter un couple clé/valeur à un dictionnaire, rien de plus simple, il suffit d'affecter la valeur à la nouvelle clé grâce à la syntaxe `dico[cle] = valeur` :
 
 ```` python
 >>> cris['Girafe'] = 'Tic-Tic'
@@ -269,7 +271,7 @@ Par contre, cet opérateur **ne permet pas de tester l'existence d'une valeur** 
 >>> 'Meuh' in cris
 False
 ````
-Ici, l'évaluation renvoie `False` car la chaine `Meuh` ne fait pas partie des clés.
+Ici, l'évaluation renvoie `False`, la chaine `Meuh` ne faisant pas partie des clés.
 	
 #### Parcourir un dictionnaire
 
@@ -352,19 +354,19 @@ Le {==**type dictionnaire**==} possède plusieurs {==**méthodes**==}, permettan
 		
 ### Et avec plus de données ?
 
-Recréons à partir du même fichier Parcoursup ``Long_Dico.csv`` un dictionnaire contenant les établissements et leurs coordonnées GPS :
+Recréons à partir du même fichier Parcoursup ``Etab_Parcoursup.csv`` un dictionnaire contenant les établissements et leurs coordonnées GPS :
 
 ```` python   
-def make_big_dict() :
+def extract_dict() :
     import csv
-    with open("Long_Dico.csv","r",encoding = "utf8") as file :
+    with open("Etab_Parcoursup.csv","r",encoding = "utf8") as file :
         dicReader = csv.DictReader(file, delimiter=';')
         etablissements=dict()
         for line in dicReader : # pour chaque ligne
             etablissements[line['Nom']] = line['GPS'] # on crée une nouvelle paire clé/valeur dans le dictionnaire
     return etablissements
 
-dic_etablissements = make_big_dict()
+dic_etablissements = extract_dict()
  
 ````
 
@@ -462,14 +464,53 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 !!! question "Exercice 1"
 
 	=== "Énoncé"
-		1. Écrire un dictionnaire `mois` dont les clés seront les mois de l'année et les valeurs seront le nombre de jours du mois correspondant (année non-bissextiles).
+		1. On donne le dictionnaire suivant :
 
-		2. Écrire un dictionnaire `quel_mois` dont les clés sont des entiers, et les valeurs sont la liste des mois correspondant au nombre de jours en clé. Par exemple :
+			``` python
+			mois = {1: 'Janvier', 2: 'Février', 3: 'Mars', 4: 'Avril', 5: 'Mai', 6: 'Juin',
+				7: 'Juillet', 8: 'Août', 9: 'Septembre', 10: 'Octobre', 11: 'Novembre', 12: 'Décembre'}
+			```
+			Compléter la fonction `renvoie_date` suivante, en utilisant le dictionnaire `mois` :
+
+			```python
+			def renvoie_date(jour : int, mois : int, annee : int) -> str :
+				""" Renvoie la date sous la forme d'une chaine de caractère 
+				>>> renvoie_date (4,5,2026)
+				'4 mai 2026'
+				On testera les préconditions.
+				"""	
+				...
+			```
+
+		2. On considère désormais le dictionnaire suivant, dont les valeurs sont elles même des dictionnaires :
 
 		``` python
-		>>> quelMois[28]
-		['Février']
-		```    
+			mois_multilingue = {
+		1: {'fra': 'Janvier', 'eng': 'January', 'esp': 'Enero', 'ger': 'Januar'},
+		2: {'fra': 'Février', 'eng': 'February', 'esp': 'Febrero', 'ger': 'Februar'},
+		3: {'fra': 'Mars', 'eng': 'March', 'esp': 'Marzo', 'ger': 'März'},
+		4: {'fra': 'Avril', 'eng': 'April', 'esp': 'Abril', 'ger': 'April'},
+		5: {'fra': 'Mai', 'eng': 'May', 'esp': 'Mayo', 'ger': 'Mai'},
+		6: {'fra': 'Juin', 'eng': 'June', 'esp': 'Junio', 'ger': 'Juni'},
+		7: {'fra': 'Juillet', 'eng': 'July', 'esp': 'Julio', 'ger': 'Juli'},
+		8: {'fra': 'Août', 'eng': 'August', 'esp': 'Agosto', 'ger': 'August'},
+		9: {'fra': 'Septembre', 'eng': 'September', 'esp': 'Septiembre', 'ger': 'September'},
+		10: {'fra': 'Octobre', 'eng': 'October', 'esp': 'Octubre', 'ger': 'Oktober'},
+		11: {'fra': 'Novembre', 'eng': 'November', 'esp': 'Noviembre', 'ger': 'November'},
+		12: {'fra': 'Décembre', 'eng': 'December', 'esp': 'Diciembre', 'ger': 'Dezember'}
+			}
+		```
+
+		Compléter la fonction `renvoie_date`, en ajoutant un paramètre `lang` dont la valeur par défaut est `fra`, et qui renvoie la chaine de caractère dans la langue demandée (toujours sous la forme jour - mois - année)
+
+		```python
+		>>> renvoie_date(4,5,2026,lang='esp')
+		'4 Mayo 2026'
+		>>> renvoie_date(11,6,2026,lang = 'ger')
+		'11 Juni 2026'
+		>>> renvoie date(14,7,2026)
+		'14 Juillet 2026'
+		```
 
 	=== "Réponses"
 		A venir !
@@ -540,7 +581,7 @@ Heureusement pour nous, {==**Python fait bien son travail**==} et utilise une fo
 		````
 		
 		1. Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nombre total de ventes dans la société.
-		2. Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-æquo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.et
+		2. Écrivez une fonction qui prend en entrée un tel dictionnaire et renvoie le nom du vendeur ayant réalisé le plus de ventes. Si plusieurs vendeurs sont ex-æquo sur ce critère, la fonction devra retourner le nom de l'un d'entre eux.
 
 	=== "Réponses"
 		A venir !

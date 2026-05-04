@@ -2206,7 +2206,7 @@
           <li class="md-nav__item">
   <a href="#ecrire-un-nouveau-fichier-csv" class="md-nav__link">
     <span class="md-ellipsis">
-      Ecrire un nouveau fichier csv
+      Écrire un nouveau fichier csv
     </span>
   </a>
   
@@ -4866,8 +4866,8 @@
 <li>un éditeur de jeux vidéo doit pouvoir stocker les informations relatives à chaque joueur et chaque élément du jeu ;</li>
 <li>etc …</li>
 </ul>
-<p>De tels traitements requierent souvent des logiciels de <strong>gestion de base de données (SGDB)</strong>, qui sont des programmes hautement spécialisés pour effectuer ce genre de tâches le plus efficacement et sûrement possible. L'étude plus détaillée des SGBD est au programme de terminale. Il est cependant facile de mettre en œuvre les opérations de bases sur certaines structures dans un langage de programmation comme Python.</p>
-<p>Il est en effet possible que de simples jeus de données soient <strong>organisés en tables</strong>. En informatique, une <strong>table de données</strong> correspondent à une liste de <strong>p-uplets</strong> nommés qui partagent les mêmes <strong>descripteurs</strong>. </p>
+<p>De tels traitements requièrent souvent des logiciels de <strong>gestion de base de données (SGDB)</strong>, qui sont des programmes hautement spécialisés pour effectuer ce genre de tâches le plus efficacement et surement possible. L'étude plus détaillée des SGBD est au programme de terminale. Il est cependant facile de mettre en œuvre les opérations de bases sur certaines structures dans un langage de programmation comme Python.</p>
+<p>Il est en effet possible que de simples jeus de données soient <strong>organisés en tables</strong>. En informatique, une <strong>table de données</strong> correspond à une liste de <strong>p-uplets</strong> nommés qui partagent les mêmes <strong>descripteurs</strong>. </p>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p>Par exemple on peut considérer la table suivante :</p>
@@ -4930,8 +4930,8 @@ Chaque enregistrement correspond donc à un <strong>dictionnaire</strong> en Pyt
 <div class="tabbed-block">
 <ol>
 <li>Quel est le symbole utilisé pour séparer les champs ?</li>
-<li>Combien de champs différents sont présents et quesl sont leurs descripteurs ?</li>
-<li>Il est aussi possible d'utiliser un <strong>tableur</strong> comme <code>LibreOffice.Calc</code> pour lire un fichier CSV. Vous pourrez constater que <code>LibreOffice.Calc</code> vous demande un certain nombre d'informations sur le contenu du fichier avant de l'ouvrir réellement. Quels intérêt voyez-vous à l'utilisation d'un tableur ? Quelles en sont les limites ?     </li>
+<li>Combien de champs différents sont présents et quels sont leurs descripteurs ?</li>
+<li>Il est aussi possible d'utiliser un <strong>tableur</strong> comme <code>LibreOffice.Calc</code> pour lire un fichier CSV. Vous pourrez constater que <code>LibreOffice.Calc</code> vous demande un certain nombre d'informations sur le contenu du fichier avant de l'ouvrir réellement. Quels intérêt voyez-vous à l'utilisation d'un tableur ? Quelles en sont les limites ?</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -4965,13 +4965,13 @@ Chaque enregistrement correspond donc à un <strong>dictionnaire</strong> en Pyt
         <span class="n">contenu</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">contenu</span><span class="p">)</span>
 </code></pre></div>
-<p>Le résultat est peu lisible, et difficilement exploitable ainsi. Mais il est tout à fait possible de reconstituer correctement chaque enregistrement, en utilisant des méthodes de chaines de caractères (<em>on se limite aux 5 premiers enregistrelments pour des raisons de lisbilités dans l'interpréteur</em>) :</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formatedContent</span><span class="o">=</span><span class="p">[]</span>
+<p>Le résultat est peu lisible, et difficilement exploitable ainsi. Mais il est tout à fait possible de reconstituer correctement chaque enregistrement, en utilisant des méthodes de chaines de caractères (<em>on se limite aux 5 premiers enregistrements pour des raisons de lisibilités dans l'interpréteur</em>) :</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formated_content</span><span class="o">=</span><span class="p">[]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">contenu</span><span class="p">[</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="p">:</span>
-        <span class="n">formatedContent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\r\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">';'</span><span class="p">))</span>
+        <span class="n">formated_content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\r\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">';'</span><span class="p">))</span>
 </code></pre></div>
 On peut alors récupérer les <strong>descripteurs</strong> :
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formatedContent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formated_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="p">[</span><span class="s1">'ISO'</span><span class="p">,</span>
  <span class="s1">'Name'</span><span class="p">,</span>
  <span class="s1">'Capital_Id'</span><span class="p">,</span>
@@ -4982,23 +4982,23 @@ On peut alors récupérer les <strong>descripteurs</strong> :
  <span class="s1">'Currency_Name'</span><span class="p">]</span>
 </code></pre></div>
 <p>Et le premier enregistrement :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formatedContent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">formated_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="p">[</span><span class="s1">'AD'</span><span class="p">,</span> <span class="s1">'Andorra'</span><span class="p">,</span> <span class="s1">'3041563'</span><span class="p">,</span> <span class="s1">'468'</span><span class="p">,</span> <span class="s1">'84000'</span><span class="p">,</span> <span class="s1">'EU'</span><span class="p">,</span> <span class="s1">'EUR'</span><span class="p">,</span> <span class="s1">'Euro'</span><span class="p">]</span>
 </code></pre></div>
-<p>Cependant cette solution n'est pas des plus efficace, car <strong>le lien entre descripteurs et valeurs n'est pas direct</strong>.</p>
+<p>Cependant, cette solution n'est pas efficace, car <strong>le lien entre descripteurs et valeurs n'est pas direct</strong>.</p>
 <h3 id="lire-un-fichier-csv-premiers-traitements">Lire un fichier CSV, premiers traitements</h3>
 <p><em>Dans la suite du cours, il sera nécessaire d'adapter au fur et à mesure un fichier python !</em></p>
-<p>Le module <code>csv</code>  est un des modules présents dans toute installation Python. Comme tout module, il est disponible par import direct :</p>
+<p>Le module <code>csv</code> est un des modules présents dans toute distribution standard Python. Comme tout module, il est disponible par import direct :</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 </code></pre></div>
-<p>Une fois importé, il offre de nombreuses possibilités, décrites dans <a href="https://docs.python.org/fr/3.6/library/csv.html" target="_blank">la doc Python</a>, dont la méthode <code>DictReader</code> qui permet der récupérer les enregistrements sous la forme d'un <mark class="critic"><strong>dictionnaire ordonné</strong></mark> :</p>
+<p>Une fois importé, il offre de nombreuses possibilités, décrites dans <a href="https://docs.python.org/fr/3.14/library/csv.html" target="_blank">la doc Python</a>, dont la méthode <code>DictReader</code> qui permet der récupérer les enregistrements sous la forme d'un <mark class="critic"><strong>dictionnaire ordonné</strong></mark> :</p>
 <div class="highlight"><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'countries.csv'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf8'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
     <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">";"</span><span class="p">)</span> <span class="c1"># L'objet reader est un itérable. On précise le delimiteur à l'appel de DictReader</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span> <span class="p">:</span>
         <span class="n">countries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </code></pre></div>
-<p>La variable <code>countries</code> fait donc référence à une liste de dictionnaires, ayant tous les mêmes descripteurs. Une fois le programme exécuté, on peut donc tester dans le shell les comandes suivantes :</p>
+<p>La variable <code>countries</code> fait donc référence à une <strong>liste de dictionnaires</strong>, ayant tous les <strong>mêmes descripteurs</strong> (c'est-à-dire les même clés). Une fois le programme exécuté, on peut donc tester dans l'invite de commande :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">countries</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">[{</span>    <span class="p">[{</span><span class="s1">'ISO'</span><span class="p">:</span> <span class="s1">'AD'</span><span class="p">,</span>
   <span class="s1">'Name'</span><span class="p">:</span> <span class="s1">'Andorra'</span><span class="p">,</span>
@@ -5041,7 +5041,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
   <span class="s1">'Currency_Code'</span><span class="p">:</span> <span class="s1">'XCD'</span><span class="p">,</span>
   <span class="s1">'Currency_Name'</span><span class="p">:</span> <span class="s1">'Dollar'</span><span class="p">}]</span>
 </code></pre></div>
-<p>On peut bien entendu connaître le nombre d'enregistrements contenus dans la variable countries :</p>
+<p>On peut bien entendu connaitre le nombre d'enregistrements contenus dans la variable <code>countries</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span>
 <span class="mi">243</span>
 </code></pre></div>
@@ -5160,7 +5160,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 </div>
 </div>
 <h3 id="les-donnees-numeriques">Les données numériques</h3>
-<p>Comment faire pour lister les pays dont la superficie est inférieure à 300 km² ? On pourrait penser à écrire une compréhension de liste identique à celles écrites précédfemment :</p>
+<p>Comment faire pour lister les pays dont la superficie est inférieure à 300 km² ? On pourrait penser à écrire une compréhension de liste identique à celles écrites précédemment :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
     <span class="o">---------------------------------------------------------------------------</span>
 
@@ -5176,7 +5176,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 
     <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">'&lt;'</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">between</span> <span class="n">instances</span> <span class="n">of</span> <span class="s1">'str'</span> <span class="ow">and</span> <span class="s1">'int'</span>
 </code></pre></div>
-<p>Mais nous avons un problème : les données extraites d'un fichier <code>csv</code> sont <mark class="critic"><strong>toutes sous la forme de chaines de caractères</strong></mark>. Il faut donc <strong>transtyper</strong> certaines données pour parvenir au résultat escompté. D'après les 5 premiers enregistrements, la superficie semble être sous la forme d'un nombre entier, donc on teste :</p>
+<p>Mais nous avons un problème : les données extraites d'un fichier <code>csv</code> sont <mark class="critic"><strong>toutes sous la forme de chaines de caractères</strong></mark>. Il faut donc <strong>trans-typer</strong> certaines données pour parvenir au résultat escompté. D'après les 5 premiers enregistrements, la superficie semble être sous la forme d'un nombre entier, donc on teste :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
 
 
@@ -5194,7 +5194,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 
     <span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">'6.5'</span>
 </code></pre></div>
-<p>Mais encore une fois un problème apparâit : <strong>les données ne sont pas toutes transtypables sous la forme entière</strong>, chose que nous ne pouvions savoir avant de traiter. Il faut donc les convertir en flottant :</p>
+<p>Mais encore une fois un problème apparait : <strong>les données ne sont pas toutes trans-typables sous la forme entière</strong>, chose que nous ne pouvions savoir avant de traiter. Il faut donc les convertir en flottant :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">]</span>
 <span class="p">[(</span><span class="s1">'Anguilla'</span><span class="p">,</span> <span class="s1">'102'</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">'American Samoa'</span><span class="p">,</span> <span class="s1">'199'</span><span class="p">),</span>
@@ -5253,7 +5253,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 </div>
 </div>
 <h3 id="trier-les-donnees">Trier les données</h3>
-<p>Les résultats precédents sont encore peu lisibles, il serait préférable que les données obtenues soient triées. On va utiliser la fonction <em>built-in</em> <code>sorted</code> :</p>
+<p>Les résultats précédents sont encore peu lisibles, il serait préférable que les données obtenues soient triées. On va utiliser la fonction <em>native</em> <code>sorted</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">])</span>
     <span class="p">[(</span><span class="s1">'American Samoa'</span><span class="p">,</span> <span class="s1">'199'</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">'Anguilla'</span><span class="p">,</span> <span class="s1">'102'</span><span class="p">),</span>
@@ -5287,7 +5287,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
      <span class="p">(</span><span class="s1">'Wallis and Futuna'</span><span class="p">,</span> <span class="s1">'274'</span><span class="p">)]</span>
 </code></pre></div>
 <p>On obtient bien une liste triée, mais par ordre alphabétique, ce qui est peu pertinent. En effet, pour trier une table, il faut préciser <strong>selon quels critères</strong>.</p>
-<p>On va donc passer un argument supplémentaire à la fonction <code>sorted</code> : une <mark class="critic"><strong>clé de tri</strong></mark>. Dans Python, la clé <strong>doit être une fonction</strong> permettant d'extraire la valeur à trier. On va donc créer une fonction qui va renvoyer la valeur voulue selon l'enrtegistrement passé en paramètre. Ici on va passer un <strong>tuple</strong> <code>(Nom;Superficie)</code> et on veut donc trier selon l'élément d'indice 1 :</p>
+<p>On va donc passer un argument supplémentaire à la fonction <code>sorted</code> : une <mark class="critic"><strong>clé de tri</strong></mark>. Dans Python, la clé <strong>doit être une fonction</strong> permettant d'extraire la valeur à trier. On va donc créer une fonction qui va renvoyer la valeur voulue selon l’enregistrement passé en paramètre. Ici on va passer un <strong>tuple</strong> <code>(Nom, Superficie)</code> et on veut donc trier selon l'élément d'indice 1 :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">areaKey</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </code></pre></div>
@@ -5327,7 +5327,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 <details class="tips">
 <summary>Fonctions anonymes</summary>
 <p><strong>Pour information</strong>, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une <strong>fonction anonyme</strong> :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="p">[(</span><span class="s1">'Vatican'</span><span class="p">,</span> <span class="s1">'0.44'</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">'Monaco'</span><span class="p">,</span> <span class="s1">'1.95'</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">'Gibraltar'</span><span class="p">,</span> <span class="s1">'6.5'</span><span class="p">),</span>
@@ -5360,7 +5360,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
      <span class="p">(</span><span class="s1">'Wallis and Futuna'</span><span class="p">,</span> <span class="s1">'274'</span><span class="p">)]</span>
 </code></pre></div>
 <p>Il est aussi possible d'inverser l'ordre - donc d'obtenir un résultat par ordre décroissant :</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">[(</span><span class="s1">'Wallis and Futuna'</span><span class="p">,</span> <span class="s1">'274'</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">'Cayman Islands'</span><span class="p">,</span> <span class="s1">'262'</span><span class="p">),</span>
      <span class="p">(</span><span class="s1">'Saint Kitts and Nevis'</span><span class="p">,</span> <span class="s1">'261'</span><span class="p">),</span>
@@ -5395,12 +5395,12 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 </details>
 <div class="admonition question">
 <p class="admonition-title">Exercice</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Réponses</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Réponses</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Ecrire un code qui donne la liste des 5 états ayant la plus grande superficie, sous la forme <code>(Nom, Superficie)</code></li>
-<li>Ecrire un code qui donne la liste des 5 états ayant la plus petite superficie parmi les 20 états ayant la plus grande population, sous la forme <code>(Nom, population)</code>.</li>
+<li>Écrire un code qui donne la liste des 5 états ayant la plus grande superficie, sous la forme <code>(Nom, Superficie)</code></li>
+<li>Écrire un code qui donne la liste des 5 états ayant la plus petite superficie parmi les 20 états ayant la plus grande population, sous la forme <code>(Nom, population)</code>.</li>
 <li>Écrire les instructions permettant de d’afficher les 8 pays possédant la plus grande densité de population, dans l’ordre inverse de densité, sous la forme <code>(Pays, population,superficie, densité)</code>.</li>
 </ol>
 </div>
@@ -5480,7 +5480,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 </div>
 </div>
 <h3 id="fusions-de-tables">Fusions de tables</h3>
-<p>Le fichier <code>cities.csv</code> téléchargeable <a href="../cities.csv" target="_blank">ici</a> contient une table des principales villes au niveayu mondial.</p>
+<p>Le fichier <code>cities.csv</code> téléchargeable <a href="../cities.csv" target="_blank">ici</a> contient une table des principales villes au niveau mondial.</p>
 <div class="admonition question">
 <p class="admonition-title">Exercice : exploration du fichier <code>cities.csv</code></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label><label for="__tabbed_5_2">Réponses</label></div>
@@ -5488,13 +5488,13 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 <div class="tabbed-block">
 <ol>
 <li>Quels sont les descripteurs de ce fichier ?</li>
-<li>Ecrire un code sauvant dans une variable <code>cities</code> les enregistrements du fichiers <code>cities.csv</code>.</li>
-<li>Ecrire une compréhension de liste donnant les villes françaises sous la forme <code>(Nom, population)</code></li>
+<li>Écrire un code sauvant dans une variable <code>cities</code> les enregistrements du fichiers <code>cities.csv</code>.</li>
+<li>Écrire une compréhension de liste donnant les villes françaises sous la forme <code>(Nom, population)</code></li>
 </ol>
 </div>
 <div class="tabbed-block">
 <ol>
-<li><code>Id;Name;Latitude;Longitude;Country_ISO;Population</code></li>
+<li>Id, Name, Latitude, Longitude, Country_ISO, Population</li>
 <li>
 <p>Le code :</p>
 <div class="highlight"><pre><span></span><code><span class="n">cities</span> <span class="o">=</span> <span class="p">[]</span>
@@ -5549,9 +5549,9 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>Ecrire une compréhension donnant les pays dont la population de la capitale est supérieure à 100 000.</li>
-<li>Ecrire un code donnant les pays dont la capitale possède une latitude supérieure à 60°.</li>
-<li>Ecrire un code donnant les pays dont la capitale possède une latitude inférieure à -50°.</li>
+<li>Écrire une compréhension donnant les pays dont la population de la capitale est supérieure à 100 000.</li>
+<li>Écrire un code donnant les pays dont la capitale possède une latitude supérieure à 60°.</li>
+<li>Écrire un code donnant les pays dont la capitale possède une latitude inférieure à -50°.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -5597,22 +5597,22 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 <p>En termes mathématiques, si <code>countries</code> est de taille <span class="arithmatex">\(n\)</span> et <code>cities</code> de taille <span class="arithmatex">\(m\)</span>, alors cet algorithme aura un coût temporel en <span class="arithmatex">\(\mathbb{O}(n\times m)\)</span>.</p>
 <p>Pour accélérer une telle fusion de liste, il peut-être judicieux de transformer ces listes en des dictionnaires, <strong>avec un choix judicieux de clés !</strong>. </p>
 <p>Par exemple, ici on pourrait transformer la liste <code>cities</code> en un dictionnaire dont la clé est l'<code>Id</code>, puis effectuer une boucle sur la liste.</p>
-<div class="highlight"><pre><span></span><code><span class="n">dicCities</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="n">dic_cities</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cities</span> <span class="p">:</span>
-        <span class="n">dicCities</span><span class="p">[</span><span class="n">ci</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ci</span>
+        <span class="n">dic_cities</span><span class="p">[</span><span class="n">ci</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ci</span>
 <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">co</span> <span class="ow">in</span> <span class="n">countries</span> <span class="p">:</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">])</span><span class="o">&gt;</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span> <span class="p">:</span>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">],</span> 
                         <span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">],</span> 
                         <span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">],</span> 
-                        <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Name'</span><span class="p">],</span> 
-                        <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Population'</span><span class="p">]))</span>     
+                        <span class="n">dic_cities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Name'</span><span class="p">],</span> 
+                        <span class="n">dic_cities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Population'</span><span class="p">]))</span>        
 </code></pre></div>
-<p>Certes le code paraît plus complexe. Mais en terme de coût temporel :</p>
+<p>Certes le code parait plus complexe. Mais en terme de coût temporel :</p>
 <ul>
 <li>Il n'y a qu'un seul parcours de la liste <code>cities</code> ;</li>
-<li>A chaque tour de boucle parcourant <code>countries</code>, on ne fera appel qu'à des actions en <strong>temps constant</strong> (en <span class="arithmatex">\(\mathbb{O}(1)\)</span>) sur le dictionnaire <code>dicCities</code>.</li>
+<li>A chaque tour de boucle parcourant <code>countries</code>, on ne fera appel qu'à des actions en <strong>temps constant</strong> (en <span class="arithmatex">\(\mathbb{O}(1)\)</span>) sur le dictionnaire <code>dic_cities</code>.</li>
 </ul>
 <p>En reprenant les données précédentes :</p>
 <ul>
@@ -5667,7 +5667,7 @@ On peut alors récupérer les <strong>descripteurs</strong> :
 <p>Oui, direz-vous, mais les ordinateurs actuels sont 1 million de fois plus rapides !</p>
 <p>Certes, mais alors combien de temps faudrait-il dans les deux cas pour traiter deux listes de 1 milliard de données chacune ?</p>
 </div>
-<h3 id="ecrire-un-nouveau-fichier-csv">Ecrire un nouveau fichier csv</h3>
+<h3 id="ecrire-un-nouveau-fichier-csv">Écrire un nouveau fichier csv</h3>
 <p>Après avoir extrait, modifié et fusionné des fichiers de type <code>.csv</code>, il est normal de vouloir en créer de nouveaux à partir de données existantes. Le module <code>csv</code> propose une méthode <code>.DictWriter</code> dont l'utilisation est la suivante : </p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"capitales.csv"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
     <span class="c1">##On definit les descripteurs du nouveau fichier</span>
@@ -5680,14 +5680,14 @@ On peut alors récupérer les <strong>descripteurs</strong> :
                         <span class="s1">'Population_pays'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">],</span>
                         <span class="s1">'Superficie'</span> <span class="p">:</span> <span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">],</span>
                         <span class="s1">'Densite'</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">co</span><span class="p">[</span><span class="s1">'Area'</span><span class="p">]),</span>
-                        <span class="s1">'Capitale'</span> <span class="p">:</span> <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Name'</span><span class="p">],</span>
-                        <span class="s1">'Population_Capitale'</span> <span class="p">:</span> <span class="n">dicCities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Population'</span><span class="p">]</span>
+                        <span class="s1">'Capitale'</span> <span class="p">:</span> <span class="n">dic_cities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Name'</span><span class="p">],</span>
+                        <span class="s1">'Population_Capitale'</span> <span class="p">:</span> <span class="n">dic_cities</span><span class="p">[</span><span class="n">co</span><span class="p">[</span><span class="s1">'Capital_Id'</span><span class="p">]][</span><span class="s1">'Population'</span><span class="p">]</span>
                         <span class="p">}</span>
                     <span class="p">)</span>
 </code></pre></div>
 <p>Ainsi, on a obtenu un nouveau fichier <code>capitale.csv</code>, contenant les informations demandées.</p>
 <h2 id="tp-explorer-imdb">TP : Explorer IMDB</h2>
-<p>Le TP pour l'année 2023-2024 se fait sur Capytale par <a href="https://capytale2.ac-paris.fr/web/c/4630-3627353" target="target">ce lien</a>.</p></div>
+<p>Le TP pour l'année 2025-2026 se fait sur Capytale par <a href="https://capytale2.ac-paris.fr/web/c/4630-3627353" target="target">ce lien</a>.</p></div>
 
 
 

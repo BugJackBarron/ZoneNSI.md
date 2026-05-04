@@ -9,9 +9,9 @@ Une des utilisations principales de l’informatique de nos jours est le **trait
 * un éditeur de jeux vidéo doit pouvoir stocker les informations relatives à chaque joueur et chaque élément du jeu ;
 * etc …
 
-De tels traitements requierent souvent des logiciels de **gestion de base de données (SGDB)**, qui sont des programmes hautement spécialisés pour effectuer ce genre de tâches le plus efficacement et sûrement possible. L'étude plus détaillée des SGBD est au programme de terminale. Il est cependant facile de mettre en œuvre les opérations de bases sur certaines structures dans un langage de programmation comme Python.
+De tels traitements requièrent souvent des logiciels de **gestion de base de données (SGDB)**, qui sont des programmes hautement spécialisés pour effectuer ce genre de tâches le plus efficacement et surement possible. L'étude plus détaillée des SGBD est au programme de terminale. Il est cependant facile de mettre en œuvre les opérations de bases sur certaines structures dans un langage de programmation comme Python.
 
-Il est en effet possible que de simples jeus de données soient **organisés en tables**. En informatique, une **table de données** correspondent à une liste de **p-uplets** nommés qui partagent les mêmes **descripteurs**. 
+Il est en effet possible que de simples jeus de données soient **organisés en tables**. En informatique, une **table de données** correspond à une liste de **p-uplets** nommés qui partagent les mêmes **descripteurs**. 
 
 !!! example "Exemple"
 	Par exemple on peut considérer la table suivante :
@@ -51,8 +51,8 @@ Nous allons dans la suite de cette partie utiliser un fichier nommé `countries.
 	=== "Enoncé"
 			
 		1. Quel est le symbole utilisé pour séparer les champs ?
-		2. Combien de champs différents sont présents et quesl sont leurs descripteurs ?
-		3. Il est aussi possible d'utiliser un **tableur** comme `LibreOffice.Calc` pour lire un fichier CSV. Vous pourrez constater que `LibreOffice.Calc` vous demande un certain nombre d'informations sur le contenu du fichier avant de l'ouvrir réellement. Quels intérêt voyez-vous à l'utilisation d'un tableur ? Quelles en sont les limites ?		
+		2. Combien de champs différents sont présents et quels sont leurs descripteurs ?
+		3. Il est aussi possible d'utiliser un **tableur** comme `LibreOffice.Calc` pour lire un fichier CSV. Vous pourrez constater que `LibreOffice.Calc` vous demande un certain nombre d'informations sur le contenu du fichier avant de l'ouvrir réellement. Quels intérêt voyez-vous à l'utilisation d'un tableur ? Quelles en sont les limites ?
 		
 	=== "Réponses"
 		1. C'est le point-virgule
@@ -82,17 +82,17 @@ Un fichier `csv` étant un fichier texte, il est tout à fait possible de lire l
 		print(contenu)
 ```
 
-Le résultat est peu lisible, et difficilement exploitable ainsi. Mais il est tout à fait possible de reconstituer correctement chaque enregistrement, en utilisant des méthodes de chaines de caractères (*on se limite aux 5 premiers enregistrelments pour des raisons de lisbilités dans l'interpréteur*) :
+Le résultat est peu lisible, et difficilement exploitable ainsi. Mais il est tout à fait possible de reconstituer correctement chaque enregistrement, en utilisant des méthodes de chaines de caractères (*on se limite aux 5 premiers enregistrements pour des raisons de lisibilités dans l'interpréteur*) :
 
 ```python
->>> formatedContent=[]
+>>> formated_content=[]
 >>> for line in contenu[ :5] :
-		formatedContent.append(line.replace('\r\n','').split(';'))
+		formated_content.append(line.replace('\r\n','').split(';'))
 ```
 On peut alors récupérer les **descripteurs** :
 
 ```python
->>> formatedContent[0]
+>>> formated_content[0]
 ['ISO',
  'Name',
  'Capital_Id',
@@ -107,23 +107,23 @@ Et le premier enregistrement :
 
 
 ```python
->>> formatedContent[1]
+>>> formated_content[1]
 ['AD', 'Andorra', '3041563', '468', '84000', 'EU', 'EUR', 'Euro']
 ```
 
-Cependant cette solution n'est pas des plus efficace, car **le lien entre descripteurs et valeurs n'est pas direct**.
+Cependant, cette solution n'est pas efficace, car **le lien entre descripteurs et valeurs n'est pas direct**.
 
 ### Lire un fichier CSV, premiers traitements
 
 *Dans la suite du cours, il sera nécessaire d'adapter au fur et à mesure un fichier python !*
 
-Le module `csv`  est un des modules présents dans toute installation Python. Comme tout module, il est disponible par import direct :
+Le module `csv` est un des modules présents dans toute distribution standard Python. Comme tout module, il est disponible par import direct :
 
 ``` python 
 import csv
 ```
 
-Une fois importé, il offre de nombreuses possibilités, décrites dans [la doc Python](https://docs.python.org/fr/3.6/library/csv.html){: target="_blank"}, dont la méthode `DictReader` qui permet der récupérer les enregistrements sous la forme d'un {==**dictionnaire ordonné**==} :
+Une fois importé, il offre de nombreuses possibilités, décrites dans [la doc Python](https://docs.python.org/fr/3.14/library/csv.html){: target="_blank"}, dont la méthode `DictReader` qui permet der récupérer les enregistrements sous la forme d'un {==**dictionnaire ordonné**==} :
 
 ```python 
 countries = []
@@ -133,7 +133,7 @@ with open('countries.csv', 'r', encoding='utf8', newline='') as file :
         countries.append(line)
 ```
 
-La variable `countries` fait donc référence à une liste de dictionnaires, ayant tous les mêmes descripteurs. Une fois le programme exécuté, on peut donc tester dans le shell les comandes suivantes :
+La variable `countries` fait donc référence à une **liste de dictionnaires**, ayant tous les **mêmes descripteurs** (c'est-à-dire les même clés). Une fois le programme exécuté, on peut donc tester dans l'invite de commande :
 
 
 ```python
@@ -181,7 +181,7 @@ La variable `countries` fait donc référence à une liste de dictionnaires, aya
 
 ```
 
-On peut bien entendu connaître le nombre d'enregistrements contenus dans la variable countries :
+On peut bien entendu connaitre le nombre d'enregistrements contenus dans la variable `countries` :
 
 ```python
 >>> len(countries)
@@ -300,7 +300,7 @@ On peut alors interroger cette variable à partir des descripteurs. Par exemple,
 
 ### Les données numériques 
 
-Comment faire pour lister les pays dont la superficie est inférieure à 300 km² ? On pourrait penser à écrire une compréhension de liste identique à celles écrites précédfemment :
+Comment faire pour lister les pays dont la superficie est inférieure à 300 km² ? On pourrait penser à écrire une compréhension de liste identique à celles écrites précédemment :
 
 
 ```python
@@ -322,7 +322,7 @@ Comment faire pour lister les pays dont la superficie est inférieure à 300 km�
 ```
     
 
-Mais nous avons un problème : les données extraites d'un fichier `csv` sont {==**toutes sous la forme de chaines de caractères**==}. Il faut donc **transtyper** certaines données pour parvenir au résultat escompté. D'après les 5 premiers enregistrements, la superficie semble être sous la forme d'un nombre entier, donc on teste :
+Mais nous avons un problème : les données extraites d'un fichier `csv` sont {==**toutes sous la forme de chaines de caractères**==}. Il faut donc **trans-typer** certaines données pour parvenir au résultat escompté. D'après les 5 premiers enregistrements, la superficie semble être sous la forme d'un nombre entier, donc on teste :
 
 ```python
 >>> [(c['Name'],c['Area']) for c in countries if int(c['Area'])<300]
@@ -343,7 +343,7 @@ Mais nous avons un problème : les données extraites d'un fichier `csv` sont {=
     ValueError: invalid literal for int() with base 10: '6.5'
 ```
 
-Mais encore une fois un problème apparâit : **les données ne sont pas toutes transtypables sous la forme entière**, chose que nous ne pouvions savoir avant de traiter. Il faut donc les convertir en flottant :
+Mais encore une fois un problème apparait : **les données ne sont pas toutes trans-typables sous la forme entière**, chose que nous ne pouvions savoir avant de traiter. Il faut donc les convertir en flottant :
 
 ```python
 >>> [(c['Name'],c['Area']) for c in countries if float(c['Area'])<300]
@@ -403,7 +403,7 @@ Mais encore une fois un problème apparâit : **les données ne sont pas toutes 
 
 ### Trier les données
 
-Les résultats precédents sont encore peu lisibles, il serait préférable que les données obtenues soient triées. On va utiliser la fonction *built-in* `sorted` :
+Les résultats précédents sont encore peu lisibles, il serait préférable que les données obtenues soient triées. On va utiliser la fonction *native* `sorted` :
 
 ```python
 >>> sorted([(c['Name'],c['Area']) for c in countries if float(c['Area'])<300])
@@ -441,7 +441,7 @@ Les résultats precédents sont encore peu lisibles, il serait préférable que 
 
 On obtient bien une liste triée, mais par ordre alphabétique, ce qui est peu pertinent. En effet, pour trier une table, il faut préciser **selon quels critères**.
 
-On va donc passer un argument supplémentaire à la fonction `sorted` : une {==**clé de tri**==}. Dans Python, la clé **doit être une fonction** permettant d'extraire la valeur à trier. On va donc créer une fonction qui va renvoyer la valeur voulue selon l'enrtegistrement passé en paramètre. Ici on va passer un **tuple** `(Nom;Superficie)` et on veut donc trier selon l'élément d'indice 1 :
+On va donc passer un argument supplémentaire à la fonction `sorted` : une {==**clé de tri**==}. Dans Python, la clé **doit être une fonction** permettant d'extraire la valeur à trier. On va donc créer une fonction qui va renvoyer la valeur voulue selon l’enregistrement passé en paramètre. Ici on va passer un **tuple** `(Nom, Superficie)` et on veut donc trier selon l'élément d'indice 1 :
 
 ```python
 def areaKey(c):
@@ -490,7 +490,7 @@ Puis on va passer cette fonction à la fonction `sorted` :
 	**Pour information**, il est possible de ne pas déclarer la fonction de tri avant de l'utiliser, en utilisant une **fonction anonyme** :
 
 	```python
-	>>> sorted([(c['Name'],c['Area']) for c in countries if float(c['Area'])<300],key = lambda x : float(x[1]))
+	>>> sorted([(c['Name'],c['Area']) for c in countries if float(c['Area'])<300], key = lambda x : float(x[1]))
 	[('Vatican', '0.44'),
 		 ('Monaco', '1.95'),
 		 ('Gibraltar', '6.5'),
@@ -527,7 +527,7 @@ Puis on va passer cette fonction à la fonction `sorted` :
 
 
 	```python
-	>>> sorted([(c['Name'],c['Area']) for c in countries if float(c['Area'])<300],key = lambda x : float(x[1]),reverse=True)
+	>>> sorted([(c['Name'],c['Area']) for c in countries if float(c['Area'])<300], key = lambda x : float(x[1]),reverse=True)
 	[('Wallis and Futuna', '274'),
 		 ('Cayman Islands', '262'),
 		 ('Saint Kitts and Nevis', '261'),
@@ -562,10 +562,10 @@ Puis on va passer cette fonction à la fonction `sorted` :
 
 !!! question "Exercice"
 
-	=== "Enoncé"
+	=== "Énoncé"
 
-		1. Ecrire un code qui donne la liste des 5 états ayant la plus grande superficie, sous la forme `(Nom, Superficie)`
-		2. Ecrire un code qui donne la liste des 5 états ayant la plus petite superficie parmi les 20 états ayant la plus grande population, sous la forme `(Nom, population)`.
+		1. Écrire un code qui donne la liste des 5 états ayant la plus grande superficie, sous la forme `(Nom, Superficie)`
+		2. Écrire un code qui donne la liste des 5 états ayant la plus petite superficie parmi les 20 états ayant la plus grande population, sous la forme `(Nom, population)`.
 		3. Écrire les instructions permettant de d’afficher les 8 pays possédant la plus grande densité de population, dans l’ordre inverse de densité, sous la forme `(Pays, population,superficie, densité)`.
 		
 	=== "Réponses"
@@ -643,19 +643,19 @@ Puis on va passer cette fonction à la fonction `sorted` :
 
 ### Fusions de tables
 
-Le fichier `cities.csv` téléchargeable [ici](cities.csv){: target="_blank"} contient une table des principales villes au niveayu mondial.
+Le fichier `cities.csv` téléchargeable [ici](cities.csv){: target="_blank"} contient une table des principales villes au niveau mondial.
 
 !!! question "Exercice : exploration du fichier `cities.csv`"
 
 	=== "Enoncé"
 
 		1. Quels sont les descripteurs de ce fichier ?
-		2. Ecrire un code sauvant dans une variable `cities` les enregistrements du fichiers `cities.csv`.
-		3. Ecrire une compréhension de liste donnant les villes françaises sous la forme `(Nom, population)`
+		2. Écrire un code sauvant dans une variable `cities` les enregistrements du fichiers `cities.csv`.
+		3. Écrire une compréhension de liste donnant les villes françaises sous la forme `(Nom, population)`
 		
 	=== "Réponses"
 	
-		1. `Id;Name;Latitude;Longitude;Country_ISO;Population`
+		1. Id, Name, Latitude, Longitude, Country_ISO, Population
 		2. Le code :
 
 			```python
@@ -713,9 +713,9 @@ Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichi
 
 	=== "Enoncé"
 
-		1. Ecrire une compréhension donnant les pays dont la population de la capitale est supérieure à 100 000.
-		2. Ecrire un code donnant les pays dont la capitale possède une latitude supérieure à 60°.
-		3. Ecrire un code donnant les pays dont la capitale possède une latitude inférieure à -50°.
+		1. Écrire une compréhension donnant les pays dont la population de la capitale est supérieure à 100 000.
+		2. Écrire un code donnant les pays dont la capitale possède une latitude supérieure à 60°.
+		3. Écrire un code donnant les pays dont la capitale possède une latitude inférieure à -50°.
 
 	=== "Réponses"
 
@@ -765,23 +765,23 @@ Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichi
 	Par exemple, ici on pourrait transformer la liste `cities` en un dictionnaire dont la clé est l'`Id`, puis effectuer une boucle sur la liste.
 	
 	```` python
-	dicCities = {}
+	dic_cities = {}
 	for ci in cities :
-			dicCities[ci['Id']] = ci
+			dic_cities[ci['Id']] = ci
 	result = []
 	for co in countries :
 		if int(co['Population'])> 50*10**6 :
 			result.append([(co['Name'], 
 							co['Population'], 
 							co['Area'], 
-							dicCities[co['Capital_Id']]['Name'], 
-							dicCities[co['Capital_Id']]['Population']))		
+							dic_cities[co['Capital_Id']]['Name'], 
+							dic_cities[co['Capital_Id']]['Population']))		
 	````
 
-	Certes le code paraît plus complexe. Mais en terme de coût temporel :
+	Certes le code parait plus complexe. Mais en terme de coût temporel :
 	
 	* Il n'y a qu'un seul parcours de la liste `cities` ;
-	* A chaque tour de boucle parcourant `countries`, on ne fera appel qu'à des actions en **temps constant** (en $\mathbb{O}(1)$) sur le dictionnaire `dicCities`.
+	* A chaque tour de boucle parcourant `countries`, on ne fera appel qu'à des actions en **temps constant** (en $\mathbb{O}(1)$) sur le dictionnaire `dic_cities`.
 	
 	En reprenant les données précédentes :
 	
@@ -807,7 +807,7 @@ Un des descripteurs est commun à la fois au fichier `countries.csv` et au fichi
 	
 	Certes, mais alors combien de temps faudrait-il dans les deux cas pour traiter deux listes de 1 milliard de données chacune ?
 
-### Ecrire un nouveau fichier csv
+### Écrire un nouveau fichier csv
 
 Après avoir extrait, modifié et fusionné des fichiers de type `.csv`, il est normal de vouloir en créer de nouveaux à partir de données existantes. Le module `csv` propose une méthode `.DictWriter` dont l'utilisation est la suivante : 
 
@@ -823,13 +823,14 @@ with open("capitales.csv", "w", encoding="utf8",newline="") as file :
 						'Population_pays' : co['Population'],
 						'Superficie' : co['Area'],
 						'Densite' : float(co['Population'])/float(co['Area']),
-						'Capitale' : dicCities[co['Capital_Id']]['Name'],
-						'Population_Capitale' : dicCities[co['Capital_Id']]['Population']
+						'Capitale' : dic_cities[co['Capital_Id']]['Name'],
+						'Population_Capitale' : dic_cities[co['Capital_Id']]['Population']
 						}
 					)
 ```
 
 Ainsi, on a obtenu un nouveau fichier `capitale.csv`, contenant les informations demandées.
+
 ## TP : Explorer IMDB
 
-Le TP pour l'année 2023-2024 se fait sur Capytale par [ce lien](https://capytale2.ac-paris.fr/web/c/4630-3627353){: target = "_blank"}.
+Le TP pour l'année 2025-2026 se fait sur Capytale par [ce lien](https://capytale2.ac-paris.fr/web/c/4630-3627353){: target = "_blank"}.
