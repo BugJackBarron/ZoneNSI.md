@@ -174,8 +174,7 @@ Il existe une version simplifiée, développée par Nigel Horspool en 1980, que 
 		"""Renvoie un dictionnaire avec pour clé la lettre et pour valeur le décalage"""
 		n = len(mot)
 		décalages = {}
-		for i, letter in enumerate(...):
-			décalages[letter] = ...
+		...
 		return décalages
 
 	# tests
@@ -186,10 +185,7 @@ Il existe une version simplifiée, développée par Nigel Horspool en 1980, que 
 
 !!! question "Recherche Boyer-Moore-Horspool"
 
-	Compléter la fonction suivante (on se servira des assertions comme tests) :
-	
-	
-	{{ IDEv('Exo_BMH') }}
+	Compléter la fonction suivante (on se servira des assertions comme tests) :	
 	
 	```` python
 	def recherche_BMH(mot : str, chaine : str) -> bool :
