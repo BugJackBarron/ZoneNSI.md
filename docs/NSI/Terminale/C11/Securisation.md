@@ -11,7 +11,7 @@ Que se passe-t-il lorsque nous tapons dans la barre d'adresse de Firefox une URL
 2. Le navigateur effectue une résolution de nom, soit en se connectant à un serveur `DNS`, soit dans son propre cache `DNS`, ce qui lui donne l'adresse `IP` de la ressource cherchée.
 3. Le navigateur peut établir une connexion `TCP` vers l'adresse `IP`, via un [handshaking en trois temps](https://fr.wikipedia.org/wiki/Three-way_handshake#Fonctionnement){: target="_blank"}, comme montré sur l'image ci-dessous :
 
-    ![TCP Handshake](https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tcp_normal_2.png/800px-Tcp_normal_2.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
+    ![TCP Handshake](https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tcp_normal_2.png/960px-Tcp_normal_2.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;"}
 
 4. Une fois la connexion établie, client et serveur échangent des données en utilisant le protocole `HTTP`, tout en découpant les données en paquets `TCP`, eux-mêmes encapsulés dans des paquets `IP` (on pourra se rappeler du modèle `OSI`).
 
@@ -419,7 +419,7 @@ Le protocole d'échange de clé de Diffie-Hellman propose donc une manière él�
 
     * $n = p\times q$
     * $e$ un nombre premier avec $(p-1)(q-1)$
-    * *$d$ un nombre tel que $ed \equiv 1 \pmod {(p-1)(q-1)}$ (qui peut être déterminé à l'aide de l'algorithme d'Euclide étendu)
+    * $d$ un nombre tel que $ed \equiv 1 \pmod {(p-1)(q-1)}$ (qui peut être déterminé à l'aide de l'algorithme d'Euclide étendu)
 
     Une fois ces nombres créés, Alice possède :
 
@@ -474,7 +474,7 @@ On retrouve le même système dans les communications sur Internet, où certains
 
     Imaginons que Bob veuille s'assurer que c'est bien Alice avec qui il va entrer en communication, via son site web.
 
-    1. Alice fait appel à Thierry, un tiers de confiance. Thierry vérifie qu'ALice est bien la propriétaire du site, en constant qu'elle peut administrer le site, ou bien par l'intermédiaire de factures montrant qu'elle possède le nom de domaine ainsi que le serveur qui héberge le site. Une fois ces vérifications effectuées, Thierry crée un certificat avec sa clé privée et la clé publique d'Alice :
+    1. Alice fait appel à Thierry, un tiers de confiance. Thierry vérifie qu'ALice est bien la propriétaire du site, en constatant qu'elle peut administrer le site, ou bien par l'intermédiaire de factures montrant qu'elle possède le nom de domaine ainsi que le serveur qui héberge le site. Une fois ces vérifications effectuées, Thierry crée un certificat avec sa clé privée et la clé publique d'Alice :
 
         $$ c = K_T^{pri}(K_A^{pub})$$
 
