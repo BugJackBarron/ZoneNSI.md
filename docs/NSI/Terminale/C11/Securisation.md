@@ -454,6 +454,8 @@ D'autre part, les propriétés des clés font que :
 
     Si Bob veut envoyer un message secret à Alice, les deux procèdent comme suit :
 
+    ![Cryptographie asymétrique](https://upload.wikimedia.org/wikipedia/commons/4/47/Chiffrement_asym%C3%A9trique.png){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;"}
+
     1. Alice met à disposition sa clé publique $A^{pub}$, en la mettant par exemple sur son site web ou en l'envoyant par mail.
     2. Bob chiffre son message $m$ avec la clé publique d'Alice et envoie le résultat $A^{pub}(m)$ à Alice.
     3. Alice applique sa clé privée sur le message reçu $A^{pri}\left(A^{pub}(m)\right) = m$, et déchiffre ainsi le message de Bob.
