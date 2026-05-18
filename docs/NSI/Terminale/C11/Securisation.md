@@ -498,7 +498,7 @@ Une {==**autorité de certification**==} (ou AC), est une entité habilitée à 
 * les associations (comme *Let's Encrypt*, que nous croiserons plus tard);
 * les entités étatiques.
 
-Leur rôle est d'attester par l'intermédiaire de certificat qu'une entité est bien ce qu'elle prétend être. Elles sont soumises à des audits réguliers et pointilleux, dont les résultats sont publics, et il existe une hiérarchie des AC. En effet, une AC doit être elle-même certifiée par une autre AC, ce qui crée un arbre de certification jusqu'à des AC appelées **AC racines**. La fondation Mozilla reconnait à ce jour (17 Mai 2024) [142 AC racines](https://ccadb.my.salesforce-sites.com/mozilla/CACertificatesInFirefoxReport){target="_blank"}. 
+Leur rôle est d'attester par l'intermédiaire de certificat qu'une entité est bien ce qu'elle prétend être. Elles sont soumises à des audits réguliers et pointilleux, dont les résultats sont publics, et il existe une hiérarchie des AC. En effet, une AC doit être elle-même certifiée par une autre AC, ce qui crée un arbre de certification jusqu'à des AC appelées **AC racines**. La fondation Mozilla reconnait à ce jour (18 Mai 2026) [120 AC racines](https://ccadb.my.salesforce-sites.com/mozilla/CACertificatesInFirefoxReport){target="_blank"}. 
 
 Le club des AC est donc très fermé, les OS et navigateurs ayant chacun les clés publiques des AC qu'ils reconnaissent (au passage, Google, Microsoft et Apple ne reconnaissent pas exactement les mêmes AC que Mozilla).
 
@@ -525,8 +525,8 @@ On retrouve la construction présentée précédemment, mais avec quelques point
             [...]
             Issuer: C = US, O = Let's Encrypt, CN = R3
             Validity
-                Not Before: May 15 22:38:03 2023 GMT
-                Not After : Aug 13 22:38:02 2023 GMT
+                Not Before: Sun, 26 Apr 2026 11:58:32 GMT
+                Not After: Sat, 25 Jul 2026 11:58:31 GMT 
             Subject: CN = zonensi.fr
             Subject Public Key Info:
                 Public Key Algorithm: rsaEncryption
@@ -535,7 +535,7 @@ On retrouve la construction présentée précédemment, mais avec quelques point
                         00:ae:43:ac:a5:ae:80:f4:38:4c:52:32:f7:...
                     Exponent: 65537 (0x10001)
             [...]
-        Signature Algorithm: sha256WithRSAEncryption
+        Signature Algorithm: ECDSA with SHA-384
         Signature Value:
             59:17:d1:ff:e2:2f:1f:a1:e5:2f:71:b6:e3:4a:4d:e4:...
     ```
