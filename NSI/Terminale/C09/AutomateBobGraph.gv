@@ -1,0 +1,16 @@
+digraph G { graph[bgcolor=slategray3]
+
+    0
+    1
+    2
+    fin
+    
+    0 -> 1 [label="b"]
+    0:w -> 0:w [xlabel = "tout sauf b"]
+    1 -> 2 [label = "o"]
+    1 -> 0 [label = "tout sauf o"]
+    2 -> fin [label = "b"]
+    2 -> 0 [xlabel = "tout sauf b"]
+    
+    {rank=same; 0;1;2;fin}
+}

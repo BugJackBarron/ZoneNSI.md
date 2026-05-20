@@ -1,0 +1,69 @@
+1. Question 1
+	a) 
+		i) 14x8 = 112 bits
+		ii) 14 octets
+	b) 
+		i) sur 4 bits on code 2^4 =16 informations différentes, alors qu'avec 3 on ne code que 2^3 = 8 informations différentes. Donc il faut au minimum 4 bits pour coder 10 informations.
+		ii) 
+			0000 =>'a'
+			0001 => 'c'
+			0010 => 'e'
+			0011 => 'i'
+			0100 => 'l'
+			0101 => 'n'
+			0110 => 'p'
+			0111 => 's'
+			1000 => 't'
+			1001 => ' '
+		iii) 4 * 14 = 56 bits
+
+2. Question 2
+	a) "nsi" => 0011 011 11
+	b) 100011011000011 => 100 011 011 0000 11 => "essai"
+	c) "specialite nsi " => 1x4+1x4+2x3+3x2+1x4+1x4+1x4+2x3+1x4+1x3 = 45 bits  Soit un bien meilleur codage que le codage utf-8 ou le codage sur 4 bits.
+	
+3. Huffman
+	a) 8 / 6 / 14
+	b) 9 fusions
+	c) tree1 = Noeud(3, 'o')
+	tree2 = Noeud(1,'x')
+		  (none,4)
+		  /		\
+		 /		 \
+		/		  \
+	('o',3)		('x',1)
+	
+	d) 
+	def fusionner(G, D) :
+		return Noeud(G.poids+D.poids, gauche = G, droit = D)
+		
+4. Question 4
+	a) return T[0]
+	b) A chque étape, on extrait et supprime deux éléments de la liste liste_arbres, et on en rajoute 1.
+	Donc à chaque tour de boucle, len(T) => len(T)-2+1 = len(T) -1. Donc à chque tour de boucle, la longueur du tableau diminue de 1, et elle finira par atteindre 1, ce qui arrête la boucle while. L'algorithme se termine donc.
+	c)
+	
+	def extraire_arbre_poids_min ( liste_arbres ):
+		poids_mini = liste_arbres[0]. poids
+		indice_mini = 0
+		for i in range(len(liste_arbres)) :
+			if liste_arbres[i].poids< poids_mini :
+				poids_mini = liste_arbres[i].poids
+				indice_mini = i
+		arbre_extrait = liste_arbres.pop( indice_mini )
+		return arbre extrait
+	
+5. Question 5
+	a) 't' => 0101 et 'i' => 11
+	b) 
+	def construire codes (A, chemin, dico ):
+		if A.est_feuille() :
+			dico [A. caractere ] = chemin
+		else :
+			construire codes (A.gauche, chemin + "0", dico)
+			construire codes (A.droit , chemin + "1", dico)
+	
+	
+	
+
+	

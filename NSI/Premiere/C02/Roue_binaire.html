@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Roue numérique</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link href="Roue_Binaire.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- C'est ici que vous mettrez votre contenu  -->
+	<div class="container">
+		<div class="texte">Ecriture décimale</div>
+	</div>
+	<div class="container" id="roue_dec">		
+		
+		<span class="digit" id ="dec_centaines">0</span>
+		<span class="digit" id ="dec_dizaines">0</span>
+		<span class="digit" id="dec_unites">0</span>
+		
+	</div>
+	<div class="container">
+	<span class="roll" id="rolldown">
+		-
+	</span>
+	
+	<span>
+		<div id="set">
+			<input type="number" id="setSpeed" name="setSpeed"
+			min="0" max="300" value="100" step ="10"/>
+		</div>
+		<div id="reset">
+			Reset
+		</div>
+	</span>
+	<span class="roll" id="rollup">
+		+
+	</span>
+	
+	</div>
+	<div class="container">
+		<div class="texte" id="bintxt">Ecriture binaire</div>
+	</div>
+	<div class="container" id="roue_bin">	
+	
+		<span class="digit" id ="bin_7">0</span>
+		<span class="digit" id ="bin_6">0</span>
+		<span class="digit" id ="bin_5">0</span>
+		<span class="digit" id ="bin_4">0</span>
+		<span class="digit" id ="bin_3">0</span>
+		<span class="digit" id ="bin_2">0</span>
+		<span class="digit" id ="bin_1">0</span>
+		<span class="digit" id ="bin_0">0</span>
+
+	</div>
+	<div class="container">
+		<div class="texte" id="hexatxt">Ecriture hexadécimale</div>
+	</div>
+	<div class="container" id="roue_hexa">
+		
+		<span class="digit" id ="hexa_1">0</span>
+		<span class="digit" id ="hexa_0">0</span>
+
+	</div>
+	<script src="Roue_binaire.js"></script>
+  </body>
+
+  
+</html>

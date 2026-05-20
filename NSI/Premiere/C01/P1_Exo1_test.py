@@ -1,0 +1,1 @@
+benchmark = ['valeur == 15', 'valeur*4 == 60']

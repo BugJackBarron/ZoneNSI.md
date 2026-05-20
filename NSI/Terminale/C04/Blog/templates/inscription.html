@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titre %}
+Inscription
+{% endblock %}
+
+{% block contenu %}
+
+<h2>Inscription</h2>
+<form action="{{ url_for('check_signin') }}" method="post">
+    <label for="pseudo">Pseudo:</label><br>
+    <input type="text" id="pseudo" name="pseudo" required><br><br>
+    <label for="password">Mot de passe:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <label for="password">Vérification :</label><br>
+    <input type="password" id="password2" name="password2" required><br><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" required><br><br>
+    <input type="submit" value="Se connecter">
+</form>
+{% endblock %}

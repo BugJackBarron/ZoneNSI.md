@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contenu %}
+<h2>Choisissez un utilisateur :</h2>
+{% if liste %}
+<ul>
+    {% for user in liste %}
+    <li><a href="{{ url_for('utilisateur', numero = user[0]) }}">{{ user[1] }}</a> ({{ user[2] }}) 
+        {% if user[3] == 0 %}
+         admin 
+        {% else %}
+        user
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
