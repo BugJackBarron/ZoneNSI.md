@@ -96,3 +96,5 @@ endwhile (est entier entre 1 et 10)
 stop
 @enduml
 ```
+
+Test pour Tour
