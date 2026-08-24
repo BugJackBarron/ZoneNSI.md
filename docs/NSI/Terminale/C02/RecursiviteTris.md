@@ -93,9 +93,9 @@
 	La principale difficulté dans cet algorithme est de créer une fonction fusionnant les deux tableaux triés. 
 	
 	1. Avant commencer, regardez la vidéo suivante :
-	<p align="center">
-	<iframe src="//video.toutatice.fr/video/24064-fusion-de-deux-tableaux-tries/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
-	</p>
+	
+		![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/157843/720p.mp4)
+
 	2. Quels sont les liens entre $i$, $j$ et $k$ ? Quelles conditions ces variables compteur doivent-elles respecter ?
 	3. Quel type de boucle allons nous utiliser ?
 	4. Que se passe-t-il dans la vidéo quand $j$ atteint la valeur $3$ ?
@@ -120,9 +120,9 @@
 	Une fois la fonction `fusion` codée, l'algorithme de tri par fusion est simple :
 	
 	1. Regardez la vidéo suivante :
-	<p align="center">
-	<iframe src="//video.toutatice.fr/video/24034-tri-fusion-recursif/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
-	</p>
+
+		![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/136452/720p.mp4)
+		
 	2. Quel est le cas de base ?
 	3. Quel est le cas récursif ?
 	4. Implémenter une fonction `triFusion(t)` qui prend en argument un tableau et renvoie une copie triée de ce tableau.
