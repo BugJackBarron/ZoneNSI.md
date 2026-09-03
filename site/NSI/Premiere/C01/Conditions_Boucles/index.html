@@ -5113,8 +5113,9 @@
 <div class="tabbed-block">
 <p>On considère un objet de type <code>int</code> dont le nom est <code>nb</code>. Que faut-il écrire pour :</p>
 <ol>
-<li>Le nombre <code>nb</code> est égal à <code>5</code> ou <code>7</code> ?</li>
-<li>Le nombre <code>nb</code> est supérieur ou égal à <code>5</code> et strictement inférieur à <code>7</code> ?</li>
+<li>Savoir si le nombre <code>nb</code> est égal à <code>5</code> ou à <code>7</code> ?</li>
+<li>Savoir si le nombre <code>nb</code> est supérieur ou égal à <code>5</code> et strictement inférieur à <code>7</code> ?</li>
+<li>Savoir si le nombre <code>nb</code> est supérieur ou égal à <code>7</code> ou strictement inférieur à <code>11</code> ?</li>
 <li>Savoir si le nombre <code>nb</code> est un nombre pair et strictement supérieur à 50 ?</li>
 <li>Savoir si le nombre <code>nb</code> est un nombre pair ou un multiple de 3 ?</li>
 <li>Savoir si le nombre <code>nb</code> appartient à l'intervalle <span class="arithmatex">\([-13 ; 25]\)</span>  ?</li>
@@ -5124,11 +5125,12 @@
 <div class="tabbed-block">
 <ol>
 <li><code>nb == 5 or nb ==7</code></li>
-<li><code>nb&gt;= 5 and nb &lt;7</code></li>
-<li><code>nb%2 == 0 and nb &gt; 50</code></li>
-<li><code>nb%2 == 0 or nb%3 == 0</code></li>
-<li><code>nb &gt;= -13 and nb &lt;= 25</code> (et en python, on a aussi la possibilité d'écrire <code>13&lt;= nb &lt;= 25</code>)</li>
-<li><code>nb&lt;13 or nb &gt;25</code> ou <code>not(nb &gt;= -13 and nb &lt;= 25)</code> ou en python  <code>not(13&lt;= nb &lt;= 25)</code></li>
+<li><code>nb &gt;= 5 and nb &lt; 7</code></li>
+<li><code>nb &gt;= 7 or nb &lt; 11</code></li>
+<li><code>nb % 2 == 0 and nb &gt; 50</code></li>
+<li><code>nb % 2 == 0 or nb%3 == 0</code></li>
+<li><code>nb &gt;= -13 and nb &lt;= 25</code> (et en python, on a aussi la possibilité d'écrire <code>13 &lt;= nb &lt;= 25</code>)</li>
+<li><code>nb &lt; 13 or nb &gt; 25</code> ou <code>not( nb &gt;= -13 and nb &lt;= 25)</code> ou en python  <code>not( 13&lt;= nb &lt;= 25)</code></li>
 </ol>
 <p>Vous pouvez tester les conditions ci-dessus en exécutant le code suivant, qui crée un objet <code>int</code> aléatoire entre -20 et 70, puis en vérifiant en affichant la valeur de <code>nb</code></p>
 <p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_f5c11e51566d59d074350a5380642cebd0d6a565" class="comment">###</span><div class="interior_wrapper"><div id="editor_f5c11e51566d59d074350a5380642cebd0d6a565"></div></div><div id="term_editor_f5c11e51566d59d074350a5380642cebd0d6a565" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_f5c11e51566d59d074350a5380642cebd0d6a565","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_f5c11e51566d59d074350a5380642cebd0d6a565","P2_Code1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_f5c11e51566d59d074350a5380642cebd0d6a565').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_f5c11e51566d59d074350a5380642cebd0d6a565" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("f5c11e51566d59d074350a5380642cebd0d6a565")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("f5c11e51566d59d074350a5380642cebd0d6a565")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_f5c11e51566d59d074350a5380642cebd0d6a565" class="hide">from random import randintbksl-nlbksl-nlnb = randint(-20, 70)bksl-nl</span><span id="corr_content_editor_f5c11e51566d59d074350a5380642cebd0d6a565" class="hide" data-strudel=""></span>

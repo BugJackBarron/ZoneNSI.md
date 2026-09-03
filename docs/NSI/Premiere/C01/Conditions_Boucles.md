@@ -226,8 +226,9 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la {==**logiq
     === "Énoncé"
         On considère un objet de type `int` dont le nom est `nb`. Que faut-il écrire pour :
 
-        1. Le nombre ``nb`` est égal à `5` ou `7` ?
-        1. Le nombre ``nb`` est supérieur ou égal à `5` et strictement inférieur à `7` ?
+        1. Savoir si le nombre ``nb`` est égal à `5` ou à `7` ?
+        1. Savoir si le nombre ``nb`` est supérieur ou égal à `5` et strictement inférieur à `7` ?
+        1. Savoir si le nombre ``nb`` est supérieur ou égal à `7` ou strictement inférieur à `11` ?
         1. Savoir si le nombre ``nb`` est un nombre pair et strictement supérieur à 50 ?
         2. Savoir si le nombre ``nb`` est un nombre pair ou un multiple de 3 ?
         3. Savoir si le nombre `nb` appartient à l'intervalle $[-13 ; 25]$  ?
@@ -236,11 +237,12 @@ Pour combiner ainsi plusieurs conditions ensembles, on va utiliser la {==**logiq
     === "Solution"
 
         1. `nb == 5 or nb ==7`
-        1. `nb>= 5 and nb <7`
-        1. `nb%2 == 0 and nb > 50`
-        2. `nb%2 == 0 or nb%3 == 0`
-        3. `nb >= -13 and nb <= 25` (et en python, on a aussi la possibilité d'écrire ``13<= nb <= 25``)
-        4. `nb<13 or nb >25` ou `not(nb >= -13 and nb <= 25)` ou en python  `not(13<= nb <= 25)`
+        1. `nb >= 5 and nb < 7`
+        1. `nb >= 7 or nb < 11`
+        1. `nb % 2 == 0 and nb > 50`
+        2. `nb % 2 == 0 or nb%3 == 0`
+        3. `nb >= -13 and nb <= 25` (et en python, on a aussi la possibilité d'écrire ``13 <= nb <= 25``)
+        4. `nb < 13 or nb > 25` ou `not( nb >= -13 and nb <= 25)` ou en python  `not( 13<= nb <= 25)`
 
         Vous pouvez tester les conditions ci-dessus en exécutant le code suivant, qui crée un objet `int` aléatoire entre -20 et 70, puis en vérifiant en affichant la valeur de `nb`
 
