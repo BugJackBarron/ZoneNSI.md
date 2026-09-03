@@ -2271,6 +2271,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#un-exemple-dalgorithme-glouton-parcoursup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un exemple d'algorithme glouton : Parcoursup
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4927,7 +4936,16 @@
 <p>Une fois la boucle terminée, on est assuré d'avoir la solution optimale au problème du sac à dos.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_obj_sub_list_from_list_and_int</span><span class="p">(</span><span class="n">obj_list</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
+<p>On utilise une représentation des objets sous la forme d'un dictionnaire de dictionnaires :</p>
+<div class="highlight"><pre><span></span><code><span class="n">objets</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">"A"</span> <span class="p">:</span> <span class="p">{</span><span class="s1">'masse'</span> <span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">'valeur'</span> <span class="p">:</span> <span class="mi">700</span><span class="p">},</span>
+<span class="s2">"B"</span> <span class="p">:</span> <span class="p">{</span><span class="s1">'masse'</span> <span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">'valeur'</span> <span class="p">:</span> <span class="mi">400</span><span class="p">},</span>
+<span class="s2">"C"</span> <span class="p">:</span> <span class="p">{</span><span class="s1">'masse'</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'valeur'</span> <span class="p">:</span> <span class="mi">300</span><span class="p">},</span>
+<span class="s2">"D"</span> <span class="p">:</span> <span class="p">{</span><span class="s1">'masse'</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'valeur'</span> <span class="p">:</span> <span class="mi">300</span><span class="p">},</span>
+        <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">make_obj_sub_list_from_list_and_int</span><span class="p">(</span><span class="n">obj_list</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">""" return a sublist created with a number between</span>
 <span class="sd">        0 and 2**n where n is len(obj_list)"""</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -4959,7 +4977,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Temps de calcul</p>
-<p>Dans notre cas précis, avec seulement 4 objets, il est tout à fait possible de tester toutes les solutions pour trouver celle optimale.Mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, deviend très rapidement trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en <span class="arithmatex">\(\mathrm{O}(a^n)\)</span> avec <span class="arithmatex">\(a\)</span> une constante et <span class="arithmatex">\(n\)</span> le nombre d'objets (<span class="arithmatex">\(a\)</span> vaut au moins <span class="arithmatex">\(2\)</span>, car il faut explorer les <span class="arithmatex">\(2^n\)</span> sous-ensembles).</p>
+<p>Dans notre cas précis, avec seulement 4 objets, il est tout à fait possible de tester toutes les solutions pour trouver celle optimale.Mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, devient très rapidement trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en <span class="arithmatex">\(\mathrm{O}(a^n)\)</span> avec <span class="arithmatex">\(a\)</span> une constante et <span class="arithmatex">\(n\)</span> le nombre d'objets (<span class="arithmatex">\(a\)</span> vaut au moins <span class="arithmatex">\(2\)</span>, car il faut explorer les <span class="arithmatex">\(2^n\)</span> sous-ensembles).</p>
 <p>On parle dans ce cas d'une <mark class="critic"><strong>complexité exponentielle</strong></mark> (en temps), ce qu'on peut voir dans le graphique suivant (exécuté sur mon ordinateur personnel).</p>
 <p><img alt="KP_Naif.png" src="../KP_Naif.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution selon le nombre d'objets, algorithme KP Naif"></p>
 <p>Les algorithmes à complexité exponentielle ne sont pas efficaces pour résoudre des problèmes, le temps de calcul devenant beaucoup trop important quand <span class="arithmatex">\(n\)</span> devient grand. </p>
@@ -4972,7 +4990,7 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Méthode gloutonne</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Comme on cherche à optimiser au maximum le gain, on va s'intéresser à la « valeur massique » de chaque objet.</p>
@@ -5015,7 +5033,7 @@
 </div>
 <div class="admonition tips">
 <p class="admonition-title">Comparaison des temps d'exécution entre algorithme naïf et algorithme glouton</p>
-<p>Sur les mêmes valeurs, voici une comparaison entre les temps d'éxécution des deux algorithmes :</p>
+<p>Sur les mêmes valeurs, voici une comparaison entre les temps d'exécution des deux algorithmes :</p>
 <p></p><div style="display:flex;">
 <div style="display : inline; width : 50%;">
 <p><img alt="KP_Glouton.png" src="../KP_Glouton.png" style="width:80%; margin:auto;display:block;background-color: #d2dce0;" title="Temps d'exécution, algorithme glouton"></p>
@@ -5028,7 +5046,7 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Code en Python</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>La liste des objets et leur masse est donné par un dictionnaire nom : (masse; valeur).
@@ -5040,9 +5058,9 @@
         <span class="p">}</span>
 </code></pre></div>
 <ol>
-<li>Ecrire une fonction Python qui renvoie un tableau de tuples <code>(nom ; valeur_massique)</code> à partir du dictionnaire passé en argument.</li>
+<li>Écrire une fonction Python qui renvoie un tableau de tuples <code>(nom ; valeur_massique)</code> à partir du dictionnaire passé en argument.</li>
 <li>Trier ce tableau par ordre décroissant des valeurs massiques.</li>
-<li>Ecrire une fonction Python qui finalise l'algorithme glouton.</li>
+<li>Écrire une fonction Python qui finalise l'algorithme glouton.</li>
 </ol>
 </div>
 </div>
@@ -5067,7 +5085,7 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">L'algorithme</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -5094,7 +5112,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Autres systèmes de monnaie</p>
 <p>Le problème du rendu de monnaie est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet" target="_blank"><mark class="critic"><strong>NP-complet</strong></mark></a> dans le cas général, c'est-à-dire très difficile à résoudre. Cependant pour certains systèmes de monnaie dits <strong>canoniques</strong>, l'algorithme glouton est optimal, c'est-à-dire qu'il suffit de rendre systématiquement la pièce ou le billet de valeur maximale — ce tant qu'il reste quelque chose à rendre. C'est la méthode employée en pratique, ce qui se justifie car la quasi-totalité des systèmes ayant cours dans le monde sont canoniques.</p>
-<p>Dans un système de monnaie non-canonique ne possédant que 3 pièces de valeurs 1, 3 et 4, quelle est la solution optimale du problème du rendu de monnaie pourt une valeur de 6 ? Que donne l'algorithme glouton ?</p>
+<p>Dans un système de monnaie non-canonique ne possédant que 3 pièces de valeurs 1, 3 et 4, quelle est la solution optimale du problème du rendu de monnaie pour une valeur de 6 ? Que donne l'algorithme glouton ?</p>
 </div>
 <details class="tips">
 <summary>Pour les cracks</summary>
@@ -5105,15 +5123,17 @@
 <ul>
 <li><code>NREP</code> correspond au nombre maximum d'objets testés ;</li>
 <li><code>LISSAGE</code> correspond au nombre de répétitions effectuées pour lisser les résultats</li>
-<li><code>FACTEUR_TAILLE</code> correspond à la taille du sac à dos (dépend du nombnre d'objets).</li>
+<li><code>FACTEUR_TAILLE</code> correspond à la taille du sac à dos (dépend du nombre d'objets).</li>
 </ul>
-<p>Ce fichier crée un fichier binaire <code>compareGreedyNatural.dat</code> qui contient les données de temps des méthodes naives et gloutonnes, utilisées par le fichier suivant.</p>
+<p>Ce fichier crée un fichier binaire <code>compareGreedyNatural.dat</code> qui contient les données de temps des méthodes naïves et gloutonnes, utilisées par le fichier suivant.</p>
 </li>
 <li>
-<p><a href="../plotCompare.py" target="_blank">plotCompare.py</a> permet d'obtenir une animation matplotlib comparant les méthodes.</p>
+<p><a href="../plotCompare.py" target="_blank">plotCompare.py</a> permet d'obtenir une animation Matplotlib comparant les méthodes.</p>
 </li>
 </ul>
-</details></div>
+</details>
+<h2 id="un-exemple-dalgorithme-glouton-parcoursup">Un exemple d'algorithme glouton : Parcoursup</h2>
+<p>Comme toujours, la chaine Youtube <a href="https://youtu.be/dO1pLi2Dedw?si=ZJiF5kd0D1e7qmMv" target="_blank">ScienceEtonnante</a> présente de manière claire un exemple d'algorithme glouton : les algorithmes de mariages stables, tels que celui utilisé (plus ou moins) par Parcoursup.</p></div>
 
 
 

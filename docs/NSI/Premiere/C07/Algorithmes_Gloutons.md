@@ -55,8 +55,19 @@
 		
 		
 	=== "Une solution hors programme"
+
+		On utilise une représentation des objets sous la forme d'un dictionnaire de dictionnaires :
 	
 		```` python
+
+		objets = {
+        "A" : {'masse' : 13, 'valeur' : 700},
+        "B" : {'masse' : 12, 'valeur' : 400},
+        "C" : {'masse' : 8, 'valeur' : 300},
+        "D" : {'masse' : 10, 'valeur' : 300},
+                }
+
+
 		def make_obj_sub_list_from_list_and_int(obj_list : list, nb : int) :
 			""" return a sublist created with a number between
 				0 and 2**n where n is len(obj_list)"""
@@ -88,7 +99,7 @@
 
 !!! warning "Temps de calcul"
 
-	Dans notre cas précis, avec seulement 4 objets, il est tout à fait possible de tester toutes les solutions pour trouver celle optimale.Mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, deviend très rapidement trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en $\mathrm{O}(a^n)$ avec $a$ une constante et $n$ le nombre d'objets ($a$ vaut au moins $2$, car il faut explorer les $2^n$ sous-ensembles).
+	Dans notre cas précis, avec seulement 4 objets, il est tout à fait possible de tester toutes les solutions pour trouver celle optimale.Mais avec un plus grand nombre d'objets, le temps de calcul, même pour un ordinateur très puissant, devient très rapidement trop important. En effet l'algorithme qui testerait toutes les combinaisons possibles aurait une complexité en temps en $\mathrm{O}(a^n)$ avec $a$ une constante et $n$ le nombre d'objets ($a$ vaut au moins $2$, car il faut explorer les $2^n$ sous-ensembles).
 
 	On parle dans ce cas d'une {==**complexité exponentielle**==} (en temps), ce qu'on peut voir dans le graphique suivant (exécuté sur mon ordinateur personnel).
 	
@@ -107,7 +118,7 @@
 
 !!! question "Méthode gloutonne"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		Comme on cherche à optimiser au maximum le gain, on va s'intéresser à la &laquo; valeur massique &raquo; de chaque objet.
 
 		1. Compléter le tableau suivant :
@@ -124,7 +135,7 @@
 		
 !!! tips "Comparaison des temps d'exécution entre algorithme naïf et algorithme glouton"
 
-	Sur les mêmes valeurs, voici une comparaison entre les temps d'éxécution des deux algorithmes :
+	Sur les mêmes valeurs, voici une comparaison entre les temps d'exécution des deux algorithmes :
 	
 	<div style="display:flex;">
 	<div style="display : inline; width : 50%;">
@@ -144,7 +155,7 @@
 
 !!! question "Code en Python"
 
-	=== "Enoncé"
+	=== "Énoncé"
 		La liste des objets et leur masse est donné par un dictionnaire nom : (masse; valeur).
 		```` python
 		objets = {
@@ -156,9 +167,9 @@
 		````
 		
 
-		1. Ecrire une fonction Python qui renvoie un tableau de tuples `(nom ; valeur_massique)` à partir du dictionnaire passé en argument.
+		1. Écrire une fonction Python qui renvoie un tableau de tuples `(nom ; valeur_massique)` à partir du dictionnaire passé en argument.
 		1. Trier ce tableau par ordre décroissant des valeurs massiques.
-		1. Ecrire une fonction Python qui finalise l'algorithme glouton.
+		1. Écrire une fonction Python qui finalise l'algorithme glouton.
 
 ## Problème du rendu de monnaie
 
@@ -180,7 +191,7 @@
 
 !!! question "L'algorithme"
 	
-	=== "Enoncé"
+	=== "Énoncé"
 		
 		1. Trouvez une méthode gloutonne permettant d'effectuer un rendu de monnaie (en utilisant le moins possible de pièces).
 		2. Vous devez rendre la somme de 2,63 €.
@@ -200,7 +211,7 @@
 
 	Le problème du rendu de monnaie est [{==**NP-complet**==}](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet){: target="_blank"} dans le cas général, c'est-à-dire très difficile à résoudre. Cependant pour certains systèmes de monnaie dits **canoniques**, l'algorithme glouton est optimal, c'est-à-dire qu'il suffit de rendre systématiquement la pièce ou le billet de valeur maximale — ce tant qu'il reste quelque chose à rendre. C'est la méthode employée en pratique, ce qui se justifie car la quasi-totalité des systèmes ayant cours dans le monde sont canoniques.
 	
-	Dans un système de monnaie non-canonique ne possédant que 3 pièces de valeurs 1, 3 et 4, quelle est la solution optimale du problème du rendu de monnaie pourt une valeur de 6 ? Que donne l'algorithme glouton ?
+	Dans un système de monnaie non-canonique ne possédant que 3 pièces de valeurs 1, 3 et 4, quelle est la solution optimale du problème du rendu de monnaie pour une valeur de 6 ? Que donne l'algorithme glouton ?
 	
 
 ??? tips "Pour les cracks"
@@ -211,9 +222,11 @@
 	
 		* `NREP` correspond au nombre maximum d'objets testés ;
 		* `LISSAGE` correspond au nombre de répétitions effectuées pour lisser les résultats
-		* `FACTEUR_TAILLE ` correspond à la taille du sac à dos (dépend du nombnre d'objets).
+		* `FACTEUR_TAILLE ` correspond à la taille du sac à dos (dépend du nombre d'objets).
 		
-		Ce fichier crée un fichier binaire `compareGreedyNatural.dat` qui contient les données de temps des méthodes naives et gloutonnes, utilisées par le fichier suivant.
-	* [plotCompare.py](plotCompare.py){: target="_blank"} permet d'obtenir une animation matplotlib comparant les méthodes.
+		Ce fichier crée un fichier binaire `compareGreedyNatural.dat` qui contient les données de temps des méthodes naïves et gloutonnes, utilisées par le fichier suivant.
+	* [plotCompare.py](plotCompare.py){: target="_blank"} permet d'obtenir une animation Matplotlib comparant les méthodes.
 		
+## Un exemple d'algorithme glouton : Parcoursup
 
+Comme toujours, la chaine Youtube [ScienceEtonnante](https://youtu.be/dO1pLi2Dedw?si=ZJiF5kd0D1e7qmMv){target="_blank"} présente de manière claire un exemple d'algorithme glouton : les algorithmes de mariages stables, tels que celui utilisé (plus ou moins) par Parcoursup.

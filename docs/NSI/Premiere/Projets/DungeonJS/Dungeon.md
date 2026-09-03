@@ -19,7 +19,7 @@ Vous trouverez [ici](Dungeon.html){:target="_blank"} un début d'exemple de ce q
 
 ### Utiliser des boutons pour modifier des variables en Javascript
 
-<iframe src="//video.toutatice.fr/video_priv/42307/5ef957d286d04577914706139960bfbe9862f06a6baae1a313bf622579dc0b44/?is_iframe=true&size=720" width="640" height="360" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
+![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/136448/720p.mp4)
 
 Les fichiers d'exemples sont visibles sur Capytale par le code [f7fa-2705601](https://capytale2.ac-paris.fr/web/c/f7fa-2705601){:target="_blank"}
 
@@ -27,11 +27,10 @@ Les fichiers d'exemples sont visibles sur Capytale par le code [f7fa-2705601](ht
 
 #### Première partie : création d'un objet, utilisation d'un champ input
 
-<iframe src="//video.toutatice.fr/video_priv/42308/bea3e767f39f58a446429787be70920d35ceaf09651e30b4ab1d1052a4b76a26/?is_iframe=true&size=720" width="640" height="360" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
-
+![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/157840/720p.mp4)
 #### Deuxième partie : utiliser l'aléatoire
 
-<iframe src="//video.toutatice.fr/video_priv/42309/ea5b1de2f726d0372250ca0ccf012cf8d4098429ff17dd8d8e72fcfcba32861f/?is_iframe=true&size=720" width="640" height="360" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
+![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/136447/720p.mp4)
 
 Les fichiers d'exemples pour les deux parties sont visibles sur Capytale par le code [4764-2707919](https://capytale2.ac-paris.fr/web/c/4764-2707919){:target="_blank"}
 
@@ -40,13 +39,13 @@ Les fichiers d'exemples pour les deux parties sont visibles sur Capytale par le 
 
 #### Partie 1 : les bases
 
-<iframe src="//video.toutatice.fr/video_priv/42310/f47e0fa6373b3d2ba3bcace6a14cecfd9d8ca5948de8fa6be93b18c65c8612e8/?is_iframe=true&size=720" width="640" height="360" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
+![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/136450/720p.mp4)
 
 Les fichiers d'exemples sont visibles sur Capytale par le code [8702-2709067](https://capytale2.ac-paris.fr/web/c/8702-2709067){: target="_blank"}
 
 #### Partie 2 : utilisation avancée (facultative)
 
-<iframe src="//video.toutatice.fr/video_priv/42311/1056fed77a7464c2f0bdc500d8bb61744766f29003447d390df0b041259724ea/?is_iframe=true&size=720" width="640" height="360" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
+![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/136451/720p.mp4)
 
 Les fichiers d'exemples sont visibles sur Capytale par le code [331d-2710811](https://capytale2.ac-paris.fr/web/c/331d-2710811){: target="_blank"}
 

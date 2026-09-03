@@ -192,7 +192,7 @@ Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par
 		
 	=== "Solution"
 	
-		 ![type:video](https://video.toutatice.fr/video/23382-affectations-de-variables-en-python-et-etat-memoire).
+		 ![type:video](https://podeduc.apps.education.fr/video/157831-affectations-de-variables-en-python-et-etat-memoire/de2c5a7d-3484-4f02-9c61-9592f0577c84/).
 
 
 

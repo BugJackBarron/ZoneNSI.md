@@ -26,7 +26,7 @@ L'objectif est d'aligner le maximum de lettres (donc de mettre le moins de tiret
 
 Le principe est présenté dans la vidéo suivante :
 
-<iframe src="//video.toutatice.fr/video/28583-alignement-de-sequences-methode-recursive-et-programmation-dynamique/?is_iframe=true" size="240" width="1280" height="720" style="padding: 0; margin: 0; border:0" allowfullscreen ></iframe>
+![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/157835/720p.mp4)
 
 
 Pour les mots `GRAS` et `GERS`, l'arbre obtenu est le suivant :
