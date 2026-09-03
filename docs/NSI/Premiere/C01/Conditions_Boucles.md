@@ -1,15 +1,50 @@
-# Conditions et boucles en  ![logo Python](https://www.python.org/static/img/python-logo.png)
+# Conditions et boucles en Python
+
+## Un premier algorithme
+
+Imaginons un jeu de **Devine nombre** (un grand classique des débuts en informatique). Dans ce jeu, l'ordinateur détermine au hasard un nombre entier entre 1 et 100, et l'utilisateur·trice doit deviner ce nombre, en proposant plusieurs solutions, et à chaque étape l'ordinateur doit donner des indications du type `"le nombre à trouver est plus petit"`, etc.
+
+Pour représenter ce jeu, nous pouvons établir un diagramme `UML` (*Unified Modeling Language *) tel que celui ci-dessous :
+
+```puml
+@startuml
+start
+:Affecter un nombre aléatoire entre 1 et 100 à la variable `a_trouver`;
+:Définir la variable `trouve` à Faux;
+while (`trouve` est il Vrai ?)  is (Non)
+    :Demande à utilisateur un nombre entier et le stocker dans la variable `nb` ;
+    if (`nb` est égal à `a_trouver`) then (oui)
+        :Affecter Vrai à `trouve`;        
+    else (non)
+        if (`nb` est inférieur à `a_trouver`) then (oui)
+            :Afficher "Le nombre à trouver est plus grand";
+        else (non)
+            :Afficher "Le nombre à trouver est plus petit";
+        endif    
+    endif
+endwhile (Oui)
+:Afficher "Bravo !";
+stop
+@enduml
+```
+
+On observe que dans l'algorithme de ce jeu, il y a :
+
+* des comparaisons entre des variables, qui amènent à des comportements différents. On parle de {==**branchements conditionnels**==} ;
+* des répétitions d'instructions. On parle de {==**boucles**==}.
+
+Ces deux types de structures sont au fondement de toute la programmation, et sont des éléments essentiels à maitriser. Les différentes syntaxes à utiliser seront à connaitre impérativement pour pouvoir progresser.
 
 ## Structures conditionnelles
 
-### Comparateurs et appartenance
+### Opérateurs de comparaisons 
 
-En Python, comme dans de nombreux langages, on utilise les comparateurs et opérateurs d'appartenance :
+Pour déterminer un branchement conditionnel, on doit souvent comparer deux variables. Pour cela on utilise les comparateurs suivants :
 
 * `==` : comparateur d'égalité ;
 * `!=` : comparateur de différence;
 * `<`, `<=`, `>`, `>=` : comparateurs d'ordre ;
-* `in`, `notin` : opérateurs d'inclusion.
+
 
 !!! warning "Evaluation des opérateurs de comparaisons et d'inclusion"
     Les expressions contenant ces opérateurs sont évaluées par l'interpréteur Python comme des valeurs de type **booléen** ( donc `True` ou `False`). 
@@ -20,23 +55,31 @@ En Python, comme dans de nombreux langages, on utilise les comparateurs et opér
     * Egalité :
 
         ``` python
-        >>> 5 == 2.0+3.0
+        >>> 5 == 2+3
         True
+        >>> 5 == 1+1
+        False
         ```
 
-    * Inégalités :
+    * Différences :
 
         ``` python
         >>> 4 != 2+3
         True
+        >>> 4 != 2+2
+        False
         ```
     * Ordre :
 
         ``` python
         >>> 7 < 5
         False
-        >>> 7 >= 7
+        >>> 7 >= 5
         True 
+        >>> 7 > 7
+        False
+        >>> 7 >= 7
+        True
         ```
 
         Les relations d'ordre ne sont pas limitées aux nombres, puisqu'on peut comparer des chaines de caractères grâce à {==**l'ordre lexicographique**==} (grosso modo en Python l'ordre alphabétique, les majuscules étant situées avant les minuscules) :
@@ -57,17 +100,29 @@ En Python, comme dans de nombreux langages, on utilise les comparateurs et opér
         ![ASCII TABLE](https://www.galloway.me.uk/media/images/2012-07-25-character-encoding-for-ios-developers-utf8/ASCII_code_chart.png)
 
 
-    * Appartenance :
+### Opérateurs d'appartenance
 
-        ``` python
-        >>> 'to' in 'Toto'
-        True
-        >>> 'TO' in 'Toto'
-        False
-        >>> 5 not in [0, 1, 2, 3, 4] # On utilise une structure de liste (objets entre crochets et séparés par des virgules)
-        True
-        ```
+Pour certains branchements conditionnels, on aura besoin d'opérateurs d'appartenances :
 
+* `in` : teste si un objet appartient à une séquence (liste, tuple, chaine de caractère, ...) ;
+* `not in` : teste si un objet n'appartient pas à une séquence.
+
+De même que pour les opérateurs de comparaisons, les expressions utilisant des opérateurs d'appartenance sont évaluées en tant que booléens.
+
+!!! example "Exemples"
+
+    ``` python
+    >>> 'to' in 'Toto'
+    True
+    >>> 'TO' in 'Toto'
+    False
+    >>> 'TO' in 'Toto'.upper()
+    True
+    >>> 5 not in [0, 1, 2, 3, 4] # On utilise une structure de liste (objets entre crochets et séparés par des virgules)
+    True
+    >>> 5 in ['1', '2', '3', '4', '5']
+    False
+    ```
 
 
 
@@ -257,7 +312,20 @@ Les différents blocs d'instructions doivent être {==**correctement indentés**
 La règle de bonne conduite est d'utiliser 4 espaces par indentation (qu'il est souvent possible d'obtenir grâce à la touche tabulation ++tab++ ). Il est {==**réellement fondamental de respecter les indentations**==}, celles-ci étant pour l'interpréteur Python le signal de déclenchement d'un bloc de code indépendant. Par exemple, le code ci-dessous renverra une erreur :
 
 
-{{ IDEv('P2_Code2') }}
+```python
+nb = int(input("Entrez un nombre entre 1 et 100 :"))
+if nb<1 :
+    print("Votre nombre est trop petit")
+elif nb>100 :
+    print("Votre nombre est trop grand")
+elif nb < 50 :
+        nb = nb + 50
+       print(f"Le nombre final est {nb}")
+else :
+    nb = nb - 50
+    print(f"Le nombre final est {nb}")
+print("FIN")
+```
 
 
 On peut aussi noter qu'il est possible dans certaines situations de se passer des instructions `elif` et `else`, mais cela peut conduire à certains **effets de bords** qui peuvent être parfois dommageables. Testez par exemple le code suivant :
@@ -295,25 +363,15 @@ if nb>0 :
 else :
     print("Votre nombre est négatif !")
 ```
+Ce qui donne par exemple
 
-    Entrez un nombre entier, positif ou négatif :9
-    Votre nombre est positif !
-    Et ce n'est pas un multiple de 2 !
+``` bash
+Entrez un nombre entier, positif ou négatif :9
+Votre nombre est positif !
+Et ce n'est pas un multiple de 2 !
+```
 
 ### Exercice sur les structures conditionnelles
-
-!!! question "Un début de Pierre-Feuille-Ciseaux"
-
-    On veut écrire un programme qui permettra de jouer plus tard à Pierre-Feuille-Ciseaux contre l'ordinateur.
-
-    Pour l'instant on considère que l'ordinateur ne joue qu'une seule chose : Pierre.
-
-    Écrire un code Python dans la zone de script de Thonny (que vous sauvegarderez sous le nom `PFC.py`) qui :
-
-    1. Demande à un utilisateur×trice de saisir `p` (pour Pierre), `f` (pour Feuille) ou `c` (pour Ciseaux).
-    2. Donne le résultat du jeu contre l'ordinateur ayant joué Pierre.
-
-    Attention ! Il faut aussi signaler à l'utilisateur×trice qu'il/elle a fait une erreur s'il/elle n'a saisi aucune des trois possibilités.
 
 !!! question "Premières étapes de Devine Nombre"
 
@@ -326,13 +384,18 @@ else :
     ```python
     import random
 
-    nb = random.randint(1, 100)
+    a_trouver = random.randint(1, 100)
     ```
-    Vous aurez alors un nombre sélectionné au hasard affecté à la variable `nb`.
+    Vous aurez alors un nombre sélectionné au hasard affecté à la variable `a_trouver`.
 
-    Vous sauvegarderez votre script sous le nom `devineNombre.py`.
+    Ecrivez alors sous ces lignes des lignes de code qui demandent à l'utilisateur·trice une saisie et qui compare cette saisie au nombre à trouver.
+
+    Vous sauvegarderez votre script sous le nom `devine_nombre.py`.
+
 
 ## Boucles
+
+Il existe deux types de boucles, les boucles non bornées, qui se répètent tant qu'une condition est vérifiée, et les boucles bornées, qui se répètent le code un nombre de fois déterminé à l'avance.
 
 ### Boucle non bornée `while`
 
@@ -346,12 +409,22 @@ La boucle `while` (appelée `Tant que` en pseudo-code), possède la structure su
 while condition :#Encore une fois, ne pas oublier le signe :
     #bloc de code
     #indenté
+#sortie de la boucle
 ```
 
 Le bloc de code situé sous l'instruction `while` sera exécuté {==**tant que la condition donnée sera vraie**==}, comme dans l'exemple donné ci-dessous :
 
 
-{{ IDEv('P2_Code3') }}
+```python
+nb= int(input("Donnez un nombre entier positif:"))
+puissance = 0
+while nb//2 >=1  :
+    puissance = puissance +1
+    nb=nb//2
+print(f"Votre nombre est supérieur ou égal à 2 puissance {puissance} et\
+    inférieur à 2 puissance {puissance+1}")
+# Notez l'utilisation de  pour éviter d'avoir une ligne trop longue.
+```
 
 
 !!! question "Rebond d'une balle"
@@ -361,6 +434,9 @@ Le bloc de code situé sous l'instruction `while` sera exécuté {==**tant que l
     ![rebond](Rebond.png){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;"}
 
     Écrire un script Python qui demande à l'utilisateur×trice une hauteur de départ (en cm) puis donne le nombre de rebonds de la balle.
+
+!!! question "Finalisation de Devine Nombre"
+    A partir du diagramme UML donné en début de cours, compléter et modifier le fichier `devine_nombre.py` afin d'avoir un jeu complet.
 
 ### Boucle bornée : `for`
 
@@ -449,16 +525,24 @@ En python, la boucle `for` peut aussi être utilisée comme une boucle `foreach`
 
 Testez par exemple le code suivant :
 
-{{ IDEv('P2_Code4') }} 
+```python
+texte ='Un texte quelconque'
+for lettre in texte :
+    if lettre in 'aeiouy':
+        print(f"Tiens, j'ai vu la voyelle {lettre}.")
+
+```
 
 Le compteur `lettre` prendra successivement **chaque** (**each**) caractère de la chaîne `texte`, soit `U`, `n`, ` `(1 espace), `t`, ..., jusqu'à ce que le parcours de la chaîne soit terminé. 
 
-Dans ce cas, il n'y a pas de **pas**, on parcourt **chaque élément** d'un ensemble donné. Nous verrons plus tard dans l'année qu'on peut parcourir ainsi des listes, des tuples, etc.
+Dans ce cas, on parcourt **chaque élément** d'un ensemble donné. Nous verrons plus tard dans l'année qu'on peut parcourir ainsi des listes, des tuples, etc.
 
 
 !!! question "Exercice"
 
-    Comment faire pour prendre en compte les majuscules dans le compte des voyelles ?
+    Comment faire pour prendre en compte les majuscules dans le compte des voyelles du code précédent ?
+
+
 
 ## Exercices
 
