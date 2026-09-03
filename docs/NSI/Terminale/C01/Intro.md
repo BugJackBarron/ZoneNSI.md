@@ -1,10 +1,10 @@
 # Modularité et initiation à la Programmation Orientée Objet
 
-Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient *built-in* ou bien importés à partir de *modules*, nous nous posons rarement la question de savoir quelle est leur {==**implémentation**==}, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons *globalement confiance* aux concepteurs du langage ou du module. 
+Quand nous utilisons certaines fonctions où certains objets Python, qu'ils soient *natifs* (*built-in*) ou bien importés à partir de *modules*, nous nous posons rarement la question de savoir quelle est leur {==**implémentation**==}, c'est-à-dire la manière dont-ils ont été conçu et programmé. Nous faisons *globalement confiance* aux concepteurs du langage ou du module. 
 
 Ce qui nous importe est plutôt {==**l'interface**==} de ces objets, c'est-à-dire la façon dont nous pouvons interagir avec ces objets : les créer, les affecter, les additionner, les supprimer...
 
-Dans cette partie nous verrons comment créer un module, le documenter,et définir une interface claire. Nous verrons les prémices d'un nouveau **paradigme de programmation** : la Programmation Orientée Objet(**POO**).
+Dans cette partie nous verrons comment créer un module, le documenter puis définir une interface claire. Nous verrons les prémices d'un nouveau **paradigme de programmation** : la Programmation Orientée Objet(**POO**).
 
 *La suite de cette partie est grandement inspirée de [Numériques et Sciences Informatique, 24 leçons avec exercices corrigé, Ellipse](https://www.editions-ellipses.fr/accueil/10445-specialite-numerique-et-sciences-informatiques-lecons-avec-exercices-corriges-terminale-nouveaux-programmes-9782340038554.html)*
 

@@ -12,18 +12,20 @@ La note du baccalauréat en NSI est composée de deux parties :
 
 ### Épreuve pratique
 
-Pour l'instant, **aucune date officielle n'est tombée** concernant l'épreuve pratique de NSI pour la session de Bac 2025. Nous pouvons cependant supposer qu'elle aura lieu en en juin, **avant les épreuves écrites**.
+Pour l'instant, **aucune date officielle n'est tombée** concernant l'épreuve pratique de NSI pour la session de Bac 2027. Nous pouvons cependant supposer qu'elle aura lieu en en juin, **avant les épreuves écrites**.
 
-Il s'agit d'une épreuve dont la durée est de 1h, et consistant en un travail devant machine (sans connexion Internet !) et composée de deux exercices :
+Il s'agit d'une épreuve dont la durée est de 1h, et consistant en un travail devant machine (sans connexion Internet !), sur un thème donné, pour travailler les 4 compétences *PACO* :
 
-* le premier exercice consiste à programmer en Python une fonction implémentant un algorithme classique (parcours d'une chaine, recherche d'un élément, etc.) ;
-* le deuxième exercice consiste à compléter un code incomplet.
+* Programmer
+* Autonomie
+* Compréhension
+* Oral
 
-Une base de donnée des sujets d'Épreuve Pratique NSI 2024 est disponible [ici](https://pixees.fr/informatiquelycee/term/index.html#ep_prat){:target="_blank"}. Les sujets de l'épreuve 2025 devraient être connus à partir des mois de Mars/Avril.
+Une base de donnée des sujets d'Épreuve Pratique NSI 2026 est disponible [ici](https://sujets.examens-concours.gouv.fr/delos/public/bgt/nsi){:target="_blank"}. Les sujets de l'épreuve 2027 devraient être connus à partir des mois de Mars/Avril.
 
 ### Épreuve écrite
 
-Les épreuves écrites de NSI auront lieu les mardi 17 et mercredi 18 juin de 14h à 17h30 (selon votre convocation).
+Les épreuves écrites de NSI auront lieu les mercredi 16 et jeudi 17 juin de 8h à 11h30 (selon votre convocation).
 
 Un sujet de NSI consiste en un ensemble de trois ou quatre exercices portant sur l'intégralité des thèmes étudiés en première et en terminale (je vous déconseille de faire une impasse...). L'épreuve en elle-même dure 3h30.
 
@@ -32,7 +34,7 @@ Des annales de sujets écrits peuvent être trouvées [ici](https://pixees.fr/in
 
 ### Grand Oral
 
-Les élèves suivants de Terminale Générale devront présenter une question de Grand Oral entre le lundi 23 juin et le mercredi 2 juillet 2025 (selon convocation).
+Les élèves suivants de Terminale Générale devront présenter une question de Grand Oral entre le lundi 21 juin et le vendredi 2 juillet 2027 (selon convocation).
 Ils présenteront au jury une fiche sur laquelle ils auront préparé **deux questions**, selon leurs spécialités.
 
 Par exemple, un élève ayant pour spécialité NSI et SVT devra présenter deux questions qui pourront être dans les configurations suivantes :
