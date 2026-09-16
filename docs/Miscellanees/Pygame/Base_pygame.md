@@ -2,6 +2,15 @@
 
 Ce cours est très largement et assez honteusement copié sur [celui-ci](http://sdz.tdct.org/sdz/interface-graphique-pygame-pour-python.html#Lesinterfacesgraphiques). Merci à vous ! En cas de soucis de droits, n'hésitez pas à me contacter par le lien  situé en bas de page !
 
+!!! danger "Python 3.14 et +"
+	Attention ! la version «originale» de Pygame ne fonctionne pas avec les versions de Python supérieures à la version 3.14
+
+	Heureusement la communauté a développé un fork de Pygame compatible avec les nouvelles versions de Python, nommé [Pygame CE](https://pyga.me/){target="_blank"} et installable grâce à la commande suivante :
+
+	``` bash
+	pip install pygame-ce
+	```
+
 ## Importer Pygame et ses constantes
 
 `Pygame` est une bibliothèque, et en tant que telle, elle est construite à partir de plusieurs modules. Les noms de ces modules sont :

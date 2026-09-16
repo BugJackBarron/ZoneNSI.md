@@ -99,14 +99,12 @@ Chacun de ces types précédents possède ses propres **attributs** et ses propr
 	* leur nombre de `points d'expérience` au départ est de $0$, et leur `niveau` est de $1$ ;
 	* Chaque personnage peut **mener une attaque**, qui consiste à ajouter un nombre aléatoire entre 1 et 20 à sa force ;
 	* Chaque personnage peut **se défendre d'une attaque** qui lui est lancée
-	en ajoutant un nombre aléatoire de 1 à 20 à son endurance. Si ce résultat est supérieur ou égal au 
-	niveau d'attaque, l'attaque a échouée, sinon le personnage perd un nombre de points 
-	de vie  égal à la différence entre le niveau d'attaque et le niveau de défense.
+	en ajoutant un nombre aléatoire de 1 à 20 à son endurance. Si ce résultat est supérieur ou égal au niveau d'attaque, l'attaque a échouée, sinon le personnage perd un nombre de points 
+	de vie égal à la différence entre le niveau d'attaque et le niveau de défense.
 		
 	
 
-Pour construire un tel personnage, on va devoir renseigner son nom, 
-et ses 4 caractéristiques. Ses PV, Pex (points d'expérience) et son niveau sont automatiquement calculés.
+Pour construire un tel personnage, on va devoir renseigner son nom, et ses 4 caractéristiques. Ses PV, Pex (points d'expérience) et son niveau sont automatiquement calculés.
  Tous sont cependant des {==**attributs**==} du personnage.
  
 !!! abstract
@@ -156,8 +154,7 @@ et ses 4 caractéristiques. Ses PV, Pex (points d'expérience) et son niveau son
 	
 !!! info "Un oubli ?"
 	Attention ! Ici nous ne respectons pas vraiment l'interface, puisque nous ne vérifions
-	pas que les attributs passés en argument sont bien des entiers entre 1 et 40 ! Ce problème sera réglé
-	plus tard.
+	pas que les attributs passés en argument sont bien des entiers entre 1 et 40 ! Ce problème sera réglé plus tard.
 
 	
 ### Instanciation d'objets
@@ -213,6 +210,8 @@ Il devient dès lors possible de modifier la valeur d'un attribut comme lors de 
 >>> first_player.rapidite
 12
 ```` 
+!!! danger "Une mauvaise pratique"
+	En réalité, dans de nombreux langages de programmation, il est impossible d'accéder directement aux attributs d'un objet et de les modifier. C'est une spécificité de Python, qui provient d'un choix de ne pas encapsuler strictement les données. Nous verrons plus loin comment faire dans d'autres langages.
 	
 ### Deux objets 
 
@@ -363,10 +362,9 @@ En rechargeant le module, puis en recréant les objets `second_player` puis `fir
 	38
 	```
 
-!!! question "Implémenter la méthode `defense(valeurAttaque)`"
+!!! question "Implémenter la méthode `defense`"
 
-	Dans notre interface de départ, nous avions prévu une méthode `defense(valeurAttaque)` 
-	qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au niveau d'attaque, l'attaque a échouée et la méthode renvoie `True`. Sinon le personnage perd un nombre de points de vie  égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie `False`.
+	Dans notre interface de départ, nous avions prévu une méthode `defense`, qui prend en paramètre une valeur d'attaque, et qui ajoute un nombre aléatoire de 1 à 20 à l'endurance du personnage. Si ce résultat est supérieur ou égal au niveau d'attaque, l'attaque a échouée et la méthode renvoie `0`. Sinon le personnage perd un nombre de points de vie égal à la différence entre le niveau d'attaque et le niveau de défense, et la méthode renvoie le nombre de points de vie perdus.
 	
 	Comment implémenter une telle méthode ?
 	
@@ -386,26 +384,25 @@ En rechargeant le module, puis en recréant les objets `second_player` puis `fir
 		def affiche(self) :
 			...
 			 
-		def attaque(self) :
+		def attaque(self) -> int :
 			return self.force + randint(1,20)
 			 
-		def defense(self, valeurAttaque) :
-			valeurDefense = self.endurance + randint(1,20)
-			if valeurAttaque> valeurDefense :
-				self.pv -=  valeurAttaque-valeurDefense
-				return False
-			return True
+		def defense(self, va: int) -> int :
+			vd = self.endurance + randint(1,20)
+			if va> vd :
+				self.pv -=  va-vd
+				return va-vd
+			return 0
 	```
 	
 	cette méthode peut alors être utilisée ainsi :
 	
 	``` python
-	>>> second_player.defense(first_player.attaque())
-	False
-	>>> second_player.pv
-	18
+	>>> va = first_player.attaque()
+	>>> second_player.defense(va)
+	6
 	```
-	
+	Ce qui signifie que `second_player` a perdu 6 points de vie.
 
 ### Méthodes spécifiques
 
@@ -452,10 +449,7 @@ En rechargeant le module, puis en recréant les objets `second_player` puis `fir
 
 !!! example "redéfinition de la méthode `__str__(self)`"
 	
-	Il est assez facile de redéfinir la méthode `__str__(self)`, puisque nous avons déjà une chaîne
-	de caractère qui nous convient : celle de la méthode `affiche(self)`. Nous allons alors 
-	changer la méthode `affiche(self)` qui renverra la chaîne de caractère générée par la méthode
-	`__str__(self)` (pour des raisons pratiques, la chaîne sera multi-ligne):
+	Il est assez facile de redéfinir la méthode `__str__(self)`, puisque nous avons déjà une chaîne de caractère qui nous convient : celle de la méthode `affiche(self)`. Nous allons alors changer la méthode `affiche(self)` qui renverra la chaîne de caractère générée par la méthode `__str__(self)` (pour des raisons pratiques, la chaîne sera multi-ligne):
 	
 	``` python
 
@@ -534,7 +528,6 @@ En rechargeant le module, puis en recréant les objets `second_player` puis `fir
 	4. Si les deux joueurs sont toujours vivants, on recommence un nouveau tour en reprenant en 1. Sinon on affiche le vainqueur.
 	5. Le vainqueur récolte un nombre de points d'expérience égal à :
 		
-
 			nombre d'attaque réussie * 2 + nombre de defense réussie
 	
 	Vous devrez implémenter un programme simulant un combat entre `Bob` et `Bill`, dont la sortie console sera sous la forme suivante :
@@ -569,10 +562,41 @@ En rechargeant le module, puis en recréant les objets `second_player` puis `fir
 		from personnage import Personnage
 		```
 	
-	4. Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant  la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
+	4. Un fichier compressé `.zip` ou `.7z` contenant les deux fichiers (celui du programme et le module contenant la classe `Personnage`) sera rendu via le cahier de texte de pronote, dans la partie **Travail à rendre**.
 	
 !!! danger "Quelques conseils de base"
 
 	* On évite les fonctions de plus de 20 lignes.
-	* Pour respecter l'élément ci-dessus, avant de se lancer dans le code, il faut prendre un papier puis faire une schéma représentant un combat, avec toutes les situations possibles
-	* Les classes en Python sont mutables. Donc attention aux modifications impromptues ! Une bonne pratique est de passer des instances en arguments de vos fonctions, et de renvoyer ces argument une fois le travail de la fonction terminé.
+	* Pour respecter l'élément ci-dessus, avant de se lancer dans le code, il faudrait prendre un papier puis faire un schéma représentant un combat, avec toutes les situations possibles. On appelle ceci un diagramme UML. Pour vous aider, en voici un en exemple.
+
+		```puml
+		@startuml
+		start
+		:definir p1 et p2;
+		:round = 0;
+		while (les deux joueurs sont vivants ?) is (oui) 
+			: Augmenter round de 1;
+			:initiative de p1 et p2;
+			if (initiatives différentes ?) then (oui)
+				:définir qui attaque et qui défend;
+				:attaquant attaque, défenseur défend;
+				if (défenseur est toujours vivant ?) then (Oui) 
+					: défenseur attaque, attaquant défend;
+					if (attaquant est vivant ?) then (Oui)
+						
+					else(non)
+						: afficher message mort;
+					endif;
+				else (non)
+				: afficher message mort;
+				endif
+			else (non)
+			: afficher message égalité;
+			endif
+		endwhile(non)
+		:déterminer vainqueur;
+		:modifier les points d'expériences du vainqueur;
+		end
+		@enduml
+		```
+	* Les classes en Python sont mutables. Donc attention aux modifications impromptues ! Une bonne pratique est de passer des instances en arguments de vos fonctions, et de renvoyer ces arguments une fois le travail de la fonction terminé.

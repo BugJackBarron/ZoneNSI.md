@@ -25,6 +25,15 @@ Pour les plus anglophones d'entre-vous (mais vous l'êtes tous 😛 ), vous trou
 
 
 ## Installation du module dans Thonny
+!!! danger "Python 3.14 et +"
+	Attention ! la version «originale» de Pygame ne fonctionne pas avec les versions de Python supérieures à la version 3.14
+
+	Heureusement la communauté a développé un fork de Pygame compatible avec les nouvelles versions de Python, nommé [Pygame CE](https://pyga.me/){target="_blank"} et installable grâce à la commande suivante :
+
+	``` bash
+	pip install pygame-ce
+	```
+	ou bien directement dans Thonny en cherchant `pygame-ce`.
 
 !!! tips "How to "
 
