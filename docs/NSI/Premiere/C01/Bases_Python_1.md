@@ -2,6 +2,14 @@
 
 *Ce cours est accompagné de **notebooks Capytale** disponibles aux personnes disposant d'un compte (par Toutatice dans l'académie de Rennes).*
 
+## Utilisation de Thonny
+
+Le logiciel qui sera utilisé majoritairement en classe de première comme en classe de terminale sera [Thonny](https://thonny.org/){target = "_blank"}. Ce logiciel, libre et gratuit, est idéal pour apprendre et visualiser le comportement d'un programme Python.
+
+Voici une description sommaire de l'interface de Thonny :
+
+![Thonny](captureThonny1.png)
+
 ## Types de base 
 
 ### Objets et types de base
@@ -14,14 +22,14 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 	
 	=== "Test1"
 		
-		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
+		Tapez l'expression suivante dans le shell de Thonny (auusi appelé **Terminal**), puis appuyez sur la touche ++return++ :
 		
 		```` python
 		5 / 3
 		````
 	=== "Test2"	
 	
-		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
+		Tapez l'expression suivante dans le shell de Thonny (auusi appelé **Terminal**), puis appuyez sur la touche ++return++ :
 		
 		```` python
 		"abra"+"cadabra"
@@ -29,7 +37,7 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 	
 	=== "Test3"
 	
-		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
+		Tapez l'expression suivante dans le shell de Thonny (auusi appelé **Terminal**), puis appuyez sur la touche ++return++ :
 		
 		```` python
 		5<9
@@ -37,7 +45,7 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 	
 	=== "Test4"
 	
-		Tapez l'expression suivante dans le terminal ci-dessous, puis appuyez sur la touche ++return++ :
+		Tapez l'expression suivante dans le shell de Thonny (auusi appelé **Terminal**), puis appuyez sur la touche ++return++ :
 		
 		```` python
 		4.5 + "3.2"
@@ -47,22 +55,29 @@ En Python, des données sont appelées des **==objets==**, et tout ce qui est ma
 	
 		Dans un terminal, la seule ligne active est celle du **prompt**, c'est-à-dire la dernière marquée par les chevrons `>>>`. *On ne peut pas ré-exécuter une ligne déjà tapée*. Cependant, il est possible de récupérer une telle ligne, grâce à l'**historique de commande** obtenu en utilisant les flèches de direction ++arrow-up++ et ++arrow-down++
 		
-	{{ terminal() }}
+	
 
-Par exemple, dans le code suivant :
+Par exemple, copiez le code suivant dans la zone de script de Thonny, puis appuyez sur la flèche verte pour exécuter ce script :
+
+``` python
+7+5
+4.2+4.6
+453*12
+12-5
+```
 
 
-{{ IDE('Code1') }}
+
 
 Lorsqu'on **exécute** ce code, des objets différents sont créés, présents dans ce qu'on appelle l'==**espace des objets**==. 
 
 Cependant l'exécution du *script* ne renvoie aucune donnée (aucun *objet*). En effet, un mécanisme existant dans presque tous les langages de programmation, appelé **garbage collector** (soit *collecteur d'ordure*), nettoie automatiquement tout objet non utilisé. La mémoire de l'ordinateur étant limitée physiquement, il est nécessaire de nettoyer très régulièrement (plusieurs centaines de fois par seconde), afin de garantir le bon fonctionnement de la machine. Le *garbage collector* a donc supprimé tous les objets, y compris les objets `12`, `8.8`, `5436` et `7` obtenus par les **évaluations des quatre expressions données**.
 
-Regardons plus précisément les objets, en demandant à Python grâce à l'instruction **built-in** `type()` la nature des objets créés.
+Regardons plus précisément les objets, en demandant à Python grâce à la fonction **native** (*built-in* en anglais) `type()` la nature des objets créés.
 
 !!! question "Les types d'objets"
 	
-	Dans la console ci-dessous, testez une par une les expressions suivantes :
+	Dans la console de Thonny, copiez et testez une par une les expressions suivantes :
 	
 	=== "Test 1"
 		```` python
@@ -81,7 +96,7 @@ Regardons plus précisément les objets, en demandant à Python grâce à l'inst
 			type(4.5)
 		````
 	
-	{{ terminal() }}
+	
 
 ??? warning "Une erreur ?"
 	Si vous avez fait un copié-collé du **Test 4** précédent, vous avez obtenu une erreur telle que celle ci-dessous :
@@ -100,69 +115,92 @@ Regardons plus précisément les objets, en demandant à Python grâce à l'inst
 !!! abstract "Types de bases et objets spécifiques"
 	Les types basiques de Python sont donc les suivants :
 
-	* le type `int` : qui permet de manipuler des nombres entiers relatifs, de $-2.10^{9}$ à $+2.10^9$ (mais la plage pouvant être étendue, en pratique on ne s'intéresse pas en python aux limites des entiers) ;
-	* le type `float` : qui permet de manipuler des nombres décimaux à $32$ bits (s'écrivant avec 32 chiffres binaires) entre $-10^{302}$ et $+10^{302}$ (*avec quelques subtilités, que nous verrons dans le chapitre correspondant au codage des nombres flottants*);
-	* le type `str` : qui permet de manipuler des chaines de caractères ;
-	* le type `bool` : qui permet de manipuler des valeurs **booléennes**, c'est à dire vraies ou fausses, utilisées par défaut dans les instructions nécessitant une condition (`if` ou `while` par exemple).
+	* le type `int` : qui permet de manipuler des {==**nombres entiers**==} relatifs, de $-2.10^{9}$ à $+2.10^9$ (mais la plage pouvant être étendue, en pratique on ne s'intéresse pas en python aux limites des entiers) ;
+	* le type `float` : qui permet de manipuler des nombres décimaux à $32$ bits (s'écrivant avec 32 chiffres binaires) entre $-10^{302}$ et $+10^{302}$ (avec quelques subtilités, que nous verrons dans le chapitre correspondant au codage des {==**nombres flottants**==});
+	* le type `str` : qui permet de manipuler des {==**chaines de caractères**==} ;
+	* le type `bool` : qui permet de manipuler des valeurs {==**booléennes**==}, c'est à dire vraies ou fausses, utilisées par défaut dans les instructions nécessitant une condition (`if` ou `while` par exemple).
 
 	Chacun de ces types possède des opérations qui lui sont propres. Elles sont nombreuses, et largement documentées dans la doc Python 3 officielle, en suivant le lien ci contre : [Doc Python 3 en français](https://docs.python.org/fr/3/).
 
 !!! warning "Objets spéciaux"
 	Il existe aussi des *constantes* spécifiques, c'est-à-dire des objets spéciaux comme, par exemple `None`, qui est un objet de type `NoneType`, signifiant une absence de valeur.
 
+!!! danger "A retenir"
+	La fonction native `type` permet de connaitre le type d'un objet qui lui est passé en *argument*. Par exemple
+
+	``` python
+	>>> type(5)
+	<class 'int'> # L'objet 5 est de type int, c'est-à-dire entier
+	>>> type("truc")
+	<class 'str'> # L'objet "truc" est de type str, donc une chaine de caractère.
+	```
+
 ### Nommage des objets et affectations
 
 Bien entendu, de manière quasi obligatoire, il est nécessaire de conserver des objets et d'éviter que ceux-ci disparaissent avec le **garbage collector**.
 
-Pour cela, on va associer à chaque objet un **nom** dans l'**espace de nom**, grâce à l'opération d'**affectation** `=`, comme par exemple `un_inconnu = "Toto"`. Ici le nom de variable `un_inconnu` est associé à l'objet de type chaine de caractère `"Toto"`. 
+!!! danger "Important"
+	Pour cela, on va associer à chaque objet un **nom** dans l'**espace de nom**, en effectuant une {==**affectation**==} grâce au signe `=`.
+	
+	Par exemple `inconnu = "Toto"`. Ici le nom de variable `inconnu` est associé à l'objet de type chaine de caractère `"Toto"`. 
 
 Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par le *garbage collector*, et peut être rappelé plus tard dans le code en utilisant son nom.
 
 !!! example "Exemple"
 
-	Exécutez le code suivant (avec la flèche), puis testez dans la console à droite le type des objets suivants, en utilisant leur nom.
+	1. Copiez le code suivant dans un nouveau script de Thonny, puis exécutez le.
 
-	{{ IDEv('Code2') }}
+		``` python
+		mon_entier = 5
+		le_vrai_hero = "Dark"
+		est_actif = True
+		est_efficace = False
+		mon_flottant = 3.2
+		c_est_lui = "Vador"
+		```
 	
-	Testez ensuite chacune des expressions ci-dessous. Pour chacune d'entre elles, expliquez ce qui se passe.
+	2. Testez ensuite chacune des expressions ci-dessous dans le shell de Thonny. Pour chacune d'entre elles, donnez le résultat de l'exécution affiché dans le shell, et expliquez avec vos mots ce qui s'est passé.
 
-	=== "1"
-				
-		```python
-		mon_entier**2
-		```
-	=== "2"
-				
-		```python
-		le_vrai_hero+c_est_lui
-		```
-	=== "3"
-				
-		```python
-		mon_flottant if est_actif else mon_entier
-		```
-	=== "4"
-				
-		```python
-		mon_flottant if not(est_actif) else mon_entier
-		```
-	=== "5"
-				
-		```python
-		type(mon_flottant*mon_entier)
-		```
-	=== "6"
-				
-		```python
-		mon_entier == mon_flottant
-		```
-		
-	=== "7"
-		
-		
-		```python
-		le_vrai_hero*10
-		```
+		=== "1"
+					
+			```python
+			mon_entier**2
+			```
+		=== "2"
+					
+			```python
+			le_vrai_hero+c_est_lui
+			```
+		=== "3"
+					
+			```python
+			not(est_actif)
+			```
+		=== "4"
+					
+			```python
+			est_actif and est_efficace
+			```
+		=== "5"
+					
+			```python
+			est_actif or est_efficace
+			```		
+		=== "6"
+					
+			```python
+			type(mon_flottant*mon_entier)
+			```
+		=== "7"
+
+			```python
+			mon_entier == mon_flottant
+			```			
+		=== "8"			
+
+			```python
+			le_vrai_hero*10
+			```
 
 !!! question "Comprendre l'affectation"
 	
@@ -192,7 +230,7 @@ Une fois un objet associé à un nom, il n'est plus ramassé automatiquement par
 		
 	=== "Solution"
 	
-		 ![type:video](https://podeduc.apps.education.fr/video/157831-affectations-de-variables-en-python-et-etat-memoire/de2c5a7d-3484-4f02-9c61-9592f0577c84/).
+		 ![type:video](https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/157831/360p.mp4).
 
 
 
@@ -257,7 +295,7 @@ Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qu
 
 !!! warning "Attention avec les flottants"
 
-	Testez dans la console ci-dessous l'instruction suivante `0.1 + 0.2 `. Qu'obtient-on ?
+	Testez dans la console ci-dessous l'instruction suivante `0.1 + 0.2 `. Quel est le problème ?
 
 	{{ terminal() }}
 
@@ -282,11 +320,11 @@ Pour les types numériques, `int` et `float` (et pour le type `complex`, mais qu
 0.3333333333333333
 ```
 
-Attention ! Au résultat ci-dessous, le type obtenu est `float`, même si le dividende et le diviseur sont entiers et que le résultat &laquo; tombe juste &raquo;... 
+Attention ! Au résultat ci-dessous, le type obtenu est `float`, même si le dividende et le diviseur sont entiers et que le résultat &laquo; tombe juste &raquo;, comme dans l'exemple ci-dessous
 
 ``` python
->>> 4/2
-2.0
+>>> 6/2
+3.0
 ```
 
 #### Division Euclidienne
@@ -301,15 +339,22 @@ Ici par contre le résultat est bien de type `int` (à tester aussi...)
 #### Reste de la Division Euclidienne
 
 ``` python
->>> 72%5 #reste de la division euclidienne ( ou modulo).
+>>> 72%5 #reste de la division euclidienne ( aussi appelé modulo).
 2
 ```
 
-C'est un point important en informatique, nous avons souvent besoin du reste, aussi appelé ==**modulo**==. Par exemple pour savoir si un nombre entier est pair, on utilise :
+C'est un point important en informatique, nous avons souvent besoin du reste, aussi appelé ==**modulo**==. Par exemple pour savoir si un nombre entier est pair, on utilise l'opération **modulo**. En effet, vous avez vu en seconde qu'un nombre :
+
+* pair s'écrivait $2k$, avec $k \in \mathbb{N}$, donc le reste de la division euclidienne d'un nombre pair par $2$ est $0$.
+* impair s'écrivait $2k+1$, avec $k \in \mathbb{N}$, donc le reste de la division euclidienne d'un nombre impair par $2$ est $1$.
+
+Il suffit donc d'écrire une *expression* booléenne contenant une opération **modulo 2** et demander si elle est égale à $0$. Si l'expression renvoie `True`, le nombre est pair, sinon le nombre est impair.
     
 ``` python
 >>> 23%2 == 0 
 False
+>>> 42%2 == 0
+True
 ```
 
 #### Puissances
@@ -322,7 +367,7 @@ False
 
 !!! warning "Opérations avec les noms des objets"
 
-	Tourtes les opérations faites avec les objets ci-dessus peuvent être effectuées directement sur les noms si ils existent :
+	Toutes les opérations faites avec les objets ci-dessus peuvent être effectuées directement sur les noms s'ils existent :
 	
 	```` python
 	>>> a = 5
@@ -333,9 +378,7 @@ False
 	1
 	````
 	
-Vous pouvez tester ces éléments dans le terminal ci-dessous :
-	
-{{ terminal() }}
+Vous pouvez tester ces éléments dans le shell de Thonny.
 
 ### Exercices sur les types numériques
 
@@ -354,7 +397,7 @@ L'utilisation de l'un ou de l'autre n'a pas d'importance, mais on peut rapidemen
 
 !!! question "Tester les chaines de caractères"
 
-	Tester les affectations suivantes dans le terminal ci-dessous, et expliquez les éventuels problèmes :
+	Tester les affectations suivantes dans le terminal de Thonny, et expliquez les éventuels problèmes :
 	
 	=== "1"
 	
@@ -388,7 +431,6 @@ L'utilisation de l'un ou de l'autre n'a pas d'importance, mais on peut rapidemen
 		texte = "Alors là je dis : "Non !""
 		````
 	
-	{{ terminal() }}
 
 Normalement, une chaine de caractère, quelle que soit sa longueur, n'est considérée être que sur une seule et unique ligne. Il est cependant possible d'avoir des chaines de caractères multi-lignes, à condition de les déclarer entre **trois paires** de guillemets identiques :
 
@@ -455,15 +497,18 @@ Si la chaine est associée à un nom :
 >>> texte[4]
 'V'
 ````
-Attention, si on cherche un indice qui n'existe pas, on a l'erreur suivante :
+!!! danger "Lire les erreurs"
+	Regardez le code suivant, et l'erreur associée
 
-```python
->>> "Abcdefg"[10]
-Traceback (most recent call last):
-    File "<input>", line 1, in <module>
-IndexError: string index out of range
+	```python
+	>>> "Abcdefg"[10]
+	Traceback (most recent call last):
+		File "<input>", line 1, in <module>
+	IndexError: string index out of range
+	```
+	Ici, on cherche quel est le caractère d'indice 10 dans la chaine `"Abcdefg"`. Or le dernier caractère a pour indice 6.
 
-```
+	Ainsi, une erreur de type `IndexError` signifie que vous cherchez à un indice qui n'existe pas.
 
 Cependant, il est aussi possible de parcourir une chaine à l'envers :
 
@@ -476,7 +521,7 @@ Cependant, il est aussi possible de parcourir une chaine à l'envers :
 
 #### Longueur d'une chaine
 
-La longueur de la chaine ``"Python"``, c'est-à-dire **le nombre de caractères qui la composent**,  est par contre bien de 6, et on peut y accéder grâce à la fonction **built-in** ``len()``.
+La longueur de la chaine ``"Python"``, c'est-à-dire **le nombre de caractères qui la composent**,  est 6. On peut y accéder à cette longueur grâce à la fonction **native** ``len()``.
 
 ```` python
 >>> len("Python")
@@ -511,7 +556,6 @@ On peut aussi concaténer une chaine avec elle-même à plusieurs reprises :
 ```
 
 
-
 ### Méthodes des chaines de caractères
 
 
@@ -528,7 +572,7 @@ On utilise ici la ==**méthode**== `replace` sur la chaine de caractère `"abrac
 
 !!! question "Modifications en place ou non ?"
 
-	Exécutez les lignes suivantes une par une dans le terminal ci-dessous :
+	Exécutez les lignes suivantes une par une dans le terminal de Thonny :
 	
 	```` python
 	>>> texte = 'abracadabra'
@@ -540,12 +584,18 @@ On utilise ici la ==**méthode**== `replace` sur la chaine de caractère `"abrac
 	
 	* la chaine originale et la chaine modifiée, il faut donner un nouveau nom et affecter de la manière suivante :
 	
-		{{ IDEv('Code3') }}
+		``` python 
+		texte =  'abracadabra'
+		nouveau_texte = texte.replace('a', 'U')
+		```
 		
 	* uniquement la chaine modifiée, il suffit de {==**réaffecter**==} la modification au nom `texte` :
 	
-		{{ IDEv('Code4') }}
-		
+		``` python
+		texte =  'abracadabra'
+		texte = texte.replace('a', 'U')
+		```
+		Dans ce cas, la chaine originale a été ramassée par le garbage collector, puisqu'elle n'était plus attachée à un nom.
 
 
     
@@ -575,7 +625,7 @@ Supprime les espaces inutiles devant et après une chaine de caractères
 
 #### Séparation d'une chaine selon un motif donné
 
-Sépare  une chaine de caractère en, fonction d'une chaine passée en argument, et renvoie une liste (que nous étudierons plus tard)
+Sépare une chaine de caractère en fonction d'une chaine passée en argument, et renvoie un objet de type `list` contenant les sous-chaines extraites. Les objets de type `list` sont vus juste ci-dessous.
 
 ```python
 >>> "Une phrase est faite avec des mots".split("est")
@@ -604,13 +654,14 @@ Une liste se crée à l'aide des crochets `[` et `]`, avec deux possibilités :
 	>>> ma_liste = [5, 4.2, True, "Toto"]
 	````
 
-Une liste en python est un objet qu'on peut modifier. On peut y ajouter un élément, en retirer un, en modifier un en particulier, etc.
+Une liste en python est un objet {==**mutable**==}, c'est-à-dire qu'on peut modifier. On peut y ajouter un élément, en retirer un, en modifier un en particulier, etc.
 
-Un tuple ne peut se crée à l'aide des parenthèses `(` et `)`, mais il doit déjà être rempli, car **il ne peut pas être modifié**(ni ajout, ni suppression, ni modification d'éléments) :
+Un tuple ne peut se crée à l'aide des parenthèses `(` et `)`, mais il doit déjà être rempli, car **il ne peut pas être modifié**(il n'est pas **mutable**, ni ajout, ni suppression, ni modification d'éléments) :
 
 ```` python
 >>> mon_tuple = (12, 45, -13, "Bob")
 ````
+
 #### Accès à un élément
 
 Dans une liste ou un tuple, on peut accéder à un objet grâce à son **indice**, tout comme pour les chaines de caractères :
@@ -621,6 +672,8 @@ Dans une liste ou un tuple, on peut accéder à un objet grâce à son **indice*
 >>> mon_tuple[2]
 -13
 ````
+
+Les règles d'accès sont identiques à celles des chaines, et l'erreur `IndexError` signifie que vous essayez de chercher en dehors de la liste ou du tuple.
 
 #### Ajouter un élément à une liste à la dernière position
 
@@ -637,6 +690,7 @@ Dans une liste ou un tuple, on peut accéder à un objet grâce à son **indice*
 >>> ma_liste = [5, 4.2, True, "Toto"]
 >>> ma_liste.pop()
 "Toto" # l'élément est renvoyé dans l'espace des objets courants
+# et donc perdu s'i i'l n'est pas réaffecté.
 >>> ma_liste
 [5, 4.2, True]
 
@@ -660,17 +714,27 @@ Les exercices sont disponibles sur le notebook Capytale [23b2-3809144](https://c
 
 ### Afficher à l'écran
 
-Jusqu'à présent, les seules choses que nous avons obtenues dans le terminal étaient des affichages simples des objets attachés à un nom connu. Il est possible de personnaliser, de différer, et de multiplier les affichages grâce à la fonction *built_in* `print()'.
+Jusqu'à présent, les seules choses que nous avons obtenues dans le terminal étaient des affichages simples des objets attachés à un nom connu. Il est possible de personnaliser, de différer, et de multiplier les affichages grâce à la fonction *native* `print()'.
 
 Par exemple, essayez le code suivant :
 
-{{ IDEv('Code4Bis') }}
+``` python
+a = 25
+print(a)
+b = 30
+print(b)
+print(a+b)
+```
 
 La fonction `print` prend entre parenthèse un objet et l'écrit **sous la forme d'une chaine de caractères** dans la console. Cela signifie que la fonction `print` **ne créé pas de nouvel objet !**
 
 Il est possible d'afficher plusieurs objets, en les séparant par une virgule. Testez par exemple le code suivant :
 
-{{ IDEv('Cod4Ter') }}
+``` python
+a = 25
+b = 30
+print(a, "+", b, "=", a+b)
+```
 
 !!! tip "Formatage des chaines de caractères"
  	On voit qu'il est possible de mêler affichage de variables (par définition pouvant changer) et de textes fixes, en utilisant les virgules. 
@@ -679,9 +743,17 @@ Il est possible d'afficher plusieurs objets, en les séparant par une virgule. T
 
 	Il est possible, et **même recommandé**, d'utiliser le {==**formatage des chaines de caractères**==} de Python !
 
-	Exécutez alors le code ci-dessous :
+	Essayez le code ci-dessous
 
-	{{ IDEv('Code5') }}
+	``` python
+	a = 5
+	b = 8
+	c = 9
+	print(f"La variable a contient {a}.")
+	print(f"La variable b contient {b}.")
+	print(f"Le produit et a et b est : {a}x{b} = {a*b}.")
+	print(f"Le produit et a et de la somme de b et c est : {a}x({b}+{c}) = {a*(b+c)}.")
+	```
 
 
 	Une chaine de caractères est formatée automatiquement par Python à condition que :
@@ -708,14 +780,21 @@ Il est possible d'afficher plusieurs objets, en les séparant par une virgule. T
 
 Pour demander une saisie clavier à un utilisateur, on utilise la fonction **built-in** `input()`, prenant *éventuellement* en **argument** une chaine de caractères. Cette fonction `input` **interrompt le programme** et **attend une saisie clavier** de l'utilisateu·trice, et retourne cette saisie sous la forme d'une chaine de caractère dès que la touche ++return++ est pressée.
 
-{{ IDEv('Code6') }}
+``` python
+nom = input("Entrez votre nom :")
+print(f"Votre nom est {nom}")
+```
+
 
 Il faut cependant être attentif·ve à ce qui est réalisé par la fonction `input()`. En effet, le **retour** effectué par cette fonction est renvoyé sous la forme de chaine de caractères, ce qui peut poser un problème comme, par exemple, dans la situation ci-dessous :
 
-{{ IDEv('Code7') }}
+``` python
+nb = input("Entrez un nombre entier :")
+print(2*nb)
+```
 
 
-Pour lever cette ambigüité, nous sommes parfois obligés d'effectuer un {==**transtypage des données**==}, c'est-à-dire une modification du **type** de la valeur de retour,  avec l'aide des fonctions **built-in** suivantes :
+Pour lever cette ambiguïté, nous sommes parfois obligés d'effectuer un {==**transtypage des données**==}, c'est-à-dire une modification du **type** de la valeur de retour, avec l'aide des fonctions **natives** suivantes :
 
 * `str()`
 * `int()`
@@ -725,17 +804,27 @@ Pour lever cette ambigüité, nous sommes parfois obligés d'effectuer un {==**t
 
 Par exemple :
 
-{{ IDEv('Code8') }}
+``` python
+saisie = input("Entrez un nombre entier :")
+nb = int(saisie)
+print(2*nb)
+```
+Ici on crée une variable `saisie`, de type `str`, qui récupère la saisie de l'utilisateur. La variable `nb` est elle créée en transtypant le contenu de la variable `saisie` en un `int`, c'est-à-dire en un nombre entier.
 
-On a forcé ici dans la première ligne Python à transformer (s'il le peut) le contenu de la variable `nb` comme étant un nombre entier.
-
-Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice saisit une chaine de caractères ne pouvant être transtypée en nombre entier, le programme renverra une erreur.
+Ceci ne lève cependant pas tous les problèmes, puisque si l'utilisateur·trice saisit une chaine de caractères qui ne contient pas que des chiffres, celle-ci ne pourra pas être transtypée en nombre entier et le programme renverra une erreur.
 
 !!! question "Exercice"
 
-	Écrire dans l'éditeur ci dessous un code python qui :
+	1. Créez un dossier `NSI` dans votre dossier `Document`.
+	2. Créez dans le dossier `NSI` un dossier `Bases_Python`.
+	3. Dans ce dossier, créez un nouveau script Thonny, que vous sauvegarderez dans sous le nom `multiplication.py`.
+	4. dans ce script, écrivez un programme qui :
 
-	* demande deux nombres entiers à l'utilisateur·trice et les stocke dans des variables `a`et `b` ;
-	* donne le produit des deux nombres saisis, ainsi que le type du résultat, sous la forme d'une chaine de caractères du type `"3x4 = 12 résultat de type <class'int'>"` (si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b`)
+		* demande deux nombres entiers à l'utilisateur·trice et les stocke dans des variables `a`et `b` ;
+		* donne le produit des deux nombres saisis, ainsi que le type du résultat, sous la forme d'une chaine de caractères telle que la suivante si l'utilisateur·trice à saisi 4 pour `a` et 3 pour `b` :
+		
+			```python
+		 	"3 x 4 = 12 résultat de type <class'int'> "
+			```
 
-	{{ IDEv() }}
+	
