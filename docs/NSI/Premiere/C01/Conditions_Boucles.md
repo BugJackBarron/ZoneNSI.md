@@ -578,7 +578,7 @@ Dans ce cas, on parcourt **chaque élément** d'un ensemble donné. Nous verrons
             ````
             
 
-        2. Écrire un programme qui affiche les restes des divisions euclidiennes des $200$ premiers entiers par  $7$.
+        2. Écrire un programme qui affiche les restes des divisions euclidiennes des $200$ premiers entiers par $7$.
         3. Écrire un programme qui affiche les restes des divisions euclidiennes des $300$ premières puissances de $2$ par $9$. Que constate-t-on ?
         4. Écrire un programme qui affiche une suite de 12 nombres dont chaque terme soit égal au triple du nombre précédent, le nombre de départ étant choisi par l'utilisateur·trice.
         5. La suite de Syracuse est définie ainsi :
