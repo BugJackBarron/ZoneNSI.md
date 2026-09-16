@@ -2607,6 +2607,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#getters-and-setters-une-bonne-pratique-dencapsulation-mais-hors-programme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getters and Setters : une bonne pratique d'encapsulation (mais hors programme)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#methodes-specifiques" class="md-nav__link">
     <span class="md-ellipsis">
       Méthodes spécifiques
@@ -5205,6 +5214,39 @@ de force du personnage auquel on ajoute un nombre aléatoire entre 1 et 20.</p>
 </code></pre></div>
 Ce qui signifie que <code>second_player</code> a perdu 6 points de vie.
 </details>
+<h3 id="getters-and-setters-une-bonne-pratique-dencapsulation-mais-hors-programme">Getters and Setters : une bonne pratique d'encapsulation (mais hors programme)</h3>
+<p>Python permet d'accéder et de modifier les <strong>attributs</strong> d'un objet directement, comme par exemple avec l'affectation suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="n">first_player</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="s2">"Anakin"</span>
+</code></pre></div>
+<p>C'est toutefois considéré comme une mauvaise pratique, car il serait alors possible d'affecter en Python à un attribut un type qui ne devrait pas correspondre : par exemple mettre une chaine de caractère en lieu et place d'un entier pour l'attribut <code>force</code>, ce qui deviendrait problématique lors de l'appel de la méthode <code>attaque</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">first_player</span><span class="o">.</span><span class="n">force</span> <span class="o">=</span> <span class="s2">"30"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first_player</span><span class="o">.</span><span class="n">attaque</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">"Personnages.py"</span><span class="p">,</span> <span class="n">line</span> <span class="o">...</span><span class="p">,</span> <span class="ow">in</span> <span class="n">attaque</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span> <span class="n">only</span> <span class="n">concatenate</span> <span class="nb">str</span> <span class="p">(</span><span class="ow">not</span> <span class="s2">"int"</span><span class="p">)</span> <span class="n">to</span> <span class="nb">str</span>
+</code></pre></div>
+<p>De nombreux languages (<code>C++</code>, <code>Rust</code>, etc.) interdisent purement et simplement de modifier et d'accéder directement à un attribut pour palier à ce risque. Mais il est absolument nécessaire de pouvoir modifier et récupérer les valeurs d'un attribut d'une instance de classe. Pour résoudre ce problème, on utilise des <strong>méthodes</strong> appelées <strong>getters</strong> (pour obtenir la valeur d'un attribut), et <strong>setters</strong> (pour modifier la valeur d'un attribut).</p>
+<p>Par exemple, ohn pourrait avoir la paire de méthodes <strong>setters</strong> et <strong>getters</strong> pour l'attribut <code>force</code> de la classe <code>Personnage</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Personnage</span> <span class="p">:</span>
+    <span class="o">...</span>
+    <span class="o">...</span>
+    <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_force</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">""" renvoie la valeur de l'attribut force"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">force</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_nom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nouvelle_force</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">""" modifie la valeur de l'attribut force avec</span>
+<span class="sd">        la valeur du paramètre nouvelle_force"""</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nouvelle_force</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="s2">"paramètre nouvelle_force doit être de type int"</span><span class="c1"># Vérification des préconditions</span>
+        <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nouvelle_force</span><span class="p">,</span> <span class="s2">"nouvelle_force doit être positive ou nulle"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">=</span> <span class="n">nouvelle_force</span>
+</code></pre></div>
+<p>Il devient ainsi impossible d'affecter à l'attribut <code>force</code> une valeur non-cohérente : non entière ou négative.</p>
+<p>Par contre vous remarquerez que je n'ai pas fixé de valeur maximale à la force du personnage.</p>
+<p><img alt="It's Over 9000!! [1080p HD]" src="https://i.makeagif.com/media/5-31-2017/wzKsfg.gif"></p>
 <h3 id="methodes-specifiques">Méthodes spécifiques</h3>
 <div class="admonition info inline end">
 <p class="admonition-title">Info</p>

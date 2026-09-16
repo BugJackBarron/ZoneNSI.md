@@ -57,7 +57,7 @@ def une_attaque(attaquant : Personnage, defenseur : Personnage) :
         defenseur.pex+=1
     else :
         printf("=> {defenseur.nom} est blessé et n'a plus que {defenseur.pv} pv.")
-        printf("=> {defenseur.nom} est blessé et n'a plus que {defenseur.pv} pv.")ex
+        printf("=> {defenseur.nom} est blessé et n'a plus que {defenseur.pv} pv.")
         attaquant.pex += 2
     return attaquant,defenseur
             
@@ -77,7 +77,7 @@ def fight(p1 : Personnage, p2 : Personnage) ->tuple[Personnage] :
 
 
 if __name__ == "__main__" :
-    firstPlayer = Personnage('Bob', 18, 25, 12, 30)
-    secondPlayer = Personnage('Bill', 34, 10, 20, 12)
+    first_player = Personnage('Bob', 18, 25, 12, 30)
+    second_player = Personnage('Bill', 34, 10, 20, 12)
     
     

@@ -404,6 +404,57 @@ En rechargeant le module, puis en recréant les objets `second_player` puis `fir
 	```
 	Ce qui signifie que `second_player` a perdu 6 points de vie.
 
+### Getters and Setters : une bonne pratique d'encapsulation (mais hors programme)
+
+Python permet d'accéder et de modifier les **attributs** d'un objet directement, comme par exemple avec l'affectation suivante :
+
+``` python
+first_player.nom = "Anakin"
+```
+
+C'est toutefois considéré comme une mauvaise pratique, car il serait alors possible d'affecter en Python à un attribut un type qui ne devrait pas correspondre : par exemple mettre une chaine de caractère en lieu et place d'un entier pour l'attribut `force`, ce qui deviendrait problématique lors de l'appel de la méthode `attaque` :
+
+``` python
+>>> first_player.force = "30"
+>>> first_player.attaque()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "Personnages.py", line ..., in attaque
+    return self.force + randint(1,20)
+TypeError: can only concatenate str (not "int") to str
+```
+
+
+De nombreux languages (`C++`, `Rust`, etc.) interdisent purement et simplement de modifier et d'accéder directement à un attribut pour palier à ce risque. Mais il est absolument nécessaire de pouvoir modifier et récupérer les valeurs d'un attribut d'une instance de classe. Pour résoudre ce problème, on utilise des **méthodes** appelées **getters** (pour obtenir la valeur d'un attribut), et **setters** (pour modifier la valeur d'un attribut).
+
+Par exemple, ohn pourrait avoir la paire de méthodes **setters** et **getters** pour l'attribut `force` de la classe `Personnage` :
+
+``` Python
+
+class Personnage :
+	...
+	...
+	...
+	def get_force(self) :
+		""" renvoie la valeur de l'attribut force"""
+		return self.force
+
+	def set_nom(self, nouvelle_force : int) :
+		""" modifie la valeur de l'attribut force avec
+		la valeur du paramètre nouvelle_force"""
+		assert isinstance(nouvelle_force, int), "paramètre nouvelle_force doit être de type int"# Vérification des préconditions
+		assert 0 <= nouvelle_force, "nouvelle_force doit être positive ou nulle"
+ 		self.force = nouvelle_force
+```
+
+Il devient ainsi impossible d'affecter à l'attribut `force` une valeur non-cohérente : non entière ou négative.
+
+Par contre vous remarquerez que je n'ai pas fixé de valeur maximale à la force du personnage.
+
+![It's Over 9000!! [1080p HD]](https://i.makeagif.com/media/5-31-2017/wzKsfg.gif)
+
+
+
 ### Méthodes spécifiques
 
 !!! info inline end 
