@@ -5149,19 +5149,69 @@
 <li><strong>n'est pas exécuté</strong> au moment de sa définition ;</li>
 <li>mais peut être <strong>appelé</strong> plusieurs fois dans le code par l'intermédiaire de son nom, <mark class="critic"><strong>suivi d'une paire de parenthèses</strong></mark>. Ces appels (<em>call</em> en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverra une <mark class="critic"><strong>valeur de retour</strong></mark>, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.</li>
 </ul>
-</div>
-<div class="admonition example">
-<p class="admonition-title">Pour notre exemple : </p>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="comment">###</span><div class="interior_wrapper"><div id="editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a"></div></div><div id="term_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","askIntFctV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide">def askpy-unduserpy-undint() -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input("Entrez un nombre entre 1 et 10 : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if 1&lt;= nb &lt;= 10 :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide" data-strudel=""></span>
+<p>Une fonction est crée en Python par le mot clé <code>def</code> suivi du nom de la fonction et des <mark class="critic"><strong>paramètres</strong></mark> utilisés, puis d'un caractère <code>:</code>, et dans le bloc de code la ou les valeurs renvoyées sont spécifiées avec le mot clé <code>return</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">est_entier_et_strictement_positif</span><span class="p">(</span><span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span><span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">nb</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
 <p>En regardant la première ligne, qu'on appelle la <mark class="critic"><strong>signature de la fonction</strong></mark> :
-</p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">est_entier_et_strictement_positif</span><span class="p">(</span><span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
 </code></pre></div>
 <ul>
-<li>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>, ce qui rend l'objet <mark class="critic"><strong>appelable</strong></mark> (<em>callable</em> en anglais).</li>
-<li>la notation <code>-&gt; int</code> est un <mark class="critic"><strong>type hint</strong></mark>, autrement dit un <em>indice de type</em>, qui indique que la valeur renvoyée par la fonction sera de type <code>int</code>. Les <strong>type hints</strong> sont <em>facultatifs en Python</em>, mais strictement nécessaires dans d'autres langages (<code>Java</code>, <code>C</code>, <code>C++</code>, etc).</li>
+<li>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>,contenant le <strong>paramètre</strong> <code>nb</code>, dont on précise qu'il doit être de type <code>int</code> ou <code>float</code>, grâce aux <strong>type hints</strong> de Python, en français <em>indices de type</em>. Les <strong>type hints</strong> ne sont que des indications en Python, mais ils sont impératifs dans d'autres langages (C, C++, Rust, etc...)</li>
+<li>la notation <code>-&gt; bool</code> est un <mark class="critic"><strong>type hint</strong></mark>, qui indique que la valeur renvoyée par la fonction sera de type <code>bool</code>. </li>
 <li>Les deux points définissent un bloc de code qui est repéré par <strong>une indentation</strong>, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.</li>
+<li>la fonction renvoie un objet de type <code>bool</code>, selon les conditions vérifiées par la structure conditionnelle.</li>
 </ul>
-<p>On fait appel à cette fonction en appelant le nom <code>ask_user_int()</code>, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.</p>
+<p>La fonction peut ensuite être <mark class="critic"><strong>appelée</strong></mark> dans le terminal :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">est_entier_et_strictement_positif</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">est_entier_et_strictement_positif</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">est_entier_et_strictement_positif</span><span class="p">(</span><span class="mf">5.4</span><span class="p">)</span>
+<span class="kc">False</span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Quelques exemples : </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Une fonction affine</label><label for="__tabbed_3_2">Une fonction sur les chaines de caractères</label><label for="__tabbed_3_3">Pour notre problème</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="nb">float</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span><span class="mi">4</span>
+</code></pre></div>
+Cette fonction :
+<ul>
+<li>possède un paramètre <code>x</code> de type <code>float</code> ;</li>
+<li>renvoie l'image de <code>x</code> par loa fonction <span class="arithmatex">\(f : x \mapsto 3x+4\)</span>.</li>
+</ul>
+<p>Une fois définie, on l'utilise de la manière suivante (dans le terminal) :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">19</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>
+<span class="mf">10.9</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">formate_</span> <span class="n">nom</span><span class="p">(</span><span class="n">nom</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">prenom</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
+    <span class="n">nomf</span> <span class="o">=</span> <span class="n">nom</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">prenomf</span> <span class="o">=</span> <span class="n">prenom</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">nomf</span><span class="o">+</span><span class="s2">" "</span><span class="o">+</span><span class="n">prenomf</span>
+</code></pre></div>
+Cette fonction :
+<ul>
+<li>possède deux paramètres <code>nom</code> et <code>prenom</code> qui sont deux chaines de caractères ;</li>
+<li>utilise deux <mark class="critic"><strong>variables  locales</strong></mark> <code>nomf</code> et <code>prenomf</code> ;</li>
+<li>renvoie une chaine de caractère formatée contenant le nom en majuscule puis le prénom en minuscule, avec la première lettre en majuscule.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="comment">###</span><div class="interior_wrapper"><div id="editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a"></div></div><div id="term_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","askIntFctV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide">def askpy-unduserpy-undint() -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input("Entrez un nombre entre 1 et 10 : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if 1&lt;= nb &lt;= 10 :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide" data-strudel=""></span>
+</div>
+</div>
+</div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Oubli des parenthèses</p>
@@ -5200,7 +5250,7 @@
 <h3 id="exercices">Exercices</h3>
 <div class="admonition question">
 <p class="admonition-title">Application 2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Enoncé</label><label for="__tabbed_3_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction nommée <code>table7</code> qui <strong>renvoie</strong> la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :</p>
@@ -5235,10 +5285,10 @@
 <div class="admonition warning">
 <p class="admonition-title">Erreurs d'appels et notion de précondition</p>
 <p>Avec le code actuel de la fonction <code>ask_user_int</code>, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><input id="__tabbed_4_3" name="__tabbed_4" type="radio"><input id="__tabbed_4_4" name="__tabbed_4" type="radio"><input id="__tabbed_4_5" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Test 1</label><label for="__tabbed_4_2">Test 2</label><label for="__tabbed_4_3">Test 3</label><label for="__tabbed_4_4">Test 4</label><label for="__tabbed_4_5">Solution ?</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><input id="__tabbed_5_3" name="__tabbed_5" type="radio"><input id="__tabbed_5_4" name="__tabbed_5" type="radio"><input id="__tabbed_5_5" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Test 1</label><label for="__tabbed_5_2">Test 2</label><label for="__tabbed_5_3">Test 3</label><label for="__tabbed_5_4">Test 4</label><label for="__tabbed_5_5">Solution ?</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Code</label><label for="__tabbed_5_2">Problème</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Code</label><label for="__tabbed_6_2">Problème</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">()</span>
@@ -5251,7 +5301,7 @@
 </div>
 </div>
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Code</label><label for="__tabbed_6_2">Problème</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Code</label><label for="__tabbed_7_2">Problème</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
@@ -5264,7 +5314,7 @@
 </div>
 </div>
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Code</label><label for="__tabbed_7_2">Problème</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Code</label><label for="__tabbed_8_2">Problème</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
@@ -5277,7 +5327,7 @@
 </div>
 </div>
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Code</label><label for="__tabbed_8_2">Problème</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Code</label><label for="__tabbed_9_2">Problème</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -5325,7 +5375,7 @@ qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui
 <h4 id="applications">Applications</h4>
 <div class="admonition question">
 <p class="admonition-title">Application 3</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction <code>table_multi(m : int)-&gt; str</code> qui prend un argument entier <code>m</code> et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.</p>
@@ -5335,7 +5385,7 @@ qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 4 : motif dans une chaine</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked id="__tabbed_11_1" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction <code>trouve_chaine(motif : str, texte : str) -&gt; bool</code>qui prend deux arguments, un <code>motif</code> ( une chaine de caractères )  et un <code>texte</code> ( une autre chaine de caractères )  et qui renvoie <code>True</code> si le <code>motif</code> est présent dans la <code>chaine</code>, quel que soit la casse du motif ou celle de la chaine, et <code>False</code> sinon.  Vous pouvez tester avec les lignes suivantes :</p>
@@ -5361,7 +5411,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </ul>
 <p>Il est à noter qu'impérativement les <strong>paramètres obligatoires doivent être placés avant les paramètres optionnels</strong>.</p>
 <p>On peut alors appeler la fonction des différentes manières suivantes (à tester) :</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked id="__tabbed_11_1" name="__tabbed_11" type="radio"><input id="__tabbed_11_2" name="__tabbed_11" type="radio"><input id="__tabbed_11_3" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">1</label><label for="__tabbed_11_2">2</label><label for="__tabbed_11_3">3</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><input id="__tabbed_12_3" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">1</label><label for="__tabbed_12_2">2</label><label for="__tabbed_12_3">3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">ask_user_int</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -5382,7 +5432,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 
 <div class="admonition question">
 <p class="admonition-title">Application 5 : paramètres optionnels</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">Enoncé</label><label for="__tabbed_12_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Enoncé</label><label for="__tabbed_13_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Compléter la fonction <code>table_multi</code> afin qu'elle utilise deux paramètres optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.</p>
@@ -5400,7 +5450,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 6 : paramètres optionnels</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Enoncé</label><label for="__tabbed_13_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><input id="__tabbed_14_2" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Enoncé</label><label for="__tabbed_14_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Réécrire la fonction <code>trouve_chaine</code> afin qu'elle utilise un <em>paramètre booléen optionnel</em> <code>verif_casse</code>, afin de déterminer si le <code>motif</code> est présent dans le <code>texte</code> en vérifiant la casse ou non. Par défaut le paramètre sera <code>False</code>. Vous pouvez utiliser les tests ci-dessous :</p>
@@ -5468,7 +5518,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%3D%2010%0Adef%20f%28%29%20%3A%0A%20%20%20%20gvar%3Dgvar%2B2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe></p>
 <p>Le code précédent déclenche une erreur <code>UnboundLocalError</code> en ligne 3. Cela signifie que l'interpréteur Python ne peut pas effectuer la ligne <code>gvar=gvar+2</code> car il cherche une variable <code>gvar</code> qu'il peut modifier. Or <mark class="critic"><strong>une variable définie hors d'une fonction ne peut pas être modifiée par celle-ci</strong></mark>.</p>
 <p>Il est par contre possible de travailler sur <mark class="critic"><strong>une copie</strong></mark> de la variable souhaitée (<em>uniquement dans le cas des types primitifs <code>int</code>, <code>float</code>, <code>str</code>...), en utilisant une fonction ayant un argument. Il faudra par conséquent </em><em>retourner la valeur changée</em>* pour qu'elle soit effective. Par exemple comparez les deux scripts suivants :</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><input id="__tabbed_14_2" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Code incorrect</label><label for="__tabbed_14_2">Code correct</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked id="__tabbed_15_1" name="__tabbed_15" type="radio"><input id="__tabbed_15_2" name="__tabbed_15" type="radio"><div class="tabbed-labels"><label for="__tabbed_15_1">Code incorrect</label><label for="__tabbed_15_2">Code correct</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28a%29%20%3A%0A%20%20%20%20%23print%28f%22Dans%20la%20fonction,%20avant%20modification,%20a%3D%7Ba%7D%22%29%0A%20%20%20%20a%3Da*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20a%3D%7Ba%7D%22%29%0Af%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe></p>
@@ -5539,7 +5589,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Écrire des tests</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked id="__tabbed_15_1" name="__tabbed_15" type="radio"><input id="__tabbed_15_2" name="__tabbed_15" type="radio"><div class="tabbed-labels"><label for="__tabbed_15_1">Enoncé</label><label for="__tabbed_15_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked id="__tabbed_16_1" name="__tabbed_16" type="radio"><input id="__tabbed_16_2" name="__tabbed_16" type="radio"><div class="tabbed-labels"><label for="__tabbed_16_1">Enoncé</label><label for="__tabbed_16_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -5599,7 +5649,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <p>L'appel à la fonction <code>doctest.testmod()</code> déclenche les trois tests présents dans la doctsring, et vérifie que les résultats de la fonctions correspondent à ceux fournit dans la docstring.</p>
 <div class="admonition question">
 <p class="admonition-title">Application 7 : Ajouter une fonction et des tests</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked id="__tabbed_16_1" name="__tabbed_16" type="radio"><input id="__tabbed_16_2" name="__tabbed_16" type="radio"><div class="tabbed-labels"><label for="__tabbed_16_1">Enoncé</label><label for="__tabbed_16_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked id="__tabbed_17_1" name="__tabbed_17" type="radio"><input id="__tabbed_17_2" name="__tabbed_17" type="radio"><div class="tabbed-labels"><label for="__tabbed_17_1">Enoncé</label><label for="__tabbed_17_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créez une fonction <code>times3</code> qui multiplie un objet par 3, en écrivant les tests correspondants.</p>

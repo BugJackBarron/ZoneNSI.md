@@ -140,22 +140,82 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
     * **n'est pas exécuté** au moment de sa définition ;
     * mais peut être **appelé** plusieurs fois dans le code par l'intermédiaire de son nom, {==**suivi d'une paire de parenthèses**==}. Ces appels (*call* en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverra une {==**valeur de retour**==}, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.
 
-!!! example "Pour notre exemple : " 
+    Une fonction est crée en Python par le mot clé `def` suivi du nom de la fonction et des {==**paramètres**==} utilisés, puis d'un caractère `:`, et dans le bloc de code la ou les valeurs renvoyées sont spécifiées avec le mot clé `return` :
 
-    {{ IDEv('askIntFctV1') }}
-
+    ``` python
+    def est_entier_et_strictement_positif(nb : int | float) -> bool :
+        if isinstance(nb)== int and nb > 0 :
+            return True
+        else :
+            return False
+    ```
 
     En regardant la première ligne, qu'on appelle la {==**signature de la fonction**==} :
     ``` python
-    def ask_user_int() -> int:
+    def est_entier_et_strictement_positif(nb : int | float) -> bool :
     ```
 
-    * La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, ce qui rend l'objet {==**appelable**==} (*callable* en anglais).
-    * la notation `-> int` est un {==**type hint**==}, autrement dit un *indice de type*, qui indique que la valeur renvoyée par la fonction sera de type `int`. Les **type hints** sont *facultatifs en Python*, mais strictement nécessaires dans d'autres langages (`Java`, `C`, `C++`, etc).
+    * La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`,contenant le **paramètre** `nb`, dont on précise qu'il doit être de type `int` ou `float`, grâce aux **type hints** de Python, en français *indices de type*. Les **type hints** ne sont que des indications en Python, mais ils sont impératifs dans d'autres langages (C, C++, Rust, etc...)
+    * la notation `-> bool` est un {==**type hint**==}, qui indique que la valeur renvoyée par la fonction sera de type `bool`. 
     * Les deux points définissent un bloc de code qui est repéré par **une indentation**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
+    * la fonction renvoie un objet de type `bool`, selon les conditions vérifiées par la structure conditionnelle.
 
-    On fait appel à cette fonction en appelant le nom `ask_user_int()`, ce qui déclenche le bloc de code, puis crée un objet de retour correspondant à la valeur saisie par l'utilisateur.
+    La fonction peut ensuite être {==**appelée**==} dans le terminal :
 
+    ```python
+    >>> est_entier_et_strictement_positif(54)
+    True
+    >>> est_entier_et_strictement_positif(-3)
+    False
+    >>> est_entier_et_strictement_positif(5.4)
+    False
+    ```
+
+
+!!! example "Quelques exemples : "
+    
+    === "Une fonction affine"
+
+        ``` python
+        def f(x : float ) -> float :
+            return 3*x +4
+        ```
+        Cette fonction :
+
+        * possède un paramètre `x` de type `float` ;
+        * renvoie l'image de `x` par loa fonction $f : x \mapsto 3x+4$.
+
+        Une fois définie, on l'utilise de la manière suivante (dans le terminal) :
+
+        ``` python
+        >>> f(5)
+        19
+        >>> f(2.3)
+        10.9
+        ```
+
+        
+
+    === "Une fonction sur les chaines de caractères"
+
+        ``` python
+        def formate_ nom(nom : str, prenom : str)-> str :
+            nomf = nom.upper()
+            prenomf = prenom.capitalize()
+            return nomf+" "+prenomf
+        ``` 
+        Cette fonction :
+
+        * possède deux paramètres `nom` et `prenom` qui sont deux chaines de caractères ;
+        * utilise deux {==**variables  locales**==} `nomf` et `prenomf` ;
+        * renvoie une chaine de caractère formatée contenant le nom en majuscule puis le prénom en minuscule, avec la première lettre en majuscule.
+
+    === "Pour notre problème"
+
+        {{ IDEv('askIntFctV1') }}
+
+
+    
 !!! warning "Oubli des parenthèses"
 
     Dans le cas d'un oubli des parenthèses lorsqu'on appelle une fonction, on obtient dans le terminal le message suivant :
