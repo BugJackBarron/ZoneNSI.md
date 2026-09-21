@@ -7,7 +7,13 @@
 
 Dans la partie précédente, nous avons terminé par un petit programme qui demande à un·e utilisateur·trice de donner un nombre entier entre 1 et 10, et qui vérifie la saisie jusqu'à ce que l'utilisateur·trice ait effectué une saisie correcte. Voici un exemple simple d'implémentation de ce programme, tel que celui que vous avez proposé :
 
-{{ IDEv('askIntV1') }}
+```python
+saisie = input("Entrez un nombre entre 1 et 10 :")
+while not(saisie in [ "1", "2", "3","4", "5", "6", "7", "8", "9", "10" ])     :
+    saisie = input("Entrez un nombre entre 1 et 10 :")
+nb = int(saisie)
+print(f"Vous avez saisi {nb}")
+```
 
 !!! question "Un blocage ?"
 
@@ -199,7 +205,7 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
     === "Une fonction sur les chaines de caractères"
 
         ``` python
-        def formate_ nom(nom : str, prenom : str)-> str :
+        def formate_nom(nom : str, prenom : str)-> str :
             nomf = nom.upper()
             prenomf = prenom.capitalize()
             return nomf+" "+prenomf
