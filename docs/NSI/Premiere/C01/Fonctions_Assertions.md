@@ -212,7 +212,25 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
 
     === "Pour notre problème"
 
-        {{ IDEv('askIntFctV1') }}
+        ``` python
+        def ask_user_int() -> int:
+            repeter = True
+            while repeter :
+                saisie = input("Entrez un nombre entre 1 et 10 : ")
+                if saisie != "" :
+                    est_un_entier = True
+                    indice_depart = 0
+                    if saisie[0] == "-" :
+                        indice_depart = 1
+                    for caractere in saisie[indice_depart : len(saisie)] :
+                        if caractere not in "0123456789" :
+                            est_un_entier = False
+                    if est_un_entier :
+                        nb = int(saisie)
+                        if 1<= nb <= 10 :
+                            repeter = False
+            return nb
+        ```
 
 
     
@@ -259,7 +277,36 @@ Comme tout objet, la valeur de retour d'une fonction doit elle-même être stock
 Le code du programme de vérification de Pythagore peut alors être {==**factorisé**==} (ce qui signifie globalement qu'on réduit sa taille en évitant les répétitions), afin de respecter le principe DRY :
 
 
-{{ IDEv('askIntFctV2') }}
+``` python
+#### Zone des fonctions
+
+def ask_user_int() -> int:
+    repeter = True
+    while repeter :
+        saisie = input("Entrez un nombre entre 1 et 10 : ")
+        if saisie != "" :
+            est_un_entier = True
+            indice_depart = 0
+            if saisie[0] == "-" :
+                indice_depart = 1
+            for caractere in saisie[indice_depart : len(saisie)] :
+                if caractere not in "0123456789" :
+                    est_un_entier = False
+            if est_un_entier :
+                nb = int(saisie)
+                if 1<= nb <= 10 :
+                    repeter = False
+    return nb
+### Code principal
+
+nb1 = ask_user_int()
+nb2 = ask_user_int()
+nb3 = ask_user_int()
+if (nb1**2 == nb2**2 + nb3**2) or (nb2**2 == nb1**2 + nb3**2) or (nb3**2 == nb2**2 + nb1**2) :
+    print("C'est une configuration de Pythagore !")
+else :
+    print("Ce n'est pas une configuration de Pythagore !")
+```
 
 Ce qui a l'avantage d'être vraiment plus clair.
 
@@ -271,13 +318,14 @@ Ce qui a l'avantage d'être vraiment plus clair.
 
     === "Enoncé"
 
-        Créer une fonction nommée `table7` qui **renvoie** la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :
+        Créer une fonction nommée `table7` qui {==**renvoie**==} la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :
 
         ``` 
         "7x0=0 \n 7x1=7 \n 7x2=14 ..."
         ```
 
         **Indication :** le symbole `\n`, insère un saut de ligne dans une chaîne de caractères.
+        **Attention :** l'énoncé ne demande pas d'*imprimer*, mais bien de *renvoyer* un objet de type chaine de caractère.
 
     === "Solution"
 
@@ -300,7 +348,25 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**p
 
 !!! example "Exemple :"
 
-    {{ IDEv('askUserIntV3') }}
+    ```python
+    def ask_user_int(borne_min : int, borne_max : int) -> int:
+        repeter = True
+        while repeter :
+            saisie = input(f"Entrez un nombre entre {borne_min} et {borne_max} : ")
+            if saisie != "" :
+                est_un_entier = True
+                indice_depart = 0
+                if saisie[0] == "-" :
+                    indice_depart = 1
+                for caractere in saisie[indice_depart : len(saisie)] :
+                    if caractere not in "0123456789" :
+                        est_un_entier = False
+                if est_un_entier :
+                    nb = int(saisie)
+                    if borne_min<= nb <= borne_max :
+                        repeter = False
+        return nb
+    ```
 
     La fonction `ask_user_int` utilise maintenant deux paramètres `borne_min` et `borne_max`, dont les **type hints** indiquent que ce doit être deux entiers.
 
@@ -383,7 +449,29 @@ On pourrait alors souhaiter séparer le code en deux fonctions :
 
 On obtiendrait alors le code suivant :
 
- {{ IDEv('askUserIntV3bis') }}
+``` python
+ def is_integer(word : str) -> bool :
+    est_un_entier = True
+    indice_depart = 0
+    if word[0] == "-" :
+        indice_depart = 1
+    for caractere in word[indice_depart : len(word)] :
+        if caractere not in "0123456789" :
+            est_un_entier = False
+    return est_un_entier
+
+
+def ask_user_int(borne_min : int, borne_max : int) -> int:
+    repeter = True
+    while repeter :
+        saisie = input(f"Entrez un nombre entre {borne_min} et {borne_max} : ")
+        if saisie != "" :            
+            if is_integer(saisie) == True:
+                nb = int(saisie)
+                if borne_min<= nb <= borne_max :
+                    repeter = False
+    return nb
+```
 
  Vous noterez que la fonction `is_integer` est utilisée au sein de la fonction `ask_user_int`.
 
@@ -417,7 +505,29 @@ Notre fonction `ask_user_int` commence à être intéressante. Mais nous pourrio
 C'est tout à fait possible en Python, grâce aux **paramètres optionnels**. Il s'agit de paramètres dont le nom est donné dans la **signature**, mais avec **une valeur par défaut**. Ainsi :
 
 
-{{ IDEv('askUserIntV4') }}
+```python
+def is_integer(word : str) -> bool :
+    est_un_entier = True
+    indice_depart = 0
+    if word[0] == "-" :
+        indice_depart = 1
+    for caractere in word[indice_depart : len(word)] :
+        if caractere not in "0123456789" :
+            est_un_entier = False
+    return est_un_entier
+
+
+def ask_user_int(borne_min : int, borne_max : int, nom :str = "Inconnu") -> int:
+    repeter = True
+    while repeter :
+        saisie = input(f"{nom}, entrez un nombre entre {borne_min} et {borne_max} : ")
+        if saisie != "" :            
+            if is_integer(saisie) == True :
+                nb = int(saisie)
+                if borne_min<= nb <= borne_max :
+                    repeter = False
+    return nb
+```
 
 Ainsi, la fonction ci-dessus possède trois paramètres :
 
@@ -446,7 +556,7 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
     ```python
     ask_user_int(25, 40, nom='foo')
     ```
-{{ terminal() }}
+
 
 !!! question "Application 5 : paramètres optionnels"
 
@@ -510,13 +620,36 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
 
 Les concepteur·trice·s de Python ont créé une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction `help`.
 
-Testez par exemple la commande `help(print)` dans la console suivante, puis essayez avec d'autres objets de Python.
+Testez par exemple la commande `help(print)` dans la console, puis essayez avec d'autres objets de Python.
 
-{{ terminal() }}
+
 
 La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring**==}, littéralement *chaine de documentation*, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une **docstring** est construite comme une chaine de caractères *non nommée* présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :
 
-{{ IDEv('docstring1') }}
+``` python
+#Import des modules
+import doctest
+
+
+# Déclaration des fonctions 
+
+def times3(n) :
+    """
+    Fonction qui multiplie par 3
+>>> times3(10)
+30
+>>> times3(5)
+15
+>>> times3('a')
+'aaa'
+"""
+    return 3*n
+
+# Code réellement exécuté
+
+doctest.testmod() # effectue tous les tests détectés dans les docstrings, et compare au résultat attendu
+
+```
 
 
 La fonction `somme` contient donc une **docstring** - introduite par trois guillemets (pour permettre les sauts de lignes). Celle-ci décrit l'effet de la fonction, de manière exacte.
@@ -533,49 +666,55 @@ Au sein d'un même programme, les variables définies n'ont pas systématiquemen
 
 En utilisant le site [Python Tutor](https://pythontutor.com/){: target="_blank"}, nous allons essayer de comprendre cette notion de portée des variables.
 
-### Variables globales
+### Variables globales et variables locales
 
-<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%20%3D%208%0Adef%20f%28%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&curInstr=0&mode=display&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
-Dans l'exemple ci-dessus, la variable `gvar` est définie dans {==**l'espace de nom global**==} (*global frame*). Elle est accessible en lecture depuis l'intérieur de la fonction `f`. On parlera alors de {==**variable globale**==}.
-
-### Variables locales
-
-<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20gvar2%20%3D%208%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-Dans l'exemple ci-dessus, la variable `gvar2` est définie dans l'espace des noms associé à la fonction `f`, et qui est créé {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminé (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `gvar2` puisqu'elle a disparue. `gvar2` est une {==**variable locale**==} à la fonction `f`.
-
-!!! warning "Changer la valeur d'une variable globale"
-
-    Regardons maintenant le code suivant :
-
-    <iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%3D%2010%0Adef%20f%28%29%20%3A%0A%20%20%20%20gvar%3Dgvar%2B2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-    Le code précédent déclenche une erreur `UnboundLocalError` en ligne 3. Cela signifie que l'interpréteur Python ne peut pas effectuer la ligne `gvar=gvar+2` car il cherche une variable `gvar` qu'il peut modifier. Or {==**une variable définie hors d'une fonction ne peut pas être modifiée par celle-ci**==}.
-
-    Il est par contre possible de travailler sur {==**une copie**==} de la variable souhaitée (*uniquement dans le cas des types primitifs `int`, `float`, `str`...), en utilisant une fonction ayant un argument. Il faudra par conséquent **retourner la valeur changée** pour qu'elle soit effective. Par exemple comparez les deux scripts suivants :
+Dans l'exemple ci-dessus, la variable `mystere` est définie dans {==**l'espace de nom global**==} (*global frame*). Elle est {==**accessible en lecture**==} depuis l'intérieur de la fonction `f`. On parlera alors de {==**variable globale**==}.
 
 
-    === "Code incorrect"
 
-        <iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28a%29%20%3A%0A%20%20%20%20%23print%28f%22Dans%20la%20fonction,%20avant%20modification,%20a%3D%7Ba%7D%22%29%0A%20%20%20%20a%3Da*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20a%3D%7Ba%7D%22%29%0Af%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%0A%20%20%20%20mystere%20%3D%2042%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&curInstr=0&mode=display&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
-        Ici on constate qu'en fait il y a deux variables `a` :
+Dans l'exemple ci-dessus, la variable `mystere` est définie dans l'espace des noms associé à la fonction `f`, et qui est créé {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminé (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `mystere` puisqu'elle a disparue. `mystere` est une {==**variable locale**==} à la fonction `f`.
 
-        * une en dehors de la fonction, qui n'est pas modifiée. C'est une variable **globale**.
-        * une à l'intérieur de la fonction, qui peut être modifiée, mais qui ne change pas la variable globale. C'est une variable **locale** à la fonction.
+!!! danger "Impossibilité de modifier une variable globale depuis une fonction appelante"
 
-        La fonction `f` ne renvoyant aucune donnée, la variable locale `a` est détruite après la fin de la fonction `f`. 
+    === "Le principe"
+        Par construction, il est impossible de modifier directement une variable globale dans une fonction. 
+        Par exemple le code suivant conduira à une erreur `UnboundLocalError`, car la variable globale `mystere` n'est pas accessible en modification depuis la fonction `f` :
 
-    === "Code correct"
+        <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&codeDivHeight=400&codeDivWidth=350&curInstr=0&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
-        <iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28x%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20avant%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20x%3Dx*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20return%20x%0Aa%3Df%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+    === "Une (mauvaise) solution"
+        Vu que certain.e.s petit.e.s malin.e.s l'ont déjà utilisé en classe, je me dois de préciser une possibilité de modification, {==**mais qui est une très très mauvaise solution**==}, reconnue unanimement comme étant à éviter le plus possible : il s'agit d'utiliser le mot clé `global` dans la fonction. Par exemple avec le code suivant :
+
+        <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20global%20mystere%20%23%20on%20dit%20qu'il%20est%20possible%20de%20modifier%20mystere...%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&codeDivHeight=400&codeDivWidth=350&curInstr=0&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
 
-        Ici on a rajouté deux lignes :
 
-        * `return a` qui permet à la fonction de renvoyer la valeur modifiée ;
-        * `a = f(a)` La valeur renvoyée par l'appel `f(a)` est affecté au nom de variable `a`. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée sur la variable globale `a`.
+### Utiliser les paramètres d'une fonction
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20None%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Af%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&codeDivHeight=400&codeDivWidth=350&curInstr=0&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
+
+Dans l'exemple ci dessus :
+
+* une variable **globale** `x` est crée avec une valeur entière 5 ;
+* cette variable est passée en paramètre à la fonction, ce qui crée une variable **locale** `x`, valant 5 ;
+* la valeur de la variable **locale** `x`est doublée. Elle vaut alors 10 ;
+* une fois la fopnction terminée, l'*espace de nom* de la fonction `f` est détruit, et donc la variable **locale** `x`est aussi détruite ;
+* par contre la variable **globale** `x`n'a pas vu sa valeur modifiée. Elle reste égale à 5.
+
+### Utiliser la valeur de retour d'une fonction
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20x%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Ax%20%3D%20f%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&curInstr=0&mode=display&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
+
+Ici, on a changé les lignes 4 et 8 :
+
+* dans la fonction, la ligne 4 `return x` indique que la valeur de la variable **locale** `x` doit être renvoyée dans l'espace global ;
+* dans le code général, la ligne 8 indique que la variable `x` est réaffectée avec la valeur de retour de la fonction `f`.
+
+
 
 
 ## Tests et assertions
@@ -700,7 +839,7 @@ import doctest # On charge en mémoire le module doctest
 
 def times2(n : object) -> object:
     """
-    Fonction qui multiplie par 2, selon le type d'objet
+    Fonction qui renvoie le double, selon le type d'objet
 
 >>> times2(4)
 8
@@ -725,13 +864,13 @@ L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents 
 
     === "Enoncé"
 
-        Créez une fonction `times3` qui multiplie un objet par 3, en écrivant les tests correspondants.
+        Créez une fonction `times3` qui renvoie le triple de l'objet passé en argument, l'objet pouvant êtrte de type `int`, `float` ou `str`, en écrivant les tests correspondants.
         
     === "Solution"
 
         A venir !
 
-**Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.**
+**Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS concevoir un jeu d'exemple avant de se lancer dans la construction d'une fonction.**
 
 ## Exercices  
 
@@ -756,7 +895,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     >>> maxi(6,6)
     6
         """
-        
+        ...
     ```
 
 2. Écrire une fonction qui renvoie le minimum de deux nombres `int` donnés :
@@ -773,7 +912,7 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     >>> mini(6,6)
     6
         """
-        
+        ...
     ```
 
 3. Écrire une fonction qui renvoie le maximum de trois nombres `int` donnés :
@@ -796,38 +935,22 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     -2
     
         """
+        ...
     ```
 
-4. Écrire une fonction qui renvoie le nombre intermédiaire dans trois nombres `int` donnés
+
+4. Écrire une fonction qui supprime tous les caractères qui ne sont pas des lettres (majuscules ou minuscules, sans accents) d'une chaine de caractères donnée.
 
     ```python
-    def intermediaire(a : int, b : int, c : int) -> int :
+    def rien_que_des_lettres(chaine :str) -> str :
         """
-        Fonction qui renvoie le nombre intermédiaire deux nombres
-    >>> intermediaire(12,8,3)
-    8
-    >>> intermediaire(-5,9,0)
-    0
-    >>> intermediaire(7,7,7)
-    7
-    >>> intermediaire(7,4,7)
-    7
-    >>> intermediaire(4,4,7)
-    4
-        """
-    ```
-
-5. Écrire une fonction qui supprime tous les caractères qui ne sont pas des lettres (majuscules ou minuscules, sans accents) d'une chaine de caractères donnée.
-
-    ```python
-    def rienQueDesLettres(chaine) :
-        """
-    >>> rienQueDesLettres('  toto  ')
+    >>> rien_que_des_lettres('  toto  ')
     'toto'
-    >>> rienQueDesLettres('123Toto456')
+    >>> rien_que_des_lettres('123Toto456')
     'Toto'
-    >>> rienQueDesLettres("Et!C'est Toto ?")
+    >>> rien_que_des_lettres("Et!C'est Toto ?")
     'EtCestToto'
         """
+        ...
     ```
 

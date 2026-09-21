@@ -1580,18 +1580,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#variables-globales" class="md-nav__link">
+  <a href="#variables-globales-et-variables-locales" class="md-nav__link">
     <span class="md-ellipsis">
-      Variables globales
+      Variables globales et variables locales
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#variables-locales" class="md-nav__link">
+  <a href="#utiliser-les-parametres-dune-fonction" class="md-nav__link">
     <span class="md-ellipsis">
-      Variables locales
+      Utiliser les paramètres d'une fonction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utiliser-la-valeur-de-retour-dune-fonction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utiliser la valeur de retour d'une fonction
     </span>
   </a>
   
@@ -5208,7 +5217,24 @@ Cette fonction :
 </ul>
 </div>
 <div class="tabbed-block">
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="comment">###</span><div class="interior_wrapper"><div id="editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a"></div></div><div id="term_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a","askIntFctV1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("12e66b42c89636f30a8ecdbb7ae879809e6c4a9a")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide">def askpy-unduserpy-undint() -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input("Entrez un nombre entre 1 et 10 : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if 1&lt;= nb &lt;= 10 :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_12e66b42c89636f30a8ecdbb7ae879809e6c4a9a" class="hide" data-strudel=""></span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">saisie</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie</span><span class="p">)]</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">nb</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -5244,8 +5270,35 @@ Cette fonction :
 </div>
 <h4 id="factorisation-du-code-de-pythagore">Factorisation du code de Pythagore</h4>
 <p>Le code du programme de vérification de Pythagore peut alors être <mark class="critic"><strong>factorisé</strong></mark> (ce qui signifie globalement qu'on réduit sa taille en évitant les répétitions), afin de respecter le principe DRY :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="comment">###</span><div class="interior_wrapper"><div id="editor_87289a0f88cdf7732b5090e73f74725df7940eb0"></div></div><div id="term_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_87289a0f88cdf7732b5090e73f74725df7940eb0","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_87289a0f88cdf7732b5090e73f74725df7940eb0","askIntFctV2")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_87289a0f88cdf7732b5090e73f74725df7940eb0').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("87289a0f88cdf7732b5090e73f74725df7940eb0")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("87289a0f88cdf7732b5090e73f74725df7940eb0")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="hide">#### Zone des fonctionsbksl-nlbksl-nldef askpy-unduserpy-undint() -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input("Entrez un nombre entre 1 et 10 : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if 1&lt;= nb &lt;= 10 :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl### Code principalbksl-nlbksl-nlnb1 = askpy-unduserpy-undint()bksl-nlnb2 = askpy-unduserpy-undint()bksl-nlnb3 = askpy-unduserpy-undint()bksl-nlif (nb1py-strpy-str2 == nb2py-strpy-str2 + nb3py-strpy-str2) or (nb2py-strpy-str2 == nb1py-strpy-str2 + nb3py-strpy-str2) or (nb3py-strpy-str2 == nb2py-strpy-str2 + nb1py-strpy-str2) :bksl-nl    print("C'est une configuration de Pythagore !")bksl-nlelse :bksl-nl    print("Ce n'est pas une configuration de Pythagore !")bksl-nl</span><span id="corr_content_editor_87289a0f88cdf7732b5090e73f74725df7940eb0" class="hide" data-strudel=""></span></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#### Zone des fonctions</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">saisie</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie</span><span class="p">)]</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">nb</span>
+<span class="c1">### Code principal</span>
+
+<span class="n">nb1</span> <span class="o">=</span> <span class="n">ask_user_int</span><span class="p">()</span>
+<span class="n">nb2</span> <span class="o">=</span> <span class="n">ask_user_int</span><span class="p">()</span>
+<span class="n">nb3</span> <span class="o">=</span> <span class="n">ask_user_int</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"C'est une configuration de Pythagore !"</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Ce n'est pas une configuration de Pythagore !"</span><span class="p">)</span>
+</code></pre></div>
 <p>Ce qui a l'avantage d'être vraiment plus clair.</p>
 <h3 id="exercices">Exercices</h3>
 <div class="admonition question">
@@ -5253,10 +5306,11 @@ Cette fonction :
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction nommée <code>table7</code> qui <strong>renvoie</strong> la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :</p>
+<p>Créer une fonction nommée <code>table7</code> qui <mark class="critic"><strong>renvoie</strong></mark> la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :</p>
 <div class="highlight"><pre><span></span><code>"7x0=0 \n 7x1=7 \n 7x2=14 ..."
 </code></pre></div>
-<p><strong>Indication :</strong> le symbole <code>\n</code>, insère un saut de ligne dans une chaîne de caractères.</p>
+<p><strong>Indication :</strong> le symbole <code>\n</code>, insère un saut de ligne dans une chaîne de caractères.
+<strong>Attention :</strong> l'énoncé ne demande pas d'<em>imprimer</em>, mais bien de <em>renvoyer</em> un objet de type chaine de caractère.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">table7</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -5275,7 +5329,24 @@ Cette fonction :
 <p>Pour ce faire, il faut, dans la définition de la fonction, préciser des <mark class="critic"><strong>paramètres</strong></mark> qui seront des objets transmis et nommés <strong>initialisés à certaines valeurs lors de l'appel à la fonction</strong> :</p>
 <div class="admonition example">
 <p class="admonition-title">Exemple :</p>
-<p></p><div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="comment">###</span><div class="interior_wrapper"><div id="editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906"></div></div><div id="term_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906","askUserIntV3")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("a8aaee2efd70192b07cac104ebd3dc729ccc7906")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("a8aaee2efd70192b07cac104ebd3dc729ccc7906")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div><span id="content_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="hide">def askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int) -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input(f"Entrez un nombre entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = Truebksl-nl            indicepy-unddepart = 0bksl-nl            if saisie[0] == "-" :bksl-nl                indicepy-unddepart = 1bksl-nl            for caractere in saisie[indicepy-unddepart : len(saisie)] :bksl-nl                if caractere not in "0123456789" :bksl-nl                    estpy-undunpy-undentier = Falsebksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if bornepy-undmin&lt;= nb &lt;= bornepy-undmax :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_a8aaee2efd70192b07cac104ebd3dc729ccc7906" class="hide" data-strudel=""></span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Entrez un nombre entre </span><span class="si">{</span><span class="n">borne_min</span><span class="si">}</span><span class="s2"> et </span><span class="si">{</span><span class="n">borne_max</span><span class="si">}</span><span class="s2"> : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">saisie</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie</span><span class="p">)]</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">borne_min</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="n">borne_max</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">nb</span>
+</code></pre></div>
 <p>La fonction <code>ask_user_int</code> utilise maintenant deux paramètres <code>borne_min</code> et <code>borne_max</code>, dont les <strong>type hints</strong> indiquent que ce doit être deux entiers.</p>
 <p>Une fois la fonction définie, on peut l'appeler en lui passant des <mark class="critic"><strong>arguments</strong></mark>, c'est-à-dire des valeurs qui seront affectées aux paramètres :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ask_user_int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -5369,8 +5440,28 @@ qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui
 </li>
 </ul>
 <p>On obtiendrait alors le code suivant :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="comment">###</span><div class="interior_wrapper"><div id="editor_60daefe045cc56eeb812a0da45699294e2d557c9"></div></div><div id="term_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_60daefe045cc56eeb812a0da45699294e2d557c9","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_60daefe045cc56eeb812a0da45699294e2d557c9","askUserIntV3bis")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_60daefe045cc56eeb812a0da45699294e2d557c9').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_60daefe045cc56eeb812a0da45699294e2d557c9" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("60daefe045cc56eeb812a0da45699294e2d557c9")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("60daefe045cc56eeb812a0da45699294e2d557c9")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="hide">def ispy-undinteger(word : str) -&gt; bool :bksl-nl    estpy-undunpy-undentier = Truebksl-nl    indicepy-unddepart = 0bksl-nl    if word[0] == "-" :bksl-nl        indicepy-unddepart = 1bksl-nl    for caractere in word[indicepy-unddepart : len(word)] :bksl-nl        if caractere not in "0123456789" :bksl-nl            estpy-undunpy-undentier = Falsebksl-nl    return estpy-undunpy-undentierbksl-nlbksl-nlbksl-nldef askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int) -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input(f"Entrez un nombre entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = ispy-undinteger(saisie)bksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if bornepy-undmin&lt;= nb &lt;= bornepy-undmax :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_60daefe045cc56eeb812a0da45699294e2d557c9" class="hide" data-strudel=""></span></p>
+<div class="highlight"><pre><span></span><code> <span class="k">def</span><span class="w"> </span><span class="nf">is_integer</span><span class="p">(</span><span class="n">word</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
+    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+        <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">word</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">est_un_entier</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Entrez un nombre entre </span><span class="si">{</span><span class="n">borne_min</span><span class="si">}</span><span class="s2"> et </span><span class="si">{</span><span class="n">borne_max</span><span class="si">}</span><span class="s2"> : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>            
+            <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">borne_min</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="n">borne_max</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">nb</span>
+</code></pre></div>
 <p>Vous noterez que la fonction <code>is_integer</code> est utilisée au sein de la fonction <code>ask_user_int</code>.</p>
 <h4 id="applications">Applications</h4>
 <div class="admonition question">
@@ -5402,8 +5493,28 @@ qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui
 <h3 id="augmenter-la-capacite-des-fonctions-les-arguments-optionnels">Augmenter la capacité des fonctions : les arguments optionnels</h3>
 <p>Notre fonction <code>ask_user_int</code> commence à être intéressante. Mais nous pourrions souhaiter personnaliser le message de la question, sans pour autant avoir envie de le changer systématiquement.
 C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels</strong>. Il s'agit de paramètres dont le nom est donné dans la <strong>signature</strong>, mais avec <strong>une valeur par défaut</strong>. Ainsi :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="comment">###</span><div class="interior_wrapper"><div id="editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525"></div></div><div id="term_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525","askUserIntV4")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("cef9b3728ae344ab4d8e4355e166dc7c3491f525")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("cef9b3728ae344ab4d8e4355e166dc7c3491f525")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="hide">def ispy-undinteger(word : str) -&gt; bool :bksl-nl    estpy-undunpy-undentier = Truebksl-nl    indicepy-unddepart = 0bksl-nl    if word[0] == "-" :bksl-nl        indicepy-unddepart = 1bksl-nl    for caractere in word[indicepy-unddepart : len(word)] :bksl-nl        if caractere not in "0123456789" :bksl-nl            estpy-undunpy-undentier = Falsebksl-nl    return estpy-undunpy-undentierbksl-nlbksl-nlbksl-nldef askpy-unduserpy-undint(bornepy-undmin : int, bornepy-undmax : int, nom :str = "Inconnu") -&gt; int:bksl-nl    repeter = Truebksl-nl    while repeter :bksl-nl        saisie = input(f"{nom}, entrez un nombre entre {bornepy-undmin} et {bornepy-undmax} : ")bksl-nl        if saisie != "" :bksl-nl            estpy-undunpy-undentier = ispy-undinteger(saisie)bksl-nl            if estpy-undunpy-undentier :bksl-nl                nb = int(saisie)bksl-nl                if bornepy-undmin&lt;= nb &lt;= bornepy-undmax :bksl-nl                    repeter = Falsebksl-nl    return nbbksl-nl</span><span id="corr_content_editor_cef9b3728ae344ab4d8e4355e166dc7c3491f525" class="hide" data-strudel=""></span></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_integer</span><span class="p">(</span><span class="n">word</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
+    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+        <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">word</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">est_un_entier</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nom</span> <span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">"Inconnu"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+        <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2">, entrez un nombre entre </span><span class="si">{</span><span class="n">borne_min</span><span class="si">}</span><span class="s2"> et </span><span class="si">{</span><span class="n">borne_max</span><span class="si">}</span><span class="s2"> : "</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saisie</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>            
+            <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span> <span class="p">:</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">borne_min</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="n">borne_max</span> <span class="p">:</span>
+                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">nb</span>
+</code></pre></div>
 <p>Ainsi, la fonction ci-dessus possède trois paramètres :</p>
 <ul>
 <li>deux paramètres <strong>obligatoires</strong>, <code>borne_min</code> et <code>borne_max</code>, de type <code>int</code> ;</li>
@@ -5427,9 +5538,6 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 </div>
 </div>
-<div onclick='start_term("id1")' id="fake_id1" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div>
-<div id="id1" class="hide"></div>
-
 <div class="admonition question">
 <p class="admonition-title">Application 5 : paramètres optionnels</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Enoncé</label><label for="__tabbed_13_2">Solution</label></div>
@@ -5488,13 +5596,30 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <p>Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... </p>
 </div>
 <p>Les concepteur·trice·s de Python ont créé une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction <code>help</code>.</p>
-<p>Testez par exemple la commande <code>help(print)</code> dans la console suivante, puis essayez avec d'autres objets de Python.</p>
-<div onclick='start_term("id2")' id="fake_id2" class="terminal_f"><label class="terminal"><span>&gt;&gt;&gt; </span></label></div>
-<div id="id2" class="hide"></div>
-
+<p>Testez par exemple la commande <code>help(print)</code> dans la console, puis essayez avec d'autres objets de Python.</p>
 <p>La fonction <code>help</code> va chercher dans l'objet passé en argument sa <mark class="critic"><strong>docstring</strong></mark>, littéralement <em>chaine de documentation</em>, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une <strong>docstring</strong> est construite comme une chaine de caractères <em>non nommée</em> présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :</p>
-<div class="ide_classe" data-max="5" data-exclude="eval,exec"><div class="wrapper"><span id="comment_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="comment">###</span><div class="interior_wrapper"><div id="editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d"></div></div><div id="term_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="term_editor"></div></div><button class="tooltip" onclick='interpretACE("editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d","v")'><img src="/../../../images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='downloadFile("editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d","docstring1")'><img src="/../../../images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick="document.getElementById('input_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d').click()"><img src="/../../..//images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>                <input type="file" id="input_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" name="file" enctype="multipart/form-data" class="hide"><span style="display: inline-block; width:1em"></span><button class="tooltip" onclick='reload("dbfe29a40dcf4b31edd6811057d0765cf7abcd6d")'><img src="/../../../images/buttons/icons8-restart-64.png"><span class="tooltiptext">Recharger</span></button><span style="display: inline-block; width:0.3em"></span><button class="tooltip" onclick='saveEditor("dbfe29a40dcf4b31edd6811057d0765cf7abcd6d")'><img src="/../../../images/buttons/icons8-save-64.png"><span class="tooltiptext">Sauvegarder</span></button></div>
-<p><span id="content_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="hide">def somme(a, b) :bksl-nl    """ fonction qui renvoie la somme des arguments a et b, bksl-nl    en vérifiant si a et b sont bien du même type, bksl-nl    et qui renvoie None sinon.bksl-nl    Par exemple :bksl-nlbksl-nl    somme(4, 3) renvoie 7bksl-nlbksl-nl    somme(4, "3") renvoie Nonebksl-nl   bksl-nl    """bksl-nl    if type(a) == type(b) :bksl-nl        return a+bbksl-nl    else :bksl-nl        return Nonebksl-nl</span><span id="corr_content_editor_dbfe29a40dcf4b31edd6811057d0765cf7abcd6d" class="hide" data-strudel=""></span></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Import des modules</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">doctest</span>
+
+
+<span class="c1"># Déclaration des fonctions </span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">times3</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Fonction qui multiplie par 3</span>
+<span class="sd">&gt;&gt;&gt; times3(10)</span>
+<span class="sd">30</span>
+<span class="sd">&gt;&gt;&gt; times3(5)</span>
+<span class="sd">15</span>
+<span class="sd">&gt;&gt;&gt; times3('a')</span>
+<span class="sd">'aaa'</span>
+<span class="sd">"""</span>
+    <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">n</span>
+
+<span class="c1"># Code réellement exécuté</span>
+
+<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span> <span class="c1"># effectue tous les tests détectés dans les docstrings, et compare au résultat attendu</span>
+</code></pre></div>
 <p>La fonction <code>somme</code> contient donc une <strong>docstring</strong> - introduite par trois guillemets (pour permettre les sauts de lignes). Celle-ci décrit l'effet de la fonction, de manière exacte.</p>
 <p>On peut alors accéder à la <strong>docstring</strong> d'une fonction en utilisant la fonction <em>built-in</em> <code>help</code> : testez par exemple <code>help(somme)</code>.</p>
 <div class="admonition tips">
@@ -5504,42 +5629,48 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <h2 id="notion-de-portee-des-variables">Notion de portée des variables</h2>
 <p>Au sein d'un même programme, les variables définies n'ont pas systématiquement la même <strong>portée</strong>. La <strong>portée d'une variable</strong>, c'est l'espace des objets/noms (on parle aussi de <em>monde</em>) dans lequel est défini cette variable.</p>
 <p>En utilisant le site <a href="https://pythontutor.com/" target="_blank">Python Tutor</a>, nous allons essayer de comprendre cette notion de portée des variables.</p>
-<h3 id="variables-globales">Variables globales</h3>
-<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%20%3D%208%0Adef%20f%28%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe>
+<h3 id="variables-globales-et-variables-locales">Variables globales et variables locales</h3>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
 
-<p>Dans l'exemple ci-dessus, la variable <code>gvar</code> est définie dans <mark class="critic"><strong>l'espace de nom global</strong></mark> (<em>global frame</em>). Elle est accessible en lecture depuis l'intérieur de la fonction <code>f</code>. On parlera alors de <mark class="critic"><strong>variable globale</strong></mark>.</p>
-<h3 id="variables-locales">Variables locales</h3>
-<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20gvar2%20%3D%208%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar2%20vaut%20%7Bgvar2%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe>
+<p>Dans l'exemple ci-dessus, la variable <code>mystere</code> est définie dans <mark class="critic"><strong>l'espace de nom global</strong></mark> (<em>global frame</em>). Elle est <mark class="critic"><strong>accessible en lecture</strong></mark> depuis l'intérieur de la fonction <code>f</code>. On parlera alors de <mark class="critic"><strong>variable globale</strong></mark>.</p>
+<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%0A%20%20%20%20mystere%20%3D%2042%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
 
-<p>Dans l'exemple ci-dessus, la variable <code>gvar2</code> est définie dans l'espace des noms associé à la fonction <code>f</code>, et qui est créé <mark class="critic"><strong>au moment de l'appel à cette fonction</strong></mark> (<em>frame f</em>). Cet espace est détruit par le <em>garbage collector</em> dès que l'exécution de la fonction est terminé (une fois la valeur de <code>return</code> renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable <code>gvar2</code> puisqu'elle a disparue. <code>gvar2</code> est une <mark class="critic"><strong>variable locale</strong></mark> à la fonction <code>f</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Changer la valeur d'une variable globale</p>
-<p>Regardons maintenant le code suivant :</p>
-<p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=gvar%3D%2010%0Adef%20f%28%29%20%3A%0A%20%20%20%20gvar%3Dgvar%2B2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20gvar%20vaut%20%7Bgvar%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe></p>
-<p>Le code précédent déclenche une erreur <code>UnboundLocalError</code> en ligne 3. Cela signifie que l'interpréteur Python ne peut pas effectuer la ligne <code>gvar=gvar+2</code> car il cherche une variable <code>gvar</code> qu'il peut modifier. Or <mark class="critic"><strong>une variable définie hors d'une fonction ne peut pas être modifiée par celle-ci</strong></mark>.</p>
-<p>Il est par contre possible de travailler sur <mark class="critic"><strong>une copie</strong></mark> de la variable souhaitée (<em>uniquement dans le cas des types primitifs <code>int</code>, <code>float</code>, <code>str</code>...), en utilisant une fonction ayant un argument. Il faudra par conséquent </em><em>retourner la valeur changée</em>* pour qu'elle soit effective. Par exemple comparez les deux scripts suivants :</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked id="__tabbed_15_1" name="__tabbed_15" type="radio"><input id="__tabbed_15_2" name="__tabbed_15" type="radio"><div class="tabbed-labels"><label for="__tabbed_15_1">Code incorrect</label><label for="__tabbed_15_2">Code correct</label></div>
+<p>Dans l'exemple ci-dessus, la variable <code>mystere</code> est définie dans l'espace des noms associé à la fonction <code>f</code>, et qui est créé <mark class="critic"><strong>au moment de l'appel à cette fonction</strong></mark> (<em>frame f</em>). Cet espace est détruit par le <em>garbage collector</em> dès que l'exécution de la fonction est terminé (une fois la valeur de <code>return</code> renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable <code>mystere</code> puisqu'elle a disparue. <code>mystere</code> est une <mark class="critic"><strong>variable locale</strong></mark> à la fonction <code>f</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Impossibilité de modifier une variable globale depuis une fonction appelante</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked id="__tabbed_15_1" name="__tabbed_15" type="radio"><input id="__tabbed_15_2" name="__tabbed_15" type="radio"><div class="tabbed-labels"><label for="__tabbed_15_1">Le principe</label><label for="__tabbed_15_2">Une (mauvaise) solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28a%29%20%3A%0A%20%20%20%20%23print%28f%22Dans%20la%20fonction,%20avant%20modification,%20a%3D%7Ba%7D%22%29%0A%20%20%20%20a%3Da*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20a%3D%7Ba%7D%22%29%0Af%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe></p>
-<p>Ici on constate qu'en fait il y a deux variables <code>a</code> :</p>
-<ul>
-<li>une en dehors de la fonction, qui n'est pas modifiée. C'est une variable <strong>globale</strong>.</li>
-<li>une à l'intérieur de la fonction, qui peut être modifiée, mais qui ne change pas la variable globale. C'est une variable <strong>locale</strong> à la fonction.</li>
-</ul>
-<p>La fonction <code>f</code> ne renvoyant aucune donnée, la variable locale <code>a</code> est détruite après la fin de la fonction <code>f</code>. </p>
+<p>Par construction, il est impossible de modifier directement une variable globale dans une fonction. 
+Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code>, car la variable globale <code>mystere</code> n'est pas accessible en modification depuis la fonction <code>f</code> :</p>
+<p><iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe></p>
 </div>
 <div class="tabbed-block">
-<p><iframe width="800" height="350" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3D10%0Aprint%28f%22Avant%20la%20fonction,%20a%3D%7Ba%7D%22%29%0Adef%20f%28x%29%20%3A%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20avant%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20x%3Dx*2%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20apr%C3%A8s%20modification,%20x%3D%7Bx%7D%22%29%0A%20%20%20%20return%20x%0Aa%3Df%28a%29%0Aprint%28f%22Apr%C3%A8s%20la%20fonction,%20a%3D%7Ba%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe></p>
-<p>Ici on a rajouté deux lignes :</p>
+<p>Vu que certain.e.s petit.e.s malin.e.s l'ont déjà utilisé en classe, je me dois de préciser une possibilité de modification, <mark class="critic"><strong>mais qui est une très très mauvaise solution</strong></mark>, reconnue unanimement comme étant à éviter le plus possible : il s'agit d'utiliser le mot clé <code>global</code> dans la fonction. Par exemple avec le code suivant :</p>
+<p><iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20global%20mystere%20%23%20on%20dit%20qu'il%20est%20possible%20de%20modifier%20mystere...%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe></p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="utiliser-les-parametres-dune-fonction">Utiliser les paramètres d'une fonction</h3>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20None%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Af%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
+
+<p>Dans l'exemple ci dessus :</p>
 <ul>
-<li><code>return a</code> qui permet à la fonction de renvoyer la valeur modifiée ;</li>
-<li><code>a = f(a)</code> La valeur renvoyée par l'appel <code>f(a)</code> est affecté au nom de variable <code>a</code>. L'opération effectuée à l'intérieur de la fonction se retrouve répercutée sur la variable globale <code>a</code>.</li>
+<li>une variable <strong>globale</strong> <code>x</code> est crée avec une valeur entière 5 ;</li>
+<li>cette variable est passée en paramètre à la fonction, ce qui crée une variable <strong>locale</strong> <code>x</code>, valant 5 ;</li>
+<li>la valeur de la variable <strong>locale</strong> <code>x</code>est doublée. Elle vaut alors 10 ;</li>
+<li>une fois la fopnction terminée, l'<em>espace de nom</em> de la fonction <code>f</code> est détruit, et donc la variable <strong>locale</strong> <code>x</code>est aussi détruite ;</li>
+<li>par contre la variable <strong>globale</strong> <code>x</code>n'a pas vu sa valeur modifiée. Elle reste égale à 5.</li>
 </ul>
-</div>
-</div>
-</div>
-</div>
+<h3 id="utiliser-la-valeur-de-retour-dune-fonction">Utiliser la valeur de retour d'une fonction</h3>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20x%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Ax%20%3D%20f%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
+
+<p>Ici, on a changé les lignes 4 et 8 :</p>
+<ul>
+<li>dans la fonction, la ligne 4 <code>return x</code> indique que la valeur de la variable <strong>locale</strong> <code>x</code> doit être renvoyée dans l'espace global ;</li>
+<li>dans le code général, la ligne 8 indique que la variable <code>x</code> est réaffectée avec la valeur de retour de la fonction <code>f</code>.</li>
+</ul>
 <h2 id="tests-et-assertions">Tests et assertions</h2>
 <h3 id="preconditions">Préconditions</h3>
 <p>Comme nous l'avons vu pour la fonction <code>ask_user_int</code>, il est souvent nécessaire de tester des <mark class="critic"><strong>préconditions</strong></mark> sur les arguments d'une fonction, pour s'assurer que celle-ci fonctionnera bien selon le schéma voulu.</p>
@@ -5630,7 +5761,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 
 <span class="k">def</span><span class="w"> </span><span class="nf">times2</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Fonction qui multiplie par 2, selon le type d'objet</span>
+<span class="sd">    Fonction qui renvoie le double, selon le type d'objet</span>
 
 <span class="sd">&gt;&gt;&gt; times2(4)</span>
 <span class="sd">8</span>
@@ -5652,7 +5783,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked id="__tabbed_17_1" name="__tabbed_17" type="radio"><input id="__tabbed_17_2" name="__tabbed_17" type="radio"><div class="tabbed-labels"><label for="__tabbed_17_1">Enoncé</label><label for="__tabbed_17_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créez une fonction <code>times3</code> qui multiplie un objet par 3, en écrivant les tests correspondants.</p>
+<p>Créez une fonction <code>times3</code> qui renvoie le triple de l'objet passé en argument, l'objet pouvant êtrte de type <code>int</code>, <code>float</code> ou <code>str</code>, en écrivant les tests correspondants.</p>
 </div>
 <div class="tabbed-block">
 <p>A venir !</p>
@@ -5660,7 +5791,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 </div>
 </div>
-<p><strong>Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS fournir un jeu d'exemple avant de se lancer dans la construction d'une fonction.</strong></p>
+<p><strong>Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS concevoir un jeu d'exemple avant de se lancer dans la construction d'une fonction.</strong></p>
 <h2 id="exercices_1">Exercices</h2>
 <p><em>Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.</em></p>
 <p><strong>Vous devrez tester les fonctions avec les jeux de tests fournis dans les docstring.</strong></p>
@@ -5678,6 +5809,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <span class="sd">&gt;&gt;&gt; maxi(6,6)</span>
 <span class="sd">6</span>
 <span class="sd">    """</span>
+    <span class="o">...</span>
 </code></pre></div>
 </li>
 <li>
@@ -5692,6 +5824,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <span class="sd">&gt;&gt;&gt; mini(6,6)</span>
 <span class="sd">6</span>
 <span class="sd">    """</span>
+    <span class="o">...</span>
 </code></pre></div>
 </li>
 <li>
@@ -5713,37 +5846,21 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <span class="sd">-2</span>
 
 <span class="sd">    """</span>
-</code></pre></div>
-</li>
-<li>
-<p>Écrire une fonction qui renvoie le nombre intermédiaire dans trois nombres <code>int</code> donnés</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">intermediaire</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Fonction qui renvoie le nombre intermédiaire deux nombres</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(12,8,3)</span>
-<span class="sd">8</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(-5,9,0)</span>
-<span class="sd">0</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(7,7,7)</span>
-<span class="sd">7</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(7,4,7)</span>
-<span class="sd">7</span>
-<span class="sd">&gt;&gt;&gt; intermediaire(4,4,7)</span>
-<span class="sd">4</span>
-<span class="sd">    """</span>
+    <span class="o">...</span>
 </code></pre></div>
 </li>
 <li>
 <p>Écrire une fonction qui supprime tous les caractères qui ne sont pas des lettres (majuscules ou minuscules, sans accents) d'une chaine de caractères donnée.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rienQueDesLettres</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rien_que_des_lettres</span><span class="p">(</span><span class="n">chaine</span> <span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">&gt;&gt;&gt; rienQueDesLettres('  toto  ')</span>
+<span class="sd">&gt;&gt;&gt; rien_que_des_lettres('  toto  ')</span>
 <span class="sd">'toto'</span>
-<span class="sd">&gt;&gt;&gt; rienQueDesLettres('123Toto456')</span>
+<span class="sd">&gt;&gt;&gt; rien_que_des_lettres('123Toto456')</span>
 <span class="sd">'Toto'</span>
-<span class="sd">&gt;&gt;&gt; rienQueDesLettres("Et!C'est Toto ?")</span>
+<span class="sd">&gt;&gt;&gt; rien_que_des_lettres("Et!C'est Toto ?")</span>
 <span class="sd">'EtCestToto'</span>
 <span class="sd">    """</span>
+    <span class="o">...</span>
 </code></pre></div>
 </li>
 </ol></div>
