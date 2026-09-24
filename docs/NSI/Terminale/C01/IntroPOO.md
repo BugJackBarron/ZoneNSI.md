@@ -439,7 +439,7 @@ class Personnage :
 		""" renvoie la valeur de l'attribut force"""
 		return self.force
 
-	def set_nom(self, nouvelle_force : int) :
+	def set_force(self, nouvelle_force : int) :
 		""" modifie la valeur de l'attribut force avec
 		la valeur du paramètre nouvelle_force"""
 		assert isinstance(nouvelle_force, int), "paramètre nouvelle_force doit être de type int"# Vérification des préconditions
@@ -449,7 +449,7 @@ class Personnage :
 
 Il devient ainsi impossible d'affecter à l'attribut `force` une valeur non-cohérente : non entière ou négative.
 
-Par contre vous remarquerez que je n'ai pas fixé de valeur maximale à la force du personnage.
+Par contre, vous remarquerez que je n'ai pas fixé de valeur maximale à la force du personnage.
 
 ![It's Over 9000!! [1080p HD]](https://i.makeagif.com/media/5-31-2017/wzKsfg.gif)
 
