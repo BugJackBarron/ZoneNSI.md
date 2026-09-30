@@ -4862,12 +4862,12 @@ u_n = u_0 + n \times r
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Une solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Construire une fonction <code>maSuiteArithmetique(n)</code> qui  calcule le <span class="arithmatex">\(n\)</span>-ième terme de la suite arithmétique de premier terme <code>3</code> et de raison <code>7</code>.
+<p>Construire une fonction <code>ma_suite_A_rithmetique(n)</code> qui  calcule le <span class="arithmatex">\(n\)</span>-ième terme de la suite arithmétique de premier terme <code>3</code> et de raison <code>7</code>.
 Quelle formule avez-vous utilisée ?</p>
 </div>
 <div class="tabbed-block">
 <p>Au vu de l'énoncé, je prends le pari que la majorité d'entre vous avez utilisé la <mark class="critic"><strong>formule explicite</strong></mark> avec un code de la forme suivante :</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">maSuiteArithmetique</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ma_suite_arithmetique</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">return</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="mi">7</span>
 </code></pre></div>
 C'est évidemment la solution la plus simple. Dans ce cas, tout comme pour les <em>suites  géométrique</em>, il est inutile de compliquer le code, nous obtenons directement la solution par un simple calcul algébrique.
@@ -4890,7 +4890,7 @@ u_{n+1} = a\times u_n +b
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Une solution probable</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Construire une fonction <code>maSuiteAG(n)</code> qui  calcule le <span class="arithmatex">\(n\)</span>-ième terme de la suite arithmético-géométriqueq de premier terme <code>7</code> et définie par :</p>
+<p>Construire une fonction <code>ma_suite_AG(n)</code> qui calcule le <span class="arithmatex">\(n\)</span>-ième terme de la suite arithmético-géométriqueq de premier terme <code>7</code> et définie par :</p>
 <div class="arithmatex">\[
 u_{n+1} = -2\times u_n +5
 \]</div>
@@ -4899,7 +4899,7 @@ u_{n+1} = -2\times u_n +5
 <div class="tabbed-block">
 <p>Ici nous n'avons qu'une formule - sauf pour les petits malins qui seront allé voir sur <a href="https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tico-g%C3%A9om%C3%A9trique#Cas_o%C3%B9_a_%E2%89%A0_1">wikipedia</a> - donc on doit utiliser un processus de répétition des opérations à partir de <code>7</code>.</p>
 <p>On peut bien sûr appliquer une  boucle <code>pour</code> dans notre fonction :</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">maSuiteAG</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ma_suite_AG</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mi">7</span> 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="c1"># j'utilise ce range plutôt que range(n) car le i utilisé correspond au terme du rang calculé.</span>
         <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="mi">5</span>
@@ -4911,7 +4911,7 @@ Deux remarques :
 <li>dans le cas où <span class="arithmatex">\(n=0\)</span>, la boucle <code>for</code> n'est pas effectuée.</li>
 </ul>
 <p>Une version plus correcte serait donc celle-ci :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">maSuiteAG</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ma_suite_AG</span><span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">!=</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">:</span> 
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"n must be a non negative integer"</span><span class="p">)</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mi">7</span> 
@@ -4925,15 +4925,15 @@ Deux remarques :
 </div>
 </div>
 <p>C'est vraiment dommage, dans le premier exercice, on utilise simplement <mark class="critic"><strong>la formule explicite</strong></mark>, alors que dans le deuxième cas, on est obligé de réfléchir à l'algorithme. Ce serait si simple de pouvoir utiliser <em>directement</em> la <mark class="critic"><strong>formule récursive</strong></mark>, comme dans le code ci-dessous :</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ma_suite_AGR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">ma_suite_AGR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
 </code></pre></div>
 ET si on tentait le coup de tester, en prenant <span class="arithmatex">\(n=3\)</span> par exemple...
 <details class="bug">
 <summary>Késako ?</summary>
-<p>Quand on teste la fonction <code>maSuiteAGR(3)</code>, python ... calcule... puis nous renvoie une erreur :</p>
+<p>Quand on teste la fonction <code>ma_suite_AGR(3)</code>, python ... calcule... puis nous renvoie une erreur :</p>
 <p><code>RecursionError: maximum recursion depth exceeded</code></p>
-<p>Le mot important dans la phrase précédente, c'est que python <strong>CALCULE</strong> ! Donc il doit a minima comprendre la fonction <code>maSuiteAGR</code> !</p>
+<p>Le mot important dans la phrase précédente, c'est que python <strong>CALCULE</strong> ! Donc il doit a minima comprendre la fonction <code>ma_suite_AGR</code> !</p>
 </details>
 <h2 id="principe-de-recursivite">Principe de récursivité</h2>
 <div class="admonition tips">
@@ -4942,13 +4942,13 @@ ET si on tentait le coup de tester, en prenant <span class="arithmatex">\(n=3\)<
 </div>
 <div class="admonition bug">
 <p class="admonition-title">Des problèmes</p>
-<p>Décomposons l'instruction l'appel à <code>maSuiteAGR(3)</code>  : </p>
+<p>Décomposons l'instruction l'appel à <code>ma_suite_AGR(3)</code>  : </p>
 <ul>
-<li><code>maSuiteAGR(3)</code> doit calculer <code>-2*maSuiteAGR(2) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(2)</code>, qui doit calculer <code>-2*maSuiteAGR(1) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(1)</code>, qui doit calculer <code>-2*maSuiteAGR(0) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(0)</code>, qui doit calculer <code>-2*maSuiteAGR(-1) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(-1)</code>, qui doit calculer <code>-2*maSuiteAGR(-2) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(3)</code> doit calculer <code>-2*ma_suite_AGR(2) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(2)</code>, qui doit calculer <code>-2*ma_suite_AGR(1) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(1)</code>, qui doit calculer <code>-2*ma_suite_AGR(0) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(0)</code>, qui doit calculer <code>-2*ma_suite_AGR(-1) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(-1)</code>, qui doit calculer <code>-2*ma_suite_AGR(-2) +5</code>, et donc doit calculer :<ul>
 <li>...</li>
 </ul>
 </li>
@@ -4970,28 +4970,28 @@ ET si on tentait le coup de tester, en prenant <span class="arithmatex">\(n=3\)<
 </div>
 <div class="admonition done">
 <p class="admonition-title">Supprimer le problème : le cas d'arrêt ou cas de base</p>
-<p>Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale <strong>toujours</strong> la valeur du premier terme (qui peut être <span class="arithmatex">\(u_0\)</span>, ou <span class="arithmatex">\(u_1\)</span>, ou même <span class="arithmatex">\(u_{42}\)</span> selon le problème et la définition de l'indice). Or dans notre fonction <code>maSuiteAGR</code>, jamais nous ne précisons ce cas, c'est-à-dire que quand <span class="arithmatex">\(n=0\)</span>, alors la suite vaut <span class="arithmatex">\(7\)</span>. Rajoutons-donc cette condition dans la fonction :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<p>Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale <strong>toujours</strong> la valeur du premier terme (qui peut être <span class="arithmatex">\(u_0\)</span>, ou <span class="arithmatex">\(u_1\)</span>, ou même <span class="arithmatex">\(u_{42}\)</span> selon le problème et la définition de l'indice). Or dans notre fonction <code>ma_suite_AGR</code>, jamais nous ne précisons ce cas, c'est-à-dire que quand <span class="arithmatex">\(n=0\)</span>, alors la suite vaut <span class="arithmatex">\(7\)</span>. Rajoutons-donc cette condition dans la fonction :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ma_suite_AGR</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span><span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> <span class="c1"># Cas de base</span>
         <span class="k">return</span> <span class="mi">7</span>
     <span class="k">else</span> <span class="p">:</span> <span class="c1"># Cas récursif</span>
-        <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span> <span class="n">maSuiteAGR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span> <span class="n">ma_suite_AGR</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
 </code></pre></div>
-<p>Et testons de nouveau <code>maSuiteAGR(3)</code> :</p>
+<p>Et testons de nouveau <code>ma_suite_AGR(3)</code> :</p>
 <ul>
-<li><code>maSuiteAGR(3)</code> doit calculer <code>-2*maSuiteAGR(2) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(2)</code>, qui doit calculer <code>-2*maSuiteAGR(1) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(1)</code>, qui doit calculer <code>-2*maSuiteAGR(0) +5</code>, et donc doit calculer :<ul>
-<li><code>maSuiteAGR(0)</code>, qui <mark class="critic"><strong>maintenant renvoie 7</strong></mark> !</li>
+<li><code>ma_suite_AGR(3)</code> doit calculer <code>-2*ma_suite_AGR(2) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(2)</code>, qui doit calculer <code>-2*ma_suite_AGR(1) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(1)</code>, qui doit calculer <code>-2*ma_suite_AGR(0) +5</code>, et donc doit calculer :<ul>
+<li><code>ma_suite_AGR(0)</code>, qui <mark class="critic"><strong>maintenant renvoie 7</strong></mark> !</li>
 </ul>
 </li>
-<li>donc <code>maSuiteAGR(1)</code> renvoie <code>-2*7+5</code> soit <code>-9</code> ;</li>
+<li>donc <code>ma_suite_AGR(1)</code> renvoie <code>-2*7+5</code> soit <code>-9</code> ;</li>
 </ul>
 </li>
-<li>donc <code>maSuiteAGR(2)</code> renvoie <code>-2*(-9)+5</code> soit <code>23</code> ;</li>
+<li>donc <code>ma_suite_AGR(2)</code> renvoie <code>-2*(-9)+5</code> soit <code>23</code> ;</li>
 </ul>
 </li>
-<li>donc <code>maSuiteAGR(3)</code> renvoie <code>-2*23+5</code> soit <code>-41</code>.</li>
+<li>donc <code>ma_suite_AGR(3)</code> renvoie <code>-2*23+5</code> soit <code>-41</code>.</li>
 </ul>
 <p>Non seulement la fonction s'arrête, mais en plus elle renvoie la bonne valeur, c'est-à-dire <span class="arithmatex">\(u_3 = -41\)</span>.</p>
 </div>

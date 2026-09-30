@@ -29,14 +29,14 @@
 !!! question "Exercice"
 
 	=== "Enoncé"
-		Construire une fonction `maSuiteArithmetique(n)` qui  calcule le $n$-ième terme de la suite arithmétique de premier terme `3` et de raison `7`.
+		Construire une fonction `ma_suite_A_rithmetique(n)` qui  calcule le $n$-ième terme de la suite arithmétique de premier terme `3` et de raison `7`.
 		Quelle formule avez-vous utilisée ?
 		
 	===  "Une solution"
 		Au vu de l'énoncé, je prends le pari que la majorité d'entre vous avez utilisé la {==**formule explicite**==} avec un code de la forme suivante :
 		
 		``` python
-		def maSuiteArithmetique(n) :
+		def ma_suite_arithmetique(n) :
 			return 3 + n*7
 		```
 		C'est évidemment la solution la plus simple. Dans ce cas, tout comme pour les *suites  géométrique*, il est inutile de compliquer le code, nous obtenons directement la solution par un simple calcul algébrique.
@@ -56,7 +56,7 @@
 	
 !!! question "Exercice"
 	=== "Enoncé"
-		Construire une fonction `maSuiteAG(n)` qui  calcule le $n$-ième terme de la suite arithmético-géométriqueq de premier terme `7` et définie par :
+		Construire une fonction `ma_suite_AG(n)` qui calcule le $n$-ième terme de la suite arithmético-géométriqueq de premier terme `7` et définie par :
 		
 		$$
 		u_{n+1} = -2\times u_n +5
@@ -70,7 +70,7 @@
 		On peut bien sûr appliquer une  boucle `pour` dans notre fonction :
 		
 		``` python
-		def maSuiteAG(n) :
+		def ma_suite_AG(n : int) -> int :
 			u = 7 
 			for i in range(1,n+1) : # j'utilise ce range plutôt que range(n) car le i utilisé correspond au terme du rang calculé.
 				u = -2*u + 5
@@ -84,7 +84,7 @@
 		Une version plus correcte serait donc celle-ci :
 
 		``` python
-		def maSuiteAG(n) :
+		def ma_suite_AG(n : int) -> int :
 			if type(n)!= int or n<0 : 
 				raise ValueError("n must be a non negative integer")
 			u = 7 
@@ -99,17 +99,17 @@
 C'est vraiment dommage, dans le premier exercice, on utilise simplement {==**la formule explicite**==}, alors que dans le deuxième cas, on est obligé de réfléchir à l'algorithme. Ce serait si simple de pouvoir utiliser *directement* la {==**formule récursive**==}, comme dans le code ci-dessous :
 
 ``` python
-def maSuiteAGR(n) :
-	return -2*maSuiteAGR(n-1) + 5
+def ma_suite_AGR(n) :
+	return -2*ma_suite_AGR(n-1) + 5
 ```
 ET si on tentait le coup de tester, en prenant $n=3$ par exemple...
 
 ??? bug "Késako ?"
-	Quand on teste la fonction `maSuiteAGR(3)`, python ... calcule... puis nous renvoie une erreur :
+	Quand on teste la fonction `ma_suite_AGR(3)`, python ... calcule... puis nous renvoie une erreur :
 	
 	`RecursionError: maximum recursion depth exceeded`
 	
-	Le mot important dans la phrase précédente, c'est que python **CALCULE** ! Donc il doit a minima comprendre la fonction `maSuiteAGR` !
+	Le mot important dans la phrase précédente, c'est que python **CALCULE** ! Donc il doit a minima comprendre la fonction `ma_suite_AGR` !
 	
 
 ## Principe de récursivité
@@ -120,13 +120,13 @@ ET si on tentait le coup de tester, en prenant $n=3$ par exemple...
 	
 !!! bug "Des problèmes"
 	
-	Décomposons l'instruction l'appel à `maSuiteAGR(3)`  : 
+	Décomposons l'instruction l'appel à `ma_suite_AGR(3)`  : 
 	
-	* `maSuiteAGR(3)` doit calculer `-2*maSuiteAGR(2) +5`, et donc doit calculer :
-		* `maSuiteAGR(2)`, qui doit calculer `-2*maSuiteAGR(1) +5`, et donc doit calculer :
-			* `maSuiteAGR(1)`, qui doit calculer `-2*maSuiteAGR(0) +5`, et donc doit calculer :
-				* `maSuiteAGR(0)`, qui doit calculer `-2*maSuiteAGR(-1) +5`, et donc doit calculer :
-					* `maSuiteAGR(-1)`, qui doit calculer `-2*maSuiteAGR(-2) +5`, et donc doit calculer :
+	* `ma_suite_AGR(3)` doit calculer `-2*ma_suite_AGR(2) +5`, et donc doit calculer :
+		* `ma_suite_AGR(2)`, qui doit calculer `-2*ma_suite_AGR(1) +5`, et donc doit calculer :
+			* `ma_suite_AGR(1)`, qui doit calculer `-2*ma_suite_AGR(0) +5`, et donc doit calculer :
+				* `ma_suite_AGR(0)`, qui doit calculer `-2*ma_suite_AGR(-1) +5`, et donc doit calculer :
+					* `ma_suite_AGR(-1)`, qui doit calculer `-2*ma_suite_AGR(-2) +5`, et donc doit calculer :
 						* ...
 
 	**"HELP ! Mais ça s'arrête quand !"** me direz-vous !
@@ -142,25 +142,25 @@ ET si on tentait le coup de tester, en prenant $n=3$ par exemple...
 	
 !!! done "Supprimer le problème : le cas d'arrêt ou cas de base"
 	
-	Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale **toujours** la valeur du premier terme (qui peut être $u_0$, ou $u_1$, ou même $u_{42}$ selon le problème et la définition de l'indice). Or dans notre fonction `maSuiteAGR`, jamais nous ne précisons ce cas, c'est-à-dire que quand $n=0$, alors la suite vaut $7$. Rajoutons-donc cette condition dans la fonction :
+	Pour supprimer le problème précédent, revenons aux maths : dans une définition par récurrence de suite, on signale **toujours** la valeur du premier terme (qui peut être $u_0$, ou $u_1$, ou même $u_{42}$ selon le problème et la définition de l'indice). Or dans notre fonction `ma_suite_AGR`, jamais nous ne précisons ce cas, c'est-à-dire que quand $n=0$, alors la suite vaut $7$. Rajoutons-donc cette condition dans la fonction :
 	
 	``` python
-	def maSuiteAGR(n) :
+	def ma_suite_AGR(n) :
 		if n== 0 : # Cas de base
 			return 7
 		else : # Cas récursif
-			return -2* maSuiteAGR(n-1) + 5
+			return -2* ma_suite_AGR(n-1) + 5
 	```
 	
-	Et testons de nouveau `maSuiteAGR(3)` :
+	Et testons de nouveau `ma_suite_AGR(3)` :
 	
-	* `maSuiteAGR(3)` doit calculer `-2*maSuiteAGR(2) +5`, et donc doit calculer :
-		* `maSuiteAGR(2)`, qui doit calculer `-2*maSuiteAGR(1) +5`, et donc doit calculer :
-			* `maSuiteAGR(1)`, qui doit calculer `-2*maSuiteAGR(0) +5`, et donc doit calculer :
-				* `maSuiteAGR(0)`, qui {==**maintenant renvoie 7**==} !
-			* donc `maSuiteAGR(1)` renvoie `-2*7+5` soit `-9` ;
-		* donc `maSuiteAGR(2)` renvoie `-2*(-9)+5` soit `23` ;
-	* donc `maSuiteAGR(3)` renvoie `-2*23+5` soit `-41`.
+	* `ma_suite_AGR(3)` doit calculer `-2*ma_suite_AGR(2) +5`, et donc doit calculer :
+		* `ma_suite_AGR(2)`, qui doit calculer `-2*ma_suite_AGR(1) +5`, et donc doit calculer :
+			* `ma_suite_AGR(1)`, qui doit calculer `-2*ma_suite_AGR(0) +5`, et donc doit calculer :
+				* `ma_suite_AGR(0)`, qui {==**maintenant renvoie 7**==} !
+			* donc `ma_suite_AGR(1)` renvoie `-2*7+5` soit `-9` ;
+		* donc `ma_suite_AGR(2)` renvoie `-2*(-9)+5` soit `23` ;
+	* donc `ma_suite_AGR(3)` renvoie `-2*23+5` soit `-41`.
 	
 	Non seulement la fonction s'arrête, mais en plus elle renvoie la bonne valeur, c'est-à-dire $u_3 = -41$.
 	
