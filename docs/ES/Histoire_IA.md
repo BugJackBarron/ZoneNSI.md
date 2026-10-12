@@ -1,4 +1,4 @@
-# Petite histoire de l'informatique 
+# Petite histoire de l'informatique, du stockage et de l'IA
 
 
 ## Le stockage des informations
@@ -8,7 +8,7 @@
 
     En 1966, l'Académie française consacre l'usage officiel du mot pour désigner la &laquo; **science du traitement de l'information** &raquo;. La presse, l'industrie et le milieu universitaire l'adoptent dès cette époque. 
 
-    *D'après Wikipedia, article «Informatique »*
+    *D'après Wikipedia, article « Informatique »*
 
 L'informatique est donc, étymologiquement, bien antérieure aux ordinateurs. Il s'agit de savoir **comment les informations sont stockées**, sur **quels supports**, et comment elles sont **traitées**.
 
@@ -18,7 +18,7 @@ L'informatique est donc, étymologiquement, bien antérieure aux ordinateurs. Il
 
 Les premières traces laissées délibérément et nous étant parvenues par les êtres humains sont les peintures et gravures rupestres. Elles gardent de nombreux mystères, mais sont réellement des chefs-d'œuvre de civilisations passées.
 
-![Grotte des combarelles](https://cdn.iris-etourism.io/uploads/lascaux/sizes/d40/combarelles1-cmn.p.jugie-800x520.webp){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Écriture cunéiforme"}
+![Grotte des combarelles](https://musee-prehistoire-eyzies.fr/sites/prehistoire/files/styles/thumbnail_w580/public/2020-06/Grotte%20des%20Combarelles-lionne.webp?itok=kEj6--QL){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Grotte des Combarelles"}
 
 Les archéo-anthropologues s'accordent actuellement sur le fait que des [proto-écritures](https://fr.wikipedia.org/wiki/Grotte_de_Lascaux#Interpr%C3%A9tations){: target="_blank"} ont été utilisées, mais nous ne disposons actuellement pas de *[pierres de Rosette](https://fr.wikipedia.org/wiki/Pierre_de_Rosette){: target="_blank"}* permettant de les décrypter.
 
@@ -28,7 +28,7 @@ On trouve ensuite les gravures sur rochers, puis rapidement les tablettes d'argi
 
 Ces supports sont particulièrement résistants, mais difficiles à stocker et ne peuvent contenir que peu d'informations. Mais ils étaient utilisés quotidiennement par les scribes, y compris pour l'apprentissage des mathématiques, de la loi, de la médecine, etc.
 
-![Problèmes mathématiques](https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Compilation_of_plane_geometry_problems_from_Larsa.jpg/800px-Compilation_of_plane_geometry_problems_from_Larsa.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Écriture cunéiforme"}
+![Problèmes mathématiques](https://upload.wikimedia.org/wikipedia/commons/5/50/Compilation_of_plane_geometry_problems_from_Larsa.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Problèmes mathématiques"}
 
 Les supports de type papyrus, vélins (peau) sont probablement très anciens, mais ils se dégradent facilement, sont sensibles aux incendies, etc. Leurs difficultés de conservation sont cependant contrebalancées par la plus grande facilité à les travailler. Ils deviennent dès l'antiquité le support privilégié pour transmettre et conserver des informations, dans toutes les grandes civilisations. Les [techniques de fabrication du papier](https://www.youtube.com/watch?v=aUw1_2xbYWM){:target="_blank"} se développent à partir de la Chine et atteignent l'Europe entre le Xe siècle et le XIVe siècle.
 
@@ -46,15 +46,15 @@ Les systèmes de comptages sont limités, du *calculi* (petits cailloux en latin
 ![Boulier.png](Boulier.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Boulier"}
 
 
-La [machine d'Anticythère](https://fr.wikipedia.org/wiki/Machine_d%27Anticyth%C3%A8re){: target="_blank"}, découverte en 1900 et datée de 87 avant J.C. est une machine servant à calculer les positions astronomiques, et donc à naviguer. Elle nous montre que le calcul a toujours un enjeu capital, et que l'humanité a fait preuve d'une très grande ingéniosité pour améliorer ses capacités de calculs (une très bonne vidéo en anglais est disponible [ici](https://www.youtube.com/watch?v=mTsCx0E7YkA){: target="_blank"}).
+La [machine d'Anticythère](https://fr.wikipedia.org/wiki/Machine_d%27Anticyth%C3%A8re){: target="_blank"}, découverte en 1900 et datée de 87 avant J.C. est une machine servant à calculer les positions astronomiques, et donc à naviguer. Elle nous montre que le calcul a toujours été un enjeu capital, et que l'humanité a fait preuve d'une très grande ingéniosité pour améliorer ses capacités de calculs (une très bonne vidéo en anglais est disponible [ici](https://www.youtube.com/watch?v=mTsCx0E7YkA){: target="_blank"}).
 
 ![Anticythere.png](Anticythere.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Mécanisme d'Anticythere"}
 
-De l'Antiquité jusqu'au Moyen Âge, les sciences se développent tranquillement, mais sans base mathématique autre que la géométrie. L'arrivée des chiffres dits *arabes*, qui remplacent les peu efficaces chiffres romains, modifient complètement les manières de faire : les commerçants s'emparent de ces chiffres et des algorithmes de calculs développés par les savants du monde musulman, et on assiste à l'apparition d'une bourgeoisie éduquée et savante qui communique à travers toute l'Europe. L'algèbre et l'arithmétique se développent, mais tous les calculs restent effectués au boulier où à la main. 
+De l'Antiquité jusqu'au Moyen Âge, les sciences se développent tranquillement, mais sans base mathématique autre que la géométrie. L'arrivée des chiffres dits *arabes*, qui remplacent les peu efficaces chiffres romains, modifie complètement les manières de faire : les commerçants s'emparent de ces chiffres et des algorithmes de calculs développés par les savants du monde musulman, et on assiste à l'apparition d'une bourgeoisie éduquée et savante qui communique à travers toute l'Europe. L'algèbre et l'arithmétique se développent, mais tous les calculs restent effectués au boulier ou à la main. 
 
 ### Des machines à calculer et des métiers à tisser
 
-Au XVIIe siècle, [Blaise Pascal](https://fr.wikipedia.org/wiki/Blaise_Pascal){: target="_blank"}, scientifique et penseur français, invente à 19 ans (en 1642) une machine à calculer pour aider son père à remettre de l'ordre dans les recettes fiscales d'une province française. Cette machine, la *pascaline*, était capable d'effecteur des opérations élémentaires par l'intermédiaire d'un ingénieux système d'engrenages. Cependant, la précision nécessaire à la réalisation de ces engrenages en a rendu la conception extrêmement couteuse, et peu de machines furent produites.
+Au XVIIe siècle, [Blaise Pascal](https://fr.wikipedia.org/wiki/Blaise_Pascal){: target="_blank"}, scientifique et penseur français, invente à 19 ans (en 1642) une machine à calculer pour aider son père à remettre de l'ordre dans les recettes fiscales d'une province française. Cette machine, la *pascaline*, était capable d'effectuer des opérations élémentaires par l'intermédiaire d'un ingénieux système d'engrenages. Cependant, la précision nécessaire à la réalisation de ces engrenages en a rendu la conception extrêmement couteuse, et peu de machines furent produites.
 
 ![Pascaline.png](Pascaline.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Pascaline du CNAM"}
 
@@ -74,11 +74,11 @@ Les métiers à tisser Jacquard sont la pointe de la technologie. Ils utilisent 
 
 ## Les pères et mères de l'informatique
 
-## Les machines à calculer
+### Les machines à calculer
 
 ![Babbage.jpg](Babbage.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Charles Babbage"}
 
-Au XIXème siècle, l'Empire Britannique est à son apogée et sa puissance repose sur sa force navale, aussi bien commerciale que militaire. Or à bord d'un navire la navigation se fait toujours aux étoiles et par l'intermédiaire de cartes marines de plus en plus détaillées. Un navigateur à cette époque utilise quotidiennement des tables de navigations, qui ne sont rien d'autre que des tables de trigonométrie et de *logarithmes*. Et ces tables sont établies et calculées à la main et sont loin d'être exemptes d'erreurs de calcul. En 1833 - 1834, le mathématicien anglais Charles Babbage imagine une machine utilisant des cartes perforées qui permettrait d'effectuer des calculs scientifiques, la {==**machine analytique**==} (*Differential engine*). Cette machine ne sera jamais opérationnelle du vivant de Babbage.
+Au XIXe siècle, l'Empire Britannique est à son apogée et sa puissance repose sur sa force navale, aussi bien commerciale que militaire. Or à bord d'un navire la navigation se fait toujours aux étoiles et par l'intermédiaire de cartes marines de plus en plus détaillées. Un navigateur à cette époque utilise quotidiennement des tables de navigations, qui ne sont rien d'autre que des tables de trigonométrie et de *logarithmes*. Et ces tables sont établies et calculées à la main et sont loin d'être exemptes d'erreurs de calcul. En 1833 - 1834, le mathématicien anglais Charles Babbage imagine une machine utilisant des cartes perforées qui permettrait d'effectuer des calculs scientifiques, la {==**machine analytique**==} (*Analytical Engine*). Cette machine ne sera jamais opérationnelle du vivant de Babbage.
 
 
 {==**Ada Lovelace**==} (1815 - 1852), est une mathématicienne anglaise. Travaillant avec Charles Babbage, elle imagine pouvoir faire jouer de la musique, afficher des chiffres et des lettres avec la machine analytique. Elle décrit, plus d'un siècle avant son invention, l'ordinateur : &laquo; La machine analytique n'a nullement la prétention de créer quelque chose par elle-même. Elle peut exécuter tout ce que nous saurons lui ordonner d'exécuter. Elle peut suivre une analyse ; mais elle n'a pas la faculté d'imaginer des relations analytiques ou des vérités. Son rôle est de nous aider à effectuer ce que nous savons déjà dominer. &raquo;
@@ -89,17 +89,17 @@ Au XIXème siècle, l'Empire Britannique est à son apogée et sa puissance repo
 Vers 1842 elle écrit des algorithmes pour réaliser un programme informatique et toutes les instructions à donner à la machine, jusqu'aux positions des rouages. Elle invente les concepts de boucle et de branchements conditionnels et devient ainsi la première programmeuse.
 
 
-L'apparition de l'électricité comme source d'énergie va rapidement permettre le développement de moteurs qui améliorent les machines à calculer. À la fin du XIXe siècle, Herman Holerith conçoit une machine utilisant des cartes perforées qui permet de simplifier le recensement de la population arrivant à New-York. Il fonde une société qui prendra rapidement le nom d'IBM. Les machines à calculer électromagnétiques se développent rapidement, et en parallèle les mathématiques progressent à grand pas. 
+L'apparition de l'électricité comme source d'énergie va rapidement permettre le développement de moteurs qui améliorent les machines à calculer. À la fin du XIXe siècle, Herman Hollerith conçoit une machine utilisant des cartes perforées qui permet de simplifier le recensement de la population aux États-Unis (1890). Il fonde une société qui prendra rapidement le nom d'IBM. Les machines à calculer électromagnétiques se développent rapidement, et en parallèle les mathématiques progressent à grand pas. 
  
   
 
 
 
-Mathématicien et cryptologue britannique (1912-1954), {==**Alan Turing**==} a d'abord travaillé sur l'idée de calculabilité. Il montre que ce qui est calculable peut se décomposer en un nombre fini d'étapes et peut de ce fait être réalisé par une machine. Il imagine à la fin des années 1930 un calculateur (appelé **«Machine de Turing»**, voir plus loin), mais celui-ci ne sera construit que 20 ans plus tard. Il imagine le moyen pour une machine de reproduire certaines actions humaines , et développe par une expérience de pensée un procédé appelé aujourd'hui **« Test de Turing»** permettant de savoir si une intelligence artificielle est capable de convaincre un humain qu'elle est humaine.
+Mathématicien et cryptologue britannique (1912-1954), {==**Alan Turing**==} a d'abord travaillé sur l'idée de calculabilité. Il montre que ce qui est calculable peut se décomposer en un nombre fini d'étapes et peut de ce fait être réalisé par une machine. Il imagine à la fin des années 1930 un calculateur (appelé **«Machine de Turing»**, voir plus loin), mais celui-ci ne sera construit que 20 ans plus tard. Il imagine le moyen pour une machine de reproduire certaines actions humaines, et développe par une expérience de pensée un procédé appelé aujourd'hui **« Test de Turing»** permettant de savoir si une intelligence artificielle est capable de convaincre un humain qu'elle est humaine.
  
 ![Turing.jpg](Turing.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Alan Turing"}
 
-Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du décodage de la machine **Enigma** utilisée par les Nazis. Il construit une machine, surnommée &laquo; La bombe &raquo;, qui permet le déchiffrement rapide des messages allemands. Cette machine peut être considérée comme le premier ordinateur électronique, mais elle était difficilement reprogrammable, car il fallait re-câbler pour changer de programme.
+Lors de la Seconde Guerre mondiale, Alan Turing coordonne l'équipe chargée du décodage de la machine **Enigma** utilisée par les nazis. Il construit une machine, surnommée &laquo; La bombe &raquo;, qui permet le déchiffrement rapide des messages allemands. Cette machine électromécanique n'est pas un ordinateur : elle est conçue pour une seule tâche, et il faut la re-câbler pour en changer.
 
 
 ![Enigma_Bombe.png](Enigma_Bombe.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Enigma"}
@@ -108,21 +108,21 @@ Lors de la seconde guerre mondiale, Alan Turing coordonne l'équipe chargée du 
 
 ## De l'électronique à la micro-informatique
 
-L'électronique nait de l'invention des {==**tubes à vides**==} au début du XXe siècle. La machine **Colossus**, créée entre 1943 et 1945 (mais dont l'existence ne fur révélée qu'en 1970) utilise ces tubes à vides.
+L'électronique nait de l'invention des {==**tubes à vide**==} au début du XXe siècle. La machine **Colossus**, créée entre 1943 et 1945 (mais dont l'existence ne fut révélée qu'en 1970) utilise ces tubes à vide.
 
-![Tubes à vides](https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/6N23P.JPG/320px-6N23P.JPG){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Lampe double-triode de fabrication russe, image wikipedia"}
+![Tubes à vides](https://upload.wikimedia.org/wikipedia/commons/1/11/6N23P.JPG){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Lampe double-triode de fabrication russe, image wikipedia"}
 
 
-L'ENIAC est créé en 1944 d'une idée de John William Mauchly, aidé pour la résolution des problèmes d'ingénierie par J. Presper Eckert. Il sert à calculer des trajectoires balistiques et est financé par l'armée américaine, pour un cout important, les tubes à vides ayant une fâcheuse tendance à voir leur durée de vie fortement limitée. L'ENIAC est surtout connu pour son côté colossal : 30 tonnes, $167 ~m^2$ de surface au sol. 
+L'ENIAC, construit de 1943 à 1945, naît d'une idée de John William Mauchly, aidé pour la résolution des problèmes d'ingénierie par J. Presper Eckert. Il sert à calculer des trajectoires balistiques et est financé par l'armée américaine, pour un coût important, les tubes à vide ayant une durée de vie très limitée. L'ENIAC est surtout connu pour son côté colossal : 30 tonnes, $167 ~m^2$ de surface au sol. 
 
 ![ENIAC.png](ENIAC.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Eniac"}
 
 
-Il est cependant d'un grand secours pour les calculs balistiques dont les calculs sont fastidieux. Par exemple voici le temps de calcul pour une table de tir :
+Il est d'un grand secours pour les calculs balistiques, qui sont fastidieux. Par exemple voici le temps de calcul pour une table de tir :
 
 | Moyen | Temps |
 | :---: | :---: |
-|A la main | 2,6 j |
+| À la main | 2,6 j |
 | Avec une machine à calculer | 12 h |
 | Model 5 (concurrent de l'ENIAC) | 40 min |
 | ENIAC | 3 s |
@@ -131,34 +131,34 @@ Il est cependant d'un grand secours pour les calculs balistiques dont les calcul
 Entre $1944$ et $1955$, six femmes, Kathleen Antonelli, Jean Bartik, Betty Holberton, Marlyn Meltzer, Frances Spence et Ruth Teitelbaum sont les premières personnes à programmer l'ENIAC, pour un calcul balistique. Elles sont toutes mathématiciennes. Kathleen Antonelli et Frances Spence sont recrutées en 1942 par l’armée américaine pour calculer manuellement les trajectoires de tir. Marlyn Meltzer et Ruth Teitelbaum sont également calculatrices. Elles travaillent sur l'ENIAC à partir de 1944. Il s'agit d'identifier les différentes étapes du calcul et ensuite de câbler physiquement la machine. Ruth Teitelbaum, Frances Spence et Kathleen Antonelli poursuivirent leur travail sur l’Eniac lorsque celui-ci est transféré à Aberdeen en 1947.
 
 
-Le transistor est inventé en $1947$, et il remplace rapidement les tubes à vides à partir du milieu des années $1950$, le cout de fabrication d'un transistor commençant à être plus faible que celui d'un tube à vide.
+Le transistor est inventé en $1947$, et il remplace rapidement les tubes à vide à partir du milieu des années $1950$, le cout de fabrication d'un transistor commençant à être plus faible que celui d'un tube à vide.
 
-![Transistors](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Transistors.agr.jpg/800px-Transistors.agr.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Transistors, image Wikipedia"}
+![Transistors](https://upload.wikimedia.org/wikipedia/commons/5/5a/Transistors.agr.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Transistors, image Wikipedia"}
 
 
 Dès $1958$ apparaissent les premiers circuits intégrés, et en $1971$ le premier **microprocesseur** commercial voit le jour : c'est *l'Intel 4004*. Les machines sont désormais miniaturisées, fiables et leur cout de fabrication décroit fortement. L'informatique s'ouvre aux particuliers.
 
-![Intel4004](https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Intel_C4004.jpg/1024px-Intel_C4004.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Par Thomas Nguyen — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=47684767"}
+![Intel4004](https://upload.wikimedia.org/wikipedia/commons/5/55/Intel_C4004.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Par Thomas Nguyen — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=47684767"}
 
 
 
-De multiples machines sont commercialisées : l’Altair 8008, l’Apple II (1977), l’IBM PC (1981), le [ZX 81](https://fr.wikipedia.org/wiki/ZX81){: target="_blank"} (1981), le [commodore 64](https://fr.wikipedia.org/wiki/Commodore_64){: target="_blank"}  (1982), le Macintosh (1984) ... Le **ZX 81** est considéré à son époque comme le premier ordinateur familial en kit en France, sa résolution et sa capacité mémoire (1 ko) ne permettait pas énormément de prouesses au niveau des jeux.
+De multiples machines sont commercialisées : l’Altair 8800 (1975), l’Apple II (1977), l’IBM PC (1981), le [ZX 81](https://fr.wikipedia.org/wiki/ZX81){: target="_blank"} (1981), le [commodore 64](https://fr.wikipedia.org/wiki/Commodore_64){: target="_blank"}  (1982), le Macintosh (1984) ... Le **ZX 81** est considéré à son époque comme le premier ordinateur familial en kit en France, sa résolution et sa capacité mémoire (1 ko) ne permettait pas énormément de prouesses au niveau des jeux.
 
 De nombreuses sociétés se lancent dans la production de machines familiales à partir du début des années $1980$, et l'informatique rentre à l'école et commence à y être enseignée, en particulier sur les machines Thomson en France, comme le [TO7](https://fr.wikipedia.org/wiki/Thomson_TO7){: target="_blank"}, le [MO5](https://fr.wikipedia.org/wiki/Thomson_MO5){: target="_blank"}...
 
 
 #### Les consoles de jeu
 
-Si les consoles de jeu sont présentes depuis le début des années 1970 - la console [Odyssey](https://fr.wikipedia.org/wiki/Magnavox_Odyssey){: target="_blank"} est la première console à pouvoir être branchée sur l'écran de la télévision dès 1972, les jeux vidéos restent souvent cantonnés dans les salles d'arcades, où les bornes fleurissent à côtés des flippers et billards.
+Si les consoles de jeu sont présentes depuis le début des années 1970 - la console [Odyssey](https://fr.wikipedia.org/wiki/Magnavox_Odyssey){: target="_blank"} est la première console à pouvoir être branchée sur l'écran de la télévision dès 1972, les jeux vidéos restent souvent cantonnés dans les salles d'arcades, où les bornes fleurissent à côté des flippers et billards.
 
-À la fin des années 1970 et au début des années 1980, le marché des consoles de jeu est florissant, avec pas moins de 744 modèles différents de consoles rien que pour l'année 1977, dont certaines telles l'[Atari 260](), la console [Vectrex]() ou bien la console Videopac ont un certain succès en France.
+À la fin des années 1970 et au début des années 1980, le marché des consoles de jeu est florissant, avec pas moins de 744 modèles différents de consoles rien que pour l'année 1977, dont certaines telles l'Atari 2600, la console Vectrex ou bien la console Videopac ont un certain succès en France.
 
 ![VideoPac](https://upload.wikimedia.org/wikipedia/commons/0/05/Philips_Videopac_G7200_with_integrated_monitor_%28RetroGathering_2010%29.jpg){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Console VideoPac G 7200, image Wikipedia"}
 
 
-Le crack du jeu vidéo de 1983 mènera à une forte réduction du nombre d'acteurs sur le marché des consoles, jusqu'à l'arrivée en 1986 de la console Nintendo NES qui bat tous les records de ventes.
+Le krach du jeu vidéo de 1983 mènera à une forte réduction du nombre d'acteurs sur le marché des consoles, jusqu'à l'arrivée en 1986 de la console Nintendo NES qui bat tous les records de ventes.
 
-![NES](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/NES-Console-Set.png/1280px-NES-Console-Set.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Console NES, image Wikipedia"}
+![NES](https://upload.wikimedia.org/wikipedia/commons/b/b2/NES-Console-Set.png){: style="width:30%; margin:auto;display:block;background-color: #d2dce0;" title="Console NES, image Wikipedia"}
     
 
 ## Le Stockage numérique des informations
@@ -190,7 +190,7 @@ Par exemple :
 
 * avec 3 bits, on peut stocker une information prenant 8 états :
 
-    | Nord | Nord-Est | Est | SUd-Est | Sud | SUd-Ouest | Ouest | Nord-Ouest |
+    | Nord | Nord-Est | Est | Sud-Est | Sud | Sud-Ouest | Ouest | Nord-Ouest |
     | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
     | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
 
@@ -218,7 +218,7 @@ Par exemple :
 
 ### Les stockages de données
 
-Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, **Herman Hollerith** dépose un brevet pour une machine électromécanique utilisant des cartes perforées permettant d'accélérer le recensement des états du gouvernement américain. Il lance par la suite une société qui deviendra IBM.
+Un des premiers systèmes de stockage de masse utilisé est la carte perforée. En 1884, **Herman Hollerith** dépose un brevet pour une machine électromécanique utilisant des cartes perforées permettant d'accélérer le recensement de la population du gouvernement américain. Il lance par la suite une société qui deviendra IBM.
 
 Une {==**carte perforée**==} est un support d'informations exprimées sous la forme binaire : une grille de « cases » est représentée, cases qui peuvent être perforées (1) ou non (0).
 
@@ -242,7 +242,7 @@ La deuxième génération de support de stockages est constituée par les suppor
 
 | Bande magnétique | Cassette | Disquettes |
 | :---: | :---: | :---: |
-| ![Bande magnétique](https://upload.wikimedia.org/wikipedia/commons/4/49/Reelt_ubt.jpeg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" title="Bande Magnétique, Wiipedia"} | ![cassette](https://upload.wikimedia.org/wikipedia/commons/3/3e/Side_A%2C_TDK_D-C60_20041220.jpg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" title="Cassette, Wikipedia"} | ![disquette](https://upload.wikimedia.org/wikipedia/commons/8/8c/Diskettes.jpg){: style="width:45%; margin:auto;display:block;background-color: #d2dce0;" title="Disquettes, Wikipedia"} |
+| ![Bande magnétique](https://upload.wikimedia.org/wikipedia/commons/4/49/Reelt_ubt.jpeg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" title="Bande Magnétique, Wikipedia"} | ![cassette](https://upload.wikimedia.org/wikipedia/commons/3/3e/Side_A%2C_TDK_D-C60_20041220.jpg){: style="width:90%; margin:auto;display:block;background-color: #d2dce0;" title="Cassette, Wikipedia"} | ![disquette](https://upload.wikimedia.org/wikipedia/commons/8/8c/Diskettes.jpg){: style="width:45%; margin:auto;display:block;background-color: #d2dce0;" title="Disquettes, Wikipedia"} |
 
 La quantité d'information pouvant être contenue dans ces supports croit exponentiellement :
 
@@ -275,6 +275,7 @@ La quantité d'information pouvant être contenue dans ces supports continue à 
 | 2013 | SSD | 6 To |
 | 2015 | SSD | 10 To |
 | 2019 | SSD | 16 To |
+| 2026 | SSD | 512 To |
 
 
 
@@ -313,9 +314,9 @@ La quantité d'information pouvant être contenue dans ces supports continue à 
 
     1. Quelle est la taille en ko d'une page de 1 000 caractères ?
     2. Quelle est la taille en Mo d'un livre de 1 000 pages ?
-    3. Quelle est la taille de Go d'une bibliothèque de 1000 livres ?
+    3. Quelle est la taille en Go d'une bibliothèque de 1000 livres ?
     4. Un volume de l'Encyclopedia Britannica contient 8 millions de caractères. Quelle serait sa taille en octet (sans les images) ?
-    5. A votre avis, quelle est la taille de Wikipedia en Anglais, sans les images ?[^wiki]
+    5. À votre avis, quelle est la taille de Wikipedia en Anglais, sans les images ?[^wiki]
 
 [^wiki]: voir [ici](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Wikip%C3%A9dia_sur_papier){:target="_blank"}
 
@@ -333,11 +334,11 @@ La quantité d'information pouvant être contenue dans ces supports continue à 
 
 !!! question "Questions V"
 
-    1. Sur la console Vectrex[^vectrex], sortie en 1982, l'écran monochrome noir et blanc offrait une résolution de 360x480 pixels. Quel était la taille en octets d'une image sur cet écran ?
+    1. Sur la console Vectrex[^vectrex], sortie en 1982, l'écran monochrome noir et blanc offrait une résolution de 360x480 pixels. Quelle était la taille en octets d'une image sur cet écran ?
     2. Sur la console NES[^NES], sortie en 1986, la résolution était de 256x240 pixels, mais 52 couleurs étaient possibles, codées sur 1 octet (pour simplifier). Quelle était la taille en octet d'une image ?
     3. Combien de nuances de couleurs sont disponibles pour un appareil utilisant un codage RGB ?
     4. En 2007, le Nokia N95 possède une optique photo en 5 Mégapixels en mode RGB. Quelle était la taille en octets d'une photo ?
-    5. La résolution d'un écran d'ordinateur actuel est souvent de 1920x1080 pixels (Full HD). Quel est le poids en octet d'un fond d'écran en mode RGBA ? A combien de livres de la partie précédente cela revient-il ?
+    5. La résolution d'un écran d'ordinateur actuel est souvent de 1920x1080 pixels (Full HD). Quel est le poids en octet d'un fond d'écran en mode RGBA ? À combien de livres de la partie précédente cela revient-il ?
 
 [^vectrex]: voir [ici](https://en.wikipedia.org/wiki/Vectrex){:target="_blank"}
 [^NES]: voir [ici](https://www.nintendo.fr/Hardware/L-histoire-de-Nintendo/Nintendo-Entertainment-System/Specifications-detaillees/Specificites-techniques-627027.html){:target="_blank"}
@@ -352,7 +353,7 @@ Une vidéo, ce n'est rien de plus que des images qui se succèdent à une certai
     1. Quel est le poids d'une vidéo non-compressée d'une minute en Full HD en mode RGB avec 25 images par secondes ?
     2. Un DVD contient au maximum 8.5 Go en double-couche. Quelle durée de film en Full HD/RGB peut-il supporter théoriquement ?
     3. En 4K, la résolution est de 3840x2160 pixels en RGB. Le film «le Hobbit : La bataille des cinq armées» dure 164 minutes en version longue. Quelle quantité théorique d'information faut-il pour contenir ce film ?
-    4. Quelle est la quantité d'octet serait théoriquement nécessaire pour jouer 30 minutes sur un jeu en 60 FPS avec une résolution Full HD ?
+    4. Quelle quantité d'octets serait théoriquement nécessaire pour jouer 30 minutes sur un jeu en 60 FPS avec une résolution Full HD ?
     5. J'ai scrollé 1h30 aujourd'hui sur TikTok, en regardant des vidéos FullHD RGB en 25 images par secondes. Combien de livres aurais-je pu télécharger avec la même consommation ?
 
 !!! info "Compression de données"
@@ -364,3 +365,118 @@ Une vidéo, ce n'est rien de plus que des images qui se succèdent à une certai
     Pour ce qui est de la vidéo, l'importance de la compression est phénoménale à l'heure actuelle, et des entreprises mènent une guerre de brevet dans ce domaine (voir l'excellente [vidéo](https://www.youtube.com/watch?v=Kv4FzAdxclA){:target="_blank"} de la chaine `_UNDERSCORE` avec J.B. Kempf de VLC ).
 
 
+
+## Petite histoire de l'intelligence artificielle
+
+### Les débuts
+
+En 1950, Alan Turing se demande si une machine peut « penser » et propose le test qui porte son nom. Le terme **intelligence artificielle** (IA) apparait en 1956, lors d'un séminaire d'été organisé au *Dartmouth College* (États-Unis) par John McCarthy, Marvin Minsky, Claude Shannon et Nathaniel Rochester.
+
+!!! abstract "Intelligence artificielle"
+
+    Une {==**intelligence artificielle**==} est un programme informatique capable de réaliser des tâches que l'on associe habituellement à l'intelligence humaine : reconnaitre une image, comprendre une phrase, jouer aux échecs, prendre une décision...
+
+Deux grandes approches se distinguent dès l'origine :
+
+* l'approche **symbolique** : un humain écrit des règles que la machine applique (*systèmes experts*) ;
+* l'approche **par apprentissage** : la machine déduit elle-même des règles à partir d'exemples. C'est cette approche qui domine aujourd'hui.
+
+Dès 1957-1958, Frank Rosenblatt construit le **perceptron**, un des premiers modèles de neurone artificiel capable d'apprendre. Son principe : le neurone additionne ses signaux d'entrée, chacun multiplié par un **poids**, puis produit une sortie (par exemple 0 ou 1) selon que cette somme dépasse un seuil. Apprendre, c'est ajuster les poids pour que la sortie soit la bonne.
+
+![Schéma d'un neurone artificiel](https://upload.wikimedia.org/wikipedia/commons/b/b7/Sch%C3%A9ma_d%27un_neurone_artificiel.JPG){: style="width:40%; margin:auto;display:block;background-color: #d2dce0;" title="Schéma d'un neurone artificiel (perceptron), image Wikipedia"}
+
+Les résultats sont cependant limités par la faible puissance des machines et le manque de données : l'enthousiasme retombe, et l'IA traverse deux périodes de désintérêt et de baisse des financements, appelées les « **hivers de l'IA** » (années 1970, puis fin des années 1980). En 1997, l'ordinateur *Deep Blue* d'IBM bat le champion du monde d'échecs Garry Kasparov, mais en s'appuyant surtout sur une puissance de calcul énorme et des règles écrites par des humains.
+
+### L'apprentissage supervisé
+
+!!! abstract "Apprentissage supervisé"
+
+    Dans l'{==**apprentissage supervisé**==}, on fournit à la machine un grand nombre d'exemples **étiquetés** (une entrée et la bonne réponse attendue). Elle ajuste ses paramètres pour se tromper le moins possible, puis on la teste sur des exemples qu'elle n'a jamais vus.
+
+Il existe deux grandes familles de problèmes supervisés : la **régression** et la **classification**.
+
+#### La régression
+
+La {==**régression**==} consiste à trouver une fonction qui explique une grandeur à partir d'une ou plusieurs autres, afin de **prédire une valeur numérique** (prix d'un logement, température de demain, consommation électrique...).
+
+L'idée est ancienne : la méthode des **moindres carrés** est publiée par Legendre en 1805 et utilisée par Gauss, notamment pour prédire la position d'un astéroïde. Le mot « régression » est introduit par Francis Galton à la fin du XIXe siècle.
+
+Dans le cas le plus simple, la **régression linéaire**, on cherche la droite $y = ax + b$ qui passe « au plus près » d'un nuage de points, c'est-à-dire qui minimise l'écart entre les valeurs prédites et les valeurs réellement observées. Les paramètres $a$ et $b$ sont ajustés à partir des données : c'est déjà un exemple d'**apprentissage**.
+
+#### La classification
+
+Il s'agit cette fois de ranger une donnée dans une **catégorie** : message « spam » ou « non spam », photo de chat ou de chien, tumeur bénigne ou maligne...
+
+Les **réseaux de neurones artificiels**, qui assemblent de nombreux perceptrons en plusieurs couches et sont inspirés (très librement) du fonctionnement du cerveau, sont l'outil le plus répandu. Plusieurs étapes marquent leur histoire :
+
+* 1986 : popularisation de l'algorithme de **rétropropagation**, qui permet d'entrainer des réseaux à plusieurs couches ;
+* années 1990 : [Yann LeCun](https://fr.wikipedia.org/wiki/Yann_Le_Cun){: target="_blank"} utilise des réseaux de neurones pour lire automatiquement les chiffres manuscrits des chèques ;
+    ![Yann LeCun](https://upload.wikimedia.org/wikipedia/commons/2/22/Yann_LeCun_-_2018_%28cropped%29.jpg){: style="width:20%; margin:auto;display:block;background-color: #d2dce0;" title="Yann LeCun en 2018, par Jérémy Barande, CC BY-SA 2.0, image Wikipedia"}
+* 2012 : le réseau *AlexNet* écrase la concurrence au concours de reconnaissance d'images *ImageNet*. C'est le début de l'ère de l'**apprentissage profond** (*deep learning*), rendu possible par de très grandes bases de données et par les cartes graphiques (GPU).
+
+
+
+!!! info "Le rôle des humains"
+
+    L'apprentissage supervisé suppose que des humains aient **étiqueté** les données, souvent en grand nombre et à bas cout. La qualité de l'IA dépend donc directement de la qualité et de la représentativité de ces données : si elles sont biaisées, l'IA reproduira ces biais.
+
+### L'apprentissage non supervisé
+
+!!! abstract "Apprentissage non supervisé"
+
+    Dans l'{==**apprentissage non supervisé**==}, les données ne sont **pas étiquetées**. La machine doit découvrir seule des structures cachées : groupes d'éléments semblables, régularités, anomalies.
+
+Une application classique est le **partitionnement** (*clustering*) : regrouper des clients aux comportements proches, des articles de presse traitant du même sujet ou des gènes ayant des fonctions voisines, sans avoir défini les groupes à l'avance. L'algorithme des **k-moyennes** (*k-means*) en est l'exemple le plus connu. On l'utilise aussi pour les systèmes de recommandation ou la détection de fraudes.
+
+On parle également d'**apprentissage par renforcement** : la machine apprend par essais et erreurs en recevant des récompenses. C'est ainsi que le programme *AlphaGo* (Google DeepMind) a battu en 2016 le champion du monde de go Lee Sedol, un jeu bien trop complexe pour une approche par force brute.
+
+| | Régression | Classification | Non supervisé |
+| :--- | :---: | :---: | :---: |
+| **Données étiquetées** | oui | oui | non |
+| **Objectif** | prédire une valeur | prédire une catégorie | trouver des groupes ou des structures |
+| **Exemple** | prix d'un appartement | spam / non spam | regrouper des clients |
+
+### Les grands modèles de langage (LLM)
+
+En 2017, des chercheurs de Google publient l'article *Attention is all you need* qui présente l'architecture **Transformer**. Elle permet d'entrainer de très grands réseaux de neurones sur d'énormes quantités de textes, en parallèle sur de nombreux processeurs.
+
+!!! abstract "LLM"
+
+    Un {==**grand modèle de langage**==} (*Large Language Model*, LLM) est un réseau de neurones entrainé sur une très grande quantité de textes (livres, sites web, code informatique...) pour **prédire le mot suivant** (plus précisément le *jeton* ou *token*) d'une séquence.
+
+!!! abstract "Transformer"
+
+    Un {==**transformer**==} est une architecture de réseau de neurones fondée sur le mécanisme d'**attention** : pour comprendre chaque mot (ou *jeton*), le modèle évalue l'importance de tous les autres mots du contexte. Dans la phrase « Le chat a mangé la souris parce qu'**il** avait faim », l'attention permet de relier « il » au bon mot.
+
+    Contrairement aux modèles précédents, qui lisaient le texte mot après mot, un transformer traite **tous les jetons en parallèle**. On peut donc l'entrainer sur d'énormes quantités de textes avec des milliers de processeurs.
+
+Cet entrainement est dit **auto-supervisé** : il n'y a pas besoin d'étiqueter les données, puisque le texte lui-même fournit la réponse attendue (le mot qui suit). Le modèle est ensuite affiné avec l'aide d'évaluateurs humains pour que ses réponses soient utiles et acceptables.
+
+Quelques repères :
+
+| Année | Évènement |
+| :-: | :-- |
+| 2017 | Architecture Transformer |
+| 2018 | Premiers modèles GPT (OpenAI) et BERT (Google) |
+| 2020 | GPT-3, avec 175 milliards de paramètres |
+| novembre 2022 | Lancement de ChatGPT, qui atteint plus de 100 millions d'utilisateurs en quelques mois |
+| depuis 2023 | Multiplication des modèles (Claude, Gemini, Llama, Mistral...) capables aussi de traiter images, sons et code |
+
+!!! warning "Les limites des LLM"
+
+    Un LLM **ne comprend pas** au sens humain : il produit le texte le plus probable. Il peut donc :
+
+    * produire des affirmations fausses mais convaincantes (on parle d'**hallucinations**) ;
+    * reproduire les **biais** présents dans ses données d'entrainement ;
+    * poser des questions de **droits d'auteur** et de protection des données personnelles ;
+    * avoir un fort **cout énergétique** (entrainement et utilisation).
+
+    Il faut donc toujours vérifier les informations, croiser les sources et garder son esprit critique.
+
+!!! question "Questions VII"
+
+    1. Citer un exemple de problème relevant de la régression, un de la classification et un de l'apprentissage non supervisé.
+    2. Pourquoi dit-on qu'un apprentissage est « supervisé » ? Quelle est la contrepartie de cette supervision ?
+    3. Pourquoi l'apprentissage profond n'a-t-il décollé qu'à partir des années 2010, alors que les réseaux de neurones existent depuis les années 1950 ?
+    4. Expliquer en une phrase comment un LLM génère une réponse. Pourquoi peut-il se tromper avec aplomb ?
+    5. Citer deux précautions à prendre lorsqu'on utilise un LLM pour préparer un exposé.
