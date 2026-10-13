@@ -4838,16 +4838,16 @@
 
 
 
-<div><h1 id="applications-de-la-recursivite-tris-de-tableaux">Applications de la récursivité :  Tris de tableaux</h1>
+<div><h1 id="applications-de-la-recursivite-tris-de-tableaux">Applications de la récursivité : tris de tableaux</h1>
 <h2 id="rappels-sur-les-algorithmes-de-tris-vus-en-classe-de-premiere">Rappels sur les algorithmes de tris vus en classe de première</h2>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du tri par insertion</p>
-<p>Le principe du tri par insertion est le suivant : au moment où on considère un élément du tableau à trier, les éléments qui le précèdent sont déjà triés, tandis que les éléments qui le suivent ne sont pas encore triés. Il faut donc prendre le premier élément de la partie non triée et de l'insérer à la bonne place dans le tableau trié.</p>
-<p>On peut voir sur l'animation suivante extraite de wikipedia :</p>
+<p>Le principe du tri par insertion est le suivant : au moment où on considère un élément du tableau à trier, les éléments qui le précèdent sont déjà triés, tandis que les éléments qui le suivent ne sont pas encore triés. Il faut donc prendre le premier élément de la partie non triée et l'insérer à la bonne place dans la partie triée.</p>
+<p>On peut voir sur l'animation suivante extraite de <a href="https://fr.wikipedia.org/wiki/Tri_par_insertion">wikipedia</a> :</p>
 <p></p><p align="center">
 <img alt="gif insertion" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" style="style">
 </p>
-<p>La complexité du tri par insertion est quadratique (en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>) dans le pire des cas et en moyenne, et linéaire (en <span class="arithmatex">\(\mathbb{O}(n)\)</span>)dans le meilleur des cas (tableau presque trié). C'est donc un tri dont la vitesse d'exécution dépendra fortement de la situation initiale.</p>
+<p>La complexité du tri par insertion est quadratique (en <span class="arithmatex">\(\mathcal{O}(n^2)\)</span>) dans le pire des cas et en moyenne, et linéaire (en <span class="arithmatex">\(\mathcal{O}(n)\)</span>) dans le meilleur des cas (tableau déjà trié ou presque trié). C'est donc un tri dont la vitesse d'exécution dépendra fortement de la situation initiale.</p>
 <details class="quote">
 <summary>Le code en Python</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -4872,28 +4872,40 @@
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du tri par sélection</p>
-<p>Sur un tableau de <span class="arithmatex">\(n\)</span> éléments, le principe du tri par sélection est le suivant : à chaque étape, on <strong>sélectionne</strong> le plus petit élément du tableau, et on le place à la première position du tableau. A l'étape suivante, on ne s'intéresse plus qu'au sous-tableau qui commence après le dernier élément sélectionné.</p>
+<p>Sur un tableau de <span class="arithmatex">\(n\)</span> éléments, le principe du tri par sélection est le suivant : à chaque étape, on <strong>sélectionne</strong> le plus petit élément du tableau, et on le place à la première position du tableau. À l'étape suivante, on ne s'intéresse plus qu'au sous-tableau qui commence après le dernier élément sélectionné.</p>
 <p>On peut voir sur l'animation suivante extraite de <a href="https://fr.wikipedia.org/wiki/Tri_par_s%C3%A9lection">wikipedia</a> :</p>
 <p></p><p align="center">
-<img alt="gif insertion" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" style="style">
+<img alt="gif selection" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" style="style">
 </p>
-<p>Cet algorithme de tri, simple à comprendre, est considéré comme mauvais car sa complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n^2)\)</span>, que ce soit dans le pire des cas ou bien le meilleur des cas (même pour un tableau déjà trié il faudra faire toutes les comparaisons).</p>
+<p>Cet algorithme de tri, simple à comprendre, est considéré comme mauvais car sa complexité en temps est en <span class="arithmatex">\(\mathcal{O}(n^2)\)</span>, que ce soit dans le pire des cas ou bien dans le meilleur des cas (même pour un tableau déjà trié il faudra faire toutes les comparaisons).</p>
 <details class="quote">
 <summary>Le code en Python</summary>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">tri_selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-            <span class="c1"># Trouver le min du sous-tableau commençant à</span>
-            <span class="c1"># l'indice i</span>
-            <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-                    <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span>
-            <span class="c1"># échange de place entre l'élément minimal</span>
-            <span class="c1"># et l'élément d'indice i</span>
-            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span>
-            <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tri_selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+        <span class="c1"># Trouver le min du sous-tableau commençant à</span>
+        <span class="c1"># l'indice i</span>
+        <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="c1"># échange de place entre l'élément minimal</span>
+        <span class="c1"># et l'élément d'indice i</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+</code></pre></div></td></tr></table></div>
 </details>
 </div>
 <div class="admonition warning">
@@ -4907,12 +4919,12 @@
 
 <div class="admonition abstract">
 <p class="admonition-title">Principe du Tri Fusion (Merge Sort)</p>
-<p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark>, est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivement (ou itérativement 
+<p>Le principe du <mark class="critic"><strong>tri fusion</strong></mark> est de séparer un tableau à trier en <strong>deux sous-tableaux</strong> qu'on triera récursivement (ou itérativement, 
 mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
 <p>Une fois les sous-tableaux triés, il faudra <mark class="critic"><strong>fusionner</strong></mark> ces deux sous-tableaux en une seule entité.</p>
-<p>Cet algorithme est du type <mark class="critic"><strong>diviser pour régner</strong></mark> (<em>Divide and Conquer</em>) : on sépare la tâche à priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux). Il a été inventé par <mark class="critic"><strong>John Von Neumann en 1945</strong></mark>.</p>
+<p>Cet algorithme est du type <mark class="critic"><strong>diviser pour régner</strong></mark> (<em>Divide and Conquer</em>) : on sépare la tâche a priori difficile en deux tâches plus simples (ici, il s'agit de diminuer la taille des tableaux). Il a été inventé par <mark class="critic"><strong>John von Neumann en 1945</strong></mark>.</p>
 <p></p><p align="center">
-<img _=";" alt="Merge Sort" src="../Ikea_Merge_Sort.png" style="width : 50%">
+<img alt="Merge Sort" src="../Ikea_Merge_Sort.png" style="width:50%;">
 </p>
 </div>
 <div class="admonition question">
@@ -4920,17 +4932,17 @@ mais ce ne sera pas le cas dans ce cours) de nouveau par tri fusion.</p>
 <p>La principale difficulté dans cet algorithme est de créer une fonction fusionnant les deux tableaux triés. </p>
 <ol>
 <li>
-<p>Avant commencer, regardez la vidéo suivante :</p>
+<p>Avant de commencer, regardez la vidéo suivante :</p>
 <p><div class="video-container"><video style="position:relative;width:100%;height:22.172vw" controls alt="type:video"><source src="https://podeduc.apps.education.fr/media/videos/4653d8a4c8f3facf92b5af74e0658ec033c629342b8191d3a039263ad71ba8af/157843/720p.mp4" type="video/mp4"></source></video></div></p>
 </li>
 <li>
-<p>Quels sont les liens entre <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(j\)</span> et <span class="arithmatex">\(k\)</span> ? Quelles conditions ces variables compteur doivent-elles respecter ?</p>
+<p>Quels sont les liens entre <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(j\)</span> et <span class="arithmatex">\(k\)</span> ? Quelles conditions ces variables compteurs doivent-elles respecter ?</p>
 </li>
-<li>Quel type de boucle allons nous utiliser ?</li>
+<li>Quel type de boucle allons-nous utiliser ?</li>
 <li>Que se passe-t-il dans la vidéo quand <span class="arithmatex">\(j\)</span> atteint la valeur <span class="arithmatex">\(3\)</span> ?</li>
-<li>Implémenter une fonction <code>fusion(t1 : list, t2 : list)-&gt; list</code> qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux <code>t1</code> et <code>t2</code>.
-On pourra utiliser les tests suivants pour vérifier que la fonction est correcte :</li>
-</ol>
+<li>
+<p>Implémenter une fonction <code>fusion(t1 : list, t2 : list) -&gt; list</code> qui prend en argument deux tableaux supposés triés (on ne vérifiera pas), et qui renvoie le tableau trié contenant tous les éléments des deux tableaux <code>t1</code> et <code>t2</code>.</p>
+<p>On pourra utiliser les tests suivants pour vérifier que la fonction est correcte :</p>
 <details class="quote">
 <summary>Les tests</summary>
 <div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">fusion</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">45</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">63</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">63</span><span class="p">]</span>
@@ -4942,6 +4954,8 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 <span class="k">assert</span> <span class="n">fusion</span><span class="p">([],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[]</span>
 </code></pre></div>
 </details>
+</li>
+</ol>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Tri Fusion Récursif</p>
@@ -4955,7 +4969,7 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 <p>Quel est le cas de base ?</p>
 </li>
 <li>Quel est le cas récursif ?</li>
-<li>Implémenter une fonction <code>triFusion(t)</code> qui prend en argument un tableau et renvoie une copie triée de ce tableau.</li>
+<li>Implémenter une fonction <code>tri_fusion(t : list) -&gt; list</code> qui prend en argument un tableau et renvoie une copie triée de ce tableau.</li>
 </ol>
 </div>
 <div class="admonition question">
@@ -4978,7 +4992,7 @@ On pourra utiliser les tests suivants pour vérifier que la fonction est correct
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Décorateur <code>@timeit</code></p>
-<p>pour utiliser le décorateur, on le place dans la ligne précédant la définition
+<p>Pour utiliser le décorateur, on le place dans la ligne précédant la définition
 de la fonction qu'on veut décorer. Par exemple :
 </p><div class="highlight"><pre><span></span><code><span class="nd">@timeit</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">tri_insertion</span><span class="p">(</span><span class="n">tab</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="p">:</span>
@@ -4986,10 +5000,10 @@ de la fonction qu'on veut décorer. Par exemple :
 </code></pre></div>
 Chaque fois que la fonction <code>tri_insertion</code> sera appelée, le décorateur sera appliqué
 et exécutera la fonction <code>timed</code>, qui calcule le temps d'exécution de la fonction décorée.
-<p>Il faudra être attentif à son utilisation <strong>dans le cas des fonctions récursives !</strong> (Je vous laisse constater par vous même le problème rencontré)</p>
-<div class="admonition tips">
+<p>Il faudra être attentif à son utilisation <strong>dans le cas des fonctions récursives !</strong> (Je vous laisse constater par vous-même le problème rencontré)</p>
+<div class="admonition tip">
 <p class="admonition-title">Fonction englobante</p>
-<p>Parfois il est nécessaire d'englober la fonction que l'on souhaite étudier au sein d'une autre fonction. Par exemple, pour éviter un appel à <code>timeit</code> à chaque appel récursif, il faut placer le décorateur sur une fonction qui englobera la fonction récursive. Par habitude de programmation, on appelera la fonction englobante du nom de la fonction récursive originale, et on renommera la fonction originale en <code>compute</code> :</p>
+<p>Parfois il est nécessaire d'englober la fonction que l'on souhaite étudier au sein d'une autre fonction. Par exemple, pour éviter un appel à <code>timeit</code> à chaque appel récursif, il faut placer le décorateur sur une fonction qui englobera la fonction récursive. Par habitude de programmation, on appellera la fonction englobante du nom de la fonction récursive originale, et on renommera la fonction originale en <code>compute</code> :</p>
 <p></p><div class="highlight"><pre><span></span><code><span class="nd">@timeit</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">tri_fusion</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="p">:</span>
@@ -4999,36 +5013,143 @@ et exécutera la fonction <code>timed</code>, qui calcule le temps d'exécution 
             <span class="k">return</span> <span class="n">fusion</span><span class="p">(</span><span class="n">compute</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]),</span> <span class="n">compute</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">:]))</span>
     <span class="k">return</span> <span class="n">compute</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </code></pre></div>
-Ainsi, le décorateur <code>timeit ne s'applique pas à chaque appel récursif, puisque la fonction</code>tri_fusion` n'est appelée qu'une seule fois.
+Ainsi, le décorateur <code>timeit</code> ne s'applique pas à chaque appel récursif, puisque la fonction <code>tri_fusion</code> n'est appelée qu'une seule fois.
 </div>
 </div>
 </li>
 <li>
 <p>Créer une fonction <code>genere_list_alea(n : int) -&gt; list[int]</code> qui crée un tableau de taille <span class="arithmatex">\(n\)</span> d'entiers aléatoires compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n^2\)</span>.</p>
 </li>
-<li>Créer à l'aide de toutes les fonctions précédentes une fonction <code>teste_temps(n : int)</code> qui compare les temps d'exécution des différents tris. Tester cette fonction pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. 
-<strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau, et donc </li>
-</ol>
+<li>
+<p>Créer à l'aide de toutes les fonctions précédentes une fonction <code>teste_temps(n : int)</code> qui compare les temps d'exécution des différents tris. Tester cette fonction pour <span class="arithmatex">\(n\)</span> valant <span class="arithmatex">\(100\)</span>, <span class="arithmatex">\(1~000\)</span>, <span class="arithmatex">\(10~000\)</span>. </p>
+<p><strong>Attention</strong>, il faudra effectuer à chaque fois les tests sur le même tableau.</p>
 <div class="admonition warning">
 <p class="admonition-title">Un risque</p>
-<p>Attention, il faut créer des copies du tableau original pour chaque tri avant de lutiliser (on peut utiliser la fonction <code>deepcopy</code> du module <code>copy</code>).</p>
+<p>Les tris par insertion et par sélection sont des tris en place : ils modifient le tableau original. Il faut donc créer une copie du tableau original pour chaque tri avant de l'utiliser (on peut utiliser la fonction <code>deepcopy</code> du module <code>copy</code>).</p>
 </div>
-<ol>
-<li>Que peut-on en conclure quand à la complexité en temps du tri fusion ?</li>
+</li>
+<li>
+<p>Que peut-on en conclure quant à la complexité en temps du tri fusion ?</p>
+</li>
 </ol>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Complexités du tri fusion</p>
-<p>La version la plus simple du tri fusion sur les tableaux a une efficacité comparable au tri rapide, mais elle n'opère pas en place : une zone temporaire de données supplémentaire de taille égale à celle de l'entrée est nécessaire (des versions plus complexes peuvent être effectuées sur place mais sont moins rapides).
-La complexité en temps est en <span class="arithmatex">\(\mathbb{O}(n log(n))\)</span> dans tous les cas et la complexité en espace est en général en <span class="arithmatex">\(\mathbb{O}(n)\)</span>.</p>
+<p>La version la plus simple du tri fusion sur les tableaux a une efficacité comparable au tri rapide, mais elle n'opère pas en place : une zone temporaire de données supplémentaire de taille égale à celle de l'entrée est nécessaire (des versions plus complexes peuvent être effectuées en place mais sont moins rapides).
+La complexité en temps est en <span class="arithmatex">\(\mathcal{O}(n \log(n))\)</span> dans tous les cas et la complexité en espace est en général en <span class="arithmatex">\(\mathcal{O}(n)\)</span>.</p>
 </div>
 <h2 id="plus-vite-quicksort-hors-programme">Plus vite ! QuickSort ! (Hors programme)</h2>
-<p>Un algorithme plus rapide, mais hors programme, est le QuickSort, dont le détail est présenté ci-dessous. C'est celui utilisé (plus ou moins), par la fonction native <code>sorted</code> ou la méthode <code>sort</code> des listes en Python.</p>
+<p>Un autre algorithme de type « diviser pour régner », hors programme, est le QuickSort (tri rapide), dont le détail est présenté ci-dessous. En pratique, il est souvent plus rapide que le tri fusion, même si sa complexité dans le pire des cas est quadratique. Il est utilisé par de nombreuses bibliothèques standard (en C, C++, Java pour les types primitifs...). En revanche, la fonction native <code>sorted</code> et la méthode <code>sort</code> des listes en Python utilisent un autre algorithme, le <em>Timsort</em>, qui est un hybride entre le tri fusion et le tri par insertion.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Principe du QuickSort</p>
 <p></p><p align="center">
-<img _=";" alt="Kwik Sort" src="../Ikea_Quick_Sort.png" style="width : 50%">
+<img alt="Kwik Sort" src="../Ikea_Quick_Sort.png" style="width:50%;">
 </p>
+<details class="quote">
+<summary>Le code en Python</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tri_rapide</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">t</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">plus_petits</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">]</span>
+        <span class="n">plus_grands</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">pivot</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">tri_rapide</span><span class="p">(</span><span class="n">plus_petits</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">tri_rapide</span><span class="p">(</span><span class="n">plus_grands</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="quote">
+<summary>Version en place : partition de Lomuto</summary>
+<p>Le pivot est le dernier élément de la zone à trier. On parcourt la zone en rangeant à gauche tous les éléments strictement plus petits que le pivot, puis on place le pivot juste après eux : il est alors à sa place définitive.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">partition_lomuto</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">debut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fin</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">fin</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">debut</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">fin</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">fin</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">i</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tri_rapide_lomuto</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="n">debut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fin</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">debut</span> <span class="o">&lt;</span> <span class="n">fin</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">partition_lomuto</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>
+            <span class="n">compute</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">compute</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>
+    <span class="n">compute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="quote">
+<summary>Version en place : partition de Hoare</summary>
+<p>Le pivot est le premier élément de la zone à trier. Deux indices partent des deux extrémités et se rapprochent : dès que l'indice de gauche trouve un élément trop grand et celui de droite un élément trop petit, on les échange. Le pivot n'est pas forcément à sa place définitive à la fin de la partition, d'où les appels récursifs sur <code>debut..p</code> et <code>p+1..fin</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">partition_hoare</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">debut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fin</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">debut</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">fin</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">j</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">j</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tri_rapide_hoare</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="n">debut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fin</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">debut</span> <span class="o">&lt;</span> <span class="n">fin</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">partition_hoare</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>
+            <span class="n">compute</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+            <span class="n">compute</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>
+    <span class="n">compute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
 </div></div>
 
 
