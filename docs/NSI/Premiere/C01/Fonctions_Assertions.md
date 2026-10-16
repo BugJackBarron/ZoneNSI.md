@@ -17,8 +17,8 @@ print(f"Vous avez saisi {nb}")
 
 !!! question "Un blocage ?"
 
-    === "Enoncé"
-        Quels sont les problèmes pouvant être posé par ce programme ?
+    === "Énoncé"
+        Quels sont les problèmes pouvant être posés par ce programme ?
 
     === "Solution"
         * En premier lieu, les lignes 1 et 3 sont des répétitions (des copiés-collés). Or en informatique, on essaye le plus possible de respecter le principe {==**DRY**==} :  *Don't Repeat Yourself*. Une méthode pour corriger ce point pourrait être la suivante :
@@ -52,7 +52,7 @@ print(f"Vous avez saisi {nb}")
                     for caractere in saisie[indice_depart : len(saisie)] : # Pour chaque caractère
                         if caractere not in "0123456789" : # Si ce n'est pas un chiffre
                             est_un_entier = False # Alors la saisie n'est pas un entier
-                    ###### ON TESTE SI IL EST ENTRE 1 et 10 #######
+                    ###### ON TESTE S'IL EST ENTRE 1 et 10 #######
                     if est_un_entier : #
                         nb = int(saisie)# Trans-typage
                         if 1<= nb <= 10 : # Si les conditions sont remplies
@@ -64,7 +64,7 @@ print(f"Vous avez saisi {nb}")
 !!! question "Application 1 : Multiplier les codes"
 
 
-    === "Enoncé"
+    === "Énoncé"
 
         Imaginons maintenant un programme qui demande **trois fois** à l'utilisateur·trice d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore (c'est-à-dire $a^2 + b^2 = c^2$).
 
@@ -75,64 +75,64 @@ print(f"Vous avez saisi {nb}")
         Un programme avec notre niveau actuel en Python pourrait être le suivant :
 
         ```` python
-            repeter = True
-            while repeter :
-                saisie1 = input("Entrez un nombre entre 1 et 10 : ")
-                if saisie1 != "" :
-                    est_un_entier = True
-                    indice_depart = 0
-                    if saisie1[0] == "-" :
-                        indice_depart = 1
-                    for caractere in saisie1[indice_depart : len(saisie1)] :
-                        if caractere not in "0123456789" :
-                            est_un_entier = False
-                    if est_un_entier :
-                        nb1 = int(saisie1)
-                        if 1<= nb1 <= 10 :
-                            repeter = False
-            repeter = True
-            while repeter :
-                saisie2 = input("Entrez un nombre entre 1 et 10 : ")
-                if saisie2 != "" :
-                    est_un_entier = True
-                    indice_depart = 0
-                    if saisie2[0] == "-" :
-                        indice_depart = 1
-                    for caractere in saisie2[indice_depart : len(saisie2)] :
-                        if caractere not in "0123456789" :
-                            est_un_entier = False
-                    if est_un_entier :
-                        nb2 = int(saisie2)
-                        if 1<= nb2 <= 10 :
-                            repeter = False
-            repeter = True
-            while repeter :
-                saisie3 = input("Entrez un nombre entre 1 et 10 : ")
-                if saisie3 != "" :
-                    est_un_entier = True
-                    indice_depart = 0
-                    if saisie3[0] == "-" :
-                        indice_depart = 1
-                    for caractere in saisie3[indice_depart : len(saisie3)] :
-                        if caractere not in "0123456789" :
-                            est_un_entier = False
-                    if est_un_entier :
-                        nb3 = int(saisie3)
-                        if 1<= nb3 <= 10 :
-                            repeter = False
+        repeter = True
+        while repeter :
+            saisie1 = input("Entrez un nombre entre 1 et 10 : ")
+            if saisie1 != "" :
+                est_un_entier = True
+                indice_depart = 0
+                if saisie1[0] == "-" :
+                    indice_depart = 1
+                for caractere in saisie1[indice_depart : len(saisie1)] :
+                    if caractere not in "0123456789" :
+                        est_un_entier = False
+                if est_un_entier :
+                    nb1 = int(saisie1)
+                    if 1<= nb1 <= 10 :
+                        repeter = False
+        repeter = True
+        while repeter :
+            saisie2 = input("Entrez un nombre entre 1 et 10 : ")
+            if saisie2 != "" :
+                est_un_entier = True
+                indice_depart = 0
+                if saisie2[0] == "-" :
+                    indice_depart = 1
+                for caractere in saisie2[indice_depart : len(saisie2)] :
+                    if caractere not in "0123456789" :
+                        est_un_entier = False
+                if est_un_entier :
+                    nb2 = int(saisie2)
+                    if 1<= nb2 <= 10 :
+                        repeter = False
+        repeter = True
+        while repeter :
+            saisie3 = input("Entrez un nombre entre 1 et 10 : ")
+            if saisie3 != "" :
+                est_un_entier = True
+                indice_depart = 0
+                if saisie3[0] == "-" :
+                    indice_depart = 1
+                for caractere in saisie3[indice_depart : len(saisie3)] :
+                    if caractere not in "0123456789" :
+                        est_un_entier = False
+                if est_un_entier :
+                    nb3 = int(saisie3)
+                    if 1<= nb3 <= 10 :
+                        repeter = False
 
-            if nb1**2 + nb2**2 == nb3**2 or nb2**2 + nb3**2 == nb1**2 or nb3**2 + nb1**2 == nb2**2 :
-                print(f"({nb1}, {nb2}, {nb3}) est un triplet de Pythagore")
-            else :
-                print(f"({nb1}, {nb2}, {nb3}) n'est pas un triplet de Pythagore)
-        
+        if nb1**2 + nb2**2 == nb3**2 or nb2**2 + nb3**2 == nb1**2 or nb3**2 + nb1**2 == nb2**2 :
+            print(f"({nb1}, {nb2}, {nb3}) est un triplet de Pythagore")
+        else :
+            print(f"({nb1}, {nb2}, {nb3}) n'est pas un triplet de Pythagore")
+
         ````
 
 !!! warning "Mauvaise pratique"
     Si ce code fait le travail demandé, il n'en est pas moins de *mauvaise qualité* pour plusieurs raisons :
 
     * Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur. Et surtout, {==**plus un code est long, moins il est lisible !**==}
-    * Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification dans la structure du code doit être **réécrite à chaque fois** que le morceau de code est copié. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.
+    * Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification dans la structure du code doit être **réécrite à chaque fois** que le morceau de code est copié. Dans notre exemple, comme il n'y a que trois répétitions, le risque d'erreur est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.
 
 ### Première fonction
 
@@ -144,13 +144,13 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
     Une {==**fonction**==} est un {==**bloc de code nommé**==} (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable) et qui :
     
     * **n'est pas exécuté** au moment de sa définition ;
-    * mais peut être **appelé** plusieurs fois dans le code par l'intermédiaire de son nom, {==**suivi d'une paire de parenthèses**==}. Ces appels (*call* en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverra une {==**valeur de retour**==}, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.
+    * mais peut être **appelé** plusieurs fois dans le code par l'intermédiaire de son nom, {==**suivi d'une paire de parenthèses**==}. Ces appels (*call* en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverront une {==**valeur de retour**==}, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.
 
-    Une fonction est crée en Python par le mot clé `def` suivi du nom de la fonction et des {==**paramètres**==} utilisés, puis d'un caractère `:`, et dans le bloc de code la ou les valeurs renvoyées sont spécifiées avec le mot clé `return` :
+    Une fonction est créée en Python par le mot clé `def` suivi du nom de la fonction et des {==**paramètres**==} utilisés, puis d'un caractère `:`, et dans le bloc de code la ou les valeurs renvoyées sont spécifiées avec le mot clé `return` :
 
     ``` python
     def est_entier_et_strictement_positif(nb : int | float) -> bool :
-        if isinstance(nb)== int and nb > 0 :
+        if isinstance(nb, int) and nb > 0 :
             return True
         else :
             return False
@@ -161,7 +161,7 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
     def est_entier_et_strictement_positif(nb : int | float) -> bool :
     ```
 
-    * La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`,contenant le **paramètre** `nb`, dont on précise qu'il doit être de type `int` ou `float`, grâce aux **type hints** de Python, en français *indices de type*. Les **type hints** ne sont que des indications en Python, mais ils sont impératifs dans d'autres langages (C, C++, Rust, etc...)
+    * La fonction est introduite par le mot clé `def`, suivi du **nom de la fonction** puis d'un couple de parenthèses `()`, contenant le **paramètre** `nb`, dont on précise qu'il doit être de type `int` ou `float`, grâce aux **type hints** de Python, en français *indices de type*. Les **type hints** ne sont que des indications en Python, mais ils sont impératifs dans d'autres langages (C, C++, Rust, etc.)
     * la notation `-> bool` est un {==**type hint**==}, qui indique que la valeur renvoyée par la fonction sera de type `bool`. 
     * Les deux points définissent un bloc de code qui est repéré par **une indentation**, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.
     * la fonction renvoie un objet de type `bool`, selon les conditions vérifiées par la structure conditionnelle.
@@ -189,7 +189,7 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
         Cette fonction :
 
         * possède un paramètre `x` de type `float` ;
-        * renvoie l'image de `x` par loa fonction $f : x \mapsto 3x+4$.
+        * renvoie l'image de `x` par la fonction $f : x \mapsto 3x+4$.
 
         Une fois définie, on l'utilise de la manière suivante (dans le terminal) :
 
@@ -197,7 +197,7 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
         >>> f(5)
         19
         >>> f(2.3)
-        10.9
+        10.899999999999999
         ```
 
         
@@ -214,7 +214,7 @@ On va donc améliorer non seulement la lisibilité de notre code, mais aussi son
 
         * possède deux paramètres `nom` et `prenom` qui sont deux chaines de caractères ;
         * utilise deux {==**variables  locales**==} `nomf` et `prenomf` ;
-        * renvoie une chaine de caractère formatée contenant le nom en majuscule puis le prénom en minuscule, avec la première lettre en majuscule.
+        * renvoie une chaine de caractères formatée contenant le nom en majuscule puis le prénom en minuscule, avec la première lettre en majuscule.
 
     === "Pour notre problème"
 
@@ -273,8 +273,8 @@ Comme tout objet, la valeur de retour d'une fonction doit elle-même être stock
 
     L'interpréteur Python évalue la ligne `entier = ask_user_int()` :
 
-    * Il commence par appeler le code correspondant à La fonction `ask_user_int()`.
-    * Le code de la fonction demande une saisie à l'utilisateur, et une fois l'instruction `return` atteinte, l'instruction `ask_user_int()` est remplacée à l'endroit de l'appel par la valeur saisie par l'utilisateur, converti en objet de type int.
+    * Il commence par appeler le code correspondant à la fonction `ask_user_int()`.
+    * Le code de la fonction demande une saisie à l'utilisateur·trice, et une fois l'instruction `return` atteinte, l'instruction `ask_user_int()` est remplacée à l'endroit de l'appel par la valeur saisie par l'utilisateur·trice, convertie en objet de type `int`.
     * L'objet est ensuite stocké dans une variable nommée `entier`, et peut alors être utilisé en dehors de la fonction.
     
 
@@ -322,15 +322,16 @@ Ce qui a l'avantage d'être vraiment plus clair.
 
 !!! question "Application 2"
 
-    === "Enoncé"
+    === "Énoncé"
 
         Créer une fonction nommée `table7` qui {==**renvoie**==} la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :
 
         ``` 
-        "7x0=0 \n 7x1=7 \n 7x2=14 ..."
+        "7x0 = 0 \n7x1 = 7 \n7x2 = 14 \n..."
         ```
 
         **Indication :** le symbole `\n`, insère un saut de ligne dans une chaîne de caractères.
+
         **Attention :** l'énoncé ne demande pas d'*imprimer*, mais bien de *renvoyer* un objet de type chaine de caractère.
 
     === "Solution"
@@ -345,11 +346,11 @@ Ce qui a l'avantage d'être vraiment plus clair.
 
 ### Augmenter la capacité des fonctions : les paramètres obligatoires 
 
-#### Premiers
+#### Premiers paramètres
 
 L'exemple de la fonction `ask_user_int` est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables, par exemple entre 1 et 100 ou bien entre -10 et 10.
 
-Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**paramètres**==} qui seront des objets transmis et nommés **initialisés à certaines valeurs lors de l'appel à la fonction** :
+Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**paramètres**==} qui seront des objets transmis et nommés, **initialisés à certaines valeurs lors de l'appel à la fonction** :
 
 
 !!! example "Exemple :"
@@ -384,7 +385,7 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**p
     ```
 
 !!! warning "Erreurs d'appels et notion de précondition" 
-    Avec le code actuel de la fonction `ask_user_int`, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console
+    Avec le code actuel de la fonction `ask_user_int`, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console :
 
     === "Test 1"
 
@@ -415,7 +416,7 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**p
 
         === "Problème"
 
-            Aucun véritable erreur n'est levée par Python, bien que les *type hints* demandent des arguments de type `int`. Comme dit précédemment, ces indications sont facultatives (à destination des programmeur·euse·s), et ici les transgresser ne pose pas vraiment de problème.
+            Aucune véritable erreur n'est levée par Python, bien que les *type hints* demandent des arguments de type `int`. Comme dit précédemment, ces indications sont facultatives (à destination des programmeur·euse·s), et ici les transgresser ne pose pas vraiment de problème.
 
     === "Test 4"
 
@@ -427,12 +428,12 @@ Pour ce faire, il faut, dans la définition de la fonction, préciser des {==**p
         === "Problème"
             Ici, la fonction tourne en boucle et il est impossible de saisir une réponse qui amènera à l'instruction `return`. En effet, lors de l'appel à la fonction, on a :
 
-            * `borne_inf` initialisé à `30`;
-            * `borne_sup` initialisé à `10`;
-            * pour atteindre l'instruction `return`, il faudrait que l'utilisateur·trice ait saisi·e un nombre `nb` à la fois supérieur à `30` et inférieur à `10`, ce qui est impossible.
+            * `borne_min` initialisé à `30` ;
+            * `borne_max` initialisé à `10` ;
+            * pour atteindre l'instruction `return`, il faudrait que l'utilisateur·trice ait saisi un nombre `nb` à la fois supérieur à `30` et inférieur à `10`, ce qui est impossible.
 
     === "Solution ?"
-        On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des {==**préconditions**==}, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que `borne_inf` est bien inférieur ou égal à `borne_sup`. Ces tests seront vu dans la partie concernant les {==**assertions**==}.
+        On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des {==**préconditions**==}, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que `borne_min` est bien inférieur ou égal à `borne_max`. Ces tests seront vus dans la partie concernant les {==**assertions**==}.
 
 
 #### Factoriser le code, 2ème saison
@@ -449,14 +450,14 @@ On pourrait alors souhaiter séparer le code en deux fonctions :
     ```python
     def is_integer(word : str) -> bool :
     ```
-    qui utilise comme paramètre `word`, une chaine de caractère, et qui renvoie un booléen `True` si `word` est transtypable en entier, et `False` sinon.
+    qui utilise comme paramètre `word`, une chaine de caractères, et qui renvoie un booléen `True` si `word` est transtypable en entier, et `False` sinon.
 
 * puis conserver la fonction `ask_user_int` telle qu'elle est définie actuellement.
 
 On obtiendrait alors le code suivant :
 
 ``` python
- def is_integer(word : str) -> bool :
+def is_integer(word : str) -> bool :
     est_un_entier = True
     indice_depart = 0
     if word[0] == "-" :
@@ -479,7 +480,7 @@ def ask_user_int(borne_min : int, borne_max : int) -> int:
     return nb
 ```
 
- Vous noterez que la fonction `is_integer` est utilisée au sein de la fonction `ask_user_int`.
+Vous noterez que la fonction `is_integer` est utilisée au sein de la fonction `ask_user_int`.
 
 #### Applications
 
@@ -487,13 +488,13 @@ def ask_user_int(borne_min : int, borne_max : int) -> int:
 !!! question "Application 3"
 
 
-    === "Enoncé"
-        Créer une fonction `table_multi(m : int)-> str` qui prend un argument entier `m` et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.
+    === "Énoncé"
+        Créer une fonction `table_multi(m : int)-> str` qui prend un argument entier `m` et renvoie la table de multiplication de ce nombre, avec un multiplicateur allant de 0 à 10.
 
 !!! question "Application 4 : motif dans une chaine"
 
-    === "Enoncé"
-        Créer une fonction `trouve_chaine(motif : str, texte : str) -> bool`qui prend deux arguments, un `motif` ( une chaine de caractères )  et un `texte` ( une autre chaine de caractères )  et qui renvoie `True` si le `motif` est présent dans la `chaine`, quel que soit la casse du motif ou celle de la chaine, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
+    === "Énoncé"
+        Créer une fonction `trouve_chaine(motif : str, texte : str) -> bool` qui prend deux arguments, un `motif` (une chaine de caractères) et un `texte` (une autre chaine de caractères), et qui renvoie `True` si le `motif` est présent dans le `texte`, quelle que soit la casse du motif ou celle du texte, et `False` sinon.  Vous pouvez tester avec les lignes suivantes :
 
         ```python
         assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
@@ -538,7 +539,7 @@ def ask_user_int(borne_min : int, borne_max : int, nom :str = "Inconnu") -> int:
 Ainsi, la fonction ci-dessus possède trois paramètres :
 
 * deux paramètres **obligatoires**, `borne_min` et `borne_max`, de type `int` ;
-* un paramètre **optionnel**, `prenom`, de type `str`, dont la **valeur par défaut est la chaine `Inconnu`.
+* un paramètre **optionnel**, `nom`, de type `str`, dont la **valeur par défaut** est la chaine `'Inconnu'`.
 
 
 Il est à noter qu'impérativement les **paramètres obligatoires doivent être placés avant les paramètres optionnels**.
@@ -566,7 +567,7 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
 
 !!! question "Application 5 : paramètres optionnels"
 
-    === "Enoncé"
+    === "Énoncé"
         Compléter la fonction `table_multi` afin qu'elle utilise deux paramètres optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.
 
     === "Solution"
@@ -575,19 +576,19 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
         def table_multi(nb : int, depart : int = 0, fin : int =10) -> str :
             table = ''
             for i in range(depart, fin+1) :
-                table += f'{nb}}x{i} = {nb*i} \n'
+                table += f'{nb}x{i} = {nb*i} \n'
             return table
         ```
 
 !!! question "Application 6 : paramètres optionnels"
 
-    === "Enoncé"
+    === "Énoncé"
 
         Réécrire la fonction `trouve_chaine` afin qu'elle utilise un *paramètre booléen optionnel* `verif_casse`, afin de déterminer si le `motif` est présent dans le `texte` en vérifiant la casse ou non. Par défaut le paramètre sera `False`. Vous pouvez utiliser les tests ci-dessous :
 
         ```python
         
-        ##les assertions suivantes sont les même que précédemment
+        ##les assertions suivantes sont les mêmes que précédemment
         assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
         assert trouve_chaine('Totos', 'Toto va à la plage')==False, 'Chaine non présente trouvée'
         assert trouve_chaine('TOTO', 'Toto va à la plage')==True, 'Problème de majuscules dans le motif'
@@ -609,7 +610,7 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
             if verif_casse==True :
                 return motif in texte
             else :
-                return  motif.lower() in texte.lower() :
+                return motif.lower() in texte.lower()
         ```
 
 
@@ -617,11 +618,11 @@ On peut alors appeler la fonction des différentes manières suivantes (à teste
 
 !!! tips "Commenter son code"
 
-    Une bonne habitude, à prendre immédiatement, est celle de commenter son code, c'est-à-dire d'expliquer l'implémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont **des lignes non-lues par l'interpréteur Python**, commençant par le symbole *dièse* `#`.
+    Une bonne habitude, à prendre immédiatement, est celle de commenter son code, c'est-à-dire d'expliquer l'implémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont **des lignes non lues par l'interpréteur Python**, commençant par le symbole *dièse* `#`.
 
-    Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un code que vous avez écrit vous-même quelques semaines voir quelques jours auparavant !
+    Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un code que vous avez écrit vous-même quelques semaines, voire quelques jours, auparavant !
 
-    Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... 
+    Alors imaginez la personne qui doit lire votre code, mais qui ne l'a pas écrit... 
 
 
 Les concepteur·trice·s de Python ont créé une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction `help`.
@@ -630,31 +631,14 @@ Testez par exemple la commande `help(print)` dans la console, puis essayez avec 
 
 
 
-La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring**==}, littéralement *chaine de documentation*, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une **docstring** est construite comme une chaine de caractères *non nommée* présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :
+La fonction `help` va chercher dans l'objet passé en argument sa {==**docstring**==}, littéralement *chaine de documentation*, qui est une chaine de caractères créée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc. Une **docstring** est construite comme une chaine de caractères *non nommée* présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :
 
 ``` python
-#Import des modules
-import doctest
-
-
-# Déclaration des fonctions 
-
-def times3(n) :
+def somme(a : int, b : int) -> int :
     """
-    Fonction qui multiplie par 3
->>> times3(10)
-30
->>> times3(5)
-15
->>> times3('a')
-'aaa'
-"""
-    return 3*n
-
-# Code réellement exécuté
-
-doctest.testmod() # effectue tous les tests détectés dans les docstrings, et compare au résultat attendu
-
+    Fonction qui renvoie la somme des deux entiers a et b.
+    """
+    return a + b
 ```
 
 
@@ -668,7 +652,7 @@ On peut alors accéder à la **docstring** d'une fonction en utilisant la foncti
 
 ## Notion de portée des variables  
 
-Au sein d'un même programme, les variables définies n'ont pas systématiquement la même **portée**. La **portée d'une variable**, c'est l'espace des objets/noms (on parle aussi de *monde*) dans lequel est défini cette variable.
+Au sein d'un même programme, les variables définies n'ont pas systématiquement la même **portée**. La **portée d'une variable**, c'est l'espace des objets/noms (on parle aussi de *monde*) dans lequel est définie cette variable.
 
 En utilisant le site [Python Tutor](https://pythontutor.com/){: target="_blank"}, nous allons essayer de comprendre cette notion de portée des variables.
 
@@ -682,9 +666,9 @@ Dans l'exemple ci-dessus, la variable `mystere` est définie dans {==**l'espace 
 
 <iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%0A%20%20%20%20mystere%20%3D%2042%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&curInstr=0&mode=display&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
-Dans l'exemple ci-dessus, la variable `mystere` est définie dans l'espace des noms associé à la fonction `f`, et qui est créé {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminé (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `mystere` puisqu'elle a disparue. `mystere` est une {==**variable locale**==} à la fonction `f`.
+Dans l'exemple ci-dessus, la variable `mystere` est définie dans l'espace des noms associé à la fonction `f`, et qui est créé {==**au moment de l'appel à cette fonction**==} (*frame f*). Cet espace est détruit par le *garbage collector* dès que l'exécution de la fonction est terminée (une fois la valeur de `return` renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable `mystere` puisqu'elle a disparu. `mystere` est une {==**variable locale**==} à la fonction `f`.
 
-!!! danger "Impossibilité de modifier une variable globale depuis une fonction appelante"
+!!! danger "Impossibilité de modifier une variable globale depuis une fonction"
 
     === "Le principe"
         Par construction, il est impossible de modifier directement une variable globale dans une fonction. 
@@ -693,7 +677,7 @@ Dans l'exemple ci-dessus, la variable `mystere` est définie dans l'espace des n
         <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&codeDivHeight=400&codeDivWidth=350&curInstr=0&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
     === "Une (mauvaise) solution"
-        Vu que certain.e.s petit.e.s malin.e.s l'ont déjà utilisé en classe, je me dois de préciser une possibilité de modification, {==**mais qui est une très très mauvaise solution**==}, reconnue unanimement comme étant à éviter le plus possible : il s'agit d'utiliser le mot clé `global` dans la fonction. Par exemple avec le code suivant :
+        Vu que certain·e·s petit·e·s malin·e·s l'ont déjà utilisé en classe, je me dois de préciser une possibilité de modification, {==**mais qui est une très très mauvaise solution**==}, reconnue unanimement comme étant à éviter le plus possible : il s'agit d'utiliser le mot clé `global` dans la fonction. Par exemple avec le code suivant :
 
         <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20global%20mystere%20%23%20on%20dit%20qu'il%20est%20possible%20de%20modifier%20mystere...%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&codeDivHeight=400&codeDivWidth=350&curInstr=0&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
@@ -703,13 +687,13 @@ Dans l'exemple ci-dessus, la variable `mystere` est définie dans l'espace des n
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20None%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Af%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&codeDivHeight=400&codeDivWidth=350&curInstr=0&origin=opt-frontend.js&primitivesAsObjects=true&py=311"> </iframe>
 
-Dans l'exemple ci dessus :
+Dans l'exemple ci-dessus :
 
-* une variable **globale** `x` est crée avec une valeur entière 5 ;
+* une variable **globale** `x` est créée avec une valeur entière 5 ;
 * cette variable est passée en paramètre à la fonction, ce qui crée une variable **locale** `x`, valant 5 ;
-* la valeur de la variable **locale** `x`est doublée. Elle vaut alors 10 ;
-* une fois la fopnction terminée, l'*espace de nom* de la fonction `f` est détruit, et donc la variable **locale** `x`est aussi détruite ;
-* par contre la variable **globale** `x`n'a pas vu sa valeur modifiée. Elle reste égale à 5.
+* la valeur de la variable **locale** `x` est doublée. Elle vaut alors 10 ;
+* une fois la fonction terminée, l'*espace de nom* de la fonction `f` est détruit, et donc la variable **locale** `x` est aussi détruite ;
+* par contre la variable **globale** `x` n'a pas vu sa valeur modifiée. Elle reste égale à 5.
 
 ### Utiliser la valeur de retour d'une fonction
 
@@ -735,25 +719,25 @@ L'instruction `assert` de Python fonctionne de la manière suivante :
 
 
 ```` python
- assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
+assert trouve_chaine('Toto', 'Toto va à la plage')==True, 'Meme casse pas trouvée'
 ````
 
 L'instruction `assert` teste un booléen, ici `trouve_chaine('Toto', 'Toto va à la plage')==True`. Il peut alors se produire deux cas :
 
 * soit le booléen est `True`, auquel cas l'interpréteur passe à la ligne suivante (il ne se passe rien de visible) ;
-* soit le booléen est `False`, auquel cas l'interpréteur {==**arrête le code**==} en levant une erreur de type `AssertionError` et affiche la chaine de caractère passée en second argument, ici `'Meme casse pas trouvée'`.
+* soit le booléen est `False`, auquel cas l'interpréteur {==**arrête le code**==} en levant une erreur de type `AssertionError` et affiche la chaine de caractères passée en second argument, ici `'Meme casse pas trouvée'`.
 
 !!! example "Correction de la fonction `ask_user_int`"
 
     ``` python
     def ask_user_int(borne_min : int, borne_max : int, nom : str ='Inconnu' ) -> int :
-        """ Fonction demandant un entier compris entre borne_nf et borne_sup.
-        personnalisation du message avec le paramètre optionnel nom.
-        renvoi un objet de type entier.
+        """ Fonction demandant un entier compris entre borne_min et borne_max.
+        Personnalisation du message avec le paramètre optionnel nom.
+        Renvoie un objet de type entier.
         """
-        assert type(borne_inf) == int and type(borne_sup) == int, "Erreur de type sur borne_inf et borne_sup"
+        assert type(borne_min) == int and type(borne_max) == int, "Erreur de type sur borne_min et borne_max"
         assert type(nom) == str, "Erreur de type sur nom"
-        assert borne_inf <= borne_sup , "borne_inf n'est pas inférieure à borne_sup"
+        assert borne_min <= borne_max, "borne_min n'est pas inférieure à borne_max"
 
         repeter = True
         while repeter :
@@ -772,13 +756,13 @@ Je rappelle que le calcul du coefficient directeur de la droite $(AB)$ se fait p
 
 $$m = \frac{y_B-y_A}{x_B-x_A}$$
 
-Ainsi nous aimerions que la fonction travaille avec 4 paramètres de type entiers  `xA, yA, xB, yB`, qu'elle renvoie le coefficient directeur de $(AB)$ sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie `None` quand il n'existe pas. On, définit ici ce qu'on appelle une {==**interface**==} de la fonction :
+Ainsi nous aimerions que la fonction travaille avec 4 paramètres de type entiers  `xA, yA, xB, yB`, qu'elle renvoie le coefficient directeur de $(AB)$ sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie `None` quand il n'existe pas. On définit ici ce qu'on appelle une {==**interface**==} de la fonction :
 
 ```python
-def coefficient_directeur(xA : int, yA : int, xB : int, yB : int) -> float :
+def coefficient_directeur(xA : int, yA : int, xB : int, yB : int) -> float | None :
     """ Renvoie le coefficient directeur de la droite (AB) telle que :
-        A (xA ; yA) et B(xB ; yB), et les coordonnées de A ety B sont entières.
-        Dans le cas ou le coefficient directeur n'existe pas, renvoie None
+        A(xA ; yA) et B(xB ; yB), et les coordonnées de A et B sont entières.
+        Dans le cas où le coefficient directeur n'existe pas, renvoie None
     """
     ... 
     
@@ -798,29 +782,29 @@ Par exemple, nous aimerions que la fonction vérifie le test suivant :
 
 !!! question "Écrire des tests"
 
-    === "Enoncé"
+    === "Énoncé"
 
         1. Écrire 5 tests prenant en compte tous les cas possibles d'utilisation de la fonction, en supposant que les types fournis en argument soient bien des entiers.
         2. Compléter la fonction `coefficient_directeur` afin qu'elle remplisse le rôle qui lui est demandé.
 
     === "Solution"
 
-        A venir !
+        À venir !
 
 
 
 
 ## Tester avec le module doctest (Non traité en classe)
 
-Pyhton étant *user friendly*, il permet au programmeur de tester automatiquement, grâce au module `doctest`.
+Python étant *user friendly*, il permet au programmeur de tester automatiquement, grâce au module `doctest`.
 
-Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalité de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :
+Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalités de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :
 
 * le module *math*, qui contient beaucoup de fonctions mathématiques ;
 * le module *turtle*, qui permet de dessiner géométriquement ;
 * le module *pygame*, qui est un module permettant de gérer les différents éléments d'un jeu vidéo ;
-* le module *panda*, qui est utilisé pour faire du traitement de données ;
-* le module *flask*, qui permet de créer une application web
+* le module *pandas*, qui est utilisé pour faire du traitement de données ;
+* le module *flask*, qui permet de créer une application web ;
 * ...
 
 Un module doit être chargé en mémoire une fois (de préférence au début du code), par l'intermédiaire de la commande :
@@ -829,8 +813,8 @@ Un module doit être chargé en mémoire une fois (de préférence au début du 
 import nom_du_module
 ````
 
-??? warning "Mais non, ca ne se fait pas que comme ça !"
-    Oui, vous avez raison, mais ce n'est pas le cas de ce cours, nous verrons l'import de modules plus tard dans l'année...
+??? warning "Mais non, ça ne se fait pas que comme ça !"
+    Oui, vous avez raison, mais ce n'est pas l'objet de ce cours, nous verrons l'import de modules plus tard dans l'année...
 
 Le module *doctest*, lui, permet d'intégrer à la **docstring un ensemble de tests** qui sont vérifiés par l'appel de la fonction **testmod** du module *doctest*.
 
@@ -864,23 +848,23 @@ doctest.testmod() # Lance les tests des fonctions déclarées
 
 
 
-L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents dans la doctsring, et vérifie que les résultats de la fonctions correspondent à ceux fournit dans la docstring.
+L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents dans la docstring, et vérifie que les résultats de la fonction correspondent à ceux fournis dans la docstring.
 
 !!! question "Application 7 : Ajouter une fonction et des tests"
 
-    === "Enoncé"
+    === "Énoncé"
 
-        Créez une fonction `times3` qui renvoie le triple de l'objet passé en argument, l'objet pouvant êtrte de type `int`, `float` ou `str`, en écrivant les tests correspondants.
+        Créez une fonction `times3` qui renvoie le triple de l'objet passé en argument, l'objet pouvant être de type `int`, `float` ou `str`, en écrivant les tests correspondants.
         
     === "Solution"
 
-        A venir !
+        À venir !
 
 **Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS concevoir un jeu d'exemple avant de se lancer dans la construction d'une fonction.**
 
 ## Exercices  
 
-*Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.*
+*Dans tous les exercices suivants, on devra écrire pour chacune des fonctions des assertions permettant de tester les préconditions.*
 
 **Vous devrez tester les fonctions avec les jeux de tests fournis dans les docstring.**
 
@@ -888,7 +872,7 @@ L'appel à la fonction `doctest.testmod()` déclenche les trois tests présents 
 Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.
 
 
-1. Ecrire une fonction qui renvoie le maximum de deux nombres `ìnt` donnés :
+1. Écrire une fonction qui renvoie le maximum de deux nombres `int` donnés :
 
     ```python
     def maxi(a : int,b :int) -> int :
@@ -939,7 +923,8 @@ Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessou
     7
     >>> maxi3(-2, -2, -3)
     -2
-    
+    >>> maxi3(20, 5, 20)
+    20
         """
         ...
     ```
