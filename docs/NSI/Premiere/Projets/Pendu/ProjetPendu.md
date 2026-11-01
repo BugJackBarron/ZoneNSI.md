@@ -9,6 +9,10 @@
 	
 
 
+!!! tip "Fiche de suivi enseignant"
+
+    [:material-file-pdf-box: Télécharger la fiche de suivi du projet (PDF)](Fiche_Suivi_Pendu.pdf){: download }
+
 ## Description du projet
 
 !!! info "jeu du Pendu"

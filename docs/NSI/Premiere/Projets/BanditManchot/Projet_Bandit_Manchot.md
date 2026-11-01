@@ -7,6 +7,10 @@
 	* Vous rendrez le code complet pour le 11 décembre 2026 au plus tard.
 	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
 
+!!! tip "Fiche de suivi enseignant"
+
+    [:material-file-pdf-box: Télécharger la fiche de suivi du projet (PDF)](Fiche_Suivi_Bandit_Manchot.pdf){: download }
+
 ## Description du projet
 
 L'objectif est de simuler une partie de machine à sous de casino de type Bandit Manchot.

@@ -4,10 +4,12 @@
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{french}
+\usepackage{amsmath}
 \usepackage{colortbl}
 \usepackage{booktabs,tabularx,array,xcolor,enumitem,amssymb,fancyhdr,eurosym,graphicx}
 \setmainfont{Latin Modern Roman}
-\setmonofont{Latin Modern Mono}[Scale=MatchLowercase]
+\directlua{luaotfload.add_fallback("symfb", {"DejaVu Sans Mono:mode=harf"})}
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase,RawFeature={fallback=symfb}]
 
 \definecolor{accent}{RGB}{31,78,121}
 \definecolor{pale}{RGB}{232,239,247}
@@ -45,12 +47,12 @@
 \toprule
 \rowcolor{pale} Jalon & Tests unitaires & Commencé & Terminé & Tests OK & Date / remarque \\
 \midrule
-\texttt{formate\_mot} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
-\texttt{genere\_tirets} & doctest : 6 tests & $\square$ & $\square$ & $\square$ & \\
-\texttt{compte\_restantes} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
-\texttt{demande\_joueur\_lettre} &  & $\square$ & $\square$ & $\square$ & \\
-\texttt{affiche\_pendu} &  & $\square$ & $\square$ & $\square$ & \\
-\texttt{une\_manche} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{formate\_\allowbreak{}mot} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{genere\_\allowbreak{}tirets} & doctest : 6 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{compte\_\allowbreak{}restantes} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{demande\_\allowbreak{}joueur\_\allowbreak{}lettre} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{affiche\_\allowbreak{}pendu} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{une\_\allowbreak{}manche} &  & $\square$ & $\square$ & $\square$ & \\
 Dossier personnel (1 à 2 pages) &  & $\square$ & $\square$ & $\square$ & \\
 Améliorations (score, difficulté, \dots) &  & $\square$ & $\square$ & $\square$ & \\
 \bottomrule
@@ -73,28 +75,29 @@ Améliorations (score, difficulté, \dots) &  & $\square$ & $\square$ & $\square
 
 \section*{Points de vigilance à contrôler}
 \begin{itemize}
-\item \texttt{choix\_mot} n'a pas été modifiée.
-\item \texttt{formate\_mot} : les ligatures (\texttt{œ} $\to$ \texttt{OE}, \texttt{æ} $\to$ \texttt{AE}) et les cédilles sont traitées ; les tirets sont conservés.
-\item \texttt{genere\_tirets} : chaque caractère est suivi d'un espace, y compris le dernier ; les tirets du mot sont affichés.
-\item \texttt{affiche\_pendu} : les 7 états (0 à 6 échecs) s'affichent correctement, mot et potence alignés.
-\item \texttt{demande\_joueur\_lettre} : refus d'une entrée vide, de plusieurs lettres, d'un chiffre, d'une lettre accentuée.
-\item \texttt{une\_manche} : une lettre déjà proposée ne coûte pas d'échec ; la partie s'arrête à 6 échecs ou quand le mot est trouvé ; le mot est révélé en cas de défaite.
+\item \texttt{choix\_\allowbreak{}mot} n'a pas été modifiée.
+\item \texttt{formate\_\allowbreak{}mot} : les ligatures (\texttt{œ} $\to$ \texttt{OE}, \texttt{æ} $\to$ \texttt{AE}) et les cédilles sont traitées ; les tirets sont conservés.
+\item \texttt{genere\_\allowbreak{}tirets} : chaque caractère est suivi d'un espace, y compris le dernier ; les tirets du mot sont affichés.
+\item \texttt{affiche\_\allowbreak{}pendu} : les 7 états (0 à 6 échecs) s'affichent correctement, mot et potence alignés.
+\item \texttt{demande\_\allowbreak{}joueur\_\allowbreak{}lettre} : refus d'une entrée vide, de plusieurs lettres, d'un chiffre, d'une lettre accentuée.
+\item \texttt{une\_\allowbreak{}manche} : une lettre déjà proposée ne coûte pas d'échec ; la partie s'arrête à 6 échecs ou quand le mot est trouvé ; le mot est révélé en cas de défaite.
 \item \textbf{Attention au barème :} les points de la grille du sujet totalisent 21 (et non 20) ; reporter la note sur 20 si besoin.
 \end{itemize}
 \smallskip
 Mots à tester : un mot avec tiret (\texttt{pull-over}), un mot avec ligature (\texttt{œil}), un mot avec cédille (\texttt{garçon}), un mot avec une lettre répétée.
 
 \section*{Grille d'évaluation}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.6cm} X C{1.3cm} C{1.5cm} p{3.4cm}@{}}
+{\renewcommand{\arraystretch}{1.7}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.6cm} X C{1.3cm} |C{1.5cm}| p{3.4cm}@{}}
 \toprule
 \rowcolor{pale} Critère & Détails & Barème & Obtenu & Observations \\
 \midrule
-\texttt{formate\_mot} & passage de tous les tests unitaires & 3 & & \\
-\texttt{genere\_tirets} & passage de tous les tests unitaires & 2 & & \\
-\texttt{compte\_restantes} & passage de tous les tests unitaires & 2 & & \\
-\texttt{demande\_joueur\_lettre} & \emph{dumbproof} & 1 & & \\
-\texttt{affiche\_pendu} & affichage correct & 3 & & \\
-\texttt{une\_manche} & jeu a minima fonctionnel & 3 & & \\
+\texttt{formate\_\allowbreak{}mot} & passage de tous les tests unitaires & 3 & & \\
+\texttt{genere\_\allowbreak{}tirets} & passage de tous les tests unitaires & 2 & & \\
+\texttt{compte\_\allowbreak{}restantes} & passage de tous les tests unitaires & 2 & & \\
+\texttt{demande\_\allowbreak{}joueur\_\allowbreak{}lettre} & \emph{dumbproof} & 1 & & \\
+\texttt{affiche\_\allowbreak{}pendu} & affichage correct & 3 & & \\
+\texttt{une\_\allowbreak{}manche} & jeu a minima fonctionnel & 3 & & \\
 Noms des variables clairs & pas de nom d'un seul caractère, sauf compteurs & 2 & & \\
 Code commenté et clair & explications minimales & 3 & & \\
 Améliorations, qualité du code &  & 2 & & \\
@@ -103,7 +106,7 @@ Améliorations, qualité du code &  & 2 & & \\
 \midrule
 \multicolumn{2}{l}{\textbf{TOTAL}} & \textbf{21} & & \\
 \bottomrule
-\end{tabularx}
+\end{tabularx}}
 
 \section*{Dossier personnel (par élève)}
 \begin{tabularx}{\linewidth}{@{}X c c c c@{}}
