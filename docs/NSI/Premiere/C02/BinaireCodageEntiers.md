@@ -4,10 +4,10 @@
 
 ### Le bit
 
-L'histoire de l'informatique est intrinsèquement dépendante de l'histoire de la maîtrise de l'électricité. Fondamentalement, tout ordinateur est construit à partir de circuits électroniques qui:
+L'histoire de l'informatique est intrinsèquement dépendante de l'histoire de la maîtrise de l'électricité. Fondamentalement, tout ordinateur est construit à partir de circuits électroniques qui :
 
 * soit ne laissent pas passer le courant électrique (*Off*);
-* soit laissent passer le courant électrique (*In*).
+* soit laissent passer le courant électrique (*On*).
 
 
 !!! example "Exemple"
@@ -21,7 +21,7 @@ L'histoire de l'informatique est intrinsèquement dépendante de l'histoire de l
 
 ### Compter en binaire
 
-Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajoute 1 jusqu'à épuiser les chiffres disponibles, et quand on a terminé, on ajoute un chiffre supplémentaire au nombre. En, binaire, cela donne :
+Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajoute 1 jusqu'à épuiser les chiffres disponibles, et quand on a terminé, on ajoute un chiffre supplémentaire au nombre. En binaire, cela donne :
 
 
 | Nombre en binaire | Nombre en décimal |
@@ -39,7 +39,7 @@ Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajo
 
 ### Grouper les bits
 
-Une information binaire est donc une suite de $0$ et de $1$. Cette information peut-être de différente nature, tout dépend de la {==**norme d'encodage**==} utilisée. En soit, la même suite binaire peut signifier des choses totalement différentes comme :
+Une information binaire est donc une suite de $0$ et de $1$. Cette information peut être de différente nature, tout dépend de la {==**norme d'encodage**==} utilisée. En soi, la même suite binaire peut signifier des choses totalement différentes comme :
 
 * un nombre entier ;
 * un nombre flottant ;
@@ -66,11 +66,11 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 	
 !!! abstract "Bits et quantités d'informations"
 	
-	Avec un unique bit, on ne peux stocker que deux informations (deux nombres, deux caractères, deux notes de musiques,...). La quantité d'information différentes pouvant être représentées dépend donc du nombre de bits utilisés :
+	Avec un unique bit, on ne peut stocker que deux informations (deux nombres, deux caractères, deux notes de musique,...). La quantité d'informations différentes pouvant être représentées dépend donc du nombre de bits utilisés :
 	
 	=== "Avec $2$ bits :"
 		??? done 
-			On peux représenter $2 \times 2 = 2^2 = 4$ informations différentes. Par exemple, avec des caractères :
+			On peut représenter $2 \times 2 = 2^2 = 4$ informations différentes. Par exemple, avec des caractères :
 
 			| Mot | Caractère |
 			| :--: | :--: | 
@@ -83,7 +83,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 	=== "Avec $3$ bits :"
 		??? done 
-			On peux représenter $2 \times 2 \times 2= 2^3 = 8$ informations différentes. Par exemple, avec des caractères :
+			On peut représenter $2 \times 2 \times 2= 2^3 = 8$ informations différentes. Par exemple, avec des caractères :
 			
 			| Mot | Caractère |
 			| :--: | :--: | 
@@ -98,7 +98,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 	=== "Avec $4$ bits :"
 		??? done 
-			On peux représenter $2 \times 2 \times 2 \times 2= 2^4 = 16$ informations différentes. Par exemple, avec des caractères, on pourra représenter jusqu'à `P`, qui sera représenté par le mot binaire `1111`
+			On peut représenter $2 \times 2 \times 2 \times 2= 2^4 = 16$ informations différentes. Par exemple, avec des caractères, on pourra représenter jusqu'à `P`, qui sera représenté par le mot binaire `1111`
 	
 	
 	 Avec un système à $n$ bits, on peut représenter $2^n$ informations différentes.
@@ -115,11 +115,11 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 	
 !!! info "Remarque"
   
-	Les préfixes *kilo*, *Mega*, *Giga* ..., sont bien ceux du système international, c'est-à-dire ceux pour $10^3$, $10^6$, $10^9$... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( *kibi*, *Mibi*, *Gibi*...), pour lesquels le facteur de changement d'unité n'est pas $10^3$ mais $2^10 = 1024$. Ainsi $1 Mibi = 1024 kibi$.
+	Les préfixes *kilo*, *Mega*, *Giga* ..., sont bien ceux du système international, c'est-à-dire ceux pour $10^3$, $10^6$, $10^9$... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( *kibi*, *Mébi*, *Gibi*...), pour lesquels le facteur de changement d'unité n'est pas $10^3$ mais $2^{10} = 1024$. Ainsi $1~Mébi = 1024~kibi$.
   
  
 
-## Ecritures en d'autres bases 
+## Écritures dans d'autres bases 
 
 ### Les entiers en base décimale
 
@@ -139,7 +139,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 	=== "Solution"
 	
 		1. $14~763 = 1 \times 10^{4} + 4 \times 10^{3} + 7 \times 10^{2}+ 6\times 10^{1} + 3\times 10^{0}$
-		2. $100~042 = 1 \times 10^{\dots} + 4 \times 10^{\dots} + 2 \times 10^{\dots}$
+		2. $100~042 = 1 \times 10^{5} + 4 \times 10^{1} + 2 \times 10^{0}$
 
 
 ### La base 2 (système binaire)
@@ -152,7 +152,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 
 !!! info "Remarques et notations"
-	L'écriture $101$ possède aussi bien un sens en binaire (un-zéro-un) qu'en décimal ( cent-un ). Pour lever l'ambiguïté , on écrira :
+	L'écriture $101$ possède aussi bien un sens en binaire (un-zéro-un) qu'en décimal ( cent-un ). Pour lever l'ambiguïté, on écrira :
 	
 	* $(101)_{10}$ ou simplement $101$ pour le nombre en base $10$ ;
 	* $(101)_2$ pour le nombre en base $2$.
@@ -179,7 +179,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 !!! question "Exercice : Conversions de la base $2$ vers la base $10$"
 
 	=== "Enoncé"
-		Ecrire les nombres suivants en base $10$ :
+		Écrire les nombres suivants en base $10$ :
 		
 		1. $(101)_2$
 		2. $(11111111)_2$
@@ -192,10 +192,11 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 !!! question "Exercice : Un peu de Python"
 	
 	=== "Enoncé"
-		Compléter la fonction suivante, **sans utiliser `int(x,2)`**, afin qu'elle renvoie en base 10 le nombre $x$ passé en argument en base $2$, sous la forme d'une chaine de caractères. *Vous pouvez cependant utiliser la fonction built-in `int` afin de convertir une chaine de caratère en un entier.*
-			``` python
-			def bin2dec(x) :
-				"""fonction convertissant le nombre (x)_2 en base 10
+		Compléter la fonction suivante, **sans utiliser `int(x,2)`**, afin qu'elle renvoie en base 10 le nombre $x$ passé en argument en base $2$, sous la forme d'une chaine de caractères. *Vous pouvez cependant utiliser la fonction built-in `int` afin de convertir une chaine de caractères en un entier.*
+
+		``` python
+		def bin2dec(x) :
+			"""fonction convertissant le nombre (x)_2 en base 10
 			>>> bin2dec('0')
 			0
 			>>> bin2dec('1')
@@ -206,20 +207,20 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 			8
 			>>> bin2dec('11111111')
 			255
-				"""
-			```
+			"""
+		```
 
 ### Conversions de la base $10$ vers la base $2$
 
 
-!!! tips "Méthode : Algorithme de conversion du nombre $(n)_{10}$ en base $2$"
+!!! tip "Méthode : Algorithme de conversion du nombre $(n)_{10}$ en base $2$"
 	
 	=== "En langage naturel"
 		```
 		fonction dec2bin(n) :
-			base2 <- chaine de caractère vide
+			base2 <- chaine de caractères vide
 			Tant que n!=0 :
-				base2 <- caractere(n%2)+base2
+				base2 <- caractère(n%2)+base2
 				n <- n//2
 			Renvoyer base2 
 		```
@@ -229,7 +230,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 		``` mermaid
 		
 		flowchart TB
-		A(Nombre n positif en décimal) --> B(base2 chaine de caractère vide)
+		A(Nombre n positif en décimal) --> B(base2 chaine de caractères vide)
 		B --> C{n != 0}
 		C --> |Non| F(base2 est la représentation de n en binaire)
 		subgraph Z["Boucle principale"]
@@ -265,8 +266,9 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 
 	=== "Enoncé"
 		Compléter la fonction suivante en Python, qui renvoie la chaine de caractères correspondant à l'écriture de $n$ en base $2$.
-			``` python
-			def dec2bin(n) :
+
+		``` python
+		def dec2bin(n) :
 			"""fonction convertissant le nombre n en base 2,
 			et renvoyant la chaine de caractères correspondante
 			>>> dec2bin(0)
@@ -280,7 +282,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 			>>> dec2bin(255)
 			'11111111'
 			"""
-			```
+		```
 	=== "Solution"
 	
 		A venir !
@@ -293,7 +295,7 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 	
 !!! question "Exercice : Nombre de bits nécessaires"
 	=== "Enoncé"
-		Déterminer pour chacun des nombres ci-dessous le nombre de bits minimal qui seront nécessaire dans l'écriture binaire de ce nombre :
+		Déterminer pour chacun des nombres ci-dessous le nombre de bits minimal qui seront nécessaires dans l'écriture binaire de ce nombre :
 
 		1. $12$
 		2. $123$
@@ -309,18 +311,18 @@ Une information binaire est donc une suite de $0$ et de $1$. Cette information p
 ### Une autre base utile : l'hexadécimal
 
 Outre que la lecture des nombres en écriture binaire par un humain est très compliquée, il faut remarquer que,
- de par la construction de ces nombres, la quantité de symboles utilisés en base $2$ est largement supérieur à
+ de par la construction de ces nombres, la quantité de symboles utilisés en base $2$ est largement supérieure à
  celui utilisé en base $10$ - **$3,2$ fois plus grand** en moyenne sur les $100~000$ premiers entiers.
 
 Il peut donc être utile de trouver un compromis entre la base $2$, utile pour l'ordinateur, et la base $10$, plus compréhensible par un être humain.
 
-Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-à-dire un système de **base 16**.
+Ce compromis peut être trouvé avec le système {==**hexadécimal**==}, c'est-à-dire un système de **base 16**.
 
 
-!!! tips "Clé WIFI"
+!!! tip "Clé WIFI"
  	Typiquement, une clé de sécurité WIFI est un nombre binaire à 128 bits (ou 256 bits). Lorsque vous vous connectez à un nouveau réseau WIFI, vous devez taper la clé sur votre ordinateur/smartphone (on élimine ici la possibilité d'un FlashCode), mais celle ci est présentée souvent sous la forme `38326f53685c2c256164712838`, déjà particulièrement pénible à taper, et les erreurs de recopiages sont faciles à  faire et difficiles à retrouver.
 	
-	Ce nombre, sous sa forme binaire est celui-ci : 
+	Ce nombre (ici de 104 bits), sous sa forme binaire, est celui-ci : 
 	
 	`111000001100100110111101010011011010000101110000101100001001010110000101100100011100010010100000111000`
 	
@@ -335,7 +337,7 @@ Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-�
 !!! example "Exemple"
 	Le nombre hexadécimal $(5B6)_{16}$ correspond donc en décimal à :
 
-	=== "A compléter"
+	=== "À compléter"
 	
 		$$
 		\begin{array}{ccccc}
@@ -365,7 +367,7 @@ Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-�
 
 
 
-!!! tips "Méthode : Convertir vers l'hexadécimal depuis le décimal"
+!!! tip "Méthode : Convertir vers l'hexadécimal depuis le décimal"
 
 	Pour convertir vers l'hexadécimal depuis le décimal, on utilise la même méthode 
 	qu'en binaire mais en divisant par $16$.
@@ -381,7 +383,7 @@ Ce compromis peut-être trouvé avec le système {==**hexadécimal**==}, c'est-�
 
 !!! info "Remarques"
 
-	* A un chiffre dans la base $16$, correspond exactement $4$ chiffres dans la base $2$.
+	* À un chiffre dans la base $16$, correspond exactement $4$ chiffres dans la base $2$.
 	* Cela signifie que pour écrire un octet en hexadécimal, **deux chiffres hexadécimaux suffisent**. C'est pour cette raison que les 
 	octets écrits en base deux sont **groupés par 4 chiffres** :
 	
@@ -461,11 +463,11 @@ La somme de deux bits est définie par la règle suivante :
 
 * $0+0 = 0$
 * $0+1 = 1$
-* $1+0 = 0$
+* $1+0 = 1$
 * $1+1 = 10$
 
 
-Ecrit sous la forme d'une *table de vérité*, avec `A` et `B` les deux entrées, `S` la somme et `C` la retenue (*cary* en anglais), on obtient le résultat suivant :
+Écrite sous la forme d'une *table de vérité*, avec `A` et `B` les deux entrées, `S` la somme et `C` la retenue (*carry* en anglais), on obtient le résultat suivant :
 
 | A | B | C | S |
 | :---: | :---: | :---: | :---: |
@@ -501,9 +503,9 @@ En observant bien, on constate que d'un point de vue de la logique formelle :
 Un tel circuit est appelé un {==**demi-additionneur binaire**==} (*Half Adder* en anglais, abrégé en HA).
 
 ### Sommes de nombres binaires
-!!! tips "Méthode : Additionner deux nombres entiers en base 2"
+!!! tip "Méthode : Additionner deux nombres entiers en base 2"
 
-	La technique d'addition de deux nombres binaire est la même que pour des nombres en écriture décimale :
+	La technique d'addition de deux nombres binaires est la même que pour des nombres en écriture décimale :
 	
 	=== "En décimal"
 	
@@ -560,7 +562,7 @@ On constate que dans de nombreuses additions élémentaires, il faut aussi prend
 Un tel circuit est représenté en électronique par le schéma suivant, dans lequel on ne détaille pas toutes les portes :
 
 <div style="width: 100%; height: 300px">
-  <logic-editor id="IqztvN" mode="tryout">
+  <logic-editor id="Kw3mRe" mode="tryout">
     <script type="application/json5">
       { // JSON5
         v: 6,
@@ -583,8 +585,8 @@ Un tel circuit est représenté en électronique par le schéma suivant, dans le
 
 ### Produits de nombres binaires
 
-!!! tips "Méthode : Multiplier deux nombres entiers en base 2"
-	La technique de multiplication de deux nombres binaire est la même que pour des nombres en écriture décimale - mais la retenue peut se propager parfois plus loin que le rang immédiatement supérieur :
+!!! tip "Méthode : Multiplier deux nombres entiers en base 2"
+	La technique de multiplication de deux nombres binaires est la même que pour des nombres en écriture décimale - mais la retenue peut se propager parfois plus loin que le rang immédiatement supérieur :
 
 	=== "En décimal"
 	

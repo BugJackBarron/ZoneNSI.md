@@ -1515,9 +1515,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#premiers" class="md-nav__link">
+  <a href="#premiers-parametres" class="md-nav__link">
     <span class="md-ellipsis">
-      Premiers
+      Premiers paramètres
     </span>
   </a>
   
@@ -5051,10 +5051,10 @@
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Un blocage ?</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Enoncé</label><label for="__tabbed_1_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Quels sont les problèmes pouvant être posé par ce programme ?</p>
+<p>Quels sont les problèmes pouvant être posés par ce programme ?</p>
 </div>
 <div class="tabbed-block">
 <ul>
@@ -5089,7 +5089,7 @@
         <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie</span><span class="p">)]</span> <span class="p">:</span> <span class="c1"># Pour chaque caractère</span>
             <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span> <span class="c1"># Si ce n'est pas un chiffre</span>
                 <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Alors la saisie n'est pas un entier</span>
-        <span class="c1">###### ON TESTE SI IL EST ENTRE 1 et 10 #######</span>
+        <span class="c1">###### ON TESTE S'IL EST ENTRE 1 et 10 #######</span>
         <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span> <span class="c1">#</span>
             <span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie</span><span class="p">)</span><span class="c1"># Trans-typage</span>
             <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span> <span class="c1"># Si les conditions sont remplies</span>
@@ -5104,7 +5104,7 @@
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 1 : Multiplier les codes</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Enoncé</label><label for="__tabbed_2_2">Une solution possible</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Une solution possible</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Imaginons maintenant un programme qui demande <strong>trois fois</strong> à l'utilisateur·trice d'entrer un tel nombre, puis qui vérifie si les trois nombres correspondent à une configuration de Pythagore (c'est-à-dire <span class="arithmatex">\(a^2 + b^2 = c^2\)</span>).</p>
@@ -5112,56 +5112,56 @@
 </div>
 <div class="tabbed-block">
 <p>Un programme avec notre niveau actuel en Python pourrait être le suivant :</p>
-<div class="highlight"><pre><span></span><code>    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
-        <span class="n">saisie1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">saisie1</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
-            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">if</span> <span class="n">saisie1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
-                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie1</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie1</span><span class="p">)]</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
-                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
-                <span class="n">nb1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie1</span><span class="p">)</span>
-                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb1</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
-                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
-        <span class="n">saisie2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">saisie2</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
-            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">if</span> <span class="n">saisie2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
-                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie2</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie2</span><span class="p">)]</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
-                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
-                <span class="n">nb2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie2</span><span class="p">)</span>
-                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb2</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
-                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
-        <span class="n">saisie3</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">saisie3</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
-            <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">if</span> <span class="n">saisie3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
-                <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie3</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie3</span><span class="p">)]</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
-                    <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
-                <span class="n">nb3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie3</span><span class="p">)</span>
-                <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb3</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
-                    <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="highlight"><pre><span></span><code><span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+    <span class="n">saisie1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">saisie1</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+        <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">saisie1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie1</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie1</span><span class="p">)]</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+            <span class="n">nb1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb1</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+    <span class="n">saisie2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">saisie2</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+        <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">saisie2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie2</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie2</span><span class="p">)]</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+            <span class="n">nb2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb2</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
+    <span class="n">saisie3</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Entrez un nombre entre 1 et 10 : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">saisie3</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">:</span>
+        <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">saisie3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
+            <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">saisie3</span><span class="p">[</span><span class="n">indice_depart</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">saisie3</span><span class="p">)]</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">caractere</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"0123456789"</span> <span class="p">:</span>
+                <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">est_un_entier</span> <span class="p">:</span>
+            <span class="n">nb3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">saisie3</span><span class="p">)</span>
+            <span class="k">if</span> <span class="mi">1</span><span class="o">&lt;=</span> <span class="n">nb3</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">:</span>
+                <span class="n">repeter</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">if</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">nb1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb2</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb3</span><span class="si">}</span><span class="s2">) est un triplet de Pythagore"</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">nb1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb2</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb3</span><span class="si">}</span><span class="s2">) n'est pas un triplet de Pythagore)</span>
+<span class="k">if</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">nb3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nb1</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">nb2</span><span class="o">**</span><span class="mi">2</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">nb1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb2</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb3</span><span class="si">}</span><span class="s2">) est un triplet de Pythagore"</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">nb1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb2</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nb3</span><span class="si">}</span><span class="s2">) n'est pas un triplet de Pythagore"</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
@@ -5172,7 +5172,7 @@
 <p>Si ce code fait le travail demandé, il n'en est pas moins de <em>mauvaise qualité</em> pour plusieurs raisons :</p>
 <ul>
 <li>Il est long, avec des répétitions. Plus un code est long, plus il prend de place en mémoire, alors qu'on cherche plutôt à minimiser ce facteur. Et surtout, <mark class="critic"><strong>plus un code est long, moins il est lisible !</strong></mark></li>
-<li>Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification dans la structure du code doit être <strong>réécrite à chaque fois</strong> que le morceau de code est copié. Dans notre exemple, ce n'est que trois fois, le risque d'erreurs est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.</li>
+<li>Le copié-collé force quand même à repasser sur chacune des parties pour modifier le nom des variables (sinon les valeurs seraient écrasées). Ainsi toute modification dans la structure du code doit être <strong>réécrite à chaque fois</strong> que le morceau de code est copié. Dans notre exemple, comme il n'y a que trois répétitions, le risque d'erreur est minime, mais pour un plus grand nombre de répétitions, il est très facile d'oublier une modification.</li>
 </ul>
 </div>
 <h3 id="premiere-fonction">Première fonction</h3>
@@ -5183,11 +5183,11 @@
 <p>Une <mark class="critic"><strong>fonction</strong></mark> est un <mark class="critic"><strong>bloc de code nommé</strong></mark> (c'est-à-dire possédant un nom dans l'espace de noms, comme toute autre variable) et qui :</p>
 <ul>
 <li><strong>n'est pas exécuté</strong> au moment de sa définition ;</li>
-<li>mais peut être <strong>appelé</strong> plusieurs fois dans le code par l'intermédiaire de son nom, <mark class="critic"><strong>suivi d'une paire de parenthèses</strong></mark>. Ces appels (<em>call</em> en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverra une <mark class="critic"><strong>valeur de retour</strong></mark>, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.</li>
+<li>mais peut être <strong>appelé</strong> plusieurs fois dans le code par l'intermédiaire de son nom, <mark class="critic"><strong>suivi d'une paire de parenthèses</strong></mark>. Ces appels (<em>call</em> en anglais) exécuteront alors l'intégralité du code à chaque appel, et renverront une <mark class="critic"><strong>valeur de retour</strong></mark>, c'est-à-dire un objet qui pourra être utilisé normalement dans la partie de code ayant appelé la fonction.</li>
 </ul>
-<p>Une fonction est crée en Python par le mot clé <code>def</code> suivi du nom de la fonction et des <mark class="critic"><strong>paramètres</strong></mark> utilisés, puis d'un caractère <code>:</code>, et dans le bloc de code la ou les valeurs renvoyées sont spécifiées avec le mot clé <code>return</code> :</p>
+<p>Une fonction est créée en Python par le mot clé <code>def</code> suivi du nom de la fonction et des <mark class="critic"><strong>paramètres</strong></mark> utilisés, puis d'un caractère <code>:</code>, et dans le bloc de code la ou les valeurs renvoyées sont spécifiées avec le mot clé <code>return</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">est_entier_et_strictement_positif</span><span class="p">(</span><span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span><span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">nb</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">nb</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span> <span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
@@ -5196,7 +5196,7 @@
 </p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">est_entier_et_strictement_positif</span><span class="p">(</span><span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
 </code></pre></div>
 <ul>
-<li>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>,contenant le <strong>paramètre</strong> <code>nb</code>, dont on précise qu'il doit être de type <code>int</code> ou <code>float</code>, grâce aux <strong>type hints</strong> de Python, en français <em>indices de type</em>. Les <strong>type hints</strong> ne sont que des indications en Python, mais ils sont impératifs dans d'autres langages (C, C++, Rust, etc...)</li>
+<li>La fonction est introduite par le mot clé <code>def</code>, suivi du <strong>nom de la fonction</strong> puis d'un couple de parenthèses <code>()</code>, contenant le <strong>paramètre</strong> <code>nb</code>, dont on précise qu'il doit être de type <code>int</code> ou <code>float</code>, grâce aux <strong>type hints</strong> de Python, en français <em>indices de type</em>. Les <strong>type hints</strong> ne sont que des indications en Python, mais ils sont impératifs dans d'autres langages (C, C++, Rust, etc.)</li>
 <li>la notation <code>-&gt; bool</code> est un <mark class="critic"><strong>type hint</strong></mark>, qui indique que la valeur renvoyée par la fonction sera de type <code>bool</code>. </li>
 <li>Les deux points définissent un bloc de code qui est repéré par <strong>une indentation</strong>, tout comme on définit des blocs dans des structures conditionnelles ou des boucles.</li>
 <li>la fonction renvoie un objet de type <code>bool</code>, selon les conditions vérifiées par la structure conditionnelle.</li>
@@ -5221,13 +5221,13 @@
 Cette fonction :
 <ul>
 <li>possède un paramètre <code>x</code> de type <code>float</code> ;</li>
-<li>renvoie l'image de <code>x</code> par loa fonction <span class="arithmatex">\(f : x \mapsto 3x+4\)</span>.</li>
+<li>renvoie l'image de <code>x</code> par la fonction <span class="arithmatex">\(f : x \mapsto 3x+4\)</span>.</li>
 </ul>
 <p>Une fois définie, on l'utilise de la manière suivante (dans le terminal) :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="mi">19</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>
-<span class="mf">10.9</span>
+<span class="mf">10.899999999999999</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -5240,7 +5240,7 @@ Cette fonction :
 <ul>
 <li>possède deux paramètres <code>nom</code> et <code>prenom</code> qui sont deux chaines de caractères ;</li>
 <li>utilise deux <mark class="critic"><strong>variables  locales</strong></mark> <code>nomf</code> et <code>prenomf</code> ;</li>
-<li>renvoie une chaine de caractère formatée contenant le nom en majuscule puis le prénom en minuscule, avec la première lettre en majuscule.</li>
+<li>renvoie une chaine de caractères formatée contenant le nom en majuscule puis le prénom en minuscule, avec la première lettre en majuscule.</li>
 </ul>
 </div>
 <div class="tabbed-block">
@@ -5290,8 +5290,8 @@ Cette fonction :
 </code></pre></div>
 <p>L'interpréteur Python évalue la ligne <code>entier = ask_user_int()</code> :</p>
 <ul>
-<li>Il commence par appeler le code correspondant à La fonction <code>ask_user_int()</code>.</li>
-<li>Le code de la fonction demande une saisie à l'utilisateur, et une fois l'instruction <code>return</code> atteinte, l'instruction <code>ask_user_int()</code> est remplacée à l'endroit de l'appel par la valeur saisie par l'utilisateur, converti en objet de type int.</li>
+<li>Il commence par appeler le code correspondant à la fonction <code>ask_user_int()</code>.</li>
+<li>Le code de la fonction demande une saisie à l'utilisateur·trice, et une fois l'instruction <code>return</code> atteinte, l'instruction <code>ask_user_int()</code> est remplacée à l'endroit de l'appel par la valeur saisie par l'utilisateur·trice, convertie en objet de type <code>int</code>.</li>
 <li>L'objet est ensuite stocké dans une variable nommée <code>entier</code>, et peut alors être utilisé en dehors de la fonction.</li>
 </ul>
 </div>
@@ -5330,14 +5330,14 @@ Cette fonction :
 <h3 id="exercices">Exercices</h3>
 <div class="admonition question">
 <p class="admonition-title">Application 2</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Créer une fonction nommée <code>table7</code> qui <mark class="critic"><strong>renvoie</strong></mark> la table de multiplication de 7 avec un multiplicateur allant de 0 à 10, sous la forme d'une chaîne de caractères comme ci-dessous :</p>
-<div class="highlight"><pre><span></span><code>"7x0=0 \n 7x1=7 \n 7x2=14 ..."
+<div class="highlight"><pre><span></span><code>"7x0 = 0 \n7x1 = 7 \n7x2 = 14 \n..."
 </code></pre></div>
-<p><strong>Indication :</strong> le symbole <code>\n</code>, insère un saut de ligne dans une chaîne de caractères.
-<strong>Attention :</strong> l'énoncé ne demande pas d'<em>imprimer</em>, mais bien de <em>renvoyer</em> un objet de type chaine de caractère.</p>
+<p><strong>Indication :</strong> le symbole <code>\n</code>, insère un saut de ligne dans une chaîne de caractères.</p>
+<p><strong>Attention :</strong> l'énoncé ne demande pas d'<em>imprimer</em>, mais bien de <em>renvoyer</em> un objet de type chaine de caractère.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">table7</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -5351,9 +5351,9 @@ Cette fonction :
 </div>
 </div>
 <h3 id="augmenter-la-capacite-des-fonctions-les-parametres-obligatoires">Augmenter la capacité des fonctions : les paramètres obligatoires</h3>
-<h4 id="premiers">Premiers</h4>
+<h4 id="premiers-parametres">Premiers paramètres</h4>
 <p>L'exemple de la fonction <code>ask_user_int</code> est assez limité. Dans l'absolu, on pourrait souhaiter que la fonction demande un nombre entier entre 2 valeurs variables, par exemple entre 1 et 100 ou bien entre -10 et 10.</p>
-<p>Pour ce faire, il faut, dans la définition de la fonction, préciser des <mark class="critic"><strong>paramètres</strong></mark> qui seront des objets transmis et nommés <strong>initialisés à certaines valeurs lors de l'appel à la fonction</strong> :</p>
+<p>Pour ce faire, il faut, dans la définition de la fonction, préciser des <mark class="critic"><strong>paramètres</strong></mark> qui seront des objets transmis et nommés, <strong>initialisés à certaines valeurs lors de l'appel à la fonction</strong> :</p>
 <div class="admonition example">
 <p class="admonition-title">Exemple :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -5382,7 +5382,7 @@ Cette fonction :
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Erreurs d'appels et notion de précondition</p>
-<p>Avec le code actuel de la fonction <code>ask_user_int</code>, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console</p>
+<p>Avec le code actuel de la fonction <code>ask_user_int</code>, on peut rencontrer un certain nombre de difficultés. Testez les commandes suivantes dans la console :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><input id="__tabbed_5_3" name="__tabbed_5" type="radio"><input id="__tabbed_5_4" name="__tabbed_5" type="radio"><input id="__tabbed_5_5" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Test 1</label><label for="__tabbed_5_2">Test 2</label><label for="__tabbed_5_3">Test 3</label><label for="__tabbed_5_4">Test 4</label><label for="__tabbed_5_5">Solution ?</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5419,7 +5419,7 @@ Cette fonction :
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Aucun véritable erreur n'est levée par Python, bien que les <em>type hints</em> demandent des arguments de type <code>int</code>. Comme dit précédemment, ces indications sont facultatives (à destination des programmeur·euse·s), et ici les transgresser ne pose pas vraiment de problème.</p>
+<p>Aucune véritable erreur n'est levée par Python, bien que les <em>type hints</em> demandent des arguments de type <code>int</code>. Comme dit précédemment, ces indications sont facultatives (à destination des programmeur·euse·s), et ici les transgresser ne pose pas vraiment de problème.</p>
 </div>
 </div>
 </div>
@@ -5434,16 +5434,16 @@ Cette fonction :
 <div class="tabbed-block">
 <p>Ici, la fonction tourne en boucle et il est impossible de saisir une réponse qui amènera à l'instruction <code>return</code>. En effet, lors de l'appel à la fonction, on a :</p>
 <ul>
-<li><code>borne_inf</code> initialisé à <code>30</code>;</li>
-<li><code>borne_sup</code> initialisé à <code>10</code>;</li>
-<li>pour atteindre l'instruction <code>return</code>, il faudrait que l'utilisateur·trice ait saisi·e un nombre <code>nb</code> à la fois supérieur à <code>30</code> et inférieur à <code>10</code>, ce qui est impossible.</li>
+<li><code>borne_min</code> initialisé à <code>30</code> ;</li>
+<li><code>borne_max</code> initialisé à <code>10</code> ;</li>
+<li>pour atteindre l'instruction <code>return</code>, il faudrait que l'utilisateur·trice ait saisi un nombre <code>nb</code> à la fois supérieur à <code>30</code> et inférieur à <code>10</code>, ce qui est impossible.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p>On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des <mark class="critic"><strong>préconditions</strong></mark>, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que <code>borne_inf</code> est bien inférieur ou égal à <code>borne_sup</code>. Ces tests seront vu dans la partie concernant les <mark class="critic"><strong>assertions</strong></mark>.</p>
+<p>On essayera donc le plus possible de créer des tests dans les fonctions permettant de tester des <mark class="critic"><strong>préconditions</strong></mark>, c'est-à-dire des tests vérifiant les propriétés nécessaires concernant les arguments, par exemple ici que les arguments sont bien de type entier, et que <code>borne_min</code> est bien inférieur ou égal à <code>borne_max</code>. Ces tests seront vus dans la partie concernant les <mark class="critic"><strong>assertions</strong></mark>.</p>
 </div>
 </div>
 </div>
@@ -5460,14 +5460,14 @@ Cette fonction :
 <p>créer une fonction <code>is_integer</code>, dont la signature serait :</p>
 <p></p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_integer</span><span class="p">(</span><span class="n">word</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
 </code></pre></div>
-qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui renvoie un booléen <code>True</code> si <code>word</code> est transtypable en entier, et <code>False</code> sinon.
+qui utilise comme paramètre <code>word</code>, une chaine de caractères, et qui renvoie un booléen <code>True</code> si <code>word</code> est transtypable en entier, et <code>False</code> sinon.
 </li>
 <li>
 <p>puis conserver la fonction <code>ask_user_int</code> telle qu'elle est définie actuellement.</p>
 </li>
 </ul>
 <p>On obtiendrait alors le code suivant :</p>
-<div class="highlight"><pre><span></span><code> <span class="k">def</span><span class="w"> </span><span class="nf">is_integer</span><span class="p">(</span><span class="n">word</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_integer</span><span class="p">(</span><span class="n">word</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="p">:</span>
     <span class="n">est_un_entier</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">indice_depart</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"-"</span> <span class="p">:</span>
@@ -5493,20 +5493,20 @@ qui utilise comme paramètre <code>word</code>, une chaine de caractère, et qui
 <h4 id="applications">Applications</h4>
 <div class="admonition question">
 <p class="admonition-title">Application 3</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>table_multi(m : int)-&gt; str</code> qui prend un argument entier <code>m</code> et écrit la table de multiplication de ce nombre, avec un multiplicateur allant de 1 à 10.</p>
+<p>Créer une fonction <code>table_multi(m : int)-&gt; str</code> qui prend un argument entier <code>m</code> et renvoie la table de multiplication de ce nombre, avec un multiplicateur allant de 0 à 10.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 4 : motif dans une chaine</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked id="__tabbed_11_1" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">Enoncé</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked id="__tabbed_11_1" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">Énoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créer une fonction <code>trouve_chaine(motif : str, texte : str) -&gt; bool</code>qui prend deux arguments, un <code>motif</code> ( une chaine de caractères )  et un <code>texte</code> ( une autre chaine de caractères )  et qui renvoie <code>True</code> si le <code>motif</code> est présent dans la <code>chaine</code>, quel que soit la casse du motif ou celle de la chaine, et <code>False</code> sinon.  Vous pouvez tester avec les lignes suivantes :</p>
+<p>Créer une fonction <code>trouve_chaine(motif : str, texte : str) -&gt; bool</code> qui prend deux arguments, un <code>motif</code> (une chaine de caractères) et un <code>texte</code> (une autre chaine de caractères), et qui renvoie <code>True</code> si le <code>motif</code> est présent dans le <code>texte</code>, quelle que soit la casse du motif ou celle du texte, et <code>False</code> sinon.  Vous pouvez tester avec les lignes suivantes :</p>
 <div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Totos'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Chaine non présente trouvée'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Problème de majuscules dans le motif'</span>
@@ -5545,7 +5545,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <p>Ainsi, la fonction ci-dessus possède trois paramètres :</p>
 <ul>
 <li>deux paramètres <strong>obligatoires</strong>, <code>borne_min</code> et <code>borne_max</code>, de type <code>int</code> ;</li>
-<li>un paramètre <strong>optionnel</strong>, <code>prenom</code>, de type <code>str</code>, dont la **valeur par défaut est la chaine <code>Inconnu</code>.</li>
+<li>un paramètre <strong>optionnel</strong>, <code>nom</code>, de type <code>str</code>, dont la <strong>valeur par défaut</strong> est la chaine <code>'Inconnu'</code>.</li>
 </ul>
 <p>Il est à noter qu'impérativement les <strong>paramètres obligatoires doivent être placés avant les paramètres optionnels</strong>.</p>
 <p>On peut alors appeler la fonction des différentes manières suivantes (à tester) :</p>
@@ -5567,7 +5567,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 5 : paramètres optionnels</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Enoncé</label><label for="__tabbed_13_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Énoncé</label><label for="__tabbed_13_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Compléter la fonction <code>table_multi</code> afin qu'elle utilise deux paramètres optionnels, la valeur de départ, fixée à 0 initialement, et la valeur d'arrivée du multiplicateur, fixée à 10 initialement.</p>
@@ -5576,7 +5576,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">table_multi</span><span class="p">(</span><span class="n">nb</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">depart</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fin</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="p">:</span>
     <span class="n">table</span> <span class="o">=</span> <span class="s1">''</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depart</span><span class="p">,</span> <span class="n">fin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nb</span><span class="si">}}</span><span class="s1">x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">nb</span><span class="o">*</span><span class="n">i</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">'</span>
+        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nb</span><span class="si">}</span><span class="s1">x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">nb</span><span class="o">*</span><span class="n">i</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">'</span>
     <span class="k">return</span> <span class="n">table</span>
 </code></pre></div>
 </div>
@@ -5585,11 +5585,11 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 </div>
 <div class="admonition question">
 <p class="admonition-title">Application 6 : paramètres optionnels</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><input id="__tabbed_14_2" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Enoncé</label><label for="__tabbed_14_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><input id="__tabbed_14_2" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Énoncé</label><label for="__tabbed_14_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Réécrire la fonction <code>trouve_chaine</code> afin qu'elle utilise un <em>paramètre booléen optionnel</em> <code>verif_casse</code>, afin de déterminer si le <code>motif</code> est présent dans le <code>texte</code> en vérifiant la casse ou non. Par défaut le paramètre sera <code>False</code>. Vous pouvez utiliser les tests ci-dessous :</p>
-<div class="highlight"><pre><span></span><code><span class="c1">##les assertions suivantes sont les même que précédemment</span>
+<div class="highlight"><pre><span></span><code><span class="c1">##les assertions suivantes sont les mêmes que précédemment</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Totos'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'Chaine non présente trouvée'</span>
 <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'TOTO'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Problème de majuscules dans le motif'</span>
@@ -5609,7 +5609,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
     <span class="k">if</span> <span class="n">verif_casse</span><span class="o">==</span><span class="kc">True</span> <span class="p">:</span>
         <span class="k">return</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">texte</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span>  <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">motif</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">texte</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </code></pre></div>
 </div>
 </div>
@@ -5618,34 +5618,18 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <h3 id="commenter-son-code-les-docstrings">Commenter son code : les docstrings</h3>
 <div class="admonition tips">
 <p class="admonition-title">Commenter son code</p>
-<p>Une bonne habitude, à prendre immédiatement, est celle de commenter son code, c'est-à-dire d'expliquer l'implémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont <strong>des lignes non-lues par l'interpréteur Python</strong>, commençant par le symbole <em>dièse</em> <code>#</code>.</p>
-<p>Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un code que vous avez écrit vous-même quelques semaines voir quelques jours auparavant !</p>
-<p>Alors imaginez celui qui doit lire votre code, mais qui ne l'a pas écrit... </p>
+<p>Une bonne habitude, à prendre immédiatement, est celle de commenter son code, c'est-à-dire d'expliquer l'implémentation de votre code sous la forme de commentaires, écrits en français (ou mieux, en anglais). Les commentaires sont <strong>des lignes non lues par l'interpréteur Python</strong>, commençant par le symbole <em>dièse</em> <code>#</code>.</p>
+<p>Ces explications sont importantes, car vous vous rendrez vite compte que vous serez parfois incapable de comprendre un code que vous avez écrit vous-même quelques semaines, voire quelques jours, auparavant !</p>
+<p>Alors imaginez la personne qui doit lire votre code, mais qui ne l'a pas écrit... </p>
 </div>
 <p>Les concepteur·trice·s de Python ont créé une fonction spécifique permettant d'obtenir des informations sur les autres objets : la fonction <code>help</code>.</p>
 <p>Testez par exemple la commande <code>help(print)</code> dans la console, puis essayez avec d'autres objets de Python.</p>
-<p>La fonction <code>help</code> va chercher dans l'objet passé en argument sa <mark class="critic"><strong>docstring</strong></mark>, littéralement <em>chaine de documentation</em>, qui est une chaine de caractères crée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc... Une <strong>docstring</strong> est construite comme une chaine de caractères <em>non nommée</em> présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#Import des modules</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">doctest</span>
-
-
-<span class="c1"># Déclaration des fonctions </span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">times3</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<p>La fonction <code>help</code> va chercher dans l'objet passé en argument sa <mark class="critic"><strong>docstring</strong></mark>, littéralement <em>chaine de documentation</em>, qui est une chaine de caractères créée par le ou la codeur·euse présentant l'utilisation de la fonction, ses paramètres obligatoires, ses paramètres optionnels, etc. Une <strong>docstring</strong> est construite comme une chaine de caractères <em>non nommée</em> présentée immédiatement après la déclaration de la fonction, comme dans l'exemple ci-dessous :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">somme</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Fonction qui multiplie par 3</span>
-<span class="sd">&gt;&gt;&gt; times3(10)</span>
-<span class="sd">30</span>
-<span class="sd">&gt;&gt;&gt; times3(5)</span>
-<span class="sd">15</span>
-<span class="sd">&gt;&gt;&gt; times3('a')</span>
-<span class="sd">'aaa'</span>
-<span class="sd">"""</span>
-    <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">n</span>
-
-<span class="c1"># Code réellement exécuté</span>
-
-<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span> <span class="c1"># effectue tous les tests détectés dans les docstrings, et compare au résultat attendu</span>
+<span class="sd">    Fonction qui renvoie la somme des deux entiers a et b.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </code></pre></div>
 <p>La fonction <code>somme</code> contient donc une <strong>docstring</strong> - introduite par trois guillemets (pour permettre les sauts de lignes). Celle-ci décrit l'effet de la fonction, de manière exacte.</p>
 <p>On peut alors accéder à la <strong>docstring</strong> d'une fonction en utilisant la fonction <em>built-in</em> <code>help</code> : testez par exemple <code>help(somme)</code>.</p>
@@ -5654,7 +5638,7 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <p><mark class="critic"><strong>Une docstring est essentielle pour comprendre l'utilité d'une fonction ! Vous devrez en utiliser le plus souvent possible !</strong></mark></p>
 </div>
 <h2 id="notion-de-portee-des-variables">Notion de portée des variables</h2>
-<p>Au sein d'un même programme, les variables définies n'ont pas systématiquement la même <strong>portée</strong>. La <strong>portée d'une variable</strong>, c'est l'espace des objets/noms (on parle aussi de <em>monde</em>) dans lequel est défini cette variable.</p>
+<p>Au sein d'un même programme, les variables définies n'ont pas systématiquement la même <strong>portée</strong>. La <strong>portée d'une variable</strong>, c'est l'espace des objets/noms (on parle aussi de <em>monde</em>) dans lequel est définie cette variable.</p>
 <p>En utilisant le site <a href="https://pythontutor.com/" target="_blank">Python Tutor</a>, nous allons essayer de comprendre cette notion de portée des variables.</p>
 <h3 id="variables-globales-et-variables-locales">Variables globales et variables locales</h3>
 <iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
@@ -5662,9 +5646,9 @@ C'est tout à fait possible en Python, grâce aux <strong>paramètres optionnels
 <p>Dans l'exemple ci-dessus, la variable <code>mystere</code> est définie dans <mark class="critic"><strong>l'espace de nom global</strong></mark> (<em>global frame</em>). Elle est <mark class="critic"><strong>accessible en lecture</strong></mark> depuis l'intérieur de la fonction <code>f</code>. On parlera alors de <mark class="critic"><strong>variable globale</strong></mark>.</p>
 <iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28%29%20%3A%0A%20%20%20%20mystere%20%3D%2042%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
 
-<p>Dans l'exemple ci-dessus, la variable <code>mystere</code> est définie dans l'espace des noms associé à la fonction <code>f</code>, et qui est créé <mark class="critic"><strong>au moment de l'appel à cette fonction</strong></mark> (<em>frame f</em>). Cet espace est détruit par le <em>garbage collector</em> dès que l'exécution de la fonction est terminé (une fois la valeur de <code>return</code> renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable <code>mystere</code> puisqu'elle a disparue. <code>mystere</code> est une <mark class="critic"><strong>variable locale</strong></mark> à la fonction <code>f</code>.</p>
+<p>Dans l'exemple ci-dessus, la variable <code>mystere</code> est définie dans l'espace des noms associé à la fonction <code>f</code>, et qui est créé <mark class="critic"><strong>au moment de l'appel à cette fonction</strong></mark> (<em>frame f</em>). Cet espace est détruit par le <em>garbage collector</em> dès que l'exécution de la fonction est terminée (une fois la valeur de <code>return</code> renvoyée dans l'espace appelant). Il devient donc impossible d'utiliser la variable <code>mystere</code> puisqu'elle a disparu. <code>mystere</code> est une <mark class="critic"><strong>variable locale</strong></mark> à la fonction <code>f</code>.</p>
 <div class="admonition danger">
-<p class="admonition-title">Impossibilité de modifier une variable globale depuis une fonction appelante</p>
+<p class="admonition-title">Impossibilité de modifier une variable globale depuis une fonction</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked id="__tabbed_15_1" name="__tabbed_15" type="radio"><input id="__tabbed_15_2" name="__tabbed_15" type="radio"><div class="tabbed-labels"><label for="__tabbed_15_1">Le principe</label><label for="__tabbed_15_2">Une (mauvaise) solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5673,7 +5657,7 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 <p><iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%20%20%20%20%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe></p>
 </div>
 <div class="tabbed-block">
-<p>Vu que certain.e.s petit.e.s malin.e.s l'ont déjà utilisé en classe, je me dois de préciser une possibilité de modification, <mark class="critic"><strong>mais qui est une très très mauvaise solution</strong></mark>, reconnue unanimement comme étant à éviter le plus possible : il s'agit d'utiliser le mot clé <code>global</code> dans la fonction. Par exemple avec le code suivant :</p>
+<p>Vu que certain·e·s petit·e·s malin·e·s l'ont déjà utilisé en classe, je me dois de préciser une possibilité de modification, <mark class="critic"><strong>mais qui est une très très mauvaise solution</strong></mark>, reconnue unanimement comme étant à éviter le plus possible : il s'agit d'utiliser le mot clé <code>global</code> dans la fonction. Par exemple avec le code suivant :</p>
 <p><iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28%29%20%3A%0A%20%20%20%20global%20mystere%20%23%20on%20dit%20qu'il%20est%20possible%20de%20modifier%20mystere...%0A%20%20%20%20mystere%20%3D%20mystere%20%2B%2010%0A%20%20%20%20print%28f%22Dans%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29%0A%20%20%20%20return%20None%0A%20%20%20%20%0Amystere%20%3D%2042%0Af%28%29%0Aprint%28f%22En%20dehors%20de%20la%20fonction,%20la%20variable%20mystere%20vaut%20%7Bmystere%7D%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe></p>
 </div>
 </div>
@@ -5682,13 +5666,13 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 <h3 id="utiliser-les-parametres-dune-fonction">Utiliser les paramètres d'une fonction</h3>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20None%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Af%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
 
-<p>Dans l'exemple ci dessus :</p>
+<p>Dans l'exemple ci-dessus :</p>
 <ul>
-<li>une variable <strong>globale</strong> <code>x</code> est crée avec une valeur entière 5 ;</li>
+<li>une variable <strong>globale</strong> <code>x</code> est créée avec une valeur entière 5 ;</li>
 <li>cette variable est passée en paramètre à la fonction, ce qui crée une variable <strong>locale</strong> <code>x</code>, valant 5 ;</li>
-<li>la valeur de la variable <strong>locale</strong> <code>x</code>est doublée. Elle vaut alors 10 ;</li>
-<li>une fois la fopnction terminée, l'<em>espace de nom</em> de la fonction <code>f</code> est détruit, et donc la variable <strong>locale</strong> <code>x</code>est aussi détruite ;</li>
-<li>par contre la variable <strong>globale</strong> <code>x</code>n'a pas vu sa valeur modifiée. Elle reste égale à 5.</li>
+<li>la valeur de la variable <strong>locale</strong> <code>x</code> est doublée. Elle vaut alors 10 ;</li>
+<li>une fois la fonction terminée, l'<em>espace de nom</em> de la fonction <code>f</code> est détruit, et donc la variable <strong>locale</strong> <code>x</code> est aussi détruite ;</li>
+<li>par contre la variable <strong>globale</strong> <code>x</code> n'a pas vu sa valeur modifiée. Elle reste égale à 5.</li>
 </ul>
 <h3 id="utiliser-la-valeur-de-retour-dune-fonction">Utiliser la valeur de retour d'une fonction</h3>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/visualize.html#code=def%20f%28x%29%20%3A%0A%20%20%20%20x%20%3D%202*x%20%0A%20%20%20%20print%28f%22Dans%20f,%20la%20variable%20x%20vaut%20%7Bx%7D%22%29%0A%20%20%20%20return%20x%0A%0Ax%20%3D%205%0Aprint%28f%22Avant%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29%0Ax%20%3D%20f%28x%29%0Aprint%28f%22Apr%C3%A8s%20l'appel%20de%20f,%20la%20variable%20x%20vaut%20%7Bx%7D.%22%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;primitivesAsObjects=true&amp;py=311"> </iframe>
@@ -5703,23 +5687,23 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 <p>Comme nous l'avons vu pour la fonction <code>ask_user_int</code>, il est souvent nécessaire de tester des <mark class="critic"><strong>préconditions</strong></mark> sur les arguments d'une fonction, pour s'assurer que celle-ci fonctionnera bien selon le schéma voulu.</p>
 <p>Une méthode pour tester les préconditions est d'utiliser des <mark class="critic"><strong>assertions</strong></mark>. </p>
 <p>L'instruction <code>assert</code> de Python fonctionne de la manière suivante :</p>
-<div class="highlight"><pre><span></span><code> <span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">trouve_chaine</span><span class="p">(</span><span class="s1">'Toto'</span><span class="p">,</span> <span class="s1">'Toto va à la plage'</span><span class="p">)</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">'Meme casse pas trouvée'</span>
 </code></pre></div>
 <p>L'instruction <code>assert</code> teste un booléen, ici <code>trouve_chaine('Toto', 'Toto va à la plage')==True</code>. Il peut alors se produire deux cas :</p>
 <ul>
 <li>soit le booléen est <code>True</code>, auquel cas l'interpréteur passe à la ligne suivante (il ne se passe rien de visible) ;</li>
-<li>soit le booléen est <code>False</code>, auquel cas l'interpréteur <mark class="critic"><strong>arrête le code</strong></mark> en levant une erreur de type <code>AssertionError</code> et affiche la chaine de caractère passée en second argument, ici <code>'Meme casse pas trouvée'</code>.</li>
+<li>soit le booléen est <code>False</code>, auquel cas l'interpréteur <mark class="critic"><strong>arrête le code</strong></mark> en levant une erreur de type <code>AssertionError</code> et affiche la chaine de caractères passée en second argument, ici <code>'Meme casse pas trouvée'</code>.</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Correction de la fonction <code>ask_user_int</code></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask_user_int</span><span class="p">(</span><span class="n">borne_min</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">borne_max</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nom</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">'Inconnu'</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
-<span class="w">    </span><span class="sd">""" Fonction demandant un entier compris entre borne_nf et borne_sup.</span>
-<span class="sd">    personnalisation du message avec le paramètre optionnel nom.</span>
-<span class="sd">    renvoi un objet de type entier.</span>
+<span class="w">    </span><span class="sd">""" Fonction demandant un entier compris entre borne_min et borne_max.</span>
+<span class="sd">    Personnalisation du message avec le paramètre optionnel nom.</span>
+<span class="sd">    Renvoie un objet de type entier.</span>
 <span class="sd">    """</span>
-    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">borne_inf</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">borne_sup</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"Erreur de type sur borne_inf et borne_sup"</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">borne_min</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">borne_max</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"Erreur de type sur borne_min et borne_max"</span>
     <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Erreur de type sur nom"</span>
-    <span class="k">assert</span> <span class="n">borne_inf</span> <span class="o">&lt;=</span> <span class="n">borne_sup</span> <span class="p">,</span> <span class="s2">"borne_inf n'est pas inférieure à borne_sup"</span>
+    <span class="k">assert</span> <span class="n">borne_min</span> <span class="o">&lt;=</span> <span class="n">borne_max</span><span class="p">,</span> <span class="s2">"borne_min n'est pas inférieure à borne_max"</span>
 
     <span class="n">repeter</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">while</span> <span class="n">repeter</span> <span class="p">:</span>
@@ -5732,11 +5716,11 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 <p>Par exemple, on pourrait considérer une fonction <code>coefficient_directeur</code> qui donne le coefficient directeur d'une droite quand on lui passe en argument les coordonnées de deux points <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span>.</p>
 <p>Je rappelle que le calcul du coefficient directeur de la droite <span class="arithmatex">\((AB)\)</span> se fait par l'intermédiaire de la formule :</p>
 <div class="arithmatex">\[m = \frac{y_B-y_A}{x_B-x_A}\]</div>
-<p>Ainsi nous aimerions que la fonction travaille avec 4 paramètres de type entiers  <code>xA, yA, xB, yB</code>, qu'elle renvoie le coefficient directeur de <span class="arithmatex">\((AB)\)</span> sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie <code>None</code> quand il n'existe pas. On, définit ici ce qu'on appelle une <mark class="critic"><strong>interface</strong></mark> de la fonction :</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">xB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="p">:</span>
+<p>Ainsi nous aimerions que la fonction travaille avec 4 paramètres de type entiers  <code>xA, yA, xB, yB</code>, qu'elle renvoie le coefficient directeur de <span class="arithmatex">\((AB)\)</span> sous la forme d'un flottant si ce coefficient existe, et qu'elle renvoie <code>None</code> quand il n'existe pas. On définit ici ce qu'on appelle une <mark class="critic"><strong>interface</strong></mark> de la fonction :</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">coefficient_directeur</span><span class="p">(</span><span class="n">xA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yA</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">xB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">yB</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">""" Renvoie le coefficient directeur de la droite (AB) telle que :</span>
-<span class="sd">        A (xA ; yA) et B(xB ; yB), et les coordonnées de A ety B sont entières.</span>
-<span class="sd">        Dans le cas ou le coefficient directeur n'existe pas, renvoie None</span>
+<span class="sd">        A(xA ; yA) et B(xB ; yB), et les coordonnées de A et B sont entières.</span>
+<span class="sd">        Dans le cas où le coefficient directeur n'existe pas, renvoie None</span>
 <span class="sd">    """</span>
     <span class="o">...</span> 
 </code></pre></div>
@@ -5747,7 +5731,7 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Écrire des tests</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked id="__tabbed_16_1" name="__tabbed_16" type="radio"><input id="__tabbed_16_2" name="__tabbed_16" type="radio"><div class="tabbed-labels"><label for="__tabbed_16_1">Enoncé</label><label for="__tabbed_16_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked id="__tabbed_16_1" name="__tabbed_16" type="radio"><input id="__tabbed_16_2" name="__tabbed_16" type="radio"><div class="tabbed-labels"><label for="__tabbed_16_1">Énoncé</label><label for="__tabbed_16_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -5756,28 +5740,28 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 </ol>
 </div>
 <div class="tabbed-block">
-<p>A venir !</p>
+<p>À venir !</p>
 </div>
 </div>
 </div>
 </div>
 <h2 id="tester-avec-le-module-doctest-non-traite-en-classe">Tester avec le module doctest (Non traité en classe)</h2>
-<p>Pyhton étant <em>user friendly</em>, il permet au programmeur de tester automatiquement, grâce au module <code>doctest</code>.</p>
-<p>Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalité de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :</p>
+<p>Python étant <em>user friendly</em>, il permet au programmeur de tester automatiquement, grâce au module <code>doctest</code>.</p>
+<p>Un module Python est un fichier (ou un ensemble de fichiers) qui comporte(nt) des objets et des fonctions qui peuvent être ajoutés aux fonctionnalités de base de Python. Il en existe un très grand nombre, tous étant spécialisés dans un domaine. On trouve par exemple :</p>
 <ul>
 <li>le module <em>math</em>, qui contient beaucoup de fonctions mathématiques ;</li>
 <li>le module <em>turtle</em>, qui permet de dessiner géométriquement ;</li>
 <li>le module <em>pygame</em>, qui est un module permettant de gérer les différents éléments d'un jeu vidéo ;</li>
-<li>le module <em>panda</em>, qui est utilisé pour faire du traitement de données ;</li>
-<li>le module <em>flask</em>, qui permet de créer une application web</li>
+<li>le module <em>pandas</em>, qui est utilisé pour faire du traitement de données ;</li>
+<li>le module <em>flask</em>, qui permet de créer une application web ;</li>
 <li>...</li>
 </ul>
 <p>Un module doit être chargé en mémoire une fois (de préférence au début du code), par l'intermédiaire de la commande :</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">nom_du_module</span>
 </code></pre></div>
 <details class="warning">
-<summary>Mais non, ca ne se fait pas que comme ça !</summary>
-<p>Oui, vous avez raison, mais ce n'est pas le cas de ce cours, nous verrons l'import de modules plus tard dans l'année...</p>
+<summary>Mais non, ça ne se fait pas que comme ça !</summary>
+<p>Oui, vous avez raison, mais ce n'est pas l'objet de ce cours, nous verrons l'import de modules plus tard dans l'année...</p>
 </details>
 <p>Le module <em>doctest</em>, lui, permet d'intégrer à la <strong>docstring un ensemble de tests</strong> qui sont vérifiés par l'appel de la fonction <strong>testmod</strong> du module <em>doctest</em>.</p>
 <p>Par exemple, copiez-collez le code suivant dans un fichier :</p>
@@ -5804,28 +5788,28 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 
 <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span> <span class="c1"># Lance les tests des fonctions déclarées</span>
 </code></pre></div>
-<p>L'appel à la fonction <code>doctest.testmod()</code> déclenche les trois tests présents dans la doctsring, et vérifie que les résultats de la fonctions correspondent à ceux fournit dans la docstring.</p>
+<p>L'appel à la fonction <code>doctest.testmod()</code> déclenche les trois tests présents dans la docstring, et vérifie que les résultats de la fonction correspondent à ceux fournis dans la docstring.</p>
 <div class="admonition question">
 <p class="admonition-title">Application 7 : Ajouter une fonction et des tests</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked id="__tabbed_17_1" name="__tabbed_17" type="radio"><input id="__tabbed_17_2" name="__tabbed_17" type="radio"><div class="tabbed-labels"><label for="__tabbed_17_1">Enoncé</label><label for="__tabbed_17_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked id="__tabbed_17_1" name="__tabbed_17" type="radio"><input id="__tabbed_17_2" name="__tabbed_17" type="radio"><div class="tabbed-labels"><label for="__tabbed_17_1">Énoncé</label><label for="__tabbed_17_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Créez une fonction <code>times3</code> qui renvoie le triple de l'objet passé en argument, l'objet pouvant êtrte de type <code>int</code>, <code>float</code> ou <code>str</code>, en écrivant les tests correspondants.</p>
+<p>Créez une fonction <code>times3</code> qui renvoie le triple de l'objet passé en argument, l'objet pouvant être de type <code>int</code>, <code>float</code> ou <code>str</code>, en écrivant les tests correspondants.</p>
 </div>
 <div class="tabbed-block">
-<p>A venir !</p>
+<p>À venir !</p>
 </div>
 </div>
 </div>
 </div>
 <p><strong>Je me servirai de doctests ou bien d'assertions pour estimer la justesse de vos fonctions et de vos programmes. Une bonne idée serait de TOUJOURS concevoir un jeu d'exemple avant de se lancer dans la construction d'une fonction.</strong></p>
 <h2 id="exercices_1">Exercices</h2>
-<p><em>Dans tous les exercices suivants, on devra écrire pour chacune des fonction des assertions permettant de tester les préconditions.</em></p>
+<p><em>Dans tous les exercices suivants, on devra écrire pour chacune des fonctions des assertions permettant de tester les préconditions.</em></p>
 <p><strong>Vous devrez tester les fonctions avec les jeux de tests fournis dans les docstring.</strong></p>
 <p>Vous pourrez créer un seul fichier contenant l'ensemble des fonctions ci-dessous.</p>
 <ol>
 <li>
-<p>Ecrire une fonction qui renvoie le maximum de deux nombres <code>ìnt</code> donnés :</p>
+<p>Écrire une fonction qui renvoie le maximum de deux nombres <code>int</code> donnés :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">maxi</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span><span class="n">b</span> <span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Fonction qui renvoie le maximum de deux nombres de type int.</span>
@@ -5871,7 +5855,8 @@ Par exemple le code suivant conduira à une erreur <code>UnboundLocalError</code
 <span class="sd">7</span>
 <span class="sd">&gt;&gt;&gt; maxi3(-2, -2, -3)</span>
 <span class="sd">-2</span>
-
+<span class="sd">&gt;&gt;&gt; maxi3(20, 5, 20)</span>
+<span class="sd">20</span>
 <span class="sd">    """</span>
     <span class="o">...</span>
 </code></pre></div>
