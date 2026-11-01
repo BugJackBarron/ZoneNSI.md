@@ -6,8 +6,8 @@ from random import choice
 
 def choix_mot(adresse_fichier) :
     """ fonction ouvrant un fichier texte dont l'adresse absolue ou relative
-    est passée en argument sous la forme d'une chaine de caractère
-    et renvoyant une chaine de caractère issue d'une ligne aléatoire du fichier
+    est passée en argument sous la forme d'une chaine de caractères
+    et renvoyant une chaine de caractères issue d'une ligne aléatoire du fichier
 """
     with open(adresse_fichier,'r', encoding='utf8') as file :
         mot = choice([m for m in file.readlines()]).replace('\n', '').strip()
@@ -15,7 +15,7 @@ def choix_mot(adresse_fichier) :
 
 def formate_mot(mot : str) -> str :
     """ fonction transformant une chaine de caractères accentués
-en une chaine de caractère latin strict (sans accents ni signes diacritiques).
+en une chaine de caractères latins stricts (sans accents ni signes diacritiques).
 La chaine renvoyée est en majuscule.
 
 >>> formate_mot('tRuC')
@@ -38,11 +38,11 @@ La chaine renvoyée est en majuscule.
     ...
     
 def genere_tirets(mot_a_trouver : str, lettres_utilisees: str ) -> str :
-    """ fonction renvoyant une chaine de caractère correspondant
+    """ fonction renvoyant une chaine de caractères correspondant
 au mot à trouver pour lequel :
-* les caractères non présents dans la chaine lettreUtilisees
+* les caractères non présents dans la chaine lettres_utilisees
 sont remplacés par des _ (underscores) ;
-* les tirest hauts "-" sont conservés ;
+* les tirets hauts "-" sont conservés ;
 * tous les caractères sont suivis d'un espace, y compris le dernier.
 
 >>> genere_tirets("Bidules", "Ble")
@@ -97,7 +97,7 @@ def demande_joueur_lettre() -> str:
     """ fonction demandant une lettre latine non accentuée au joueur,
 et renvoyant cette lettre en majuscule. La fonction redemande au joueur
 tant que celui-ci n'a pas fourni une lettre correcte.
-La lettre est renvoyée en par la fonction.
+La lettre est renvoyée par la fonction.
 """
     ...
     
@@ -106,9 +106,9 @@ def une_manche() -> None :
     """ fonction déclenchant une manche de jeu. On entend par manche de jeu :
 * le choix d'un mot dans le fichier 'liste_francais_modifiee.txt' ;
 * le formatage de ce mot ;
-* puis la répétitions de :
+* puis la répétition de :
     * la demande d'une lettre au joueur ;
-    * la mise à jour des lettres utilisée le cas échéant ;
+    * la mise à jour des lettres utilisées le cas échéant ;
     * la mise à jour de l'affichage
     
     jusqu'à ce que soit le mot complet ait été trouvé,
@@ -123,7 +123,7 @@ def presentation() -> None :
 #                                            #
 #                Jeu du Pendu                #
 #                                            #
-# 1ère NSI 2022-2023                         #
+# 1ère NSI 2026-2027                         #
 ##############################################
 """)
     
@@ -146,5 +146,3 @@ if __name__ == "__main__" :
     import doctest
     doctest.testmod()
     main()
-
-```

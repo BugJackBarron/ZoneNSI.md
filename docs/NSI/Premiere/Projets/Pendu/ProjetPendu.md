@@ -2,9 +2,9 @@
 
 !!! warning "principe du projet"
 
-	* Vous travaillerez par binomes sur ce projet (ou exceptionnellement par trinome).
-	* Vous rendrez le code complet + votre dossier personnel pour le 12 décembre 2024 au plus tard.
-	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
+	* Vous travaillerez par binômes sur ce projet (ou exceptionnellement par trinômes).
+	* Vous rendrez le code complet + votre dossier personnel pour le 11 décembre 2026 au plus tard.
+	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
 	
 	
 
@@ -26,11 +26,11 @@
 	5. Si la lettre fait partie du mot cherché, les tirets correspondants
 	sont remplacés par la lettre. Sinon on ajoute un élément au dessin du pendu.
 	6. On reprend à l'étape 4 tant que :
-		* soit il reste des lettres à trouver ;
-		* soit le pendu est complètement dessiné (6 échecs).
-	7. Une fois la partie terminée, le joueur/la joueuse" peut alors choisir de recommencer ou non une nouvelle partie.
+		* il reste des lettres à trouver ;
+		* **et** le pendu n'est pas complètement dessiné (moins de 6 échecs).
+	7. Une fois la partie terminée, le joueur/la joueuse peut alors choisir de recommencer ou non une nouvelle partie.
 		
-	Le rendu final devrait ressembler si possible à celui de la vidéo suivante  :
+	Le rendu final devrait ressembler si possible à celui de la vidéo suivante :
 	
 	<p align="center">
 	![type:video](ExemplePendu.mp4)
@@ -38,10 +38,10 @@
 
 ## Les fichiers nécessaires
 
-!!! tips "Fichier de mots"
+!!! tip "Fichier de mots"
 
 	Pour mener à bien le projet, vous aurez d'abord besoin du fichier
-	{==**[des mots français.](https://fvergniaud-drive.mytoutatice.cloud/public?sharecode=6yiGXrQkojGt)**==}.
+	{==**[des mots français.](liste_francais_modifiee.txt)**==}.
 	
 	Vous téléchargerez celui-ci et le copierez dans votre dossier de travail, à côté du fichier python utilisé.
 
@@ -54,7 +54,7 @@
 
 	Les mots peuvent être en majuscule, en minuscule, ou toute autre combinaison de casse.
 	
-!!! tips "Base de code Python"
+!!! tip "Base de code Python"
 	
 	Je vous donne [ici](./Projet_Pendu_Eleve.py) le code qui doit être votre base de travail.
 	
@@ -70,7 +70,7 @@
 	* les caractères *retour chariot* (sauts de lignes) `\n` sont supprimés.
 		
 	Dans le cadre de ce projet, le fichier `liste_francais_modifiee.txt` doit normalement être situé dans le même
-	répertoire que `ProjetPendu.py`. Donc vous pouvez utiliser cette fonction de la manière suivante :
+	répertoire que `Projet_Pendu_Eleve.py`. Donc vous pouvez utiliser cette fonction de la manière suivante :
 	
 	``` python
 	mot = choix_mot("liste_francais_modifiee.txt")
@@ -81,24 +81,24 @@
 
 1. Vous commencerez par compléter la fonction `formate_mot(mot)`, afin qu'elle renvoie 
 une chaîne de caractères en {==**majuscule**==} dans laquelle tous les {==**signes diacritiques**==} ont été
-supprimés (à par les tirets des mots composés). Des **tests unitaires** sont donnés à titre d'exemple
-Vous pouvez éventuellement rajouter les votres.
+supprimés (à part les tirets des mots composés). Des **tests unitaires** sont donnés à titre d'exemple.
+Vous pouvez éventuellement rajouter les vôtres.
 
-2. Vous complèterez ensuite la fonction `genere_tirets(mot_a_trouver,lettres_utilisees)`, qui 
+2. Vous compléterez ensuite la fonction `genere_tirets(mot_a_trouver,lettres_utilisees)`, qui 
 renvoie une chaîne de caractères correspondant à celle passée en premier argument `mot_a_trouver`, pour laquelle
-les lettres {==**non présentes**==} dans la chaîne de caractère `lettres_utilisees`.
-De plus, chaque caractère de la chaîne finale {==**devra être suivi d'un espace**==}. Des **tests unitaires** sont donnés à titre d'exemple
-Vous pouvez éventuellement rajouter les votres.
+les lettres {==**non présentes**==} dans la chaîne de caractères `lettres_utilisees` sont remplacées par des tirets bas `_`.
+De plus, chaque caractère de la chaîne finale {==**devra être suivi d'un espace**==}. Des **tests unitaires** sont donnés à titre d'exemple.
+Vous pouvez éventuellement rajouter les vôtres.
 
-3. Vous complèterez la fonction `compte_restantes(mot_a_trouver,lettres_utilisees)` qui renvoie un entier
+3. Vous compléterez la fonction `compte_restantes(mot_a_trouver,lettres_utilisees)` qui renvoie un entier
 correspondant au nombre de lettres restant à trouver dans `mot_a_trouver`
 sachant la chaîne de lettres déjà utilisées `lettres_utilisees`.
 
-4. Vous complèterez ensuite la fonction `demande_joueur_lettre()` et la rendrez *dumbproof* : cette fonction doit 
+4. Vous compléterez ensuite la fonction `demande_joueur_lettre()` et la rendrez *dumbproof* : cette fonction doit 
 continuer à redemander au joueur de saisir une lettre tant que celle-ci n'est pas compatible avec les règles du jeu.
 
-5. Vous complèterez ensuite la fonction `affiche_pendu(mot_a_trouver, lettres_utilisees, nb_echecs)` qui affiche non seulement la potence, 
-amis aussi le mot à trouver sous sa forme de tirets.
+5. Vous compléterez ensuite la fonction `affiche_pendu(mot_a_trouver, lettres_utilisees, nb_echecs)` qui affiche non seulement la potence, 
+mais aussi le mot à trouver sous sa forme de tirets.
 Pour construire cette fonction, vous utiliserez une *f-string* multi-lignes telle que :
 
 ``` python linenums="1"
@@ -113,32 +113,32 @@ f"""
  _______|__ 
 """
 ```
-6. A partir de toutes les fonctions précédentes, vous finaliserez le jeu en
+6. À partir de toutes les fonctions précédentes, vous finaliserez le jeu en
 complétant la fonction `une_manche()`.
 
 7. Une fois le jeu complété, vous devrez en outre compléter un **dossier personnel** d'une ou
  deux pages présentant : 
  * ce que vous avez réalisé individuellement dans ce projet ;
  * les difficultés rencontrées et/ou les problèmes que vous n'avez pas pu résoudre ;
- * les aides qui vous on été apportées.
+ * les aides qui vous ont été apportées.
 
 8. Vous pourrez enfin apporter des modifications et/ou améliorations au code, par exemple en :
 	* ajoutant un compteur de score qui donne le nombre de réussites par rapport au nombre de parties jouées.
-	* ajouter un niveau de difficulté, en changeant le nombre d'erreurs possibles ;
+	* ajoutant un niveau de difficulté, en changeant le nombre d'erreurs possibles ;
 	* etc...
 
 
 
 ## Grille de notation
 
-| intitulé | barême | Détails |
+| intitulé | barème | Détails |
 | :---: | :---: | :--- |
-| fonction `formate_mot` | 3 pt | passage de tous les tests unitaires |
-| fonction `genere_tirets` | 2 pt | passage de tous les tests unitaires  |
-| fonction `compte_restantes` | 2 pt | passage de tous les tests unitaires |
+| fonction `formate_mot` | 3 pts | passage de tous les tests unitaires |
+| fonction `genere_tirets` | 2 pts | passage de tous les tests unitaires  |
+| fonction `compte_restantes` | 2 pts | passage de tous les tests unitaires |
 | fonction `demande_joueur_lettre` | 1 pt | *dumbproof* |
 | fonction `affiche_pendu` | 3 pt | Affichage correct |
 | fonction `une_manche` | 3 pts | On attend un jeu a minima fonctionnel |
 | Noms des variables clairs | 2 pts | On proscrira les noms de variable d'un seul caractère, sauf compteurs précis |
 | Code commenté et clair | 3 pts | Des explications minimales doivent être écrites pour expliquer votre code |
-| Améliorations,   qualité du code, etc... | 2 pts | |
+| Améliorations, qualité du code, etc... | 2 pts | |

@@ -12,7 +12,7 @@ symboles = '♠♥♦♣7Ω' ## Symboles utilisés dans le bandit-manchot
 
 def choisir_symbole(symboles : str) -> str :
     """
-fonction renvoyant un symbole aléatoire parmi une suite de symbole passée en argument
+fonction renvoyant un symbole aléatoire parmi une suite de symboles passée en argument
 
 >>> choisir_symbole('abc') in 'abc'
 True
@@ -29,7 +29,7 @@ True
 
 def fabriquer_chaine(symboles : str, taille : int = 3) -> str :
     """ fonction renvoyant une chaine aléatoire de dimension taille,
-à partir de la liste de symbole symboles.
+à partir de la chaine de symboles symboles.
 
 >>> len(fabriquer_chaine('atcg'))
 3
@@ -46,7 +46,7 @@ True
 
 def compte_symboles_identiques(s : str, chaine: str) -> int :
     """
-Fonction renvoyant le nombre d'occurences du symbole s au sein de la chaine chaine
+Fonction renvoyant le nombre d'occurrences du symbole s au sein de la chaine chaine
 Si le symbole n'est pas présent, renvoie 0
 
 >>> compte_symboles_identiques("a", "abracadabra")
@@ -85,7 +85,7 @@ False
 def table_gain(chaine : str, mise: int) -> int:
     """
     Fonction renvoyant le gain selon la chaine passée en argument
-    A titre d'information, l'espérance de gain avec la table donnée est de 37.5
+    A titre d'information, l'espérance de gain avec la table donnée est d'environ 2.59 fois la mise
 >>> table_gain('777', 20)
 2000
 >>> table_gain('ΩΩΩ', 20)
@@ -135,7 +135,7 @@ def afficher_bandit(chaine : str, gain : int) -> None:
 
 def main_game() -> int :
     """
-    Fonction principale du jeu, qui lance une partie, et se poursuiit tant que le joueur /la joueuse
+    Fonction principale du jeu, qui lance une partie, et se poursuit tant que le joueur /la joueuse
     souhaite ou peut continuer.
     Ne peut pas être testée par doctest.
     """
@@ -151,7 +151,7 @@ def presentation() -> None :
 #                                            #
 #              Bandit Manchot                #
 #                                            #
-# 1ère NSI 2022-2023                         #
+# 1ère NSI 2026-2027                         #
 ##############################################
 """)
     print("\n"*5)
@@ -162,49 +162,43 @@ def presentation() -> None :
 
 def sauve_score(nom_j : str, score_j: int) -> None :
     """ Fonction sauvant le nom du joueur/de la joueuse, ainsi que son score, dans un fichier texte
-nommé HighScore.txt, situé dans le même dossier que ce fichier python
+nommé HighScore.txt, situé dans le même dossier que ce fichier python.
+Seuls les 10 meilleurs scores sont conservés.
 """
+    hs = []
     try :
-        with open('HighScore.txt',"r", encoding="utf-8") as f :
-            lines = f.readlines()
-            hs = [{"nom":"", "score" : 0}]*9
-            for i, l in enumerate(lines) :
-                nom, score = l.split(" / ")
+        with open('HighScore.txt', "r", encoding="utf-8") as f :
+            for ligne in f :
+                if ligne.strip() == "" :
+                    continue
+                nom, score = ligne.rsplit(" / ", 1)
                 try :
-                    hs[i] = {"nom" : nom, "score" : int(score)}
+                    hs.append({"nom" : nom, "score" : int(score)})
                 except ValueError :
-                    hs[i] = {"nom" : nom, "score" :0}
-            is_better_than = len(hs)-1
-            while is_better_than>=0 and score_j>hs[is_better_than]['score'] :                    
-                if is_better_than != len(hs)-1 :
-                    hs[is_better_than+1] = hs[is_better_than]
-                hs[is_better_than] = {"nom" : nom_j, "score" : score_j}
-                is_better_than -= 1
+                    hs.append({"nom" : nom, "score" : 0})
     except FileNotFoundError :
-            hs =[{"nom" : nom_j, "score" : score_j}]
-    finally :
-        with open("HighScore.txt", "w", encoding="utf8") as f :
-            for s in hs :
-                if s is not None :
-                    f.write(f"{s['nom']} / {s['score']}\n")
-                else :
-                    f.write(f"Inconnu / 0\n")
-                    
+        pass
+    hs.append({"nom" : nom_j, "score" : score_j})
+    hs.sort(key=lambda d : d['score'], reverse=True)  # tri stable : à égalité, l'ancien score reste devant
+    with open("HighScore.txt", "w", encoding="utf-8") as f :
+        for d in hs[:10] :
+            f.write(f"{d['nom']} / {d['score']}\n")
+
 def get_score() -> str:
-    """ Fonction récupérant les HighScore sauvegardés depuis un fichier HishScore.txt,
+    """ Fonction récupérant les HighScore sauvegardés depuis un fichier HighScore.txt,
 et qui renvoie une chaine de caractères correctement formatée pour la console"""
-    lines =""
     try :
-        with open('HighScore.txt',"r", encoding="utf-8") as f  :
-            lines = f.readlines()        
+        with open('HighScore.txt', "r", encoding="utf-8") as f :
+            lines = [l for l in f.readlines() if l.strip() != ""]
     except FileNotFoundError :
-        lines = "Inconnu / 0\n"*9                
-    finally :
-        HS = [{'nom': line.split(" / ")[0], 'score' : line.split(" / ")[1].replace("\n","")} for line in lines]
+        with open('HighScore.txt', "w", encoding="utf-8") as f :
+            pass  # création d'un fichier vide
+        lines = ["Inconnu / 0\n"]*10
     final = ""
-    for i,d in enumerate(HS) :
-        final +=f"{i+1} {d['nom']:>15} : {d['score']:>10} €\n"
-    return final    
+    for i, line in enumerate(lines) :
+        nom, score = line.rsplit(" / ", 1)
+        final += f"{i+1} {nom:>15} : {score.strip():>10} €\n"
+    return final
 
 ## La partie ci-dessous n'est effectuée que si vous déclenchez le programme
 ## en tant que programme principal (notion de modules, vue en terminale)

@@ -1525,6 +1525,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motus/ProjetMotus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projet : Motus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4852,9 +4875,9 @@
 <p class="admonition-title">Principes du projet</p>
 <ul>
 <li><strong>LA NOTE MAXIMALE DE CE PROJET EST DE 18 SANS LA PARTIE FACULTATIVE !</strong> </li>
-<li>Vous travaillerez par binomes sur ce projet (ou exceptionnellement par trinome).</li>
-<li>Vous rendrez le code complet pour le 12 décembre 2024 au plus tard.</li>
-<li>Vous aurez un temps en classe pour réaliser le projet, mais ce temps  ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !</li>
+<li>Vous travaillerez par binômes sur ce projet (ou exceptionnellement par trinômes).</li>
+<li>Vous rendrez le code complet pour le 11 décembre 2026 au plus tard.</li>
+<li>Vous aurez un temps en classe pour réaliser le projet, mais ce temps ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !</li>
 </ul>
 </div>
 <h2 id="description-du-projet">Description du projet</h2>
@@ -4863,14 +4886,14 @@
 <li>Le ou la joueur·euse commence la partie avec 500 €.</li>
 <li>Il ou elle parie une somme comprise entre 10 € et son pot actuel.</li>
 <li>Le bandit-manchot tire alors aléatoirement une série de trois symboles, qui donnent ou non un gain selon le tirage.</li>
-<li>Si le pot n'est pas égal à zéro, le ou la joueur·euse peut rejouer si il ou elle le souhaite.</li>
-<li><em>Facultatif :</em> Le joueur/la joueuse peut se voir proposer de sauvegarder son nom et son score. Sule les 10 meilleusr scores sont sauvegardés.</li>
+<li>Si le pot n'est pas égal à zéro, le ou la joueur·euse peut rejouer s'il ou elle le souhaite.</li>
+<li><em>Facultatif :</em> Le joueur/la joueuse peut se voir proposer de sauvegarder son nom et son score. Seuls les 10 meilleurs scores sont sauvegardés.</li>
 </ol>
 <div class="admonition example">
 <p class="admonition-title">Exemple de réalisation</p>
 <p><img alt="Gif Manchot" src="../projet_Bandit_Manchot.gif" style="width:50%; margin:auto;display:block;background-color: #d2dce0;"></p>
 </div>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Table des gains</p>
 <p>Il existe de nombreuses tables de gains pour une machine à sous. Vous devrez cependant utiliser la table ci-dessous pour passer tous les tests :</p>
 <table>
@@ -4905,7 +4928,7 @@
 <tr>
 <td style="text-align: center;"><code>♠♠7</code></td>
 <td style="text-align: right;">5 fois la mise</td>
-<td style="text-align: left;">On aura de même si l'ordre des symboles change, et avec les symboles,<code>♥</code> <code>♦</code> et <code>♣</code></td>
+<td style="text-align: left;">On aura de même si l'ordre des symboles change, et avec les symboles <code>♥</code>, <code>♦</code> et <code>♣</code></td>
 </tr>
 <tr>
 <td style="text-align: center;"><code>♠Ω7</code></td>
@@ -4916,7 +4939,7 @@
 </table>
 </div>
 <h2 id="les-fonctions-necessaires">Les fonctions nécessaires</h2>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Base de travail</p>
 <p>Vous trouverez <a href="../Bandit_Manchot_Eleve.py">ici</a> une base de code à utiliser pour réaliser le jeu.</p>
 </div>
@@ -4925,26 +4948,26 @@
 <p>Ces fonctions <strong>ne sont pas à modifier</strong>, ni même à comprendre... Elles sont nécessaires pour la partie facultative du projet !</p>
 </div>
 <h2 id="plan-de-travail">Plan de travail</h2>
-<p>Voii quelques éléments sur le code, dont un plan de travail :</p>
+<p>Voici quelques éléments sur le code, dont un plan de travail :</p>
 <ol>
 <li>Une variable globale <code>symboles = "♠♥♦♣7Ω"</code> donne les 6 symboles utilisés dans le bandit-manchot.</li>
-<li>Vous devrez concevoir une fonction <code>choisir_symbole</code> qui prend en argument la chaîne de caractères <code>symboles</code>, et renvoie une chaine de caractère contenant <strong>un seul de ces symboles aléatoirement</strong>.</li>
-<li>La fonction <code>fabriquer_chaine</code> doit fournir une chaîne de caractères de taille <code>taille</code> (par défaut 3), dont tous les caractères sont aléatoirement choisis parmi une liste de caractères <code>symboles</code>. Inutile de réiçnventer l'eau chaude, puisque vous avez déjà fait la question précédente.</li>
-<li>Vous implémenterez ensuite une fonction <code>compte_symboles_identiques</code>, qui prend en argument un caractère <code>s</code>, et qui cherche le nombre d'occurence de ce caractère dans la chaine <code>chaine</code> passée en argument. Les exemples donnés dans la docstring doivent vous aider.</li>
-<li>Vous pourrez ensuite implémenter la fonction <code>presence_symboles_identiques_multiples</code> (pénible à taper ce nom... mais ne le changez pas !) qui prend en argument une liste de symboles <code>symboles</code>, et une chaine de caractères <code>chaine</code>, et qui renvoie <code>True</code> si <strong>un des symboles est présent plusieurs fois dans la chaine</strong>, ou <code>False</code> si ce n'est pas le cas.</li>
+<li>Vous devrez concevoir une fonction <code>choisir_symbole</code> qui prend en argument la chaîne de caractères <code>symboles</code>, et renvoie une chaîne de caractères contenant <strong>un seul de ces symboles aléatoirement</strong>.</li>
+<li>La fonction <code>fabriquer_chaine</code> doit fournir une chaîne de caractères de taille <code>taille</code> (par défaut 3), dont tous les caractères sont aléatoirement choisis parmi la chaîne de caractères <code>symboles</code>. Inutile de réinventer l'eau chaude, puisque vous avez déjà fait la question précédente.</li>
+<li>Vous implémenterez ensuite une fonction <code>compte_symboles_identiques</code>, qui prend en argument un caractère <code>s</code>, et qui cherche le nombre d'occurrences de ce caractère dans la chaine <code>chaine</code> passée en argument. Les exemples donnés dans la docstring doivent vous aider.</li>
+<li>Vous pourrez ensuite implémenter la fonction <code>presence_symboles_identiques_multiples</code> (pénible à taper ce nom... mais ne le changez pas !) qui prend en argument une chaine de symboles <code>symboles</code>, et une chaine de caractères <code>chaine</code>, et qui renvoie <code>True</code> si <strong>un des symboles est présent plusieurs fois dans la chaine</strong>, ou <code>False</code> si ce n'est pas le cas.</li>
 <li>En parallèle (c'est-à-dire que vous pouvez faire cette fonction indépendamment des autres), vous pourrez implémenter la fonction <code>table_gain</code> qui renvoie le gain associé à la chaine passée en argument, en fonction de la mise de départ.</li>
 <li>En parallèle, vous pourrez implémenter la fonction <code>saisir_mise</code> qui prend en argument une valeur (le pot actuel du joueur/de la joueuse), et renvoie la mise saisie par le joueur/la joueuse.</li>
-<li>En parallèle, vous implémenterez la fonction <code>demander_continuer</code>, qui demande à l'utilisateur·trice si il souhaite refaire une nouvelle manche de jeu, et renvoie un booléen correspondant à la réponse.</li>
+<li>En parallèle, vous implémenterez la fonction <code>demander_continuer</code>, qui demande à l'utilisateur·trice s'il ou elle souhaite refaire une nouvelle manche de jeu, et renvoie un booléen correspondant à la réponse.</li>
 <li>En parallèle, vous implémenterez une fonction <code>afficher_bandit</code> sans valeur de retour, qui affiche dans la console le bandit-manchot ainsi que le gain correspondant. Vous pouvez vous inspirer de la fonction <code>presentation</code> qui vous est fournie.</li>
 <li>Une fois toutes les étapes précédentes terminées, vous implémenterez une fonction <code>main_game</code> qui représente la totalité du jeu d'un joueur/d'une joueuse, jusqu'à ce qu'il/elle abandonne ou qu'il/elle s'arrête. La fonction renverra <strong>le gain réel du joueur/de la joueuse</strong>, qui pourra servir à la phase suivante.</li>
-<li><em>Facultatif</em> : en utilisant les fonctions <code>sauve_score</code> et <code>get_score</code>, insérez à la fin du jeu la possibilté d'enregistrer son score, puis qui affiche les 10 meilleurs scores enregistrés.</li>
+<li><em>Facultatif</em> : en utilisant les fonctions <code>sauve_score</code> et <code>get_score</code>, insérez à la fin du jeu la possibilité d'enregistrer son score, puis qui affiche les 10 meilleurs scores enregistrés.</li>
 </ol>
 <h2 id="grille-de-notation">Grille de notation</h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">intitulé</th>
-<th style="text-align: center;">barême</th>
+<th style="text-align: center;">barème</th>
 <th style="text-align: left;">Détails</th>
 </tr>
 </thead>
@@ -4966,7 +4989,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">fonction <code>presence_symboles_identiques_multiples</code></td>
-<td style="text-align: center;">2 pt</td>
+<td style="text-align: center;">2 pts</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -5006,7 +5029,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">Améliorations,   qualité du code, etc...</td>
-<td style="text-align: center;">1 pts</td>
+<td style="text-align: center;">1 pt</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>

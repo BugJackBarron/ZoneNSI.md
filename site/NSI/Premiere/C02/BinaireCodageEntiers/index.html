@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://www.zonensi.fr/NSI/Premiere/C02/BinaireCodageEntiers/">
       
       
-        <link rel="prev" href="../../Projets/Pendu/ProjetPendu/">
+        <link rel="prev" href="../../Projets/Motus/ProjetMotus/">
       
       
         <link rel="next" href="../Entiers_relatifs_Flottants/">
@@ -1445,6 +1445,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets/Motus/ProjetMotus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projet : Motus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1603,13 +1626,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ecritures-en-dautres-bases" class="md-nav__link">
+  <a href="#ecritures-dans-dautres-bases" class="md-nav__link">
     <span class="md-ellipsis">
-      Ecritures en d'autres bases
+      Écritures dans d'autres bases
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ecritures en d&#39;autres bases">
+    <nav class="md-nav" aria-label="Écritures dans d&#39;autres bases">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4958,10 +4981,10 @@
 <div><h1 id="binaire-et-representation-des-entiers">Binaire et représentation des entiers</h1>
 <h2 id="linformation-binaire">L'information binaire</h2>
 <h3 id="le-bit">Le bit</h3>
-<p>L'histoire de l'informatique est intrinsèquement dépendante de l'histoire de la maîtrise de l'électricité. Fondamentalement, tout ordinateur est construit à partir de circuits électroniques qui:</p>
+<p>L'histoire de l'informatique est intrinsèquement dépendante de l'histoire de la maîtrise de l'électricité. Fondamentalement, tout ordinateur est construit à partir de circuits électroniques qui :</p>
 <ul>
 <li>soit ne laissent pas passer le courant électrique (<em>Off</em>);</li>
-<li>soit laissent passer le courant électrique (<em>In</em>).</li>
+<li>soit laissent passer le courant électrique (<em>On</em>).</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -4973,7 +4996,7 @@
 <p>La notation internationale pour le bit est <span class="arithmatex">\(b\)</span>. On parlera alors de <span class="arithmatex">\(kb\)</span>, <span class="arithmatex">\(Mb\)</span>, <span class="arithmatex">\(Gb\)</span>.</p>
 </div>
 <h3 id="compter-en-binaire">Compter en binaire</h3>
-<p>Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajoute 1 jusqu'à épuiser les chiffres disponibles, et quand on a terminé, on ajoute un chiffre supplémentaire au nombre. En, binaire, cela donne :</p>
+<p>Pour compter en binaire, on applique le même algorithme qu'en décimal : on ajoute 1 jusqu'à épuiser les chiffres disponibles, et quand on a terminé, on ajoute un chiffre supplémentaire au nombre. En binaire, cela donne :</p>
 <table>
 <thead>
 <tr>
@@ -5025,7 +5048,7 @@
 </tbody>
 </table>
 <h3 id="grouper-les-bits">Grouper les bits</h3>
-<p>Une information binaire est donc une suite de <span class="arithmatex">\(0\)</span> et de <span class="arithmatex">\(1\)</span>. Cette information peut-être de différente nature, tout dépend de la <mark class="critic"><strong>norme d'encodage</strong></mark> utilisée. En soit, la même suite binaire peut signifier des choses totalement différentes comme :</p>
+<p>Une information binaire est donc une suite de <span class="arithmatex">\(0\)</span> et de <span class="arithmatex">\(1\)</span>. Cette information peut être de différente nature, tout dépend de la <mark class="critic"><strong>norme d'encodage</strong></mark> utilisée. En soi, la même suite binaire peut signifier des choses totalement différentes comme :</p>
 <ul>
 <li>un nombre entier ;</li>
 <li>un nombre flottant ;</li>
@@ -5049,13 +5072,13 @@
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Bits et quantités d'informations</p>
-<p>Avec un unique bit, on ne peux stocker que deux informations (deux nombres, deux caractères, deux notes de musiques,...). La quantité d'information différentes pouvant être représentées dépend donc du nombre de bits utilisés :</p>
+<p>Avec un unique bit, on ne peut stocker que deux informations (deux nombres, deux caractères, deux notes de musique,...). La quantité d'informations différentes pouvant être représentées dépend donc du nombre de bits utilisés :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Avec <span class="arithmatex">\(2\)</span> bits :</label><label for="__tabbed_1_2">Avec <span class="arithmatex">\(3\)</span> bits :</label><label for="__tabbed_1_3">Avec <span class="arithmatex">\(4\)</span> bits :</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <details class="done">
 <summary>Done</summary>
-<p>On peux représenter <span class="arithmatex">\(2 \times 2 = 2^2 = 4\)</span> informations différentes. Par exemple, avec des caractères :</p>
+<p>On peut représenter <span class="arithmatex">\(2 \times 2 = 2^2 = 4\)</span> informations différentes. Par exemple, avec des caractères :</p>
 <table>
 <thead>
 <tr>
@@ -5087,7 +5110,7 @@
 <div class="tabbed-block">
 <details class="done">
 <summary>Done</summary>
-<p>On peux représenter <span class="arithmatex">\(2 \times 2 \times 2= 2^3 = 8\)</span> informations différentes. Par exemple, avec des caractères :</p>
+<p>On peut représenter <span class="arithmatex">\(2 \times 2 \times 2= 2^3 = 8\)</span> informations différentes. Par exemple, avec des caractères :</p>
 <table>
 <thead>
 <tr>
@@ -5135,7 +5158,7 @@
 <div class="tabbed-block">
 <details class="done">
 <summary>Done</summary>
-<p>On peux représenter <span class="arithmatex">\(2 \times 2 \times 2 \times 2= 2^4 = 16\)</span> informations différentes. Par exemple, avec des caractères, on pourra représenter jusqu'à <code>P</code>, qui sera représenté par le mot binaire <code>1111</code></p>
+<p>On peut représenter <span class="arithmatex">\(2 \times 2 \times 2 \times 2= 2^4 = 16\)</span> informations différentes. Par exemple, avec des caractères, on pourra représenter jusqu'à <code>P</code>, qui sera représenté par le mot binaire <code>1111</code></p>
 </details>
 </div>
 </div>
@@ -5151,9 +5174,9 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">Remarque</p>
-<p>Les préfixes <em>kilo</em>, <em>Mega</em>, <em>Giga</em> ..., sont bien ceux du système international, c'est-à-dire ceux pour <span class="arithmatex">\(10^3\)</span>, <span class="arithmatex">\(10^6\)</span>, <span class="arithmatex">\(10^9\)</span>... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( <em>kibi</em>, <em>Mibi</em>, <em>Gibi</em>...), pour lesquels le facteur de changement d'unité n'est pas <span class="arithmatex">\(10^3\)</span> mais <span class="arithmatex">\(2^10 = 1024\)</span>. Ainsi <span class="arithmatex">\(1 Mibi = 1024 kibi\)</span>.</p>
+<p>Les préfixes <em>kilo</em>, <em>Mega</em>, <em>Giga</em> ..., sont bien ceux du système international, c'est-à-dire ceux pour <span class="arithmatex">\(10^3\)</span>, <span class="arithmatex">\(10^6\)</span>, <span class="arithmatex">\(10^9\)</span>... On verra dans la partie suivante qu'ils sont parfois confondus avec les préfixes binaires ( <em>kibi</em>, <em>Mébi</em>, <em>Gibi</em>...), pour lesquels le facteur de changement d'unité n'est pas <span class="arithmatex">\(10^3\)</span> mais <span class="arithmatex">\(2^{10} = 1024\)</span>. Ainsi <span class="arithmatex">\(1~Mébi = 1024~kibi\)</span>.</p>
 </div>
-<h2 id="ecritures-en-dautres-bases">Ecritures en d'autres bases</h2>
+<h2 id="ecritures-dans-dautres-bases">Écritures dans d'autres bases</h2>
 <h3 id="les-entiers-en-base-decimale">Les entiers en base décimale</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Rappels : Base décimale </p>
@@ -5176,7 +5199,7 @@
 <div class="tabbed-block">
 <ol>
 <li><span class="arithmatex">\(14~763 = 1 \times 10^{4} + 4 \times 10^{3} + 7 \times 10^{2}+ 6\times 10^{1} + 3\times 10^{0}\)</span></li>
-<li><span class="arithmatex">\(100~042 = 1 \times 10^{\dots} + 4 \times 10^{\dots} + 2 \times 10^{\dots}\)</span></li>
+<li><span class="arithmatex">\(100~042 = 1 \times 10^{5} + 4 \times 10^{1} + 2 \times 10^{0}\)</span></li>
 </ol>
 </div>
 </div>
@@ -5193,7 +5216,7 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">Remarques et notations</p>
-<p>L'écriture <span class="arithmatex">\(101\)</span> possède aussi bien un sens en binaire (un-zéro-un) qu'en décimal ( cent-un ). Pour lever l'ambiguïté , on écrira :</p>
+<p>L'écriture <span class="arithmatex">\(101\)</span> possède aussi bien un sens en binaire (un-zéro-un) qu'en décimal ( cent-un ). Pour lever l'ambiguïté, on écrira :</p>
 <ul>
 <li><span class="arithmatex">\((101)_{10}\)</span> ou simplement <span class="arithmatex">\(101\)</span> pour le nombre en base <span class="arithmatex">\(10\)</span> ;</li>
 <li><span class="arithmatex">\((101)_2\)</span> pour le nombre en base <span class="arithmatex">\(2\)</span>.</li>
@@ -5223,7 +5246,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Ecrire les nombres suivants en base <span class="arithmatex">\(10\)</span> :</p>
+<p>Écrire les nombres suivants en base <span class="arithmatex">\(10\)</span> :</p>
 <ol>
 <li><span class="arithmatex">\((101)_2\)</span></li>
 <li><span class="arithmatex">\((11111111)_2\)</span></li>
@@ -5241,19 +5264,19 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked id="__tabbed_5_1" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Enoncé</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter la fonction suivante, <strong>sans utiliser <code>int(x,2)</code></strong>, afin qu'elle renvoie en base 10 le nombre <span class="arithmatex">\(x\)</span> passé en argument en base <span class="arithmatex">\(2\)</span>, sous la forme d'une chaine de caractères. <em>Vous pouvez cependant utiliser la fonction built-in <code>int</code> afin de convertir une chaine de caratère en un entier.</em>
-    </p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bin2dec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+<p>Compléter la fonction suivante, <strong>sans utiliser <code>int(x,2)</code></strong>, afin qu'elle renvoie en base 10 le nombre <span class="arithmatex">\(x\)</span> passé en argument en base <span class="arithmatex">\(2\)</span>, sous la forme d'une chaine de caractères. <em>Vous pouvez cependant utiliser la fonction built-in <code>int</code> afin de convertir une chaine de caractères en un entier.</em></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bin2dec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">"""fonction convertissant le nombre (x)_2 en base 10</span>
-<span class="sd">&gt;&gt;&gt; bin2dec('0')</span>
-<span class="sd">0</span>
-<span class="sd">&gt;&gt;&gt; bin2dec('1')</span>
-<span class="sd">1</span>
-<span class="sd">&gt;&gt;&gt; bin2dec('11')</span>
-<span class="sd">3</span>
-<span class="sd">&gt;&gt;&gt; bin2dec('1000')</span>
-<span class="sd">8</span>
-<span class="sd">&gt;&gt;&gt; bin2dec('11111111')</span>
-<span class="sd">255</span>
+<span class="sd">    &gt;&gt;&gt; bin2dec('0')</span>
+<span class="sd">    0</span>
+<span class="sd">    &gt;&gt;&gt; bin2dec('1')</span>
+<span class="sd">    1</span>
+<span class="sd">    &gt;&gt;&gt; bin2dec('11')</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; bin2dec('1000')</span>
+<span class="sd">    8</span>
+<span class="sd">    &gt;&gt;&gt; bin2dec('11111111')</span>
+<span class="sd">    255</span>
 <span class="sd">    """</span>
 </code></pre></div>
 </div>
@@ -5261,15 +5284,15 @@
 </div>
 </div>
 <h3 id="conversions-de-la-base-10-vers-la-base-2">Conversions de la base <span class="arithmatex">\(10\)</span> vers la base <span class="arithmatex">\(2\)</span></h3>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Méthode : Algorithme de conversion du nombre <span class="arithmatex">\((n)_{10}\)</span> en base <span class="arithmatex">\(2\)</span></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">En langage naturel</label><label for="__tabbed_6_2">Sous forme de diagramme</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>fonction dec2bin(n) :
-    base2 &lt;- chaine de caractère vide
+    base2 &lt;- chaine de caractères vide
     Tant que n!=0 :
-        base2 &lt;- caractere(n%2)+base2
+        base2 &lt;- caractère(n%2)+base2
         n &lt;- n//2
     Renvoyer base2 
 </code></pre></div>
@@ -5277,7 +5300,7 @@
 <div class="tabbed-block">
 <pre class="mermaid"><code>
 flowchart TB
-A(Nombre n positif en décimal) --&gt; B(base2 chaine de caractère vide)
+A(Nombre n positif en décimal) --&gt; B(base2 chaine de caractères vide)
 B --&gt; C{n != 0}
 C --&gt; |Non| F(base2 est la représentation de n en binaire)
 subgraph Z["Boucle principale"]
@@ -5320,21 +5343,21 @@ end
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Enoncé</label><label for="__tabbed_8_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter la fonction suivante en Python, qui renvoie la chaine de caractères correspondant à l'écriture de <span class="arithmatex">\(n\)</span> en base <span class="arithmatex">\(2\)</span>.
-    </p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dec2bin</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
-<span class="sd">"""fonction convertissant le nombre n en base 2,</span>
-<span class="sd">et renvoyant la chaine de caractères correspondante</span>
-<span class="sd">&gt;&gt;&gt; dec2bin(0)</span>
-<span class="sd">'0'</span>
-<span class="sd">&gt;&gt;&gt; dec2bin(1)</span>
-<span class="sd">'1'</span>
-<span class="sd">&gt;&gt;&gt; dec2bin(3)</span>
-<span class="sd">'11'</span>
-<span class="sd">&gt;&gt;&gt; dec2bin(8)</span>
-<span class="sd">'1000'</span>
-<span class="sd">&gt;&gt;&gt; dec2bin(255)</span>
-<span class="sd">'11111111'</span>
-<span class="sd">"""</span>
+<p>Compléter la fonction suivante en Python, qui renvoie la chaine de caractères correspondant à l'écriture de <span class="arithmatex">\(n\)</span> en base <span class="arithmatex">\(2\)</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dec2bin</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">"""fonction convertissant le nombre n en base 2,</span>
+<span class="sd">    et renvoyant la chaine de caractères correspondante</span>
+<span class="sd">    &gt;&gt;&gt; dec2bin(0)</span>
+<span class="sd">    '0'</span>
+<span class="sd">    &gt;&gt;&gt; dec2bin(1)</span>
+<span class="sd">    '1'</span>
+<span class="sd">    &gt;&gt;&gt; dec2bin(3)</span>
+<span class="sd">    '11'</span>
+<span class="sd">    &gt;&gt;&gt; dec2bin(8)</span>
+<span class="sd">    '1000'</span>
+<span class="sd">    &gt;&gt;&gt; dec2bin(255)</span>
+<span class="sd">    '11111111'</span>
+<span class="sd">    """</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -5353,7 +5376,7 @@ end
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Enoncé</label><label for="__tabbed_9_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Déterminer pour chacun des nombres ci-dessous le nombre de bits minimal qui seront nécessaire dans l'écriture binaire de ce nombre :</p>
+<p>Déterminer pour chacun des nombres ci-dessous le nombre de bits minimal qui seront nécessaires dans l'écriture binaire de ce nombre :</p>
 <ol>
 <li><span class="arithmatex">\(12\)</span></li>
 <li><span class="arithmatex">\(123\)</span></li>
@@ -5369,14 +5392,14 @@ end
 </div>
 <h3 id="une-autre-base-utile-lhexadecimal">Une autre base utile : l'hexadécimal</h3>
 <p>Outre que la lecture des nombres en écriture binaire par un humain est très compliquée, il faut remarquer que,
- de par la construction de ces nombres, la quantité de symboles utilisés en base <span class="arithmatex">\(2\)</span> est largement supérieur à
+ de par la construction de ces nombres, la quantité de symboles utilisés en base <span class="arithmatex">\(2\)</span> est largement supérieure à
  celui utilisé en base <span class="arithmatex">\(10\)</span> - <strong><span class="arithmatex">\(3,2\)</span> fois plus grand</strong> en moyenne sur les <span class="arithmatex">\(100~000\)</span> premiers entiers.</p>
 <p>Il peut donc être utile de trouver un compromis entre la base <span class="arithmatex">\(2\)</span>, utile pour l'ordinateur, et la base <span class="arithmatex">\(10\)</span>, plus compréhensible par un être humain.</p>
-<p>Ce compromis peut-être trouvé avec le système <mark class="critic"><strong>hexadécimal</strong></mark>, c'est-à-dire un système de <strong>base 16</strong>.</p>
-<div class="admonition tips">
+<p>Ce compromis peut être trouvé avec le système <mark class="critic"><strong>hexadécimal</strong></mark>, c'est-à-dire un système de <strong>base 16</strong>.</p>
+<div class="admonition tip">
 <p class="admonition-title">Clé WIFI</p>
 <p>Typiquement, une clé de sécurité WIFI est un nombre binaire à 128 bits (ou 256 bits). Lorsque vous vous connectez à un nouveau réseau WIFI, vous devez taper la clé sur votre ordinateur/smartphone (on élimine ici la possibilité d'un FlashCode), mais celle ci est présentée souvent sous la forme <code>38326f53685c2c256164712838</code>, déjà particulièrement pénible à taper, et les erreurs de recopiages sont faciles à  faire et difficiles à retrouver.</p>
-<p>Ce nombre, sous sa forme binaire est celui-ci : </p>
+<p>Ce nombre (ici de 104 bits), sous sa forme binaire, est celui-ci : </p>
 <p><code>111000001100100110111101010011011010000101110000101100001001010110000101100100011100010010100000111000</code></p>
 <p>De quoi faire encore plus d'erreurs en le recopiant...</p>
 </div>
@@ -5391,7 +5414,7 @@ end
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p>Le nombre hexadécimal <span class="arithmatex">\((5B6)_{16}\)</span> correspond donc en décimal à :</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><input id="__tabbed_10_2" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">A compléter</label><label for="__tabbed_10_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked id="__tabbed_10_1" name="__tabbed_10" type="radio"><input id="__tabbed_10_2" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">À compléter</label><label for="__tabbed_10_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="arithmatex">\[
@@ -5429,7 +5452,7 @@ end
 </div>
 </div>
 </div>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Méthode : Convertir vers l'hexadécimal depuis le décimal</p>
 <p>Pour convertir vers l'hexadécimal depuis le décimal, on utilise la même méthode 
 qu'en binaire mais en divisant par <span class="arithmatex">\(16\)</span>.</p>
@@ -5450,7 +5473,7 @@ qu'en binaire mais en divisant par <span class="arithmatex">\(16\)</span>.</p>
 <div class="admonition info">
 <p class="admonition-title">Remarques</p>
 <ul>
-<li>A un chiffre dans la base <span class="arithmatex">\(16\)</span>, correspond exactement <span class="arithmatex">\(4\)</span> chiffres dans la base <span class="arithmatex">\(2\)</span>.</li>
+<li>À un chiffre dans la base <span class="arithmatex">\(16\)</span>, correspond exactement <span class="arithmatex">\(4\)</span> chiffres dans la base <span class="arithmatex">\(2\)</span>.</li>
 <li>Cela signifie que pour écrire un octet en hexadécimal, <strong>deux chiffres hexadécimaux suffisent</strong>. C'est pour cette raison que les 
 octets écrits en base deux sont <strong>groupés par 4 chiffres</strong> :</li>
 </ul>
@@ -5519,10 +5542,10 @@ Reset
 <ul>
 <li><span class="arithmatex">\(0+0 = 0\)</span></li>
 <li><span class="arithmatex">\(0+1 = 1\)</span></li>
-<li><span class="arithmatex">\(1+0 = 0\)</span></li>
+<li><span class="arithmatex">\(1+0 = 1\)</span></li>
 <li><span class="arithmatex">\(1+1 = 10\)</span></li>
 </ul>
-<p>Ecrit sous la forme d'une <em>table de vérité</em>, avec <code>A</code> et <code>B</code> les deux entrées, <code>S</code> la somme et <code>C</code> la retenue (<em>cary</em> en anglais), on obtient le résultat suivant :</p>
+<p>Écrite sous la forme d'une <em>table de vérité</em>, avec <code>A</code> et <code>B</code> les deux entrées, <code>S</code> la somme et <code>C</code> la retenue (<em>carry</em> en anglais), on obtient le résultat suivant :</p>
 <table>
 <thead>
 <tr>
@@ -5585,9 +5608,9 @@ Reset
 
 <p>Un tel circuit est appelé un <mark class="critic"><strong>demi-additionneur binaire</strong></mark> (<em>Half Adder</em> en anglais, abrégé en HA).</p>
 <h3 id="sommes-de-nombres-binaires">Sommes de nombres binaires</h3>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Méthode : Additionner deux nombres entiers en base 2</p>
-<p>La technique d'addition de deux nombres binaire est la même que pour des nombres en écriture décimale :</p>
+<p>La technique d'addition de deux nombres binaires est la même que pour des nombres en écriture décimale :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">En décimal</label><label for="__tabbed_13_2">En binaire</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5644,7 +5667,7 @@ Reset
 
 <p>Un tel circuit est représenté en électronique par le schéma suivant, dans lequel on ne détaille pas toutes les portes :</p>
 <div style="width: 100%; height: 300px">
-  <logic-editor id="IqztvN" mode="tryout">
+  <logic-editor id="Kw3mRe" mode="tryout">
     <script type="application/json5">
       { // JSON5
         v: 6,
@@ -5667,9 +5690,9 @@ Reset
 <p>Rendez-vous sur Capytale pour créer un additionneur 4 bits à partir du fichier <a href="https://capytale2.ac-paris.fr/web/c/9575-7214900" target="target">suivant</a></p>
 </div>
 <h3 id="produits-de-nombres-binaires">Produits de nombres binaires</h3>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Méthode : Multiplier deux nombres entiers en base 2</p>
-<p>La technique de multiplication de deux nombres binaire est la même que pour des nombres en écriture décimale - mais la retenue peut se propager parfois plus loin que le rang immédiatement supérieur :</p>
+<p>La technique de multiplication de deux nombres binaires est la même que pour des nombres en écriture décimale - mais la retenue peut se propager parfois plus loin que le rang immédiatement supérieur :</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked id="__tabbed_14_1" name="__tabbed_14" type="radio"><input id="__tabbed_14_2" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">En décimal</label><label for="__tabbed_14_2">En binaire</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
