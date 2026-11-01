@@ -14,7 +14,7 @@ Une présentation possible est la suivante :
 
 ### La classe personnage
 
-Un objet de la classe `personnage` devra posséder à minima les {==**attributs**==} suivants :
+Un objet de la classe `personnage` devra posséder au minimum les {==**attributs**==} suivants :
 
 * un **niveau** ;
 * un nombre de **points de vie maximum** ;
@@ -25,7 +25,7 @@ Un objet de la classe `personnage` devra posséder à minima les {==**attributs*
 * il devra aussi avoir des attributs pointant vers d'autres objets comme :
     * la barre de vie ;
     * le bouton pour le nourrir ;
-    * le texte donnant son niveau
+    * le texte donnant son niveau ;
     * et bien sûr l'image associée au personnage
 
 Il devra aussi avoir les {==**méthodes**==} suivantes :

@@ -63,10 +63,9 @@ class ForceMonster :
             self.collect_pts += self.level
             self.text = pg.font.Font('Starjout.ttf', 20
             ).render(f"Level {self.level:02d}", 1, (0, 255, 255))
-            
-            
-            
-        
+            self.force_bar.set_force_max(self.force_max)
+            self.force_bar.set_actual_force(self.actual_force)
+
     def show(self, main_frame, blit) :
         if self.is_alive :
             if blit :
@@ -80,6 +79,7 @@ class ForceMonster :
             self.flamme.show(self.monster_frame, self.flamme_inverted)
         else :
             self.monster_frame = pg.Surface((130, 400))
+            self.monster_frame.set_colorkey((0,0,0))
         self.monster_frame.blit(self.image, self.image_rect)
         self.text_bg.fill((50,50,50))
         self.text_bg.blit(self.text, (0,0))
@@ -116,6 +116,9 @@ class ForceBar :
         
     def set_actual_force(self, value) :
         self.actual_force = value
+
+    def set_force_max(self, value) :
+        self.force_max = value
         
     def show(self, surface, blit) :
         if blit :
@@ -140,7 +143,7 @@ class ForceButton :
         self. image = pg.Surface((100,50))
         self.rect = self.image.fill((0,255,0))
         self.rect.center=(600, 525)
-        self.text = pg.font.Font(pg.font.match_font('starjedioutline'), 25).render('FARM', 1, (50,50,50))
+        self.text = pg.font.Font('Starjout.ttf', 25).render('FARM', 1, (50,50,50))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = self.rect.center
         
@@ -155,7 +158,7 @@ class FeedButton :
         self.button = pg.Surface((80, 50))
         self.rect = self.button.fill((50,50,50))
         self.rect.center = center_position
-        self.text = pg.font.Font(pg.font.match_font('starjedioutline'), 25).render('FEED', 1, (0,255,0))
+        self.text = pg.font.Font('Starjout.ttf', 25).render('FEED', 1, (0,255,0))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = self.rect.center
         
@@ -167,6 +170,7 @@ class FeedButton :
         diff = self.monster.force_max -self.monster.actual_force
         if diff > force_point :
             self.monster.actual_force += force_point
+            self.monster.force_bar.set_actual_force(self.monster.actual_force)
             return 0
         else :
             
@@ -196,8 +200,8 @@ class ForceCounter :
         self.surface = STARFONT.render(self.text, 1, (0, 255, 0))
         
     def reinit(self, value) :
-        self.valeur = value
-        self.update()
+        self.value = value
+        self.update_text()
         
     def get_value(self) :
         return self.value
@@ -228,8 +232,8 @@ class ScoreCounter :
         self.surface = STARFONT.render(self.text, 1, (0, 255, 0))
         
     def reinit(self, value) :
-        self.valeur = value
-        self.update()
+        self.value = value
+        self.update_text()
         
     def get_value(self) :
         return self.value
@@ -244,6 +248,8 @@ class ScoreCounter :
    
 
 class Flamme :
+    images = {}  # cache partagé : (niveau, inversée) -> Surface
+
     def __init__(self, center, level=2) :
         self.center = center
         self.level = level
@@ -252,13 +258,15 @@ class Flamme :
                       2 : 'G',
                       3 : 'B',
                       4 : 'P'}
+        if not Flamme.images :
+            for i, c in self.colors.items() :
+                for inv in (False, True) :
+                    img = pg.image.load(f'Flamme{c}{"I" if inv else ""}.png').convert_alpha()
+                    Flamme.images[(i, inv)] = pg.transform.scale(img, (128, 152))
         
         
     def show(self,frame, inversed = False) :
-        if not(inversed) :
-            flamme = pg.transform.scale(pg.image.load(f'Flamme{self.colors[self.level]}.png').convert_alpha(), (128, 152))
-        else :
-            flamme = pg.transform.scale(pg.image.load(f'Flamme{self.colors[self.level]}I.png').convert_alpha(), (128, 152))
+        flamme = Flamme.images[(self.level, bool(inversed))]
         flamme_rect=flamme.get_rect()
         flamme_rect.center = self.center
         frame.blit(flamme, flamme_rect)
@@ -272,7 +280,7 @@ def main() :
     main_frame = pg.display.set_mode((1200, 675))
     
     background = pg.image.load('Cantina.png').convert()
-    pg.display.set_caption('KawaiiWars')
+    pg.display.set_caption('ClickerWars')
     main_frame.blit(background, (0,0))
     game_playing = True
     force_button = ForceButton()
