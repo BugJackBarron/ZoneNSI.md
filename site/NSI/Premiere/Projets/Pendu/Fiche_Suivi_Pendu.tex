@@ -1,0 +1,134 @@
+% !TEX program = lualatex
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\usepackage{colortbl}
+\usepackage{booktabs,tabularx,array,xcolor,enumitem,amssymb,fancyhdr,eurosym,graphicx}
+\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase]
+
+\definecolor{accent}{RGB}{31,78,121}
+\definecolor{pale}{RGB}{232,239,247}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\parindent}{0pt}
+\setlist{nosep,leftmargin=*}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{-2mm}\textcolor{accent}{\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\textcolor{gray}{1\iere{} NSI -- Fiche de suivi enseignant}}
+\fancyhead[R]{\small\textcolor{gray}{Projet Jeu du Pendu}}
+\fancyfoot[C]{\small\thepage}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{accent} Fiche de suivi de projet}\\[2mm]
+{\Large Projet : Jeu du Pendu}
+\end{center}
+
+\medskip
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Élèves} & 1. \dotfill\ 2. \dotfill\ 3. \dotfill \\[2mm]
+\textbf{Classe / groupe} & \dotfill \hfill \textbf{Date de rendu} : \dotfill \\[2mm]
+\textbf{Fichier(s)} & \texttt{Projet\_Pendu\_Eleve.py \quad (corrigé : Corrige\_Projet\_Pendu.py)} \\
+\end{tabularx}
+
+\section*{Suivi de l'avancement}
+\begin{tabularx}{\linewidth}{@{}X l C{1.2cm} C{1.2cm} C{1.2cm} l@{}}
+\toprule
+\rowcolor{pale} Jalon & Tests unitaires & Commencé & Terminé & Tests OK & Date / remarque \\
+\midrule
+\texttt{formate\_mot} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{genere\_tirets} & doctest : 6 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{compte\_restantes} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{demande\_joueur\_lettre} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{affiche\_pendu} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{une\_manche} &  & $\square$ & $\square$ & $\square$ & \\
+Dossier personnel (1 à 2 pages) &  & $\square$ & $\square$ & $\square$ & \\
+Améliorations (score, difficulté, \dots) &  & $\square$ & $\square$ & $\square$ & \\
+\bottomrule
+\end{tabularx}
+
+\section*{Journal des séances}
+\begin{tabularx}{\linewidth}{@{}C{2cm} X X@{}}
+\toprule
+\rowcolor{pale} Date & Travail observé / difficultés & Aides apportées, consignes données \\
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\bottomrule
+\end{tabularx}
+
+\section*{Points de vigilance à contrôler}
+\begin{itemize}
+\item \texttt{choix\_mot} n'a pas été modifiée.
+\item \texttt{formate\_mot} : les ligatures (\texttt{œ} $\to$ \texttt{OE}, \texttt{æ} $\to$ \texttt{AE}) et les cédilles sont traitées ; les tirets sont conservés.
+\item \texttt{genere\_tirets} : chaque caractère est suivi d'un espace, y compris le dernier ; les tirets du mot sont affichés.
+\item \texttt{affiche\_pendu} : les 7 états (0 à 6 échecs) s'affichent correctement, mot et potence alignés.
+\item \texttt{demande\_joueur\_lettre} : refus d'une entrée vide, de plusieurs lettres, d'un chiffre, d'une lettre accentuée.
+\item \texttt{une\_manche} : une lettre déjà proposée ne coûte pas d'échec ; la partie s'arrête à 6 échecs ou quand le mot est trouvé ; le mot est révélé en cas de défaite.
+\item \textbf{Attention au barème :} les points de la grille du sujet totalisent 21 (et non 20) ; reporter la note sur 20 si besoin.
+\end{itemize}
+\smallskip
+Mots à tester : un mot avec tiret (\texttt{pull-over}), un mot avec ligature (\texttt{œil}), un mot avec cédille (\texttt{garçon}), un mot avec une lettre répétée.
+
+\section*{Grille d'évaluation}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.6cm} X C{1.3cm} C{1.5cm} p{3.4cm}@{}}
+\toprule
+\rowcolor{pale} Critère & Détails & Barème & Obtenu & Observations \\
+\midrule
+\texttt{formate\_mot} & passage de tous les tests unitaires & 3 & & \\
+\texttt{genere\_tirets} & passage de tous les tests unitaires & 2 & & \\
+\texttt{compte\_restantes} & passage de tous les tests unitaires & 2 & & \\
+\texttt{demande\_joueur\_lettre} & \emph{dumbproof} & 1 & & \\
+\texttt{affiche\_pendu} & affichage correct & 3 & & \\
+\texttt{une\_manche} & jeu a minima fonctionnel & 3 & & \\
+Noms des variables clairs & pas de nom d'un seul caractère, sauf compteurs & 2 & & \\
+Code commenté et clair & explications minimales & 3 & & \\
+Améliorations, qualité du code &  & 2 & & \\
+\midrule
+\multicolumn{2}{l}{\textbf{Sous-total}} & \textbf{21} & & \\
+\midrule
+\multicolumn{2}{l}{\textbf{TOTAL}} & \textbf{21} & & \\
+\bottomrule
+\end{tabularx}
+
+\section*{Dossier personnel (par élève)}
+\begin{tabularx}{\linewidth}{@{}X c c c c@{}}
+\toprule
+ & Rendu & Contribution décrite & Difficultés exposées & Aides citées \\
+\midrule
+Élève 1 : \dotfill & $\square$ & $\square$ & $\square$ & $\square$ \\[3mm]
+Élève 2 : \dotfill & $\square$ & $\square$ & $\square$ & $\square$ \\[3mm]
+Élève 3 : \dotfill & $\square$ & $\square$ & $\square$ & $\square$ \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+Équilibre du binôme / trinôme (répartition réelle du travail) :
+\par\medskip\hrule\medskip\hrule\medskip
+
+\section*{Bilan}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\textbf{Appréciation générale} :\par\medskip
+\hrule\medskip\hrule\medskip\hrule\medskip
+\end{tabularx}
+
+\bigskip
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\textbf{Note du projet : \hspace{1.5cm} / 21} \quad $\Rightarrow$ \quad \textbf{Note sur 20 : \hspace{1.5cm}} & Date : \dotfill \\
+\end{tabularx}
+
+\end{document}

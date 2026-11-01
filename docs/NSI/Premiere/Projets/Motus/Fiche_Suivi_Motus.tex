@@ -1,0 +1,140 @@
+% !TEX program = lualatex
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{booktabs,tabularx,array,xcolor,enumitem,amssymb,fancyhdr,eurosym,graphicx}
+\setmainfont{Latin Modern Roman}
+\directlua{luaotfload.add_fallback("symfb", {"DejaVu Sans Mono:mode=harf"})}
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase,RawFeature={fallback=symfb}]
+
+\definecolor{accent}{RGB}{31,78,121}
+\definecolor{pale}{RGB}{232,239,247}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\parindent}{0pt}
+\setlist{nosep,leftmargin=*}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{-2mm}\textcolor{accent}{\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\textcolor{gray}{1\iere{} NSI -- Fiche de suivi enseignant}}
+\fancyhead[R]{\small\textcolor{gray}{Projet Motus}}
+\fancyfoot[C]{\small\thepage}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{accent} Fiche de suivi de projet}\\[2mm]
+{\Large Projet : Motus}
+\end{center}
+
+\medskip
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Élèves} & 1. \dotfill\ 2. \dotfill\ 3. \dotfill \\[2mm]
+\textbf{Classe / groupe} & \dotfill \hfill \textbf{Date de rendu} : \dotfill \\[2mm]
+\textbf{Fichier(s)} & \texttt{motus\_eleve.py \quad (corrigé : motus.py)} \\
+\end{tabularx}
+
+\section*{Suivi de l'avancement}
+\begin{tabularx}{\linewidth}{@{}X l C{1.2cm} C{1.2cm} C{1.2cm} l@{}}
+\toprule
+\rowcolor{pale} Jalon & Tests unitaires & Commencé & Terminé & Tests OK & Date / remarque \\
+\midrule
+\texttt{choisir\_\allowbreak{}mot} & doctest : 2 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{mot\_\allowbreak{}valide} & doctest : 5 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{demande\_\allowbreak{}proposition} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{teste\_\allowbreak{}mot} & doctest : 6 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{affiche\_\allowbreak{}essais} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{calcule\_\allowbreak{}score} & doctest : 4 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{une\_\allowbreak{}manche} &  & $\square$ & $\square$ & $\square$ & \\
+Dossier personnel (1 à 2 pages) &  & $\square$ & $\square$ & $\square$ & \\
+Améliorations &  & $\square$ & $\square$ & $\square$ & \\
+Question facultative (High Score) &  & $\square$ & $\square$ & $\square$ & \\
+\bottomrule
+\end{tabularx}
+
+\section*{Journal des séances}
+\begin{tabularx}{\linewidth}{@{}C{2cm} X X@{}}
+\toprule
+\rowcolor{pale} Date & Travail observé / difficultés & Aides apportées, consignes données \\
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\bottomrule
+\end{tabularx}
+
+\section*{Points de vigilance à contrôler}
+\begin{itemize}
+\item \texttt{charge\_\allowbreak{}mots} n'a pas été modifiée ; \texttt{LONGUEUR\_\allowbreak{}MOT} et \texttt{NB\_\allowbreak{}ESSAIS\_\allowbreak{}MAX} sont utilisées (pas de \texttt{6} « en dur »).
+\item \texttt{teste\_\allowbreak{}mot} : \texttt{ALLONS} contre \texttt{BALLES} $\to$ \texttt{alL..S}, \texttt{LLLLLL} contre \texttt{BALLES} $\to$ \texttt{..LL..} (pas de plantage, une lettre ne sert qu'une fois, bien placée prioritaire).
+\item Les propositions invalides (longueur, première lettre, mot inconnu) ne comptent pas comme un essai.
+\item Le mot à trouver n'est jamais affiché avant la fin de la manche.
+\item La manche s'arrête à 6 essais ou à la victoire ; le score est $100\times(\text{essais non utilisés}+1)$, ou 0 en cas de défaite.
+\item Question facultative : nom non vide, sauvegarde par \texttt{sauve\_\allowbreak{}score}, top 10 affiché par \texttt{get\_\allowbreak{}score}, réponse à la question 3 (nom contenant \texttt{ / }).
+\end{itemize}
+\smallskip
+Propositions à tester : mot trop court, mot commençant par une autre lettre, mot inventé, majuscules/minuscules mélangées, mot à lettres doubles.
+
+\section*{Grille d'évaluation}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.6cm} X C{1.3cm} C{1.5cm} p{3.4cm}@{}}
+\toprule
+\rowcolor{pale} Critère & Détails & Barème & Obtenu & Observations \\
+\midrule
+\texttt{choisir\_\allowbreak{}mot} & passage de tous les tests unitaires & 1 & & \\
+\texttt{mot\_\allowbreak{}valide} & passage de tous les tests unitaires & 2 & & \\
+\texttt{demande\_\allowbreak{}proposition} & \emph{dumbproof}, messages d'erreur explicites & 2 & & \\
+\texttt{teste\_\allowbreak{}mot} & tests unitaires, dont les lettres en double & 4 & & \\
+\texttt{affiche\_\allowbreak{}essais} & affichage correct & 2 & & \\
+\texttt{calcule\_\allowbreak{}score} & passage de tous les tests unitaires & 1 & & \\
+\texttt{une\_\allowbreak{}manche} & jeu a minima fonctionnel & 3 & & \\
+Noms des variables clairs & pas de nom d'un seul caractère, sauf compteurs & 1 & & \\
+Code commenté et clair & explications minimales & 1 & & \\
+Améliorations, qualité du code &  & 1 & & \\
+\midrule
+\multicolumn{2}{l}{\textbf{Sous-total}} & \textbf{18} & & \\
+\midrule
+Partie facultative (High Score) & affichage correct et bonne saisie & 2 & & \\
+\midrule
+\multicolumn{2}{l}{\textbf{TOTAL}} & \textbf{20} & & \\
+\bottomrule
+\end{tabularx}
+
+\section*{Dossier personnel (par élève)}
+\begin{tabularx}{\linewidth}{@{}X c c c c@{}}
+\toprule
+ & Rendu & Contribution décrite & Difficultés exposées & Aides citées \\
+\midrule
+Élève 1 : \dotfill & $\square$ & $\square$ & $\square$ & $\square$ \\[3mm]
+Élève 2 : \dotfill & $\square$ & $\square$ & $\square$ & $\square$ \\[3mm]
+Élève 3 : \dotfill & $\square$ & $\square$ & $\square$ & $\square$ \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+Équilibre du binôme / trinôme (répartition réelle du travail) :
+\par\medskip\hrule\medskip\hrule\medskip
+
+\section*{Bilan}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\textbf{Appréciation générale} :\par\medskip
+\hrule\medskip\hrule\medskip\hrule\medskip
+\end{tabularx}
+
+\bigskip
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\textbf{Note du projet : \hspace{1.5cm} / 20} \quad $\Rightarrow$ \quad \textbf{Note sur 20 : \hspace{1.5cm}} & Date : \dotfill \\
+\end{tabularx}
+
+\end{document}

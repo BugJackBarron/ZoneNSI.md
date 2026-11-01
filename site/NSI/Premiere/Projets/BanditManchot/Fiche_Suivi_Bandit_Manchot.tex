@@ -1,0 +1,125 @@
+% !TEX program = lualatex
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\usepackage{colortbl}
+\usepackage{booktabs,tabularx,array,xcolor,enumitem,amssymb,fancyhdr,eurosym,graphicx}
+\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase]
+
+\definecolor{accent}{RGB}{31,78,121}
+\definecolor{pale}{RGB}{232,239,247}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\parindent}{0pt}
+\setlist{nosep,leftmargin=*}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{-2mm}\textcolor{accent}{\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\textcolor{gray}{1\iere{} NSI -- Fiche de suivi enseignant}}
+\fancyhead[R]{\small\textcolor{gray}{Projet Bandit Manchot}}
+\fancyfoot[C]{\small\thepage}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{accent} Fiche de suivi de projet}\\[2mm]
+{\Large Projet : Bandit Manchot}
+\end{center}
+
+\medskip
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Élèves} & 1. \dotfill\ 2. \dotfill\ 3. \dotfill \\[2mm]
+\textbf{Classe / groupe} & \dotfill \hfill \textbf{Date de rendu} : \dotfill \\[2mm]
+\textbf{Fichier(s)} & \texttt{Bandit\_Manchot\_Eleve.py} \\
+\end{tabularx}
+
+\section*{Suivi de l'avancement}
+\begin{tabularx}{\linewidth}{@{}X l C{1.2cm} C{1.2cm} C{1.2cm} l@{}}
+\toprule
+\rowcolor{pale} Jalon & Tests unitaires & Commencé & Terminé & Tests OK & Date / remarque \\
+\midrule
+\texttt{choisir\_symbole} & doctest : 4 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{fabriquer\_chaine} & doctest : 4 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{compte\_symboles\_identiques} & doctest : 4 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{presence\_symboles\_identiques\_multiples} & doctest : 5 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{table\_gain} & doctest : 8 tests & $\square$ & $\square$ & $\square$ & \\
+\texttt{saisir\_mise} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{demander\_continuer} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{afficher\_bandit} &  & $\square$ & $\square$ & $\square$ & \\
+\texttt{main\_game} &  & $\square$ & $\square$ & $\square$ & \\
+Partie facultative (High Score) &  & $\square$ & $\square$ & $\square$ & \\
+\bottomrule
+\end{tabularx}
+
+\section*{Journal des séances}
+\begin{tabularx}{\linewidth}{@{}C{2cm} X X@{}}
+\toprule
+\rowcolor{pale} Date & Travail observé / difficultés & Aides apportées, consignes données \\
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\midrule
+ & & \\[8mm]
+\bottomrule
+\end{tabularx}
+
+\section*{Points de vigilance à contrôler}
+\begin{itemize}
+\item \texttt{get\_score} et \texttt{sauve\_score} n'ont pas été modifiées ; \texttt{HighScore.txt} est créé automatiquement s'il manque.
+\item \texttt{saisir\_mise} : mise entre 10 et le pot ; refus d'un texte, d'un nombre négatif, d'un flottant, d'une mise supérieure au pot.
+\item \texttt{table\_gain} : vérifier \texttt{777} ($\times 100$), \texttt{ΩΩΩ} ($\times 50$), un brelan de couleurs ($\times 20$), \texttt{Ω7Ω} ($\times 10$), \texttt{♠♠7} ($\times 5$), trois symboles différents ($\times 2$), sinon 0.
+\item \texttt{main\_game} : départ à 500\,\euro, la partie s'arrête quand le pot est nul ou que le joueur abandonne ; la fonction renvoie le gain réel.
+\item Information : avec cette table, l'espérance de gain est d'environ 2,59 fois la mise (très favorable au joueur).
+\end{itemize}
+\smallskip
+Cas à tester : mise de 10, mise égale au pot, pot nul après une perte, plusieurs parties de suite, saisies absurdes.
+
+\section*{Grille d'évaluation}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.6cm} X C{1.3cm} C{1.5cm} p{3.4cm}@{}}
+\toprule
+\rowcolor{pale} Critère & Détails & Barème & Obtenu & Observations \\
+\midrule
+\texttt{choisir\_symbole} & assertions efficaces & 1 & & \\
+\texttt{fabriquer\_chaine} & assertions efficaces & 1 & & \\
+\texttt{compte\_symboles\_identiques} & passage de tous les tests unitaires & 1 & & \\
+\texttt{presence\_symboles\_identiques\_multiples} &  & 2 & & \\
+\texttt{table\_gain} & passage de tous les tests unitaires & 1 & & \\
+\texttt{saisir\_mise} & \emph{dumbproof} & 1 & & \\
+\texttt{demander\_continuer} & \emph{dumbproof} & 1 & & \\
+\texttt{afficher\_bandit} & affichage correct & 1 & & \\
+\texttt{main\_game} & jeu a minima fonctionnel & 4 & & \\
+Noms des variables clairs & pas de nom d'un seul caractère, sauf compteurs & 2 & & \\
+Code commenté et clair & explications minimales & 2 & & \\
+Améliorations, qualité du code &  & 1 & & \\
+\midrule
+\multicolumn{2}{l}{\textbf{Sous-total}} & \textbf{18} & & \\
+\midrule
+Partie facultative (High Score) & affichage correct et bonne saisie & 2 & & \\
+\midrule
+\multicolumn{2}{l}{\textbf{TOTAL}} & \textbf{20} & & \\
+\bottomrule
+\end{tabularx}
+
+
+\section*{Bilan}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\textbf{Appréciation générale} :\par\medskip
+\hrule\medskip\hrule\medskip\hrule\medskip
+\end{tabularx}
+
+\bigskip
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\textbf{Note du projet : \hspace{1.5cm} / 20} \quad $\Rightarrow$ \quad \textbf{Note sur 20 : \hspace{1.5cm}} & Date : \dotfill \\
+\end{tabularx}
+
+\end{document}

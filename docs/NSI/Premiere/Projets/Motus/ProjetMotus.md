@@ -4,7 +4,7 @@
 
 	* **LA NOTE MAXIMALE DE CE PROJET EST DE 18 SANS LA PARTIE FACULTATIVE !**
 	* Vous travaillerez par binômes sur ce projet (ou exceptionnellement par trinômes).
-	* Vous rendrez le code complet + votre dossier personnel à la date fixée en classe.
+	* Vous rendrez le code complet + votre dossier personnel pour le 11 décembre 2026.
 	* Vous aurez un temps en classe pour réaliser le projet, mais ce temps ne sera pas suffisant ! Vous devrez vous coordonner pour arriver à vos fins !
 
 ## Description du projet
