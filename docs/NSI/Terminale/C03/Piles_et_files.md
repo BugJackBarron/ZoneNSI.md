@@ -6,7 +6,7 @@
 
 !!! abstract "Définition"
 
-	Une {==**pile**==} (*stack* en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'{==**insertion**==} et de {==**délétion**==} :
+	Une {==**pile**==} (*stack* en anglais) est une structure de données permettant de stocker un ensemble d'objets tout en respectant certaines règles d'{==**insertion**==} et de {==**délétion**==} :
 	
 	* un objet est ajouté toujours en haut de la pile (**empiler**);
 	* quand on supprime un objet, il s'agit toujours du **dernier objet ajouté** (**dépiler**).
@@ -34,7 +34,7 @@
 	| `creer_pile() -> Pile[T]` | crée une pile vide |
 	| `est_vide(p : Pile[T]) -> bool` | renvoie `True` si l'objet `p` de type `Pile[T]` est vide, `False` sinon. |
 	| `empiler(e : T, p : Pile[T]) -> None` | ajoute l'élément `e` de type `T` au sommet de la pile `p`. |
-	| `dépiler(p : Pile[T]) -> e : T` | retire et renvoie l'élément `e` de type `T` situé au sommet de la pile `p`. |
+	| `depiler(p : Pile[T]) -> e : T` | retire et renvoie l'élément `e` de type `T` situé au sommet de la pile `p`. |
 	
 		
 !!! example "Situations utilisant des piles"
@@ -51,7 +51,7 @@
 	
 	=== "Pile d'appels d'une fonction récursive"
 	
-		Une pile est crée lors des différents appels récursifs d'une fonction, et cette pile est dépilée à chaque retour de fonction.
+		Une pile est créée lors des différents appels récursifs d'une fonction, et cette pile est dépilée à chaque retour de fonction.
 		
 		Par exemple, avec la fonction factorielle :
 		<p align="center">
@@ -69,7 +69,7 @@
 
 !!! abstract "Définition"
 	
-	Une {==**file**==} (*queue* en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :
+	Une {==**file**==} (*queue* en anglais) est une structure de données permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :
 	
 	* un objet est ajouté toujours à la fin de la file (**enfiler**);
 	* quand on supprime un objet, il s'agit toujours du **premier objet de la file** (**défiler**).
@@ -81,7 +81,7 @@
 	</p>
 	
 	
-	Une file est particulièrement adaptée aux {**traitements séquentiels**}.
+	Une file est particulièrement adaptée aux {==**traitements séquentiels**==}.
 	
 	Un tel type de structure est souvent appelé :
 	
@@ -98,7 +98,7 @@
 	
 	| fonction|  description|
 	|:---:| :--- |
-	| `creer_file() -> File[T]` | crée une pile vide |
+	| `creer_file() -> File[T]` | crée une file vide |
 	| `est_vide(f : File[T]) -> bool` | renvoie `True` si l'objet `f` de type `File[T]` est vide, `False` sinon. |
 	| `enfiler(e : T, f : File[T]) -> None` | ajoute l'élément `e` de type `T` à la fin de la file `f`. |
 	| `defiler(f : File[T]) -> e : T` | retire et renvoie l'élément `e` de type `T` situé au début de la file `f`. |
@@ -107,9 +107,9 @@
 
 	=== "Jeu de Bataille"
 	
-		Dans un jeu de bataille, chaque joueur possède une file de carte. On **défile** chaque paquet, compare les cartes, et le vainqueur **enfile** les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.
+		Dans un jeu de bataille, chaque joueur possède une file de cartes. On **défile** chaque paquet, compare les cartes, et le vainqueur **enfile** les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.
 		
-	=== "Serveurs d'impressions"
+	=== "Serveurs d'impression"
 	
 		Les serveurs d'impression traitent les requêtes dans l'ordre dans lequel elles arrivent, et les insèrent dans une file d'attente (dite aussi *queue* ou *spool*), lorsque d'autres travaux sont en exécution.
 	
@@ -129,7 +129,7 @@
 !!! question "Implémentation à partir du type `list`"
 	=== "Énoncé"
 
-		Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles, en utilisant le type `list` de python:
+		Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles, en utilisant le type `list` de python :
 		
 		``` python
 					
@@ -166,11 +166,11 @@
 		
 !!! warning "Un code simple et efficace ?"
 
-	Certes la construction de code effectuée est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type `list` en python sont cachés, comme par exemple l'**allocation dynamique de mémoire**. Cette allocation se fait à la création, puis quand la lite dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... [voir ici](https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/){:target = "_blank"}), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.
+	Certes la construction de code effectuée est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type `list` en python sont cachés, comme par exemple l'**allocation dynamique de mémoire**. Cette allocation se fait à la création, puis quand la liste dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... [voir ici](https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/){:target = "_blank"}), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.
 
 ### À partir d'une liste chainée
 
-Une des possibilités les plus simples pour implémenter une pile est d'utiliser les liste chainée. En effet, dans une liste chainée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type `list` de python.
+Une des possibilités les plus simples pour implémenter une pile est d'utiliser les listes chainées. En effet, dans une liste chainée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type `list` de python.
 
 !!! question "Implémentation par les listes chainées"
 
@@ -235,7 +235,7 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 	
 		``` python
 		
-		class Chainon
+		class Chainon :
 			def __init__(self, valeur, suivant) :
 				self.valeur = valeur
 				self.suivant = suivant
@@ -265,9 +265,9 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 	
 	Une implémentation totalement différente de la première est d'utiliser deux piles, une pile d'entrées et une pile de sorties.
 	
-	Le principe est celui d'un jeu de carte dans lequel il y a une défausse :
+	Le principe est celui d'un jeu de cartes dans lequel il y a une défausse :
 	
-	* Le paquet de carte principal est le *paquet de sortie* : c'est la **pile de sortie**. On tire une carte à partir de cette pile.
+	* Le paquet de cartes principal est le *paquet de sortie* : c'est la **pile de sortie**. On tire une carte à partir de cette pile.
 	* La défausse est composée de cartes jouées face ouverte, posées sur le sommet du paquet de défausse. C'est la pile d'entrées. 
 	* Quand le paquet principal est vide, on prend la défausse et sans la mélanger on la retourne et elle prend la place du paquet principal.
 	
@@ -279,7 +279,7 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 	
 	=== "Énoncé"
 	
-		Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons défini plus haut :
+		Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons définie plus haut :
 		
 		``` python
 		class File :
@@ -319,7 +319,7 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 !!! question "Améliorer le calcul de la taille"
 	
 	=== "Énoncé"
-		Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe `Pile` .
+		Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe `Pile`.
 		Nous allons ajouter un *attribut* `_taille` à la classe, qui contiendra en permanence la taille de la pile courante.
 		
 		Quelles méthodes modifier ? Quelle est alors la complexité ?
@@ -340,19 +340,19 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 	
 	Le calcul $((1 + 2) \times 4) + 3$ peut se lire intuitivement :
 
-    * je mets 1, ($1$) ;
-    * j'ajoute 2, ($2 +$) ;
-    * je multiplie par 4, ($4 \times$) ;
-    * j'ajoute 3. ($3 +$).
+	* je mets 1, ($1$) ;
+	* j'ajoute 2, ($2 +$) ;
+	* je multiplie par 4, ($4 \times$) ;
+	* j'ajoute 3. ($3 +$).
 
 	Ce qui donne la notation précédente.
 	
 	On peut tester ce calcul et cette notation sur le simulateur [omega](https://getomega.dev/simulator){: target = "_blank"} de la calculatrice *Numworks*.
 	
-	La `NPI` est dites **inversée car elle dérive de la *notation polonaise* présentée en 1924 par le mathématicien polonais *Jan Łukasiewicz,* 
+	La `NPI` est dite **inversée** car elle dérive de la *notation polonaise* présentée en 1924 par le mathématicien polonais *Jan Łukasiewicz,* 
 	et elle s’en différencie par l’ordre des termes, les opérandes y étant présentés avant les opérateurs.
 	
-	La structure de calcul en NPI est utilise une **pile** de la manière suivante :
+	La structure de calcul en NPI utilise une **pile** de la manière suivante :
 	
 	* quand on rencontre un nombre, on l'empile ;
 	* quand on rencontre un opérateur ($+,~\times~,-~,...$) on dépile les **deux nombres au sommet de la pile** et on effectue l'opération, 
@@ -370,7 +370,7 @@ Une des possibilités les plus simples pour implémenter une pile est d'utiliser
 
 		``` python
 		>>> NPI("7 3 * 11 + 8 /")
-		4
+		4.0
 		```
 
 		**Remarque** : on se limitera aux opérateurs classiques `+, -, *, /`, mais rien n'empêche les plus courageux d'essayer de programmer les opérateurs `sqrt` et `**`.

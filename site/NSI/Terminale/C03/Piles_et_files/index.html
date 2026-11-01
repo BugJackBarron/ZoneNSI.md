@@ -4924,7 +4924,7 @@
 <h3 id="piles">Piles</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Définition</p>
-<p>Une <mark class="critic"><strong>pile</strong></mark> (<em>stack</em> en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'<mark class="critic"><strong>insertion</strong></mark> et de <mark class="critic"><strong>délétion</strong></mark> :</p>
+<p>Une <mark class="critic"><strong>pile</strong></mark> (<em>stack</em> en anglais) est une structure de données permettant de stocker un ensemble d'objets tout en respectant certaines règles d'<mark class="critic"><strong>insertion</strong></mark> et de <mark class="critic"><strong>délétion</strong></mark> :</p>
 <ul>
 <li>un objet est ajouté toujours en haut de la pile (<strong>empiler</strong>);</li>
 <li>quand on supprime un objet, il s'agit toujours du <strong>dernier objet ajouté</strong> (<strong>dépiler</strong>).</li>
@@ -4965,7 +4965,7 @@
 <td style="text-align: left;">ajoute l'élément <code>e</code> de type <code>T</code> au sommet de la pile <code>p</code>.</td>
 </tr>
 <tr>
-<td style="text-align: center;"><code>dépiler(p : Pile[T]) -&gt; e : T</code></td>
+<td style="text-align: center;"><code>depiler(p : Pile[T]) -&gt; e : T</code></td>
 <td style="text-align: left;">retire et renvoie l'élément <code>e</code> de type <code>T</code> situé au sommet de la pile <code>p</code>.</td>
 </tr>
 </tbody>
@@ -4983,7 +4983,7 @@
 </p>
 </div>
 <div class="tabbed-block">
-<p>Une pile est crée lors des différents appels récursifs d'une fonction, et cette pile est dépilée à chaque retour de fonction.</p>
+<p>Une pile est créée lors des différents appels récursifs d'une fonction, et cette pile est dépilée à chaque retour de fonction.</p>
 <p>Par exemple, avec la fonction factorielle :
 </p><p align="center">
 <img alt="exemple factorielle" src="../pileFacto.png" style="width : 90%;">
@@ -4998,7 +4998,7 @@
 <h3 id="files">Files</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Définition</p>
-<p>Une <mark class="critic"><strong>file</strong></mark> (<em>queue</em> en anglais) est une structure de donnée permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :</p>
+<p>Une <mark class="critic"><strong>file</strong></mark> (<em>queue</em> en anglais) est une structure de données permettant de stocker un ensemble d'objets tout en respectant certaines règles d'insertion et de délétion :</p>
 <ul>
 <li>un objet est ajouté toujours à la fin de la file (<strong>enfiler</strong>);</li>
 <li>quand on supprime un objet, il s'agit toujours du <strong>premier objet de la file</strong> (<strong>défiler</strong>).</li>
@@ -5007,7 +5007,7 @@
 <p></p><p align="center">
 <img alt="file 1" src="../files1.png" style="width : 70%;">
 </p>
-<p>Une file est particulièrement adaptée aux {<strong>traitements séquentiels</strong>}.</p>
+<p>Une file est particulièrement adaptée aux <mark class="critic"><strong>traitements séquentiels</strong></mark>.</p>
 <p>Un tel type de structure est souvent appelé :</p>
 <ul>
 <li><em>Premier entré, premier sorti</em> (<em>PEPS</em>) en français ;</li>
@@ -5029,7 +5029,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;"><code>creer_file() -&gt; File[T]</code></td>
-<td style="text-align: left;">crée une pile vide</td>
+<td style="text-align: left;">crée une file vide</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code>est_vide(f : File[T]) -&gt; bool</code></td>
@@ -5048,10 +5048,10 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Situations utilisant une file</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Jeu de Bataille</label><label for="__tabbed_2_2">Serveurs d'impressions</label><label for="__tabbed_2_3">Mémoire tampon (<em>buffers</em>)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Jeu de Bataille</label><label for="__tabbed_2_2">Serveurs d'impression</label><label for="__tabbed_2_3">Mémoire tampon (<em>buffers</em>)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Dans un jeu de bataille, chaque joueur possède une file de carte. On <strong>défile</strong> chaque paquet, compare les cartes, et le vainqueur <strong>enfile</strong> les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.</p>
+<p>Dans un jeu de bataille, chaque joueur possède une file de cartes. On <strong>défile</strong> chaque paquet, compare les cartes, et le vainqueur <strong>enfile</strong> les cartes récoltées dans son paquet, jusqu'à ce qu'un des joueurs ait une file vide.</p>
 </div>
 <div class="tabbed-block">
 <p>Les serveurs d'impression traitent les requêtes dans l'ordre dans lequel elles arrivent, et les insèrent dans une file d'attente (dite aussi <em>queue</em> ou <em>spool</em>), lorsque d'autres travaux sont en exécution.</p>
@@ -5073,7 +5073,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Une solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles, en utilisant le type <code>list</code> de python:</p>
+<p>Compléter le code suivant afin qu'il corresponde à l'interface définie pour les piles, en utilisant le type <code>list</code> de python :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Pile</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
         <span class="o">...</span>
@@ -5108,10 +5108,10 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Un code simple et efficace ?</p>
-<p>Certes la construction de code effectuée est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type <code>list</code> en python sont cachés, comme par exemple l'<strong>allocation dynamique de mémoire</strong>. Cette allocation se fait à la création, puis quand la lite dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... <a href="https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/" target="target">voir ici</a>), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.</p>
+<p>Certes la construction de code effectuée est simple, et ne présente aucune difficulté. Cependant certains mécanismes du type <code>list</code> en python sont cachés, comme par exemple l'<strong>allocation dynamique de mémoire</strong>. Cette allocation se fait à la création, puis quand la liste dépasse certaines valeurs (définies spécifiquement dans la doc : 0, 4, 8, 16, 25, 35, 46, 58, 72, 88... <a href="https://www.it-swarm-fr.com/fr/python/taille-de-la-liste-en-memoire/940441450/" target="target">voir ici</a>), la réservation mémoire pour la liste est augmentée puis la liste originelle est copiée dans le nouvel emplacement. Cela génère bien entendu une complexité en temps comme en mémoire inutile dans la plupart des cas.</p>
 </div>
 <h3 id="a-partir-dune-liste-chainee">À partir d'une liste chainée</h3>
-<p>Une des possibilités les plus simples pour implémenter une pile est d'utiliser les liste chainée. En effet, dans une liste chainée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type <code>list</code> de python.</p>
+<p>Une des possibilités les plus simples pour implémenter une pile est d'utiliser les listes chainées. En effet, dans une liste chainée nous pouvons insérer et supprimer facilement la tête de la liste, ce qui correspondra au sommet de la pile, et nous n'aurons plus le problème d'agrandissement généré par le type <code>list</code> de python.</p>
 <div class="admonition question">
 <p class="admonition-title">Implémentation par les listes chainées</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enoncé</label><label for="__tabbed_4_2">Une solution</label></div>
@@ -5162,7 +5162,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Compléter le code suivant pour qu'il respecte l'interface définie pour une file :</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Chainon</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Chainon</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">suivant</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suivant</span> <span class="o">=</span> <span class="n">suivant</span>
@@ -5193,9 +5193,9 @@
 <div class="admonition abstract">
 <p class="admonition-title">Une autre implémentation : Utiliser deux piles</p>
 <p>Une implémentation totalement différente de la première est d'utiliser deux piles, une pile d'entrées et une pile de sorties.</p>
-<p>Le principe est celui d'un jeu de carte dans lequel il y a une défausse :</p>
+<p>Le principe est celui d'un jeu de cartes dans lequel il y a une défausse :</p>
 <ul>
-<li>Le paquet de carte principal est le <em>paquet de sortie</em> : c'est la <strong>pile de sortie</strong>. On tire une carte à partir de cette pile.</li>
+<li>Le paquet de cartes principal est le <em>paquet de sortie</em> : c'est la <strong>pile de sortie</strong>. On tire une carte à partir de cette pile.</li>
 <li>La défausse est composée de cartes jouées face ouverte, posées sur le sommet du paquet de défausse. C'est la pile d'entrées. </li>
 <li>Quand le paquet principal est vide, on prend la défausse et sans la mélanger on la retourne et elle prend la place du paquet principal.</li>
 </ul>
@@ -5204,7 +5204,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Énoncé</label><label for="__tabbed_6_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons défini plus haut :</p>
+<p>Compléter le code suivant pour qu'il corresponde à l'interface d'une file telle que nous l'avons définie plus haut :</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">File</span> <span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entrees</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
@@ -5250,7 +5250,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Énoncé</label><label for="__tabbed_8_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe <code>Pile</code> .
+<p>Pour éviter le problème rencontré dans l'exercice précédent, nous allons modifier la structure de la classe <code>Pile</code>.
 Nous allons ajouter un <em>attribut</em> <code>_taille</code> à la classe, qui contiendra en permanence la taille de la pile courante.</p>
 <p>Quelles méthodes modifier ? Quelle est alors la complexité ?</p>
 </div>
@@ -5277,9 +5277,9 @@ de façon non ambigüe les formules arithmétiques <em>sans utiliser de parenth�
 </ul>
 <p>Ce qui donne la notation précédente.</p>
 <p>On peut tester ce calcul et cette notation sur le simulateur <a href="https://getomega.dev/simulator" target="target">omega</a> de la calculatrice <em>Numworks</em>.</p>
-<p>La <code>NPI</code> est dites <em><em>inversée car elle dérive de la </em>notation polonaise</em> présentée en 1924 par le mathématicien polonais <em>Jan Łukasiewicz,</em> 
+<p>La <code>NPI</code> est dite <strong>inversée</strong> car elle dérive de la <em>notation polonaise</em> présentée en 1924 par le mathématicien polonais <em>Jan Łukasiewicz,</em> 
 et elle s’en différencie par l’ordre des termes, les opérandes y étant présentés avant les opérateurs.</p>
-<p>La structure de calcul en NPI est utilise une <strong>pile</strong> de la manière suivante :</p>
+<p>La structure de calcul en NPI utilise une <strong>pile</strong> de la manière suivante :</p>
 <ul>
 <li>quand on rencontre un nombre, on l'empile ;</li>
 <li>quand on rencontre un opérateur (<span class="arithmatex">\(+,~\times~,-~,...\)</span>) on dépile les <strong>deux nombres au sommet de la pile</strong> et on effectue l'opération, 
@@ -5294,7 +5294,7 @@ et unique nombre dans cette pile quand l'expression  a été entièrement lue.</
 et qui renvoie le résultat du calcul.</p>
 <p>Par exemple :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">NPI</span><span class="p">(</span><span class="s2">"7 3 * 11 + 8 /"</span><span class="p">)</span>
-<span class="mi">4</span>
+<span class="mf">4.0</span>
 </code></pre></div>
 <p><strong>Remarque</strong> : on se limitera aux opérateurs classiques <code>+, -, *, /</code>, mais rien n'empêche les plus courageux d'essayer de programmer les opérateurs <code>sqrt</code> et <code>**</code>.</p>
 </div>

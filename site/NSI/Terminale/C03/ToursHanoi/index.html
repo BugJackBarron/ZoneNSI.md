@@ -2855,13 +2855,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#codage-de-python" class="md-nav__link">
+  <a href="#codage-en-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Codage de Python
+      Codage en Python
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Codage de Python">
+    <nav class="md-nav" aria-label="Codage en Python">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4906,7 +4906,7 @@
 
 <div><h1 id="tp-tour-de-hanoi">TP : Tour de Hanoï</h1>
 <h2 id="presentation-du-jeu">Présentation du jeu</h2>
-<p><strong>Les tours de Hanoï</strong> est un jeu de réflexion imaginé par le mathématicien français <a href="https://fr.wikipedia.org/wiki/%C3%89douard_Lucas" target="target">Édouard Lucas</a>.</p>
+<p><strong>Les tours de Hanoï</strong> sont un jeu de réflexion imaginé par le mathématicien français <a href="https://fr.wikipedia.org/wiki/%C3%89douard_Lucas" target="target">Édouard Lucas</a>.</p>
 <p>Il consiste à déplacer des disques de différents diamètres d'une « tour de départ » à une « tour d'arrivée » en passant par une « tour intermédiaire », et ce en un minimum de coups, en respectant les deux règles suivantes :</p>
 <ul>
 <li>on ne peut déplacer qu'un disque à la fois ;</li>
@@ -4923,13 +4923,25 @@
 <p>Si on observe de près le jeu pour un nombre de disques supérieur à 1, on s'aperçoit qu'il n'y a que 1 ou 2 déplacements possibles :</p>
 <ul>
 <li>le petit disque peut <strong>toujours</strong> se déplacer sur les deux autres tours.</li>
-<li>si un disque différent du plus petit peut-être déplacé, il n'y a qu'une seule possibilité, c'est-à-dire sur la tour <strong>où n'est pas le petit disque</strong>.</li>
+<li>si un disque différent du plus petit peut être déplacé, il n'y a qu'une seule possibilité, c'est-à-dire sur la tour <strong>où n'est pas le petit disque</strong>.</li>
 </ul>
+<p>Le petit disque se déplace toujours dans le même sens cyclique, mais ce <strong>sens dépend de la parité du nombre <code>n</code> de disques</strong> :</p>
+<ul>
+<li>si <code>n</code> est <strong>impair</strong>, le petit disque suit le cycle <code>D-&gt;A-&gt;I-&gt;D</code> ;</li>
+<li>si <code>n</code> est <strong>pair</strong>, le petit disque suit le cycle <code>D-&gt;I-&gt;A-&gt;D</code>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Pourquoi ?</p>
+<p>Le plus grand disque ne bouge qu'une seule fois, de <code>D</code> vers <code>A</code>. Il faut pour cela que les <code>n-1</code> autres disques soient réunis sur <code>I</code>.
+Avec 2 disques, le petit disque doit donc aller d'abord sur <code>I</code> (<code>D-&gt;I</code>), alors qu'avec 3 disques il va d'abord sur <code>A</code> (<code>D-&gt;A</code>) pour que le disque moyen puisse aller sur <code>I</code>.</p>
+</div>
 <p>Un algorithme itératif est donc le suivant :</p>
-<div class="highlight"><pre><span></span><code>Tant qu'il reste un disque sur la tour de départ ou sur la tour intermédiaire :
-    Déplacer le petit disque d'une tour dans le sens D-&gt;A-&gt;I-&gt;D
+<div class="highlight"><pre><span></span><code>Si n est pair, le sens du cycle est D-&gt;I-&gt;A-&gt;D, sinon il est D-&gt;A-&gt;I-&gt;D
+Tant qu'il reste un disque sur la tour de départ ou sur la tour intermédiaire :
+    Déplacer le petit disque d'une tour dans le sens du cycle
     Si on peut déplacer un disque autre que le plus petit, alors le déplacer
 </code></pre></div>
+<p>Le nombre minimal de déplacements pour <code>n</code> disques est <span class="arithmatex">\(2^n - 1\)</span>.</p>
 <div class="admonition example">
 <p class="admonition-title">Exemple avec 3 disques</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:8"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><input id="__tabbed_1_6" name="__tabbed_1" type="radio"><input id="__tabbed_1_7" name="__tabbed_1" type="radio"><input id="__tabbed_1_8" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Etape 0</label><label for="__tabbed_1_2">Etape 1</label><label for="__tabbed_1_3">Etape 2</label><label for="__tabbed_1_4">Etape 3</label><label for="__tabbed_1_5">Etape 4</label><label for="__tabbed_1_6">Etape 5</label><label for="__tabbed_1_7">Etape 6</label><label for="__tabbed_1_8">Etape 7</label></div>
@@ -4969,7 +4981,7 @@
 </div>
 </div>
 </div>
-<h2 id="codage-de-python">Codage de Python</h2>
+<h2 id="codage-en-python">Codage en Python</h2>
 <p>Vous créerez un fichier python vide nommé <code>tour_de_hanoi.py</code>, dans lequel vous effectuerez toutes les étapes suivantes :</p>
 <h3 id="creation-de-la-classe-chainon">Création de la classe Chainon</h3>
 <p>Créer une classe <code>Chainon</code> représentant un chainon de liste chainée.
@@ -4977,7 +4989,7 @@ Cette classe devra :</p>
 <ul>
 <li>avoir comme attributs <code>valeur</code>, représentant la valeur stockée dans le chainon, et <code>suivant</code>, représentant l'objet auquel le chainon est attaché, objet qui est soit de type <code>Chainon</code>, soit <code>None</code>.</li>
 <li>
-<p>avoir comme méthode le DUNDERS <code>__str__</code>, renvoyant une chaine de caractère définie de la manière suivante, en considérant la liste chainée suivante :</p>
+<p>avoir comme méthode spéciale (<em>dunder</em>) <code>__str__</code>, renvoyant une chaine de caractères définie de la manière suivante, en considérant la liste chainée suivante :</p>
 <p><img alt="affiche_liste_1.png" src="../affiche_liste_1.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;"></p>
 <ul>
 <li>
@@ -5015,7 +5027,7 @@ Cette classe devra :</p>
 <td style="text-align: left;"><code>est_vide</code></td>
 <td style="text-align: center;">aucun</td>
 <td style="text-align: center;">un <code>bool</code></td>
-<td style="text-align: left;">renvoie <code>True si la pile est vide,</code>False`sinon</td>
+<td style="text-align: left;">renvoie <code>True</code> si la pile est vide, <code>False</code> sinon</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>empiler</code></td>
@@ -5033,7 +5045,7 @@ Cette classe devra :</p>
 <td style="text-align: left;"><code>consulter</code></td>
 <td style="text-align: center;">aucun</td>
 <td style="text-align: center;">un <code>int</code></td>
-<td style="text-align: left;">renvoie la valeur de l'élément en haut de la pile, <strong>sans le dépiler</strong>. Si la pile est vide renvoie <code>float(inf)</code>.</td>
+<td style="text-align: left;">renvoie la valeur de l'élément en haut de la pile, <strong>sans le dépiler</strong>. Si la pile est vide renvoie <code>float('inf')</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>__str__</code></td>
@@ -5062,7 +5074,7 @@ Cette classe devra :</p>
 <li><code>0</code> est le plus petit disque</li>
 <li><code>n-1</code> est le plus grand disque.</li>
 </ul>
-<p>L'interface de la classe <code>HanoiGame</code> et la suivante :</p>
+<p>L'interface de la classe <code>HanoiGame</code> est la suivante :</p>
 <table>
 <thead>
 <tr>
@@ -5105,31 +5117,31 @@ Cette classe devra :</p>
 <p>Cette méthode doit afficher l'état actuel des trois piles comme l'exemple ci-dessous, pour un jeu à 3 disques :</p>
 <p></p><div class="highlight"><pre><span></span><code>D : 
 I :  1  &lt;-   2  
-F : 3
+A : 3
 </code></pre></div>
 Cet affichage correspond à la situation suivante :
 <p><img alt="Etape_4.png" src="../Etape_4.png" style="width:30%; margin:auto;display:block;background-color: #d2dce0;">    </p>
 </li>
 <li>
 <p><mark class="critic"><strong>méthode <code>solve</code></strong></mark> :</p>
-<p>La méthode <code>next_move</code> prend en argument optionnel un booléen <code>verbose</code> initialisé à <code>True</code>.
-Cette méthode doit renvoyer un entier correspondant au nombre de déplacements nécessaire pour terminer le jeu (c'est-à-dire déplacer l'intégralité des disques de la tour de départ vers la tour d'arrivée).</p>
+<p>La méthode <code>solve</code> prend en argument optionnel un booléen <code>verbose</code> initialisé à <code>True</code>.
+Cette méthode doit renvoyer un entier correspondant au nombre de déplacements nécessaires pour terminer le jeu (c'est-à-dire déplacer l'intégralité des disques de la tour de départ vers la tour d'arrivée).</p>
 <p>Dans le cas où l'argument <code>verbose</code> est <code>True</code> (ce qui est le cas par défaut), cette méthode doit en outre afficher l'état des trois tours à chaque étape de la résolution, par exemple comme ci-dessous pour un jeu à 3 disques :</p>
 <p></p><div class="highlight"><pre><span></span><code>...
 Etape 4
 D :
 I :  1  &lt;-   2  
-F : 3
+A : 3
 
 Etape 5
 D : 1
 I : 2
-F : 3
+A : 3
 
 Etape 6
 D : 1
 I :
-F :  2  &lt;-   3
+A :  2  &lt;-   3
 ...
 </code></pre></div>
 Si l'argument <code>verbose</code> est <code>False</code>, la méthode n'affiche rien.
@@ -5162,32 +5174,32 @@ Si l'argument <code>verbose</code> est <code>False</code>, la méthode n'affiche
 <h3 id="code-en-python">Code en Python</h3>
 <p>On rajoute à la classe <code>HanoiGame</code> la méthode suivante :</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">solve_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">solve_r</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">nb_move</span><span class="p">)</span> <span class="p">:</span>
-            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">piles</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-                <span class="k">return</span> <span class="mi">1</span>
-            <span class="k">else</span> <span class="p">:</span>
-                <span class="n">nb_move</span> <span class="o">+=</span> <span class="n">solve_r</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">piles</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">piles</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">depiler</span><span class="p">())</span>
-                <span class="n">nb_move</span> <span class="o">+=</span><span class="mi">1</span>
-                <span class="n">nb_move</span> <span class="o">+=</span> <span class="n">solve_r</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">nb_move</span>
-        <span class="k">return</span> <span class="n">solve_r</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solve_r</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">nb_move</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">piles</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">nb_move</span> <span class="o">+=</span> <span class="n">solve_r</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">piles</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">piles</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">depiler</span><span class="p">())</span>
+            <span class="n">nb_move</span> <span class="o">+=</span><span class="mi">1</span>
+            <span class="n">nb_move</span> <span class="o">+=</span> <span class="n">solve_r</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">nb_move</span>
+    <span class="k">return</span> <span class="n">solve_r</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p>On a ici une <strong>fonction auxiliaire récursive</strong> <code>solve</code> qui prend en argument :</p>
+<p>On a ici une <strong>fonction auxiliaire récursive</strong> <code>solve_r</code> qui prend en argument :</p>
 <ul>
 <li><code>n</code> le nombre de disques à déplacer ;</li>
 <li><code>d</code> l'indice de la tour de départ du déplacement ;</li>
-<li><code>d</code> l'indice de la tour intermédiaire du déplacement ;</li>
-<li><code>a</code> l'indice de la tour d'arrivée' du déplacement ;</li>
+<li><code>i</code> l'indice de la tour intermédiaire du déplacement ;</li>
+<li><code>a</code> l'indice de la tour d'arrivée du déplacement ;</li>
 <li><code>nb_move</code> le nombre de déplacements actuels.</li>
 </ul>
 <p>La méthode <code>solve_rec</code> ne fait qu'appeler la fonction <code>solve_r</code> avec les arguments correspondant à un déplacement complet de la tour d'indice <code>0</code> vers la tour d'indice <code>2</code>.</p>
 <div class="admonition question">
-<p class="admonition-title">A faire</p>
+<p class="admonition-title">À faire</p>
 <ol>
 <li>Compléter les pointillés du code précédent.</li>
-<li>Comparer le nombre de déplacement nécessaires avec les méthodes itératives et récursives.</li>
+<li>Comparer le nombre de déplacements nécessaires avec les méthodes itératives et récursives.</li>
 </ol>
 </div></div>
 
